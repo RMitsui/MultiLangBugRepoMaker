@@ -10,15 +10,14 @@ from langdetect import detect
 from github import Github
 token = Conf.GITHUB_API_KEY
 
-def get_bugtag():
+def get_bugtag(filepath):
     g = Github(token)
-    file = sys.argv[1]
 
     print("Select Repositories with issues tagged as bug")
-    f = open(file,"r")
-    w = open("./Bug/"+os.path.splitext(os.path.basename(file))[0]+"_bug.txt","w")
+    f = open(filepath,"r")
+    w = open("./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt","w")
 
-    #nl = os.path.splitext(os.path.basename(file))[0].split('_')[0].split('-')[1]
+    #nl = os.path.splitext(os.path.basename(filepath))[0].split('_')[0].split('-')[1]
 
     while True:
         line = f.readline().split()
@@ -48,7 +47,9 @@ def get_bugtag():
 
     f.close()
     w.close()
-    subprocess.run(["sort", "-nr", "./Bug/"+os.path.splitext(os.path.basename(file))[0]+"_bug.txt", "-o" ,"./Bug/"+os.path.splitext(os.path.basename(file))[0]+"_bug.txt"])
+    subprocess.run(["sort", "-nr", "./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt", "-o" ,"./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt"])
+    return "./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt"
 
 if __name__ == '__main__':
-    get_bugtag()
+    filepath = sys.argv[1]
+    get_bugtag(filepath)
