@@ -13,7 +13,7 @@ token = Conf.GITHUB_API_KEY
 def get_bugtag(filepath):
     g = Github(token)
 
-    print("Select Repositories with issues tagged as bug")
+    print("👉 Select Repositories with issues tagged as bug")
     f = open(filepath,"r")
     w = open("./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt","w")
 

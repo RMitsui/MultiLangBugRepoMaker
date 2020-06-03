@@ -10,14 +10,10 @@ token = Conf.GITHUB_API_KEY
 #file入力形式
 #{/n} {reponame}
 
-def select_java(filepath):
+def select_java(filepath,th,plang):
     g = Github(token)
-
-    th = 50
-    if(sys.argv[2] != None):
-        th = int(sys.argv[2])
     lang = 'Java'
-    print("Select Repositories written in "+ lang +" at least " +str(th) +" issues written in selected NL.")
+    print("👉 Select Repositories written in "+ lang +" at least " +str(th) +" issues written in selected NL.")
     f = open(filepath,"r")
     w = open("./"+lang+"/"+os.path.splitext(os.path.basename(filepath))[0]+"_java.txt","w")
 
@@ -46,4 +42,8 @@ def select_java(filepath):
 
 if __name__ == '__main__':
     filepath = sys.argv[1]
-    select_java(filepath)
+    if(len(sys.argv)>2):
+        th = sys.argv[2]
+    else:
+        th = 50
+    select_java(filepath,th)

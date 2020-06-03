@@ -12,10 +12,9 @@ token = Conf.GITHUB_API_KEY
 
 def check_ICLinking(filepath):
     g = Github(token)
-    file = sys.argv[1]
 
-    print("Select Repositories where issue-commit linking applied.")
-    f = open(file,"r")
+    print("👉 Select Repositories where issue-commit linking applied.")
+    f = open(filepath,"r")
     w = open("./IC-linked/"+os.path.splitext(os.path.basename(filepath))[0]+"_iclink.txt","w")
 
     #nl = os.path.splitext(os.path.basename(filepath))[0].split('_')[0].split('-')[1]
@@ -33,7 +32,7 @@ def check_ICLinking(filepath):
             bugfix = 0
             for commit in commits:
                 message = commit._rawData['commit']['message']
-                if('#' in message or 'fix' in message or 'Fix' in message or 'Bug' in message or 'bug' in message):
+                if('#' in message):
                     print("\t"+message.replace('\r\n','').replace('\n',''))
                     bugfix+=1
         except:
