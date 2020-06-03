@@ -10,7 +10,7 @@ from langdetect import detect
 from github import Github
 token = Conf.GITHUB_API_KEY
 
-def get_bugtag(filepath):
+def check_ICLinking(filepath):
     g = Github(token)
     file = sys.argv[1]
 
@@ -50,4 +50,4 @@ def get_bugtag(filepath):
 
 if __name__ == '__main__':
     filepath = sys.argv[1]
-    get_bugtag(filepath)
+    check_ICLinking(filepath)
