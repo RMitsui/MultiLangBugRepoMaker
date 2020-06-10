@@ -5,7 +5,9 @@ import re
 import os
 import sys
 import subprocess
+import datetime
 
+from xml.sax.saxutils import escape
 from langdetect import detect
 from github import Github
 token = Conf.GITHUB_API_KEY
@@ -17,13 +19,16 @@ def get_bugtag(filepath):
     f = open(filepath,"r")
     w = open("./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt","w")
 
-    #nl = os.path.splitext(os.path.basename(filepath))[0].split('_')[0].split('-')[1]
+    nl = os.path.splitext(os.path.basename(filepath))[0].split('_')[0].split('-')[1]
 
     while True:
         line = f.readline().split()
         if(len(line)==0):
             break
         name = line[0].strip()
+        os.makedirs("./Bug/"+nl,exist_ok=True)
+        isf = open("./Bug/"+nl+"/"+name.split('/')[1]+".xml","w")
+        isf.write("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n\n")
         try:
             repo = g.get_repo(name)
             print(name)
@@ -34,11 +39,20 @@ def get_bugtag(filepath):
                     if("bug" in label.name or "Bug" in label.name):
                         title = issue.title
                         print("\t" + title)
+                        isf.write("<bug>\n")
+                        isf.write("\t<id>"+str(issue.number)+"</id>\n")
+                        isf.write("\t<title>"+title+"</title>\n")
+                        isf.write("\t<body>"+escape(issue.body.replace("\n"," ").replace("\r",""))+"</body>\n")
+                        isf.write("\t<created>"+issue.created_at.strftime("%Y-%m-%d %H:%M:%S")+"</created>\n")
+                        isf.write("\t<closed>"+issue.closed_at.strftime("%Y-%m-%d %H:%M:%S")+"</closed>\n")
+                        isf.write("</bug>\n")
                         #print(detect(title))
                         bugissues+=1
             print(bugissues)
             if(bugissues != 0):
                 w.write(str(bugissues) + " " + name + "\n")
+            else:
+                os.remove("./Bug/"+nl+"/"+name.split('/')[1]+".xml")
 
         except:
             #pass

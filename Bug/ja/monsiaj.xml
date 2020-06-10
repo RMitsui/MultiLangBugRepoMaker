@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bug>
+	<id>210</id>
+	<title>ラベルプリンタ用紙など一般的でない用紙の印刷ができなかった</title>
+	<body>* 一般サイズでない場合に mediaSizeName = null を指定していたのが問題だった    * mediaSizeNameを指定しなければ適切に印刷してくれる(プリンタによるかもだが    * PDFライブラリpdfboxへの切替時に入ったバグ(用紙サイズ指定部分を以前の実装と同等に戻した)</body>
+	<created>2020-03-16 00:30:13</created>
+	<closed>2020-03-16 03:03:50</closed>
+</bug>
+<bug>
+	<id>207</id>
+	<title>WebSocket再接続後のPingがうまく動作せず回線の無通信時間制限にかかり再接続を繰り返す不具合</title>
+	<body>### 現象一度回線が切れると30秒毎に切断と再接続を繰り返す。### 原因ExecutorServiceによる10秒間隔のPingの送信処理の挿入位置が悪かったため、初回接続時のみPing送信が有効で、再接続した後はおそらく古い切断済みのSessionでPingを送信するためにMaxIdleTimeout=30sとなりonClose処理が走っていたと考えられる。### 修正onOpenでExecutorServiceを登録実行する、onCloseでExecutorServiceを停止するよう修正した。### 動作確認* GAM(SoftwareVPN)とWAF(TLS1.2、インターネット接続)のそれぞれで意図的に回線切断し、再接続を行ない、PingPong通信が動作すること、切断、再接続を繰り返さないことを確認した。</body>
+	<created>2020-02-19 01:58:57</created>
+	<closed>2020-02-20 00:40:38</closed>
+</bug>
+<bug>
+	<id>204</id>
+	<title>WebSocket接続にプロキシ設定ができない</title>
+	<body></body>
+	<created>2019-12-13 02:46:32</created>
+	<closed>2020-01-08 05:26:50</closed>
+</bug>
+<bug>
+	<id>202</id>
+	<title>ログファイルの日時フォーマット指定文字列のミリ秒部分が2桁になっていたのを3桁に修正(先頭0の場合省略されていた)</title>
+	<body></body>
+	<created>2019-12-05 06:55:25</created>
+	<closed>2019-12-05 07:47:33</closed>
+</bug>
+<bug>
+	<id>201</id>
+	<title>#194の影響でSSO接続できなくなっていた</title>
+	<body>protocol.getHttpURLConnection(uri)を使うよう修正。* 通常認証、SSO認証ができることを確認</body>
+	<created>2019-12-05 02:23:00</created>
+	<closed>2019-12-05 06:56:22</closed>
+</bug>
+<bug>
+	<id>200</id>
+	<title>ログファイル削除が常に実行される</title>
+	<body>ctimeの経過時間で削除するためのしきい値が即値計算の際にint型となりオーバーフローし負値となっていた。そのため作成直後のログファイルも削除されログが書き込まれない状態となった。</body>
+	<created>2019-12-03 08:03:09</created>
+	<closed>2019-12-03 08:35:54</closed>
+</bug>
+<bug>
+	<id>139</id>
+	<title>Java 8で動作するようString.strip()をString.trim()に変更</title>
+	<body>Java 11の環境では問題ないがJava 8の環境ではString.strip()でエラーが発生しうまく動作しなかった。String.strip()はJava 11からサポートのため、String.strip()はString.trim()のUnicode強化版とのことなので、今回除外したいのはASCIIの改行コードと空白なのでtrim()でも問題ない。参考https://codeday.me/jp/qa/20190309/383626.html</body>
+	<created>2019-08-05 06:25:09</created>
+	<closed>2019-08-05 06:38:04</closed>
+</bug>
+<bug>
+	<id>138</id>
+	<title>配列をやり取りするwidgetデータでcountなどの外れ値をチェックするようにした</title>
+	<body>アプリで画面データの初期化漏れなどがあるとcountなどが負値でくる場合があり、その場合にArrayIndexErrorになっていた。</body>
+	<created>2019-07-31 01:44:33</created>
+	<closed>2019-07-31 04:01:11</closed>
+</bug>
+<bug>
+	<id>136</id>
+	<title>ランチャーでSystemLookAndFeelにならないのを修正</title>
+	<body>launch()でswing componentを使う前にLAF設定を行うようにした。(constructorのinitLookAndFeel()で行うように)</body>
+	<created>2019-07-30 05:05:04</created>
+	<closed>2019-07-30 05:24:42</closed>
+</bug>
+<bug>
+	<id>132</id>
+	<title>ログイン画面でSystemLookAndFeelにならない</title>
+	<body>Windows10, monsiaj 2.0.16、AdoptOpenJDK 11.4ですが、ログイン画面のLAFがWindows LAFになりません。Launcher.java```    public void launch(String[] args) {        if (checkCommandLineOption(args)) {            return;        }                try {            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {            java.util.logging.Logger.getLogger(Launcher.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);        }```の如く、swing componentを使う前にLAF設定を行うほうが良いと思われます。あるいは、SwingUtilities.updateComponentTreeUI(f)してもよいでしょう。</body>
+	<created>2019-07-19 03:03:51</created>
+	<closed>2019-07-30 05:25:18</closed>
+</bug>

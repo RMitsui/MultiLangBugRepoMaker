@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bug>
+	<id>328</id>
+	<title>UserInfoActivityでunretweetすると落ちる</title>
+	<body></body>
+	<created>2018-03-10 16:48:17</created>
+	<closed>2018-06-02 11:25:11</closed>
+</bug>
+<bug>
+	<id>320</id>
+	<title>Detailでfavした後にMainに戻るとクラッシュする</title>
+	<body>at com.freshdigitable.udonroad.listitem.TwitterCombinedName.&lt;init&gt; (Unknown Source)  at com.freshdigitable.udonroad.listitem.StatusListItem.getCombinedName (Unknown Source)  at com.freshdigitable.udonroad.listitem.StatusView.bind (Unknown Source)  at com.freshdigitable.udonroad.listitem.StatusViewHolder.bind (Unknown Source)  at com.freshdigitable.udonroad.TimelineAdapter$StatusTimelineAdapter.onBindViewHolder (Unknown Source)  at com.freshdigitable.udonroad.TimelineAdapter$StatusTimelineAdapter.onBindViewHolder (Unknown Source)</body>
+	<created>2018-01-20 16:36:54</created>
+	<closed>2018-01-25 15:50:53</closed>
+</bug>
+<bug>
+	<id>295</id>
+	<title>RT/favを消すのがうまくいかないことがある</title>
+	<body>他の人がRTしたツイートに対してRT/favを消す操作が失敗する。- RTを消す場合は、操作を行ったツイートのIDから自分のRTを探し出して消す操作を行う- favを消す場合は、操作を行ったツイートの元ツイートに対して消す操作を行う</body>
+	<created>2017-10-28 12:29:48</created>
+	<closed>2018-03-03 10:55:15</closed>
+</bug>
+<bug>
+	<id>285</id>
+	<title>不要な引用ビューがリサイクルされずに残ってしまう</title>
+	<body></body>
+	<created>2017-10-09 05:11:28</created>
+	<closed>2017-10-28 09:00:12</closed>
+</bug>
+<bug>
+	<id>284</id>
+	<title>timelineが表示される前にbackボタンを押すとクラッシュする</title>
+	<body></body>
+	<created>2017-10-04 05:16:14</created>
+	<closed>2017-10-28 12:20:39</closed>
+</bug>
+<bug>
+	<id>265</id>
+	<title>UserInfoActivityからhomeに戻るとtimelineが止まったままになる</title>
+	<body></body>
+	<created>2017-09-08 04:51:48</created>
+	<closed>2017-11-02 03:09:32</closed>
+</bug>
+<bug>
+	<id>223</id>
+	<title>OAuth認証した後落ちる</title>
+	<body>```D/BaseCacheRealm: openD/ConfigRequestWorker: fetchTwitterAPIConfig: fetchingD/ActivityLifecycleCallbacksImpl: onActivityCreated: count&gt;2D/BaseCacheRealm: openE/MainActivity: setupNavigationDrawer:  java.lang.NullPointerException: The mapper function returned a null value. at io.reactivex.internal.functions.ObjectHelper.requireNonNull(ObjectHelper.java:39) at io.reactivex.internal.operators.observable.ObservableMap$MapObserver.onNext(ObservableMap.java:59) at io.reactivex.internal.operators.observable.ObservableObserveOn$ObserveOnObserver.drainNormal(ObservableObserveOn.java:200) at io.reactivex.internal.operators.observable.ObservableObserveOn$ObserveOnObserver.run(ObservableObserveOn.java:252) at io.reactivex.android.schedulers.HandlerScheduler$ScheduledRunnable.run(HandlerScheduler.java:109) at android.os.Handler.handleCallback(Handler.java:751) at android.os.Handler.dispatchMessage(Handler.java:95) at android.os.Looper.loop(Looper.java:154) at android.app.ActivityThread.main(ActivityThread.java:6286) at java.lang.reflect.Method.invoke(Native Method) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:869) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:759)D/ActivityLifecycleCallbacksImpl: onActivityDestroyed: count&gt;2D/BaseCacheRealm: close: cacheD/BaseCacheRealm: close: cacheD/ActivityLifecycleCallbacksImpl: onActivityDestroyed: count&gt;1E/ConfigRequestWorker: call: java.lang.IllegalStateException: This Realm instance has already been closed, making it unusable. at io.realm.BaseRealm.checkIfValid(BaseRealm.java:380) at io.realm.BaseRealm.beginTransaction(BaseRealm.java:347) at io.realm.BaseRealm.beginTransaction(BaseRealm.java:343) at io.realm.Realm.beginTransaction(Realm.java:131) at io.realm.Realm.executeTransaction(Realm.java:1441) at com.freshdigitable.udonroad.module.realm.ConfigStoreRealm.replaceIgnoringUsers(ConfigStoreRealm.java:86) at com.freshdigitable.udonroad.subscriber.ConfigRequestWorker.lambda$fetchAllIgnoringUsers$2$ConfigRequestWorker(ConfigRequestWorker.java:128) at com.freshdigitable.udonroad.subscriber.ConfigRequestWorker$$Lambda$7.accept(Unknown Source) at io.reactivex.internal.operators.single.SingleDoOnSuccess$DoOnSuccess.onSuccess(SingleDoOnSuccess.java:53) at io.reactivex.internal.operators.single.SingleObserveOn$ObserveOnSingleObserver.run(SingleObserveOn.java:81) at io.reactivex.android.schedulers.HandlerScheduler$ScheduledRunnable.run(HandlerScheduler.java:109) at android.os.Handler.handleCallback(Handler.java:751) at android.os.Handler.dispatchMessage(Handler.java:95) at android.os.Looper.loop(Looper.java:154) at android.app.ActivityThread.main(ActivityThread.java:6286) at java.lang.reflect.Method.invoke(Native Method) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:869) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:759)E/ConfigRequestWorker: call: java.lang.IllegalStateException: This Realm instance has already been closed, making it unusable. at io.realm.BaseRealm.checkIfValid(BaseRealm.java:380) at io.realm.BaseRealm.beginTransaction(BaseRealm.java:347) at io.realm.BaseRealm.beginTransaction(BaseRealm.java:343) at io.realm.Realm.beginTransaction(Realm.java:131) at io.realm.Realm.executeTransaction(Realm.java:1441) at com.freshdigitable.udonroad.module.realm.ConfigStoreRealm.replaceIgnoringUsers(ConfigStoreRealm.java:86) at com.freshdigitable.udonroad.subscriber.ConfigRequestWorker.lambda$fetchAllIgnoringUsers$2$ConfigRequestWorker(ConfigRequestWorker.java:128) at com.freshdigitable.udonroad.subscriber.ConfigRequestWorker$$Lambda$7.accept(Unknown Source) at io.reactivex.internal.operators.single.SingleDoOnSuccess$DoOnSuccess.onSuccess(SingleDoOnSuccess.java:53) at io.reactivex.internal.operators.single.SingleObserveOn$ObserveOnSingleObserver.run(SingleObserveOn.java:81) at io.reactivex.android.schedulers.HandlerScheduler$ScheduledRunnable.run(HandlerScheduler.java:109) at android.os.Handler.handleCallback(Handler.java:751) at android.os.Handler.dispatchMessage(Handler.java:95) at android.os.Looper.loop(Looper.java:154) at android.app.ActivityThread.main(ActivityThread.java:6286) at java.lang.reflect.Method.invoke(Native Method) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:869) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:759)```</body>
+	<created>2017-07-14 10:42:41</created>
+	<closed>2017-07-16 08:50:36</closed>
+</bug>
+<bug>
+	<id>222</id>
+	<title>TwitterCardのフェッチが終わる前にActivityから離れると落ちる</title>
+	<body></body>
+	<created>2017-07-14 10:21:50</created>
+	<closed>2017-07-15 10:19:27</closed>
+</bug>
+<bug>
+	<id>210</id>
+	<title>正常に終了できなかった後に起動させるとカラのリストアイテムが表示される</title>
+	<body>## why- 各sorted cacheはpoolにある`Status`や`User`のデータを参照している- poolはアプリ起動時に`clear`される- 各sorted cacheは`TimelineFragment.onDetach()`で`drop`される- 正常に終了できず`TimelineFragment.onDetach()`が呼ばれないと、次のアプリ起動時にsorted cacheは残ったままだが、参照元であるpoolはクリアされるためリストアイテムのデータを取得できない## goal- [x] アプリ起動時にpoolを`clear`するのをやめる- [x] poolを`drop`しないとDBファイルがどんどん大きくなってしまうので、参照先のsorted cacheが全てなくなった時などに`drop`できるようにする</body>
+	<created>2017-06-18 16:01:37</created>
+	<closed>2017-07-04 16:13:59</closed>
+</bug>
+<bug>
+	<id>154</id>
+	<title>同じツイートが表示されることがある</title>
+	<body>ツイートが入ってくるタイミングによって、同じツイートが連続して表示されることがある。データソースの更新とビューの更新のタイミングが合っていないのかもしれない</body>
+	<created>2016-10-31 12:03:25</created>
+	<closed>2017-09-17 14:50:48</closed>
+</bug>
+<bug>
+	<id>135</id>
+	<title>inReplyToがただのメンションになっている</title>
+	<body>リプライするツイートのIDが正しくセットされていない様子</body>
+	<created>2016-10-06 01:16:50</created>
+	<closed>2016-10-06 07:58:39</closed>
+</bug>
+<bug>
+	<id>123</id>
+	<title>しばらく動かしているとANRが出る</title>
+	<body></body>
+	<created>2016-09-23 13:46:16</created>
+	<closed>2017-08-09 11:22:35</closed>
+</bug>
+<bug>
+	<id>81</id>
+	<title>サムネイルのクリックリスナが抜ける</title>
+	<body></body>
+	<created>2016-07-26 11:32:22</created>
+	<closed>2016-07-31 05:53:19</closed>
+</bug>
+<bug>
+	<id>77</id>
+	<title>UserInfoで画像を開くとMainに戻った後にアプリが落ちる</title>
+	<body>cacheを閉じすぎている？activity遷移のテストを書いておく必要がある。</body>
+	<created>2016-07-26 10:49:56</created>
+	<closed>2016-08-02 10:01:51</closed>
+</bug>
+<bug>
+	<id>72</id>
+	<title>VideoViewの代替</title>
+	<body># whyVideoViewは内部のAudioManagerがcontextを解放しないためメモリリークが発生する。applicationContextを渡して作れば良い（それでもエンコードエラーの際にダイアログを表示しようとして落ちるらしい）らしいが、xmlからinflateしたものについては確実にリークする様子。refs: https://code.google.com/p/android/issues/detail?id=152173</body>
+	<created>2016-07-19 11:19:11</created>
+	<closed>2017-04-16 16:47:55</closed>
+</bug>
+<bug>
+	<id>58</id>
+	<title>UserInfoに切り替えた直後のFABアクションが実行されない</title>
+	<body>タブを切り替えると実行できるようになる。切り替わった直後だけ効かない</body>
+	<created>2016-07-06 10:51:49</created>
+	<closed>2016-08-06 15:23:47</closed>
+</bug>
+<bug>
+	<id>44</id>
+	<title>RTされたツイートが削除されると画面にビューが残ることがある</title>
+	<body></body>
+	<created>2016-06-21 15:47:22</created>
+	<closed>2016-06-30 12:02:08</closed>
+</bug>
+<bug>
+	<id>43</id>
+	<title>RTされたツイートが削除されると落ちる</title>
+	<body>```06-20 02:11:14.095 30877-30967/com.freshdigitable.udonroad D/UserStreamUtil: StatusDeletionNoticeImpl{statusId=744578107277905920, userId=42432969}06-20 02:11:14.097 30877-30967/com.freshdigitable.udonroad D/UserStreamUtil: StatusDeletionNoticeImpl{statusId=744578159392088064, userId=42432969}06-20 02:11:14.124 30877-30877/com.freshdigitable.udonroad D/RealmTimelineAdapter: call: deletedStatus06-20 02:11:14.125 30877-30877/com.freshdigitable.udonroad D/RealmTimelineAdapter: call: deletedStatus06-20 02:11:14.144 30877-30877/com.freshdigitable.udonroad D/REALM: Row 0x9f4217a0 is no longer attached!06-20 02:11:14.144 30877-30877/com.freshdigitable.udonroad D/REALM: jni: ThrowingException 13, Object is no longer valid to operate on. Was it deleted by another thread?, .06-20 02:11:14.145 30877-30877/com.freshdigitable.udonroad D/REALM: Exception has been throw: Illegal State: Object is no longer valid to operate on. Was it deleted by another thread?06-20 02:11:14.145 30877-30877/com.freshdigitable.udonroad D/AndroidRuntime: Shutting down VM06-20 02:11:14.148 30877-30877/com.freshdigitable.udonroad E/AndroidRuntime: FATAL EXCEPTION: main                                                                             Process: com.freshdigitable.udonroad, PID: 30877                                                                             java.lang.IllegalStateException: Illegal State: Object is no longer valid to operate on. Was it deleted by another thread?                                                                                 at io.realm.internal.UncheckedRow.nativeGetLong(Native Method)                                                                                 at io.realm.internal.UncheckedRow.getLong(UncheckedRow.java:128)                                                                                 at io.realm.StatusRealmRealmProxy.realmGet$id(StatusRealmRealmProxy.java:109)                                                                                 at com.freshdigitable.udonroad.realmdata.StatusRealm.getId(StatusRealm.java:61)                                                                                 at com.freshdigitable.udonroad.TimelineAdapter.getSelectedTweetId(TimelineAdapter.java:42)                                                                                 at com.freshdigitable.udonroad.TimelineAdapter.onBindViewHolder(TimelineAdapter.java:84)                                                                                 at com.freshdigitable.udonroad.TimelineAdapter.onBindViewHolder(TimelineAdapter.java:22)                                                                                 at android.support.v7.widget.RecyclerView$Adapter.onBindViewHolder(RecyclerView.java:5768)                                                                                 at android.support.v7.widget.RecyclerView$Adapter.bindViewHolder(RecyclerView.java:5801)                                                                                 at android.support.v7.widget.RecyclerView$Recycler.getViewForPosition(RecyclerView.java:5037)                                                                                 at android.support.v7.widget.RecyclerView$Recycler.getViewForPosition(RecyclerView.java:4913)                                                                                 at android.support.v7.widget.LinearLayoutManager$LayoutState.next(LinearLayoutManager.java:2029)                                                                                 at android.support.v7.widget.LinearLayoutManager.layoutChunk(LinearLayoutManager.java:1414)                                                                                 at android.support.v7.widget.LinearLayoutManager.fill(LinearLayoutManager.java:1377)                                                                                 at android.support.v7.widget.LinearLayoutManager.onLayoutChildren(LinearLayoutManager.java:588)                                                                                 at android.support.v7.widget.RecyclerView.dispatchLayoutStep1(RecyclerView.java:3211)                                                                                 at android.support.v7.widget.RecyclerView.dispatchLayout(RecyclerView.java:3067)                                                                                 at android.support.v7.widget.RecyclerView.consumePendingUpdateOperations(RecyclerView.java:1505)                                                                                 at android.support.v7.widget.RecyclerView.access$400(RecyclerView.java:151)                                                                                 at android.support.v7.widget.RecyclerView$1.run(RecyclerView.java:305)                                                                                 at android.view.Choreographer$CallbackRecord.run(Choreographer.java:767)                                                                                 at android.view.Choreographer.doCallbacks(Choreographer.java:580)                                                                                 at android.view.Choreographer.doFrame(Choreographer.java:549)                                                                                 at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:753)                                                                                 at android.os.Handler.handleCallback(Handler.java:739)                                                                                 at android.os.Handler.dispatchMessage(Handler.java:95)                                                                                 at android.os.Looper.loop(Looper.java:211)                                                                                 at android.app.ActivityThread.main(ActivityThread.java:5335)                                                                                 at java.lang.reflect.Method.invoke(Native Method)                                                                                 at java.lang.reflect.Method.invoke(Method.java:372)                                                                                 at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1016)                                                                                 at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:811)```</body>
+	<created>2016-06-19 17:18:09</created>
+	<closed>2016-06-29 05:15:11</closed>
+</bug>
+<bug>
+	<id>40</id>
+	<title>notifyChangedの後に新しいビューが古いビューの上に重なってしまう</title>
+	<body></body>
+	<created>2016-06-19 05:30:12</created>
+	<closed>2016-06-21 15:42:36</closed>
+</bug>
+<bug>
+	<id>31</id>
+	<title>ユーザアイコンが時々別人になる</title>
+	<body>StatusViewがリサイクルされる時にPicassoのフェッチをキャンセルしなければならないのではないか</body>
+	<created>2016-06-12 09:33:58</created>
+	<closed>2016-10-25 05:50:02</closed>
+</bug>
+<bug>
+	<id>30</id>
+	<title>FABのフリックイベントが正しく処理されていない</title>
+	<body>TimelineFragmentをつけたり外したりするときイベントリスナが正しくセットされていない恐れがあるので調査する。</body>
+	<created>2016-06-11 16:07:41</created>
+	<closed>2016-06-12 09:30:19</closed>
+</bug>
+<bug>
+	<id>20</id>
+	<title>UserInfoに切り替えた時にHeadingボタンのアクションもUserTimelineに向ける</title>
+	<body></body>
+	<created>2016-06-08 02:38:42</created>
+	<closed>2016-06-08 03:13:06</closed>
+</bug>
+<bug>
+	<id>19</id>
+	<title>RealmTimelineAdapterのnotifyInsertedの処理が間違っている</title>
+	<body></body>
+	<created>2016-06-03 09:54:06</created>
+	<closed>2016-06-18 09:14:32</closed>
+</bug>
+<bug>
+	<id>12</id>
+	<title>CollapseToolbarが伸びた時、FABが画面外に押し出されるのを直す</title>
+	<body></body>
+	<created>2016-06-03 09:33:01</created>
+	<closed>2016-06-06 09:21:23</closed>
+</bug>
