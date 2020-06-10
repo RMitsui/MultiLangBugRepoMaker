@@ -10,6 +10,14 @@ def make(reponame, nlang):
     wf.write("testtest!")
     wf.close()
 
+
+def get_issueinfo():
+    pass
+
+
+def get_fixfiles(issuenum):
+    pass
+
 if __name__ == '__main__':
     reponame = sys.argv[1].split('/')[1]
     nlang = sys.argv[2]

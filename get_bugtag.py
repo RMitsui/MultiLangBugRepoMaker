@@ -26,8 +26,10 @@ def get_bugtag(filepath):
         if(len(line)==0):
             break
         name = line[0].strip()
+        print(os.getcwd())
         os.makedirs("./Bug/"+nl,exist_ok=True)
-        isf = open("./Bug/"+nl+"/"+name.split('/')[1]+".xml","w")
+        os.makedirs("./Bug/"+nl+"/"+name.split('/')[0],exist_ok=True)
+        isf = open("./Bug/"+nl+"/"+name+".xml","w")
         isf.write("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n\n")
         try:
             repo = g.get_repo(name)
@@ -42,7 +44,10 @@ def get_bugtag(filepath):
                         isf.write("<bug>\n")
                         isf.write("\t<id>"+str(issue.number)+"</id>\n")
                         isf.write("\t<title>"+title+"</title>\n")
-                        isf.write("\t<body>"+escape(issue.body.replace("\n"," ").replace("\r",""))+"</body>\n")
+                        if(issue.body != None):
+                            isf.write("\t<body>"+escape(issue.body.replace("\n"," ").replace("\r",""))+"</body>\n")
+                        else:
+                            isf.write("\t<body></body>\n")
                         isf.write("\t<created>"+issue.created_at.strftime("%Y-%m-%d %H:%M:%S")+"</created>\n")
                         isf.write("\t<closed>"+issue.closed_at.strftime("%Y-%m-%d %H:%M:%S")+"</closed>\n")
                         isf.write("</bug>\n")
@@ -51,8 +56,15 @@ def get_bugtag(filepath):
             print(bugissues)
             if(bugissues != 0):
                 w.write(str(bugissues) + " " + name + "\n")
+                os.chdir("./Bug/"+nl+"/"+name.split('/')[0])
+                subprocess.run(["git","clone","--bare", "https://github.com/"+name])
+                os.chdir("./../../..")
             else:
-                os.remove("./Bug/"+nl+"/"+name.split('/')[1]+".xml")
+                os.remove("./Bug/"+nl+"/"+name+".xml")
+                try:
+                    os.rmdir("./Bug/"+nl+"/"+name.split('/')[0])
+                except OSError as e:
+                    pass
 
         except:
             #pass
