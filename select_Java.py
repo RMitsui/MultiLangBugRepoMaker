@@ -12,25 +12,28 @@ token = Conf.GITHUB_API_KEY
 
 def select_java(filepath,th,plang):
     g = Github(token)
-    lang = 'Java'
+    lang = plang
     print("👉 Select Repositories written in "+ lang +" at least " +str(th) +" issues written in selected NL.")
-    f = open(filepath,"r")
-    w = open("./"+lang+"/"+os.path.splitext(os.path.basename(filepath))[0]+"_java.txt","w")
+    print("ℹ️ 選択された自然言語で書かれたイシューランキングの上から " +str(th) +"番目までのリポジトリから，プログラミング言語"+lang+"で書かれたリポジトリを抽出します．")
 
-    while True:
+    #NLイシュー数ランキングを読む
+    f = open(filepath,"r")
+    #NLイシュー数ランキング(指定されたプ言語)を書く
+    w = open("./"+lang+"/"+os.path.splitext(os.path.basename(filepath))[0]+"_" +lang+".txt","w")
+
+    #上位 th 位のリポジトリに対して
+    for i in 1..th:
         line = f.readline().split()
         if(len(line)==0):
+            #空行の場合
             break
         num = int(line[0])
         name = line[1].strip()
         try:
-            if (num > th):
-                repo = g.get_repo(name)
-                if repo.language == lang:
-                    print(str(num) + " " + name)
-                    w.write(name+"\n")
-            else:
-                break
+            repo = g.get_repo(name)
+            if repo.language == lang:
+                print(str(num) + " " + name)
+                w.write(name+"\n")
         except:
             pass
             #import traceback
