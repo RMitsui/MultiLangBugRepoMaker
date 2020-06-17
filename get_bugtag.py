@@ -31,6 +31,7 @@ def get_bugtag(filepath):
         os.makedirs("./Bug/"+nl+"/"+name.split('/')[0],exist_ok=True)
         isf = open("./Bug/"+nl+"/"+name+".xml","w")
         isf.write("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n\n")
+        isf.write("<bugs>\n")
         try:
             repo = g.get_repo(name)
             print(name)
@@ -41,18 +42,19 @@ def get_bugtag(filepath):
                     if("bug" in label.name or "Bug" in label.name):
                         title = issue.title
                         print("\t" + title)
-                        isf.write("<bug>\n")
-                        isf.write("\t<id>"+str(issue.number)+"</id>\n")
-                        isf.write("\t<title>"+title+"</title>\n")
+                        isf.write("\t<bug>\n")
+                        isf.write("\t\t<id>"+str(issue.number)+"</id>\n")
+                        isf.write("\t\t<title>"+title+"</title>\n")
                         if(issue.body != None):
-                            isf.write("\t<body>"+escape(issue.body.replace("\n"," ").replace("\r",""))+"</body>\n")
+                            isf.write("\t\t<body>"+escape(issue.body.replace("\n"," ").replace("\r",""))+"</body>\n")
                         else:
-                            isf.write("\t<body></body>\n")
-                        isf.write("\t<created>"+issue.created_at.strftime("%Y-%m-%d %H:%M:%S")+"</created>\n")
-                        isf.write("\t<closed>"+issue.closed_at.strftime("%Y-%m-%d %H:%M:%S")+"</closed>\n")
-                        isf.write("</bug>\n")
+                            isf.write("\t\t<body></body>\n")
+                        isf.write("\t\t<created>"+issue.created_at.strftime("%Y-%m-%d %H:%M:%S")+"</created>\n")
+                        isf.write("\t\t<closed>"+issue.closed_at.strftime("%Y-%m-%d %H:%M:%S")+"</closed>\n")
+                        isf.write("\t</bug>\n")
                         #print(detect(title))
                         bugissues+=1
+            isf.write("</bugs>\n")
             print(bugissues)
             if(bugissues != 0):
                 w.write(str(bugissues) + " " + name + "\n")
@@ -70,7 +72,7 @@ def get_bugtag(filepath):
             #pass
             import traceback
             traceback.print_exc()
-
+    isf.close()
     f.close()
     w.close()
     subprocess.run(["sort", "-nr", "./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt", "-o" ,"./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt"])
