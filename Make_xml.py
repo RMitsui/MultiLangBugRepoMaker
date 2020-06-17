@@ -2,6 +2,7 @@
 
 import buginfo
 import os
+import re
 import sys
 import xml.etree.ElementTree as ET
 import Conf
@@ -25,6 +26,9 @@ def make(reponame, nlang):
     tree = ET.parse("./Bug/"+nlang+"/"+fullname+".xml")
     root = tree.getroot()
 
+    prtree = ET.parse("./Bug/"+nlang+"/"+fullname+"_PR.xml")
+    prroot = prtree.getroot()
+
     repo = g.get_repo(fullname)
 
     #git logにより各コミットでの変更ファイルをgitlog.txtに出力する
@@ -47,7 +51,7 @@ def make(reponame, nlang):
             if ev.event == "referenced" or ev.event == "closed":
                 if ev.commit_id != None:
                     commitid = ev.commit_id
-                    print("cid:" + commitid)
+                    print("\tcid:" + commitid)
                     fixed.append(get_fixfiles(commitid,fullname,nlang))
 
         title = charset(bug.find("title").text)
@@ -55,17 +59,27 @@ def make(reponame, nlang):
         created = charset(bug.find("created").text)
         closed = charset(bug.find("closed").text)
 
+        #対象とするPRがあるか検索する(ぜんぶみる)
+        prroot = prtree.getroot()
+        for pr in prroot:
+            if pr.find("to").text == bugid:
+                prid = pr.find("number").text
+                fixed.append(get_pr_fixfiles(prid,repo))
+                break
+
         files = list(itertools.chain.from_iterable(fixed))
+        files_uniq = list(set(files))
         if len(files) == 0:
+            print("None.")
             continue
 
         wf.write('\t<bug id="'+bugid+'" opendate="'+created+'" fixdate="'+closed+'">\n')
         wf.write('\t\t<buginformation>\n')
-        wf.write('\t\t\t<summary>'+title+'</summary>\n')
+        wf.write('\t\t\t<summary>'+escape(title)+'</summary>\n')
         wf.write('\t\t\t<description>'+escape(body)+'</description>\n')
         wf.write('\t\t</buginformation>\n')
         wf.write('\t\t<fixedfiles>\n')
-        for file in files:
+        for file in files_uniq:
             wf.write('\t\t<file>')
             wf.write(file)
             wf.write('</file>\n')
@@ -90,11 +104,32 @@ def get_fixfiles(commitid,fullname,nlang):
             flag = False
         if(flag):
             if(line.split('\t')[0] == 'A' or line.split('\t')[0] == 'M'):
-                fixed.append(line.split('\t')[1].replace("\n",""))
+                fixed.append(line.rstrip().split('\t')[1])
+                print("\t\t"+line.rstrip().split('\t')[1])
 
     logs.close()
 
     return fixed
+
+
+def get_pr_fixfiles(prid,repo):
+    fixed = []
+    print("\t"+ prid)
+    pr = repo.get_issue(int(prid))
+    prev = pr.get_events()
+
+    for ev in prev:
+        if ev.event == "merged":
+            cmsha = ev.commit_id
+            print("\tcid:" + cmsha +"(PR)")
+            prcm = repo.get_commit(cmsha)
+            for file in prcm.files:
+                fixed.append(file.filename)
+                print("\t\t"+file.filename)
+
+    return fixed
+
+
 
 #XMLの文字コード調整用
 def charset(text):
