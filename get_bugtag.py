@@ -63,7 +63,7 @@ def get_bugtag(filepath):
                             print("\tIS#" + str(issue.number) +" "+ title)
                             isf.write("\t<bug>\n")
                             isf.write("\t\t<id>"+str(issue.number)+"</id>\n")
-                            isf.write("\t\t<title>"+title+"</title>\n")
+                            isf.write("\t\t<title>"+escape(title)+"</title>\n")
                             if(issue.body != None):
                                 isf.write("\t\t<body>"+escape(body)+"</body>\n")
                             else:
