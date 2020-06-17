@@ -6,6 +6,7 @@ import os
 import sys
 import subprocess
 import datetime
+import shutil
 
 from xml.sax.saxutils import escape
 from langdetect import detect
@@ -40,6 +41,11 @@ def get_bugtag(filepath):
         isf.write("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n\n")
         isf.write("<bugs>\n")
 
+        #PRXMLを生成する
+        prf = open("./Bug/"+nl+"/"+name+"_PR.xml","w")
+        prf.write("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n\n")
+        prf.write("<pullrequests>\n")
+
         #ファイルをなめる
         try:
             repo = g.get_repo(name)
@@ -47,29 +53,48 @@ def get_bugtag(filepath):
             issues = repo.get_issues(state="closed")
             bugissues = 0
             for issue in issues:
+                title = issue.title
+                body = issue.body.replace("\n"," ").replace("\r","")
+                #print("★#"+str(issue.number)+title)
                 for label in issue.labels:
-                    if("bug" in label.name or "Bug" in label.name):
-                        title = issue.title
-                        print("\t" + title)
-                        isf.write("\t<bug>\n")
-                        isf.write("\t\t<id>"+str(issue.number)+"</id>\n")
-                        isf.write("\t\t<title>"+title+"</title>\n")
-                        if(issue.body != None):
-                            isf.write("\t\t<body>"+escape(issue.body.replace("\n"," ").replace("\r",""))+"</body>\n")
-                        else:
-                            isf.write("\t\t<body></body>\n")
-                        isf.write("\t\t<created>"+issue.created_at.strftime("%Y-%m-%d %H:%M:%S")+"</created>\n")
-                        isf.write("\t\t<closed>"+issue.closed_at.strftime("%Y-%m-%d %H:%M:%S")+"</closed>\n")
-                        isf.write("\t</bug>\n")
+                    #Bugラベルの選別
+                    if(not issue.pull_request):
+                        if("bug" in label.name or "Bug" in label.name):
+                            print("\tIS#" + str(issue.number) +" "+ title)
+                            isf.write("\t<bug>\n")
+                            isf.write("\t\t<id>"+str(issue.number)+"</id>\n")
+                            isf.write("\t\t<title>"+title+"</title>\n")
+                            if(issue.body != None):
+                                isf.write("\t\t<body>"+escape(body)+"</body>\n")
+                            else:
+                                isf.write("\t\t<body></body>\n")
+                            isf.write("\t\t<created>"+issue.created_at.strftime("%Y-%m-%d %H:%M:%S")+"</created>\n")
+                            isf.write("\t\t<closed>"+issue.closed_at.strftime("%Y-%m-%d %H:%M:%S")+"</closed>\n")
+                            isf.write("\t</bug>\n")
 
-                        bugissues+=1
+                            bugissues+=1
 
+                #PR情報
+                mat = re.match(r"(fix(ed|es)*|close(s)*|resolve(s|d)*) #([0-9]+)",body)
+                if(issue.pull_request and mat):
+                    print("\tPR#" + str(issue.number) +" "+ title)
+                    print("\t\t-> #" + str(mat.group(5)))
+                    prf.write("\t<pullrequest>\n")
+                    prf.write("\t\t<number>"+str(issue.number)+"</number>\n")
+                    prf.write("\t\t<title>"+title+"</title>\n")
+                    prf.write("\t\t<body>"+escape(body)+"</body>\n")
+                    prf.write("\t\t<to>"+mat.group(5)+"</to>\n")
+                    prf.write("\t</pullrequest>\n")
+
+            prf.write("</pullrequests>\n")
             isf.write("</bugs>\n")
-            print("\t"+str(bugissues)+"件のイシューが検出されました．")
+            print("\t😃"+str(bugissues)+"件のイシューが検出されました．")
             if(bugissues != 0):
                 w.write(str(bugissues) + " " + name + "\n")
                 os.chdir("./Bug/"+nl+"/"+name.split('/')[0])
                 #git logを実行するために，各リポジトリの.gitファイルだけを取得する．
+                if(os.path.exists("./"+name.split('/')[1]+".git")):
+                    shutil.rmtree("./"+name.split('/')[1]+".git")
                 subprocess.run(["git","clone","--bare", "https://github.com/"+name])
                 os.chdir("./../../..")
             else:
@@ -83,6 +108,10 @@ def get_bugtag(filepath):
             import traceback
             traceback.print_exc()
 
+        #テスト用
+        break
+
+    prf.close()
     isf.close()
     f.close()
     w.close()
