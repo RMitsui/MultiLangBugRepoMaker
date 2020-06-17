@@ -13,8 +13,8 @@ token = Conf.GITHUB_API_KEY
 def select_java(filepath,th,plang):
     g = Github(token)
     lang = plang
-    print("👉 Select Repositories written in "+ lang +" at least " +str(th) +" issues written in selected NL.")
-    print("ℹ️ 選択された自然言語で書かれたイシューランキングの上から " +str(th) +"番目までのリポジトリから，プログラミング言語"+lang+"で書かれたリポジトリを抽出します．")
+    #print("👉 Select Repositories written in "+ lang +" at least " +str(th) +" issues written in selected NL.")
+    print("👉 選択された自然言語で書かれたイシューランキングの上から " +str(th) +"番目までのリポジトリから，プログラミング言語"+lang+"で書かれたリポジトリを抽出します．")
 
     #NLイシュー数ランキングを読む
     f = open(filepath,"r")
@@ -22,7 +22,7 @@ def select_java(filepath,th,plang):
     w = open("./"+lang+"/"+os.path.splitext(os.path.basename(filepath))[0]+"_" +lang+".txt","w")
 
     #上位 th 位のリポジトリに対して
-    for i in 1..th:
+    for i in range(th):
         line = f.readline().split()
         if(len(line)==0):
             #空行の場合
@@ -41,7 +41,7 @@ def select_java(filepath,th,plang):
 
     f.close()
     w.close()
-    return "./"+lang+"/"+os.path.splitext(os.path.basename(filepath))[0]+"_java.txt"
+    return "./"+lang+"/"+os.path.splitext(os.path.basename(filepath))[0]+"_"+plang+".txt"
 
 if __name__ == '__main__':
     filepath = sys.argv[1]

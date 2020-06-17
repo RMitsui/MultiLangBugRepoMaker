@@ -53,8 +53,11 @@ def get_bugtag(filepath):
             issues = repo.get_issues(state="closed")
             bugissues = 0
             for issue in issues:
-                title = issue.title
-                body = issue.body.replace("\n"," ").replace("\r","")
+                title = removeControlCharacter(issue.title)
+                if(issue.body.replace("\n"," ").replace("\r","") != None):
+                    body = removeControlCharacter(issue.body.replace("\n"," ").replace("\r",""))
+                else:
+                    body = ""
                 #print("★#"+str(issue.number)+title)
                 for label in issue.labels:
                     #Bugラベルの選別
@@ -81,8 +84,11 @@ def get_bugtag(filepath):
                     print("\t\t-> #" + str(mat.group(5)))
                     prf.write("\t<pullrequest>\n")
                     prf.write("\t\t<number>"+str(issue.number)+"</number>\n")
-                    prf.write("\t\t<title>"+title+"</title>\n")
-                    prf.write("\t\t<body>"+escape(body)+"</body>\n")
+                    prf.write("\t\t<title>"+escape(title)+"</title>\n")
+                    if(issue.body != None):
+                        prf.write("\t\t<body>"+escape(body)+"</body>\n")
+                    else:
+                        prf.write("\t\t<body></body>\n")
                     prf.write("\t\t<to>"+mat.group(5)+"</to>\n")
                     prf.write("\t</pullrequest>\n")
 
@@ -108,8 +114,6 @@ def get_bugtag(filepath):
             import traceback
             traceback.print_exc()
 
-        #テスト用
-        break
 
     prf.close()
     isf.close()
@@ -119,6 +123,18 @@ def get_bugtag(filepath):
     #イシューの数順にソートしておく
     subprocess.run(["sort", "-nr", "./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt", "-o" ,"./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt"])
     return "./Bug/"+os.path.splitext(os.path.basename(filepath))[0]+"_bug.txt"
+
+
+def removeControlCharacter(s):
+    ret = ''
+    for c in s:
+        ord_num = ord(c)
+        #制御文字
+        if(ord_num <= 31):
+            a = 1234
+        else:
+            ret += c
+    return ret
 
 if __name__ == '__main__':
     filepath = sys.argv[1]

@@ -11,11 +11,11 @@ import itertools
 from github import Github
 from xml.sax.saxutils import escape
 token = Conf.GITHUB_API_KEY
-fullname = ''
 g = Github(token)
 
 
-def make(reponame, nlang):
+def make(fullname, nlang):
+    reponame = fullname.split('/')[1]
     #バグリポジトリXMLを生成する
     os.makedirs('./BugRepository/'+nlang, exist_ok=True)
     wf = open('./BugRepository/'+nlang+'/'+reponame+'.xml',mode='w')
@@ -55,7 +55,10 @@ def make(reponame, nlang):
                     fixed.append(get_fixfiles(commitid,fullname,nlang))
 
         title = charset(bug.find("title").text)
-        body = charset(bug.find("body").text)
+        if bug.find("body").text is not None:
+            body = charset(bug.find("body").text)
+        else:
+            body = ""
         created = charset(bug.find("created").text)
         closed = charset(bug.find("closed").text)
 
@@ -136,7 +139,7 @@ def charset(text):
     return text.encode('ISO-8859-1').decode('UTF-8')
 
 if __name__ == '__main__':
-    reponame = sys.argv[1].split('/')[1]
+    reponame = sys.argv[1]
     nlang = sys.argv[2]
     fullname = sys.argv[1]
     make(reponame, nlang)
