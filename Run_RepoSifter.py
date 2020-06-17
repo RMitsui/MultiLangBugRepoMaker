@@ -35,7 +35,7 @@ def Run():
         if(len(line)==0):
             #空行
             break
-        reponame = line[1].rstrip().split('/')[1]
+        reponame = line[1].rstrip()
         Make_xml.make(reponame,nlang)
 
     f.close()
