@@ -78,9 +78,13 @@ def make(fullname, nlang):
             print("None.")
             continue
 
-        if(detect(title) != nlang and detect(body) != nlang):
-            print("Not " + nlang)
-            continue
+        if(detect(title) != nlang):
+            if(body != ""):
+                if(detect(body) != nlang):
+                    print("Not " + nlang +".")
+                    continue
+            else:
+                continue
 
         bugnum += 1
         wf.write('\t<bug id="'+bugid+'" opendate="'+created+'" fixdate="'+closed+'">\n')
@@ -90,7 +94,7 @@ def make(fullname, nlang):
         wf.write('\t\t</buginformation>\n')
         wf.write('\t\t<fixedfiles>\n')
         for file in files_uniq:
-            wf.write('\t\t<file>')
+            wf.write('\t\t\t<file>')
             wf.write(file)
             wf.write('</file>\n')
         wf.write('\t\t</fixedfiles>\n')
