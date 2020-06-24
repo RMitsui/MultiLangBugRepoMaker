@@ -30,15 +30,18 @@ def Run():
     #repo_plang_bug_ICLink = Check_ICLinking.check_ICLinking(repo_plang_bug)
     #XMLつくる
     f = open(repo_plang_bug,"r")
+    w = open("./BugRepository/ranking-"+nlang+"_"+plang+"_bugrepo.txt","w")
     while True:
         line = f.readline().split()
         if(len(line)==0):
             #空行
             break
         reponame = line[1].rstrip()
-        Make_xml.make(reponame,nlang)
+        bugnum = Make_xml.make(reponame,nlang)
+        w.write(str(line[0]) +" "+ str(bugnum) + + reponame +"\n")
 
     f.close()
+    w.close()
     print("🎉 完了")
     print("🎊生成が終了しました！")
 

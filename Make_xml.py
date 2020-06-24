@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 import Conf
 import subprocess
 import itertools
+from langdetect import detect
 from github import Github
 from xml.sax.saxutils import escape
 token = Conf.GITHUB_API_KEY
@@ -37,6 +38,7 @@ def make(fullname, nlang):
     subprocess.run(["git","log","--branches", "--name-status", "--oneline", "--all","--pretty=format:%H, %s, %ad"],encoding='UTF-8',stdout=gl)
     gl.close()
     os.chdir("./../../../..")
+    bugnum = 0
 
     #イシューのeventがreferencedとclosedのもののコミット(と変更ファイル)を取得しXMLに書く
     for bug in root:
@@ -72,10 +74,15 @@ def make(fullname, nlang):
 
         files = list(itertools.chain.from_iterable(fixed))
         files_uniq = list(set(files))
-        if len(files) == 0:
+        if len(files_uniq) == 0:
             print("None.")
             continue
 
+        if(detect(title) != nlang and detect(body) != nlang):
+            print("Not " + nlang)
+            continue
+
+        bugnum += 1
         wf.write('\t<bug id="'+bugid+'" opendate="'+created+'" fixdate="'+closed+'">\n')
         wf.write('\t\t<buginformation>\n')
         wf.write('\t\t\t<summary>'+escape(title)+'</summary>\n')
@@ -90,6 +97,7 @@ def make(fullname, nlang):
         wf.write('\t</bug>\n')
     wf.write('<bugrepository>\n')
     wf.close()
+    return bugnum
 
 
 def get_fixfiles(commitid,fullname,nlang):
@@ -107,8 +115,10 @@ def get_fixfiles(commitid,fullname,nlang):
             flag = False
         if(flag):
             if(line.split('\t')[0] == 'A' or line.split('\t')[0] == 'M'):
-                fixed.append(line.rstrip().split('\t')[1])
-                print("\t\t"+line.rstrip().split('\t')[1])
+                filename = line.rstrip().split('\t')[1]
+                if(filename.endswith(".java")):
+                    fixed.append(filename)
+                    print("\t\t"+filename)
 
     logs.close()
 
@@ -127,8 +137,9 @@ def get_pr_fixfiles(prid,repo):
             print("\tcid:" + cmsha +"(PR)")
             prcm = repo.get_commit(cmsha)
             for file in prcm.files:
-                fixed.append(file.filename)
-                print("\t\t"+file.filename)
+                if(file.filename.endswith(".java")):
+                    fixed.append(file.filename)
+                    print("\t\t"+file.filename)
 
     return fixed
 
