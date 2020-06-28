@@ -1,21 +1,34 @@
 # -*- coding: utf-8 -*-
-
-import buginfo
+import itertools
 import os
 import re
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
-import Conf
-import subprocess
-import itertools
-from langdetect import detect
-from github import Github
 from xml.sax.saxutils import escape
+
+import Conf
+from github import Github
+from langdetect import detect
+
 token = Conf.GITHUB_API_KEY
 g = Github(token)
 
-
 def make(fullname, nlang):
+    """[summary]
+
+    Parameters
+    ----------
+    fullname : String
+        リポジトリの名前．{username}/{reponame}の形式．
+    nlang : String
+        自然言語．
+
+    Returns
+    -------
+    bugnum : int
+        XMLに記載されたバグ数
+    """
     reponame = fullname.split('/')[1]
     #バグリポジトリXMLを生成する
     os.makedirs('./BugRepository/'+nlang, exist_ok=True)

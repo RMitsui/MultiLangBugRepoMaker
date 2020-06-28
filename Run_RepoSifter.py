@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-import sys
 import argparse
+import sys
 
-import Select_Java
 import Get_Bugtag
 import Make_xml
-#import Check_ICLinking
+import Select_pLang
 
 parser = argparse.ArgumentParser(description="指定された自然言語・プログラミング言語のバグリポジトリを生成する．")
 parser.add_argument('-n','--natural_lang',help='自然言語 (default:ja)',required=True)
@@ -28,7 +27,7 @@ def Run():
     if(args.skip == 0):
         print("👉 " + nlang + " でIssueが書かれている " + plang + " で開発されたリポジトリからBugRepositoryを生成します．")
         lankpath = "../lang/ranking/ranking-"+nlang+".txt"
-        repo_plang = Select_Java.select_java(lankpath,th,plang)
+        repo_plang = Select_pLang.select_plang(lankpath,th,plang)
         print("🎉 完了")
         args.skip = 1
 
