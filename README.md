@@ -17,10 +17,10 @@ GITHUB_API_KEY = "トークン"
 ```
 
 ## Usage
-
+![shikumi](https://user-images.githubusercontent.com/43768808/86399542-64eb6280-bce2-11ea-9599-906aaa9efee0.png)
 
 ## しくみ
-![shikumi](https://gyazo.com/67f89ab94f26265e733a6a7b4d2f73c9)
+
 
 - SelectPLang.py
   - 与えられたリポジトリ群から，あるプログラミング言語(PL)で開発されたものを抽出する．
