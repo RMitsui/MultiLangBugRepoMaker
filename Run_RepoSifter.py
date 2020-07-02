@@ -2,9 +2,9 @@
 import argparse
 import sys
 
-import Get_Bugtag
-import Make_xml
-import Select_pLang
+import GetBugtag
+import MakeXML
+import SelectPLang
 
 parser = argparse.ArgumentParser(description="指定された自然言語・プログラミング言語のバグリポジトリを生成する．")
 parser.add_argument('-n','--natural_lang',help='自然言語 (default:ja)',required=True)
