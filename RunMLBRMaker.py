@@ -26,16 +26,14 @@ def Run():
 
     if(args.skip == 0):
         print("👉 " + nlang + " でIssueが書かれている " + plang + " で開発されたリポジトリからBugRepositoryを生成します．")
-        lankpath = "../lang/ranking/ranking-"+nlang+".txt"
-        repo_plang = Select_pLang.select_plang(lankpath,th,plang)
-        print("🎉 完了")
+        lankpath = "../lang/ranking/ranking-" + nlang + ".txt"
+        repo_plang = SelectPLang.select_plang(lankpath, th, plang)
         args.skip = 1
 
     if(args.skip == 1):
         if(repo_plang == ""):
             repo_plang = args.path
-        repo_plang_bug = Get_Bugtag.get_bugtag(repo_plang)
-        print("🎉 完了")
+        repo_plang_bug = GetBugtag.get_bugtag(repo_plang)
         args.skip = 2
 
     if(args.skip == 2):
@@ -43,15 +41,15 @@ def Run():
         if(repo_plang_bug == ""):
             repo_plang_bug = args.path
         f = open(repo_plang_bug,"r")
-        w = open("./BugRepository/ranking-"+nlang+"_"+plang+"_bugrepo.txt","w")
+        w = open("./BugRepository/ranking-" + nlang + "_" + plang + "_bugrepo.txt", "w")
         while True:
             line = f.readline().split()
-            if(len(line)==0):
+            if(len(line) == 0):
                 #空行
                 break
             reponame = line[1].rstrip()
-            bugnum = Make_xml.make(reponame,nlang)
-            w.write(str(line[0].strip()) + " " + str(bugnum) + " " + reponame +"\n")
+            bugnum = MakeXML.make(reponame,nlang)
+            w.write(str(line[0].strip()) + " " + str(bugnum) + " " + reponame + "\n")
 
         f.close()
         w.close()

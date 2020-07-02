@@ -65,6 +65,7 @@ def select_plang(filepath,th,plang):
     f.close()
     w.close()
 
+    print("🎉 完了")
     return outpath
 
 if __name__ == '__main__':

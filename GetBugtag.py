@@ -145,7 +145,7 @@ def get_bugtag(filepath):
 
     #イシューの数順にソートしておく
     subprocess.run(["sort", "-nr", outpath, "-o", outpath])
-
+    print("🎉 完了")
     return outpath
 
 

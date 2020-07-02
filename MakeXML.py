@@ -15,7 +15,7 @@ token = Conf.GITHUB_API_KEY
 g = Github(token)
 
 def make(fullname, nlang):
-    """[summary]
+    """与えられたバグ情報，PR情報から，XMLを生成する．
 
     Parameters
     ----------
@@ -161,10 +161,10 @@ def get_pr_fixfiles(prid,repo):
     return fixed
 
 
-
 #XMLの文字コード調整用
 def charset(text):
     return text.encode('ISO-8859-1').decode('UTF-8')
+
 
 if __name__ == '__main__':
     reponame = sys.argv[1]
