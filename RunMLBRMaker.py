@@ -26,7 +26,7 @@ def Run():
 
     if(args.skip == 0):
         print("👉 " + nlang + " でIssueが書かれている " + plang + " で開発されたリポジトリからBugRepositoryを生成します．")
-        lankpath = "../lang/ranking/ranking-" + nlang + ".txt"
+        lankpath = "./ranking/ranking-" + nlang + ".txt"
         repo_plang = SelectPLang.select_plang(lankpath, th, plang)
         args.skip = 1
 
