@@ -91,13 +91,17 @@ def make(fullname, nlang):
             print("None.")
             continue
 
-        if(detect(title) != nlang):
-            if(body != ""):
-                if(detect(body) != nlang):
-                    print("Not " + nlang +".")
+        try:
+            if(detect(title) != nlang):
+                if(body != ""):
+                    if(detect(body) != nlang):
+                        print("Not " + nlang +".")
+                        continue
+                else:
                     continue
-            else:
-                continue
+        except:
+            #たまにLangDetectExceptionが出る
+            continue
 
         bugnum += 1
         wf.write('\t<bug id="'+bugid+'" opendate="'+created+'" fixdate="'+closed+'">\n')
