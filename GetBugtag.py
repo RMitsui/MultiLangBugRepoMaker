@@ -75,7 +75,7 @@ def get_bugtag(filepath):
             bugissues = 0
             for issue in issues:
                 title = removeControlCharacter(issue.title)
-                if(issue.body.replace("\n"," ").replace("\r","") != None):
+                if(issue.body != None):
                     body = removeControlCharacter(issue.body.replace("\n"," ").replace("\r",""))
                 else:
                     body = ""
