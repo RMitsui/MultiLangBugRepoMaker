@@ -73,6 +73,7 @@ def get_bugtag(filepath):
             print(name)
             #Bugラベルの捜索
             repolabels = repo.get_labels()
+            buglabel = None
             for label in repolabels:
                 if("bug" in label.name or "Bug" in label.name):
                     buglabel = label
