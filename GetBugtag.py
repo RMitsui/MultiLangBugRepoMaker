@@ -96,22 +96,20 @@ def get_bugtag(filepath):
                     body = removeControlCharacter(issue.body.replace("\n"," ").replace("\r",""))
                 else:
                     body = ""
-                for label in issue.labels:
-                    #Bugラベルの選別
-                    if(not issue.pull_request):
-                        if("bug" in label.name or "Bug" in label.name):
-                            print("\tIS#" + str(issue.number) + " " + title)
-                            isf.write("\t<bug>\n")
-                            isf.write("\t\t<id>" + str(issue.number) + "</id>\n")
-                            isf.write("\t\t<title>" + escape(title) + "</title>\n")
-                            if(issue.body != None):
-                                isf.write("\t\t<body>" + escape(body) + "</body>\n")
-                            else:
-                                isf.write("\t\t<body></body>\n")
-                            isf.write("\t\t<created>" + issue.created_at.strftime("%Y-%m-%d %H:%M:%S") + "</created>\n")
-                            isf.write("\t\t<closed>" + issue.closed_at.strftime("%Y-%m-%d %H:%M:%S") + "</closed>\n")
-                            isf.write("\t</bug>\n")
-                            bugissues += 1
+
+                if(not issue.pull_request):
+                    print("\tIS#" + str(issue.number) + " " + title)
+                    isf.write("\t<bug>\n")
+                    isf.write("\t\t<id>" + str(issue.number) + "</id>\n")
+                    isf.write("\t\t<title>" + escape(title) + "</title>\n")
+                    if(issue.body != None):
+                        isf.write("\t\t<body>" + escape(body) + "</body>\n")
+                    else:
+                        isf.write("\t\t<body></body>\n")
+                    isf.write("\t\t<created>" + issue.created_at.strftime("%Y-%m-%d %H:%M:%S") + "</created>\n")
+                    isf.write("\t\t<closed>" + issue.closed_at.strftime("%Y-%m-%d %H:%M:%S") + "</closed>\n")
+                    isf.write("\t</bug>\n")
+                    bugissues += 1
             isf.write("</bugs>\n")
 
             #PR情報
