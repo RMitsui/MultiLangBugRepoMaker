@@ -71,6 +71,22 @@ def get_bugtag(filepath):
         try:
             repo = g.get_repo(name)
             print(name)
+            #Bugラベルの捜索
+            repolabels = repo.get_labels()
+            for label in repolabels:
+                if("bug" in label.name or "Bug" in label.name):
+                    buglabel = label
+            if buglabel is None:
+                #bugissueがない場合はBug以下に何も残さない．
+                os.remove("./Bug/" + nlang + "/" + name + ".xml")
+                os.remove("./Bug/" + nlang + "/" + name + "_PR.xml")
+                try:
+                    os.rmdir("./Bug/" + nlang + "/" + name.split('/')[0])
+                except OSError as e:
+                    #握潰
+                    pass
+                continue
+
             issues = repo.get_issues(state="closed")
             bugissues = 0
             for issue in issues:
@@ -94,16 +110,24 @@ def get_bugtag(filepath):
                             isf.write("\t\t<created>" + issue.created_at.strftime("%Y-%m-%d %H:%M:%S") + "</created>\n")
                             isf.write("\t\t<closed>" + issue.closed_at.strftime("%Y-%m-%d %H:%M:%S") + "</closed>\n")
                             isf.write("\t</bug>\n")
-
                             bugissues += 1
+            isf.write("</bugs>\n")
 
-                #PR情報
+            #PR情報
+            pullrequests = repo.get_pulls(state="closed")
+            for pr in pullrequests:
+                title = removeControlCharacter(pr.title)
+                if(pr.body != None):
+                    body = removeControlCharacter(pr.body.replace("\n"," ").replace("\r",""))
+                else:
+                    body = ""
+                #PRのmessageにfix,close,resolveがあればそのIssueと紐付ける
                 mat = re.match(r"(fix(ed|es)*|close(s)*|resolve(s|d)*) #([0-9]+)",body)
-                if(issue.pull_request and mat):
-                    print("\tPR#" + str(issue.number) + " " + title)
+                if(mat):
+                    print("\tPR#" + str(pr.number) + " " + title)
                     print("\t\t-> #" + str(mat.group(5)))
                     prf.write("\t<pullrequest>\n")
-                    prf.write("\t\t<number>" + str(issue.number) + "</number>\n")
+                    prf.write("\t\t<number>" + str(pr.number) + "</number>\n")
                     prf.write("\t\t<title>" + escape(title) + "</title>\n")
                     if(issue.body != None):
                         prf.write("\t\t<body>" + escape(body) + "</body>\n")
@@ -111,9 +135,7 @@ def get_bugtag(filepath):
                         prf.write("\t\t<body></body>\n")
                     prf.write("\t\t<to>" + mat.group(5) + "</to>\n")
                     prf.write("\t</pullrequest>\n")
-
             prf.write("</pullrequests>\n")
-            isf.write("</bugs>\n")
 
             if(bugissues != 0):
                 print("\t😃" + str(bugissues) + "件のイシューが検出されました．")
@@ -128,6 +150,7 @@ def get_bugtag(filepath):
             else:
                 #bugissueがない場合はBug以下に何も残さない．
                 os.remove("./Bug/" + nlang + "/" + name + ".xml")
+                os.remove("./Bug/" + nlang + "/" + name + "_PR.xml")
                 try:
                     os.rmdir("./Bug/" + nlang + "/" + name.split('/')[0])
                 except OSError as e:
