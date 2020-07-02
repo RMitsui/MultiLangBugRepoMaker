@@ -7,8 +7,6 @@
 - 生成するバグリポジトリはBugLocatorで読み込める形式
   - 実際に読み込ませる前にはFixedFileが本当に存在するか確認する必要あり
     - 存在しないファイルをFixedFileとして渡すと落ちるバグ(多分)があるため
-    
-- ranking-{自然言語PL}.txtは
 
 ## Require
 > langdetect
