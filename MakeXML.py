@@ -60,6 +60,26 @@ def make(fullname, nlang):
         issue = repo.get_issue(int(bugid))
         fixed = []
 
+        title = charset(bug.find("title").text)
+        if bug.find("body").text is not None:
+            body = charset(bug.find("body").text)
+        else:
+            body = ""
+        created = charset(bug.find("created").text)
+        closed = charset(bug.find("closed").text)
+
+        try:
+            if(detect(title) != nlang):
+                if(body != ""):
+                    if(detect(body) != nlang):
+                        print("\tNot " + nlang +".")
+                        continue
+                else:
+                    continue
+        except:
+            #たまにLangDetectExceptionが出る
+            continue
+
         #イシューのeventをなめる
         events = issue.get_events()
         for ev in events:
@@ -68,14 +88,6 @@ def make(fullname, nlang):
                     commitid = ev.commit_id
                     print("\tcid:" + commitid)
                     fixed.append(get_fixfiles(commitid,fullname,nlang))
-
-        title = charset(bug.find("title").text)
-        if bug.find("body").text is not None:
-            body = charset(bug.find("body").text)
-        else:
-            body = ""
-        created = charset(bug.find("created").text)
-        closed = charset(bug.find("closed").text)
 
         #対象とするPRがあるか検索する(ぜんぶみる)
         prroot = prtree.getroot()
@@ -88,19 +100,7 @@ def make(fullname, nlang):
         files = list(itertools.chain.from_iterable(fixed))
         files_uniq = list(set(files))
         if len(files_uniq) == 0:
-            print("None.")
-            continue
-
-        try:
-            if(detect(title) != nlang):
-                if(body != ""):
-                    if(detect(body) != nlang):
-                        print("Not " + nlang +".")
-                        continue
-                else:
-                    continue
-        except:
-            #たまにLangDetectExceptionが出る
+            print("\tNone.")
             continue
 
         bugnum += 1
