@@ -75,9 +75,11 @@ def make(fullname, nlang):
                         print("\tNot " + nlang +".")
                         continue
                 else:
+                    print("\tNot " + nlang +".")
                     continue
         except:
             #たまにLangDetectExceptionが出る
+            print("\tLangDetectException")
             continue
 
         #イシューのeventをなめる
