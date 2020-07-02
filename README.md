@@ -4,6 +4,10 @@
 - 自然言語NLで書かれたIssue数ランキングから，プログラミング言語PLで書かれたリポジトリ集合Repos(NL,PL)を取得
 - Repos(NL,PL)に含まれる各リポジトリに対して，バグ情報をGitHubAPIを用いて収集し，バグ情報XMLを生成
 
+- 生成するバグリポジトリはBugLocatorで読み込める形式
+  - 実際に読み込ませる前にはFixedFileが本当に存在するか確認する必要あり
+    - 存在しないファイルをFixedFileとして渡すと落ちるバグ(多分)があるため
+
 ## Require
 > langdetect
 
@@ -17,10 +21,15 @@ GITHUB_API_KEY = "トークン"
 ```
 
 ## Usage
+- 日本語(ja)の上位250番目までに含まれるJavaで開発されたリポジトリを対象にXMLを生成する
+  - `$ python3 RunMLBRMaker.py -n ja -t 250 -p Java`
+ 
+- 申し訳程度のヘルプ
+  - `$ python3 RunMLBRMaker.py -h`
 
 
 ## しくみ
-![shikumi](https://gyazo.com/67f89ab94f26265e733a6a7b4d2f73c9)
+![shikumi](https://user-images.githubusercontent.com/43768808/86399542-64eb6280-bce2-11ea-9599-906aaa9efee0.png)
 
 - SelectPLang.py
   - 与えられたリポジトリ群から，あるプログラミング言語(PL)で開発されたものを抽出する．
