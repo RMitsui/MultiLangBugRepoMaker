@@ -21,10 +21,15 @@ GITHUB_API_KEY = "トークン"
 ```
 
 ## Usage
-![shikumi](https://user-images.githubusercontent.com/43768808/86399542-64eb6280-bce2-11ea-9599-906aaa9efee0.png)
+- 日本語(ja)の上位250番目までに含まれるJavaで開発されたリポジトリを対象にXMLを生成する
+  - `$ python3 RunMLBRMaker.py -n ja -t 250 -p Java`
+ 
+- 申し訳程度のヘルプ
+  - `$ python3 RunMLBRMaker.py -h`
+
 
 ## しくみ
-
+![shikumi](https://user-images.githubusercontent.com/43768808/86399542-64eb6280-bce2-11ea-9599-906aaa9efee0.png)
 
 - SelectPLang.py
   - 与えられたリポジトリ群から，あるプログラミング言語(PL)で開発されたものを抽出する．
