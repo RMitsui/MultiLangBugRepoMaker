@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>938</id>
+		<title>Unable to move history page</title>
+		<body>1. Select an item in list.    - https://service-knowledge.support-project.org/open.knowledge/histories/19 2. Display error message.  ```json {     children: [ ],     code: 400,     message: "param is invalid.",     result: null,     status: 2 } ```  Beccause URL is invalid. `/open.knowledge/history/19&amp;page=0&amp;history_no=2` Correctly `/open.knowledge/history/19?page=0&amp;history_no=2` </body>
+		<created>2017-10-31 13:40:25</created>
+		<closed>2017-11-02 23:07:15</closed>
+	</bug>
+	<bug>
+		<id>926</id>
+		<title>アカウント登録確認メールのURL認証直後に[Get Start!]押下すると Not Found </title>
+		<body>v1.10.0 でアカウント登録メールのURL認証直後に[Get Start!]すると Not Found  になります。 Get Start!のURLは以下のようになります。 http://localhost/knowledge/open.signup/activate/open.knowledge/list  https://github.com/support-project/knowledge/issues/684 で初期登録されるHTMLで相対パスにしたのが影響してるのではないでしょうか。 とりあえずはカスタムTOPページのHTMLを消せば発生しません。</body>
+		<created>2017-10-25 00:32:33</created>
+		<closed>2017-12-08 21:41:21</closed>
+	</bug>
+	<bug>
+		<id>909</id>
+		<title>Display time incorrect on activity list </title>
+		<body>- It is displayed as UTC. - Convert to time on timezone.</body>
+		<created>2017-10-18 11:04:37</created>
+		<closed>2017-10-22 02:01:34</closed>
+	</bug>
+	<bug>
+		<id>905</id>
+		<title>A user with editing authority can not edit a survey</title>
+		<body>Only registered users of articles are editable</body>
+		<created>2017-10-17 13:27:34</created>
+		<closed>2017-10-22 02:01:24</closed>
+	</bug>
+	<bug>
+		<id>884</id>
+		<title>記事のコメントの再編集時にpdfのリンクボタンが「画像表示」となる</title>
+		<body>## 概要 ある記事へのコメントへの新規登録時にpdfをアップした際には正しく、スライドボタンとなりますが 当該コメントの編集時にはスライドボタンであるべきリンクボタンが、画像表示のリンクボタンとなってしまいます。  ## 環境情報 demoページでの再現を確認しました。  ## 取り急ぎのワークアラウンド 画像リンクボタンボタンからドキュメントの番号を把握し、[slide 222] のように手動で差し替える</body>
+		<created>2017-10-05 00:16:44</created>
+		<closed>2017-10-22 01:59:25</closed>
+	</bug>
+	<bug>
+		<id>879</id>
+		<title>記事を開くと "protect.survey/load" 401 もしくは 404 が出ます</title>
+		<body>デモ環境でも発生しました。 記事を開くとコンソールに以下のようなエラーが出ます。 未ログインで 401、ログイン状態で 404 になるようです。  ``` page-common-70be83d24b.js:3 GET https://test-knowledge.support-project.org/protect.survey/load/3 404 () ```  Google Chrome 61.0.3163.100（Official Build） （64 ビット） を使用しています。</body>
+		<created>2017-10-03 11:53:46</created>
+		<closed>2017-10-22 01:59:10</closed>
+	</bug>
+	<bug>
+		<id>876</id>
+		<title>Post fails with WebAPI</title>
+		<body></body>
+		<created>2017-10-02 11:27:32</created>
+		<closed>2017-10-22 01:58:09</closed>
+	</bug>
+	<bug>
+		<id>875</id>
+		<title>Error when backing up embedded database</title>
+		<body>Internal Server Error occurs</body>
+		<created>2017-10-02 11:21:56</created>
+		<closed>2017-10-22 01:57:56</closed>
+	</bug>
+	<bug>
+		<id>861</id>
+		<title>削除済みグループで絞り込むと『Internal Server Error』</title>
+		<body>お世話になっております。  一通りIssuesを確認しましたが、なさそうでしたので投稿します。 ある動作を行うと『Internal Server Error』の表示になりましたので、以下に詳細を記載します。  --- 事象 -- 『Internal Server Error』が発生。  【ログ(app.log)一部抜粋】 INFO  2017-09-19 09:51:19,725 [Intercepter(213)] error. [object]class org.support.project.knowledge.logic.KnowledgeLogic_$$_jvst4ca_a[proceed]_d34showKnowledgeOnGroup[param0]13[param1]org.support.project.web.bean.LoginedUser@9fde5a[param2]0[param3]50 [throwable.getMessage()] null ERROR 2017-09-19 09:51:19,725 [ControlManagerFilter(206)] ERROR SEND ERROR 2017-09-19 09:51:19,725 [LoggingFilter(64)] Any exception is thrown. [javax.servlet.ServletException] javax.servlet.ServletException: javax.servlet.ServletException: org.support.project.common.exception.SystemException:  at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:300) at org.support.project.knowledge.listener.CloseAbleAuthenticationFilter.doFilter(CloseAbleAuthenticationFilter.java:98) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.support.project.knowledge.filter.ApiFilter.doFilter(ApiFilter.java:71) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.support.project.web.filter.LoggingFilter.doFilter(LoggingFilter.java:62) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.support.project.web.filter.SeqFilter.doFilter(SeqFilter.java:31) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.support.project.web.filter.EncodingFilter.doFilter(EncodingFilter.java:36) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:624) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Unknown Source)  発生手順 -- ①投稿済みのナレッジで公開先に指定されているグループを削除します。 ②TOP画面(ナレッジ一覧画面)に移動し、リスト上で①のグループをクリックします。  発生環境 -- バージョン：1.10.0 ブラウザ：Chrome  ---  グループが削除されていても絞り込まれるのを期待しておりましたが、これは仕様でしょうか？  お忙しいところ申し訳ございません。 ご確認いただければ幸いです。 よろしくお願いいたします。 </body>
+		<created>2017-09-19 01:20:11</created>
+		<closed>2017-10-22 01:57:24</closed>
+	</bug>
+	<bug>
+		<id>860</id>
+		<title>Keyboard shortcuts not working in slideshow except Firefox.</title>
+		<body>スライドショーで矢印キーによる操作がFirefox以外のブラウザでできない。  🆗 Firefox 🆖 IE, Edge, Chrome  OS: Windows 10 Browser version: Latest Knowledge: v1.10(Stable) and [here](https://support-project.org/open.knowledge/view/18)  ----  Knowledgeがサポートしているブラウザとバージョンってどこかに明記してありましたっけ？ IEの件は知ってますがそれ以外について知りたいです。</body>
+		<created>2017-09-18 13:04:17</created>
+		<closed>2017-10-05 01:03:50</closed>
+	</bug>
+	<bug>
+		<id>832</id>
+		<title>Failed a user information copy</title>
+		<body>User information is not copied when copying data from embedded database to custom DB  -----  組み込みDBからカスタムDBへデータコピーの際に、ユーザ情報がコピーされない  from #352 #742</body>
+		<created>2017-08-18 11:53:38</created>
+		<closed>2017-10-22 01:54:08</closed>
+	</bug>
+	<bug>
+		<id>823</id>
+		<title>Language - variable name spelling mistake</title>
+		<body>Hello,  this wasn't a bug but just a little spelling mistake on a variable name in the files :  - appresource.properties - appresource_ja.properties They're a variable named "knowledge.auth.label.request.init.passwoed", I think the right name should be "knowledge.auth.label.request.init.password"  By the case, you made a very good job, all seems to be very clean and pleasant to read! Thank you!</body>
+		<created>2017-08-11 08:55:58</created>
+		<closed>2017-10-22 01:53:30</closed>
+	</bug>
+	<bug>
+		<id>810</id>
+		<title>画像をアップすると、イメージファイルがコピーされて2個アップされる</title>
+		<body>pngファイルのようなイメージファイルをアップすると、別名でコピーされているようです。 ですので、画像が2つアップされているように見えます。 txtのようなファイルは、1個のままでした。  どちらか一方だけ、表示することはできないのでしょうか。  ・画像ファイルは、1個アップすると2個アップされる ![2017-07-31_14h28_05](https://user-images.githubusercontent.com/11866919/28763999-1dbf67e6-75fd-11e7-8262-bf3595cd66ee.png)  また、画像をコピーしているということは、ストレージもその分使用(2倍になる)していると思うのですが、これは仕様でしょうか。 容量の無駄遣いのような気がするので、いつか改善していただけるとありがたいです。</body>
+		<created>2017-07-31 05:44:55</created>
+		<closed>2017-10-22 01:50:19</closed>
+	</bug>
+	<bug>
+		<id>785</id>
+		<title>LDAP使用時に内部エラーが発生してしまいログインできない</title>
+		<body>1.10.0pre1を手元の環境に入れてみました。 LDAPユーザーが以下のようなエラーになってしまいログインできませんでした。 内部ユーザー(admin)はログインできているので #657 の変更が影響しているのかもしれません  ``` ERROR 2017-07-05 11:24:18,545 [Transaction(58)] Error(Rollback) : org.support.project.web.logic.impl.DefaultAuthenticationLogicImpl_$$_jvst990_6#_d0auth INFO  2017-07-05 11:24:18,546 [Intercepter(213)] error. [object]class org.support.project.web.logic.impl.DefaultAuthenticationLogicImpl_$$_jvst990_6[proceed]_d0auth[param0]User1[param1]password [throwable.getMessage()] null ERROR 2017-07-05 11:24:18,547 [LoggingFilter(64)] Any exception is thrown. [javax.servlet.ServletException] javax.servlet.ServletException: java.lang.NullPointerException     at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:300)     at org.support.project.knowledge.listener.CloseAbleAuthenticationFilter.doFilter(CloseAbleAuthenticationFilter.java:98)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)     at org.support.project.knowledge.filter.ApiFilter.doFilter(ApiFilter.java:71)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)     at org.support.project.web.filter.LoggingFilter.doFilter(LoggingFilter.java:62)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)     at org.support.project.web.filter.SeqFilter.doFilter(SeqFilter.java:31)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)     at org.support.project.web.filter.EncodingFilter.doFilter(EncodingFilter.java:36)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)     at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)     at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)     at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)     at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)     at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:620)     at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)     at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:509)     at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1104)     at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)     at org.apache.tomcat.util.net.AprEndpoint$SocketWithOptionsProcessor.run(AprEndpoint.java:2445)     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)     at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)     at java.lang.Thread.run(Thread.java:745) Caused by: java.lang.NullPointerException     at org.support.project.web.logic.impl.DefaultAuthenticationLogicImpl.auth(DefaultAuthenticationLogicImpl.java:223)     at org.support.project.ormapping.transaction.Transaction.invoke(Transaction.java:48)     at org.support.project.web.filter.AuthenticationFilter.doLogin(AuthenticationFilter.java:347)     at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:205)     ... 29 more INFO  2017-07-05 11:24:18,548 [LoggingFilter(100)] POST     http://xxxxx/knowledge/signin   200     10.184.153.31   50[ms] ```  ＃いろいろ伏せるの忘れてました。。</body>
+		<created>2017-07-05 11:36:55</created>
+		<closed>2017-08-18 11:28:44</closed>
+	</bug>
+	<bug>
+		<id>773</id>
+		<title>debian8の最新のtomcat8で利用するとエラー</title>
+		<body>データベース操作をするアクションを起こすと次のようなエラーになる。  javax.servlet.ServletException: javax.servlet.ServletException: java.lang.NullPointerException at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:300) at org.support.project.knowledge.listener.CloseAbleAuthenticationFilter.doFilter(CloseAbleAuthenticationFilter.java:98) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) at org.support.project.web.filter.LoggingFilter.doFilter(LoggingFilter.java:62) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) at org.support.project.web.filter.SeqFilter.doFilter(SeqFilter.java:31) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) at org.support.project.web.filter.EncodingFilter.doFilter(EncodingFilter.java:36) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:610) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:537) at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1081) at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:658) at org.apache.coyote.http11.Http11NioProtocol$Http11ConnectionHandler.process(Http11NioProtocol.java:222) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1580) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1537) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748) Caused by: javax.servlet.ServletException: java.lang.NullPointerException at org.support.project.web.filter.ControlManagerFilter.doFilter(ControlManagerFilter.java:216) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) at org.support.project.web.filter.MultipartFilter.doFilter(MultipartFilter.java:63) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:293) ... 28 more Caused by: java.lang.NullPointerException at org.support.project.web.logic.HttpRequestCheckLogic.checkReferrer(HttpRequestCheckLogic.java:64) at org.support.project.web.logic.HttpRequestCheckLogic.checkCSRF(HttpRequestCheckLogic.java:200) at org.support.project.web.filter.ControlManagerFilter.doFilter(ControlManagerFilter.java:172) ... 34 more</body>
+		<created>2017-06-28 03:02:32</created>
+		<closed>2017-07-04 13:37:22</closed>
+	</bug>
+	<bug>
+		<id>770</id>
+		<title>PowerPoint ファイルをスライドショーにすると真っ黒画像に変換される</title>
+		<body>現状、PowerPoint ファイルのスライドショー変換を行うと、ほぼ 100% の確率で真っ黒画像に変換されます。  PptxSlideShowParser の実装を見ると、  ```java for (Slide&lt;?, ?&gt; slide : slides) {     String title = slide.getTitle();     System.out.println("Rendering slide " + slideNo + (title == null ? "" : ": " + title));      BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);     //ImageIOUtil.writeImage(img, outputDir.getAbsolutePath() + "/" + (slideNo) + ".png", 300);     super.writeImage(img, outputDir.getAbsolutePath() + "/" + (slideNo) + ".png");     slideNo++; } ```  となっていて、Slide の内容を BufferedImage に反映していないように思いました。そこで以下のようにコードを変えたらスライドが生成されるようにはなったのですが、今度は #509 で指摘されているような事象が起きました。  ```java for (Slide&lt;?, ?&gt; slide : slides) {     String title = slide.getTitle();     System.out.println("Rendering slide " + slideNo + (title == null ? "" : ": " + title));      BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);     Graphics2D graphics = img.createGraphics();     graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);     graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);     graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);     graphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);     slide.draw(graphics);     img.flush();     //ImageIOUtil.writeImage(img, outputDir.getAbsolutePath() + "/" + (slideNo) + ".png", 300);     super.writeImage(img, outputDir.getAbsolutePath() + "/" + (slideNo) + ".png");     graphics.dispose();     slideNo++; } ```  おそらく d15d24aaf70cf1d7ba36d62d7da400eb908b3ee3 で修正する前の内容に一部戻ってしまうかなと思うのですが、こちら PR お送りした方が良いでしょうか？</body>
+		<created>2017-06-24 19:03:28</created>
+		<closed>2017-07-04 13:37:07</closed>
+	</bug>
+	<bug>
+		<id>756</id>
+		<title>サインインしていない状態でイベントに参加しようとするとエラー</title>
+		<body>サインインしていない状態で参加するボタンを押すと ``` {"children":[],"code":400,"message":"param is invalid.","result":null,"status":2} ``` のようなメッセージが表示されてしまいます。 ログイン状態から参加するボタンを押せば問題ありません。 常にログイン状態で使っていたのでリリースされてすぐにアップデートしてから今まで気付きませんでした。  問題のあるバージョンは `1.9.1pre1` です。 `1.8.0`, `1.8.1`, `1.9.0` は問題ありませんでした。 デモサイトでも再現しました。</body>
+		<created>2017-06-13 08:53:31</created>
+		<closed>2017-07-04 13:36:21</closed>
+	</bug>
+	<bug>
+		<id>747</id>
+		<title>テンプレートを削除した後、それを利用した記事があると記事一覧で500エラーとなる</title>
+		<body>お世話になります。 度々issues に登録してすみません。  以下作業をしたところ500エラーが発生しました。 ・新規でテンプレートAを追加→テンプレートAを利用して記事を作成→テンプレートAを削除→記事一覧を表示→以下500エラーが表示される  [以下で記事一覧は見れるようになりました] /knowledge/open.knowledge/view/記事番号　を直接urlに入力して記事を表示される 　→記事に利用しているテンプレートを存在しているテンプレートBに変更→記事一覧表示可  記事が紐づいているテンプレートを消さない　ということで運用回避は可能ですが、 登録させていただきます。   [500エラーの内容] Error  Internal Server Error javax.servlet.jsp.JspTagException: 500 /WEB-INF/views/open/knowledge/partials/common_list.jsp at org.apache.taglibs.standard.tag.common.core.ImportSupport.acquireString(ImportSupport.java:329) at org.apache.taglibs.standard.tag.common.core.ImportSupport.doEndTag(ImportSupport.java:171) at org.apache.jsp.WEB_002dINF.views.open.knowledge.list_jsp._jspx_meth_c_005fimport_005f1(list_jsp.java:976) at org.apache.jsp.WEB_002dINF.views.open.knowledge.list_jsp._jspService(list_jsp.java:806) at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:443) at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:385) at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:329) at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728) at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:467) at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392) at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311) at org.support.project.web.common.HttpUtil.forward(HttpUtil.java:83) at org.support.project.web.boundary.ForwardBoundary.navigate(ForwardBoundary.java:23) at org.support.project.web.filter.ControlFilter.invoke(ControlFilter.java:51) at org.support.project.web.filter.ControlManagerFilter.doFilter(ControlManagerFilter.java:184) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.support.project.web.filter.MultipartFilter.doFilter(MultipartFilter.java:63) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:184) at org.support.project.knowledge.listener.CloseAbleAuthenticationFilter.doFilter(CloseAbleAuthenticationFilter.java:98) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.support.project.web.filter.LoggingFilter.doFilter(LoggingFilter.java:62) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.support.project.web.filter.SeqFilter.doFilter(SeqFilter.java:31) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.support.project.web.filter.EncodingFilter.doFilter(EncodingFilter.java:36) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:624) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748)  </body>
+		<created>2017-06-08 01:38:34</created>
+		<closed>2017-07-04 13:35:35</closed>
+	</bug>
+	<bug>
+		<id>744</id>
+		<title>デフォルトの公開範囲の設定を設定しているのに、新規作成時に設定されない</title>
+		<body>#741 と同じかもしれませんが、上げさせていただきます。  [メニュー]-[デフォルトの公開範囲の設定]画面で、「保護(公開先を選択)」を指定し、公開先を指定して保存しました。  しかし、新規作成画面に行くと、「公開範囲の指定」のフラグは「保護(公開先を選択)」になっているのですが、公開先は設定されていません。  内部的には設定されているのかと思ったのですが、投稿したあとの画面をみても設定されていませんでした。  対応しているのがフラグのみのようにみえます。</body>
+		<created>2017-06-07 00:04:11</created>
+		<closed>2017-07-04 13:35:27</closed>
+	</bug>
+	<bug>
+		<id>740</id>
+		<title>default publication range in usermenu is different from real one</title>
+		<body>### default publication range default publication range after user created is `private` (ref below).  ![default_publication_range_02](https://cloud.githubusercontent.com/assets/14275619/26573724/c7b542c2-4559-11e7-91cb-796f2247efed.png)  ### in usermenu range but in usermenu, selected `public (to all users)` initially (ref below).  ![default_publication_range_01](https://cloud.githubusercontent.com/assets/14275619/26573744/d5f3f50e-4559-11e7-959a-acacd0480092.png)  ### not intuitive? if no operation in this usermenu, range is still `private` of course. so users must push `save` button on purpose. I think this non intuitive. How is this?  ### ps `Knowledge` is very very indeed sexy product! thanks! :-)</body>
+		<created>2017-05-30 08:08:04</created>
+		<closed>2017-07-04 13:35:12</closed>
+	</bug>
+	<bug>
+		<id>736</id>
+		<title>very minor Japanese typo </title>
+		<body>your product `Knowledge` is very awesome and useful, thanks so much!  in [`knowledge/src/main/resources/appresource_ja.properties` l495](https://github.com/support-project/knowledge/blob/master/src/main/resources/appresource_ja.properties#L495), Japanese expression has very minor typo.  - incorrect `立って`  - correct `経って`  please modify it when you have sufficient time because of very little typo :)</body>
+		<created>2017-05-24 06:04:46</created>
+		<closed>2017-06-06 18:16:51</closed>
+	</bug>
+	<bug>
+		<id>731</id>
+		<title>閲覧する権限が無い投稿が検索結果に表示されます</title>
+		<body>knowledgeのバージョンは1.9.0です。  ログインした状態でtagNamesやgroupNamesのクエリで検索すると権限が無い投稿が検索結果に表示されてしまうようでした。  下のようなクエリです。 knowledge/open.knowledge/list?tagNames=議事録  タグのボタンから検索した時にこのクエリが使われていました。  検索結果にタイトルなどが表示されますが権限がない投稿の内容自体は見れていないので大きな問題ではないと思われます。</body>
+		<created>2017-05-19 08:16:13</created>
+		<closed>2017-05-22 11:15:54</closed>
+	</bug>
+	<bug>
+		<id>724</id>
+		<title>アンケートの集計画面の表示に関する問題</title>
+		<body>![a](https://cloud.githubusercontent.com/assets/15116901/26095613/2d35a6ac-3a59-11e7-8e22-eb8e4cf98b7e.png)  - 回答日時がUTCになっています。 - 右の `glyphicon glyphicon-export` アイコンが表示されていません。 `fa fa-download` あたりに変えてはいかがでしょうか。</body>
+		<created>2017-05-16 08:02:10</created>
+		<closed>2017-05-22 11:12:16</closed>
+	</bug>
+	<bug>
+		<id>714</id>
+		<title>Cannot migrate to PostgreSQL</title>
+		<body>最新版をインストールし、システム設定画面から DB 接続先を PostgreSQL 9.6 に変更した上でデータを移行しようとするとエラーになります。  ``` INFO  2017-04-30 20:41:17,398 [DataTransferEndpoint(68)] INFO  2017-04-30 20:41:17,394 [Intercepter(213)] error. [object]class org.support.project.knowledge.dao.gen.GenMailLocaleTemplatesDao_$$_jvsta05_20[proceed]_d17executeUpdate[param0]INSERT INTO MAIL_LOCALE_TEMPLATES ( KEY , TEMPLATE_ID , TITLE , CONTENT , INSERT_USER , INSERT_DATETIME , UPDATE_USER , UPDATE_DATETIME , DELETE_FLAG ) VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? )[param1][Ljava.lang.Object;@59309333 INFO  2017-04-30 20:41:17,399 [DataTransferEndpoint(68)] [throwable.getMessage()] ERROR: duplicate key value violates unique constraint "mail_locale_templates_pkc" INFO  2017-04-30 20:41:17,409 [DataTransferEndpoint(68)]   詳細: Key (template_id, key)=(notify_event, ja) already exists. [cause] ERROR: duplicate key value violates unique constraint "mail_locale_templates_pkc" INFO  2017-04-30 20:41:17,410 [DataTransferEndpoint(68)]   詳細: Key (template_id, key)=(notify_event, ja) already exists. ```  おそらく InitializeSystem クラスの `MailLogic.get().initMailTemplate();` で初期データを投入後、さらにレコードを H2DB からコピーしようとしているため発生しているのではないかと推測しています。私にはどのように直すべきか判断できませんでした。</body>
+		<created>2017-04-30 11:49:01</created>
+		<closed>2017-05-01 04:49:49</closed>
+	</bug>
+	<bug>
+		<id>712</id>
+		<title>When tag name icludes "&amp;", tag name search does not work correctly.</title>
+		<body>タグ名に ＆ が含まれていると、そのタグ名をクリックしたときにタグ名で絞られずに全件表示される場合がある。具体的には、タグ ID で検索している箇所は正しく検索できるが、tag name で検索している箇所は正しく検索できない。</body>
+		<created>2017-04-29 12:53:21</created>
+		<closed>2017-05-01 04:49:29</closed>
+	</bug>
+	<bug>
+		<id>711</id>
+		<title>脚注から正しくジャンプできない？</title>
+		<body>脚注記法を用いた際、付与されるリンクのURLで  * `http://&lt;BASE-URL&gt;/open.knowledge/view/N#fn-1` * `http://&lt;BASE-URL&gt;/open.knowledge/view/N#fnref-1`  に（おそらく）なって欲しいところが、  * `http://&lt;BASE-URL&gt;/#fn-1` * `http://&lt;BASE-URL&gt;/#fnref-1`  になっており、脚注の数字や矢印をクリックした際にトップページへページ遷移が発生するようです。 </body>
+		<created>2017-04-24 23:46:56</created>
+		<closed>2017-05-01 04:48:57</closed>
+	</bug>
+	<bug>
+		<id>708</id>
+		<title>became_public=true が送信されない場合がある</title>
+		<body>以下のようなケースで became_public=true が送信されない場合があります。  1. 非公開で記事を作成 1. 一定の時間待機 私の環境では５分程度でした。 この段階で became_public=false が WebHook で送信されます。 1. 記事を公開に変更 しばらく待っても WebHook が送信されません。  結果的に became_public=true が送信されてきませんので通知などの処理が行えません。  * (2.) の段階を踏まずに非公開で記事をすぐに公開へ切り替えると正常に became_public=true が送信されます。 * (3.) のあとか同時に記事本文を編集すれば WebHook が送信されます。</body>
+		<created>2017-04-20 02:28:47</created>
+		<closed>2017-06-10 22:25:44</closed>
+	</bug>
+	<bug>
+		<id>684</id>
+		<title>Change top page link</title>
+		<body>I added a service customization function and made it possible to change the HTML of the top page. Because the context of the URL of the top page link ("Get Started" button) is fixed to "/ knowledge", I will fix it url.  -----  v1.8.0 で、サービスのカスタマイズ機能を追加し、トップページのHTMLを変更できるようにしました。 そのトップページのリンク（「Get Started」ボタン）のURLのコンテキストが「/knowledge」固定になっているので修正します。  </body>
+		<created>2017-03-26 03:36:07</created>
+		<closed>2017-04-04 20:58:23</closed>
+	</bug>
+	<bug>
+		<id>653</id>
+		<title>Can not paste clipboard image in comment area</title>
+		<body>Missing "uploadedFiles" function</body>
+		<created>2017-02-23 17:09:30</created>
+		<closed>2017-03-13 22:29:04</closed>
+	</bug>
+	<bug>
+		<id>644</id>
+		<title>タグをクリックしても全記事が表示される</title>
+		<body>全記事を表示した状態で、記事についているタグをクリックしても、そのタグに関する記事が表示されません。 URLが `https://support-project.org/knowledge/open.knowledge/list?tag=` となっています。  2017-02-14 15:57現在、デモサイトで確認しました。</body>
+		<created>2017-02-14 06:58:06</created>
+		<closed>2017-03-13 22:28:51</closed>
+	</bug>
+	<bug>
+		<id>643</id>
+		<title>自分がストックしたナレッジ一覧に、消したストックにストックされていた記事がずっと表示される</title>
+		<body>不具合かもしれないものです。 重大なバグではないと思いますので、時間があったときにでも閲覧お願いします。  発生した手順： 1. ストックを追加する 1. 追加したストックに、何でもいいのでナレッジをストックする 1. 追加したストックを削除する  以上の手順を踏むと、自分がストックしたナレッジ一覧に、消したストックにストックされていた記事がずっと表示されるようになります。どうにか消そうと思いましたが、消すことができませんでした。</body>
+		<created>2017-02-13 04:49:03</created>
+		<closed>2017-03-13 22:28:41</closed>
+	</bug>
+	<bug>
+		<id>634</id>
+		<title>サービスのカスタマイズが保存できない</title>
+		<body>1.8.0preにおいて サービスのカスタマイズを保存すると下記URLにてホワイトアウトする現象が起きています。  /admin.customservice/save</body>
+		<created>2017-02-07 16:57:16</created>
+		<closed>2017-03-13 22:27:57</closed>
+	</bug>
+	<bug>
+		<id>628</id>
+		<title>メールの通知が失敗することがある</title>
+		<body>利用ユーザ数が多くなり、投稿があったことのメール通知先が多くなったことで、 メール送信に失敗することが発生するようになった。 全て失敗するのでは無く、その中の数件が失敗している。  メール送信毎に、メールサーバーとのセッションを確立しているが、この処理を 連続して実施すると失敗するようなので、メールサーバーとのセッションは一度 確立したら保持して送信するように変更してみる。 </body>
+		<created>2017-02-06 12:41:01</created>
+		<closed>2017-03-13 22:27:47</closed>
+	</bug>
+	<bug>
+		<id>608</id>
+		<title>管理者からの全体メッセージが動かない</title>
+		<body>管理者からのアナウンス登録機能が、動いていないっぽい</body>
+		<created>2017-01-31 09:33:50</created>
+		<closed>2017-03-13 22:26:36</closed>
+	</bug>
+	<bug>
+		<id>602</id>
+		<title>スライドからスライドショーの作成に失敗する</title>
+		<body>デモサイトおよびver１．７を適用した自社knowledgeにて、SLIDEを挿入しても表示されない現象がでています。  https://support-project.org/knowledge/open.knowledge/view/1040 https://support-project.org/knowledge/open.knowledge/view/1039 https://support-project.org/knowledge/open.knowledge/view/1025  SLIDE作成までに時間がかかるとのことですが、半日以上たった状態で IE:×マーク Chrome：Wait Parcing となっています。 なお、右カラムの添付ファイルからDLすれば、ファイルの閲覧は可能です。  下記ページのスライドはchromeであれば一部表示されます。 https://support-project.org/knowledge/open.knowledge/view/768</body>
+		<created>2017-01-30 01:36:08</created>
+		<closed>2017-03-13 22:25:58</closed>
+	</bug>
+	<bug>
+		<id>588</id>
+		<title>添付ファイル表示部分のアイコンが表示されない</title>
+		<body>Minifyの時にアイコンを消してしまってた</body>
+		<created>2017-01-20 11:12:03</created>
+		<closed>2017-01-20 14:06:28</closed>
+	</bug>
+	<bug>
+		<id>585</id>
+		<title>下書き保存状態で添付ファイルの削除を行うとエラーが出て失敗する</title>
+		<body></body>
+		<created>2017-01-20 11:05:26</created>
+		<closed>2017-01-20 11:19:56</closed>
+	</bug>
+	<bug>
+		<id>580</id>
+		<title>下書き保存の際に、添付ファイルのバイナリをクリアしてしまっていた</title>
+		<body>下書き保存を実施したときに、添付ファイルのバイナリをクリアする場合があったので修正した。  </body>
+		<created>2017-01-17 13:41:56</created>
+		<closed>2017-01-17 23:00:32</closed>
+	</bug>
+	<bug>
+		<id>568</id>
+		<title>絵文字が表示されない</title>
+		<body>v1.7.0pre4にアップデートしたところ絵文字が表示されなくなりました。 ただいま現物にアクセスできないのでデモサイトの方を確認したところ同様でした。 インスペクタで確認すると画像ファイルが存在しないようです。 &lt;img width="1150" alt="knowledge" src="https://cloud.githubusercontent.com/assets/12589/21889955/c3bcb41e-d90e-11e6-9df2-b5090b3c6593.png"&gt;  </body>
+		<created>2017-01-12 12:37:09</created>
+		<closed>2017-01-17 23:00:48</closed>
+	</bug>
+	<bug>
+		<id>546</id>
+		<title>箇条書き中ではインラインのコードがブロック要素になります</title>
+		<body>Release v1.7.0pre2 で確認しました。  バッククオート1つによるマークアップがおかしいです。  以下のように文章中だと期待通り表示されます:  &lt;pre&gt;この関数は `x + 1` を返します。&lt;/pre&gt;  しかし、以下のように箇条書きの中だと表示がおかしいです:  &lt;pre&gt;* この関数は `x + 1` を返します。&lt;/pre&gt; &lt;pre&gt;1. この関数は `x + 1` を返します。&lt;/pre&gt;  これは、以下のように表示されます。  ---  * この関数は   ```   x + 1   ```   を返します。  ---  ご確認をお願いします。</body>
+		<created>2016-12-19 06:58:44</created>
+		<closed>2017-01-08 03:25:54</closed>
+	</bug>
+	<bug>
+		<id>524</id>
+		<title>データベースの接続先変更でエラー</title>
+		<body>- Amazon Linux(AWS EC2) - v1.6.0pre4.war - tomcat8 - PostgreSQL9.3.1  上記環境で、システム設定 &gt; データベースの接続先変更 ページにて、PostgreSQL への移行を試していますがエラーが発生してPostgreSQLへの移行ができていない状態です。  以下、tomcatのログで確認したエラー内容です。 [localhost_log.txt](https://github.com/support-project/knowledge/files/619126/localhost_log.txt)  ざっくりしていて申し訳ありませんが、事象の原因をご確認頂けますでしょうか。。。 お渡しする情報に不備があればお知らせくださいませ。  </body>
+		<created>2016-11-29 14:06:26</created>
+		<closed>2017-01-08 03:31:44</closed>
+	</bug>
+	<bug>
+		<id>508</id>
+		<title>メールから投稿の場合、登録日時がズレる</title>
+		<body>9時間進んで登録されるもよう（日本では）</body>
+		<created>2016-11-01 01:54:39</created>
+		<closed>2017-01-08 03:34:47</closed>
+	</bug>
+	<bug>
+		<id>499</id>
+		<title>スライドからスライドショーの作成に失敗する</title>
+		<body>サーバーがWindowsやMacだとうまくいくことが多いが、 Linuxだと失敗することが多い。  インストールされているフォントや、パース処理のメモリ量の問題か？ 調査して解決する。 </body>
+		<created>2016-10-27 05:42:45</created>
+		<closed>2017-01-08 03:35:52</closed>
+	</bug>
+	<bug>
+		<id>477</id>
+		<title>ChromeでCookieでのログイン情報が消える</title>
+		<body>一度ログインすると、10日間は自動でログインできるようにCookieに暗号化された情報を格納しているが、この情報が消えてしまうことがある。 デモサイトでは消えない。 リバースプロキシにNginxをおいている環境で発生しているため、NginXの設定がおかしいかも？ また、FireFoxでは問題無い。 </body>
+		<created>2016-10-04 11:32:22</created>
+		<closed>2016-11-05 21:09:28</closed>
+	</bug>
+	<bug>
+		<id>471</id>
+		<title>パワーポイントからスライド表示をするとエラーが発生</title>
+		<body>スライド解析時に作成する画像ファイルの名称を間違えた </body>
+		<created>2016-09-26 15:22:39</created>
+		<closed>2016-11-05 20:55:54</closed>
+	</bug>
+	<bug>
+		<id>470</id>
+		<title>スライド解析待ち画像が表示されない</title>
+		<body>初期セットアップの際にデフォルトの画像をslideディレクトリに格納するようにしたはずなのに 格納できていないことがある。 </body>
+		<created>2016-09-26 15:21:34</created>
+		<closed>2016-11-05 20:56:09</closed>
+	</bug>
+	<bug>
+		<id>446</id>
+		<title>データのエクスポートでエラー</title>
+		<body>デモサイトの投稿から  ---  エクスポートは私の環境では「Internal Server Error」と表示され確認ができず 両者の違いがわかりません。  問い合わせをどこにすればよいのかわからず書き込んでしまいました。 すみません。  ちなみにエクスポートのエラーは以下の内容です。  ``` javax.servlet.ServletException: javax.servlet.ServletException: org.support.project.common.exception.SystemException: at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:309) at org.support.project.knowledge.listener.CloseAbleAuthenticationFilter.doFilter(CloseAbleAuthenticationFilter.java:94) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) at org.support.project.web.filter.LoggingFilter.doFilter(LoggingFilter.java:62) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) at org.support.project.web.filter.EncodingFilter.doFilter(EncodingFilter.java:36) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:620) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) at org.apache.coyote.ajp.AjpProcessor.service(AjpProcessor.java:780) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:785) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1425) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:745) Caused by: javax.servlet.ServletException: org.support.project.common.exception.SystemException: at org.support.project.web.filter.ControlManagerFilter.doFilter(ControlManagerFilter.java:214) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) at org.support.project.web.filter.MultipartFilter.doFilter(MultipartFilter.java:63) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:302) ... 25 more Caused by: org.support.project.common.exception.SystemException: at org.support.project.common.util.ObjectUtils.invoke(ObjectUtils.java:136) at org.support.project.web.common.InvokeTarget.invoke(InvokeTarget.java:106) at org.support.project.web.filter.ControlManagerFilter.doInvoke(ControlManagerFilter.java:360) at org.support.project.web.filter.ControlFilter.invoke(ControlFilter.java:31) at org.support.project.web.filter.ControlManagerFilter.doFilter(ControlManagerFilter.java:181) ... 31 more Caused by: java.lang.reflect.InvocationTargetException at org.support.project.common.util.ObjectUtils.invoke(ObjectUtils.java:132) ... 35 more Caused by: java.io.FileNotFoundException: C:\Windows\system32\config\systemprofile.knowledge\tmp\DataExport.zip (指定されたファイルが見つかりません。) at java.io.FileInputStream.open0(Native Method) at java.io.FileInputStream.open(FileInputStream.java:195) at java.io.FileInputStream.(FileInputStream.java:138) at org.support.project.knowledge.control.admin.DatabaseControl.download(DatabaseControl.java:403) ... 36 more   ``` </body>
+		<created>2016-08-24 03:18:08</created>
+		<closed>2017-10-22 02:14:45</closed>
+	</bug>
+	<bug>
+		<id>439</id>
+		<title>検索でキーワードによりエラーが発生する</title>
+		<body>検索で、"hoge-fuga" と入力すると、そのキーに完全一致するもののみを檢索するが、 入力を間違えて、"hoge-fuga （←最後の " が無い）場合、エラーが発生する。 （検索エンジンがエラーを発生）  エラー画面に遷移しないようにする。 </body>
+		<created>2016-08-06 22:27:17</created>
+		<closed>2016-09-15 13:48:54</closed>
+	</bug>
+	<bug>
+		<id>437</id>
+		<title>ALL USERS グループの権限がデフォルトは不参加になっている</title>
+		<body>ユーザー登録した段階でuser_groupsのgroup_roleが0のため ALL USERS グループの権限がデフォルトは不参加になっている。  しかし、「グループ表示」画面で権限を更新できない。 </body>
+		<created>2016-08-03 02:36:40</created>
+		<closed>2016-09-15 13:48:37</closed>
+	</bug>
+	<bug>
+		<id>431</id>
+		<title>メール受信処理でエラー</title>
+		<body>メールから投稿の処理を作成したが、エラーで受信できない環境がある。 （環境による？） 修正してからリリースする予定にする。 </body>
+		<created>2016-07-24 19:41:51</created>
+		<closed>2016-08-06 12:16:05</closed>
+	</bug>
+	<bug>
+		<id>422</id>
+		<title>BookmarkコンテンツでURLに日本語が入っているとパース失敗</title>
+		<body>Bookmarkコンテンツの場合、URLの内容を検索できるように、 そのURLに書かれている内容を取得するが、URLに日本語が入っていると その処理が失敗する </body>
+		<created>2016-07-22 17:59:14</created>
+		<closed>2016-08-06 12:15:25</closed>
+	</bug>
+	<bug>
+		<id>420</id>
+		<title>メールから投稿時でHTMLメールだったとき、投稿通知にHTMLタグが書かれてしまう</title>
+		<body>投稿通知メールは、プレーンテキストなメールで送信している。 HTMLメールから、Knowledgeに投稿する際、KnowledgeはHTMLのタグもほとんど処理できるので問題無いが、それを通知メールで投稿のお知らせをすると、HTMLタグが大量に出力されてしまう。 </body>
+		<created>2016-07-21 15:05:52</created>
+		<closed>2016-08-06 12:15:12</closed>
+	</bug>
+	<bug>
+		<id>417</id>
+		<title>公開先選択ダイアログのタイトルがおかしい</title>
+		<body>リソースの文字列を消してしまった </body>
+		<created>2016-07-20 23:10:59</created>
+		<closed>2016-08-06 12:14:59</closed>
+	</bug>
+	<bug>
+		<id>415</id>
+		<title>公開範囲を絞っている場合、添付ファイルの中身を検索する場合に登録者しか検索できない</title>
+		<body>添付ファイルの中身のテキストを全文検索エンジンに登録する際に、 「公開」の場合は、全ユーザが検索できるようにしている。  しかし「非公開」「保護（公開先を指定）」している場合、アクセス権を登録者のみにしていた。  非公開では問題ないが、「保護」の場合、公開範囲のユーザ／グループにアクセス権を付け忘れていた。 </body>
+		<created>2016-07-20 12:10:03</created>
+		<closed>2016-08-06 12:14:45</closed>
+	</bug>
+	<bug>
+		<id>410</id>
+		<title>コード表示内で「&amp;」を入力すると「&amp;amp」と表示される</title>
+		<body>1.4.1を使用していますが、記事中でバッククォートを使いコードを記述した際、「&amp;」（半角アンパサンド）を使用すると「&amp;amp」という文字列で表示されてしまいます。 （&amp;read_data が&amp;ampread_data に置き換わってしまう） </body>
+		<created>2016-07-12 02:25:19</created>
+		<closed>2016-08-06 12:14:29</closed>
+	</bug>
+	<bug>
+		<id>387</id>
+		<title>個人ページにアクセス出来ない</title>
+		<body>記事のユーザ名部分のリンクをクリックすると 500 Internal Server Error が出ます。  URL Path: `/open.account/info/1` バージョン: 1.4  ご確認おねがいします。 </body>
+		<created>2016-05-31 03:45:40</created>
+		<closed>2016-06-10 12:23:41</closed>
+	</bug>
+	<bug>
+		<id>384</id>
+		<title>「URLをコピー」でクリップボードに入るURL</title>
+		<body>「URLをコピー」ボタンを押下すると、クリップボードには以下の内容が入ります。  ``` http://(サイトのURL)/knowledge/記事ID ```  このURLをブラウザで指定すると「Error Not Found」となります。 Docker上で運用し、コンテナのポートは49170-&gt;8080としています。 </body>
+		<created>2016-05-24 03:37:42</created>
+		<closed>2016-05-25 04:00:30</closed>
+	</bug>
+	<bug>
+		<id>370</id>
+		<title>Markdownのテーブル記述でエラーが発生する</title>
+		<body>お世話になっております。  テーブル記述で恐らく、列数が足りなかったときにエラーとしてアウトプットされてしまっていたので、テーブル変換できなかったものは、そのまま文字列として出力していただけるようにご検討のほどよろしくお願いします。 ### エラー内容  ``` javax.servlet.ServletException: javax.servlet.ServletException: org.support.project.common.exception.SystemException:      at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:319)     at org.support.project.knowledge.listener.CloseAbleAuthenticationFilter.doFilter(CloseAbleAuthenticationFilter.java:91)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:217)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:184)     at org.support.project.web.filter.LoggingFilter.doFilter(LoggingFilter.java:62)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:217)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:184)     at org.support.project.web.filter.EncodingFilter.doFilter(EncodingFilter.java:36)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:217)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:184)     at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)     at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:105)     at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)     at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)     at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)     at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)     at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:361)     at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:1080)     at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:75)     at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:757)     at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1515)     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)     at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)     at java.lang.Thread.run(Thread.java:745) Caused by: javax.servlet.ServletException: org.support.project.common.exception.SystemException:      at org.support.project.web.filter.ControlManagerFilter.doFilter(ControlManagerFilter.java:216)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:217)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:184)     at org.support.project.web.filter.MultipartFilter.doFilter(MultipartFilter.java:79)     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:217)     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:184)     at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:203)     ... 24 more Caused by: org.support.project.common.exception.SystemException:      at org.support.project.common.util.ObjectUtils.invoke(ObjectUtils.java:134)     at org.support.project.web.common.InvokeTarget.invoke(InvokeTarget.java:83)     at org.support.project.web.filter.ControlManagerFilter.doInvoke(ControlManagerFilter.java:360)     at org.support.project.web.filter.ControlFilter.invoke(ControlFilter.java:32)     at org.support.project.web.filter.ControlManagerFilter.doFilter(ControlManagerFilter.java:184)     ... 30 more Caused by: java.lang.reflect.InvocationTargetException     at org.support.project.common.util.ObjectUtils.invoke(ObjectUtils.java:130)     ... 34 more Caused by: java.lang.IndexOutOfBoundsException: Index: 4, Size: 4     at java.util.ArrayList.rangeCheck(ArrayList.java:653)     at java.util.ArrayList.get(ArrayList.java:429)     at io.github.gitbucket.markedj.Parser.tok(Parser.java:81)     at io.github.gitbucket.markedj.Parser.parse(Parser.java:35)     at io.github.gitbucket.markedj.Marked.marked(Marked.java:18)     at io.github.gitbucket.markedj.Marked.marked(Marked.java:11)     at org.support.project.knowledge.logic.MarkdownLogic.markdownToHtmlOnMarkedJ(MarkdownLogic.java:116)     at org.support.project.knowledge.logic.MarkdownLogic.markdownToHtml(MarkdownLogic.java:70)     at org.support.project.knowledge.logic.MarkdownLogic.markdownToHtml(MarkdownLogic.java:52)     at org.support.project.knowledge.control.open.KnowledgeControl.view(KnowledgeControl.java:107)     ... 35 more Back to Top ``` ### 失敗例  下記のような記述  |Column1|Column2|Column3| |------------------------|------------| |text1      |text 2     | text 3    | </body>
+		<created>2016-05-12 01:49:56</created>
+		<closed>2016-05-25 03:59:53</closed>
+	</bug>
+	<bug>
+		<id>364</id>
+		<title>添付ファイルの画像が表示されない</title>
+		<body>アップロードした画像を表示するようにしたが、画像が表示されないことがあった。  調べてみると、DBの添付ファイルのテーブルの、knowledge_idが空になっていた。 それを設定したら表示できたが、なぜ空になってしまったかを調査して、修正する。 </body>
+		<created>2016-04-22 00:31:08</created>
+		<closed>2017-08-18 11:28:20</closed>
+	</bug>
+	<bug>
+		<id>352</id>
+		<title>データベースの接続先変更時に、ユーザー情報だけ移行されない</title>
+		<body>システム設定 &gt; データベースの接続先変更 ページにて、PostgreSQL への移行を試しています。 本文や添付ファイルはコピーされるが、ユーザー情報がコピーされず、ページは閲覧できるがログインできない、という症状が起こりました。  以下、状況を整理してみます： - データ   - 登録ユーザー数 :   30    - 投稿数 :  29   - 添付ファイル数 :  14   - knowledge_db.mv.db のファイルサイズ :   135 MB - 症状   - 投稿の閲覧 : 可能   - 添付ファイルのダウンロード : 可能   - ログイン :  ID/パスワードが一致しませんとのエラー   - テーブルのコピー状況     - knowledges :  コピーされている     - knowledge_files :  コピーされている     - knowledge_users :  コピーされている     - users :  空のまま  ちなみに、試しに、3ユーザー、5投稿、2添付ファイルくらいの小さなデータを作って、H2 -&gt; PostgreSQL -&gt; H2 と変更を何度か行ってみたところ、ちゃんとユーザー情報も含めて正常にコピーされていました。 </body>
+		<created>2016-04-15 06:24:04</created>
+		<closed>2017-08-18 11:55:12</closed>
+	</bug>
+	<bug>
+		<id>341</id>
+		<title>`Test Hook` で送信される JSON が実際のデータと乖離している</title>
+		<body>現状 Webhook の `Test Hook` で送信される JSON は以下のようになっています。  ``` json {   "knowledge_id": 1,  "title": "記事タイトル",  "content": "記事本文",  "status": "created",    "public_flag": 10,  "tags": ["Sample"   ],  "groups": [     "ALL USERS" ],  "like_count": 2,    "comment_count": 3, "type_id": -100,    "link": "http://example.jp/knowledge/open.knowledge/view/1",    "insert_user": "記事投稿ユーザ名",  "insert_date": "記事投稿日",   "update_user": "記事更新ユーザ名",  "update_date": "記事更新日"} ```  "insert_date" などでは、キーに対するバリューの型やその表現が本番データと大きな乖離があります。  Webhook を受ける側の実装によっては、不正な JSON（想定外の JSON）として処理されてしまい、テストとして成立しないと感じました。  具体的な値自体は何でもいいですが、実際のデータにより近い形式で Test Hook が動作するとありがたいです。 </body>
+		<created>2016-04-08 10:44:13</created>
+		<closed>2016-05-25 03:56:26</closed>
+	</bug>
+	<bug>
+		<id>335</id>
+		<title>メール送信エラー</title>
+		<body>#321 の対応で、ローカルの環境だと動くのだけど、実際の環境ではエラーが発生してメール通知が出来ない。  SQLエラーが発生している。 </body>
+		<created>2016-04-05 14:05:32</created>
+		<closed>2016-04-07 19:11:03</closed>
+	</bug>
+	<bug>
+		<id>322</id>
+		<title>人気一覧にユーザ名が表示されていない</title>
+		<body>表示し忘れてる </body>
+		<created>2016-03-08 07:43:19</created>
+		<closed>2016-04-05 14:08:42</closed>
+	</bug>
+	<bug>
+		<id>317</id>
+		<title>ユーザ情報ページで、ナレッジ投稿件数のカウントがおかしい</title>
+		<body>#156 の対応で、ユーザ情報でナレッジ投稿件数やいいね獲得件数を表示するようにしたが、  件数のカウントがおかしい。  一回のSQLで情報全てを取得しようとしていたが、よく考えたら、いいねの件数分投稿件数が増えているSQLになっていた。 </body>
+		<created>2016-03-06 13:40:54</created>
+		<closed>2016-03-08 04:48:31</closed>
+	</bug>
+	<bug>
+		<id>311</id>
+		<title>表示されている投稿日時が正しくない</title>
+		<body>投稿一覧と投稿の詳細ヘッダーにおいて、  ![ss_141](https://cloud.githubusercontent.com/assets/15116901/13483222/da6b8cca-e135-11e5-8c32-ba7d2d8fd6a8.png) ![ss_138](https://cloud.githubusercontent.com/assets/15116901/13483224/de361226-e135-11e5-9317-7ba66fab9ff7.png)  `2016/03/03 10:29 に投稿` と表示されていますが、編集履歴を見ると投稿日時は `2016/02/24 12:27` で、最終更新は `2016/02/24 12:59` となっていました。  この `2016/03/03 10:29` という時間は  ![ss_140](https://cloud.githubusercontent.com/assets/15116901/13483250/30715212-e136-11e5-9a93-71b7dd2e776c.png)  コメントによる更新の日時によるものかと思いますが、これは投稿日時でも更新日時でもないので `2016/03/03 10:29 に投稿` ではなく `2016/03/03 10:29 に更新` とするか、正しい投稿日時を表示するように修正すべきと思います。  他の記事でも同様のケースが見られましたので、記事単体の問題ではないようです。 </body>
+		<created>2016-03-03 02:53:18</created>
+		<closed>2016-03-08 04:48:20</closed>
+	</bug>
+	<bug>
+		<id>300</id>
+		<title>検索欄で「*」または「?」を先頭に入れるとエラーになる。</title>
+		<body>## バージョン  v1.1.0 ## 現象  記事検索の際、キーワードの先頭に「*」または「?」を入力すると、Internal Server Errorになる。 先頭以外では再現しない。スペース区切りで2つ目のキーワードに先頭「 \* 」「?」を入れた場合でも発生。 </body>
+		<created>2016-02-22 06:18:59</created>
+		<closed>2016-03-08 04:47:25</closed>
+	</bug>
+	<bug>
+		<id>291</id>
+		<title>取り消し線が表示されない</title>
+		<body>デモサイトへの投稿から。  ``` ~~aaa~~ ```  で取り消し線になるはずだが、取り消し線にならない。  ~~aaaa~~  Githubではちゃんと表示されますね。 </body>
+		<created>2016-02-11 14:15:33</created>
+		<closed>2016-03-08 04:46:53</closed>
+	</bug>
+	<bug>
+		<id>272</id>
+		<title>外からアクセスできるべきリソースまで認証が必要になっている</title>
+		<body>ログアウトして登録されていない閲覧者としてサインインページを開いたときのことです。  システム設定で **全ての機能には、ログインしないとアクセス不可** となっている環境で、 `/open.account/icon/` を取得できずに画像が出なくなっていました。 </body>
+		<created>2016-02-04 08:57:44</created>
+		<closed>2016-02-07 01:13:29</closed>
+	</bug>
+	<bug>
+		<id>271</id>
+		<title>タグの文字が数値文字参照に化ける</title>
+		<body>はじめに、`Let's Encrypt` というタグがあるとします。 ナレッジの記事の投稿、編集画面でタグを追加するときサジェストが出ますが、このサジェストで`Let's Encrypt` を選んで追加しようとした場合、`Let&amp;#39;s Encrypt` となります。 </body>
+		<created>2016-02-03 06:32:21</created>
+		<closed>2017-08-18 11:36:34</closed>
+	</bug>
+	<bug>
+		<id>257</id>
+		<title>検索時にエラーが発生する事がある</title>
+		<body>ブログのコメントへの投稿から  ---  続けて別件、ご報告いたします。（※Release v1.0.0 で動作検証）  Knowledgeの木ワード検索として、[秋葉原]を入力→検索を行うと、Server Error が表示され、検索が正常に行われません。[秋葉原]以外の語は今のところ問題ありません。  ``` INFO 2016-01-25 10:03:49,765 [Intercepter(215)] error. [object]class org.support.project.knowledge.logic.KnowledgeLogic_$$_jvst929_5[proceed]_d21searchKnowledge[param0]秋葉原[param1]null[param2]null[param3]org.support.project.web.bean.LoginedUser@48783cda[param4]0[param5]50 [throwable.getMessage()] null ERROR 2016-01-25 10:03:49,769 [ControlManagerFilter(206)] ERROR SEND ERROR 2016-01-25 10:03:49,771 [LoggingFilter(64)] Any exception is thrown. [javax.servlet.ServletException] javax.servlet.ServletException: javax.servlet.ServletException: org.support.project.common.exception.SystemException: at org.support.project.web.filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:319) . .（40行ほど略） . Caused by: java.lang.reflect.InvocationTargetException at org.support.project.common.util.ObjectUtils.invoke(ObjectUtils.java:130) ... 34 more Caused by: java.lang.NullPointerException at org.support.project.knowledge.logic.KnowledgeLogic.getKnowledgeDatas(KnowledgeLogic.java:708) at org.support.project.knowledge.logic.KnowledgeLogic.searchKnowledge(KnowledgeLogic.java:438) ```  --- </body>
+		<created>2016-01-25 01:40:52</created>
+		<closed>2016-02-07 01:12:38</closed>
+	</bug>
+	<bug>
+		<id>256</id>
+		<title>共同編集時に編集不可能になる</title>
+		<body>以下のような状況で記事が編集不可能になります。 1. ユーザーAが、ユーザーAとユーザーBを共同編集者として記事作成 2. ユーザーBが記事を編集し保存 3. ユーザーBの画面から、当該記事の編集ボタンが消える。 4. ユーザーAで確認すると、ユーザーBの権限が消えている。  条件があまり分かっておらず具体例での報告で申し訳ないのですが、よろしくお願いいたします。 </body>
+		<created>2016-01-22 01:15:06</created>
+		<closed>2016-08-06 12:12:35</closed>
+	</bug>
+	<bug>
+		<id>253</id>
+		<title>編集中画面でのマークダウン表示が異常</title>
+		<body>現在、 flatly, darkula テーマで編集画面を利用していますが、プレビューした場合  ![ss_062](https://cloud.githubusercontent.com/assets/15116901/12437765/f79b29ac-bf63-11e5-901b-3d088b25ab79.png)  このように、背景色なしで文字色のみハイライトされるような状況になっています(今回は ```sql によりはじめましたが、他の言語を指定しても同様)。  また、右側に不要なスクロールバーも出ています。  ![ss_063](https://cloud.githubusercontent.com/assets/15116901/12437810/8484d76e-bf64-11e5-8195-f24cbbc3962c.png)  正しくはこう表示されるかと思います(上記SSは投稿後の閲覧画面)。  スタイルの指定ミスかなと思いますので、修正をお願いします。 </body>
+		<created>2016-01-20 01:57:40</created>
+		<closed>2016-02-07 01:11:59</closed>
+	</bug>
+	<bug>
+		<id>248</id>
+		<title>エクスポートしたデータがおかしい</title>
+		<body>ブログのコメントから。  日本語が文字化けしている。  あと、ダウンロードできる内容が最新のものではなく、立ち上げた直後のデータになったとのこと。 </body>
+		<created>2016-01-18 15:37:16</created>
+		<closed>2016-01-25 11:53:24</closed>
+	</bug>
+	<bug>
+		<id>240</id>
+		<title>タグ入力がおかしい</title>
+		<body>以下の問い合わせより  ---  以前まではナレッジ登録画面のタグ一覧にタグを記入するときに、タグ名を記載してTabかEnterを押すとタグ名確定して、続けて他のタグ名を記載することができていたのですが 1.0.0pre1からは、タグ名を記載してTabかEnterを押すとタグ名確定して、その右側に同じタグ名が表示される状況になってしまい、続けて他のタグを入れたい時にそれをいちいち消さないといけない動作になってしまっています。  ---  たぶん、タグ入力のフロントエンドライブラリを最新化したことが原因と思われる。 旧バージョンに戻して確認してみる。 </body>
+		<created>2016-01-13 13:16:35</created>
+		<closed>2016-01-19 16:23:09</closed>
+	</bug>
+	<bug>
+		<id>239</id>
+		<title>特定条件で保存又は更新すると記事が二重、三重に投稿されてしまう</title>
+		<body>こちらちょっとまだ条件がわかってないのですが 作成より記事を保存後、手直しをして更新すると記事が新たに作られてしまうという現象が起きました。  引き続き調査いたします。 </body>
+		<created>2016-01-09 03:11:59</created>
+		<closed>2017-08-18 11:32:52</closed>
+	</bug>
+	<bug>
+		<id>235</id>
+		<title>編集履歴のユーザー・リンクがうまく機能しない？</title>
+		<body>Live Demoに [Sample](https://support-project.org/knowledge/open.knowledge/view/174?keyword=&amp;tag=&amp;tagNames=&amp;user=&amp;offset=0&amp;group=&amp;groupNames=) を作りました。  以下のように、最終履歴のユーザー名とアイコンが一致していないように見受けられます。 記事作成者？のアイコンが残っているようです。  **記事閲覧画面**  ![user_link -](https://cloud.githubusercontent.com/assets/15374413/12192976/33ecff84-b627-11e5-8af5-99213154c706.png)  **記事閲覧画面からユーザーで記事をフィルタリングした画面**  ![user_link2 -](https://cloud.githubusercontent.com/assets/15374413/12192975/33e82c0c-b627-11e5-91f0-316692c80107.png)  Javaで直接直せなくてごめんなさい。現行が正しいのか判断できなかったのですが、ご確認お願いします。 </body>
+		<created>2016-01-08 07:48:17</created>
+		<closed>2016-01-19 16:22:46</closed>
+	</bug>
+	<bug>
+		<id>222</id>
+		<title>グループ公開されてる記事の詳細ページへ行くとレイアウトが崩れる</title>
+		<body>一部divタグの閉じタグが欠損してるためレイアウトが崩れるようです。 ※後ほどPR出します。 </body>
+		<created>2016-01-05 16:25:33</created>
+		<closed>2016-01-19 16:21:58</closed>
+	</bug>
+	<bug>
+		<id>219</id>
+		<title>検索でInternalServerErrorが発生することがある</title>
+		<body>- ブログのコメントのやりとりの転記  画面上部の検索フォームに例えば pre1 と入力すると、 「pre」と「1」のor検索が走ってるように見えますがこれは仕様でしょうか？ そのため検索にかなり時間がかかり、たまにInternalServerErrorとなることもありました。 </body>
+		<created>2016-01-05 12:58:06</created>
+		<closed>2016-09-15 13:48:15</closed>
+	</bug>
+	<bug>
+		<id>218</id>
+		<title>ナレッジ表示画面の投稿時間の表示がおかしい</title>
+		<body>GMTで表示しているかも？ デザイン変更の際に、時間表示の部分をおかしくしてしまったと思われる。 </body>
+		<created>2016-01-05 12:41:58</created>
+		<closed>2016-01-19 16:21:45</closed>
+	</bug>
+	<bug>
+		<id>203</id>
+		<title>記事登録者ではない人がコメントすると、コメント欄に線が出てしまう</title>
+		<body>デモサイトへの投稿から https://support-project.org/knowledge/open.knowledge/view/148  記事登録者ではない人がコメントすると、コメント欄に線が出てしまう </body>
+		<created>2015-12-24 03:18:05</created>
+		<closed>2016-01-07 20:31:21</closed>
+	</bug>
+	<bug>
+		<id>180</id>
+		<title>デスクトップ通知のWebSocketがつながらない（切れる？）</title>
+		<body>（#179 の問い合わせ履歴から）  ブラウザの管理者ツールで見ると、`ws://hogehoge/notify への接続が切断されました`というメッセージが一覧画面で表示されます。  一方でDEMOの方ではこのようなメッセージは表示されません。  open.knowledge/listファイルに差分があるようで、私がダウンロードしたwarファイルでは`webSocket`変数があるのに対し、DEMOでは無いようでした。  見当違いであれば申し訳ありませんが、何かの参考になれば。  ``` var webSocket; window.onload = function() {     var forRtoA = document.createElement('a');     forRtoA.href = '/notify';     console.log(forRtoA.href.replace("http://", "ws://").replace("https://", "wss://"));     webSocket = new WebSocket(forRtoA.href.replace("http://", "ws://").replace("https://", "wss://"));     webSocket.onopen = function() {     }     webSocket.onclose = function() {     }     webSocket.onmessage = function(message) {         console.log('[RECEIVE] ');         var result = JSON.parse(message.data);         console.log(result);         notifyDesktop(result.message, result.result);     }     webSocket.onerror = function(message) {     } ``` </body>
+		<created>2015-12-05 05:14:03</created>
+		<closed>2017-10-22 02:02:33</closed>
+	</bug>
+	<bug>
+		<id>179</id>
+		<title>閲覧履歴が表示されない</title>
+		<body>## 事象 - 閲覧履歴が表示されない ## 環境とか - Dockerコンテナで運用しています - バージョン：v0.7.1pre1 - OS:CentOS6.6 - Dockerバージョン:1.5.0 - v0.6.1から使用させてもらっていますが、その頃から見えていません。 - 何か設定条件等ありますでしょうか。  （DEMO環境に登録された、問い合わせを転記） </body>
+		<created>2015-12-05 05:09:40</created>
+		<closed>2016-01-20 15:34:35</closed>
+	</bug>
+	<bug>
+		<id>164</id>
+		<title>Cookieに使用してはいけない文字が含まれている</title>
+		<body>KNOWLEDGE_HISTORYの値にカンマを使用されているようですが、Cookieの値にはカンマは使用できないようです。  Tomcat 9.0.0.M1で実行させたところ、Tomcat内部でのCookieチェックの際にIllegalArgumentExceptionがスローされる問題が発生しています。  &gt; Caused by: java.lang.IllegalArgumentException: An invalid character [44] was present in the Cookie value &gt;     at org.apache.tomcat.util.http.Rfc6265CookieProcessor.validateCookieValue(Rfc6265CookieProcessor.java:160) &gt;     at org.apache.tomcat.util.http.Rfc6265CookieProcessor.generateHeader(Rfc6265CookieProcessor.java:109) &gt;     at org.apache.catalina.connector.Response.generateCookieString(Response.java:960) &gt;     at org.apache.catalina.connector.Response.addCookie(Response.java:908) &gt;     at org.apache.catalina.connector.ResponseFacade.addCookie(ResponseFacade.java:391) &gt;     at org.support.project.knowledge.control.open.KnowledgeControl.view(KnowledgeControl.java:111) &gt;     ... 35 more </body>
+		<created>2015-11-25 16:30:01</created>
+		<closed>2015-12-17 11:38:09</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>記事保存時の「権限がありません」エラー</title>
+		<body>記事保存時にまれに「権限がありません」というエラーが発生し，記事の保存が不可能になります．  ログインが解除されたわけではなく，他のページに移ってから記事を書き直すと保存できます． どのような条件下で発生するかわかっていませんが，同じ記事を保存せずに長時間書いている場合に発生している印象です．  こちらの環境は CentOS7, tomcat8, java8 ,postgreSQLで運用しています． </body>
+		<created>2015-11-24 14:33:06</created>
+		<closed>2015-12-17 11:38:48</closed>
+	</bug>
+	<bug>
+		<id>154</id>
+		<title>サインインのID部分のプレースホルダがメールアドレスになっている</title>
+		<body>Ldapログインなどでは、ユーザIDを使う場合もあるので、名称を考える </body>
+		<created>2015-11-19 20:53:32</created>
+		<closed>2015-11-22 23:01:15</closed>
+	</bug>
+	<bug>
+		<id>137</id>
+		<title>bookmark登録時にURLのコンテンツ取得でエラーが発生すると、それ以降のbookmarkを処理しなくなる</title>
+		<body>エラーが発生したbookmarkをスキップして次のURLを処理するように変更する </body>
+		<created>2015-11-05 13:27:45</created>
+		<closed>2015-11-22 22:58:03</closed>
+	</bug>
+	<bug>
+		<id>125</id>
+		<title>Ldap接続でユーザーIDの大文字、小文字でエラー</title>
+		<body>AD認証で、大文字でも小文字でもログインできる場合に、先に大文字でログイン後に小文字でログインするとエラーになる。 初めてログイン時に、knowledgeにユーザーを作成するが、knowledgeではIDは大文字、小文字を別と判定する。 このために、エラーが発生する。 </body>
+		<created>2015-10-27 03:37:18</created>
+		<closed>2015-11-22 22:56:52</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>ナレッジを更新すると、タグの選択の状態がおかしくなる</title>
+		<body>ナレッジを更新した後に、ナレッジ一覧に戻ると、 更新したナレッジに付けたタグで絞り込んだ状態になる。 #### 確認した動作 - ナレッジ一覧表示   - タグ選択無しなので全て表示 - ナレッジ編集→保存   - タグ「テスト」をナレッジに設定している - ナレッジ一覧に戻る   - タグ「テスト」で絞りこまれている   - 前の一覧表示で、タグで絞り込みはしていないので、絞り込み無しで良いはず </body>
+		<created>2015-10-22 17:15:10</created>
+		<closed>2015-12-17 11:39:40</closed>
+	</bug>
+	<bug>
+		<id>114</id>
+		<title>記事に紐づく画像が削除できない</title>
+		<body>コードを見る限り記事に紐づくものは削除できないようになっていますが、こちら仕様になりますか？  間違ってアップロードした場合など削除できた方がいいかなと思うのですがいかがでしょうか？ </body>
+		<created>2015-10-21 13:29:23</created>
+		<closed>2015-10-30 22:17:13</closed>
+	</bug>
+	<bug>
+		<id>103</id>
+		<title>LDAPの情報登録のエラー</title>
+		<body>LDAPの情報登録の際に、 設定2で登録しようとした場合に、設定1にHostとポートを指定しないとエラーになる（必須エラー） </body>
+		<created>2015-10-16 20:12:00</created>
+		<closed>2015-10-30 22:16:45</closed>
+	</bug>
+	<bug>
+		<id>102</id>
+		<title>Knowledge freeze while previewing markdown doccument</title>
+		<body>Hi,  I hosted a knowledge base system with Knowledge Docker, and I posted a markdown document basically  transferred from a wiki website, but Knowledge stop responding when I tried to preview or open the document after saving the document to Knowledge. The attachment is the document that cause the freeze, and you might want to take a look. Since I cannot upload files to this repository, I will provide the link from my google drive.  https://drive.google.com/file/d/0Bzfel_IWZzflT1pNblN4ZFFJY1k/view?usp=sharing  Thanks for all the hard works! This system is great and does all the jobs I need! </body>
+		<created>2015-10-16 08:31:40</created>
+		<closed>2015-10-30 22:16:41</closed>
+	</bug>
+	<bug>
+		<id>100</id>
+		<title>h2からpostgresql移行時に正しくデータが反映されない</title>
+		<body>h2のデータが破損したためpostgresqlに移行を試みたのですが、一部のデータ(ユーザ情報)が正常に反映されず一部の記事のauthorが何も表示がない状態になりました。 こちら全て反映させるために何か特別な作業等ありますでしょうか？  以下作業した手順記載しておきます。 1. postgresqlをインストール 2. knowledge用のユーザとDBをcli上から作成 3. knowledgeのweb画面からpostgresqlの接続情報を設定 4. 組み込みデータベースからpostgresqlへのデータ移行ボタンを押して移行 </body>
+		<created>2015-10-13 02:45:14</created>
+		<closed>2015-10-22 19:10:59</closed>
+	</bug>
+	<bug>
+		<id>99</id>
+		<title>記事作成メール通知が届かない</title>
+		<body>Knowledge 0.6pre2へアップデート後、記事作成通知が届かなくなりました。すべての通知を受け取るように設定していますが、ユーザ追加通知のみ届き、他の通知は届かない状態となっています。  アップデート前はKnowledge0.5.3pre3でしたが、0.5.3pre3ではナレッジ登録やナレッジ更新通知が届いていました。  まずは起票いたします。 </body>
+		<created>2015-10-13 02:40:41</created>
+		<closed>2015-10-30 22:16:40</closed>
+	</bug>
+	<bug>
+		<id>95</id>
+		<title>グループの削除時にNot foundページに遷移する</title>
+		<body>フォームからSubmitする時にPostで送られてきますが、コントローラのアノテーションが@GetになってるためNot foundになってると思われます。  https://github.com/support-project/knowledge/blob/master/src/main/java/org/support/project/knowledge/control/protect/GroupControl.java#L238  後ほどPR出させて頂きますね。 </body>
+		<created>2015-10-11 16:24:50</created>
+		<closed>2015-10-30 22:16:47</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>タグ一覧ページの2ページ目以降が表示されない</title>
+		<body>デバッグ環境の用意がつらくて(Java開発環境の用意からなので)テストせず投稿してすみませんが、  https://github.com/support-project/knowledge/blob/master/src/main/java/org/support/project/knowledge/logic/TagLogic.java#L49  こちらの部分で `offset * offset` とオフセットを指定してるからか、タグ一覧の2ページ目以降に何も表示されません。  `limit` が20ですので、2ページ目はオフセットが200以降のタグを表示するような形になっているのではないかと思います。確認をお願いします。 </body>
+		<created>2015-10-05 06:13:00</created>
+		<closed>2015-10-30 22:16:45</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>0.6pre1から0.6pre2にバージョンアップするとテーブルがないと怒られる</title>
+		<body>アップデートして記事の追加ボタンをおすと TEMPLATE_MASTER がないためエラーが出て記事が追加できなくなる  管理者でProxy設定を開こうとした時も同様なエラーなエラーがでる。  新たにテーブルが増えたようですが、うまく生成されていないようです データベースにはPostgreSQLを使っています。 </body>
+		<created>2015-10-04 20:51:41</created>
+		<closed>2016-02-07 13:47:08</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>0.5.3で記事を作成するとCPU負荷があがる</title>
+		<body>Knowledge 0.5.3にしてから、記事を投稿するとサーバのCPU負荷があがりKnowledgeの反応が悪くなってしまいます。  topコマンドで確認するとjavaプロセスが二つ起動しており、生存時間の短いほうのプロセスがCPU使用率を上げているようでした。  MailSendBat.logを確認すると、次の出力で止まっています。  ``` INFO  2015-08-18 16:32:59,332 [AbstractBat(26)] MailSendBat is start. INFO  2015-08-18 16:33:12,601 [DBConnenctionLogic(35)] Custom connection setting is exists. ```  アップデート前の0.5.3pre3ではこの現象はありませんでした。 </body>
+		<created>2015-08-18 07:40:48</created>
+		<closed>2016-02-08 12:17:49</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>マークダウンのパース処理でエラーが発生する事がある</title>
+		<body>- 0.5.3pre2より、マークダウンのパースを変更したがエラーが発生する事がある - フロント側のjs（marked.js)でパースしていた - サーバー側でパースに変更(PegDown)   - XSS対策や、codeブロック内の制御がしやすいため - PegDownのパースでエラーが発生するもよう </body>
+		<created>2015-07-27 13:16:19</created>
+		<closed>2015-08-10 13:29:33</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>タグが数文字でスクロールして消えてしまう</title>
+		<body>![20150723-220417](https://cloud.githubusercontent.com/assets/6997928/8850944/00d6bb46-3187-11e5-9516-a7e6d0baecc5.png) のように、abcdefghijkl というタグを入力しようとしてもスクロールしてしまって前の方が見えなくなってしまいます。 </body>
+		<created>2015-07-23 13:08:50</created>
+		<closed>2015-08-10 13:28:23</closed>
+	</bug>
+	<bug>
+		<id>70</id>
+		<title>グループのメンバー一覧が10件しか表示出来ない</title>
+		<body>一覧に表示する件数は10件にして、ページ制御で切り替えようと思っていたのに、 ページ制御を付け忘れました。  「ALL USERS」グループは10人しか表示されていませんが、全員グループのメンバーに入っています。 </body>
+		<created>2015-07-16 16:18:41</created>
+		<closed>2015-08-10 13:26:25</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>コードブロックの中では&lt;&gt;を許すように変更</title>
+		<body>コードブロック内で、  ``` vector&lt;int&gt; int_vector; ```  と書くと、  &amp;lt;int&amp;gt;部分が消えてしまう。 </body>
+		<created>2015-07-13 18:19:19</created>
+		<closed>2015-08-10 13:25:47</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>メール通知が届かない</title>
+		<body>メール通知機能ですが、最近利用できなくなりました。  利用できていた以前の状況： - Knowledge 5.0 ~ Knowledge 5.1 - H2 Database (初期データベース) - GmailのSMTP認証ありで送信  利用できなくなった現状： - Knowledge 5.2 - PostgreSQLへ以降済 - メール設定変わらず  ログを確認しましたがメールを送信しようとしているそれらしいログはないようです。 調査方法などありましたら教えていただけないでしょうか。 </body>
+		<created>2015-06-30 02:01:50</created>
+		<closed>2015-08-10 13:25:09</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>IE11で添付ファイル（日本語）のファイル名が文字化けする</title>
+		<body>IEのための特別な設定など無いか調べる </body>
+		<created>2015-06-23 14:47:44</created>
+		<closed>2015-08-10 13:22:59</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>コメントの順番がおかしくなることがある</title>
+		<body>作成日時でソートしていなかった。 </body>
+		<created>2015-06-15 18:00:46</created>
+		<closed>2015-06-28 19:41:24</closed>
+	</bug>
+	<bug>
+		<id>53</id>
+		<title>コメントに何も入力しないで登録するとエラーになる</title>
+		<body>コメント未入力時の画面遷移を間違えた </body>
+		<created>2015-06-15 17:00:08</created>
+		<closed>2015-06-28 19:41:07</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>編集時のプレビューで”が＆quot;で表示される</title>
+		<body>パースの順序を変更すれば直ると思う </body>
+		<created>2015-06-15 16:58:12</created>
+		<closed>2015-06-28 19:40:49</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>日本語、英語以外の文字で登録すると、通知メール内の文字が文字化けする</title>
+		<body>- メールのエンコードを「ISO-2022-JP」にしているためかと思う - utf-8にするべきか？ - utf-8にすると、一部のメーラーでは日本語が文字化けするらしい   - モダンな環境であれば、utf-8で問題無いかな？ </body>
+		<created>2015-06-01 18:14:23</created>
+		<closed>2015-06-28 19:40:31</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>iphone でサインアウトが出来ない</title>
+		<body>サインアウトが押せない？ </body>
+		<created>2015-05-31 18:22:06</created>
+		<closed>2015-06-28 19:40:09</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>絵文字の記法をコードの部分に書きたい</title>
+		<body>絵文字記法→HTML→HTMLのコードと認識してしまい、 絵文字表示にならない </body>
+		<created>2015-05-29 17:14:11</created>
+		<closed>2015-06-28 19:39:39</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>水平線が表示されない</title>
+		<body>hrタグのスタイルに指定されている画像をセットしていなかった </body>
+		<created>2015-05-14 23:21:22</created>
+		<closed>2015-05-22 21:06:34</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>パフォーマンスを改善する</title>
+		<body>#### 対応 - VPSのサーバーが貧弱なのもあるが、アクセスがそれなりにあるとパフォーマンスが非常に悪くなる。 - そこでパフォーマンス改善を行う。 #### 実施内容 - データ表示時にXSS対策などを行っているが、保存時に実行して表示の時には実施しないように変更 - メイン部分のSPA化 - jsやcssの結合＋圧縮 </body>
+		<created>2015-04-25 07:07:13</created>
+		<closed>2016-02-07 13:49:16</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>プレビュー時と実際の表示が異なる</title>
+		<body>コードハイライト font awesomeのアイコン表示 が、プレビュー時には表示されない。  実際の表示の時点では表示できる。 </body>
+		<created>2015-03-18 21:17:15</created>
+		<closed>2015-05-22 21:04:28</closed>
+	</bug>
+</bugs>

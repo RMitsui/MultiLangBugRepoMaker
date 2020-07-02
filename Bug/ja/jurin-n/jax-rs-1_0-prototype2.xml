@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+<bug>
+	<id>66</id>
+	<title>Authorizationヘッダに : が含まれない場合、java.lang.ArrayIndexOutOfBoundsException</title>
+	<body>### バグが含まれてるメソッド  AuthenticationService.setFiledsForAuth </body>
+	<created>2016-01-03 11:22:29</created>
+	<closed>2016-01-10 14:00:06</closed>
+</bug>
+<bug>
+	<id>50</id>
+	<title>PracticeMenuコンストラクタでPracticeMenuIdを渡してもJPAPracticeMenuRepositoryでaddした時にid生成するので必要ない可能性がある</title>
+	<body>### 関係するコンストラクタとメソッド - PracticeMenu(PracticeMenuId aPracticeMenuId,String aMenu) - JPAPracticeMenuRepository.add  JPAPracticeMenuRepository.addでPracticeMenuを追加しても addメソッドの中でidを取得してセットしてる。 よって、PracticeMenu(PracticeMenuId aPracticeMenuId,String aMenu) でid 渡しても使われない。 </body>
+	<created>2015-12-16 15:05:18</created>
+	<closed>2015-12-18 14:51:39</closed>
+</bug>
+<bug>
+	<id>46</id>
+	<title>PracticePlanIdクラスのハッシュ計算で37が無効</title>
+	<body></body>
+	<created>2015-12-14 12:15:50</created>
+	<closed>2015-12-14 13:01:19</closed>
+</bug>
+<bug>
+	<id>19</id>
+	<title>コンパイル時のJavaバージョンがJava8。このためJava7環境でビルドできない。</title>
+	<body></body>
+	<created>2015-11-24 04:33:33</created>
+	<closed>2015-11-24 10:41:21</closed>
+</bug>
+<bug>
+	<id>18</id>
+	<title>コンパイル時に文字コード UTF-8が指定されてない</title>
+	<body></body>
+	<created>2015-11-24 04:32:05</created>
+	<closed>2015-11-24 10:49:28</closed>
+</bug>
+<bug>
+	<id>17</id>
+	<title>@EmbeddedId に指定のIdクラスにequal()メソッドと hashcode()メソッドが実装されてない</title>
+	<body>対象はPracticeMenuId,PracticeMemberId,PracticePlanId,PracticeRecordId。 ### 参考資料 - Effective Javaの第３章。テストはp34の反射的,対称的,推移的,整合的を満たすこと確認。 - 実践ドメイン駆動設計のサンプルコード  TenantId.java  https://github.com/VaughnVernon/IDDD_Samples/blob/master/iddd_agilepm/src/main/java/com/saasovation/agilepm/domain/model/tenant/TenantId.java </body>
+	<created>2015-11-23 11:34:32</created>
+	<closed>2015-11-29 03:36:16</closed>
+</bug>
+<bug>
+	<id>14</id>
+	<title>PracticePlanエンティティにJPAアノテーション@EmbeddedIdが３つ定義されていて、実行時エラー</title>
+	<body>com.jurin_n.domain.model.practice.PracticePlan に@EmbeddedIdが３つつけてあり実行時エラー。  以下、対象コード抜粋。  ``` Java @Entity @Table(name="t_PracticePlan") public class PracticePlan {     @EmbeddedId     private PracticePlanId practicePlanId;     @EmbeddedId     private PracticeMenuId practiceMenuId;     @EmbeddedId     private PracticeMemberId memberId; ```  PracticePlanIdは、PracticePlanのID。 PracticeMenuIdとPracticeMemberIdは対象となるPracticeMenuとPracticeMember のIdを指し示す値オブジェクト。 </body>
+	<created>2015-11-15 03:23:42</created>
+	<closed>2015-11-16 15:08:52</closed>
+</bug>
+<bug>
+	<id>9</id>
+	<title>JPATeamRepositoryクラスのオブジェクトがnewキーワードでインスタンス化されてる</title>
+	<body>com.jurin_n.services.TeamServiceクラスのcreateTeamメソッドで JPATeamRepositoryクラスのオブジェクトがnewキーワードでインスタンス化されてる </body>
+	<created>2015-11-10 12:37:12</created>
+	<closed>2015-11-10 13:06:45</closed>
+</bug>
+<bug>
+	<id>7</id>
+	<title>@Injectにすべきところ@EJBでインジェクトしてしまっている</title>
+	<body>com.jurin_n.services.TeamApplicationService で TeamServiceクラスを@EJBでインジェクトしている。 CDIのアノテーション@Injectでも対応できるはず。 </body>
+	<created>2015-11-09 13:38:30</created>
+	<closed>2015-11-09 14:00:56</closed>
+</bug>
+</bugs>

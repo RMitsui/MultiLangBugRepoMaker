@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<pullrequests>
+	<pullrequest>
+		<number>752</number>
+		<title>SonarLintに基づいたリファクタリングを実施</title>
+		<body>resolved #747 </body>
+		<to>747</to>
+	</pullrequest>
+	<pullrequest>
+		<number>749</number>
+		<title>TRACEレベルのログを消す</title>
+		<body>resolve #742</body>
+		<to>742</to>
+	</pullrequest>
+	<pullrequest>
+		<number>746</number>
+		<title>入力コードがどのテストにどう落ちるか出力する処理を追加</title>
+		<body>resolve #741   - `TestResult` にテストの失敗理由を保持する`failedReson`を追加   - ↑に関連して `TestThread` の処理も追加 - ~~`TestResult` に `failedReason` をパースして expected / actual valueを取得するメソッドを追加~~ → see https://github.com/kusumotolab/kGenProg/pull/746#issuecomment-645102518 - `kGenProgMain` に `failedReason` を利用して入力コードがどのテストにどう落ちるか出力する処理を追加  </body>
+		<to>741</to>
+	</pullrequest>
+	<pullrequest>
+		<number>745</number>
+		<title>結合テスト内の内部処理の指定を削除</title>
+		<body>resolve #725   結合テスト（kGenProgMainTest）において，内部処理を明示的に書いているコードを削除し， CUILauncher経由で結合テストを実行するように変更した．  example/CloseToZero03 は CUILauncher経由だと修正できなくなってしまうので別途対応が必要． see also #744 </body>
+		<to>725</to>
+	</pullrequest>
+	<pullrequest>
+		<number>733</number>
+		<title>For文の条件式が空の時に落ちるバグを修正</title>
+		<body>resolve #732  </body>
+		<to>732</to>
+	</pullrequest>
+	<pullrequest>
+		<number>729</number>
+		<title>jdk12以降でClassLoaderテストをスキップ</title>
+		<body>resolve #716  ### やったこと jdk12で問題になっているリフレクションを用いたクラスローダのテストを， jdk12以降に限りスキップするように変更．  これの案4． https://github.com/kusumotolab/kGenProg/issues/716#issuecomment-618830480  </body>
+		<to>716</to>
+	</pullrequest>
+	<pullrequest>
+		<number>728</number>
+		<title>バージョン解決の修正</title>
+		<body>resolve #727  CIで生成したjarのバージョン解決を修正． gradleの書式を間違えていたのが原因だと思う．`doFirst` で囲むべきだった．  たぶん直ったけど，masterにmergeする以外に確認方法がないので，やってみるしかない．</body>
+		<to>727</to>
+	</pullrequest>
+	<pullrequest>
+		<number>726</number>
+		<title>QuickSortTestの速度改善</title>
+		<body>resolve #724   テスト速度改善のため，QSortTestのタイムアウト制限をシビアに変更した． それだけ． </body>
+		<to>724</to>
+	</pullrequest>
+	<pullrequest>
+		<number>723</number>
+		<title>多重起動の問題を解決</title>
+		<body>resolve #722  ### やったこと - 多重起動の妨げとなっていた一時 `junit.jar` の扱いを改善． 具体的には，プロセスごとに別一時dirを使うように変更．  ついでに以下の改善． - テストに含まれる一時ファイルの扱いを改善（LocalTestExecutorTest.java ） - assertがあまいテストを厳格に（MemoryClassLoaderTest.java）</body>
+		<to>722</to>
+	</pullrequest>
+	<pullrequest>
+		<number>721</number>
+		<title>LICENSEの記載年を更新</title>
+		<body>resolved #720 </body>
+		<to>720</to>
+	</pullrequest>
+	<pullrequest>
+		<number>719</number>
+		<title>JDK9環境のwarningを修正</title>
+		<body>resolved #661  Deprecatedのアノテーションを付けただけです．</body>
+		<to>661</to>
+	</pullrequest>
+	<pullrequest>
+		<number>714</number>
+		<title>メソッドのブロックをFLの対象から除外</title>
+		<body>resolve #713   コードの修正はVisitorを少しだけ． あとはテストの修正． </body>
+		<to>713</to>
+	</pullrequest>
+	<pullrequest>
+		<number>710</number>
+		<title>条件式を再利用対象に加えた．</title>
+		<body>resolve #706  現状では，SimpleMutationのみ実装済み． HeuristiscMutationにおいて条件式を取り扱うのは今後の課題．</body>
+		<to>706</to>
+	</pullrequest>
+	<pullrequest>
+		<number>705</number>
+		<title>1つしかStatementを内包しないBlockを修正箇所の候補から除外</title>
+		<body>resolve #704 </body>
+		<to>704</to>
+	</pullrequest>
+	<pullrequest>
+		<number>702</number>
+		<title>mockバグの修正</title>
+		<body>resolve #690  ### やったこと SMCL のロードスキップ条件を追加した．それだけ． ```diff - if (name.startsWith("org.junit.") || name.startsWith("junit.")) { + if (name.startsWith("org.junit.") || name.startsWith("junit.") || name.startsWith("org.hamcrest.")) { ``` 実はクラスロードに失敗していただけで，mock処理は普通に動くっぽい．  mockライブラリはクラスローダ上の（＝メモリ上の）クラスをランタイムで書き換えるらしい． なので，kgpとの相性問題はそもそも発生しない． https://stackoverflow.com/questions/2993464/how-do-java-mocking-frameworks-work  ### やってないこと 真面目なテスト．手元では動作確認しているが，テスト化されていない． テスト作成は別ISSUEを切る予定．</body>
+		<to>690</to>
+	</pullrequest>
+	<pullrequest>
+		<number>701</number>
+		<title>intellijに移行</title>
+		<body>resolve #700 #681   ### やったこと - intellijで全ソースコードをリフォーマット - intellijのcode style ruleを少し変更 （ローカル変数のアノテーションを必ずwrapするように） ```diff - @SuppressWorning("xxx") int x = 0; + @SuppressWorning("xxx") + int x = 0; ```  - intellijをrecommendするようにcontributing guideを更新．</body>
+		<to>700</to>
+	</pullrequest>
+	<pullrequest>
+		<number>696</number>
+		<title>CIでのgradle実行方法を安定に</title>
+		<body>resolve #695 </body>
+		<to>695</to>
+	</pullrequest>
+	<pullrequest>
+		<number>686</number>
+		<title>EmptyBuildResultsとEmptyTestResultsのシングルトンを止めた</title>
+		<body>resolve #284   やったこと． - EmptyBuildResultsはビルドがこけた情報を保持するために，diagnosticsとbuildProgressTextに情報を格納するようにした． - EmptyTestResultsはreasonというフィールドを作り，テスト結果が得られなかった理由をそこに格納するようにした． </body>
+		<to>284</to>
+	</pullrequest>
+	<pullrequest>
+		<number>679</number>
+		<title>build.gradleの中でJDKのバージョンを指定するのを止めた</title>
+		<body>resolve #674 </body>
+		<to>674</to>
+	</pullrequest>
+	<pullrequest>
+		<number>676</number>
+		<title>DStarを実装</title>
+		<body>resolve #675   式はここ参照： https://github.com/kusumotolab/kGenProg/issues/675#issue-513702261  `*` のところは2乗を使っています</body>
+		<to>675</to>
+	</pullrequest>
+	<pullrequest>
+		<number>673</number>
+		<title>READMEにhistoryオプションの記述を追加</title>
+		<body>resolve #672</body>
+		<to>672</to>
+	</pullrequest>
+	<pullrequest>
+		<number>670</number>
+		<title>バカ息子を多く産む親の評価を下げる評価関数を導入</title>
+		<body>resolved #569   以下のクラスを導入 - LimitedNumberSimpleFitness：指定回数後に評価値を0にする - LimitedNumberCodeValidation：LimitedNumberSimpleFitnessを使うためのCodeValidation</body>
+		<to>569</to>
+	</pullrequest>
+	<pullrequest>
+		<number>668</number>
+		<title>Build Failedを除外するように</title>
+		<body>resolve #570   ## 変更点 * DefaultVariantSelection の exec でビルド失敗しているものはフィルタリングで除外するようにした * 上記に伴い，DefaultVariantSelectionTest にテストを追加 * 上記に伴い，同クラスの既存のテストの書き方を変更</body>
+		<to>570</to>
+	</pullrequest>
+	<pullrequest>
+		<number>665</number>
+		<title>historyオプションの実装を修正</title>
+		<body>resolve #656    ### 変更点 - `needHistoricalElement` -&gt; `noHistoryRecord`に変更． - パラメータの値による処理の変化は全て`VariantStore`で対処するように変更．(`Mutation`と`Crossover`はオプション追加前の状態に戻した.) - `Variant`生成ごとのパラメータの確認をやめた.</body>
+		<to>656</to>
+	</pullrequest>
+	<pullrequest>
+		<number>664</number>
+		<title>READMEのRequirementsを更新</title>
+		<body>resolve #607   #600 が無事に治ったので </body>
+		<to>607</to>
+	</pullrequest>
+	<pullrequest>
+		<number>663</number>
+		<title>force(-f)オプションを削除</title>
+		<body>resolve #650   ## 変更点 - 起動時に **常に** 出力ディレクトリを空にするようにkGPの挙動を変更 - READMEから `force` オプションに関する記述を削除 - `force` オプションの有無に対するテストケースを削除 </body>
+		<to>650</to>
+	</pullrequest>
+	<pullrequest>
+		<number>662</number>
+		<title>ライセンスファイルを更新した</title>
+		<body>resolve #642 </body>
+		<to>642</to>
+	</pullrequest>
+	<pullrequest>
+		<number>660</number>
+		<title>JDK9以上の環境で実行できるように</title>
+		<body>resolve #600 #659  ### やったこと - JDK9以上の環境もサポート（JDK8もOK）   - クラスローダ探索のバグを修正 - `build.gradle` のJDK指定を8→11に変更 - CIのテスト環境も8→11に変更</body>
+		<to>600</to>
+	</pullrequest>
+	<pullrequest>
+		<number>658</number>
+		<title>FL実装のリファクタリング</title>
+		<body>resolve #657   ### やったこと - FL周りをリファクタリング．   - Spectrum-Based FL固有の処理を共通化し，抽象化された数式のみを実装する形に変更． - 簡単な高速化の工夫も追加．</body>
+		<to>657</to>
+	</pullrequest>
+	<pullrequest>
+		<number>649</number>
+		<title>IsForceを IsForceWriteに変更</title>
+		<body>resolve #646</body>
+		<to>646</to>
+	</pullrequest>
+	<pullrequest>
+		<number>647</number>
+		<title>InsertBeforeOpetion の追加</title>
+		<body>resolve #632  #632 で議論した`InsertBeforeOperation`の追加 - `InsertOperation`を`InsertAfterOperation`にリネーム - `InsertBeforeOperation`の追加 - `SimpleMutation`は 1/2 で After か Before かを決定 - `HeuristicMutation`は挿入する先のコードを見て，After か Before かを判定．どちらでも良い場合は 1/2 で決定</body>
+		<to>632</to>
+	</pullrequest>
+	<pullrequest>
+		<number>638</number>
+		<title>jacoco APIの使い方のバグを修正</title>
+		<body>resolve #635  ### やったこと - FL速度低下の根本原因であったJacoco使い方のバグを修正した． - 伴い，FLの4メトリクスの計算方法を修正 - 伴い，#633 での修正の不要になった部分を削除  #633 と併せて分散環境でのボトルネックが改善したかも．</body>
+		<to>635</to>
+	</pullrequest>
+	<pullrequest>
+		<number>633</number>
+		<title>FLの高速化</title>
+		<body>resolve #628   FLが重たい原因は対象プロジェクトの全てのクラスの全ての行に対してFLを計算しているから． この修正では，失敗したテストで実行したクラスのみを取得し，それらのクラスについてのみFLを計算するように変更した．</body>
+		<to>628</to>
+	</pullrequest>
+	<pullrequest>
+		<number>631</number>
+		<title>Historical Element生成オプションの追加</title>
+		<body>resolve #579   ### 変更点 - `Configuration.java`でオプション`needHistoricalElement`を追加 - `needHistoricalElement == false`の場合    - 各crossover，mutationでHistorical Elementにnullを代入    - `VariantStore.java`で`allVariant`に生成したvariantを記録しない</body>
+		<to>579</to>
+	</pullrequest>
+	<pullrequest>
+		<number>626</number>
+		<title>開発者用ドキュメントの作成2</title>
+		<body>resolve #589  pr #624 で開発者用ドキュメントをマージしたがコミット漏れしていた． もっと丁寧なドキュメントが残ってたので issue #589 reopen して新規issue切りなおした．</body>
+		<to>589</to>
+	</pullrequest>
+	<pullrequest>
+		<number>624</number>
+		<title>開発者用ドキュメントの作成</title>
+		<body>resolve #589  </body>
+		<to>589</to>
+	</pullrequest>
+	<pullrequest>
+		<number>623</number>
+		<title>Windows環境でVariantSerializerTestが落ちる問題を解決</title>
+		<body>resolve #613   Windows環境で`gradle test`の実行に成功するか確認お願いします ## 変更点 * Windows環境だと失敗するアサーションをコメントアウト(#565が解決次第コメントアウトを解除) * VariantSerializerTestのリファクタリング * TestUtilのリファクタリング</body>
+		<to>613</to>
+	</pullrequest>
+	<pullrequest>
+		<number>615</number>
+		<title>TargetProjectの半端な修正の意図を明記</title>
+		<body>resolve #614 </body>
+		<to>614</to>
+	</pullrequest>
+	<pullrequest>
+		<number>612</number>
+		<title>TargetProjectFactoryTestのバグ修正</title>
+		<body>resolve #611</body>
+		<to>611</to>
+	</pullrequest>
+	<pullrequest>
+		<number>609</number>
+		<title>重複したコードが生成された場合にSyntaxValidに含められない仕様を変更</title>
+		<body>resolve #468  # 現状の問題点 重複したコードが生成された場合に，そのソースコードを`GenerationFailedSourceCode`として扱ってしまっていた． 重複したコードを`GenerationFailedSourceCode`として扱ってしまうと，ソースコードが文法的に正しくても文法的に正しくても，正しくないものとしてログに出力されていた  # 修正内容 - `DuplicatedSourceCode`というクラスを追加し，重複したコードにはこのクラスが生成される - `GenerationSourceCode`に重複したコードか判定するメソッドを追加 - `KGenProgMain`のログに syntax-valid-and-new を追加  # 備考 ログの変更は現状の僕の案です． 何か他に案があればコメントお願いします．  (PR作成時のログの案) ``` 2019-04-21 16:43:23 [main] [INFO]  KGenProgMain - entered the era of 1st generation. 2019-04-21 16:43:23 [main] [INFO]  KGenProgMain -  ---------------------------------------------------------------- Elapsed time: 0 seconds Variants: generated 10, syntax-valid 10, syntax-valid-and-new 4, build-succeeded 2 Fitness: max 1.0(1), min 0.75(1), ave 0.875 ----------------------------------------------------------------  2019-04-21 16:43:23 [main] [INFO]  KGenProgMain - entered the era of 2nd generation. 2019-04-21 16:43:23 [main] [INFO]  KGenProgMain -  ---------------------------------------------------------------- Elapsed time: 0 seconds Variants: generated 10, syntax-valid 10, syntax-valid-and-new 3, build-succeeded 6 Fitness: max 1.0(2), min 0.75(4), ave 0.8333333333333334 ---------------------------------------------------------------- ``` </body>
+		<to>468</to>
+	</pullrequest>
+	<pullrequest>
+		<number>608</number>
+		<title>出力ファイルの階層を変更</title>
+		<body>resolve #432   ## 変更点 * 出力ファイルの階層を変更 * -f(--force)オプションを追加  ### 出力ファイルの階層(out-dirが`out`とき) ``` out ├─ variant1 |      ├─ Foo.java |      ├─ Foo.diff  |      | ... |... ├─ variant1.patch |... └── history.json ```  ### -f(--forceオプションの動作)  | | dir存在せず | 空dir存在 | dirの中にファイルあり |  | :-- | :-- | :-- | :-- |   | -fなし | 普通に実行 | 普通に実行 | 警告を出力し，出力は実行しない |  | -fあり | 普通に実行 | 普通に実行 | 全削除して実行 | </body>
+		<to>432</to>
+	</pullrequest>
+	<pullrequest>
+		<number>605</number>
+		<title>READMEの記述漏れを修正</title>
+		<body>resolve #544   ## やったこと - `JDK8` -&gt; `JDK8+` - Optionsの表に`--config`についての説明を追加 - 受賞歴としてAPSECのBest Poster Awardを追加</body>
+		<to>544</to>
+	</pullrequest>
+	<pullrequest>
+		<number>604</number>
+		<title>Mutationで選択する個体の重みを変更</title>
+		<body>resolve #374  今まではビルドに失敗したものも選択できるよう、重みに1を足していたが、それを削除。 これにより、ビルドに失敗した個体はMutationの対象にはならなくなる。</body>
+		<to>374</to>
+	</pullrequest>
+	<pullrequest>
+		<number>603</number>
+		<title>Counterクラスを削除</title>
+		<body>resolve #516    ## 変更点 * Counterクラスを削除 * 型がCounterクラスだった変数を~~primitive long~~ AtomicLongに置換</body>
+		<to>516</to>
+	</pullrequest>
+	<pullrequest>
+		<number>601</number>
+		<title>tomlを使わずに実行した時に落ちる問題を解決</title>
+		<body>resolve #573  `Path`を`relativize`する時に`normalize`していないことが原因</body>
+		<to>573</to>
+	</pullrequest>
+	<pullrequest>
+		<number>596</number>
+		<title>起動時にビルドツールの設定ファイルを参照できるように改良</title>
+		<body>resolve #588  `CUILauncher`からビルドツールの設定ファイルを参照できるように改良した  ビルドツールの設定ファイルは主に`TargetProject`が管理していたが `CUILauncher`と連携していなかった（繋がりがなかった）のでその間の橋渡しをした  ## 戦略 - `TargetProject`に変数追加 configファイルへのパスを表す変数を`TargetProject`に持たせました CUILauncherの見た目は変わっていませんが， `CUILauncher#launch`内で`config.getTargetProject().getBuildConfigPaths()`とすればパスを得られるようになっています  - `xxxFactory`クラス内での変更 変数追加に伴いFactoryクラスに変更が及んでいます 基本的にはnewするときにコンストラクタへconfigファイルへのパスを渡しています  - テスト追加 configファイルへのパスを正しく取得できているか 確認するテストも追加しています  ## 備考 設定ファイルが複数あった場合の対応についてはこの後に別issueとして考えます cf: #137 </body>
+		<to>588</to>
+	</pullrequest>
+	<pullrequest>
+		<number>595</number>
+		<title>LICENSEに記載のメンバーを更新</title>
+		<body>resolve #594   松尾さんと僕を追加 記載は論文の著者順にしています</body>
+		<to>594</to>
+	</pullrequest>
+	<pullrequest>
+		<number>587</number>
+		<title>再現性の確保</title>
+		<body>resolve #583  `DefaultVariantSelection` 内で呼び出している`shuffle`の呼び出しに`Random`を渡すよう修正</body>
+		<to>583</to>
+	</pullrequest>
+	<pullrequest>
+		<number>586</number>
+		<title>古い名前を新しい名前に変更 TestSimilarity -&gt; TestComplementary</title>
+		<body>resolve #585 </body>
+		<to>585</to>
+	</pullrequest>
+	<pullrequest>
+		<number>580</number>
+		<title>Diff出力にBlockを追加</title>
+		<body>resolve #575</body>
+		<to>575</to>
+	</pullrequest>
+	<pullrequest>
+		<number>574</number>
+		<title>交叉対象バリアントの選択において，二つ目の親を一つ目の親と被らないように選ぶように修正</title>
+		<body>resolve #568   ### やったこと - exec#SecondVariantSimilarityBasedSelectionにおいて，一つ目の親と同じバリアントを二つ目の親として返すことが内容に修正 - exec#SecondVariantRandomSelectionにおいて，一つ目の親と同じバリアントを二つ目の親として返すことが内容に修正 - 上記2メソッドにおいて，交叉対象バリアントが足りない（1つしかない）場合は，nullを返すように修正 - 各CrossoverのmakeVariantsにおいて，二つ目の親がnullとなった場合には空のリストを返すように修正 - 上記に伴い，exec#CrossoverAdaptorにおいて，交叉でバリアントが生成できなくなった場合に交叉生成ループを抜けるように修正 - 各種テストケースの追加</body>
+		<to>568</to>
+	</pullrequest>
+	<pullrequest>
+		<number>572</number>
+		<title>古い個体を優先的に残さないように改良</title>
+		<body>resolve #564 古い個体が優先的に残される問題（a.k.a. じじい-oriented問題）を解決した．  ## やったこと - `DefaultVariantSelection#exec` で真っ先にVariantをshuffleする操作を追加 　　-&gt; 古い個体がリスト内で偏らないように - `DefaultVariantSelectionTest#testExec` を改良 　　-&gt; shufflingを追加したことによるもの - `EliteAndOldVariantSelection`および`EliteAndOldVariantSelectionTest`を追加 　　-&gt; 従来の`DefaultVariantSelection`  ## 気になること - 従来の実装（じじい-oriented）の命名問題 `EliteAndOldVariantSelection`という名前で実装したがこの名前でいいのか  https://github.com/kusumotolab/kGenProg/issues/564#issuecomment-459242821  &gt; 現状の実装（じじい-oriented）はどう名前をつけるか？ &gt; -&gt; EliteAndxxxVariantSelection &gt; xxx: Old, Ancient, Ancestor, ...   - `{Default, EliteAndOld}VariantSelection`を実行時にswitchできるオプションは実装してないです 最近オプションが増えすぎている，追加するかどうか</body>
+		<to>564</to>
+	</pullrequest>
+	<pullrequest>
+		<number>561</number>
+		<title>実行時に交叉関連のストラテジーを選択できるように改良</title>
+		<body>resolve #525   ## やったこと - オプションの追加 ``` 交叉種別：`--crossover-type` 交叉対象の第一バリアントの選択方法：`--crossover-first-variant` 交叉対象の第二バリアントの選択方法：`--crossover-second-variant` ``` - テストを追加 - 上記のオプション追加に伴い `README` を更新 - （unused importsを削除）  FLと同様に，主にREADMEまわりを @a-tanikd さん，実装まわりを @YoshikiHigo 先生にお願いしたいです． 基本的な実装方針はFLと同じです． 差分が多くなって申し訳ありません．</body>
+		<to>525</to>
+	</pullrequest>
+	<pullrequest>
+		<number>558</number>
+		<title>NoSuchFileExceptionが発生するバグを修正</title>
+		<body>resolve #556 #547   ## 原因  #547   ## 変更点 * ファイルの存在チェックをしてからファイルを開くようにした * ファイルの出力ができているか確認するテストを追加</body>
+		<to>556</to>
+	</pullrequest>
+	<pullrequest>
+		<number>554</number>
+		<title>クラスローダの委譲バグの修正</title>
+		<body>resolve #541  ### やったこと - バグ #541 を確認する題材 BuildSuccess23 の追加   - `jp.kusumotolab`パッケージのクラスをロードする題材．成功する訳がない題材． - 上記のテスト追加 - バグ #541 の修正   - SkippingMemoryClassLoaderを作成  ### SkippingMemoryClassLoader MemoryClassLoaderの拡張クラス．クラスローダの委譲関係をあえて崩すことで，KGP本体のクラスロード（`AppClassLoader`）の副作用を回避する．委譲の流れは以下の通り． ```  - SkippingMemoryClassLoader  -&gt; AppClassLoader (ここをスキップ)  -&gt; ExtensionClassLoader (ここにダイレクトに委譲)  -&gt; BootstrapClassLoader ```  ただし例外としてJUnit関係のクラスのみ，そのロードをAppClassLoaderに委譲する．KGPのテスト実行時のJUnitクラス，及び題材のテスト実行時のJUnitクラスを同一のクラスローダでロードしないと，JUnitが期待通りに動作しないため．</body>
+		<to>541</to>
+	</pullrequest>
+	<pullrequest>
+		<number>551</number>
+		<title>出力先の有無によってTestResultsSerializerTestの結果が変化しないように修正</title>
+		<body>resolve #540   ## 変更点 TargetProjectのインスタンスを作る時に、 rootPathだけでなくsourcePathやtestPathを指定するようにした  https://github.com/kusumotolab/kGenProg/blob/8615594e26dc61e43bbda35f11dc89954f255d72/src/test/java/jp/kusumotolab/kgenprog/output/TestResultsSerializerTest.java#L44-L56  ## バグの原因 1 . テスト実行時にrootPathのみを指定しているため、出力フォルダ内のjavaファイルもビルド対象になり、ビルドに失敗する 2. ビルドに失敗したVariantのfitnessはNaNであるため、fitnessのアサーションに失敗(TestResultsSerializerTest.java:111)  TestResultsSerializerTest.java ```java   private TestResults execTest(final String root) {     final Path rootPath = Paths.get(root);      final TargetProject targetProject = TargetProjectFactory.create(rootPath);      // ↑ この部分(src と testの指定が抜けている)     final GeneratedSourceCode generatedSourceCode = TestUtil.createGeneratedSourceCode(         targetProject);      // ...省略      return executor.exec(variant);   } ```</body>
+		<to>540</to>
+	</pullrequest>
+	<pullrequest>
+		<number>543</number>
+		<title>実行時にFL関連のストラテジーを選択できるように改良</title>
+		<body>resolve #526   ## やったこと - 実行時にFL戦略を選択できるように改良   - オプションとして`--fault-localization &lt;name&gt;`で選択できるように   - `&lt;name&gt; = "Ample" | "Jaccard" | "Ochiai" | "Tarantula" | "Zoltar";` - テストを追加   - テストを実行するために `example/BuildSuccess08/withFaultLocalization.toml` も追加しています - 上記のオプション追加に伴い `README` を更新  主にREADMEまわりを @a-tanikd さん，実装周りを @YoshikiHigo 先生にお願いしたいです．  ## 懸念事項 ### README - `README` のUsageに説明のないオプションがいくつかあるのですが，追加しなくていいのでしょうか． - Fault Localizationを日本語にどう訳せばいいかわからなかったので，README (ja) の説明が微妙です．  ### 実装 - オプションのコマンドは `--fault-localization` でいいですか？ - FL戦略を `switch` 文で選択しているダサい実装部分があるので，できれば何とかしたいです．  https://github.com/kusumotolab/kGenProg/blob/335717572f84735b109889f0f437daef07b4f1b8/src/main/java/jp/kusumotolab/kgenprog/CUILauncher.java#L45-L65  https://github.com/kusumotolab/kGenProg/blob/335717572f84735b109889f0f437daef07b4f1b8/src/test/java/jp/kusumotolab/kgenprog/KGenProgMainTest.java#L59-L79  https://github.com/kusumotolab/kGenProg/blob/d2994f1c0aaf39b8fe78e17e8422068d7d928655/src/test/java/jp/kusumotolab/kgenprog/testutil/TestUtil.java#L35-L55  </body>
+		<to>526</to>
+	</pullrequest>
+	<pullrequest>
+		<number>542</number>
+		<title>build.gradleの最適化</title>
+		<body>resolve #536 resolve #535   ### やったこと - hamcrest.jarを削除 #535  - `build.gradle` でgradle lintを利用するように変更 - `build.gradle` にgradle lintを適用して最適化 #536  ### 効果 生成jarサイズ：24MB → 21MB </body>
+		<to>536</to>
+	</pullrequest>
+	<pullrequest>
+		<number>539</number>
+		<title>commons.io依存の削除</title>
+		<body>resolve #305   ### やったこと - `apache-commons-io` 依存の部分を全て削除してnativeに   - `commons.FileUtils`を`Files.walk`に差し替え - final修飾子の付与漏れ修正</body>
+		<to>305</to>
+	</pullrequest>
+	<pullrequest>
+		<number>538</number>
+		<title>java10/11環境のサポート</title>
+		<body>resolve #300  resolve #537  ### やったこと - `InMemoryFileManager` の2つのメソッドを実装 #300 - kgp内（`ProjectBuilder.java`）のコンパイルバージョンを1.8に指定 (1.8で良いかは要検討) #300 - kgp自体（`build.gradle`）のコンパイルバージョンを1.8に指定 #537 - 上記変更について，jdk8/10/11環境で動作することを確認．  ### 細かいやつ - jdk10/11で出る警告の回避   - `InsertTimeoutRuleFieldOperation` の `@Deprecated` を追加   - `MemoryClassLoaderTest` の `newInstance()` 呼び出しを変更 ([参考](https://docs.oracle.com/javase/10/docs/api/java/lang/Class.html#newInstance()))</body>
+		<to>300</to>
+	</pullrequest>
+	<pullrequest>
+		<number>533</number>
+		<title>BuildSuccess08 が toml ファイルによるプロジェクト設定の確認用題材となるように変更</title>
+		<body>resolve #522 </body>
+		<to>522</to>
+	</pullrequest>
+	<pullrequest>
+		<number>531</number>
+		<title>題材がクラスローダのバイナリresourceを読む場合のバグを修正</title>
+		<body>resolve #530   ### やったこと - クラスローダ経由でバイナリresourceを読む題材 `BuildSuccess22` を追加 - 上記のテストを追加 - #530 のバグを修正</body>
+		<to>530</to>
+	</pullrequest>
+	<pullrequest>
+		<number>529</number>
+		<title>resourceを読み込む題材の確認</title>
+		<body>resolve #486   ### やったこと - resourceを読み込む題材 `BuildSuccess21` を追加 - 上記に伴うテストを追加  実装への変更はなし．テストと題材の追加のみ</body>
+		<to>486</to>
+	</pullrequest>
+	<pullrequest>
+		<number>528</number>
+		<title>Configのシリアライズ処理を追加</title>
+		<body>resolve #499   ## 変更点 * configのシリアライズ処理を追加(カスタムシリアライザを導入せずに、クラスをjsonにマッピングする機能を利用)  ## シリアライズ対象にしたCongurationのフィールド * ~~headCount~~ * ~~crossoverGeneratingCount~~ * ~~mutationGeneratingCount~~ * ~~maxGeneration~~ * ~~requiredSolutionsCount~~ * ~~randomSeed~~ 全ての非staticフィールド </body>
+		<to>499</to>
+	</pullrequest>
+	<pullrequest>
+		<number>524</number>
+		<title>シンボリックリンクに対するテストを改善</title>
+		<body>resolve #523  ### やったこと - git内のsymlinkフォルダを削除 (#523 のため) - symlinkを用いるテストを，link生成 → テスト → link削除 という流れに変更</body>
+		<to>523</to>
+	</pullrequest>
+	<pullrequest>
+		<number>521</number>
+		<title>一時ディレクトリに関する全部分の削除</title>
+		<body>resolve #386  </body>
+		<to>386</to>
+	</pullrequest>
+	<pullrequest>
+		<number>518</number>
+		<title>不要になったタイムアウト差し込みクラスのテストをIgnore</title>
+		<body>resolve #517   ### やったこと - `InsertTimeoutRuleFieldOperation` の `@Deprecated` にその理由を追記． - `InsertTimeoutRuleFieldOperationTest` に `@Ignore` 追加，その理由を併記．</body>
+		<to>517</to>
+	</pullrequest>
+	<pullrequest>
+		<number>515</number>
+		<title>クラスパス比較の潜在バグを修正</title>
+		<body>resolve #514  ### やったこと - クラスパス比較の潜在バグを修正 - クラスパス比較を行っていたテスト（BuildSuccess06）の軽いリファクタリング   - CPを表すstaticフィールドをローカル変数に変更（staticである理由がないため）   - BS06では `lib/junit.jar` を参照していた部分を，0バイトの `lib/dummy.jar` を参照するように． ファイルの実態がないとCP比較が失敗するため．</body>
+		<to>514</to>
+	</pullrequest>
+	<pullrequest>
+		<number>510</number>
+		<title>テスト周りの不要なシリアライズの削除</title>
+		<body>resolve #384   プロセス化時代の名残． rx導入により完全に不要になったので削除しておく．</body>
+		<to>384</to>
+	</pullrequest>
+	<pullrequest>
+		<number>507</number>
+		<title>2種類のタイムアウトバグを修正</title>
+		<body>resolve #418（JUnit4でのタイムアウト問題） resolve #433（JUnit3でのタイムアウト問題） resolve #392（たぶん上2つの問題に起因するKGP終了問題）  ### やったこと - kgpカスタムJUnitを作成．強制タイムアウトAPIを追加． 詳細は後述．  - カスタムJUnitを用いたKGP上でのタイムアウト処理の追加．  - #408 で追加された `@Rule Timeout` フィールドの強制差し込みを排除． カスタムJUnitで強制適用されるので不要に．これにより題材の書き換え処理はなくなったはず．  - BuildSuccess19を追加．無限ループ時のタイムアウトを確認する題材．JUnit4形式のテスト - BuildSuccess20を追加．無限ループ時のタイムアウトを確認する題材．JUnit3形式のテスト - 上記2題材を用いたテストを追加．  - Ignoreされていた`BuildSuccess04`のテストを差し戻し． プロセスkillを期待する過去の無限ループ題材．本修正によりテスト可能になったため．  - Ignoreされていた`KGPMainTest`の`GCD01`と`QSort`のテストを有効化． 共に無限ループにより実行不可だったが，正しく動作するようになった． </body>
+		<to>418</to>
+	</pullrequest>
+	<pullrequest>
+		<number>504</number>
+		<title>example/README.mdの記述漏れ部分を追記</title>
+		<body>resolve #503   ### やったこと - BuildSuccess15 の説明を追記 - BuildSuccess16 の説明を追記 - BuildSuccess15を用いるテストのリファクタリング   - `Hoge` -&gt; `Baz`    - テストの意図が理解しやすいように，`scope`を変数に切り出し   - `Foo`へのFqn解決処理を`ExampleAlias`に依頼</body>
+		<to>503</to>
+	</pullrequest>
+	<pullrequest>
+		<number>495</number>
+		<title>設定ファイルでシンボリックリンクが指定された場合に警告を出力するように変更</title>
+		<body>resolve #353 </body>
+		<to>353</to>
+	</pullrequest>
+	<pullrequest>
+		<number>489</number>
+		<title>git submodulesを復元2</title>
+		<body>resolve #484 </body>
+		<to>484</to>
+	</pullrequest>
+	<pullrequest>
+		<number>488</number>
+		<title>classpathバグの修正</title>
+		<body>resolve #423 resolve #487   ### やったこと - テスト実行時にclasspathを適切に処理（MemoryClassLoaderをContextClassLoaderにセット） - classpathバグを再現する題材 `BuildSuccess16` の追加（`.class`と`.jar`を読み込む題材） - `BuildSuccess16` を使ったテストの追加  ### やってないこと - resources読み込みの確認 #486</body>
+		<to>423</to>
+	</pullrequest>
+	<pullrequest>
+		<number>480</number>
+		<title>SourcePath#pathをルートからの相対パスに変更</title>
+		<body>resolve #479 </body>
+		<to>479</to>
+	</pullrequest>
+	<pullrequest>
+		<number>478</number>
+		<title>シリアライザの登録方法の変更</title>
+		<body>resolve #475    ## 原因 LazyVariantのシリアライズをするときに，VariantSerializerではなくGsonのデフォルトのシリアライザが使われていたため  ### Gsonのデフォルトのシリアライザの動作 フィールドをそのままシリアライズするので, 循環参照があるとスタックオーバーフローする https://stackoverflow.com/questions/10209959/gson-tojson-throws-stackoverflowerror  </body>
+		<to>475</to>
+	</pullrequest>
+	<pullrequest>
+		<number>477</number>
+		<title>不要なコンストラクタを消去</title>
+		<body>resolve #474</body>
+		<to>474</to>
+	</pullrequest>
+	<pullrequest>
+		<number>464</number>
+		<title>GA パッケージの整理</title>
+		<body>resolve #403 </body>
+		<to>403</to>
+	</pullrequest>
+	<pullrequest>
+		<number>459</number>
+		<title>CLI 引数で渡された Path の存在確認を追加</title>
+		<body>resolve #304  resolve #388  ### やったこと - 指定された Path の存在の確認を追加</body>
+		<to>304</to>
+	</pullrequest>
+	<pullrequest>
+		<number>458</number>
+		<title>GAパラメタのデフォルト値を修正</title>
+		<body>resolve #404</body>
+		<to>404</to>
+	</pullrequest>
+	<pullrequest>
+		<number>453</number>
+		<title>コンフィグファイルの設定を CLI オプションから上書き可能に変更</title>
+		<body>resolve #391   ### やったこと - `--config` オプションを他のオプショナルなオプションと共存できるように変更 - オプショナルなオプションがコンフィグファイルと CLI オプションの両方から指定された場合に CLI オプションの値を優先するように変更 - 雑多な修正   - `Configuration.Builder#Build()` の javadoc 修正   - `--no-output` オプションに usage メッセージを追加   - `ConfigurationBuilderTest` の `needNotOutput` に関するテストケースを修正  ### やってないこと - 必須オプションとコンフィグファイルの共存   - `-r`, `-s`, `-t` は `--config` と共に使用できないまま   - `--config` オプション指定時， `rootDir`, `productPaths` 等はコンフィグファイルが位置するディレクトリを基点に解決するので，これらを共存可能にすると処理が煩雑になるため</body>
+		<to>391</to>
+	</pullrequest>
+	<pullrequest>
+		<number>449</number>
+		<title>Ochiai以外のFL戦略を追加</title>
+		<body>resolve #441  ## 内容 - 以下のFL戦略を追加   - Ample   - Jaccard   - Tarantula   - Zolar - 追加したFL戦略に対応するテストを追加 - （`OchiaiTest.java`の有効数字を拡張）   - 他のテストと合わせるため．それほど意味はないです  ## 備考 `TestUtil#createVariant`等で`new Ochiai()`しているところがありますが保留しています see #352 </body>
+		<to>441</to>
+	</pullrequest>
+	<pullrequest>
+		<number>446</number>
+		<title>StatementSelection の HashMultimap を ArrayListMultimap に変更</title>
+		<body>resolve #436  ## 問題 KGPの実行結果に再現性がなかった．  ## 原因 `HashMultimap.get` が返す`Colletction` がオプションの有無によって順番が異なる．  ## 修正内容 `StatementSelection` 内で使う `Multimap` を `HashMultimap` ではなく，順番を保持する `ArrayListMultimap` に変更．  ## 備考 テストが書きにくいため，現在は省略しています． #436 を参考に実際に動かしてオプションの有無で動作が変わらないことを確認しました． 以下の環境で実行すると 3 世代目で解が見つりました．  (実行環境 Mac Ubuntu) ``` ==================== kGenProg Configuration ==================== targetProject = . executionTests = [] workingDir = /tmp/kgenprog-work4261179770604300829 outDir = kgenprog-out mutationGeneratingCount = 10 crossoverGeneratingCount = 10 headcount = 100 maxGeneration = 10 timeLimit = PT1M testTimeLimit = PT10S requiredSolutionsCount = 1 logLevel = INFO randomSeed = 0 scope = PACKAGE needNotOutput = false currentDirectory = /home/j-matumt/research/kGenProg/example/CloseToZero03 ================================================================ ```  (実行結果) ``` 2018-11-27 20:20:06 [main] [INFO]  KGenProgMain - entered the era of 1st generation. 2018-11-27 20:20:07 [main] [INFO]  KGenProgMain -  ---------------------------------------------------------------- Elapsed time: 0 seconds Variants: generated 10, syntax-valid 7, build-succeeded 3 Fitness: max 0.75(2), min 0.25(1), ave 0.5833333333333334 ----------------------------------------------------------------  2018-11-27 20:20:07 [main] [INFO]  KGenProgMain - entered the era of 2nd generation. 2018-11-27 20:20:07 [main] [INFO]  KGenProgMain -  ---------------------------------------------------------------- Elapsed time: 0 seconds Variants: generated 10, syntax-valid 6, build-succeeded 2 Fitness: max 0.75(1), min 0.25(1), ave 0.5 ----------------------------------------------------------------  2018-11-27 20:20:07 [main] [INFO]  KGenProgMain - entered the era of 3rd generation. 2018-11-27 20:20:07 [main] [INFO]  KGenProgMain - found enough solutions. 2018-11-27 20:20:07 [main] [INFO]  Patch -  --- example.CloseToZero +++ example.CloseToZero @@ -20,6 +20,12 @@        n--;      } else {        n++; +if (n &gt; 0) { +n--; +} else { +if (n == 0) { +} +}      }      return n;    } 2018-11-27 20:20:07 [main] [INFO]  KGenProgMain - execution time: 0 seconds ```</body>
+		<to>436</to>
+	</pullrequest>
+	<pullrequest>
+		<number>444</number>
+		<title>git submodulesを復元</title>
+		<body>resolve #443</body>
+		<to>443</to>
+	</pullrequest>
+	<pullrequest>
+		<number>442</number>
+		<title>世代のサマリログの位置を修正</title>
+		<body>resolve #440 </body>
+		<to>440</to>
+	</pullrequest>
+	<pullrequest>
+		<number>438</number>
+		<title>世代サマリのログ出力において，ビルド可能な変異プログラムが存在するかのチェックを追加</title>
+		<body>resolve #437  </body>
+		<to>437</to>
+	</pullrequest>
+	<pullrequest>
+		<number>430</number>
+		<title>CloseToZero0{2..4} に設定ファイルを設置</title>
+		<body>resolve #402 </body>
+		<to>402</to>
+	</pullrequest>
+	<pullrequest>
+		<number>429</number>
+		<title>設定ファイルのテンプレートを追加</title>
+		<body>resolve #421  </body>
+		<to>421</to>
+	</pullrequest>
+	<pullrequest>
+		<number>427</number>
+		<title>再利用候補の範囲の選択を実装</title>
+		<body>resolve #405  ## 修正内容 - `Mutation`で再利用する候補を設定できるよう修正   - `ALL`, `PACKAGE`,` FILE` の 3 種類 - `SimpleStatementSelection`と`RouletteStatementSelection`の親クラスとして`StatementSelection`を追加   - 共通する処理が発生したため．  ## StatementSelectionの処理の概要 1.  `setCandidates(candidates)` が呼ばれたタイミングで，スコープ毎の statement 一覧を作成 2. 再利用候補を選ぶタイミングで，該当するスコープの statement 一覧からルーレットが作成される(これはキャッシュされる) 3. 該当するルーレットから statement を取り出して返す  ## 備考 Config には範囲を選択する設定をまだ追加していません．それはこのPRがマージされた後に追加する予定です．</body>
+		<to>405</to>
+	</pullrequest>
+	<pullrequest>
+		<number>426</number>
+		<title>VariantStore#changeGenerationをproceedNextGenerationに変更</title>
+		<body>resolve #409 </body>
+		<to>409</to>
+	</pullrequest>
+	<pullrequest>
+		<number>425</number>
+		<title>GeneratedASTにgetNumberOfLines追加</title>
+		<body>resolve #414   OchiaiのcountLinesをgetNumberOfLinesに置き換え</body>
+		<to>414</to>
+	</pullrequest>
+	<pullrequest>
+		<number>424</number>
+		<title>JUnitの余計なスレッドタイムアウト処理の削除</title>
+		<body>resolve #415</body>
+		<to>415</to>
+	</pullrequest>
+	<pullrequest>
+		<number>422</number>
+		<title>Patch 関係のリファクタリング</title>
+		<body>resolve #373 #411   ## 変更内容 - `Patch` -&gt; `FileDiff` - `Patches` -&gt; `Patch` - `PatchesStore` -&gt; `PatchStore` - `FileDiff`, `Patch`, `PatchStore`, `PatchGenerator` を `jp.kusumotolab.kgenprog.output` へ移動</body>
+		<to>373</to>
+	</pullrequest>
+	<pullrequest>
+		<number>420</number>
+		<title>出力フォルダをgitignoreに追加</title>
+		<body>resolve #419</body>
+		<to>419</to>
+	</pullrequest>
+	<pullrequest>
+		<number>417</number>
+		<title>QuickSortを修正容易に</title>
+		<body>resolve #416  ### やったこと - KGenProgMainTestでのQSortテストのバグ修正（Mainの二重実行） - QSortの再利用候補を探しやすいようにチートコードを追加 </body>
+		<to>416</to>
+	</pullrequest>
+	<pullrequest>
+		<number>408</number>
+		<title>テストクラスへのTimeout フィールド追加処理を実装</title>
+		<body>resolve #372   テストクラスにTimeoutを設定するフィールドを追加する処理を、initialVariant生成時に追加 ソースコードが変更されていることは確認したが、実際にTimeoutされるかは確認していない  Timeout時間がハードコードなのでConfigに吸い出す必要あり</body>
+		<to>372</to>
+	</pullrequest>
+	<pullrequest>
+		<number>406</number>
+		<title>ファイル入出力を行う題材の追加</title>
+		<body>resolve #400  </body>
+		<to>400</to>
+	</pullrequest>
+	<pullrequest>
+		<number>401</number>
+		<title>BinaryStoreアクセスの高速化</title>
+		<body>resolve #382   ### やったこと - 各種 `BinaryStore#get` を高速化 - KGPMainTestでCTZ1～4を確認するように変更（各種改善により固いテストが可能に）  3倍くらい早くなる．一生改善できるけど原稿はこの辺りが落とし所かも．  修正前 ![image](https://user-images.githubusercontent.com/5342911/48103326-ff777200-e271-11e8-8bc8-74aaac10effb.png)  修正後 ![image](https://user-images.githubusercontent.com/5342911/48103286-d22ac400-e271-11e8-8c4f-04523c73a8b5.png)    弱参照化（#385）はやってません．ちょっと実装が厄介なので後回し．</body>
+		<to>382</to>
+	</pullrequest>
+	<pullrequest>
+		<number>399</number>
+		<title>inferLocation機能をASTLocationsクラスに切り出し</title>
+		<body>resolve #396 </body>
+		<to>396</to>
+	</pullrequest>
+	<pullrequest>
+		<number>398</number>
+		<title> getPrimaryClassNameの戻り値をFullyQualifiedNameに変更</title>
+		<body>resolve #397   GeneratedAST.getPrimaryClassNameの戻り値をStringからFullyQualifiedNameに変更 FullyQualifiedName関連のクラスをprojectパッケージに移動</body>
+		<to>397</to>
+	</pullrequest>
+	<pullrequest>
+		<number>395</number>
+		<title>GA周りの定数の修正漏れを修正</title>
+		<body>close #387  ## 修正内容 #377 のPRで漏れていたGA周りの修正  ## 備考   #377 でコメントしていただいたのですが、以下のテストはデフォルトの値と異なるため修正していません。   https://github.com/kusumotolab/kGenProg/blob/7fd19271492854d85e9a5a33281f2c503f59c51d/src/main/java/jp/kusumotolab/kgenprog/PerformanceTest.java#L37  デフォルトの値と同じで問題ないのであれば、修正するのでコメントください。  | |テストで指定されている値 | Config内のデフォルトの値| |---|:---:|---:| | timeout | 600秒 | 60秒 | | maxGeneration | 1000 | 10 |  | requiredSolutions | 100 | 1 |  </body>
+		<to>387</to>
+	</pullrequest>
+	<pullrequest>
+		<number>394</number>
+		<title>ConfigurationBuilderTestを安定化</title>
+		<body>resolve #333</body>
+		<to>333</to>
+	</pullrequest>
+	<pullrequest>
+		<number>383</number>
+		<title>メモリ&amp;差分ビルド</title>
+		<body>resolve #306 #363 #364  ### やったこと - メモリ&amp;差分ビルドの実装   - 関連クラスを大工事（下記シーケンス図参照）   - テスト追加   - 差分ビルドテストのためのBuildFailure14追加   - 差分ビルドのためのバイナリ集合を持つ`BinaryStore`クラス追加  ![x](https://user-images.githubusercontent.com/5342911/47903851-9d141f80-dec7-11e8-8293-73b2a8f98378.jpg) - ビルド関係のクラスを`kgp.project.build`パッケージに移動 - 不要になったバイナリ解析ライブラリasmの依存削除，及び関連クラスを削除   なお差が巨大，かつパッケージを移動してしまったのでdiffが役に立ちません． diff見るよりソースコード見たほうが理解につながるとは思います．  ### やってないこと（後でやる予定） - BinaryStoreの`get()`アクセスの高速化 #382 現在キャッシュ内を全探索しているのでキャッシュ増えると苦しい．  - テスト処理の一つにビルドが入っている #252 </body>
+		<to>306</to>
+	</pullrequest>
+	<pullrequest>
+		<number>379</number>
+		<title>jarファイル生成タスクを追加</title>
+		<body>resolve #371 </body>
+		<to>371</to>
+	</pullrequest>
+	<pullrequest>
+		<number>377</number>
+		<title>GA内の定数をConfigに移動</title>
+		<body>close #343  ## 内容 - GA内にあった定数をConfigに移動 - Configのテストを追加</body>
+		<to>343</to>
+	</pullrequest>
+	<pullrequest>
+		<number>375</number>
+		<title>英語版 README の作成</title>
+		<body>resolve #370   英語のチェックをお願いいたします．  ### やったこと - 日本語版 README の移動 - 英語版 README の追加</body>
+		<to>370</to>
+	</pullrequest>
+	<pullrequest>
+		<number>368</number>
+		<title>DefaultCodeGenerationでinitialVariantと重複チェックをするように変更</title>
+		<body>resolve #367</body>
+		<to>367</to>
+	</pullrequest>
+	<pullrequest>
+		<number>366</number>
+		<title>テストソースコードのASTを作るように変更</title>
+		<body>resolve #362.  + GeneratedASTに型パラメータ（T extends SourcePath）追加 + GeneratedSourceCodeにgetTestAsts()追加 + JDTASTConstruction#constructASTでテストソースコードのASTを生成</body>
+		<to>362</to>
+	</pullrequest>
+	<pullrequest>
+		<number>365</number>
+		<title>SourceCodeValidation#exec の引数変更</title>
+		<body>resolve #361   `SourceCodeValidation#exec` の第1引数を `VariantStore` -&gt; `GeneratedSourceCode` に変更</body>
+		<to>361</to>
+	</pullrequest>
+	<pullrequest>
+		<number>360</number>
+		<title>クラスパスのバグを修正</title>
+		<body>resolve #357   バグの原因はクラスパスの扱いがjavaコンパイラに準拠していなかったため．  KGPではCPにフォルダが指定された場合，ご丁寧に `.class` や `.jar` を探索してパラメタ化していた． しかし，javaコンパイラとしてはそのような処理は不要． CPにフォルダが指定されたら何も考えずにフォルダのまま渡せば良い．  ### やったこと - バグ確認テスト用題材 BuildSuccess13を追加 - バグ確認テストの追加 - バグ修正 </body>
+		<to>357</to>
+	</pullrequest>
+	<pullrequest>
+		<number>356</number>
+		<title>パッチを出力する機能を実装</title>
+		<body>resolve #303   今回の変更点は以下の通り． - `Patch` のリストオブジェクト `Patches` の作成 - `Patches` に修正結果を出力する機能を実装 - ファイルへの出力を行わないか指定する隠しオプション`--discard-output` の追加</body>
+		<to>303</to>
+	</pullrequest>
+	<pullrequest>
+		<number>351</number>
+		<title>CrossOver する際にどちらの遺伝子も最低一つを含めるよう修正</title>
+		<body>close #350   ## 問題点 CrossOver する際に親と同じ遺伝子を持つ Variant が出力されてしまう。  ## 修正内容 二つの base 列のサイズの小さい方の値が min の時、 1 ~ min-2 の間で CrossOver するよう修正した。 (ただし、min が 2 以下 なら、0 ~ min の間で CrossOver する)</body>
+		<to>350</to>
+	</pullrequest>
+	<pullrequest>
+		<number>348</number>
+		<title>設定ファイル読み込み機能を実装</title>
+		<body>resolve #26   ### やったこと - 設定ファイル読み込み処理の実装 - これにともない，`-r`, `-s`, `-t` をオプショナルにした - オプションが何も指定されなければ，カレントディレクトリの `kgenprog.toml` を読み込むようにした   - この場合のテストは書けていません   - テスト実行時にカレントディレクトリを変更する方法が分からなかったため - 雑多な修正   - 覚えづらい短縮オプションの削除（`-i`, `-a` 等）   - `metaVar` （usage で表示されるオプションの引数を表す `&lt;path&gt;` 等の文字列）がいくつかのオプションに設定されていなかったので，それらを追加   - usage メッセージを変更</body>
+		<to>26</to>
+	</pullrequest>
+	<pullrequest>
+		<number>347</number>
+		<title>VariantStore内部でgeneratedVariantsを扱うように変更</title>
+		<body>resolve #345   次世代のVariantsをVariantStore内部で持つように変更し、Variantが追加されるときにCompletedVariantかを判定する。 VariantSelectionもVariantStore内から呼び出すように変更</body>
+		<to>345</to>
+	</pullrequest>
+	<pullrequest>
+		<number>346</number>
+		<title>ルーレットの配列あふれバグの修正</title>
+		<body>resolve #315  ## 問題 - `Random` の引数の指定がバラバラ - ルーレットの候補のリストが空の場合に `java.lang.IndexOutOfBoundsException: Index: 0, Size: 0` で落ちる  ## 修正内容 - `Random` の引数を `config` の値 ( もしくはそのデフォルト値 ) に修正 - ルーレットの候補のリストが空の場合に `java.lang.IllegalArgumentException` を投げるよう修正  ## 懸念点 ルーレットの候補の空の場合の処理ってこれでいいですかね？ 良いプラクティスがあれば教えてください。 </body>
+		<to>315</to>
+	</pullrequest>
+	<pullrequest>
+		<number>340</number>
+		<title>-q オプション指定時に余計なログを出力しないように修正</title>
+		<body>resolve #293   ### やったこと - `CUILauncher` のロギング処理削除 - `Configuration.Builder` 内で `-q` オプション指定時に warning メッセージを出力しないように修正 - `Configuration.Builder` の雑多な変更   - メソッド並べ替え   - ログレベル変更処理時のログメッセージのログレベルを INFO -&gt; DEBUG に変更   - コメント追加</body>
+		<to>293</to>
+	</pullrequest>
+	<pullrequest>
+		<number>338</number>
+		<title>テスト内での異常系バグ2つの小さな修正</title>
+		<body>resolve #336  ### やったこと - FQN指定ミス時の `ClassNotFoundException` を正しくハンドリング - `EmptyBuildResults` 時の振る舞いを改善 （この修正は本PRで適用するつもりだったが前のPR #332 に混入してた．instanceofだけ排除） - 上記を確認するテスト2つを追加</body>
+		<to>336</to>
+	</pullrequest>
+	<pullrequest>
+		<number>337</number>
+		<title>タイムアウト混在バグの修正</title>
+		<body>resolve #327  ### やったこと - Configurationオブジェクト内で2つのタイムアウトを切り分け - 上記テストの追加 - TestExecutorでテスト用のタイムアウトを読み込むように修正</body>
+		<to>327</to>
+	</pullrequest>
+	<pullrequest>
+		<number>332</number>
+		<title>実行テストとビルドテストの混在によるバグを修正</title>
+		<body>resolve #331   きちんと以下の方針に ``` A プロダクトバイナリ → ロード候補に追加 &amp; jacoco書き換え B テストバイナリ　　 → ロード候補に追加 C 実行テストバイナリ → 実際にクラスロードしてJUnit実行 ```  ### やったこと - `TestThread` の修正（本質，数行） - 修正を確認するテストの追加（`BuildSuccess12`）</body>
+		<to>331</to>
+	</pullrequest>
+	<pullrequest>
+		<number>330</number>
+		<title>多重ロード時のバグ修正</title>
+		<body>resolve #283  多重ロードの際の例外をきちんと掴むように． テストも一応追加したが，そもそも多重ロードがどういう時に発生するかがいまいちわかっていない．  Math85等のリアル系題材で発生するのは確認済み． かつ本PRによってそれらのエラーが解決することも確認済み．</body>
+		<to>283</to>
+	</pullrequest>
+	<pullrequest>
+		<number>329</number>
+		<title>ProjectBuilderのロガーの設定を修正</title>
+		<body>resolve #326 </body>
+		<to>326</to>
+	</pullrequest>
+	<pullrequest>
+		<number>325</number>
+		<title>継承ベースJUnitに対するjacocoバグを修正</title>
+		<body>resolve #288  根本的には継承ベースの（古い）JUnitの使い方に対するJacoco計測のミス． ```java public class FooTest extends TestCase {...} ``` 継承ベースだとlistenerが期待通りに動いていなかった．  ### やったこと - jacocoリスナー内でのテスト失敗の記録方法を修正（3行程度） - バグ修正を確認するテストの追加（`BuildSuccess11`．継承ベース）</body>
+		<to>288</to>
+	</pullrequest>
+	<pullrequest>
+		<number>324</number>
+		<title>セッション破棄によるjacocoバグを修正</title>
+		<body>resolve #290   根本的にはjacoco apiの使い方の間違い． failure発生の流れはこう．  1. 実行すべきテストが残っているにもかかわらずjacocoが使うRuntime（実行環境）を破棄 2. 次のテストでRuntimeがない状態 3. そのテストの中で新規クラスロードが必要な場合，Runtimeがないのでロードできない 4. `java.lang.Long cannot be cast to [Z` で死ぬ  ### やったこと - jacocoのRuntime初期化周りを修正（最も本質．3行程度） - バグ修正を確認するテストの追加（`BuildSuccess10`．テストの途中でロードが必要な題材）  なお，バグ修正を加えた `TestThread` と，そのテスト `TestExecutorTest` は後でリファクタリングかける予定です．このPRではコードの品質は無視してください．</body>
+		<to>290</to>
+	</pullrequest>
+	<pullrequest>
+		<number>321</number>
+		<title>内部クラスがある場合のjacocoバグを修正</title>
+		<body>resolve #285  いわゆる行ズレバグと読んでいたjacoco利用に起因するバグの修正． バグの原因は，内部クラスが存在する場合のjacoco計測の取り出し方法のミスによるもの．  都合よく，`BuildSuccess03` がほとんど利用されておらず内部クラスを持っていたので， この `03` に上記行ズレバグの確認テストを追加．  やったこと - バグの修正（最も本質，`TestResults.java` の修正のみ，10行程度） - バグの確認テストを追加   - まず題材 `BuildSuccess03` で内部クラスを持つ `Baz` クラスを叩く， 新たなテスト `BazTest#test01` と `BazTest#test02` を追加   - `TestExecutorTest.java` で上記テストを実行 &amp; jacoco計測してFLメトリクスを確認  以下粘度系のやったこと - `BuildSucess03` のリフォーマット． - 無駄に `BuildSucess03` をテストに使っていた `PatchGeneratorTest` を `02` を使うように変更． （テストの内容的にも02で十分なので問題なし）</body>
+		<to>285</to>
+	</pullrequest>
+	<pullrequest>
+		<number>320</number>
+		<title>実アプリバグ題材を git submodule を用いて追加</title>
+		<body>resolve #277   ### やったこと - [kGenProg-example](https://github.com/kusumotolab/kGenProg-example) を `git submodule` で追加 - example/README.md を更新</body>
+		<to>277</to>
+	</pullrequest>
+	<pullrequest>
+		<number>319</number>
+		<title>CLI のオプション指定の一貫性を確保</title>
+		<body>resolve #318  メモ： `handler = StringArrayOptionHandler.class` を指定しなくても（前の状態でも）， `-x A -x B` と `-x A B` 両方動くっぽい．  さらに，`handler = StringArrayOptionHandler.class` を指定しても `-x A -x B` と `-x A B` 両方動くっぽい．  実装方法が一貫していないのは事実なので修正．</body>
+		<to>318</to>
+	</pullrequest>
+	<pullrequest>
+		<number>316</number>
+		<title>Mockitoを導入</title>
+		<body>resolve #308 </body>
+		<to>308</to>
+	</pullrequest>
+	<pullrequest>
+		<number>314</number>
+		<title>README を追加</title>
+		<body>resolve #144   ### やったこと - README 作成 - （kgenprog の jar を [Releases](https://github.com/kusumotolab/kGenProg/releases) に登録） </body>
+		<to>144</to>
+	</pullrequest>
+	<pullrequest>
+		<number>313</number>
+		<title>テスト内でのStaticフィールドの命名規則を統一</title>
+		<body>resolve #246 ``` Foo → FOO Bar → BAR ```</body>
+		<to>246</to>
+	</pullrequest>
+	<pullrequest>
+		<number>312</number>
+		<title>実行するテストを指定可能に</title>
+		<body>resolve #287  CUIから `-x` で実行すべきテストを指定可能に． テストはひとまずFQNで指定（将来的にファイルしても可能に）．  ```bash # テストを指定しない＝全テストを実行する（asis） $ kgp ./ -s src/ -t test/  # 単一テストを指定 $ kgp ./ -s src/ -t test/ -x example.FooTest  # 複数テストを指定（クラスパスと同様コロン区切りに） $ kgp ./ -s src/ -t test/ -x example.FooTest:example.BarTest ```  動作確認用のテストを追加してます． `TestExecutorTest#testTestExecutorForBuildSuccess02WithSpecifyingExecutedTest`</body>
+		<to>287</to>
+	</pullrequest>
+	<pullrequest>
+		<number>311</number>
+		<title>Exampleデータの再整理</title>
+		<body>resolve #310  粘土系PR  - example/README.mdにBuildSuccess{06,07}を追記 - 無駄にASTフォーマットが適用されている題材に普通のフォーマッタを適用 - 上に伴うテストの修正 - 無限ループ題材としてQuxという名前の題材があったがFooでええやん</body>
+		<to>310</to>
+	</pullrequest>
+	<pullrequest>
+		<number>307</number>
+		<title>不要な diff が出力されないように変更</title>
+		<body>resolve #302 </body>
+		<to>302</to>
+	</pullrequest>
+	<pullrequest>
+		<number>301</number>
+		<title>プロジェクト全体で共有する情報を管理するクラスを作成</title>
+		<body>resolve #146  ### やったこと - プロジェクト全体で共有する情報を管理するための `Configuration` クラスを作成．     次の情報を管理している．     - `targetProject`: 修正対象の `TargetProject` インスタンス     - `workingDirectory`: 作業用ディレクトリ     - `siblingsCount`: 1つのバリアントから生成する子バリアント数（`Mutation` の `numberOfBase` に対応）     - `headCount`: 1世代に生成するバリアントの最大数     - `maxGeneration`: 最大世代数     - `timeLimit`: 制限時間     - `requiredSolutionsCount`: 出力する解の数     - `logLevel`: 表示するログのレベル     - `randomSeed`: 乱数のシード値 - コマンドライン引数のパース処理を `Configuration.Builder` クラスに委譲 - 各クラスで管理していた作業ディレクトリやタイムアウト時間といった情報を `Configuration` で管理するように変更．</body>
+		<to>146</to>
+	</pullrequest>
+	<pullrequest>
+		<number>292</number>
+		<title>JUnitのJarファイルを外部ファイルとして生成するように変更</title>
+		<body>resolve #291   kGenProgをIDEから実行する場合， ``` -classpath file:unit4/unit-4.12.jar  ``` は参照可能（当たり前）．  kGenProgをJarとして実行する場合， ``` -classpath jar:file:kGenProg.jar!/unit4/unit-4.12.jar ``` は参照できないっぽい．javacがエラーを出すわけではなく，無視している．  上記のことより，入れ子になったjarファイルは参照できないので，カレントディレクトリにJUnitのjarを生成して，それを参照するように変更した． 生成したJUnitのJarはkGenProgのプロセス終了時に消すようにした．</body>
+		<to>291</to>
+	</pullrequest>
+	<pullrequest>
+		<number>280</number>
+		<title>CUILauncher内で扱うProductSP/TestSP型をPath型に変更</title>
+		<body>resolve #279   CUILauncher内でのProductSourcePathおよびTestSourcePathの使用をやめました． レビューお願いします．</body>
+		<to>279</to>
+	</pullrequest>
+	<pullrequest>
+		<number>275</number>
+		<title>kGenProgMainのリファクタリング</title>
+		<body>resolve #255.  #238 対応の前段階としてkGenProgMainをリファクタリング  # やったこと ## Variantにフィールドとそのセッタを追加  Gene, GeneratedSourceCode, TestResults, Fitness, List\&lt;Suspiciousness\&gt; を保持   ## VariantStore追加  生成されたすべてのVariantを管理するクラス kGenProgMainのいくつかのフィールドを移動  ## Strategyの型を変更  Gene, Suspiciousnessなどいろいろな型をとっていたStrategyをVariantに統一 VariantSelectionを、現在のVariantsと新たに生成されたVariantsの2引数に変更  ## FaultLocalization で無駄なテストを実行しないように変更  すでにテスト実行済みならば再利用する。  </body>
+		<to>255</to>
+	</pullrequest>
+	<pullrequest>
+		<number>274</number>
+		<title>Math 系の example を git subtree で管理するように変更</title>
+		<body>resolve #264 resolve #266  ### 変更点 - submodule を削除 - Math02, Math05, Math70, Math73, Math85 を `git subtree` で追加</body>
+		<to>264</to>
+	</pullrequest>
+	<pullrequest>
+		<number>273</number>
+		<title>maven を扱うライブラリの追加</title>
+		<body>resolve #272  maven の Model を扱うライブラリを追加しました</body>
+		<to>272</to>
+	</pullrequest>
+	<pullrequest>
+		<number>271</number>
+		<title>jacocoの操作をするライブラリを変更</title>
+		<body>resolve #270 ## 修正内容 - 使用するライブラリを`jacoco-maven-plugin`から`jacoco-core`に変更 - 付随していたライブラリのバージョンが変わったことによる import の修正</body>
+		<to>270</to>
+	</pullrequest>
+	<pullrequest>
+		<number>265</number>
+		<title>git submoduleでshallow cloneするように変更</title>
+		<body>resolve #264  resolve #266  shallow cloneにより少しマシになったけど，マシ程度． しばらくこのまま使ってみて考えよう．  ```sh // before $ du -sh .git/modules/ 3.8G    .git/modules/  // after $ du -sh .git/modules 1.4G    .git/modules ```  中身は正しいはず． ```sh $ less example/Math02/defects4j.build.properties #File automatically generated by Defects4J d4j.bug.id=2 d4j.classes.modified=org.apache.commons.math3.distribution.HypergeometricDistribution d4j.dir.src.classes=src/main/java d4j.dir.src.tests=src/test/java d4j.project.id=Math d4j.tests.trigger=org.apache.commons.math3.distribution.HypergeometricDistributionTest::testMath1021  $ less example/Math05/defects4j.build.properties #File automatically generated by Defects4J d4j.bug.id=5 d4j.classes.modified=org.apache.commons.math3.complex.Complex d4j.dir.src.classes=src/main/java d4j.dir.src.tests=src/test/java d4j.project.id=Math d4j.tests.trigger=org.apache.commons.math3.complex.ComplexTest::testReciprocalZero ```</body>
+		<to>264</to>
+	</pullrequest>
+	<pullrequest>
+		<number>263</number>
+		<title>ClassLoader のバグを修正</title>
+		<body>resolve #262 </body>
+		<to>262</to>
+	</pullrequest>
+	<pullrequest>
+		<number>257</number>
+		<title>IProjectFactoryをリネーム</title>
+		<body>resolve #244  </body>
+		<to>244</to>
+	</pullrequest>
+	<pullrequest>
+		<number>256</number>
+		<title>ビルドとテストのインメモリ化</title>
+		<body>resolve #150 resolve #242  resolve #243   ビルドで生成されるクラスファイルをインメモリ化した． さらにテスト実行もインメモリ化した．  速度向上はCloseToZero01に対しておよそ10倍強．  ```sh // before 2018-08-21 04:22:36 [main] [INFO]  jp.kusumotolab.kgenprog.KGenProgMain - 98th solution has been found (5 minutes 55 seconds) 2018-08-21 04:22:37 [main] [INFO]  jp.kusumotolab.kgenprog.KGenProgMain - 99th solution has been found (5 minutes 56 seconds) 2018-08-21 04:22:41 [main] [INFO]  jp.kusumotolab.kgenprog.KGenProgMain - 100th solution has been found (6 minutes 0 seconds)  // after 2018-08-21 03:44:14 [main] [INFO]  jp.kusumotolab.kgenprog.KGenProgMain - 98th solution has been found (35 seconds) 2018-08-21 03:44:14 [main] [INFO]  jp.kusumotolab.kgenprog.KGenProgMain - 99th solution has been found (35 seconds) 2018-08-21 03:44:14 [main] [INFO]  jp.kusumotolab.kgenprog.KGenProgMain - 100th solution has been found (35 seconds) ```</body>
+		<to>150</to>
+	</pullrequest>
+	<pullrequest>
+		<number>254</number>
+		<title>applyDirectly の除去</title>
+		<body>resolve #207  resolve #239   applyDirectly 除去しました． その副次効果として，PatchGenerator のダウンキャストも除去しました．</body>
+		<to>207</to>
+	</pullrequest>
+	<pullrequest>
+		<number>253</number>
+		<title>実アプリのバグ題材を追加</title>
+		<body>resolve #161   ### 変更点 - 以下の5バグを追加   - [Math2](https://github.com/Spirals-Team/defects4j-repair/tree/master/results/2015-august#math-2)   - [Math5](https://github.com/Spirals-Team/defects4j-repair/tree/master/results/2015-august#math-5)   - [Math70](https://github.com/Spirals-Team/defects4j-repair/tree/master/results/2015-august#math-70)   - [Math73](https://github.com/Spirals-Team/defects4j-repair/tree/master/results/2015-august#math-73)   - [Math85](https://github.com/Spirals-Team/defects4j-repair/tree/master/results/2015-august#math-85) - example/README.md を更新</body>
+		<to>161</to>
+	</pullrequest>
+	<pullrequest>
+		<number>249</number>
+		<title>進化の過程を保持するクラスを追加</title>
+		<body>resolve #11. refs #238.  + HistoricalElementとその派生クラスを追加 + Variantで保持 + 世代番号をVariantに追加   </body>
+		<to>11</to>
+	</pullrequest>
+	<pullrequest>
+		<number>248</number>
+		<title>テスト実行時のタイムアウトを追加</title>
+		<body>resolve #199  タイムアウト動作確認用の`BuildSuccess04`も同時に追加． </body>
+		<to>199</to>
+	</pullrequest>
+	<pullrequest>
+		<number>247</number>
+		<title>remove RandomNumberGeneration.</title>
+		<body>resolve #184  issue の通りですが，一部テストコードが正しくないのが含まれていたのでその修正もしました</body>
+		<to>184</to>
+	</pullrequest>
+	<pullrequest>
+		<number>245</number>
+		<title>ライセンスのドキュメントを追加</title>
+		<body>resolve #192</body>
+		<to>192</to>
+	</pullrequest>
+	<pullrequest>
+		<number>240</number>
+		<title>GA関連のパラメータ設定のためのオプション追加</title>
+		<body>resolve #159  resolve #172   ### 変更点 - GA 関連のオプション追加 - `KGenProgMain` のインスタンス生成時に，コマンドラインで受け取った GA 関連の値を指定するように変更 - テスト追加 - 雑多な修正   - `CUILauncher` のフィールドの順序入れ替え   - `CUILauncherTest` のテストケースに `@Test` アノテーションが抜けているものがあったので修正   - 一貫性を保つために `CUILauncherTest` の一部テストケース名変更 </body>
+		<to>159</to>
+	</pullrequest>
+	<pullrequest>
+		<number>237</number>
+		<title>exampleのREADMEを追加</title>
+		<body>resolve #25   exampleに対するREADME.mdを追加．  各exampleフォルダ内に個々のREADMEを追加するのではなく， example直下に一括してREADMEを追加した． こちらのほうが一覧性が高いという判断． https://github.com/kusumotolab/kGenProg/tree/add-example-readme/example   併せて，CloseToZero04を追加した． 条件式が反転している典型的なバグ． なお，現在のKGenProgでは最も合理的な修正（条件式の反転）はできない模様． いつもの地獄のような修正は可能．</body>
+		<to>25</to>
+	</pullrequest>
+	<pullrequest>
+		<number>236</number>
+		<title>PatchGenerator の責務を分割</title>
+		<body>resolve #188   ```PatchGenerator``` の責務を ```Patch``` オブジェクトの生成のみに限定． ファイルへの出力機能を実装はしてありますが，現在ファイルへの出力は行っていません．  ## 変更点 - ```Patch``` クラスの作成． - ```PatchGenerator``` の責務を ```Patch``` オブジェクトの生成のみに変更． - ```Patch``` クラスにファイル出力機能を移植． - ```PatchGenerator``` を1回の呼び出しにつき一つのバリアントの処理を行うように変更． - ```PatchGenerator``` の変更に伴い，```CUILauncher```, ```KGenProgMain``` のインスタンス生成部分を変更． - ```PatchGeneratorTest``` でファイルからの読み込みを除去． - ```KGenProgMain``` に Diff のログを出力する処理を追加．</body>
+		<to>188</to>
+	</pullrequest>
+	<pullrequest>
+		<number>235</number>
+		<title>テスト内でのworkpathの扱いを一貫させてテストをstableに</title>
+		<body>resolve #97   テスト内でのworkpathの扱いを一貫させた． 基本は `tmp/work` に中間生成物（.class等）を吐き出すように． ＝`example` 配下への書き込みを完全に排除． </body>
+		<to>97</to>
+	</pullrequest>
+	<pullrequest>
+		<number>234</number>
+		<title>jacocoで書き換えたclassファイルを解放</title>
+		<body>resolve #233   inputstreamをcloseするように修正． あと細かい修正 - this削除 - streamの使い方を改善  このPRにより，#97 の以下コメントのバグが解決． &gt; MemoryClassLoaderTestのworkingdirの削除で失敗する． </body>
+		<to>233</to>
+	</pullrequest>
+	<pullrequest>
+		<number>232</number>
+		<title>IntelliJ に関する .gitignore の設定を強化</title>
+		<body>resolve #230   [gitignore.io](https://www.gitignore.io/) によって生成した以下の設定を追加 https://www.gitignore.io/api/intellij+all</body>
+		<to>230</to>
+	</pullrequest>
+	<pullrequest>
+		<number>231</number>
+		<title>クラスパスオプションをオプショナルに変更</title>
+		<body>resolve #116   ### 変更点 - `--cp` オプションをオプショナルに変更</body>
+		<to>116</to>
+	</pullrequest>
+	<pullrequest>
+		<number>229</number>
+		<title>CLI からログレベルを変更する機能を実装</title>
+		<body>resolve #85   ### 変更点 - `CUILauncher` のインスタンス生成時にログレベルを `INFO` に設定するように変更 - `-v (--verbose)` オプションの実装   - ログレベルを `DEBUG` に変更する - `-q (--quiet)` オプションの実装   - ログレベルを `ERROR` に変更する</body>
+		<to>85</to>
+	</pullrequest>
+	<pullrequest>
+		<number>228</number>
+		<title>PatchGenerator をリファクタリング</title>
+		<body>resolve #174 resolve #187  #188 についても，ローカルでは修正したのですが，この PR と同時に行った場合，Diff がとても見にくくなったため，この PR がマージされた後，別ブランチを切り，再度 PR を出します．  ## 変更点 - クラス名を DiffOutput から PatchGenerator へ変更． - クラス名を ResultOutput から ResultGenerator へ変更． - PatchGenerator の線形探索の除去</body>
+		<to>174</to>
+	</pullrequest>
+	<pullrequest>
+		<number>227</number>
+		<title>exampleのリネーム</title>
+		<body>resolve #226   修正内容は以下のとおりです．基本は置換です． ```sh # 題材プロジェクトの名前 example/example00     →  example/BuildFailure01      # ビルド失敗シリーズ） example/example01-03  →  example/BuildSuccess01-03   # ビルド成功シリーズ，APRは不可 example/example04-06  →  example/CloseToZero01-03    # APR確認用の最もシンプルシリーズ example/example07     →  example/GCD01               # APR確認用 example/example08     →  example/QuickSort01         # APR確認用  # 題材プロジェクトのパッケージ名 jp.kusumotolab        →  example ```  example配下が大幅に変わっているので，レビュー前に以下コマンド叩いたほうが良いです． ```sh $ git clean example -fdx  # example配下のゴミ削除 ```  修正が多数ファイルにわたるので，実験的に二段階レビューして頂きたいです．  - 1段目：機械的に置換可能な変更内容のチェック（sed &amp; grep でゴリ押し可能な修正） - 2段目：人手が必要な変更内容のチェック（テストメソッド名や変数名等）  現在は1段目だけ終えた状態です． このまま2段目やるとわけわからんなると思ったので1段目で止めてます．  OKならコメント下さい．2段目やります．</body>
+		<to>226</to>
+	</pullrequest>
+	<pullrequest>
+		<number>225</number>
+		<title>CUILauncher のテスト追加</title>
+		<body>resolve #84  (`TargetProject` クラスのインスタンス生成時に `rootDir` を渡すように変更した修正はすでにマージ済み)  ### 変更点 - `*Path[s]` 系の値を絶対パスで保持するように変更 - `testSourcePath` のセッターの名前がおかしかったのを修正 - `CUILauncher` に対するテストを追加</body>
+		<to>84</to>
+	</pullrequest>
+	<pullrequest>
+		<number>224</number>
+		<title>ProjectBuilder#build で return null の替わりに EmptyBuildResults を返すように修正</title>
+		<body>resolve #186  </body>
+		<to>186</to>
+	</pullrequest>
+	<pullrequest>
+		<number>223</number>
+		<title>パッチをログで確認できるように修正</title>
+		<body>resolve #201  PR #203 のやり直し ### 変更点 - パッチの出力先をログに変更 - ログレベルを DEBUG -&gt; INFO に変更</body>
+		<to>201</to>
+	</pullrequest>
+	<pullrequest>
+		<number>222</number>
+		<title>Statement内に含まれるStatementの数でルーレット選択するよう修正 </title>
+		<body>resolve #177  Statementに対して`toStringn()`した単純な長さでルーレット選択をしていたが，それをStatement内のStatementの数でルーレサット選択するよう修正</body>
+		<to>177</to>
+	</pullrequest>
+	<pullrequest>
+		<number>218</number>
+		<title>Variant#isCompleteを追加</title>
+		<body>resolve #171  OOっぽく以下を追加． - `Fitness#isCompleted`インタフェース Fitnessは比較可能な値へのAPI `getValue()`と，完全に適合したかを表すAPI `isCompleted()`を持つ．  - `SimpleFitness#isCompleted`メソッド SimpleFitnessは値が1.0ならcompleteである．  - `Variant#isCompleted`メソッド 上記Fitnessを内包するVariantも，完全に適合したかを表すAPI `isCompleted()`を持つ． 中身は単なる`Fitness#isCompleted`の委譲．   加え，それらの呼び出し箇所を修正． </body>
+		<to>171</to>
+	</pullrequest>
+	<pullrequest>
+		<number>217</number>
+		<title>KGenProgTimer を StopWatch に変更</title>
+		<body>resolve #204 </body>
+		<to>204</to>
+	</pullrequest>
+	<pullrequest>
+		<number>216</number>
+		<title>スペルミスの修正: Suspiciouseness -&gt; Suspiciousness</title>
+		<body>resolve #215 </body>
+		<to>215</to>
+	</pullrequest>
+	<pullrequest>
+		<number>214</number>
+		<title>SourceCodeの型を厳格に扱うようリファクタリング</title>
+		<body>resolve #104  - `TargetSourcePath` → `ProductSourcePath` にrename - 抽象型`SourcePath`で取り回しをしていたAPI群の型を厳格に（基本は`ProduceSourcePath`に）． この修正により，間違って`TestSourcePath`を渡してしまうケースを防げる（型制約が可能）．  変更量は多いですが，基本リファクタリングです． </body>
+		<to>104</to>
+	</pullrequest>
+	<pullrequest>
+		<number>213</number>
+		<title>KGenProgMainTestのexample04-06を修正</title>
+		<body>resolve #179 resolve #210    MainTest周りISSUE2点の修正 + 細かい修正2点．  ### テストに対するAssertを追加 #179 example04-06それぞれに対して， 少なくとも一つの成功遺伝子（全テストパス）を生成できることを確認するassert．  ### example04-06がfailしていた問題を修正 #210  ### テスト全体の`@Ignore`を削除 CIでもMainのテストを行う方針に． https://github.com/kusumotolab/kGenProg/wiki/20180725-meeting の議論より．  ### ついでにtest07/08のコードの一貫性と作業ディレクトリの指定方法を修正．  ただし現在，別バグ #212 によりtest05/06がfailしているのでマージ不可能． よって，一時的にtest05/06に`@Ignore`を追加中． #212 の修正PR #211 をクローズ後に戻す必要あり． </body>
+		<to>179</to>
+	</pullrequest>
+	<pullrequest>
+		<number>211</number>
+		<title>DefaultVariantSelectionのバグを修正</title>
+		<body>resolves #212   ### 問題点 Double.Nanの比較にバグが存在していて，落ちる  ### 原因 Nan同士の比較の際の挙動が定義されていなかった  ### 修正内容 - Nan同士の比較を追加 - Nan同士の比較が必要なテストを追加</body>
+		<to>212</to>
+	</pullrequest>
+	<pullrequest>
+		<number>203</number>
+		<title>パッチが標準出力に出力されない問題の修正</title>
+		<body>resolve #201  パッチの標準出力への出力をロガー経由に変更． DEBUG レベルで出力されることでパッチの出力が流れてしまっていたので，出力するログレベルを INFO に変更．</body>
+		<to>201</to>
+	</pullrequest>
+	<pullrequest>
+		<number>196</number>
+		<title>テストのAssertJ化と改善</title>
+		<body>resolve #142 resolve #153  テストのAssertJ化と改善（リファクタリング）を行いました． 相変わらずの巨大マージです．  ## 1. 全テストをAssertJに書き換え hamcrestを駆逐． 確実にAssertJの方が使いやすい．  ## 2. 可読性向上のための一部テストのリファクタリング - 徹底したfinal修飾子の付与 - 意図の解釈しにくいexpectに意図を付与 - メソッドチェーンによる改行回避のための一時変数化 - ルートパス/一時作業パスの変数名をrootPath/workPathに統一 ## 3. ASTNode用のassertionクラス`ASTNodeAssert`を作成 ### why ASTNodeに対するテストが「AST#toStringで生成される文字列ベース」で行われておりかなり読みにい． テストのバグの原因になりがち． これはやばい． ```java assertEquals("class A {\n  public void a(){\n    int a=0;\n  }\n}\n", ast.getRoot().toString()); ``` 加え，ASTNodeに対するテストは今後も多様する可能性が高い． ### how AssertJのカスタムassertion（`assertThat`拡張）を使う． http://joel-costigliola.github.io/assertj/assertj-core-custom-assertions.html  裏ではactual/expect両方をAST化し，`jdt.code.formatter`で整形（正規化）してから文字列比較する． これにより，スタイルの違いを無視してソースを比較可能に． assertの失敗時にもコードのどこが違うかが確認しやすい．  ### example `ASTNodeAssertTest`より，全部パスする ```java     assertThat(statement1).isSameSourceCodeAs("int n=0;");     assertThat(statement1).isSameSourceCodeAs("int n = 0;");     assertThat(statement1).isSameSourceCodeAs("int n = 0;  ");     assertThat(statement1).isSameSourceCodeAs("int n = 0;\n");     assertThat(statement1).isSameSourceCodeAs("int n = 0;\n\n");     assertThat(statement1).isSameSourceCodeAs("  int n = 0;");     assertThat(statement1).isSameSourceCodeAs("\nint\nn\n=\n0\n;\n"); ```  assertに失敗すると（print文が`n`ではなく`i`になってる） ```java     assertThat(ifStatement).isSameSourceCodeAs("if(n==1){System.out.println(i);}"); ``` こうassertエラーが返ってくる． ``` java.lang.AssertionError: Expected souce code to be &lt;if (n == 1) { System.out.println(i); }&gt; but was &lt;if (n == 1) { System.out.println(n); }&gt; ``` ## 4. その他 - DiffOutputTestのみ修正は雑 (実装側の修正がありそうなので) - build.gradleのリフォーマット</body>
+		<to>142</to>
+	</pullrequest>
+	<pullrequest>
+		<number>189</number>
+		<title>SinglePointCrossoverの実装を追加</title>
+		<body>resolve #120  ## 主な変更内容 - Mutationの中でRandomNumberGenerationを作成することをやめた (RandomNumberGenerationをCrossoverでも使うためです) - SinglePointCrossoverの実装を追加 - SinglePointCrossoverのテストを追加  ## 懸念点 Crossoverするかしないかはどこで決めるべきですかね？ とりあえず今はSingleCrossoverの中で決めていますが、SingleCrossoverはCrossoverするクラスであり、CrossOverするかしないか決めるクラスではない気もします。</body>
+		<to>120</to>
+	</pullrequest>
+	<pullrequest>
+		<number>183</number>
+		<title>細かなリファクタリングの適用</title>
+		<body>resolve #132 resolve #136  各種クラスに横断しがちな「tinyな修正」をまとめてやりました． コンフリクト地獄の回避のためにでまとめてやったら， PR自体が地獄になりました．  あまりにtungledだと感じるなら言ってください． PR分割します．  やったこと - MainのテストにIgnore追加（CIが苦しいので） - Paths.getの使い方を統一（#136） - java.io.Fileではなくjava.nio.Path/java.nio.Filesを積極的に利用（#132） - pathを表現する変数名/メソッド名の"file"を"path"に修正（#132） - static import利用の廃止（[20180620議論](https://github.com/kusumotolab/kGenProg/wiki/20180620-meeting)より） - test内での例外を一貫して丸投げに（#113 の議論より） - 参照されていないdeprecatedメソッド/クラスを削除 - 大文字が続く変数名/メソッド名を修正（一部のみ，checkstyleで警告が出るため） - DiffOutputの余計なsysout文を削除 - DiffOutputTestの危険な文字列normalizeを修正 - test内でのworkingdir="_bin"を"bin"に変更 - workingdir削除の不安定さを隠す一時パッチの追加（#97）</body>
+		<to>132</to>
+	</pullrequest>
+	<pullrequest>
+		<number>182</number>
+		<title>YoshikiHigo の user.name のばらつきを修正</title>
+		<body>resolve #181</body>
+		<to>181</to>
+	</pullrequest>
+	<pullrequest>
+		<number>180</number>
+		<title>Mutationが重みを付けてBaseを生成するよう修正</title>
+		<body>resolve #164   ### 問題点 RandomMutationが疑惑値の高い場所も低い場所も1つずつしかBaseを生成していなかった  ### 解決方法 疑惑値を二乗にした値でルーレット選択を行なう  ### 主な修正内容 - RandomMutationが生成するBaseの数を決められるよう修正 - 疑惑値を二乗にした値でルーレット選択を行なってBaseを生成 - 今後作られるかもしれない他のMutationが行うであろう処理もRandomMutationが行なっていたので，Mutationを抽象クラスにして必要な処理をそちらに移動 - RandomNumberGenerationで生成される数値の型が増えつつあるので，メソッド名を修正 - 上の修正内容に応じてテストを修正</body>
+		<to>164</to>
+	</pullrequest>
+	<pullrequest>
+		<number>176</number>
+		<title>世代情報と見つけたバグ修正済みプログラムの数のロギングを追加</title>
+		<body>resolve #165 </body>
+		<to>165</to>
+	</pullrequest>
+	<pullrequest>
+		<number>175</number>
+		<title>ビルドが失敗したときにERRORのログを吐くのをやめた．</title>
+		<body>resolve #152 </body>
+		<to>152</to>
+	</pullrequest>
+	<pullrequest>
+		<number>173</number>
+		<title>n世代とn+1世代からn+2世代の変異プログラムを生成するように変更</title>
+		<body>resolve #163 </body>
+		<to>163</to>
+	</pullrequest>
+	<pullrequest>
+		<number>170</number>
+		<title>KGenProgMain の run メソッドに DiffOutput を追加した</title>
+		<body>resolve #166 </body>
+		<to>166</to>
+	</pullrequest>
+	<pullrequest>
+		<number>168</number>
+		<title>コードフォーマッタの適用と改行コードの統一</title>
+		<body>resolve #143 resolve #134</body>
+		<to>143</to>
+	</pullrequest>
+	<pullrequest>
+		<number>167</number>
+		<title>KGenProgMainの最低限の機能を実装</title>
+		<body>resolve #128 resolve #129  resolve #133 </body>
+		<to>128</to>
+	</pullrequest>
+	<pullrequest>
+		<number>156</number>
+		<title>TargetProject の sourceFiles からテストファイルを除去</title>
+		<body>resolve #155 #79</body>
+		<to>155</to>
+	</pullrequest>
+	<pullrequest>
+		<number>148</number>
+		<title>KGenProgMainでのworkingdirを指定</title>
+		<body>resolve #118  - KGenProgMainでのworkingdirを指定 - 上記で利用していたTestProcessBuilderでのdeprecatedメソッドを削除 - Main中の不要フィールドをついでに掃除</body>
+		<to>118</to>
+	</pullrequest>
+	<pullrequest>
+		<number>147</number>
+		<title>TestProcessBuilderでビルド失敗時の処理を追加</title>
+		<body>resolve #123 #124   - TestProcessBuilderが返すTestResultsをOptionalで包んだ - 上に伴うクライアント側コードの修正 - Build失敗時を再現するexample00を追加 - Build失敗時のOchiaiのテストを追加 - Build失敗時のTestProcessBuilderのテストを追加  かなりTODOコメント（Technical Debt）多め． ビルド失敗時の対処 + Optionalによる対策はもう少し考える必要あり．  少なくともビルド失敗時でも，正しくFL計算やバリアント評価はできているはず．</body>
+		<to>123</to>
+	</pullrequest>
+	<pullrequest>
+		<number>145</number>
+		<title>古いクラスファイルが残っているのを削除</title>
+		<body>resolve #75   issue #75 を解決するための修正です． masterから切り直しましました． レビューお願いします．</body>
+		<to>75</to>
+	</pullrequest>
+	<pullrequest>
+		<number>134</number>
+		<title>各種IDEのコードフォーマッタファイルを追加</title>
+		<body>resolve #108  related to #15   eclipseとintellijのフォーマッタファイルを追加した． ベースは[GoogleStyle](https://github.com/HPI-Information-Systems/Metanome/wiki/Installing-the-google-styleguide-settings-in-intellij-and-eclipse)であり，Stream等のメソッドチェーンを改行するように修正した．  eclipse - intellij間での互換性の担保が一番重要だが，雑な確認しかしていない． レビューで確認してもらえると助かる． 一部，javadocの行末スペースで互換性がないことを確認済み．どう修正すべきかは不明．  ```diff    /**     * a_nf -   *  +   *     * @param sourceFile     * @param location     * @return  上記削除行の行末スペースが，intellijでは削除，eclipseでは挿入される． ```</body>
+		<to>108</to>
+	</pullrequest>
+	<pullrequest>
+		<number>131</number>
+		<title>TestProcessBuilderのpath周りのバグを修正</title>
+		<body>resolve #119   - 「rootPath - workingdir間」での「絶対 - 相対」混在の指定を許容 - example直下にworkingdirが存在していなくても動作するように - outDirという名前をworkingDirに変更 - 上記を確認するテストの追加</body>
+		<to>119</to>
+	</pullrequest>
+	<pullrequest>
+		<number>130</number>
+		<title>TargetProjectFactoryの作成</title>
+		<body>resolve #117   TargetProjectの生成責務をFactoryパターンで実装した． `TargetProject::new` を行うのは本Factoryクラスのみ．  基本的なFactoryの利用はこの形 ```java // 全パラメタを指定してcreate final TargetProject project = TargetProjectFactory.create(rootPath, sourceFiles, testFiles, classPaths);  // 空気を読んでcreate final TargetProject project = TargetProjectFactory.create(Paths.get("example/example01")); ```  後者の空気を読むcreateでは， もしビルドツールの設定ファイル（`build.xml` や `build.gradle`）が存在すれば， それら設定ファイルを解釈してTargetProjectを生成する（予定）．  ビルドツールごとのファクトリクラスはスタブのみの実装なので注意．</body>
+		<to>117</to>
+	</pullrequest>
+	<pullrequest>
+		<number>126</number>
+		<title>最終成果物を出力する機能の実装</title>
+		<body>resolve #14  最終成果物(修正ファイルとパッチファイル)を出力する機能を実装しました． 最終成果物のファイルはルートディレクトリ以下に modified ディレクトリを生成し，出力しています． パッチファイルの内容は標準出力にも出力しています． 評価お願いします．</body>
+		<to>14</to>
+	</pullrequest>
+	<pullrequest>
+		<number>113</number>
+		<title>ロガーの追加</title>
+		<body>resolve #47  # 概要 CUILancher・KGenProgMainで使用されているクラスのメソッドに入る箇所と出る箇所にログを追 加．ただし，return文のみのメソッドは入る箇所のみ．コンストラクタのログは省略 出力先はログレベルにかかわらず，すべて標準出力．  # フォーマット 年-月-日 時:分:秒 [スレッド] [ログレベル] ロガーの名前 - メッセージ ``` 2018-12-31 12:34:56 [main] [INFO]  jp.kusumotolab.kgenprog.CUILauncher - message 2018-12-31 12:34:56 [main] [ERROR] jp.kusumotolab.kgenprog.CUILauncher - message2 ```  # 現在のログレベル - info : プログラムの開始地点と終了地点 ```java    public static void main(String[] args) {     log.info("start kGenProg");  // 省略      log.info("end kGenProg");   } ``` - debug : メソッドに入る箇所と出る箇所 ```java public void run(String arg1, int arg2){   log.debug("enter run(String, int)"); // 省略   log.debug("exit run(String, int)"); } ``` -  error : 例外発生時 ```java try{ // 省略 }catch(IOException e){   log.error(e.getMessage(), e);   // e.printStackTrace(); と同じ出力結果が得られる } ```</body>
+		<to>47</to>
+	</pullrequest>
+	<pullrequest>
+		<number>111</number>
+		<title>APRで修正可能なシンプルな題材example04,05,06を追加</title>
+		<body>resolve #112  example04~06を追加． 04と05は単純なステートメントレベルでの置換・追加・削除で修正可能な題材． 06はブロック単位での処理が必須．  バグの具体的な内容，及びAPRでどのように修正されるべきかはソースコードのコメントに記載．</body>
+		<to>112</to>
+	</pullrequest>
+	<pullrequest>
+		<number>105</number>
+		<title>Ochiaiの実装</title>
+		<body>resolve #4 ochiaiのFLを実装したのでレビューお願いします． テストがしょぼいです．</body>
+		<to>4</to>
+	</pullrequest>
+	<pullrequest>
+		<number>103</number>
+		<title>TestResultsに求められる5つのAPIを共通言語化</title>
+		<body>resolve #60 TestResultsに求められる5つのAPIを共通言語で問い合わせできるように修正した． ``` tr.getSuccessRate(); tr.getNumberOfFailedTestExecutingTheStatement(SourceFile, Location); tr.getNumberOfPassedTestExecutingTheStatement(SourceFile, Location); tr.getNumberOfFailedTestNotExecutingTheStatement(SourceFile, Location); tr.getNumberOfPassedTestNotExecutingTheStatement(SourceFile, Location); ``` データ構造そのものの修正はpending  当該PRにはリファクタリングも多数含まれているので，diffは多め． 本質たる修正は`TestResults`と`TestResultsTest`である． Ochiai実装時には後者が参考になりそう．</body>
+		<to>60</to>
+	</pullrequest>
+</pullrequests>

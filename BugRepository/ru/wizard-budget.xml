@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="wizard-budget">
+	<bug id="111" opendate="2015-11-11 01:16:25" fixdate="2015-11-11 02:09:22">
+		<buginformation>
+			<summary>Список покупок в виджете не отсортирован</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/BuyManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="109" opendate="2015-11-10 15:08:07" fixdate="2015-11-10 15:14:15">
+		<buginformation>
+			<summary>Если корректировочная трата равна нулю, она все равно добавляется</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/SpendingManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="106" opendate="2015-10-30 12:19:40" fixdate="2015-10-30 12:24:36">
+		<buginformation>
+			<summary>При восстановлении бекапа отсутствует уведомление</summary>
+			<description>Если нет ни трат, ни покупок, но были восстановлены настройки, то уведомление о восстановлении не показывается. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/BackupManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="84" opendate="2015-08-02 16:43:18" fixdate="2015-10-04 03:39:10">
+		<buginformation>
+			<summary>Разница между ожидаемыми и недоработанными часами отображается неверным цветом при нуле</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/Widget.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="78" opendate="2015-06-14 01:13:03" fixdate="2015-07-11 15:34:19">
+		<buginformation>
+			<summary>При импорте SMS не обнуляются секунды</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/SpendingManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2015-06-11 18:38:10" fixdate="2015-06-12 20:48:31">
+		<buginformation>
+			<summary>При изменении паролей доступа к Dropbox токен не сбрасывается</summary>
+			<description>В результате работа ведётся всё равно со старым приложением. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/SettingsActivity.java</file>
+			<file>src/ru/thewizardplusplus/wizardbudget/MainActivity.java</file>
+			<file>src/ru/thewizardplusplus/wizardbudget/Settings.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="65" opendate="2015-05-17 11:41:47" fixdate="2015-05-18 23:07:50">
+		<buginformation>
+			<summary>Встроенный редактор времени обнуляет значение секунд</summary>
+			<description>Вместо замены редактора времени лучше обнулять секунды при добавлении трат. Точности в минуту более чем достаточно.  Соответственно, отображение секунд можно скрыть (но можно и оставить для упрощения и понятности вывода). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/SpendingManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="64" opendate="2015-05-17 11:41:01" fixdate="2015-05-17 19:42:34">
+		<buginformation>
+			<summary>Тег rest совпадает с одноимённым особым пунктом в статистике</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/SpendingManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2015-02-22 19:13:01" fixdate="2015-03-05 03:02:54">
+		<buginformation>
+			<summary>Тег кредитной карты не определяется в списке трат, если содержит русские буквы</summary>
+			<description>Тег кредитной карты не определяется в списке трат, если содержит русские буквы. Это происходит из-за того, что регулярные выражения JavaScript не парсят русские буквы напрямую (только выраженные в Unicode-кодах). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/SpendingManager.java</file>
+			<file>src/ru/thewizardplusplus/wizardbudget/Settings.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="27" opendate="2015-02-13 12:40:41" fixdate="2015-02-13 23:14:54">
+		<buginformation>
+			<summary>Обновлять виджет при парсинге и импорте SMS</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/SmsReceiver.java</file>
+			<file>src/ru/thewizardplusplus/wizardbudget/Utils.java</file>
+			<file>src/ru/thewizardplusplus/wizardbudget/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="19" opendate="2015-01-17 22:55:29" fixdate="2015-01-21 01:13:54">
+		<buginformation>
+			<summary>Правильно обрабатывать смену ориентации экрана</summary>
+			<description>Сейчас при смене ориентации экрана текущая страница сбрасывается на главную. Нужно сделать запоминание текущей страницы, чтобы при смене ориентации экрана она сохранялась.  Сохранять имя текущей страницы в пользовательских настройках, загружать и устанавливать её оттуда при старте основного активити. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/MainActivity.java</file>
+			<file>src/ru/thewizardplusplus/wizardbudget/Settings.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="8" opendate="2015-01-05 03:39:44" fixdate="2015-01-14 23:02:40">
+		<buginformation>
+			<summary>Добавить поддержку кнопки "Назад"</summary>
+			<description>Сейчас при нажатии кнопки "Назад" приложение просто закрывается (т. к. состоит из единственного активити и переходы по страницам приложения новых активити не создают).  Нужно перехватывать такое нажатие и вместо стандартного поведения симулировать переход по истории перемещения по страницам приложения (как вариант, использовать HTML5 History API). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/ru/thewizardplusplus/wizardbudget/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

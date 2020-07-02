@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+<bug>
+	<id>76</id>
+	<title>カメラ機能で連打された時に撮影枚数とカウントがずれるバグ</title>
+	<body>連打をブロックするか、実際に撮影された枚数をカウントするかいずれかで対応。 </body>
+	<created>2015-04-14 09:18:20</created>
+	<closed>2015-04-14 15:22:02</closed>
+</bug>
+<bug>
+	<id>75</id>
+	<title>満腹度100時の経験値UpがGameSurfaceViewに戻るたびに実行されるバグ</title>
+	<body>前回満腹度100で経験値をアップした時間を取得。3時間経過時に次のUp実行を行うようにしてバグフィックス。また、プレファレンスかな。 </body>
+	<created>2015-04-14 03:17:45</created>
+	<closed>2015-04-14 05:18:20</closed>
+</bug>
+<bug>
+	<id>72</id>
+	<title>ペットのレベルが3なのにTwitter投稿画像がレベル2のものになるバグ</title>
+	<body>SnsBtnクラスの該当部分を見る限りミスはなさそうなのですが…。 </body>
+	<created>2015-04-13 09:30:07</created>
+	<closed>2015-04-14 01:42:47</closed>
+</bug>
+<bug>
+	<id>69</id>
+	<title>notificationが設定日時以内なのに出されてしまうバグ</title>
+	<body>AlarmBroadcastReceiverクラス側で、notificationを出すかどうかを現在時刻と前回notificationを出した時刻で比較して出すようにする。 </body>
+	<created>2015-04-10 09:51:28</created>
+	<closed>2015-04-13 08:37:59</closed>
+</bug>
+<bug>
+	<id>66</id>
+	<title>ノーティフィケーションで表示されるペットイラストのサイズが大きすぎて見えないバグ</title>
+	<body>ノーティフィケーションマネジャーでイラストを渡す時点でviewの幅を基準にリサイズして回避を。 </body>
+	<created>2015-04-07 15:22:53</created>
+	<closed>2015-04-08 15:09:45</closed>
+</bug>
+<bug>
+	<id>65</id>
+	<title>横位置で写真を撮ろうとするとプレビューが左右がつまった感じになるバグ</title>
+	<body>実際に撮った写真はアスペクト比は問題ない模様。プレビューのみが変。 </body>
+	<created>2015-04-07 15:18:46</created>
+	<closed>2015-04-08 15:09:45</closed>
+</bug>
+<bug>
+	<id>62</id>
+	<title>ゲーム画面で戻るボタン押下時にホーム画面に戻らないバグ</title>
+	<body>2回押すと戻るということは、どこかでMainActivityが2つ起動しているということ？ </body>
+	<created>2015-04-07 15:05:17</created>
+	<closed>2015-04-09 15:59:53</closed>
+</bug>
+<bug>
+	<id>60</id>
+	<title>チュートリアルで説明文最終行の文字の下部がかけている</title>
+	<body>パディングの調整でなんとか…。 </body>
+	<created>2015-04-07 15:02:57</created>
+	<closed>2015-04-08 15:09:45</closed>
+</bug>
+<bug>
+	<id>57</id>
+	<title>ゲーム中以外でレベルアップした場合にペット図鑑の表示が実態とずれるバグ</title>
+	<body>プリファレンスへの履歴登録おwゲームスレッドで行っているため。現状のステータスを参照してプリファレンスを更新するようにするか、図鑑側からペットのgetter経由でペット種別名を取得するように変更が必要。 </body>
+	<created>2015-04-07 05:34:05</created>
+	<closed>2015-04-07 15:00:38</closed>
+</bug>
+<bug>
+	<id>56</id>
+	<title>3時間以内に食べたエサの数が起動直後だとリセットされていないバグ</title>
+	<body>プリファレンスから取得した数を、プリファレンス登録時の時間も一緒に登録&amp;取得するように変更？　もっと合理的な実装方法があるかもしれないですが…。 </body>
+	<created>2015-04-07 04:19:29</created>
+	<closed>2015-04-07 15:00:38</closed>
+</bug>
+<bug>
+	<id>55</id>
+	<title>タップした座標が残っているためペットが当該位置に来るたびに鳴き声を出すバグ</title>
+	<body>鳴き声を出させるための座標を別の変数にて管理することで回避かな。 </body>
+	<created>2015-04-07 04:17:57</created>
+	<closed>2015-04-08 15:09:44</closed>
+</bug>
+<bug>
+	<id>53</id>
+	<title>エサの出現範囲（乱数で出しているX座標）を画面幅を最大値に変更</title>
+	<body></body>
+	<created>2015-04-06 12:41:29</created>
+	<closed>2015-04-07 04:16:10</closed>
+</bug>
+<bug>
+	<id>52</id>
+	<title>Nexus7で写真が取得できなくなっている不具合</title>
+	<body>写真取得時に乱数を使ったことで発生した問題か? </body>
+	<created>2015-04-06 08:24:27</created>
+	<closed>2015-04-16 06:09:00</closed>
+</bug>
+<bug>
+	<id>43</id>
+	<title>ペット図鑑でのレベル取得バグ</title>
+	<body>セリフ機能を実装したところ、ペット図鑑でのレベル取得がうまくいかない。 そのため、レベル1のペットしか表示されない状態となっている。 </body>
+	<created>2015-04-05 07:07:01</created>
+	<closed>2015-04-05 10:21:51</closed>
+</bug>
+<bug>
+	<id>41</id>
+	<title>ペット図鑑でのViewによる想定外表示を微調整する</title>
+	<body>xmlでの描画時とくらべてやや文字が小さくなっている。 </body>
+	<created>2015-04-02 12:48:41</created>
+	<closed>2015-04-05 07:08:36</closed>
+</bug>
+<bug>
+	<id>37</id>
+	<title>10インチタブレットでのペットの動きが早過ぎる</title>
+	<body>移動幅をViewの幅からとれていない? </body>
+	<created>2015-03-30 08:07:28</created>
+	<closed>2015-04-01 14:39:56</closed>
+</bug>
+<bug>
+	<id>36</id>
+	<title>10インチタブレットでペットの表示サイズが小さい</title>
+	<body>Viewの幅をとれていない? </body>
+	<created>2015-03-30 08:05:42</created>
+	<closed>2015-03-30 14:45:14</closed>
+</bug>
+<bug>
+	<id>35</id>
+	<title>10インチタブレットでTwitterとfacebook遷移時に例外発生</title>
+	<body></body>
+	<created>2015-03-30 08:02:02</created>
+	<closed>2015-03-31 15:25:18</closed>
+</bug>
+<bug>
+	<id>34</id>
+	<title>10インチタブレットでペットとエサの動く範囲がおかしい問題</title>
+	<body>ペットは画面の左右3/4くらい。エサは画面をややはみ出た部分まで行ってしまう。 </body>
+	<created>2015-03-30 08:01:48</created>
+	<closed>2015-03-30 14:45:14</closed>
+</bug>
+<bug>
+	<id>33</id>
+	<title>10インチタブレットで謎の犬画像の解像度が足りない問題に対処</title>
+	<body>Xhdpiに高解像度画像を入れる。 </body>
+	<created>2015-03-30 07:58:52</created>
+	<closed>2015-04-07 15:00:38</closed>
+</bug>
+<bug>
+	<id>31</id>
+	<title>ゲーム画面初回表示時のwelcomeメッセージ表示バグ</title>
+	<body>ゲーム画面表示時のwelcomeメッセージ内のTextがstring.xmlをうまく拾わないことによるバグ。 </body>
+	<created>2015-03-30 02:04:54</created>
+	<closed>2015-03-30 14:45:14</closed>
+</bug>
+<bug>
+	<id>30</id>
+	<title>生後1日目と2日目の英語表記バグ</title>
+	<body>1th Day. 2th Dayと気の毒な表示になっているバグ。 </body>
+	<created>2015-03-29 12:25:44</created>
+	<closed>2015-03-30 14:45:14</closed>
+</bug>
+<bug>
+	<id>29</id>
+	<title>インストール後の初回起動検知がうまく行っていないバグ</title>
+	<body>チュートリアル機能実装にともない、インストール後の初回起動検知をStartActivityでプリファレンスを用いて行う。  ところが、その判定がうまく行っていない。謎。 </body>
+	<created>2015-03-28 14:20:06</created>
+	<closed>2015-03-31 15:25:18</closed>
+</bug>
+<bug>
+	<id>26</id>
+	<title>ペット動作での画面端判定バグ</title>
+	<body>ペットが動いているうちにだんだんとxy両方向とも外側にはみ出てしまう現象が発生している。クラス構成を全面的に書き換えた時に何処かで問題が発生。 </body>
+	<created>2015-03-26 15:07:13</created>
+	<closed>2015-03-27 14:59:48</closed>
+</bug>
+<bug>
+	<id>24</id>
+	<title>ペットと餌の衝突判定でのエラー</title>
+	<body>RectFクラスのintersects(RectF a, RectF b)メソッドを使うと、衝突判定のfor文中でRectFの中身が殻になっている模様（同クラスのisEmpty()メソッドで確認）。 </body>
+	<created>2015-03-24 14:36:03</created>
+	<closed>2015-03-26 15:02:38</closed>
+</bug>
+<bug>
+	<id>14</id>
+	<title>累積撮影回数の書き込みが0になる現象</title>
+	<body>SurfaceViewから直接SQLiteファイルに書き込むように変更した際に発生。 </body>
+	<created>2015-03-18 06:31:12</created>
+	<closed>2015-03-19 00:10:41</closed>
+</bug>
+<bug>
+	<id>13</id>
+	<title>CameraActivityに遷移する際にLolipopのNexus7（2013）で例外発生。</title>
+	<body>Nexus7（2012）では例外は発生しない。 </body>
+	<created>2015-03-17 10:54:28</created>
+	<closed>2015-04-08 15:09:44</closed>
+</bug>
+<bug>
+	<id>11</id>
+	<title>BGMのオン・オフ不具合</title>
+	<body>onResume()とonPause()でBGMのオン・オフをしようとしたところ、TwitterやFacebookにインテントを飛ばして戻ってきたあとBGMが必ずオフになる現象が発生。 また、カメラ機能を利用してメインアクティビティに戻ってきたあとは逆に、BGMが必ずオンになる現象も。 </body>
+	<created>2015-03-15 18:28:15</created>
+	<closed>2015-03-17 05:41:34</closed>
+</bug>
+<bug>
+	<id>10</id>
+	<title>onResumeとonPause時のPreference不具合</title>
+	<body>撮影回数を保持しているPreferenceのリセットがうまくいかない。 onResume→onPauseを減ると撮影していなくても、Preferenceに保存されている直近の撮影回数分だけ撮影回数が増加してしまう。 </body>
+	<created>2015-03-15 14:53:17</created>
+	<closed>2015-03-19 00:10:41</closed>
+</bug>
+<bug>
+	<id>9</id>
+	<title>写真撮影時のプレビューが90度回転している</title>
+	<body>写真撮影時のプレビューが90度回転しているバグをなんとかしましょう。 </body>
+	<created>2015-03-11 15:55:16</created>
+	<closed>2015-03-15 14:49:08</closed>
+</bug>
+<bug>
+	<id>8</id>
+	<title>openOutputStream部分でのエラー</title>
+	<body>CameraViewでの、openOutputStream部分でのエラーが未解決。 </body>
+	<created>2015-03-11 12:44:58</created>
+	<closed>2015-03-15 14:49:35</closed>
+</bug>
+<bug>
+	<id>1</id>
+	<title>撮影ボタンでException発生</title>
+	<body>CameraActivityにて、撮影ボタンをタップするとException発生。原因不明。 </body>
+	<created>2015-03-11 02:17:00</created>
+	<closed>2015-03-15 14:49:46</closed>
+</bug>
+</bugs>

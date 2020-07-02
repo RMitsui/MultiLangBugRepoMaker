@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>1263</id>
+		<title>[BUG] Неверно определяется AnnotationKind </title>
+		<body>**Версия**   **Описание ошибки диагностики** Анотации расширений указываются как CUSTOM  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  **Скриншоты** &gt; Скриншоты с подтверждением  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2020-06-20 19:18:47</created>
+		<closed>2020-06-21 08:11:21</closed>
+	</bug>
+	<bug>
+		<id>1233</id>
+		<title>[BUG] Срабатывание MissingSpace на последней строке модуля на символе ";"</title>
+		<body>**Версия** &gt; 0.15.0  **Описание ошибки диагностики**  Неправильно работает MissingSpace. На символе ";" срабатывает диагностика, если выражение расположено на последней строке. Есть подозрения на EOF.  **Пример кода** ```bsl Тест = "1";  Сообщить(Текст); ```  **Скриншоты** ![image](https://user-images.githubusercontent.com/11651847/83476771-c50ca000-a4bb-11ea-8a54-48e7ac0ac133.png)  </body>
+		<created>2020-06-02 03:32:08</created>
+		<closed>2020-06-07 13:38:34</closed>
+	</bug>
+	<bug>
+		<id>1228</id>
+		<title>[BUG] NPE при открытии файлов</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  0.15.0  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  При работе функций `ServerContext#populateContext` и `textDocument/didOpen` может возникнуть race condidition за добавление файла в контекст и построение/перестроение первичных данных.  Как следствие, различные сервисы (например, `textDocument/codeLens`) могут получить NPE при получении данных из `DocumentContext`, т.к. они могут быть очищены параллельным потоком </body>
+		<created>2020-06-01 16:01:37</created>
+		<closed>2020-06-02 07:29:52</closed>
+	</bug>
+	<bug>
+		<id>1114</id>
+		<title>Неверно заполняется путь к исходным файлам при формировании отчета</title>
+		<body>**Наблюдается в версии 14.1**  При формировании отчета средствами командной строки (`--analyze`) в случае когда указывается путь к файлам проекта в отчет попадают некорректные пути файлов.  **Пример** Структура проекта:  &gt; ``` &gt; src/ &gt;     cf &gt;         module.os &gt;     otherstuff &gt; tools &gt; ```  Если указываем в качестве каталога исходников путь `src/cf`: `--analyze --srcDir src/cf`  то в отчет путь к `module.os` выводится как `module.os` вместо `src/cf/module.os`  Единственный способ вывести корректный путь к модулю относительно корневой папки, это указать в качестве каталога исходников саму корневую папку (или, что то же самое не указывать параметр). Но в этом случае избыточно анализируется содержимое всех папок проекта (включая tools и otherstuff).  **Предлагаемое решение** Добавить параметр `workspaceDir` - каталог проекта относительно которого и должны указываться пути к исходным файлам.  В этом случае выполнение команды `--analyze --srcDir src/cf --workspaceDir .` Укажет пути как `src/cf/module.os` Выполнение команды `--analyze --srcDir src/cf --workspaceDir src/cf` Укажет пути как `module.os` </body>
+		<created>2020-04-25 08:29:15</created>
+		<closed>2020-04-26 10:35:56</closed>
+	</bug>
+	<bug>
+		<id>1110</id>
+		<title>[BUG] ошибка фонового задания NullPointerException</title>
+		<body>**1.5.0**  Периодически при работе фонового задания Сонар появляется ошибка java.lang.NullPointerException: null [ce.log](https://github.com/1c-syntax/bsl-language-server/files/4524782/ce.log) ![Ошибка Sonar](https://user-images.githubusercontent.com/53838986/80141560-3f7f0180-8599-11ea-8e6d-a7c1c55e37a5.png)  **Возникает не постоянно, где-то каждую четвертую проверку.** </body>
+		<created>2020-04-23 19:37:07</created>
+		<closed>2020-04-24 09:37:00</closed>
+	</bug>
+	<bug>
+		<id>1065</id>
+		<title>[BUG] VariableKind у Variables ошибочно выставляется в GLOBAL</title>
+		<body>**Версия** develop  **Описание ошибки диагностики** VariableKind у Variables ошибочно выставляется в GLOBAL вместо MODULE  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  **Скриншоты** &gt; Скриншоты с подтверждением  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2020-04-16 13:43:01</created>
+		<closed>2020-04-16 14:19:50</closed>
+	</bug>
+	<bug>
+		<id>1060</id>
+		<title>[BUG] Падает sonar-scanner при проверке</title>
+		<body>**Версия** &gt; 1.5.0  **Описание ошибки диагностики** &gt; При проверке сонар-сканер падает при проверке этого модуля  **Пример кода** &gt;  [error_files.zip](https://github.com/1c-syntax/bsl-language-server/files/4482807/error_files.zip) вывод работы и результат ошибки </body>
+		<created>2020-04-15 17:40:56</created>
+		<closed>2020-04-16 11:47:40</closed>
+	</bug>
+	<bug>
+		<id>1052</id>
+		<title>[BUG] MethodSymbolComputer пустой name при ошибке разбора SubName</title>
+		<body>**Версия** Develop  **Описание ошибки диагностики** При разборе #994 выяснилось, что проблема в MethodSymbolComputer   ```bsl Процедура Выполнить()  КонецПроцедуры ```  В name пусто, а в subNameRange рандомный рендж  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  **Скриншоты** &gt; Скриншоты с подтверждением  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2020-04-13 16:12:42</created>
+		<closed>2020-04-13 17:47:55</closed>
+	</bug>
+	<bug>
+		<id>1047</id>
+		<title>Неправильная ссылка на ИТС в диагностике FunctionNameStartsWithGet</title>
+		<body>![image](https://user-images.githubusercontent.com/11651847/79090416-d23ac780-7d73-11ea-862e-8027eb1c51ea.png)  Так же стоит проверить другие диагностики на корректность ссылок на ИТС. </body>
+		<created>2020-04-13 03:51:40</created>
+		<closed>2020-04-13 08:10:11</closed>
+	</bug>
+	<bug>
+		<id>1038</id>
+		<title>[BUG] DocumentContext.contentList пропускает последние пустые строки в файле</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  ветка девелоп.  **Описание ошибки диагностики**  - @nixel2007 documentContext.getContentList() работает неверно - если в конце файла пустые строки, то они не показываются. пустые строки в начале и середине файла показываются верно. - показ разницы в количестве строк   - ![image](https://user-images.githubusercontent.com/2920817/79065513-7e6ba800-7cb9-11ea-9faa-e7d694012dcd.png)  - активно юзается как раз в квик-фиксах ( - через метод getText    - а указанный метод getText и юзает этот метод  ```java   public String getText(Range range) {     Position start = range.getStart();     Position end = range.getEnd();      String[] contentListUnboxed = getContentList(); ```   - ![image](https://user-images.githubusercontent.com/2920817/79065538-c1c61680-7cb9-11ea-8405-ca3124005a2d.png)  - смотреть ConsecutiveEmptyLinesDiagnostic - метод getQuickFixes   - в ПР https://github.com/1c-syntax/bsl-language-server/pull/1030 </body>
+		<created>2020-04-12 09:39:04</created>
+		<closed>2020-04-13 21:54:10</closed>
+	</bug>
+	<bug>
+		<id>1032</id>
+		<title>[BUG] для новой диагностики прекоммит-шаг из Градля работает неточно</title>
+		<body>**Описание ошибки диагностики** &gt; Описание ошибки, замечачания @TheShadoWCo @nixel2007 прекоммит-шаг из Градля работает неточно ( и для английского описания аналогично.  **Скриншоты** &gt; Скриншоты с подтверждением ![image](https://user-images.githubusercontent.com/2920817/79020911-d05de200-7b82-11ea-8747-d52a7f40855a.png) </body>
+		<created>2020-04-10 20:28:27</created>
+		<closed>2020-05-14 07:20:48</closed>
+	</bug>
+	<bug>
+		<id>1015</id>
+		<title>[BUG] При пробелах в пути к коду падает анализ</title>
+		<body>**Версия** &gt; Плагин VSC Версия GitHub release 1.20.0   **Описание ошибки** При анализе файла по пути с пробелом происходит сбой с кучей ругани в Output  **Пример кода** ЗИП с минимальным воспроизведением в приложении. При открытии файла "Папка\src\Папка с пробелом\ВнешняяОбработка1\Form\Форма\Форма.bsl " все падает  Папка\output.txt - содержимое соответствующей страницы подвала VSC [Папка.zip](https://github.com/1c-syntax/bsl-language-server/files/4428145/default.zip) </body>
+		<created>2020-04-03 15:09:45</created>
+		<closed>2020-04-06 14:10:44</closed>
+	</bug>
+	<bug>
+		<id>1004</id>
+		<title>[BUG] Не правильно определяется уровень поддержки при нескольких поставщиках</title>
+		<body>Если на одном объекте несколько вариантов поддержки, то должен браться самый замочный. Если по одному поставщику стоит замок (0), по второй снят с сохранением (1), а по третьему вообще этого объекта нет (3 или 4), то в итоге объект считается на замке и не редактируется. Это поведение 1Ски.  Сейчас берется не самый замочный.</body>
+		<created>2020-03-23 08:36:52</created>
+		<closed>2020-03-23 11:15:43</closed>
+	</bug>
+	<bug>
+		<id>994</id>
+		<title>[BUG] Ошибка при анализе кода 1С7</title>
+		<body>**Версия** 1.4.2  **Описание ошибки диагностики** При анализе кода 1С7 ( файл 1sm) через Jenkins, выходит ошибка: 00:00:09.295 13:26:34.579 INFO: ------------------------------------------------------------------------ 00:00:09.295 13:26:34.579 INFO: EXECUTION FAILURE 00:00:09.295 13:26:34.579 INFO: ------------------------------------------------------------------------ 00:00:09.295 13:26:34.579 INFO: Total time: 8.648s 00:00:09.558 13:26:34.842 INFO: Final Memory: 148M/616M 00:00:09.558 13:26:34.842 INFO: ------------------------------------------------------------------------ 00:00:09.558 13:26:34.842 ERROR: Error during SonarQube Scanner execution 00:00:09.559 java.lang.IllegalArgumentException: java.lang.IllegalArgumentException: Start pointer [line=193, lineOffset=10] should be before end pointer [line=193, lineOffset=9] 00:00:09.560 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) 00:00:09.560 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) 00:00:09.560 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) 00:00:09.560 at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) 00:00:09.560 at java.base/java.util.concurrent.ForkJoinTask.getThrowableException(ForkJoinTask.java:600) 00:00:09.560 at java.base/java.util.concurrent.ForkJoinTask.reportException(ForkJoinTask.java:678) 00:00:09.560 at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:737) 00:00:09.560 at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159) 00:00:09.560 at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173) 00:00:09.560 at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) 00:00:09.560 at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497) 00:00:09.560 at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:661) 00:00:09.560 at com.github._1c_syntax.bsl.sonar.BSLCoreSensor.lambda$execute$4(BSLCoreSensor.java:166) 00:00:09.560 at java.base/java.util.HashMap.forEach(HashMap.java:1336) 00:00:09.560 at com.github._1c_syntax.bsl.sonar.BSLCoreSensor.execute(BSLCoreSensor.java:155) 00:00:09.560 at org.sonar.scanner.sensor.AbstractSensorWrapper.analyse(AbstractSensorWrapper.java:48) 00:00:09.560 at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:85) 00:00:09.560 at org.sonar.scanner.sensor.ModuleSensorsExecutor.lambda$execute$1(ModuleSensorsExecutor.java:59) 00:00:09.560 at org.sonar.scanner.sensor.ModuleSensorsExecutor.withModuleStrategy(ModuleSensorsExecutor.java:77) 00:00:09.560 at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:59) 00:00:09.560 at org.sonar.scanner.scan.ModuleScanContainer.doAfterStart(ModuleScanContainer.java:82) 00:00:09.560 at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:136) 00:00:09.560 at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:122) 00:00:09.560 at org.sonar.scanner.scan.ProjectScanContainer.scan(ProjectScanContainer.java:400) 00:00:09.560 at org.sonar.scanner.scan.ProjectScanContainer.scanRecursively(ProjectScanContainer.java:395) 00:00:09.560 at org.sonar.scanner.scan.ProjectScanContainer.doAfterStart(ProjectScanContainer.java:358) 00:00:09.560 at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:136) 00:00:09.560 at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:122) 00:00:09.560 at org.sonar.scanner.bootstrap.GlobalContainer.doAfterStart(GlobalContainer.java:141) 00:00:09.560 at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:136) 00:00:09.560 at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:122) 00:00:09.560 at org.sonar.batch.bootstrapper.Batch.doExecute(Batch.java:73) 00:00:09.560 at org.sonar.batch.bootstrapper.Batch.execute(Batch.java:67) 00:00:09.560 at org.sonarsource.scanner.api.internal.batch.BatchIsolatedLauncher.execute(BatchIsolatedLauncher.java:46) 00:00:09.560 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 00:00:09.561 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) 00:00:09.561 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) 00:00:09.561 at java.base/java.lang.reflect.Method.invoke(Method.java:566) 00:00:09.561 at org.sonarsource.scanner.api.internal.IsolatedLauncherProxy.invoke(IsolatedLauncherProxy.java:60) 00:00:09.561 at com.sun.proxy.$Proxy0.execute(Unknown Source) 00:00:09.561 at org.sonarsource.scanner.api.EmbeddedScanner.doExecute(EmbeddedScanner.java:189) 00:00:09.561 at org.sonarsource.scanner.api.EmbeddedScanner.execute(EmbeddedScanner.java:138) 00:00:09.561 at org.sonarsource.scanner.cli.Main.execute(Main.java:112) 00:00:09.561 at org.sonarsource.scanner.cli.Main.execute(Main.java:75) 00:00:09.561 at org.sonarsource.scanner.cli.Main.main(Main.java:61)  **Пример кода** `Процедура Выполнить() Если ПустоеЗначение(выбДок)=1 Тогда Возврат; ` **Скриншоты** ![image](https://user-images.githubusercontent.com/12712626/76483654-66460600-6439-11ea-9ae4-d98905d49a1b.png)   **Дополнительная информация** Ошибка пропала после того как заменили Выполнить() на другое т.к. Выполнить() это служебная конструкция в 1С8. </body>
+		<created>2020-03-12 03:15:40</created>
+		<closed>2020-04-13 19:04:22</closed>
+	</bug>
+	<bug>
+		<id>991</id>
+		<title>[BUG] NestedFunctionInParameters NPE</title>
+		<body>## Диагностика &lt;!-- Имя или код диагностики, в которой обнаружена ошибка --&gt; NestedFunctionInParameters  ## Версия develop  ## Описание ошибки диагностики &lt;!-- Описание ошибки, замечачания --&gt; NullPointerException в модуле [Module.txt](https://github.com/1c-syntax/bsl-language-server/files/4314884/Module.txt)   ## Дополнительная информация &lt;!-- Любая дополнительная информация, которая поможет в расследовании проблемы --&gt; `Analyzing files...  73% [===============&gt;     ] 5191/7056 (0:04:17 / 0:01:32) [ForkJoinPool.commonPool-worker-7] ERROR com.github._1c_syntax.bsl.languageserver.providers.DiagnosticProvider - Diagnostic computation error. File: file:///E:/projects/OneCAutoservice/autoservice/src/Documents/МассоваяРассылка/Forms/ФормаДокумента/Module.bsl Diagnostic: NestedFunctionInParameters Analyzing files...  74% [===============&gt;     ] 5227/7056 (0:04:18 / 0:01:30) java.lang.NullPointerException         at com.github._1c_syntax.bsl.languageserver.diagnostics.NestedFunctionInParametersDiagnostic.visitNewExpression(NestedFunctionInParametersDiagnostic.java:69)         at com.github._1c_syntax.bsl.languageserver.diagnostics.NestedFunctionInParametersDiagnostic.visitNewExpression(NestedFunctionInParametersDiagnostic.java:34)         at com.github._1c_syntax.bsl.parser.BSLParser$NewExpressionContext.accept(BSLParser.java:6225)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitComplexIdentifier(BSLParserBaseVisitor.java:771)         at com.github._1c_syntax.bsl.parser.BSLParser$ComplexIdentifierContext.accept(BSLParser.java:6498)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitMember(BSLParserBaseVisitor.java:723)         at com.github._1c_syntax.bsl.parser.BSLParser$MemberContext.accept(BSLParser.java:6111)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitExpression(BSLParserBaseVisitor.java:683)         at com.github._1c_syntax.bsl.parser.BSLParser$ExpressionContext.accept(BSLParser.java:5722)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitAssignment(BSLParserBaseVisitor.java:659)         at com.github._1c_syntax.bsl.parser.BSLParser$AssignmentContext.accept(BSLParser.java:5499)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitStatement(BSLParserBaseVisitor.java:651)         at com.github._1c_syntax.bsl.parser.BSLParser$StatementContext.accept(BSLParser.java:5312)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitCodeBlock(BSLParserBaseVisitor.java:587)         at com.github._1c_syntax.bsl.parser.BSLParser$CodeBlockContext.accept(BSLParser.java:4698)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitSubCodeBlock(BSLParserBaseVisitor.java:371)         at com.github._1c_syntax.bsl.parser.BSLParser$SubCodeBlockContext.accept(BSLParser.java:3168)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitProcedure(BSLParserBaseVisitor.java:339)         at com.github._1c_syntax.bsl.parser.BSLParser$ProcedureContext.accept(BSLParser.java:2801)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitSub(BSLParserBaseVisitor.java:331)         at com.github._1c_syntax.bsl.parser.BSLParser$SubContext.accept(BSLParser.java:2738)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitSubs(BSLParserBaseVisitor.java:323)         at com.github._1c_syntax.bsl.parser.BSLParser$SubsContext.accept(BSLParser.java:2671)         at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)         at com.github._1c_syntax.bsl.parser.BSLParserBaseVisitor.visitFile(BSLParserBaseVisitor.java:43)         at com.github._1c_syntax.bsl.languageserver.diagnostics.AbstractVisitorDiagnostic.getDiagnostics(AbstractVisitorDiagnostic.java:46)         at com.github._1c_syntax.bsl.languageserver.providers.DiagnosticProvider.lambda$computeDiagnostics$0(DiagnosticProvider.java:77)         at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:271)         at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)         at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)         at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)         at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:952)         at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:926)         at java.base/java.util.stream.AbstractTask.compute(AbstractTask.java:327)         at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746)         at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)         at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.helpCC(ForkJoinPool.java:1115)         at java.base/java.util.concurrent.ForkJoinPool.awaitJoin(ForkJoinPool.java:1687)         at java.base/java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:411)         at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:736)         at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateParallel(ReduceOps.java:919)         at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233)         at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578)         at com.github._1c_syntax.bsl.languageserver.providers.DiagnosticProvider.computeDiagnostics(DiagnosticProvider.java:91)         at com.github._1c_syntax.bsl.languageserver.cli.AnalyzeCommand.getFileInfoFromFile(AnalyzeCommand.java:107)         at com.github._1c_syntax.bsl.languageserver.cli.AnalyzeCommand.lambda$execute$0(AnalyzeCommand.java:83)         at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)         at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:948)         at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)         at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)         at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:952)         at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:926)         at java.base/java.util.stream.AbstractTask.compute(AbstractTask.java:327)         at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746)         at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)         at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)         at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)         at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)         at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:177)` </body>
+		<created>2020-03-10 21:30:21</created>
+		<closed>2020-03-11 06:12:58</closed>
+	</bug>
+	<bug>
+		<id>977</id>
+		<title>Области внутри процедуры имеют некорректного родителя в DocumentSymbol</title>
+		<body>![image](https://user-images.githubusercontent.com/1132840/75478273-bab7a300-59ae-11ea-981e-913aaaa75bf9.png) </body>
+		<created>2020-02-27 19:16:09</created>
+		<closed>2020-03-12 10:44:35</closed>
+	</bug>
+	<bug>
+		<id>974</id>
+		<title>[BUG] Лишние ссылки в методах и областях друг на друга</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  latest  Из-за ошибок в алгоритме сборки областей и методов возникает утечка памяти, т.к. при getMethods и getRegions используются ссылки на новые объекты.</body>
+		<created>2020-02-25 14:53:00</created>
+		<closed>2020-02-26 18:03:27</closed>
+	</bug>
+	<bug>
+		<id>972</id>
+		<title>Утечка памяти в RegionSymbol</title>
+		<body>Где-то в районе RegionSymbol остаются ссылки на узлы ParseTree</body>
+		<created>2020-02-24 17:53:25</created>
+		<closed>2020-02-26 18:03:27</closed>
+	</bug>
+	<bug>
+		<id>971</id>
+		<title>[BUG] Тяжелые расчеты предыдущей ноды в UnaryPlusInConcatenationDiagnostic</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  BSL LS: 790dda932007e3e4b0a835eb84bb14384ecbe950  **Описание ошибки диагностики**  При расчете диагностики вызывается Trees.getPreviousNode, который явно делает что-то страшное.  Судя по профайлеру данная диагностика находится в топе по нагрузке на CPU  **Скриншоты**  ![image](https://user-images.githubusercontent.com/1132840/74867930-992f3980-5366-11ea-903a-d3e3f88aab0c.png) </body>
+		<created>2020-02-19 19:26:12</created>
+		<closed>2020-03-09 19:19:23</closed>
+	</bug>
+	<bug>
+		<id>970</id>
+		<title>[BUG] Не работает "висячее" откл.чение диагностики</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  0.13.3  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  Не работает висячий комментарий отключения срабатывания диагностики (блочный работает)  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  `ПараметрыРегистрации = МодульДополнительныеОтчетыИОбработки.СведенияОВнешнейОбработке("2.2.2.1");  ` **Скриншоты** &gt; Скриншоты с подтверждением  ![image](https://user-images.githubusercontent.com/9591731/74631797-e9dc4200-516e-11ea-93e1-f0a33adb2d1c.png)  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2020-02-17 07:19:04</created>
+		<closed>2020-03-27 07:48:40</closed>
+	</bug>
+	<bug>
+		<id>963</id>
+		<title>[BUG] CodeBlockBeforeSubDiagnostic</title>
+		<body>## Диагностика &lt;!-- Имя или код диагностики, в которой обнаружена ошибка --&gt;  CodeBlockBeforeSub  ## Версия &lt;!-- Версия BSLLS либо плагина, который использует BSLLS --&gt; latest  ## Описание ошибки диагностики &lt;!-- Описание ошибки, замечачания --&gt;  Из-за "особенностей" парсера диагностика пытается сработать на модулях, у которых нет кода. Узел FileCodeBlockBeforeSub присуствует, но имеет только start без end, что "мягко" валится в ошибку  ## Пример кода &lt;!-- Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится --&gt;  Любой правильный модуль  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt;  ## Дополнительная информация &lt;!-- Любая дополнительная информация, которая поможет в расследовании проблемы --&gt; </body>
+		<created>2020-02-11 17:02:39</created>
+		<closed>2020-02-11 17:08:37</closed>
+	</bug>
+	<bug>
+		<id>934</id>
+		<title>Плагин VSCODE падает при редактировании файла по сети[BUG]</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  1.20.0  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  Редактируем файл по пути `\\sv-88\c$\opt\copy.os`  Получаем ошибку "A request has failed.".  ``` WARNING: Notification threw an exception: {   "jsonrpc": "2.0",   "method": "textDocument/didOpen",   "params": {     "textDocument": {       "uri": "file://sv-88/c%24/opt/copy.os",       "languageId": "bsl",       "version": 1,       "text": "..."     }   } } ```  **Скриншоты** &gt; Скриншоты с подтверждением  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы ``` java.lang.RuntimeException: java.lang.reflect.InvocationTargetException at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67) at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152) at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220) at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187) at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194) at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94) at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113) at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) at java.base/java.util.concurrent.FutureTask.run(Unknown Source) at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) at java.base/java.lang.Thread.run(Unknown Source) Caused by: java.lang.reflect.InvocationTargetException at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) at java.base/java.lang.reflect.Method.invoke(Unknown Source) at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65) ... 11 more Caused by: java.lang.IllegalArgumentException: URI has an authority component at java.base/java.io.File.&lt;init&gt;(Unknown Source) at com.github._1c_syntax.bsl.languageserver.utils.Absolute.path(Absolute.java:48) at com.github._1c_syntax.bsl.languageserver.utils.Absolute.uri(Absolute.java:38) at com.github._1c_syntax.bsl.languageserver.context.ServerContext.addDocument(ServerContext.java:65) at com.github._1c_syntax.bsl.languageserver.context.ServerContext.addDocument(ServerContext.java:79) at com.github._1c_syntax.bsl.languageserver.BSLTextDocumentService.didOpen(BSLTextDocumentService.java:226) ... 16 more  ```</body>
+		<created>2020-02-04 14:25:25</created>
+		<closed>2020-02-05 11:38:03</closed>
+	</bug>
+	<bug>
+		<id>929</id>
+		<title>Обработка документов с URI-схемами, отличающимися от file://</title>
+		<body>При редактировании не-сохранненного untitled-файла в VSC в URI документа указана схема untitled. При прогоне такого URI через Absolute#URI возникает IllegalArgumentException.  Нужно научить класс Absolute обрабатывать такие схемы и возвращать исходный uri, если передается не file://</body>
+		<created>2020-02-03 11:22:50</created>
+		<closed>2020-02-04 17:13:40</closed>
+	</bug>
+	<bug>
+		<id>925</id>
+		<title>Переменные модуля не попадают в области</title>
+		<body>Пример: ![image](https://user-images.githubusercontent.com/11651847/73459221-0d4e7100-43a9-11ea-806c-24e7ca4afb14.png) </body>
+		<created>2020-01-30 14:40:12</created>
+		<closed>2020-03-12 10:44:35</closed>
+	</bug>
+	<bug>
+		<id>900</id>
+		<title>[BUG] CyclomaticComplexityDiagnostic ошибка в позиционировании</title>
+		<body>## Диагностика &lt;!-- Имя или код диагностики, в которой обнаружена ошибка --&gt; CyclomaticComplexityDiagnostic   ## Версия &lt;!-- Версия BSLLS либо плагина, который использует BSLLS --&gt; latest RC  ## Описание ошибки диагностики &lt;!-- Описание ошибки, замечачания --&gt;  Обнаружено неверное позиционирование замечения + лишний элемент в релейшене  ## Пример кода &lt;!-- Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится --&gt;  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt;  ![image](https://user-images.githubusercontent.com/9591731/72964690-9b37c400-3dcb-11ea-804f-ff6bc5eccc27.png)  ## Дополнительная информация &lt;!-- Любая дополнительная информация, которая поможет в расследовании проблемы --&gt; </body>
+		<created>2020-01-23 07:25:26</created>
+		<closed>2020-01-23 13:03:10</closed>
+	</bug>
+	<bug>
+		<id>881</id>
+		<title>[BUG] Генерация диагностики через gradlew генерирует табы вместо пробелов</title>
+		<body>**Версия** 0.13.0 **Описание ошибки** При использовании команды gradlew newDiagnostic, содержимое указанных тегов содержит табы вместо пробелов. **Пример кода** ```   tags = { DiagnosticTag.STANDARD, DiagnosticTag.DEPRECATED } ```  Перед DiagnosticTag и закрывающей фигурной скобкой ставятся табы. </body>
+		<created>2020-01-22 11:44:19</created>
+		<closed>2020-01-22 14:33:51</closed>
+	</bug>
+	<bug>
+		<id>824</id>
+		<title>[BUG]Потерялись ссылки в документации</title>
+		<body>Для русского варианта: ``` WARNING -  Documentation file 'contributing/DiagnosticStructure.md' contains a link to 'contributing/src/main/java/org/github/_1c_syntax/bsl/languageserver/diagnostics/metadata/DiagnosticMetadata.java' which is not found in the documentation files.  WARNING -  Documentation file 'features/index.md' contains a link to 'features/docs\features\DiagnosticIgnorance.md' which is not found in the documentation files. ```  Для английского: ``` WARNING -  Documentation file 'index.md' contains a link to '../assets/images/jetbrains-variant-4.png' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/index.md' contains a link to 'contributing/EnvironmentSetting.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/index.md' contains a link to 'contributing/DiagnosticExample.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/index.md' contains a link to 'contributing/DiagnosticDevWorkFlow.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/index.md' contains a link to 'contributing/DiagnosticTypeAndSeverity.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/index.md' contains a link to 'contributing/DiagnosticTag.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/index.md' contains a link to 'contributing/DiagnostcAddSettings.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/index.md' contains a link to 'contributing/DiagnosticQuickFix.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/FastStart.md' contains a link to 'contributing/EnvironmentSetting.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/FastStart.md' contains a link to 'contributing/DiagnosticExample.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/FastStart.md' contains a link to 'contributing/DiagnosticStructure.md' which is not found in the documentation files.  WARNING -  Documentation file 'contributing/FastStart.md' contains a link to 'contributing/EnvironmentSetting.md' which is not found in the documentation files. ```  Это пишется в екшене на шагах билд.</body>
+		<created>2020-01-20 19:13:00</created>
+		<closed>2020-01-21 05:15:33</closed>
+	</bug>
+	<bug>
+		<id>819</id>
+		<title>[BUG] CodeOutOfRegionDiagnostic ranges 0</title>
+		<body>## Диагностика CodeOutOfRegionDiagnostic  ## Версия &lt;!-- Версия BSLLS либо плагина, который использует BSLLS --&gt;  ## Описание ошибки диагностики Возвращает  Start 0 0 End 0 0  ## Пример кода &lt;!-- Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится --&gt;  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt;  ## Дополнительная информация &lt;!-- Любая дополнительная информация, которая поможет в расследовании проблемы --&gt; </body>
+		<created>2020-01-20 12:59:31</created>
+		<closed>2020-01-20 13:14:42</closed>
+	</bug>
+	<bug>
+		<id>803</id>
+		<title>[BUG]NPE NonStandardRegionDiagnostic</title>
+		<body>## Диагностика NonStandardRegionDiagnostic  ## Версия  13 alfa  ## Описание ошибки диагностики &lt;!-- Описание ошибки, замечачания --&gt;  ## Пример кода &lt;!-- Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится --&gt;  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt;  ## Дополнительная информация  ``` Caused by: java.lang.NullPointerException at com.github._1c_syntax.bsl.languageserver.diagnostics.NonStandardRegionDiagnostic.lambda$visitFile$1(NonStandardRegionDiagnostic.java:184) at java.base/java.util.ArrayList.forEach(Unknown Source) at com.github._1c_syntax.bsl.languageserver.diagnostics.NonStandardRegionDiagnostic.visitFile(NonStandardRegionDiagnostic.java:181) ```</body>
+		<created>2020-01-15 15:51:17</created>
+		<closed>2020-01-16 14:21:39</closed>
+	</bug>
+	<bug>
+		<id>799</id>
+		<title>[BUG] Для форматат EDT метаданные конфигурации определяются как пустые</title>
+		<body>**Версия**  develop  **Описание ошибки диагностики** Не учитываются данные из конфигурации в формате EDT. В частности не реагирует на пропуск файлов на поддержке.  Это связано с неверным путем к конфигурационному файлу передаваемый в mdclasses.   Например: В параметры был передан путь к конфигурации `C:\Users\ived\projects\OneCAutoservice\autoservice\src`. На его основании алгоритм определить путь к файлу `Configuration.mdo` и возьмет его родителя как значение для mdclasses `C:\Users\ived\projects\OneCAutoservice\autoservice\src\Configuration`. А mdclasses ожидает `C:\Users\ived\projects\OneCAutoservice\autoservice` так как \src\Configuration она добавляет сама. В результате имеем неверный путь к файлу `C:\Users\ived\projects\OneCAutoservice\autoservice\src\Configuration\src\Configuration\Configuration.mdo`  </body>
+		<created>2020-01-15 14:08:24</created>
+		<closed>2020-01-15 16:36:10</closed>
+	</bug>
+	<bug>
+		<id>778</id>
+		<title>[BUG] После вставки в VSC текста из буфера плагин ошибочно помечает весь файл как ошибочный.</title>
+		<body>**Версия** Последняя develop сборка.  **Описание ошибки**  1. Берем bsl файл c содержимым ниже. Он должен быть сохранен заранее; 2. Открываем файл в VSC. Ждем пока завершится анализ диагностик. Убеждаемся что на ```#Область ВнешняяНепустаяОбласть  #Область ВнутренняяНепустаяОбласть``` нет срабатывания; 3. Делаем CTRL+A CTRL+X CTRL+V CTRL+S. Видим, что VSC помечает все области как пустые. Повторное сохранение не помогает, лечится только перезапуском VSC.  **Пример кода** ```#Область Тест // должна упасть здесь #КонецОбласти  #Область ВнешняяОбласть // срабатывание так как во внешней области нет функций #Область ВнутренняяОбласть // срабатывание так как во внутренней области нет функций  #КонецОбласти #КонецОбласти  #Область Тест3 // Нет срабатывания  Функция Тест() КонецФункции  #КонецОбласти  #Область ВнешняяНепустаяОбласть // Нет срабатывания #Область ВнутренняяНепустаяОбласть // Нет срабатывания  Функция Тест() КонецФункции  #КонецОбласти #КонецОбласти ``` </body>
+		<created>2019-12-30 15:38:27</created>
+		<closed>2020-04-13 13:35:21</closed>
+	</bug>
+	<bug>
+		<id>767</id>
+		<title>[BUG] Падает сборка gradle на этапе :updateDiagnosticDocs если в папке libs есть несколько билдов.</title>
+		<body>**Версия** 0.12.3  **Описание ошибки диагностики** Если в папке билдов находится несколько билдов следующего формата: ``` bsl-language-server-OSUsersDiagnostic-6b85343.jar24.12.2019 10:33 bsl-language-server-OSUsersDiagnostic-829e149-DIRTY.jar24.12.2019 14:24 bsl-language-server-OSUsersDiagnostic-5849743-DIRTY.jar 24.12.2019 18:49 bsl-language-server-OSUsersDiagnostic-f491113-DIRTY.jar24.12.2019 14:16 ```  То при выполнения команды `gradlew precommit` сборка падает на этапе updateDiagnosticDocs со следующей ошибкой: ```  Caused by: java.util.MissingResourceException: Can't find bundle for base name com.github._1c_syntax.bsl.languageserver.diagnostics.MultilingualStringHasAllDeclaredLanguagesDiagnostic, locale ru         at com.github._1c_syntax.bsl.languageserver.diagnostics.metadata.DiagnosticInfo.getResourceString(DiagnosticInfo.java:113)         at com.github._1c_syntax.bsl.languageserver.diagnostics.metadata.DiagnosticParameterInfo.lambda$createDiagnosticParameters$0(DiagnosticParameterInfo.java:86)         at com.github._1c_syntax.bsl.languageserver.diagnostics.metadata.DiagnosticParameterInfo.createDiagnosticParameters(DiagnosticParameterInfo.java:87)         at com.github._1c_syntax.bsl.languageserver.diagnostics.metadata.DiagnosticInfo.&lt;init&gt;(DiagnosticInfo.java:64)         at com.github._1c_syntax.bsl.languageserver.diagnostics.DiagnosticSupplier.getDiagnosticInstance(DiagnosticSupplier.java:88)         ... 195 more ``` </body>
+		<created>2019-12-24 11:39:40</created>
+		<closed>2019-12-27 07:36:30</closed>
+	</bug>
+	<bug>
+		<id>764</id>
+		<title>[BUG] ArrayIndexOutOfBoundsException при попытке проверить, что один квик фикс закрывает две диагностики</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS 0.12.3  **Описание ошибки диагностики** Предположим, что один квик фикс может закрыть сразу две диагностики, так как у них пересекается область. Например диагностика пустых областей. Если в пустой внешней области есть пустая внутренняя область, то один квик фикс должен закрыть сразу две диагностики.  Проверка осуществляется новым апи. **Пример кода** ```     List&lt;Diagnostic&gt; diagnostics = getDiagnostics();     final Diagnostic externalRegionDiagnostic = diagnostics.get(1);     final Diagnostic internalRegionDiagnostic = diagnostics.get(2);      List&lt;CodeAction&gt; quickFixes = getQuickFixes(externalRegionDiagnostic);      assertThat(quickFixes).hasSize(1);      final CodeAction quickFix = quickFixes.get(0);      assertThat(quickFix).of(diagnosticInstance).in(documentContext)       .fixes(internalRegionDiagnostic);      assertThat(quickFix).of(diagnosticInstance).in(documentContext)       .fixes(externalRegionDiagnostic);      assertThat(quickFix).in(documentContext)       .hasChanges(1)       .hasNewText(""); ```  **Дополнительная информация** Вывод консоли: ``` Index 1 out of bounds for length 1 java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at com.github._1c_syntax.bsl.languageserver.context.DocumentContext.getText(DocumentContext.java:179) at com.github._1c_syntax.bsl.languageserver.util.assertions.CodeActionAssert.lambda$fixes$0(CodeActionAssert.java:82) at java.base/java.util.ArrayList.forEach(ArrayList.java:1540) at com.github._1c_syntax.bsl.languageserver.util.assertions.CodeActionAssert.fixes(CodeActionAssert.java:69) at com.github._1c_syntax.bsl.languageserver.diagnostics.EmptyRegionDiagnosticTest.testQuickFix(EmptyRegionDiagnosticTest.java:71) ``` </body>
+		<created>2019-12-23 12:48:08</created>
+		<closed>2020-01-11 19:23:56</closed>
+	</bug>
+	<bug>
+		<id>759</id>
+		<title>Форматтер съедает цифры в начале имени библиотеки</title>
+		<body>```bsl #Использовать 1commands ```  после форматирования превращается в   ```bsl #Использовать commands ```</body>
+		<created>2019-12-18 12:10:34</created>
+		<closed>2019-12-18 14:29:05</closed>
+	</bug>
+	<bug>
+		<id>749</id>
+		<title>[BUG] Не заполняются контексты методов регионов до явного вызова getMethods()</title>
+		<body>**Версия** &gt; 0.12.3  **Описание ошибки** &gt; При вызове documentContext.getRegionsFlat() у областей пустые массивы методов (methods) даже если области не пустые. Контекст методов заполняется только если перед вызовом getRegionsFlat() сделать вызов documentContext.getMethods(). </body>
+		<created>2019-12-12 11:37:19</created>
+		<closed>2019-12-24 10:10:08</closed>
+	</bug>
+	<bug>
+		<id>741</id>
+		<title>[BUG] CompilationDirectiveLost ошибка в сообщении </title>
+		<body>## Диагностика CompilationDirectiveLost   ## Версия 0.12.3  ## Описание ошибки диагностики Пропущено сообщение   ## Пример кода &lt;!-- Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится --&gt;  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt;  ## Дополнительная информация &lt;!-- Любая дополнительная информация, которая поможет в расследовании проблемы --&gt; </body>
+		<created>2019-12-06 17:04:34</created>
+		<closed>2019-12-06 19:48:07</closed>
+	</bug>
+	<bug>
+		<id>733</id>
+		<title>В VSC не определяется тип модуля</title>
+		<body>Как следствие не работают диагностики, на него завязанные</body>
+		<created>2019-12-04 15:49:43</created>
+		<closed>2019-12-04 16:12:53</closed>
+	</bug>
+	<bug>
+		<id>723</id>
+		<title>Таска на доку не переваривает сложные параметры</title>
+		<body>@theshadowco посмотри на досуге плз, похоже тут парсер параметров ломается об List  _Originally posted by @asosnoviy in https://github.com/1c-syntax/bsl-language-server/pull/722#issuecomment-560523251_</body>
+		<created>2019-12-02 18:37:59</created>
+		<closed>2019-12-08 13:37:43</closed>
+	</bug>
+	<bug>
+		<id>701</id>
+		<title>[BUG] Не работает параметр maxAllowedLevel в NestedStatementsDiagnostic</title>
+		<body>## Диагностика &lt;!-- Имя или код диагностики, в которой обнаружена ошибка --&gt; NestedStatementsDiagnostic  ## Версия &lt;!-- Версия BSLLS либо плагина, который использует BSLLS --&gt; v0.12.2  ## Описание ошибки диагностики &lt;!-- Описание ошибки, замечачания --&gt; Для диагностики установлено значение больше чем по умолчанию, но все равно отрабатывает значение по умолчанию.  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt; Настройка 8 ![Настройка](https://user-images.githubusercontent.com/5488710/69436045-b21d5400-0d51-11ea-9665-02ea68ebdffb.png)  А ругается уже на вложенность 5 ![Результат](https://user-images.githubusercontent.com/5488710/69436054-b77a9e80-0d51-11ea-8a6f-3ba7ea9a4b80.png)  </body>
+		<created>2019-11-22 15:00:00</created>
+		<closed>2019-11-22 18:37:47</closed>
+	</bug>
+	<bug>
+		<id>700</id>
+		<title>[BUG]Не срабатывают диагностики с фильтром по режиму совместимости.</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS 0.12  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  Не определяется режим совместимости.   **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится   **Скриншоты** &gt; Скриншоты с подтверждением  ![image](https://user-images.githubusercontent.com/15638529/69433827-71bbd700-0d4d-11ea-885a-068f4b99fb9e.png)  ![image](https://user-images.githubusercontent.com/15638529/69433915-9b74fe00-0d4d-11ea-8c28-75dd21b68b5b.png)   **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2019-11-22 14:28:11</created>
+		<closed>2019-11-24 22:18:33</closed>
+	</bug>
+	<bug>
+		<id>678</id>
+		<title>NPE TimeoutsInExternalResources</title>
+		<body>``` ERROR: Error during SonarQube Scanner execution java.lang.NullPointerException   at com.github._1c_syntax.bsl.languageserver.diagnostics.TimeoutsInExternalResourcesDiagnostic.isTimeoutModifer(TimeoutsInExternalResourcesDiagnostic.java:180)   at com.github._1c_syntax.bsl.languageserver.diagnostics.TimeoutsInExternalResourcesDiagnostic.lambda$checkNextStatement$2(TimeoutsInExternalResourcesDiagnostic.java:170)   at java.base/java.util.ArrayList.forEach(Unknown Source)   at com.github._1c_syntax.bsl.languageserver.diagnostics.TimeoutsInExternalResourcesDiagnostic.checkNextStatement(TimeoutsInExternalResourcesDiagnostic.java:166)   at com.github._1c_syntax.bsl.languageserver.diagnostics.TimeoutsInExternalResourcesDiagnostic.lambda$visitCodeBlock$1(TimeoutsInExternalResourcesDiagnostic.java:151)   at java.base/java.util.ArrayList.forEach(Unknown Source)   at com.github._1c_syntax.bsl.languageserver.diagnostics.TimeoutsInExternalResourcesDiagnostic.visitCodeBlock(TimeoutsInExternalResourcesDiagnostic.java:138)   at com.github._1c_syntax.bsl.languageserver.diagnostics.TimeoutsInExternalResourcesDiagnostic.visitCodeBlock(TimeoutsInExternalResourcesDiagnostic.java:42) ```</body>
+		<created>2019-11-18 09:18:00</created>
+		<closed>2019-11-19 05:25:33</closed>
+	</bug>
+	<bug>
+		<id>674</id>
+		<title>[BUG] TimeoutsInExternalResourcesDiagnostic</title>
+		<body>## Диагностика TimeoutsInExternalResourcesDiagnostic - неверный порядок параметра таймаут у FTPСоединение. Должен быть 7-ой, а не 6-ой.  ## Описание ошибки диагностики &lt;!-- Описание ошибки, замечачания --&gt;  ## Пример кода ```bsl FTPСоединение = Новый FTPСоединение(ПараметрыПодключения.FTPсервер, 21, ПараметрыПодключения.FTPлогин, ПараметрыПодключения.FTPпароль, , Истина, 60); ``` </body>
+		<created>2019-11-18 07:12:53</created>
+		<closed>2019-11-18 08:01:55</closed>
+	</bug>
+	<bug>
+		<id>672</id>
+		<title>[BUG] UsingCancelParameterDiagnostic NPE</title>
+		<body>## Диагностика   UsingCancelParameterDiagnostic  ## Версия 0.12.0 ## Описание ошибки диагностики  ## Пример кода ``` Процедура Запуститься(п, П, 0) КонецПроцедуры ``` ## Скриншоты  ## Дополнительная информация </body>
+		<created>2019-11-17 18:29:16</created>
+		<closed>2019-11-17 19:29:23</closed>
+	</bug>
+	<bug>
+		<id>670</id>
+		<title>[BUG]  DeletingCollectionItem lowercase в сообщении</title>
+		<body>## Диагностика DeletingCollectionItem  ## Версия 12  ## Описание ошибки диагностики В сообщение выводится имя коллекции приведенное к нижнему регистру  ## Пример кода  ## Скриншоты ![image](https://user-images.githubusercontent.com/15638529/68994213-70903300-0891-11ea-8468-0bb68acfc1b3.png)  ## Дополнительная информация &lt;!-- Любая дополнительная информация, которая поможет в расследовании проблемы --&gt;  </body>
+		<created>2019-11-16 13:53:55</created>
+		<closed>2019-11-18 10:16:57</closed>
+	</bug>
+	<bug>
+		<id>649</id>
+		<title>[BUG] Кривые описания некоторых диагностик</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  latest  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  Часть описаний диагностик не содержит информации отличной от автогенерируемой + есть описания, созданные без использования шаблона (например MultilingualStringHasAllDeclaredLanguages.md)  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  **Скриншоты** &gt; Скриншоты с подтверждением  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2019-11-15 15:18:20</created>
+		<closed>2019-11-18 10:33:17</closed>
+	</bug>
+	<bug>
+		<id>632</id>
+		<title>[BUG] Вероятно перепутаны Старт Стоп токены при ошибках разбора</title>
+		<body>**Версия** Develop 0.12  **Описание ошибки диагностики** Вероятно перепутаны Старт Стоп токены при ошибках разбора  **Пример кода** ``` УспешноПодключено = ПодключитьВнешнююКомпоненту( #Если Клиент Тогда "C:\Projects\ETPAddin\Bin\Debug-Win32\AddInNative\AddInNative.dll", #Иначе "C:\Projects\ETPAddin\Bin\Debug-x64\AddInNative\AddInNative.dll", #КонецЕсли "ETP", ТипВнешнейКомпоненты.Native); ```   **Скриншоты** &gt; Скриншоты с подтверждением ![image](https://user-images.githubusercontent.com/15638529/68865003-1feacf80-0703-11ea-9e50-6266902aae34.png)  ![image](https://user-images.githubusercontent.com/15638529/68865034-2c6f2800-0703-11ea-86c5-263f8b3bbec3.png)   **Дополнительная информация** #630 </body>
+		<created>2019-11-14 14:22:07</created>
+		<closed>2019-11-16 11:04:04</closed>
+	</bug>
+	<bug>
+		<id>623</id>
+		<title>[BUG] QuickFixSupplier дергает лишние диагностики</title>
+		<body>**Версия** Develop  **Описание ошибки диагностики** ``` java.util.concurrent.CompletionException: java.lang.ClassCastException: class com.github._1c_syntax.bsl.languageserver.diagnostics.MethodSizeDiagnostic cannot be cast to class com.github._1c_syntax.bsl.languageserver.diagnostics.QuickFixProvider (com.github._1c_syntax.bsl.languageserver.diagnostics.MethodSizeDiagnostic and com.github._1c_syntax.bsl.languageserver.diagnostics.QuickFixProvider are in unnamed module of loader 'app') ```  **Пример кода**  **Скриншоты**  **Дополнительная информация**  В VSC переходим из панели проблем к любой ошибке, для которой нет квикфикса.</body>
+		<created>2019-11-13 09:18:09</created>
+		<closed>2019-11-13 14:50:01</closed>
+	</bug>
+	<bug>
+		<id>607</id>
+		<title>[BUG] MagicNumbers неверное имя в eng </title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS Develop **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  В eng языке magickNumber называется Method size limit  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  **Скриншоты** &gt; Скриншоты с подтверждением  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2019-11-08 06:09:45</created>
+		<closed>2019-11-08 08:36:47</closed>
+	</bug>
+	<bug>
+		<id>593</id>
+		<title>[BUG] Срабатывает отключенная диагностика</title>
+		<body>## Диагностика CognitiveComplexity но думаю, проблема со всеми  ## Версия 0.11.0+247  ## Описание ошибки диагностики Срабатывает отключенная диагностика   ## Пример кода ```bsl // BSLLS:CognitiveComplexity-off Процедура ПрочитатьДанныеСтроки(...) // Какой-то код КонецПроцедуры // BSLLS:CognitiveComplexity-on ```  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt; ![image](https://user-images.githubusercontent.com/10762909/68021226-e56c4600-fcb1-11e9-8650-9ca107f84a80.png)  </body>
+		<created>2019-11-01 11:16:05</created>
+		<closed>2019-11-01 11:37:17</closed>
+	</bug>
+	<bug>
+		<id>591</id>
+		<title>[BUG] Задваивает сообщение об ошибке для диагностики WorkingTimeoutWithExternalResources</title>
+		<body>## Диагностика WorkingTimeoutWithExternalResources  ## Версия 0.11.0 + (develop от 29.10.2019)  ## Описание ошибки диагностики Задваивает сообщение об ошибке для диагностики WorkingTimeoutWithExternalResources  ## Пример кода ```bsl Эластик_Соединение = Новый HTTPСоединение(Эластик_Сервер, Эластик_Порт, Эластик_Пользователь, Эластик_Пароль); ```  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt; ![image](https://user-images.githubusercontent.com/10762909/68020266-0bdcb200-fcaf-11e9-9a86-7342bedc1833.png)   </body>
+		<created>2019-11-01 10:59:30</created>
+		<closed>2019-11-06 13:06:39</closed>
+	</bug>
+	<bug>
+		<id>589</id>
+		<title>[BUG] Падает sonar scanner на //BSLLS:&lt;имя диагностики&gt;-off/on</title>
+		<body>**Версия** 1.2.0  **Описание ошибки диагностики** Падает sonar scanner на //BSLLS:&lt;имя диагностики&gt;-off/on  **Пример кода** ```bsl // BSLLS:CognitiveComplexity-off Процедура ПрочитатьДанныеСтроки(...) // Какой-то код КонецПроцедуры // BSLLS:CognitiveComplexity-on  ```  **Скриншоты** ```txt ERROR: Error during SonarQube Scanner execution java.lang.NullPointerException at com.github._1c_syntax.bsl.languageserver.context.computer.DiagnosticIgnoranceComputer$Data.lambda$diagnosticShouldBeIgnored$0(DiagnosticIgnoranceComputer.java:202) at java.base/java.util.function.Predicate.lambda$or$2(Predicate.java:101) at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:176) at java.base/java.util.HashMap$EntrySpliterator.tryAdvance(HashMap.java:1767) at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:127) at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:502) at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:488) at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474) at java.base/java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:230) at java.base/java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:196) at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) at java.base/java.util.stream.ReferencePipeline.anyMatch(ReferencePipeline.java:528) at com.github._1c_syntax.bsl.languageserver.context.computer.DiagnosticIgnoranceComputer$Data.diagnosticShouldBeIgnored(DiagnosticIgnoranceComputer.java:210) at com.github._1c_syntax.bsl.languageserver.providers.DiagnosticProvider.lambda$computeDiagnostics$1(DiagnosticProvider.java:124) at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:176) at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654) at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658) at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:274) at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654) at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474) at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:952) at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:926) at java.base/java.util.stream.AbstractTask.compute(AbstractTask.java:327) at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746) at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) at java.base/java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:408) at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:736) at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateParallel(ReduceOps.java:919) at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578) at com.github._1c_syntax.bsl.languageserver.providers.DiagnosticProvider.computeDiagnostics(DiagnosticProvider.java:125) at com.github._1c_syntax.bsl.sonar.BSLCoreSensor.processFile(BSLCoreSensor.java:163) at com.github._1c_syntax.bsl.sonar.BSLCoreSensor.lambda$execute$0(BSLCoreSensor.java:128) at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:948) at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290) at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746) at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.helpCC(ForkJoinPool.java:1115) at java.base/java.util.concurrent.ForkJoinPool.externalHelpComplete(ForkJoinPool.java:1957) at java.base/java.util.concurrent.ForkJoinTask.tryExternalHelp(ForkJoinTask.java:378) at java.base/java.util.concurrent.ForkJoinTask.externalAwaitDone(ForkJoinTask.java:323) at java.base/java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:412) at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:736) at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159) at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173) at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497) at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:661) at com.github._1c_syntax.bsl.sonar.BSLCoreSensor.execute(BSLCoreSensor.java:123) at org.sonar.scanner.sensor.AbstractSensorWrapper.analyse(AbstractSensorWrapper.java:48) at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:85) at org.sonar.scanner.sensor.ModuleSensorsExecutor.lambda$execute$1(ModuleSensorsExecutor.java:59) at org.sonar.scanner.sensor.ModuleSensorsExecutor.withModuleStrategy(ModuleSensorsExecutor.java:77) at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:59) at org.sonar.scanner.scan.ModuleScanContainer.doAfterStart(ModuleScanContainer.java:82) at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:136) at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:122) at org.sonar.scanner.scan.ProjectScanContainer.scan(ProjectScanContainer.java:400) at org.sonar.scanner.scan.ProjectScanContainer.scanRecursively(ProjectScanContainer.java:395) at org.sonar.scanner.scan.ProjectScanContainer.doAfterStart(ProjectScanContainer.java:358) at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:136) at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:122) at org.sonar.scanner.bootstrap.GlobalContainer.doAfterStart(GlobalContainer.java:141) at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:136) at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:122) at org.sonar.batch.bootstrapper.Batch.doExecute(Batch.java:73) at org.sonar.batch.bootstrapper.Batch.executeTask(Batch.java:99) at org.sonarsource.scanner.api.internal.batch.BatchIsolatedLauncher.execute(BatchIsolatedLauncher.java:63) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.base/java.lang.reflect.Method.invoke(Method.java:566) at org.sonarsource.scanner.api.internal.IsolatedLauncherProxy.invoke(IsolatedLauncherProxy.java:60) at com.sun.proxy.$Proxy0.execute(Unknown Source) at org.sonarsource.scanner.api.EmbeddedScanner.doExecute(EmbeddedScanner.java:233) at org.sonarsource.scanner.api.EmbeddedScanner.runAnalysis(EmbeddedScanner.java:151) at org.sonarsource.scanner.cli.Main.runAnalysis(Main.java:123) at org.sonarsource.scanner.cli.Main.execute(Main.java:77) at org.sonarsource.scanner.cli.Main.main(Main.java:61) ERROR:  ERROR: Re-run SonarQube Scanner using the -X switch to enable full debug logging. ```  </body>
+		<created>2019-11-01 08:07:26</created>
+		<closed>2019-11-01 09:15:24</closed>
+	</bug>
+	<bug>
+		<id>560</id>
+		<title>[BUG] Не корректно работает установка локали языка диагностик</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  0.11  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  Задаваемый в конфигурационном файле код языка не влияет на работу в режиме анализа, используется системная локаль  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  **Скриншоты** &gt; Скриншоты с подтверждением  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2019-10-30 09:27:20</created>
+		<closed>2019-11-12 09:40:33</closed>
+	</bug>
+	<bug>
+		<id>557</id>
+		<title>[BUG] Репортер generic сохраняет абсолютные пути вместо относительных</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  0.11  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  Репортер generic сохраняет абсолютные пути вместо относительных, что приводит к некорректной работе при использовании в ci  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  **Скриншоты** &gt; Скриншоты с подтверждением  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2019-10-30 05:28:34</created>
+		<closed>2019-11-14 14:41:07</closed>
+	</bug>
+	<bug>
+		<id>552</id>
+		<title>[BUG] В описании диагностики "Включена по умолчанию" всегда Нет</title>
+		<body>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  1.11  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  В описании диагностики "Включена по умолчанию" всегда Нет  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  **Скриншоты** &gt; Скриншоты с подтверждением  ![image](https://user-images.githubusercontent.com/9591731/67760726-e0f62200-fa52-11e9-8b00-493613a9f0d7.png)  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </body>
+		<created>2019-10-29 10:49:12</created>
+		<closed>2019-11-01 06:20:34</closed>
+	</bug>
+	<bug>
+		<id>521</id>
+		<title>[BUG] Диагностика "Использование свойства "ЭтаФорма" срабатывает дважды</title>
+		<body>**Диагностика** Использование свойства "ЭтаФорма"  **Тип ошибки** - [ ] Ложное срабатывание [FP] - [ ] Ложное НЕ срабатывание [FN] - [x] Ошибка [BUG]  **Версия** 1C (BSL) Community Plugin 1.2.0  **Описание ошибки диагностики** Диагностика сработала дважды  **Пример кода**  ```bsl Процедура ПрочитатьФайл(Команда)      Если НЕ ПроверкаПередЗагрузкойПройдена() Тогда         Возврат;     КонецЕсли;     Режим = РежимДиалогаВопрос.ДаНет;     Оповещение = Новый ОписаниеОповещения("ПослеЗакрытияВопроса_ПрочитатьФайл", ЭтаФорма, Параметры);  КонецПроцедуры ```  **Скриншоты** ![image](https://user-images.githubusercontent.com/24920942/67285974-383f4400-f4e1-11e9-8f6f-ffd35bf99322.png)  </body>
+		<created>2019-10-22 12:33:50</created>
+		<closed>2019-11-02 16:35:51</closed>
+	</bug>

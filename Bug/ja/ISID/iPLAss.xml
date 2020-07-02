@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>524</id>
+		<title>EntityCRUD WebAPI、jsonとcsvでfilter指定の場合の取得プロパティが異なる（3.0）</title>
+		<body>Backport of #523  ※ 3.0においては、デフォルト値は、現行のまま json -&gt; mapped byを取得する csv -&gt; mapped byを取得しない にする。 </body>
+		<created>2020-06-22 09:52:18</created>
+		<closed>2020-06-24 12:35:40</closed>
+	</bug>
+	<bug>
+		<id>521</id>
+		<title>EntityViewの管理設定にてdefault view定義でautoGenerateをtrueにしても自動生成されない（3.0）</title>
+		<body>Backport of #520</body>
+		<created>2020-06-19 09:07:24</created>
+		<closed>2020-06-22 11:46:40</closed>
+	</bug>
+	<bug>
+		<id>512</id>
+		<title>AdminConsole、CSVDownloadの条件にマルチバイト文字を含む場合に結果が不正になる（3.0）</title>
+		<body>https://github.com/ISID/iPLAss/issues/511 のBackport対応  _(English)_ Backport of https://github.com/ISID/iPLAss/issues/511</body>
+		<created>2020-06-11 05:13:02</created>
+		<closed>2020-06-11 11:20:46</closed>
+	</bug>
+	<bug>
+		<id>511</id>
+		<title>AdminConsole、CSVDownloadの条件にマルチバイト文字を含む場合に結果が不正になる</title>
+		<body>AdminConsole、CSVDownloadの条件にマルチバイト文字を含む場合に結果が不正になる。  例えば、EQLWorksheetやEntityExplorerのWhere条件にマルチバイトの条件を指定していると、CSVの結果が０件になってしまう。  対象は以下の機能。 - EQLWorksheet - EntityExplorer - BuiltinAuthUserExplorer </body>
+		<created>2020-06-11 05:06:35</created>
+		<closed>2020-06-11 11:16:55</closed>
+	</bug>
+	<bug>
+		<id>510</id>
+		<title>NestTableの自動補完、他のReferenceに同一プロパティ名があると連動してしまう（3.0）</title>
+		<body>https://github.com/ISID/iPLAss/issues/509 のBackport対応  (English) Backport of https://github.com/ISID/iPLAss/issues/509</body>
+		<created>2020-06-11 02:29:57</created>
+		<closed>2020-06-12 06:05:56</closed>
+	</bug>
+	<bug>
+		<id>509</id>
+		<title>NestTableの自動補完、他のReferenceに同一プロパティ名があると連動してしまう</title>
+		<body>NestTableの自動補完、他のReferenceに同一プロパティ名があると連動してしまう。  例えば、以下のような場合に、 `reference2.string2` が `reference1.string1` のchangeで動作してしまう。  ``` AEntity ‐ reference1 (多重度1、ReferenceSection利用)   - string1   - string2 (string1を連動元にして自動補完設定) - reference2 (多重度*、ReferencePropertyEditorでNestTable形式を利用)   - string1   - string2 (string1を連動元にして自動補完設定、ネストプロパティ同士の自動補完ON) ```</body>
+		<created>2020-06-11 02:18:57</created>
+		<closed>2020-06-12 05:24:35</closed>
+	</bug>
+	<bug>
+		<id>479</id>
+		<title>大量データ参照セクション、子の参照先のプロパティをNestPropertyとして指定しても検索されない (3.0.13~)</title>
+		<body>大量データ参照セクションで指定された被参照プロパティに定義されている参照先のプロパティをNestPropertyとして指定しても、一覧にデータが表示されない。  ``` MassReferenceSection （ref1 ・・・被参照プロパティ）   ref2 (参照 多重度1)     string1 ```  この場合、以下の定義をすることで、`ref1.ref2.string1` の結果が一覧に表示されるはずが、表示できていない。  1. ref1に対するMassReferenceSectionを追加 2. MassReferenceSectionのNestPropertyにref2を指定（ReferencePropertyEditor） 3. 2で指定したReferencePropertyEditorのNestPropertyにstring1を指定  </body>
+		<created>2020-04-21 05:47:01</created>
+		<closed>2020-04-21 07:38:34</closed>
+	</bug>
+	<bug>
+		<id>478</id>
+		<title>SQLServer、DATE_ADD関数が不正</title>
+		<body>DATE_ADD関数でunitに'DAY'、'HOUR'、'MINUTE'を指定するとエラーとなる。</body>
+		<created>2020-04-17 08:44:06</created>
+		<closed>2020-04-17 09:30:54</closed>
+	</bug>
+	<bug>
+		<id>475</id>
+		<title>SQLServer、検索時にソートしない設定でページングを有効にすると検索でエラーが発生する</title>
+		<body>SQLServerのOFFSET FETCHではOrderBy句の指定が必要であるため。</body>
+		<created>2020-04-09 09:16:02</created>
+		<closed>2020-04-09 09:25:57</closed>
+	</bug>
+	<bug>
+		<id>474</id>
+		<title>gem、Entity検索画面、ソート条件未指定時にoidがデフォルトで付与されない(3.0.20～3.0.21)</title>
+		<body>gem、Entity検索画面、ソート条件未指定時にoidがデフォルトで付与されなくなってしまった。  https://github.com/ISID/iPLAss/issues/434 でのデグレ。 </body>
+		<created>2020-04-08 08:52:04</created>
+		<closed>2020-04-08 10:06:08</closed>
+	</bug>
+	<bug>
+		<id>473</id>
+		<title>SQLServer、EntityManagerのcountメソッドにOrderByが設定されたQueryを指定するとエラーが発生</title>
+		<body>EntityManagerのcountメソッドでは指定されたQueryをサブクエリとして扱うが、SQLServerではサブクエリにOrderByを指定することは出来ない。 (正確には TOP、OFFSET、または FOR XML が指定が必要) countメソッドではOrderByの指定は不要のためサブクエリ化するSQLからOrderBy句を削除する。</body>
+		<created>2020-04-06 04:56:11</created>
+		<closed>2020-04-06 05:15:48</closed>
+	</bug>
+	<bug>
+		<id>472</id>
+		<title>EntityExplorer、DateとTimeがクライアントのTimezoneによってずれてしまう</title>
+		<body>EntityExplorerの検索結果表示で、Date型とTime型の値がクライアントのTimezoneによってずれてしまう。  APサーバのタイムゾーンとクライアント(OS)のタイムゾーンが異なる場合に発生する可能性がある。</body>
+		<created>2020-03-31 07:07:18</created>
+		<closed>2020-03-31 08:52:35</closed>
+	</bug>
+	<bug>
+		<id>467</id>
+		<title>jacksonバージョンアップ</title>
+		<body>jacksonをver.2.10.3にバージョンアップする。 Mapに対してjava.sql.Dateインスタンスを保持した場合、 意図した通りにシリアライズされない問題に対処するため。 （jacksonのissue#2573を取り込むため）</body>
+		<created>2020-03-18 05:24:54</created>
+		<closed>2020-03-18 05:45:27</closed>
+	</bug>
+	<bug>
+		<id>466</id>
+		<title>MySQL、TRUNCATE関数が不正</title>
+		<body>TRUNCATE関数で'decimalPlace'を省略するとエラーとなる。</body>
+		<created>2020-03-18 05:17:58</created>
+		<closed>2020-03-18 06:10:45</closed>
+	</bug>
+	<bug>
+		<id>465</id>
+		<title>SQLServer、TRUNCATE関数とROUND関数が不正</title>
+		<body>TRUNCATE関数で切り捨て結果が不正な値となる。 ROUND関数で'decimalPlace'を省略するとエラーとなる。</body>
+		<created>2020-03-17 11:05:12</created>
+		<closed>2020-03-18 05:05:32</closed>
+	</bug>
+	<bug>
+		<id>464</id>
+		<title>バルク更新、Statementのクローズ漏れ</title>
+		<body>バルク更新、Statementのクローズ漏れ。 現状でもConnection#close時にcloseされはするが、使い終わったらちゃんとクローズするようにする。</body>
+		<created>2020-03-17 09:33:09</created>
+		<closed>2020-03-17 09:38:32</closed>
+	</bug>
+	<bug>
+		<id>460</id>
+		<title>TopView検索結果一覧Parts、全文検索Parts、詳細画面経由で編集画面に遷移した際に詳細画面に戻らない</title>
+		<body>TopViewの検索結果一覧Parts、全文検索Partsにて、 検索結果から詳細画面経由で編集画面に遷移した際に編集画面でキャンセルをすると、 検索結果画面（Top画面）に戻ってしまい、詳細画面に戻らない。 （編集画面で保存した場合は、詳細画面に戻る）  汎用画面と同様にキャンセル時も詳細画面に戻るようにする。  既存の動作を保証するため、GemConfigServiceの設定で、Topに戻るフラグを用意する。 デフォルト値はfalse(詳細に戻る)として、Topに戻りたい場合はtrueに変更してもらう。 </body>
+		<created>2020-03-12 07:35:55</created>
+		<closed>2020-03-13 11:15:36</closed>
+	</bug>
+	<bug>
+		<id>455</id>
+		<title>全文検索、複数エンティティを全文検索する場合にソート順が不正になる</title>
+		<body>作成されたインデックスファイルの中身によって、複数エンティティを全文検索する場合、検索結果がエンティティの順番に返されない可能性がありますので、ソート順不正ケースがあります。  https://github.com/ISID/iPLAss/issues/434 のバグ</body>
+		<created>2020-03-06 02:18:10</created>
+		<closed>2020-03-06 08:22:34</closed>
+	</bug>
+	<bug>
+		<id>454</id>
+		<title>Package、Entityデータインポート時に前後の空白が除去される</title>
+		<body>Packageにおいて、Entityデータインポート時に前後の空白が除去される。  出力されたCSVはダブルクォーテーションで囲んでいない（※1）が、 取り込み時に前後の空白をTrimしているため除去されてしまう。  対応としては、 出力時に前後にスペースが含まれる場合は、ダブルクォーテーションで囲むようにする。  ※現状でもデータに特殊文字が含まれている場合はダブルクォーテーションで囲む。 対象文字は以下を参照。 https://commons.apache.org/proper/commons-text/apidocs/org/apache/commons/text/StringEscapeUtils.html#escapeCsv-java.lang.String- </body>
+		<created>2020-03-06 01:50:11</created>
+		<closed>2020-03-06 06:50:54</closed>
+	</bug>
+	<bug>
+		<id>450</id>
+		<title>全文検索、同じ項目のヘッダーを再度クリックした際にソートされない</title>
+		<body>ヘッダークリックしてソート後（昇順）、同じ項目のヘッダーを再度クリックした際、 降順になる想定が反応しない。3回クリックすると降順になる。 </body>
+		<created>2020-02-28 05:56:34</created>
+		<closed>2020-03-02 04:25:52</closed>
+	</bug>
+	<bug>
+		<id>448</id>
+		<title>バージョン管理しているEntityをクエリーする際、2階層以上深い参照では「最新を取得」が効かない</title>
+		<body>バージョン管理しているEntityをクエリーする際、2階層以上深い参照では「最新を取得」が効かない。 </body>
+		<created>2020-02-25 09:25:50</created>
+		<closed>2020-02-25 09:45:31</closed>
+	</bug>
+	<bug>
+		<id>447</id>
+		<title>Entity CRUD APIを利用したCSVアップロードでEntityバリデーションエラーの場合エラーレスポンスを返さない</title>
+		<body>Entity CRUD API でCSVをアップロードする時Entityバリデーションエラーの場合にエラーレスポンスを返しません。</body>
+		<created>2020-02-25 09:00:50</created>
+		<closed>2020-02-25 09:04:23</closed>
+	</bug>
+	<bug>
+		<id>444</id>
+		<title>manageLobSizeOnRdbをONで、FileLobStore利用した際にバイナリファイルのコピー処理が著しく遅い</title>
+		<body>manageLobSizeOnRdbをONで、FileLobStore利用した際にバイナリファイルのコピー処理が著しく遅い</body>
+		<created>2020-02-20 11:07:21</created>
+		<closed>2020-02-21 08:50:32</closed>
+	</bug>
+	<bug>
+		<id>440</id>
+		<title>フラットスキン、パスワード期限切れ再設定画面でカスタムロゴ設定が有効にならない</title>
+		<body>フラットスキンにて、パスワード有効期限切れによるパスワード再設定画面が表示された際に、 テナントで指定されたカスタムロゴ `ロゴURL(大)` 設定が有効にならず、 標準のロゴが出力されてしまう。</body>
+		<created>2020-02-12 04:22:17</created>
+		<closed>2020-02-14 05:05:01</closed>
+	</bug>
+	<bug>
+		<id>437</id>
+		<title>ReferencePropertyEditorでNullPointerExceptionが発生（3.0.18のみ）</title>
+		<body>検索画面、詳細/編集画面を開く際にReferencePropertyEditorでNullPointerExceptionが発生する。  以下の条件の場合に発生。 ①EntityViewの全View定義内で１つも以下の設定がされていない場合 ・ReferencePropertyEditorのurlParameter ・ScriptingSection ・DefaultSection、MassReferenceSectionのupperContents、lowerContents （SearchLayoutまたはDetailLayoutのどこかのViewで設定されていれば対象外）  ①の状態で、ReferencePropertyEditorが以下の場合にエラーになる。 検索条件部： ・TypeがLINKで、かつ「選択ダイアログを利用」がONの場合 ・TypeがUNIQUEの場合  詳細画面、編集画面（EditPageの設定により詳細か編集で起きる） ・TypeがLINK、UNIQUE、NESTTABLEの場合    </body>
+		<created>2020-02-03 02:28:36</created>
+		<closed>2020-02-03 03:12:54</closed>
+	</bug>
+	<bug>
+		<id>436</id>
+		<title>MySQLパーティションに関するオプションを削除</title>
+		<body>MySQLにおけるテナントマネージャ及びパーティションマネージャでのパーティションに関するオプションを削除する。 ・テナント作成及びパーティション作成でのサブパーティション利用有無オプション ・テナント削除でのパーティション削除オプション</body>
+		<created>2020-01-27 09:50:51</created>
+		<closed>2020-01-28 10:30:13</closed>
+	</bug>
+	<bug>
+		<id>432</id>
+		<title>ReferencePropertyEditor、「参照リンクで編集を許可」している場合に、編集結果を反映しようとしてエラー</title>
+		<body>ReferencePropertyEditorの設定で「参照リンクで編集を許可」を許可している場合に、 編集ダイアログで編集後にダイアログを閉じたタイミングでエラー画面が表示される。  `表示タイプ` が `Link` と `NestTable` の場合。 詳細画面の編集リンクから編集した場合に発生。 </body>
+		<created>2020-01-22 05:05:34</created>
+		<closed>2020-01-22 10:49:10</closed>
+	</bug>
+	<bug>
+		<id>431</id>
+		<title>AdminConsole、EQL実行時の日本語ログメッセージが未定義</title>
+		<body>AdminConsole、EQL実行時の日本語ログメッセージが未定義。</body>
+		<created>2020-01-21 10:46:40</created>
+		<closed>2020-01-21 11:13:36</closed>
+	</bug>
+	<bug>
+		<id>428</id>
+		<title>EntityCRUD WebAPI、複数件を一括で検索する場合のレスポンス内容が不正</title>
+		<body>EntityCRUD WebAPI、複数件を一括で検索する場合、tabular=falseの場合の参照項目のレスポンス内容が不正</body>
+		<created>2020-01-17 09:25:01</created>
+		<closed>2020-01-17 09:42:53</closed>
+	</bug>
+	<bug>
+		<id>425</id>
+		<title>LangExplorer、EntityView定義を開くとエラーが発生する</title>
+		<body>LangExplorer、EntityView定義を開くとエラーが発生する。  ``` ERROR 60 171486   o.i.a.s.base.rpc.i18n.LangDataLogic - org.iplass.mtp.view.generic.element.section.SearchResultSection.getLocalizedBulkUpdateDisplayLabelList() java.lang.NoSuchMethodException: org.iplass.mtp.view.generic.element.section.SearchResultSection.getLocalizedBulkUpdateDisplayLabelList() at java.lang.Class.getMethod(Class.java:1786) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:105) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:76) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:167) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:76) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangInfo(LangDataLogic.java:66) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:165) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:76) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangInfo(LangDataLogic.java:66) ```</body>
+		<created>2020-01-14 07:24:48</created>
+		<closed>2020-01-14 07:44:37</closed>
+	</bug>
+	<bug>
+		<id>422</id>
+		<title>EntityCRUD WebAPI、Entityのプロパティ値をnull値で更新できない</title>
+		<body>EntityCRUD WebAPI、Entityのプロパティ値をnull値で更新できない</body>
+		<created>2020-01-09 02:18:21</created>
+		<closed>2020-01-17 10:03:35</closed>
+	</bug>
+	<bug>
+		<id>421</id>
+		<title>EntityDeserializer、jsonパース処理でBigDecimalのマッピングが正しくない</title>
+		<body>EntityDeserializer、jsonパース処理でBigDecimalのマッピングが正しくない</body>
+		<created>2020-01-09 02:17:33</created>
+		<closed>2020-01-09 06:10:50</closed>
+	</bug>
+	<bug>
+		<id>417</id>
+		<title>DBに接続できない環境において、ResourceBundle経由でメッセージが正しく取得できない</title>
+		<body>DBに接続できない環境において、ResourceBundle経由でメッセージが正しく取得できない。 次を修正。  - iPLAss自体が利用するメッセージはプロパティファイルから正しく、直接取得するように修正 - メッセージがResoruceBundleから取得できなかった場合エラーログ出力する  この修正により、 https://github.com/ISID/iPLAss/issues/226 にあるような形でメタデータのメッセージ定義を利用してiPLAss内の文言を変更する場合の手順に、もう1ステップの追加が必要となる。  #### mtp-gem-messages.propertiesの一部文言をメッセージ定義で上書きしたい場合  ・service-configのMessageServiceにてresourceBundle設定の上書き ***&lt;-追加*** ・Message定義に「mtp-gem-messages」メタデータを作成 ・変更したいメッセージのkeyをIDに設定 ・メッセージを設定（多言語もOK）  MessageServiceの定義例：（iPLAss内のラベルもメッセージ定義優先とする場合）         &lt;service&gt;                 &lt;interface&gt;org.iplass.mtp.impl.message.MessageService&lt;/interface&gt;                 &lt;property name="resourceBundle"&gt;                         &lt;property name="formats" value="mtp.message" /&gt;                         &lt;property name="formats" value="java.class" /&gt;                         &lt;property name="formats" value="java.properties" /&gt;                         &lt;property name="fallbackToSystemLocale" value="false" /&gt;                 &lt;/property&gt;         &lt;/service&gt; </body>
+		<created>2020-01-06 08:13:28</created>
+		<closed>2020-01-15 11:04:44</closed>
+	</bug>
+	<bug>
+		<id>410</id>
+		<title>MySQLの場合に、特定条件下でEntityをアンロックした場合エラー</title>
+		<body>MySQLの場合に、特定条件下※でEntityをアンロックした場合エラーが発生してアンロックできない。  ※Entityに多数のプロパティ定義がされている、もしくは何度もプロパティ定義の追加削除を実施し、Entity1レコードが複数のpageNoにまたがって保存されるようになった状況下において。 </body>
+		<created>2019-12-19 09:52:38</created>
+		<closed>2019-12-20 07:50:10</closed>
+	</bug>
+	<bug>
+		<id>402</id>
+		<title>ログイン画面、IEの互換表示設定によって表示できない場合がある</title>
+		<body>ログイン画面、IEの互換表示設定によって表示できない場合がある。  IEの互換表示設定で、「イントラネットサイトを互換表示で表示する」が有効になっている場合に、 ドキュメントモードが11未満になってしまい表示されないことがある。  現状 `X-UA-compatible` メタタグが設定されていないため、設定することで回避する。  汎用画面など標準レイアウト( layout.jsp)を利用している画面については、設定されているため問題なし。</body>
+		<created>2019-12-11 01:42:35</created>
+		<closed>2019-12-19 07:02:42</closed>
+	</bug>
+	<bug>
+		<id>400</id>
+		<title>EntityCalendar、フラットスキンの場合に定型検索のラジオボタン表示が他と異なる</title>
+		<body>EntityCalendar、フラットスキンの場合に定型検索のラジオボタン表示が汎用検索画面の定型検索表示と異なる。</body>
+		<created>2019-12-06 06:04:22</created>
+		<closed>2020-03-25 10:04:00</closed>
+	</bug>
+	<bug>
+		<id>395</id>
+		<title>全文検索、多重度複数の値もIndexするようにする</title>
+		<body>全文検索、多重度複数の値もIndexするようにする</body>
+		<created>2019-12-03 06:20:06</created>
+		<closed>2019-12-05 04:28:58</closed>
+	</bug>
+	<bug>
+		<id>394</id>
+		<title>CSV出力時、多重度が複数のプロパティの値がnullの場合に列がずれる</title>
+		<body>CSV出力時、多重度が複数のプロパティの値がnullの場合に列がずれる。  ヘッダは多重度分列が出力されるが、値は１つしか出力されていないため。</body>
+		<created>2019-11-28 01:02:06</created>
+		<closed>2019-11-28 01:33:05</closed>
+	</bug>
+	<bug>
+		<id>387</id>
+		<title>システムエラーログ出力が必要以上に抑制されてしまう</title>
+		<body>システムエラーログ出力が必要以上に抑制されてしまう。 ExceptionInterceptorの実装バグのため。</body>
+		<created>2019-11-19 10:32:24</created>
+		<closed>2019-11-19 10:34:52</closed>
+	</bug>
+	<bug>
+		<id>385</id>
+		<title>AdminConsole、画面のzoom設定によってツリーのアイコンが表示されないことがある</title>
+		<body>AdminConsoleのTree形式の表示部分のアイコンが、画面のzoom設定によって表示されないことがある。 例えばメニュー編集画面など。 Chromeで発生。</body>
+		<created>2019-11-15 01:55:03</created>
+		<closed>2019-11-15 05:34:16</closed>
+	</bug>
+	<bug>
+		<id>380</id>
+		<title>マルチ選択ダイアログの検索結果一覧で、多重度が複数のデータを選択すると、選択数に計上されてしまう</title>
+		<body>選択ダイアログで、多重度が複数のデータを選択すると、同じOIDとVersionであっても、参照先エンティティの選択数に計上されてしまいます。参照プロパティの多重度を正しく判断できないので、  以下のように修正します。  1. 同じOIDとVersionのレコードを重複カウントしないように 1. 検索結果一覧で選択行と同じOIDとVersionのレコードをすべて選択します。 </body>
+		<created>2019-11-13 05:00:18</created>
+		<closed>2019-11-21 00:47:00</closed>
+	</bug>
+	<bug>
+		<id>379</id>
+		<title>参照ダイアログからの新規登録時にセクションが非表示にならない</title>
+		<body>標準セクションの「新規登録/編集時の表示可否」をUPDATEに設定したエンティティについて、 参照ダイアログで新規登録をする場合、標準セクションが表示されたままになる。  jspを見るとダイアログじゃない方のjspと表示の条件が違っている。 edit.jsp 270行目  ` if (!EntityViewUtil.isDisplayElement(defName, section.getElementRuntimeId(), OutputType.EDIT) || !ViewUtil.dispElement(section)) { continue; } `  ref/edit.jsp 221行目  ` if (!EntityViewUtil.isDisplayElement(defName, section.getElementRuntimeId(), OutputType.EDIT) &amp;&amp; ViewUtil.dispElement(section)) { continue; } ` </body>
+		<created>2019-11-12 07:52:08</created>
+		<closed>2019-11-14 01:56:30</closed>
+	</bug>
+	<bug>
+		<id>373</id>
+		<title>検索画面、検索条件のEditorの表示タイプが「Radio」の場合、復元されない</title>
+		<body>検索画面、検索条件のEditorの表示タイプが「Radio」の場合、復元されない。  １．検索条件のラジオボタンで「未選択」以外にチェックして検索 ２．検索結果一覧の詳細リンク押下で詳細画面を開く ３．戻るリンクで検索画面に戻る  検索結果は選択したラジオボタンの条件で絞られるが、ラジオボタンは「未選択」がチェックされている。</body>
+		<created>2019-10-30 09:00:34</created>
+		<closed>2019-10-30 09:59:02</closed>
+	</bug>
+	<bug>
+		<id>372</id>
+		<title>ユニークキー参照、refEdit設定が効かない場合があり、古いクリックイベントハンドルをクリアしてない</title>
+		<body>1.  JQueryのプラグインにrefEdit設定を文字列として渡していますが、JQuery内部のメソッドでBooleanとして利用されてしまいます。 1. ユニークキーの参照リンクを更新する際に、既存のクリックイベントハンドルをクリアしてません。登録順番で呼び出されてしまいます。</body>
+		<created>2019-10-30 05:11:12</created>
+		<closed>2019-10-30 05:19:25</closed>
+	</bug>
+	<bug>
+		<id>371</id>
+		<title>Package、MetaDataExportバッチ、Localメタデータ出力時にShared Overwriteが含まれない</title>
+		<body>Package、MetaDataExportバッチ、 `Local` メタデータのみを出力する場合に、 `Shared Overwrite` が含まれない。  例えば「TenantメタデータをExportに含めますか？」で `yes` を選択した場合にもTenantが含まれない。 （ver 3.0.13 からTenantは `Local` ではなく、 `Shared Overwrite` に変更） </body>
+		<created>2019-10-30 05:06:24</created>
+		<closed>2019-10-30 05:25:11</closed>
+	</bug>
+	<bug>
+		<id>368</id>
+		<title>AdminConsole、MenuItemのコピー時にコピー元表示名が未設定の場合はセットしない</title>
+		<body>AdminConsole、MenuItemのコピー時にコピー元表示名が未設定の場合はセットしない。</body>
+		<created>2019-10-29 05:32:59</created>
+		<closed>2019-10-30 07:15:27</closed>
+	</bug>
+	<bug>
+		<id>366</id>
+		<title>TopView、検索結果一覧パーツ、検索画面に遷移時に定型検索が非表示の場合は通常検索を表示する</title>
+		<body>TopView、検索結果一覧パーツでFilterを指定した状態で検索一覧画面に遷移する際に、 表示する検索画面のView定義で定型検索が非表示の場合は通常検索を表示するように。  FilterをTopViewの絞り込み条件として利用したい場合のみに対応。</body>
+		<created>2019-10-28 12:10:45</created>
+		<closed>2019-10-29 08:37:38</closed>
+	</bug>
+	<bug>
+		<id>364</id>
+		<title>TopView、検索結果一覧パーツ、Viewのデフォルトフィルタ条件が効かない</title>
+		<body>TopView、検索結果一覧パーツ、Viewのデフォルトフィルタ条件が効かない。  Filter未指定時にも、「デフォルト検索条件をフィルタ定義と一緒に利用するか」がONでないと設定されない。</body>
+		<created>2019-10-28 12:07:34</created>
+		<closed>2019-10-30 06:24:26</closed>
+	</bug>
+	<bug>
+		<id>363</id>
+		<title>TopView、検索結果一覧パーツ、タイトルの多言語化が効かない</title>
+		<body>TopView、検索結果一覧パーツ、タイトルの多言語化が効かない。</body>
+		<created>2019-10-28 11:49:00</created>
+		<closed>2019-10-29 07:10:20</closed>
+	</bug>
+	<bug>
+		<id>362</id>
+		<title>TopView、検索結果一覧パーツの英語文言不正</title>
+		<body>TopView、検索結果一覧パーツの英語文言がおかしい。 「検索画面を表示する」が「Search」になっている。</body>
+		<created>2019-10-28 11:48:23</created>
+		<closed>2019-10-29 05:02:43</closed>
+	</bug>
+	<bug>
+		<id>360</id>
+		<title>TopView、検索結果一覧パーツ、View定義の仮想プロパティにwidthを指定するとエラーになる</title>
+		<body>TopView、検索結果一覧パーツ、View定義の検索結果設定で仮想プロパティにwidthを指定するとエラーになる。  カンマが１つ多い。</body>
+		<created>2019-10-28 09:44:06</created>
+		<closed>2019-10-29 05:41:18</closed>
+	</bug>
+	<bug>
+		<id>355</id>
+		<title>共有メタデータ（Annotation、XML定義）をMetaDataExplorer、PackagingToolからimportにて上書き更新しようとするとエラー</title>
+		<body>共有メタデータ（Annotation、XML定義）をMetaDataExplorer、PackagingToolからimportにて上書き更新しようとするとエラー。 </body>
+		<created>2019-10-24 11:29:34</created>
+		<closed>2019-10-25 11:19:02</closed>
+	</bug>
+	<bug>
+		<id>351</id>
+		<title>PostgreSQLでバイナリ型(bytea)を含むテーブルのレコード削除時にSQLエラーが発生する</title>
+		<body>レコード削除時に不正なトリガーが呼ばれているため。 バイナリ型をoidからbyteaに変更した際に不要となったトリガーが残ったままになっている。</body>
+		<created>2019-10-16 02:43:48</created>
+		<closed>2019-10-18 02:16:04</closed>
+	</bug>
+	<bug>
+		<id>350</id>
+		<title>PostgreSQLでstorage_space_ddlバッチによりDDLを作成する際"tableNamePostfix"に大文字が設定されていると大文字を含んだオブジェクト名となってしまう</title>
+		<body>PostgreSQLではオブジェクト名の大文字・小文字を区別するため全て小文字で作成する必要がある。 DDLのテンプレートで"tableNamePostfix"の値を小文字に変換してオブジェクト名を作成するようにする。</body>
+		<created>2019-10-16 02:43:00</created>
+		<closed>2019-10-18 02:00:26</closed>
+	</bug>
+	<bug>
+		<id>349</id>
+		<title>AdminConsole、画面のzoom設定によってメニューのアイコンが表示されないことがある</title>
+		<body>AdminConsoleのメニューのアイコンが、画面のzoom設定によって表示されないことがある。 Chromeで発生。</body>
+		<created>2019-10-15 03:31:17</created>
+		<closed>2019-10-16 05:58:19</closed>
+	</bug>
+	<bug>
+		<id>334</id>
+		<title>Decimalの丸めモードの英語記述を修正</title>
+		<body>Decimalの丸めモードで"五捨六入"の英語記述が「"round up on 6 and round down on 4"」になっています。</body>
+		<created>2019-09-10 06:47:50</created>
+		<closed>2019-09-10 06:52:05</closed>
+	</bug>
+	<bug>
+		<id>333</id>
+		<title>カスタム一括更新処理クラスでバリデーションエラーを設定した場合、NullPointerExceptionが発生</title>
+		<body>カスタム一括更新処理クラス( `BulkOperationInterrupter` )でバリデーションエラーを設定した場合、「検索条件を元に一括更新」すると、 `NullPointerException` が発生します。</body>
+		<created>2019-09-10 02:18:38</created>
+		<closed>2019-09-10 02:37:18</closed>
+	</bug>
+	<bug>
+		<id>332</id>
+		<title>EQL、TRUNCATEで小数点以下の桁数指定しても小数点以下が切り捨てられてしまう</title>
+		<body>EQL、TRUNCATEで小数点以下の桁数指定しても小数点以下が切り捨てられてしまう</body>
+		<created>2019-09-09 07:21:24</created>
+		<closed>2019-09-09 07:38:09</closed>
+	</bug>
+	<bug>
+		<id>330</id>
+		<title>Package、バージョン管理しているEntityデータのインポートでエラーになる</title>
+		<body>Package、バージョン管理しているEntityデータのインポートでエラーになる。 EntityExplorerでのCSVインポートでも同様にエラーになる。  &gt; Caused by: org.iplass.mtp.entity.EntityConcurrentUpdateException: 対象のデータは、既に削除されました。  PackageやEntityExplorerでのインポート時は指定されたOID、Versionでインポートする必要があるが、現状できていないため、対応を行う。</body>
+		<created>2019-09-06 00:44:14</created>
+		<closed>2019-09-26 01:53:09</closed>
+	</bug>
+	<bug>
+		<id>319</id>
+		<title>ユーザー情報変更、変更可能な項目に参照プロパティが含まれるとエラー</title>
+		<body>ツールバーから実行可能な「ユーザー情報変更」機能で、変更可能な項目に参照プロパティが含まれるとNullPointerExceptionが発生する。  TopViewの「User Maintenance」パーツを利用して、UserエンティティのViewを指定することで、ユーザ自身によるプロパティの変更が可能になるが、指定したUserエンティティのView定義に参照プロパティが含まれていると、画面表示時にエラーが発生。  編集対象ユーザのデータに値が設定済みの場合に、LoadEntityInterrupter#beforeLoadReferenceを実行しようとするが、LoadEntityInterrupterが取得できていない。</body>
+		<created>2019-08-23 08:03:49</created>
+		<closed>2019-09-19 05:13:07</closed>
+	</bug>
+	<bug>
+		<id>318</id>
+		<title>NestTableのバイナリ型で動作不良</title>
+		<body>NestTable内のバイナリ型でファイルアップロードを行うと、非表示のダミー行にファイルが追加される。  addNestRow内でpnameの値を置換（Dummyからidx）しようとしてるが、実際の属性名がdata-pnameなため、置換がうまく行っていない。</body>
+		<created>2019-08-22 08:57:42</created>
+		<closed>2019-08-23 02:47:14</closed>
+	</bug>
+	<bug>
+		<id>316</id>
+		<title>大量データ参照セクションで参照項目の名前が取得できない</title>
+		<body>大量データ参照セクションに配置した参照項目(※)で、 選択画面からデータを選択して保存した場合に、ラベルに指定した名前が取得できず 名前が表示されてしまう。  ※NestPropertyのReferencePropertyEditorで「参照リンクで編集を許可」をONにしている場合</body>
+		<created>2019-08-22 08:14:06</created>
+		<closed>2019-08-28 11:08:54</closed>
+	</bug>
+	<bug>
+		<id>314</id>
+		<title>AdminConsole、Firefoxでのファイルアップロードに失敗する</title>
+		<body>AdminConsole、Firefoxでのファイルアップロードに失敗する。  PackageやMetaDataExplorerなどのインポート時のファイルアップロードで失敗する。 </body>
+		<created>2019-08-21 09:55:20</created>
+		<closed>2019-08-22 04:18:58</closed>
+	</bug>
+	<bug>
+		<id>311</id>
+		<title>共有テナント有効化時、且つtenantLocalStoreにRdbMetaDataStore以外を利用した場合、Entityメタデータの変更に伴うデータ更新が正しく行われない</title>
+		<body>共有テナント有効化時、且つtenantLocalStoreにRdbMetaDataStore以外を利用した場合、Entityメタデータの変更に伴うデータ更新が正しく行われない。 </body>
+		<created>2019-08-21 06:01:17</created>
+		<closed>2019-10-11 08:56:02</closed>
+	</bug>
+	<bug>
+		<id>306</id>
+		<title>共有テナント側RdbMetaDataStoreに保存されたメタデータをローカルテナント側で上書きしようとするとエラー</title>
+		<body>共有テナント側RdbMetaDataStoreに保存されたメタデータをローカルテナント側で上書きしようとするとエラー。 </body>
+		<created>2019-08-19 09:38:30</created>
+		<closed>2019-08-21 09:49:20</closed>
+	</bug>
+	<bug>
+		<id>302</id>
+		<title>参照セクションで参照項目の名前が取得できない</title>
+		<body>参照セクションに配置した参照項目で、選択画面からデータを選択した際に名前が取得できない。 ネストテーブルや通常の参照は問題なし。 </body>
+		<created>2019-08-13 04:10:04</created>
+		<closed>2019-08-28 10:58:22</closed>
+	</bug>
+	<bug>
+		<id>299</id>
+		<title>参照元画面の参照リンクの表示ラベル更新処理不具合修正（#250）に伴うEnterprise版機能のデグレーションへの対応</title>
+		<body>Enterprise版機能、また既存のカスタマイズなどを考慮して、showReferenceに「parentPropName」などが渡されていなくても名前を返すようにする。</body>
+		<created>2019-08-08 02:02:54</created>
+		<closed>2019-08-08 02:17:08</closed>
+	</bug>
+	<bug>
+		<id>295</id>
+		<title>デフォルト提供のMailTemplateのIDが重複</title>
+		<body>デフォルト提供のMailTemplateのIDが重複。 id=MT0003 で mtp/auth/onetime/SendCode (EE側に存在するMailTemplate) mtp/auth/CredentialResetWithSpecifiedPasswordMail の2つのテンプレートが登録されてしまっている。  mtp/auth/CredentialResetWithSpecifiedPasswordMail のIDを変更する。 </body>
+		<created>2019-08-07 02:34:08</created>
+		<closed>2019-08-08 01:09:54</closed>
+	</bug>
+	<bug>
+		<id>291</id>
+		<title>全一括更新と全削除にEQLカスタム処理クラス名に指定したインターラプターが適用されない</title>
+		<body>全一括更新と全削除にEQLカスタム処理クラス名に指定したインターラプターが適用されないので、 更新/削除対象が画面検索の結果と一致になっていません。</body>
+		<created>2019-08-05 05:52:17</created>
+		<closed>2019-08-08 09:14:23</closed>
+	</bug>
+	<bug>
+		<id>290</id>
+		<title>NestTableにダイアログの内容を反映させる際にJSエラー</title>
+		<body>参照項目があるNestTableで、編集リンクからダイアログを立ち上げ、編集・保存をすると、Javascriptエラーが発生。 反映先の参照の選択ボタンから属性値を取る際のキーが「propName」等になっているが、設定されている属性値は「data-propName」となっており、値がうまく取れていない。</body>
+		<created>2019-08-05 04:04:14</created>
+		<closed>2019-08-09 05:55:55</closed>
+	</bug>
+	<bug>
+		<id>287</id>
+		<title>検索結果のNestTableにJoinPropertyを利用するロジックに渡すパラメータが不正</title>
+		<body>パラメータの渡しのミスです。  https://github.com/ISID/iPLAss/issues/213 のバグ</body>
+		<created>2019-07-24 08:03:06</created>
+		<closed>2019-07-24 08:06:55</closed>
+	</bug>
+	<bug>
+		<id>285</id>
+		<title>参照プロパティエディターの自動補完機能の利用で編集画面で重複のデータを追加できてしまう</title>
+		<body>参照プロパティエディターの自動補完機能を利用する場合、編集画面で重複のデータを追加できてしまいます。</body>
+		<created>2019-07-24 02:45:50</created>
+		<closed>2019-09-09 05:15:58</closed>
+	</bug>
+	<bug>
+		<id>284</id>
+		<title>参照プロパティエディターの自動補完機能の利用で編集画面で多重度以上のデータを追加できてしまう</title>
+		<body>参照プロパティエディターの自動補完機能を利用し、既存データが登録されている場合、編集画面で多重度以上のデータを追加できてしまいます。</body>
+		<created>2019-07-24 02:40:07</created>
+		<closed>2019-09-04 05:53:41</closed>
+	</bug>
+	<bug>
+		<id>282</id>
+		<title>ラベルプロパティが設定された場合、全文検索結果一覧に正しく表示できない</title>
+		<body>ラベルプロパティが設定された場合、全文検索結果一覧に正しく表示できません。  関連issue https://github.com/ISID/iPLAss/issues/121 https://github.com/ISID/iPLAss/issues/194 https://github.com/ISID/iPLAss/issues/213 </body>
+		<created>2019-07-23 05:18:30</created>
+		<closed>2019-07-23 07:45:16</closed>
+	</bug>
+	<bug>
+		<id>280</id>
+		<title>AdminConsole、EntityのCSVデータのインポート時に「存在しないプロパティの無視」が動作しない</title>
+		<body>AdminConsole、EntityのCSVデータのインポート時に「存在しないプロパティの無視」が動作しない。 存在しないプロパティが含まれているとエラーになってしまう。</body>
+		<created>2019-07-22 07:40:18</created>
+		<closed>2019-07-22 09:07:35</closed>
+	</bug>
+	<bug>
+		<id>279</id>
+		<title>検索結果一覧に多重度が1より大きいな参照先を編集したら、参照リンクの名前が1件目しか更新されない</title>
+		<body>検索結果一覧に多重度が1より大きいな参照先を編集したら、参照元画面のリンクの名前が1件目しか更新されない。 参照先リークのidにアンダースコアを含んでいるので、JqueryのSelectorが一件目しか取得してくれないようです。 </body>
+		<created>2019-07-22 06:27:53</created>
+		<closed>2019-08-20 04:40:42</closed>
+	</bug>
+	<bug>
+		<id>278</id>
+		<title>デフォルト設定ファイル（mtp-core-service-config.xml）の記述ミス</title>
+		<body>デフォルト設定ファイル（mtp-core-service-config.xml）の記述ミス。 その影響で起動時に警告ログが出力されてしまう。 アプリの動作に影響はなし。 </body>
+		<created>2019-07-19 10:47:02</created>
+		<closed>2019-07-19 10:59:01</closed>
+	</bug>
+	<bug>
+		<id>276</id>
+		<title>DateRangePropertyはSearchResultSectionに設定された場合、全文検索結果一覧に正しく表示できない</title>
+		<body>DateRangePropertyはSearchResultSectionに設定された場合、全文検索結果一覧に正しく表示できない。</body>
+		<created>2019-07-19 07:26:40</created>
+		<closed>2019-07-23 05:14:36</closed>
+	</bug>
+	<bug>
+		<id>275</id>
+		<title>JoinPropertyはNestTableに設定された場合、全文検索結果一覧に表示できない</title>
+		<body>JoinPropertyはNestTableに設定された場合、全文検索結果一覧に表示できない</body>
+		<created>2019-07-19 06:03:06</created>
+		<closed>2019-07-23 04:58:39</closed>
+	</bug>
+	<bug>
+		<id>272</id>
+		<title>複数項目を一括更新する処理にネストテーブルが利用された場合、再帰的な呼び出し処理でエラーが発生してしまう</title>
+		<body>複数項目を一括更新する処理（Bulk View利用）にネストテーブルが利用された場合、再帰的な呼び出しの処理になってしまうので、エラーが発生してしまいます。  https://github.com/ISID/iPLAss/issues/209 のバグ。</body>
+		<created>2019-07-18 00:58:24</created>
+		<closed>2019-07-18 04:24:43</closed>
+	</bug>
+	<bug>
+		<id>270</id>
+		<title>参照プロパティの新規ボタンの表示制御漏れ</title>
+		<body>https://github.com/ISID/iPLAss/issues/114 の対応で、LINKタイプとTreeタイプの新規ボタン表示制御が漏れました。</body>
+		<created>2019-07-16 08:14:02</created>
+		<closed>2019-07-17 07:30:53</closed>
+	</bug>
+	<bug>
+		<id>263</id>
+		<title>ダイアログでユニークキーを利用する場合、選択ボタンが押すと、サブダイアログが表示できない</title>
+		<body>- ダイアログでユニークキーを利用する場合、選択ボタンが押すと、サブダイアログが表示できない。 - 親画面からPropertyEditorのViewNameも正しく渡されてないようです。  #219  のバグ。</body>
+		<created>2019-07-10 01:22:42</created>
+		<closed>2019-07-10 08:24:24</closed>
+	</bug>
+	<bug>
+		<id>262</id>
+		<title>ユニークキー項目を利用する場合、通常検索でリセット処理が正しくない</title>
+		<body>ユニークキー項目を利用する場合、通常検索でResetHandlerが正しく実装されてないので、リセット処理が正しくなくなっています。  #219 のバグ</body>
+		<created>2019-07-10 01:17:29</created>
+		<closed>2019-07-10 05:35:19</closed>
+	</bug>
+	<bug>
+		<id>261</id>
+		<title>表示ラベルとして扱うプロパティにnameを指定すると、ラベル（リンク）が表示されなくなってしまう</title>
+		<body>リファレンスプロパティエディタで【表示ラベルとして扱うプロパティ】にnameプロパティを指定すると、ラベル（リンク）が表示されるなくなってしまいます。 （何も指定しなければnameプロパティの値が表示される）。</body>
+		<created>2019-07-10 00:35:16</created>
+		<closed>2019-07-10 01:02:25</closed>
+	</bug>
+	<bug>
+		<id>253</id>
+		<title>多重度が*の場合、ユニークキーの項目が表示されない</title>
+		<body>多重度が「*」（メタデータでは-1）の場合、ユニークキーの項目が表示されない  https://github.com/ISID/iPLAss/issues/219 のバグ</body>
+		<created>2019-07-03 03:48:50</created>
+		<closed>2019-07-03 04:50:29</closed>
+	</bug>
+	<bug>
+		<id>250</id>
+		<title>参照先エンティティを更新した後参照元画面の参照リンクの表示ラベルが正しく更新されない</title>
+		<body>参照先エンティティをダイアログで更新した後に、参照元画面の参照リンクの表示ラベルが正しく更新されません。  issue https://github.com/ISID/iPLAss/issues/121 https://github.com/ISID/iPLAss/issues/194 https://github.com/ISID/iPLAss/issues/213 での対応漏れでした。  </body>
+		<created>2019-07-02 02:47:39</created>
+		<closed>2019-07-23 02:48:17</closed>
+	</bug>
+	<bug>
+		<id>248</id>
+		<title>ReferencePropertyEditor、参照コンボが DEFAULT View定義以外で動かない</title>
+		<body>ReferencePropertyEditor、参照コンボが DEFAULT View定義以外で動かない。  ViewNameがうまく渡せていないため、参照コンボの設定が取れていない。  ※DEFAULT のView定義に参照コンボ設定がある場合、その設定を参照してしまう。 </body>
+		<created>2019-06-25 07:49:37</created>
+		<closed>2019-06-26 01:18:33</closed>
+	</bug>
+	<bug>
+		<id>243</id>
+		<title>検索条件での孫Entityのプロパティが表示されない</title>
+		<body>検索画面の検索条件に2階層下（孫）のリファレンスプロパティを選択すると、 adminコンソールで表示ラベルとして扱うプロパティに孫Entityのプロパティを設定しても 検索ダイアログで選択したデータの表示名（リンク）が表示されない。</body>
+		<created>2019-06-13 06:45:27</created>
+		<closed>2019-06-13 07:51:35</closed>
+	</bug>
+	<bug>
+		<id>242</id>
+		<title>フラットスキン、Aboutメニュー、アプリ管理メニューのマウスホバー時に色が変わらない</title>
+		<body>フラットスキン、Aboutメニュー、アプリ管理メニューのマウスホバー時に色が変わらない。 </body>
+		<created>2019-06-13 03:59:31</created>
+		<closed>2019-06-13 05:46:49</closed>
+	</bug>
+	<bug>
+		<id>238</id>
+		<title>EntityViewが未設定の場合、参照プロパティの名前が表示されない</title>
+		<body>EntityViewが未設定の場合、参照プロパティの名前にブランクが表示されてしまいます。</body>
+		<created>2019-06-11 01:02:51</created>
+		<closed>2019-06-11 01:37:20</closed>
+	</bug>
+	<bug>
+		<id>234</id>
+		<title>EntityJavaMappingClassCreator、ベースパッケージ名を指定するとクラス名が出力されない</title>
+		<body>ベースパッケージ名を指定するとJavaクラスファイル内のクラス名が出力されない。</body>
+		<created>2019-06-06 06:26:55</created>
+		<closed>2019-06-10 07:21:33</closed>
+	</bug>
+	<bug>
+		<id>233</id>
+		<title>updateAll、deleteAll、条件文にSelectValueインスタンスが指定された場合NullPointerException</title>
+		<body>updateAll、deleteAll、条件文にSelectValueインスタンスが指定された場合NullPointerException</body>
+		<created>2019-06-04 02:52:48</created>
+		<closed>2019-06-04 08:39:25</closed>
+	</bug>
+	<bug>
+		<id>229</id>
+		<title>MetaDataExplorer、インポート時のダイアログがチラつくことがある</title>
+		<body>MetaDataExplorer、インポート時のダイアログがチラつくことがある。  ノートPCなど、画面の表示領域が小さいPCで発生。 （解像度が高くても、表示スケールをあげている場合など）  縦のスクロール表示による横のスクロール表示のON・OFFなどが関係して発生してしまっている。縦スクロールを無条件で表示することで回避。</body>
+		<created>2019-05-30 06:12:32</created>
+		<closed>2019-05-30 06:15:18</closed>
+	</bug>
+	<bug>
+		<id>227</id>
+		<title>PackageExportバッチ、Entityを個別指定しても対象が見つからない</title>
+		<body>PackageExportバッチ、Entityを個別指定しても対象が見つからない。  Export対象として個別にEntity名を指定すると該当がないと返ってきてしまう。  例： ×mtp.auth.User ○mtp.auth.User*  原因は「.」の「/」への変換漏れ。パスが一致しない。</body>
+		<created>2019-05-30 02:58:26</created>
+		<closed>2019-05-30 03:06:07</closed>
+	</bug>
+	<bug>
+		<id>225</id>
+		<title>AdminConsole、階層化しないメタデータ名にハイフンが利用できない</title>
+		<body>AdminConsole、階層化しないメタデータ名にハイフンが利用できない。 （Entity定義については、もともとハイフンは利用不可）  例えばMessage定義名に、「some-abc」のようなメタデータを作成できない。  ×「some-abc」                          ルートには指定できない ×「folder-abc/someaaa」          第１階層は指定できない ○「folder/some-abc」               ２階層目以降は指定可能 ○「folder/some-abc/aaa-abc」 ２階層目以降は指定可能 </body>
+		<created>2019-05-29 05:47:34</created>
+		<closed>2019-05-29 06:07:22</closed>
+	</bug>
+	<bug>
+		<id>223</id>
+		<title>RedisCacheStoreのCAS系メソッド（putIfAbsent、Replaceなど）がスレッドセーフ実装になってない</title>
+		<body>RedisCacheStoreのCAS系メソッド（putIfAbsent、Replaceなど）がスレッドセーフ実装になってない。</body>
+		<created>2019-05-28 06:52:47</created>
+		<closed>2019-05-29 08:30:53</closed>
+	</bug>
+	<bug>
+		<id>218</id>
+		<title>検索結果一覧にNestTableにネストされたjoinPropertyEditorを利用する項目が見えない</title>
+		<body>検索結果一覧にNestTableにネストされたjoinPropertyEditorを利用する項目が見えない</body>
+		<created>2019-05-23 04:31:48</created>
+		<closed>2019-05-23 10:01:26</closed>
+	</bug>
+	<bug>
+		<id>217</id>
+		<title>SimpleCacheStoreFactoryのCacheStoreのCAS系メソッド（putIfAbsent、Replaceなど）がスレッドセーフ実装になってない</title>
+		<body>iPLAss2.1から3.0へのバージョンアップの際に、SimpleCacheStoreFactoryのCacheStoreで使用するマップのライブラリをConcurrentLinkedHashMapからCaffeineへ変更したが、CAS系メソッド（putIfAbsent、Replaceなど）に対するスレッドセーフ実装の対応が漏れていたため。  </body>
+		<created>2019-05-23 02:07:22</created>
+		<closed>2019-05-23 07:50:40</closed>
+	</bug>
+	<bug>
+		<id>215</id>
+		<title>参照プロパティでJoinPropertyEditorを利用する場合、編集ダイアログのプロパティリストに参照元のものが表示されてしまう</title>
+		<body>参照プロパティでJoinPropertyEditorを利用する場合、編集ダイアログのプロパティリストに参照元のものが表示されてしまう。  1. 参照プロパティでJoinPropertyEditorを設定する 1. JoinPropertyEditorの編集画面で、プロパティエディターをReferenceEditorに設定する 1.  ReferenceEditorの編集ボタンを押下し、編集ダイアログを開く 1. プロパティリストに参照元のものが表示されてしまう  新規でプロパティを追加する場合は正常に参照先のプロパティが表示されているが、保存されているView定義を開いた場合に参照元のプロパティが表示される状態になってしまう。 </body>
+		<created>2019-05-22 01:33:51</created>
+		<closed>2019-07-05 04:14:10</closed>
+	</bug>
+	<bug>
+		<id>214</id>
+		<title>参照プロパティでJoinPropertyEditorを利用する場合、検索結果一覧に見えない</title>
+		<body>参照プロパティでJoinPropertyEditorを利用する場合、検索結果一覧に見えない  - 参照プロパティでJoinPropertyEditorを設定しておく。 - 一番目のプロパティエディターをReferenceEditorにすると、検索結果一覧に参照プロパティが見えない。</body>
+		<created>2019-05-22 01:12:49</created>
+		<closed>2019-05-22 02:04:16</closed>
+	</bug>
+	<bug>
+		<id>212</id>
+		<title>JoinPropertyEditor、プロパティエディタをReferencePropertyEditorにして保存するとエラーが発生してしまう</title>
+		<body>JoinPropertyEditor、プロパティエディタをReferencePropertyEditorにして保存するとエラーが発生してしまう。  原因はJoinPropertyEditorのプロパティエディタで設定したReferencePropertyEditorに対してObjectNameの設定が漏れているため。</body>
+		<created>2019-05-21 05:28:50</created>
+		<closed>2019-05-21 07:31:48</closed>
+	</bug>
+	<bug>
+		<id>211</id>
+		<title>TopView、SearchResultListパーツの高さを指定しても有効にならない</title>
+		<body>TopView、SearchResultListパーツの高さを指定しても有効にならない。  固定の160になってしまう。</body>
+		<created>2019-05-21 05:28:29</created>
+		<closed>2019-05-21 05:57:35</closed>
+	</bug>
+	<bug>
+		<id>208</id>
+		<title>詳細画面でJoinPropertyEditorに囲まれたReferenceプロパティのが表示されない</title>
+		<body>詳細画面でJoinPropertyEditorに囲まれたReferenceプロパティが表示されない。  - Referenceプロパティを1個定義しておく - それをJoinPropertyのネストプロパティのみで利用すると、Referenceプロパティが表示されない。</body>
+		<created>2019-05-17 01:55:00</created>
+		<closed>2019-05-20 04:57:13</closed>
+	</bug>
+	<bug>
+		<id>205</id>
+		<title>ReferencePropertyEditor、保存後に選択可能なプロパティが参照元のものになってしまう</title>
+		<body>ReferencePropertyEditor、新規でプロパティを設定する場合は、参照先のEntityのプロパティが表示されるが、保存後に再度設定しようとすると選択可能なプロパティが参照元のものになってしまう（ComboBox形式のため、値は消えないがリストから選択できない）。 </body>
+		<created>2019-05-15 08:01:28</created>
+		<closed>2019-05-15 09:36:33</closed>
+	</bug>
+	<bug>
+		<id>203</id>
+		<title>デフォルトView以外で一括更新するとエラーが発生してしまう</title>
+		<body>デフォルトView以外で個別レコードにチェックを入れ、一括更新すると画面上で「項目を一括更新することが出来ません。」というエラーメッセージが発生してしまいました。  原因としてはパラメータViewNameをサーバに渡されなかったです。</body>
+		<created>2019-05-14 06:32:33</created>
+		<closed>2019-05-14 09:14:36</closed>
+	</bug>
+	<bug>
+		<id>199</id>
+		<title>連動プロパティの編集画面、連動元プロパティ名に参照先のプロパティが表示されてしまう</title>
+		<body>Referenceエディターの連動プロパティの設定で、連動元プロパティ名に参照先のプロパティが表示されてしまいます。 参照元のものを表示すべきです。</body>
+		<created>2019-05-09 05:27:26</created>
+		<closed>2019-05-15 09:36:22</closed>
+	</bug>
+	<bug>
+		<id>196</id>
+		<title>Jackson（WebApiでJSON）でjava.sql.Dateを出力する際、TimeZoneがUTC以外の場合、日付がずれる</title>
+		<body>#159 でJacksonを2.9系にverupしたが、その際、互換性維持のためsql.Date出力フォーマットを指定したが、TimeZoneの指定も必要であった。 </body>
+		<created>2019-05-08 07:12:27</created>
+		<closed>2019-05-08 09:06:15</closed>
+	</bug>
+	<bug>
+		<id>195</id>
+		<title>ReferenceComboSettingのソートアイテムに参照元のプロパティが表示されてしまう</title>
+		<body>参照プロパティエディターのReferenceComboSettingでソートアイテムに参照元のエンティティのプロパティを表示していますが、参照先のものを表示すべきです。</body>
+		<created>2019-05-08 00:45:11</created>
+		<closed>2019-05-15 09:36:13</closed>
+	</bug>
+	<bug>
+		<id>193</id>
+		<title>全文検索、SearchOptionでisCountTotalがtrueでも該当データがない場合に-1が返る</title>
+		<body>#187 で追加されたIFを利用した場合に、 SearchOptionで `CountTotal` に `true` を設定していても、全文検索の結果として該当データがない場合に `-1` が返ってきてしまう。  0 が返るように。 </body>
+		<created>2019-05-07 03:30:01</created>
+		<closed>2019-05-07 04:53:14</closed>
+	</bug>
+	<bug>
+		<id>191</id>
+		<title>TenantManager(GUI)、SettingsのJDBCDriver名が正しく表示されない</title>
+		<body>TenantManager(GUI)、SettingsのJDBCDriver名が正しく表示されない</body>
+		<created>2019-04-25 02:16:20</created>
+		<closed>2019-05-21 07:06:11</closed>
+	</bug>
+	<bug>
+		<id>190</id>
+		<title>EQLで参照先のExpressionPropertyの取得がうまくいかない</title>
+		<body>EQLで参照先のExpressionPropertyに相関サブクエリが指定されている場合、その取得がうまくいかない 。 相関サブクエリのON句の結合条件の書き換えロジックが不正。  以下詳細。  EntityA  refAtoB: EntityBへの参照  EntityB  exp: (select count() from EntityC on .this = refCtoB) と定義されるExpresisonプロパティ  EntityC  refCtoB: EntityBへの参照  が定義される場合、  EQLで select refAtoB.exp from EntityA が発行された場合、 select (select count() from EntityC on .refAtoB = refCtoB) from EntityA と書き換えされるべきところ、 select (select count() from EntityC on .this = refCtoB) from EntityA のままとなってしまっていた。 </body>
+		<created>2019-04-23 11:37:13</created>
+		<closed>2019-05-07 08:24:54</closed>
+	</bug>
+	<bug>
+		<id>189</id>
+		<title>LobStore、manageLobSizeOnRdb=trueかつFileLobStore利用時にNullPointerException</title>
+		<body>LobStore、manageLobSizeOnRdb=trueかつFileLobStore利用時にNullPointerException</body>
+		<created>2019-04-23 11:03:03</created>
+		<closed>2019-04-24 08:31:00</closed>
+	</bug>
+	<bug>
+		<id>182</id>
+		<title>検索結果一覧、ソート後に再検索した際にソートマークが消えない</title>
+		<body>検索結果一覧、ソート後に再検索した際にソートマークが消えない。  再検索する際は、ソート条件がリセットされているため、ソートマークは消えなければならない。</body>
+		<created>2019-04-17 05:50:10</created>
+		<closed>2019-04-19 04:16:55</closed>
+	</bug>
+	<bug>
+		<id>178</id>
+		<title>ネストテーブルで多重度*の時、行追加時にボタンが消える</title>
+		<body>参照項目(多重度*)をネストテーブル表示した際に、追加ボタンを押すと1行追加時点で追加ボタンが消えてしまう。  ReferencePropertyEditor_Table.jspで「toggleAddBtn_xxx」のjsのfunctionを作成する際にプロパティの多重度を見てるが、*だった場合は多重度が-1になり、必ず非表示の判定になる。  #114 の対応。</body>
+		<created>2019-04-16 06:02:24</created>
+		<closed>2019-04-16 08:35:07</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>SearchQueryInterrupter、CSVダウンロード時に特権実行が有効にならない</title>
+		<body>SearchQueryInterrupter、CSVダウンロード時に特権実行が有効にならない。  beforeSearchで返すSearchQueryContextに特権実行を設定しても、CSVダウンロード時は効いていない。</body>
+		<created>2019-03-27 09:57:12</created>
+		<closed>2019-03-27 10:03:43</closed>
+	</bug>
+	<bug>
+		<id>157</id>
+		<title>クラスタ環境において、AutoNumberが20番単位で採番されてしまう</title>
+		<body>クラスタ環境において、AutoNumberが20番単位で採番されてしまう。 https://github.com/ISID/iPLAss/issues/61 https://github.com/ISID/iPLAss/issues/126 で修正した内容の影響。  新規にキャッシュにputした際にも、クラスタメンバに対して変更通知が発行され、それで採番キャッシュがクリアされてしまう。  リセット操作のときのみに変更通知されるように改修する。 </body>
+		<created>2019-03-14 08:54:43</created>
+		<closed>2019-03-15 06:00:40</closed>
+	</bug>
+	<bug>
+		<id>154</id>
+		<title>一括更新されたプロパティ一覧リストにエスケープされてない項目がある</title>
+		<body>一括更新されたプロパティ一覧リストにエスケープ処理が実行されてない項目があります。</body>
+		<created>2019-03-11 10:22:59</created>
+		<closed>2019-03-11 10:55:26</closed>
+	</bug>
+	<bug>
+		<id>153</id>
+		<title>複数ページにまたがるEntityにて、Refer句に結合条件指定されている場合SQLがエラーになることがある</title>
+		<body>複数ページにまたがるEntityにて、Refer句に結合条件指定されている場合SQLがエラーになることがある。 </body>
+		<created>2019-03-11 09:17:03</created>
+		<closed>2019-03-11 10:22:40</closed>
+	</bug>
+	<bug>
+		<id>152</id>
+		<title>JoinPropertyEditorの定義にSelectPropertyを含める場合、一括更新処理後エラーが発生</title>
+		<body>JoinPropertyEditorの定義にSelectPropertyを含める場合、間違っている場所からSelect Value定義を取得する処理を実装しているので、一括更新処理を実行した後に、エラーが発生してしまいます。</body>
+		<created>2019-03-11 02:06:24</created>
+		<closed>2019-03-11 09:50:17</closed>
+	</bug>
+	<bug>
+		<id>149</id>
+		<title>EntityのLoadキャッシュ、EntityPermission.Action、特権実行有無を考慮する</title>
+		<body>EntityのLoadキャッシュ、EntityPermission.Action、特権実行有無を考慮する。 同一トランザクション内でEntityPermission.Actionを変えてloadした場合、権限によってロードできるか否かが変わる場合がありうる。</body>
+		<created>2019-03-06 07:55:23</created>
+		<closed>2019-03-06 08:02:28</closed>
+	</bug>
+	<bug>
+		<id>145</id>
+		<title>ネストテーブルの行追加方法を設定すると、行追加/削除処理が正しくない</title>
+		<body>・ネストテーブルで行追加方法を「Top」に設定した場合、行追加処理を実行すると、テーブルの最後に行追加されてしまいました。 ・ネストテーブルで行追加方法を「Top」に設定した場合、行削除処理を実行すると、テーブルの消す処理が正しくないです。 ・ネストテーブルで行追加方法を「Top」に設定した場合、Flatデザインを設定すると、レイアウトがずれてしまいます。</body>
+		<created>2019-03-05 08:48:23</created>
+		<closed>2019-03-06 04:47:05</closed>
+	</bug>
+	<bug>
+		<id>141</id>
+		<title>PermissionExplorer、Role条件を登録しようとするとエラーになる</title>
+		<body>PermissionExplorer、Role条件を登録しようとするとエラーになる。 </body>
+		<created>2019-02-27 10:36:28</created>
+		<closed>2019-02-28 01:57:33</closed>
+	</bug>
+	<bug>
+		<id>140</id>
+		<title>Entity権限、単一ユーザに複数のロールが紐付き、且つそれぞれで許可と不許可が設定されている場合、参照可能範囲条件が付与されない</title>
+		<body>Entity権限、単一ユーザに複数のロールが（同一優先度で）紐付き、且つそれぞれで許可と不許可が設定されている場合、参照可能範囲条件が付与されない。  複数ロールが単一ユーザに紐づく場合、同一優先度のロールの各権限はマージ（OR）されるが、許可と不許可のEntity権限をマージする際のデータ参照可能範囲条件のマージの仕方が不正。 </body>
+		<created>2019-02-27 06:11:54</created>
+		<closed>2019-02-27 09:44:32</closed>
+	</bug>
+	<bug>
+		<id>136</id>
+		<title>一括更新で排他制御によりロールバックされた際に表示メッセージが不正</title>
+		<body>複数件のデータに対して更新処理を実行する際に、もしupdateDateのチェックにより、トランザクションがロールバックされた場合、最後にすべての更新処理がロールバックされたが、画面での表示は最後の１件の状態で、例えば、メッセージ「”一括更新に成功しました”」が出力されてしまう。</body>
+		<created>2019-02-25 00:53:51</created>
+		<closed>2019-02-25 02:15:56</closed>
+	</bug>
+	<bug>
+		<id>135</id>
+		<title>BooleanPropertyEditor、未選択時の保存値が正しくない</title>
+		<body>Boolean型のPropertyの登録で、値を設定していない場合の保存データが不正になる。  - SELECT型、LABEL型の場合、未選択であればnullで登録 - CHECKBOX型の場合、未選択であればfalseで登録 - RADIO型の場合、未選択であればnullで登録  とする仕様だが、  - SELECT型、LABEL型の場合、false - CHECKBOX型の場合、null  で登録されてしまう。（RADIO型は正常） </body>
+		<created>2019-02-22 06:00:47</created>
+		<closed>2019-02-25 02:26:07</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>連動プロパティ、ネストされたセクション上で設定すると、連動された値が取得されない</title>
+		<body>連動プロパティ、ネストされたセクション上で設定すると、連動された値が取得されない。  例えば、「標準セクション」の中に「標準セクション」をネストさせた状態で、そのセクション上で参照プロパティに対して連動プロパティを設定しても、連動されたデータが取得されず、空の状態になってしまう。  セクションがネストされてない状態であれば正常に動く。 </body>
+		<created>2019-02-22 03:49:23</created>
+		<closed>2019-02-22 07:55:05</closed>
+	</bug>
+	<bug>
+		<id>132</id>
+		<title>フラットスキン、TABでラジオ、チェックボックスに移動できない</title>
+		<body>フラットスキン、タブキーでラジオ、チェックボックスに移動できない。</body>
+		<created>2019-02-21 10:08:23</created>
+		<closed>2019-02-26 03:40:32</closed>
+	</bug>
+	<bug>
+		<id>131</id>
+		<title>大量データセクション、「default」View定義以外の設定が有効にならない</title>
+		<body>DetailLayoutで大量データセクションを利用した場合に、「default」View定義以外の設定が正常に動作しない。  - 「default」Viewに大量データセクションを配置していない状態で他のView定義で大量データセクションを設定しても、正常に画面表示されない （ページングや追加、削除ボタンのみ表示される）  - 詳細・編集画面で、「default」View以外のViewに設定した大量データセクションの情報が反映されず「default」Viewに設定された大量データセクションの情報で表示される （表示プロパティの設定など） </body>
+		<created>2019-02-21 06:28:22</created>
+		<closed>2019-02-21 10:37:07</closed>
+	</bug>
+	<bug>
+		<id>126</id>
+		<title>CounterService、キャッシュクリア時にCluster通信エラー</title>
+		<body>CounterService、キャッシュクリア時（AutoNumberPropertyの設定変更、カウンタのリセット操作時など）にCluster通信エラーが発生。 </body>
+		<created>2019-02-15 04:38:22</created>
+		<closed>2019-02-15 06:52:50</closed>
+	</bug>
+	<bug>
+		<id>124</id>
+		<title>Package、インポート時のOIDPrefixが効かない</title>
+		<body>Package、インポート時にOIDPrefixを指定しても、Prefixが付かない状態で登録されてしまう。</body>
+		<created>2019-02-14 10:23:23</created>
+		<closed>2019-02-15 03:16:16</closed>
+	</bug>
+	<bug>
+		<id>111</id>
+		<title>参照セクションでネストプロパティのプロパティ名が選択できない</title>
+		<body>参照セクションでネストプロパティ指定時、プロパティ名のプルダウンを展開してもうまく読み込めず、選択が出来ない。 プロパティ名をコピペで貼り付ければ設定は出来るが、フォーカスアウト時にワーニングのメッセージが表示される。</body>
+		<created>2019-02-05 05:33:26</created>
+		<closed>2019-02-19 03:36:15</closed>
+	</bug>
+	<bug>
+		<id>110</id>
+		<title>プロパティを削除した後に画面定義を保存できなくなる</title>
+		<body>SearchLayoutで複数のViewを定義している状態で、Viewに指定してるプロパティを削除すると、削除後に画面定義の保存でエラーになる。  Viewがひとつの場合はSearchLayoutを構成するときに消したプロパティが無視されるため、そのまま保存できるが、 Viewが複数の場合は見えていないViewに消したプロパティが残っており、それを保存しようとしてエラーになる。  検索条件、検索結果、ソート条件に指定したプロパティが対象。</body>
+		<created>2019-02-05 01:38:48</created>
+		<closed>2019-03-05 10:17:47</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>デフォルト提供している静的エラーページのCSSパスが不正</title>
+		<body>デフォルト提供している静的エラーページのCSSパスが不正。 相対パスで記述されているが、 エラーページが表示されるパスは様々なので絶対パス指定（or CSSもhtml中に取り込んでおく）する必要あり。</body>
+		<created>2019-01-23 09:47:19</created>
+		<closed>2019-01-30 04:45:53</closed>
+	</bug>
+	<bug>
+		<id>104</id>
+		<title>NestTable、保存時にValiationエラーで再表示されると削除した行が表示されてしまう</title>
+		<body>NestTable、参照元Entityの保存時にValiationエラーで編集画面が再表示されると、削除した行が値未設定の状態で表示されてしまう。  調査した結果、NestTableで対象としている参照先Entityに多重度複数のプロパティが存在する場合に発生。</body>
+		<created>2019-01-11 10:40:36</created>
+		<closed>2019-01-13 05:02:39</closed>
+	</bug>
+	<bug>
+		<id>103</id>
+		<title>NestTable、編集リンクでダイアログ表示すると多重度複数のプロパティ値が表示されない</title>
+		<body>NestTable、参照リンクで編集ダイアログを表示すると、その参照Entityに定義されている多重度複数のプロパティの値が表示されない。  プロパティ型によって表示されるものと表示されないものがある。  ■表示されないもの ・Boolean ・Binary ・String ・SelectValue ・Reference  ■正しく表示されるもの（日付系、数値系） ・Date ・DateTime ・Time ・Long ・Float ・Decimal</body>
+		<created>2019-01-11 06:36:01</created>
+		<closed>2019-01-13 05:02:21</closed>
+	</bug>
+	<bug>
+		<id>102</id>
+		<title>AdminConsole、ScriptEditorを開くとエラーが発生する (3.0.4 Only)</title>
+		<body>バージョン3.0.4にて、AdminConsole上でScriptEditorを開こうとするとエラーが発生して入力できない。 （例えば、ScriptCommandやGroovyTemplateの定義の編集時など）  ■原因 3.0.4にて、iplass-adminの依存関係からScriptEditorで利用しているAce Editorのwebjar定義が抜けてしまったため。  ■暫定対応方法 3.0.5にて正式対応しますが、暫定的に以下の回避策を実施してください。  ### (1)iPLAss SDKのスケルトンまたはGitHub上の `iplass-skeleton` プロジェクトを利用している場合(Enterprise版も同様)  プロジェクト直下にあるbuild.gradleに依存関係を追加します。  1. build.gradleファイルを開きます。 2. dependenciesの最後に次の定義を追加します。 ``` ・・・・・ dependencies {     ・・・・      //AdminConsole用定義追加 (https://github.com/ISID/iPLAss/issues/102)     runtime 'org.webjars.npm:ace-builds:1.2.9' } ・・・・・ ``` 3. プロジェクトを右クリックし、 `Gradle &gt; Refresh Gradle Project` をクリックして依存するライブラリをダウンロードします。  ### (2)インストーラファイル（iplass.war）を利用している場合 インストーラ(warファイル)を更新したので、[ダウンロードサイト](https://iplass.org/downloads/) から再度取得しなおしてください。  ### (3)Dockerを利用している場合 イメージファイルを更新したので、再度イメージファイルを取得してください。 ``` docker pull iplass/iplass ``` または ``` docker pull iplass/iplass-standalone ``` </body>
+		<created>2019-01-11 05:13:53</created>
+		<closed>2019-01-28 03:36:32</closed>
+	</bug>
+	<bug>
+		<id>101</id>
+		<title>iplass-admin、ace editorのwebjarをruntimeに変更</title>
+		<body>ace editorのwebjarをcompileからruntimeに変更する。 runtime時のみ必要。</body>
+		<created>2019-01-11 02:23:26</created>
+		<closed>2019-01-11 02:28:46</closed>
+	</bug>
+	<bug>
+		<id>100</id>
+		<title>NestTableの編集リンク、参照ダイアログ上で動かない</title>
+		<body>参照ダイアログに表示しているNestTableの編集リンクをクリックしても、参照ダイアログが表示されない。 行追加時に編集リンクにイベントを追加する際に、ダイアログ上での利用の考慮がもれていた。</body>
+		<created>2019-01-10 10:12:52</created>
+		<closed>2019-01-30 09:11:47</closed>
+	</bug>
+	<bug>
+		<id>99</id>
+		<title>DatePropertyEditor、多重度複数の場合にnull値があると編集画面表示時にエラー</title>
+		<body>DatePropertyEditor、多重度複数の場合にnull値があると編集画面表示時にエラーになる。  例えば、  [20181101, null, 20181202]  のようにデータを登録した場合に、編集画面を開くと、 ２つ目のnullを表示しようとしてNullPointerが発生。</body>
+		<created>2019-01-10 04:51:43</created>
+		<closed>2019-01-11 06:12:32</closed>
+	</bug>
+	<bug>
+		<id>97</id>
+		<title>NestTable、Validationエラー後に編集リンクでダイアログ表示するとエラーになる</title>
+		<body>参照プロパティをNestTableで表示し、編集リンクでの編集を許可している場合で、  ①行を追加して、値を設定（編集リンクで編集画面は開かない＝保存していない状態） ②親側を保存した際にValidationエラーが発生すると、編集画面が再表示される ③①で追加した行の編集リンクで参照先の編集画面を表示しようとするとエラー  となってしまう。</body>
+		<created>2019-01-10 03:15:19</created>
+		<closed>2019-01-10 04:07:21</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>MetaScriptingEventListenerでlistenEventをクリアできない</title>
+		<body>・applyConfig関数でgetListenEvent()がnullの場合、listenEventをnullにクリアするように</body>
+		<created>2018-12-26 07:57:57</created>
+		<closed>2018-12-26 08:00:53</closed>
+	</bug>
+	<bug>
+		<id>86</id>
+		<title>画面定義で設定可能な項目が表示されない</title>
+		<body>3.0.3から画面定義で幾つかの項目が表示されず、設定が出来なくなってる。  以下は確認できた部分。 ・DetailFormのボタンの「新規登録/編集時の編集可否」や「表示タイプ」 ・NestPropertyの項目（ReferencePropertyEditorから設定した時と、MassReferenceSectionから設定した時で表示される項目が違う）</body>
+		<created>2018-12-21 02:03:42</created>
+		<closed>2018-12-21 06:47:36</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>NestTableの編集リンクでデータを登録した場合に二重で登録されてしまう</title>
+		<body>参照のプロパティをNestTableで表示し、編集リンクでの編集を許可している場合で、  ①NestTable上で新規行追加→②編集リンクでダイアログからデータ登録→③親側を保存  という一連の流れを実行すると、 ②でダイアログで保存（新規登録）したEntityとは別に、③で②と同じ値のEntityが登録（新規登録）されてしまう。 参照している側からは③で登録したEntityを参照していて、②で登録されたEntityは参照されずに残ってしまう。</body>
+		<created>2018-12-13 06:16:28</created>
+		<closed>2018-12-20 09:29:46</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>AdminConsole、client用のenリソース定義がjaとあっていない</title>
+		<body>client用のenリソース定義がjaと不一致。  ■足りない定義 - datasource_entity_CrawlEntityDS_name - datasource_entity_CrawlEntityDS_dispName - datasource_entity_CrawlEntityDS_failedToGetEntityList  ■重複定義 - generic_element_section_ScriptingSection_scriptDisplaNameKey - generic_element_section_ScriptingSection_scriptDescriptionKey  ■不正なメッセージ - ui_metadata_entity_layout_DetailDropLayout_checkPropCountErr </body>
+		<created>2018-12-13 01:55:40</created>
+		<closed>2018-12-13 02:10:55</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>静的リソースのZip化漏れ</title>
+		<body>iplass-adminの静的リソースのZip化を行う。</body>
+		<created>2018-12-11 07:57:05</created>
+		<closed>2018-12-12 10:00:05</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>ReferencePropertyEditorのNestTable、EditorをLabel表示すると正しく表示されない</title>
+		<body>ReferencePropertyEditorのNestTable、EditorをLabel表示すると正しく表示されない。  ・BooleanPropertyEditorは編集画面で編集した結果が反映されない ・DatePropertyEditorがあると追加ボタン実行時にJavaScriptエラーが発生する ・TimestampPropertyEditorは編集画面で編集した結果を表示する際にTimeRangeが考慮されていない ・TimePropertyEditorは編集画面で編集した結果を表示する際にTimeRangeが考慮されていない ・DatePropertyEditor、TimestampPropertyEditorの曜日表示に対応していない</body>
+		<created>2018-12-05 23:31:29</created>
+		<closed>2018-12-12 10:36:48</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>フラットスキン、大量データ参照セクションで削除ボタンが効かない</title>
+		<body>編集画面表示時に大量データ参照セクションにデータが存在する場合、 個別に選択して削除ボタンを押しても対象が削除されない。  フラットスキンの場合のみ発生。</body>
+		<created>2018-11-12 06:45:25</created>
+		<closed>2018-11-27 04:54:42</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>大量データ参照セクションで追加時等のアクションがおかしい</title>
+		<body>大量データ参照セクションで追加や詳細/編集での更新後のレイアウトがポップアップではなく標準レイアウトになっている oidなどのパラメータが不足していて、間違ったパラメータマッピングが適用されている。</body>
+		<created>2018-11-12 06:27:02</created>
+		<closed>2018-11-12 06:28:14</closed>
+	</bug>
+	<bug>
+		<id>63</id>
+		<title>Service直下に定義されるMap内のBeanの初期化処理</title>
+		<body>Service直下に定義されるMap内のBeanがServiceInitListenerを実装している場合inited()、destroyed()を呼び出すように修正。 </body>
+		<created>2018-11-01 08:58:25</created>
+		<closed>2018-11-01 09:06:42</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>AutoNumberProperty、クラスタ構成時、カウンタリセット時に正しく通知されない</title>
+		<body>AutoNumberProperty、クラスタ構成時、カウンタリセットを行った場合にクラスタ内の別サーバにに正しく通知されない</body>
+		<created>2018-11-01 02:08:07</created>
+		<closed>2018-11-01 02:25:55</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>画面定義の自動生成、viewNameがうまく引き継がれない</title>
+		<body>画面定義の自動生成機能で作った検索、詳細画面で画面遷移を行うと、viewNameが引き継がれずにdefaultが表示されてしまう。 自動生成後にnameを設定してないため、次の画面遷移時にdefaultになってしまう。</body>
+		<created>2018-11-01 00:54:47</created>
+		<closed>2018-11-01 00:55:18</closed>
+	</bug>
+	<bug>
+		<id>56</id>
+		<title>Encoder、FileInputStreamが正しくクローズされない可能性</title>
+		<body>org.iplass.mtp.tools.batch.crypt.Encoder   ``` try (InputStreamReader is = new InputStreamReader(new FileInputStream(path.toFile()), "utf-8")) { prop.load(is); } ```  を  ``` try (FileInputStream fis = new FileInputStream(path.toFile()); InputStreamReader is = new InputStreamReader(fis, "utf-8")) { prop.load(is); } ``` に。</body>
+		<created>2018-10-29 08:52:17</created>
+		<closed>2018-11-01 02:31:22</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>AdminConsole、DetailLayout編集画面でDefaultSectionのNestが表示されない</title>
+		<body>AdminConsole、DetailLayout編集画面でDefaultSectionのNestが表示されない。  作成時は表示されるが、保存して再度DetailLayout編集画面を表示すると復元されない。  </body>
+		<created>2018-10-25 05:31:53</created>
+		<closed>2018-10-25 05:48:58</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>ValidationErrorにセットされたプロパティ表示名に多言語対応されていない</title>
+		<body>下記のタスク対応でValidationErrorにセットされたプロパティ表示名に多言語対応が漏れました。 [issue #31](https://github.com/ISID/iPLAss/issues/31)  - 表示名を取得する関数をgetDisplayNameからgetLocalizedDisplayNameに変更</body>
+		<created>2018-10-23 06:27:06</created>
+		<closed>2018-10-23 06:36:26</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>エンティティ検索画面の検索条件にエスケープされた日本語が表示される</title>
+		<body>現状、エンティティ検索画面の検索条件に日本語を入力し、検索処理を実行して他の画面に遷移する。 検索画面に戻った時、入力した日本語がエスケープされた状態で表示されてしまう。 </body>
+		<created>2018-10-23 02:46:42</created>
+		<closed>2018-10-23 05:58:25</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>WebAPI、レスポンスがXMLの場合のnamespaceが不正</title>
+		<body>WebAPIのレスポンスのタイプがXMLの場合、  ```  &lt;beanmapper:webApiResponse&gt;    &lt;status&gt;OK&lt;/status&gt;     ...  &lt;/beanmapper:webApiResponse&gt; ``` となっていたものを、  ```  &lt;webapi:webApiResponse&gt;    &lt;status&gt;OK&lt;/status&gt;    ...  &lt;/webapi:webApiResponse&gt; ```  に修正。 </body>
+		<created>2018-10-18 09:38:21</created>
+		<closed>2018-10-18 09:42:30</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>フラットデザイン、ネストテーブルでラジオ、チェックボックスのアイコンが効かない</title>
+		<body>ネストテーブルで行追加時に、ラジオボタンとチェックボックスのアイコンが選択状態にならない。 画面表示時にアイコンにイベントを設定しているが、行追加時にはイベントまでコピーされてないため、アイコンの選択状態が反映されない。</body>
+		<created>2018-10-16 00:48:03</created>
+		<closed>2018-10-16 00:48:30</closed>
+	</bug>
+	<bug>
+		<id>43</id>
+		<title>RememberMeでログイン時、token不正の場合にエラーメッセージが正しく表示されない</title>
+		<body>RememberMeでログイン時、token不正の場合にエラーメッセージが正しく表示されず、ブランク画面が表示されてしまう。 これを正しくログイン画面を表示し、エラーメッセージを表示するように修正。 </body>
+		<created>2018-10-10 11:45:09</created>
+		<closed>2018-10-10 11:46:02</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>仮想プロパティを検索結果にした場合にJSエラー</title>
+		<body>仮想プロパティを検索結果に指定して、幅やテキストの配置を指定すると、 jqgridのcolModelを作成する際に不要なカンマが出力されてJSエラーが発生する。</body>
+		<created>2018-10-10 07:43:44</created>
+		<closed>2018-10-10 07:44:31</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>AdminConsole、enのリソースファイルにマルチバイトが含まれている</title>
+		<body>AdminConsole、en用のクライアントリソースファイル(locale_en.js)にマルチバイトが含まれている。</body>
+		<created>2018-10-03 02:10:09</created>
+		<closed>2018-10-03 05:10:26</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>AdminConsole、テナントのskin名、theme名の多言語化</title>
+		<body>AdminConsole、テナントのskin名、theme名が多言語化できていない。</body>
+		<created>2018-10-03 01:45:03</created>
+		<closed>2018-11-05 02:58:01</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>Deepコピー処理でValidationエラーが発生すると画面にエラーメッセージが表示されない</title>
+		<body>現状、汎用詳細画面、Deepコピー処理でValidationエラーが発生すると共通エラー画面に遷移されます。 汎用詳細画面でValidationエラーメッセージが表示できるようにする。</body>
+		<created>2018-09-26 10:17:40</created>
+		<closed>2018-09-27 02:28:12</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>ヘルプ用のツールチップの挙動がおかしい</title>
+		<body>検索画面の詳細検索にあるヘルプアイコンで、 ホバーしたときに表示されるツールチップの挙動がおかしい。 ツールチップの文言が2行以上の場合に表示/非表示を繰り返してしまう。</body>
+		<created>2018-09-26 08:58:07</created>
+		<closed>2018-09-26 09:00:01</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>コピー時にShallowかDeepを選択用のJavaScriptが正しく動かない</title>
+		<body>現状、コピー対象の枚挙クラスorg.iplass.mtp.view.generic.DetailFormView.CopyTargetの変数が英語の全大文字で定義されていてinput hiddenに出力されいますが、Javascript側の判断処理で利用する文字列と一致していません。  例  - サーバ側：DEEP - JavaScript側：Deep</body>
+		<created>2018-09-19 01:56:27</created>
+		<closed>2018-09-28 07:13:26</closed>
+	</bug>
+	<bug>
+		<id>15</id>
+		<title>暗号化バッチ、FILE_MODEで実行すると無限ループする</title>
+		<body>現状、tools.crypt.Encoderバッチに引数指定で（-file)起動すると、無限ループになってしまう。 バッチ処理を見直す。</body>
+		<created>2018-09-12 05:38:28</created>
+		<closed>2018-09-12 06:35:23</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>パスワードリセットボタンの表示判定用スクリプトが正しくない</title>
+		<body>現状、「パスワードリセット」ボタンの表示判定用スクリプトで、ユーザに対してパスワードリセットが可能か否かを判断する時、「1」のメソッドを呼び出しています、正しいのは「2」です。 認証ポリシー設定に認証プロバイダが指定されている場合、表示の結果が正しくないです。  1. `boolean canResetCredential()`  2. `boolean canResetCredential(String policyName)`    </body>
+		<created>2018-09-07 01:44:38</created>
+		<closed>2018-09-07 04:30:21</closed>
+	</bug>
+	<bug>
+		<id>1</id>
+		<title>タイ語表示の際に検索結果の編集リンクが見切れる</title>
+		<body>タイ語で検索結果一覧や全文検索を表示すると、「詳細|編集」のリンクの文字が長くなり、右側が見切れてしまう。 resouceBundleにて言語毎の幅を管理する。</body>
+		<created>2018-08-28 08:06:31</created>
+		<closed>2018-08-28 08:09:58</closed>
+	</bug>
+</bugs>

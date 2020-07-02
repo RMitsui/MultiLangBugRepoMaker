@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<pullrequests>
+	<pullrequest>
+		<number>105</number>
+		<title>Windows用buildall.batスクリプトを整備</title>
+		<body>close #61   Link #61   Windows環境で buildall.bat を実行して jar ファイルを生成できるように整備した  - Windows環境で「native2ascii」用スクリプトを実行可能とした   - この処理は「jp.go.aist.rtm.toolscommon」でのみ実行され、LinuxとWindowsではスクリプト名が異なる。このため、「native2ascii」処理を新たな target として切り出し、Linux用は「Native2ascii」、Windows用は「Native2ascii_win」と定義した。   - Windows用 buildall.bat は、「jp.go.aist.rtm.toolscommon」をビルドする際、「Native2ascii_win」を含む「buildAll_win」ターゲットを ant の引数に渡すようにした。  - Windows環境では、バージョン番号を更新しても jar ファイル名のバージョン番号が更新されなかったので修正した   - 原因は、buildall.bat で version ファイルから PROJECT_VERSION を取得していなかったため   - ビルド時、PROJECT_VERSION で MANIFEST.MF の Bundle-Version を書き換え、Jar ファイル名にはBundle-Version のバージョン番号が含まれる。   - Linux環境では、version ファイルから「1.2.0.v20190626」形式の PROJECT_VERSION を取得できるが、Windows環境で同じ動作に対応しようとすると処理が長くなるので、とりあえず「1.2.0」形式のバージョン番号のみとした。  ## Verification   - [x] Did you succesed the build?   - [x] No warnings for the build?   - Windows環境でのビルドは、eclipse-rcp-2019-03-R-win32-x86_64.zip を展開し、buildall.bat を実行して確認。今後masterブランチはバージョン番号2.0.0へ更新予定なので、この場合でもjarファイル名が正しいバージョン番号になることを確認。 - Linux環境での build_all 実行動作も問題ないことを確認  </body>
+		<to>61</to>
+	</pullrequest>
+	<pullrequest>
+		<number>30</number>
+		<title>Merge RELENG_1_2 into master</title>
+		<body>close #29  RELENG_1_2ブランチをmasterブランチへマージする  Link to #29 </body>
+		<to>29</to>
+	</pullrequest>
+	<pullrequest>
+		<number>28</number>
+		<title>Revert eclipse49</title>
+		<body>close #27  Link to #27  ## Verification   - [x] Did you succesed the build?   - [x] No warnings for the build?   - [ ] Have you passed the unit tests?   - Eclipse4.7.3環境でのビルド動作を確認</body>
+		<to>27</to>
+	</pullrequest>
+</pullrequests>

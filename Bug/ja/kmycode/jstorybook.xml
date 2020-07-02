@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+<bug>
+	<id>78</id>
+	<title>エンティティの新規作成のさい、「適用」によって新規作成を行う操作が２回以上続くと、順番の数字が0になる</title>
+	<body></body>
+	<created>2015-10-17 09:22:57</created>
+	<closed>2015-10-17 09:43:13</closed>
+</bug>
+<bug>
+	<id>70</id>
+	<title>タブに対して複雑な操作を行うと、ストーリーを閉じて次に開いた時タブが一切開けなくなる</title>
+	<body>原因不明（大体想像はつくが） </body>
+	<created>2015-10-06 13:33:44</created>
+	<closed>2015-10-12 04:55:49</closed>
+</bug>
+<bug>
+	<id>69</id>
+	<title>一番最初に表示されるタブペインのタブを全て消した後、新しいタブを追加できなくなる</title>
+	<body>ドッキングによって画面を分割した場合も、 最初からあったタブペインのタブを全て消すか他へ移すと 新しいタブを表示できなくなる </body>
+	<created>2015-10-04 00:08:40</created>
+	<closed>2015-10-06 13:32:43</closed>
+</bug>
+<bug>
+	<id>66</id>
+	<title>ストーリー新規作成するとき、保存先に既存のファイルを指定するとSQLエラーが出る</title>
+	<body>既存のファイルをそのまま開いてテーブル作成などの初期化処理をしようとしたため。 ファイルを消してから新規作成処理を開始すれば、このバグはなくなるはずなんだ </body>
+	<created>2015-10-03 13:08:17</created>
+	<closed>2015-10-12 05:13:00</closed>
+</bug>
+<bug>
+	<id>63</id>
+	<title>シーンを新規作成するとき、関連付けの設定が反映されない</title>
+	<body>他のエンティティを新規作成するときは、きちんと関連付けの設定が保存されるのに なぜかシーンだけ </body>
+	<created>2015-10-01 21:50:22</created>
+	<closed>2015-10-09 13:40:54</closed>
+</bug>
+<bug>
+	<id>62</id>
+	<title>シーンの関連場所が設定できない</title>
+	<body>設定してもすぐ戻ってしまう  場所から関連シーンを選択すると設定可能 </body>
+	<created>2015-10-01 21:48:09</created>
+	<closed>2015-10-02 11:15:41</closed>
+</bug>
+<bug>
+	<id>58</id>
+	<title>日付入力で直接入力を行うと、入力したデータが保存されない</title>
+	<body>１０００年も前の世界が舞台とかだとさすがに不便 </body>
+	<created>2015-09-30 21:34:14</created>
+	<closed>2015-10-06 13:32:12</closed>
+</bug>
+<bug>
+	<id>57</id>
+	<title>環境設定でフォントサイズを変更した時、メインメニュー項目に新しいフォントサイズが反映されない</title>
+	<body>ポップアップメニューには反映される。 Mac、Linuxで確認 </body>
+	<created>2015-09-27 03:06:24</created>
+	<closed>2015-09-27 05:39:35</closed>
+</bug>
+<bug>
+	<id>56</id>
+	<title>エンティティを編集した時、関連図で例外が発生し、更新が反映されないことがある</title>
+	<body>IndexOutOfBoundExceptionが発生する。  Exception in thread "JavaFX Application Thread" java.lang.IndexOutOfBoundsException: Index: 2, Size: 2     at java.util.ArrayList.rangeCheck(ArrayList.java:653)     at java.util.ArrayList.get(ArrayList.java:429)     at jstorybook.view.pane.chart.AssociationChartPane.releate(AssociationChartPane.java:201)     at jstorybook.view.pane.chart.AssociationChartPane.lambda$new$125(AssociationChartPane.java:79)     at jstorybook.viewtool.messenger.Messenger.send(Messenger.java:54)     at jstorybook.model.pane.AssociationModel.drawArea(AssociationModel.java:259)     at jstorybook.model.pane.AssociationModel.drawArea(AssociationModel.java:267)     at jstorybook.model.pane.AssociationModel.draw(AssociationModel.java:138)     at jstorybook.viewmodel.pane.chart.AssociationViewModel.lambda$storeCommand$199(AssociationViewModel.java:41)     at jstorybook.viewmodel.ViewModel$CommandContainer.execute(ViewModel.java:205)     at jstorybook.viewmodel.ViewModel.executeCommand(ViewModel.java:94)     at jstorybook.viewmodel.ViewModelList.executeCommand(ViewModelList.java:58)     at jstorybook.view.pane.chart.AssociationChartPane.reload(AssociationChartPane.java:102)     at jstorybook.view.MainWindow.reloadTab(MainWindow.java:469)     at jstorybook.view.MainWindow.lambda$applyMessenger$43(MainWindow.java:321)     at jstorybook.viewtool.messenger.Messenger.send(Messenger.java:54)     at jstorybook.viewtool.messenger.Messenger.lambda$relay$7(Messenger.java:47)     at jstorybook.viewtool.messenger.Messenger.send(Messenger.java:54)     at jstorybook.model.story.EntityEditModel.apply(EntityEditModel.java:305)     at jstorybook.viewmodel.pane.EntityEditViewModel.lambda$storeCommand$197(EntityEditViewModel.java:47)     at jstorybook.viewmodel.ViewModel$CommandContainer.execute(ViewModel.java:205)     at jstorybook.viewmodel.ViewModel.executeCommand(ViewModel.java:94)     at jstorybook.viewmodel.ViewModelList.executeCommand(ViewModelList.java:58)     at jstorybook.common.util.GUIUtil.lambda$createCommandButton$4(GUIUtil.java:46)     at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)     at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)     at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)     at javafx.event.Event.fireEvent(Event.java:198)     at javafx.scene.Node.fireEvent(Node.java:8411)     at javafx.scene.control.Button.fire(Button.java:185)     at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:182)     at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:96)     at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:89)     at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)     at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)     at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)     at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)     at javafx.event.Event.fireEvent(Event.java:198)     at javafx.scene.Scene$MouseHandler.process(Scene.java:3757)     at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)     at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)     at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:352)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:275)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$355(GlassViewEventHandler.java:388)     at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:387)     at com.sun.glass.ui.View.handleMouseEvent(View.java:555)     at com.sun.glass.ui.View.notifyMouse(View.java:937)     at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)     at com.sun.glass.ui.gtk.GtkApplication.lambda$null$50(GtkApplication.java:139)     at java.lang.Thread.run(Thread.java:745) </body>
+	<created>2015-09-27 03:04:13</created>
+	<closed>2015-09-27 05:09:53</closed>
+</bug>
+<bug>
+	<id>55</id>
+	<title>複数のエンティティを一括で順序変更するとき、正しく動かない</title>
+	<body>複数のエンティティがいっぺんに移動するのを想定していたのに - １つしか移動しない場合がある - 最上部へ達した時にさらにボタンを押したら順序変更を繰り返す - たまにNPEが出る   といった複数の問題が発生する </body>
+	<created>2015-09-27 02:51:55</created>
+	<closed>2015-10-12 06:03:45</closed>
+</bug>
+<bug>
+	<id>53</id>
+	<title>リストが空っぽの状態でエンティティを新規作成した時、順番が2から始まる</title>
+	<body>なぜ1から始まらないのと思ってしまう 1にしてもシステム上問題はないが、気分の問題 </body>
+	<created>2015-09-27 02:38:31</created>
+	<closed>2015-09-27 05:11:28</closed>
+</bug>
+<bug>
+	<id>52</id>
+	<title>エンティティを新規作成するとき、関連付けがおかしい</title>
+	<body>エンティティを新規作成するときなど、 エンティティのIDがまだ付与されていない状態で 他のエンティティとの関連付けを設定すると、 設定がおかしくなる、正常に保存されないなどの問題が生じる。  適用ボタンを押していったん保存したあとに関連付けでも同様の問題が起きる。 編集画面をいったん閉じて、同じエンティティの編集画面を開き直すと問題が解決される。  おそらく、新規作成用の仮のIDに対して直接関連付けられてしまったものと思われる。 また、適用ボタンを押してもエンティティのIDは変更されないため このような挙動をとったと思う。 </body>
+	<created>2015-09-27 02:36:22</created>
+	<closed>2015-09-27 04:56:21</closed>
+</bug>
+<bug>
+	<id>51</id>
+	<title>エンティティを編集し、OK／適用ボタンをクリックすると、NPEが発生することがある</title>
+	<body>EntityEditModelクラスのrelationListRenewメソッドで発生。 どのような場合に発生するか不明 </body>
+	<created>2015-09-26 21:19:11</created>
+	<closed>2015-09-26 21:26:15</closed>
+</bug>
+<bug>
+	<id>46</id>
+	<title>アプリ起動直後にエンティティリストのテーブルカラムをクリックしてソートした時、エンティティを選択しても編集や削除ができない</title>
+	<body></body>
+	<created>2015-09-21 22:46:54</created>
+	<closed>2015-09-25 22:27:53</closed>
+</bug>
+<bug>
+	<id>44</id>
+	<title>登場人物リストで、アプリ起動直後に特定の行を選択した時、その性別の文字色が真っ黒のままになる</title>
+	<body>編集すれば直る。いろいろやってみたがだめだった。 性別は、いずれ従来通りのアイコンを表示する仕様に変更するつもりなので、それまで辛抱か </body>
+	<created>2015-09-21 21:46:32</created>
+	<closed>2015-09-22 09:07:37</closed>
+</bug>
+<bug>
+	<id>41</id>
+	<title>複数のエンティティを同時編集中、一方のエンティティの関連付け情報を保存しても、もう一方のエンティティの編集画面に反映されない</title>
+	<body>登場人物の関連人物で確認済 パフォーマンスを考えると、チェックリストはあまりバインディング可能にはしたくないが‥‥ OKボタンを押した時、他の編集画面に再取得させるためのメッセージか何かを作るという方向で </body>
+	<created>2015-09-21 10:32:50</created>
+	<closed>2015-09-22 04:35:14</closed>
+</bug>
+<bug>
+	<id>40</id>
+	<title>エンティティリストで、エンティティを全削除したあと、編集ボタンと削除ボタンが操作可能なままになる</title>
+	<body>一応押しても例外が出ないように処置はしたけど‥‥ </body>
+	<created>2015-09-21 09:25:44</created>
+	<closed>2015-10-12 05:45:37</closed>
+</bug>
+<bug>
+	<id>39</id>
+	<title>エンティティ編集画面で、ノートのサイズが固定になっており、ウィンドウサイズを小さくした時操作しづらい</title>
+	<body>今は申し訳程度にScrollPaneでラップしているが、 やっぱり画面サイズに合わせて自動的に伸縮するのが一番なんだ  いっそのこと、面倒だけどコンバータ経由しとくか迷っている </body>
+	<created>2015-09-19 08:40:00</created>
+	<closed>2015-09-25 22:28:31</closed>
+</bug>
+<bug>
+	<id>34</id>
+	<title>タグへの関連付けで、場所以外の関連付けができない</title>
+	<body>JavaFX移行に伴うバグと思われる </body>
+	<created>2015-08-29 01:18:51</created>
+	<closed>2015-09-15 14:05:40</closed>
+</bug>
+<bug>
+	<id>16</id>
+	<title>印刷できない</title>
+	<body>そもそも印刷ダイアログが表示されない </body>
+	<created>2015-08-24 13:05:44</created>
+	<closed>2015-09-21 14:17:36</closed>
+</bug>
+<bug>
+	<id>12</id>
+	<title>新規シーン作成中のシーンエディタ内で構想線を新規作成した後、エディタの記入内容が初期化される</title>
+	<body></body>
+	<created>2015-08-24 12:57:46</created>
+	<closed>2015-09-21 14:17:14</closed>
+</bug>
+<bug>
+	<id>7</id>
+	<title>文字列からDateオブジェクトへ変換するときに例外が発生することがある</title>
+	<body>発生条件は未調査。内部例外のため画面には表示されないが、のちのち影響がありそうなので修正しておきたい </body>
+	<created>2015-08-23 12:44:20</created>
+	<closed>2015-09-21 14:16:46</closed>
+</bug>
+<bug>
+	<id>5</id>
+	<title>略称自動反映において、姓名に２文字以上の名前を設定したのに１文字しか反映されない時がある</title>
+	<body>この機能周りで別の不具合を修正したところ、新たにこのようなバグが発生した。 そもそも自動反映自体必要なのかもあわせて、この課題を検討していきたい </body>
+	<created>2015-08-23 11:59:44</created>
+	<closed>2015-08-25 22:07:10</closed>
+</bug>
+<bug>
+	<id>4</id>
+	<title>【重大】編や章などの親に自分自身のエンティティを設定すると、そのストーリーが二度と開けなくなる</title>
+	<body></body>
+	<created>2015-08-23 08:57:46</created>
+	<closed>2015-09-21 14:16:38</closed>
+</bug>
+<bug>
+	<id>3</id>
+	<title>アイテムまたはタグが空の状態で、「分類名の変更」メニューが機能しない</title>
+	<body></body>
+	<created>2015-08-23 08:51:59</created>
+	<closed>2015-09-21 14:16:31</closed>
+</bug>
+<bug>
+	<id>2</id>
+	<title>CreationTime生成コードが汚い</title>
+	<body>編と章は、現在、コンストラクタでCreationTimeの初期化をやっている。 でも、ソースコード全体の規則性を見ると、初期化処理をコンストラクタに書くべきでないことは明白だろう。 代替手段を探すべきだ </body>
+	<created>2015-08-23 08:04:09</created>
+	<closed>2015-09-21 14:16:23</closed>
+</bug>
+<bug>
+	<id>1</id>
+	<title>編・シーンの作成日時・終了予定などが、エディタのデータ更新直後に反映されない</title>
+	<body></body>
+	<created>2015-08-23 07:42:10</created>
+	<closed>2015-08-23 08:02:53</closed>
+</bug>
+</bugs>
