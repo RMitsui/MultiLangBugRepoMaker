@@ -88,7 +88,7 @@ def get_bugtag(filepath):
                     pass
                 continue
 
-            issues = repo.get_issues(state="closed")
+            issues = repo.get_issues(state="closed",label=buglabel)
             bugissues = 0
             for issue in issues:
                 title = removeControlCharacter(issue.title)
