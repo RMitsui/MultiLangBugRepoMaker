@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="wikidemarches">
+	<bug id="603" opendate="2019-06-04 14:52:32" fixdate="2019-06-04 14:55:24">
+		<buginformation>
+			<summary>Une vérification manquante dans le post-processeur de démarches empêche d'importer de nouveaux fichiers via l'application d'import en batch</summary>
+			<description>Dans le post-processeur d'import tabulaire de démarches, il manque une vérification de la présence de l'entête recherché, cf [DemarcheRowDataPostprocessor.java#L230](https://github.com/DISIC/wikidemarches/blob/master/extensions/batch-imports/batch-imports-api/src/main/java/com/xwiki/projects/dinsic/wikidemarches/extensions/batchimports/DemarcheRowDataPostprocessor.java#L230). Comme le post-processeur, une fois installé, est appelé pour tout import, ce bug bloque l'import de fichiers autre que celui du top 250. En particulier dans le cadre de l'import des données de disponibilité (suite à #552), cela peut poser un problème de mise à jour des données. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>extensions/batch-imports/batch-imports-api/src/main/java/com/xwiki/projects/dinsic/wikidemarches/extensions/batchimports/DemarcheRowDataPostprocessor.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

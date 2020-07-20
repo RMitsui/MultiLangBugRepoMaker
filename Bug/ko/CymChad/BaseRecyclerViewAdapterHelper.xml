@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>3052</id>
+		<title>BaseSectionQuickAdapter  convertHeader方法要加open关键字</title>
+		<body>BaseSectionQuickAdapter  类中  protected fun convertHeader(helper: VH, item: T?, payloads: MutableList&lt;Any&gt;) {}  要加open关键字 protected open fun convertHeader(helper: VH, item: T?, payloads: MutableList&lt;Any&gt;) {} </body>
+		<created>2020-02-07 13:48:53</created>
+		<closed>2020-02-25 04:17:36</closed>
+	</bug>
+	<bug>
+		<id>3046</id>
+		<title>3.0.0-beta5指定的EmptyView高度是180dp，但空视图还是占满一页的</title>
+		<body> </body>
+		<created>2020-01-17 04:56:18</created>
+		<closed>2020-02-25 08:02:49</closed>
+	</bug>
+	<bug>
+		<id>3019</id>
+		<title>getItemPosition 是 internal 无法访问</title>
+		<body>```kotlin     internal fun getItemPosition(item: T?): Int {         return if (item != null &amp;&amp; data.isNotEmpty()) data.indexOf(item) else -1     } ``` 在 BaseQuickAdapter.kt 里  3.0.0-beta5 在 java 里继承 BaseQuickAdapter 然后使用 getItemPosition 报错，提示要用 getItemPosition$library_release 。  很奇怪，是不是我的使用方式有问题？这是 feature 吗？</body>
+		<created>2020-01-02 16:17:07</created>
+		<closed>2020-01-02 17:27:09</closed>
+	</bug>
+	<bug>
+		<id>3009</id>
+		<title>关于loadMoreView 默认使用全局静态变量的问题</title>
+		<body>版本： 3.0.0-beta4 问题：全局静态的 loadMoreView 包含的 loadMoreStatus， isLoadEndMoreGone 在全局中共享状态，造成不重启App的话，是无法复位状态，则RecyclerView不能触发加载更多。如果一个App中有多个不同的RecyclerView 使用BaseQuickAdapter，但所有BaseQuickAdapter 都共用这个静态 loadMoreView . 则共享使用了 loadMore 的状态了。这应该是有问题的。  1. 为何需要这样一个静态变量？ 2. 如果这是必须的，因为 loadMoreStatus， isLoadEndMoreGone 均为 internal set 变量，那么在不自定义loadMoreView的情况下，我该如何重置其状态？  无法通过 isEnableLoadMore 重置其状态 `adapter.loadMoreModule.isEnableLoadMore = true`  无法通过直接该其属性 `adapter.loadMoreModule!!.loadMoreView.isLoadEndMoreGone = false`  有疑问的地方在 BaseLoadMoreModule 中第43行 &gt;/** 设置加载更多布局 */     var loadMoreView = LoadMoreModuleConfig.defLoadMoreView  和第22行  &gt; object LoadMoreModuleConfig {     /**      * 设置全局的LodeMoreView      */     @JvmStatic     var defLoadMoreView: BaseLoadMoreView = SimpleLoadMoreView() } </body>
+		<created>2019-12-28 04:49:04</created>
+		<closed>2019-12-30 06:33:07</closed>
+	</bug>
+	<bug>
+		<id>3004</id>
+		<title>demo中的BaseNodeAdapter折叠展开问题</title>
+		<body>版本:3.0.0-beta3  demo中BaseNodeAdapter的First Node 7 展开后再次点击无法折叠 点击其他First Node也无法折叠First Node 7 demo里调用的方法是expandAndCollapseOther(position) ![device-2019-12-26-125644](https://user-images.githubusercontent.com/58125980/71458771-56763880-27df-11ea-8de4-e46167e16130.png) </body>
+		<created>2019-12-26 04:58:19</created>
+		<closed>2019-12-27 08:04:44</closed>
+	</bug>
+	<bug>
+		<id>2142</id>
+		<title>使用最新版的 多布局方法后，列表item的点击事件失效了，但是在Provider中条目的点击事件是正常的。</title>
+		<body>使用最新版的 多布局方法后，列表item的点击事件失效了，但是在Provider中条目的点击事件是正常的。</body>
+		<created>2018-04-11 11:12:11</created>
+		<closed>2018-04-12 02:21:38</closed>
+	</bug>
+</bugs>

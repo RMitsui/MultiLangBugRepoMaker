@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<pullrequests>
+	<pullrequest>
+		<number>3148</number>
+		<title>issue 3083 bug fix and fix typo</title>
+		<body>fix #3083   由于kotlin是弱类型语言, 如果在对kotlin bean的fieldName进行解析判断的时候如果用Java的一套解析方法去做的话就会出现issue中的问题, 因此这里针对kotlin进行了kotlin的bean的field解析的增强, 思路主要是通过分析kotlin bean经过java反射之后, 不同格式的名称会有不同类型的get/set方法, 通过这些方法来进行fieldName的推断, 以此来推测出正确的fieldName  字段名称 | set方法名 | get方法名 -- | -- | -- abc | setAbc | getAbc _abc | set_abc | get_abc is_abc | set_abc | is_abc isAbc | setAbc | isAbc   </body>
+		<to>3083</to>
+	</pullrequest>
+	<pullrequest>
+		<number>3146</number>
+		<title>Fix issue 3132 包名为中文的时候toJSONString会有异常</title>
+		<body>fix #3132   由于`com.alibaba.fastjson.asm.ByteVector#putUTF8`在判断char的值的时候, 只判断了c &gt;= '\001' &amp;&amp; c &lt;= '\177'的情况, 导致中文路径传入后解析发现不在这个范围内, 中文包名虽然不符合代码规范, 但是编译不会报错, 因此在这里对所有中文字符做了补充支持, 使得包名为中文的情况下依旧可以正常调用相应API</body>
+		<to>3132</to>
+	</pullrequest>
+	<pullrequest>
+		<number>3099</number>
+		<title>Fix issue3079（JSONValidator直接返回False）</title>
+		<body>closes #3079  修改了JSONValidatorAPI的行为，当json字符串不符合要求时`validator()`方法不再抛出异常，而是返回false，更符合正常人的思维逻辑</body>
+		<to>3079</to>
+	</pullrequest>
+	<pullrequest>
+		<number>2842</number>
+		<title>修复测试用例</title>
+		<body>fix #2823 </body>
+		<to>2823</to>
+	</pullrequest>
+	<pullrequest>
+		<number>2778</number>
+		<title>fix issue #2754(反序列化带时区的时间字符串失败)</title>
+		<body>fix #2754 针对新西兰时区的特殊情况做了判断（目前只发现这一个时区比较特殊）</body>
+		<to>2754</to>
+	</pullrequest>
+	<pullrequest>
+		<number>2762</number>
+		<title>修复以$和_开头的属性名无法正确序列化和反序列化的问题</title>
+		<body>fix #2488 #2385 #2722   修复两个问题 1. 以美元符号（$）开头的属性，序列化和反序列都不解析，因为当前的逻辑是通过get/set/is方法名来解析propertyName，其中只对大写字母开头、'\_'开头和'f'开头的属性做了特殊判断，但没有考虑到去掉get/set/is前缀后方法名与属性名称相同的场景，比如`setage()`对应age属性（此前只能识别`setAge()`) 修复方案：在所有解析propertyName的逻辑中，若匹配大写字母开头、'_'开头和'f'开头失败时（进入else分支），尝试直接去掉get\set\is前缀，并且不做任何大小写转换去获取field  2. 以下划线符号（\_）开头，序列化出来的字符串丢失了下划线符号（_），因为解析propertyName逻辑中为了支持`get_set_Test.java`用例中的特殊下划线场景，直接去掉了下划线。 修复方案：在下划线开头的特殊处理分支中增加逻辑，如果去掉下划线获取不到field,就尝试加上下划线去获取（如果还是获取不到就还原回去掉下划线的属性名，以减少本次改动带来的影响）</body>
+		<to>2488</to>
+	</pullrequest>
+	<pullrequest>
+		<number>2748</number>
+		<title>Fix issue2736(JSONObject.keySet()中可能包含非String键)</title>
+		<body>fix #2736   `JSONObject.innerMap`的泛型参数为&lt;String, Object&gt;，而`DefaultJSONParser.parseObject()`方法中的map没有指定泛型参数，往里put键值对也没有做类型检查，可能会put进非String类型的key。 当前的`parseObject()`逻辑中如果开启了NonStringKeyAsString这个特性，则会将key转为String类型。可以直接在这个判断条件后面新增一个对JSONObject的判断。  The parameterType of `JSONObject.innerMap` is &lt;String, Object&gt;, while in the method `DefaultJSONParser.parseObject()`, non-String key might be put into this map, resulting in unexpected outcome. Currently, the type of key will be converted to String only when the feature `NonStringKeyAsString` is enabled. Therefore, an additional statement which determines whether current object is a JSONObject can be added after that to suit the case here.</body>
+		<to>2736</to>
+	</pullrequest>
+	<pullrequest>
+		<number>2710</number>
+		<title>fix issue2447, JSON.toJSON方法序列化不支持@JSONField(unwrapped=true)</title>
+		<body>fixes #2447  在`JavaBeanSerializer`类的`getFieldValuesMap()`方法中新增了对unwrapped注解配置情况的判断和采取的相应措施。 由于`JSONPath`类的`paths()`接口也使用了`getFieldValuesMap()`方法，所以unwrap属性也将会在`JSONPath`中生效。 由于`JSON.toJSON()`方法内由局部变量JSONObject处理键值对，而JSONObject内存储的键值对默认是无序的，因此`JSON.toJSON()`与`JSON.toJSONString`返回的结果中键值对的顺序不一致</body>
+		<to>2447</to>
+	</pullrequest>
+	<pullrequest>
+		<number>2672</number>
+		<title>fix issue #1821 (当Base64字符串中的斜杠`/`被转义为`\/`后，解析为`byte[]`有问题)</title>
+		<body>fix #1821 and add testcase  ```ObjectArrayCodec```进行反序列化时，对于```[]byte```类型，```bytesValue()```函数中在进行Base64解码之前应该使用转义处理过的字符串，而不是原始的JSON串中的子串。</body>
+		<to>1821</to>
+	</pullrequest>
+	<pullrequest>
+		<number>2280</number>
+		<title>add comment for FastJsonConfig</title>
+		<body>fix #2274 </body>
+		<to>2274</to>
+	</pullrequest>
+	<pullrequest>
+		<number>2225</number>
+		<title>fix #2224 复杂继承情况下 TypeUtils.getCollectionItemType() 获取类型错误导致反序列化失败</title>
+		<body>fix #2224</body>
+		<to>2224</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1507</number>
+		<title>fix #1493</title>
+		<body>fix #1493</body>
+		<to>1493</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1290</number>
+		<title>bug fixed for issue 1281 (android oom).</title>
+		<body>fixed #1281 #1286  修复安卓环境中无参写法导致的oom问题。 这种修复方式支持在安卓5.0以上的版本。 麻烦@wenshao review评估下.  相关信息 https://android.googlesource.com/platform/libcore/+/c7dede2138e5b122cb1011a355e4f9f8e6d37856%5E%21/</body>
+		<to>1281</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1280</number>
+		<title>fixed #1278 and add testcase</title>
+		<body>fixed #1278 and add testcase</body>
+		<to>1278</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1269</number>
+		<title>fixed #1267 and add testcase</title>
+		<body>fixed #1267 and add testcase</body>
+		<to>1267</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1260</number>
+		<title>fixed #1259</title>
+		<body>fixed #1259</body>
+		<to>1259</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1248</number>
+		<title>fix #1247</title>
+		<body>fix #1247</body>
+		<to>1247</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1037</number>
+		<title>bug fixed for issue 1036 (DefaultFieldDeserializer).</title>
+		<body>fixed #1036 。 在```DefaultFieldDeserializer. parseField```处理的时候，如果 ```fieldValueDeserilizer ```为 ```JavaBeanDeserializer```的子类时，直接调用```deserialze(DefaultJSONParser parser, Type type, Object fieldName, int features)```方法不会走子类的反序列化实现。  问题在1.2.12版本引入，似乎是BeanToArray特性引起.</body>
+		<to>1036</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1027</number>
+		<title>bug fixed for issue 1013 (Collection repeats to add elements.).</title>
+		<body>fixed #1013 </body>
+		<to>1013</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1022</number>
+		<title>fix #1021</title>
+		<body>fix #1021</body>
+		<to>1021</to>
+	</pullrequest>
+	<pullrequest>
+		<number>1008</number>
+		<title>bug fixed for issue 1005.</title>
+		<body>fixed #1005 </body>
+		<to>1005</to>
+	</pullrequest>
+	<pullrequest>
+		<number>949</number>
+		<title>fix #943</title>
+		<body>fix #943 空白符问题.</body>
+		<to>943</to>
+	</pullrequest>
+	<pullrequest>
+		<number>941</number>
+		<title>Fixed#849#937</title>
+		<body>fix #849 双参数时同样存在内存占用大得问题. ```Java public static &lt;K, V&gt; Map&lt;K, V&gt; parseToMap(String json,                                              Class&lt;K&gt; keyType,                                              Class&lt;V&gt; valueType) {      return JSON.parseObject(json,                              new TypeReference&lt;Map&lt;K, V&gt;&gt;(keyType, valueType) {                             }); }  // 可以这样使用 String json = "{1:{name:\"ddd\"},2:{name:\"zzz\"}}"; Map&lt;Integer, Model&gt; map = parseToMap(json, Integer.class, Model.class); assertEquals("ddd", map.get(1).name); assertEquals("zzz", map.get(2).name); ```  视乎 https://github.com/alibaba/fastjson/commit/ef50a5b756a6cab1ab753f4a661bdfb0ccbd6b7e 引入了 #937  问题 ？ </body>
+		<to>849</to>
+	</pullrequest>
+	<pullrequest>
+		<number>217</number>
+		<title>improve ListSerializer</title>
+		<body>fix #210 </body>
+		<to>210</to>
+	</pullrequest>
+</pullrequests>

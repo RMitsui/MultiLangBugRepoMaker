@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="apollo">
+	<bug id="2015" opendate="2019-03-01 04:44:33" fixdate="2019-03-09 06:16:49">
+		<buginformation>
+			<summary>windows操作系统下复制粘贴配置内容时，如果有空行，会报错</summary>
+			<description>如题，我的复制粘贴内容如下 ``` spring.datasource.url = jdbc:mysql://172.16.113.135:3306/sandbox2?characterEncoding=utf8 url = https://${var.env}.xxx.com var.env = dev k2 = dev.v2 k1 = dev.v1  spring.datasource.driver-class-name = com.mysql.jdbc.Driver spring.datasource.username = root spring.datasource.password = root raw = dev.raw.value ```     ![f40cf5a3-287c-449a-8ca9-d1624bff8774](https://user-images.githubusercontent.com/4167422/53616840-7371c780-3c1f-11e9-9d75-3556c1a9b528.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>apollo-portal/src/main/java/com/ctrip/framework/apollo/portal/component/txtresolver/PropertyResolver.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="FileDownloader">
+	<bug id="1289" opendate="2019-10-11 12:18:02" fixdate="2019-10-12 05:50:23">
+		<buginformation>
+			<summary>传入错误下载地址，没有下载错误的回调</summary>
+			<description>传入一个无效的地址，例如空字符串，开始下载后没有任何回调，包括下载错误的回调 请问这正常吗？是不是我需要设置重试次数或其他属性？</description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/util/FileDownloadUtils.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/DownloadTask.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1209" opendate="2019-04-25 03:29:48" fixdate="2019-08-23 12:40:43">
+		<buginformation>
+			<summary>更新到1.7.6版本后，通知栏仍概率性自动出现FileDownloader is running提示，不能复现</summary>
+			<description>更新到1.7.6版本后，通知栏仍概率性自动出现FileDownloader is running提示，点击该通知提示没有响应。该提示是在用户使用手机并未下载资源的时候自动出现，手机未重启放置一晚第二天看这个通知又自动消失了。目前暂未获取到有效log。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloader.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/LostServiceConnectedHandler.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/BaseFileServiceUIGuard.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/ILostServiceConnectedHandler.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="953" opendate="2018-02-13 12:34:42" fixdate="2018-02-26 06:30:58">
+		<buginformation>
+			<summary>请问数据库操作为什么和log的级别嵌套在一起呢？</summary>
+			<description>FileDownloadManager  ![image](https://user-images.githubusercontent.com/17804057/36150066-42a2f8ca-10fd-11e8-8aa6-e36a257cd211.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="933" opendate="2018-01-28 15:05:46" fixdate="2018-01-31 14:31:49">
+		<buginformation>
+			<summary>重复下载</summary>
+			<description>每次下载的时候都会先发起range为  0-  的请求，然后再分段下载，但是这一个 0- 的请求，就已经下载了整个文件了，为什么不发起一个range为0-0的请求，然后解析response中的content-range来获取总长再进行分段？我自己改了一版代码，发现这样也是完全可以下载的，可以解决掉重复下载的问题，但不明白为什么作者不这样用呢？其他的使用者好像也没反馈类似问题 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/connection/FileDownloadConnection.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadLaunchRunnable.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/connection/FileDownloadUrlConnection.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/util/FileDownloadUtils.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/ConnectionProfile.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/ConnectTask.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="889" opendate="2017-12-25 12:13:40" fixdate="2018-01-07 01:33:52">
+		<buginformation>
+			<summary>请问这是什么非法参数异常错误，没找到具体原因</summary>
+			<description>#### Issue       12-25 19:23:43.587 13320-13320/? E/AndroidRuntime: FATAL EXCEPTION: main Process: com.hy.HoneyMarket, PID: 13320       java.lang.IllegalArgumentException: can't handover the message, no master to receive this message(status[2]) size[0]        at com.liulishuo.filedownloader.k.b(Unknown Source)     at com.liulishuo.filedownloader.j$b.a(Unknown Source)     at com.liulishuo.filedownloader.j$b.handleMessage(Unknown Source)     at android.os.Handler.dispatchMessage(Handler.java:98)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5258)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:963)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:758)  --- </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/MessageSnapshotGate.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="884" opendate="2017-12-23 02:16:31" fixdate="2018-01-16 13:19:37">
+		<buginformation>
+			<summary>你的demoapp点击开始然后快速点击暂停，网速为负值</summary>
+			<description>#### Before Issue  1. Please search on the [Issues](https://github.com/lingochamp/FileDownloader/issues) 2. Please search on the [wiki](https://github.com/lingochamp/FileDownloader/wiki) 3. Please set `FileDownloadLog.NEED_LOG=true` and review the Logcat output from main process and `:filedownloader` process ( pay attention to Warn and Error level logcat)  #### Issue  1. What problem do you get? 2. Which version of FileDownloader are you using when you produce such problem? 3. How to reproduce such problem? 4. Do you set `FileDownloadLog.NEED_LOG=true`? 5. Could you please reproduce this problem and provide all main process and `:filedownloader` process logcat  6. Can you fix it by yourself and request PR, if not, what's problem do you get when you try to fix it  &gt;P.S. If you don't know how to get `:filedownloader` process, it's recommended to using `pidcat` to just filter all your application logcat, or define `process.non-separate=true` on [filedownloader.properties](https://github.com/lingochamp/FileDownloader/wiki/filedownloader.properties)  ---  请在Issue前认真的跟进上面提到的建议，这样将可以极大的加快你遇到问题的处理。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadLaunchRunnable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="793" opendate="2017-10-12 11:47:44" fixdate="2017-10-13 11:58:47">
+		<buginformation>
+			<summary>下载几个文件，然后同时暂停再继续概率出现从头开始下载</summary>
+			<description>#### Before Issue  1. Please search on the [Issues](https://github.com/lingochamp/FileDownloader/issues) 2. Please search on the [wiki](https://github.com/lingochamp/FileDownloader/wiki) 3. Please set `FileDownloadLog.NEED_LOG=true` and review the Logcat output from main process and `:filedownloader` process ( pay attention to Warn and Error level logcat)  #### Issue  1. What problem do you get? 2. Which version of FileDownloader are you using when you produce such problem? 3. How to reproduce such problem? 4. Do you set `FileDownloadLog.NEED_LOG=true`? 5. Could you please reproduce this problem and provide all main process and `:filedownloader` process logcat  6. Can you fix it by yourself and request PR, if not, what's problem do you get when you try to fix it  &gt;P.S. If you don't know how to get `:filedownloader` process, it's recommended to using `pidcat` to just filter all your application logcat, or define `process.non-separate=true` on [filedownloader.properties](https://github.com/lingochamp/FileDownloader/wiki/filedownloader.properties)  ---  请在Issue前认真的跟进上面提到的建议，这样将可以极大的加快你遇到问题的处理。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/model/FileDownloadModel.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadStatusCallback.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadManager.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadLaunchRunnable.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/DefaultDatabaseImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="737" opendate="2017-08-21 03:20:49" fixdate="2017-08-21 09:48:58">
+		<buginformation>
+			<summary>下载出现416错误</summary>
+			<description>从又拍云服务器下载zip压缩包的时候，始终报416错误，无法下载，用原生httpURLconnection下载没问题</description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadLaunchRunnable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="631" opendate="2017-06-26 08:46:47" fixdate="2017-07-06 13:06:22">
+		<buginformation>
+			<summary>下载到最后回调两次99%但是接下来的任何进度</summary>
+			<description>@Gongcong @wanghaihui  #### 多次返回的总进度相同这个是有可能的  因为回调是根据是否字节数有增加，而非整体的进度百分比，而具体配置体现在[根据间隔/回调进度等配置进行回调](https://github.com/lingochamp/FileDownloader/wiki/processing-callback-frequency)。  #### 但是根据你们( @Gongcong @wanghaihui ) 的描述:   &gt; 因为我们现在用的就是最新的1.5.7版本，这个问题的复现情况是这样的，下载完后，然后再清除APP缓存数据，然后再下载，会有几率复现，我们打了log，progress是100，但是最后会出现两次progress=99, 然后，完全进度就死在那了，没有任何回调  #### 似乎是怀疑下载完成了，但是没有回调`完成`对吗？  如果是，可以告知下当遇到这种特征情况时（如你们所说在第二次progress=99时):  1. `FileDownloader.getStatus(id, path)`返回的状态如何？ 2. 本地的`FileDownloadUtils.getTempPath(task.getTargetFilePath())`文件是否存在？ 3. 本地的 `task.getTargetFilePath()`文件是否存在。 4. 留意Logcat中是否有crash日志，或者warn/error的日志  ---  #### P.S. 按照现有代码逻辑是不可能出现下载完成但不回调完成的。只有可能下载进程Crash?或者`error`的回调，因此我比较倾向于是否是下载进程Crash或者是[网络情况导致](https://github.com/lingochamp/FileDownloader/issues/628#issuecomment-310268437) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadLaunchRunnable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="625" opendate="2017-06-20 10:00:00" fixdate="2017-06-27 02:05:29">
+		<buginformation>
+			<summary>经常出现不下载的情况，没有回调进度，临时文件也没被创建，我之前频繁操作过暂停下载、启动下载</summary>
+			<description>源码： FileDownloader.getImpl().create(realUrl)                     .setPath(dir + bean.getRealName())                     .setSyncCallback(true)// 不回调在ui线程                     .setCallbackProgressTimes(3000) // 最大回调次数                     .setCallbackProgressMinInterval(500)// 设置回调最小间隔2s                     .setListener(demandListener)                     .asInQueueTask()                     .enqueue();   FileDownloader.getImpl().start(demandListener, true);</description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/FetchDataTask.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadRunnable.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadLaunchRunnable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="348" opendate="2016-10-05 14:11:26" fixdate="2016-10-15 10:38:30">
+		<buginformation>
+			<summary>In 1.2.0, If you don't provide the FileDownloadListener to the task, you can't receive FileDownloadMonitor.IMonitor#onTaskOver callback when the task is finished</summary>
+			<description>升到1.2.0之后你改掉了notifyCompleted的回调判断，不设置下载监听，连全局Monitor的成功回调都没了！！！！我说之前还是好好的，看了下源码发现改了！ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/IFileDownloadMessenger.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloadMessenger.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloadMessageStation.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="176" opendate="2016-06-14 03:18:19" fixdate="2016-06-14 04:26:15">
+		<buginformation>
+			<summary>数据库中的下载数据会定时清除吗？</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadRunnable.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/message/SmallMessageSnapshot.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadMgr.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/IFileDownloadServiceProxy.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/message/MessageSnapshotTaker.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/BaseDownloadTask.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FDServiceSeparateHandler.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/message/LargeMessageSnapshot.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/util/FileDownloadUtils.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadDBHelper.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/util/DownloadServiceNotConnectedHelper.java</file>
+			<file>demo/src/main/java/com/liulishuo/filedownloader/demo/TasksManagerDemoActivity.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloadTask.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloadServiceUIGuard.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloadServiceProxy.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloader.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FDServiceSharedHandler.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloadServiceSharedTransmit.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadDBOpenHelper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="162" opendate="2016-05-27 03:17:35" fixdate="2016-05-28 10:13:37">
+		<buginformation>
+			<summary>你好，使用中出现bug</summary>
+			<description>实际使用中，似乎存在多次点击会出现这个错误（特别是下载准备完成时）。 我尝试做判断，如果为空，不调用callback,但这样，似乎又会出现其他问题  java.lang.NullPointerException     at com.liulishuo.filedownloader.FileDownloadMessenger.handoverMessage(FileDownloadMessenger.java:257)     at com.liulishuo.filedownloader.FileDownloadMessageStation$UIHandlerCallback.dispose(FileDownloadMessageStation.java:179)     at com.liulishuo.filedownloader.FileDownloadMessageStation$UIHandlerCallback.handleMessage(FileDownloadMessageStation.java:170)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:153)     at android.app.ActivityThread.main(ActivityThread.java:5000)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:821)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:584)     at dalvik.system.NativeStart.main(Native Method)  另，麻烦修复一下： 不明白为什么跑到这个分支 ，可能 也是多次点击 ？ java.util.MissingFormatArgumentException: Format specifier: d     at java.util.Formatter.getArgument(Formatter.java:1111)     at java.util.Formatter.doFormat(Formatter.java:1076)     at java.util.Formatter.format(Formatter.java:1042)     at java.util.Formatter.format(Formatter.java:1011)     at java.lang.String.format(String.java:1999)     at com.liulishuo.filedownloader.util.FileDownloadUtils.formatString(FileDownloadUtils.java:286)     at com.liulishuo.filedownloader.services.FileDownloadRunnable.run(FileDownloadRunnable.java:166)     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)     at java.lang.Thread.run(Thread.java:841) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadRunnable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="92" opendate="2016-04-09 08:34:24" fixdate="2016-04-09 12:26:25">
+		<buginformation>
+			<summary>新问题，关于自动重试</summary>
+			<description>测试发现，如果设置了自动重试（比如 3次），我进行如下操作： 下载一个文件，在进行了一段时间后，这时切到后天，主动关闭手机的网络（wifi），这是切回应用，会回调 error，这时我主动重新开始 调用下载，不是（task.start()）而是： FileDownloader.getImpl().create(url).setPath(path).setCallbackProgressTimes(1000).setListener(mFileDownloadListener).start(); 因为这时还没有网络，所以会回调 retry 一次（只有一次），然后 error，这时主动去开启网络，继续重新开始下载，这时下载进度却从 0开始了，不管测试是 第一次回调 error之前重新联网还是 回调了error之后重新联网，都是这样的结果，断点续传失效了。 然后继续测试 建立下载的时候 不设置自动重试的次数，重试以上的过程，主动联网后，再次调用下载，可以断点续传，以前的下载进度存在。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/IFileDownloadDBHelper.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadRunnable.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadDBHelper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="91" opendate="2016-04-09 07:53:04" fixdate="2016-04-09 11:16:34">
+		<buginformation>
+			<summary>一些疑问</summary>
+			<description>1.测试一个下载，下载进行中时，主动断开了手机的网络连接（wifi），发现只回调了retry一次（初始下载时设置了 自动重试 3次） 2.然后进入了 error，我收到 error后，主动调用 task.start(); 但发现并未发生预计出现的任何事情（比如，继续回调 error 或者 retry）（这时主动调用时， 即使是我主动开启了网络连接依然如此），是机制就这这样的吗？感觉这样子，出现了异常，难道只能 主动delete下载包继续新建下载 重新下载吗？ 3.setCallbackProgressTimes 是有默认值吗？发现 设置 1000 后，回调progress会平滑很多，是否可以关闭这个限制？就以设置的回调间隔来回调 progress 呢？ 4.是否可以拓展个内部的数据，downloadSpeed 和 remainingTime，如果自己实现的话，因为 progress回调的间隔时间实在是业务层无法掌握的节奏，它是不确定的，我本想自己通过间隔来算，发现回调的不确定 算不了这个速度，剩余时间也同样算不了。是否可以在 lib 内部实现这个 速度和时间的 估算呢？这个需求应该算是很常规的需要把 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/model/FileDownloadStatus.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloadList.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/BaseDownloadTask.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="90" opendate="2016-04-09 03:02:07" fixdate="2016-04-09 04:11:28">
+		<buginformation>
+			<summary>测试发现的问题</summary>
+			<description>1.建立了一个下载，下载未完成，直接关闭应用，FileDownloader的service未被kill，然后重新打开应用，重新走 start 流程，发现不会回调 progress 了，只会在一段时间后回调 completed。请问是 bug吗？要怎么才能继续回调 progress  呢？ 2. 测试下载中，默认 10ms回调，progress  里面的进度走势并不顺畅，感觉是跳动一下，然后顿一下，然后又 迅速跳几下进度，又卡顿一会， 比较了其它几个下载库，感觉不顺畅。即使时间设置为0.1s 也并无改观。是否就是这样的呢？ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/model/FileDownloadTransferModel.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/FileDownloadMgr.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/BaseDownloadTask.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

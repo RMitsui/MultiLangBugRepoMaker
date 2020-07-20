@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>177</id>
+		<title>En el site, en mi cuenta, sale un error si selecciono reservas del mes anterior.</title>
+		<body>Si estamos en enero y selecciono el mes anterior, resta 1 al valor numérico de mes y queda en 0 que es un valor no admitido. </body>
+		<created>2016-01-26 12:28:25</created>
+		<closed>2016-01-27 08:46:05</closed>
+	</bug>
+	<bug>
+		<id>174</id>
+		<title>NullPointerException al finalizar suscripción a comunidad sin validación</title>
+		<body>Comunidad disponible con suscripción inmediata.  Parte significativa del log:   *\* com.greco.beans.SubscribeMeCBean.submit(SubscribeMeCBean.java:79) *\*    javax.servlet.ServletException: java.lang.NullPointerException     javax.faces.webapp.FacesServlet.service(FacesServlet.java:659)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50)     org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:108)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)     org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)     org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:344)     org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:261)  root cause  javax.faces.el.EvaluationException: java.lang.NullPointerException     javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:101)     com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)     org.primefaces.application.DialogActionListener.processAction(DialogActionListener.java:45)     javax.faces.component.UICommand.broadcast(UICommand.java:315)     javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)     javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)     com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)     com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)     com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)     javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50)     org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:108)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)     org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)     org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:344)     org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:261)  root cause  java.lang.NullPointerException     com.greco.beans.SubscribeMeCBean.submit(SubscribeMeCBean.java:79)     sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)     sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     java.lang.reflect.Method.invoke(Method.java:606)     org.apache.el.parser.AstValue.invoke(AstValue.java:262)     org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278)     com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105)     javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87)     com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)     org.primefaces.application.DialogActionListener.processAction(DialogActionListener.java:45)     javax.faces.component.UICommand.broadcast(UICommand.java:315)     javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)     javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)     com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)     com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)     com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)     javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50)     org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:108)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)     org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)     org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:344)     org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:261) </body>
+		<created>2016-01-22 09:15:37</created>
+		<closed>2016-01-22 10:13:43</closed>
+	</bug>
+	<bug>
+		<id>173</id>
+		<title>Edición de comunidad. Error al validar id de comunidad único</title>
+		<body>Si ponemos un nombre de comunidad y código postal igual a otro existente, se produce un error al guardar. No aparece mensaje de confirmación de cambio ni se modifica. </body>
+		<created>2016-01-20 17:05:23</created>
+		<closed>2016-01-21 12:01:10</closed>
+	</bug>
+	<bug>
+		<id>172</id>
+		<title>Cambio de literal. Distrito postal -&gt; Código postal</title>
+		<body>Cambiar en messages.properties el literal "distrito postal" por el de "código postal". </body>
+		<created>2016-01-20 16:24:10</created>
+		<closed>2016-01-21 12:03:19</closed>
+	</bug>
+	<bug>
+		<id>171</id>
+		<title>Requerir código de activación cuando se modifique la cuenta de correo.</title>
+		<body>Si el usuario, bien desde la consola, bien desde el site, modifica la cuenta de correo, se generará un nuevo código de activación que le será enviado a su cuenta y que necesitará introducir para hacer login. </body>
+		<created>2016-01-20 15:06:43</created>
+		<closed>2016-01-21 14:50:24</closed>
+	</bug>
+	<bug>
+		<id>170</id>
+		<title>Cambio de correo a la cuenta de Google Apps</title>
+		<body>Pasar a utilizar la nueva cuenta de Google asociada al dominio alnura.es </body>
+		<created>2016-01-20 11:14:49</created>
+		<closed>2016-01-20 11:16:02</closed>
+	</bug>
+	<bug>
+		<id>169</id>
+		<title>Captchas en inglés.</title>
+		<body>Los captchas están en ingles. </body>
+		<created>2016-01-19 15:39:30</created>
+		<closed>2016-01-19 15:44:40</closed>
+	</bug>
+	<bug>
+		<id>163</id>
+		<title>Pruebas de github y las ramas</title>
+		<body>Issue creado para pruebas. </body>
+		<created>2016-01-04 11:28:05</created>
+		<closed>2016-01-04 11:51:47</closed>
+	</bug>
+	<bug>
+		<id>158</id>
+		<title>Recurso reservable con mínimo que, al restar de la hora actual, queda antes del inicio</title>
+		<body>Si tenemos un recurso con inicio 9:00 y fin cualquiera. Mínimo de reserva =2h y son las 10:00 da un error. </body>
+		<created>2015-12-17 11:27:40</created>
+		<closed>2015-12-17 11:38:14</closed>
+	</bug>
+	<bug>
+		<id>154</id>
+		<title>Error al abrir página de reservas bajo ciertas circunstancias </title>
+		<body>Si tenemos un recurso con las siugentes características:  Disponibilidad: 14:55-15:55 Antelación: 24 minutos. Hora actual posterior al fin de diponibilidad. </body>
+		<created>2015-12-10 16:42:45</created>
+		<closed>2015-12-11 11:06:58</closed>
+	</bug>
+	<bug>
+		<id>153</id>
+		<title>Crear/editar recurso. El máximo reservable no puede superar las 24h</title>
+		<body>El sistema permite poner como máximo 60h. </body>
+		<created>2015-12-10 15:40:48</created>
+		<closed>2015-12-17 10:53:58</closed>
+	</bug>
+	<bug>
+		<id>151</id>
+		<title>Edición de comunidad. Al pulsar URL, abrir en misma pestaña</title>
+		<body>En la edición de comunidad, al pulsar en la URL, no debe saltar a otra pestaña ya que no somos capaces de mantener dos sesiones simultaneas en site y consola. </body>
+		<created>2015-12-09 17:08:48</created>
+		<closed>2015-12-10 08:18:44</closed>
+	</bug>
+	<bug>
+		<id>150</id>
+		<title>Si pulso F5 en página de finalización, crea nuevas suscripciones para mismo usuario.</title>
+		<body>Si desde un site me suscribo a la comunidad y en la página de "hemos enviado un correo a su admin..." pulsamos F5, no hay ningún control y crea dos suscripciones para un mismo usuario, dejando el sistema inconsistente. </body>
+		<created>2015-12-09 16:56:55</created>
+		<closed>2015-12-21 11:44:12</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>Reservar (móvil). El mensaje de tiempo excedido de reserva no se ve.</title>
+		<body>Si excedo el tiempo de reserva máximo, la reserva no se marca y aparece un mensaje indicándolo. El problema es que en el móvil no se ve. Hay que hacer scoll para ver el mensaje de manera que parece que algo no funciona. </body>
+		<created>2015-12-03 10:51:48</created>
+		<closed>2015-12-10 14:24:15</closed>
+	</bug>
+	<bug>
+		<id>145</id>
+		<title>Búsqueda de reservas/edición comunidad. Recolocar página.</title>
+		<body>Cuando pulsamos buscar (resevas), o, al editar comunidad, cuando volvemos de la edición de recursos, debería haber un marcador al inicio de las respectivas tablas al que ir en lugar de al inicio de página. En un móvil no se ve el resultado. </body>
+		<created>2015-12-03 10:48:11</created>
+		<closed>2015-12-18 11:52:10</closed>
+	</bug>
+	<bug>
+		<id>144</id>
+		<title>Edición de cuenta en site (móvil). Botón Buscar pegado.</title>
+		<body>Poner un margen superior al botón buscar para que en móvil, que pasa a la siguiente fila, no quede pegado a la caja de texto. </body>
+		<created>2015-12-03 10:42:02</created>
+		<closed>2015-12-10 08:19:35</closed>
+	</bug>
+	<bug>
+		<id>143</id>
+		<title>Edición de cuenta en consola (móvil) no responsiva.</title>
+		<body>Los componentes salen pegados a los laterales y la tabla no se reajusta. </body>
+		<created>2015-12-03 10:40:15</created>
+		<closed>2015-12-09 16:54:42</closed>
+	</bug>
+	<bug>
+		<id>142</id>
+		<title>Recuperación de contraseña/suscripción desde site. Página final no responsive.</title>
+		<body>La página final (la del botón finalizar), de las opciones de recuperación de contraseña y suscripción desde site no es responsiva. </body>
+		<created>2015-12-03 10:20:16</created>
+		<closed>2015-12-09 15:50:53</closed>
+	</bug>
+	<bug>
+		<id>141</id>
+		<title>Baja desde site elimina admin único.</title>
+		<body>La baja desde site debería no permitirse si el miembro es el único administrador de la comunidad. </body>
+		<created>2015-12-03 10:07:12</created>
+		<closed>2015-12-09 12:00:28</closed>
+	</bug>
+	<bug>
+		<id>140</id>
+		<title>Site comunidad. En las reservas no sale nada si no hay resultado</title>
+		<body>En la página de edición de cuenta, al pulsar en buscar, si no hay resultados, no sale nada. Debería aparecer un mensaje indicando que la búsqueda no proporciona resultado alguno. </body>
+		<created>2015-11-30 11:05:29</created>
+		<closed>2015-11-30 11:44:09</closed>
+	</bug>
+	<bug>
+		<id>139</id>
+		<title>Contacto admin. El mensaje debe borrarse una vez enviado.</title>
+		<body>Borrar el mensaje enviado para evitar nuevos envíos. </body>
+		<created>2015-11-27 13:30:51</created>
+		<closed>2015-11-30 09:27:46</closed>
+	</bug>
+	<bug>
+		<id>138</id>
+		<title>Contacto admin. El sistema debe avisar si el mensaje es vacío</title>
+		<body>El mensaje que se envíe debe suprimir blancos por delante y detrás y no permitir envío de consultas en blanco. </body>
+		<created>2015-11-27 13:28:28</created>
+		<closed>2015-11-30 10:07:33</closed>
+	</bug>
+	<bug>
+		<id>137</id>
+		<title>Contacto admin. Correo sin remitente</title>
+		<body>En el correo que se envía desde la opción  "contacta al admin" no se indica el correo del usuario que lanzó la consulta. </body>
+		<created>2015-11-27 13:26:40</created>
+		<closed>2015-11-30 10:25:02</closed>
+	</bug>
+	<bug>
+		<id>136</id>
+		<title>Contacto admin. Considera blancos en email</title>
+		<body>El sistema no debería considerar a la hora de validar y obtener el email blancos al principio y final. </body>
+		<created>2015-11-27 13:23:54</created>
+		<closed>2015-11-30 10:08:13</closed>
+	</bug>
+	<bug>
+		<id>135</id>
+		<title>Reservas confirmadas. Muestra antiguas</title>
+		<body>La lista de reservas confirmadas (página "mis reservas"), debería mostrar solo aquellas reservas cuya hora de fin sea anterior a la hora actual (teniendo en cuenta el locale de la comunidad). De igual manera, las reservas que no salgan en esta lista debería poder localizarse en el histórico de reservas (página "Mi cuenta"). </body>
+		<created>2015-11-27 12:34:41</created>
+		<closed>2015-11-30 15:28:57</closed>
+	</bug>
+	<bug>
+		<id>134</id>
+		<title>Confirmación de preserva eliminada.</title>
+		<body>Si se confirma una reserva que, mientras el suscriptor tenía la página de "mis reservas", ha sido eliminada bien por el administrador  o porque caduca, se envía correo de confirmación, aparece mensaje pero la reserva no se realiza.  Hay que hacer que si un prereserva ya no exisite y se pulsa confirmar, se avise de esta circunstancia y no se envíe correo no se muestre un mensaje indicando que se produjo esta circunstancia. </body>
+		<created>2015-11-27 11:02:50</created>
+		<closed>2015-12-01 10:47:48</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>Correo de confirmación de reserva. No indica tipo de recurso.</title>
+		<body>En el correo, en la lista de reservas confirmadas se indica el nombre de tipo de recurso y no la descripción. </body>
+		<created>2015-11-27 10:48:37</created>
+		<closed>2015-12-01 11:52:37</closed>
+	</bug>
+	<bug>
+		<id>132</id>
+		<title>Mis reservas. Poner tipo de recurso en ambas tablas</title>
+		<body>Indicar el tipo de recurso (la descripción, no el nombre), en las tablas de "mis reservas". Considerar si como tooltip o como columna, </body>
+		<created>2015-11-27 10:47:25</created>
+		<closed>2015-12-01 13:59:55</closed>
+	</bug>
+	<bug>
+		<id>130</id>
+		<title>Cambiar Coyright a 2015-2016</title>
+		<body>NA </body>
+		<created>2015-11-26 16:36:42</created>
+		<closed>2015-12-01 16:24:40</closed>
+	</bug>
+	<bug>
+		<id>129</id>
+		<title>Fallo al establecer antelación</title>
+		<body>Parece que para la antelación toma como referencia la hora de fin del último periodo reservable y no la de inicio. De esta manera, para unidades de reserva de una hora, si ponemos dos horas de antelación podemos reservar 1 hora y, si ponemos 1, no podremos reservar nunca ninguna. </body>
+		<created>2015-11-26 16:22:17</created>
+		<closed>2015-12-09 11:41:44</closed>
+	</bug>
+	<bug>
+		<id>128</id>
+		<title>Limitar a 15 minutos el tiempo mínimo de reserva.</title>
+		<body>El tiempo mínimo de reserva y, por tanto, la unidad de reserva, no puede ser inferior a 10 minutos. </body>
+		<created>2015-11-26 14:45:18</created>
+		<closed>2015-12-09 10:44:20</closed>
+	</bug>
+	<bug>
+		<id>126</id>
+		<title>Consola. Cambiar dominio en correo.</title>
+		<body>En todos los correos, la web a la que se hace referencia está en www.greco.es. Una vez tengamos dominio, cambiar todas la URLs de lo correos. Basta con cambiarlo en el archivo de properties asociado al email.  También, cuando contratemos la cuena gmail, hay q cambiar la cuenta del usuario que envía y recibe correo. </body>
+		<created>2015-11-25 16:44:28</created>
+		<closed>2016-01-08 12:34:28</closed>
+	</bug>
+	<bug>
+		<id>125</id>
+		<title>Errata en correo de aceptación de suscripción.</title>
+		<body>En el asunto pone suscrpción en lugar de suscripción. </body>
+		<created>2015-11-24 10:36:04</created>
+		<closed>2015-12-09 10:09:40</closed>
+	</bug>
+	<bug>
+		<id>123</id>
+		<title>Suscripción. Valores perdidos entre pasos.</title>
+		<body>En la suscripción desde site, si en el paso dos marcamos que aceptamos términos y condiciones, volvemos al paso 1 regresamos al 2, se pierde la marca de aceptación de téminos y condiciones además del captcha. Este último podría obviarse si es complicado. </body>
+		<created>2015-11-23 11:23:29</created>
+		<closed>2015-12-09 09:48:28</closed>
+	</bug>
+	<bug>
+		<id>122</id>
+		<title>Suscripción. No descarta blanco en alias.</title>
+		<body>Cuando un usuario se suscribe e introduce el alias, debería descartar blancos delante y detrás, no contando con ellos a la hora de validar si un usuario. </body>
+		<created>2015-11-23 11:02:42</created>
+		<closed>2015-12-09 09:41:00</closed>
+	</bug>
+	<bug>
+		<id>121</id>
+		<title>Suscripción. No descarta blancos del correo.</title>
+		<body>Al suscribir un usuario que ha sido dado de alta previamente en el sistema, en el paso 1, al introducir el correo,  no detecta que no se han intruducido blancos y los considera parte del email. El sistema debe suprimir blancos delante y detrás aunque el usuario los ponga. </body>
+		<created>2015-11-23 10:21:15</created>
+		<closed>2015-12-09 09:38:52</closed>
+	</bug>
+	<bug>
+		<id>120</id>
+		<title>Consola. Hacer que la página principal sea la de miembros.</title>
+		<body>Hacer que cuando se acceda a la consola, la página principal sea la de miembros. </body>
+		<created>2015-11-23 09:47:11</created>
+		<closed>2015-12-17 13:40:32</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>Edición de comunidad. Error al eliminar recursos con reservas.</title>
+		<body>Si tratamos de eliminar un recurso que tiene reservas pendientes, al pulsar el botón guardar, aparece un mensaje de error en el growl. El problema es que el growl es demasiado grande y se solapa con botones de aplicación que, una vez que desaparece el growl, dejan de ser utilizables. Es importante corregir este punto pq uno de los botones es el botón deshacer. </body>
+		<created>2015-11-20 11:28:30</created>
+		<closed>2015-12-09 09:31:52</closed>
+	</bug>
+	<bug>
+		<id>118</id>
+		<title>Error Java si tras deshacer creo nuevo recurso.</title>
+		<body>En la edición de comunidad, pulso en deshacer (haya o no cambios en la lista de recursos.), e intento crear un recurso. Al pulsar en Hecho aparece un error java.  HTTP Status 500 -  type Exception report  message  description The server encountered an internal error () that prevented it from fulfilling this request.  exception  javax.servlet.ServletException: java.lang.UnsupportedOperationException     javax.faces.webapp.FacesServlet.service(FacesServlet.java:659)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50)     org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:108)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)     org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)     org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:344)     org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:261)  root cause  javax.faces.el.EvaluationException: java.lang.UnsupportedOperationException     javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:101)     com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)     org.primefaces.application.DialogActionListener.processAction(DialogActionListener.java:45)     javax.faces.component.UICommand.broadcast(UICommand.java:315)     javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)     javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)     com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)     com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)     com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)     javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50)     org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:108)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)     org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)     org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:344)     org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:261)  root cause  java.lang.UnsupportedOperationException     java.util.AbstractList.add(AbstractList.java:148)     java.util.AbstractList.add(AbstractList.java:108)     com.greco.beans.ResourcesSBean.add(ResourcesSBean.java:151)     com.greco.beans.NewResourceCBean.add(NewResourceCBean.java:61)     sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)     sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     java.lang.reflect.Method.invoke(Method.java:606)     org.apache.el.parser.AstValue.invoke(AstValue.java:262)     org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278)     com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105)     javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87)     com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)     org.primefaces.application.DialogActionListener.processAction(DialogActionListener.java:45)     javax.faces.component.UICommand.broadcast(UICommand.java:315)     javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)     javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)     com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)     com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)     com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)     javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50)     org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:108)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)     org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)     org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:344)     org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:261)  note The full stack trace of the root cause is available in the JBoss Web/7.0.13.Final logs. </body>
+		<created>2015-11-20 10:55:30</created>
+		<closed>2015-12-09 08:59:50</closed>
+	</bug>
+	<bug>
+		<id>117</id>
+		<title>Edición de recurso. Problema con el pie.</title>
+		<body>El pie de página queda en el medio en resolución de portátil. </body>
+		<created>2015-11-19 16:22:47</created>
+		<closed>2015-12-07 16:38:01</closed>
+	</bug>
+	<bug>
+		<id>116</id>
+		<title>Editar recurso. Considera blancos delante y detrás del nombre.</title>
+		<body>No debería permitir que se crearan, dentro de una misma comunidad, recursos con el mismo nombre y tipo pero con la diferencia de blancos delante o detrás del nombre.  https://github.com/amartingu72/greco/wiki/TC-Validar-valor-%C3%BAnico-al-crear-recurso </body>
+		<created>2015-11-19 11:51:14</created>
+		<closed>2015-12-07 16:30:28</closed>
+	</bug>
+	<bug>
+		<id>115</id>
+		<title>Error al guardar los recursos de una comunidad. No guarda la unidades</title>
+		<body>Si creamos o editamos un recurso de una comunidad y asignamos una unidad de tiempo distinto de Horas a la antelación o los tiempos máximo y mínimo de reserva, no se guardan. </body>
+		<created>2015-11-19 11:23:35</created>
+		<closed>2015-12-07 11:56:54</closed>
+	</bug>
+	<bug>
+		<id>114</id>
+		<title>Crear / editar comunidad. Columna tipo de recurso erronea.</title>
+		<body>En la tabla de recursos, la columna de tipo de recurso debería tener la descripción en lugar del nombre. </body>
+		<created>2015-11-19 11:17:14</created>
+		<closed>2015-12-07 10:31:47</closed>
+	</bug>
+	<bug>
+		<id>113</id>
+		<title>Crear recursos. Si mínimo vacío no retorna a valor por defecto</title>
+		<body>Al crear un nuevo recurso, si pongo blanco en mínimo tiempo de reserva, aunque lo detecta y no lo admite no vuelve a poner el valor por defecto.  https://github.com/amartingu72/greco/wiki/TC-Crear-recurso-con-valores-l%C3%ADmite </body>
+		<created>2015-11-19 11:09:45</created>
+		<closed>2015-12-04 13:53:29</closed>
+	</bug>
+	<bug>
+		<id>112</id>
+		<title>Crear recurso. Sin límite en descripción</title>
+		<body>El campo descripción permite introducir más de los 128 caracteres permitidos.  https://github.com/amartingu72/greco/wiki/TC-Crear-recurso-con-valores-l%C3%ADmite </body>
+		<created>2015-11-19 10:41:21</created>
+		<closed>2015-12-04 13:48:12</closed>
+	</bug>
+	<bug>
+		<id>111</id>
+		<title>Crear recursos. Antelación no ofrece días</title>
+		<body>Al crear el recurso , no en el combo de unidades de antelación no se ofrece la posibilidad de que sean días. Solo horas o minutos. </body>
+		<created>2015-11-19 10:39:32</created>
+		<closed>2015-12-04 13:45:12</closed>
+	</bug>
+	<bug>
+		<id>109</id>
+		<title>Edición de comunidad. Admite blancos delante y detrás.</title>
+		<body>SI ponemos un blanco delante y otro detrás en el nombre, el cambio se recoge como tal. El sistema debería obviar los blancos de delante y detrás.  https://github.com/amartingu72/greco/wiki/TC-Editar-comunidad-con-valores-medios </body>
+		<created>2015-11-18 16:23:45</created>
+		<closed>2015-12-04 13:26:59</closed>
+	</bug>
+	<bug>
+		<id>108</id>
+		<title>Crear comunidad. No controla blancos en el nombre</title>
+		<body>El sistema permite dos comunidades con el mismo nombre en un código postal si la diferencia está en blancos antes o despues del nombre. Esto no debería ser así y el sistema debería ignorar estos blancos antes de realizar la validación  https://github.com/amartingu72/greco/wiki/TC-Validar-valor-%C3%BAnico-al-crear-comunidad </body>
+		<created>2015-11-18 15:38:27</created>
+		<closed>2015-12-04 13:26:59</closed>
+	</bug>
+	<bug>
+		<id>107</id>
+		<title>Creación de comunidad. No evita cósigos canarios</title>
+		<body>El sistema no debe permitir crear comunidades con códigos postales de Canarias:  38xxx SC Tenerife 35xxx Las Palmas </body>
+		<created>2015-11-18 15:08:03</created>
+		<closed>2015-12-04 11:00:22</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>Crear comunidad. Código postal no limitado.</title>
+		<body>Al introducir código postal permite más de 5 y pueden ser no numéricos. </body>
+		<created>2015-11-18 15:00:58</created>
+		<closed>2015-12-04 11:00:22</closed>
+	</bug>
+	<bug>
+		<id>105</id>
+		<title>Olvide mi contraseña. El email considera blanco.</title>
+		<body>En caso de que el usuario introduzca blancos al principio o al final del email, el sistema debe obviarlos.  https://github.com/amartingu72/greco/wiki/TC-Recuperar-contrase%C3%B1a-usuario-registrado </body>
+		<created>2015-11-17 14:59:37</created>
+		<closed>2015-12-02 16:46:01</closed>
+	</bug>
+	<bug>
+		<id>103</id>
+		<title>Edición de cuenta desde consola. Si límites de longitud</title>
+		<body>Permite introducir más de 32 y 64 caracteres en campos de alias e email respectivamente. </body>
+		<created>2015-11-17 11:35:40</created>
+		<closed>2015-12-02 16:28:06</closed>
+	</bug>
+	<bug>
+		<id>102</id>
+		<title>Edición de cuenta de consola. Evitar los blancos</title>
+		<body>En el alias y el correo, si el usuario introduce blancos delante o detrás, el sistema debe eliminarlos antes de guardar y no lo está haciendo. </body>
+		<created>2015-11-17 11:08:04</created>
+		<closed>2015-12-02 16:26:32</closed>
+	</bug>
+	<bug>
+		<id>101</id>
+		<title>Consola. La política de cookies aparece en misma página</title>
+		<body>Cuando se selecciona información de cookies aparece en la misma pestaña del explorador. Debería abrir una nueva. </body>
+		<created>2015-11-16 10:52:31</created>
+		<closed>2015-12-02 16:35:44</closed>
+	</bug>
+	<bug>
+		<id>100</id>
+		<title>Creación de usuario desde consola. No considera blanco en nickname</title>
+		<body>Considera nickname distinto si incluye un blanco al principio. </body>
+		<created>2015-11-16 10:13:13</created>
+		<closed>2015-12-02 16:26:08</closed>
+	</bug>
+	<bug>
+		<id>99</id>
+		<title>Cambiar nickname por alias</title>
+		<body>Cambiar el literal allí donde aparezca. </body>
+		<created>2015-11-16 10:11:56</created>
+		<closed>2015-12-02 16:40:26</closed>
+	</bug>
+	<bug>
+		<id>98</id>
+		<title>Creación de cuenta en consola. No considera blancos en email</title>
+		<body>Debe eliminar los blancos del principio del email a comprobar email repetido. </body>
+		<created>2015-11-16 10:08:43</created>
+		<closed>2015-12-02 16:25:29</closed>
+	</bug>
+	<bug>
+		<id>97</id>
+		<title>Icono de pestaña no coincide</title>
+		<body>La G del icono no tiene que ver con nada. Crear uno nuevo. </body>
+		<created>2015-11-16 09:34:40</created>
+		<closed>2015-12-02 16:09:40</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>Longitud de nickname no coincide.</title>
+		<body>En BBDD: 32 caracteres. En alta desde consola permite 16. En edición desde consola, no tiene límite y falla. En edición desde site, no tiene límite y falla.  Cerrar todos a 16 caracteres. No pueden escribir más de 16 y no cuentan los blancos delante ni detrás. </body>
+		<created>2015-11-13 13:50:02</created>
+		<closed>2015-12-02 15:40:08</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>Documento de seguridad para LOPD</title>
+		<body>Redactar documentación y obtener aprobación de la Agencia Estatal de Protección de Datos. </body>
+		<created>2015-11-12 17:02:23</created>
+		<closed>2015-12-21 11:05:10</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>No graba la cookie de aceptación de cookies</title>
+		<body>Aunque se pulse OK, la pide constantemente, </body>
+		<created>2015-11-05 08:12:10</created>
+		<closed>2015-11-05 09:31:02</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>Permitir que me contacten por correo</title>
+		<body>Poner una cuenta de correo y un enlace a la misma para que puedan contactarme los usuario que lo deseen </body>
+		<created>2015-10-30 13:43:36</created>
+		<closed>2015-11-04 14:54:46</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>Las unidades de tiempo de reserva no pueden ser días</title>
+		<body>El tiempo de reserva de un recurso no puede exceder de 24 horas. De esta manera, las unidades de tiempo de reserva solo pueden se horas y minutos. </body>
+		<created>2015-10-14 15:07:35</created>
+		<closed>2015-10-15 10:14:16</closed>
+	</bug>
+	<bug>
+		<id>81</id>
+		<title>No se controla la antelación de reserva.</title>
+		<body></body>
+		<created>2015-10-13 15:25:59</created>
+		<closed>2015-10-14 16:10:59</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>No es posible seleccionar todas las reservas desde la opción de móvil</title>
+		<body>Desde la opción de móvil, debido al solapamiento del menú, no es posible seleccionar todas la reservas disponibles debido a que la mitad de los botones quedan tapados.  He detectado que, en el caso de las opciones de redes sociales, no hay este problema. Ver si cía CSS se puede evitar el solapamiento. </body>
+		<created>2015-10-07 10:58:15</created>
+		<closed>2015-10-09 12:42:25</closed>
+	</bug>
+	<bug>
+		<id>78</id>
+		<title>Tarda demasiado entre que se selecciona una reserva y queda marcada como pre-reserva.</title>
+		<body>Buscar el problema. Aprovechar para cambiar colores. </body>
+		<created>2015-10-07 10:55:19</created>
+		<closed>2015-10-13 09:22:11</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>Olvidé mi contraseña no está implementado en sites</title>
+		<body>"Olvidé  mi contraseña" no está implementado en welcome.xhtml. </body>
+		<created>2015-10-06 10:25:50</created>
+		<closed>2015-10-06 12:52:56</closed>
+	</bug>
+	<bug>
+		<id>73</id>
+		<title>En la consulta de miembros desde openshift , no pone fecha de mañana por defecto.</title>
+		<body>En la consulta de miembros desde openshift , no pone fecha de mañana por defecto.. </body>
+		<created>2015-10-05 11:05:15</created>
+		<closed>2015-10-06 16:00:47</closed>
+	</bug>
+	<bug>
+		<id>72</id>
+		<title>Error en pag de subscripción</title>
+		<body>Cuando se pulsa, desde una comunidad la opción "Suscríbete", la marca reservala.es sale mal. </body>
+		<created>2015-10-05 11:02:27</created>
+		<closed>2015-10-05 14:29:19</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>Limitación de reservas por usuario</title>
+		<body>No se ha incluido la limitación de reservas por usuario. </body>
+		<created>2015-10-02 10:38:01</created>
+		<closed>2015-10-14 14:23:26</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>Faltan opciones de baja y refresco en la fase de creación de una nueva comunidad</title>
+		<body>Además no funciona la opción de añadir un nuevo recurso </body>
+		<created>2015-09-21 09:38:43</created>
+		<closed>2015-09-24 10:04:53</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>Incluir el nombre de la comunidad para que sea visible en todo momento</title>
+		<body>Todas las páginas deben incluir el nombre de la comunidad administrada (consola), o de aquella en la que se ha hecho login (sites). </body>
+		<created>2015-09-15 16:10:01</created>
+		<closed>2015-09-28 16:02:08</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>Eliminar la descripción de la cuenta</title>
+		<body>Eliminar descripción como un atributo de la cuenta. En cambio, incluiremos en la consola aquellas comunidades en la que está suscrito. </body>
+		<created>2015-09-10 15:21:34</created>
+		<closed>2015-09-11 13:10:57</closed>
+	</bug>
+	<bug>
+		<id>57</id>
+		<title>Evitar problemas de concurrencia en la pantalla de miembros</title>
+		<body>Considerar el problema de actualizar desde dos sesiones distintas. </body>
+		<created>2015-09-09 16:10:22</created>
+		<closed>2015-09-10 10:35:00</closed>
+	</bug>
+	<bug>
+		<id>55</id>
+		<title>Error al eliminar suscripción desde pestaña de búsqueda</title>
+		<body>No actualiza contadores y se marcha al tab inicial en lugar de permanecer. </body>
+		<created>2015-09-08 16:35:49</created>
+		<closed>2015-09-10 10:35:32</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>I18N en página EditMembership</title>
+		<body>Internzacioanlizar mensajes pendientes. </body>
+		<created>2015-09-08 16:34:37</created>
+		<closed>2015-09-09 10:03:26</closed>
+	</bug>
+	<bug>
+		<id>53</id>
+		<title>Busqueda avanzada entra en conflicto con pestaña de suscripciones</title>
+		<body></body>
+		<created>2015-09-08 16:33:14</created>
+		<closed>2015-09-08 16:34:02</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>No funciona la baja de miembro desde consola.</title>
+		<body>En la opción búsqueda, no funciona el botón de baja. </body>
+		<created>2015-08-28 09:43:37</created>
+		<closed>2015-09-04 13:16:54</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>Error en la selección de comnunidad</title>
+		<body>En la selección de comunidad de la consola solo deberían aparecer aquellas comunidades en las que l usuario que ha hecho login sea administrador. </body>
+		<created>2015-08-21 11:16:42</created>
+		<closed>2015-09-14 11:28:08</closed>
+	</bug>
+	<bug>
+		<id>43</id>
+		<title>Tanto las pre-reservas como las reservas confirmadas no se filtran por comunidad.</title>
+		<body>Si estoy dado de alta como miembro en dos comunidades, mis reservas en una comunidad se ven en la otra. </body>
+		<created>2015-08-04 12:50:51</created>
+		<closed>2015-08-05 11:50:52</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>Error en comunidades nuevas</title>
+		<body>Al crear una nueva comunidad y hacer login, me lleva una los recursos de una comuinidad que no tiene que ver.   Para reproducir:  Com:32 Usuario:lola@isban.es La comunidad que toma al hacer login es la 15. </body>
+		<created>2015-08-03 12:07:08</created>
+		<closed>2015-08-03 12:45:00</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>La imagen de padel no que sale en el sitio de comunidad.</title>
+		<body>Revisar las imágenes que se muestran cuando creo un sitio de comunidad. He creado una comunidad con pista de tenis y padel y me aparece tenis y ping pong, </body>
+		<created>2015-07-31 12:56:53</created>
+		<closed>2015-08-03 09:04:43</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>Al crear la comunidad no se indica URL de página</title>
+		<body>Cuando creamos una comunidad debería generarse un nuevo campo no editable que permitiese localizar la URL de sitio.  Nota: Si creamos una comunidad y no asignamos recursos, cuando el usuario vaya a la URL de comunidad deberá aparecer un mensaje que diga que todavía no se han creado recursos. </body>
+		<created>2015-07-31 12:46:24</created>
+		<closed>2015-08-04 06:56:57</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>No funciona check box de comunidad activa en función móvil.</title>
+		<body>No es posible seleccionar el check que activa la comunidad. Tener en cuenta que el miembros si que funciona. </body>
+		<created>2015-07-31 12:42:22</created>
+		<closed>2015-08-04 10:56:42</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>Eliminar páginas sobrantes.</title>
+		<body>Eliminar los .xhtml que ya no utilizo. </body>
+		<created>2015-07-31 12:14:48</created>
+		<closed>2015-10-30 12:00:14</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>No mostrar como disponibles para reserva intervalos de tiempo antiguos</title>
+		<body>La consulta de disponibilidad no debe permitir reservar intervalos de tiempo cuya hora de fin sea anterior a la hora actual.  Hay que tener en cuenta esta situación en la confirmación de cesta. Recordar que el usuario puede mantener una reserva en su cesta demasiado tiempo. </body>
+		<created>2015-07-31 09:53:57</created>
+		<closed>2015-08-05 11:48:08</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>Eliminar pre-reservas (reservas en la cesta), expiradas</title>
+		<body>Ver caso de uso "Eliminar reservas expiradas" </body>
+		<created>2015-07-31 09:05:24</created>
+		<closed>2015-08-06 13:04:56</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>Los miembros no pueden darse de baja de una comunidad</title>
+		<body>Un miembro no puede darse de baja (a sí mismo) de una comunidad. </body>
+		<created>2015-07-31 08:48:16</created>
+		<closed>2015-09-23 11:16:26</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>No se envía mensaje con notificación de expulsión.</title>
+		<body>Baja de un miembro no voluntaria, es decir, realizada por un administrador desde la consola. </body>
+		<created>2015-07-30 12:33:58</created>
+		<closed>2015-10-05 14:42:08</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>El cambio de estado de un suscriptor debe enviar notificación por correo.</title>
+		<body>Ver caso de uso asociado. </body>
+		<created>2015-07-30 12:19:35</created>
+		<closed>2015-10-06 11:00:55</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>Notificar por correo al cambiar el rol de un miembro de una comunidad</title>
+		<body>Ver caso de uso. </body>
+		<created>2015-07-30 12:18:40</created>
+		<closed>2015-10-06 11:00:14</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>Expiración de sesión sin gestionar</title>
+		<body>Cuando dejamos una sesión abierta mucho tiempo, la sesión expira y pulsamos otra opción, no aparece un error del servidor. Debería volver a la página de login. </body>
+		<created>2015-07-30 08:27:46</created>
+		<closed>2015-09-10 16:53:54</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>Eliminar recurso.</title>
+		<body>Caso de uso sin implementar. El caso de uso está definido pero faltaría la gestión de excepciones de la que no hay especificación. </body>
+		<created>2015-07-30 07:38:22</created>
+		<closed>2015-09-18 12:29:49</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>La suscripción debe incluir un campo específico por cada comunidad.</title>
+		<body>Un miembro puede requerir enviar información concreta de cada comunidad donde se suscriba. Esta información será visible desde la página de suscripción de la consola de administración. </body>
+		<created>2015-07-27 12:44:06</created>
+		<closed>2015-08-28 09:41:49</closed>
+	</bug>
+	<bug>
+		<id>15</id>
+		<title>Opción crear comunidad cuando el usuario no tiene ninguna, no funciona.</title>
+		<body>Cuando un usuario hace login y no tiene ninguna comunidad creada, aparece un botón en la página princiapl con la opción de crear una nueva. Dicho botón no hace nada.  Tampoco desde la opción de selección de comunidades. </body>
+		<created>2015-07-22 06:58:05</created>
+		<closed>2015-07-22 07:42:04</closed>
+	</bug>
+	<bug>
+		<id>13</id>
+		<title>Login de usuario. No se considera que puede haber varios.</title>
+		<body>Tener en cuenta que un mismo usuario (una misma cuenta de correo), puede estar como varias entradas en la tabla de usuarios ya que puede ser simultáneamente: - Miembro de una o varios comunidades (un registro por comunidad distinta). - Administrador de comunidades (registro único con perfil ADMIN, independientemente del número de comunidades que gestione). </body>
+		<created>2015-07-21 07:58:54</created>
+		<closed>2015-07-21 12:48:43</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>Crear cuenta de administrador. El correo tiene que ser único "solo" con perfil admin</title>
+		<body>El correo debe ser único sólo para perfil administrador. Para ello modificaremos el alta de usuario y utilizaremos el campo profile de la tabla users, que podrá tener uno de los siguientes valores: ADMIN, USER.  </body>
+		<created>2015-07-21 07:34:57</created>
+		<closed>2015-07-21 10:20:03</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>Presentación. No aparece icono de página.</title>
+		<body>Aparece un icono por defecto.  ![image](https://cloud.githubusercontent.com/assets/10940906/8776187/73598710-2eef-11e5-8482-322c5e17f874.png) </body>
+		<created>2015-07-20 12:56:16</created>
+		<closed>2015-08-03 08:20:21</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>Crear cuenta de adminitrador. Barra de scroll no debería estar</title>
+		<body>Al crear una cuenta de administrador, en la página de welcome, aparece una barra de scroll horizontal que no debería estar, </body>
+		<created>2015-07-20 12:48:00</created>
+		<closed>2015-07-22 06:55:06</closed>
+	</bug>
+	<bug>
+		<id>7</id>
+		<title>Creación de cuenta de usuario. No valida email único.</title>
+		<body>Permite emails duplicados. </body>
+		<created>2015-07-20 12:32:00</created>
+		<closed>2015-07-20 12:32:44</closed>
+	</bug>
+	<bug>
+		<id>6</id>
+		<title>Error en las validaciones al registrar un nuevo usuario.</title>
+		<body>Limitar la longitud del texto que se puede introducir (maxlength) en la página de creación de un usuario. La cuenta de correo debe ser única. </body>
+		<created>2015-07-20 10:44:51</created>
+		<closed>2015-07-20 11:58:51</closed>
+	</bug>
+	<bug>
+		<id>5</id>
+		<title>Seguridad. Contraseña en claro en la base de datos.</title>
+		<body>Encriptar la contraseña almacenada en base de datos. </body>
+		<created>2015-07-17 12:33:08</created>
+		<closed>2015-11-03 15:29:49</closed>
+	</bug>
+	<bug>
+		<id>4</id>
+		<title>Seguridad. Configuración de accesos SpringSecurity</title>
+		<body>Revisar coherencia de la configuración de accesos en SpringSecurity. </body>
+		<created>2015-07-17 12:32:07</created>
+		<closed>2015-10-30 12:02:33</closed>
+	</bug>
+</bugs>

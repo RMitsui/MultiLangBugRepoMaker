@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="mybatis-plus">
+	<bug id="1918" opendate="2019-12-06 12:16:50" fixdate="2020-01-16 14:46:15">
+		<buginformation>
+			<summary>3.3.0 对于is开头的字段判断错误，导致list查询报错</summary>
+			<description>### 当前使用版本(必须填写清楚，否则不予处理)  3.3.0  ### 该问题是怎么引起的？  ![TIM图片20191206201736](https://user-images.githubusercontent.com/18638322/70322611-85932d00-1865-11ea-952a-e00908d59d35.png)  3.3.0新增了这个方法来获取字段，导致is开头的字段，获取方法名和lambok对不上  ### 重现步骤  如果字段是is开头的话，list查询会报错 lambok自动编译出来的是getIsXXX，比如我的字段是isSystem，lambok生成的是getIsSystem ![TIM图片20191206201826](https://user-images.githubusercontent.com/18638322/70322638-99d72a00-1865-11ea-84e3-17cb4255d2bb.png) ![TIM图片20191206201830](https://user-images.githubusercontent.com/18638322/70322640-9a6fc080-1865-11ea-963e-f7b4844bb5aa.png)  ### 报错信息 ![TIM图片20191206201857](https://user-images.githubusercontent.com/18638322/70322655-a65b8280-1865-11ea-8781-345d3fdce417.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>mybatis-plus-core/src/test/java/com/baomidou/mybatisplus/core/toolkit/ReflectionKitTest.java</file>
+			<file>mybatis-plus-core/src/test/java/com/baomidou/mybatisplus/core/toolkit/StringUtilsTest.java</file>
+			<file>mybatis-plus-core/src/main/java/com/baomidou/mybatisplus/core/toolkit/StringUtils.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

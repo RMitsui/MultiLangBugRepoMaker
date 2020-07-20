@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="druid">
+	<bug id="2989" opendate="2018-12-22 10:11:19" fixdate="2019-01-31 02:07:50">
+		<buginformation>
+			<summary>mysql 语句解析问题</summary>
+			<description> `SQLUtils.parseStatements（“select id, distinct name from a", "mysql");`  Druid解析没有报错， mysql cmdline 报错  ``` mysql&gt; select id,distinct name from a; ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct name from a' at line 1 ```  ``` &lt;dependency&gt;             &lt;groupId&gt;com.alibaba&lt;/groupId&gt;             &lt;artifactId&gt;druid&lt;/artifactId&gt;             &lt;version&gt;1.1.12&lt;/version&gt;         &lt;/dependency&gt; ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLExprParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/select/MySqlSelectTest_227.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2388" opendate="2018-03-08 09:50:45" fixdate="2018-03-11 14:46:08">
+		<buginformation>
+			<summary>字符'\'解析问题</summary>
+			<description>版本:1.1.8 描述：   在字符'\\'之后一位的字符如果不能和'\\'形成转义会丢失 举例：    INSERT INTO SUNTEST(ID,NAME) VALUES(1,'\\_ASDFASDF') 在通过 解析器解析之后会变成   INSERT INTO SUNTEST(ID,NAME) VALUES(1,'_ASDFASDF')</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/parser/Lexer.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/insert/MySqlInsertTest_26_special.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2304" opendate="2018-01-31 09:00:45" fixdate="2018-02-04 07:13:49">
+		<buginformation>
+			<summary>db2：SET CURRENT SCHEMA = 'PAYROLL'语句解析不支持</summary>
+			<description>master版本，db2解析器执行SET CURRENT SCHEMA = 'PAYROLL'语句出错，测试代码: ![image](https://user-images.githubusercontent.com/26472867/35613819-1a2e0902-06a8-11e8-9217-6e2ffdabd49c.png) 异常信息： ![image](https://user-images.githubusercontent.com/26472867/35613895-4455b69e-06a8-11e8-8bee-d8333bf522ee.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/db2/parser/DB2ExprParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/db2/DB2SetTest_0.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2222" opendate="2017-12-27 04:01:55" fixdate="2018-02-11 08:18:57">
+		<buginformation>
+			<summary>数字值超过Long.MAX_VALUE后，druid反向生成SQL时错误</summary>
+			<description>原始SQL: `SELECT a from b where c &lt;&gt; 1  LIMIT 0, 18446744073709551615` 经过druid识别为语法树，然后再遍历语法树生成SQL时变为: `SELECT a FROM b WHERE c &lt;&gt; 1 LIMIT 0, -1`  复现代码:  ```java String sql = "SELECT a from b where c &lt;&gt; 1  LIMIT 0, 18446744073709551615"; List&lt;SQLStatement&gt; sqlStatements = SQLUtils.parseStatements(sql, JdbcConstants.MYSQL); StringBuilder sb = new StringBuilder(); MySqlOutputVisitor visitor = new MySqlOutputVisitor(sb); visitor.setPrettyFormat(false); sqlStatements.get(0).accept(visitor); System.out.println(sb); ``` 输出结果: ` SELECT a FROM b WHERE c &lt;&gt; 1 LIMIT 0, -1 `  [问题代码](https://github.com/alibaba/druid/blob/master/src/main/java/com/alibaba/druid/sql/visitor/SQLASTOutputVisitor.java#L1317) 调用`x.getNumber().longValue()` 时，如果数字值超过Long.MAX_VALUE将会得到未预期的赋值，而数据库是存在`unsigned bigint`类型的  @wenshao 有空修吗？ 没时间的话，我可以提PR。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/UnsignedBigIntTest.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/SQLASTOutputVisitor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2211" opendate="2017-12-22 06:47:06" fixdate="2018-02-04 07:13:05">
+		<buginformation>
+			<summary>MATERIALIZED VIEW无法解析</summary>
+			<description>SQLUtils.parseStatements("DROP MATERIALIZED VIEW ATOM_MVIEW.NONAUTO_CLAIM_FOLDER_T;", "oracle");  Exception in thread "main" com.alibaba.druid.sql.parser.ParserException: TODO : pos 17, line 1, column 5, token IDENTIFIER MATERIALIZED</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/oracle/parser/OracleExprParser.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/ast/statement/SQLDropMaterializedViewStatement.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/ast/statement/SQLCreateMaterializedViewStatement.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLExprParser.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/SQLASTVisitorAdapter.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLStatementParser.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/oracle/parser/OracleStatementParser.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/SQLASTVisitor.java</file>
+			<file>src/main/java/com/alibaba/druid/support/metrics/MetricCollector.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/SQLASTOutputVisitor.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/oracle/parser/OracleCreateTableParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/oracle/create/OracleCreateMaterializedViewTest3.java</file>
+			<file>src/main/java/com/alibaba/druid/util/FnvHash.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2167" opendate="2017-12-07 03:14:36" fixdate="2018-02-04 07:11:35">
+		<buginformation>
+			<summary>mysql sql解析error，测试从1.1.3至1.1.6都有该问题，1.1.3之前版本正常</summary>
+			<description>目前项目中使用的是1.0.29的版本，近期打算升级到最新版本1.1.6。 升级之后启动个别应用出现。 异常信息：  [ERROR] 2017-12-07 10:23:18,219 --main-- [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] sql injection violation, syntax error: syntax error, error in :'pe=? and cfgdatasou0_.module_name=?', expect AND, actual AND pos 790, line 1, column 787, token AND : select *(这里字段*代替了) from TABLENAME cfgdatasou0_ where cfgdatasou0_.type=? and cfgdatasou0_.module_name=? and cfgdatasou0_.node_type=? or cfgdatasou0_.type=? and cfgdatasou0_.module_name=? and cfgdatasou0_.node_type=? or cfgdatasou0_.type=? and cfgdatasou0_.module_name=? and cfgdatasou0_.node_type=?   Caused by: com.alibaba.druid.sql.parser.ParserException: syntax error, error in :'pe=? and cfgdatasou0_.module_name=?', expect AND, actual AND pos 790, line 1, column 787, token AND at com.alibaba.druid.sql.parser.SQLParser.printError(SQLParser.java:284) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:421) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:81) at com.alibaba.druid.wall.WallProvider.checkInternal(WallProvider.java:624) at com.alibaba.druid.wall.WallProvider.check(WallProvider.java:578) at com.alibaba.druid.wall.WallFilter.checkInternal(WallFilter.java:785) ... 59 common frames omitted  但是有部分应用启动正常，然后我对比了执行的sql发现在解析select *(这里字段*代替了) from TABLENAME cfgdatasou0_ where cfgdatasou0_.type=? and cfgdatasou0_.module_name=? and cfgdatasou0_.node_type=? or cfgdatasou0_.type=? and cfgdatasou0_.module_name=? and cfgdatasou0_.node_type=? 是正常的，对比发现少了一个or条件or cfgdatasou0_.type=? and cfgdatasou0_.module_name=? and cfgdatasou0_.node_type=?   也就是说当我是where条件为where cfgdatasou0_.type=? and cfgdatasou0_.module_name=? and cfgdatasou0_.node_type=? or cfgdatasou0_.type=? and cfgdatasou0_.module_name=? and cfgdatasou0_.node_type=? or cfgdatasou0_.type=? and cfgdatasou0_.module_name=? and cfgdatasou0_.node_type=?  出错，我试了很多版本，在1.1.3之前的版本是正常的，1.1.3以后的版本都有这个问题，包括最新版本1.1.6。  一路跟了下dubug源码出现问题的在com.alibaba.druid.sql.dialect.mysql.parser.MySqlSelectParser.        parseWhere(queryBlock);这一句，解析两个or条件正常， WHERE cfgdatasou0_.type = ? AND cfgdatasou0_.module_name = ? AND cfgdatasou0_.node_type = ? OR cfgdatasou0_.type = ? AND cfgdatasou0_.module_name = ? AND cfgdatasou0_.node_type = ?，并且**lexer.token=EOF**结束状态是正常的。  异常情况下 (cfgdatasou0_.type = ? AND cfgdatasou0_.module_name = ? AND cfgdatasou0_.node_type = ?) OR (cfgdatasou0_.type = ? AND cfgdatasou0_.module_name = ? AND cfgdatasou0_.node_type = ?) OR cfgdatasou0_.type = ?  成这个样子了？？？？不全。。。并且**lexer.token=AND**   if (parseStatementListDialect(statementList)) 这句返回false，接下来执行了 printError(lexer.token);丢出来了上面的异常。  相同的情况下，我用1.1.3之前版本是正常的。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLExprParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/select/MySqlSelectTest_92.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/filter/wall/mysql/MySqlWallTest148.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2119" opendate="2017-11-20 12:20:39" fixdate="2017-12-01 14:57:53">
+		<buginformation>
+			<summary>关于hint的解析</summary>
+			<description>```sql  select id from a /*+ xxx */  ``` 这样的sql是可以正常提炼出hint的，但   ```sql  select now()  /*+ xxx */  ```  就不能正常提炼出hint了，不确定这算不算bug。  有问题的版本是1.1.5；之前1.1.2版本是正常的。  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/select/MySqlSelectTest_91_hints.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/ast/SQLCommentHint.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2105" opendate="2017-11-10 02:31:19" fixdate="2017-12-01 14:51:09">
+		<buginformation>
+			<summary>sql统计重复</summary>
+			<description>在批量更新时数据量不一样导致druid认为是两条不同的sql：  如  update table set field=?;update table set field=?; 与 update table set field=?;update table set field=?;update table set field=?;  druid会记录两条这样的信息。。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/param/MySqlParameterizedOutputVisitorTest_59_multiupdate.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/ParameterizedOutputVisitorUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2051" opendate="2017-10-20 06:37:34" fixdate="2017-10-27 15:26:07">
+		<buginformation>
+			<summary>hql 解析报错</summary>
+			<description>脚本内容： ``` drop table if EXISTS test.test; create table if not EXISTS test.test stored as parquet as select *  from test.test; ``` 程序片段： ```  String dbType = JdbcConstants.HIVE;   List&lt;SQLStatement&gt; stmtList = SQLUtils.parseStatements(sql, dbType); ``` 错误信息： ``` Exception in thread "main" com.alibaba.druid.sql.parser.ParserException: syntax error, error in :'e if EXISTS test.test; create table', expect EXISTS, actual EXISTS pos 21, line 2, column 15, token EXISTS at com.alibaba.druid.sql.parser.SQLParser.printError(SQLParser.java:285) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:395) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:68) at com.alibaba.druid.sql.SQLUtils.parseStatements(SQLUtils.java:461) at com.sf.open.tools.DruidTest.main(DruidTest.java:38) ``` 版本：  &lt;dependency&gt;             &lt;groupId&gt;com.alibaba&lt;/groupId&gt;             &lt;artifactId&gt;druid&lt;/artifactId&gt;             &lt;version&gt;1.1.4&lt;/version&gt;         &lt;/dependency&gt;</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/h2/H2_CreateTableTest_0.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/hive/parser/HiveCreateTableParser.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/hive/visitor/HiveOutputVisitor.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/ast/statement/SQLCreateTableStatement.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLParser.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/SQLASTOutputVisitor.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/hive/stmt/HiveCreateTableStatement.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/hive/parser/HiveStatementParser.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2041" opendate="2017-10-12 02:08:49" fixdate="2017-10-27 15:26:16">
+		<buginformation>
+			<summary>db2解析带有WITH UR的SQL语句时报错</summary>
+			<description>在解析带有WITH UR的SQL语句时会报syntax error, expect ROLLUP, actual IDENTIFIER, pos 851, line 1, column 849, token IDENTIFIER UR的错误</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/db2/DB2InsertTest_1.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLSelectParser.java</file>
+			<file>src/main/java/com/alibaba/druid/util/FnvHash.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1807" opendate="2017-07-03 04:01:54" fixdate="2017-07-13 05:17:20">
+		<buginformation>
+			<summary>1.1.0中bug 1759没有修复啊</summary>
+			<description>之前提的partition bug解决，但comment被错误阻止问题在1.1.0中仍然存在，下面sql仍然报错，温少麻烦再看看，难道是我用错了吗？   sql is: COMMENT ON COLUMN "TB_CRM_MATERIAL"."INVALID_TIME" IS '生效时间'  调用方法： OracleStatementParser parser = new OracleStatementParser(sql); SQLStatement statement = parser.parseStatement();// 分号之后多语句忽略 OracleWallProvider provider = new OracleWallProvider(); provider.getConfig().setCommentAllow(true); WallCheckResult result1 = provider.check(sql);  执行报：class com.alibaba.druid.sql.ast.statement.SQLCommentStatement not allow</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/bug/Issue1759.java</file>
+			<file>src/main/java/com/alibaba/druid/wall/spi/WallVisitorUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1727" opendate="2017-05-10 06:58:34" fixdate="2017-05-14 03:35:04">
+		<buginformation>
+			<summary>PG执行SQL语句出错</summary>
+			<description>sql: ``` WITH sel AS (SELECT        unnest(ARRAY [4275]) AS gdid,        unnest(ARRAY [1])    AS gdnumber) UPDATE goods_detail SET gd_number = gd_number - gdnumber FROM sel WHERE gd_id = gdid; ``` 错误信息  ```  org.springframework.jdbc.UncategorizedSQLException:  ### Error updating database.  Cause: java.sql.SQLException: sql injection violation, syntax error: TODO : WITH sel AS (SELECT                unnest(ARRAY [4275]) AS gdid,                unnest(ARRAY [1])    AS gdnumber) UPDATE goods_detail SET gd_number = gd_number - gdnumber FROM sel WHERE gd_id = gdid; ### SQL: WITH sel AS (SELECT                unnest(ARRAY [4275]) AS gdid,                unnest(ARRAY [1])    AS gdnumber) UPDATE goods_detail SET gd_number = gd_number - gdnumber FROM sel WHERE gd_id = gdid; ### Cause: java.sql.SQLException: sql injection violation, syntax error: TODO : WITH sel AS (SELECT                unnest(ARRAY [4275]) AS gdid,                unnest(ARRAY [1])    AS gdnumber) UPDATE goods_detail SET gd_number = gd_number - gdnumber FROM sel WHERE gd_id = gdid; ; uncategorized SQLException for SQL []; SQL state [null]; error code [0]; sql injection violation, syntax error: TODO : WITH sel AS (SELECT                unnest(ARRAY [4275]) AS gdid,                unnest(ARRAY [1])    AS gdnumber) UPDATE goods_detail SET gd_number = gd_number - gdnumber FROM sel WHERE gd_id = gdid;; nested exception is java.sql.SQLException: sql injection violation, syntax error: TODO : WITH sel AS (SELECT                unnest(ARRAY [4275]) AS gdid,                unnest(ARRAY [1])    AS gdnumber) UPDATE goods_detail SET gd_number = gd_number - gdnumber FROM sel WHERE gd_id = gdid; ```  在 语法解析上面有问题   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/postgresql/parser/PGSQLStatementParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/postgresql/select/PGSelectTest49.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1492" opendate="2016-11-18 08:08:17" fixdate="2016-11-26 08:15:51">
+		<buginformation>
+			<summary>[ODPS]解析多列DISTRIBUTE BY错误</summary>
+			<description>select * from a DISTRIBUTE BY b,c</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/odps/visitor/OdpsOutputVisitor.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/odps/ast/OdpsSelectQueryBlock.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/odps/OdpsSelectTest20.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/odps/parser/OdpsSelectParser.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1362" opendate="2016-08-09 08:12:48" fixdate="2016-08-10 08:26:39">
+		<buginformation>
+			<summary>SQL解析失败</summary>
+			<description>insert into order (id, name) values (?, ?)   com.alibaba.druid.sql.parser.ParserException: error ORDER     at com.alibaba.druid.sql.parser.SQLExprParser.name(SQLExprParser.java:991)     at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseInsert(MySqlStatementParser.java:1978)     at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseInsert(MySqlStatementParser.java:1)     at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:198)     at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:147)     at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:142)     at com.alibaba.druid.sql.parser.SQLTableNameTest.test_merge_2(SQLTableNameTest.java:69)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)     at java.lang.reflect.Method.invoke(Unknown Source)     at junit.framework.TestCase.runTest(TestCase.java:176)     at junit.framework.TestCase.runBare(TestCase.java:141)     at junit.framework.TestResult$1.protect(TestResult.java:122)     at junit.framework.TestResult.runProtected(TestResult.java:142)     at junit.framework.TestResult.run(TestResult.java:125)     at junit.framework.TestCase.run(TestCase.java:129)     at junit.framework.TestSuite.runTest(TestSuite.java:252)     at junit.framework.TestSuite.run(TestSuite.java:247)     at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)     at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)     at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/MySqlInsertTest_13.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLExprParser.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

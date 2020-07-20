@@ -44,7 +44,7 @@ def get_bugtag(filepath):
     w = open(outpath, "w")
 
     #自然言語
-    nlang = os.path.splitext(os.path.basename(filepath))[0].split('_')[0].split('-')[1]
+    nlang = os.path.splitext(os.path.basename(filepath))[0].split('_')[0].replace("ranking-","")
 
     while True:
         line = f.readline().split()
@@ -73,11 +73,11 @@ def get_bugtag(filepath):
             print(name)
             #Bugラベルの捜索
             repolabels = repo.get_labels()
-            buglabel = None
+            buglabel = []
             for label in repolabels:
                 if("bug" in label.name or "Bug" in label.name):
-                    buglabel = label
-            if buglabel is None:
+                    buglabel.append(label.name)
+            if len(buglabel)==0:
                 #bugissueがない場合はBug以下に何も残さない．
                 os.remove("./Bug/" + nlang + "/" + name + ".xml")
                 os.remove("./Bug/" + nlang + "/" + name + "_PR.xml")
@@ -88,7 +88,7 @@ def get_bugtag(filepath):
                     pass
                 continue
 
-            issues = repo.get_issues(state="closed",label=buglabel)
+            issues = repo.get_issues(state="closed", labels=buglabel)
             bugissues = 0
             for issue in issues:
                 title = removeControlCharacter(issue.title)
@@ -112,31 +112,31 @@ def get_bugtag(filepath):
                     bugissues += 1
             isf.write("</bugs>\n")
 
-            #PR情報
-            pullrequests = repo.get_pulls(state="closed")
-            for pr in pullrequests:
-                title = removeControlCharacter(pr.title)
-                if(pr.body != None):
-                    body = removeControlCharacter(pr.body.replace("\n"," ").replace("\r",""))
-                else:
-                    body = ""
-                #PRのmessageにfix,close,resolveがあればそのIssueと紐付ける
-                mat = re.match(r"(fix(ed|es)*|close(s)*|resolve(s|d)*) #([0-9]+)",body)
-                if(mat):
-                    print("\tPR#" + str(pr.number) + " " + title)
-                    print("\t\t-> #" + str(mat.group(5)))
-                    prf.write("\t<pullrequest>\n")
-                    prf.write("\t\t<number>" + str(pr.number) + "</number>\n")
-                    prf.write("\t\t<title>" + escape(title) + "</title>\n")
-                    if(issue.body != None):
-                        prf.write("\t\t<body>" + escape(body) + "</body>\n")
-                    else:
-                        prf.write("\t\t<body></body>\n")
-                    prf.write("\t\t<to>" + mat.group(5) + "</to>\n")
-                    prf.write("\t</pullrequest>\n")
-            prf.write("</pullrequests>\n")
-
             if(bugissues != 0):
+                #PR情報
+                pullrequests = repo.get_pulls(state="closed")
+                for pr in pullrequests:
+                    title = removeControlCharacter(pr.title)
+                    if(pr.body != None):
+                        body = removeControlCharacter(pr.body.replace("\n"," ").replace("\r",""))
+                    else:
+                        body = ""
+                    #PRのmessageにfix,close,resolveがあればそのIssueと紐付ける
+                    mat = re.match(r"(fix(ed|es)*|close(s)*|resolve(s|d)*) #([0-9]+)",body)
+                    if(mat):
+                        print("\tPR#" + str(pr.number) + " " + title)
+                        print("\t\t-> #" + str(mat.group(5)))
+                        prf.write("\t<pullrequest>\n")
+                        prf.write("\t\t<number>" + str(pr.number) + "</number>\n")
+                        prf.write("\t\t<title>" + escape(title) + "</title>\n")
+                        if(pr.body != None):
+                            prf.write("\t\t<body>" + escape(body) + "</body>\n")
+                        else:
+                            prf.write("\t\t<body></body>\n")
+                        prf.write("\t\t<to>" + mat.group(5) + "</to>\n")
+                        prf.write("\t</pullrequest>\n")
+                prf.write("</pullrequests>\n")
+
                 print("\t😃" + str(bugissues) + "件のイシューが検出されました．")
                 w.write(str(bugissues) + " " + name + "\n")
                 os.chdir("./Bug/" + nlang + "/" + name.split('/')[0])

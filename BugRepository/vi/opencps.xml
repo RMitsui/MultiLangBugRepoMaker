@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="opencps">
+	<bug id="1134" opendate="2016-10-14 09:53:43" fixdate="2017-03-31 07:39:44">
+		<buginformation>
+			<summary>Không đổi được mật khẩu tài khoản công dân, tổ chức</summary>
+			<description>Doanh nghiệp vào đổi mật khẩu, hệ thống báo lỗi com.liferay.portal.UserPasswordException  ![2016-10-14_164503](https://cloud.githubusercontent.com/assets/17695836/19383482/c04fee12-922e-11e6-93d1-eaae003ff648.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/service/impl/BusinessLocalServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1130" opendate="2016-10-13 07:21:26" fixdate="2016-11-10 06:56:44">
+		<buginformation>
+			<summary>Màn hình danh sách hồ sơ mới được xử lý không đúng thiết kế</summary>
+			<description>1. Vào tài khoản cán bộ -&gt; menu Xử lý hồ sơ -&gt; Hồ sơ mới được xử lý 2. Màn hình danh sách hồ sơ mới được xử lý không đúng thiết kế    KQMM: Màn hình danh sách hồ sơ mới được xử lý hiển thị đúng thiết kế    Link: http://qa.opencps.vn/group/guest/xu-ly-ho-so?p_p_id=16_WAR_opencpsportlet&amp;p_p_lifecycle=0&amp;p_p_state=normal&amp;p_p_mode=view&amp;p_p_col_id=column-1&amp;p_p_col_count=1&amp;_16_WAR_opencpsportlet_mvcPath=%2Fhtml%2Fportlets%2Fprocessmgt%2Fprocessorder%2Fprocessorderjustfinishedlist.jsp&amp;_16_WAR_opencpsportlet_tabs1=finished-processing </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/bean/ProcessOrderBean.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/service/persistence/ProcessOrderFinderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1126" opendate="2016-10-13 03:35:43" fixdate="2016-10-25 03:10:56">
+		<buginformation>
+			<summary>Lỗi sửa thêm chức vụ cho cán bộ</summary>
+			<description>1. Vào tài khoản quản trị 2. Vào Quản lý cán bộ -&gt; vào tab Cán bộ 3. Vào Sửa cán bộ 1 4. Thêm chức vụ X hiện đang gán cho cán bộ 2 cho cán bộ 1 5. Lỗi: Chức vụ X của cán bộ 2 khi kiểm tra lại trong liferay bị mất trong khi không sửa đổi gì cả, trên giao diện Cập nhật thông tin tổ chức-Chức vụ của cán bộ 2 vẫn còn có chức vụ X)    ![2016-10-13_102320](https://cloud.githubusercontent.com/assets/17695836/19335659/33979560-912f-11e6-92ca-94f97c43bb9d.png)    Kiểm tra vai trò của tài khoản cán bộ 2 trong liferay, hiện mất role Đã kiểm tra    ![2016-10-13_103501](https://cloud.githubusercontent.com/assets/17695836/19335858/c104dc86-9130-11e6-8fa2-50c25458169f.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/usermgt/service/impl/EmployeeLocalServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1121" opendate="2016-10-12 04:31:30" fixdate="2016-10-18 10:19:24">
+		<buginformation>
+			<summary>Lỗi ngày xử lý không hiển thị trên tab xử lý của phiếu xử lý</summary>
+			<description>1. Vào tài khoản lãnh đạo 2. xử lý 1 hồ sơ 3. Lỗi ngày xử lý không hiển thị trên tab xử lý của phiếu xử lý    ![2016-10-12_112801](https://cloud.githubusercontent.com/assets/17695836/19297456/51903150-906f-11e6-8f08-3bf977b3d9df.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/portlet/ProcessOrderPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1112" opendate="2016-10-07 05:03:50" fixdate="2016-10-25 03:42:07">
+		<buginformation>
+			<summary>Lỗi không sinh phiên bản giấy tờ khi update form động</summary>
+			<description>1. Vào tk NLTT hoặc CBXL 2. Khai trực tuyến lần 1, click ghi lại -&gt; số phiên bản giấy tờ hiển thị là 1 3. Vào sửa lại nội dung form động lần 2 (không thực hiện xóa file), click Ghi lại  4. Lỗi: số phiên bản vẫn là 1, nội dung file hiển thị trên phiên bản là nội dung sửa lần 2; chưa xem lại được nội dung sửa lần 1 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/portlet/DossierMgtFrontOfficePortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1089" opendate="2016-10-03 07:08:16" fixdate="2016-11-10 07:01:06">
+		<buginformation>
+			<summary>Chức năng gửi mail thông báo cho quản trị biết có tài khoản mới được tạo</summary>
+			<description>@thanhld2901  from @khoahp   &gt; Dear Thành, &gt;  &gt; Phần này em bổ xung thêm vào cấu hình portlet đăng ký tài khoản địa chỉ gửi email thông báo. &gt;  &gt; Thông tin cấu hình sẽ là danh sách email, nếu số nhiều thì phân tách email bằng đấu ';'. &gt;  &gt; Phần nội dung email sẽ lấy nội dung từ phần cấu hình của portal, thông tin cấu hình dạng template như các email thông báo tài khoản. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/portlet/AccountRegPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/MessageBusUtil.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/portlet/ConfigurationImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1086" opendate="2016-09-30 02:11:07" fixdate="2016-10-24 07:29:21">
+		<buginformation>
+			<summary>Cán bộ chưa tra cứu được theo mã số hồ sơ </summary>
+			<description>1. Vào tk cán bộ 2. Vào Tra cứu hồ sơ 3. Tìm kiếm theo mã số hồ sơ    Lỗi: Không tìm kiếm được    KQMM: Cán bộ chưa tra cứu được theo mã số hồ sơ     ![2016-09-30_091042](https://cloud.githubusercontent.com/assets/17695836/18978491/cf4d2b1a-86ed-11e6-90f1-1c1657538110.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/persistence/DossierFinderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1078" opendate="2016-09-27 10:54:57" fixdate="2016-10-24 08:58:44">
+		<buginformation>
+			<summary>Chưa lọc phiếu thanh toán theo Cơ quan thực hiện ở portlet quản lý thu phí</summary>
+			<description>1. Đăng nhập vào tài khoản kế toán của cơ quan thực hiện A    Lỗi: Hệ thống hiển thị hết tất cả các phiếu thanh toán của các cơ quan khác     KQMM: Sau khi kế toán đăng nhập, hệ thống chỉ hiển thị các phiếu thanh toán thuộc cơ quan A (không hiển thị tất cả) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/persistence/PaymentFileFinderImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/impl/PaymentFileLocalServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1074" opendate="2016-09-27 02:08:52" fixdate="2016-09-29 09:04:23">
+		<buginformation>
+			<summary>Không xóa được biểu mẫu đính kèm ở quản lý thủ tục hành chính</summary>
+			<description>Vào ứng dụng quản lý thủ tục hành chính Xóa biểu mẫu đính kèm trước đó đi. Kết quả: Không xóa được Kết quả mong muốn: Xóa được biểu mẫu đính kèm </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/servicemgt/portlet/ServiceMgtPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="959" opendate="2016-08-24 10:33:02" fixdate="2016-08-30 04:07:56">
+		<buginformation>
+			<summary>NLTT chưa nhận được loại giấy tờ nhiều kết quả</summary>
+			<description>1. Cấu hình trả về loại nhiều giấy tờ kết quả A 2. Thực hiện xử lý hồ sơ đến bước trả về giấy  A 3. Lỗi: NLTT không nhận được giấy A (loại nhiều giấy tờ kết quả) (trường synstatus=0 trong db) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/backend/engine/BackOfficeProcessEngine.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/service/impl/ProcessOrderLocalServiceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/portlet/ProcessOrderPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="956" opendate="2016-08-24 07:11:15" fixdate="2016-11-09 08:59:32">
+		<buginformation>
+			<summary>Địa chỉ NLTT trên màn hình thông tin hồ sơ không thay đổi khi NLTT thực hiện đã sửa đổi địa chỉ</summary>
+			<description>1. Vào tài khoản NLTT (doanhnghiep.cps@gmail.com/congdan.cps@gmail.com) 2. Vào thông tin tài khoản http://qa.opencps.vn/group/guest/thong-tin-tai-khoan-cd-tc 3. Thay đổi địa doanh nghiệp (địa chỉ/ xã/huyện/tỉnh) 4. Lưu lại thành công 5. NLTT thực hiện nộp hồ sơ (vào quản lý hồ sơ) 6. Lỗi: Màn hình thông tin hồ sơ vẫn hiển thị địa chỉ cũ (trc khi sửa đổi) của NLTT </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/AccountUtil.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/PortletUtil.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/portlet/DossierMgtFrontOfficePortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/portlet/AccountProfilePortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="948" opendate="2016-08-22 04:45:50" fixdate="2016-08-31 03:24:07">
+		<buginformation>
+			<summary>Lỗi thanh toán trực tuyến</summary>
+			<description>1. Doanh nghiệp vào http://qa.opencps.vn/group/guest/yeu-cau-thanh-toan 2. Thực hiện thanh toán trực tuyến 3. Nhập thông tin thanh toán trên hệ thống keypay: Visa: tài khoản: 4005550000000001 - Expiry Date: 05/17 - Security code:123 4. Hệ thống keypay báo thanh toán thành công, tại màn hình chuyển chờ chuyển về trang đại lý, doanh nghiệp close (x) trang này đi.    ![screenshot from 2016-08-22 11-45-00](https://cloud.githubusercontent.com/assets/17695836/17843927/f4f339c6-685d-11e6-8002-9f962c70c958.png)  Lỗi: Vào lại trang http://qa.opencps.vn/group/guest/yeu-cau-thanh-toan phiếu thanh toán chưa chuyển sang trạng thái Hòan thành. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/backend/util/AutoFillFormData.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/persistence/ServiceConfigFinderImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/portlet/ProcessOrderPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/impl/PaymentFileLocalServiceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/portlet/PaymentMgtFrontOfficePortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="947" opendate="2016-08-22 04:40:51" fixdate="2016-09-19 02:35:26">
+		<buginformation>
+			<summary>Không chuyển trạng thái phiếu thanh toán khi thực hiện thanh toán trực tuyến</summary>
+			<description>1. Doanh nghiệp vào http://qa.opencps.vn/group/guest/yeu-cau-thanh-toan 2. Thực hiện thanh toán trực tuyến 3. Nhập thông tin thanh toán trên hệ thống keypay: Visa: tài khoản: 4005550000000001  - Expiry Date: 05/17 - Security code:123 4. Hệ thống keypay báo thanh toán thành công, hệ thống quay về màn hình yêu cầu thanh toán.    Lỗi: Phiếu thanh toán chưa chuyển sang trạng thái Hòan thành </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/backend/util/AutoFillFormData.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/persistence/ServiceConfigFinderImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/portlet/ProcessOrderPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/impl/PaymentFileLocalServiceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/portlet/PaymentMgtFrontOfficePortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="940" opendate="2016-08-19 03:42:05" fixdate="2016-12-14 08:42:59">
+		<buginformation>
+			<summary>Kiểm tra thông tin serviceUrl khi click nút Nộp hồ sơ trực tuyến</summary>
+			<description>1. link: http://qa.opencps.vn/tiep-nhan-ho-so-qua-mang 2. Xem Hướng dẫn 1 DVC 3. click nút Nộp hồ sơ trực tuyến    Khi này phải kiểm tra thông tin serviceUrl trong bảng service_config, nếu trắng thì nộp hồ sơ tại cổng, nếu có link thì lấy luôn link này.    màn hình:    ![2016-08-19_104135](https://cloud.githubusercontent.com/assets/17695836/17798214/8acb6cb4-65f9-11e6-8e50-0edc7738b668.png)    @huymq  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/portlet/AccountRegPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/MessageBusUtil.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/portlet/ConfigurationImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="925" opendate="2016-08-17 07:40:27" fixdate="2016-09-19 02:41:19">
+		<buginformation>
+			<summary>[Feature]Thêm chức năng lọc theo lĩnh vực hoạt động của doanh nghiệp trên màn hình quản lý tài khoản công dân tổ chức</summary>
+			<description>Thêm chức năng lọc theo lĩnh vực hoạt động của doanh nghiệp trên màn hình quản lý tài khoản công dân tổ chức </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/service/persistence/BusinessFinderImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/service/persistence/CitizenFinderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="815" opendate="2016-08-09 03:42:59" fixdate="2016-08-15 09:48:11">
+		<buginformation>
+			<summary>Lỗi không xuất được báo cáo khi nhập ký tự enter xuống dòng ở ô thuộc loại textaria trên form trực tuyến </summary>
+			<description>Lỗi không xuất được báo cáo khi nhập ký tự enter xuống dòng ở ô thuộc loại textaria trên form trực tuyến  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/JsonUtils.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/jasperreport/util/JRReportUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="806" opendate="2016-08-08 07:36:10" fixdate="2016-09-19 04:04:21">
+		<buginformation>
+			<summary>[Backend phân tán] Đầu doanh nghiệp Gửi hồ sơ từ cổng, đầu cán bộ nhận được hồ sơ nhưng không xem được file đính kèm trong nội dung hồ sơ</summary>
+			<description>Doanh nghiệp Gửi hồ sơ từ cổng,  Cán bộ nhận được hồ sơ nhưng không xem được file đính kèm trong nội dung hồ sơ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/jms/util/JMSMessageBodyUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="805" opendate="2016-08-08 07:35:09" fixdate="2016-09-19 04:04:41">
+		<buginformation>
+			<summary>[Backend phân tán]Doanh nghiệp gửi hồ sơ từ cổng, doanh nghiệp không nhận được mã tiếp nhận </summary>
+			<description>Doanh nghiệp gửi hồ sơ từ cổng, doanh nghiệp không nhận được mã tiếp nhận (bên cán bộ đã nhận được số tiếp nhận) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/backend/exc/MsgOutBackOffice.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/impl/DossierLocalServiceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/jms/business/SyncFromBackOffice.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="783" opendate="2016-08-02 11:26:56" fixdate="2016-08-09 03:40:52">
+		<buginformation>
+			<summary>Lỗi nhập enter xuống dòng ở ô thuộc loại textaria trên form trực tuyến</summary>
+			<description>Lỗi nhập enter xuống dòng ở ô thuộc loại textaria trên form trực tuyến </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/JsonUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="778" opendate="2016-08-02 08:27:04" fixdate="2016-08-09 07:24:42">
+		<buginformation>
+			<summary>Cán bộ không xem được form khai đơn trên nội dung hồ sơ</summary>
+			<description>1. Đăng nhập tk NLTT 2. Tạo hồ sơ 3. Nhập form khai trực tuyến 4. Nhấn Ghi lại (không nhấn nút Tạo form) 5. Gửi nộp hồ sơ 6. Đăng nhập tài khoản cán bộ, xem chi tiết hồ sơ mới nộp này.    Lỗi: Trên tab Nội dung hồ sơ, không hiển thị nút Xem biểu mẫu  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/JsonUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="772" opendate="2016-08-02 05:07:31" fixdate="2016-08-22 03:09:28">
+		<buginformation>
+			<summary>Thông báo hồ sơ chưa lọc theo user đăng nhập</summary>
+			<description>1. Thông báo hồ sơ chưa lọc theo user đăng nhập 2. Tiêu đề STT đổi thành "Số hồ sơ" </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/impl/DossierLocalServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="771" opendate="2016-08-02 04:40:10" fixdate="2016-08-19 04:05:06">
+		<buginformation>
+			<summary>[UIUX] Thay text hiển thị "Xin chào ..." bằng icon</summary>
+			<description>1. Đăng nhập vào hệ thống 2. Thay text hiển thị tên user "Xin chào CÔNG TY TNHH...." bằng icon và có tooltip "Thông tin tài khoản"    Click vào icon đó thì ra trang Thông tin tài khoản ứng với từng user đăng nhập    ![2016-08-02_113614](https://cloud.githubusercontent.com/assets/17695836/17317215/5e77d7c6-58a5-11e6-88b1-7ae392941845.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/usermgt/portlet/UserMgtPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="745" opendate="2016-08-01 07:54:21" fixdate="2016-08-18 10:56:26">
+		<buginformation>
+			<summary> Màn hình cập nhật thông tin một quy trình </summary>
+			<description>1.Đăng nhập TK admin 2.Vào Quản trị hệ thống/Quản lý quy trình 3.Màn hình cập nhật thông tin một quy trình xuất hiện KQ: tên tab Hành động đổi thành "Thao tác xử lý " , button Ghi lại đổ thành "Lưu", button Hủy bỏ đổi thành "Quay lại" cho đúng với file phân tích Link phân tích: https://github.com/VietOpenCPS/doc/wiki/Ph%C3%A2n-t%C3%ADch-qu%E1%BA%A3n-l%C3%BD-quy-tr%C3%ACnh-x%E1%BB%AD-l%C3%BD-h%E1%BB%93-s%C6%A1 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/portlet/AccountRegPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/usermgt/portlet/UserMgtPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/MessageKeys.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="733" opendate="2016-07-30 11:03:52" fixdate="2016-08-30 07:25:54">
+		<buginformation>
+			<summary>Thêm chức vụ chưa có thông báo khi nhập tiêu đề trùng với tiêu đề đã có trong DB</summary>
+			<description>1.Đăng nhập TK admin 2.Vào quản lý cán bộ/Thêm chức vụ 3.Nhập tiêu đề trùng với tiêu đề đã có trong DB 4.Nhấn Ghi lại KQ: Không có thông báo gì nhảy luôn về form màn hình thông tin chung KQMM: Hiển thị thông báo tiêu đề đã tồn tại </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/usermgt/portlet/UserMgtPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="721" opendate="2016-07-29 02:24:31" fixdate="2016-08-26 07:31:59">
+		<buginformation>
+			<summary>lỗi thêm chức vụ xong xuất hiện form thông tin chung</summary>
+			<description>1. Đăng nhập TK admin 2. Vào quản lý cán bộ/Thay đổi thông tin tổ chức/chọn thêm chức vụ 3. Nhập đầy đủ thông tin thêm chức vụ 4. Nhấn ghi lại    KQ: hiển thị màn hình thông tin chung    KQMM: hiển thị màn hình danh sách chức vụ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/portlet/AccountRegPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/usermgt/portlet/UserMgtPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/MessageKeys.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="675" opendate="2016-07-22 03:47:05" fixdate="2016-08-09 09:58:26">
+		<buginformation>
+			<summary>Sau khi tạo mới mẫu hồ sơ, nhấn nút lưu thì hệ thống không giữ nguyên màn hình </summary>
+			<description>Sau khi tạo mới mẫu hồ sơ, nhấn nút lưu thì hệ thống không giữ nguyên màn hình (hiện tại đang quay lại danh sách mẫu hồ sơ) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/portlet/DossierMgtAdminPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/usermgt/portlet/UserMgtPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="671" opendate="2016-07-22 03:12:16" fixdate="2016-11-09 10:03:29">
+		<buginformation>
+			<summary>Danh sách tra cứu hồ sơ Dossier BackOffice Management chưa sắp sếp theo ngày nhận hồ sơ mới-cũ</summary>
+			<description>Danh sách tra cứu hồ sơ Dossier BackOffice Management chưa sắp sếp theo ngày nhận hồ sơ vào hệ thống CBXL mới-cũ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/persistence/DossierFinderImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/comparator/DossierSubmitDateComparator.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/util/DossierMgtUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="670" opendate="2016-07-22 03:11:05" fixdate="2017-04-03 10:51:00">
+		<buginformation>
+			<summary>Cột tình trạng hiển thị trắng trên danh sách tra cứu hồ sơ Dossier BackOffice Management</summary>
+			<description>Cột tình trạng hiển thị trắng trên danh sách tra cứu hồ sơ Dossier BackOffice Management </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/PortletUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="653" opendate="2016-07-20 09:11:19" fixdate="2016-08-10 10:23:00">
+		<buginformation>
+			<summary>Xuất hiện popup danh sách hồ sơ</summary>
+			<description>1.Đăng nhập tài khoản doanh nghiệp 2.Tạo hồ sơ mới 3. Vào thành phần hồ sơ, vào màn hình đính kèm file 4. Nhập tên file không chọn file đính kèm 5.Nhấn đồng ý KQ: Xuất hiện thông báo chưa được việt hóa 6. Đính kèm file 7. Nhấn đồng ý KQ: xuất hiện popup danh sách hồ sơ  ![hinh ch p t 2016-07-20 15-58-15](https://cloud.githubusercontent.com/assets/20554327/16981363/8936fcbe-4e94-11e6-8dc0-53a4198072ee.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/portlet/DossierMgtFrontOfficePortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="649" opendate="2016-07-20 04:45:21" fixdate="2016-11-18 02:08:56">
+		<buginformation>
+			<summary>Chưa hiển thị nội dung thông báo phí trên tab Kết quả </summary>
+			<description>- Chưa hiển thị nội dung thông báo phí trên tab Kết quả  - Chưa việt hóa   ![2016-07-20_114129](https://cloud.githubusercontent.com/assets/17695836/16975331/69cbcdde-4e6f-11e6-89cc-4464f6cbc987.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/backend/engine/BackOfficeProcessEngine.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/PortletConstants.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/util/DossierMgtUtil.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/impl/DossierLogLocalServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="645" opendate="2016-07-20 03:41:48" fixdate="2016-08-15 11:05:17">
+		<buginformation>
+			<summary>Chưa hiển thị số giấy tờ, loại giấy tờ (nếu có) của thành phần hồ sơ trong Nội dung hồ sơ</summary>
+			<description>1. Đăng nhập tài khoản cán bộ 2. Vào xem nội dung hồ sơ của 1 hồ sơ    Lỗi: thành phần hồ sơ có nhận số giấy tờ nhưng không hiển thị lên    ![16processmgtprocessorderdossierfile](https://cloud.githubusercontent.com/assets/17695836/16974413/8b2533e8-4e66-11e6-9d40-de358aab3886.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/util/DossierMgtUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="638" opendate="2016-07-19 09:01:25" fixdate="2016-08-01 10:20:22">
+		<buginformation>
+			<summary>Hiển thị sai cơ quan thực hiện trên danh sách dvc trong quy trình</summary>
+			<description>B1: Đăng nhập tk quản trị, vào quản lý quy trình B2: Vào tab Dịch vụ B3: Trên danh sách dịch vụ công: Lỗi: - Cấp quản lý đổi thành cơ quan thực hiện - Hiển thị sai cơ quan quản thực hiện    ![2016-07-19_151101_co quan thuc hien](https://cloud.githubusercontent.com/assets/17695836/16944272/f5713ad2-4dc9-11e6-8529-e402e498e401.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/usermgt/portlet/UserMgtPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="614" opendate="2016-07-17 01:49:12" fixdate="2016-09-06 08:13:54">
+		<buginformation>
+			<summary>Trên màn hình xác nhận chuyển bước, không hiển thị người được phân công xử lý ở bước sau (người đã được cấu hình trong quy trình)</summary>
+			<description>@tragiangdt phần này em test lại trên con QA nhé </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/util/ProcessMgtUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="555" opendate="2016-07-12 04:36:19" fixdate="2016-09-22 10:02:27">
+		<buginformation>
+			<summary>Cán bộ không sửa được thông tin tài khoản</summary>
+			<description>1. Đăng nhập vào tài khoản cán bộ 2. vào thông tin tài khoản cán bộ 3. Sửa đổi thông tin/ đổi pass đều báo lỗi hệ thống </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/usermgt/portlet/UserMgtEditProfilePortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/impl/DossierLocalServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="550" opendate="2016-07-12 02:18:47" fixdate="2016-10-29 03:39:54">
+		<buginformation>
+			<summary>lỗi bảo mật chỗ xử lý hồ sơ</summary>
+			<description>phiên bản 1.2 có một lỗi bảo mật chỗ xử lý hồ sơ: người dùng có thể thay đổi tham số _16_WAR_opencpsportlet_processOrderId=5201 trên địa chỉ để thực hiện việc xử lý hồ sơ bất kỳ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/portlet/ProcessOrderPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="544" opendate="2016-07-07 03:52:36" fixdate="2016-07-19 04:36:37">
+		<buginformation>
+			<summary>Chưa check bắt buộc thành phần kq tại thao tác xử lý </summary>
+			<description>1. Cấu hình quy trình:    trong màn hình cập nhật thao tác X, chọn kết quả xử lý là Thành phần hồ sơ A (check bắt buộc) 2. xử lý hồ sơ thuộc quy trình này, đến bước có thao tác trên    Trên màn hình Xử lý hồ sơ của cán bộ, không thực hiện khai form trực tuyến hoặc tải tệp thành phần hồ sơ A    Lỗi: Nhấn nút thao tác X, hồ sơ chuyển được bước xử lý, ko check bắt buộc thành phần hồ sơ A </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/search/ProcessOrderDisplayTerms.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/portlet/ProcessOrderPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="541" opendate="2016-07-06 09:52:56" fixdate="2016-07-19 07:42:04">
+		<buginformation>
+			<summary>Không hiển thị tên chủ cơ sở trên danh sách quản lý thu phí</summary>
+			<description>Một số lỗi như sau: ![ql thu phi_2016-07-06_164731](https://cloud.githubusercontent.com/assets/17695836/16614202/07476f04-439a-11e6-8918-fcf2c212bc12.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/service/impl/BusinessLocalServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="514" opendate="2016-06-29 08:45:16" fixdate="2016-09-19 04:54:08">
+		<buginformation>
+			<summary>Thành phần hồ sơ không hiển thị theo thứ tự cấu hình</summary>
+			<description>B1: Vào tài khoản quản trị, cấu hình dịch vụ công mức 3, cấu hình thành phần hồ sơ B2: Chọn kiểu thành phần Nhóm tùy chọn/nhóm giấy tờ khác/ nhóm giấy tờ riêng cho 1 thành phần hồ sơ (VD: TP2) B3: Tạo thành phần con của TP2 trên vừa tạo gồm: TP2.1 và TP2.2 Lỗi: Trên màn hình chuẩn bị hồ sơ, thứ tự hiển thị các thành phần là: TP2   TP2.2   TP2.1 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/impl/DossierPartLocalServiceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/comparator/DossierPartSiblingComparator.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/util/DossierMgtUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="489" opendate="2016-06-24 04:06:18" fixdate="2016-09-26 08:27:51">
+		<buginformation>
+			<summary>Lỗi: Người không được phân công xử lý, nhưng vẫn vào xử lý được hồ sơ</summary>
+			<description>B1: Vào cấu hình quy trình, tại bước bắt đầu, gán phân công người xử lý là người xử lý 1 B2: DN tạo hồ sơ -&gt; nộp hồ sơ B3: Người xử lý 2 ở cùng role với người xử lý 1, vào tab Xử lý hồ sơ, các nút thao tác không bị disable. Lỗi: Người không được phân công xử lý, nhưng vẫn vào xử lý được hồ sơ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/backend/engine/BackOfficeProcessEngine.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="486" opendate="2016-06-23 08:03:11" fixdate="2016-06-29 02:32:17">
+		<buginformation>
+			<summary>Không lưu vết trường Phân công cán bộ xử lý trên màn hình cấu hình thao tác</summary>
+			<description>B1: Đăng nhập tài khoản quản trị B2: Vào 1 quy trình B3: Vào sửa đổi 1 thao tác B4: Sửa đổi người xử lý. Sau đó nhấn Ghi lại Lỗi: Không lưu vết trường Phân công cán bộ xử lý trên màn hình cấu hình thao tác @dunglt91   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/WebKeys.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/portlet/SubmitInstructionPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/impl/ServiceConfigLocalServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="477" opendate="2016-06-18 07:32:08" fixdate="2016-09-26 12:59:19">
+		<buginformation>
+			<summary>TH lãnh đạo yêu cầu kiểm tra lại, hệ thống chưa trả hồ sơ về đúng cho cán bộ vừa mới xử lý hồ sơ này</summary>
+			<description>TH lãnh đạo yêu cầu kiểm tra lại, hệ thống chưa trả hồ sơ về đúng cho cán bộ vừa mới xử lý hồ sơ này </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/service/impl/ActionHistoryLocalServiceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/util/ProcessUtils.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/service/persistence/ActionHistoryFinderImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/util/ProcessMgtUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="466" opendate="2016-06-16 08:58:41" fixdate="2016-06-29 09:06:54">
+		<buginformation>
+			<summary>Hồ sơ không chuyển sang trạng thái kết thúc</summary>
+			<description>Cán bộ xử lý thực hiện nhấn thao tác (thao tác, hành động có bước sau xử lý là bước kết thúc), thì  Lỗi: - hồ sơ không chuyển trạng thái sang kết thúc. - trên màn hình của cán bộ xử lý không thay đổi gì, hồ sơ không mất khỏi danh sách Hồ sơ chờ xử lý của cán bộ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/backend/engine/BackOfficeProcessEngine.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="463" opendate="2016-06-16 07:35:41" fixdate="2016-07-19 08:02:22">
+		<buginformation>
+			<summary>Chưa đặt tên bước bắt đầu và kết thúc trong quy trình</summary>
+			<description>B1: Vào tài khoản quản trị B2: Vào xem chi tiết 1 quy trình B3: Vào tab Thao tác Lỗi chưa có bước bắt đầu và kết thúc để chọn khi cấu hình. ![2016-06-16_loi buoc bat dau kt](https://cloud.githubusercontent.com/assets/17695836/16108797/8dc65c50-33cf-11e6-8bf8-5889b11f61f2.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/util/ProcessUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="424" opendate="2016-06-09 03:14:19" fixdate="2016-06-16 03:38:36">
+		<buginformation>
+			<summary>Chưa check những thành phần hồ sơ được cấu hình bắt buộc khi nộp hồ sơ</summary>
+			<description>B1: Cấu hình thành phần hồ sơ bắt buộc B2: Vào tài khoản DN, thêm mới hồ sơ B3: Không nhập thành phần hồ sơ nào cả, nhấp ghi lại và gửi nộp hồ sơ thành công Lỗi Chưa check những thành phần hồ sơ được cấu hình bắt buộc khi nộp hồ sơ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/portlet/DossierMgtFrontOfficePortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="354" opendate="2016-05-31 07:45:02" fixdate="2016-11-18 03:17:24">
+		<buginformation>
+			<summary>Backend xử lý - Hoàn tiện ích sinh ngày hẹn trả</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/notificationmgt/utils/NotificationUtils.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/backend/engine/BackOfficeProcessEngine.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/util/SendMailUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="330" opendate="2016-05-27 08:16:40" fixdate="2016-06-13 10:07:42">
+		<buginformation>
+			<summary>Nhấn nút Ghi lại khi thêm mới 1 thao tác, hệ thống quay ra màn hình danh sách quy trình</summary>
+			<description>B1: Đăng nhập tài khoản quản trị B2: Vào 1 quy trình, thực hiện thêm mới thao tác hành động B2: Nhấn nút Ghi lại,  Lỗi hệ thống quay ra màn hình danh sách quy trình  Mong muốn: hệ thống quay lại danh sách thao tác khi nhấn nút Ghi lại </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/service/impl/ProcessWorkflowLocalServiceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/processmgt/portlet/ProcessMgtAdminPortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="324" opendate="2016-05-27 05:01:07" fixdate="2016-06-09 02:54:04">
+		<buginformation>
+			<summary>Trường nhập  "Địa chỉ thực hiện DVC cấp 3" trong màn hình quản lý thủ tục hành chính có độ dài quá ngắn</summary>
+			<description>B1: Đăng nhập tài khoản quản trị B2: Vào quản lý thủ tục hành chính B3: Thêm mới/sửa đổi 1 TTHC B4: Lỗi: Trường nhập  "Địa chỉ thực hiện DVC cấp 3" trong màn hình quản lý thủ tục hành chính có độ dài quá ngắn </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/servicemgt/portlet/ServiceMgtPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/service/impl/ServiceConfigLocalServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="291" opendate="2016-05-24 08:47:24" fixdate="2016-05-25 11:34:37">
+		<buginformation>
+			<summary>Lỗi Tải file đính kèm khi chuẩn bị hồ sơ xong hệ thống quay ra màn hình danh sách hồ sơ</summary>
+			<description>B1: Sửa hồ sơ B2: Thêm 1 tệp đính kèm B3: Nhập tên tệp đính kèm trùng với tệp trước, sao cho nhấn lưu lại thông báo lỗi B4: Nhập lại tên têp đính kèm đúng B5: Nhấn ghi lại, lỗi: hệ thống quay lại màn hình danh sách hồ sơ (phải quay lại màn hình thành phần hồ sơ) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/portlet/DossierMgtFrontOfficePortlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="268" opendate="2016-05-20 10:04:22" fixdate="2016-05-26 02:59:18">
+		<buginformation>
+			<summary>Trường tên đầy đủ của doanh nghiệp khi đăng ký tài khoản không lưu được vào DB</summary>
+			<description>B1: Đăng ký tài khoản doanh nghiệp B2: Lỗi Trường tên đầy đủ của doanh nghiệp khi đăng ký tài khoản không lưu được vào DB </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/model/impl/PaymentConfigCacheModel.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/model/impl/PaymentFileCacheModel.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/base/PaymentConfigLocalServiceClpInvoker.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/model/impl/PaymentFileBaseImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/base/PaymentFileLocalServiceBaseImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/base/PaymentFileServiceClpInvoker.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/base/PaymentConfigServiceBaseImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/base/PaymentFileServiceBaseImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/accountmgt/service/impl/BusinessLocalServiceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/base/PaymentConfigLocalServiceBaseImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/http/PaymentFileServiceSoap.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/model/impl/PaymentConfigModelImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/base/PaymentConfigServiceClpInvoker.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/model/impl/PaymentFileModelImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/persistence/PaymentConfigPersistenceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/http/PaymentConfigServiceSoap.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/persistence/PaymentFilePersistenceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/model/impl/PaymentConfigBaseImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/paymentmgt/service/base/PaymentFileLocalServiceClpInvoker.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="243" opendate="2016-05-18 09:51:40" fixdate="2016-05-27 04:40:15">
+		<buginformation>
+			<summary>Không nhập hết được tên, tên ngắn thủ tục hành chính khi thêm mới/sửa thủ tục hành chính</summary>
+			<description>B1: Đăng nhập tài khoản quản trị B2: Vào quản lý thủ tục hành chính B3: Thêm mới/sửa tên, tên ngắn thủ tục hành chính Độ dài tên, tên ngắn, mô tả thủ tục hành chính quá ngắn, không nhập hết được tên TTHC </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/servicemgt/search/ServiceDisplayTerms.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/servicemgt/service/impl/ServiceInfoLocalServiceImpl.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/servicemgt/portlet/ServiceMgtPortlet.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/servicemgt/service/persistence/ServiceInfoFinderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="228" opendate="2016-05-18 02:17:55" fixdate="2016-06-02 02:34:24">
+		<buginformation>
+			<summary>Menu Không gian làm việc: Bộ lọc lỗi giá trị trong droplist </summary>
+			<description>- Người làm thủ tục: Đăng nhập và chọn luôn menu "Không gian làm việc" =&gt; Droplist bộ lọc lỗi hiện giá trị "Tất cả" , phải sửa thành "Mới" </description>
+		</buginformation>
+		<fixedfiles>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/search/DossierSearchTerms.java</file>
+			<file>portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/dossiermgt/search/DossierDisplayTerms.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

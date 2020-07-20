@@ -1,0 +1,2013 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>1937</id>
+		<title>Erro 500 ao ordenar index de controladores</title>
+		<body>No index de controladores, ao clicar no cabeçalho da tabela p/ ordenar por status, dá erro 500. Ao clicar no campo localização a requisição retorna 200, mas os controladores não ordenam.</body>
+		<created>2017-02-20 14:36:58</created>
+		<closed>2017-12-15 11:46:44</closed>
+	</bug>
+	<bug>
+		<id>1916</id>
+		<title>Problema ao criar evento pelo agrupamento</title>
+		<body>1- Cria um evento as 6:0:0 - Plano 1 2- Cria um agrupamento com o Plano 4 3- Edita o agrupamento e insere um enveto as 6:0:0 - Plano 4 4- Ao perguntar se deseja criar um evento - SIM 5- Ao perguntar se deseja substituir o evento existente - NAO 6- BUG o evento 6:0:0 - Plano foi removido</body>
+		<created>2017-01-20 17:11:17</created>
+		<closed>2017-01-20 18:44:16</closed>
+	</bug>
+	<bug>
+		<id>1910</id>
+		<title>Bug a tentar excluir um estágio que seja dispensável  </title>
+		<body>![captura de tela 2017-01-20 as 11 57 20](https://cloud.githubusercontent.com/assets/505372/22151962/a9342e3e-df07-11e6-92b7-5708f05d863f.png) </body>
+		<created>2017-01-20 13:58:07</created>
+		<closed>2017-09-15 12:37:50</closed>
+	</bug>
+	<bug>
+		<id>1907</id>
+		<title>Busca comandos da central</title>
+		<body>Quando pesquisei na subarea o valor 234 ocorreu erro 500.</body>
+		<created>2017-01-20 12:43:11</created>
+		<closed>2017-01-20 19:27:18</closed>
+	</bug>
+	<bug>
+		<id>1899</id>
+		<title>Mensagem "nada a preencher" não muda mesmo preenchendo</title>
+		<body>no wizard, a mensagem de "é necessário preencher os dados..." não é alterada depois de preencher os dados ou clicar no checkbox. ela somente passa de vermelho p/ verde, mas continua a mesma.  Problema acontecendo nos botões de "salvar" e no "salvar e avançar".  ![screen shot 2017-01-18 at 19 52 17](https://cloud.githubusercontent.com/assets/194442/22084597/e3461c46-ddb7-11e6-849d-7734ba1db9df.png) </body>
+		<created>2017-01-18 21:54:28</created>
+		<closed>2017-01-19 19:15:57</closed>
+	</bug>
+	<bug>
+		<id>1847</id>
+		<title>Erro entrada manual com falha</title>
+		<body>Para reproduzir: 1. Inicie um controlador 2. Cause uma falha de fase vermelha apagada em um grupo semafórico de um anel com modo manual 3. Depois que o anel entrar em intermitente, ative o modo manual.  A seguinte exception vai ser lançada na central: ``` [info] OficialInfluunt - [INICIALIZACAO] O controlador foi colocado em execução [info] OficialInfluunt - [EXECUCAO] Troca de plano por tabela horária. Plano 1 - TEMPO_FIXO_COORDENADO [info] OficialInfluunt - [EXECUCAO] Troca de plano por tabela horária. Plano 1 - TEMPO_FIXO_COORDENADO [info] OficialInfluunt - [EXECUCAO] Troca de plano por tabela horária. Plano 1 - TEMPO_FIXO_COORDENADO [info] OficialInfluunt - [EXECUCAO] FALHA_FASE_VERMELHA_DE_GRUPO_SEMAFORICO_APAGADA - Anel 1: Fase vermelha do G1 apagada [info] OficialInfluunt - [EXECUCAO] REMOCAO_FALHA_FASE_VERMELHA_DE_GRUPO_SEMAFORICO - Plano{id=c9ed6ba7-7521-491a-9c29-628f779320d3, idJson='187f124f-a0e2-4f4e-9447-3c6ad2688b47', posicao=1, tempoCiclo=100, defasagem=0, versaoPlano=VersaoPlano{id=dd52d15a-828e-4397-8bd1-ab882b33f5d3, idJson='9a5e47c5-8966-41af-845d-d78248f62226', versaoAnterior=null, descricao='null', statusVersao=CONFIGURADO, dataCriacao=null}, posicaoTabelaEntreVerde=1, dataCriacao=null, dataAtualizacao=null}: Fase vermelha do G1 apagada removida [info] OficialInfluunt - [EXECUCAO] FALHA_FASE_VERMELHA_DE_GRUPO_SEMAFORICO_APAGADA - Anel 1: Fase vermelha do G1 apagada [info] OficialInfluunt - [EXECUCAO] INSERCAO_DE_PLUG_DE_CONTROLE_MANUAL - Inserção de plug do controle manual [info] OficialInfluunt - [EXECUCAO] INSERCAO_DE_PLUG_DE_CONTROLE_MANUAL - Inserção de plug do controle manual [info] OficialInfluunt - [EXECUCAO] INSERCAO_DE_PLUG_DE_CONTROLE_MANUAL - Inserção de plug do controle manual [info] OficialInfluunt - [EXECUCAO] Troca de plano por tabela horária. Plano 0 - MANUAL java.lang.NullPointerException at engine.GerenciadorDeEstagios.verificaETrocaEstagio(GerenciadorDeEstagios.java:381) at engine.Motor.lambda$ativaModoManual$11(Motor.java:267) at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1374) at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580) at engine.Motor.ativaModoManual(Motor.java:265) at engine.GerenciadorDeEstagios.verificaSeDeveAguardarEntradaEmModoManual(GerenciadorDeEstagios.java:250) at engine.GerenciadorDeEstagios.verificaETrocaIntervalo(GerenciadorDeEstagios.java:179) at engine.GerenciadorDeEstagios.tick(GerenciadorDeEstagios.java:121) at java.util.ArrayList.forEach(ArrayList.java:1249) at engine.Motor.tick(Motor.java:136) at os72c.client.device.DeviceActor.lambda$start$1(DeviceActor.java:100) at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) at java.lang.Thread.run(Thread.java:745) java.lang.NullPointerException at engine.GerenciadorDeEstagios.executaAgendamentoTrocaDePlano(GerenciadorDeEstagios.java:439) at engine.Motor.lambda$ativaModoManual$11(Motor.java:266) at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1374) at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580) at engine.Motor.ativaModoManual(Motor.java:265) at engine.GerenciadorDeEstagios.verificaSeDeveAguardarEntradaEmModoManual(GerenciadorDeEstagios.java:250) at engine.GerenciadorDeEstagios.verificaETrocaIntervalo(GerenciadorDeEstagios.java:179) at engine.GerenciadorDeEstagios.tick(GerenciadorDeEstagios.java:121) at java.util.ArrayList.forEach(ArrayList.java:1249) at engine.Motor.tick(Motor.java:136) at os72c.client.device.DeviceActor.lambda$start$1(DeviceActor.java:100) at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) at java.lang.Thread.run(Thread.java:745) java.lang.NullPointerException at engine.GerenciadorDeEstagios.executaAgendamentoTrocaDePlano(GerenciadorDeEstagios.java:439) at engine.Motor.lambda$ativaModoManual$11(Motor.java:266) at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1374) at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580) at engine.Motor.ativaModoManual(Motor.java:265) at engine.GerenciadorDeEstagios.verificaSeDeveAguardarEntradaEmModoManual(GerenciadorDeEstagios.java:250) at engine.GerenciadorDeEstagios.verificaETrocaIntervalo(GerenciadorDeEstagios.java:179) at engine.GerenciadorDeEstagios.tick(GerenciadorDeEstagios.java:121) at java.util.ArrayList.forEach(ArrayList.java:1249) at engine.Motor.tick(Motor.java:136) at os72c.client.device.DeviceActor.lambda$start$1(DeviceActor.java:100) at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) at java.lang.Thread.run(Thread.java:745) ```   </body>
+		<created>2017-01-10 18:54:20</created>
+		<closed>2017-01-10 21:32:19</closed>
+	</bug>
+	<bug>
+		<id>1829</id>
+		<title>Erro ao copiar plano já finalizado</title>
+		<body>1- Finaliza o controlador com Plano 1 e 2 2- Edita planos 3- Copia o plano 1 para o plano 2 4- Salva a edição 5- O plano 2 fica com os novos estágios e os anteriores também. (Deve acontecer com os grupos semafóricos planos também) </body>
+		<created>2017-01-09 13:33:39</created>
+		<closed>2017-01-16 12:53:37</closed>
+	</bug>
+	<bug>
+		<id>1819</id>
+		<title>Bug Tabela EntreVerde - Ao tentar adicionar uma nova tabela entre verdes o sistema não  está comportando  corretamente. Não é possível configurar</title>
+		<body></body>
+		<created>2017-01-07 02:44:00</created>
+		<closed>2017-01-20 21:53:08</closed>
+	</bug>
+	<bug>
+		<id>1807</id>
+		<title>Problemas ao remover estágio plano</title>
+		<body></body>
+		<created>2017-01-05 11:02:12</created>
+		<closed>2017-01-05 14:17:47</closed>
+	</bug>
+	<bug>
+		<id>1787</id>
+		<title>Erro ao carregar gráfico no dashboard</title>
+		<body>Ao entrar no dashboard em production, um dos gráficos era pra estar vazio, mas ele tentou ser renderizado e resultou em erro. ![screen shot 2017-01-02 at 20 00 31](https://cloud.githubusercontent.com/assets/194442/21596728/57f6a5c2-d126-11e6-9279-fc53bb6aa5a2.png) </body>
+		<created>2017-01-02 22:02:50</created>
+		<closed>2017-01-03 19:41:02</closed>
+	</bug>
+	<bug>
+		<id>1786</id>
+		<title>Bug Em mapas - Não está mostrando corretamente no mapa os controladores</title>
+		<body>![captura de tela 2017-01-02 as 14 47 09](https://cloud.githubusercontent.com/assets/505372/21593047/62eabcec-d0fa-11e6-899e-94836cd9319d.png) </body>
+		<created>2017-01-02 16:47:39</created>
+		<closed>2017-01-03 21:00:31</closed>
+	</bug>
+	<bug>
+		<id>1780</id>
+		<title>Bug ao tentar salvar uma subárea informando apenas o nome</title>
+		<body>![captura de tela 2016-12-27 as 16 54 06](https://cloud.githubusercontent.com/assets/505372/21506185/45fdcd8a-cc55-11e6-8b71-9274106d64c9.png) </body>
+		<created>2016-12-27 18:55:36</created>
+		<closed>2016-12-29 19:05:56</closed>
+	</bug>
+	<bug>
+		<id>1779</id>
+		<title>Bug em subárea ao clicar em salvar o sistema não está apresentado os erros corretamente</title>
+		<body></body>
+		<created>2016-12-27 17:47:43</created>
+		<closed>2016-12-29 19:05:56</closed>
+	</bug>
+	<bug>
+		<id>1778</id>
+		<title>Bug ao tentar apagar uma subarea</title>
+		<body>![captura de tela 2016-12-27 as 15 23 43](https://cloud.githubusercontent.com/assets/505372/21504742/9659734a-cc48-11e6-818f-4df2a36106d2.png) </body>
+		<created>2016-12-27 17:24:46</created>
+		<closed>2017-01-02 18:56:08</closed>
+	</bug>
+	<bug>
+		<id>1774</id>
+		<title>Bug em planos, os erros estão sumindo ao mudar de plano </title>
+		<body></body>
+		<created>2016-12-26 12:55:11</created>
+		<closed>2017-01-02 18:56:12</closed>
+	</bug>
+	<bug>
+		<id>1773</id>
+		<title>Erro defasagem no simulador</title>
+		<body>Defasagem entre os cruzamentos (anéis). Foram gravados dois planos (plano 1 e plano 2). No primeiro plano, a defasagem entre o anel 1 e o anel 2 estava com valor Zero e o programa respondeu corretamente. No plano 2, colocamos valores de defasagem entre os anéis e a mesma (no simulador) está incorreta.  ![item7](https://cloud.githubusercontent.com/assets/1890706/21480725/ec13278e-cb46-11e6-8905-0de64204349e.png) Plano 2 – Defasagem entre o Anel 1 e Anel 2 incorreta (instante 25 e instante 30)</body>
+		<created>2016-12-26 10:40:31</created>
+		<closed>2017-01-02 21:55:34</closed>
+	</bug>
+	<bug>
+		<id>1772</id>
+		<title>Problema na criação de planos</title>
+		<body>Criação de planos: após criarmos o plano 1, não conseguimos criar o plano 2. Isto somente foi possível após copiarmos o plano1 para o plano2.</body>
+		<created>2016-12-26 10:37:46</created>
+		<closed>2017-01-02 21:56:25</closed>
+	</bug>
+	<bug>
+		<id>1771</id>
+		<title>Erro entreverdes no simulador</title>
+		<body>Erro encontrado na simulação da programação da Vergueiro. Ocorreu mudança de estágios sem cumprimento de entreverdes. E entrou em intermitente.  ![item4](https://cloud.githubusercontent.com/assets/1890706/21480663/66ef385e-cb46-11e6-9334-8495c771f2c2.png) Erro de sequência do Plano 1.  ![item4-1](https://cloud.githubusercontent.com/assets/1890706/21480649/51807262-cb46-11e6-89d7-fa795106063f.png) Erro de sequência do Plano 2.</body>
+		<created>2016-12-26 10:36:47</created>
+		<closed>2017-01-02 18:55:38</closed>
+	</bug>
+	<bug>
+		<id>1770</id>
+		<title>Erro imposição de plano - simulador</title>
+		<body>Na imposição de um plano qualquer (por exemplo, plano 4), durante a simulação do plano 3, não ocorreu o forçamento (não sei se é devido à rede) e continuou operando o plano 3.  Abriu uma linha de tempo (numero 1, vide figura abaixo) no horário que deveria ter feito a troca, não foi possível entender o que é.  ![item2](https://cloud.githubusercontent.com/assets/1890706/21480612/e33f8edc-cb45-11e6-8827-760b454fbd3d.png)  ![item2-1](https://cloud.githubusercontent.com/assets/1890706/21480615/e6c973c4-cb45-11e6-9b01-9dd955928c16.png)   Não fez troca para plano 4 (continuou no Plano 3) apesar da imposição na simulação.</body>
+		<created>2016-12-26 10:33:30</created>
+		<closed>2016-12-27 10:40:19</closed>
+	</bug>
+	<bug>
+		<id>1769</id>
+		<title>Erro atraso de grupo no simulador</title>
+		<body>Quando implementado o atraso de grupo, o diagrama de barras do plano elaborado fica correto, porém quando roda no simulador, dando como exemplo o cruzamento da área 3 – Tuiuti x Gonçalves Crespo (um único anel, pedestre carona, pedestre não-carona e pedestre meio de quadra) que tem como sequencia de estágios 1-2-3 (anexos), ocorre:  Na transição do estágio 1 para estágio 2, o simulador não implementou o amarelo e vermelho limpeza dos grupos veiculares (G1 e G7), passando direto de verde para vermelho.  ![item1](https://cloud.githubusercontent.com/assets/1890706/21480589/a173bfdc-cb45-11e6-9ce8-466074f24621.png)  FOI ENTÃO RETIRADO O ATRASO DE GRUPO, E VOLTOU A FAZER O ENTREVERDES (DE G1 E G7) NA TRANSIÇÃO E1 – E2</body>
+		<created>2016-12-26 10:31:15</created>
+		<closed>2017-01-02 21:55:33</closed>
+	</bug>
+	<bug>
+		<id>1747</id>
+		<title>Erro diagrama de intervalos</title>
+		<body>Na tela de planos, caso exista um estágio associado a somente um grupo semafórico, este grupo semafórico não pode ser desativado. No exemplo abaixo, o grupo G6 não pode ser desativado, pois somente ele fica verde no estágio E2. ![screen shot 2016-12-20 at 18 59 17](https://cloud.githubusercontent.com/assets/194442/21367744/72d8f92a-c6e6-11e6-840b-467a09ecf140.png) </body>
+		<created>2016-12-20 21:00:13</created>
+		<closed>2016-12-22 11:12:30</closed>
+	</bug>
+	<bug>
+		<id>1740</id>
+		<title>Tela Impor Configuração - Botão "Ler Dados" </title>
+		<body>O texto não reconhece em alguns lugares.  ![image](https://cloud.githubusercontent.com/assets/5081549/21361847/fa3db622-c6cc-11e6-8d49-0fa803efcdee.png) </body>
+		<created>2016-12-20 17:57:37</created>
+		<closed>2016-12-21 10:50:51</closed>
+	</bug>
+	<bug>
+		<id>1735</id>
+		<title>Dúvida confirmação nada a preencher atraso de grupo</title>
+		<body>Enviado por: Suely  &gt;Na tela de atraso de grupos, é obrigatório o preenchimento do campo “confirmo que não há configurações a fazer neste anel”? Qual é a consistência que o sistema está fazendo: por tela, por transição de grupo ou por anel? Ele só deixou sair quando acionou o botão na primeira tela de cada anel, mesmo tendo atrasos configurados para um grupo deste anel. Esta dúvida persiste ainda nesta versão!</body>
+		<created>2016-12-20 14:37:34</created>
+		<closed>2016-12-22 10:29:03</closed>
+	</bug>
+	<bug>
+		<id>1732</id>
+		<title>Erro plano modo apagado + simulador</title>
+		<body>Enviado por: Suely  &gt;Modo apagado. Ao configurar modo apagado em um determinado anel de um plano, o sistema misturou os dados do anel, duplicando os estágios e não permitindo assim prosseguir. Telas abaixo: Tela do anel e plano aonde seria configurado o modo apagado (plano 4, anel 3): ![screen shot 2016-12-20 at 12 30 54](https://cloud.githubusercontent.com/assets/194442/21354178/2e065e90-c6b0-11e6-82d7-74e1c479a83b.png)  &gt;Tela do outro plano, que já estava configurado, deste mesmo anel(plano 1, anel 3): ![screen shot 2016-12-20 at 12 31 56](https://cloud.githubusercontent.com/assets/194442/21354218/52c5353a-c6b0-11e6-95fb-833a1cd0f993.png)  &gt;Tela do outro plano, que já estava configurado, deste mesmo anel (plano 2, anel 3): ![screen shot 2016-12-20 at 12 32 35](https://cloud.githubusercontent.com/assets/194442/21354237/69632554-c6b0-11e6-9482-2246e6e96e10.png)   &gt;Ao rodar o simulador o sistema apresentou esta tela preta e não evoluiu disto. ![screen shot 2016-12-20 at 12 33 42](https://cloud.githubusercontent.com/assets/194442/21354269/90a162a2-c6b0-11e6-982c-4cf6d54f1d24.png)  &gt;Para sair desta situação deletei os estágios que haviam sido duplicados pelo sistema. E coloquei plano intermitente no anel 4 só para testar se ele respeitaria este modo.  &gt;Tela abaixo do simulador nesta situação: ![screen shot 2016-12-20 at 12 34 27](https://cloud.githubusercontent.com/assets/194442/21354298/ac69374e-c6b0-11e6-9d31-f5bb7528b810.png)   &gt;Só acho que para diferençar que este amarelo piscante é um plano de tabela horária e não uma situação de falha na linha lateral que indica o modo de operação, ele deveria continuar em “TFC” e não “INT” pois é plano de tabela horária.  &gt;Uma observação: ao acionar o modo manual ele saiu do intermitente, o que está certo, mas depois de alguns segundos, sem a solicitação, ele saiu do modo manual retornando à tabela horária vigente, como mostra a tela abaixo. ![screen shot 2016-12-20 at 12 35 39](https://cloud.githubusercontent.com/assets/194442/21354347/d8d2180a-c6b0-11e6-966b-108cc2d1d5cf.png) </body>
+		<created>2016-12-20 14:31:28</created>
+		<closed>2016-12-22 17:15:50</closed>
+	</bug>
+	<bug>
+		<id>1731</id>
+		<title>Erro edição de planos</title>
+		<body>Enviado por: Suely  &gt;Tela de planos: Ao copiar um plano o sistema copiou o plano novo somente do primeiro anel (inclusive o ciclo) os demais anéis vieram com o valor “default” é isso?  &gt;Ao tentar configurar o plano o sistema travou na tela a seguir: ![screen shot 2016-12-20 at 12 11 53](https://cloud.githubusercontent.com/assets/194442/21353520/8628e550-c6ad-11e6-9883-69b3520f4a45.png)  &gt;Tentei cancelar a edição deste plano, mas o sistema emitiu a seguinte mensagem: ![screen shot 2016-12-20 at 12 12 25](https://cloud.githubusercontent.com/assets/194442/21353537/9a250fca-c6ad-11e6-80e7-305d33419e02.png)  </body>
+		<created>2016-12-20 14:12:59</created>
+		<closed>2016-12-22 17:15:50</closed>
+	</bug>
+	<bug>
+		<id>1728</id>
+		<title>Confirmação nada a preencher transições proibidas</title>
+		<body>Enviado por: Bruno  ![screen shot 2016-12-20 at 12 02 37](https://cloud.githubusercontent.com/assets/194442/21353255/56b35f7c-c6ac-11e6-93bd-4550e938b739.png) </body>
+		<created>2016-12-20 14:04:13</created>
+		<closed>2016-12-21 21:07:09</closed>
+	</bug>
+	<bug>
+		<id>1724</id>
+		<title>Erro grupo semafórico simulador</title>
+		<body>Enviado por: Madeira  &gt;O simulador não roda igual ao plano criado. No plano 7 (noturno), os grupos de pedestres que no plano ficariam apagados, ao rodar no SIMULADOR permanecem em VERMELHO PERMANENTE.</body>
+		<created>2016-12-20 13:59:24</created>
+		<closed>2016-12-20 19:10:25</closed>
+	</bug>
+	<bug>
+		<id>1723</id>
+		<title>Erro: simulador travado</title>
+		<body>Enviado por: Madeira  &gt;O simulador de planos travou várias vezes (tela preta). Para voltar a funcionar foi necessário sair do Influunt e fechar o navegador.</body>
+		<created>2016-12-20 13:58:24</created>
+		<closed>2016-12-20 18:56:04</closed>
+	</bug>
+	<bug>
+		<id>1722</id>
+		<title>Atraso de grupo automático (Madeira)</title>
+		<body>Enviado por: Madeira  &gt;**Permanece um erro grave:** os entreverdes dos grupos que fecham simultaneamente, com tempos diferentes, estão iniciando o entreverdes ao mesmo tempo. O correto é que terminem juntos. Ou seja, os grupos com tempo total de entreverdes maior devem começar o fechamento com antecedência para terminarem juntos.</body>
+		<created>2016-12-20 13:57:58</created>
+		<closed>2016-12-20 16:42:13</closed>
+	</bug>
+	<bug>
+		<id>1721</id>
+		<title>Erro validação planos</title>
+		<body>Enviado por: Madeira  &gt;R. Vergueiro x R. Queiroz Aranha, permanece mostrando a seguinte mensagem: “o tempo de ciclo de 60 segundos é diferente da soma dos estágios 60 segundos”. A falha ocorreu durante a elaboração de um plano em que foi suprimido o estágio exclusivo de pedestres e todos os demais pedestres foram desligados (apagados).</body>
+		<created>2016-12-20 13:57:12</created>
+		<closed>2016-12-21 11:30:03</closed>
+	</bug>
+	<bug>
+		<id>1718</id>
+		<title>Erro simulador</title>
+		<body>Enviado por: Ager  &gt;Neste mesmo controlador (R. Clélia x R. Jeroaquara), no anel 2, plano 2,  gravamos uma sequência de estágios diferente: Estágios - A, B, C, B. No simulador, mesmo ativando a botoeira, não conseguimos que o controlador seguisse tal sequência. O estágio B entrava somente uma vez no ciclo.</body>
+		<created>2016-12-20 13:51:34</created>
+		<closed>2016-12-20 20:22:31</closed>
+	</bug>
+	<bug>
+		<id>1713</id>
+		<title>Mensagem validação em planos</title>
+		<body>Enviado por: Ager  &gt;Aquela mensagem “a soma dos estágios é diferente do tempo de ciclo” aparece mesmo quando o valor já está corrigido.  ![screen shot 2016-12-20 at 11 41 12](https://cloud.githubusercontent.com/assets/194442/21352569/3e04879c-c6a9-11e6-8ea4-248fcc89535d.png) </body>
+		<created>2016-12-20 13:41:35</created>
+		<closed>2016-12-21 11:30:03</closed>
+	</bug>
+	<bug>
+		<id>1712</id>
+		<title>Erro validação plano manual</title>
+		<body>Enviado por: Ager &gt;a) Aquela mensagem “este plano deve ter a mesma quantidade de estágios” voltou a aparecer, mas mesmo assim, conseguimos configurá-lo.  &gt;b) Após a configuração deste plano da operação manual, fomos gravar o plano 1. O software, sozinho, incluiu um estágio (vejam o print da tela). Não conseguimos apaga-lo, o que ocorreu automaticamente, após avançarmos telas.  ![screen shot 2016-12-20 at 11 39 31](https://cloud.githubusercontent.com/assets/194442/21352525/05d47e7c-c6a9-11e6-93bc-933bf5013d20.png)</body>
+		<created>2016-12-20 13:40:16</created>
+		<closed>2016-12-21 11:46:09</closed>
+	</bug>
+	<bug>
+		<id>1711</id>
+		<title>Paginação nos relatórios com problema</title>
+		<body>A paginação não está funcionando nos relatórios. Ao alterar o `per_page` não altera nada, exceto no relatório de planos. Nesse relatório o total de registros é sempre 1 a menos que o `per_page`. Ex: se o `per_page` for 5, vão ser mostrados 4 registros.</body>
+		<created>2016-12-20 13:04:51</created>
+		<closed>2016-12-20 19:54:34</closed>
+	</bug>
+	<bug>
+		<id>1710</id>
+		<title>Bug em pesquisa na tela de comandos da central</title>
+		<body>Ao tentar realizar uma pesquisa na index de comandos da central o sistema está apresentando erro  ![captura de tela 2016-12-20 as 10 28 56](https://cloud.githubusercontent.com/assets/505372/21350572/243a40cc-c69f-11e6-87b4-a4a3e28e664e.png) </body>
+		<created>2016-12-20 12:29:41</created>
+		<closed>2016-12-22 17:15:50</closed>
+	</bug>
+	<bug>
+		<id>1705</id>
+		<title>Texto imposição de plano com erro</title>
+		<body>Nos "comandos da central" ao impor um plano o texto que aparece é "Modo imposto" ao invés de "plano imposto". ![screen shot 2016-12-19 at 18 24 38](https://cloud.githubusercontent.com/assets/194442/21327942/a3ac5886-c618-11e6-8fb4-5a4ca4ecb652.png) </body>
+		<created>2016-12-19 20:26:35</created>
+		<closed>2016-12-20 13:05:41</closed>
+	</bug>
+	<bug>
+		<id>1693</id>
+		<title>Status "ativo" aparecendo no filtro do index de controladores</title>
+		<body>Deveria ser "sincronizado". </body>
+		<created>2016-12-18 22:05:32</created>
+		<closed>2016-12-19 20:35:22</closed>
+	</bug>
+	<bug>
+		<id>1681</id>
+		<title>Bug em Planos em modo Manual. </title>
+		<body>O sistema está validando ao tentar salvar um plano em modo manual em apenas um anel. O sistema apresenta essa mensagem "Este plano deve ser configurado em todos os aneis."   O erro foi encontrado pelo cucumber editar_planos.     ![screen shot 2016-12-18 at 11 32 19](https://cloud.githubusercontent.com/assets/505372/21293987/f81bde3c-c519-11e6-9832-118a99852f3f.png) </body>
+		<created>2016-12-18 14:03:39</created>
+		<closed>2016-12-18 17:46:22</closed>
+	</bug>
+	<bug>
+		<id>1679</id>
+		<title>Simulador em stage não está funcionando </title>
+		<body></body>
+		<created>2016-12-18 13:04:29</created>
+		<closed>2016-12-18 16:28:15</closed>
+	</bug>
+	<bug>
+		<id>1678</id>
+		<title>transacao - imposicao de modo</title>
+		<body>tentei impor modo no stage e ao clicar no boao impor nao aconteceu nada. nao deu status e nem falha, porem o controlador aceitou o comando. Acho q a tela ainda nao esta confiavel. Priorizar esse</body>
+		<created>2016-12-18 13:00:16</created>
+		<closed>2016-12-19 19:36:06</closed>
+	</bug>
+	<bug>
+		<id>1677</id>
+		<title>Adicionar data no influuntlog</title>
+		<body></body>
+		<created>2016-12-18 12:56:42</created>
+		<closed>2016-12-19 20:01:09</closed>
+	</bug>
+	<bug>
+		<id>1674</id>
+		<title>[dashboard] Historico do controlador</title>
+		<body>ou simplificar tirando os totalizadores; ou arrumar o calculo dos totalizadores; se possivel adcionar os outros eventos na timeline</body>
+		<created>2016-12-18 12:50:59</created>
+		<closed>2016-12-19 19:42:38</closed>
+	</bug>
+	<bug>
+		<id>1673</id>
+		<title>Dash board - mostrar hora</title>
+		<body>No dashboard se clico em online/offline só aparece a data do evento. mesma coisa na pagina de ver detalhaes.</body>
+		<created>2016-12-18 12:48:33</created>
+		<closed>2016-12-18 21:13:07</closed>
+	</bug>
+	<bug>
+		<id>1672</id>
+		<title>Relatório log do controlador nao funciona</title>
+		<body></body>
+		<created>2016-12-18 12:46:49</created>
+		<closed>2016-12-18 21:13:07</closed>
+	</bug>
+	<bug>
+		<id>1669</id>
+		<title>Verificar validação em planos</title>
+		<body>Badge de erro da validação de "Tempo máximo de permanência" na tela de planos apareceu no estágio errado.</body>
+		<created>2016-12-17 00:29:43</created>
+		<closed>2016-12-18 13:14:24</closed>
+	</bug>
+	<bug>
+		<id>1649</id>
+		<title>/app/subareas</title>
+		<body>Os controladores associados nãoa parecem para alteração. Na visualização aparecem normalmente.</body>
+		<created>2016-12-15 17:49:09</created>
+		<closed>2016-12-15 18:00:21</closed>
+	</bug>
+	<bug>
+		<id>1600</id>
+		<title>Corrigir transação para vários controladores no motor</title>
+		<body>Atualmente quando chega um pacote de transação no motor, o mesmo storage é utilizado para todos, de forma que eles são sobrescritos e somente o último dá certo.</body>
+		<created>2016-12-12 11:42:15</created>
+		<closed>2016-12-14 20:37:03</closed>
+	</bug>
+	<bug>
+		<id>1567</id>
+		<title>Dados do controlador com erro</title>
+		<body>Ao ver os dados de um controlador que estava em modo manual, nas informações apareceu que o tempo restante de ciclo era -20 segundos.</body>
+		<created>2016-12-09 18:37:46</created>
+		<closed>2016-12-13 19:13:38</closed>
+	</bug>
+	<bug>
+		<id>1566</id>
+		<title>Erro I18n</title>
+		<body>No painel de facilidades, ao ver dados do controlador, no modal que aparece a palavra "Parâmetros" está sem acento.</body>
+		<created>2016-12-09 18:34:17</created>
+		<closed>2016-12-13 19:50:28</closed>
+	</bug>
+	<bug>
+		<id>1565</id>
+		<title>Modo manual - troca de estágio no verde de segurança</title>
+		<body>no modo manual, ao trocar de estágio dentro do verde de segurança, voltou para o plano normal, ao invés de manter no modo manual.</body>
+		<created>2016-12-09 18:31:54</created>
+		<closed>2016-12-14 20:36:32</closed>
+	</bug>
+	<bug>
+		<id>1564</id>
+		<title>Evento de remoção de falha não veio </title>
+		<body>Ao causar falha de fase vermelha apagada, o painel de monitoramento acusou a falha. Quando a falha foi removida, o painel de facilidades não acusou a recuperação da falha (a tomada continuou vermelha). Provavelmente o evento de remoção de falha não foi enviado.</body>
+		<created>2016-12-09 18:29:15</created>
+		<closed>2016-12-14 13:15:57</closed>
+	</bug>
+	<bug>
+		<id>1561</id>
+		<title>Bug Pesquisa em relatório Controladores por Falhas</title>
+		<body>Ao realizar a pesquisa por Tipo de falha o sistema apresenta erro. Segue imagem ![captura de tela 2016-12-08 as 10 32 46](https://cloud.githubusercontent.com/assets/505372/21010152/b2f04b80-bd31-11e6-965b-2825507d7229.png)  Obs: erro acontece em http://stage.influunt.com.br/#/app/relatorios/controladores_falhas </body>
+		<created>2016-12-08 12:33:54</created>
+		<closed>2016-12-14 15:53:36</closed>
+	</bug>
+	<bug>
+		<id>1559</id>
+		<title>Bug Mapa - Ao selecionar o filtro de aneis eles ainda continuam aparecendo. </title>
+		<body>Obs: O problema está acontecendo no cucumber filter_mapas, a linha está comentada </body>
+		<created>2016-12-07 20:23:03</created>
+		<closed>2016-12-15 16:54:39</closed>
+	</bug>
+	<bug>
+		<id>1522</id>
+		<title>Botão sincronizar em planos aparecendo no footer</title>
+		<body>Na tela de planos, o botão de sincronizar está aparecendo no footer da página, abaixo do logo da raro: ![screen shot 2016-12-05 at 12 09 41](https://cloud.githubusercontent.com/assets/194442/20887945/e03ac69c-bae3-11e6-9ac2-b069d96bc172.png) </body>
+		<created>2016-12-05 14:11:30</created>
+		<closed>2016-12-07 16:31:37</closed>
+	</bug>
+	<bug>
+		<id>1519</id>
+		<title>Plano </title>
+		<body></body>
+		<created>2016-12-05 13:25:17</created>
+		<closed>2016-12-06 17:51:34</closed>
+	</bug>
+	<bug>
+		<id>1511</id>
+		<title>Tabela horaria Breadcrumb com o cruzamento do controlador não está mais aparecendo </title>
+		<body></body>
+		<created>2016-12-02 17:22:03</created>
+		<closed>2016-12-06 18:25:56</closed>
+	</bug>
+	<bug>
+		<id>1495</id>
+		<title>Bug relatório tabela horaria, o campo data não aceita digitar o valor. </title>
+		<body>Ao digitar a data no campo 08/11/2016 o sistema deu erro  CompletionException: java.lang.IllegalArgumentException: Invalid format: ""08/11/2016""]</body>
+		<created>2016-11-30 18:36:50</created>
+		<closed>2016-12-05 19:41:50</closed>
+	</bug>
+	<bug>
+		<id>1488</id>
+		<title>Bug- Faltando permissão para o botão imprimir o controlador</title>
+		<body>![captura de tela 2016-11-30 as 09 53 48](https://cloud.githubusercontent.com/assets/505372/20751444/eca890ee-b6e2-11e6-95eb-d664f32ea07d.png)  Obs, Erro ocorrendo em produção </body>
+		<created>2016-11-30 12:02:35</created>
+		<closed>2016-12-01 18:31:28</closed>
+	</bug>
+	<bug>
+		<id>1481</id>
+		<title>Bug é possível salvar um controlador com os dados iniciais sem um segundo endereço ou uma altura númerica</title>
+		<body>![screen shot 2016-11-28 at 21 48 57](https://cloud.githubusercontent.com/assets/505372/20690912/8dfd1102-b5b4-11e6-957c-316a58cb3550.png)  Obs, corrigir o cucumber para pegar o erro por campo</body>
+		<created>2016-11-28 23:49:56</created>
+		<closed>2016-12-07 18:54:40</closed>
+	</bug>
+	<bug>
+		<id>1480</id>
+		<title>Bug em relatório tabela horária. </title>
+		<body>![screen shot 2016-11-28 at 21 40 01](https://cloud.githubusercontent.com/assets/505372/20690713/546c9242-b5b3-11e6-947c-96c7cf4903de.png)   Bug encontrando em produção </body>
+		<created>2016-11-28 23:41:18</created>
+		<closed>2016-11-30 17:29:54</closed>
+	</bug>
+	<bug>
+		<id>1475</id>
+		<title>Erro mensagem de recuperação de senha</title>
+		<body>![image](https://cloud.githubusercontent.com/assets/99245/20683475/488355a8-b593-11e6-84ec-caddd1a17a8d.png) </body>
+		<created>2016-11-28 19:51:30</created>
+		<closed>2016-12-06 21:37:27</closed>
+	</bug>
+	<bug>
+		<id>1474</id>
+		<title>Bug check atraso de grupo</title>
+		<body>1- Caso o usuário insira um atraso de grupo no G2 e depois clica no G1 o check não leva em consideração o valor do G2, sendo necessario marcar que não há nada a ser feito</body>
+		<created>2016-11-28 19:24:10</created>
+		<closed>2016-12-07 01:20:48</closed>
+	</bug>
+	<bug>
+		<id>1468</id>
+		<title>Ajustes Simulador</title>
+		<body></body>
+		<created>2016-11-28 12:09:25</created>
+		<closed>2016-11-28 18:10:54</closed>
+	</bug>
+	<bug>
+		<id>1466</id>
+		<title>Requisições para API mesmo sem estar logado</title>
+		<body>Acabei de perceber que quando tento entrar no APP sem estar logado (acessando a url `localhost`, sem o `/login`), são feitas algumas requisições para a API (que obviamente retornam "não autorizado") antes de ser redirecionado para a tela de login. Imagino que possa ter alguma coisa a ver com o ticket de expirar a sessão. ![screen shot 2016-11-26 at 16 06 31](https://cloud.githubusercontent.com/assets/194442/20642290/9226be4a-b3f2-11e6-948f-5a8ce7318574.png) </body>
+		<created>2016-11-26 18:12:12</created>
+		<closed>2016-12-20 10:48:45</closed>
+	</bug>
+	<bug>
+		<id>1456</id>
+		<title>Erro ao tentar salvar um modelo de controlador em branco </title>
+		<body>![captura de tela 2016-11-24 as 15 13 15](https://cloud.githubusercontent.com/assets/505372/20606533/ba0f476a-b258-11e6-9693-c77f24305eac.png) </body>
+		<created>2016-11-24 17:15:06</created>
+		<closed>2016-11-28 18:41:09</closed>
+	</bug>
+	<bug>
+		<id>1429</id>
+		<title>Erro em planos, ao configurar estágio dispensável. </title>
+		<body>Em plano ao configurar um estágio como dispensável e salvar, quando finalizar o controlador e voltar nesse plano para edita-lo , o campo ESTÁGIO QUE RECEBE TEMPO DO ESTÁGIO DISPENSÁVEL volta em branco, perdendo assim a informação de qual estágio recebe o tempo.  ![captura de tela 2016-11-18 as 11 09 56](https://cloud.githubusercontent.com/assets/505372/20431138/97e9e0c4-ad7f-11e6-9bb8-10e184394da3.png) </body>
+		<created>2016-11-18 13:10:45</created>
+		<closed>2016-12-06 11:16:55</closed>
+	</bug>
+	<bug>
+		<id>1428</id>
+		<title>Agrupamento - Bug ao tentar salvar um controlador não está mostrando validação.  </title>
+		<body> - Validação tempoCicloIgualOuMultiploDeTodoPlano não está aparecendo.   ![captura de tela 2016-11-18 as 10 40 55](https://cloud.githubusercontent.com/assets/505372/20430474/99a74f72-ad7b-11e6-9ee5-d367dc343bf8.png) </body>
+		<created>2016-11-18 12:43:05</created>
+		<closed>2016-11-26 16:59:06</closed>
+	</bug>
+	<bug>
+		<id>1417</id>
+		<title>Após salvar o tempo de defasagem não é possível alterar</title>
+		<body></body>
+		<created>2016-11-15 16:16:33</created>
+		<closed>2016-11-23 11:23:16</closed>
+	</bug>
+	<bug>
+		<id>1410</id>
+		<title>erro ao excluir tabelas horárias</title>
+		<body>Eventos Deletados na tabela horária continuam fazendo parte das validações.  Exemplo: Supondo que eu tenha dois eventos de horários distintos, excluo um e altero o horário do não excluído para **exatamente** o mesmo horário do recém-deletado, a tabela horária não poderá ser salva porque "dois eventos não podem ter o mesmo horário"</body>
+		<created>2016-11-11 21:37:13</created>
+		<closed>2016-11-15 16:28:14</closed>
+	</bug>
+	<bug>
+		<id>1405</id>
+		<title>Item 9 - Confirmação antes de deletar aneis</title>
+		<body>Garantir que apareça a confirmação de deletar um anel em todos os casos. Atualmente o usuário é alertado somente nos aneis que já foram salvos.  &gt; a opção de cancelar só aparece na aba do último anel, quando deveria aparecer em todos. Além disso (e mais grave), &gt; um anel pode ser apagado sem pedido de confirmação (apaga direto!) (Nascimento);</body>
+		<created>2016-11-11 20:23:52</created>
+		<closed>2016-11-14 16:35:36</closed>
+	</bug>
+	<bug>
+		<id>1404</id>
+		<title>Item 8. Forçar o valor mínimo para a numeração dos agrupamentos para 1</title>
+		<body>&gt; na tela de programação de agrupamento, a numeração começa do zero e aceita números negativos! (Marcos);</body>
+		<created>2016-11-11 20:21:23</created>
+		<closed>2016-11-14 16:35:36</closed>
+	</bug>
+	<bug>
+		<id>1396</id>
+		<title>Validação verde mínimo em planos não está mais aparecendo</title>
+		<body>Ao configurar estágio com verde menor que o mínimo aceitável, o sistema não está validando o erro.  Bug encontrado no Cucumber planos feature:85</body>
+		<created>2016-11-10 12:18:05</created>
+		<closed>2016-11-11 09:47:12</closed>
+	</bug>
+	<bug>
+		<id>1393</id>
+		<title>Bug em transições proibidas</title>
+		<body> Ao adicionar transicao proibida entre e1 e e2 e colocao alternativa no e3, salvo e continuo na transição proibida, quando altero a transição de e1 e e3 alternativa e2 não  salvar</body>
+		<created>2016-11-10 10:59:11</created>
+		<closed>2016-11-10 18:48:42</closed>
+	</bug>
+	<bug>
+		<id>1391</id>
+		<title>Bug ao editar um transição proibida usando o botão salvar </title>
+		<body>Ao editar uma transição proibida no controlador, quando mudo a transição proibida e clico no botão salvar, quando clico no outro anel o sistema apresenta erro, não deixando mais selecionar nenhum transição e não mostra nenhuma transição selecionada. Segue o erro abaixo  ![captura de tela 2016-11-09 as 14 57 31](https://cloud.githubusercontent.com/assets/505372/20146903/e35dfe7c-a68c-11e6-996b-c24b751d1298.png) </body>
+		<created>2016-11-09 16:58:49</created>
+		<closed>2016-11-10 13:29:02</closed>
+	</bug>
+	<bug>
+		<id>1388</id>
+		<title>Erro ao remover estágio de plano</title>
+		<body>Ao remover um estágio de um plano, o estágio não é realmente apagado. O plano é salvo, mas ao entrar na página de novo, de cara já aparece a mensagem de que o tempo de ciclo é diferente dos tempos dos estágios, e o estágio apagado continua no plano.  </body>
+		<created>2016-11-09 12:37:21</created>
+		<closed>2016-11-14 12:09:25</closed>
+	</bug>
+	<bug>
+		<id>1386</id>
+		<title>Bug ao editar um agrupamento. </title>
+		<body>Ao editar um agrupamento que possuía apenas um controlador, ao adicionar outro controlador e tentar salvar ele não deixou, não está tratando o erro. ![captura de tela 2016-11-08 as 17 42 38](https://cloud.githubusercontent.com/assets/505372/20114358/1234f668-a5db-11e6-9c51-6d865346f567.png) </body>
+		<created>2016-11-08 19:45:41</created>
+		<closed>2016-11-10 13:53:34</closed>
+	</bug>
+	<bug>
+		<id>1371</id>
+		<title>Plano atuado em mapas está mostrando diagrama</title>
+		<body>Ao entrar em mapas clicar em um anel, após clicar no plano que seja atuado dentro das opções,  está mostrando o diagrama incompleto, o certo era não mostra nada como é feito em tabelas horárias.  ![captura de tela 2016-11-04 as 12 44 58](https://cloud.githubusercontent.com/assets/505372/20009675/8642f958-a28c-11e6-8d6d-1508476eff2f.png) </body>
+		<created>2016-11-04 14:45:38</created>
+		<closed>2016-11-10 13:53:34</closed>
+	</bug>
+	<bug>
+		<id>1366</id>
+		<title>epic modelo controlador</title>
+		<body></body>
+		<created>2016-11-03 18:20:37</created>
+		<closed>2016-11-04 18:08:57</closed>
+	</bug>
+	<bug>
+		<id>1365</id>
+		<title>Erro ao associar Demanda prioritária como uma transição proibida</title>
+		<body>Em TRANSIÇÕES PROIBIDAS ao associar um estágio demanda prioritária como proibida, o sistema não deixou salvar porem não apresentou o erro.  </body>
+		<created>2016-11-03 18:12:17</created>
+		<closed>2016-11-03 19:54:58</closed>
+	</bug>
+	<bug>
+		<id>1363</id>
+		<title>correções em edição de aneis</title>
+		<body></body>
+		<created>2016-11-03 17:05:01</created>
+		<closed>2016-11-04 18:09:49</closed>
+	</bug>
+	<bug>
+		<id>1361</id>
+		<title>Bug em configuração de anéis</title>
+		<body>Em configuração de anéis no controlador. Ao clicar no botão salvar, depois clicar em voltar, os sistema apagou todos as informações dos anéis e não consegui mais salvar novamente.  ![captura de tela 2016-11-03 as 14 27 07](https://cloud.githubusercontent.com/assets/505372/19975078/c03383d2-a1d1-11e6-81ce-636ceaa8a5d6.png) </body>
+		<created>2016-11-03 16:28:23</created>
+		<closed>2016-11-04 18:09:47</closed>
+	</bug>
+	<bug>
+		<id>1360</id>
+		<title>Dados Básico não mostra o usuário que atualizou ou criou o controlador</title>
+		<body>![captura de tela 2016-11-03 as 14 06 28](https://cloud.githubusercontent.com/assets/505372/19974276/0a03d65e-a1cf-11e6-88d3-d45e9b94e7e0.png) </body>
+		<created>2016-11-03 16:09:02</created>
+		<closed>2016-11-04 18:09:13</closed>
+	</bug>
+	<bug>
+		<id>1358</id>
+		<title>Bug ao editar o anel do controlador </title>
+		<body>Ao Cadastrar estágios para um controlador, quando fui em resumo e cliquei em editar as configurações do anel, ao remover um estágio do primeiro anel, consegui salva-lo com apenas um estágio. ![captura de tela 2016-11-03 as 11 34 57](https://cloud.githubusercontent.com/assets/505372/19968125/5ed68592-a1ba-11e6-94fe-65114df10bf9.png) </body>
+		<created>2016-11-03 13:41:56</created>
+		<closed>2016-11-03 23:39:44</closed>
+	</bug>
+	<bug>
+		<id>1357</id>
+		<title>Não consigo cadastrar plano em modo coordenado com estágio dispensável</title>
+		<body>Ao tentar salvar um plano em modo coordenado com estágio dispensável, está dando erro 500 na API: ![screen shot 2016-11-03 at 11 26 36](https://cloud.githubusercontent.com/assets/194442/19967656/7119c96e-a1b8-11e6-9b34-4471fda92f97.png) ![screen shot 2016-11-03 at 11 27 29](https://cloud.githubusercontent.com/assets/194442/19967689/96ccda8e-a1b8-11e6-8f39-990f4b5369a6.png) ![screen shot 2016-11-03 at 11 27 44](https://cloud.githubusercontent.com/assets/194442/19967700/a25db148-a1b8-11e6-83e0-c28da6b93f1e.png) </body>
+		<created>2016-11-03 13:29:09</created>
+		<closed>2016-11-04 18:09:31</closed>
+	</bug>
+	<bug>
+		<id>1355</id>
+		<title>Bug estágio que recebe estágio dispensável</title>
+		<body>Ao configurar um plano no modo coordenado e marcar um estágio como dispensável, no select para escolher o "estágio que recebe tempo do estágio dispensável" apareceu o mesmo estágio duplicado. Controlador tem 1 anel com 2 estágios somente. ![screen shot 2016-11-03 at 11 16 07](https://cloud.githubusercontent.com/assets/194442/19967388/2af0f4cc-a1b7-11e6-92ec-a6b193d6deb5.png) </body>
+		<created>2016-11-03 13:18:08</created>
+		<closed>2016-11-04 18:07:34</closed>
+	</bug>
+	<bug>
+		<id>1354</id>
+		<title>Não está aparecendo a localização abaixo do breadcrumbs</title>
+		<body>Acredito que parou de aparecer  ao colocar uma referência no endereço.  ![captura de tela 2016-11-03 as 11 16 25](https://cloud.githubusercontent.com/assets/505372/19967337/fe87389c-a1b6-11e6-93b6-0295d569793a.png) </body>
+		<created>2016-11-03 13:16:57</created>
+		<closed>2016-11-04 18:09:08</closed>
+	</bug>
+	<bug>
+		<id>1353</id>
+		<title>Erro para excluir um fabricante</title>
+		<body>Ao tentar excluir um fabricante onde exista um controlador com o modelo desse fabricante, o sistema apresentou erro 500.  ![captura de tela 2016-11-03 as 11 08 48](https://cloud.githubusercontent.com/assets/505372/19967103/f3fe9394-a1b5-11e6-90b1-9f347dc3e443.png) </body>
+		<created>2016-11-03 13:09:37</created>
+		<closed>2016-11-11 20:28:29</closed>
+	</bug>
+	<bug>
+		<id>1352</id>
+		<title>Bug Modelo Controladores - O limite de planos não está sendo setado. Ficando sempre 16</title>
+		<body>Ao criar um novo modelo de controlador e colocar o limite de planos como 1 e salvar, o sistema seta esse limite como 16. </body>
+		<created>2016-11-03 13:05:26</created>
+		<closed>2016-11-03 23:39:44</closed>
+	</bug>
+	<bug>
+		<id>1351</id>
+		<title>Mensagem de erro em planos com problema</title>
+		<body>Ao tentar salvar um plano com tempo de ciclo maior que o tempo dos estágios, aparece uma mensagem de erro com cada um dos tempos. Ao se alterar o tempo de ciclo, o valor é alterado na mensagem de erro, fazendo com que ela fique sem sentido: ![screen shot 2016-11-03 at 10 50 44](https://cloud.githubusercontent.com/assets/194442/19966561/6a1c8c96-a1b3-11e6-87f4-08156e7e175a.png) </body>
+		<created>2016-11-03 12:51:16</created>
+		<closed>2016-11-04 18:09:24</closed>
+	</bug>
+	<bug>
+		<id>1349</id>
+		<title>Finalizar controlador sem bloqueio</title>
+		<body>É possível para um usuário finalizar um controlador mesmo que não tenha sido ele quem cadastrou. O controlador só pode ser finalizado pelo usuário que cadastrou.</body>
+		<created>2016-11-03 12:28:26</created>
+		<closed>2016-11-04 18:09:19</closed>
+	</bug>
+	<bug>
+		<id>1341</id>
+		<title>Bug ao clicar em salvar modelo de controlador com os campos em branco</title>
+		<body>![captura de tela 2016-11-02 as 12 53 53](https://cloud.githubusercontent.com/assets/505372/19933721/81f72f28-a0fb-11e6-83d2-eb2efa2ed83d.png) </body>
+		<created>2016-11-02 14:55:13</created>
+		<closed>2016-11-04 18:08:56</closed>
+	</bug>
+	<bug>
+		<id>1340</id>
+		<title>Apagar dados dos anéis com problema</title>
+		<body>Para reproduzir: 1. Colocar 2 anéis no controlador e avançar para o próximo passo 2. Voltar para o passo anterior (anéis) 3. Remover o segundo anel, adicionar ele de novo, e avançar para o próximo passo (Grupos Semafóricos). Nesse momento era para aparecer 2 anéis, mas somente 1 é mostrado. 4. Voltar para o passo anterior e adicionar o segundo anel de novo. As imagens que tinham sido cadastradas anteriormente vão aparecer (não deveriam)  </body>
+		<created>2016-11-01 22:02:19</created>
+		<closed>2016-11-03 23:39:44</closed>
+	</bug>
+	<bug>
+		<id>1281</id>
+		<title>Bug ao pesquisar na listagem de auditoria</title>
+		<body>Ao realizar a pesquisa na listagem de auditoria usando a opção igual, o sistema apresenta erro   ![captura de tela 2016-10-28 as 14 24 06](https://cloud.githubusercontent.com/assets/505372/19813848/46729134-9d1a-11e6-9114-f7eef159bc8e.png)  obs: já deixei o teste de aceitação para isso pronto no arquivo pesquisas.feature, ele está comentado. </body>
+		<created>2016-10-28 16:26:57</created>
+		<closed>2016-11-01 16:07:17</closed>
+	</bug>
+	<bug>
+		<id>1280</id>
+		<title>Cores tabela horária errada</title>
+		<body>Ao editar uma tabela horária finalizada (clonar), as cores da tabela ficaram diferente das cores dos eventos: ![screen shot 2016-10-28 at 13 54 47](https://cloud.githubusercontent.com/assets/194442/19812985/7379c7be-9d16-11e6-94fc-2fa789841790.png) </body>
+		<created>2016-10-28 15:57:42</created>
+		<closed>2016-11-01 14:48:33</closed>
+	</bug>
+	<bug>
+		<id>1262</id>
+		<title>ITEM 9 - Validação de tempos de estágio e tempos de ciclo.</title>
+		<body>Quando o usuário tenta salvar um plano com a **soma do tempo dos estágios** diferente do **tempo total de ciclo**, o sistema envia uma validação de "A soma do tempo de estágios (79s) é diferente do tempo de ciclo (80s)".  Quando o usuário começa corrigir este problema, o sistema não esconde a validação e atualiza os valores enquanto o usuário está editando os planos. Quando os valores estão corretos, a mensagem permanece "A soma do tempo de estágios **(80s)** é diferente do tempo de ciclo **(80s)**".  Precisamos esconder esta mensagem caso o usuário comece a corrigir o plano ou não permitir que ela seja atualizada dado que os dados são também atualizados pelo usuário. Ela somente deverá ser modificada, então, quando o usuário salvar novamente o(s) plano(s). </body>
+		<created>2016-10-27 11:07:38</created>
+		<closed>2016-10-31 17:04:18</closed>
+	</bug>
+	<bug>
+		<id>1257</id>
+		<title>Não consigo salvar plano coordenado com estágio dispensável</title>
+		<body>Tentei criar um plano no modo coordenado com estágio dispensável, mas deu erro de validação, dizendo que o `estagioQueRecebeEstagioDispensavel` não pode ficar em branco, mas o `estagioQueRecebeEstagioDispensavel` foi enviado para o servidor.  O `estagioQueRecebeEstagioDispensavel` é um `EstagioPlano`, e no JSON enviado p/ o servidor dá pra ver que o `idJson` não é de nenhum `EstagioPlano`. Conferi no JSON, o `idJson` enviado é de um estágio, não de um estágio plano. ![screen shot 2016-10-26 at 19 30 15](https://cloud.githubusercontent.com/assets/194442/19746009/2cae8e64-9bb3-11e6-91da-e74bd107482d.png) </body>
+		<created>2016-10-26 21:36:53</created>
+		<closed>2016-10-31 17:04:18</closed>
+	</bug>
+	<bug>
+		<id>1256</id>
+		<title>Erro ao tentar cancelar uma edição na tabela horária.</title>
+		<body>Ao editar uma tabela horária que possua alguns eventos cadastrados, após remover todo os eventos e clicar em cancelar a tabela horária o sistema não cancelou . ![captura de tela 2016-10-26 as 15 06 52](https://cloud.githubusercontent.com/assets/505372/19736416/e4b48ff2-9b8d-11e6-947b-c3531f78d654.png) </body>
+		<created>2016-10-26 17:07:38</created>
+		<closed>2016-11-01 14:49:19</closed>
+	</bug>
+	<bug>
+		<id>1255</id>
+		<title>Erro ao visualizar diagrama de intervalos plano não configurado</title>
+		<body>Na tela de tabelas horárias, ao selecionar um plano que não foi configurado e clicar no botão de visualizar o diagrama de intervalos, não acontece nada na tela e aparece um erro no console. ![screen shot 2016-10-26 at 14 54 51](https://cloud.githubusercontent.com/assets/194442/19735948/65983562-9b8c-11e6-8489-1252b926dfc7.png) </body>
+		<created>2016-10-26 16:57:10</created>
+		<closed>2016-11-01 14:48:33</closed>
+	</bug>
+	<bug>
+		<id>1254</id>
+		<title>Diagrama de intervalos errado</title>
+		<body>Na tela de tabelas horárias, ao visualizar o diagrama de intervalos de um plano, o diagrama está incompleto. Nesse meu exemplo, ficaram faltando os últimos 10 do diagrama.  tela de planos: ![screen shot 2016-10-26 at 14 51 03](https://cloud.githubusercontent.com/assets/194442/19735776/b6b09f76-9b8b-11e6-96be-0f1d730eed98.png)  tela de tabela horária: ![screen shot 2016-10-26 at 14 51 13](https://cloud.githubusercontent.com/assets/194442/19735790/c48a1514-9b8b-11e6-8865-c9201fe0e514.png) </body>
+		<created>2016-10-26 16:53:23</created>
+		<closed>2016-11-01 14:48:33</closed>
+	</bug>
+	<bug>
+		<id>1248</id>
+		<title>Relatório auditoria datas erradas</title>
+		<body>Ao pedir um relatório de auditoria a partir de uma data, os dados dessa data não estão sendo retornados. Aproveitar e checar o timezone da data final (23:59:59 no app) </body>
+		<created>2016-10-25 22:50:31</created>
+		<closed>2016-11-01 14:00:52</closed>
+	</bug>
+	<bug>
+		<id>1246</id>
+		<title>Ajustar excluir anel</title>
+		<body>Quando está configurando anel pela primeira vez, se você clicar no X e remover um anel e depois habilitar novamente as informações continua do anel removido. Ex: estágios </body>
+		<created>2016-10-25 22:05:21</created>
+		<closed>2016-11-01 16:07:16</closed>
+	</bug>
+	<bug>
+		<id>1237</id>
+		<title>Item 20</title>
+		<body>Tela de planos: Sugerimos que o valor inicial do verde do estágio, durante a programação dos planos, seja o verde de segurança, não de um segundo.  Ao alterar de modo de operação Ex: isolado para coordenado os valores minimos que seriam os verdes de segurança alteram para 1 </body>
+		<created>2016-10-25 15:50:06</created>
+		<closed>2016-10-25 17:56:26</closed>
+	</bug>
+	<bug>
+		<id>1219</id>
+		<title>Bug ao definir perfil  </title>
+		<body>Utilizando um usuário não root, ao desmarcar a opção "[Perfis] - Definir as permissões dos perfis"  e salvar, ao voltar para o mesmo perfil a opção continua marcada, como se não tivesse alterado. </body>
+		<created>2016-10-22 19:45:57</created>
+		<closed>2016-11-23 11:09:45</closed>
+	</bug>
+	<bug>
+		<id>1188</id>
+		<title>Tabela Horária - horários não aparecem</title>
+		<body>&gt; Está ficando muito bom, somente na tabela horária, após a digitação não aparecem os valores (pode ser meu monitor)  ![cetfix_tab_horaria](https://cloud.githubusercontent.com/assets/194442/19436508/40c8051c-944f-11e6-983e-fbb6b1f1ba97.png) </body>
+		<created>2016-10-17 11:52:00</created>
+		<closed>2016-10-17 19:41:35</closed>
+	</bug>
+	<bug>
+		<id>1176</id>
+		<title>Bug - Tabela horária com plano Atuado</title>
+		<body>Cadastrei um plano como atuado, ao tentar configurar uma tabela horária com este plano atuado, quando clico no botão visualizar os diagramas o sistema apresenta erro. Segue imagem ![captura de tela 2016-10-11 as 17 19 01](https://cloud.githubusercontent.com/assets/505372/19287128/dc50e1de-8fd6-11e6-9f86-6c4f1aaea605.png) </body>
+		<created>2016-10-11 20:19:36</created>
+		<closed>2016-10-18 17:30:40</closed>
+	</bug>
+	<bug>
+		<id>1168</id>
+		<title>Botão de finalizar aparece sem tabela horária configurada</title>
+		<body>Depois de configurar um controlador, os planos e a tabela horária, o botão de finalizar o controlador fica disponível na index. Se todos os eventos da tabela horária forem apagados (deixar a tabela horária vazia), o botão de finalizar continua aparecendo na index.  Index: ![screen shot 2016-10-10 at 15 19 57](https://cloud.githubusercontent.com/assets/194442/19246542/4154ba90-8efd-11e6-95c4-eb2ddf3b6173.png)  Tabela horária: ![screen shot 2016-10-10 at 15 22 09](https://cloud.githubusercontent.com/assets/194442/19246563/5a1c2dba-8efd-11e6-9315-dd3dbc42e333.png) </body>
+		<created>2016-10-10 18:23:02</created>
+		<closed>2016-10-21 16:05:48</closed>
+	</bug>
+	<bug>
+		<id>1157</id>
+		<title>Editar meus dados sem permissão</title>
+		<body>Durante a apresentação o @leonardoherbert tentou editar seus dados, mas deu ação não autorizada. Um usuário deve sempre poder editar seus próprios dados, mas sem a escolha de área.  </body>
+		<created>2016-10-07 19:53:36</created>
+		<closed>2016-10-10 12:27:22</closed>
+	</bug>
+	<bug>
+		<id>1156</id>
+		<title>Erro permissão ao editar tabela horária</title>
+		<body>Durante a apresentação o @leonardoherbert entrou na página de visualização de tabelas horárias, e o botão de editar tabelas horárias estava na tela. Quando clicou no botão, deu ação não autorizada. </body>
+		<created>2016-10-07 19:51:17</created>
+		<closed>2016-10-27 13:17:49</closed>
+	</bug>
+	<bug>
+		<id>1155</id>
+		<title>Tabela Horária - Erro ao visualizar diagrama do plano escolhido</title>
+		<body>Ocorreu um erro com o @leonardoherbert durante a apresentação, na tela de tabelas horárias. Para reproduzir: - Entrar na tela de editar tabela horária. - Configurar um novo evento. - abrir a visualização do diagrama de intervalos. - trocar para o anel 2 na visualização - fechar visualização - criar novo evento - Abrir visualização do diagrama de intervalos para o novo evento. Nesse momento a visualização abre com o anel 2 selecionado, mas mostrando os dados do anel 1. </body>
+		<created>2016-10-07 19:49:24</created>
+		<closed>2016-10-08 19:19:04</closed>
+	</bug>
+	<bug>
+		<id>1151</id>
+		<title>Mensagem erro agrupamentos</title>
+		<body>Durante a apresentação o @leonardoherbert tentou salvar um agrupamento e deu erro, mas não apareceu nenhuma mensagem de erro. </body>
+		<created>2016-10-07 19:37:28</created>
+		<closed>2016-10-07 22:26:33</closed>
+	</bug>
+	<bug>
+		<id>1149</id>
+		<title>Menu cadastros aparecendo mesmo sem permissão</title>
+		<body>Se usuário não tem nenhuma permissão do menu de "cadastros", o menu continua aparecendo (vazio). Não deveria nem aparecer. </body>
+		<created>2016-10-07 19:35:22</created>
+		<closed>2016-10-08 19:19:04</closed>
+	</bug>
+	<bug>
+		<id>1148</id>
+		<title>Usuário não loga sem permissão de ver status controladores</title>
+		<body>Se usuário não tem permissão de ver status dos controladores, ele é redirecionado para a tela de login imediatamente após logar. </body>
+		<created>2016-10-07 19:34:38</created>
+		<closed>2016-10-10 12:27:23</closed>
+	</bug>
+	<bug>
+		<id>1141</id>
+		<title>Mensagem de erro de transição não estão aparecendo</title>
+		<body>1- estagioPossuiAoMenosUmaTransicaoOrigemValida 2- estagioPossuiAoMenosUmaTransicaoDestinoValida </body>
+		<created>2016-10-07 15:50:34</created>
+		<closed>2016-10-07 16:48:09</closed>
+	</bug>
+	<bug>
+		<id>1139</id>
+		<title>Mensagem erro associacao grupo semaforico</title>
+		<body>Quando tenta colocar dois estágio como demanda prioritária o erro que ocorre não aparece na mensagem </body>
+		<created>2016-10-07 15:20:27</created>
+		<closed>2016-10-07 22:11:18</closed>
+	</bug>
+	<bug>
+		<id>1138</id>
+		<title>Validação de planos não configurados em tabelas horárias não aparece na tela.</title>
+		<body>"O plano selecionado não está configurado em todos os anéis." não aparece na tela de usuário </body>
+		<created>2016-10-07 13:43:23</created>
+		<closed>2016-10-07 13:44:21</closed>
+	</bug>
+	<bug>
+		<id>1137</id>
+		<title>blockUI não apareceu ao finalizar controlador</title>
+		<body>Ao clicar no botão de finalizar um controlador, o blockUI não apareceu durante a requisição. </body>
+		<created>2016-10-07 13:10:44</created>
+		<closed>2016-10-21 19:26:13</closed>
+	</bug>
+	<bug>
+		<id>1136</id>
+		<title>Bug - Planos Posição do badge-danger voltou a ficar na posição errada o ter mais de um plano configurado</title>
+		<body>- Para ocasionar o bug é preciso, de primeiramente configurar 3 planos aleatórios, depois salvar, voltar novamente nos planos, clicar em editar, clonar um plano configurado corretamente, depois no plano clonado alterar o tempo de ciclo dele e clicar me salvar novamente. O sistema irá apresentar o erro no outro plano.  Segue imagem  ![captura de tela 2016-10-07 as 09 30 59](https://cloud.githubusercontent.com/assets/505372/19190110/ffcaf018-8c71-11e6-967e-b16360d89021.png) </body>
+		<created>2016-10-07 12:40:12</created>
+		<closed>2016-10-10 12:27:26</closed>
+	</bug>
+	<bug>
+		<id>1131</id>
+		<title>Endereço controlador aparecendo no index de controladores</title>
+		<body>Depois de entrar na tela de planos e voltar p/ index, o endereço do controlador continua aparecendo no breadcrumb.  Index ![screen shot 2016-10-06 at 20 01 21](https://cloud.githubusercontent.com/assets/194442/19173747/febfab54-8bff-11e6-8927-6431e2716a4f.png) </body>
+		<created>2016-10-06 23:04:38</created>
+		<closed>2016-10-07 13:06:54</closed>
+	</bug>
+	<bug>
+		<id>1126</id>
+		<title>Bug - Transições proibidas não está passando no wizard</title>
+		<body></body>
+		<created>2016-10-06 20:27:31</created>
+		<closed>2016-10-07 13:07:49</closed>
+	</bug>
+	<bug>
+		<id>1125</id>
+		<title>Erro intermitente ao carregar mapa</title>
+		<body>De vez em quando ocorre um erro ao carregar os mapas. Na URL de buscar o mapa aparece `NaN/Nan` no local onde eu imagino que deveriam estar a latitude e a longitude. ![screen shot 2016-10-06 at 15 39 19](https://cloud.githubusercontent.com/assets/194442/19165702/3d8f0020-8bdb-11e6-8f45-56eb5ee47318.png) </body>
+		<created>2016-10-06 18:41:13</created>
+		<closed>2016-10-06 21:45:24</closed>
+	</bug>
+	<bug>
+		<id>1122</id>
+		<title>Delete croqui de dados básicos não funciona</title>
+		<body>Apesar de retornar 200, ao salvar (avançar) e atualizar a tela, o croqui permanece cadastrado. </body>
+		<created>2016-10-06 17:09:48</created>
+		<closed>2016-10-07 13:06:39</closed>
+	</bug>
+	<bug>
+		<id>1121</id>
+		<title>Bug ao tentar editar um evento especial</title>
+		<body></body>
+		<created>2016-10-06 14:41:41</created>
+		<closed>2016-10-06 22:06:22</closed>
+	</bug>
+	<bug>
+		<id>1118</id>
+		<title>fix dropzone</title>
+		<body></body>
+		<created>2016-10-06 13:06:31</created>
+		<closed>2016-10-06 21:24:21</closed>
+	</bug>
+	<bug>
+		<id>1110</id>
+		<title>Permissoes fica em cache</title>
+		<body>Ao trocar de usuário os menus ficam em cache até que atualize a tela </body>
+		<created>2016-10-05 18:40:42</created>
+		<closed>2016-10-06 20:18:52</closed>
+	</bug>
+	<bug>
+		<id>1108</id>
+		<title>Bug - No anel com quatro estágios sendo o quarto proibido com o terceiro, ao clicar em atuado o sistema continua apresentando erro.  </title>
+		<body>![captura de tela 2016-10-05 as 14 08 23](https://cloud.githubusercontent.com/assets/505372/19123562/7bf1dcec-8b05-11e6-8053-3383740c8a21.png) </body>
+		<created>2016-10-05 17:11:16</created>
+		<closed>2016-10-05 17:13:10</closed>
+	</bug>
+	<bug>
+		<id>1107</id>
+		<title>Visualização em mapa não está funcionando</title>
+		<body>Não aparece nenhuma informação Os filtros não funcionam </body>
+		<created>2016-10-05 16:29:46</created>
+		<closed>2016-10-05 18:00:58</closed>
+	</bug>
+	<bug>
+		<id>1106</id>
+		<title>Controlador não volta para em edição de depois de finalizado</title>
+		<body></body>
+		<created>2016-10-05 16:27:03</created>
+		<closed>2016-10-07 13:35:17</closed>
+	</bug>
+	<bug>
+		<id>1105</id>
+		<title>Depois de finalizar o controlador não é possivel editar a tabela horaria</title>
+		<body></body>
+		<created>2016-10-05 16:25:19</created>
+		<closed>2016-10-06 12:31:42</closed>
+	</bug>
+	<bug>
+		<id>1104</id>
+		<title>Na tabela horaria se configurar um evento especial com um plano que nao tem em todos os aneis, nao salva, mas nao aparece a mensagem de erro</title>
+		<body></body>
+		<created>2016-10-05 16:23:40</created>
+		<closed>2016-10-06 15:31:40</closed>
+	</bug>
+	<bug>
+		<id>1103</id>
+		<title>Não avança da tela de transições proibidas</title>
+		<body>No cenario do controlador Varick St não consegui avançar dessa etapa </body>
+		<created>2016-10-05 15:57:46</created>
+		<closed>2016-10-06 12:48:35</closed>
+	</bug>
+	<bug>
+		<id>1102</id>
+		<title>Estágio aceita arquivos que não imagens</title>
+		<body></body>
+		<created>2016-10-05 15:41:19</created>
+		<closed>2016-10-06 12:40:33</closed>
+	</bug>
+	<bug>
+		<id>1099</id>
+		<title>Cadastro de Croqui fica com estranho quando o usuário escolhe um arquivo que não seja img</title>
+		<body>1 - Adicionei um pdf 2 - Adicionei uma imagem Resultado: &lt;img width="721" alt="screen shot 2016-10-05 at 12 34 08 pm" src="https://cloud.githubusercontent.com/assets/99245/19120085/2c06a8fa-8af8-11e6-895c-5f918e047406.png"&gt; </body>
+		<created>2016-10-05 15:36:18</created>
+		<closed>2016-10-06 21:24:22</closed>
+	</bug>
+	<bug>
+		<id>1098</id>
+		<title>Pesquisa index controlador com resultados inconsistentes</title>
+		<body>Não é possível retirar o filtro por status; Filtro por area inválida deveria limpar os resultados e não manter os dados anteriores; Automatizar com o cucumber todos os cenários de filtros </body>
+		<created>2016-10-05 15:33:00</created>
+		<closed>2016-10-05 19:11:45</closed>
+	</bug>
+	<bug>
+		<id>1097</id>
+		<title>Acesso a informações indevidas</title>
+		<body>Meu usuário tem perfil de engenheiro e está associado a um área. - eu não deveria ser capaz de visualizar subareas de outras areas - eu não deveria ser capaz de acessar o cadastro de areas - eu não deveria ser capaz de acessar o cadastro de modelos - eu não deveria ser capaz de acessar o cadastro de fabricantes - eu não deveria ser capaz de acessar a tela de auditorias - Os menus dos quais eu não tenho acesso não deveriam aparecer para meu usuário </body>
+		<created>2016-10-05 15:30:15</created>
+		<closed>2016-10-06 20:18:55</closed>
+	</bug>
+	<bug>
+		<id>1095</id>
+		<title>Verificar se essa situação de 2 telas pode acontecer</title>
+		<body>/app/wizard-controladores/ - Editei numa tela e na outra cancelei a edição. Na anterior não deu nada. Por trás deu isso: "vendor.js:5 POST http://stage.influunt.com.br/api/v1/controladores/aneis 404 (Not Found)" </body>
+		<created>2016-10-05 14:45:11</created>
+		<closed>2016-11-01 15:30:30</closed>
+	</bug>
+	<bug>
+		<id>1093</id>
+		<title>Tela inicial</title>
+		<body>/login - Esqueci minha senha não está funcionando </body>
+		<created>2016-10-05 14:45:09</created>
+		<closed>2016-10-07 13:07:07</closed>
+	</bug>
+	<bug>
+		<id>1092</id>
+		<title>Mostrar no Mapa</title>
+		<body>/app/mapa-controladores - Mapa não está mostrando nada. </body>
+		<created>2016-10-05 14:45:05</created>
+		<closed>2016-10-07 13:07:42</closed>
+	</bug>
+	<bug>
+		<id>1091</id>
+		<title>Dashboard</title>
+		<body>/app/main - O escopo mostra "0 offline" mas quando clico tem um controlador lá dentro. </body>
+		<created>2016-10-05 14:45:04</created>
+		<closed>2016-10-07 01:07:01</closed>
+	</bug>
+	<bug>
+		<id>1090</id>
+		<title>Planos</title>
+		<body>Quando está configurando plano e tem o Plano Manual exclusivo. Se você ativa o plano 6 e depois limpa o mesmo. O sistema exclui o 6 e ativa o 7, sumindo com o 6 da tela.  ![image](https://cloud.githubusercontent.com/assets/1890706/19117341/0dc4ad32-8aef-11e6-9eae-e955fe38fcf4.png) </body>
+		<created>2016-10-05 14:30:23</created>
+		<closed>2016-10-05 21:49:00</closed>
+	</bug>
+	<bug>
+		<id>1083</id>
+		<title>Problema quando ocorre erro no upload de imagem</title>
+		<body>Quando ocorre erro no upload de um croqui e dá erro, não é possível excluir o arquivo, pois o erro fica em cima do botão remover.  ![image](https://cloud.githubusercontent.com/assets/1890706/19114482/86b9868c-8ae4-11e6-8bcc-78bf870db00d.png) </body>
+		<created>2016-10-05 13:14:51</created>
+		<closed>2016-10-06 21:24:21</closed>
+	</bug>
+	<bug>
+		<id>1062</id>
+		<title>Transição Proibida</title>
+		<body>Esta sendo permitido selecionar um estágio alternativo que também é proibida a transição  ![image](https://cloud.githubusercontent.com/assets/1890706/19088659/6f146a2a-8a4d-11e6-8b82-eed5e02e4104.png) </body>
+		<created>2016-10-04 19:13:19</created>
+		<closed>2016-10-05 17:42:12</closed>
+	</bug>
+	<bug>
+		<id>1060</id>
+		<title>Transição proibida</title>
+		<body>Mensagem de erro quando o estagio é de demanda prioritária não aparece em nenhum lugar </body>
+		<created>2016-10-04 19:02:55</created>
+		<closed>2016-10-05 17:41:58</closed>
+	</bug>
+	<bug>
+		<id>1049</id>
+		<title>Bug tabela horaria</title>
+		<body>Quando cria o primeiro horario diferente de domingo, a tabela não preenche o domingo </body>
+		<created>2016-10-04 14:21:22</created>
+		<closed>2016-10-04 16:42:25</closed>
+	</bug>
+	<bug>
+		<id>1045</id>
+		<title>Bug no cadastro de plano - O erro não está mostrando no plano correto.</title>
+		<body>Segue a imagem.  ![captura de tela 2016-10-04 as 10 31 47](https://cloud.githubusercontent.com/assets/505372/19076181/2be0985c-8a1e-11e6-8b50-b0fa5d1503ee.png) </body>
+		<created>2016-10-04 13:34:59</created>
+		<closed>2016-10-05 11:28:50</closed>
+	</bug>
+	<bug>
+		<id>1043</id>
+		<title>Tabela Horária quebrada controlador "CONFIGURADO"</title>
+		<body>Depois que um controlador é finalizado (status alterado para `FINALIZADO`), a tabela horária quebra. ![screen shot 2016-10-03 at 22 09 35](https://cloud.githubusercontent.com/assets/194442/19059442/544278dc-89b6-11e6-824d-8931854031ea.png) </body>
+		<created>2016-10-04 01:12:43</created>
+		<closed>2016-10-04 14:34:32</closed>
+	</bug>
+	<bug>
+		<id>1033</id>
+		<title>Esqueci Minha Senha</title>
+		<body>/recuperar_senha/ - Não está enviando email </body>
+		<created>2016-10-02 02:03:42</created>
+		<closed>2016-10-04 16:33:59</closed>
+	</bug>
+	<bug>
+		<id>1032</id>
+		<title>Ordem das alterações - Auditoria</title>
+		<body>/app/auditorias/ A ordem das alterações está crescente. Quando a paginação for muita deve ser melhor mostrar decrescente para a última ficar na primeira tela. </body>
+		<created>2016-10-02 02:03:26</created>
+		<closed>2016-10-03 18:14:24</closed>
+	</bug>
+	<bug>
+		<id>1031</id>
+		<title>/app/controladores/ - Data do histórico está fixa</title>
+		<body>/app/controladores/ - Data do histórico está fixa </body>
+		<created>2016-10-02 02:02:52</created>
+		<closed>2016-10-04 14:18:31</closed>
+	</bug>
+	<bug>
+		<id>1030</id>
+		<title>Labels na Tabela Horária</title>
+		<body>/app/tabela_horarios/ - Aba Eventos Especiais Recorrentes e NR: Label da data está: "Data" e "Data(Dia/Mês)". Deveria ser "Data(Dia/Mês)" e "Data(Dia/Mês/Ano)" </body>
+		<created>2016-10-02 02:02:41</created>
+		<closed>2016-10-03 20:15:07</closed>
+	</bug>
+	<bug>
+		<id>1029</id>
+		<title>Dashboard</title>
+		<body>/app/main - Rever essa frase no Dashboard: "Nenhum Controladores Estão Apresentado Falhas" </body>
+		<created>2016-10-02 02:02:18</created>
+		<closed>2016-10-03 20:15:03</closed>
+	</bug>
+	<bug>
+		<id>1028</id>
+		<title>Agrupamento</title>
+		<body>/app/agrupamentos/new - Botão Salvar no agrupamento não está funcionando "Expression 'undefined' in attribute 'ngModel' used with directive 'ichecks' is non-assignable!" </body>
+		<created>2016-10-02 02:01:51</created>
+		<closed>2016-10-03 17:26:26</closed>
+	</bug>
+	<bug>
+		<id>1027</id>
+		<title>Limpeza da pesquisa</title>
+		<body>/app/auditorias (e outros) - Quando limpa a pesquisa vem "invalid date" na data </body>
+		<created>2016-10-02 02:01:17</created>
+		<closed>2016-10-03 22:50:32</closed>
+	</bug>
+	<bug>
+		<id>1026</id>
+		<title>Pesquisa não está funcionando</title>
+		<body>/app/auditorias (e outros) - Pesquisa não está funcionando </body>
+		<created>2016-10-02 02:00:38</created>
+		<closed>2016-10-03 17:21:28</closed>
+	</bug>
+	<bug>
+		<id>1024</id>
+		<title>Bug em Planos - Erro ao limpar um plano</title>
+		<body>Ao clicar em limpar um plano, por exemplo o 16 o sistema não está voltando para o plano 1, segue imagem.   ![image](https://cloud.githubusercontent.com/assets/505372/19005464/41bcd48c-8731-11e6-85af-8bd41eb5067e.png) </body>
+		<created>2016-09-30 20:13:57</created>
+		<closed>2016-10-04 16:34:02</closed>
+	</bug>
+	<bug>
+		<id>1023</id>
+		<title>Bug no Wizard cadastro de detectores</title>
+		<body>Quando você está cadastrando um controlador com mais de 9 estágios, na parte de detetores vou selecionando-os em seus respectivos estágio, porém a partir do nono, quando seleciono o detector ele apaga o primeiro que ja tinha selecionado, como está na figura.   ![image](https://cloud.githubusercontent.com/assets/505372/19000977/afdf6a30-871b-11e6-8b9d-b081d9cc75b3.png) </body>
+		<created>2016-09-30 17:40:27</created>
+		<closed>2016-10-03 19:58:55</closed>
+	</bug>
+	<bug>
+		<id>1015</id>
+		<title>Controlador não passa para estado "Configurado"</title>
+		<body>Cadastrei um novo controlador, passando pelo wizard inteiro até o final. Depois de cadastrado somente o botão de configurar o controlador ficou ativo para mim. Verifiquei na API, e vi que o controlador não ficou "configurado" por conta dos seguintes erros: ![screen shot 2016-09-29 at 21 45 29](https://cloud.githubusercontent.com/assets/194442/18977136/2f205f5e-868e-11e6-8680-5b756b6c92ec.png)  Porém, o controlador criado tem todos os dados (eu cadastrei ele através do wizard, então ele passou em todas as validações).  Controlador: ![screen shot 2016-09-29 at 21 47 32](https://cloud.githubusercontent.com/assets/194442/18977164/61b943e0-868e-11e6-8f00-2130b0a433c4.png)  Anel: ![screen shot 2016-09-29 at 21 48 15](https://cloud.githubusercontent.com/assets/194442/18977174/74ad9fa0-868e-11e6-9d8c-c67276510f9e.png)  A minha humilde opinião é que o Ebean não está retornando os endereços do banco, e a validação está falhando. </body>
+		<created>2016-09-30 00:50:23</created>
+		<closed>2016-10-06 18:15:37</closed>
+	</bug>
+	<bug>
+		<id>1011</id>
+		<title>Revisar soma do tempo de estágio</title>
+		<body>Ao editar plano aparece a seguinte mensagem.  ![image](https://cloud.githubusercontent.com/assets/389829/18969265/d96c6484-8662-11e6-9da3-9035c7ec67e8.png) </body>
+		<created>2016-09-29 19:37:02</created>
+		<closed>2016-10-03 17:26:33</closed>
+	</bug>
+	<bug>
+		<id>1004</id>
+		<title>Dados duplicados no JSON de controladores</title>
+		<body>O @pauloFernandes identificou que ao fazer o Serialize de vários controladores, o map de endereços (campo `enderecosMap` no `ControladorCustomSerializer`) não era limpado a cada controlador, e como resultado o campo `todosEnderecos` do controlador 2 possuía todos os endereços do controlador 2 e do controlador 1.  É necessário verificar se isso não está ocorrendo com os outros dados que são colocados no json. </body>
+		<created>2016-09-29 13:48:02</created>
+		<closed>2016-09-30 17:09:51</closed>
+	</bug>
+	<bug>
+		<id>998</id>
+		<title>- Bug no cadastro de agrupamento, ao clicar em salvar tudo em branco os sistema não apresenta os erros.</title>
+		<body>Já estou resolvendo esse bug  </body>
+		<created>2016-09-28 17:37:18</created>
+		<closed>2016-10-03 13:06:43</closed>
+	</bug>
+	<bug>
+		<id>991</id>
+		<title>Erro ao editar controlador e remover grupos semaforicos</title>
+		<body>A numeração do grupo semaforico não fica correta, quando esta editando um controlador com dois aneis. Ao excluir e adicionar um novo grupo a numeração fica incorreta. </body>
+		<created>2016-09-28 12:23:12</created>
+		<closed>2016-09-30 12:15:02</closed>
+	</bug>
+	<bug>
+		<id>990</id>
+		<title>Erro ao entrar em planos após editar alguns dados no controlador</title>
+		<body>Quando edita um controlador que tem planos criados, ao entrar novamente em plano ocorre erro nos planos que estão salvos. O sistema deveria ter limpado os planos, caso tenha sido feito uma alteração que afeta o planos. Ex: Excluir um estágio </body>
+		<created>2016-09-28 12:22:31</created>
+		<closed>2016-09-30 18:32:39</closed>
+	</bug>
+	<bug>
+		<id>989</id>
+		<title>Apagar erros da tela após salvar</title>
+		<body>Qual você salva um tela e dá erro, você ajusta e salva novamente o erro não apaga. Tem que utilizar o botão salvar e não o botão salvar e avançar </body>
+		<created>2016-09-28 12:21:41</created>
+		<closed>2016-09-29 13:00:57</closed>
+	</bug>
+	<bug>
+		<id>988</id>
+		<title>Log de acesso com datas inválidas</title>
+		<body>O log de acesso dos usuários está mostrando datas inválidas. ![screen shot 2016-09-27 at 20 19 55](https://cloud.githubusercontent.com/assets/194442/18895415/da28082a-84ef-11e6-8510-03a33d0bcf1c.png) </body>
+		<created>2016-09-27 23:20:52</created>
+		<closed>2016-09-28 19:29:35</closed>
+	</bug>
+	<bug>
+		<id>983</id>
+		<title>Bug no Wizard - Transições Proibidas</title>
+		<body>- Ao preencher o anel 1 com uma alternativa, clicar no anel 2 e selecionar uma transição proibida, porem não selecionar um estágio alternativo para ela, quando clico em salvar o erro aparece também na alternativa no anel 1, mesmo estando preenchido, e se eu adicionar mais transições e remover o sistema não remove as alternativas ficando bagunçadas como na foto abaixo.  ![image](https://cloud.githubusercontent.com/assets/505372/18890396/5820fa16-84d7-11e6-9023-b9f562abe925.png) </body>
+		<created>2016-09-27 20:25:27</created>
+		<closed>2016-09-29 18:06:21</closed>
+	</bug>
+	<bug>
+		<id>982</id>
+		<title>Erro ao ativar controlador</title>
+		<body>Ao ativar um controlador (na index de controladores), somente os controladores `EM_CONFIGURACAO` são retornados, e consequentemente vários controladores "somem" da index.  A index antes de ativar um controlador era assim: ![screen shot 2016-09-27 at 17 17 21](https://cloud.githubusercontent.com/assets/194442/18890200/939e3b54-84d6-11e6-9bb8-6c6807df8d87.png)  Depois de ativar um dos controladores ficou assim: ![screen shot 2016-09-27 at 17 16 52](https://cloud.githubusercontent.com/assets/194442/18890217/a14f8a0a-84d6-11e6-9f9a-be55ed2a3a98.png) </body>
+		<created>2016-09-27 20:21:33</created>
+		<closed>2016-09-29 12:45:03</closed>
+	</bug>
+	<bug>
+		<id>976</id>
+		<title>Erro ao abrir modal com diagrama de planos</title>
+		<body>Ao visualizar planos na tabela horaria o diagrama de intervalos não aparece. Verificar o controlador da Rua Itapolis. Tem essa mesma visualização no Mapa, quando você clica em um anel e manda visualizar planos </body>
+		<created>2016-09-27 12:20:57</created>
+		<closed>2016-09-28 13:12:41</closed>
+	</bug>
+	<bug>
+		<id>971</id>
+		<title>Erro ao alterar de modo de operação</title>
+		<body>Ao alterar o modo de operação em planos Ex: Intermitente e Apagado. O sistema não altera o diagrama de planos. </body>
+		<created>2016-09-26 18:53:02</created>
+		<closed>2016-09-28 13:12:59</closed>
+	</bug>
+	<bug>
+		<id>962</id>
+		<title>Tabela Horária - Diagrama de intervalos com erro </title>
+		<body>Na tela de tabela horária, ao clicar no olho ("Visualizar o diagrama de intervalos do plano selecionado") o diagrama de intervalos aparece com erro. O plano sendo visualizado está corretamente configurado.  ![screen shot 2016-09-23 at 19 20 44](https://cloud.githubusercontent.com/assets/194442/18803032/14f4f9a2-81c3-11e6-801e-d0068359b4cf.png) </body>
+		<created>2016-09-23 22:22:52</created>
+		<closed>2016-09-28 13:12:46</closed>
+	</bug>
+	<bug>
+		<id>953</id>
+		<title>Erro com a sessão ao ter 2 ambientes abertos</title>
+		<body>Eu estava com o influunt rodando local, abri o stage para fazer uns testes, e quando voltei para o localhost o app começou a fazer requisições para o stage.influunt.com.br. Pesquisei mais um pouco e vi que o arquivo `ngConstants.js` estava modificado para o ambiente de staging. Reiniciei o gulp e o arquivo voltou para local. ![screen shot 2016-09-22 at 17 54 36](https://cloud.githubusercontent.com/assets/194442/18765841/d1deb1ce-80ed-11e6-8cb1-7be68f1f18ab.png) </body>
+		<created>2016-09-22 20:57:00</created>
+		<closed>2016-09-22 21:12:49</closed>
+	</bug>
+	<bug>
+		<id>952</id>
+		<title>Diagrama de intervalos com erro</title>
+		<body>Na configuração de planos, quando tem somente o mesmo estágio duplicado, o diagrama de intervaos fica com erro (não mostra nenhum dos tempos entre-verdes). ![screen shot 2016-09-22 at 17 10 16](https://cloud.githubusercontent.com/assets/194442/18764366/78255918-80e7-11e6-868a-e1e93cfa55bc.png) </body>
+		<created>2016-09-22 20:11:21</created>
+		<closed>2016-09-22 20:17:15</closed>
+	</bug>
+	<bug>
+		<id>942</id>
+		<title>Verificar loadings</title>
+		<body>Loading não some após: - trocar aba de plano - excluir detector - excluir em qualquer CRUD </body>
+		<created>2016-09-22 15:28:51</created>
+		<closed>2016-09-27 17:19:08</closed>
+	</bug>
+	<bug>
+		<id>931</id>
+		<title>Loading continua na tela após login</title>
+		<body>Aconteceu comigo no primeiro teste em staging, fiz o login mas o loading continuou na tela. Mesmo depois de dar um reload na página, ele continuou lá. ![screen shot 2016-09-21 at 01 17 14](https://cloud.githubusercontent.com/assets/194442/18697623/6148eb5a-7f99-11e6-869b-8e0088bf2d5e.png) </body>
+		<created>2016-09-21 04:19:11</created>
+		<closed>2016-09-21 13:16:10</closed>
+	</bug>
+	<bug>
+		<id>930</id>
+		<title>Loading continua na tela após requisição com erro</title>
+		<body>Na tela de login, se o servidor responde erro o loading continua na tela p/ sempre. ![screen shot 2016-09-21 at 01 11 52](https://cloud.githubusercontent.com/assets/194442/18697542/82e066ea-7f98-11e6-80a8-1e6f1613e502.png) </body>
+		<created>2016-09-21 04:13:10</created>
+		<closed>2016-09-21 13:16:12</closed>
+	</bug>
+	<bug>
+		<id>904</id>
+		<title>Tabela horária não é atualizada ao remover evento</title>
+		<body>A tabela horária continua mostrando os eventos que foram apagados. Não aparece nenhum erro no console. ![screen shot 2016-09-17 at 15 57 05](https://cloud.githubusercontent.com/assets/194442/18610322/b20d8ec6-7cef-11e6-8583-b0b63fd331d8.png) </body>
+		<created>2016-09-17 19:00:32</created>
+		<closed>2016-09-19 17:17:54</closed>
+	</bug>
+	<bug>
+		<id>895</id>
+		<title>58- Limpar os valores de monitoramento de detecores, igual a tela de associação de estágios</title>
+		<body>Foram configurados inicialmente valores de monitoramento de falha do detector DP1. Em seguida, desmarcou-se o monitoramento, fechou-se a janela, clicou-se em “salvar e voltar”. Voltou-se novamente à configuração desse detector e os valores continuam sendo mostrados nos relógios, apesar de estar desmarcado o monitoramento. </body>
+		<created>2016-09-16 12:02:53</created>
+		<closed>2016-09-19 17:17:36</closed>
+	</bug>
+	<bug>
+		<id>894</id>
+		<title>57- Bug ao cadastrar grupo semafórico</title>
+		<body>Quando se tentou colocar um valor de verde de segurança menor que o mínimo permitido pela Especificação no Grupo G1 (veicular), resultou na seguinte mensagem:  ![image](https://cloud.githubusercontent.com/assets/1890706/18585237/21ae5602-7bec-11e6-8d6b-fb2ac8005a7c.png)  Ao clicar em Sim, o sistema apagou o grupo em questão e renomeou os demais grupos, resultando na seguinte tela:  ![image](https://cloud.githubusercontent.com/assets/1890706/18585240/2bd49ace-7bec-11e6-98be-453a73d79dc9.png)  Pergunta-se: existe algum sentido nesse procedimento? </body>
+		<created>2016-09-16 12:01:54</created>
+		<closed>2016-09-19 17:18:00</closed>
+	</bug>
+	<bug>
+		<id>889</id>
+		<title>52- Ajustar eventos tabela horária</title>
+		<body>![image](https://cloud.githubusercontent.com/assets/1890706/18585031/e3154b86-7bea-11e6-8382-cc4b07ba5f35.png)  O primeiro campo (“Dias”) vai de 0 a 23; o segundo de 0 a 59 e o terceiro de 0 a 59. O que significa? O único que está claro é o último onde constam os Planos 1 a 16.  Onde se configuram os agrupamentos de dias de semana, conforme o item 4.5.22.2 da Especificação?  Conforme o item 4.5.22.1 da Especificação, o horário de ativação de plano deve ser hora, minuto e segundo. Como configurar isso na tela?  Ao preencher o valor 0 em “Horário”, a tela mudou para:  ![image](https://cloud.githubusercontent.com/assets/1890706/18585027/de9a2ef0-7bea-11e6-8745-58fd3319dfca.png)  Percebe-se que mudou até o tamanho do campo “Dias”. Agora no campo “Dias” aparecem os agrupamentos de dias de semana. Os 3 campos seguintes devem ser hora (de 0 a 23), minuto (de 0 a 59) e segundo (de 0 a 59). Sugerimos colocar acima dos campos “Hora”, “Minuto” e “Segundo”. </body>
+		<created>2016-09-16 11:52:43</created>
+		<closed>2016-09-20 22:59:56</closed>
+	</bug>
+	<bug>
+		<id>888</id>
+		<title>51- Ajustar loading</title>
+		<body>Ao abrir a tabela horária e trocar de aba, os campos da aba anterior ainda permanece na tela, ficando assim bem confuso. </body>
+		<created>2016-09-16 11:51:01</created>
+		<closed>2016-09-20 22:59:56</closed>
+	</bug>
+	<bug>
+		<id>883</id>
+		<title>46- Ajustar valores minimos e maximos do atraso de grupo</title>
+		<body>O sistema não aceita valores de atraso maiores que 20 segundos. O item 4.5.3.5 da Especificação diz que o valor máximo é 60 segundos. </body>
+		<created>2016-09-16 11:42:05</created>
+		<closed>2016-09-19 19:14:32</closed>
+	</bug>
+	<bug>
+		<id>881</id>
+		<title>44- Remover a opção de navegar pelo wizard através das bolinhas</title>
+		<body>O sistema salva se, em vez de usar os botões “Salvar e voltar” ou “salvar e avançar”, eu voltar ou avançar clicando nas “bolinhas” da Tela 17?  </body>
+		<created>2016-09-16 11:40:05</created>
+		<closed>2016-09-20 20:02:12</closed>
+	</bug>
+	<bug>
+		<id>880</id>
+		<title>43- Ajustes em planos</title>
+		<body>1- Erro ao tentar cancelar edição. 2- Verificar por que o botão aparece sem opção de salvar   2.1- Por que o sistema não mostrou a mensagem: É necessário resolver todos os problemas antes de salvar? Neste caso, o sistema salvou? </body>
+		<created>2016-09-16 11:39:20</created>
+		<closed>2016-09-28 12:39:08</closed>
+	</bug>
+	<bug>
+		<id>878</id>
+		<title>41- Ajustar loading</title>
+		<body></body>
+		<created>2016-09-16 11:35:59</created>
+		<closed>2016-09-20 22:59:56</closed>
+	</bug>
+	<bug>
+		<id>877</id>
+		<title>32- Erro não mostrar em planos</title>
+		<body>Erro: Desta vez foi possível configurar os três primeiros anéis, mas o quarto não, apesar dos tempos estarem corretos. Não foi possível saber qual era o erro, pois apenas apareceu o ícone sem explicação alguma.  Ao voltar, todas as informações dos outros anéis digitados sem erro se perderam.  </body>
+		<created>2016-09-16 11:30:40</created>
+		<closed>2016-09-21 13:15:39</closed>
+	</bug>
+	<bug>
+		<id>870</id>
+		<title>Não é possível cadastrar usuário selecionando área</title>
+		<body>O combo de área não carrega nenhuma opção </body>
+		<created>2016-09-15 11:14:44</created>
+		<closed>2016-09-29 12:46:42</closed>
+	</bug>
+	<bug>
+		<id>863</id>
+		<title>40- Ajustar o loding das telas</title>
+		<body></body>
+		<created>2016-09-14 17:56:16</created>
+		<closed>2016-09-20 22:59:56</closed>
+	</bug>
+	<bug>
+		<id>860</id>
+		<title>37- Erro ao editar tabela horária</title>
+		<body>No item tabela horária, durante a 1ª EDIÇÃO, ele habilita os dias de ocorrência dos planos, porém, após feita a tabela, ele não salva e não HABILITA MAIS os dias de ocorrência. </body>
+		<created>2016-09-14 17:50:09</created>
+		<closed>2016-09-14 20:42:45</closed>
+	</bug>
+	<bug>
+		<id>859</id>
+		<title>36- Ajustes no valores de monitoramento de detectores</title>
+		<body>No item detector de pedestres, o tempo máximo de permanência sem atuação deverá ser de 3 dias ou 4320 minutos, e para permanente atuação 1 dia ou 1440 minutos.  Observação: será alterado o item 4.5.23.2 da Especificação, alterando o valor de 1440 para 4320 minutos. </body>
+		<created>2016-09-14 17:48:36</created>
+		<closed>2016-09-15 21:33:18</closed>
+	</bug>
+	<bug>
+		<id>858</id>
+		<title>35- Melhorar a usabilidade dos botões</title>
+		<body>Para melhor entendimento, as teclas “salvar e avançar” e “salvar e voltar” devem ser renomeadas para “avançar” (sem necessariamente salvar), “voltar” (idem) e “SALVAR” (apenas salvar, sem avançar ou voltar). </body>
+		<created>2016-09-14 17:48:04</created>
+		<closed>2016-09-15 11:19:55</closed>
+	</bug>
+	<bug>
+		<id>857</id>
+		<title>34- Remover estágios</title>
+		<body>Quando da edição das figuras dos estágios, após a criação dos mesmos, ele não permite apagar para menos de dois estágios.  Comentário: Não entendemos ser necessário manter sempre dois estágios, o programador deve ter esse controle, apagando todos se necessário durante a elaboração, se necessário. </body>
+		<created>2016-09-14 17:47:26</created>
+		<closed>2016-09-14 20:36:35</closed>
+	</bug>
+	<bug>
+		<id>856</id>
+		<title>33- Ajustar combos tabela entreverdes no resumo</title>
+		<body>Tem hora que aparece o valor da tabela entreverdes e o grupo esta em branco </body>
+		<created>2016-09-14 17:46:32</created>
+		<closed>2016-09-14 20:31:14</closed>
+	</bug>
+	<bug>
+		<id>855</id>
+		<title>28- Ajustes em planos</title>
+		<body>E-mail do dia 13/09/2016  Olá Leo bom dia  Na verdade eu não sei por que o sistema não me deixa prosseguir.  Se você der uma olhada na programação que eu inseri  ele deveria estar ok.  Foram colocados os seguintes dados:  Rua da Consolação X Rua Fernando de Albuquerque  Tentei o plano 1 de ciclo de 128 seg.  Onde a sequência seria: E1 – E2  - E3  como E3 é um estágio dispensável, caso não ocorra a demanda a sequência queria E1 – E2  - Aliás aonde eu especifico para qual estágio vai o tempo  quando o estágio é dispensável? Não encontrei uma maneira.  No caso do exemplo se não ocorrer a demanda o tempo do estágio 3 iria para o estágio 2 e não para o 1. Mantendo desta forma o tempo de ciclo da rede.  Os tempos do plano seriam:   Com demanda: E1 (9+2+80)  E2 (4+2+13) E3 (4+1+13)  totalizando 128 segundos de ciclo.   Foi programado atraso de 6 seg. no anel 1 grupo 5 nas transições de E3 para E1 e  E2 para E1 (que não interfere no ciclo porque está dentro dos entreverdes)  Não foi possível prosseguir porque o sistema dá uma incompatibilidade de tempos de ciclo no Anel 1. Esta é a dúvida. Não sei se eu fiz algo errado.  No aguardo de novidades </body>
+		<created>2016-09-14 17:45:18</created>
+		<closed>2016-09-21 13:15:36</closed>
+	</bug>
+	<bug>
+		<id>854</id>
+		<title>27- Mostrar atraso de grupo no resumo</title>
+		<body>Foi configurado atraso de grupo no grupo G5 de 6 segundos, mas este valor não aparece no resumo dos dados. </body>
+		<created>2016-09-14 17:44:20</created>
+		<closed>2016-09-14 20:33:44</closed>
+	</bug>
+	<bug>
+		<id>853</id>
+		<title>26- Erro ao cancelar um plano</title>
+		<body>Ao tentar cancelar a edição de planos, (a ideia era recomeçar) apareceu na tela a mensagem de erro abaixo não sendo possível continuar a partir este ponto, foi necessário voltar. </body>
+		<created>2016-09-14 17:43:49</created>
+		<closed>2016-09-14 20:27:07</closed>
+	</bug>
+	<bug>
+		<id>852</id>
+		<title>25- Ajustes tempos diagrama de intervalos</title>
+		<body>Na montagem de um plano os tempos não estavam compatíveis com os programados. Ao inserir um ciclo de 128 seg., por exemplo, o sistema já apresentava os valores de entreverdes, mas estes não estavam corretos. Antes do vermelho intermitente havia um valor diferente conforme tela anexa.   Mesmo configurando os valores que o diagrama de barras mostrava como valores em branco o sistema deu erro no final. </body>
+		<created>2016-09-14 17:43:09</created>
+		<closed>2016-09-21 13:15:34</closed>
+	</bug>
+	<bug>
+		<id>851</id>
+		<title>24- Ajustes estágios dispensáveis (Validar o diagrama de intervalos)</title>
+		<body>Planos que contenham estágios dispensáveis e que não atendam o modo atuado, onde se determina para qual estágio vai o tempo do estágio dispensável, caso não ocorra a demanda? Conforme a especificação deve ser possível escolher para onde vai este tempo. Exemplo: Sequência E1-E2-E3, onde E3 é dispensável e o plano é coordenado, para qual estágio vai o tempo caso não ocorra a demanda para E1 ou E2? Aonde se coloca esta informação no plano? </body>
+		<created>2016-09-14 17:41:04</created>
+		<closed>2016-09-20 21:25:21</closed>
+	</bug>
+	<bug>
+		<id>850</id>
+		<title>23- Botão do amarelo na tabela entreverdes</title>
+		<body>Na tela de configuração de tabelas de entreverdes, o botão do amarelo não funcionou, foi preciso digitar o valor. </body>
+		<created>2016-09-14 17:33:22</created>
+		<closed>2016-09-20 17:24:37</closed>
+	</bug>
+	<bug>
+		<id>849</id>
+		<title>22- Numero SMEE no resumo</title>
+		<body>Após inserir os dados dos anéis, quando acessa o resumo o sistema não mostrou o numero do SMEE especificado nos dados. </body>
+		<created>2016-09-14 17:32:38</created>
+		<closed>2016-09-15 21:33:45</closed>
+	</bug>
+	<bug>
+		<id>847</id>
+		<title>20- Correção de texto</title>
+		<body>“Entreverdes” é uma palavra só. Corrigir em todas as telas em que esta palavra aparecer. </body>
+		<created>2016-09-14 17:31:11</created>
+		<closed>2016-09-28 16:40:57</closed>
+	</bug>
+	<bug>
+		<id>845</id>
+		<title>18- Numeração de detectores</title>
+		<body>Ainda na parte de detectores: a denominação de detectores deveria ser contínua, como é o caso de grupos semafóricos em relação aos anéis. Ou seja, se no anel 1 eu associei um detector de pedestres e ele recebeu o nome de “DP1”, caso eu configure outro detector em outo anel, ele seria o DP2 e assim por diante. Idem quanto ao veicular. </body>
+		<created>2016-09-14 17:29:49</created>
+		<closed>2016-09-15 21:32:56</closed>
+	</bug>
+	<bug>
+		<id>844</id>
+		<title>17- Obrigar preenchimento de valores de monitoramento de detectores</title>
+		<body>Na associação de detectores, caso seja indicado algum detector, o programador deveria ser obrigado a preencher os parâmetros de alarme. Hoje ele pode avançar na edição sem preencher esses dados. </body>
+		<created>2016-09-14 17:28:48</created>
+		<closed>2016-09-14 19:29:48</closed>
+	</bug>
+	<bug>
+		<id>843</id>
+		<title>16- Ajustes valores monitoramento de falhas botoeiras</title>
+		<body>No monitoramento de falha das botoeiras, favor estender o limite máximo para 3 dias (4.320 minutos), pois há casos em que não existem pedestres no fim de semana e isso evitaria alarmes desnecessários.  Observação: será alterado o item 4.5.23.2 da Especificação, alterando o valor de 1440 para 4320 minutos. </body>
+		<created>2016-09-14 17:28:11</created>
+		<closed>2016-09-15 21:32:37</closed>
+	</bug>
+	<bug>
+		<id>840</id>
+		<title>13- Erro ao cancelar</title>
+		<body>Tentei apertar o botão de “cancelar” na configuração de planos e o sistema apresentou erro. </body>
+		<created>2016-09-14 17:25:38</created>
+		<closed>2016-09-21 13:15:42</closed>
+	</bug>
+	<bug>
+		<id>833</id>
+		<title>6- Ajustar layout</title>
+		<body>Na tela de associação estágio x grupo, o texto que descreve as opções aparece todo em uma linha na primeira associação e depois em duas linhas na segunda associação (essa é meio que frescura, mas queremos deixar tudo bonito!). </body>
+		<created>2016-09-14 17:16:46</created>
+		<closed>2016-09-19 12:51:26</closed>
+	</bug>
+	<bug>
+		<id>832</id>
+		<title>5- Remover estágios</title>
+		<body>Houve casos em que não foi possível apagar/remover os desenhos dos estágios depois de inseridos. Possivelmente isso tem a ver com o alarme que aponta que se deve cadastrar ao menos dois estágios em um anel, mas essa consistência só deveria ser feita no momento de salvar e não durante a edição. </body>
+		<created>2016-09-14 17:15:13</created>
+		<closed>2016-09-14 18:50:56</closed>
+	</bug>
+	<bug>
+		<id>830</id>
+		<title>3- Texto de visualizar histórico</title>
+		<body>Quando encostamos o cursor em “Histórico” aparece a dica “Vizualizar histórico”. Favor corrigir para “Visualizar”. </body>
+		<created>2016-09-14 17:14:17</created>
+		<closed>2016-09-15 21:31:47</closed>
+	</bug>
+	<bug>
+		<id>828</id>
+		<title>1 - A tabela horária não está sendo salva.</title>
+		<body></body>
+		<created>2016-09-14 17:12:26</created>
+		<closed>2016-09-14 18:37:17</closed>
+	</bug>
+	<bug>
+		<id>825</id>
+		<title>Apagar controlador com tabela horária</title>
+		<body>Depois de associar um controlador com uma tabela horária, não é mais possível deletar o controlador. Ao executar `controlador.delete()` a seguinte exception é lançada:  ``` java.lang.ClassCastException: com.avaje.ebeaninternal.server.expression.DefaultExpressionList cannot be cast to com.avaje.ebean.Query      at com.avaje.ebeaninternal.server.deploy.BeanPropertyAssocOne.findIdsByParentIdList(BeanPropertyAssocOne.java:249)     at com.avaje.ebeaninternal.server.deploy.BeanPropertyAssocOne.findIdsByParentId(BeanPropertyAssocOne.java:224)     at com.avaje.ebeaninternal.server.persist.DefaultPersister.delete(DefaultPersister.java:647)     at com.avaje.ebeaninternal.server.persist.DefaultPersister.deleteChildrenById(DefaultPersister.java:1354)     at com.avaje.ebeaninternal.server.persist.DefaultPersister.deleteManyDetails(DefaultPersister.java:1330)     at com.avaje.ebeaninternal.server.persist.DefaultPersister.deleteAssocMany(DefaultPersister.java:1296)     at com.avaje.ebeaninternal.server.persist.DefaultPersister.delete(DefaultPersister.java:751)     at com.avaje.ebeaninternal.server.persist.DefaultPersister.deleteRequest(DefaultPersister.java:542)     at com.avaje.ebeaninternal.server.persist.DefaultPersister.deleteRequest(DefaultPersister.java:522)     at com.avaje.ebeaninternal.server.persist.DefaultPersister.delete(DefaultPersister.java:514)     at com.avaje.ebeaninternal.server.core.DefaultServer.delete(DefaultServer.java:1840)     at com.avaje.ebeaninternal.server.core.DefaultServer.delete(DefaultServer.java:1833)     at com.avaje.ebean.Model.delete(Model.java:271)     at controllers.ControladoresController.delete(ControladoresController.java:229)     at router.Routes$$anonfun$routes$1$$anonfun$applyOrElse$27$$anonfun$apply$27.apply(Routes.scala:1894)     at router.Routes$$anonfun$routes$1$$anonfun$applyOrElse$27$$anonfun$apply$27.apply(Routes.scala:1894)     at play.core.routing.HandlerInvokerFactory$$anon$5.resultCall(HandlerInvoker.scala:160)     at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$14$$anon$3$$anon$1.invocation(HandlerInvoker.scala:136)     at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:73)     at play.http.HttpRequestHandler$1.call(HttpRequestHandler.java:54)     at be.objectify.deadbolt.java.actions.AbstractDeadboltAction.authorizeAndExecute(AbstractDeadboltAction.java:292)     at be.objectify.deadbolt.java.ConstraintLogic.lambda$dynamic$6(ConstraintLogic.java:166)     at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:952)     at java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:926)     at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:442)     at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)     at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)     at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39)     at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:409)     at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)     at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)     at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)     at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) ``` </body>
+		<created>2016-09-13 19:56:34</created>
+		<closed>2016-12-20 15:48:59</closed>
+	</bug>
+	<bug>
+		<id>814</id>
+		<title>Planos - Cancelar Edição não está funcionando</title>
+		<body></body>
+		<created>2016-09-09 21:05:53</created>
+		<closed>2016-09-12 16:23:56</closed>
+	</bug>
+	<bug>
+		<id>813</id>
+		<title>Planos</title>
+		<body>Fiz algumas alterações no plano 1 mas ao salvar deu erro no plano 2 mas não mostrou. </body>
+		<created>2016-09-09 20:58:59</created>
+		<closed>2016-09-21 13:16:43</closed>
+	</bug>
+	<bug>
+		<id>806</id>
+		<title>Transições Proibidas</title>
+		<body>Nas telas de transições proibidas e atraso de grupo, marquei que não tinha nada a ser feito, depois salvei voltando para a tela anterior. Quando avancei novamente a caixa estava marcada. Se eu voltei salvando não deveria ter ficado marcada? </body>
+		<created>2016-09-09 18:31:13</created>
+		<closed>2016-09-09 20:42:08</closed>
+	</bug>
+	<bug>
+		<id>805</id>
+		<title>Configurações de Anéis</title>
+		<body>Na tela de Configurações de Anéis, não deixa remover um estágio que acabou de ser colocado por engano. </body>
+		<created>2016-09-09 18:26:05</created>
+		<closed>2016-09-10 00:42:34</closed>
+	</bug>
+	<bug>
+		<id>804</id>
+		<title>tabela horária ajustes eventos iguais</title>
+		<body></body>
+		<created>2016-09-09 18:13:23</created>
+		<closed>2016-09-09 19:39:55</closed>
+	</bug>
+	<bug>
+		<id>798</id>
+		<title>Não mostrar erros em planos quando tem mais de um anel</title>
+		<body>Se salvar os planos e ocorrer erro no anel 1 e 2 não mostra as mensagens dentro do anel 2 </body>
+		<created>2016-09-09 14:02:05</created>
+		<closed>2016-09-09 20:41:03</closed>
+	</bug>
+	<bug>
+		<id>796</id>
+		<title>Erro ao remover estágios</title>
+		<body>Quando você coloca estágio, salva e dá erro na tela e depois tenta remover o estagio dá um erro falando que não é possível remover o estagio </body>
+		<created>2016-09-09 13:45:11</created>
+		<closed>2016-09-10 00:42:42</closed>
+	</bug>
+	<bug>
+		<id>795</id>
+		<title>Erro ao subir estagios em dois aneis</title>
+		<body>Quando você sobe o estagio e troca de aba muito rápido as imagens vão para a aba corrente e não para a aba onde subiu o estagio  </body>
+		<created>2016-09-09 13:42:35</created>
+		<closed>2016-09-09 20:38:16</closed>
+	</bug>
+	<bug>
+		<id>781</id>
+		<title>Em qualquer lugar do sistema ao clicar em um form com os campos em branco o sistema apresenta erro 422</title>
+		<body>![captura de tela 2016-09-06 as 17 18 23](https://cloud.githubusercontent.com/assets/505372/18289488/f7fddd66-7455-11e6-89cf-ede46a25765a.png) </body>
+		<created>2016-09-06 20:19:21</created>
+		<closed>2016-09-07 12:07:01</closed>
+	</bug>
+	<bug>
+		<id>777</id>
+		<title>Bug no Cadastro de Nova Área ao tentar salvar em branco </title>
+		<body>Ao tentar salvar uma área deixando os campos vazios, o sistema apresenta erro. </body>
+		<created>2016-09-06 15:07:36</created>
+		<closed>2016-09-07 12:06:28</closed>
+	</bug>
+	<bug>
+		<id>774</id>
+		<title>Substituir suite de testes</title>
+		<body>Substituir o jasmine por outra suite de testes (ex.: Mocha/Chai). O jasmine hoje tem apresentado alguns problemas dada certa quantidade de testes escritos.  É interessante que a nova suite de testes também suporte a geração de relatórios HTML e de cobertura, assim como hoje o jasmine faz. </body>
+		<created>2016-09-06 12:16:30</created>
+		<closed>2016-11-01 12:19:53</closed>
+	</bug>
+	<bug>
+		<id>768</id>
+		<title>Erro ao salvar plano com problemas</title>
+		<body></body>
+		<created>2016-09-05 22:15:39</created>
+		<closed>2016-09-05 22:54:20</closed>
+	</bug>
+	<bug>
+		<id>764</id>
+		<title>Mensagem de erro errada em detectores</title>
+		<body></body>
+		<created>2016-09-05 21:45:04</created>
+		<closed>2016-09-05 22:52:45</closed>
+	</bug>
+	<bug>
+		<id>743</id>
+		<title>A subárea não voltou no modo de edição do controlador, em dados básicos</title>
+		<body></body>
+		<created>2016-09-02 21:40:32</created>
+		<closed>2016-09-06 12:17:16</closed>
+	</bug>
+	<bug>
+		<id>741</id>
+		<title>Verificar mensagens de validação de tabelas horárias</title>
+		<body>As mensagens de validação não estão aparecendo. </body>
+		<created>2016-09-02 21:39:34</created>
+		<closed>2016-09-05 17:52:15</closed>
+	</bug>
+	<bug>
+		<id>735</id>
+		<title>Erro ao trocar nome do plano</title>
+		<body>O nome do plano, quando alterado, permanece o mesmo no título da tela. Esse erro ocorreu com o Léo durante a apresentação do dia 02/09, mas não consegui reproduzir nem local nem em staging. </body>
+		<created>2016-09-02 21:29:45</created>
+		<closed>2016-09-05 17:25:10</closed>
+	</bug>
+	<bug>
+		<id>734</id>
+		<title>Erro ao cadastrar endereço do controlador</title>
+		<body>Na tela de dadso básicos, ao cadastrar logradouro 2, apagar e colocar altura númerica, o endereço do controlador fica errado (mostra altura numérica e logradouro 2) Quando isso ocorreu, na tela de anéis a altura numérica do endereço do anel 1 ficou "0". ![screen shot 2016-09-02 at 18 06 53](https://cloud.githubusercontent.com/assets/194442/18218289/129a8c9e-7138-11e6-934a-3a3667338469.png) </body>
+		<created>2016-09-02 21:07:32</created>
+		<closed>2016-09-05 15:39:31</closed>
+	</bug>
+	<bug>
+		<id>733</id>
+		<title>Marker dos mapas desaparecido</title>
+		<body>O marker dos mapas parece ter desaparecido novamente dos mapas </body>
+		<created>2016-09-02 21:02:53</created>
+		<closed>2016-09-06 12:08:29</closed>
+	</bug>
+	<bug>
+		<id>726</id>
+		<title>Croqui com vários aneis</title>
+		<body>Quando o controlador tem vários anéis o croqui não aparece nos outros aneis, somente no primeiro  </body>
+		<created>2016-09-02 17:00:04</created>
+		<closed>2016-09-05 22:17:27</closed>
+	</bug>
+	<bug>
+		<id>725</id>
+		<title>Ao alterar perfil do usuário root, usuário deixa de ser root</title>
+		<body></body>
+		<created>2016-09-02 16:09:38</created>
+		<closed>2016-09-08 22:34:54</closed>
+	</bug>
+	<bug>
+		<id>694</id>
+		<title>Plano copiado não é salvo</title>
+		<body>Ao copiar um plano e mandar salvar, o plano copiado não é salvo. </body>
+		<created>2016-08-31 21:05:05</created>
+		<closed>2016-09-01 14:04:09</closed>
+	</bug>
+	<bug>
+		<id>692</id>
+		<title>Tempo errado no diagrama de intervalos</title>
+		<body>Na tela de planos, ao desabilitar um estágio  no diagrama de intervalos, o estágio desabilitado mostra um tempo de 255s, mesmo se o tempo de ciclo for menos do que 255s. ![screen shot 2016-08-31 at 16 34 09](https://cloud.githubusercontent.com/assets/194442/18143564/fafc63b4-6f98-11e6-8bf6-376ca11ffde0.png) </body>
+		<created>2016-08-31 19:40:25</created>
+		<closed>2016-09-01 14:04:06</closed>
+	</bug>
+	<bug>
+		<id>691</id>
+		<title>Erro ao trocar de anel tela de planos</title>
+		<body>Na tela de planos de um controlador configurado com 2 anéis, ao selecionar o anel 2 é lançado um erro no console do chrome. ![screen shot 2016-08-31 at 16 27 49](https://cloud.githubusercontent.com/assets/194442/18143352/079506d6-6f98-11e6-9ae8-ddbe33ce2fe5.png) </body>
+		<created>2016-08-31 19:29:28</created>
+		<closed>2016-09-01 14:04:05</closed>
+	</bug>
+	<bug>
+		<id>675</id>
+		<title>Bug Tela de Detectores</title>
+		<body>A tela de associação de detectores não está funcionando corretamente.  - Ao adicionar detectores e não fazer nenhuma alteração neles, era pra tela estar válida (todos os valores são 0 e os limites são entre 0 e 1440), mas a API retorna erro de validação. - Algumas vezes, mesmo alterando os valores para um detector específico, a API continua retornando erro para esse detector. Parece que ao alterar um detector, o valor de outro é alterado. </body>
+		<created>2016-08-30 15:05:35</created>
+		<closed>2016-08-30 21:00:44</closed>
+	</bug>
+	<bug>
+		<id>654</id>
+		<title>Nome da aba some ao cancelar deleção de anel</title>
+		<body>Ao tentar deletar um anel e cancelar, o nome da aba some. ![screen shot 2016-08-26 at 18 56 58](https://cloud.githubusercontent.com/assets/194442/18021595/f7edbfa2-6bbe-11e6-8c07-8e5a252e5501.png) </body>
+		<created>2016-08-26 21:58:29</created>
+		<closed>2016-09-01 14:06:20</closed>
+	</bug>
+	<bug>
+		<id>653</id>
+		<title>Corrigir croqui (dropzone)</title>
+		<body>Croqui está duplicando as imagens dos estágios, no passo "Anéis". Os dois componentes devem funcionar separadamente. ![screen shot 2016-08-26 at 18 50 02](https://cloud.githubusercontent.com/assets/194442/18021469/f05ba1d8-6bbd-11e6-86a7-5ce2e833c610.png) </body>
+		<created>2016-08-26 21:50:31</created>
+		<closed>2016-08-29 21:10:26</closed>
+	</bug>
+	<bug>
+		<id>652</id>
+		<title>Erro validação endereço do anel</title>
+		<body>Está ocorrendo um erro no endereço 0 do primeiro anel, no wizard passou do passo dados básicos, mas não passou do associação grupos semafóricos por conta desse erro. ![screen shot 2016-08-26 at 18 42 35](https://cloud.githubusercontent.com/assets/194442/18021304/e922c956-6bbc-11e6-876f-fdac7a44e8f9.png) </body>
+		<created>2016-08-26 21:43:25</created>
+		<closed>2016-08-26 22:12:28</closed>
+	</bug>
+	<bug>
+		<id>637</id>
+		<title>Bug no form de aneis está duplicando o segundo endereço</title>
+		<body>Ao realizar os teste de cucumber no wizard, foi encontrado esse erro.  </body>
+		<created>2016-08-26 14:55:09</created>
+		<closed>2016-08-30 19:32:47</closed>
+	</bug>
+	<bug>
+		<id>628</id>
+		<title>Erro ao mostrar mensagem em associação estagio x gruposemaforico</title>
+		<body>quando você troca a ordem dos estagios e o sistema gera erro, a marcação do erro fica na aba do estagio errado.  A marcação fica na aba do estagio sem a ordenação </body>
+		<created>2016-08-24 20:19:08</created>
+		<closed>2016-08-31 18:41:48</closed>
+	</bug>
+	<bug>
+		<id>626</id>
+		<title>Div quebrada em grupos semafóricos</title>
+		<body>![firefox_screenshot_2016-08-24t17-42-18 722z](https://cloud.githubusercontent.com/assets/1928821/17944068/7c6ea054-6a14-11e6-9caf-a5d7785a4f4e.png) </body>
+		<created>2016-08-24 19:06:34</created>
+		<closed>2016-08-24 22:17:59</closed>
+	</bug>
+	<bug>
+		<id>596</id>
+		<title>Tooltip permanece na tela após clicar em link</title>
+		<body>No index de controladores, ao clicar em uma ação do controlador que tem tooltip, o tooltip permanece na tela após o usuário navegar para a página seguinte.  ![screen shot 2016-08-22 at 16 33 33](https://cloud.githubusercontent.com/assets/194442/17868704/5bb88fda-6886-11e6-839c-b0a22b64b71b.png) </body>
+		<created>2016-08-22 19:35:26</created>
+		<closed>2016-08-23 19:02:19</closed>
+	</bug>
+	<bug>
+		<id>593</id>
+		<title>ID Json duplicados quando controlador é clonado</title>
+		<body>Quando um controlador é clonado, estão aparecendo entidades no banco de dados com o `id_json` duplicado.  Testei com aneis e estágios. Acho uma boa colocarmos um index unique no banco para todos os `id_json`. </body>
+		<created>2016-08-22 14:42:23</created>
+		<closed>2016-09-01 14:06:29</closed>
+	</bug>
+	<bug>
+		<id>591</id>
+		<title>Setas do Drag Drop</title>
+		<body>As setas do drag drop não estão funcionando </body>
+		<created>2016-08-22 13:46:03</created>
+		<closed>2016-08-22 18:03:10</closed>
+	</bug>
+	<bug>
+		<id>581</id>
+		<title>Bug indicador de progresso wizard</title>
+		<body>Está ocorrendo um erro intermitente no mostrador de progresso do wizard. Em alguns momentos o passo do wizard que acabou de ser feito fica cinza, como se ainda não tivesse sido configurado. Comigo aconteceu entre os passos "Grupos Semaforicos" e "Verdes Conflitantes". Com o @lesio aconteceu entre os passos "Detectores" e "Revisão". Ao dar um reload na página o problema some. ![screen shot 2016-08-19 at 15 22 45](https://cloud.githubusercontent.com/assets/194442/17820035/224f6442-6621-11e6-8a2b-a95994dc89d0.png) </body>
+		<created>2016-08-19 18:25:54</created>
+		<closed>2016-10-05 13:54:16</closed>
+	</bug>
+	<bug>
+		<id>580</id>
+		<title>Erro ao trocar estágios de posição</title>
+		<body>No passo "Associação Estágio Grupo Semafórico", ao clicar na setinha para trocar os estágios de lugar está dando erro. ![screen shot 2016-08-19 at 15 04 45](https://cloud.githubusercontent.com/assets/194442/17819480/6fd8fc8a-661e-11e6-8060-826be9078af4.png) </body>
+		<created>2016-08-19 18:06:17</created>
+		<closed>2016-08-23 13:41:06</closed>
+	</bug>
+	<bug>
+		<id>573</id>
+		<title>Investigar um bug</title>
+		<body>![untitled3](https://cloud.githubusercontent.com/assets/1890706/17789157/4ac7048a-6567-11e6-806b-f07956ab8589.png) </body>
+		<created>2016-08-18 20:15:05</created>
+		<closed>2016-09-01 15:24:31</closed>
+	</bug>
+	<bug>
+		<id>500</id>
+		<title>Erro ao adicionar nova tabela de entre verder</title>
+		<body></body>
+		<created>2016-08-15 18:54:06</created>
+		<closed>2016-08-24 22:18:56</closed>
+	</bug>
+	<bug>
+		<id>453</id>
+		<title>Usuários criados pela interface não conseguem fazer logon</title>
+		<body></body>
+		<created>2016-08-08 14:40:49</created>
+		<closed>2016-08-08 16:34:45</closed>
+	</bug>
+	<bug>
+		<id>442</id>
+		<title>Na tabela entre-verdes esta listando as transições proibidas</title>
+		<body></body>
+		<created>2016-08-05 12:48:27</created>
+		<closed>2016-08-05 19:50:44</closed>
+	</bug>
+	<bug>
+		<id>441</id>
+		<title>Imagens de estagios esta quebrando na tela de tabela entre-verdes</title>
+		<body></body>
+		<created>2016-08-05 12:47:51</created>
+		<closed>2016-08-09 18:15:39</closed>
+	</bug>
+	<bug>
+		<id>440</id>
+		<title>Erro no monitoramento do tempo máximo de permanencia do estagio</title>
+		<body>1- Ao desativar o percentual fica negativo 2- O label esta QTD é deveria ser SEG 3- Verificar os limites deveria ser 60 a 255 segundos </body>
+		<created>2016-08-05 12:46:57</created>
+		<closed>2016-08-08 16:54:23</closed>
+	</bug>
+	<bug>
+		<id>439</id>
+		<title>Validar verdes conflitantes na tela de associação de estagios x grupo semaforicos</title>
+		<body></body>
+		<created>2016-08-05 12:45:01</created>
+		<closed>2016-08-05 15:03:14</closed>
+	</bug>
+	<bug>
+		<id>438</id>
+		<title>Verificar a qualidade da imagem dos estagios na tela de aneis</title>
+		<body>Parece que o dropzone dá um zoom na imagem </body>
+		<created>2016-08-05 12:44:25</created>
+		<closed>2016-08-09 19:14:19</closed>
+	</bug>
+	<bug>
+		<id>437</id>
+		<title>Remover o nome da Imagem no upload de estagios na tela de aneis</title>
+		<body></body>
+		<created>2016-08-05 12:43:36</created>
+		<closed>2016-08-09 19:14:09</closed>
+	</bug>
+	<bug>
+		<id>436</id>
+		<title>Problema nos estagios tela de detectores</title>
+		<body>Qual altera o anel os acontece um problema no carregamento das imagens do estagios. </body>
+		<created>2016-08-05 12:42:59</created>
+		<closed>2016-08-08 21:18:05</closed>
+	</bug>
+	<bug>
+		<id>434</id>
+		<title>Somente o label da aba é clicavel. Fazer a aba toda ser</title>
+		<body></body>
+		<created>2016-08-05 12:27:01</created>
+		<closed>2016-08-09 18:15:10</closed>
+	</bug>
+	<bug>
+		<id>430</id>
+		<title>Erro ao adicionar nova tabela entre verdes</title>
+		<body>No passo "tabela entre verdes" com 2 anéis com 3 e 2 grupos semafóricos respectivamente, ao adicionar uma nova tabela entre verdes no anel 1 (3 grupos), a nova tabela é adicionada somente ao grupo saemafórico 2.  </body>
+		<created>2016-08-04 21:33:13</created>
+		<closed>2016-08-05 00:20:23</closed>
+	</bug>
+	<bug>
+		<id>424</id>
+		<title>Select transição alternativa quebrado tela Transições Proibidas</title>
+		<body>![screen shot 2016-08-04 at 18 03 01](https://cloud.githubusercontent.com/assets/194442/17418213/b7afb506-5a6d-11e6-9ffc-68ffa70bcf7f.png) </body>
+		<created>2016-08-04 21:03:40</created>
+		<closed>2016-08-05 00:20:04</closed>
+	</bug>
+	<bug>
+		<id>379</id>
+		<title>Ajuste layout Associação de de grupos semaforicos</title>
+		<body>Quando tem varios grupos semaforicos os checks ficam desalinhados </body>
+		<created>2016-07-28 22:18:29</created>
+		<closed>2016-08-03 12:35:41</closed>
+	</bug>
+	<bug>
+		<id>378</id>
+		<title>Ajuste upload de estagios</title>
+		<body>1- Após subir uma imagem, não dá opção de subir novas imagens. 2- Quando você remove um imagem e depois sobe outra imagem e salva dá erro na API </body>
+		<created>2016-07-28 22:12:25</created>
+		<closed>2016-08-01 19:17:00</closed>
+	</bug>
+	<bug>
+		<id>377</id>
+		<title>Ajustar o botão voltar tela anterior</title>
+		<body></body>
+		<created>2016-07-28 22:10:29</created>
+		<closed>2016-07-29 00:24:26</closed>
+	</bug>
+	<bug>
+		<id>366</id>
+		<title>Botão Quebrando em Planos</title>
+		<body>- Botão Próximo não está funcionando; - Layout dos botões está quebrando, na tela de Planos.   ![image](https://cloud.githubusercontent.com/assets/5081549/17215208/7dac1d06-54b2-11e6-906a-5363aac5dbdb.png) </body>
+		<created>2016-07-28 15:20:37</created>
+		<closed>2016-08-02 21:31:54</closed>
+	</bug>
+	<bug>
+		<id>365</id>
+		<title>Legenda não funciona</title>
+		<body>Botão Legenda, na tela de Planos, manda direto para a tela de login. </body>
+		<created>2016-07-28 13:58:00</created>
+		<closed>2016-07-29 00:23:30</closed>
+	</bug>
+	<bug>
+		<id>364</id>
+		<title>Adicionar Planos</title>
+		<body>Não está deixando adicionar Planos no Controlador </body>
+		<created>2016-07-28 13:57:04</created>
+		<closed>2016-08-03 12:35:35</closed>
+	</bug>
+	<bug>
+		<id>363</id>
+		<title>Dados do grupo copiam para todos</title>
+		<body>Em Configuração de Grupo  - os dados do grupo 1 fica repetido no grupo 2; - não deixa adicionar um novo grupo. </body>
+		<created>2016-07-28 13:48:14</created>
+		<closed>2016-07-28 20:03:29</closed>
+	</bug>
+	<bug>
+		<id>314</id>
+		<title>Login do usuário não é atualizado</title>
+		<body>Ao editar um usuário e trocar o login dele, essa mudança não está sendo salva no banco. </body>
+		<created>2016-07-20 21:54:37</created>
+		<closed>2016-07-27 13:52:19</closed>
+	</bug>
+	<bug>
+		<id>291</id>
+		<title>Acessar página de planos somente com controlador completo</title>
+		<body>A página de planos só deve ser acessível se o controlador já tiver, pelo menos,  tabelas entre verdes. Caso contrário a página dá erro. Atualmente o link sempre aparece, independente do estado do controlador. </body>
+		<created>2016-07-19 21:17:09</created>
+		<closed>2016-07-28 21:48:48</closed>
+	</bug>
+	<bug>
+		<id>229</id>
+		<title>Logo do influunt sai do sistema</title>
+		<body>Ao clicar no logo do influunt sai do sistema no lugar de ir para a home </body>
+		<created>2016-07-15 17:07:04</created>
+		<closed>2016-07-18 21:33:32</closed>
+	</bug>
+	<bug>
+		<id>228</id>
+		<title>Campos não estão sendo carregados na tela de Áreas</title>
+		<body>/app/areas  {{ pageTitle | translate }} {{ objeto.descricao }} - #{{ minid }} </body>
+		<created>2016-07-15 17:06:14</created>
+		<closed>2016-07-27 14:45:45</closed>
+	</bug>
+	<bug>
+		<id>201</id>
+		<title>Testes quebrando,</title>
+		<body></body>
+		<created>2016-07-05 12:46:03</created>
+		<closed>2016-07-07 15:14:38</closed>
+	</bug>
+	<bug>
+		<id>193</id>
+		<title>Bug mensagem de erro verdes conflitantes</title>
+		<body>Ao tentar salvar no wizard passo "verdes conflitantes" com 2 aneis e 4 grupos semafóricos (G1 e G2 no anel 1 e G3 e G4 no anel 2), se eu marcar conflito somente entre os grupos G3 e G4 e tentar salvar, deveriam aparecer duas mensagens de erro, mas elas não aparecem:  ``` G1: Esse grupo semafórico deve ter ao menos um verde conflitante G2: Esse grupo semafórico deve ter ao menos um verde conflitante ``` </body>
+		<created>2016-07-04 19:58:57</created>
+		<closed>2016-07-04 21:03:56</closed>
+	</bug>
+	<bug>
+		<id>183</id>
+		<title>Bug Fixes API - Iteracao I</title>
+		<body></body>
+		<created>2016-07-01 15:40:12</created>
+		<closed>2016-07-01 16:17:55</closed>
+	</bug>
+	<bug>
+		<id>182</id>
+		<title>Revisar Mapeamento Papeis / Permissoes</title>
+		<body>Tabelas duplicadas nesse relacionamento. </body>
+		<created>2016-07-01 14:14:04</created>
+		<closed>2016-07-08 13:57:35</closed>
+	</bug>
+	<bug>
+		<id>176</id>
+		<title>Pesquisa some com os registros</title>
+		<body>Quando é digitada uma pesquisa nenhum registro aparece, nem o que corresponde ao que foi digitado. </body>
+		<created>2016-06-30 15:33:54</created>
+		<closed>2016-07-05 12:49:08</closed>
+	</bug>
+	<bug>
+		<id>174</id>
+		<title>iChecks não funcionam no stage.</title>
+		<body>iChecks não funcionam no stage. </body>
+		<created>2016-06-30 01:39:40</created>
+		<closed>2016-07-27 13:35:43</closed>
+	</bug>
+	<bug>
+		<id>173</id>
+		<title>Validação</title>
+		<body>Botão Anterior no cadastro de Controladores faz a validação, mas deveria ser só no botão Próximo. </body>
+		<created>2016-06-30 01:39:23</created>
+		<closed>2016-07-01 16:01:13</closed>
+	</bug>
+	<bug>
+		<id>172</id>
+		<title>Layout</title>
+		<body>1) Na tela "/app/fabricantes/new" O Drop/Down da Configuração não abre quando a tela está reduzida. 2) Layout quebra em diversos lugares quando diminui. Tela de cadastro de Fabricantes, Aneis do Controlador, Associação (esse quebra sempre). </body>
+		<created>2016-06-30 01:39:01</created>
+		<closed>2016-07-05 12:49:08</closed>
+	</bug>
+	<bug>
+		<id>171</id>
+		<title>Número CTA, no cadastro de Áreas, está aceitando negativo.</title>
+		<body>Número CTA, no cadastro de Áreas, está aceitando negativo. </body>
+		<created>2016-06-30 01:38:14</created>
+		<closed>2016-07-01 15:45:23</closed>
+	</bug>
+	<bug>
+		<id>169</id>
+		<title>Na tela de Áreas</title>
+		<body>As Coordenadas não aparecem na tela que lista os registros. </body>
+		<created>2016-06-30 01:36:02</created>
+		<closed>2016-07-05 12:49:08</closed>
+	</bug>
+	<bug>
+		<id>168</id>
+		<title>A frase "Nenhum registro encontrado" está fixa, mesmo quando tem registros.</title>
+		<body>A frase "Nenhum registro encontrado" está fixa, mesmo quando tem registros. </body>
+		<created>2016-06-30 01:35:01</created>
+		<closed>2016-07-04 14:44:07</closed>
+	</bug>
+	<bug>
+		<id>167</id>
+		<title>Alterar Labels</title>
+		<body>Alterar Label "DESCRICAO" para "NÚMERO CTA", nas telas "/app/areas" e "/app/areas/new". </body>
+		<created>2016-06-30 01:34:45</created>
+		<closed>2016-07-01 16:04:40</closed>
+	</bug>
+	<bug>
+		<id>166</id>
+		<title>O campo "Nome", da Cidade, por ser único, deve ser obrigatório.</title>
+		<body>O campo "Nome", da Cidade, por ser único, deve ser obrigatório. </body>
+		<created>2016-06-30 01:34:24</created>
+		<closed>2016-07-01 15:43:49</closed>
+	</bug>
+	<bug>
+		<id>165</id>
+		<title>Tela de confirmação "quer mesmo apagar este registro?" Começa em minúsculo.</title>
+		<body>Tela de confirmação "quer mesmo apagar este registro?" Começa em minúsculo. Botão "Próximo" no cadastro de Controladores está em minúsculo. Botões "Adicionar coordenadas" e "Adicionar modelo controlador" Começa, em minúsculo. </body>
+		<created>2016-06-30 01:32:56</created>
+		<closed>2016-07-01 16:03:58</closed>
+	</bug>
+	<bug>
+		<id>164</id>
+		<title>Está deixando cadastrar alguns itens com todos os campos em branco.</title>
+		<body>Está deixando cadastrar alguns itens com todos os campos em branco. </body>
+		<created>2016-06-30 01:32:39</created>
+		<closed>2016-07-01 16:01:33</closed>
+	</bug>
+	<bug>
+		<id>163</id>
+		<title>Está deixando repetir cidades com o mesmo nome.</title>
+		<body>Está deixando repetir cidades com o mesmo nome. </body>
+		<created>2016-06-30 01:32:08</created>
+		<closed>2016-07-01 15:44:21</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>Tabelas de index não reconhecem dados vindos de promise</title>
+		<body>O componente de formação de tabelas - datatables - parece não reconhecer os dados que vêm das promises.  Os filtros, ordenadores e paginação não funcionam com este componente. </body>
+		<created>2016-06-30 01:15:02</created>
+		<closed>2016-07-05 12:49:08</closed>
+	</bug>
+	<bug>
+		<id>103</id>
+		<title>Criar pré-condições para cada acessar cada step do wizard</title>
+		<body>Caso um usuário acesse via url um passo qualquer do wizard com um controlador que não existe ou em um passo que ainda não foi alcançado através do preenchimento do wizard (ex.: http://localhost/#/app/wizard-controladores/aneis/id-de-controlador-nao-existente), a tela é exibida, mesmo faltando dados.  É necessário criar pré-condições para acessar qualquer tela do wizard. Caso a pré-condição seja cumprida, o step será acessado. Caso contrário, o usuário deverá se redirecionado a um step válido. </body>
+		<created>2016-06-21 13:55:46</created>
+		<closed>2016-07-04 12:59:38</closed>
+	</bug>
+	<bug>
+		<id>102</id>
+		<title>Associação estágio - grupo semaforico</title>
+		<body>Ao dar um reload no wizard `associacao`, é necessário recalcular os valores da variável `associacaoEstagioGrupoSemaforicos`. </body>
+		<created>2016-06-21 13:50:30</created>
+		<closed>2016-07-05 12:49:08</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>Ao acessar o staging.influunt.com.br com browser em EN está dando erro de i18n</title>
+		<body></body>
+		<created>2016-06-15 21:05:13</created>
+		<closed>2016-06-23 18:08:49</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>Implementar modelo Area/Localidade Geografica</title>
+		<body>Implementar a relação entre o modelo de Area com o modelo de Localidade Geografica. </body>
+		<created>2016-06-13 13:27:53</created>
+		<closed>2016-06-16 22:15:17</closed>
+	</bug>
+</bugs>

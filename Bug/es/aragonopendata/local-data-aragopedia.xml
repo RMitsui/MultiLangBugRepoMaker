@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>61</id>
+		<title>Prueba de creacción de issue desde api 24051530</title>
+		<body>Esto es una prueba de creaccion de una isssue desde la api de github realizada por hlafuente </body>
+		<created>2016-05-24 13:30:19</created>
+		<closed>2016-05-25 07:52:41</closed>
+	</bug>
+	<bug>
+		<id>57</id>
+		<title>Prueba de creacción de issue desde api 23051213</title>
+		<body>Esto es una prueba de creaccion de una isssue desde la api de github realizada por hlafuente </body>
+		<created>2016-05-23 10:37:38</created>
+		<closed>2016-05-24 09:39:14</closed>
+	</bug>
+	<bug>
+		<id>56</id>
+		<title>Prueba de creacción de issue desde api 23051213</title>
+		<body>Esto es una prueba de creaccion de una isssue desde la api de github realizada por hlafuente </body>
+		<created>2016-05-23 10:13:29</created>
+		<closed>2016-05-23 10:14:59</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>Prueba de creacción de issue desde api 4</title>
+		<body>Esto es una prueba de creaccion de una isssue desde la api de github realizada por hlafuente </body>
+		<created>2016-05-12 15:56:37</created>
+		<closed>2016-05-12 15:57:24</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>Prueba de creacción de issue desde api 3</title>
+		<body>Esto es una prueba de creaccion de una isssue desde la api de github realizada por hlafuente </body>
+		<created>2016-05-12 14:28:51</created>
+		<closed>2016-05-12 15:57:12</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>Prueba de creacción de issue desde api 1</title>
+		<body>Esto es una prueba de creaccion de una isssue desde la api de github realizada por hlafuente </body>
+		<created>2016-05-12 14:18:14</created>
+		<closed>2016-05-12 15:57:01</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>Prueba de creacción de issue desde api 1</title>
+		<body>Esto es una prueba de creaccion de una isssue desde la api de github realizada por hlafuente </body>
+		<created>2016-05-12 13:45:51</created>
+		<closed>2016-05-12 14:25:25</closed>
+	</bug>
+	<bug>
+		<id>41</id>
+		<title>Errores en el linked data api</title>
+		<body>Se ha detectado el error que al parsear con javascript el json del linked data api da error debido al caracter ':'   Por tanto se va a proceder a sustituirlo por el caracter '_'  Además se va a agregar el título de los cubos de datos. </body>
+		<created>2016-05-04 15:03:57</created>
+		<closed>2016-05-25 09:51:25</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>Posible error en informe 03-0300006A</title>
+		<body>En el informe 03-030006A hay un posible error en uno de los datos, creemos. Se trata de la tasa de feminidad, que es una columna que debería dar algún tipo de tasa, pero que aparece en todas las filas como 0. </body>
+		<created>2016-04-26 07:58:32</created>
+		<closed>2016-12-19 16:35:35</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>refPeriod como measure en vez de como dimension</title>
+		<body>En algunos casos en los DSD se generan: http://purl.org/linked-data/sdmx/2009/measure#refPeriod  en lugar de como habitualmente (y creo que es la única forma en SDMX): http://purl.org/linked-data/sdmx/2009/dimension#refPeriod  Ej: /recurso/iaest/dsd/05-050202.json  Creo que hay más: select distinct ?s ?p where {?s ?p http://purl.org/linked-data/sdmx/2009/measure#refPeriod} LIMIT 100 </body>
+		<created>2016-03-29 10:30:41</created>
+		<closed>2016-04-20 15:30:10</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>Listado de posibles medidas que en realidad son dimensiones</title>
+		<body>Como ahora podemos distinguir si las medidas son integer, double o string. He sacado un listado con todas las medidas que son actualmente string. Ya que son las que tienen toda la pinta que en realidad son dimensiones.  La query que he ejecutado es:  select distinct ?x ?l where { graph http://opendata.aragon.es:8890/datacube { ?x a rdf:Property;   rdfs:label ?l;   rdfs:range xsd:string. } }   [posibles medidas que deberían ser dimensiones.txt](https://github.com/aragonopendata/local-data-aragopedia/files/178118/posibles.medidas.que.deberian.ser.dimensiones.txt)  Se puede ver que muchos son refArea pero mi algoritmo solo considera un refArea como tal si es una dimensión. Si no es así reasigname la incidencia . </body>
+		<created>2016-03-17 15:12:48</created>
+		<closed>2016-04-27 10:41:35</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>Generada medida municipio en 05-0709-070902 (en vez de refArea)</title>
+		<body>Revisar DSD de 05-0709-070902  Revisar también si debe estar la medida "Dirección provincial nombre" ¿Qué valores debería tener? </body>
+		<created>2016-03-11 09:11:09</created>
+		<closed>2016-04-20 15:32:57</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>Generación errónea de medidas en 01-080101-010105TC</title>
+		<body>Revisar el DSD de 01-080101-010105TC: - Salen medidas que deberían ser codelist - Se generan años que en realidad son valores de una codelist #   select distinct ?p ?o where { ?obs http://purl.org/linked-data/cube#DataSet http://opendata.aragon.es/recurso/iaest/cubo/01-080101-010105TC. ?obs http://purl.org/linked-data/sdmx/2009/dimension#refArea http://opendata.aragon.es/recurso/territorio/Comarca/Gúdar-Javalambre. ?obs ?p ?o } LIMIT 100 </body>
+		<created>2016-03-11 09:08:02</created>
+		<closed>2016-04-27 10:41:15</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>Referenciada codelist que luego no tiene valores</title>
+		<body>En /recurso/iaest/dsd/01-080101-010105 se referencia a la codelist  /kos/iaest/ccaa-nombre  Pero esta codelist, al consultarla vía API, no tiene valores asociados. </body>
+		<created>2016-03-09 14:43:24</created>
+		<closed>2016-03-21 08:14:06</closed>
+	</bug>
+	<bug>
+		<id>16</id>
+		<title>Incluir descripciones para algunas medidas en los DSDs</title>
+		<body>Algunas medidas no incluyen información asociada (_about, comment, label...) Difieren de cómo se generan en otros casos Ej. n-accidentes  /recurso/iaest/dsd/05-0709-070902.json </body>
+		<created>2016-03-08 14:23:28</created>
+		<closed>2016-03-21 08:13:48</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>Añadir en los ficheros de metadatos para la creación de RDF una columna de tipo constante</title>
+		<body>Muchos de los informes tienen como constante el año o trimestre-año en el que han sido generados. Sería útil permitir en estos ficheros de metadatos la inclusión de una columna que permita valores constantes para todas las observaciones, como se hace ahora mismo con refPeriod, de tal manera que esto no esté insertado directamente en el código de generación. Y dicho esto, se pueden generar los ficheros de metadatos correspondientes. </body>
+		<created>2016-03-03 17:51:35</created>
+		<closed>2016-03-29 07:12:17</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>Modificar algunos datos en los RDFs de informes</title>
+		<body>En cada uno de los ficheros RDF generados para cada informe se generan algunos errores: - Los informes se describen como de tipo qb:dataSet. Debería ser qb:DataSet - dc:modify no existe. Debería ser dc:modified </body>
+		<created>2016-03-03 17:48:55</created>
+		<closed>2016-03-11 08:12:39</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>Evitar generación de algunas propiedades en los DSDs</title>
+		<body>Al generar los DSDs a partir de los ficheros Excel de metadatos, se están generando algunos valores repetidos que son incorrectos. Por ejemplo, en el primero de todos: `http://opendata.aragon.es/recurso/iaest/dsd/01-010001 a qb:DataStructureDefinition ;     rdfs:label "Estructura de los cubos de datos que se corresponden con los informes 01-010001"@es ;     skos:notation "DSD-01-010001" .  http://opendata.aragon.es/recurso/iaest/dsd/01-010001 qb:component _:node1egmfx1 . _:node1egmfx1 qb:dimension sdmx-dimension:refArea .  ...  http://opendata.aragon.es/recurso/iaest/dsd/01-010001 qb:component _:node2egmfx1 . _:node2egmfx1 qb:dimension sdmx-dimension:refArea . `  Se genera dos veces el componente con la dimensión refArea, lo que es incorrecto. Esto procede de la unión de varios DSDs que teníamos anteriormente generados, antes de hacer la unión de sus metadatos. </body>
+		<created>2016-03-03 17:46:17</created>
+		<closed>2016-03-11 08:12:35</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>Mejorar la generación de SKOS Concept Schemes</title>
+		<body>En el fichero [kos.ttl](https://github.com/aragonopendata/local-data-aragopedia/blob/master/data/dump/DatosTTL/codelists/kos.ttl) se generan los SKOS concept schemes y SKOS concepts que se corresponden con los valores de las dimensiones.   Se deben hacer los siguientes cambios: - No generar SKOS Concept Schemes para aquellas propiedades que se transforman en sdmx-dimension:refArea o sdmx-dimension:refPeriod - El rdfs:label de un skos:ConceptScheme debería ser el nombre bien escrito, y no el código utilizado como skos:notation, siempre que sea posible. </body>
+		<created>2016-03-03 17:43:24</created>
+		<closed>2016-03-29 07:12:48</closed>
+	</bug>
+</bugs>

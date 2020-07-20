@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="TadpoleForDBTools">
+	<bug id="1048" opendate="2017-10-10 00:17:43" fixdate="2017-11-06 20:56:46">
+		<buginformation>
+			<summary>프로시져 실행시 인수 타입이 날짜일 경우 </summary>
+			<description>프로시져 실행시 인수 타입이 날짜일 경우 yyyy-mm-dd, yyyymmdd, yyyy/mm/dd  형식으로 지정해도 모두 타입오류가 발생합니다.  인수를 프로시져로 넘길때 적절하게 타입을 변환하여 넘길수 있도록 수정되어야 할듯 합니다.  ![image](https://user-images.githubusercontent.com/859932/31363765-9e3aed02-ad9b-11e7-8958-174f849153db.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>com.hangum.tadpole.commons.sql/src/com/hangum/tadpole/engine/sql/util/executer/procedure/ProcedureExecutor.java</file>
+			<file>com.hangum.tadpole.commons.sql/src/com/hangum/tadpole/engine/sql/util/executer/procedure/OracleProcedureExecuter.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

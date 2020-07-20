@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>2493</id>
+		<title>自动重播有一秒钟的加载时间卡顿显示了预览图</title>
+		<body>**需求描述 按照文档在onAutoCompletion中调用startVideo方法实现自动重播，总是会有一秒左右的加载时间，然后闪一下预览图，有没有办法做到不显示预览图？我已经在onAutoCompletion方法里设置了thumbImageView隐藏，但是貌似没有效果。用的7.0.4  **其他app是否实现 参考朋友圈小视频自动重播  </body>
+		<created>2019-06-29 09:27:23</created>
+		<closed>2019-07-01 17:29:36</closed>
+	</bug>
+	<bug>
+		<id>2448</id>
+		<title>调用changeUrl切换url的bug</title>
+		<body>**什么jzvd版本 7.04  **是否和安卓版本有关系，什么版本 所有手机 **是否和特定品牌的手机机型有关系，什么机型 测试过一加，小米，华为， **相关log是什么     Process: cn.jzvd.demo, PID: 29667     java.lang.IllegalStateException: mpjni: prepareAsync: null mp         at tv.danmaku.ijk.media.player.IjkMediaPlayer._prepareAsync(Native Method)         at tv.danmaku.ijk.media.player.IjkMediaPlayer.prepareAsync(IjkMediaPlayer.java:515)         at cn.jzvd.demo.CustomMedia.JZMediaIjk.lambda$prepare$0$JZMediaIjk(JZMediaIjk.java:68)         at cn.jzvd.demo.CustomMedia.-$$Lambda$JZMediaIjk$j54qzRRHtS1XuUqfdO9dyeNMzfE.run(Unknown Source:2)         at android.os.Handler.handleCallback(Handler.java:873)         at android.os.Handler.dispatchMessage(Handler.java:99)         at android.os.Looper.loop(Looper.java:193)         at android.os.HandlerThread.run(HandlerThread.java:65)  **复现流程  在demo ActivityApiCustomMedia 操作切换播放器内核，用MyJzvdStd复写onAutoCompletion 增加回调调用changeUrl会出现以下情况。 1.在调用changeUrl如果调用jzvdStd.startButton.performClick(); 不闪退，会出现有声音画面停留上一个视频的末尾。 2.在调用changeUrl如果调用jzvdStd.startVideo(); 闪退，必现。但是视频能正常切换，声音正常。闪退的概率在多切换几次就出现上面的log。   **最好有截图或者视频说明情况 需要附上demo吗？ </body>
+		<created>2019-06-06 03:47:25</created>
+		<closed>2020-02-24 03:11:30</closed>
+	</bug>
+	<bug>
+		<id>2238</id>
+		<title>自定义ui添加EditText无法获取焦点</title>
+		<body>**需求描述  有个需求需要发射弹幕，于是自定义ui时，加了一个editText  就一个简单的editText，没其他代码 ```` &lt;EditText             android:id="@+id/sendDanmaku"             android:layout_width="150dp"             android:layout_height="wrap_content" /&gt; ````  在操作的时候，点击该EditText输入时，该EditText会自动失去焦点，键盘也没有弹出来  **其他app是否实现  **截图或者小视频说明 </body>
+		<created>2018-12-13 07:11:31</created>
+		<closed>2019-01-09 10:41:31</closed>
+	</bug>
+	<bug>
+		<id>2002</id>
+		<title>Resolution selection (HLS Video)</title>
+		<body>How to add option for select the video resolution like youtube player?</body>
+		<created>2018-07-17 03:19:43</created>
+		<closed>2018-08-11 14:42:13</closed>
+	</bug>
+	<bug>
+		<id>1752</id>
+		<title>切换全屏时的bug</title>
+		<body>红米note3也会。但是我这边没有真机。无法视频录制 跟之前一个人反馈的问题是一样的。没有日志反馈 地址  https://github.com/lipangit/JiaoZiVideoPlayer/issues/1741 GIF演示   https://imgchr.com/i/CpoPN4  ``` &lt;activity             android:name=".circle.activity.PostDetailActivity"             android:configChanges="orientation|screenSize|keyboardHidden"             android:screenOrientation="portrait"             android:theme="@style/AppTheme2"             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" /&gt; ``` `public class PostDetailActivity extends AppCompatActivity`   </body>
+		<created>2018-04-04 03:52:31</created>
+		<closed>2018-11-29 14:07:48</closed>
+	</bug>
+	<bug>
+		<id>1390</id>
+		<title>关于播放中点击返回导致ProgressTimerTask没有被及时置空</title>
+		<body>playView.setUp(linkedHashMap, 0, JZVideoPlayer.SCREEN_WINDOW_FULLSCREEN);后，点击返回按钮，这个时候虽然退出了播放，但后台的ProgressTimerTask没有被及时停止置空，导致不断抛出被捕获的异常。 发生方式， 1、在Activity中设置全屏 JZVideoPlayer.FULLSCREEN_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;         JZVideoPlayer.NORMAL_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;  `    @Override     public void onBackPressed() {         if (JZVideoPlayer.backPress()) {             return;         }         super.onBackPressed();     }`      `@Override     protected void onPause() {         super.onPause();         JZVideoPlayer.releaseAllVideos();     }` 2、播放 3、点击返回按键，此时退出到了全屏待播放界面，并且界面处于暂停状态，点击暂停，奔溃。  返回抛出的异常 `System.err: java.lang.IllegalStateException System.err:     at android.media.MediaPlayer.getDuration(Native Method) System.err:     at cn.jzvd.JZVideoPlayer.getDuration(JZVideoPlayer.java:861) System.err:     at cn.jzvd.JZVideoPlayer$ProgressTimerTask$1.run(JZVideoPlayer.java:1156) System.err:     at android.os.Handler.handleCallback(Handler.java:743) System.err:     at android.os.Handler.dispatchMessage(Handler.java:95) System.err:     at android.os.Looper.loop(Looper.java:148) System.err:     at android.app.ActivityThread.main(ActivityThread.java:5426) System.err:     at java.lang.reflect.Method.invoke(Native Method) System.err:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:772) System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:662) JiaoZiVideoPlayer: setProgressAndText: progress=0 position=0 duration=0`   奔溃：  ` FATAL EXCEPTION: main  Process: com.zwl9517hotmail.demoplaymedia, PID: 14879  java.lang.IllegalStateException      at android.media.MediaPlayer._pause(Native Method)      at android.media.MediaPlayer.pause(MediaPlayer.java:1440)      at cn.jzvd.JZVideoPlayer.onClick(JZVideoPlayer.java:392)      at cn.jzvd.JZVideoPlayerStandard.onClick(JZVideoPlayerStandard.java:262)      at android.view.View.performClick(View.java:5204)      at android.view.View$PerformClick.run(View.java:21170)      at android.os.Handler.handleCallback(Handler.java:743)      at android.os.Handler.dispatchMessage(Handler.java:95)      at android.os.Looper.loop(Looper.java:148)      at android.app.ActivityThread.main(ActivityThread.java:5426)                                                                                            at java.lang.reflect.Method.invoke(Native Method)      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:772)      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:662)`    </body>
+		<created>2017-11-24 11:59:04</created>
+		<closed>2017-12-11 04:10:07</closed>
+	</bug>
+	<bug>
+		<id>1212</id>
+		<title>Facing issue on Media Player error</title>
+		<body>I am getting this issue and not playing video..! E/MediaPlayer: Attempt to call getDuration without a valid mediaplayer  E/MediaPlayer: error (-38, 0)  E/MediaPlayer: Error (-38,0)  E/JieCaoVideoPlayer: onError 260 - -110 [1151961832]  E/JieCaoVideoPlayer: onError -38 - 0 [1151961832]   E/JieCaoVideoPlayer: onError -38 - 0 [1151961832] </body>
+		<created>2017-09-06 10:07:01</created>
+		<closed>2017-12-11 03:20:32</closed>
+	</bug>
+	<bug>
+		<id>1176</id>
+		<title>vivo y17t android 4.2.2 API17,视频播放时切换大小屏幕崩溃</title>
+		<body> FATAL EXCEPTION: main                                                                        java.lang.RuntimeException: Error during detachFromGLContext (see logcat for details)                                                                            at android.graphics.SurfaceTexture.attachToGLContext(SurfaceTexture.java:237)                                                                            at android.view.GLES20TextureLayer.setSurfaceTexture(GLES20TextureLayer.java:81)                                                                            at android.view.HardwareRenderer$Gl20Renderer.setSurfaceTexture(HardwareRenderer.java:1576)                                                                            at android.view.TextureView.getHardwareLayer(TextureView.java:393)                                                                            at android.view.View.getDisplayList(View.java:12731)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.getDisplayList(View.java:12760)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.draw(View.java:13835)                                                                            at android.view.View.getDisplayList(View.java:12762)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.getDisplayList(View.java:12760)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.getDisplayList(View.java:12760)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.getDisplayList(View.java:12760)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.getDisplayList(View.java:12760)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.getDisplayList(View.java:12760)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.draw(View.java:13835)                                                                            at android.widget.FrameLayout.draw(FrameLayout.java:467)                                                                            at android.view.View.getDisplayList(View.java:12762)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.getDisplayList(View.java:12760)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.getDisplayList(View.java:12760)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.getDisplayList(View.java:12760)                                                                            at android.view.View.getDisplayList(View.java:12806)                                                                            at android.view.View.draw(View.java:13540)                                                                            at android.view.ViewGroup.drawChild(ViewGroup.java:3022)                                                                            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:2886)                                                                            at android.view.View.draw(View.java:13835)                                                                            at android.widget.FrameLayout.draw(FrameLayout.java:467)                                                                            at com.android.internal.policy.impl.PhoneWindow$DecorView.draw(PhoneWindow.java:2236)</body>
+		<created>2017-08-24 09:22:32</created>
+		<closed>2017-11-28 03:44:24</closed>
+	</bug>
+	<bug>
+		<id>1169</id>
+		<title>三星S8只播放声音画面卡主不动</title>
+		<body>三星S8只播放声音画面卡主不动</body>
+		<created>2017-08-21 10:22:00</created>
+		<closed>2017-08-24 09:53:12</closed>
+	</bug>
+	<bug>
+		<id>1154</id>
+		<title>播放出错</title>
+		<body>![image](https://user-images.githubusercontent.com/19503881/29400667-c33a88de-8360-11e7-939d-2ec2b0e27a0b.png) 异常如图 是播放到自动缓冲的位置就播放失败了 不能继续自动缓冲下去</body>
+		<created>2017-08-17 07:29:53</created>
+		<closed>2017-11-28 03:48:07</closed>
+	</bug>
+	<bug>
+		<id>1109</id>
+		<title>加载长视频的时候总是失败，长视频大概20分钟左右</title>
+		<body></body>
+		<created>2017-08-04 02:40:09</created>
+		<closed>2017-11-28 03:33:06</closed>
+	</bug>
+	<bug>
+		<id>1072</id>
+		<title>播放不了视频</title>
+		<body>http://222.37.159.225:13164/playurl.m3u8?xxx http://xx.m3u8? 这两类视屏都不可以啊 QCMediaPlayer mediaplayer NOT present 07-23 16:32:06.531 21206 21316 E   MediaPlayer com.SL.TV                        error (-38, 0) 07-23 16:32:06.531 21206 21316 W   MediaPlayer com.SL.TV                        setScreenOnWhilePlaying(true) is ineffective without a SurfaceHolder 07-23 16:32:06.531 21206 21316 E   MediaPlayer com.SL.TV                        prepareAsync called in state 0 07-23 16:32:06.531 21206 21316 W   System.err com.SL.TV                         java.lang.Illegal State Exception 07-23 16:32:06.531 21206 21316 W   System.err com.SL.TV                         at android</body>
+		<created>2017-07-23 08:39:48</created>
+		<closed>2017-08-07 07:01:42</closed>
+	</bug>
+	<bug>
+		<id>1070</id>
+		<title>hang when try to rotat phone</title>
+		<body>hi i am using your library in my android project but when i try to rotate phone portrait to landscape its hand for 3 or 4 sec </body>
+		<created>2017-07-22 10:44:05</created>
+		<closed>2017-11-28 03:09:41</closed>
+	</bug>
+	<bug>
+		<id>1057</id>
+		<title>leadked</title>
+		<body>JCVideoPlayer$ProgressTimerTask.this refrerences JCVideoPlayerStandard.mcontext</body>
+		<created>2017-07-19 07:11:00</created>
+		<closed>2017-12-11 03:22:02</closed>
+	</bug>
+	<bug>
+		<id>1044</id>
+		<title>内存泄漏</title>
+		<body>![](https://user-images.githubusercontent.com/22962183/28167462-48b6e156-680e-11e7-91e2-f1e0b16d7e0e.jpg) </body>
+		<created>2017-07-13 13:00:49</created>
+		<closed>2017-07-17 04:05:56</closed>
+	</bug>
+	<bug>
+		<id>998</id>
+		<title>华为荣耀7i AL00 手机上loop = true;循环播放无效</title>
+		<body></body>
+		<created>2017-06-27 06:53:57</created>
+		<closed>2017-07-17 03:50:08</closed>
+	</bug>
+	<bug>
+		<id>991</id>
+		<title>求教，小米note在系统4.4.4下onError -38 - 0 [1118573208] 无法播放问题</title>
+		<body>06-06 18:01:43.356 31856-31856/com.xcar.activity I/JCResizeTextureView: onMeasure  [1119758608]  06-06 18:01:43.356 31856-31856/com.xcar.activity I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 06-06 18:01:43.356 31856-31856/com.xcar.activity I/JCResizeTextureView: viewRotation = 0 06-06 18:01:43.356 31856-31856/com.xcar.activity I/JCResizeTextureView: onMeasure  [1119758608]  06-06 18:01:43.356 31856-31856/com.xcar.activity I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 06-06 18:01:43.366 31856-31856/com.xcar.activity I/JCResizeTextureView: viewRotation = 0 06-06 18:01:43.366 31856-31856/com.xcar.activity I/JCResizeTextureView: onMeasure  [1119758608]  06-06 18:01:43.366 31856-31856/com.xcar.activity I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 06-06 18:01:43.366 31856-31856/com.xcar.activity I/JCResizeTextureView: viewRotation = 0 06-06 18:01:43.366 31856-31856/com.xcar.activity I/JCResizeTextureView: onMeasure  [1119758608]  06-06 18:01:43.366 31856-31856/com.xcar.activity I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 06-06 18:01:43.366 31856-31856/com.xcar.activity I/JCResizeTextureView: viewRotation = 0 06-06 18:01:43.366 31856-31856/com.xcar.activity I/JieCaoVideoPlayer: onSurfaceTextureAvailable [1119987416]   以下是错误 06-06 18:01:43.366 31856-32522/com.xcar.activity E/MediaPlayer-JNI: QCMediaPlayer mediaplayer NOT present 06-06 18:01:43.376 31856-32522/com.xcar.activity E/MediaPlayer: error (-38, 0) 06-06 18:01:43.376 31856-32522/com.xcar.activity W/MediaPlayer: setScreenOnWhilePlaying(true) is ineffective without a SurfaceHolder 06-06 18:01:43.376 31856-32522/com.xcar.activity E/MediaPlayer: prepareAsync called in state 0 06-06 18:01:43.376 31856-32522/com.xcar.activity W/System.err: java.lang.IllegalStateException 06-06 18:01:43.376 31856-32522/com.xcar.activity W/System.err:     at android.media.MediaPlayer.prepareAsync(Native Method) 06-06 18:01:43.376 31856-32522/com.xcar.activity W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCMediaManager$MediaHandler.handleMessage(JCMediaManager.java:98) 06-06 18:01:43.376 31856-32522/com.xcar.activity W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:102) 06-06 18:01:43.376 31856-32522/com.xcar.activity W/System.err:     at android.os.Looper.loop(Looper.java:136) 06-06 18:01:43.376 31856-32522/com.xcar.activity W/System.err:     at android.os.HandlerThread.run(HandlerThread.java:61) 06-06 18:01:43.376 31856-32522/com.xcar.activity E/MediaPlayer: Error (-38,0) 06-06 18:01:43.386 31856-31856/com.xcar.activity E/JieCaoVideoPlayer: onError -38 - 0 [1118573208]   小米note，系统4.4.4，在recyclerview中，无法播放</body>
+		<created>2017-06-23 10:09:48</created>
+		<closed>2017-07-17 03:51:52</closed>
+	</bug>
+	<bug>
+		<id>987</id>
+		<title>小米盒子3播放出现what -38 extra 0</title>
+		<body>系统版本 android.os.Build.MODEL + ","                 + android.os.Build.VERSION.SDK + ","                 + android.os.Build.VERSION.RELEASE  MIBox3,22,5.1.1  在手机上测试多个系统都没有这个问题</body>
+		<created>2017-06-21 15:24:43</created>
+		<closed>2017-07-17 03:24:33</closed>
+	</bug>
+	<bug>
+		<id>984</id>
+		<title>判断是否是播放本地视频的问题</title>
+		<body>你好，播放本地视频的时候，本地视频url开头是"/storage"开头，仍然会提示是否使用流量播放的对话框。视频路径是通过ContentResolver查询MediaStore得到的，视频文件放在sd卡中，机器型号三星s5，系统是官方6.0</body>
+		<created>2017-06-21 03:52:08</created>
+		<closed>2017-07-17 03:24:14</closed>
+	</bug>
+	<bug>
+		<id>980</id>
+		<title>在列表中点击全屏播放，第一条视频播放完成后继续全屏播放第二条视频的时候 抛异常</title>
+		<body>```java java.lang.IllegalStateException 06-20 16:17:17.457 19220-19220/com.uf.ufballtest W/System.err:     at android.media.MediaPlayer.getCurrentPosition(Native Method) 06-20 16:17:17.457 19220-19220/com.uf.ufballtest W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.getCurrentPositionWhenPlaying(JCVideoPlayer.java:721) 06-20 16:17:17.457 19220-19220/com.uf.ufballtest W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.onCompletion(JCVideoPlayer.java:470) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard.onCompletion(JCVideoPlayerStandard.java:778) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayerManager.completeAll(JCVideoPlayerManager.java:42) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.prepareMediaPlayer(JCVideoPlayer.java:199) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard.startVideo(JCVideoPlayerStandard.java:252) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard.onClick(JCVideoPlayerStandard.java:189) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at android.view.View.performClick(View.java:5207) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at android.view.View$PerformClick.run(View.java:21177) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at android.os.Handler.handleCallback(Handler.java:739) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:95) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at android.os.Looper.loop(Looper.java:148) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:5458) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at java.lang.reflect.Method.invoke(Native Method) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:738) 06-20 16:17:17.458 19220-19220/com.uf.ufballtest W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:628) ``` 在列表中点击全屏播放，第一条视频播放完成后继续全屏播放第二条视频的时候 抛异常 ```java  url = data.getVideoUrl(); videoType = VIDEO_POSITIVE; player.setUp(url, JCVideoPlayer.SCREEN_WINDOW_FULLSCREEN, "", data.getVideoId()); player.startButton.performClick(); //JCVideoPlayer.startFullscreen(getContext(), VideoPlayer.class, url, ""); ```</body>
+		<created>2017-06-20 08:22:42</created>
+		<closed>2017-07-17 03:12:11</closed>
+	</bug>
+	<bug>
+		<id>979</id>
+		<title>5.5.4，     mJcVideoPlayerStandard.loop = true; 无法循环播放</title>
+		<body>只播放一次</body>
+		<created>2017-06-20 02:06:15</created>
+		<closed>2017-07-17 03:11:52</closed>
+	</bug>
+	<bug>
+		<id>977</id>
+		<title>播放assets目录下的视频报错</title>
+		<body>代码：videoplayer.setUp("file:///android_asset/video1.mp4",JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "本地视频");  报错： java.lang.reflect.InvocationTargetException java.lang.reflect.Method.invoke(Native Method) fm.jiecao.jcvideoplayer_lib.JCMediaManager$MediaHandler.handleMessage(JCMediaManager.java:83)</body>
+		<created>2017-06-19 11:45:39</created>
+		<closed>2017-07-17 03:11:36</closed>
+	</bug>
+	<bug>
+		<id>970</id>
+		<title>画面声音不同步</title>
+		<body>http://yixiaomiao.img-cn-beijing.aliyuncs.com/video/609_1497146633_95723_qncaf_1.mp4 http://yixiaomiao.img-cn-beijing.aliyuncs.com/video/609_1497159665_85779_m0d3a_1.mp4 这个视频是正常的，但是用JieCaoVideopalyer播放时明显的声音画面不同步</body>
+		<created>2017-06-15 09:34:01</created>
+		<closed>2017-07-17 03:10:08</closed>
+	</bug>
+	<bug>
+		<id>933</id>
+		<title>fragment列表里面播放，点击全屏后把手机横屏就报这个错，在activity里面是没事的。</title>
+		<body>fragment列表里面播放，点击全屏后把手机横屏就报这个错，在activity里面是没事的 ![image](https://cloud.githubusercontent.com/assets/16240767/26716250/4daf8f1a-47ab-11e7-9620-69744201dbe7.png) 报错位置： ![image](https://cloud.githubusercontent.com/assets/16240767/26716304/7d0c3dee-47ab-11e7-99da-5a2bb55c714c.png)  activity继承的是AppCompatActivity，fragment继承的是Fragment   </body>
+		<created>2017-06-02 07:53:27</created>
+		<closed>2017-07-16 12:20:04</closed>
+	</bug>
+	<bug>
+		<id>930</id>
+		<title>设置 seekToInAdvance 没用作用</title>
+		<body>jcVideoPlayerStandard.seekToInAdvance = 500; 设置之后点击播放，还是从头播放，我用的是最新的版本5.5.4。 "devBrand":"samsung" "devModel":"SM-N9006" 系统5.0</body>
+		<created>2017-06-01 09:53:02</created>
+		<closed>2017-07-16 12:20:08</closed>
+	</bug>
+	<bug>
+		<id>891</id>
+		<title>JieCaoVideoPlayer load videos very slow</title>
+		<body>I am using JieCao Video Player but video loading is very slow is there any way to increase the speed, my mp4 files is small "3-7 mb" " 480P" but take too much time to repare the video and is there a way to detect when the video is prepared something like " OnPreparedListener "</body>
+		<created>2017-05-16 19:38:23</created>
+		<closed>2017-07-16 12:11:08</closed>
+	</bug>
+	<bug>
+		<id>868</id>
+		<title>播放进度未保存</title>
+		<body>当前播放的视频当滑出界面后，再次滑动回去，点击播放，不是从之前进度播放，而是重新播放。 </body>
+		<created>2017-05-10 07:12:58</created>
+		<closed>2017-09-18 08:02:32</closed>
+	</bug>
+	<bug>
+		<id>864</id>
+		<title>内存泄漏 memory leak</title>
+		<body>In fm.jiecao.jiecaovideoplayer:5.5.4:59. * fm.jiecao.jiecaovideoplayer.PlayDirectlyActivity has leaked: * GC ROOT java.util.Timer$TimerImpl.&lt;Java Local&gt; * references fm.jiecao.jcvideoplayer_lib.JCVideoPlayer$ProgressTimerTask.this$0 * references fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard.mContext * leaks fm.jiecao.jiecaovideoplayer.PlayDirectlyActivity instance * Retaining: 331 KB. * Reference Key: ad7592d3-816d-42a9-b97b-dc0cf5d0348c * Device: HUAWEI Huawei HUAWEI MT7-CL00 MT7-CL00 * Android Version: 6.0 API: 23 LeakCanary: 1.4-beta2 3799172 * Durations: watch=5013ms, gc=179ms, heap dump=3377ms, analysis=287758ms   In fm.jiecao.jiecaovideoplayer:5.5.4:59.  * fm.jiecao.jiecaovideoplayer.PlayDirectlyActivity has leaked:  * GC ROOT static fm.jiecao.jcvideoplayer_lib.JCMediaManager.textureView * references fm.jiecao.jcvideoplayer_lib.JCResizeTextureView.mContext * leaks fm.jiecao.jiecaovideoplayer.PlayDirectlyActivity instance * Retaining: 179 KB. * Reference Key: abb2c545-7c7d-4f75-88ba-f2e96aee561b * Device: HUAWEI Huawei HUAWEI MT7-CL00 MT7-CL00 * Android Version: 6.0 API: 23 LeakCanary: 1.4-beta2 3799172 * Durations: watch=5012ms, gc=177ms, heap dump=3093ms, analysis=270081ms  以上是leakcanary反馈的2处内存泄漏信息   麻烦修复下</body>
+		<created>2017-05-09 08:04:52</created>
+		<closed>2017-07-16 11:52:52</closed>
+	</bug>
+	<bug>
+		<id>857</id>
+		<title>索尼LT26i Android  4.2可以在线播放视频但不能播放本地视频</title>
+		<body>用户反映的 暂时没有拿到Log @lipangit </body>
+		<created>2017-05-06 14:52:15</created>
+		<closed>2017-07-16 11:53:24</closed>
+	</bug>
+	<bug>
+		<id>844</id>
+		<title>mediaPlayer prepareAysnc()  导致error -38</title>
+		<body>日志如下： I/JieCaoVideoPlayer: onClick start [879264280] D/JieCaoVideoPlayer: prepareMediaPlayer [879264280] D/JieCaoVideoPlayer: addTextureView [879264280] I/JieCaoVideoPlayer: onSurfaceTextureAvailable [107980740] D/JieCaoVideoPlayer: onInfo what - 701 extra - 0 D/JieCaoVideoPlayer: MEDIA_INFO_BUFFERING_START E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] E/JieCaoVideoPlayer: onError -38 - 0 [879264280] I/JieCaoVideoPlayer: onVideoSizeChanged  [879264280] I/JieCaoVideoPlayer: onPrepared  [879264280] I/JieCaoVideoPlayer: onSurfaceTextureSizeChanged [107980740] D/JieCaoVideoPlayer: onInfo what - 3 extra - 0 D/JieCaoVideoPlayer: onInfo what - 702 extra - 0 D/JieCaoVideoPlayer: MEDIA_INFO_BUFFERING_END D/JieCaoVideoPlayer: releaseAllVideos I/JieCaoVideoPlayer: onCompletion  [879264280]   当修改成prepare()之后，没有问题。 版本号是Android5.0 平板 在此给需要的朋友说明一下</body>
+		<created>2017-05-02 07:46:56</created>
+		<closed>2017-07-16 11:39:55</closed>
+	</bug>
+	<bug>
+		<id>837</id>
+		<title>Bug Play Video Android</title>
+		<body>Im using the Android 4.1.1.  And cant play the video demo of JieCaoVdeoPlayer, this is the LogCat results:  ```  04-27 13:28:04.376 1971-1971/fm.jiecao.jiecaovideoplayer D/OpenGLRenderer: TextureCache::callback: name, removed size, mSize = 14, 129600, 1464256 04-27 13:28:04.512 1971-1971/fm.jiecao.jiecaovideoplayer I/JieCaoVideoPlayer: backPress 04-27 13:28:05.740 1971-1971/fm.jiecao.jiecaovideoplayer I/JieCaoVideoPlayer: onClick start [1399947100]  04-27 13:28:05.740 1971-1971/fm.jiecao.jiecaovideoplayer D/JieCaoVideoPlayer: prepareMediaPlayer [1399947100]  04-27 13:28:05.740 1971-1971/fm.jiecao.jiecaovideoplayer D/JieCaoVideoPlayer: addTextureView [1399947100]  04-27 13:28:05.744 1971-1971/fm.jiecao.jiecaovideoplayer I/USER_EVENT: ON_CLICK_START_ICON title is : Titulo del Video url is : http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4 screen is : 2 04-27 13:28:05.744 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:05.744 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 04-27 13:28:05.744 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:05.748 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:05.748 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 04-27 13:28:05.756 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:05.760 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:05.760 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 04-27 13:28:05.760 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:05.760 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:05.760 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 04-27 13:28:05.760 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:05.772 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:05.772 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 04-27 13:28:05.772 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:05.772 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:05.772 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 04-27 13:28:05.772 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:05.780 1971-1971/fm.jiecao.jiecaovideoplayer I/JieCaoVideoPlayer: onSurfaceTextureAvailable [1400058652]  04-27 13:28:05.780 1971-2008/fm.jiecao.jiecaovideoplayer W/MediaPlayer: setScreenOnWhilePlaying(true) is ineffective without a SurfaceHolder 04-27 13:28:05.780 1971-2008/fm.jiecao.jiecaovideoplayer W/MediaPlayer: setScreenOnWhilePlaying(true) is ineffective for Surface 04-27 13:28:06.268 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:06.268 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 04-27 13:28:06.268 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:06.300 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:06.304 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0 04-27 13:28:06.304 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:11.400 1971-1981/fm.jiecao.jiecaovideoplayer E/MediaPlayer: error (1, -2147483648) 04-27 13:28:11.400 1971-2008/fm.jiecao.jiecaovideoplayer E/MediaPlayer: Error (1,-2147483648) 04-27 13:28:11.456 1971-1971/fm.jiecao.jiecaovideoplayer I/JieCaoVideoPlayer: onVideoSizeChanged  [1399947100]  04-27 13:28:11.456 1971-1971/fm.jiecao.jiecaovideoplayer I/JieCaoVideoPlayer: onPrepared  [1399947100]  04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 640, videoHeight = 480 04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: widthMeasureSpec  [MeasureSpec: EXACTLY 720] 04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: heightMeasureSpec [MeasureSpec: EXACTLY 1184] 04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [1399947548]  04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 640, videoHeight = 480 04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0 04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: widthMeasureSpec  [MeasureSpec: EXACTLY 720] 04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: heightMeasureSpec [MeasureSpec: EXACTLY 1184] 04-27 13:28:11.580 1971-1971/fm.jiecao.jiecaovideoplayer I/JieCaoVideoPlayer: onSurfaceTextureSizeChanged [1400058652]  04-27 13:28:11.588 1971-1971/fm.jiecao.jiecaovideoplayer E/JieCaoVideoPlayer: onError 1 - -2147483648 [1399947100]  04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err: java.lang.IllegalStateException 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.media.MediaPlayer.getDuration(Native Method) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.getDuration(JCVideoPlayer.java:737) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.setProgressAndText(JCVideoPlayer.java:747) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard.setProgressAndText(JCVideoPlayerStandard.java:321) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer$ProgressTimerTask$1.run(JCVideoPlayer.java:709) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.os.Handler.handleCallback(Handler.java:615) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:92) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.os.Looper.loop(Looper.java:137) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:4745) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at java.lang.reflect.Method.invokeNative(Native Method) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at java.lang.reflect.Method.invoke(Method.java:511) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786) 04-27 13:28:11.632 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at dalvik.system.NativeStart.main(Native Method) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err: java.lang.IllegalStateException 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.media.MediaPlayer.getDuration(Native Method) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.getDuration(JCVideoPlayer.java:737) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard.setProgressAndText(JCVideoPlayerStandard.java:323) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer$ProgressTimerTask$1.run(JCVideoPlayer.java:709) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.os.Handler.handleCallback(Handler.java:615) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:92) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.os.Looper.loop(Looper.java:137) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:4745) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at java.lang.reflect.Method.invokeNative(Native Method) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at java.lang.reflect.Method.invoke(Method.java:511) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553) 04-27 13:28:11.636 1971-1971/fm.jiecao.jiecaovideoplayer W/System.err:     at dalvik.system.NativeStart.main(Native Method)  ```</body>
+		<created>2017-04-27 18:31:42</created>
+		<closed>2017-07-16 11:41:23</closed>
+	</bug>
+	<bug>
+		<id>826</id>
+		<title>亮度调节有bug</title>
+		<body>当将亮度调制最低后，再次调节亮度会先亮度升高然后在回到调节中的亮度上。</body>
+		<created>2017-04-25 12:47:12</created>
+		<closed>2017-05-28 14:34:12</closed>
+	</bug>
+	<bug>
+		<id>808</id>
+		<title>华为荣耀7全屏播放闪退</title>
+		<body>华为荣耀7全屏播放闪退 操作：全屏播放或转动横竖屏，100%几率闪退 报错日志：04-17 19:27:07.458 8186-8197/com.laka.taste E/StrictMode: A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.                                                           java.lang.Throwable: Explicit termination method 'release' not called                                                               at dalvik.system.CloseGuard.open(CloseGuard.java:180)                                                               at android.view.Surface.setNativeObjectLocked(Surface.java:509)                                                               at android.view.Surface.&lt;init&gt;(Surface.java:158)                                                               at fm.jiecao.jcvideoplayer_lib.JCMediaManager$MediaHandler.handleMessage(JCMediaManager.java:123)                                                               at android.os.Handler.dispatchMessage(Handler.java:102)                                                               at android.os.Looper.loop(Looper.java:150)                                                               at android.os.HandlerThread.run(HandlerThread.java:61) 手机信息： 华为荣耀7 PLK-UL00 EMUI系统4.0.2 Android版本6.0 sdk版本：5.5.3/5.2.1/4.8.2 </body>
+		<created>2017-04-17 11:33:04</created>
+		<closed>2017-07-16 11:43:45</closed>
+	</bug>
+	<bug>
+		<id>807</id>
+		<title>播放结束后退出应用报空指针</title>
+		<body>  Process: fm.jiecao.jiecaovideoplayer, PID: 5536                                                                            java.lang.NullPointerException: Attempt to invoke virtual method 'void fm.jiecao.jcvideoplayer_lib.JCResizeTextureView.setSurfaceTexture(android.graphics.SurfaceTexture)' on a null object reference                                                                                at fm.jiecao.jcvideoplayer_lib.JCMediaManager.onSurfaceTextureAvailable(JCMediaManager.java:126)                                                                                at android.view.TextureView.getHardwareLayer(TextureView.java:368)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16511)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16529)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.draw(View.java:17544)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16534)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16529)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16529)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.draw(View.java:17544)                                                                                at android.widget.ScrollView.draw(ScrollView.java:2803)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16534)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16529)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16529)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16529)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16529)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16529)                                                                                at android.view.View.draw(View.java:17310)                                                                                at android.view.ViewGroup.drawChild(ViewGroup.java:3926)                                                                                at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)                                                                                at android.view.View.draw(View.java:17544)                                                                                at com.android.internal.policy.PhoneWindow$DecorView.draw(PhoneWindow.java:3187)                                                                                at android.view.View.updateDisplayListIfDirty(View.java:16534)                                                                                at android.view.ThreadedRenderer.updateViewTreeDisplayList(ThreadedRenderer.java:325)                                                                                at android.view.ThreadedRenderer.updateRootDisplayList(ThreadedRenderer.java:331)                                                                                at android.view.ThreadedRenderer.draw(ThreadedRenderer.java:366)                                                                                at android.view.ViewRootImpl.draw(ViewRootImpl.java:3259)                                                                                at android.view.ViewRootImpl.performDraw(ViewRootImpl.java:3058)                                                                                at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2640)                                                                                at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1544)                                                                                at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:7616)                                                                                at android.view.Choreographer$CallbackRecord.run(Choreographer.java:911)                                                                                at android.view.Choreographer.doCallbacks(Choreographer.java:686)                                                                                at android.view.Choreographer.doFrame(Choreographer.java:622)</body>
+		<created>2017-04-17 09:38:00</created>
+		<closed>2017-07-16 11:43:50</closed>
+	</bug>
+	<bug>
+		<id>805</id>
+		<title>视频重复播放问题</title>
+		<body></body>
+		<created>2017-04-17 01:03:01</created>
+		<closed>2017-07-16 11:00:39</closed>
+	</bug>
+	<bug>
+		<id>799</id>
+		<title>部分机型暂停状态下全屏或者退出全屏界面变绿</title>
+		<body>现在已知的我手上的魅族MX5有这种情况 在播放的时候点击暂停, 然后全屏或者退出全屏, 播放画面会变为绿色 再次点击播放能恢复正常</body>
+		<created>2017-04-13 09:54:37</created>
+		<closed>2017-07-16 11:03:09</closed>
+	</bug>
+	<bug>
+		<id>798</id>
+		<title>全屏状态播放视频完毕BUG？</title>
+		<body>                     java.lang.NullPointerException: Attempt to invoke virtual method 'void fm.jiecao.jcvideoplayer_lib.JCResizeTextureView.setVideoSize(android.graphics.Point)' on a null object reference                                                                                    at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.onVideoSizeChanged(JCVideoPlayer.java:578)                                                                                    at fm.jiecao.jcvideoplayer_lib.JCMediaManager$7.run(JCMediaManager.java:228)</body>
+		<created>2017-04-13 08:58:14</created>
+		<closed>2017-07-16 11:03:16</closed>
+	</bug>
+	<bug>
+		<id>793</id>
+		<title>流量网络下 JCVideoPlayerStandard.startFullscreen 界面卡死</title>
+		<body>移动网络下，调用  JCVideoPlayerStandard.startFullscreen ，弹出是否继续播放的对话框后点击“不继续播放”按钮，界面会卡死</body>
+		<created>2017-04-11 09:18:30</created>
+		<closed>2017-04-13 14:45:48</closed>
+	</bug>
+	<bug>
+		<id>775</id>
+		<title>刷新遇到问题</title>
+		<body>假如我在scrollview 嵌套一个JCVideoPlayerStandard 我在刷新完请求后 又setUp一遍  会报java.lang.NullPointerException: Attempt to invoke virtual method 'void com.york.library_jcvideoplayer.JCResizeTextureView.setVideoSize(android.graphics.Point)' on a null object reference @lipangit </body>
+		<created>2017-04-05 03:59:39</created>
+		<closed>2017-07-16 11:32:28</closed>
+	</bug>
+	<bug>
+		<id>773</id>
+		<title>我使用的5.5.2版本的，但是点击全屏的时候闪退了，我的activity父类没有继承AppCompatActivity这个怎么解决啊</title>
+		<body>E/AndroidRuntime: FATAL EXCEPTION: main                   Process: com.zontonec.ztgarden, PID: 27388                   java.lang.NullPointerException: Attempt to invoke virtual method 'android.support.v7.app.ActionBar android.support.v7.app.AppCompatActivity.getSupportActionBar()' on a null object reference                       at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.hideSupportActionBar(JCVideoPlayer.java:864)                       at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.startWindowFullscreen(JCVideoPlayer.java:638)                       at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.onClick(JCVideoPlayer.java:190)                       at fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard.onClick(JCVideoPlayerStandard.java:176)                       at android.view.View.performClick(View.java:5210)                       at android.view.View$PerformClick.run(View.java:20976)                       at android.os.Handler.handleCallback(Handler.java:739)                       at android.os.Handler.dispatchMessage(Handler.java:95)                       at android.os.Looper.loop(Looper.java:145)                       at android.app.ActivityThread.main(ActivityThread.java:6145)                       at java.lang.reflect.Method.invoke(Native Method)                       at java.lang.reflect.Method.invoke(Method.java:372)                       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1399)                       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1194) </body>
+		<created>2017-04-01 06:19:07</created>
+		<closed>2017-04-06 12:11:52</closed>
+	</bug>
+	<bug>
+		<id>754</id>
+		<title>Video not playing in older android versions</title>
+		<body>I could able to play perfectly from Lollipop version but in older version when i tried to play, the video keeps buffering and is throwing me the following Log:   ``` E/MediaPlayer-JNI: QCMediaPlayer mediaplayer NOT present E/MediaPlayer: error (-38, 0) W/MediaPlayer: setScreenOnWhilePlaying(true) is ineffective without a SurfaceHolder E/MediaPlayer: prepareAsync called in state 0 W/System.err: java.lang.IllegalStateException W/System.err:     at android.media.MediaPlayer.prepareAsync(Native Method) W/System.err:     at fm.jiecao.jcvideoplayer_lib.JCMediaManager$MediaHandler.handleMessage(JCMediaManager.java:93) W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:102) W/System.err:     at android.os.Looper.loop(Looper.java:136) W/System.err:     at android.os.HandlerThread.run(HandlerThread.java:61) E/MediaPlayer: Error (-38,0) E/JieCaoVideoPlayer: onError -38 - 0 [1174932672] ``` </body>
+		<created>2017-03-21 11:12:47</created>
+		<closed>2017-07-16 10:51:11</closed>
+	</bug>
+	<bug>
+		<id>753</id>
+		<title>java.lang.NullPointerException</title>
+		<body>  at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.onVideoSizeChanged(JCVideoPlayer.java:578); 全屏模式(横屏)下视频播放完成后,返回正常模式时报以上错误;   1. 初步分析是视频播放完成后回调了JCVideoPlayer 的onCompletion()方法将 JCMediaManager.textureView 设置为空,  2. 而后又回调了JCVideoPlayer的onVideoSizeChanged(), 在其中调用JCMediaManager.textureView.setVideoSize(point);  通过在调用JCMediaManager.textureView.setVideoSize(point)之前,先判断textureView 是否为空可避免该问题, 但是修改后视频全屏状态下无法播放完整个视频就跳回正常播放模式了.  请问该怎么解决? 谢谢!</body>
+		<created>2017-03-21 08:19:14</created>
+		<closed>2017-07-16 10:51:34</closed>
+	</bug>
+	<bug>
+		<id>739</id>
+		<title>播放时候出现onError 1 - -1004 [168415800] </title>
+		<body>有些视频会，有些快进就出现。</body>
+		<created>2017-03-16 02:51:37</created>
+		<closed>2017-07-16 10:57:30</closed>
+	</bug>
+	<bug>
+		<id>729</id>
+		<title>在全屏之后再就崩溃</title>
+		<body>在全屏之后再就崩溃</body>
+		<created>2017-03-07 12:43:54</created>
+		<closed>2017-07-16 10:34:39</closed>
+	</bug>
+	<bug>
+		<id>701</id>
+		<title>兼容问题</title>
+		<body>手机上能播放出来，但是定制的一款andoid设备不能播放，版本是4.4.4的。错误（-38,0）</body>
+		<created>2017-02-23 02:10:15</created>
+		<closed>2017-07-16 10:45:30</closed>
+	</bug>
+	<bug>
+		<id>689</id>
+		<title>在RecyclerView 中使用 JCVideoPlayerStandard.startFullscreen</title>
+		<body>第一次点击没有问题 可以正常播放 java.lang.IllegalStateException                                                             at android.media.MediaPlayer.isPlaying(Native Method)                                                             at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer$1.onAudioFocusChange(JCVideoPlayer.java:740)                                                             at android.media.AudioManager$ServiceEventHandlerDelegate$1.handleMessage(AudioManager.java:2364)                                                             at android.os.Handler.dispatchMessage(Handler.java:102)                                                             at android.os.Looper.loop(Looper.java:156)                                                             at android.app.ActivityThread.main(ActivityThread.java:6524)                                                             at java.lang.reflect.Method.invoke(Native Method)                                                             at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:941)                                                             at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:831)  点击返回按钮以后在进行播放列表中的视频出现</body>
+		<created>2017-02-16 07:35:53</created>
+		<closed>2017-07-16 10:20:06</closed>
+	</bug>
+	<bug>
+		<id>677</id>
+		<title>5.4全屏后第二进度消失</title>
+		<body>如题 5.4全屏后第二进度消失</body>
+		<created>2017-02-13 02:31:07</created>
+		<closed>2017-02-26 13:07:51</closed>
+	</bug>
+	<bug>
+		<id>676</id>
+		<title>5.4不支持m3u8格式的url吗？用官方demo播放m3u8格式都无法播放。</title>
+		<body></body>
+		<created>2017-02-13 02:06:43</created>
+		<closed>2017-07-16 10:22:45</closed>
+	</bug>
+	<bug>
+		<id>671</id>
+		<title>V5.3 java.lang.IllegalStateException</title>
+		<body>java.lang.IllegalStateException at android.media.MediaPlayer.seekTo(Native Method) at fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.onTouch(TbsSdkJava:273) at fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard.onTouch(TbsSdkJava:174) at android.view.View.dispatchTouchEvent(View.java:8666) at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2517)</body>
+		<created>2017-02-09 13:06:10</created>
+		<closed>2017-07-16 10:25:09</closed>
+	</bug>
+	<bug>
+		<id>668</id>
+		<title>Couldn't replay the video</title>
+		<body>Hi , I am using a m3u8 URL which changes video quality according to internet speed. It plays the entire video once completely and I couldn't play the video again . I even tried to clear the cache  and restarted the app. If an URL once played , it never plays again, it always shows the seek bar full. I have listed my Log below:  ``` `02-09 11:05:01.740 29559-29559/fm.jiecao.jiecaovideoplayer D/JieCaoVideoPlayer: prepareMediaPlayer [231678422]   02-09 11:05:01.740 29559-29559/fm.jiecao.jiecaovideoplayer D/JieCaoVideoPlayer: addTextureView [231678422]   02-09 11:05:01.750 29559-29559/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [514512591]   02-09 11:05:01.750 29559-29559/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0  02-09 11:05:01.750 29559-29559/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0  02-09 11:05:01.751 29559-29559/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: onMeasure  [514512591]   02-09 11:05:01.751 29559-29559/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: videoWidth = 0, videoHeight = 0  02-09 11:05:01.751 29559-29559/fm.jiecao.jiecaovideoplayer I/JCResizeTextureView: viewRotation = 0  02-09 11:05:01.756 29559-29559/fm.jiecao.jiecaovideoplayer I/JieCaoVideoPlayer: onSurfaceTextureAvailable [32736610]   02-09 11:05:01.758 29559-29845/fm.jiecao.jiecaovideoplayer E/MediaPlayer-JNI: QCMediaPlayer mediaplayer NOT present  02-09 11:05:01.761 29559-29845/fm.jiecao.jiecaovideoplayer W/MediaPlayer: setScreenOnWhilePlaying(true) is ineffective without a SurfaceHolder  02-09 11:05:01.763 29559-29845/fm.jiecao.jiecaovideoplayer W/MediaPlayer: setScreenOnWhilePlaying(true) is ineffective for Surface  02-09 11:05:01.769 29559-29868/fm.jiecao.jiecaovideoplayer D/MediaHTTPConnection: filterOutInternalHeaders: key=User-Agent, val= stagefright/1.2 (Linux;Android 5.1.1)  02-09 11:05:01.770 29559-29579/fm.jiecao.jiecaovideoplayer D/MediaHTTPConnection: proxy null port 0  02-09 11:05:01.833 29559-29868/fm.jiecao.jiecaovideoplayer E/MediaPlayer: error (1, -1004)  02-09 11:05:01.833 29559-29845/fm.jiecao.jiecaovideoplayer E/MediaPlayer: Error (1,-1004)  02-09 11:05:01.835 29559-29559/fm.jiecao.jiecaovideoplayer E/JieCaoVideoPlayer: onError 1 - -1004 [231678422]   02-09 11:05:01.866 29559-29559/fm.jiecao.jiecaovideoplayer I/art: Explicit concurrent mark sweep GC freed 4321(286KB) AllocSpace objects, 5(277KB) LOS objects, 39% free, 19MB/31MB, paused 3.414ms total 30.843ms  02-09 11:05:01.868 29559-29559/fm.jiecao.jiecaovideoplayer I/JieCaoVideoPlayer: onAutoCompletion  [231678422]  ` ```  </body>
+		<created>2017-02-09 05:41:58</created>
+		<closed>2017-03-21 11:17:59</closed>
+	</bug>
+	<bug>
+		<id>639</id>
+		<title>HUAWEIG750-TO1,API(4.2.2) java.lang.RuntimeException: Error during detachFromGLContext (see logcat for details)</title>
+		<body>`java.lang.RuntimeException: Error during detachFromGLContext (see logcat for details) android.graphics.SurfaceTexture.attachToGLContext(SurfaceTexture.java:237) android.view.GLES20TextureLayer.setSurfaceTexture(GLES20TextureLayer.java:81) android.view.HardwareRenderer$Gl20Renderer.setSurfaceTexture(HardwareRenderer.java:1583) android.view.TextureView.getHardwareLayer(TextureView.java:393) android.view.View.getDisplayList(View.java:12865) android.view.View.getDisplayList(View.java:12951) android.view.View.draw(View.java:13708) android.view.ViewGroup.drawChild(ViewGroup.java:3083) android.view.ViewGroup.dispatchDraw(ViewGroup.java:2931) android.view.View.draw(View.java:14018) android.widget.FrameLayout.draw(FrameLayout.java:526) android.view.View.getDisplayList(View.java:12902) android.view.View.getDisplayList(View.java:12951) android.view.View.draw(View.java:13708) android.view.ViewGroup.drawChild(ViewGroup.java:3083) android.view.ViewGroup.dispatchDraw(ViewGroup.java:2931) android.view.View.draw(View.java:14018) android.view.View.getDisplayList(View.java:12902) android.view.View.getDisplayList(View.java:12951) android.view.View.draw(View.java:13708) android.view.ViewGroup.drawChild(ViewGroup.java:3083) android.view.ViewGroup.dispatchDraw(ViewGroup.java:2931) android.view.View.getDisplayList(View.java:12897) android.view.View.getDisplayList(View.java:12951) android.view.View.draw(View.java:13708) android.view.ViewGroup.drawChild(ViewGroup.java:3083) android.view.ViewGroup.dispatchDraw(ViewGroup.java:2931) android.view.View.draw(View.java:14018) android.widget.FrameLayout.draw(FrameLayout.java:526) android.view.View.getDisplayList(View.java:12902) android.view.View.getDisplayList(View.java:12951) android.view.View.draw(View.java:13708) android.view.ViewGroup.drawChild(ViewGroup.java:3083) android.view.ViewGroup.dispatchDraw(ViewGroup.java:2931) android.view.View.getDisplayList(View.java:12897) android.view.View.getDisplayList(View.java:12951) android.view.View.draw(View.java:13708) android.view.ViewGroup.drawChild(ViewGroup.java:3083) android.view.ViewGroup.dispatchDraw(ViewGroup.java:2931) android.view.View.getDisplayList(View.java:12897) android.view.View.getDisplayList(View.java:12951) android.view.View.draw(View.java:13708) android.view.ViewGroup.drawChild(ViewGroup.java:3083) android.view.ViewGroup.dispatchDraw(ViewGroup.java:2931) android.view.View.getDisplayList(View.java:12897) android.view.View.getDisplayList(View.java:12951) android.view.View.draw(View.java:13708) android.view.ViewGroup.drawChild(ViewGroup.java:3083) android.view.ViewGroup.dispatchDraw(ViewGroup.java:2931) android.view.View.draw(View.java:14018)`</body>
+		<created>2017-01-18 02:08:04</created>
+		<closed>2017-07-16 09:38:02</closed>
+	</bug>
+	<bug>
+		<id>547</id>
+		<title>压力测试崩溃问题</title>
+		<body>滑动列表，多次点击不同视频，会出现崩溃问题，且没有任何日志</body>
+		<created>2016-12-06 07:14:19</created>
+		<closed>2016-12-20 15:38:19</closed>
+	</bug>
+	<bug>
+		<id>546</id>
+		<title>视频不居中</title>
+		<body>![a3363d6110e19b375125a1a1fdec39e5](https://cloud.githubusercontent.com/assets/22672329/20914898/8eb10734-bbbd-11e6-9bdf-03d810dd1648.jpg) 如图，视频不居中，右边有一段黑边</body>
+		<created>2016-12-06 06:10:22</created>
+		<closed>2016-12-20 15:38:15</closed>
+	</bug>
+	<bug>
+		<id>538</id>
+		<title>压力测试，重复点击2个Item,播放和暂停，会崩掉，没有错误日志？</title>
+		<body>5.0解决了，谢谢。</body>
+		<created>2016-12-02 09:33:39</created>
+		<closed>2016-12-20 15:36:52</closed>
+	</bug>
+	<bug>
+		<id>531</id>
+		<title>4.8.3 魅族note3，当点击全屏，一开始是竖着的全屏，然后当我想横着看的时候，旋转手机，就会退出APP</title>
+		<body>概率大概是40%。这是什么原因。</body>
+		<created>2016-12-01 03:38:56</created>
+		<closed>2016-12-05 05:11:18</closed>
+	</bug>
+	<bug>
+		<id>462</id>
+		<title>crash on 7.0</title>
+		<body>11-01 11:52:54.086 2321-2801/? A/libc: Fatal signal 11 (SIGSEGV), code 1, fault addr 0x566f61436002b8 in tid 2801 (JieCaoVideoPlay)                                                                                [ 11-01 11:52:54.092   376:  376 W/         ]                                        debuggerd: handling request: pid=2321 uid=10283 gid=10283 tid=2801 11-01 11:52:54.226 3622-3622/? A/DEBUG: *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** 11-01 11:52:54.227 3622-3622/? A/DEBUG: Build fingerprint: 'google/angler/angler:7.0/NBD90X/3254009:user/release-keys' 11-01 11:52:54.227 3622-3622/? A/DEBUG: Revision: '0' 11-01 11:52:54.227 3622-3622/? A/DEBUG: ABI: 'arm64' 11-01 11:52:54.227 3622-3622/? A/DEBUG: pid: 2321, tid: 2801, name: JieCaoVideoPlay  &gt;&gt;&gt; com.theme.valenciacf &lt;&lt;&lt; 11-01 11:52:54.227 3622-3622/? A/DEBUG: signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x566f61436002b8 11-01 11:52:54.227 3622-3622/? A/DEBUG:     x0   0000007ee230a588  x1   69566f614365694a  x2   0000007ee1efc800  x3   0000000000000000 11-01 11:52:54.227 3622-3622/? A/DEBUG:     x4   0000000000000038  x5   0000007efec38d90  x6   0000007efecea980  x7   0000000000000000 11-01 11:52:54.227 3622-3622/? A/DEBUG:     x8   69566f6143600250  x9   000000000000004a  x10  0000000000000056  x11  0000007edfff54e8 11-01 11:52:54.227 3622-3622/? A/DEBUG:     x12  fffffffffffff000  x13  ffffffffffffefff  x14  00000000ffffffff  x15  0000007f09365000 11-01 11:52:54.227 3622-3622/? A/DEBUG:     x16  0000007f0935a5a0  x17  0000007f09301d5c  x18  0000000000000000  x19  0000007ee1efc800 11-01 11:52:54.227 3622-3622/? A/DEBUG:     x20  69566f614365694a  x21  0000007ee230a588  x22  0000000000000000  x23  0000007f09365800 11-01 11:52:54.227 3622-3622/? A/DEBUG:     x24  0000007f0936586c  x25  0000007ed91f0000  x26  0000007eda70cef0  x27  0000000000000000 11-01 11:52:54.227 3622-3622/? A/DEBUG:     x28  0000000000000000  x29  0000007edfff4000  x30  0000007f093293d4 11-01 11:52:54.227 3622-3622/? A/DEBUG:     sp   0000007edfff3fd0  pc   0000007f09328e90  pstate 0000000080000000 11-01 11:52:54.241 3622-3622/? A/DEBUG: backtrace: 11-01 11:52:54.241 3622-3622/? A/DEBUG:     #00 pc 000000000008fe90  /system/lib64/libc.so (ifree+88) 11-01 11:52:54.241 3622-3622/? A/DEBUG:     #01 pc 00000000000903d0  /system/lib64/libc.so (je_free+128) 11-01 11:52:54.241 3622-3622/? A/DEBUG:     #02 pc 0000000000147258  /data/app/com.theme.valenciacf-2/lib/arm64/libijkffmpeg.so (av_dict_free+48)</body>
+		<created>2016-11-01 03:59:15</created>
+		<closed>2016-12-20 15:22:20</closed>
+	</bug>
+	<bug>
+		<id>111</id>
+		<title>播放时间问题</title>
+		<body>小窗口中暂停视频后进入全屏，全屏后不进行任何操作，稍等一段时长后，再返回小窗口，点击播放时，当前播放点自动跳到若干秒后（有时5秒，有时8秒，有时15秒。。。） </body>
+		<created>2016-06-01 12:15:44</created>
+		<closed>2016-07-17 11:22:39</closed>
+	</bug>
+	<bug>
+		<id>110</id>
+		<title>JCMediaManager is leaking Activity</title>
+		<body>I'm showing a video inside a RecyclerView, and invoking _JCVideoPlayer.releaseAllVideos();_ in _onPause_, but LeakCanary catches this leak  This is the summarized version  ``` JCMediaManager   references JCMediaManager.lastListener  references JCVideoPlayer.mContext  leaks MyActivity instance ```  Full leak dump. _ChatbotJCVideoPlayer_ is a dummy class, it simply extends JCVideoPlayerStandard  ``` * GC ROOT static fm.jiecao.jcvideoplayer_lib.JCMediaManager.JCMediaManager         * references fm.jiecao.jcvideoplayer_lib.JCMediaManager.lastListener         * references com.myapp.ui.chatbot.video.ChatbotJCVideoPlayer.mContext         * leaks com.myapp.ui.chatbot.ChatbotActivity instance          * Retaining: 4,1 MB.         * Reference Key: 8624ab78-cce7-42f1-81a0-01e8f2366ce9         * Device: LGE google Nexus 5X bullhead         * Android Version: 6.0.1 API: 23 LeakCanary: 1.4-beta2 3799172         * Durations: watch=5126ms, gc=204ms, heap dump=2327ms, analysis=43475ms          * Details:         * Class fm.jiecao.jcvideoplayer_lib.JCMediaManager         |   static $staticOverhead = byte[8]@854099969 (0x32e88801)         |   static JCMediaManager = fm.jiecao.jcvideoplayer_lib.JCMediaManager@855596128 (0x32ff5c60)         * Instance of fm.jiecao.jcvideoplayer_lib.JCMediaManager         |   static $staticOverhead = byte[8]@854099969 (0x32e88801)         |   static JCMediaManager = fm.jiecao.jcvideoplayer_lib.JCMediaManager@855596128 (0x32ff5c60)         |   currentVideoHeight = 720         |   currentVideoWidth = 1280         |   lastListener = com.myapp.ui.chatbot.video.ChatbotJCVideoPlayer@854994944 (0x32f63000)         |   lastState = 2         |   listener = com.myapp.ui.chatbot.video.ChatbotJCVideoPlayer@854994944 (0x32f63000)         |   mediaPlayer = android.media.MediaPlayer@855581952 (0x32ff2500)         |   shadow$_klass_ = fm.jiecao.jcvideoplayer_lib.JCMediaManager         |   shadow$_monitor_ = 0         * Instance of com.myapp.ui.chatbot.video.ChatbotJCVideoPlayer         |   backButton = android.support.v7.widget.AppCompatImageView@854318080 (0x32ebdc00)         |   bottomProgressBar = android.widget.ProgressBar@851781104 (0x32c525f0)         |   coverImageView = android.support.v7.widget.AppCompatImageView@854318592 (0x32ebde00)         |   loadingProgressBar = android.widget.ProgressBar@851781600 (0x32c527e0)         |   thumbImageView = android.support.v7.widget.AppCompatImageView@854319104 (0x32ebe000)         |   titleTextView = android.support.v7.widget.AppCompatTextView@855001088 (0x32f64800)         |   bottomContainer = android.widget.LinearLayout@855002112 (0x32f64c00)         |   currentTimeTextView = android.support.v7.widget.AppCompatTextView@855003136 (0x32f65000)         |   fullscreenButton = android.support.v7.widget.AppCompatImageView@854319616 (0x32ebe200)         |   mAudioManager = android.media.AudioManager@855118208 (0x32f81180)         |   mChangePosition = false         |   mChangeVolume = false         |   mCurrentState = 4         |   mDialogCurrentTime = null         |   mDialogIcon = null         |   mDialogProgressBar = null         |   mDialogTotalTime = null         |   mDialogVolumeProgressBar = null         |   mDownPosition = 0         |   mDownVolume = 0         |   mDownX = 549.0         |   mDownY = 231.0         |   mIfCurrentIsFullscreen = false         |   mIfFullscreenIsDirectly = false         |   mMapHeadData = java.util.HashMap@855056240 (0x32f71f70)         |   mObjects = java.lang.Object[1]@855102016 (0x32f7d240)         |   mProgressDialog = null         |   mResultTimePosition = 0         |   mScreenHeight = 1794         |   mScreenWidth = 1080         |   mThreshold = 80         |   mTouchingProgressBar = false         |   mUrl = java.lang.String@851576768 (0x32c207c0)         |   mVolumeDialog = null         |   progressBar = android.support.v7.widget.AppCompatSeekBar@855004160 (0x32f65400)         |   startButton = android.support.v7.widget.AppCompatImageView@854320128 (0x32ebe400)         |   surfaceContainer = android.widget.RelativeLayout@855005184 (0x32f65800)         |   surfaceHolder = android.view.SurfaceView$4@855102032 (0x32f7d250)         |   surfaceView = fm.jiecao.jcvideoplayer_lib.JCResizeSurfaceView@855006208 (0x32f65c00)         |   topContainer = android.widget.LinearLayout@855007232 (0x32f66000)         |   totalTimeTextView = android.support.v7.widget.AppCompatTextView@855008256 (0x32f66400)         |   mForegroundPaddingBottom = 0         |   mForegroundPaddingLeft = 0         |   mForegroundPaddingRight = 0         |   mForegroundPaddingTop = 0         |   mMatchParentChildren = java.util.ArrayList@855111168 (0x32f7f600)         |   mMeasureAllChildren = false         |   mOverlayBounds = android.graphics.Rect@855111200 (0x32f7f620)         |   mSelfBounds = android.graphics.Rect@855111232 (0x32f7f640)         |   mAnimationListener = null         |   mCachePaint = null         |   mChildAcceptsDrag = false         |   mChildCountWithTransientState = 0         |   mChildTransformation = null         |   mChildren = android.view.View[12]@855118272 (0x32f811c0)         |   mChildrenCount = 1         |   mCurrentDrag = null         |   mCurrentDragView = null         |   mDisappearingChildren = null         |   mDragNotifiedChildren = null         |   mFirstHoverTarget = null         |   mFirstTouchTarget = null         |   mFocused = null         |   mGroupFlags = 2244691         |   mHoveredSelf = false         |   mInvalidateRegion = null         |   mInvalidationTransformation = null         |   mLastTouchDownIndex = 0         |   mLastTouchDownTime = 874249032         |   mLastTouchDownX = 945.0         |   mLastTouchDownY = 484.0         |   mLayoutAnimationController = null         |   mLayoutCalledWhileSuppressed = false         |   mLayoutMode = -1         |   mLayoutTransitionListener = android.view.ViewGroup$2@855102048 (0x32f7d260)         |   mLocalPoint = null         |   mNestedScrollAxes = 0         |   mOnHierarchyChangeListener = null         |   mPersistentDrawingCache = 2         |   mPreSortedChildren = null         |   mSuppressLayout = false         |   mTempPoint = float[2]@855111264 (0x32f7f660)         |   mTransientIndices = null         |   mTransientViews = null         |   mTransition = null         |   mTransitioningViews = null         |   mVisibilityChangingChildren = null         |   mAccessibilityCursorPosition = -1         |   mAccessibilityDelegate = null         |   mAccessibilityTraversalAfterId = -1         |   mAccessibilityTraversalBeforeId = -1         |   mAccessibilityViewId = -1         |   mAnimator = null         |   mAttachInfo = null         |   mAttributes = null         |   mBackground = null         |   mBackgroundRenderNode = null         |   mBackgroundResource = 0         |   mBackgroundSizeChanged = true         |   mBackgroundTint = null         |   mBottom = 525         |   mCachingFailed = false         |   mClipBounds = null         |   mContentDescription = null         |   mContext = com.myapp.ui.chatbot.ChatbotActivity@854360912 (0x32ec8350)         |   mCurrentAnimation = null         |   mDrawableState = int[2]@1879843320 (0x700c21f8)         |   mDrawingCache = null         |   mDrawingCacheBackgroundColor = 0         |   mFloatingTreeObserver = null         |   mForegroundInfo = null         |   mGhostView = null         |   mHasPerformedLongPress = false         |   mID = 2131558676         |   mIgnoreNextUpEvent = false         |   mInContextButtonPress = false         |   mInputEventConsistencyVerifier = null         |   mKeyedTags = null         |   mLabelForId = -1         |   mLastIsOpaque = false         |   mLayerPaint = null         |   mLayerType = 0         |   mLayoutInsets = null         |   mLayoutParams = android.widget.LinearLayout$LayoutParams@855118336 (0x32f81200)         |   mLeft = 0         |   mLeftPaddingDefined = false         |   mListenerInfo = null         |   mMatchIdPredicate = null         |   mMatchLabelForPredicate = null         |   mMeasureCache = android.util.LongSparseLongArray@855111296 (0x32f7f680)         |   mMeasuredHeight = 525         |   mMeasuredWidth = 996         |   mMinHeight = 0         |   mMinWidth = 0         |   mNestedScrollingParent = null         |   mNextFocusDownId = -1         |   mNextFocusForwardId = -1         |   mNextFocusLeftId = -1         |   mNextFocusRightId = -1         |   mNextFocusUpId = -1         |   mOldHeightMeasureSpec = 1073742349         |   mOldWidthMeasureSpec = 1073742820         |   mOutlineProvider = android.view.ViewOutlineProvider$1@1879877072 (0x700ca5d0)         |   mOverScrollMode = 1         |   mOverlay = null         |   mPaddingBottom = 0         |   mPaddingLeft = 0         |   mPaddingRight = 0         |   mPaddingTop = 0         |   mParent = android.widget.LinearLayout@854995968 (0x32f63400)         |   mPendingCheckForLongPress = null         |   mPendingCheckForTap = null         |   mPerformClick = null         |   mPrivateFlags = 18877104         |   mPrivateFlags2 = 1610819112         |   mPrivateFlags3 = 16         |   mRecreateDisplayList = false         |   mRenderNode = android.view.RenderNode@855111328 (0x32f7f6a0)         |   mResources = android.content.res.Resources@852118112 (0x32ca4a60)         |   mRight = 996         |   mRightPaddingDefined = false         |   mScrollCache = null         |   mScrollIndicatorDrawable = null         |   mScrollX = 0         |   mScrollY = 0         |   mSendViewScrolledAccessibilityEvent = null         |   mSendViewStateChangedAccessibilityEvent = null         |   mSendingHoverAccessibilityEvents = false         |   mStartActivityRequestWho = null         |   mStateListAnimator = null         |   mSystemUiVisibility = 0         |   mTag = null         |   mTempNestedScrollConsumed = null         |   mTop = 0         |   mTouchDelegate = null         |   mTouchSlop = 21         |   mTransformationInfo = android.view.View$TransformationInfo@855111360 (0x32f7f6c0)         |   mTransientStateCount = 0         |   mTransitionName = null         |   mUnscaledDrawingCache = null         |   mUnsetPressedState = null         |   mUserPaddingBottom = 0         |   mUserPaddingEnd = -2147483648         |   mUserPaddingLeft = 0         |   mUserPaddingLeftInitial = 0         |   mUserPaddingRight = 0         |   mUserPaddingRightInitial = 0         |   mUserPaddingStart = -2147483648         |   mVerticalScrollFactor = 0.0         |   mVerticalScrollbarPosition = 0         |   mViewFlags = 402653312         |   mWindowAttachCount = 3         |   shadow$_klass_ = com.myapp.ui.chatbot.video.ChatbotJCVideoPlayer         |   shadow$_monitor_ = 0         * Instance of com.myapp.ui.chatbot.ChatbotActivity         |   static $staticOverhead = byte[8]@852856833 (0x32d59001)         |   static ACTION_TRAY_TAG = java.lang.String@851984832 (0x32c841c0)         |   drawer = android.support.v4.widget.DrawerLayout@854198272 (0x32ea0800)         |   items = java.util.ArrayList@855269312 (0x32fa5fc0)         |   mAdapter = com.myapp.ui.chatbot.ChatbotAdapter@854876960 (0x32f46320)         |   recyclerView = android.support.v7.widget.RecyclerView@854192128 (0x32e9f000)         |   slidingUpLayout = com.sothree.slidinguppanel.SlidingUpPanelLayout@854194176 (0x32e9f800)         |   subscription = rx.observers.SafeSubscriber@855250496 (0x32fa1640)         |   toggle = android.support.v7.app.ActionBarDrawerToggle@854871776 (0x32f44ee0)         |   logOutReceiver = com.myapp.BaseLoggedInMvpActivity$1@855278560 (0x32fa83e0)         |   mvpDelegate = com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateImpl@855181552 (0x32f908f0)         |   presenter = com.myapp.ui.chatbot.ChatbotPresenter@855278592 (0x32fa8400)         |   retainInstance = false         |   mDelegate = android.support.v7.app.AppCompatDelegateImplV23@854569744 (0x32efb310)         |   mEatKeyUpEvent = false         |   mResources = null         |   mThemeId = 2131296459         |   mCreated = true         |   mFragments = android.support.v4.app.FragmentController@855181568 (0x32f90900)         |   mHandler = android.support.v4.app.FragmentActivity$1@855278624 (0x32fa8420)         |   mMediaController = null         |   mNextCandidateRequestIndex = 0         |   mOptionsMenuInvalidated = false         |   mPendingFragmentActivityResults = android.support.v4.util.SparseArrayCompat@855278656 (0x32fa8440)         |   mReallyStopped = true         |   mRequestedPermissionsFromFragment = false         |   mResumed = false         |   mRetaining = false         |   mStartedActivityFromFragment = false         |   mStopped = true         |   mActionBar = null         |   mActionModeTypeStarting = 0         |   mActivityInfo = android.content.pm.ActivityInfo@855090816 (0x32f7a680)         |   mActivityTransitionState = android.app.ActivityTransitionState@855275456 (0x32fa77c0)         |   mApplication = com.myapp.App@854820704 (0x32f38760)         |   mCalled = true         |   mChangeCanvasToTranslucent = false         |   mChangingConfigurations = false         |   mComponent = android.content.ComponentName@855181584 (0x32f90910)         |   mConfigChangeFlags = 0         |   mCurrentConfig = android.content.res.Configuration@855272224 (0x32fa6b20)         |   mDecor = null         |   mDefaultKeyMode = 0         |   mDefaultKeySsb = null         |   mDestroyed = true         |   mDoReportFullyDrawn = false         |   mEmbeddedID = null         |   mEnableDefaultActionBarUp = false         |   mEnterTransitionListener = android.app.SharedElementCallback$1@1879805752 (0x700b8f38)         |   mExitTransitionListener = android.app.SharedElementCallback$1@1879805752 (0x700b8f38)         |   mFinished = true         |   mFragments = android.app.FragmentController@855181600 (0x32f90920)         |   mHandler = android.os.Handler@855278688 (0x32fa8460)         |   mHasCurrentPermissionsRequest = false         |   mIdent = 254545771         |   mInstanceTracker = android.os.StrictMode$InstanceTracker@855181616 (0x32f90930)         |   mInstrumentation = android.app.Instrumentation@854872400 (0x32f45150)         |   mIntent = android.content.Intent@855275520 (0x32fa7800)         |   mLastNonConfigurationInstances = null         |   mMainThread = android.app.ActivityThread@851456256 (0x32c03100)         |   mManagedCursors = java.util.ArrayList@855278720 (0x32fa8480)         |   mManagedDialogs = null         |   mMenuInflater = null         |   mParent = null         |   mReferrer = java.lang.String@855250544 (0x32fa1670)         |   mResultCode = 0         |   mResultData = null         |   mResumed = false         |   mSearchEvent = null         |   mSearchManager = null         |   mStartedActivity = false         |   mStopped = true         |   mTemporaryPause = false         |   mTitle = java.lang.String@854884608 (0x32f48100)         |   mTitleColor = 0         |   mTitleReady = true         |   mToken = android.os.BinderProxy@854879936 (0x32f46ec0)         |   mTranslucentCallback = null         |   mUiThread = java.lang.Thread@1952368008 (0x745ec588)         |   mVisibleBehind = false         |   mVisibleFromClient = true         |   mVisibleFromServer = true         |   mVoiceInteractor = null         |   mWindow = com.android.internal.policy.PhoneWindow@852063648 (0x32c975a0)         |   mWindowAdded = true         |   mWindowManager = android.view.WindowManagerImpl@854884640 (0x32f48120)         |   mInflater = com.android.internal.policy.PhoneLayoutInflater@854871056 (0x32f44c10)         |   mOverrideConfiguration = null         |   mResources = android.content.res.Resources@852118112 (0x32ca4a60)         |   mTheme = android.content.res.Resources$Theme@854884672 (0x32f48140)         |   mThemeResource = 2131296459         |   mBase = android.app.ContextImpl@855090944 (0x32f7a700)         |   shadow$_klass_ = com.myapp.ui.chatbot.ChatbotActivity         |   shadow$_monitor_ = -2009389646         * Excluded Refs:         | Field: android.view.inputmethod.InputMethodManager.mNextServedView         | Field: android.view.inputmethod.InputMethodManager.mServedView         | Field: android.view.inputmethod.InputMethodManager.mServedInputConnection         | Field: android.view.inputmethod.InputMethodManager.mCurRootView         | Field: android.widget.Editor$Blink.this$0         | Field: android.view.Choreographer$FrameDisplayEventReceiver.mMessageQueue (always)         | Thread:FinalizerWatchdogDaemon (always)         | Thread:main (always)         | Thread:LeakCanary-Heap-Dump (always)         | Class:java.lang.ref.WeakReference (always)         | Class:java.lang.ref.SoftReference (always)         | Class:java.lang.ref.PhantomReference (always)         | Class:java.lang.ref.Finalizer (always)         | Class:java.lang.ref.FinalizerReference (always)         | Root Class:android.os.Binder (always) ``` </body>
+		<created>2016-06-01 11:23:51</created>
+		<closed>2016-06-14 16:22:19</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>暂停以后，再播放，视频会卡上很长一段时间</title>
+		<body></body>
+		<created>2016-05-30 05:20:09</created>
+		<closed>2016-07-17 11:21:02</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>由于动态添加SurfaceView，会在进入activity时导致闪烁一下</title>
+		<body>我通过这篇文章解决了问题 http://blog.csdn.net/hym2111/article/details/50424720 </body>
+		<created>2016-05-20 06:07:48</created>
+		<closed>2016-06-03 16:28:33</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>Fullscreen or quit fullscreen image will fuzzy 2s on android 5.0</title>
+		<body></body>
+		<created>2016-03-27 01:58:07</created>
+		<closed>2016-05-06 06:35:09</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>Video sound is gone when enter fullscreen</title>
+		<body>When enter fullscreen mode video sound is gone on Marshmallow </body>
+		<created>2016-03-16 07:28:17</created>
+		<closed>2016-05-18 10:39:30</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>Click seekbar should also check the video state</title>
+		<body>if vide state is prepareing when edit seekbar , the loading icon will invisable but it should visable </body>
+		<created>2016-03-15 04:13:13</created>
+		<closed>2016-04-04 15:33:02</closed>
+	</bug>
+	<bug>
+		<id>7</id>
+		<title>In list if drag faster, the loading control partly hidden and partly visable</title>
+		<body></body>
+		<created>2016-02-24 03:14:29</created>
+		<closed>2016-04-02 02:12:39</closed>
+	</bug>
+	<bug>
+		<id>5</id>
+		<title>No video url toast I have seen not only once</title>
+		<body></body>
+		<created>2016-02-21 02:31:33</created>
+		<closed>2016-04-04 15:34:30</closed>
+	</bug>
+</bugs>

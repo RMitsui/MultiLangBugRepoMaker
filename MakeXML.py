@@ -120,6 +120,9 @@ def make(fullname, nlang):
         wf.write('\t</bug>\n')
     wf.write('<bugrepository>\n')
     wf.close()
+    if(bugnum == 0):
+        os.remove('./BugRepository/'+nlang+'/'+reponame+'.xml')
+
     return bugnum
 
 
