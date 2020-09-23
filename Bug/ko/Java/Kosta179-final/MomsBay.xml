@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>117</id>
+		<title>거래게시판 글삭제 후 잘못된 목록이동</title>
+		<body>- detail_trade_post.jsp - PagingBean - SharPostService - TradeBoardController - TradePostService</body>
+		<created>2018-05-31 05:12:54</created>
+		<closed>2018-05-31 05:21:27</closed>
+	</bug>
+	<bug>
+		<id>107</id>
+		<title>Q&amp;A게시판의 버튼기능을 보완한다.</title>
+		<body></body>
+		<created>2018-05-29 10:55:16</created>
+		<closed>2018-05-29 11:01:52</closed>
+	</bug>
+	<bug>
+		<id>99</id>
+		<title>일반게시판의 글쓰기 및 수정시 script문에서 content 값을 가져오지 못하는 문제 </title>
+		<body></body>
+		<created>2018-05-28 04:39:10</created>
+		<closed>2018-05-28 05:02:55</closed>
+	</bug>
+	<bug>
+		<id>98</id>
+		<title>거래게시판글 수정시 NULL 값인 경우 수정하기 하면 500 에러가 뜬다</title>
+		<body>- 거래게시판 글 수정시 NULL 값을 입력하고 수정하기 하면 500 에러가 뜬다. 모든 게시판이 이런 현상을 나타내고 있다</body>
+		<created>2018-05-28 01:19:38</created>
+		<closed>2018-05-30 11:06:21</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>각자 이미지저장 경로가 다르다.</title>
+		<body>이슈 상황1 - TradeBoardController에 이미지 저장 경로가 저장되는데 팀원들의 저장소 경로가 다르기 때문에 pull받을 때 마다 고쳐줘야한다.  이슈 상황2 - spring-web.xml에 bean으로 이미지 저장 경로를 지정했는데, 실제 실행시에는 잘 돌아가지만 테스트 클래스 실행시 오류발생  해결방안 - 이미지 업로드를 하는 controller는 1개임으로 bean을 삭제하고 컨트롤러에 직접 입력한다. - 공통의 이미지 저장 폴더를 생성한다. - C:\java-kosta\framework-workspace2\resources\upload\postImg</body>
+		<created>2018-05-28 00:40:04</created>
+		<closed>2018-05-28 00:44:39</closed>
+	</bug>
+	<bug>
+		<id>95</id>
+		<title>메세지 불러오는 ajax 오류 해결</title>
+		<body>- ajax 함수 호출시 세션 아이디가 null로 호출되는 문제 해결    &gt; 매개변수를 안넘기고 있는 문제를 해결하기 위해 sessionId를 전역변수로 변경</body>
+		<created>2018-05-25 11:09:54</created>
+		<closed>2018-05-25 11:10:38</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>목록버튼으로 목록 갈때와 삭제후 목록으로 돌아갈때 수정</title>
+		<body>- #92 의 목록구현은 이전페이지가 목록이 아닐때의 경우는 제대로된 페이지로 넘겨주지 못한다.    &gt; 상세페이지에 page번호를 같이 넘겨 목록으로 이동시 넘어온 page 번호로 이동한다.  - 전체 메세지함에서 상세목록으로 왔다가 목록으로 돌아갈시 받은메세지이면 받은메세지 함으로 보낸메세지면 보낸메세지 함으로 이동하는 버그 수정    &gt;  db에 messageType을 추가한다.  - 삭제후 이전 경로의 페이지 번호로 넘어갈 경우 페이지번호가 없어졌을때 문제가 생긴다. 삭제후 정확한 목록으로 가야한다.    &gt; 상세페이지에 page번호를 같이 넘겨 pagingBean에서 마지막 페이지 번호를 구하고 넘어온 page번호와 보다 작을경우 nowPageNo를 다시 set한다.</body>
+		<created>2018-05-25 05:41:19</created>
+		<closed>2018-05-30 10:46:10</closed>
+	</bug>
+</bugs>

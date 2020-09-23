@@ -1,0 +1,3060 @@
+9a1174c155281423e10e75c10d9d59e5fe84aacd, refactor(push): move Xposed module to a separate project, Sun Jul 5 21:49:13 2020 -0700
+M	app/src/main/res/values-zh/strings.xml
+M	app/src/main/res/values/strings.xml
+M	push/build.gradle
+M	push/src/main/AndroidManifest.xml
+D	push/src/main/assets/xposed_init
+D	push/src/main/java/com/xiaomi/xposed/hook/MiPushEnhanceHook.java
+M	push/src/main/res/values-zh/strings.xml
+M	push/src/main/res/values/strings.xml
+
+037214a7f6a7beb2cd77412ce5f7df65dfc6586d, feat(push): delegate notification to Nevolution, Sun Jul 5 20:57:32 2020 -0700
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+f469166c9f71207686c40dc5ec03141b96e53d69, feat: raise the compileSdkVersion to 28, Sun Jul 5 20:51:55 2020 -0700
+M	build.gradle
+
+1767c225f764ef527c610021d0560b2df111eced, feat(push): upgrade Epic, Sun Jul 5 20:50:10 2020 -0700
+M	push/build.gradle
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/IHook.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/PushSdkHooks.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookMIUIPushSdk.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPingReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPkgUninstallReceiver.java
+
+74cb2e9eb126bb27e7070ca4c60ab0c4107f153f, Mark gradlew executable, Sun Jul 5 20:48:57 2020 -0700
+M	gradlew
+
+22d950aee7b790c86f8876dab2ca7eb258afdcbc, refactor(app/common/extenders/provider/push): switch to AndroidX; remove Fabric; upgrade dependencies; remove abi filter, Sun Jul 5 20:43:10 2020 -0700
+M	app/build.gradle
+M	app/src/main/java/android/support/design/internal/BaselineLayout.java
+M	app/src/main/java/android/support/design/internal/BottomNavigationAnimationHelperKitkat.java
+M	app/src/main/java/android/support/design/internal/BottomNavigationItemView.java
+M	app/src/main/java/android/support/design/internal/BottomNavigationMenu.java
+M	app/src/main/java/android/support/design/internal/BottomNavigationMenuView.java
+M	app/src/main/java/android/support/design/internal/BottomNavigationPresenter.java
+M	app/src/main/java/android/support/design/widget/BottomNavigationView.java
+M	app/src/main/java/android/support/design/widget/ThemeUtils.java
+M	app/src/main/java/com/android/settings/applications/LayoutPreference.java
+M	app/src/main/java/com/android/settings/widget/EntityHeaderController.java
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/control/CheckPermissionsUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/control/FragmentBroadcast.java
+M	app/src/main/java/top/trumeet/mipushframework/control/OnConnectStatusChangedListener.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/event/RecentActivityActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/help/Article.java
+M	app/src/main/java/top/trumeet/mipushframework/help/HelpActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/plugin/PluginAuth.java
+M	app/src/main/java/top/trumeet/mipushframework/plugin/PushServiceAPIProvider.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/MiPushManifestChecker.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/OnLoadMoreListener.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/ViewUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/widgets/FooterItemBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/FinishWizardActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/UsageStatsPermissionActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/WelcomeActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/WizardSPUtils.java
+M	app/src/main/res/layout/activity_main.xml
+M	app/src/main/res/layout/switch_layout.xml
+M	app/src/main/res/values/attrs.xml
+M	app/src/main/res/values/styles.xml
+M	build.gradle
+M	common/build.gradle
+M	common/src/main/java/android/app/ActivityManager.java
+M	common/src/main/java/android/os/UserHandle.java
+M	common/src/main/java/moe/yuuta/mipush/sdk/app/ControlAPIProvider.java
+M	common/src/main/java/top/trumeet/common/cache/AbstractCacheAspect.java
+M	common/src/main/java/top/trumeet/common/cache/ApplicationNameCache.java
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+M	common/src/main/java/top/trumeet/common/db/RegisteredApplicationDb.java
+M	common/src/main/java/top/trumeet/common/event/Event.java
+M	common/src/main/java/top/trumeet/common/event/type/CommandType.java
+M	common/src/main/java/top/trumeet/common/event/type/EventType.java
+M	common/src/main/java/top/trumeet/common/event/type/NotificationType.java
+M	common/src/main/java/top/trumeet/common/event/type/RegistrationResultType.java
+M	common/src/main/java/top/trumeet/common/event/type/RegistrationType.java
+M	common/src/main/java/top/trumeet/common/event/type/UnknownType.java
+M	common/src/main/java/top/trumeet/common/ipc/IPCUtils.java
+M	common/src/main/java/top/trumeet/common/ita/AccessMode.java
+M	common/src/main/java/top/trumeet/common/ita/impl/ActivityUsageStatsImpl.java
+M	common/src/main/java/top/trumeet/common/override/ActivityManagerOverride.java
+M	common/src/main/java/top/trumeet/common/plugin/PluginManager.java
+M	common/src/main/java/top/trumeet/common/push/ControllerImpl.java
+M	common/src/main/java/top/trumeet/common/push/LegacyImpl.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+M	common/src/main/java/top/trumeet/common/register/RegisteredApplication.java
+M	common/src/main/java/top/trumeet/common/utils/DatabaseUtils.java
+M	common/src/main/java/top/trumeet/common/utils/NotificationUtils.java
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+M	common/src/main/java/top/trumeet/common/utils/rom/RomChecker.java
+M	common/src/main/java/top/trumeet/common/utils/rom/RomUtils.java
+M	condom/build.gradle
+M	condom/src/main/java/android/content/ContentResolver.java
+M	condom/src/main/java/android/content/IContentProvider.java
+M	condom/src/main/java/android/content/pm/PackageManager.java
+M	condom/src/main/java/android/telephony/TelephonyManager.java
+M	condom/src/main/java/com/oasisfeng/condom/CondomContext.java
+M	condom/src/main/java/com/oasisfeng/condom/CondomCore.java
+M	condom/src/main/java/com/oasisfeng/condom/CondomOptions.java
+M	condom/src/main/java/com/oasisfeng/condom/CondomProcess.java
+M	condom/src/main/java/com/oasisfeng/condom/ContentResolverWrapper.java
+M	condom/src/main/java/com/oasisfeng/condom/OutboundJudge.java
+M	condom/src/main/java/com/oasisfeng/condom/OutboundType.java
+M	condom/src/main/java/com/oasisfeng/condom/PackageManagerWrapper.java
+M	condom/src/main/java/com/oasisfeng/condom/PseudoContextWrapper.java
+M	condom/src/main/java/com/oasisfeng/condom/util/Lazy.java
+M	extenders/build.gradle
+M	extenders/src/main/java/android/app/NotificationManagerExtender.java
+M	gradle.properties
+M	provider/build.gradle
+M	provider/src/main/java/top/trumeet/mipush/provider/MyMigrationHelper.java
+M	provider/src/main/java/top/trumeet/mipush/provider/event/Event.java
+M	provider/src/main/java/top/trumeet/mipush/provider/event/EventProvider.java
+M	provider/src/main/java/top/trumeet/mipush/provider/register/AppProvider.java
+M	provider/src/main/java/top/trumeet/mipush/provider/register/RegisteredApplication.java
+M	push/build.gradle
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/push/revival/NotificationRevival.kt
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/BackgroundActivityStartEnabler.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/ManageSpaceActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/RemoveDozeActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/APIProvider.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/XMOutbound.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPingReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPkgUninstallReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/KeepAliveReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiPushPingReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/NetworkStatusReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/PkgUninstallReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ColorUtil.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/LogUtils.java
+
+53f2887e3119fc70778bef0e7506370822ed0112, Fix implementation package, Sat Mar 21 15:05:58 2020 +0800
+M	app/build.gradle
+
+82aa335e9751f323d85596d9f16e4dfcb187ba4c, Update implementation, Sat Mar 21 15:05:29 2020 +0800
+M	build.gradle
+M	condom/build.gradle
+M	push/build.gradle
+
+01d6259f516271de7de08950812d2fa60ecbd62e, Update build tools, Thu Mar 19 17:08:43 2020 +0800
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.properties
+
+91e82b2c9dc10861173124b982bed10eb2501843, Force installation on internal storage, Thu Mar 26 20:08:42 2020 +0800
+M	app/src/main/AndroidManifest.xml
+M	push/src/main/AndroidManifest.xml
+
+68e5714b62f3a58561a2ea7347239f274c2efa23, Remove useless test gradle, Sat Mar 21 15:04:10 2020 +0800
+M	common/build.gradle
+M	extenders/build.gradle
+M	provider/build.gradle
+
+3b57661dab6353bb80f9dc8c86c920a737100b4f, push: Update zh-rCN translation, Thu Mar 19 17:20:08 2020 +0800
+M	push/src/main/res/values-zh/strings.xml
+
+111b3d81517eaf4aff0df6295a23e272b0400bc7, Remove useless files, Thu Mar 19 17:12:49 2020 +0800
+D	common/src/androidTest/java/top/trumeet/common/ExampleInstrumentedTest.java
+D	common/src/androidTest/java/top/trumeet/common/utils/UtilsTest.java
+D	common/src/test/java/top/trumeet/common/ExampleUnitTest.java
+D	condom/src/androidTest/AndroidManifest.xml
+D	condom/src/androidTest/java/com/oasisfeng/condom/CondomContextBasicSemanticTest.java
+D	condom/src/androidTest/java/com/oasisfeng/condom/CondomContextBlockingTest.java
+D	condom/src/androidTest/java/com/oasisfeng/condom/CondomKitTest.java
+D	condom/src/androidTest/java/com/oasisfeng/condom/CondomMiscTest.java
+D	condom/src/androidTest/java/com/oasisfeng/condom/CondomProcessTest.java
+D	extenders/src/androidTest/java/moe/yuuta/extenders/ExampleInstrumentedTest.java
+D	extenders/src/test/java/moe/yuuta/extenders/ExampleUnitTest.java
+D	provider/src/androidTest/java/top/trumeet/mipush/provider/ExampleInstrumentedTest.java
+D	provider/src/test/java/top/trumeet/mipush/provider/ExampleUnitTest.java
+D	push/src/androidTest/java/com/xiaomi/xmsf/ExampleInstrumentedTest.java
+
+b69e434614251221de423a0b9d991a453627fc1e, Merge pull request #328 from MiPushFramework/master_fix, Tue May 5 09:47:35 2020 -0700
+0d1720aaa2facfa31a16abb63ff62d31ec72b951, fix ci build, Tue May 5 22:08:21 2020 +0800
+M	.travis.yml
+
+80ea9b3c8cf12a997a0b4577e67af0f11d1dcdd9, Merge pull request #327 from MiPushFramework/master_fix, Mon May 4 19:27:48 2020 -0700
+682ec07fd1cc88160b6ff91f5cf02ac646cb3c8b, fix build remove fabric upgrade compileSdkVersion,supportLibraryVersion to 28 gradle 4.6->4.9, Tue May 5 10:11:29 2020 +0800
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+D	app/src/main/java/top/trumeet/mipushframework/debug/IdJob.java
+M	build.gradle
+D	fabric.gradle
+M	gradle/wrapper/gradle-wrapper.properties
+M	push/build.gradle
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+1d8d9d37c51fb315ee12027ea80f0df87e8b6a9c, ADD: Retain active push notifications across the package update of module "push"., Sun Apr 19 15:19:42 2020 +0800
+M	push/src/main/AndroidManifest.xml
+A	push/src/main/java/com/xiaomi/push/revival/NotificationRevival.kt
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+A	push/src/main/java/com/xiaomi/push/service/SelfUpdateReceiver.kt
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+415d076fd321610d187bfb59f47b69c4d9c8f497, UPDATE: Add Kotlin support to module "push"., Sun Apr 19 14:30:42 2020 +0800
+M	build.gradle
+M	push/build.gradle
+
+11d7d758751e3935cc6c8987d231fb38b716a3ad, Merge pull request #321 from oasisfeng/patch-background-direct-launch, Fri Apr 17 21:56:05 2020 -0700
+4597577bb67fc349b48f49c3414913317c7cd6f3, UPDATE: Use direct background service launch instead of app activity launch for notification click whenever possible., Tue Apr 14 17:44:49 2020 +0800
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+A	push/src/main/java/com/xiaomi/push/service/BackgroundActivityStartEnabler.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+718a351a86dbe278886024a061d3e16579168c6d, FIX: Correctly launch PushServiceMain as foreground service., Tue Apr 14 17:04:53 2020 +0800
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPingReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPkgUninstallReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/KeepAliveReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiPushPingReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/NetworkStatusReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/PkgUninstallReceiver.java
+
+7dd847be59edf96698aa682675fb56816cf404de, UPDATE: Avoid unnecessary foreground notification repeated updates., Tue Apr 14 16:59:20 2020 +0800
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+0c9d8bee79c05e64f6bfb6e70490081a36efcf04, FIX: Foreground service requires notification ID to be non-zero., Tue Apr 14 16:56:11 2020 +0800
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+1bd534f84e8855d58aa8570525b743b0ac8a1b25, Merge pull request #302 from heruoxin/master, Sat Mar 14 19:41:32 2020 -0700
+e0a7697c887e2d9c2f2f0c38804631aca6a272f4, Make the notification behavior consistent with official MIUI, Fri Dec 27 20:01:21 2019 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+9fafd63770eb2fb74ca7db07197032eb584e6eca, Merge pull request #297 from MiPushFramework/prepare4Q, Wed Dec 11 08:50:32 2019 -0800
+e1f598323a9428a2e5541e17d761ae5f6c125ef5, condom fix, Thu Dec 12 00:09:48 2019 +0800
+M	condom/src/main/java/com/oasisfeng/condom/CondomProcess.java
+
+07c90957b5b33d2ebf6480e692bdc27255deaa0e, upgrade epic, Thu Dec 12 00:05:20 2019 +0800
+M	push/build.gradle
+
+c30f369b3769f9b10e7a4256953599de90bfaf07, Merge pull request #293 from MiPushFramework/DEV-20191001, Tue Oct 8 10:27:55 2019 -0700
+139934627cb5cdb981353130624b7d7627a70a92, feat(push): op for application icon gen process, Mon Sep 30 18:25:21 2019 +0800
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+
+ea8837a5b9d5aba9f30d4121ea52f8cb5eccb3aa, Merge pull request #283 from MiPushFramework/TimothyZhang023-patch-1, Sun Aug 4 09:16:04 2019 -0700
+9ce3314b04d79a77b86ffef727487e0df1306cf9, Update .travis.yml, Sun Aug 4 20:01:04 2019 +0800
+M	.travis.yml
+
+28960a4852481bbaedf01dafc4a13e1ba7f46bcc, Merge pull request #279 from oasisfeng/master, Tue Jul 30 13:50:49 2019 +0800
+36fa7f5681be853cf8788bad5d92e6636e28bb27, feat(push): Do not cancel the notification if target service if failed to start., Wed Jul 10 16:57:53 2019 +0800
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+
+69abc1da8ac3edb294a011f87afa600c3148e885, feat(push): Correctly display app name and icon even for hidden (frozen) apps., Tue Jul 9 21:46:45 2019 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	common/src/main/java/top/trumeet/common/cache/ApplicationNameCache.java
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+M	common/src/main/java/top/trumeet/common/event/type/EventType.java
+M	common/src/main/java/top/trumeet/common/register/RegisteredApplication.java
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+M	provider/src/main/java/top/trumeet/mipush/provider/register/RegisteredApplication.java
+
+af38eb3a761cfc144ebef41b99d76e56935e2c27, Merge pull request #262 from MiPushFramework/battery_save, Mon Apr 29 10:30:07 2019 -0700
+b183efa437d61856944463bb4220240d86f8be13, feat(Push) batterySave mode, Wed Mar 6 14:53:18 2019 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/LogUtils.java
+
+e17a4e8d09b0a17a1bb20859a2da7461509a1973, feat(push): enable back button for advanced settings activity, Sat Feb 9 17:16:53 2019 -0800
+M	push/src/main/java/com/xiaomi/xmsf/ManageSpaceActivity.java
+
+000e8ef375467a0d97dd6c1ebbfc6f4983618dbf, feat(push): tweak strings, Sat Feb 9 17:11:18 2019 -0800
+M	push/src/main/res/values/strings.xml
+
+7283a3a1db1ca92c70541027baa673675cbca810, feat(push): remove enter/exit animations for RemoveDozeActivity, Sat Feb 9 17:08:12 2019 -0800
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/res/values/styles.xml
+
+7e5a87bdd8cd2ec496943d0694522ed320ca0137, feat(app): skip class finding for apps which is not declaring PushMessageHandler, Sat Feb 9 16:54:25 2019 -0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+
+e1bd028e0387a9e7a6d84d650461ac0e92171e87, chore(common): change the scope of support library to "api", Sat Feb 9 13:36:14 2019 -0800
+M	common/build.gradle
+
+070780e0da1ce24b768ed5dbdd6da46b7b971de1, feat(app): use a new way to detect whatever the target app is using MiPush, Sat Feb 9 13:35:47 2019 -0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+D	app/src/main/java/top/trumeet/mipushframework/utils/MiPushManifestChecker.java
+
+7600b4f98744b85c35badbb06346018d42c1db1c, docs: add a new line between two lines, Fri Feb 8 19:17:51 2019 -0800
+M	README.md
+
+58a3b414a2c76a84e306e1c30ba60598de06a419, docs: add English document, Fri Feb 8 19:16:18 2019 -0800
+M	README.md
+A	README_zh-rCN.md
+
+b0fe71907d8ab4f785207ad8bd4d1739ae23e0cc, Merge pull request #256 from MiPushFramework/DEV-20190128, Mon Jan 28 12:07:41 2019 +0800
+7a722b10b5e9b258a1cc4d7a52916243dec0b076, feat(bugfix) fix build and build icon, Mon Jan 28 11:07:32 2019 +0800
+M	.travis.yml
+M	README.md
+
+67208c70f9daed0a01121d650f021d2352e283ff, Merge pull request #254 from MiPushFramework/DEV-20190101, Sun Jan 27 11:13:17 2019 -0800
+65c4bbf0946be4fa19ba17e2701f013c53122248, feat (push) optimize for notification icon, Sun Jan 13 23:06:10 2019 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+M	common/src/main/java/top/trumeet/common/utils/ImgUtils.java
+
+72d532fafa463b1d2153e3c72fa8f252325347e5, feat (push) skip scheduleNextUpload when FABRIC_KEY is null, Sun Jan 13 21:28:20 2019 +0800
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+69f111d1980dc996b00ae7d2c8eb2fa231642287, feat (manager) revert commit 0aebc8a8e8f6e18415437a5b04c279b8c4dfd863, Wed Jan 9 02:15:39 2019 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+
+bcb7037161dfdb9dcc2c4545828b17a6a7e4f876, feat(manager) rename repo, Sun Jan 6 15:22:02 2019 +0800
+M	README.md
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/help/SupportFragment.java
+M	app/src/main/res/raw/can_not_receive_push.md
+M	app/src/main/res/values-zh/strings.xml
+M	app/src/main/res/values/strings.xml
+
+083f9f9738f60119eed4f76c6979861de79e94ff, feat(manager) fix help articles, Sun Jan 6 15:16:33 2019 +0800
+M	app/src/main/res/values-zh/strings.xml
+M	app/src/main/res/values/strings.xml
+
+0aebc8a8e8f6e18415437a5b04c279b8c4dfd863, feat(manager) skip check system app except for miui, Sun Jan 6 15:05:30 2019 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/MiPushManifestChecker.java
+
+171f3f92a676efcee518bb51494f5068a42c5419, feat(push): add app foreground check delay, Tue Jan 1 15:47:42 2019 +0800
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+
+9284e39794e7c2fb0a1c6f07aa828e66e9214db7, Merge pull request #250 from Trumeet/Trumeet-patch-fix-release-key, Thu Dec 27 09:22:14 2018 +0800
+d848552ab16080ba3022bb1a1fc3187ef5b1173c, fix(build): update release key, Wed Dec 26 17:11:24 2018 -0800
+M	.travis.yml
+
+d728befecbe4528e9292a35ac52223a24def7e63, Merge pull request #242 from Trumeet/DEV-20181201, Wed Dec 26 16:43:59 2018 -0800
+54aab15c7890e74a6e42ffdeb5fd055897341559, feat(push): update strings, Wed Dec 26 16:21:58 2018 -0800
+M	app/src/main/res/values/strings.xml
+
+7805896b5e9ad922375bba22aa7f55c37aa710d4, feat(push): update strings, Wed Dec 26 16:20:29 2018 -0800
+M	app/src/main/res/values/strings.xml
+
+8eaa865985ddc83443f66d6b931da4ac69f6a575, feat(manager) auto enable frozen app by IceBox SDK, Sun Dec 23 09:14:45 2018 +0800
+M	common/src/main/res/values-zh/strings.xml
+M	common/src/main/res/values/strings.xml
+M	push/build.gradle
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/xmsf/ManageSpaceActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+M	push/src/main/res/values-zh/strings.xml
+M	push/src/main/res/values/strings.xml
+M	push/src/main/res/xml/fragmented_preferences.xml
+
+00a8a09835fd97a73bd6f04559c2cf33c4b22525, feat(manager) sort applications. [registered app(latest first) -> registered abnormal -> not registered], Tue Dec 18 00:58:19 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+
+3de5635ec526a4953c1c253e89927d30532faeb2, Update strings.xml, Mon Dec 17 08:00:25 2018 -0800
+M	app/src/main/res/values/strings.xml
+
+5b7610d3b0313c6fdd5682a12f0b773af5e9ae16, Update strings.xml, Mon Dec 17 07:59:36 2018 -0800
+M	app/src/main/res/values-zh/strings.xml
+
+cf62bdd8677cebc1d7972337a4e4dc95650d5135, Add .gitignore for condom, Sun Dec 16 13:46:04 2018 -0800
+A	condom/.gitignore
+
+9dfe2f39ca8a9dc44c113c3ea346241f245bdd10, feat(push): use xLog instead Log4a to record logs, close #245, Sun Dec 16 13:45:22 2018 -0800
+M	push/build.gradle
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/MiPushMsgAck.java
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/ManageSpaceActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/ShareLogActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/auth/AuthActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/AppOpsKit.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/NotificationManagerKit.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/XMOutbound.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/PushSdkHooks.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPingReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPkgUninstallReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/MiuiPushActivateService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/KeepAliveReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/LogUtils.java
+M	push/src/main/res/values/strings.xml
+M	push/src/main/res/xml/filepaths.xml
+
+64e125f0184312e1a7c343dd8139d0b13d5732ea, Update README, Sun Dec 16 10:26:42 2018 -0800
+A	CONTRIBUTION.md
+M	README.md
+
+e65fd1f3dda1c44c5eec78ae8838357a2f6e7f33, feat(manager/push): simplify keep alive UI, Sun Dec 16 10:23:08 2018 -0800
+M	app/src/main/res/values/strings.xml
+M	push/src/main/java/com/xiaomi/xmsf/EmptyActivity.java
+M	push/src/main/res/layout/activity_empty.xml
+M	push/src/main/res/values-zh/strings.xml
+M	push/src/main/res/values/strings.xml
+
+d4bff06e130a9d55c4e467f095b63a14f70cfb26, feat: optimize strings, Sun Dec 16 10:16:07 2018 -0800
+D	app/src/main/res/layout/item_action.xml
+M	app/src/main/res/layout/settings_entity_header.xml
+M	app/src/main/res/values-zh/strings.xml
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/ita/TopActivityFactory.java
+M	push/src/main/res/layout/activity_empty.xml
+M	push/src/main/res/values-zh/strings.xml
+M	push/src/main/res/values/strings.xml
+
+4db208d65dbb6a797b43f62f142da2a342d4fb1b, feat(build): do not enforce fabric is enabled, skip applying plugin when key is not specified, close #243, Sun Dec 16 09:16:43 2018 -0800
+M	app/build.gradle
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+M	app/src/main/java/top/trumeet/mipushframework/debug/IdJob.java
+A	fabric.gradle
+M	local.properties.example
+M	push/build.gradle
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+
+3e97f1b2cb33478bf7ce529d5538459b9df0b449, feat(push): log running status to Fabric, Sat Dec 15 22:08:46 2018 -0800
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+4b6c990950b614ae659cb30c50bf4f2ca972e393, fix(push): remove lint to pass building with low target api, Sat Dec 15 21:17:56 2018 -0800
+M	push/build.gradle
+
+c172a6d4bd10ed438702394c9b9bf0e6b3d80cc5, Update README.md, Sat Dec 15 09:07:03 2018 -0800
+M	README.md
+
+5821c17721dc835b3a42426ac138e550aaa9af95, Update README.md, Sat Dec 15 17:05:11 2018 +0800
+M	README.md
+
+ca30a2a984032374d2026b2361c683e4a618bc90, feat(push) add global register notification switch, notification disabled by default, Sat Dec 15 13:43:47 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/res/values-zh/strings.xml
+M	app/src/main/res/values/strings.xml
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/xmsf/ManageSpaceActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+M	push/src/main/res/values-zh/strings.xml
+M	push/src/main/res/values/strings.xml
+M	push/src/main/res/xml/fragmented_preferences.xml
+
+a21a484685f3a4b5650b9324f2a3acf824b30333, Merge branch 'DEV-20181201' of https://github.com/Trumeet/MiPushFramework into DEV-20181201, Fri Dec 14 22:55:50 2018 +0800
+0d8c0b83b888ee43ee8dceded647013b5e13a60d, Merge pull request #235 from yfdyh000/event_view, Fri Dec 14 22:55:24 2018 +0800
+1dec8541b4c10e63c9ffe114b94495a476fa403a, feat(app/common/push): change en as default language, Sun Dec 9 10:24:03 2018 +0800
+D	app/src/main/res/values-en-v26/strings.xml
+D	app/src/main/res/values-en/configs.xml
+D	app/src/main/res/values-en/strings.xml
+M	app/src/main/res/values-v26/strings.xml
+A	app/src/main/res/values-zh-v26/strings.xml
+A	app/src/main/res/values-zh/strings.xml
+M	app/src/main/res/values/configs.xml
+M	app/src/main/res/values/strings.xml
+D	common/src/main/res/values-en/strings.xml
+A	common/src/main/res/values-zh/strings.xml
+M	common/src/main/res/values/strings.xml
+D	push/src/main/res/values-en/strings.xml
+A	push/src/main/res/values-zh/strings.xml
+M	push/src/main/res/values/strings.xml
+
+8c8763685797da07068802caa641c4935cd05abb, Merge pull request #232 from yfdyh000/strings_en, Wed Dec 5 19:33:39 2018 -0800
+8d9d79666bc8cbaa631073c238c512c8e1fddc38, Merge branch 'DEV-20181201' of https://github.com/Trumeet/MiPushFramework into DEV-20181201, Fri Dec 7 10:56:08 2018 +0800
+df6bcecfdd3d5f647e02f8060abfffdaaf6a4879, Merge pull request #232 from yfdyh000/strings_en, Wed Dec 5 19:33:39 2018 -0800
+6a2cd2d09b707a89897a4e59e312d6d77aded60d, Merge pull request #233 from yfdyh000/example3, Thu Dec 6 10:39:10 2018 +0800
+eebf7c6b576be60b5803b9f955d9350b9750be20, feat(push) update PkgUninstallReceiver, Wed Dec 5 23:23:28 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/PkgUninstallReceiver.java
+
+8c237fd61416af51709fb0ce1b3744e71812ec47, feat(app): fixes 'en' locale, Wed Dec 5 16:46:34 2018 +0800
+M	app/src/main/res/values-en/strings.xml
+
+888389a9dccacad9558a6247899c05b5e96f0f0f, feat(app): quickly open app permissions from events, Tue Dec 4 13:45:23 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+
+79752fd964e26ca62dcb32e49fc31bdc097e47a5, fix(push): fix notifications on registerAllowed and push disabled, Tue Dec 4 07:18:47 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+ebba99c9e446a843f7cd18797a98f8107d951bf5, feat(app/common/push): add 'en' locale, I18n fixes, Sun Dec 2 03:10:21 2018 +0800
+M	app/build.gradle
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+A	app/src/main/res/values-en-v26/strings.xml
+A	app/src/main/res/values-en/strings.xml
+M	app/src/main/res/values/strings.xml
+A	common/src/main/res/values-en/strings.xml
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+A	push/src/main/res/values-en/strings.xml
+M	push/src/main/res/values/strings.xml
+M	push/src/main/res/xml/fragmented_preferences.xml
+
+5b172b954b449e9566b984c82909f3897f989895, fix(example): update the guide, Mon Dec 3 16:45:15 2018 +0800
+M	local.properties.example
+
+d772b3d6e42416dfb64df1c2b169e75d0f358554, Merge pull request #221 from yfdyh000/refine_strings, Sun Dec 2 09:59:54 2018 -0800
+ac76d7035912f29bf29deeab5726c0e631f1d04f, fix(strings): all strings to Chinese, refine and fixes, Sat Dec 1 20:33:42 2018 +0800
+M	app/src/main/res/values-v26/strings.xml
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	common/src/main/res/values/strings.xml
+M	push/src/main/java/com/xiaomi/xmsf/ManageSpaceActivity.java
+M	push/src/main/res/values/strings.xml
+
+ecd47b4dcca3668c7e424daaa44dbff8d48d90b4, Merge pull request #224 from yfdyh000/app_registered_error_tip, Sun Dec 2 09:37:30 2018 -0800
+06cc5a2b9668daf68159890a204ff5ee32cddce0, Merge pull request #229 from yfdyh000/README_and_localProperties2, Sun Dec 2 09:26:16 2018 -0800
+4685e3a79190c0240d33b11c9e290d1a18956ad2, feat(op): remove bold style from app_registere tips, Sun Dec 2 00:03:26 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/res/values/strings.xml
+
+e68b49be8cf12cf9de433275ce853f1a343b6991, feat(op): add app_registered_error tip, Sat Dec 1 23:56:16 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/db/RegisteredApplicationDb.java
+
+236123997355275311162d64c246eaedd6595547, Refine Release downloads in README.md, Sun Dec 2 00:52:20 2018 +0800
+M	README.md
+
+1f67baff3e7e5fdb4efe71ff2a1126298322ad19, Refine GPL to GPLv3.0 in README.md, Sun Dec 2 00:48:35 2018 +0800
+M	README.md
+
+f011e6a7560836f82cbd1a9fe0f7fcef8567b1fb, Add local.properties.example, Sun Dec 2 00:27:00 2018 +0800
+M	README.md
+A	local.properties.example
+
+6f35563ae140e019796988adab5d484efae4f8f5, Refine README.md, Sun Dec 2 00:24:00 2018 +0800
+M	README.md
+
+cca1d1c4122d28a0233c97b1d40eb9ca2c3b6c4b, Merge pull request #223 from yfdyh000/footer_marginLeft, Sun Dec 2 12:33:02 2018 +0800
+09102db0d966c22c0cca7fda89c6bc6e24395881, Merge pull request #222 from yfdyh000/accessibility_description, Sun Dec 2 10:59:34 2018 +0800
+cbd35bef5fa19a6e6d01f96843d545fc49f93d9c, Update README.md, Sat Dec 1 08:49:29 2018 -0800
+M	README.md
+
+47511d4639b1f90fac5876ec56b5a44d87ab2dc2, fix(op) add marginLeft to items footer info icon, Sat Dec 1 23:14:41 2018 +0800
+M	app/src/main/res/layout/item_footer.xml
+
+3562e3d703c368da6420c716cd9c2ae1c02d3a1b, feat(push): add accessibility description, Sat Dec 1 23:13:35 2018 +0800
+M	push/src/main/res/values/strings.xml
+M	push/src/main/res/xml/detection_service_config.xml
+
+49dce48c366e2767df213467d1ed131c29b48970, feat(mock_notification), Sat Dec 1 10:14:34 2018 +0800
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	common/src/main/res/values/strings.xml
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+D	push/src/main/java/com/xiaomi/xmsf/ClearLogActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/ManageSpaceActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/res/values/strings.xml
+M	push/src/main/res/xml/fragmented_preferences.xml
+
+78812035cf53f0297b23bdddf0d465401bd001ef, Merge pull request #211 from Trumeet/DEV-20180930, Thu Nov 29 20:17:26 2018 -0800
+174335b11c8b22cafa254255fe057bc865666bc2, feat(bugfix) fix app color issue, Thu Nov 29 00:30:19 2018 +0800
+M	common/src/main/java/top/trumeet/common/cache/ApplicationNameCache.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+65bfb0b764b47e14432762f28df1a96884a9be1b, Update XmsfApp.java, Mon Nov 26 19:37:31 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+
+73610ec6ab489ab4e0b97272f6b6978f682bafee, feat(riru): update to lastest version, Sun Nov 25 19:54:19 2018 +0800
+M	ext_RiruMiPushFake
+
+7966685cb7333505e625d2a3f4ebb402c3af4af1, feat(op) reduce wake service on SCREEN_ON, Sat Nov 24 20:50:28 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/KeepAliveReceiver.java
+
+3747b2dab25be82ee3e0946867fe27b9d00f5c95, feat(bugfix) fix  push activity failed, Sat Nov 24 20:27:40 2018 +0800
+M	push/src/main/AndroidManifest.xml
+
+534faae30f5fa1ff735af6d073f6fb08e9e50a00, feat(xposed) update xposed hook, Fri Nov 23 08:56:07 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	push/src/main/java/com/xiaomi/xposed/hook/MiPushEnhanceHook.java
+
+1a45c3b84026ebc5b8eb0da22ce8eb9be8261dc7, feat(op) upgrade version code, Thu Nov 22 19:39:06 2018 +0800
+M	build.gradle
+
+1baf12475956fed87c35b3f2f2a2db141647b9d2, Merge pull request #210 from Trumeet/Trumeet-patch-remove-screenshot, Thu Nov 22 14:02:56 2018 +0800
+c0371f8c93622ce77e7fdc4e4ae063a4408d9466, feat(op) remove remote preference, Thu Nov 22 13:57:30 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/xmsf/EmptyActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/ManageSpaceActivity.java
+M	push/src/main/res/values/strings.xml
+M	push/src/main/res/xml/fragmented_preferences.xml
+
+583846dd8745c6ef67d44719b3d86186015cac76, feat(op) remove remote preference, Thu Nov 22 02:09:02 2018 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+D	app/src/main/java/top/trumeet/mipushframework/preferences/MiPushAppPreferenceProvider.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/build.gradle
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+D	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	common/src/main/res/values/strings.xml
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/EmptyActivity.java
+A	push/src/main/java/com/xiaomi/xmsf/ManageSpaceActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+M	push/src/main/res/values/strings.xml
+A	push/src/main/res/xml/fragmented_preferences.xml
+
+b0ceaba23136e359745203285b5b2fa92c1d6a5e, feat(op) ..., Tue Nov 20 00:06:52 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+
+a986d0cc1989ab5f9e4398e91bd8c380e839f5af, Update README.md, remove the first screenshot, Sun Nov 18 09:19:26 2018 -0800
+M	README.md
+
+7a74d59a570246f3f57fa2f88f0475cdedef9484, feat(fake) global fake switch, Sun Nov 18 20:03:01 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	push/src/main/java/com/xiaomi/xposed/hook/MiPushEnhanceHook.java
+
+2ab20acfdfbd7c64651c72b92ba78a2edb6efbb5, bugfix(db) prevent data loss on upgrade, Sun Nov 18 14:30:32 2018 +0800
+M	provider/src/main/java/top/trumeet/mipush/provider/DatabaseUtils.java
+A	provider/src/main/java/top/trumeet/mipush/provider/MyMigrationHelper.java
+
+3dd2ca75ac428203c57a84eaed2468d4f4192283, feat(op) multi-thread check, Fri Nov 9 22:36:18 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/MiPushManifestChecker.java
+
+e190c5ff73d54222476e402f162d16b5cc55ea90, feat(xposed): update FAKE_CONFIGURATION_PATH, Fri Oct 5 09:27:27 2018 +0800
+M	common/src/main/java/top/trumeet/common/Constants.java
+
+7a8cd4c00838d159b8c9b4982760615ac26a3d4f, revert: feat(build.gradle): downgrade android.tools.build, Fri Oct 5 08:56:36 2018 +0800
+M	build.gradle
+
+f101e7beefd7ffd4a69b4e7f334501683cc7b1a6, fix(manager): some older push service versions can't remove OK after removing doze, Thu Oct 4 16:53:24 2018 -0700
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/control/CheckPermissionsUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/models/ActivityResultAndPermissionResult.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	app/src/main/res/values/strings.xml
+M	common/src/main/res/values/strings.xml
+
+2174cc9abbd262f32128359f651c2943d1e5e37d, fix(build): upgrade gradle, Wed Oct 3 21:46:10 2018 +0800
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.properties
+
+2af98e68d527ab7589f12b739e7f405a4a08e0a9, feat(manager): update wizard & fix page will still jump when not connected, Mon Oct 1 16:00:07 2018 -0700
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/UsageStatsPermissionActivity.java
+M	common/src/main/java/top/trumeet/common/push/ControllerImpl.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+
+a11f14393661a88079e7f05a3ea80452fd8bbb4d, feat(manager): remove Magisk Fake module from wizard and settings, Sun Sep 30 15:30:32 2018 -0700
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/wizard/UsageStatsPermissionActivity.java
+D	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildActivity.java
+D	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildUtils.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+
+c5c6c9918cb16228c32d83cd591d83344a54572e, feat(app/common/push): add fake settings for Xposed module, Fri Sep 28 17:07:25 2018 -0700
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/ShellUtils.java
+A	app/src/main/res/values/configs.xml
+M	app/src/main/res/values/strings.xml
+A	common/src/main/java/android/os/UserHandle.java
+M	common/src/main/java/top/trumeet/common/Constants.java
+A	common/src/main/java/top/trumeet/common/override/UserHandleOverride.java
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+M	push/src/main/java/com/xiaomi/xposed/hook/MiPushEnhanceHook.java
+D	push/src/main/java/com/xiaomi/xposed/util/CommonUtil.java
+
+aafaca272742b71a29ee4e1b11104628b97a57d7, fix(common): restore missing files, Thu Sep 27 22:14:19 2018 -0700
+A	common/src/main/java/moe/yuuta/mipush/sdk/app/ControlAPIProvider.java
+
+65fb15c9d6900df8748c0d15d5d12a113db4321d, revert: feat(app/common): introduce a new module: sdk, Thu Sep 27 22:11:49 2018 -0700
+M	push/build.gradle
+D	sdk/.gitignore
+D	sdk/build.gradle
+D	sdk/proguard-rules.pro
+D	sdk/src/androidTest/java/moe/yuuta/mipush/sdk/ExampleInstrumentedTest.java
+D	sdk/src/main/AndroidManifest.xml
+D	sdk/src/main/java/moe/yuuta/mipush/sdk/app/ControlAPIProvider.java
+D	sdk/src/main/res/values/strings.xml
+D	sdk/src/test/java/moe/yuuta/mipush/sdk/ExampleUnitTest.java
+M	settings.gradle
+
+10ffff117b360311bbe35ab119845d215e88d453, feat(app/common/provider/push): display a notification when app registers, close #180, Thu Sep 27 19:58:25 2018 -0700
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/res/values/strings.xml
+M	build.gradle
+M	common/src/main/java/top/trumeet/common/db/RegisteredApplicationDb.java
+M	common/src/main/java/top/trumeet/common/register/RegisteredApplication.java
+M	provider/build.gradle
+M	provider/src/main/java/top/trumeet/mipush/provider/register/RegisterDB.java
+M	provider/src/main/java/top/trumeet/mipush/provider/register/RegisteredApplication.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/res/values/strings.xml
+
+1b3d5bdc9252322e63e3fc05a3fc6737639b8d45, feat(manager): change DEBUG_ICON to false as default, Fri Sep 21 19:27:15 2018 -0700
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+
+c09a3e97d6f597ef2e471fa1dbed928a7a8a2199, feat(manager/common): show all apps in default, close #174, Fri Sep 21 19:24:06 2018 -0700
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+A	app/src/main/java/top/trumeet/mipushframework/utils/MiPushManifestChecker.java
+A	app/src/main/java/top/trumeet/mipushframework/widgets/Footer.java
+A	app/src/main/java/top/trumeet/mipushframework/widgets/FooterItemBinder.java
+A	app/src/main/java/top/trumeet/mipushframework/widgets/InfoPreference.java
+A	app/src/main/res/drawable/ic_error_outline_black_24dp.xml
+A	app/src/main/res/drawable/ic_info_outline_black_24dp.xml
+A	app/src/main/res/layout/item_footer.xml
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/db/RegisteredApplicationDb.java
+M	common/src/main/java/top/trumeet/common/register/RegisteredApplication.java
+
+36e8b0334875e1ce3eeda5deb6bfcb817e4fa0fc, feat(manager): remove warn according to #175, Fri Sep 21 16:22:23 2018 -0700
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	app/src/main/res/values/strings.xml
+
+3fa692bafcbae4828ee02aacdaedf1f07692f73f, feat(op) app color cache & remove large icon, Sat Nov 17 22:13:45 2018 +0800
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+89fccd006241f55af1af898d1b4e39999a498737, feat(op) Push luancher icon for OnePlus feat(message filter) filter dup msg within 60s, Sat Nov 17 09:30:35 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	common/src/main/res/values/strings.xml
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/xmsf/EmptyActivity.java
+
+061fc8b08661f3b114d091c978a6853bdf850eb9, Merge pull request #196 from Trumeet/DEV-20181005, Fri Oct 26 19:16:11 2018 -0700
+2c52c950584eb8818518ee1004d3883eb5723992, feat(keepalive), Sat Oct 20 21:30:53 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+A	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/KeepAliveReceiver.java
+
+97feddf867e9196c669e689083b202e60c98df3e, feat(dup_msg): prevent dup msg , reduce cache size, Sat Oct 20 20:54:13 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+
+eaea786cb7255f591eddf17af318e943ac004c19, feat(notification): scale icon to 64dp, Wed Oct 10 19:37:47 2018 +0800
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+M	common/src/main/java/top/trumeet/common/utils/ImgUtils.java
+
+5bc00759f2bf6a02bd0861b8e340351c4f291dd0, [fix] try fix, Tue Oct 9 00:43:40 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+ebaf7f57866cb4c82dc81c2f199107cb6cf9e18a, feat(dup_msg): prevent dup msg, Sat Oct 6 17:11:11 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+
+e0387784e07e219ddc4e5d368e13217c97e3de3a, feat(keepalive): temp remove function : disable_fg_notification_warning, Sat Oct 6 11:32:57 2018 +0800
+M	app/src/main/res/xml/settings.xml
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+2f02f87eb150508acf9a8c98b3e89ee653a418c8, feat(keepalive): check connection on screen on, Sat Oct 6 11:21:52 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+
+f1c7c07ccd41fdf6c8a74e4d8b9c72492ec7ca2c, feat(keepalive): check connection on screen on, Sat Oct 6 09:46:56 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiPushPingReceiver.java
+
+3ef6f0f1345950ebe42037c0415adba16814d0d2, Add MiPushFake, Wed Sep 19 19:07:46 2018 -0700
+M	.gitmodules
+A	ext_MiPushFakeGlobal
+
+65306b72e215dd92b7882e7539e4217e24c649db, Add Riru-MiPushFake, Wed Sep 19 16:21:03 2018 -0700
+M	.gitmodules
+A	ext_RiruMiPushFake
+D	ext_RiruMiPushFake/.gitignore
+D	ext_RiruMiPushFake/README.md
+D	ext_RiruMiPushFake/build.gradle
+D	ext_RiruMiPushFake/build.sh
+D	ext_RiruMiPushFake/jni/.gitattributes
+D	ext_RiruMiPushFake/jni/Android.mk
+D	ext_RiruMiPushFake/jni/Application.mk
+D	ext_RiruMiPushFake/jni/external/Android.mk
+D	ext_RiruMiPushFake/jni/external/include/xhook/xhook.h
+D	ext_RiruMiPushFake/jni/external/xhook/queue.h
+D	ext_RiruMiPushFake/jni/external/xhook/tree.h
+D	ext_RiruMiPushFake/jni/external/xhook/xh_core.c
+D	ext_RiruMiPushFake/jni/external/xhook/xh_core.h
+D	ext_RiruMiPushFake/jni/external/xhook/xh_elf.c
+D	ext_RiruMiPushFake/jni/external/xhook/xh_elf.h
+D	ext_RiruMiPushFake/jni/external/xhook/xh_errno.h
+D	ext_RiruMiPushFake/jni/external/xhook/xh_jni.c
+D	ext_RiruMiPushFake/jni/external/xhook/xh_log.c
+D	ext_RiruMiPushFake/jni/external/xhook/xh_log.h
+D	ext_RiruMiPushFake/jni/external/xhook/xh_util.c
+D	ext_RiruMiPushFake/jni/external/xhook/xh_util.h
+D	ext_RiruMiPushFake/jni/external/xhook/xh_version.c
+D	ext_RiruMiPushFake/jni/external/xhook/xh_version.h
+D	ext_RiruMiPushFake/jni/external/xhook/xhook.c
+D	ext_RiruMiPushFake/jni/external/xhook/xhook.h
+D	ext_RiruMiPushFake/jni/main/Android.mk
+D	ext_RiruMiPushFake/jni/main/hook.cpp
+D	ext_RiruMiPushFake/jni/main/hook.h
+D	ext_RiruMiPushFake/jni/main/logging.h
+D	ext_RiruMiPushFake/jni/main/main.cpp
+D	ext_RiruMiPushFake/jni/main/misc.cpp
+D	ext_RiruMiPushFake/jni/main/misc.h
+D	ext_RiruMiPushFake/src/main/AndroidManifest.xml
+D	ext_RiruMiPushFake/template_override/config.sh
+D	ext_RiruMiPushFake/template_override/module.prop
+D	ext_RiruMiPushFake/template_override/riru_module.prop
+
+67f922a8b4d22611d4c2e4a17ee86571fbadbabd, Rename submodule, Wed Sep 19 16:18:27 2018 -0700
+D	Riru-MiPushFake
+A	ext_RiruMiPushFake/.gitignore
+A	ext_RiruMiPushFake/README.md
+A	ext_RiruMiPushFake/build.gradle
+A	ext_RiruMiPushFake/build.sh
+A	ext_RiruMiPushFake/jni/.gitattributes
+A	ext_RiruMiPushFake/jni/Android.mk
+A	ext_RiruMiPushFake/jni/Application.mk
+A	ext_RiruMiPushFake/jni/external/Android.mk
+A	ext_RiruMiPushFake/jni/external/include/xhook/xhook.h
+A	ext_RiruMiPushFake/jni/external/xhook/queue.h
+A	ext_RiruMiPushFake/jni/external/xhook/tree.h
+A	ext_RiruMiPushFake/jni/external/xhook/xh_core.c
+A	ext_RiruMiPushFake/jni/external/xhook/xh_core.h
+A	ext_RiruMiPushFake/jni/external/xhook/xh_elf.c
+A	ext_RiruMiPushFake/jni/external/xhook/xh_elf.h
+A	ext_RiruMiPushFake/jni/external/xhook/xh_errno.h
+A	ext_RiruMiPushFake/jni/external/xhook/xh_jni.c
+A	ext_RiruMiPushFake/jni/external/xhook/xh_log.c
+A	ext_RiruMiPushFake/jni/external/xhook/xh_log.h
+A	ext_RiruMiPushFake/jni/external/xhook/xh_util.c
+A	ext_RiruMiPushFake/jni/external/xhook/xh_util.h
+A	ext_RiruMiPushFake/jni/external/xhook/xh_version.c
+A	ext_RiruMiPushFake/jni/external/xhook/xh_version.h
+A	ext_RiruMiPushFake/jni/external/xhook/xhook.c
+A	ext_RiruMiPushFake/jni/external/xhook/xhook.h
+A	ext_RiruMiPushFake/jni/main/Android.mk
+A	ext_RiruMiPushFake/jni/main/hook.cpp
+A	ext_RiruMiPushFake/jni/main/hook.h
+A	ext_RiruMiPushFake/jni/main/logging.h
+A	ext_RiruMiPushFake/jni/main/main.cpp
+A	ext_RiruMiPushFake/jni/main/misc.cpp
+A	ext_RiruMiPushFake/jni/main/misc.h
+A	ext_RiruMiPushFake/src/main/AndroidManifest.xml
+A	ext_RiruMiPushFake/template_override/config.sh
+A	ext_RiruMiPushFake/template_override/module.prop
+A	ext_RiruMiPushFake/template_override/riru_module.prop
+
+00f6589fe4707bf06d9631645ec599cd32990707, Remove RELEASE_NOTE.md, Wed Sep 19 16:16:54 2018 -0700
+D	RELEASE_NOTE.md
+
+798df168dbbdc8809d70541f5d5f118bac6cb37b, Add Riru-MiPushFake, Wed Sep 19 16:07:26 2018 -0700
+A	.gitmodules
+A	Riru-MiPushFake
+
+16e1bf1c0a2332095d8e7d70ea954e03c53fdeac, Merge pull request #173 from Trumeet/DEV-20180811, Thu Aug 16 11:13:30 2018 +0800
+17aae971ba3736cf14522c5b970f03a9dabe60a6, fix(push): fix auto jump issue, Sat Aug 11 15:49:07 2018 +0800
+M	README.md
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+
+05d14bebfc6f7c16c3013d4307086c091ca02f6e, Add Shields, Wed Aug 8 22:08:45 2018 +0800
+M	README.md
+
+f235beaf99565926c841d346cdf9daf6088bb781, Merge pull request #172 from Trumeet/DEV-20180805, Wed Aug 8 17:31:00 2018 +0800
+93e80af3a878de0e574a7e472625212076520bf4, [fix] FROM_NOTIFICATION == false makes app skip reg process case bugs, Tue Aug 7 01:45:42 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+
+9a91d0eb13fe70c26429b00cb47d606abb3c02cf, Update version code, Sun Aug 5 11:03:55 2018 +0800
+M	build.gradle
+
+c715ceaf52a107fb93907bee1bb7c643c8ec4943, Merge pull request #166 from Trumeet/DEV-20180804, Sat Aug 4 18:16:24 2018 +0800
+a7b040239a440d0fee3a77d0a8750504e6a2c83f, feat(xposed): backlist add google apps, Sat Aug 4 10:15:02 2018 +0800
+M	push/src/main/java/com/xiaomi/xposed/hook/MiPushEnhanceHook.java
+
+67752a6b7274694671d19d685ecd76049201ea62, feat(manager): add try-catch on onHandleIntent, Mon Jul 30 10:37:42 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+360fad694dd11f2ce05187be4a2f1594b66f7699, feat(manager): react code, Sat Jul 28 16:37:13 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/service/MiuiPushActivateService.java
+D	push/src/main/java/com/xiaomi/xmsf/push/service/MyLog.java
+D	push/src/main/java/com/xiaomi/xmsf/push/service/Utils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMAccountManager.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/utils/RemoveTremblingUtils.java
+
+6a98b7ae44f7ac4bfc7dba1c88c53a3201a65ab7, feat(app): add onError handing in checking permissions, Sat Jul 28 10:39:13 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/control/CheckPermissionsUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+
+89902a045b5f33cbc2b3ee5f36f45f68a0de65c8, feat(manager): react code, Sat Jul 28 09:56:55 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+A	push/src/main/java/com/xiaomi/xmsf/utils/ColorUtil.java
+D	push/src/main/java/com/xiaomi/xmsf/utils/ColorUtils.java
+
+8b85729c042419ef7be3fb03d6e2820ebfb021d6, feat(manager): prevent double notify, Sat Jul 28 01:41:30 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+
+909777f659fbc4a9598173eb657d9decccabd519, Merge pull request #164 from Trumeet/dev, Sat Jul 28 00:51:41 2018 +0800
+dc48eb27f598c6af5b4df8fe930426d9e1984af1, Merge remote-tracking branch 'origin/dev' into dev_current, Sat Jul 28 00:22:35 2018 +0800
+8e802d5cdef41bac0b28d2650883af3884ef3421, optimize code, Sat Jul 28 00:22:27 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/auth/AuthActivity.java
+
+c1cc5507561ea36da39a63a6fcc84d5b0ab8c2d7, Merge branch 'dev' of https://github.com/Trumeet/MiPushFramework, Fri Jul 27 12:36:10 2018 +0800
+9688257324fea08c1d0b6636d7e65eeb90373ddd, Merge remote-tracking branch 'origin/master', Fri Jul 27 12:32:50 2018 +0800
+99d332a6903acc6e7d3af39181e18b03f5d81151, feat(manager): collect some information, Fri Jul 27 12:32:31 2018 +0800
+M	app/build.gradle
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+A	app/src/main/java/top/trumeet/mipushframework/debug/IdJob.java
+M	build.gradle
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+
+bd095458e485050db930602f0f8d464102d4d8d9, [build] speed up travis build, Wed Jul 25 00:25:42 2018 +0800
+M	.travis.yml
+
+8c759c4ee2aaffa714375673eaf420af7619f0c8, [feature] remove battery optimize on start fix notify id, Wed Jul 25 00:01:04 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+
+32ab5735d81935921423e0f8c01438e9a031c3dd, Merge branch 'dev_n_notification' into dev, Tue Jul 24 23:34:24 2018 +0800
+4f6a1c213984c7d11ec53d324a1d563c86d3d86f, 通知分组也能用在Android N上, Sun Jul 22 15:44:08 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+34409ff0da56bda01926421e58d4a7febb2a789f, move top activity helper to ita, Tue Jul 24 08:26:15 2018 +0800
+R091	push/src/main/java/com/xiaomi/helper/AccessMode.java	common/src/main/java/top/trumeet/common/ita/AccessMode.java
+R092	push/src/main/java/com/xiaomi/helper/DetectionService.java	common/src/main/java/top/trumeet/common/ita/DetectionService.java
+R089	push/src/main/java/com/xiaomi/helper/ITopActivity.java	common/src/main/java/top/trumeet/common/ita/ITopActivity.java
+R074	push/src/main/java/com/xiaomi/helper/TopActivityFactory.java	common/src/main/java/top/trumeet/common/ita/TopActivityFactory.java
+R083	push/src/main/java/com/xiaomi/helper/impl/ActivityAccessibilityImpl.java	common/src/main/java/top/trumeet/common/ita/impl/ActivityAccessibilityImpl.java
+R075	push/src/main/java/com/xiaomi/helper/impl/ActivityUsageStatsImpl.java	common/src/main/java/top/trumeet/common/ita/impl/ActivityUsageStatsImpl.java
+R078	push/src/main/java/com/xiaomi/helper/impl/FakeImpl.java	common/src/main/java/top/trumeet/common/ita/impl/FakeImpl.java
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+
+b1823d2171ea5a7c2fc05d27f33821f97a0398b6, [fix] notification sound twice, Tue Jul 24 08:06:34 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+0dd3c50e1fbc2ff4b5bfb53ed066919f86357644, Update README.md, Mon Jul 23 18:46:44 2018 +0800
+M	README.md
+
+5a20d025a19270c54985e2b17b049b8e0e0792bf, Merge remote-tracking branch 'origin/master', Mon Jul 23 17:04:36 2018 +0800
+d0103164ca79cd9d706303e3dbb66ab5d0303158, feat(manager): add checking to wizard, Mon Jul 23 17:03:51 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+
+5422e0483efab4f7593850a4e8b69bb3355239c7, fix(manager): fix NPE, Mon Jul 23 17:03:40 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+
+aa299743aa291c06d5dc6f3e9dbc29a0c90a7027, fix(push): cannot exit activity when already in whitelist, Mon Jul 23 17:03:27 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/RemoveDozeActivity.java
+
+f3be592f09095da6751432112087e29fc8c19859, Merge pull request #160 from Trumeet/dev, Mon Jul 23 08:26:43 2018 +0800
+72cd31ba9b9a623b5c370b0d8cd15a7c1b381672, [feature] remove battery optimize on start, Mon Jul 23 08:25:55 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckDozeActivity.java
+M	app/src/main/res/values/strings.xml
+M	common/src/main/res/values/strings.xml
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+9f10511aa02ac7ef371777f18818c0b5a89b3f4b, feat(app): update texts, Sun Jul 22 19:53:30 2018 +0800
+M	app/src/main/res/values/strings.xml
+
+10c68c993a0d1cca6ef87d780cda1e284f5cd4a5, feat(app): remove some wizard pages, Sun Jul 22 19:48:20 2018 +0800
+M	app/src/main/AndroidManifest.xml
+D	app/src/main/java/top/trumeet/mipushframework/wizard/CheckDozeActivity.java
+D	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunningStatusActivity.java
+D	app/src/main/java/top/trumeet/mipushframework/wizard/StartFailFAQActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/WelcomeActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildActivity.java
+M	app/src/main/res/xml/settings.xml
+
+d2a7e66b1ce55f43fdb6c51b028515f44204d96a, feat(app): verify doze before accessing APIProvider, Sun Jul 22 19:45:02 2018 +0800
+M	app/build.gradle
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+A	app/src/main/java/top/trumeet/mipushframework/models/ActivityResultAndPermissionResult.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/res/values/strings.xml
+D	common/src/main/java/top/trumeet/common/utils/PermissionUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/RemoveDozeActivity.java
+
+40dee734a6fe2461ae8d4dbac3bd8a64a0f22516, feat(app): import RxJava and RxActivityResult, Sun Jul 22 19:04:04 2018 +0800
+M	app/build.gradle
+M	build.gradle
+
+ca96be549f4625ba80e7e740c676911e3a2cab04, refactor(app/common/push): optimize imports, Sun Jul 22 18:35:37 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/UsageStatsPermissionActivity.java
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/APIProvider.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/Utils.java
+
+bc81474c6f2339999628e8d1e7072d1ae3f3b844, optimize code, Sun Jul 22 10:04:33 2018 +0800
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	provider/src/main/java/top/trumeet/mipush/provider/DatabaseUtils.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/utils/RemoveTremblingUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ColorUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/LogUtils.java
+M	push/src/main/java/com/xiaomi/xposed/hook/MiPushEnhanceHook.java
+M	push/src/main/java/com/xiaomi/xposed/util/CommonUtil.java
+
+4da887554fde7b8d80a547082a7ab534833e7a60, [bugfix] fixed push auto close issue, Sat Jul 21 10:46:52 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+M	app/src/main/res/layout/switch_layout.xml
+
+2b6e33ef25302bc5835a3894d2f7350e4a32589f, optimize guide article, Sat Jul 21 01:25:34 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+A	app/src/main/res/raw/no_register.md
+M	app/src/main/res/raw/register_error.md
+M	app/src/main/res/values/strings.xml
+
+8a988d0f50f19bea2fc3fc6298ad343b54d6d423, Merge remote-tracking branch 'origin/master', Fri Jul 20 22:35:13 2018 +0800
+d59d130b7fe3a64e28be654bb01ef72bdca1e623, Merge branch 'timothy_dev' of https://github.com/Trumeet/MiPushFramework, Fri Jul 20 22:34:33 2018 +0800
+6595bf0f85d0d613bfc9507365e527277f1a6135, feat(app/common): update texts, Fri Jul 20 22:27:57 2018 +0800
+M	push/src/main/res/values/strings.xml
+
+5bc698b6cd3d4cfc7fe230b1eb22d7847274c7eb, remove useless code, Fri Jul 20 22:24:27 2018 +0800
+M	app/src/main/java/com/android/settings/applications/LayoutPreference.java
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/Utils.java
+
+c11ac1735a590f2a19b12cef5b24b88dcbdd0980, Merge pull request #158 from Trumeet/timothy_dev, Fri Jul 20 00:57:57 2018 +0800
+fd0071aade417d4ee6816dd07290a0c816dacb20, update help article, Fri Jul 20 00:29:50 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+A	app/src/main/res/drawable/ic_help_outline_24.xml
+M	app/src/main/res/menu/menu_main.xml
+M	app/src/main/res/raw/can_not_receive_push.md
+A	app/src/main/res/raw/register_error.md
+M	app/src/main/res/values/strings.xml
+
+bf71aa2989f89b0730ab9d2f905b834784b005ba, [bugfix] try to fix push auto close issue, Fri Jul 20 00:19:07 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+M	app/src/main/res/menu/menu_main.xml
+M	app/src/main/res/values/strings.xml
+
+1f866659841722539a7b97aaaf5809d91c5f5000, [bug present] when push exit, and manager UI got recycled, when user open manager, ui recreate, and disabled got false, it may trigger push disable action [bugfix] isEnable return wrong result when strict is false and push service not running, Wed Jul 18 23:28:46 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/control/APIProvider.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/ControlService.java
+
+75979dbcf27464476ed0d58ddccaa99fb0ddb7bd, [bugfix] force use Accessibility before M, Tue Jul 17 19:35:35 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/UsageStatsPermissionActivity.java
+M	push/src/main/java/com/xiaomi/helper/TopActivityFactory.java
+
+08d9551f1baa489c069863de8705382cfefae82e, Merge pull request #157 from Trumeet/timothy_dev, Tue Jul 17 12:18:35 2018 +0800
+a165575579e91470b290c1810a821fb3fd2f97f6, [feature] remove mips support, Tue Jul 17 00:18:30 2018 +0800
+M	app/build.gradle
+M	app/src/main/res/raw/can_not_receive_push.md
+M	push/build.gradle
+
+4c63e9c5e00fb6edbeb5abb303084c36bbb1b458, [feature] remove useless config key, Mon Jul 16 23:54:03 2018 +0800
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+M	push/src/main/res/values/strings.xml
+
+f850762462ba8b7c2b2aa5dc9eeba2905468f3bf, [bugfix] smartisan and 360 rom removed  IGNORE_BATTERY_OPTIMIZATIONS activity, add try catch prevent crash, Mon Jul 16 21:52:06 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/RemoveDozeActivity.java
+
+bc332ee4d44af291b9886e355559b1e153e9f487, [bugfix] prevent crash when using ActivityUsageStatsImpl, make toast when crash, Mon Jul 16 21:40:28 2018 +0800
+M	common/src/main/res/values/strings.xml
+M	push/src/main/java/com/xiaomi/helper/impl/ActivityUsageStatsImpl.java
+
+a3dc1fe905f51cab3ec0341962de9e2815b82b12, [bugfix] add GET_ACCOUNTS permission reduce crash, Mon Jul 16 21:28:39 2018 +0800
+M	push/src/main/AndroidManifest.xml
+
+d2c086617435443020e54a079802a97302e25c55, feat(app/common): do not show alive option on some AOSP ROMs, Sun Jul 15 15:38:10 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	common/src/main/java/top/trumeet/common/utils/rom/RomUtils.java
+
+e637fb5669149f2e48b7bc7edfe675228f0c7b3e, feat(common): add CM and Los checking, Sun Jul 15 15:28:38 2018 +0800
+A	common/src/main/java/top/trumeet/common/utils/rom/CyanogenModChecker.java
+A	common/src/main/java/top/trumeet/common/utils/rom/LineageOSChecker.java
+M	common/src/main/java/top/trumeet/common/utils/rom/RomUtils.java
+
+7b3c969ef46bce7deeb6b3273e12aa0ca8cbff4a, feat(common): finish H2OS checker, Sun Jul 15 15:15:49 2018 +0800
+M	common/src/main/java/top/trumeet/common/utils/rom/h2os/H2OSChecker.java
+
+24464c762760f9e44f9b645b284a7ffb5ee56788, feat(app): observe settings changes, Sun Jul 15 15:09:44 2018 +0800
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+5fee9ee20e3b4c4dc061fc9e60a2a3fd6c953ce7, feat(app): update about dialog, Sun Jul 15 14:40:00 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+A	app/src/main/res/layout/dialog_about.xml
+M	app/src/main/res/values/strings.xml
+
+c65a4f7ce1caa677b1f27531466f606df491a1a8, refactor(app/common/push): rename static final fields, Sun Jul 15 14:22:07 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+M	app/src/main/java/top/trumeet/mipushframework/preferences/MiPushAppPreferenceProvider.java
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+
+9c05221b709410b49bc839ac2daf2ebd30857741, revert: feat: log push service crashes to file, Sun Jul 15 13:18:01 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+D	push/src/main/java/com/xiaomi/xmsf/crash/CrashHandler.java
+
+a8d88e0d9c5b2e25a6fa0208c2b9b99f4e036c18, Merge remote-tracking branch 'origin/master', Sun Jul 15 13:13:52 2018 +0800
+94cb74f1fad02471848f958fd8822e507d56a516, feat(app/common/sdk/push): use ContentProvider as the way of IPC, Sun Jul 15 13:11:47 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+A	common/src/main/java/top/trumeet/common/push/ControllerImpl.java
+A	common/src/main/java/top/trumeet/common/push/LegacyImpl.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/helper/AccessMode.java
+A	push/src/main/java/com/xiaomi/xmsf/push/control/APIProvider.java
+A	sdk/src/main/java/moe/yuuta/mipush/sdk/app/ControlAPIProvider.java
+
+49e29da764dd9b8bbb823c86c184346c78147c0b, feat(app/common/push): enable Java8 supporting, Sun Jul 15 12:44:58 2018 +0800
+M	app/build.gradle
+M	common/build.gradle
+M	push/build.gradle
+
+3c784d863f17482466d2d9e6fb42191c46163542, Update issue templates, Sun Jul 15 09:52:13 2018 +0800
+A	.github/ISSUE_TEMPLATE/bug-report-------.md
+A	.github/ISSUE_TEMPLATE/feature-request---------.md
+
+0a1fd4e33fbc84154290321f332a08f41311f6c3, Merge branch 'master' of https://github.com/Trumeet/MiPushFramework, Sat Jul 14 08:43:59 2018 +0800
+22e97271341c963d0eb298a2d7ea56c45b860a9c, feat(common): introduce H2OS checking, Sat Jul 14 08:43:46 2018 +0800
+M	common/src/main/java/top/trumeet/common/utils/rom/RomChecker.java
+M	common/src/main/java/top/trumeet/common/utils/rom/RomUtils.java
+A	common/src/main/java/top/trumeet/common/utils/rom/h2os/H2OSChecker.java
+
+b120c0e94a5e2382f544abef93ee47b2196e46e5, [bug present] when push exit, and manager UI got recycled, when user open manager, ui recreate, and disabled got false, it may trigger push disable action [bugfix] try tmp fix push auto disable, Sat Jul 14 00:34:19 2018 +0800
+M	app/src/main/res/layout/switch_layout.xml
+
+4243c046af8463bc3368d4fd1ab3876dd8239001, [bugfix] fix NPE, Fri Jul 13 22:48:10 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+a6d8fc7a3f82db358e9b924fa90f4146c6c33c97, refactor(app/common): refactor RomUtils, Fri Jul 13 16:02:28 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	common/src/main/java/top/trumeet/common/utils/rom/RomUtils.java
+
+2c8075b2dd13840699b9a3088dc5afcfd1fbe037, Merge branch 'master' of https://github.com/Trumeet/MiPushFramework, Fri Jul 13 15:57:20 2018 +0800
+dbb34104bc36c988525bccdf0790ec04268cf823, [feature] update release tag, Fri Jul 13 10:42:54 2018 +0800
+M	.travis.yml
+M	build.gradle
+
+3f91c02919f050b698d4d38a4026285bd089b14a, [bugfix] fix NPE, Fri Jul 13 10:30:42 2018 +0800
+M	push/src/main/AndroidManifest.xml
+A	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/PkgUninstallReceiver.java
+
+d00c627826ab6f4e6720d93559867477d8657fa8, [bugfix] register result judgement, Fri Jul 13 10:02:34 2018 +0800
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+
+b930cb2294cae6e1132cb4eef525002f75422dd1, speed up travis build, Fri Jul 13 08:24:42 2018 +0800
+M	.travis.yml
+
+a47062bd595ba5f271aba4c28cd18beb389c80f2, [bug present] when push exit, and manager UI got recycled, when user open manager, ui recreate, and disabled got false, it may trigger push disable action [bugfix] tmp fix push auto disable, Fri Jul 13 00:34:25 2018 +0800
+M	app/src/main/res/layout/switch_layout.xml
+
+cf59e48962551e125d08d5ff2cd1c7ffdfe5aa41, [bugfix] fix crash, Thu Jul 12 21:08:35 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPkgUninstallReceiver.java
+
+99b41adaf5b395cbd3f20343f7c2d043637ebc7a, [feature] update release name, Thu Jul 12 20:31:49 2018 +0800
+M	.travis.yml
+M	build.gradle
+
+c4c22ee8fcd3e8a6bc32db601f70f2ad0c4ec141, [feature] push service add fabric, Thu Jul 12 19:24:34 2018 +0800
+M	push/build.gradle
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+
+bfb7d7d0ac2b8b33a49aa9c1163c7ce5375cfc79, [xposed] 增加黑名单 谷歌相机和manager, Thu Jul 12 15:12:39 2018 +0800
+M	push/src/main/java/com/xiaomi/xposed/hook/MiPushEnhanceHook.java
+
+ad8db1800315e7283dc23a65d77f76823cbf5e25, fix crash getGreyHistogram, Thu Jul 12 15:08:51 2018 +0800
+M	common/src/main/java/top/trumeet/common/utils/ImgUtils.java
+
+9b0cf59073a638981f84f858de5b460e2136f3a8, fix npe in DetectionService, Thu Jul 12 00:16:10 2018 +0800
+M	push/src/main/java/com/xiaomi/helper/DetectionService.java
+
+d506b169d2c1e3d2bdb354714343d2c79d953dc9, fix travis, Sat Jul 7 15:32:08 2018 +0800
+M	.travis.yml
+
+24940b1bfd2409f8f783c358a4815210b08670f0, release 0.3.4, Sat Jul 7 15:18:15 2018 +0800
+M	build.gradle
+
+12e7bb8812657b8df5c14429c1a9e5a96070c085, remove SNAPSHOT tag from tag name, Sat Jul 7 15:16:56 2018 +0800
+M	.travis.yml
+M	build.gradle
+
+ec3753baef2c2022eb9b509cce0405978575decb, 0.3.4 RELEASE NOTE, Sat Jul 7 15:13:27 2018 +0800
+A	RELEASE_NOTE.md
+
+796fe47bf0a101e366017c2591fb77742365c539, feat(app/common): introduce a new module: sdk, Fri Jul 6 10:17:29 2018 +0800
+A	sdk/.gitignore
+A	sdk/build.gradle
+A	sdk/proguard-rules.pro
+A	sdk/src/androidTest/java/moe/yuuta/mipush/sdk/ExampleInstrumentedTest.java
+A	sdk/src/main/AndroidManifest.xml
+A	sdk/src/main/res/values/strings.xml
+A	sdk/src/test/java/moe/yuuta/mipush/sdk/ExampleUnitTest.java
+M	settings.gradle
+
+96dfb0afd11a99a0e09e13449d1ff12c405adf03, feat(app/common): introduce PushServiceAPIProvider, Fri Jul 6 10:08:52 2018 +0800
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/top/trumeet/mipushframework/plugin/PluginAuth.java
+A	app/src/main/java/top/trumeet/mipushframework/plugin/PluginController.java
+A	app/src/main/java/top/trumeet/mipushframework/plugin/PushServiceAPIProvider.java
+M	common/src/main/java/top/trumeet/common/Constants.java
+A	common/src/main/java/top/trumeet/common/plugin/PluginManager.java
+
+e7b844354122447e67e0a505c88736e19f648fa3, Merge remote-tracking branch 'origin/master', Fri Jul 6 10:04:48 2018 +0800
+b830953c9c33d57e71a7bb3b59d57c19b1de80f1, Merge pull request #152 from Trumeet/dev, Thu Jul 5 19:17:10 2018 +0800
+0130e047c07150ee99bf0c65c8d6e5150467886e, Platform mode is NO LONGER SUPPORTED, Thu Jul 5 18:12:57 2018 +0800
+M	.travis.yml
+M	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+M	app/src/main/res/values/strings.xml
+D	common/src/androidTest/java/top/trumeet/common/plugin/PlatformUtilsTest.java
+D	common/src/main/java/top/trumeet/common/plugin/PlatformUtils.java
+M	push/build.gradle
+
+e905f39d90f7994379926bedeb3ba64513705d29, refactor(common): make fields final, Thu Jul 5 18:04:51 2018 +0800
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+
+717af874f2ba5e049fec9faaf3726e06873f2e7d, chore(app): remove useless dependencies, Thu Jul 5 17:59:40 2018 +0800
+M	app/build.gradle
+
+61b9bd17305dceda73cb2a63d0c3367725d78d37, refactor(app/push): move Xposed part to push service, Thu Jul 5 17:46:54 2018 +0800
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+D	app/src/main/assets/xposed_init
+M	push/build.gradle
+M	push/src/main/AndroidManifest.xml
+A	push/src/main/assets/xposed_init
+R095	app/src/main/java/top/trumeet/mipushframework/xposed/hook/MiPushEnhanceHook.java	push/src/main/java/com/xiaomi/xposed/hook/MiPushEnhanceHook.java
+R085	app/src/main/java/top/trumeet/mipushframework/xposed/util/CommonUtil.java	push/src/main/java/com/xiaomi/xposed/util/CommonUtil.java
+M	push/src/main/res/values/strings.xml
+
+606adaf0ea8dff2c1a8d5a6cf97c910020002ece, fix for status, Sun Jul 1 00:24:55 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+
+3f3f8c3eaf5255f09dd9c5091114cd1cb47b7638, Merge pull request #151 from Trumeet/dev, Sat Jun 30 21:26:05 2018 +0800
+87e0330a8e533fb9628797676d9102207c2496c5, 权限简化 push版本升级, Sat Jun 30 00:47:04 2018 +0800
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	build.gradle
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+M	push/src/main/res/values/strings.xml
+
+02fb03927e929b1a4efed0dd5b8aa9b3276092ad, 权限简化, Sat Jun 30 00:05:06 2018 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	push/src/main/AndroidManifest.xml
+
+ad46c487c8e419232fccd4698b98b35bc4dd133c, Merge pull request #148 from Trumeet/dev, Wed Jun 27 00:28:26 2018 +0800
+75de7698bd6fea2d0fbf99a7357808d2ebf647fa, bugfix, Wed Jun 27 00:27:01 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+
+a220f61b13486c0802c0d22a020f1b201e895c56, Merge pull request #147 from Trumeet/dev, Tue Jun 26 23:55:10 2018 +0800
+f83a918c2fadfbc46d15d918a7cf23aacba1142c, define permission in app fix broadcast, Tue Jun 26 23:32:39 2018 +0800
+M	.travis.yml
+M	common/src/main/res/values/strings.xml
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/res/values/strings.xml
+
+80ef3dbf647398a14138056c612c9976491c350a, define permission in app, Tue Jun 26 23:05:35 2018 +0800
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/res/drawable/ic_notifications_black_24dp.xml
+
+0429112d548a83311e5c5f615bf5839720366e3d, Merge pull request #146 from Trumeet/dev, Sun Jun 24 17:54:07 2018 +0800
+08bf3fc048bf41855691a0483eeb568b7c4fe845, log crash fix notification merge on before Oreo, Sun Jun 24 17:53:25 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/ControlService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+M	push/src/main/res/values/strings.xml
+
+c7480d0e9efe44e99491854fc48b6456e463f12e, update code, Sun Jun 24 09:15:30 2018 +0800
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+
+c6f0bdc6fc3a1966bbfca45b08f27eb9c260d61c, update code try fix notification sound under oreo, Sat Jun 23 20:02:59 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/control/FragmentBroadcast.java
+M	app/src/main/java/top/trumeet/mipushframework/control/OnConnectStatusChangedListener.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+M	common/src/main/res/values/strings.xml
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+7c608ab30a0f9704e76dd8e6321a48ae6bb33e12, Merge remote-tracking branch 'origin/master', Sat Jun 23 01:32:53 2018 +0800
+938d774b2ab931255d204806970250eca5b1a346, 标记注册结果, Sat Jun 23 01:10:47 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+M	common/src/main/java/top/trumeet/common/register/RegisteredApplication.java
+
+1e805ffbed01a17cd19bab8434c585c2afc0252e, 标记注册结果, Sat Jun 23 01:10:47 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+M	common/src/main/java/top/trumeet/common/register/RegisteredApplication.java
+
+de758fe4b1b3f78c146861589c3096cd3b58967d, show dev info in recent event, Thu Jun 21 10:10:24 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+
+3e87a1e2423811fb1e894cb376d6f3ab94564a58, enhance settings, Mon Jun 18 11:55:39 2018 +0800
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+
+477fe5f406b347ae887d9ea676e02a270353d4be, enhance settings, Mon Jun 18 09:21:12 2018 +0800
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	build.gradle
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+
+b5dc928861526e827a1726237c611842451c3698, update build version, Sun Jun 17 21:18:23 2018 +0800
+M	build.gradle
+
+2e831f4a53d926b7975af4ac68c3b861c33db8b4, Merge branch 'newbuild', Sun Jun 17 20:57:09 2018 +0800
+bfad6abccc16a445c7e8a465e33a2445d4176547, optimize push notification-2, Sun Jun 17 20:44:24 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+M	common/src/main/java/top/trumeet/common/cache/ApplicationNameCache.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+M	common/src/main/java/top/trumeet/common/push/PushServiceAccessibility.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+
+ef2f74a3e84539932cafa0055949cfc753f62e6e, optimize push notification, Sun Jun 17 20:04:55 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/ClearLogActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/EmptyActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/RemoveDozeActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/ShareLogActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/LogUtils.java
+
+40667a43e528b10784a1313757f5f71d328223d6, optimize push notification, Sun Jun 17 20:02:58 2018 +0800
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+A	push/src/main/java/com/xiaomi/push/service/MiPushMsgAck.java
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/crash/CrashHandler.java
+M	push/src/main/res/values/strings.xml
+
+93101e515904bf516a27d9595a622b3ddd321b56, update build version, Fri Jun 15 13:25:18 2018 +0800
+M	build.gradle
+
+1f7177483610eef70081166a398a55c91c6b862a, ahead 10 version, Fri Jun 15 12:05:52 2018 +0800
+M	build.gradle
+
+5ace037e67607e64eb68f867930cec8cb56575ab, Update build.gradle, Fri Jun 15 11:40:10 2018 +0800
+M	build.gradle
+
+58e539f29623c6000a54bb9f0154c95cefd4b156, small improvements, Fri Jun 15 07:52:41 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+66c4134f0729be3bdb79207db41b28c695d5b650, enhance performance, Fri Jun 15 01:04:47 2018 +0800
+M	common/src/main/java/top/trumeet/common/utils/ImgUtils.java
+
+672f6def24670b55d7a68b7d4eb4351dd868bf85, 跳转增强, Fri Jun 15 00:01:38 2018 +0800
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+A	push/src/main/java/com/xiaomi/xmsf/utils/ConfigCenter.java
+
+e703cce740c873ba50587fd3d70096a389f594aa, group notification auto cancel group summary, Tue Jun 12 23:19:11 2018 +0800
+M	common/src/main/java/top/trumeet/common/utils/NotificationUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+5e9c8065c7afa410bd7ed812b69bbecefdcfeaca, remove style, Tue Jun 12 00:39:38 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+c32b505d2d13ca2967a709a6d64402608d2747c4, hook 8.1, Mon Jun 11 23:14:56 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/PushSdkHooks.java
+
+64fcd4c04811ab93e4c3fe718d5494dbbd3adefd, revert, Sun Jun 10 21:57:10 2018 +0800
+M	common/src/main/java/top/trumeet/common/utils/ImgUtils.java
+
+b9064fd432e44557607a7b905a02789f3a764870, group notification, Sat Jun 9 20:20:13 2018 +0800
+A	common/src/main/java/top/trumeet/common/cache/AbstractCacheAspect.java
+A	common/src/main/java/top/trumeet/common/cache/ApplicationNameCache.java
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+M	common/src/main/java/top/trumeet/common/utils/ImgUtils.java
+M	common/src/main/java/top/trumeet/common/utils/NotificationUtils.java
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/NotificationManagerKit.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/PushSdkHooks.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+e9e2f21b5a6138131b49f8c0a91203cb66160322, group notification, Sat Jun 9 20:20:13 2018 +0800
+A	common/src/main/java/top/trumeet/common/cache/AbstractCacheAspect.java
+A	common/src/main/java/top/trumeet/common/cache/ApplicationNameCache.java
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+M	common/src/main/java/top/trumeet/common/utils/ImgUtils.java
+M	common/src/main/java/top/trumeet/common/utils/NotificationUtils.java
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/NotificationManagerKit.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/PushSdkHooks.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+1615fc0e9e117ebdca9f3843e45118551676cd6a, Merge pull request #135 from wzv5/pr1, Sat Jun 9 12:07:09 2018 +0800
+fc3226d47c48775d4f1176e231e9e1709521d309, 修复记录重复显示的问题, Thu Jun 7 19:01:22 2018 +0800
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+
+05e60f8530b3f02244a992e62d66b15f4cc0fc4e, Merge pull request #136 from Trumeet/timothydev, Sat Jun 9 10:18:24 2018 +0800
+92cde83957b563ad34c309a6042f20e6147aeb29, fix typo, Sat Jun 9 10:17:10 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/ParseUtils.java
+
+4ccc7ed48bca1d9d1637601b82fd868298f710d8, Merge branch 'xposed' of https://github.com/Trumeet/MiPushFramework into dev, Sat Jun 9 09:58:39 2018 +0800
+c81bfb58879ce7f9abdfc10b266fad4de9cc2203, set app ops by root first, Thu Jun 7 00:06:15 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/UsageStatsPermissionActivity.java
+
+eba558c6719158252f260a6da2198ded271f049f, fix crash on guideToEnable, Wed Jun 6 23:39:02 2018 +0800
+M	push/src/main/java/com/xiaomi/helper/impl/ActivityAccessibilityImpl.java
+M	push/src/main/java/com/xiaomi/helper/impl/ActivityUsageStatsImpl.java
+
+577ba921f6d75d967592bacbabe1654957aa9524, optimise code, Sun Jun 3 22:29:27 2018 +0800
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+
+03d4010c34d7a8eb8a982407998903e60d4adc12, Merge pull request #132 from Trumeet/timothydev, Sun Jun 3 22:19:26 2018 +0800
+2408ed75dae31c0741fbc29f836eb368a051e9d8, optimise code, Sun Jun 3 22:18:30 2018 +0800
+M	README.md
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	common/src/main/java/top/trumeet/common/plugin/PlatformUtils.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+M	common/src/main/java/top/trumeet/common/utils/ImgUtils.java
+M	common/src/main/java/top/trumeet/common/utils/NotificationUtils.java
+M	common/src/main/java/top/trumeet/common/utils/PermissionUtils.java
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+
+bbd085d471e5d7affddce8bbc2a9945623fd4d8d, fix ui bug about time, Sun Jun 3 19:33:23 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/ParseUtils.java
+
+58546c17a6ef48894ec8658b4c8eff405081c6b8, remove platform hint, Sun Jun 3 11:12:07 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+
+de45114bdfaf0e77ed259abffa2e9d5954fa65ab, pull fresh, Sun Jun 3 11:07:48 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+
+cd83d17bbc5a7328358413c7de3515b5eece1067, remove model, Sat Jun 2 14:14:50 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/xposed/hook/MiPushEnhanceHook.java
+
+0787a972d6bafbbc4842c5e25ffbf3f956b95ee6, Merge pull request #129 from Trumeet/xposed, Wed May 30 22:54:47 2018 +0800
+40fed2ca163ac297225dd2f4129beb265a7e9046, fix bootloop, Wed May 30 22:52:47 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/xposed/hook/MiPushEnhanceHook.java
+
+188ae1f40a60b768e2bc673b0cab2e496e9b5d8f, Merge pull request #128 from Trumeet/xposed, Wed May 30 00:28:32 2018 +0800
+e30234ffeb08fcc9af127ab254a356a6cd6d5776, xposed初版。没有黑名单功能, Wed May 30 00:27:57 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/xposed/hook/MiPushEnhanceHook.java
+
+db16dba2b3ef2f1d615ed89e23ac97bc7044beb7, Merge pull request #127 from Trumeet/xposed, Tue May 29 08:20:08 2018 +0800
+d0189cf7026d60d546e11ac75bd9be96ce4d61e5, xposed初版。没有黑名单功能, Tue May 29 08:13:58 2018 +0800
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/assets/xposed_init
+A	app/src/main/java/top/trumeet/mipushframework/xposed/hook/MiPushEnhanceHook.java
+A	app/src/main/java/top/trumeet/mipushframework/xposed/util/CommonUtil.java
+
+c1298bd6c8074a266fc31073ca034cf656434256, [optimiz] 保活界面优化, Thu May 24 23:55:58 2018 +0800
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/xmsf/EmptyActivity.java
+M	push/src/main/res/layout/activity_empty.xml
+M	push/src/main/res/values/strings.xml
+
+af16bab1ed6c0855f2b292d9d75335d5ca49885b, [fix] 自动注册, Thu May 24 08:37:03 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+991b2d7fa3f7d323b649275ee860059d57370592, [fix] 兼容权限升级带来的问题, Thu May 24 01:58:41 2018 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/control/OnConnectStatusChangedListener.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+
+3bf227d45dde2b03da90cd77e2109e15fe88926d, [fix] app crash and 增加H2OS防杀, Tue May 22 23:05:25 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	push/src/main/AndroidManifest.xml
+A	push/src/main/java/com/xiaomi/xmsf/EmptyActivity.java
+A	push/src/main/res/layout/activity_empty.xml
+M	push/src/main/res/values/strings.xml
+
+1afb23dfe47427e2f52864a86894771ea09f396a, [fix] app crash, Tue May 22 08:53:04 2018 +0800
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+
+919f6a59c71217de48e7c9907b01954dd1c4a0b5, [dev] filter getIsMiui log output, Sun May 20 22:05:34 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/IHook.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/PushSdkHooks.java
+D	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookGetIsMIUI.java
+A	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookMIUIPushSdk.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPingReceiver.java
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPkgUninstallReceiver.java
+
+2e2d5e160ece6eb3a5cbdd260091cbb294b7cd7a, [dev] 清空日志, Sun May 20 21:01:04 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	push/src/main/AndroidManifest.xml
+A	push/src/main/java/com/xiaomi/xmsf/ClearLogActivity.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/LogUtils.java
+M	push/src/main/res/values/strings.xml
+
+402140d75024a724cfc6b3512ffdc42055ffbf91, [dev] 过滤已经卸载的APP, Sat May 19 20:30:58 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+
+07570af8b1f3477b8bc0f138d1978617dd9382d2, Merge branch 'timothy_dev', Sat May 19 20:03:30 2018 +0800
+188ed05af6161a6640d71220cba53c2d0b029afa, [dev] 自动注册, Sat May 19 19:56:17 2018 +0800
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/helper/TopActivityFactory.java
+A	push/src/main/java/com/xiaomi/helper/impl/FakeImpl.java
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+407df8cb5e55bc7c2c77a1064d161e19aaf1910a, Merge pull request #108 from wzv5/master, Tue May 1 22:57:37 2018 +0800
+092685cefcdb00853e1e761939e502e13b0567d2, fix #103, #105, Wed Apr 25 00:22:54 2018 +0800
+M	common/src/main/java/top/trumeet/common/utils/PermissionUtils.java
+
+3572d338268832636b52c6a4329d5116385ba363, fix typo, Wed Apr 25 00:20:28 2018 +0800
+M	app/src/main/AndroidManifest.xml
+M	push/src/main/AndroidManifest.xml
+
+18bc05b9a63277e1c1c1b23a7ed0d16a2ae658c6, Merge pull request #107 from Trumeet/timothy_dev, Tue Apr 24 23:46:17 2018 +0800
+1d156a437738c046d74c6ef02d13f42ff64fd101, Merge remote-tracking branch 'origin/master', Sun Apr 22 20:19:47 2018 +0800
+ef309e1c75a0587cdcef11b2f0c732b493d398ca, feat(manager): add alert on MIUI, Sun Apr 22 20:18:26 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/control/OnConnectStatusChangedListener.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	app/src/main/res/values/strings.xml
+
+21f5df4c3d5dd429f46078451c9f6e05a1760ed2, feat(common): add MIUI check, Sun Apr 22 20:11:12 2018 +0800
+A	common/src/main/java/top/trumeet/common/utils/rom/RomChecker.java
+A	common/src/main/java/top/trumeet/common/utils/rom/RomUtils.java
+A	common/src/main/java/top/trumeet/common/utils/rom/miui/C0030a.java
+A	common/src/main/java/top/trumeet/common/utils/rom/miui/C0032c.java
+A	common/src/main/java/top/trumeet/common/utils/rom/miui/C0033d.java
+A	common/src/main/java/top/trumeet/common/utils/rom/miui/MiuiChecker.java
+
+4a1f87eebbd455d23682d8294c493ca018ecdd0c, feat(push): flush log when push crashes, Sun Apr 22 19:58:01 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/crash/CrashHandler.java
+
+6ba6d717b60567f21f000fef45ded1ae140a3aa5, feat(push): flush log before sharing, Sun Apr 22 19:57:37 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/ShareLogActivity.java
+
+0c29f5523474b9dd4c351ede58a92b14090ba468, Upgrade gradle, Sun Apr 22 19:47:05 2018 +0800
+M	build.gradle
+
+435c05ba818ff2672b7961c12d627f3f7b4cfd8b, [dev] settings_debug_icon, Sun Apr 22 08:45:19 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+M	app/src/main/java/top/trumeet/mipushframework/preferences/MiPushAppPreferenceProvider.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+
+7c6e4dc811bbcc1e315bbf9c5f62380805065c5c, [dev] working mode check, Sun Apr 22 00:40:56 2018 +0800
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/top/trumeet/mipushframework/preferences/MiPushAppPreferenceProvider.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	common/build.gradle
+A	common/src/main/java/top/trumeet/common/utils/PreferencesUtils.java
+M	push/src/main/AndroidManifest.xml
+A	push/src/main/java/com/xiaomi/helper/AccessMode.java
+A	push/src/main/java/com/xiaomi/helper/DetectionService.java
+A	push/src/main/java/com/xiaomi/helper/ITopActivity.java
+A	push/src/main/java/com/xiaomi/helper/TopActivityFactory.java
+A	push/src/main/java/com/xiaomi/helper/impl/ActivityAccessibilityImpl.java
+A	push/src/main/java/com/xiaomi/helper/impl/ActivityUsageStatsImpl.java
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+A	push/src/main/res/xml/detection_service_config.xml
+
+57a9c21bf30e8b78fcf04c07a98ae14ff32cbe76, [dev] IconCache react, Sat Apr 21 20:04:50 2018 +0800
+M	common/src/main/java/top/trumeet/common/cache/IconCache.java
+
+8215bab3c70fed245d811fc3795c9857d04fdbbb, Merge pull request #101 from Trumeet/platform-dev, Sat Apr 21 14:47:09 2018 +0800
+d68eb639702d99e88017a4785b432768622455bc, feat(manager): add suggestion when platform mode available, Sat Apr 21 12:56:27 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+M	app/src/main/res/values/strings.xml
+A	common/src/androidTest/java/top/trumeet/common/plugin/PlatformUtilsTest.java
+A	common/src/main/java/top/trumeet/common/plugin/PlatformUtils.java
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+
+ba235157717870bf3eb17bafa165555e43cbef33, feat(push): add coreApp tag on platform builds, Sat Apr 21 12:13:54 2018 +0800
+M	push/src/platform/AndroidManifest.xml
+
+17bcdd8ef2d5b53948c1ca8343c1bdd0db607101, fix(push): add dexposed supporting test before start, Sat Apr 21 12:13:23 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/PushSdkHooks.java
+
+5eba16d3ae4ca57782517043827eb179aec34b60, fix(manager): service connection leak, Sat Apr 21 12:12:54 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+
+3a6070fa18e12f433d5f482f7d7fb9495f4aeb60, Merge branches 'master' and 'platform-dev' of https://github.com/Trumeet/MiPushFramework, Sat Apr 21 11:46:13 2018 +0800
+793353c16e5bf378b28bd53100cec6227cbe1926, feat(manager/push/common/provider): new permissions policy, Sat Apr 21 11:45:08 2018 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	common/src/main/AndroidManifest.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+M	common/src/main/java/top/trumeet/common/db/RegisteredApplicationDb.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+M	common/src/main/java/top/trumeet/common/push/PushServiceAccessibility.java
+A	common/src/main/java/top/trumeet/common/utils/PermissionUtils.java
+M	common/src/main/res/values/strings.xml
+M	provider/src/main/AndroidManifest.xml
+M	provider/src/main/res/values/strings.xml
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/xmsf/push/control/ControlService.java
+M	push/src/main/res/values/strings.xml
+
+91da50bd955e77567d2ff83259e5aa741a2c7dbc, [dev] IconCache, Thu Apr 19 22:47:54 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+A	common/src/main/java/top/trumeet/common/cache/IconCache.java
+R092	push/src/main/java/com/xiaomi/xmsf/utils/ImgUtils.java	common/src/main/java/top/trumeet/common/utils/ImgUtils.java
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/ColorUtils.java
+
+66426a63d076c8e732cc4c0abb7a09467126e1c1, [dev] icon trim corner and border, Thu Apr 19 17:53:39 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/utils/ImgUtils.java
+
+fcac1b44ce65ba4f156f6e9abf180fe61897d279, Revert: [dev] hook mipush sdk, Thu Apr 19 15:32:53 2018 +0800
+M	gradle.properties
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/xmsf/push/hooks/PushSdkHooks.java
+A	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiPushPingReceiver.java
+
+461ffe9ee1d70e0725fc9101789cc75195cb91d8, [dev] enhance icon binarization, Thu Apr 19 12:50:36 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+A	push/src/main/java/com/xiaomi/xmsf/utils/ImgUtils.java
+
+b5752600b36e22b6ccc5315745ae9bd46cec96cc, [dev] binarization icon, Thu Apr 19 09:06:36 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+f19cfdd526ffb294076f552931a57e4ae69a726d, convertToTransparentAndWhite, Wed Apr 18 21:23:44 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+5a315881a9256ffeaef154a363b8ff46b8406fe3, [dev] hook mipush sdk, Mon Apr 16 15:46:45 2018 +0800
+M	gradle.properties
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+A	push/src/main/java/com/xiaomi/xmsf/push/hooks/IHook.java
+A	push/src/main/java/com/xiaomi/xmsf/push/hooks/PushSdkHooks.java
+A	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookGetIsMIUI.java
+A	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPingReceiver.java
+A	push/src/main/java/com/xiaomi/xmsf/push/hooks/impl/HookPkgUninstallReceiver.java
+D	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiPushPingReceiver.java
+
+39f532910354e17763047d13c56c4f9be93a9c64, upgrade epic now support ART hook, Mon Apr 16 10:58:59 2018 +0800
+M	build.gradle
+M	push/build.gradle
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+
+d4002f375b656feb5c4df422ef41a98fbff542f7, feat(push): set android:persistent on platform builds, Sun Apr 15 11:52:59 2018 +0800
+M	push/src/platform/AndroidManifest.xml
+
+3c4b2aee5b75a3b2d249ce05d2f2026359a2f42e, feat(travis): support platform signing, Sun Apr 15 11:49:20 2018 +0800
+M	.travis.yml
+
+9875b002fab8230a24d1514d19af763ddec5a62b, feat(push): add the platform flavor, Sun Apr 15 11:13:11 2018 +0800
+M	push/build.gradle
+A	push/src/platform/AndroidManifest.xml
+
+8ddc789fa8172de20fef08d1a2ca8c814f4fb662, release 0.3.2, Fri Apr 13 09:45:16 2018 +0800
+M	build.gradle
+
+258f9506bdb97910543a7f52b4a39113f9772c06, Disable remote view, Tue Apr 10 10:29:45 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+75d383127ba4ef727ca6e387fca4afc678e24d4c, [try] prevent crash when click notification, Sun Apr 8 17:01:36 2018 +0800
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+
+a60a2ae2ef93eb7dab0e804fec9aa40d948375e6, [try] fix Notification sound on android N and before, Sun Apr 8 15:33:58 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+6e43c2ff9b922663608b25fa4243d7d4641872e8, [try]fix travis build, Sun Apr 8 10:10:50 2018 +0800
+M	.travis.yml
+
+855c7803151dba112e710e5e985248bad3a79cb0, Merge pull request #88 from TimothyZhang023/pr, Sun Apr 8 09:31:00 2018 +0800
+19dd9e1c614fcdcf058c1a7c75e84554b1922d59, [fix] passthough message with no title but content [try] MiPushPingReceiver [fix] fix crash on OOS [fix] add back isAppForeground wait, Sat Mar 31 09:53:04 2018 +0800
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+A	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiPushPingReceiver.java
+
+a2b0fb28469950fd29d95d15ba77793f9b048241, fix(service): usage stats permission guide text, Sun Feb 18 19:35:50 2018 +0800
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/res/values/strings.xml
+
+a0cd692f0d88a11b1a09fb5e57d283c8aa9e559a, feat(service): new way to set small icon, Sun Feb 18 19:31:52 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+D	push/src/main/java/com/xiaomi/xmsf/push/notification/OreoNotificationManager.java
+
+a1ef63e987f5ac9997ec4182e1ed7b72ac5f75d0, feat(service): add colored app name in sub text, Sun Feb 18 18:32:29 2018 +0800
+M	README.md
+A	app/src/main/res/article_can_not_receive_push.md
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+M	common/src/main/res/values/strings.xml
+M	push/build.gradle
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+A	push/src/main/java/com/xiaomi/xmsf/utils/ColorUtils.java
+
+a9c89602b819e3da76a62cb74a5b0d7da109a392, Merge remote-tracking branch 'origin/master', Sun Feb 18 13:29:46 2018 +0800
+604b917122eca00c521003be1d7c4f579dc3c7dd, feat(service): use "usage stats" to get top package, Sun Feb 18 13:26:36 2018 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/UsageStatsPermissionActivity.java
+M	app/src/main/res/values/strings.xml
+M	build.gradle
+A	common/src/main/java/android/app/ActivityManager.java
+M	common/src/main/java/android/app/AppOpsManager.java
+A	common/src/main/java/top/trumeet/common/override/ActivityManagerOverride.java
+M	common/src/main/java/top/trumeet/common/override/AppOpsManagerOverride.java
+M	push/src/main/AndroidManifest.xml
+D	push/src/main/java/com/xiaomi/helper/DetectionService.java
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/res/values/strings.xml
+D	push/src/main/res/xml/detection_service_config.xml
+
+ea5ea8f047108286df6b03b401980533328ee978, Merge pull request #59 from TimothyZhang023/master, Sun Feb 18 12:22:05 2018 +0800
+2ad379985dcb505099dfeebf0dc1b5085a1eca9c, Merge remote-tracking branch 'origin/master', Sun Feb 18 12:19:49 2018 +0800
+27ea400c59b3e9213d9bf9181ee3206985a81446, [bugfix] sendBroadcast MESSAGE_ARRIVED, Wed Feb 14 13:00:57 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+
+e8a30857a89595878798f33c8c4bab5f26dffab1, [bugfix] load latest event, Wed Feb 14 12:42:44 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/OnLoadMoreListener.java
+
+ffc7f90d44cfe70491d84092a42678b11562329b, determineTitleAndDespByDIP and hidden actions when debug disable, Wed Feb 14 09:31:36 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+8c95731aa69277fee8e9320660211fb9986afc0c, update duplicate ask position, Wed Feb 14 09:15:17 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+
+eb0a6765c57bb8b9f52f5dcbead3d99378020493, Merge pull request #53 from TimothyZhang023/master, Tue Feb 13 13:31:54 2018 +0800
+1b3da529ad9e9b01a84982b4299d23ea10cb997d,  send Broadcast if need, Tue Feb 13 10:26:15 2018 +0800
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+8884d5cce3579a479fbe88a995422c328a352a09, remove useless code, Mon Feb 12 14:30:03 2018 +0800
+M	push/src/main/java/com/xiaomi/helper/DetectionService.java
+
+658d4f26bf7a618ed8317d733dd6fb5926328308, use reflect, Mon Feb 12 11:10:44 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+
+df4183797f795f1676eaf7a00a0f1eeac21742fc, try to support remote view, Mon Feb 12 10:02:03 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+2d8bfa6e311a7df57e11d950b2491d9450d33ca7, update small icon, Sun Feb 11 14:02:56 2018 +0800
+M	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+0cfbc72977eb6d226fe28f069f812ec2638b32e4, group message by package, Sat Feb 10 16:19:18 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+cd35f7929888247756195dcc49c8f1dbede3bfd5, Open App and process message need AccessibilityService to check, Fri Feb 9 16:14:11 2018 +0800
+M	push/src/main/AndroidManifest.xml
+A	push/src/main/java/com/xiaomi/helper/DetectionService.java
+A	push/src/main/java/com/xiaomi/push/sdk/MyPushMessageHandler.java
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+M	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+A	push/src/main/res/xml/detection_service_config.xml
+
+743d7fa51c67e74b5297618881726bbe2f308ffa, port xiaomi push notification, Wed Feb 7 17:39:28 2018 +0800
+D	.idea/gradle.xml
+D	.idea/misc.xml
+D	.idea/modules.xml
+D	.idea/runConfigurations.xml
+D	.idea/vcs.xml
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+A	push/src/main/java/com/xiaomi/push/service/MyMIPushMessageProcessor.java
+A	push/src/main/java/com/xiaomi/push/service/MyMIPushNotificationHelper.java
+
+1d6a46af084db93d3dba2a5c590e910232d25e88, feat: add help & support, Thu Feb 8 21:08:50 2018 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/top/trumeet/mipushframework/help/Article.java
+A	app/src/main/java/top/trumeet/mipushframework/help/HelpActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/help/SupportFragment.java
+A	app/src/main/res/raw/can_not_receive_push.md
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/xml/settings.xml
+M	build.gradle
+M	common/src/main/java/android/app/AppOpsManager.java
+
+1393b30b12f51076de1681a0413cc38d47b730b8, fix: service apk 404, Wed Feb 7 22:06:03 2018 +0800
+M	.travis.yml
+M	app/build.gradle
+M	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+M	build.gradle
+
+d5d2ebe1baafa4c4bd7d3cf6cebda2a8459087e7, Update README.md, Wed Feb 7 22:00:13 2018 +0800
+M	README.md
+
+87c783bbc085bab9464d7f141b47b8757c8b58d8, refactor(manager): remove useless classes, Wed Feb 7 21:56:59 2018 +0800
+D	app/src/main/java/top/trumeet/mipushframework/utils/INetwork.java
+D	app/src/main/java/top/trumeet/mipushframework/utils/Network.java
+
+9563cab855503a5b5b640397ea5b30328ba18230, fix(manager): exception when disconnect, Wed Feb 7 21:56:19 2018 +0800
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+
+87ba21836e5820d1cd9253187e785ee7e90e6f34, feat(service): do not use git commit count as version code, Wed Feb 7 21:55:04 2018 +0800
+M	build.gradle
+
+a7ed5021685259fd5158ed9b1e8285dc421f41ea, fix(manager): some options not work, close #49, Wed Feb 7 21:52:52 2018 +0800
+M	app/src/main/res/xml/settings.xml
+
+e510cf9ab2dd25266dbaa73cc8a91eead002a904, feat(manager): remove check update, Wed Feb 7 21:49:06 2018 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+D	app/src/main/java/top/trumeet/mipushframework/update/ActionView.java
+D	app/src/main/java/top/trumeet/mipushframework/update/CheckUpdateTask.java
+D	app/src/main/java/top/trumeet/mipushframework/update/UpdateActivity.java
+D	app/src/main/java/top/trumeet/mipushframework/update/UpdateResult.java
+D	app/src/main/res/drawable/ic_file_download_black_24dp.xml
+D	app/src/main/res/drawable/ic_refresh_black_24dp.xml
+D	app/src/main/res/drawable/ic_system_update_black_24dp.xml
+D	app/src/main/res/layout/activity_update.xml
+M	app/src/main/res/values/strings.xml
+
+a9abb47a9d5f2c4b15a8455696dbfd5c2a2788af, feat: record a lot of things, Wed Feb 7 21:38:33 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+M	app/src/main/res/values/strings.xml
+M	build.gradle
+M	common/build.gradle
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+M	common/src/main/java/top/trumeet/common/event/Event.java
+A	common/src/main/java/top/trumeet/common/event/type/CommandType.java
+A	common/src/main/java/top/trumeet/common/event/type/EventType.java
+A	common/src/main/java/top/trumeet/common/event/type/NotificationType.java
+A	common/src/main/java/top/trumeet/common/event/type/RegistrationResultType.java
+A	common/src/main/java/top/trumeet/common/event/type/RegistrationType.java
+A	common/src/main/java/top/trumeet/common/event/type/TypeFactory.java
+A	common/src/main/java/top/trumeet/common/event/type/UnknownType.java
+M	common/src/main/res/values/strings.xml
+M	provider/build.gradle
+M	provider/src/main/java/top/trumeet/mipush/provider/event/Event.java
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+A	push/src/main/java/com/xiaomi/xmsf/push/type/TypeFactory.java
+
+6f7aba516db119e53545724424e79602b8476c15, feat(manager): change check op logic, Mon Feb 5 17:06:34 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+
+54e7b19a6d08758e67808bfe1170e1d6a8f74813, feat(travis): remove useless repositories to speed up build, Mon Feb 5 16:54:55 2018 +0800
+M	.travis.yml
+
+56084aeaae0ad28c0427321b403aed0c68b247ac, feat(manager): use Fabric plugin 1.25.1, Mon Feb 5 16:30:25 2018 +0800
+M	app/build.gradle
+M	build.gradle
+
+1487346de6411b2e72696d7b7bf5efdf1f48b235, refactor(condom): remove useless classes, Mon Feb 5 12:56:29 2018 +0800
+D	condom/src/main/java/android/app/AppOpsManager.java
+D	condom/src/main/java/android/app/NotificationManager.java
+
+d90e823cf5c0ca3c2b5b7df505918a288f22096c, feat(travis): rename before publish, Mon Feb 5 12:25:14 2018 +0800
+M	.travis.yml
+
+0036babcad05d33b1589b71afabdbc7242f802d8, refactor(service): remove hidden apis to pass Travis CI build, Mon Feb 5 12:23:14 2018 +0800
+M	common/src/main/java/android/app/AppOpsManager.java
+M	common/src/main/java/top/trumeet/common/override/AppOpsManagerOverride.java
+A	common/src/main/java/top/trumeet/common/override/ManifestOverride.java
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+M	extenders/build.gradle
+M	push/build.gradle
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/AppOpsKit.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/ControlService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+5fce8b6cd38d277e1c38d0815d3dc7889d515c45, feat(travis): add some extra config, Mon Feb 5 11:57:11 2018 +0800
+M	.travis.yml
+
+7d8c7b1d6a5c88780a8d7752e983dd2e66a213f6, feat(travis): upload push service apk, Mon Feb 5 11:43:38 2018 +0800
+M	.travis.yml
+
+380be90ebb8d8951b9102a89b3ebfc4bf9d985dd, Change signing config to pass Travis CI build, Mon Feb 5 11:31:27 2018 +0800
+M	app/build.gradle
+M	push/build.gradle
+
+196e46268933beaa64062fe331d733db303a8fe8, Change keystore path to pass Travis CI build, Mon Feb 5 11:26:26 2018 +0800
+M	app/build.gradle
+M	push/build.gradle
+
+e97b773e8976beabd2b48018fd99b852571b9853, feat: auto generate version by git, Mon Feb 5 11:24:21 2018 +0800
+M	build.gradle
+
+030907d1e554540ea7da7f38fecc1eeaba96ff7f, refactor: remove hidden apis to pass Travis CI build, Mon Feb 5 11:08:10 2018 +0800
+D	app/src/main/java/android/app/AppOpsManager.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+A	common/src/main/java/android/app/AppGlobals.java
+A	common/src/main/java/top/trumeet/common/override/AppOpsManagerOverride.java
+
+a6753ff11c5babdf5c2e6972055a8eab613a56bc, refactor: remove hidden apis to pass Travis CI build, Sun Feb 4 13:24:16 2018 +0800
+M	app/build.gradle
+A	app/src/main/java/android/app/AppOpsManager.java
+M	app/src/main/java/com/android/settings/widget/EntityHeaderController.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	build.gradle
+M	common/build.gradle
+A	common/src/main/java/android/app/AppOpsManager.java
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+M	common/src/main/java/top/trumeet/common/db/RegisteredApplicationDb.java
+M	common/src/main/java/top/trumeet/common/ipc/IPCUtils.java
+M	common/src/main/java/top/trumeet/common/push/PushController.java
+M	common/src/main/java/top/trumeet/common/push/PushServiceAccessibility.java
+M	common/src/main/java/top/trumeet/common/utils/NotificationUtils.java
+M	common/src/main/java/top/trumeet/common/utils/Utils.java
+M	condom/build.gradle
+M	extenders/build.gradle
+M	provider/build.gradle
+M	provider/src/main/java/top/trumeet/mipush/provider/event/Event.java
+M	push/build.gradle
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/crash/CrashHandler.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+7e44fba159e2111c18e3b14f5a4ce183e53f0373, Update travis config, Sun Feb 4 12:37:50 2018 +0800
+M	.travis.yml
+
+5c96f3197965643e80f55ef0c9640e15e3169fc2, feat: log push service crashes to file, Sun Feb 4 12:29:04 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+A	push/src/main/java/com/xiaomi/xmsf/crash/CrashHandler.java
+
+3fb7925800219b4ab4233914e29af68a036cdfe5, fix: can not find local.properties, Sun Feb 4 12:00:50 2018 +0800
+M	app/build.gradle
+M	push/build.gradle
+
+36ec1f796c7c7600700ad437cd8a141df2b77279, Update travis config, Sun Feb 4 11:53:16 2018 +0800
+M	.travis.yml
+
+054fb5f75346546a9bbeddeefc78ba8703cb29e1, Update travis config, Sat Feb 3 15:30:41 2018 +0800
+M	.travis.yml
+
+83a6c7ab25e612c115e0e3d00f7072985f80d109, Update travis config, Sat Feb 3 15:24:29 2018 +0800
+M	.travis.yml
+M	.yuuta.jks.enc
+
+14c3912ac7a376297b5082b96addc66c10624a72, Update travis config, Sat Feb 3 15:10:01 2018 +0800
+M	.travis.yml
+M	.yuuta.jks.enc
+
+ca8d098a18b6dc92e540d03e7cadf8c5eb0497e9, Add Travis CI build, Sat Feb 3 15:02:33 2018 +0800
+M	.gitignore
+A	.travis.yml
+A	.yuuta.jks.enc
+M	app/build.gradle
+M	build.gradle
+M	push/build.gradle
+
+fbfec844f6f270c9a32a45631d99fea5c602615f, feat: remove useless logs, Sat Feb 3 13:50:42 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/XMOutbound.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/LogUtils.java
+
+1b6bc916e46d343ea00d04357832f4a39593c731, feat: log build container info to file, Fri Feb 2 22:31:00 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+
+db185edd23cd5faa20d25f2e419b692e015d52b2, fix: use signature|privileged protection level, close #47, Fri Feb 2 10:21:20 2018 +0800
+M	provider/src/main/AndroidManifest.xml
+
+ccdc978d207a92d060ad8deeda1c63989f463c6e, fix: crash when start activity, close #41, Fri Feb 2 10:17:39 2018 +0800
+M	app/src/main/java/com/android/settings/widget/EntityHeaderController.java
+
+c26625dd0805c151e37fcb13a14e3e3b06e9717d, fix: do not use 8.0 background management to modify Op status, close #45, Fri Feb 2 10:05:17 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+M	app/src/main/res/values-v26/strings.xml
+
+2af4547320e6875f444a8e4b578862f4b7e641a9, fix: do not check root use root, Wed Jan 31 22:06:12 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/ShellUtils.java
+
+e8ccb0e0598b4a6cff92c7ce64a15459b4fc6f95, fix: bad operation when SDK version lower than N, close #38, Wed Jan 31 22:05:49 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+
+5bb31fb1db85c736a0bac1d7f68797d6b19c27c2, fix: NPE when destroy if not init the controller yet, Wed Jan 31 22:02:37 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+
+e19ab5410dec7edfd0b048b566b3903bdcf64052, fix, Wed Jan 31 15:17:27 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+
+1e47f469b0f97f19c205c1aae966c5b1d015522b, Add a missed file, Wed Jan 31 15:16:42 2018 +0800
+A	push/libs/miuipushsdkshared.jar
+
+587eb6cc3c7f61d0a289d3a8d04cdf118451ae68, feat: fabric analytics, Wed Jan 31 15:15:38 2018 +0800
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+
+9546c186e7d28592dcb8f0b48189b81a52cce6c1, Change package name, Wed Jan 31 14:52:12 2018 +0800
+M	app/build.gradle
+
+1bd476423f9c22db10a676be2b1ff6a82a8882a2, Change package name, Wed Jan 31 14:48:31 2018 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/android/support/design/internal/BottomNavigationItemView.java
+M	app/src/main/java/android/support/design/internal/BottomNavigationMenuView.java
+M	app/src/main/java/android/support/design/widget/BottomNavigationView.java
+M	app/src/main/java/com/android/settings/applications/LayoutPreference.java
+M	app/src/main/java/com/android/settings/widget/EntityHeaderController.java
+M	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/update/ActionView.java
+M	app/src/main/java/top/trumeet/mipushframework/update/UpdateActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/ParseUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckDozeActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunningStatusActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/FinishWizardActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/StartFailFAQActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/WelcomeActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildActivity.java
+
+f20e7a67cb64a8bd170876f29d49e6a4b215e6e1, feat: detect and control command messages, Wed Jan 31 14:18:02 2018 +0800
+M	app/src/main/res/values/strings.xml
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+
+89b71277d55f398ff54326551142c5eda7b8a27d, feat: enable vibration in the channel of applications, Wed Jan 31 14:08:02 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+
+16ad1b9ac90ccd04d47181dda34600907f6703e4, feat: show notification title in events, Wed Jan 31 14:05:18 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/db/EventDb.java
+M	common/src/main/java/top/trumeet/common/event/Event.java
+M	provider/build.gradle
+M	provider/src/main/java/top/trumeet/mipush/provider/event/Event.java
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+f2faf23aa62aafc56a07bd8385fab8b7ed5eb96e, feat: add a view notification channel setting preference, Tue Jan 30 16:59:13 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/res/values-v26/strings.xml
+A	common/src/main/java/top/trumeet/common/utils/NotificationUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+M	push/src/main/java/com/xiaomi/xmsf/push/notification/OreoNotificationManager.java
+
+facea9d96788c9feefc499dcee0ec9cf8dfe1541, feat: split application notification channel, Tue Jan 30 16:12:48 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+A	push/src/main/java/com/xiaomi/xmsf/push/notification/NotificationController.java
+A	push/src/main/java/com/xiaomi/xmsf/push/notification/OreoNotificationManager.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/res/values/strings.xml
+
+5f4db2b64541fa70d54aa677a7c2c321bcf618f1, feat: use AppOps app to set "Allow run in background" op, Thu Jan 25 18:39:30 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/ShellUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunningStatusActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+
+8802f6a82df4b1defa10ea6b90b580eaf0de3d63, fix: wizard logic, Wed Jan 24 21:59:07 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckDozeActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunningStatusActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildActivity.java
+
+9150db6e769b464b9aef581e0a533d43fc3b6568, fix: request ignore doze may not working on some ROMs, Wed Jan 24 19:26:12 2018 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckDozeActivity.java
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	push/src/main/AndroidManifest.xml
+A	push/src/main/java/com/xiaomi/xmsf/RemoveDozeActivity.java
+
+eeb3d3215e5b2ae1891b049863b53ee9c0583745, fix: logs may empty, Wed Jan 24 18:40:44 2018 +0800
+M	common/src/main/java/top/trumeet/common/Constants.java
+M	push/src/main/java/com/xiaomi/xmsf/utils/LogUtils.java
+M	push/src/main/res/xml/filepaths.xml
+
+0ced71f759aa558f8a900d073741fd4f7c075df1, fix: crash when registering for the first time, Wed Jan 24 18:28:25 2018 +0800
+M	common/src/main/java/top/trumeet/common/db/RegisteredApplicationDb.java
+
+aaae7ced46aed836cad5e52624dbf58ba30c0576, feat: do not show time in alive notification, Wed Jan 24 17:41:13 2018 +0800
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+
+d6652a7a14153f0eb6c6f6a8defda0e0ffb90759, feat: post keep alive notification in PushService, Wed Jan 24 17:36:48 2018 +0800
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+D	push/src/main/java/com/xiaomi/xmsf/push/alive/KeepAliveService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+
+0172530bf4858015c3eba15309a9f69cab9c48ae, feat: do not use default process in receivers, Wed Jan 24 17:30:52 2018 +0800
+M	push/src/main/AndroidManifest.xml
+
+3f993f6cadd5e877c8c64f68c5ea0078d1b66714, fix: some function still requires old push service, Wed Jan 24 17:19:49 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/NetworkStatusReceiver.java
+
+7a6a504c7f274227763e59d42f36b9b8c7f13279, feat: add some debug code, Tue Jan 23 23:04:20 2018 +0800
+M	push/src/main/java/com/xiaomi/xmsf/push/control/NotificationManagerKit.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+
+bce41886c14f3defb48bf53ffb81f85131232e82, fix: extenders not working, Tue Jan 23 21:36:05 2018 +0800
+M	.idea/gradle.xml
+M	.idea/modules.xml
+A	extenders/.gitignore
+A	extenders/build.gradle
+A	extenders/proguard-rules.pro
+A	extenders/src/androidTest/java/moe/yuuta/extenders/ExampleInstrumentedTest.java
+A	extenders/src/main/AndroidManifest.xml
+A	extenders/src/main/java/android/app/AppOpsManager.java
+R096	push/src/main/java/android/app/AppOpsManagerExtender.java	extenders/src/main/java/android/app/AppOpsManagerExtender.java
+A	extenders/src/main/java/android/app/NotificationManager.java
+A	extenders/src/main/java/android/app/NotificationManagerExtender.java
+A	extenders/src/test/java/moe/yuuta/extenders/ExampleUnitTest.java
+M	push/build.gradle
+R092	push/src/main/java/android/app/AppOpsKit.java	push/src/main/java/com/xiaomi/xmsf/push/control/AppOpsKit.java
+A	push/src/main/java/com/xiaomi/xmsf/push/control/NotificationManagerKit.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/XMOutbound.java
+M	settings.gradle
+
+0bbecfebdc54a339dbb48ecdadc8d224b6eb32f8, Update README.md, Tue Jan 23 20:23:10 2018 +0800
+M	README.md
+
+8f783b4601d853646dec0f40cfa3c3f1e4cb4e07, Remove unused codes, Tue Jan 23 19:41:29 2018 +0800
+M	condom/src/main/java/com/oasisfeng/condom/CondomContext.java
+M	push/src/main/AndroidManifest.xml
+D	push/src/main/java/com/xiaomi/mipush/sdk/MessageHandler.java
+D	push/src/main/java/com/xiaomi/mipush/sdk/MyMessageHandleService.java
+
+c22928e0e7ecad1b5838a244b5415130775a33c5, feat: use a new way to detect and control push, Tue Jan 23 19:10:06 2018 +0800
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/res/values/strings.xml
+M	common/src/main/java/top/trumeet/common/db/RegisteredApplicationDb.java
+M	common/src/main/java/top/trumeet/common/event/Event.java
+M	common/src/main/java/top/trumeet/common/register/RegisteredApplication.java
+M	condom/build.gradle
+M	condom/src/main/java/com/oasisfeng/condom/CondomContext.java
+M	provider/build.gradle
+M	provider/src/main/java/top/trumeet/mipush/provider/register/RegisterDB.java
+M	provider/src/main/java/top/trumeet/mipush/provider/register/RegisteredApplication.java
+M	push/src/main/AndroidManifest.xml
+M	push/src/main/java/android/app/AppOpsKit.java
+A	push/src/main/java/android/app/AppOpsManagerExtender.java
+D	push/src/main/java/android/app/NotificationKit.java
+A	push/src/main/java/com/xiaomi/mipush/sdk/MessageHandler.java
+A	push/src/main/java/com/xiaomi/mipush/sdk/MyMessageHandleService.java
+A	push/src/main/java/com/xiaomi/push/service/MyClientEventDispatcher.java
+A	push/src/main/java/com/xiaomi/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/XMOutbound.java
+D	push/src/main/java/com/xiaomi/xmsf/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+6c4dda961da41945fc1781b3189fd18e8598547c, fix: can't register app and other detects, Sat Jan 20 22:31:56 2018 +0800
+M	condom/build.gradle
+A	condom/src/main/java/android/app/AppOpsManager.java
+A	condom/src/main/java/android/app/NotificationManager.java
+A	condom/src/main/java/com/android/internal/app/IAppOpsService.java
+M	condom/src/main/java/com/oasisfeng/condom/CondomContext.java
+M	condom/src/main/java/com/oasisfeng/condom/CondomCore.java
+M	push/src/main/AndroidManifest.xml
+A	push/src/main/java/android/app/AppOpsKit.java
+A	push/src/main/java/android/app/NotificationKit.java
+M	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+A	push/src/main/java/com/xiaomi/xmsf/push/control/XMOutbound.java
+A	push/src/main/java/com/xiaomi/xmsf/push/service/PushServiceMain.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+
+ee6b6f7966771f04dcb671a2f91aefcf4e1cfe26, refactor: split manager and service, Fri Jan 19 20:56:37 2018 +0800
+M	.idea/gradle.xml
+M	.idea/modules.xml
+M	app/build.gradle
+D	app/libs/cloud-common.jar
+D	app/libs/miuipushsdkshared.jar
+D	app/libs/miuistatssdkshared.jar
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/com/android/settings/widget/EntityHeaderController.java
+D	app/src/main/java/com/xiaomi/xmsf/push/service/StatService.java
+A	app/src/main/java/top/trumeet/mipushframework/MainActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/MainFragment.java
+A	app/src/main/java/top/trumeet/mipushframework/MiPushFramework.java
+A	app/src/main/java/top/trumeet/mipushframework/control/ConnectFailUtils.java
+A	app/src/main/java/top/trumeet/mipushframework/control/FragmentBroadcast.java
+A	app/src/main/java/top/trumeet/mipushframework/control/OnConnectStatusChangedListener.java
+D	app/src/main/java/top/trumeet/mipushframework/event/EventDB.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+D	app/src/main/java/top/trumeet/mipushframework/push/PushServiceAccessibility.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/ShellUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckDozeActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunningStatusActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/PushControllerWizardActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/StartFailFAQActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/WizardSPUtils.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/WizardUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildActivity.java
+D	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckAppSupportActivity.java
+D	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckSupportUtils.java
+D	app/src/main/java/top/trumeet/mipushframework/wizard/support/SupportStatus.java
+A	app/src/main/res/layout/layout_progress.xml
+M	app/src/main/res/layout/switch_layout.xml
+A	app/src/main/res/values-v26/strings.xml
+M	app/src/main/res/values/dimens.xml
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/values/styles.xml
+M	app/src/main/res/xml/settings.xml
+M	build.gradle
+A	common/.gitignore
+A	common/build.gradle
+A	common/proguard-rules.pro
+A	common/src/androidTest/java/top/trumeet/common/ExampleInstrumentedTest.java
+A	common/src/androidTest/java/top/trumeet/common/utils/UtilsTest.java
+A	common/src/main/AndroidManifest.xml
+A	common/src/main/aidl/top/trumeet/common/IPushController.aidl
+R062	app/src/main/java/top/trumeet/mipushframework/Constants.java	common/src/main/java/top/trumeet/common/Constants.java
+A	common/src/main/java/top/trumeet/common/db/EventDb.java
+A	common/src/main/java/top/trumeet/common/db/RegisteredApplicationDb.java
+A	common/src/main/java/top/trumeet/common/event/Event.java
+A	common/src/main/java/top/trumeet/common/ipc/Disconnectable.java
+A	common/src/main/java/top/trumeet/common/ipc/IPCUtils.java
+A	common/src/main/java/top/trumeet/common/ipc/ServiceConnectionListener.java
+A	common/src/main/java/top/trumeet/common/push/PushController.java
+A	common/src/main/java/top/trumeet/common/push/PushServiceAccessibility.java
+A	common/src/main/java/top/trumeet/common/register/RegisteredApplication.java
+A	common/src/main/java/top/trumeet/common/utils/DatabaseUtils.java
+A	common/src/main/java/top/trumeet/common/utils/ServiceRunningChecker.java
+A	common/src/main/java/top/trumeet/common/utils/Utils.java
+A	common/src/main/java/top/trumeet/common/widget/LinkAlertDialog.java
+R100	app/src/main/res/values-sw600dp/dimens.xml	common/src/main/res/values-sw600dp/dimens.xml
+R100	app/src/main/res/values-sw720dp-land/dimens.xml	common/src/main/res/values-sw720dp-land/dimens.xml
+R100	app/src/main/res/values-sw720dp-w1280dp/dimens.xml	common/src/main/res/values-sw720dp-w1280dp/dimens.xml
+R094	app/src/main/res/values-sw720dp/dimens.xml	common/src/main/res/values-sw720dp/dimens.xml
+A	common/src/main/res/values/dimens.xml
+A	common/src/main/res/values/strings.xml
+A	common/src/test/java/top/trumeet/common/ExampleUnitTest.java
+A	provider/.gitignore
+A	provider/build.gradle
+A	provider/proguard-rules.pro
+A	provider/src/androidTest/java/top/trumeet/mipush/provider/ExampleInstrumentedTest.java
+A	provider/src/main/AndroidManifest.xml
+A	provider/src/main/java/top/trumeet/mipush/provider/DatabaseUtils.java
+R075	app/src/main/java/top/trumeet/mipushframework/event/Event.java	provider/src/main/java/top/trumeet/mipush/provider/event/Event.java
+A	provider/src/main/java/top/trumeet/mipush/provider/event/EventProvider.java
+A	provider/src/main/java/top/trumeet/mipush/provider/register/AppProvider.java
+R054	app/src/main/java/top/trumeet/mipushframework/register/RegisterDB.java	provider/src/main/java/top/trumeet/mipush/provider/register/RegisterDB.java
+R082	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplication.java	provider/src/main/java/top/trumeet/mipush/provider/register/RegisteredApplication.java
+A	provider/src/main/res/values/strings.xml
+A	provider/src/test/java/top/trumeet/mipush/provider/ExampleUnitTest.java
+A	push/.gitignore
+A	push/build.gradle
+A	push/proguard-rules.pro
+A	push/src/androidTest/java/com/xiaomi/xmsf/ExampleInstrumentedTest.java
+A	push/src/main/AndroidManifest.xml
+A	push/src/main/java/com/xiaomi/xmsf/ShareLogActivity.java
+R073	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java	push/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+R094	app/src/main/java/top/trumeet/mipushframework/alive/KeepAliveService.java	push/src/main/java/com/xiaomi/xmsf/push/alive/KeepAliveService.java
+R086	app/src/main/java/top/trumeet/mipushframework/auth/AuthActivity.java	push/src/main/java/com/xiaomi/xmsf/push/auth/AuthActivity.java
+A	push/src/main/java/com/xiaomi/xmsf/push/control/ControlService.java
+R084	app/src/main/java/top/trumeet/mipushframework/push/PushController.java	push/src/main/java/com/xiaomi/xmsf/push/control/PushControllerUtils.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/HttpService.java	push/src/main/java/com/xiaomi/xmsf/push/service/HttpService.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/IHttpService.java	push/src/main/java/com/xiaomi/xmsf/push/service/IHttpService.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/IStatService.java	push/src/main/java/com/xiaomi/xmsf/push/service/IStatService.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/MiuiPushActivateService.java	push/src/main/java/com/xiaomi/xmsf/push/service/MiuiPushActivateService.java
+R093	app/src/main/java/com/xiaomi/xmsf/push/service/MyLog.java	push/src/main/java/com/xiaomi/xmsf/push/service/MyLog.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/Utils.java	push/src/main/java/com/xiaomi/xmsf/push/service/Utils.java
+R099	app/src/main/java/com/xiaomi/xmsf/push/service/XMAccountManager.java	push/src/main/java/com/xiaomi/xmsf/push/service/XMAccountManager.java
+R079	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java	push/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/notificationcollection/NotificationListener.java	push/src/main/java/com/xiaomi/xmsf/push/service/notificationcollection/NotificationListener.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/notificationcollection/UploadNotificationJob.java	push/src/main/java/com/xiaomi/xmsf/push/service/notificationcollection/UploadNotificationJob.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/AccountChangedReceiver.java	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/AccountChangedReceiver.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/BootReceiver.java	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/BootReceiver.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/NetworkStatusReceiver.java	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/NetworkStatusReceiver.java
+R100	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/NotificationEventReceiver.java	push/src/main/java/com/xiaomi/xmsf/push/service/receivers/NotificationEventReceiver.java
+R098	app/src/main/java/top/trumeet/mipushframework/utils/RemoveTremblingUtils.java	push/src/main/java/com/xiaomi/xmsf/push/utils/RemoveTremblingUtils.java
+R089	app/src/main/java/top/trumeet/mipushframework/log/LogUtils.java	push/src/main/java/com/xiaomi/xmsf/utils/LogUtils.java
+A	push/src/main/res/drawable-v24/ic_launcher_foreground.xml
+A	push/src/main/res/drawable/ic_launcher_background.xml
+A	push/src/main/res/drawable/ic_notifications_black_24dp.xml
+A	push/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+A	push/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+A	push/src/main/res/mipmap-hdpi/ic_launcher.png
+A	push/src/main/res/mipmap-hdpi/ic_launcher_round.png
+A	push/src/main/res/mipmap-mdpi/ic_launcher.png
+A	push/src/main/res/mipmap-mdpi/ic_launcher_round.png
+A	push/src/main/res/mipmap-xhdpi/ic_launcher.png
+A	push/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+A	push/src/main/res/mipmap-xxhdpi/ic_launcher.png
+A	push/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+A	push/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+A	push/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+A	push/src/main/res/values/strings.xml
+A	push/src/main/res/values/styles.xml
+R100	app/src/main/res/xml/filepaths.xml	push/src/main/res/xml/filepaths.xml
+M	settings.gradle
+
+be60dc3271541b4af92641774b88680f295c98af, feat: merge some Xmsf code, Tue Dec 19 18:17:29 2017 +0800
+A	app/libs/cloud-common.jar
+R100	app/libs/mipush.jar	app/libs/miuipushsdkshared.jar
+A	app/libs/miuistatssdkshared.jar
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/com/xiaomi/xmsf/push/service/IStatService.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/MyLog.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/StatService.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/NotificationEventReceiver.java
+
+9e6e6300cfd2342840b3fbaa37e4f2dbef74b082, feat: add keep alive, Tue Dec 12 16:55:27 2017 +0800
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/top/trumeet/mipushframework/alive/KeepAliveService.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	app/src/main/res/values/strings.xml
+M	build.gradle
+
+a4e055c53a0a56e4af52f7a662ab8bfae637ce9f, feat: update UI, Tue Dec 12 16:35:24 2017 +0800
+A	app/src/main/java/com/android/settings/AppHeader.java
+A	app/src/main/java/com/android/settings/applications/LayoutPreference.java
+A	app/src/main/java/com/android/settings/widget/EntityHeaderController.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/Utils.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplication.java
+A	app/src/main/res/drawable/ic_info.xml
+A	app/src/main/res/drawable/ic_settings_24dp.xml
+A	app/src/main/res/layout/layout_preference_frame.xml
+A	app/src/main/res/layout/settings_entity_header.xml
+A	app/src/main/res/values-sw600dp/dimens.xml
+A	app/src/main/res/values-sw720dp-land/dimens.xml
+A	app/src/main/res/values-sw720dp-w1280dp/dimens.xml
+A	app/src/main/res/values-sw720dp/dimens.xml
+M	app/src/main/res/values/attrs.xml
+M	app/src/main/res/values/dimens.xml
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/values/styles.xml
+
+8a600f33c8b1a4506e9062be522af6f12a5779bc, Disable minify, Sun Dec 10 20:12:19 2017 +0800
+M	app/build.gradle
+
+ad8660983edc3bdde475c7075a775e378e4621cd, feat: show a empty item when app not found, Sun Dec 10 14:57:54 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+
+ca770e70976011af7493d981a07e37e24f14e943, feat: do not print error log when can't get app info, Sun Dec 10 14:55:27 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+
+378c2a17d60b3baf7fb75ee1a809e9c30fba3158, feat: use Log4a instant of LogBack, Sun Dec 10 14:52:38 2017 +0800
+M	.idea/misc.xml
+M	app/build.gradle
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/MyLog.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/BootReceiver.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/log/LogUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushServiceAccessibility.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/ShellUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckSupportUtils.java
+M	build.gradle
+
+67d219961eef58de4ccb520d5fd9df953f6313b2, feat: update preference library, Sun Dec 10 14:30:24 2017 +0800
+M	app/build.gradle
+
+e27c27ddfccdb9e15fa9b7590a07c18fd61d1d89, feat: revert MiuiPushMessageReceiver, Sun Dec 10 14:28:55 2017 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+
+7045b210072438d50d72b7185346c5eab1e53e20, feat: try hook isMiui method, Sun Dec 10 14:28:37 2017 +0800
+M	app/build.gradle
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	build.gradle
+M	condom/build.gradle
+
+82b97de7fbab860f8b16643620f824d69ebed52c, feat: update push sdk, Sun Dec 10 13:52:37 2017 +0800
+A	app/libs/mipush.jar
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/HttpService.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/IHttpService.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/notificationcollection/NotificationListener.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/notificationcollection/UploadNotificationJob.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/BootReceiver.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/NetworkStatusReceiver.java
+
+4c4a68cf0c6405ef1833da0e7937778da967fecf, Update something, Sun Dec 10 12:57:49 2017 +0800
+M	app/build.gradle
+D	app/libs/MiPush_SDK_Client_3_4_0.jar
+M	app/src/main/AndroidManifest.xml
+M	build.gradle
+M	condom/build.gradle
+
+722b1c3b77e1a3367041cc0159e649227dac39b3, Update something, Sun Dec 10 12:50:23 2017 +0800
+M	app/src/main/AndroidManifest.xml
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.properties
+
+a1dfe10cf569f856d3befe1d8f418825ed717589, fix: ConcurrentModificationException, Tue Sep 19 16:31:13 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/utils/RemoveTremblingUtils.java
+
+4698327279cda59b6390f66431b1264eca279418, feat: deny multi request by XMPush SDK, Wed Sep 6 19:01:56 2017 +0800
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	app/src/main/java/top/trumeet/mipushframework/Constants.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventDB.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisterDB.java
+A	app/src/main/java/top/trumeet/mipushframework/utils/RemoveTremblingUtils.java
+
+1851933540bc3bd90ee08993bf7bdae038d52819, Merge pull request #20 from fython/patch-1, Wed Sep 6 18:34:44 2017 +0800
+9fa08c12fc899f96efa61a8275858008351f0fa3, AuthActivity: Exclude from Recents List, Sun Sep 3 13:11:10 2017 +0800
+M	app/src/main/AndroidManifest.xml
+
+f7d5aa78bc579db48268863dd9484a7b59ec57a7, Update README.md, Sun Sep 3 09:21:31 2017 +0800
+M	README.md
+
+37cec7cfd8ecca3b604fd94bef3ead2e9909e41e, fix: crash when share log, fix #12, Thu Aug 31 20:14:31 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/log/LogUtils.java
+M	app/src/main/res/values/strings.xml
+
+4d48c78d5887dfaa7aa26266cdb0b69e30950875, fix: crash when click header, Thu Aug 31 20:07:58 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckAppSupportActivity.java
+
+54ceb2c0ac6eefd2bd604d16199ba6a1867503bc, feat: check update, Thu Aug 31 20:05:27 2017 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/update/ActionView.java
+A	app/src/main/java/top/trumeet/mipushframework/update/CheckUpdateTask.java
+A	app/src/main/java/top/trumeet/mipushframework/update/UpdateActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/update/UpdateResult.java
+A	app/src/main/java/top/trumeet/mipushframework/utils/INetwork.java
+A	app/src/main/java/top/trumeet/mipushframework/utils/Network.java
+A	app/src/main/res/drawable/ic_file_download_black_24dp.xml
+A	app/src/main/res/drawable/ic_refresh_black_24dp.xml
+A	app/src/main/res/drawable/ic_system_update_black_24dp.xml
+A	app/src/main/res/layout/activity_update.xml
+A	app/src/main/res/layout/item_action.xml
+M	app/src/main/res/menu/menu_main.xml
+M	app/src/main/res/values/attrs.xml
+M	app/src/main/res/values/dimens.xml
+M	app/src/main/res/values/strings.xml
+M	build.gradle
+
+f3e070aab811d621ffed360eb0e3aefcd55135bc, Merge remote-tracking branch 'origin/master', Tue Aug 29 17:05:06 2017 +0800
+c04cf4c102c454b2ac4baf2ea73089025ad69383, ignore .idea, Tue Aug 29 17:04:42 2017 +0800
+M	.gitignore
+
+8c2f03c870bbfba5fdc1feb93872576772da8e8a, Merge pull request #18 from Jamesits/patch-1, Tue Aug 29 16:12:14 2017 +0800
+7f7bfa873da4113d61ef4f1fb0e6f5d7e4717628, feat: skip XMPush permissions check, Tue Aug 29 15:30:47 2017 +0800
+M	app/src/main/AndroidManifest.xml
+M	condom/src/main/java/com/oasisfeng/condom/CondomContext.java
+A	condom/src/main/java/top/trumeet/hook/FakeManifestUtils.java
+
+395858bd10c4973a39e370b53b9a2be2c0db48c7, 将 Xposed 模块链接改为最新 release 链接, Tue Aug 29 15:20:31 2017 +0800
+M	app/src/main/res/values/strings.xml
+
+62d1a6b0613498002e70ebc501d4c0230bb2b5a7, feat: user can view application recent activity, Mon Aug 28 19:47:26 2017 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/event/EventDB.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+A	app/src/main/java/top/trumeet/mipushframework/event/RecentActivityActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/res/values/strings.xml
+
+cf43607de04ae5f7588b4a637ae0bdfbaa0a2966, feat: use SimpleMenuPreference instead of DropDownPreference, Mon Aug 28 19:38:18 2017 +0800
+M	app/build.gradle
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/res/values/styles.xml
+
+3324d0f66f0c3ebed897ac920091af8c204e585b, add screenshots, Mon Aug 28 18:56:58 2017 +0800
+A	art/ask.jpg
+A	art/tab_apps.jpg
+A	art/tab_events.jpg
+A	art/tab_permissions.jpg
+A	art/tab_settings.jpg
+
+7ba957e712b98f6d0d468bd6888c7df0a24a9024, Update README.md, Mon Aug 28 18:55:54 2017 +0800
+M	README.md
+
+95629e9f7e4ea472e93273319803fe4c11c62a74, fix: try fix push not work (??), Mon Aug 28 18:48:27 2017 +0800
+M	app/src/main/AndroidManifest.xml
+
+8fe99efe6fef150e1f8e5ce82293120a130ff6f6, fix: build fail when enabled minify, Mon Aug 28 18:43:23 2017 +0800
+M	app/build.gradle
+M	app/proguard-rules.pro
+
+2a2b80f802c9a9ab547217ec05a151336a95faa8, fix: sometimes crash when start auth, Mon Aug 28 14:57:50 2017 +0800
+M	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+
+d69b17689767d2c73297de4d6fd084d072e84811, feat: log, Mon Aug 28 14:48:54 2017 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/MiuiPushActivateService.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/AccountChangedReceiver.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/BootReceiver.java
+M	app/src/main/java/top/trumeet/mipushframework/Constants.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventDB.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+A	app/src/main/java/top/trumeet/mipushframework/log/LogUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushServiceAccessibility.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/ShellUtils.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckSupportUtils.java
+M	app/src/main/res/values/strings.xml
+A	app/src/main/res/xml/filepaths.xml
+M	app/src/main/res/xml/settings.xml
+
+1b6bcfb4c34c7428569ba91dd3f3f8c670a91cda, fix: some app check support is always false, close #9, Mon Aug 28 13:03:53 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckSupportUtils.java
+
+7eae2ee9cc9a8065d0b199c95ab614d176162109, feat: remove use root modify build.prop, Mon Aug 28 12:24:28 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildUtils.java
+M	app/src/main/res/values/strings.xml
+
+daec467ec75ad52eab57de76b7819d2d274d774c, feat: remove NetworkChange listener, Mon Aug 28 12:12:48 2017 +0800
+M	app/src/main/AndroidManifest.xml
+
+d5cb3046297ae88718fc1c036766fc1e6fa44a01, show auth activity in recent, Mon Aug 28 12:08:05 2017 +0800
+M	app/src/main/AndroidManifest.xml
+
+cb5e70f55a099a7b9082bb92e701132f8e8e248e, feat: block XMPush sdk read IMEI, Mon Aug 28 12:03:49 2017 +0800
+M	.idea/gradle.xml
+M	.idea/modules.xml
+M	README.md
+M	app/build.gradle
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	build.gradle
+A	condom/build.gradle
+A	condom/proguard-rules.pro
+A	condom/src/androidTest/AndroidManifest.xml
+A	condom/src/androidTest/java/com/oasisfeng/condom/CondomContextBasicSemanticTest.java
+A	condom/src/androidTest/java/com/oasisfeng/condom/CondomContextBlockingTest.java
+A	condom/src/androidTest/java/com/oasisfeng/condom/CondomKitTest.java
+A	condom/src/androidTest/java/com/oasisfeng/condom/CondomMiscTest.java
+A	condom/src/androidTest/java/com/oasisfeng/condom/CondomProcessTest.java
+A	condom/src/main/AndroidManifest.xml
+A	condom/src/main/java/android/content/ContentResolver.java
+A	condom/src/main/java/android/content/IContentProvider.java
+A	condom/src/main/java/android/content/IntentSender.java
+A	condom/src/main/java/android/content/pm/IPackageDataObserver.java
+A	condom/src/main/java/android/content/pm/IPackageDeleteObserver.java
+A	condom/src/main/java/android/content/pm/IPackageStatsObserver.java
+A	condom/src/main/java/android/content/pm/KeySet.java
+A	condom/src/main/java/android/content/pm/PackageManager.java
+A	condom/src/main/java/android/telephony/TelephonyManager.java
+A	condom/src/main/java/com/oasisfeng/condom/CondomContext.java
+A	condom/src/main/java/com/oasisfeng/condom/CondomCore.java
+A	condom/src/main/java/com/oasisfeng/condom/CondomKit.java
+A	condom/src/main/java/com/oasisfeng/condom/CondomOptions.java
+A	condom/src/main/java/com/oasisfeng/condom/CondomProcess.java
+A	condom/src/main/java/com/oasisfeng/condom/ContentResolverWrapper.java
+A	condom/src/main/java/com/oasisfeng/condom/OutboundJudge.java
+A	condom/src/main/java/com/oasisfeng/condom/OutboundType.java
+A	condom/src/main/java/com/oasisfeng/condom/PackageManagerWrapper.java
+A	condom/src/main/java/com/oasisfeng/condom/PseudoContextWrapper.java
+A	condom/src/main/java/com/oasisfeng/condom/kit/NullDeviceIdKit.java
+A	condom/src/main/java/com/oasisfeng/condom/kit/package-info.java
+A	condom/src/main/java/com/oasisfeng/condom/package-info.java
+A	condom/src/main/java/com/oasisfeng/condom/util/Lazy.java
+M	settings.gradle
+
+807f6d970dd60e08bccbedc112a972d9fe1d9041, fix: crash on pre-lollipop, Sun Aug 27 21:53:21 2017 +0800
+M	.idea/misc.xml
+M	app/build.gradle
+
+eef7ca771cabdb58a8b9c8ac6287fd639a6d3c9f, feat: add more MIUI keys, Sun Aug 27 21:02:26 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildUtils.java
+
+410aae7073eaab07f8c065bfaab2104702762335, feat: add click action to event item, Sun Aug 27 20:54:22 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+M	app/src/main/res/layout/app_item.xml
+M	app/src/main/res/layout/preference_app.xml
+
+56d40efc1bce40f5047ba504d6427df76592cba8, fix: too crowd, Sun Aug 27 20:52:02 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+M	app/src/main/res/layout/app_item.xml
+M	app/src/main/res/values/strings.xml
+
+0c1a1b7d23ce80e1c18d9d1598a376f4bcb98f44, fix: text not aligned, Sun Aug 27 20:48:13 2017 +0800
+M	app/src/main/res/layout/app_item.xml
+
+1e66da5e7ea457369138ac84b32b3d2645c2eb16, feat: add 8dp elevation on bottom bar, Sun Aug 27 20:43:24 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+
+55867bf264811b0fc6fdd4e2f597421ba4cc02df, fix: selected menu item not uncheck when swipe, Sun Aug 27 20:41:31 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+
+3c442eae93ba5af6eb8019819b41d53833c88212, fix: dislocation when handle fix result, Sun Aug 27 20:36:41 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckAppSupportActivity.java
+
+50b9e072b1cd0795b3aa56e3a8f2fe61d8cbcf36, feat: don't allow check self, Sun Aug 27 20:32:34 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckAppSupportActivity.java
+
+1f5d20b9b3c58d7efc48abd2a85fdf701ff5335c, feat: add backup before edit build.prop, Sun Aug 27 20:31:46 2017 +0800
+D	app/src/main/java/top/trumeet/mipushframework/db/DaoMaster.java
+D	app/src/main/java/top/trumeet/mipushframework/db/DaoSession.java
+D	app/src/main/java/top/trumeet/mipushframework/db/EventDao.java
+D	app/src/main/java/top/trumeet/mipushframework/db/RegisteredApplicationDao.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildUtils.java
+M	app/src/main/res/values/strings.xml
+
+f4fd62d5f88ea3ef4b8f5916921ea901a680069f, feat: settings UI, Sun Aug 27 20:11:33 2017 +0800
+M	README.md
+M	app/src/main/java/top/trumeet/mipushframework/Constants.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/settings/SettingsFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckDozeActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunningStatusActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckAppSupportActivity.java
+M	app/src/main/res/values/strings.xml
+A	app/src/main/res/xml/settings.xml
+
+541a6cc70edd38cf048673dbb34f256dc97cff13, feat: shrinkResources and minify, Sun Aug 27 16:10:52 2017 +0800
+M	app/build.gradle
+M	build.gradle
+
+77635b8036822c17c180df298a4b07176611a551, feat: new icons, Sun Aug 27 15:53:31 2017 +0800
+M	README.md
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/ic_app-web.png
+A	app/src/main/ic_launcher-web.png
+D	app/src/main/res/drawable/ic_launcher_background.xml
+D	app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+D	app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+A	app/src/main/res/mipmap-hdpi/ic_app.png
+M	app/src/main/res/mipmap-hdpi/ic_launcher.png
+D	app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png
+D	app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+A	app/src/main/res/mipmap-mdpi/ic_app.png
+M	app/src/main/res/mipmap-mdpi/ic_launcher.png
+D	app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png
+D	app/src/main/res/mipmap-mdpi/ic_launcher_round.png
+A	app/src/main/res/mipmap-xhdpi/ic_app.png
+M	app/src/main/res/mipmap-xhdpi/ic_launcher.png
+D	app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png
+D	app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+A	app/src/main/res/mipmap-xxhdpi/ic_app.png
+M	app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+D	app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png
+D	app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+A	app/src/main/res/mipmap-xxxhdpi/ic_app.png
+M	app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+D	app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png
+D	app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+
+5627b539d7383a0e3dfd0aa9c8a091507b2c923d, feat: user can choose allow register when application register push, Sun Aug 27 15:42:47 2017 +0800
+M	README.md
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+A	app/src/main/java/top/trumeet/mipushframework/auth/AuthActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplication.java
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/values/styles.xml
+
+509e598a9712516c23a5901af1e6c7ddafba7e55, feat: allow manage receive, Sun Aug 27 15:04:53 2017 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	app/src/main/java/top/trumeet/mipushframework/Constants.java
+M	app/src/main/java/top/trumeet/mipushframework/db/DaoMaster.java
+M	app/src/main/java/top/trumeet/mipushframework/db/RegisteredApplicationDao.java
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisterDB.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplication.java
+M	app/src/main/res/values/strings.xml
+
+bbc006f7b9a52afdf964add3bb3ea08d21e475ca, fix: crash when configuration changed, Sun Aug 27 14:36:06 2017 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+
+4e733dc2a084d03f087df5e0751f571b1bbf2280, feat: allow manage app permission, Sun Aug 27 11:44:18 2017 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/top/trumeet/mipushframework/db/DaoMaster.java
+M	app/src/main/java/top/trumeet/mipushframework/db/RegisteredApplicationDao.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+A	app/src/main/java/top/trumeet/mipushframework/permissions/ManagePermissionsActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisterDB.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplication.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationBinder.java
+M	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+A	app/src/main/res/drawable/ic_check_black_24dp.xml
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/values/styles.xml
+
+3dd51e7b40a43db2521de8f49ded6652751b9bd0, Update README.md, Sat Aug 26 19:57:30 2017 +0800
+M	README.md
+A	app/src/main/java/top/trumeet/mipushframework/db/RegisteredApplicationDao.java
+
+91ec467239d214e6f46cc5a979ec7fbd1f5af2fd, feat: registered application list, Sat Aug 26 19:52:44 2017 +0800
+M	app/build.gradle
+M	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+M	app/src/main/java/top/trumeet/mipushframework/db/DaoMaster.java
+M	app/src/main/java/top/trumeet/mipushframework/db/DaoSession.java
+A	app/src/main/java/top/trumeet/mipushframework/register/RegisterDB.java
+A	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplication.java
+A	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationBinder.java
+A	app/src/main/java/top/trumeet/mipushframework/register/RegisteredApplicationFragment.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+
+ce3202da4df85ce886f5f4c6e444428615eb2e53, feat: support push event, Sat Aug 26 16:02:38 2017 +0800
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+M	app/src/main/java/top/trumeet/mipushframework/Constants.java
+M	app/src/main/java/top/trumeet/mipushframework/db/DaoMaster.java
+M	app/src/main/java/top/trumeet/mipushframework/db/DaoSession.java
+M	app/src/main/java/top/trumeet/mipushframework/db/EventDao.java
+D	app/src/main/java/top/trumeet/mipushframework/db/NotificationInfoDao.java
+M	app/src/main/java/top/trumeet/mipushframework/event/Event.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventDB.java
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+D	app/src/main/java/top/trumeet/mipushframework/event/notification/NotificationInfo.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	app/src/main/res/values/strings.xml
+
+2e33611211dc56a80a96245702eebdca8390dc0d, refactor: use a unified application list recycler binder, Sat Aug 26 15:03:44 2017 +0800
+M	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+A	app/src/main/java/top/trumeet/mipushframework/utils/BaseAppsBinder.java
+
+c04f2aeebd09d478c66f52e31ea7ca11d43e6eff, feat: bottom navigation, Sat Aug 26 14:56:45 2017 +0800
+M	app/build.gradle
+A	app/src/main/java/android/support/design/internal/BaselineLayout.java
+A	app/src/main/java/android/support/design/internal/BottomNavigationAnimationHelperBase.java
+A	app/src/main/java/android/support/design/internal/BottomNavigationAnimationHelperKitkat.java
+A	app/src/main/java/android/support/design/internal/BottomNavigationItemView.java
+A	app/src/main/java/android/support/design/internal/BottomNavigationMenu.java
+A	app/src/main/java/android/support/design/internal/BottomNavigationMenuView.java
+A	app/src/main/java/android/support/design/internal/BottomNavigationPresenter.java
+A	app/src/main/java/android/support/design/internal/TextScale.java
+A	app/src/main/java/android/support/design/widget/BottomNavigationView.java
+A	app/src/main/java/android/support/design/widget/ThemeUtils.java
+A	app/src/main/java/top/trumeet/mipushframework/db/DaoMaster.java
+A	app/src/main/java/top/trumeet/mipushframework/db/DaoSession.java
+A	app/src/main/java/top/trumeet/mipushframework/db/EventDao.java
+A	app/src/main/java/top/trumeet/mipushframework/db/NotificationInfoDao.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/utils/ViewUtils.java
+A	app/src/main/res/color/nav_color_select.xml
+A	app/src/main/res/drawable-v21/design_bottom_navigation_item_background.xml
+A	app/src/main/res/drawable/design_bottom_navigation_item_background.xml
+A	app/src/main/res/drawable/ic_apps_black_24dp.xml
+A	app/src/main/res/drawable/ic_event_note_black_24dp.xml
+A	app/src/main/res/drawable/ic_settings_black_24dp.xml
+A	app/src/main/res/layout/activity_main.xml
+A	app/src/main/res/layout/design_bottom_navigation_item.xml
+A	app/src/main/res/menu/bottom_navigation.xml
+A	app/src/main/res/values/attrs.xml
+M	app/src/main/res/values/dimens.xml
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/values/styles.xml
+
+bb2650b3a45572d2869ea7ba1d27321c3596778b, feat: basic event log, Sat Aug 26 10:08:31 2017 +0800
+M	app/build.gradle
+D	app/src/androidTest/java/com/xiaomi/xmsf/ExampleInstrumentedTest.java
+M	app/src/main/AndroidManifest.xml
+D	app/src/main/java/com/xiaomi/xmsf/Application.java
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/MyLog.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+D	app/src/main/java/miui/external/Application.java
+D	app/src/main/java/miui/external/ApplicationDelegate.java
+M	app/src/main/java/top/trumeet/mipushframework/Constants.java
+A	app/src/main/java/top/trumeet/mipushframework/event/Event.java
+A	app/src/main/java/top/trumeet/mipushframework/event/EventDB.java
+A	app/src/main/java/top/trumeet/mipushframework/event/EventFragment.java
+A	app/src/main/java/top/trumeet/mipushframework/event/EventItemBinder.java
+A	app/src/main/java/top/trumeet/mipushframework/event/notification/NotificationInfo.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/utils/OnLoadMoreListener.java
+A	app/src/main/java/top/trumeet/mipushframework/utils/ParseUtils.java
+M	app/src/main/res/layout/app_item.xml
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/values/styles.xml
+D	app/src/test/java/com/xiaomi/xmsf/ExampleUnitTest.java
+M	build.gradle
+
+d81378aabd160fc08fa2c767babe0c7097f74011, feat: wake up when boot completed, Fri Aug 25 17:43:07 2017 +0800
+M	README.md
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/BootReceiver.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	app/src/main/res/values/strings.xml
+
+0fec2de9897f5c2110b5d1b0cc5e17e09a847afa, feat: try include stopped devices, Fri Aug 25 17:39:15 2017 +0800
+M	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+
+b1587ef0974196ce6f430b070317139c8ab90ab7, Update README.md, Fri Aug 25 17:20:59 2017 +0800
+M	README.md
+
+558b46e91746720a570796f89d300e7065fbacd2, feat: allow disable or enable push, Fri Aug 25 17:19:49 2017 +0800
+M	README.md
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+M	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+M	app/src/main/java/top/trumeet/mipushframework/Constants.java
+A	app/src/main/java/top/trumeet/mipushframework/push/PushController.java
+M	app/src/main/java/top/trumeet/mipushframework/push/PushServiceAccessibility.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+M	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunningStatusActivity.java
+A	app/src/main/res/layout/switch_layout.xml
+A	app/src/main/res/menu/menu_main.xml
+M	app/src/main/res/values/strings.xml
+D	app/src/main/res/xml/preference.xml
+
+c0f787f5c9340981768ee2e29178dce03f7a9dcb, feat: wizard and Fake build.prop, Fri Aug 25 12:25:15 2017 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/top/trumeet/mipushframework/Constants.java
+A	app/src/main/java/top/trumeet/mipushframework/push/PushServiceAccessibility.java
+M	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/utils/ShellUtils.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/CheckDozeActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunInBackgroundActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/CheckRunningStatusActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/FinishWizardActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/StartFailFAQActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/WelcomeActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/WizardSPUtils.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/fake/FakeBuildUtils.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckAppSupportActivity.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/support/CheckSupportUtils.java
+A	app/src/main/java/top/trumeet/mipushframework/wizard/support/SupportStatus.java
+A	app/src/main/res/layout/app_item.xml
+A	app/src/main/res/layout/preference_app.xml
+A	app/src/main/res/values/dimens.xml
+M	app/src/main/res/values/strings.xml
+M	app/src/main/res/values/styles.xml
+M	build.gradle
+
+da7d1b46997ecf0df3ed19627687cb1394a3f62c, Update README.md, Thu Aug 24 07:17:01 2017 -0500
+M	README.md
+
+f95bd33953b1ef5c1abbdf1e70ea5ef071afb551, Update README.md, Thu Aug 24 07:11:29 2017 -0500
+M	README.md
+
+d2e4e5b4e266a5fbfe8fcb2b7c64688a82b6cf72, Update README.md, Wed Aug 23 21:53:39 2017 -0500
+M	README.md
+
+dbe0621b132eee0bc503abfd86ab90bb687b0c69, Update README.md, Thu Aug 24 10:28:26 2017 +0800
+M	README.md
+
+beb946b2fa96e7557505312b7cf4d91a058991fc, Update README.md, Thu Aug 24 09:57:47 2017 +0800
+M	README.md
+A	art/screenshot.png
+
+87c2c66c0e706f72f68de761b8ae26ddd1921b40, First Commit, Thu Aug 24 09:50:49 2017 +0800
+A	.gitignore
+A	.idea/gradle.xml
+A	.idea/misc.xml
+A	.idea/modules.xml
+A	.idea/runConfigurations.xml
+A	.idea/vcs.xml
+A	LICENSE
+A	README.md
+A	app/.gitignore
+A	app/build.gradle
+A	app/libs/MiPush_SDK_Client_3_4_0.jar
+A	app/proguard-rules.pro
+A	app/src/androidTest/java/com/xiaomi/xmsf/ExampleInstrumentedTest.java
+A	app/src/main/AndroidManifest.xml
+A	app/src/main/java/com/xiaomi/xmsf/Application.java
+A	app/src/main/java/com/xiaomi/xmsf/XmsfApp.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/MiuiPushActivateService.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/MyLog.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/Utils.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/XMAccountManager.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/XMPushService.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/AccountChangedReceiver.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/MiuiPushMessageReceiver.java
+A	app/src/main/java/com/xiaomi/xmsf/push/service/receivers/NetworkStatusReceiver.java
+A	app/src/main/java/miui/external/Application.java
+A	app/src/main/java/miui/external/ApplicationDelegate.java
+A	app/src/main/java/top/trumeet/mipushframework/settings/MainActivity.java
+A	app/src/main/res/drawable/ic_launcher_background.xml
+A	app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+A	app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+A	app/src/main/res/mipmap-hdpi/ic_launcher.png
+A	app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png
+A	app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+A	app/src/main/res/mipmap-mdpi/ic_launcher.png
+A	app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png
+A	app/src/main/res/mipmap-mdpi/ic_launcher_round.png
+A	app/src/main/res/mipmap-xhdpi/ic_launcher.png
+A	app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png
+A	app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+A	app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+A	app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png
+A	app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+A	app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+A	app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png
+A	app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+A	app/src/main/res/values/strings.xml
+A	app/src/main/res/values/styles.xml
+A	app/src/main/res/xml/preference.xml
+A	app/src/test/java/com/xiaomi/xmsf/ExampleUnitTest.java
+A	build.gradle
+A	gradle.properties
+A	gradle/wrapper/gradle-wrapper.jar
+A	gradle/wrapper/gradle-wrapper.properties
+A	gradlew
+A	gradlew.bat
+A	settings.gradle

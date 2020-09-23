@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Zettelkasten">
+	<bug id="218" opendate="2020-04-19 08:30:44" fixdate="2020-04-19 17:52:50">
+		<buginformation>
+			<summary>Suche nach Zetteln über Schlagwörter, Fehler im Fensterstack</summary>
+			<description>Wenn ich ZKN3 (3.3.1) unter Windows-10 (aktuelle Version 1909) in Full-Screen-Ansicht öffne und in der Schlagwortliste ein Schlagwort doppelt anklicke, blitzt das Ergebnisfenster kurz auf und verschwindet dann hinter dem Hauptfenster.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/de/danielluedecke/zettelkasten/ZettelkastenView.java</file>
+			<file>src/main/java/de/danielluedecke/zettelkasten/SearchResultsFrame.java</file>
+			<file>src/main/java/de/danielluedecke/zettelkasten/tasks/StartSearchTask.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="215" opendate="2020-04-08 10:42:57" fixdate="2020-05-07 20:13:07">
+		<buginformation>
+			<summary>Anfügen von Zettelkästen mit ID-Dopplungen ist unzuverlässig</summary>
+			<description>Wenn man zkx3 Dateien importieren will und sich IDs in den beiden Dokumenten doppeln, sollten Dopplungen, nach Codedoku, gelöscht werden, um die Eindeutigkeit der IDs beizubehalten. Tatsächlich bleibt bei mir aber gefühlt jeder zweite oder dritte Zettel mit identischer ID bestehen.  Doppelte IDs entstanden in dem konkreten Fall durch Verwendung einer Zettelkasten-"Vorlage", also ein Zettelkasten mit angelegten Zetteln, aber leerem Inhalt. Das Template wurde dann kopiert, befüllt und die Kopien anschließend zusammengefügt.  **Vorschlag**:  - Statt Dopplungen zu löschen, sollten diese ggf. eine neue ID zugewiesen bekommen, damit die Infos erhalten bleiben. @strengejacke Gab es damals einen konkreten Grund für die Entscheidung zur Löschung?  - Feststellen der Dopplungen sollte über Mengen laufen, statt über Listeniterationen, dann würden wir die Laufzeit von O(n)^2 auf 2*O(n) reduzieren. Bei großen Zettelkästen würde das, denke ich, auf jeden Fall bemerkbar sein.   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/de/danielluedecke/zettelkasten/util/Tools.java</file>
+			<file>src/main/java/de/danielluedecke/zettelkasten/tasks/importtasks/ImportFromZkx.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="178" opendate="2018-10-19 07:01:32" fixdate="2020-04-03 07:28:18">
+		<buginformation>
+			<summary>Bei Programmstart prüfen, ob der zu ladende Zettel existiert</summary>
+			<description>Die Einstellungen von Zettelkasten bis Version 3.2.7 bieten an, bei Programmstart den zuletzt benutzten Zettel zu laden. Offensichtlich wird der "zuletzt benutzte Zettel" bei Programmende im Benutzerprofil gespeichert. Das ist im Prinzip sinnvoll, weil es die Arbeit des einzelnen Benutzers erleichtert.   In der aktuellen Programmimplementierung scheint die Bearbeitungshistorie jedoch nicht mit einem bestimmten Dokument assoziiert zu werden. Die daraus entstehenden Probleme habe ich in meinen Kommentaren zu #176 und #151 beschrieben. Andere Issues hier weisen auf vergleichbare Symptome hin.   Man kann sich überlegen, ob man die Informationen zur Bearbeitungshistorie entsprechend im Benutzerprofil erweitert, oder ob man sie ganz dem Dokument zuordnet. Beides hat im Hinblick auf die möglichen Szenarien (x Benutzer arbeiten an y gemeinsam genutzten Zettelkästen) Vor- und Nachteile.   Was auf jeden Fall benötigt wird, ist eine Prüfung bei Programmstart, ob der zu ladende Zettel (unabhängig von den Programmeinstellungen) tatsächlich vorhanden ist.   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/de/danielluedecke/zettelkasten/ZettelkastenView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="47" opendate="2015-05-17 19:48:56" fixdate="2015-05-17 20:41:41">
+		<buginformation>
+			<summary>Literaturangabe nicht bearbeitbar</summary>
+			<description>Die Änderung, die seltsamerweise nicht angenommen wurde, ist die Korrektur eines Tippfehlers, und zwar statt Großbuchstaben Kleinbuchstaben. Also statt falschem "BUch" z.B. "Buch", oder statt "AUtorenname" Korrektur zu "Autorenname". Offenbar werden Änderungen nicht übernommen, wenn ein Großbuchstabe durch einen Kleinbuchstaben ersetzt wird oder umgekehrt. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/de/danielluedecke/zettelkasten/NewEntryFrame.java</file>
+			<file>src/de/danielluedecke/zettelkasten/ZettelkastenView.java</file>
+			<file>src/de/danielluedecke/zettelkasten/database/Daten.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="38" opendate="2015-05-17 19:10:28" fixdate="2015-05-29 12:17:28">
+		<buginformation>
+			<summary>Querverweis auf gelöschten Zettel lässt sich nicht entfernen</summary>
+			<description>Folgendes habe ich getan: zwei Zettel wurden über die Funktion "Verweise" miteinander verbunden. Nun habe ich einen der Zettel gelöscht mittels "Zettel entfernen". Danach bin ich in den anderen rein gegangen und wollte dort den alten Verweis raus löschen was aber nicht mehr geht. Der gesetzte Verweis läst sich nicht mehr löschen </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/de/danielluedecke/zettelkasten/database/Daten.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2015-04-17 18:18:38" fixdate="2015-08-22 12:13:50">
+		<buginformation>
+			<summary>Tags aus Zotero werden nicht als Schlagwörter importiert</summary>
+			<description>Wenn ich in Zotereo Einträge mit Tags verschlagworte und diese über den Export in eine Bibtex-Datei übergeb, wird bei einem Import in Zettelkasten bei Auswahl der Option "Schlagwörter eines Eintrags ebenfalls importieren, wenn vorhanden" eben nicht diese Keywords übernommen.   ![ishot-2](https://cloud.githubusercontent.com/assets/732025/7208157/e2125dd0-e53e-11e4-9d76-72eca3e061ee.jpg)  In der Bibtext-Datei werden die Tags mit dieser Syntax ausgegeben.  `keywords = {Tag1, Tag2},` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/de/danielluedecke/zettelkasten/CImportBibTex.java</file>
+			<file>src/de/danielluedecke/zettelkasten/tasks/DeleteEntryTask.java</file>
+			<file>src/de/danielluedecke/zettelkasten/database/BibTex.java</file>
+			<file>src/de/danielluedecke/zettelkasten/database/Daten.java</file>
+			<file>src/de/danielluedecke/zettelkasten/util/ZettelkastenViewUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="27" opendate="2015-03-22 09:35:02" fixdate="2015-03-22 10:05:04">
+		<buginformation>
+			<summary>Mehrere Komma-getrennte Suchbegriffe in Suchmaske von Leerzeichen bereinigen</summary>
+			<description>`Begriff1, Begriff2` als Eingabe sucht nach `_Begriff2` (_ = Leerzeichen), nicht nach `Begriff2`. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/de/danielluedecke/zettelkasten/CFindReplaceDialog.java</file>
+			<file>src/de/danielluedecke/zettelkasten/CSearchDlg.java</file>
+			<file>src/de/danielluedecke/zettelkasten/util/Constants.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="26" opendate="2015-03-22 06:50:15" fixdate="2015-10-08 12:22:44">
+		<buginformation>
+			<summary>Dateinamen mit Unterstrichen kollidieren mit Markdowninterpretation</summary>
+			<description>Bei aktiviertem Markdown können Bilder, die Unterstriche im Dateinamen haben, nicht eingefügt werden, da ein Unterstrichpaar zuerst als kursive Auszeichnung interpretiert und ersetzt wird. Damit stimmt der Dateiname nicht mehr.  `![Bild](2014_09_15_Dateiname.png)`  Zeigt also immer nur ein Viereck mit rotem X an. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/de/danielluedecke/zettelkasten/util/Constants.java</file>
+			<file>src/de/danielluedecke/zettelkasten/util/HtmlUbbUtil.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

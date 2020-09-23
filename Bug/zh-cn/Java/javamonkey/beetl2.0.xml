@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>285</id>
+		<title>spring boot 下htmltag 不能自动更新</title>
+		<body>改变htmltag，必须重启服务器才行，  原因是htmtag 对应的文件路径虽然拼对了，但查询lastModify 却是0</body>
+		<created>2016-11-30 01:14:56</created>
+		<closed>2016-11-30 04:56:53</closed>
+	</bug>
+	<bug>
+		<id>247</id>
+		<title>classpath+springboot error</title>
+		<body>http://ibeetl.com/community/?/question/602 </body>
+		<created>2016-06-16 00:57:02</created>
+		<closed>2016-07-04 00:12:52</closed>
+	</bug>
+	<bug>
+		<id>242</id>
+		<title>方法调用后有表达式导致报错</title>
+		<body>fun()[xxx.id-1]  原因是fun后就没有类型推测了 </body>
+		<created>2016-06-07 00:34:27</created>
+		<closed>2016-06-07 00:37:15</closed>
+	</bug>
+	<bug>
+		<id>232</id>
+		<title>for 循环 continue不管用</title>
+		<body>&lt;% for(var i=0;i&lt;3;i++){     if(i==1) continue;     print("data is"+i); } %&gt;  死循环了  </body>
+		<created>2016-04-19 02:29:03</created>
+		<closed>2016-04-19 02:35:08</closed>
+	</bug>
+	<bug>
+		<id>203</id>
+		<title>default 里加上break导致for循环终端</title>
+		<body>&lt;% var a = [1,2,3] ; for(i in a){ switch(i){   case 1:println("find");break;   default: break; } println("loop"+i); } </body>
+		<created>2015-11-24 05:40:39</created>
+		<closed>2015-11-26 06:38:51</closed>
+	</bug>
+	<bug>
+		<id>202</id>
+		<title>template.binding(Map map)</title>
+		<body>会覆盖以前的binding  ``` public void binding(Map map) {     Map&lt;String, Object&gt; values = map; ``` </body>
+		<created>2015-11-23 02:00:13</created>
+		<closed>2015-11-26 05:48:29</closed>
+	</bug>
+	<bug>
+		<id>199</id>
+		<title>docode 不能比较不同类型数字</title>
+		<body>如 int 和long比较，建议使用numbertutil的数字比较方法而不是简单的equal </body>
+		<created>2015-11-17 03:15:00</created>
+		<closed>2015-11-26 05:22:06</closed>
+	</bug>
+	<bug>
+		<id>187</id>
+		<title>文档错误strutil.len</title>
+		<body>2.17. 函数调用  </body>
+		<created>2015-09-18 06:36:29</created>
+		<closed>2015-09-25 09:37:44</closed>
+	</bug>
+	<bug>
+		<id>186</id>
+		<title>不能访问nName 这种属性</title>
+		<body>beetl 支持 javabean规范只支持了第一条  如果属性名的第二个字母大写，那么该属性名直接用作 getter/setter 方法中 get/set 的后部分，就是说大小写不变 </body>
+		<created>2015-09-17 07:21:16</created>
+		<closed>2015-09-25 09:37:53</closed>
+	</bug>
+	<bug>
+		<id>175</id>
+		<title>jodd 3.3 版本不支持</title>
+		<body>我今天将beetl和jodd做了个集成，但是启动的时候报错java.lang.AbstractMethodError: org.beetl.ext.jodd.BeetlActionResult.getResultName()Ljava/lang/String;     at jodd.madvoc.component.ResultsManager.register(ResultsManager.java:85)     at jodd.madvoc.component.ResultsManager.register(ResultsManager.java:60)     at jodd.madvoc.config.AutomagicMadvocConfigurator.onResultClass(AutomagicMadvocConfigurator.java:212)     at jodd.madvoc.config.AutomagicMadvocConfigurator.onEntry(AutomagicMadvocConfigurator.java:106)     at jodd.io.findfile.ClassFinder.scanEntry(ClassFinder.java:389)     at jodd.io.findfile.ClassFinder.scanJarFile(ClassFinder.java:292)     at jodd.io.findfile.ClassFinder.scanPath(ClassFinder.java:261)     at jodd.io.findfile.ClassFinder.scanPaths(ClassFinder.java:226) </body>
+		<created>2015-07-07 02:36:06</created>
+		<closed>2015-07-10 05:59:40</closed>
+	</bug>
+	<bug>
+		<id>174</id>
+		<title>三元表达式后如果有赋值表达式</title>
+		<body>本来是true?"a=ccc;“   但写成了 true?a=ccc;  此时变量a未定义，但却不报错，反而覆盖了其他变量 </body>
+		<created>2015-06-29 08:54:29</created>
+		<closed>2015-07-11 07:14:20</closed>
+	</bug>
+	<bug>
+		<id>171</id>
+		<title>a=b=c 不支持（严重)</title>
+		<body>这种赋值表达式不报错，但赋值错误 </body>
+		<created>2015-06-25 10:47:37</created>
+		<closed>2015-07-11 07:14:32</closed>
+	</bug>
+	<bug>
+		<id>169</id>
+		<title>Jfinal2.0 Res 读取错误</title>
+		<body>${_res.xxxx}  错误原因   　　　　public String get(String key)  而Beetl 优化是 public Object get(String key) </body>
+		<created>2015-06-22 05:26:32</created>
+		<closed>2015-06-22 05:27:40</closed>
+	</bug>
+	<bug>
+		<id>165</id>
+		<title>html 放json，2.2.3 不兼容以前版本</title>
+		<body> tt='${{a:1}} </body>
+		<created>2015-06-10 13:54:26</created>
+		<closed>2015-07-12 03:11:32</closed>
+	</bug>
+	<bug>
+		<id>153</id>
+		<title>文档includejsp 部分有误</title>
+		<body>includeJSP("/xxxx.jsp",{"key":"value"})  需要后面{} </body>
+		<created>2015-05-12 08:44:56</created>
+		<closed>2015-06-06 09:29:39</closed>
+	</bug>
+	<bug>
+		<id>151</id>
+		<title>html属性解析parseAttr</title>
+		<body>&lt;a tt ="${  {a:1}  }" 解析错，2.2.2版本问题 </body>
+		<created>2015-05-09 02:31:37</created>
+		<closed>2015-07-12 03:11:55</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>ibm web server+jfinal,找不到webroot</title>
+		<body>建议jfinal集成，获取root，采用jfinal自带的 </body>
+		<created>2015-04-23 08:29:48</created>
+		<closed>2015-05-02 06:28:41</closed>
+	</bug>
+	<bug>
+		<id>145</id>
+		<title>变量类型为byte，报错</title>
+		<body>private byte recycle;  当访问属性recyle ,的时候，报错 </body>
+		<created>2015-04-19 04:48:30</created>
+		<closed>2015-04-19 04:48:39</closed>
+	</bug>
+	<bug>
+		<id>143</id>
+		<title>classpathresourceloader 无法加载jar文件中的模板</title>
+		<body>估计是loader 采用的classloader的问题 </body>
+		<created>2015-04-09 06:51:04</created>
+		<closed>2015-05-02 06:49:35</closed>
+	</bug>
+	<bug>
+		<id>141</id>
+		<title>block 里出现连续“；”将导致模板解析错误</title>
+		<body>&lt;% { ; ; } %&gt; </body>
+		<created>2015-04-02 09:16:14</created>
+		<closed>2015-04-02 09:16:25</closed>
+	</bug>
+	<bug>
+		<id>137</id>
+		<title>本地调用错误</title>
+		<body>有来个同名方法，一个是getPara(),一个是getPara（String name） 当@obj.getPara("xxx") 的时候，会抛错，ObjectUtil.match 241行 </body>
+		<created>2015-03-26 07:57:40</created>
+		<closed>2015-03-31 01:38:02</closed>
+	</bug>
+	<bug>
+		<id>128</id>
+		<title>默认的安全管理器不能处理类为数组的情况</title>
+		<body>public boolean permit(String resourceId, Class c, Object target, String method)     {         String name = c.getSimpleName();         String pkg = c.getPackage().getName();  如果c 是个数组，则c.getPackage().为空。 此事应该抛出一个异常，提醒用户，数组没有method方法 </body>
+		<created>2015-03-08 11:21:10</created>
+		<closed>2015-03-31 01:45:16</closed>
+	</bug>
+	<bug>
+		<id>127</id>
+		<title>spring配置文件配置root不能以/结尾</title>
+		<body>1.springmvc,配置beetl &amp;lt;bean id="beetlConfig" class="org.beetl.ext.spring.BeetlGroupUtilConfiguration"         init-method="init"&gt;         &amp;lt;property name="root" value="/WEB-INF/beetl/" /&gt;     &amp;lt;/bean&gt;  如果是这种情况，  %include("beetl_template.html"){}%&gt;  会报找不到bbeetl_template.html 多了一个字母b </body>
+		<created>2015-03-02 09:34:32</created>
+		<closed>2015-03-05 06:23:40</closed>
+	</bug>
+</bugs>

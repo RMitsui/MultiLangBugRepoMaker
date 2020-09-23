@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="DP10Entrega">
+	<bug id="129" opendate="2016-04-21 16:07:44" fixdate="2016-04-25 13:32:39">
+		<buginformation>
+			<summary>Cambiar todo el planteamiento de como se relacionan los barters incluyendo servicios, querys, y test</summary>
+			<description>incluyendo todos los sitios donde se usar XXbarter.getRelatedBarter  Esto se debe a la imposibilidad de ponerlos bien el populate. #108 #97 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/BarterService.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/administrator/BarterAdministratorController.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/domain/Barter.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/repositories/BarterRepository.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/BarterController.java</file>
+			<file>WorkSpace/Acme-Barter/src/test/java/services/BarterServiceTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="126" opendate="2016-04-21 15:44:06" fixdate="2016-04-21 17:07:06">
+		<buginformation>
+			<summary>OJO!!!!!!!!!! Un user no puede crearse social identities si antes no tiene una!</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/WelcomeController.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/user/SocialIdentityUserController.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/UserService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="125" opendate="2016-04-21 15:41:18" fixdate="2016-04-25 13:38:05">
+		<buginformation>
+			<summary>[Service] Error en userService.getUsersWithNoBarterThisMonth()</summary>
+			<description>Este método no devuelve lo que se espera, puede comprobar al lanzar el test UserServiceTest.testUsersNotCreateRecentBarter()  igualmente ese servicio usa cosas deprecated, por favor mirad lo del test que cumple de mejor manera los requisitos </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/BarterService.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/UserService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="123" opendate="2016-04-21 15:33:21" fixdate="2016-04-22 16:05:29">
+		<buginformation>
+			<summary>Al listar barter (como user) siempre te aparece la opcion de cancelar</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/user/BarterUserController.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/BarterController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="119" opendate="2016-04-21 11:55:25" fixdate="2016-04-21 17:07:24">
+		<buginformation>
+			<summary>Mensaje que indica que Matchs se listan (Está mal en Matchs de usuarios)</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/MatchController.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/WelcomeController.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/UserService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="110" opendate="2016-04-20 23:20:35" fixdate="2016-04-21 11:06:37">
+		<buginformation>
+			<summary>SocialIdentity falla en la paginación (al pasar a página 2)</summary>
+			<description>Concretamente se te va a la pagina principal de la app. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/user/SocialIdentityUserController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="96" opendate="2016-04-19 18:30:32" fixdate="2016-04-25 19:33:01">
+		<buginformation>
+			<summary>ERROR en un barter.getRelatedBarter contiene null ! !</summary>
+			<description>Mirar porque pasa y como </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/test/java/services/BarterServiceTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="94" opendate="2016-04-19 16:21:42" fixdate="2016-04-19 20:59:31">
+		<buginformation>
+			<summary>Un mensaje se puede añadir muchas veces a una carpeta</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/FolderService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="93" opendate="2016-04-19 10:38:16" fixdate="2016-04-19 20:59:45">
+		<buginformation>
+			<summary>Fallo al relacionar Barter</summary>
+			<description>Si relaciono el Barter A con el B no me sale que esté relacionado B con A </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/administrator/BarterAdministratorController.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/BarterService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="82" opendate="2016-04-17 11:25:21" fixdate="2016-04-19 21:00:02">
+		<buginformation>
+			<summary>Error no notificado al crear un mensaje con prioridad errónea</summary>
+			<description>Si le pones otra prioridad que no sea una correcta (Ej: 353516), la página se recarga pero sin ningún error que te informe de qué pasa. Debería informar de que la prioridad no es correcta y de qué valores son los correctos. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/actor/MessageActorController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="81" opendate="2016-04-17 11:22:08" fixdate="2016-04-20 13:05:15">
+		<buginformation>
+			<summary>¡Faltan traducciones al español en el menú!</summary>
+			<description>-----------Falta por traducir al español: Como User: -Users -Profile info Como No Autenticado: -Users Como Admin: -Users -Profile info Como Auditor: -Users -Profile info </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/FolderService.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/UserService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="68" opendate="2016-04-15 14:06:42" fixdate="2016-04-25 13:58:52">
+		<buginformation>
+			<summary>[Service] Incumplimiento requisitos BarterService.cancel</summary>
+			<description>https://github.com/DPIRPSG/DP10Entrega/blob/Develop/WorkSpace/Acme-Barter/src/main/java/services/BarterService.java#L110-L121  El problema está en que no solo puede hacerlo un admin según hablamos con Inma (#22) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/user/BarterUserController.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/BarterService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="62" opendate="2016-04-14 10:44:03" fixdate="2016-04-15 17:59:24">
+		<buginformation>
+			<summary>Que a un User no le aparezca el enlace de seguirse a si mismo</summary>
+			<description>Es tan simple como en el controller pasarle su id por un parametro con el findByPrincipal y en la vista un if para que no lo muestre si es igual al row_user.id </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/controllers/UserController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="53" opendate="2016-04-12 15:56:48" fixdate="2016-04-20 13:05:38">
+		<buginformation>
+			<summary>Envío de mensaje a uno mismo no aparece en Inbox</summary>
+			<description>Situación:  Creo un usuario, digo que quiero enviar un mensaje a varias personas y a mi. Lo envió pero no aparece en mi InBox pero en los otros usuarios si. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/FolderService.java</file>
+			<file>WorkSpace/Acme-Barter/src/main/java/services/UserService.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

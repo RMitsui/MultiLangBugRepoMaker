@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="jax-rs-1_0-prototype2">
+	<bug id="46" opendate="2015-12-14 12:15:50" fixdate="2015-12-14 13:01:19">
+		<buginformation>
+			<summary>PracticePlanIdクラスのハッシュ計算で37が無効</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="14" opendate="2015-11-15 03:23:42" fixdate="2015-11-16 15:08:52">
+		<buginformation>
+			<summary>PracticePlanエンティティにJPAアノテーション@EmbeddedIdが３つ定義されていて、実行時エラー</summary>
+			<description>com.jurin_n.domain.model.practice.PracticePlan に@EmbeddedIdが３つつけてあり実行時エラー。  以下、対象コード抜粋。  ``` Java @Entity @Table(name="t_PracticePlan") public class PracticePlan {     @EmbeddedId     private PracticePlanId practicePlanId;     @EmbeddedId     private PracticeMenuId practiceMenuId;     @EmbeddedId     private PracticeMemberId memberId; ```  PracticePlanIdは、PracticePlanのID。 PracticeMenuIdとPracticeMemberIdは対象となるPracticeMenuとPracticeMember のIdを指し示す値オブジェクト。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/jurin_n/domain/model/practice/PracticePlanId.java</file>
+			<file>src/main/java/com/jurin_n/domain/model/practice/PracticeMemberId.java</file>
+			<file>src/test/java/com/jurin_n/domain/model/practice/PracticePlanServiceTest.java</file>
+			<file>src/main/java/com/jurin_n/domain/model/practice/PracticePlan.java</file>
+			<file>src/main/java/com/jurin_n/domain/model/practice/PracticeMenuId.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="9" opendate="2015-11-10 12:37:12" fixdate="2015-11-10 13:06:45">
+		<buginformation>
+			<summary>JPATeamRepositoryクラスのオブジェクトがnewキーワードでインスタンス化されてる</summary>
+			<description>com.jurin_n.services.TeamServiceクラスのcreateTeamメソッドで JPATeamRepositoryクラスのオブジェクトがnewキーワードでインスタンス化されてる </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/jurin_n/domain/model/team/TeamRepository.java</file>
+			<file>src/main/java/com/jurin_n/infrastructure/persistence/JPATeamRepository.java</file>
+			<file>src/main/java/com/jurin_n/services/TeamService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7" opendate="2015-11-09 13:38:30" fixdate="2015-11-09 14:00:56">
+		<buginformation>
+			<summary>@Injectにすべきところ@EJBでインジェクトしてしまっている</summary>
+			<description>com.jurin_n.services.TeamApplicationService で TeamServiceクラスを@EJBでインジェクトしている。 CDIのアノテーション@Injectでも対応できるはず。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/jurin_n/services/TeamApplicationService.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

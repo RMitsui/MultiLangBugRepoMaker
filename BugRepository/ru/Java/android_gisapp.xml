@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="android_gisapp">
+	<bug id="604" opendate="2017-12-18 17:07:31" fixdate="2018-04-05 14:14:10">
+		<buginformation>
+			<summary>Корректный URL не проходит проверку в maplib</summary>
+			<description>Проблема возникает с некоторыми URL в этой точке:  https://github.com/nextgis/android_maplib/blob/57b650aa903e9b6cdf4da73f99d29a877f9de804/src/main/java/com/nextgis/maplib/util/NetworkUtil.java#L145  Валидатор android.util.Patterns.WEB_URL.matcher() не пропускает, например, такой URL, который открывается в браузере:  http://kedr.primorsky.ru/ngw/api/resource/57/feature/?bbox=14837293.000000,5535483.500000,14980318.000000,5692577.000000&amp;status=%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9&amp;date={%22gt%22:%222017-06-18T00:00:00Z%22}  На этот валидатор уже были нарекания: https://stackoverflow.com/a/29771086 Рекомендуют его вовсе не использовать, заменив на альтернативный.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/AttributesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="504" opendate="2016-09-16 15:08:42" fixdate="2016-11-30 10:03:50">
+		<buginformation>
+			<summary>При трекинге, в окне настроек NGW, нестабильно добавляется слой "My tracks"</summary>
+			<description>## Шаги для воспроизведения - Есть бесплатный аккаунт на nextgis.com - Делаю там группу keyname=tracks - Делаю в ней слой keyname=tracker с нужной структурой - Делаю пользователя tracker, включаю его в группу Editors - На мобильном:  - Удаляю подключение к ngw - Добавляю через окно настроек новое подключение к ngw под логином tracker - Включаю автоматическую синхронизацию на 5 минут - В списке слоёв у слоя My tracks нажимаю 3 точки --&gt; Синхронизация, выбираю аккаунт - Включаю трек - Иду по улице - Возвращаюсь, подключаюсь к WiFi, жду ## Желаемое поведение - Один раз из 10 в вебе появились точки, и в окне настроек ngw появился слой "Мои треки" ## Текущее поведение - Точки в nextgis.com не появляются, и в окне настроек ngw **не добавляется слой "Мои треки"**   ![screenshot_2016-09-16-18-11-23_com nextgis mobile](https://cloud.githubusercontent.com/assets/4630662/18590870/0f9cdcc0-7c39-11e6-82dd-ea50a4a2b5d0.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/SettingsActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="471" opendate="2016-08-08 11:57:56" fixdate="2016-08-08 14:53:12">
+		<buginformation>
+			<summary>Падение при редактировании атрибутов</summary>
+			<description>``` java.lang.NullPointerException: Attempt to invoke virtual method 'boolean java.lang.String.equals(java.lang.Object)' on a null object reference     at com.nextgis.maplibui.activity.ModifyAttributesActivity.hasEdits(ModifyAttributesActivity.java:504)     at com.nextgis.maplibui.activity.ModifyAttributesActivity.onOptionsItemSelected(ModifyAttributesActivity.java:458)     at android.app.Activity.onMenuItemSelected(Activity.java:2885)     at android.support.v4.app.FragmentActivity.onMenuItemSelected(FragmentActivity.java:421)     at android.support.v7.app.AppCompatActivity.onMenuItemSelected(AppCompatActivity.java:188)     at android.support.v7.view.WindowCallbackWrapper.onMenuItemSelected(WindowCallbackWrapper.java:103)     at android.support.v7.view.WindowCallbackWrapper.onMenuItemSelected(WindowCallbackWrapper.java:103)     at android.support.v7.widget.ToolbarWidgetWrapper$1.onClick(ToolbarWidgetWrapper.java:185)     at android.view.View.performClick(View.java:4856)     at android.view.View$PerformClick.run(View.java:19956)     at android.os.Handler.handleCallback(Handler.java:739)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:211)     at android.app.ActivityThread.main(ActivityThread.java:5389)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1020)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:815) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/AttributesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="461" opendate="2016-07-19 20:24:16" fixdate="2016-07-20 10:29:44">
+		<buginformation>
+			<summary>Слой пустой</summary>
+			<description>http://rykovd.nextgis.com/resource/34 Если добавить как вектор, то слой пустой, если как растр - то все ок. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="455" opendate="2016-07-17 00:51:35" fixdate="2016-07-18 11:29:11">
+		<buginformation>
+			<summary>Окно идентификации не читабельно</summary>
+			<description>![screenshot_2016-07-17-07-50-00](https://cloud.githubusercontent.com/assets/866124/16898096/4045bff2-4bf3-11e6-8e57-36cd76828999.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/AttributesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="454" opendate="2016-07-16 15:01:22" fixdate="2016-07-16 16:38:27">
+		<buginformation>
+			<summary>Приложение вылетает при идентификации объектов из слоя NGW</summary>
+			<description>Вот на этом слое: http://rykovd.nextgis.com/resource/34. При загрузке слоя пишет, что поле `desc` запрещено и удалено, может в этом причина. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/AttributesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="446" opendate="2016-07-10 12:27:08" fixdate="2016-07-11 14:36:16">
+		<buginformation>
+			<summary>Не работает кеш ОСМ</summary>
+			<description>Сейчас в apk приложения 10 Мб мусора, который не используется.  Как воспроизвести: 1. Скачиваю с testfairy apk.   2. Отключаю Интернет. 3. Устанавливаю приложение. 4. Запускаю приложение и вижу только фон. Перемещение по уровням зума не дает отображение подложки ОСМ.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/MainApplication.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="440" opendate="2016-07-06 09:12:22" fixdate="2016-07-18 11:12:09">
+		<buginformation>
+			<summary>Два трека с одинаковым именем</summary>
+			<description>В мобильном есть 2 трека за одно число: `2016-07-03-1`. Первый вопрос - это нормально, что разные треки имеют одинаковое имя? Второй вопрос - когда я выбираю их оба и пытаюсь сохранить, то сохраняется только второй - это ожидаемое поведение? </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="435" opendate="2016-07-03 06:32:57" fixdate="2016-07-18 11:12:09">
+		<buginformation>
+			<summary>Трек не продолжает записываться после отключения</summary>
+			<description>Записывал трек. Телефон разрядился, после того как его включил - в меню есть пункт Остановить запись трека, хотя он при этом не пишется: не горит человечек сверху и не рисуется на карте. Чтобы заработало - надо остановить и запустить заново. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/activity/SettingsActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="421" opendate="2016-06-15 21:23:57" fixdate="2016-07-18 14:34:52">
+		<buginformation>
+			<summary>перекрытие двух кнопок в меню создания слоя</summary>
+			<description>Было бы хорошо поместить галочку напротив "Create layer", так как она не даёт нажать плюс (скриншот с телефона highscreen zera f): ![screenshot_2016-06-14-19-10-53](https://cloud.githubusercontent.com/assets/16957191/16097694/cef2e43c-3357-11e6-94f6-684c7fd20aad.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/CreateVectorLayerActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="418" opendate="2016-06-13 00:49:46" fixdate="2016-06-22 12:37:33">
+		<buginformation>
+			<summary>Падение при выборе геометрии</summary>
+			<description>``` java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.nextgis.maplib.datasource.Feature.getFieldValueAsString(java.lang.String)' on a null object reference     at com.nextgis.mobile.fragment.MapFragment.defineMenuItems(MapFragment.java:563)     at com.nextgis.mobile.fragment.MapFragment.onSingleTapUp(MapFragment.java:1482)     at com.nextgis.maplibui.mapui.MapView.onSingleTapUp(MapView.java:479)     at android.view.GestureDetector.onTouchEvent(GestureDetector.java:595)     at com.nextgis.maplibui.mapui.MapView.onTouchEvent(MapView.java:329)     at android.view.View.dispatchTouchEvent(View.java:8472)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2106)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2106)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2106)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2106)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2106)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2106)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2106)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2106)     at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:2369)     at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1719)     at android.app.Activity.dispatchTouchEvent(Activity.java:2742)     at android.support.v4.app.BaseFragmentActivityDonut.dispatchTouchEvent(BaseFragmentActivityDonut.java)     at android.support.v7.internal.view.WindowCallbackWrapper.dispatchTouchEvent(WindowCallbackWrapper.java:60)     at android.support.v7.internal.view.WindowCallbackWrapper.dispatchTouchEvent(WindowCallbackWrapper.java:60)     at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:2330)     at android.view.View.dispatchPointerEvent(View.java:8667)     at android.view.ViewRootImpl$ViewPostImeInputStage.processPointerEvent(ViewRootImpl.java:4248)     at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:4114)     at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3664)     at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3717)     at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3683)     at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:3803)     at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3691)     at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:3860)     at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3664)     at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3717)     at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3683)     at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3691)     at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3664)     at android.view.ViewRootImpl.deliverInputEvent(ViewRootImpl.java:5966)     at android.view.ViewRootImpl.doProcessInputEvents(ViewRootImpl.java:5940)     at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:5911)     at android.view.ViewRootImpl$WindowInputEventReceiver.onInputEvent(ViewRootImpl.java:6056)     at android.view.InputEventReceiver.dispatchInputEvent(InputEventReceiver.java:185)     at android.os.MessageQueue.nativePollOnce(Native Method)     at android.os.MessageQueue.next(MessageQueue.java:143)     at android.os.Looper.loop(Looper.java:122)     at android.app.ActivityThread.main(ActivityThread.java:5273)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698) ```  Похожее падение  ``` java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.nextgis.maplib.datasource.Feature.getFieldValueAsString(java.lang.String)' on a null object reference     at com.nextgis.mobile.fragment.MapFragment.defineMenuItems(MapFragment.java:563)     at com.nextgis.mobile.fragment.MapFragment.setMode(MapFragment.java:545)     at com.nextgis.mobile.fragment.MapFragment.restoreBottomBar(MapFragment.java:1702)     at com.nextgis.mobile.activity.MainActivity.restoreBottomBar(MainActivity.java:831)     at com.nextgis.mobile.fragment.AttributesFragment.onDestroyView(AttributesFragment.java:173)     at android.support.v4.app.Fragment.performDestroyView(Fragment.java:2170)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1152)     at android.support.v4.app.FragmentManagerImpl.removeFragment(FragmentManager.java:1356)     at android.support.v4.app.BackStackRecord.popFromBackStack(BackStackRecord.java:902)     at android.support.v4.app.FragmentManagerImpl.popBackStackState(FragmentManager.java:1677)     at android.support.v4.app.FragmentManagerImpl$2.run(FragmentManager.java:577)     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1624)     at android.support.v4.app.FragmentManagerImpl$1.run(FragmentManager.java:517)     at android.os.Handler.handleCallback(Handler.java:815)     at android.os.Handler.dispatchMessage(Handler.java:104)     at android.os.Looper.loop(Looper.java:194)     at android.app.ActivityThread.main(ActivityThread.java:5624)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:959)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:754) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="414" opendate="2016-05-30 13:27:00" fixdate="2016-07-06 11:59:20">
+		<buginformation>
+			<summary>Падение при редактировании</summary>
+			<description>``` java.lang.NullPointerException: Attempt to invoke virtual method 'int com.nextgis.maplibui.api.DrawItem.getSelectedRingId()' on a null object reference     at com.nextgis.maplibui.overlay.EditLayerOverlay.setHasEdits(EditLayerOverlay.java:337)     at com.nextgis.mobile.fragment.MapFragment$3.onMenuItemClick(MapFragment.java:482)     at android.support.v7.widget.Toolbar$1.onMenuItemClick(Toolbar.java:180)     at android.support.v7.widget.ActionMenuView$MenuBuilderCallback.onMenuItemSelected(ActionMenuView.java:761)     at android.support.v7.internal.view.menu.MenuBuilder.dispatchMenuItemSelected(MenuBuilder.java:811)     at android.support.v7.internal.view.menu.MenuItemImpl.invoke(MenuItemImpl.java:153)     at android.support.v7.internal.view.menu.MenuBuilder.performItemAction(MenuBuilder.java:958)     at android.support.v7.internal.view.menu.MenuBuilder.performItemAction(MenuBuilder.java:948)     at android.support.v7.widget.ActionMenuView.invokeItem(ActionMenuView.java:619)     at android.support.v7.internal.view.menu.ActionMenuItemView.onClick(ActionMenuItemView.java:139)     at android.view.View.performClick(View.java:5273)     at android.view.View$PerformClick.run(View.java:21225)     at android.os.Handler.handleCallback(Handler.java:739)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:224)     at android.app.ActivityThread.main(ActivityThread.java:5514)     at java.lang.reflect.Method.invoke(Native Method)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/AttributesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="378" opendate="2016-04-07 18:44:45" fixdate="2016-04-21 14:27:09">
+		<buginformation>
+			<summary>Падение при редактировании</summary>
+			<description>``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.mobile/com.nextgis.mobile.activity.MainActivity}: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=1, result=0, data=null} to activity {com.nextgis.mobile/com.nextgis.mobile.activity.MainActivity}: java.lang.NullPointerException     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2579)     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2607)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2093)     at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3516)     at android.app.ActivityThread.access$700(ActivityThread.java:134)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1205)     at android.os.Handler.dispatchMessage(Handler.java:99)     at android.os.Looper.loop(Looper.java:137)     at android.app.ActivityThread.main(ActivityThread.java:4744)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=1, result=0, data=null} to activity {com.nextgis.mobile/com.nextgis.mobile.activity.MainActivity}: java.lang.NullPointerException     at android.app.ActivityThread.deliverResults(ActivityThread.java:3145)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2566)     ... 13 more Caused by: java.lang.NullPointerException     at com.nextgis.maplibui.overlay.EditLayerOverlay.setHasEdits(EditLayerOverlay.java:334)     at com.nextgis.mobile.fragment.MapFragment.onActivityResult(MapFragment.java:284)     at com.nextgis.mobile.activity.MainActivity.onActivityResult(MainActivity.java:440)     at android.app.Activity.dispatchActivityResult(Activity.java:5192)     at android.app.ActivityThread.deliverResults(ActivityThread.java:3141)     ... 14 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="365" opendate="2016-03-26 10:35:17" fixdate="2016-03-26 13:32:54">
+		<buginformation>
+			<summary>Линейка</summary>
+			<description>Открываю - нет линейки, после того как включил-отключил компас - справа сверху появилась линейка. Измерил - линейка опять пропала. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="364" opendate="2016-03-26 10:21:49" fixdate="2016-04-02 14:39:55">
+		<buginformation>
+			<summary>Баг в настройках. Падение.</summary>
+			<description>``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.mobile/com.nextgis.mobile.activity.MainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'android.content.SharedPreferences com.nextgis.maplib.map.VectorLayer.getPreferences()' on a null object reference     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2521)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2595)     at android.app.ActivityThread.access$800(ActivityThread.java:178)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1470)     at android.os.Handler.dispatchMessage(Handler.java:111)     at android.os.Looper.loop(Looper.java:194)     at android.app.ActivityThread.main(ActivityThread.java:5624)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:959)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:754) Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'android.content.SharedPreferences com.nextgis.maplib.map.VectorLayer.getPreferences()' on a null object reference     at com.nextgis.mobile.fragment.MapFragment.defineMenuItems(MapFragment.java:475)     at com.nextgis.mobile.fragment.MapFragment.setMode(MapFragment.java:464)     at com.nextgis.mobile.fragment.MapFragment.onViewStateRestored(MapFragment.java:831)     at android.support.v4.app.Fragment.restoreViewState(Fragment.java:475)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1105)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1241)     at android.support.v4.app.FragmentManagerImpl.dispatchActivityCreated(FragmentManager.java:2053)     at android.support.v4.app.FragmentController.dispatchActivityCreated(FragmentController.java:165)     at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:543)     at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1244)     at android.app.Activity.performStart(Activity.java:6108)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2478)     ... 10 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="350" opendate="2016-03-11 08:07:15" fixdate="2016-05-10 13:54:52">
+		<buginformation>
+			<summary>Падение при выходе приложения из фона при отсутствии таблицы</summary>
+			<description>Стэктрейс:  ``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.mobile/com.nextgis.mobile.activity.MainActivity}: android.database.sqlite.SQLiteException: no such table: layer_20160310153622376 (code 1)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3003)     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3032)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1384)     at android.os.Handler.dispatchMessage(Handler.java:110)     at android.os.Looper.loop(Looper.java:193)     at android.app.ActivityThread.main(ActivityThread.java:5333)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:824)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:640)     at dalvik.system.NativeStart.main(Native Method) Caused by: android.database.sqlite.SQLiteException: no such table: layer_20160310153622376 (code 1)     at android.database.sqlite.SQLiteConnection.nativeExecuteForCursorWindow(Native Method)     at android.database.sqlite.SQLiteConnection.executeForCursorWindow(SQLiteConnection.java:849)     at android.database.sqlite.SQLiteSession.executeForCursorWindow(SQLiteSession.java:836)     at android.database.sqlite.SQLiteQuery.fillWindow(SQLiteQuery.java:62)     at android.database.sqlite.SQLiteCursor.fillWindow(SQLiteCursor.java:159)     at android.database.sqlite.SQLiteCursor.getCount(SQLiteCursor.java:148)     at android.database.AbstractCursor.moveToPosition(AbstractCursor.java:197)     at android.database.AbstractCursor.moveToFirst(AbstractCursor.java:237)     at com.nextgis.mobile.fragment.AttributesFragment.setAttributes(AttributesFragment.java:218)     at com.nextgis.mobile.fragment.AttributesFragment.onResume(AttributesFragment.java:151)     at android.support.v4.app.Fragment.performResume(Fragment.java:2008)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1119)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1241)     at android.support.v4.app.FragmentManagerImpl.dispatchResume(FragmentManager.java:2063)     at android.support.v4.app.FragmentController.dispatchResume(FragmentController.java:187)     at android.support.v4.app.FragmentActivity.onResumeFragments(FragmentActivity.java:462)     at android.support.v4.app.FragmentActivity.onPostResume(FragmentActivity.java:451)     at android.support.v7.app.AppCompatActivity.onPostResume(AppCompatActivity.java:141)     at android.app.Activity.performResume(Activity.java:5435)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2989)     ... 10 more ```  ``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.mobile/com.nextgis.mobile.activity.MainActivity}: android.database.sqlite.SQLiteException: no such table: layer_20160310165317326 (code 1)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3003)     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3032)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1384)     at android.os.Handler.dispatchMessage(Handler.java:110)     at android.os.Looper.loop(Looper.java:193)     at android.app.ActivityThread.main(ActivityThread.java:5333)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:824)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:640)     at dalvik.system.NativeStart.main(Native Method) Caused by: android.database.sqlite.SQLiteException: no such table: layer_20160310165317326 (code 1)     at android.database.sqlite.SQLiteConnection.nativeExecuteForCursorWindow(Native Method)     at android.database.sqlite.SQLiteConnection.executeForCursorWindow(SQLiteConnection.java:849)     at android.database.sqlite.SQLiteSession.executeForCursorWindow(SQLiteSession.java:836)     at android.database.sqlite.SQLiteQuery.fillWindow(SQLiteQuery.java:62)     at android.database.sqlite.SQLiteCursor.fillWindow(SQLiteCursor.java:159)     at android.database.sqlite.SQLiteCursor.getCount(SQLiteCursor.java:148)     at android.database.AbstractCursor.moveToPosition(AbstractCursor.java:197)     at android.database.AbstractCursor.moveToFirst(AbstractCursor.java:237)     at com.nextgis.mobile.fragment.AttributesFragment.setAttributes(AttributesFragment.java:218)     at com.nextgis.mobile.fragment.AttributesFragment.onResume(AttributesFragment.java:151)     at android.support.v4.app.Fragment.performResume(Fragment.java:2008)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1119)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1241)     at android.support.v4.app.FragmentManagerImpl.dispatchResume(FragmentManager.java:2063)     at android.support.v4.app.FragmentController.dispatchResume(FragmentController.java:187)     at android.support.v4.app.FragmentActivity.onResumeFragments(FragmentActivity.java:462)     at android.support.v4.app.FragmentActivity.onPostResume(FragmentActivity.java:451)     at android.support.v7.app.AppCompatActivity.onPostResume(AppCompatActivity.java:141)     at android.app.Activity.performResume(Activity.java:5435)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2989)     ... 10 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/AttributesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="337" opendate="2016-02-21 14:22:00" fixdate="2016-03-09 11:35:17">
+		<buginformation>
+			<summary>Можно создать новый слой без названия и полей</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/CreateVectorLayerActivity.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/dialog/NewFieldDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="334" opendate="2016-02-21 11:04:08" fixdate="2016-02-21 15:13:15">
+		<buginformation>
+			<summary>Падение при отрисовке оверлея</summary>
+			<description>``` java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.graphics.Bitmap.isRecycled()' on a null object reference     at android.graphics.Canvas.throwIfCannotDraw(Canvas.java:1224)     at android.view.GLES20Canvas.drawBitmap(GLES20Canvas.java:579)     at com.nextgis.maplibui.api.Overlay.drawOverlayItem(Overlay.java:79)     at com.nextgis.maplibui.overlay.CurrentLocationOverlay.draw(CurrentLocationOverlay.java:180)     at com.nextgis.maplibui.mapui.MapViewOverlays.onDraw(MapViewOverlays.java:90)     at android.view.View.draw(View.java:15122)     at android.view.View.updateDisplayListIfDirty(View.java:14056)     at android.view.View.getDisplayList(View.java:14079)     at android.view.View.draw(View.java:14846)     at android.view.ViewGroup.drawChild(ViewGroup.java:3404)     at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3198)     at android.view.View.updateDisplayListIfDirty(View.java:14051)     at android.view.View.getDisplayList(View.java:14079)     at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3388)     at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3367)     at android.view.View.updateDisplayListIfDirty(View.java:14016)     at android.view.View.getDisplayList(View.java:14079)     at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3388)     at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3367)     at android.view.View.updateDisplayListIfDirty(View.java:14016)     at android.view.View.getDisplayList(View.java:14079)     at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3388)     at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3367)     at android.view.View.updateDisplayListIfDirty(View.java:14016)     at android.view.View.getDisplayList(View.java:14079)     at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3388)     at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3367)     at android.view.View.updateDisplayListIfDirty(View.java:14016)     at android.view.View.getDisplayList(View.java:14079)     at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3388)     at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3367)     at android.view.View.updateDisplayListIfDirty(View.java:14016)     at android.view.View.getDisplayList(View.java:14079)     at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3388)     at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3367)     at android.view.View.updateDisplayListIfDirty(View.java:14016)     at android.view.View.getDisplayList(View.java:14079)     at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3388)     at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3367)     at android.view.View.updateDisplayListIfDirty(View.java:14016)     at android.view.View.getDisplayList(View.java:14079)     at android.view.ThreadedRenderer.updateViewTreeDisplayList(ThreadedRenderer.java:266)     at android.view.ThreadedRenderer.updateRootDisplayList(ThreadedRenderer.java:272)     at android.view.ThreadedRenderer.draw(ThreadedRenderer.java:311)     at android.view.ViewRootImpl.draw(ViewRootImpl.java:2499)     at android.view.ViewRootImpl.performDraw(ViewRootImpl.java:2344)     at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1975)     at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1060)     at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:5793)     at android.view.Choreographer$CallbackRecord.run(Choreographer.java:767)     at android.view.Choreographer.doCallbacks(Choreographer.java:580)     at android.view.Choreographer.doFrame(Choreographer.java:550)     at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:753)     at android.os.Handler.handleCallback(Handler.java:739)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5264)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:899)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:694) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="315" opendate="2016-01-06 15:35:28" fixdate="2016-01-11 16:42:59">
+		<buginformation>
+			<summary>Падение при переходе в фон</summary>
+			<description>``` java.lang.RuntimeException: Unable to pause activity {com.nextgis.mobile/com.nextgis.mobile.activity.MainActivity}: java.lang.IllegalArgumentException: Receiver not registered: com.nextgis.mobile.activity.MainActivity$MessageReceiver@40ffcba0     at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3113)     at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3062)     at android.app.ActivityThread.handlePauseActivity(ActivityThread.java:3035)     at android.app.ActivityThread.access$800(ActivityThread.java:139)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1268)     at android.os.Handler.dispatchMessage(Handler.java:99)     at android.os.Looper.loop(Looper.java:154)     at android.app.ActivityThread.main(ActivityThread.java:4945)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.IllegalArgumentException: Receiver not registered: com.nextgis.mobile.activity.MainActivity$MessageReceiver@40ffcba0     at android.app.LoadedApk.forgetReceiverDispatcher(LoadedApk.java:675)     at android.app.ContextImpl.unregisterReceiver(ContextImpl.java:1314)     at android.content.ContextWrapper.unregisterReceiver(ContextWrapper.java:354)     at com.nextgis.mobile.activity.MainActivity.onPause(MainActivity.java:685)     at android.app.Activity.performPause(Activity.java:4649)     at android.app.Instrumentation.callActivityOnPause(Instrumentation.java:1307)     at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3093)     ... 12 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="308" opendate="2015-12-26 14:59:37" fixdate="2015-12-28 07:37:55">
+		<buginformation>
+			<summary>Падение при заполнении панели информации о спутниках и координатах</summary>
+			<description>``` java.lang.NullPointerException     at com.nextgis.mobile.fragment.MapFragment.fillTextViews(MapFragment.java:1129)     at com.nextgis.mobile.fragment.MapFragment.fillStatusPanel(MapFragment.java:1104)     at com.nextgis.mobile.fragment.MapFragment.onLocationChanged(MapFragment.java:1073)     at com.nextgis.maplib.location.GpsEventSource$GpsLocationListener.onLocationChanged(GpsEventSource.java:312)     at android.location.LocationManager$ListenerTransport._handleMessage(LocationManager.java:279)     at android.location.LocationManager$ListenerTransport.access$000(LocationManager.java:208)     at android.location.LocationManager$ListenerTransport$1.handleMessage(LocationManager.java:224)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:212)     at android.app.ActivityThread.main(ActivityThread.java:5137)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:902)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:718)     at dalvik.system.NativeStart.main(Native Method) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="286" opendate="2015-12-13 19:41:55" fixdate="2015-12-14 11:51:06">
+		<buginformation>
+			<summary>Очень мелкие подписи</summary>
+			<description>Подписи элементов синие и мелкие. Должно быть TextView цвета основного текста и размером middle.  ![screenshot_2015-12-13-22-43-16](https://cloud.githubusercontent.com/assets/1708122/11768857/b19e5500-a1ea-11e5-91e2-aa2c1e29201f.png)  Аналогично в диалоге создания поля. И еще это оформление диссонирует с другими диалогами - выбор удаленного слоя, закачки растров, свойств слоев и т.д. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/CreateVectorLayerActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="277" opendate="2015-12-08 20:13:55" fixdate="2016-03-28 14:55:29">
+		<buginformation>
+			<summary>Запрос разрешений</summary>
+			<description>При старте приложения запрашивать разрешения у пользователя (согласно манифесту) в специальном диалоге. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="267" opendate="2015-11-18 09:59:25" fixdate="2015-12-14 15:56:19">
+		<buginformation>
+			<summary>Кривой компас</summary>
+			<description>Запускаю приложение, сворачиваю, восстанавливаю через некоторое время. Компас становится кривым.  ![screenshot_2015-11-17-15-32-46](https://cloud.githubusercontent.com/assets/866124/11238037/ef7071fa-8e04-11e5-9780-15e2ece12b8b.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="264" opendate="2015-11-10 19:03:15" fixdate="2015-11-13 09:42:24">
+		<buginformation>
+			<summary>Иконка индикации синхронизации в дереве слоев появляется только после перезагрузки</summary>
+			<description>Зашел в настройки, поставил галки. Вернулся в основное окно приложения - иконка крутилики у слоя не появилась. Перезагрузил программу - появилась. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/LayersFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="262" opendate="2015-10-20 19:03:48" fixdate="2015-10-20 19:28:20">
+		<buginformation>
+			<summary>Падение при открытии диалога треков</summary>
+			<description>android.content.res.Resources$NotFoundException: Resource ID #0x1     at android.content.res.Resources.getValue(Resources.java:2354)     at android.content.res.Resources.getDrawable(Resources.java:1919)     at android.support.v4.content.ContextCompat.getDrawable(ContextCompat.java:323)     at android.support.v7.internal.widget.TintManager.getDrawable(TintManager.java:177)     at android.support.v7.internal.widget.TintManager.getDrawable(TintManager.java:170)     at android.support.v7.widget.AppCompatImageHelper.setImageResource(AppCompatImageHelper.java:53)     at android.support.v7.widget.AppCompatImageView.setImageResource(AppCompatImageView.java:74)     at android.support.v4.widget.SimpleCursorAdapter.setViewImage(SimpleCursorAdapter.java:195)     at android.support.v4.widget.SimpleCursorAdapter.bindView(SimpleCursorAdapter.java:143)     at com.nextgis.maplibui.util.TrackView$TrackAdapter.bindView(TrackView.java:227)     at android.support.v4.widget.CursorAdapter.getView(CursorAdapter.java:256)     at android.widget.AbsListView.obtainView(AbsListView.java:2743)     at android.widget.ListView.makeAndAddView(ListView.java:1811)     at android.widget.ListView.fillDown(ListView.java:697)     at android.widget.ListView.fillFromTop(ListView.java:763)     at android.widget.ListView.layoutChildren(ListView.java:1627)     at android.widget.AbsListView.onLayout(AbsListView.java:2564)     at android.view.View.layout(View.java:15598)     at android.view.ViewGroup.layout(ViewGroup.java:4880)     at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1677)     at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1531)     at android.widget.LinearLayout.onLayout(LinearLayout.java:1440)     at android.view.View.layout(View.java:15598)     at android.view.ViewGroup.layout(ViewGroup.java:4880)     at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)     at android.widget.FrameLayout.onLayout(FrameLayout.java:388)     at android.view.View.layout(View.java:15598)     at android.view.ViewGroup.layout(ViewGroup.java:4880)     at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)     at android.widget.FrameLayout.onLayout(FrameLayout.java:388)     at android.view.View.layout(View.java:15598)     at android.view.ViewGroup.layout(ViewGroup.java:4880)     at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)     at android.widget.FrameLayout.onLayout(FrameLayout.java:388)     at android.view.View.layout(View.java:15598)     at android.view.ViewGroup.layout(ViewGroup.java:4880)     at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1677)     at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1531)     at android.widget.LinearLayout.onLayout(LinearLayout.java:1440)     at android.view.View.layout(View.java:15598)     at android.view.ViewGroup.layout(ViewGroup.java:4880)     at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)     at android.widget.FrameLayout.onLayout(FrameLayout.java:388)     at android.view.View.layout(View.java:15598)     at android.view.ViewGroup.layout(ViewGroup.java:4880)     at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:2350)     at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2063)     at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1251)     at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:6540)     at android.view.Choreographer$CallbackRecord.run(Choreographer.java:813)     at android.view.Choreographer.doCallbacks(Choreographer.java:613)     at android.view.Choreographer.doFrame(Choreographer.java:583)     at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:799)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5593)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/MainApplication.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="259" opendate="2015-10-08 13:35:38" fixdate="2016-03-29 15:15:49">
+		<buginformation>
+			<summary>При загрузке слоя поворот экрана закрывается диалог процесса загрузки</summary>
+			<description>Диалог закрывается при повороте экрана, а должен закрываться только по завершению операции или при нажатии кнопок на нем.  Алтернативно можно добавить в статус баре вторую кнопку - показать диалог. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="241" opendate="2015-10-02 16:57:11" fixdate="2015-10-03 20:38:56">
+		<buginformation>
+			<summary>Пропадают объекты при редактировании слоя PostGIS</summary>
+			<description>Загружаем слой PostGIS любой, например http://demo.nextgis.ru/ngw/resource/74, лонг тап на любой геометрии, появляется панель снизу, тапаем на другую геометрию - она пропадает. Если не получается воспроизвести - попробовать пару раз на других объектах, довольно легко воспроизводится. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="233" opendate="2015-09-30 08:06:36" fixdate="2015-10-06 13:15:46">
+		<buginformation>
+			<summary>Некорректное отображение числовых атрибутов при идентификации</summary>
+			<description>Должно быть `-2092924`, сейчас `-2.09292e+06`. Проверял на ресурсе http://demo.nextgis.ru/ngw/resource/58 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/AttributesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="227" opendate="2015-09-28 08:43:05" fixdate="2015-10-01 10:33:22">
+		<buginformation>
+			<summary>Не верно отображается дата/время</summary>
+			<description>При отображении даты/времени в панели идентификации показывается число вместо даты/времени.  ![screenshot_2015-09-28-12-45-12](https://cloud.githubusercontent.com/assets/1708122/10131052/126c5c84-65d6-11e5-977c-940be558dc3d.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/AttributesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="192" opendate="2015-06-08 13:53:58" fixdate="2015-08-26 18:38:08">
+		<buginformation>
+			<summary>При переносе слоёв по дереву нужно блокировать сдвигание окна дерева</summary>
+			<description>Открываю дерево слоёв. Хочу перенести слой сверху на самый низ.  Нажимаю на него пальцем и двигаю вниз. Иногда возникает "дребезг" - устройство считает, что я сдвигаю палец вниз-влево, бросает название слоя, и начинает сдвигать дерево слоёв влево. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/LayersFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="189" opendate="2015-06-01 21:06:19" fixdate="2015-10-03 20:38:56">
+		<buginformation>
+			<summary>Анимация иконки перерисовки накладывается на саму иконку</summary>
+			<description>При обновлении карты, в результате анимации начинает дублироваться стрелка. Возникает не сразу, а через какое-то время. Видимо надо либо иконку удалять в момент анимации или как-то более четко отследивать создание/удаление анимации. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="183" opendate="2015-05-28 12:29:55" fixdate="2015-09-16 18:39:46">
+		<buginformation>
+			<summary>Окно атрибутов не работает в горизонтальной ориентации</summary>
+			<description>Микро-ЭВМ типа "Планшет" Asus Nexus 7.  Линейный слой. Долгий тап на объекте, кнопка "Атрибуты".  Если при открытом окне атрибутов повернуть планшет из вертикальной в горизонтальную ориентацию, а так же если открывать это окно в горизонтальной ориентации - то весь экран приложения становится белый, атрибуты не показываются, по нажатию кнопки Х закрывается панель, экран становится весь белый, возврата в программу не происходит. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/activity/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/AttributesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="147" opendate="2015-05-16 16:36:10" fixdate="2015-09-24 12:59:12">
+		<buginformation>
+			<summary>Дублируются названия треков</summary>
+			<description>![screenshot_2015-05-15-20-04-14](https://cloud.githubusercontent.com/assets/1708122/7666991/b9ee49ec-fc02-11e4-9391-1a3d915e0a20.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/activity/SettingsActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="141" opendate="2015-05-13 16:46:17" fixdate="2015-09-24 12:59:12">
+		<buginformation>
+			<summary>Иногда не закрывается сессия записи трека</summary>
+			<description>Точно не помню. Раньше вроде открывалось приложение, теперь только шторка закрывается.  Видимо это специфичный баг моей конфигурации. Google Nexus 4.4.4 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/activity/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/activity/SettingsActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="133" opendate="2015-05-08 17:26:54" fixdate="2015-05-08 21:36:12">
+		<buginformation>
+			<summary>Не отключается панель статуса</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="128" opendate="2015-04-27 13:06:51" fixdate="2015-04-29 19:09:30">
+		<buginformation>
+			<summary>Не показывать фразу про синхронизацию и кнопку в drawer, если нет подключений к NGW</summary>
+			<description>В 2.1 она ничего не означает, как я понимаю. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/LayersFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="119" opendate="2015-04-15 07:40:06" fixdate="2015-04-19 01:18:51">
+		<buginformation>
+			<summary>После редактирования векторного слоя не сохраняются правки</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="113" opendate="2015-04-13 22:15:27" fixdate="2015-04-20 00:30:29">
+		<buginformation>
+			<summary>Крэш после возврата в инфо активити</summary>
+			<description>Если зайти в инфо-активити объекта, затем в эбаут/настройки и вернуться обратно, то панель никак закрыть, кнопки следующая/предыдущая запись приводят к крэшу. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/AttributesFragment.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/GISApplication.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="96" opendate="2015-03-27 15:44:43" fixdate="2015-03-31 10:20:15">
+		<buginformation>
+			<summary>Не правильный стиль диалога выбора слоя</summary>
+			<description>В Android 2.2. диалог выбора Dark и надписи темные - ничего не видно </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/SelectMapPathDialogPreference.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="77" opendate="2015-03-23 01:25:46" fixdate="2015-03-23 11:18:39">
+		<buginformation>
+			<summary>При просмотре в режиме атрибутов выделение геометрии</summary>
+			<description>Если перейти в режим просмотра атрибутов и щелкнуть на геометрию (режим планшета), то на точке появится значок ее выделения красным со стрелкой, но двигать ее нельзя. При этом, таблица атрибутов показывает данные совсем другой точки. Ожидаемое поведение - при клике на геометрию она должна подсвечиваться в режиме highlight, при этом заполняются атрибуты этой геометрии. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/AttributesFragment.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2015-03-21 11:43:29" fixdate="2015-03-23 14:12:16">
+		<buginformation>
+			<summary>Мое местоположение показывает неактуальные данные</summary>
+			<description>По аналогии с #73 надо сделать, что бы, если на панели информации n/a, то и мое местоположение не показывалось. А то сейчас в панели информации показывает, что фикса нет, а мое местоположение и даже направление движения показывается. Видимо нужен какой-то общий механизм, что бы в одном месте исправлять. Например тут: https://github.com/nextgis/android_maplib/blob/master/src/main/java/com/nextgis/maplib/location/GpsEventSource.java </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="73" opendate="2015-03-15 02:47:48" fixdate="2015-03-19 08:52:41">
+		<buginformation>
+			<summary>Панель информации показывает неактуальные данные</summary>
+			<description>При отображении панели информации если нет фикса выводится LastKnowLocation или что-то подобное. В любом случае у меня в самолете в панели показывалось 3 спутника, и координаты в районе Автозаводской - это когда я логгером в метро писал, а там выход метро на поверхность и логгер записал ГПС координаты.   Есть 2 варианта решения: 1. Выводить дополнительный значок, которое показывает, что это не актуальные координаты 2. Выводить пустую панель (у меня там есть код, когда везде пишется n/a - нет данных) - я думаю, это предпочтительный вариант </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2015-03-07 15:14:43" fixdate="2015-03-11 10:58:58">
+		<buginformation>
+			<summary>Диалоги ввода минимального времени и расстояния для снятия GPS</summary>
+			<description>Диалоги выбора минимального времени и расстояния для снятия координат GPS при выборе цифры не отображают кнопки скопировать (см. #11). Я предлагаю там вообще не поле ввода делать, а выпадающий список с предустановленными значениями как было в старом приложении:  https://github.com/nextgis/nextgismobile/blob/master/res/values/arrays.xml </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/SettingsActivity.java</file>
+			<file>app/src/main/java/com/nextgis/mobile/SettingsFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2015-03-04 20:55:16" fixdate="2015-03-05 00:04:10">
+		<buginformation>
+			<summary>Ошибка работы на Android 2.2</summary>
+			<description>1. Карта не панится 2. Кнопка FAB не синяя 3. Тайлы не рисуются  ![device-2015-03-04-235305](https://cloud.githubusercontent.com/assets/1708122/6493149/d63dd8dc-c2c9-11e4-9317-b358d0ad84b1.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/GISApplication.java</file>
+			<file>app/src/main/java/com/getbase/floatingactionbutton/FloatingActionButton.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2015-02-04 02:07:36" fixdate="2015-05-08 08:53:34">
+		<buginformation>
+			<summary>Не убираются контролы ZoomIn и ZoomOut</summary>
+			<description>При их отключении через меню они отключаются, но сами кнопки с экрана не исчезают. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="22" opendate="2015-02-01 17:27:37" fixdate="2015-08-26 13:02:53">
+		<buginformation>
+			<summary>Два окна при быстром нажатии кнопки создания объекта</summary>
+			<description>Если быстро нажать два раза на кнопке добавления объекта, то появляется 2 окна с выбором слоя (если доступных слоёв больше 1) друг поверх друга. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6" opendate="2015-01-27 16:09:19" fixdate="2015-04-13 00:17:35">
+		<buginformation>
+			<summary>Пропускаются события отрисовки последнего слоя</summary>
+			<description>Если пропущено события отрисовки последнего слоя (вся карта отрисована), то не происходит обновления экрана. Карта показа не полностью, но стоит сдвинуть, сразу же картинка обновляется. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/mobile/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

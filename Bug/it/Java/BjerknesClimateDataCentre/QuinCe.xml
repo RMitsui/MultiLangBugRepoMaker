@@ -1,0 +1,1670 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>1842</id>
+		<title>Range check auto QC routine fails if it's given an empty set of data</title>
+		<body>It should check this first and simply return. Check other QC routines too.</body>
+		<created>2020-09-04 11:11:56</created>
+		<closed>2020-09-04 12:15:44</closed>
+	</bug>
+	<bug>
+		<id>1841</id>
+		<title>Reinstate SailDrone data reducers</title>
+		<body>As of Release 4.0.0, the SailDrone data reducers do not perform any calculations - they simply pass records through without doing anything. They should be reinstated at some point.  They do nothing because of the revised `getValue` methods used to get sensor values from the source data, which was restructured ready for future development. Pressure to release, along with the fact that no new SailDrone data is expected for the foreseeable future, meant that they were left in a non-working state.</body>
+		<created>2020-09-02 13:29:46</created>
+		<closed>2020-09-04 14:53:09</closed>
+	</bug>
+	<bug>
+		<id>1838</id>
+		<title>NRT processing issue</title>
+		<body>Processing NRT data sets frequently fails, and requires a Tomcat restart before it will work again. This implies a database/data caching issue.</body>
+		<created>2020-08-27 10:48:29</created>
+		<closed>2020-08-27 14:38:41</closed>
+	</bug>
+	<bug>
+		<id>1828</id>
+		<title>Intermittent failure of data reduction</title>
+		<body>Occasionally data reduction jobs fail when attempting to locate interpolated values. Immediately re-running the data reduction job immediately usually works with no problems. No idea what's happening, but it needs fixing ASAP.  Most commonly occurs in the gas standard calculation when looking for prior/post values for the standard interpolations. It might be worth generating a loggable string of all relevant values, and comparing these when we see the error pop up. Could be issues in reading from the database and/or creating the underlying data structures.</body>
+		<created>2020-08-19 09:46:45</created>
+		<closed>2020-08-26 06:31:03</closed>
+	</bug>
+	<bug>
+		<id>1821</id>
+		<title>G O Sars processing fails</title>
+		<body>Investigate and fix</body>
+		<created>2020-08-17 08:24:42</created>
+		<closed>2020-08-18 08:17:58</closed>
+	</bug>
+	<bug>
+		<id>1816</id>
+		<title>Error calculating calibrated values for Simon Stevin</title>
+		<body>Data Reduction - error: Error in value calculator for SensorType Sensor Type: xH₂O (with standards): Error while calculating calibrated value ``` uk.ac.exeter.QuinCe.data.Dataset.DataReduction.ValueCalculatorException: Error in value calculator for SensorType Sensor Type: xH₂O (with standards): Error while calculating calibrated value at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.xCO2InGasWithStandardsCalculator.calibrate(xCO2InGasWithStandardsCalculator.java:281) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.xCO2InGasWithStandardsCalculator.dryingCalculation(xCO2InGasWithStandardsCalculator.java:124) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.xCO2InGasWithStandardsCalculator.calculateValue(xCO2InGasWithStandardsCalculator.java:72) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.ValueCalculators.calculateValue(ValueCalculators.java:34) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.MeasurementValues.getValue(MeasurementValues.java:65) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.UnderwayAtmosphericPco2Reducer.doCalculation(UnderwayAtmosphericPco2Reducer.java:44) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.DataReducer.performDataReduction(DataReducer.java:94) at uk.ac.exeter.QuinCe.jobs.files.DataReductionJob.execute(DataReductionJob.java:169) at uk.ac.exeter.QuinCe.jobs.JobThread.run(JobThread.java:86) Caused by: java.lang.ArrayIndexOutOfBoundsException: -55917 at java.util.ArrayList.elementData(ArrayList.java:422) at java.util.ArrayList.get(ArrayList.java:435) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.xCO2InGasWithStandardsCalculator.getPostCalibrationValue(xCO2InGasWithStandardsCalculator.java:374) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.xCO2InGasWithStandardsCalculator.calibrate(xCO2InGasWithStandardsCalculator.java:256) ... 8 more ``` </body>
+		<created>2020-08-14 13:09:43</created>
+		<closed>2020-08-14 13:53:46</closed>
+	</bug>
+	<bug>
+		<id>1810</id>
+		<title>NullPointerException during G O Sars data reduction</title>
+		<body>The latest G O Sars data is triggering the above error. Find cause and kill.</body>
+		<created>2020-08-14 09:19:24</created>
+		<closed>2020-08-14 10:48:38</closed>
+	</bug>
+	<bug>
+		<id>1792</id>
+		<title>MySQL aborted connections</title>
+		<body>On the live system we get a lot of these log messages:  ``` [Note] Aborted connection 8 to db: 'quince' user: 'quince' host: 'localhost' (Got an error reading communication packets) ```  Don't know what the cause is yet. Find out and eliminate. Maybe talk to André and see if he knows any more.</body>
+		<created>2020-07-30 06:59:47</created>
+		<closed>2020-08-21 14:33:11</closed>
+	</bug>
+	<bug>
+		<id>1790</id>
+		<title>Polarstern</title>
+		<body>Fix Polarstern data. There seem to be issues with the merged files we generated (overlapping dates?) as well as general processing during the LocateMeasurementsJob.</body>
+		<created>2020-07-21 09:56:17</created>
+		<closed>2020-08-12 11:08:39</closed>
+	</bug>
+	<bug>
+		<id>1771</id>
+		<title>SailDrone uploads failing</title>
+		<body>File format detection is broken</body>
+		<created>2020-06-30 05:53:56</created>
+		<closed>2020-06-30 07:28:39</closed>
+	</bug>
+	<bug>
+		<id>1769</id>
+		<title>Ambient Pressure not found during pCO2 data reduction</title>
+		<body>Something we forgot in the data migration when Ambient Pressure got renamed to Pressure at instrument</body>
+		<created>2020-06-29 09:04:50</created>
+		<closed>2020-06-29 12:32:56</closed>
+	</bug>
+	<bug>
+		<id>1753</id>
+		<title>Last measurement before run type change is wrong</title>
+		<body>&lt;img width="1528" alt="Screen Shot 2020-06-17 at 15 22 12" src="https://user-images.githubusercontent.com/733650/84903489-76abf380-b0ae-11ea-80de-20fe25bcf7fd.png"&gt; In the attached screenshot, the measurement at 19:06:35 is actually the last marine measurement before we go into the flushing period of the atmospheric measurements. But it's been processed as an atmospheric measurement.</body>
+		<created>2020-06-17 13:24:33</created>
+		<closed>2020-08-17 16:01:59</closed>
+	</bug>
+	<bug>
+		<id>1735</id>
+		<title>Missing position not handled in acceptAutoQC</title>
+		<body>ManualQCBean.java:156  ```java         if (position.needsFlag()           || value.getQcFlag().moreSignificantThan(position.getQcFlag())) { ```  Also check manual QC</body>
+		<created>2020-06-05 14:31:54</created>
+		<closed>2020-06-05 15:02:18</closed>
+	</bug>
+	<bug>
+		<id>1730</id>
+		<title>Saildrone script fails if there's no data</title>
+		<body>The script crashes if no data is downloaded.</body>
+		<created>2020-06-04 08:19:07</created>
+		<closed>2020-06-08 09:29:52</closed>
+	</bug>
+	<bug>
+		<id>1726</id>
+		<title>CO2 data not loaded</title>
+		<body>The test data file from Belgium isn't loaded properly. After the first 22k rows or so, the CO2 data is missing. It is in the data file, but for some reason QuinCe isn't reading it.</body>
+		<created>2020-06-03 08:26:56</created>
+		<closed>2020-06-04 08:40:41</closed>
+	</bug>
+	<bug>
+		<id>1719</id>
+		<title>Position data missing from SailDrone 1030</title>
+		<body>Exported data for SD1030 is missing its position data.</body>
+		<created>2020-05-21 19:35:51</created>
+		<closed>2020-05-22 11:08:19</closed>
+	</bug>
+	<bug>
+		<id>1714</id>
+		<title>NullPointerException QCing Nuka data</title>
+		<body>Any attempt to set a QC flag results in the following:  ``` May 15 15:00:44 quince catalina.sh[305]: java.lang.NullPointerException May 15 15:00:44 quince catalina.sh[305]: #011at uk.ac.exeter.QuinCe.web.datasets.plotPage.ManualQC.ManualQcBean.applyManualFlag(ManualQcBean.java:376) May 15 15:00:44 quince catalina.sh[305]: #011at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ```  Also check "Accept automatic QC"</body>
+		<created>2020-05-15 13:10:06</created>
+		<closed>2020-05-15 14:56:06</closed>
+	</bug>
+	<bug>
+		<id>1707</id>
+		<title>Add QC routines for Atmospheric Pressure</title>
+		<body>The Atmospheric Pressure sensor type has no QC routines configured.</body>
+		<created>2020-05-12 08:55:08</created>
+		<closed>2020-05-13 11:14:17</closed>
+	</bug>
+	<bug>
+		<id>1688</id>
+		<title>Remove commas from QC messages on export</title>
+		<body>The Carbon Portal doesn't parse CSV files containing quoted commas properly. A fix is forthcoming, but in the meantime we'll just strip them out of our exports to get things working.</body>
+		<created>2020-05-06 08:00:51</created>
+		<closed>2020-05-06 08:49:12</closed>
+	</bug>
+	<bug>
+		<id>1682</id>
+		<title>Internal server error exporting dataset</title>
+		<body>Exporting some datasets using the API results in an Internal ServerError somewhere in the authentication filter:  ``` javax.servlet.ServletException: java.lang.NullPointerException org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:432) org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:370) org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:389) org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:342) org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:229) uk.ac.exeter.QuinCe.api.ApiAuthenticationFilter.doFilter(ApiAuthenticationFilter.java:85) org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ```</body>
+		<created>2020-05-05 08:57:45</created>
+		<closed>2020-05-05 09:25:46</closed>
+	</bug>
+	<bug>
+		<id>1681</id>
+		<title>Position bounds in manifest for SailDrone wrong</title>
+		<body>Seems to be not setting them at all - we have what looks like Java's min and max values.  ```json "bounds":{   "east":4.9E-324,   "south":1.7976931348623157E308,   "north":4.9E-324,   "west":1.7976931348623157E308 } ```</body>
+		<created>2020-05-05 08:49:45</created>
+		<closed>2020-05-05 11:36:06</closed>
+	</bug>
+	<bug>
+		<id>1675</id>
+		<title>Fix SailDrone fCO2 calculations</title>
+		<body>Both marine and atmospheric pCO2 calculations are wrong.</body>
+		<created>2020-04-30 19:26:21</created>
+		<closed>2020-05-01 09:36:54</closed>
+	</bug>
+	<bug>
+		<id>1670</id>
+		<title>Assign Variables page failure</title>
+		<body>The attached file causes a JS error on the Assign Variables page when creating a new instrument. ![Screen Shot 2020-04-29 at 13 23 51](https://user-images.githubusercontent.com/733650/80590865-ea217500-8a1c-11ea-9161-82be74f4aa27.png)  [2020-01-20 .csv.zip](https://github.com/BjerknesClimateDataCentre/QuinCe/files/4551364/2020-01-20.csv.zip)  </body>
+		<created>2020-04-29 11:25:58</created>
+		<closed>2020-05-01 11:47:51</closed>
+	</bug>
+	<bug>
+		<id>1669</id>
+		<title>Deployment script order</title>
+		<body>The main deployment script will not install QuinCe if the junit tests fail. Good thing.  However, this happens after the database migrations, so if they fail they could leave the system in an unrunnable state.  Check the order of the whole script.</body>
+		<created>2020-04-29 08:38:46</created>
+		<closed>2020-05-01 11:59:23</closed>
+	</bug>
+	<bug>
+		<id>1644</id>
+		<title>Multiple NRT datasets generated</title>
+		<body>It's somehow possible that more than one NRT dataset can exist.</body>
+		<created>2020-04-05 07:33:11</created>
+		<closed>2020-05-09 03:49:44</closed>
+	</bug>
+	<bug>
+		<id>1641</id>
+		<title>NRT datasets not created properly</title>
+		<body>The NRT dataset creation is not working correctly. It is deciding what period the NRT dataset should cover before the existing NRT dataset is removed, so it only creates the dataset for the newest file(s) that have been uploaded.</body>
+		<created>2020-04-02 07:10:28</created>
+		<closed>2020-04-02 16:50:34</closed>
+	</bug>
+	<bug>
+		<id>1640</id>
+		<title>Sample file &lt;50 lines fails?</title>
+		<body>The old version of QuinCe fails when defining an instrument if the sample file has less than 50 lines. Check to see if this also affects the new version.</body>
+		<created>2020-04-01 11:54:27</created>
+		<closed>2020-04-29 11:28:39</closed>
+	</bug>
+	<bug>
+		<id>1624</id>
+		<title>Degenerate files search fails</title>
+		<body>The function `DataFileDB.getFilesWithinDates` throws an exception if it's given an identical start and end date. Either allow this and return an empty list, or stop the caller(s) from trying.</body>
+		<created>2020-03-24 14:08:57</created>
+		<closed>2020-03-24 14:19:41</closed>
+	</bug>
+	<bug>
+		<id>1601</id>
+		<title>Revise SailDrone CO₂ calculation</title>
+		<body>Conversations with Adrienne Sutton have revealed that the calculation we're doing for SailDrone CO₂ is likely to be incorrect. From her suggestions there's a different method that should be used, but the data we would need doesn't seem to be available through the SailDrone API.</body>
+		<created>2020-01-20 10:37:51</created>
+		<closed>2020-02-22 03:30:45</closed>
+	</bug>
+	<bug>
+		<id>1595</id>
+		<title>Nuka NRT dataset not processing</title>
+		<body>Gets a NullPointerException during data reduction. Likely related to the latest release.</body>
+		<created>2020-01-03 12:37:31</created>
+		<closed>2020-01-03 12:57:54</closed>
+	</bug>
+	<bug>
+		<id>1587</id>
+		<title>Maps not working</title>
+		<body>Clicking the button makes the browser go into CPU overload.</body>
+		<created>2020-01-02 13:41:44</created>
+		<closed>2020-03-06 11:49:07</closed>
+	</bug>
+	<bug>
+		<id>1583</id>
+		<title>End of year failure</title>
+		<body>Data on 31st Dec seems to be given the year 2020 already.</body>
+		<created>2020-01-01 20:49:02</created>
+		<closed>2020-01-02 08:21:42</closed>
+	</bug>
+	<bug>
+		<id>1580</id>
+		<title>Exception in positional auto QC</title>
+		<body>``` Exceptions found in /var/log/quince.log Dec 23 14:08:47 quince catalina.sh[265]: java.lang.IndexOutOfBoundsException: Index: 55670, Size: 55670 Dec 23 14:08:47 quince catalina.sh[265]: uk.ac.exeter.QuinCe.jobs.JobFailedException: Job ID 773 failed Dec 23 14:08:47 quince catalina.sh[265]: Caused by: java.lang.IndexOutOfBoundsException: Index: 55670, Size: 55670 ```</body>
+		<created>2019-12-24 09:27:06</created>
+		<closed>2019-12-24 10:08:59</closed>
+	</bug>
+	<bug>
+		<id>1544</id>
+		<title>Occasional failure on NRT with no new data</title>
+		<body>Sometimes when there's no new data, the NRT dataset maker attempts to create a new NRT dataset *without first deleting the old one*. This results in a zero-sized NRT dataset which then fails to process.  ![Screen Shot 2019-11-22 at 11 16 40](https://user-images.githubusercontent.com/733650/69417742-9433fd00-0d19-11ea-88a5-6cd6c5edb760.png) &lt;img width="808" alt="Screen Shot 2019-11-22 at 11 16 53" src="https://user-images.githubusercontent.com/733650/69417756-9bf3a180-0d19-11ea-9400-77b461065a62.png"&gt;  There are two points here: 1. It shouldn't be trying to create the new dataset in the first place 2. Even if it is, it should be deleting the old one first  There's obviously some strange set of circumstances that we're not handling. Because this is intermittent, we need to add copious logging to work out what's happening.</body>
+		<created>2019-11-22 10:18:36</created>
+		<closed>2020-03-06 13:43:28</closed>
+	</bug>
+	<bug>
+		<id>1520</id>
+		<title>NRT for GO Sars not working</title>
+		<body>It seems to have got stuck making a one-day NRT dataset.</body>
+		<created>2019-11-11 11:23:13</created>
+		<closed>2019-11-11 13:39:48</closed>
+	</bug>
+	<bug>
+		<id>1510</id>
+		<title>Run types with pipes not working</title>
+		<body>Run types containing the pipe character (`|`) don't seem to work - they're all set to Ignored whatever you choose during instrument setup.  That seems to be what's happening anyway.</body>
+		<created>2019-11-08 07:46:26</created>
+		<closed>2019-11-20 14:07:15</closed>
+	</bug>
+	<bug>
+		<id>1508</id>
+		<title>Time not populated when editing calibration deployments</title>
+		<body>When clicking a deployment in the timeline to edit it, the dialog pops up with the calendar, targets and coefficients as it should. However, while the date is set correctly in the calendar, the time is always midnight.  I don't know if this is a bug in how I'm updating the calendar, or an issue with PrimeFaces.</body>
+		<created>2019-11-06 09:01:16</created>
+		<closed>2020-02-18 20:42:35</closed>
+	</bug>
+	<bug>
+		<id>1505</id>
+		<title>make_nrt_datasets script logs invalid error</title>
+		<body>When `make_nrt_datasets` makes a request to QuinCe to create a new NRT dataset, QuinCe will return 204 if there is not new data to process. The script incorrectly thinks this is an error.</body>
+		<created>2019-11-04 09:36:22</created>
+		<closed>2020-07-01 13:09:22</closed>
+	</bug>
+	<bug>
+		<id>1498</id>
+		<title>Rectangle select misbehaving</title>
+		<body>Thanos was having trouble with this, using Chrome for Windows. Have a play and see if it can be reproduced.</body>
+		<created>2019-10-31 11:27:51</created>
+		<closed>2019-11-20 14:05:55</closed>
+	</bug>
+	<bug>
+		<id>1462</id>
+		<title>Pressing Finish button on non-NRT data set throws an error</title>
+		<body>Everything works as it should, but the following is logged:  ``` org.apache.myfaces.view.facelets.el.ContextAwareELException: javax.el.ELException: Error reading [nrt] on type [uk.ac.exeter.QuinCe.web.datasets.plotPage.ManualQC.ManualQcBean] at org.apache.myfaces.view.facelets.el.ContextAwareTagValueExpression.getValue(ContextAwareTagValueExpression.java:104) at javax.faces.component._DeltaStateHelper.eval(_DeltaStateHelper.java:377) at javax.faces.component.UIComponentBase.isRendered(UIComponentBase.java:1211) at org.apache.myfaces.view.facelets.tag.ui.ComponentRef.isRendered(ComponentRef.java:47) at javax.faces.component.UIComponentBase._isPhaseExecutable(UIComponentBase.java:2440) at javax.faces.component.UIComponentBase.processUpdates(UIComponentBase.java:1489) at javax.faces.component.UIComponentBase.processUpdates(UIComponentBase.java:1498) at javax.faces.component.UIComponentBase.processUpdates(UIComponentBase.java:1505) at javax.faces.component.UIComponentBase.processUpdates(UIComponentBase.java:1505) at javax.faces.component.UIViewRoot._processUpdatesDefault(UIViewRoot.java:1694) at javax.faces.component.UIViewRoot.access$700(UIViewRoot.java:77) at javax.faces.component.UIViewRoot$UpdateModelPhaseProcessor.process(UIViewRoot.java:1832) at javax.faces.component.UIViewRoot._process(UIViewRoot.java:1655) at javax.faces.component.UIViewRoot.processUpdates(UIViewRoot.java:916) at org.apache.myfaces.lifecycle.UpdateModelValuesExecutor.execute(UpdateModelValuesExecutor.java:38) at org.apache.myfaces.lifecycle.LifecycleImpl.executePhase(LifecycleImpl.java:196) at org.apache.myfaces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:143) at javax.faces.webapp.FacesServlet.service(FacesServlet.java:198) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at uk.ac.exeter.QuinCe.web.User.AuthenticatedFilter.doFilter(AuthenticatedFilter.java:91) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748) Caused by: javax.el.ELException: Error reading [nrt] on type [uk.ac.exeter.QuinCe.web.datasets.plotPage.ManualQC.ManualQcBean] at javax.el.BeanELResolver.getValue(BeanELResolver.java:98) at javax.el.CompositeELResolver.getValue(CompositeELResolver.java:62) at org.apache.myfaces.el.unified.resolver.FacesCompositeELResolver.getValue(FacesCompositeELResolver.java:179) at org.apache.el.parser.AstValue.getValue(AstValue.java:169) at org.apache.el.parser.AstNot.getValue(AstNot.java:43) at org.apache.el.ValueExpressionImpl.getValue(ValueExpressionImpl.java:190) at org.apache.myfaces.view.facelets.el.ContextAwareTagValueExpression.getValue(ContextAwareTagValueExpression.java:96) ... 42 more Caused by: java.lang.NullPointerException at uk.ac.exeter.QuinCe.web.datasets.plotPage.PlotPageBean.isNrt(PlotPageBean.java:758) at sun.reflect.GeneratedMethodAccessor134.invoke(Unknown Source) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at javax.el.BeanELResolver.getValue(BeanELResolver.java:94) ... 48 more ```</body>
+		<created>2019-10-16 10:46:41</created>
+		<closed>2020-03-18 09:37:41</closed>
+	</bug>
+	<bug>
+		<id>1461</id>
+		<title>Switching to highlight tool resets plot zoom</title>
+		<body>It shouldn't! </body>
+		<created>2019-10-16 06:35:27</created>
+		<closed>2019-10-22 10:49:21</closed>
+	</bug>
+	<bug>
+		<id>1454</id>
+		<title>Error while extracting data from France-Brazil</title>
+		<body>Error in the ExtractDataSet job. This issue will be updated as investigations are made.</body>
+		<created>2019-10-14 11:27:10</created>
+		<closed>2019-10-14 13:49:00</closed>
+	</bug>
+	<bug>
+		<id>1450</id>
+		<title>Standard values are being shown in main QC page</title>
+		<body>The filter that removes standard run values from the manual QC page isn't working, so all gas standard values are visible.</body>
+		<created>2019-10-04 12:29:21</created>
+		<closed>2019-10-25 10:52:45</closed>
+	</bug>
+	<bug>
+		<id>1431</id>
+		<title>NRT can make a zero-size dataset, which then fails to process</title>
+		<body>Using the attached G O Sars data files to make a data set, it will leave a small amount of unused data (i.e. ignored lines not relevant to processing) as the dataset gets trimmed during processing. If you then try to create an NRT dataset, it will create one, trim it down, and be left with a dataset of size 0 (or -1 seconds). Processing then fails, for obvious reasons.  This isn't a massive problem in itself, because the dataset is of zero size so there's no need to export anything; plus it will be deleted the next day and recreated with new data, which will solve the whole problem. But it should be fixed at some point anyway.  Note that it's probably also possible to do this when creating a dataset by hand, so that should be looked into as well.   [GOS_2019-266-0001dat.txt](https://github.com/BjerknesClimateDataCentre/QuinCe/files/3675307/GOS_2019-266-0001dat.txt) [GOS_2019-267-0001dat.txt](https://github.com/BjerknesClimateDataCentre/QuinCe/files/3675308/GOS_2019-267-0001dat.txt) </body>
+		<created>2019-10-01 09:02:49</created>
+		<closed>2019-11-11 13:40:33</closed>
+	</bug>
+	<bug>
+		<id>1412</id>
+		<title>Data sets given wrong prefix</title>
+		<body>If you change instruments in the data set list, and then create a new dataset, the automatically generated dataset name has the platform code for the original instrument.</body>
+		<created>2019-09-24 11:31:06</created>
+		<closed>2019-12-06 06:52:18</closed>
+	</bug>
+	<bug>
+		<id>1411</id>
+		<title>Handle numbers with commas in</title>
+		<body>Benguela Stream reports pressures as `1,002.34`. This currently fails the number parsing during data extraction.</body>
+		<created>2019-09-24 11:29:21</created>
+		<closed>2019-09-25 06:37:14</closed>
+	</bug>
+	<bug>
+		<id>1403</id>
+		<title>Update exception extractor for Python 3</title>
+		<body>Currently uses Python 2, which isn't installed on the live server.</body>
+		<created>2019-09-23 09:14:14</created>
+		<closed>2019-09-23 13:11:50</closed>
+	</bug>
+	<bug>
+		<id>1386</id>
+		<title>PanelGrid warning on index page</title>
+		<body>We have a PrimeFaces warning for an unbalanced PanelGrid in `index.xhtml`. I think it's from removing the Sign Up button.  ``` WARNING: PanelGrid {Component-Path : [Class: javax.faces.component.UIViewRoot,ViewId: /index.xhtml][Class: javax.faces.component.html.HtmlBody,Id: j_id_8][Class: javax.faces.component.html.HtmlForm,Id: loginform][Class: javax.faces.component.html.HtmlPanelGrid,Id: j_id_u] Location: /index.xhtml at line 52 and column 77} has not enough children. Child count should be a multiple of the columns attribute. ```  I want to fix this because it's filling the server log.</body>
+		<created>2019-09-14 20:17:43</created>
+		<closed>2019-09-16 10:54:36</closed>
+	</bug>
+	<bug>
+		<id>1379</id>
+		<title>Hotfix for CMEMS upload</title>
+		<body>CMEMS uploading is potentially broken. Look into it and fix</body>
+		<created>2019-09-13 06:35:47</created>
+		<closed>2019-09-13 11:25:09</closed>
+	</bug>
+	<bug>
+		<id>1378</id>
+		<title>Set custom column headers for Carbon Portal export</title>
+		<body>The column headers needed for the Carbon Portal are not generated during export. Investigate how to make this work</body>
+		<created>2019-09-12 17:08:42</created>
+		<closed>2019-09-18 13:36:40</closed>
+	</bug>
+	<bug>
+		<id>1377</id>
+		<title>Failed exports to Carbon Portal are not retried</title>
+		<body>If the upload of a data set to the Carbon Portal fails, it is still stored in the export script's database as an uploaded file, and is therefore not retried on subsequent runs.</body>
+		<created>2019-09-12 16:15:44</created>
+		<closed>2019-09-27 08:42:16</closed>
+	</bug>
+	<bug>
+		<id>1367</id>
+		<title>NRT datasets not being generated on live system</title>
+		<body>The `MakeNrtDataset` call always returns `204 No Content` (= no new dataset created). Reason unknown at this point.</body>
+		<created>2019-09-10 06:08:48</created>
+		<closed>2019-09-20 13:58:13</closed>
+	</bug>
+	<bug>
+		<id>1365</id>
+		<title>Needed Flag counts do not match between dataset list and QC page</title>
+		<body>I don't know which is wrong.</body>
+		<created>2019-09-07 22:25:22</created>
+		<closed>2019-09-12 10:45:47</closed>
+	</bug>
+	<bug>
+		<id>1361</id>
+		<title>Flag counts in dataset list do not match QC flag count</title>
+		<body>The "Flags Needed" count in the dataset list and the QC page do not match.</body>
+		<created>2019-09-04 07:09:54</created>
+		<closed>2019-09-26 15:57:54</closed>
+	</bug>
+	<bug>
+		<id>1354</id>
+		<title>G O Sars data errors</title>
+		<body>Errors are thrown while processing G O Sars data.</body>
+		<created>2019-09-02 08:38:15</created>
+		<closed>2019-09-02 14:06:11</closed>
+	</bug>
+	<bug>
+		<id>1348</id>
+		<title>Nuka export issues</title>
+		<body>Nuka Arctica data isn't exporting properly, including the Copernicus side.</body>
+		<created>2019-08-30 12:23:58</created>
+		<closed>2019-08-30 14:23:36</closed>
+	</bug>
+	<bug>
+		<id>1347</id>
+		<title>Can export a dataset during automatic QC</title>
+		<body>The current interface allows admin users to export datasets while they're still being processed. At least during Automatic QC, and probably during data reduction too. This should not be allowed. ![Screen Shot 2019-08-30 at 13 16 59](https://user-images.githubusercontent.com/733650/64016936-9fb3c580-cb28-11e9-9bdf-e4b8edfb31d7.png) </body>
+		<created>2019-08-30 11:18:26</created>
+		<closed>2019-11-08 13:20:02</closed>
+	</bug>
+	<bug>
+		<id>1344</id>
+		<title>External Standards page broken</title>
+		<body>The External Standards page is currently broken for Nuka NRT data (and possibly others - I haven't checked yet)  ``` uk.ac.exeter.QuinCe.utils.DatabaseException: Error getting sensor data at uk.ac.exeter.QuinCe.data.Dataset.DataSetDataDB.getQCSensorData(DataSetDataDB.java:881) at uk.ac.exeter.QuinCe.web.datasets.plotPage.InternalCalibration.InternalCalibrationBean.loadData(InternalCalibrationBean.java:206) at uk.ac.exeter.QuinCe.web.datasets.plotPage.PlotPageBean.start(PlotPageBean.java:426) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.apache.el.parser.AstValue.invoke(AstValue.java:247) at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:267) at org.apache.myfaces.view.facelets.el.ContextAwareTagMethodExpression.invoke(ContextAwareTagMethodExpression.java:96) at org.apache.myfaces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:74) at javax.faces.component.UICommand.broadcast(UICommand.java:120) at javax.faces.component.UIViewRoot._broadcastAll(UIViewRoot.java:1172) at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:365) at javax.faces.component.UIViewRoot._process(UIViewRoot.java:1658) at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:862) at org.apache.myfaces.lifecycle.InvokeApplicationExecutor.execute(InvokeApplicationExecutor.java:42) at org.apache.myfaces.lifecycle.LifecycleImpl.executePhase(LifecycleImpl.java:196) at org.apache.myfaces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:143) at javax.faces.webapp.FacesServlet.service(FacesServlet.java:198) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at uk.ac.exeter.QuinCe.web.User.AuthenticatedFilter.doFilter(AuthenticatedFilter.java:85) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748) Caused by: java.lang.NullPointerException at uk.ac.exeter.QuinCe.data.Instrument.Instrument.getInternalCalibrationRunTypes(Instrument.java:416) at uk.ac.exeter.QuinCe.web.datasets.plotPage.InternalCalibration.InternalCalibrationPageData.initFilter(InternalCalibrationPageData.java:59) at uk.ac.exeter.QuinCe.web.datasets.data.DatasetMeasurementData.filterAndAddValues(DatasetMeasurementData.java:432) at uk.ac.exeter.QuinCe.data.Dataset.DataSetDataDB.getQCSensorData(DataSetDataDB.java:835) ... 44 more ``` </body>
+		<created>2019-08-29 12:46:55</created>
+		<closed>2019-09-25 06:36:25</closed>
+	</bug>
+	<bug>
+		<id>1342</id>
+		<title>QC Page can't handle null position values</title>
+		<body>These shouldn't end up in the data anywhere, since missing position = invalid values anyway. Don't add any sensor values to the system if they don't have a corresponding position.</body>
+		<created>2019-08-29 11:32:55</created>
+		<closed>2019-08-29 12:22:46</closed>
+	</bug>
+	<bug>
+		<id>1340</id>
+		<title>Issue with Nuka data and standards</title>
+		<body>Pretty normal data set covering multiple days with standard records. For some reason they're not being found for STD2:  ``` uk.ac.exeter.QuinCe.jobs.JobFailedException: Job ID 717 failed at uk.ac.exeter.QuinCe.jobs.files.DataReductionJob.execute(DataReductionJob.java:229) at uk.ac.exeter.QuinCe.jobs.JobThread.run(JobThread.java:79) Caused by: uk.ac.exeter.QuinCe.data.Dataset.DataReduction.DataReductionException: Error while applying internal calibration at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.DataReducer.applyValueCalibration(DataReducer.java:397) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.UnderwayMarinePco2Reducer.doCalculation(UnderwayMarinePco2Reducer.java:78) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.DataReducer.performDataReduction(DataReducer.java:113) at uk.ac.exeter.QuinCe.jobs.files.DataReductionJob.execute(DataReductionJob.java:169) ... 1 more Caused by: uk.ac.exeter.QuinCe.utils.RecordNotFoundException: No calibrations found for external standard 'std2' at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.DataReducer.calculateStandardValueAtDate(DataReducer.java:425) at uk.ac.exeter.QuinCe.data.Dataset.DataReduction.DataReducer.applyValueCalibration(DataReducer.java:381) ... 4 more ```</body>
+		<created>2019-08-28 13:16:26</created>
+		<closed>2019-08-29 11:21:15</closed>
+	</bug>
+	<bug>
+		<id>1336</id>
+		<title>Handle missing position values</title>
+		<body>Missing position values aren't handled properly in the new `LocateMeasurementsJob`</body>
+		<created>2019-08-28 12:45:14</created>
+		<closed>2019-08-28 13:12:21</closed>
+	</bug>
+	<bug>
+		<id>1331</id>
+		<title>Fix clean-up functionality in CMEMS NRT export</title>
+		<body>Current delete notice not accepted by CMEMS. Filepath of file to be deleted should not be full path. Use only local path starting with latest/monthly/history level. </body>
+		<created>2019-08-26 11:56:57</created>
+		<closed>2019-09-12 14:10:56</closed>
+	</bug>
+	<bug>
+		<id>1328</id>
+		<title>Intermittent error in extracting data sets</title>
+		<body>Some run type handling at the end of datasets fails because it falls off the end.  ``` Dataset Extraction - error: Index: 1022, Size: 1022  java.lang.IndexOutOfBoundsException: Index: 1022, Size: 1022 at java.util.ArrayList.rangeCheck(ArrayList.java:657) at java.util.ArrayList.get(ArrayList.java:433) at uk.ac.exeter.QuinCe.jobs.files.ExtractDataSetJob.execute(ExtractDataSetJob.java:225) at uk.ac.exeter.QuinCe.jobs.JobThread.run(JobThread.java:79) ```</body>
+		<created>2019-08-26 09:23:52</created>
+		<closed>2019-08-28 12:51:05</closed>
+	</bug>
+	<bug>
+		<id>1314</id>
+		<title>Not all Auto QCs are running</title>
+		<body>We only seem to be getting auto QC running for the first sensor. Investigate.</body>
+		<created>2019-08-13 15:45:40</created>
+		<closed>2019-08-13 19:04:30</closed>
+	</bug>
+	<bug>
+		<id>1306</id>
+		<title>QC page for NRT datasets not working</title>
+		<body>The Javascript is trying to manipulate controls that aren't rendered in NRT mode.</body>
+		<created>2019-08-13 08:23:35</created>
+		<closed>2019-08-13 09:09:04</closed>
+	</bug>
+	<bug>
+		<id>1287</id>
+		<title>Variable QC comments ;;;;</title>
+		<body>Variable QC comments are a combination of all QC comments from the sensor values. These get combined with `;` separators.  The separators are put in the comment even if there's no comments to separate, so all the comments on variables are `";;;;"`</body>
+		<created>2019-08-01 13:10:22</created>
+		<closed>2019-08-04 10:56:16</closed>
+	</bug>
+	<bug>
+		<id>1286</id>
+		<title>Flag cascades not working</title>
+		<body>Cascading flags aren't appearing in exports. Either because they aren't being saved in the database, or the export isn't extracting them properly.</body>
+		<created>2019-08-01 13:08:52</created>
+		<closed>2019-08-04 09:26:49</closed>
+	</bug>
+	<bug>
+		<id>1269</id>
+		<title>Don't show run types for non-selected variables</title>
+		<body>If we select only Marine pCO2, the run types for Atmospheric pCO2 are still shown.</body>
+		<created>2019-07-23 11:49:37</created>
+		<closed>2019-07-23 14:01:31</closed>
+	</bug>
+	<bug>
+		<id>1259</id>
+		<title>Record count in manifest doesn't match the number of records in the file</title>
+		<body>Possible theory: We filter out bad records for OTC, but we don't account for that in the count? </body>
+		<created>2019-07-19 07:10:59</created>
+		<closed>2019-07-19 09:20:03</closed>
+	</bug>
+	<bug>
+		<id>1253</id>
+		<title>Change ppm to μatm in export headers</title>
+		<body>ppm is not correct</body>
+		<created>2019-07-16 05:36:38</created>
+		<closed>2019-07-16 05:50:08</closed>
+	</bug>
+	<bug>
+		<id>1240</id>
+		<title>Data sets table isn't updated when instrument is changed</title>
+		<body>It waits until the background refresh. Fix it.</body>
+		<created>2019-07-10 20:56:03</created>
+		<closed>2019-07-10 21:16:07</closed>
+	</bug>
+	<bug>
+		<id>1226</id>
+		<title>Data set with 0 flags to set not recognised as complete</title>
+		<body>![Screen Shot 2019-07-08 at 14 41 15](https://user-images.githubusercontent.com/733650/60810925-757c0200-a18e-11e9-8409-d1ea0b13ff46.png) </body>
+		<created>2019-07-08 12:41:28</created>
+		<closed>2019-07-08 13:18:30</closed>
+	</bug>
+	<bug>
+		<id>1224</id>
+		<title>QC Page breaks on large data sets</title>
+		<body>The complete Benguela Stream data set experiences failures when setting QC flags. Unfortunately the error is not helpful. ![706ec976d1a10704](https://user-images.githubusercontent.com/733650/60810663-e1119f80-a18d-11e9-8354-23c1302f3f22.png)  A data set half the size seems to work just fine.</body>
+		<created>2019-07-08 12:37:37</created>
+		<closed>2019-07-08 14:24:51</closed>
+	</bug>
+	<bug>
+		<id>1206</id>
+		<title>Left map in plot page not working</title>
+		<body>Showing the left map fails, with a JSON parse error. The right map works fine. Considering they both use the same logic, I'm not sure why they're different at this point.</body>
+		<created>2019-06-14 11:36:09</created>
+		<closed>2019-07-06 17:28:20</closed>
+	</bug>
+	<bug>
+		<id>1194</id>
+		<title>Data format detection failure</title>
+		<body>Anna Willstrand Wranne has a FerryBox data file that QuinCe can't deal with, I suspect due to empty columns at the end of lines. [TP_20180518230152.mit.zip](https://github.com/BjerknesClimateDataCentre/QuinCe/files/3167610/TP_20180518230152.mit.zip)  </body>
+		<created>2019-05-10 17:54:38</created>
+		<closed>2019-05-12 09:22:48</closed>
+	</bug>
+	<bug>
+		<id>1189</id>
+		<title>Database deadlocks</title>
+		<body>Running multiple dataset processing jobs at the same time results in deadlocks, because they use large transactions and take a while and end up locking each other out.  The quick fix is to reduce the job thread pool size down to 1 - it's hard coded at the minute.  Future improvements are discussed in #29 and #1173 </body>
+		<created>2019-05-02 10:43:55</created>
+		<closed>2019-05-06 13:21:17</closed>
+	</bug>
+	<bug>
+		<id>1182</id>
+		<title>G O Sars file not recognised</title>
+		<body>QuinCe is unable to parse the attached file from G O Sars. There's some oddities in it, but I haven't tracked down the exact cause. [GOS_2019-104-0000dat.txt](https://github.com/BjerknesClimateDataCentre/QuinCe/files/3084639/GOS_2019-104-0000dat.txt) </body>
+		<created>2019-04-16 09:30:01</created>
+		<closed>2020-06-26 17:59:30</closed>
+	</bug>
+	<bug>
+		<id>1178</id>
+		<title>delete_instrument script deletes wrong files</title>
+		<body>The `delete_instrument` script tries to delete the corresponding files from the file store. It finds the folder matching the instrument ID and deletes that. It should be finding the folders matching the file definitions defined for that instrument.</body>
+		<created>2019-04-12 08:09:14</created>
+		<closed>2019-05-12 09:23:14</closed>
+	</bug>
+	<bug>
+		<id>1164</id>
+		<title>File with just header not recognised</title>
+		<body>A Nuka file with just a header and a blank line isn't recognised during upload. It should be recognised and ignored by the uploader, or recognised and rejected as empty in the web page. [Nuka_2019-087-0000dat.txt](https://github.com/BjerknesClimateDataCentre/QuinCe/files/3037450/Nuka_2019-087-0000dat.txt) </body>
+		<created>2019-04-03 07:50:03</created>
+		<closed>2020-06-26 18:00:13</closed>
+	</bug>
+	<bug>
+		<id>1162</id>
+		<title>index_latest DNT response not downloaded</title>
+		<body>The DNT response file for `index_latest.txt` isn't downloaded during the CMEMS upload procedure.</body>
+		<created>2019-04-03 07:15:59</created>
+		<closed>2019-07-19 07:13:21</closed>
+	</bug>
+	<bug>
+		<id>1150</id>
+		<title>Ignore bad positions for non-measurement run types</title>
+		<body>In GO files, the gas standard lines don't always contain lat/lon values. This causes an error, but it shouldn't.</body>
+		<created>2019-03-27 12:45:45</created>
+		<closed>2019-03-27 14:33:10</closed>
+	</bug>
+	<bug>
+		<id>1136</id>
+		<title>Sign Up button/link should not require a password</title>
+		<body>When the Sign Up button is pressed, it checks that a password has been entered. It shouldn't.  Probably fixable with `immediate=true` in the link.</body>
+		<created>2019-03-11 10:48:42</created>
+		<closed>2019-04-15 06:29:20</closed>
+	</bug>
+	<bug>
+		<id>1118</id>
+		<title>Running junit tests through gradle sometimes fails on first attempt</title>
+		<body>Rerunning the tests immediately will pass.  I speculate that it's something to do with the Flyway tests, specifically loading the test SQL files before individual tests. For whatever reason they don't work (possibly the files aren't found in the `ApplicationContext`). I'm not sure why it would fix itself second time around though. Perhaps there's some way to force a full refresh, similar to the "Refresh Gradle Project" command in Eclipse? </body>
+		<created>2019-02-28 12:24:56</created>
+		<closed>2020-03-18 09:45:12</closed>
+	</bug>
+	<bug>
+		<id>1111</id>
+		<title>Database pool exceptions</title>
+		<body>Since the 1.0.4 release we're seeing a lot of database connection pool errors:  ``` Caused by: java.sql.SQLException: Cannot get a connection, pool error Timeout waiting for idle object at org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:142) at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1563) at uk.ac.exeter.QuinCe.data.Files.DataFileDB.getUserFiles(DataFileDB.java:524) ```  I suspect something isn't closing connections somewhere.</body>
+		<created>2019-02-25 15:23:22</created>
+		<closed>2019-02-26 08:16:00</closed>
+	</bug>
+	<bug>
+		<id>1109</id>
+		<title>Plots sometimes stop responding</title>
+		<body>From a demo with Thanos:  After some extenstive use of the QC screen, plot/map clicks stopped working. Switching between plot modes caused the page to reload, which solved the issue. This is likely to be a Javascript error, that then results in a form being submitted to reload the page.  Related to #889 ?</body>
+		<created>2019-02-25 13:26:01</created>
+		<closed>2020-05-06 21:13:49</closed>
+	</bug>
+	<bug>
+		<id>1108</id>
+		<title>Don't show True xH₂O in variables lists if it's not being used</title>
+		<body>True xH₂O is only calculated if the CO₂ measurements need to be adjusted for moisture (using xH₂O). It should not appear in variable lists if it isn't being calculated. ![screen shot 2019-02-25 at 11 35 44](https://user-images.githubusercontent.com/733650/53331626-a8191280-38f1-11e9-8f5e-671edbddbf5f.png) </body>
+		<created>2019-02-25 10:37:22</created>
+		<closed>2019-07-10 21:00:12</closed>
+	</bug>
+	<bug>
+		<id>1087</id>
+		<title>NullPointerException when loading data into manual QC</title>
+		<body>A null pointer exception is thrown when loading Schuster data into the manual QC (see full exception at bottom) In the front end there is an error stating unexpected end of JSON input, possibly because no data is sent?  &gt; java.lang.NullPointerException &gt; at uk.ac.exeter.QuinCe.web.datasets.ManualQcBean.loadTableData(ManualQcBean.java:244) &gt; at uk.ac.exeter.QuinCe.web.PlotPageBean.generateTableData(PlotPageBean.java:325) &gt; at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) &gt; at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) &gt; at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) &gt; at java.lang.reflect.Method.invoke(Method.java:498) &gt; at org.apache.el.parser.AstValue.invoke(AstValue.java:247) &gt; at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:267) &gt; at org.apache.myfaces.view.facelets.el.ContextAwareTagMethodExpression.invoke(ContextAwareTagMethodExpression.java:96) &gt; at org.apache.myfaces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:74) &gt; at javax.faces.component.UICommand.broadcast(UICommand.java:120) &gt; at javax.faces.component.UIViewRoot._broadcastAll(UIViewRoot.java:1172) &gt; at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:365) &gt; at javax.faces.component.UIViewRoot._process(UIViewRoot.java:1658) &gt; at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:862) &gt; at org.apache.myfaces.lifecycle.InvokeApplicationExecutor.execute(InvokeApplicationExecutor.java:42) &gt; at org.apache.myfaces.lifecycle.LifecycleImpl.executePhase(LifecycleImpl.java:196) &gt; at org.apache.myfaces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:143) &gt; at javax.faces.webapp.FacesServlet.service(FacesServlet.java:198) &gt; at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) &gt; at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) &gt; at uk.ac.exeter.QuinCe.web.User.AuthenticatedFilter.doFilter(AuthenticatedFilter.java:85) &gt; at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) &gt; at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) &gt; at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) &gt; at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) &gt; at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) &gt; at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) &gt; at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) &gt; at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) &gt; at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) &gt; at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) &gt; at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616) &gt; at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) &gt; at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:528) &gt; at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1099) &gt; at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:670) &gt; at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1520) &gt; at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1476) &gt; at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) &gt; at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) &gt; at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) &gt; at java.lang.Thread.run(Thread.java:748)</body>
+		<created>2019-01-23 13:48:51</created>
+		<closed>2019-02-04 15:43:16</closed>
+	</bug>
+	<bug>
+		<id>1081</id>
+		<title>setNullableValue doesn't handle NaNs</title>
+		<body>Calling `DatabaseUtils.setNullableValue` with `NaN` throws an exception. It should be treated the same as a `null` value.</body>
+		<created>2019-01-17 13:50:37</created>
+		<closed>2019-01-17 15:04:24</closed>
+	</bug>
+	<bug>
+		<id>1080</id>
+		<title>Pre-flushing time runs off end of file</title>
+		<body>If the file ends during the pre-flushing time of a run, it drops off the end of the file and causes an exception.</body>
+		<created>2019-01-17 13:49:42</created>
+		<closed>2019-02-21 10:15:29</closed>
+	</bug>
+	<bug>
+		<id>1060</id>
+		<title>Dataset marked as Ready for Submission before QC complete</title>
+		<body>Datasets should only have the status Ready for Submission if there are no 'Needs Flag' QC records. This check isn't being triggered - possibly related to NRT datasets?</body>
+		<created>2018-12-12 10:07:39</created>
+		<closed>2018-12-20 11:42:59</closed>
+	</bug>
+	<bug>
+		<id>1046</id>
+		<title>Export names with / are not handled correctly</title>
+		<body>Export options with a `/` in the name are converted into directories when they are exported in ZIP files. We should handle this case by escaping them in the filenames when they're generated.</body>
+		<created>2018-12-07 08:40:37</created>
+		<closed>2018-12-12 13:46:54</closed>
+	</bug>
+	<bug>
+		<id>1043</id>
+		<title>Clicking a selected point doesn't highlight in table</title>
+		<body>Clicking a selected point in a plot scrolls to the correct table as it should, but the flashing highlight isn't shown.</body>
+		<created>2018-12-06 16:54:36</created>
+		<closed>2019-02-21 16:18:56</closed>
+	</bug>
+	<bug>
+		<id>1041</id>
+		<title>Equilibrator pressure export does work with differential EqP</title>
+		<body>The differential pressure is reported in the export file, when it should be the (calculated) absolute pressure.</body>
+		<created>2018-12-04 10:38:18</created>
+		<closed>2018-12-12 13:38:24</closed>
+	</bug>
+	<bug>
+		<id>1029</id>
+		<title>Calibration to standards incorrect</title>
+		<body>&lt;img width="480" alt="screen shot 2018-11-27 at 15 06 04" src="https://user-images.githubusercontent.com/733650/49086952-12200e00-f256-11e8-9dd5-76f6814dfe38.png"&gt;  The screenshot above shows measured CO2 (bottom) and the CO2 after calibration to the standards. There is no way the adjustment should be this high.  This is from Simon Stevin, file attached in a ZIP.  The standards used are: &lt;img width="1045" alt="screen shot 2018-11-27 at 15 08 43" src="https://user-images.githubusercontent.com/733650/49087095-5f03e480-f256-11e8-807b-7830238dd735.png"&gt;   [180709_ex.csv.zip](https://github.com/BjerknesClimateDataCentre/QuinCe/files/2620293/180709_ex.csv.zip)   </body>
+		<created>2018-11-27 14:09:28</created>
+		<closed>2018-11-30 13:55:07</closed>
+	</bug>
+	<bug>
+		<id>1022</id>
+		<title>Setting calibration coefficients for sensors not working</title>
+		<body>Clicking the `View Calibrations` buttons does nothing. There is an error produced:  ``` javax.faces.view.facelets.FaceletException: Error Parsing /viewMetadata/instrument/sensor_calibrations.xhtml: Error Traced[line: 30] Element type "p:calendar" must be followed by either attribute specifications, "&gt;" or "/&gt;".      at org.apache.myfaces.view.facelets.compiler.SAXCompiler.doCompileViewMetadata(SAXCompiler.java:820)      at org.apache.myfaces.view.facelets.compiler.Compiler.compileViewMetadata(Compiler.java:97) ```</body>
+		<created>2018-11-26 13:56:43</created>
+		<closed>2018-12-12 13:46:53</closed>
+	</bug>
+	<bug>
+		<id>1009</id>
+		<title>Last Instrument not updated when changing lists</title>
+		<body>The user's Last Instrument preference isn't updated when they change instruments in the Data Set or Files list. It should be.  ![screen shot 2018-11-12 at 17 50 47](https://user-images.githubusercontent.com/733650/48362252-85951d80-e6a3-11e8-9234-fbc9cc34c82d.png) </body>
+		<created>2018-11-12 16:52:13</created>
+		<closed>2019-01-07 10:29:31</closed>
+	</bug>
+	<bug>
+		<id>984</id>
+		<title>Auto-selected dataset overlaps existing</title>
+		<body>Clicking on the timeline to auto-create a new dataset creates a one-record overlap with the existing data set(s) it's fitting around. This is because it sets its limits as the exact start/end date of the existing data sets, so those end records are included in the new data set.  The new data set limits need to be offset from the existing ones.</body>
+		<created>2018-10-05 13:21:07</created>
+		<closed>2018-11-13 13:25:28</closed>
+	</bug>
+	<bug>
+		<id>982</id>
+		<title>Sets of external standards not found when multiple instruments have same standard names</title>
+		<body>The SQL query for this ends up mixing the two instruments together, and ends up with no matching standards at all.</body>
+		<created>2018-10-05 12:22:13</created>
+		<closed>2018-11-13 13:25:28</closed>
+	</bug>
+	<bug>
+		<id>980</id>
+		<title>Not setting date in standard deployment gives error</title>
+		<body>![screen shot 2018-10-05 at 13 30 11](https://user-images.githubusercontent.com/733650/46532866-e4949500-c8a2-11e8-952f-300b2e117cb0.png)  In the above screenshot, the date hasn't actually been selected (although it's quite hard to spot the fact). Cicking the `Add` button results in an error.  We should disable the Add button if the date hasn't been selected yet.</body>
+		<created>2018-10-05 11:32:17</created>
+		<closed>2018-12-12 15:20:08</closed>
+	</bug>
+	<bug>
+		<id>965</id>
+		<title>Plot/Map toggles don't work correctly</title>
+		<body>&lt;img width="114" alt="screen shot 2018-09-12 at 14 33 56" src="https://user-images.githubusercontent.com/733650/45425182-ee0e5100-b698-11e8-985e-7ed62c4f7bb8.png"&gt;  These are actually checkboxes underneath (PrimeFaces selectOneCheckbox), which means clicking the selected option deselects it. We need to prevent this - clicking the selected option should cause no action.</body>
+		<created>2018-09-12 12:35:17</created>
+		<closed>2019-07-08 12:43:13</closed>
+	</bug>
+	<bug>
+		<id>956</id>
+		<title>Hide scale when map is hidden</title>
+		<body>On QC page:  1. Switch to map view 2. Show scale 3. Switch to plot view  Map scale is still visible. Should be hidden.</body>
+		<created>2018-09-07 10:37:55</created>
+		<closed>2018-10-05 09:13:34</closed>
+	</bug>
+	<bug>
+		<id>955</id>
+		<title>Empty last column for space delimited files</title>
+		<body>This gives an error of "Not enough columns". Since we collapse multiple spaces, empty values within a file are not detectable. But if we have a trailing space we can at least work out if there should be a column but it's missing.  Applies to all formats - see attachment [GOS_2019-098-0000dat.txt](https://github.com/BjerknesClimateDataCentre/QuinCe/files/3068456/GOS_2019-098-0000dat.txt) </body>
+		<created>2018-09-07 10:36:49</created>
+		<closed>2019-04-15 06:28:46</closed>
+	</bug>
+	<bug>
+		<id>943</id>
+		<title>Logout link doesn't go anywhere</title>
+		<body>The Logout link is hard-coded to go to `&lt;hostname&gt;/QuinCe` after logging out the user. This doesn't work on the live site, since the app is at the root instead of under QuinCe.</body>
+		<created>2018-08-31 09:24:52</created>
+		<closed>2018-09-06 19:47:05</closed>
+	</bug>
+	<bug>
+		<id>940</id>
+		<title>Separate month values are offset</title>
+		<body>Files with a separate month column in the date have the month offset by 1, because Java thinks January is month zero. An offset needs to be applied explicitly during data extraction.</body>
+		<created>2018-08-29 08:08:50</created>
+		<closed>2018-09-04 12:32:30</closed>
+	</bug>
+	<bug>
+		<id>936</id>
+		<title>Run type menus don't work with 2nd of two files</title>
+		<body>The javascript doesn't set up the menus properly:  ![screen shot 2018-08-28 at 09 58 01](https://user-images.githubusercontent.com/733650/44709433-e8feae80-aaa9-11e8-8554-398f70a9bcaa.png) </body>
+		<created>2018-08-28 08:05:58</created>
+		<closed>2018-08-30 09:45:21</closed>
+	</bug>
+	<bug>
+		<id>935</id>
+		<title>Cannot set run type aliases when there are multiple files</title>
+		<body>The alias menu is not shown: ![screen shot 2018-08-28 at 10 02 07](https://user-images.githubusercontent.com/733650/44709308-9b824180-aaa9-11e8-9df5-1a0b41778ecd.png)  This is likely due to some javascript errors: ![screen shot 2018-08-28 at 10 01 31](https://user-images.githubusercontent.com/733650/44709331-a4731300-aaa9-11e8-9fa1-6d5cf701ddf5.png)  </body>
+		<created>2018-08-28 08:04:04</created>
+		<closed>2018-08-30 09:45:21</closed>
+	</bug>
+	<bug>
+		<id>928</id>
+		<title>Confirmation email failed in release 1.0.0</title>
+		<body>When registering a new account in the new QuinCe version v1.0.0, the registration email failed with the following message:       java.lang.NumberFormatException: For input string: ''         at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)         at java.lang.Integer.parseInt(Integer.java:592)         at java.lang.Integer.parseInt(Integer.java:615)         at uk.ac.exeter.QuinCe.utils.EmailSender.sendEmail(EmailSender.java:63)         at uk.ac.exeter.QuinCe.jobs.user.SendEmailVerificationMailJob.execute(SendEmailVerificationMailJob.java:58)         at uk.ac.exeter.QuinCe.jobs.JobThread.run(JobThread.java:79)  </body>
+		<created>2018-08-14 07:56:40</created>
+		<closed>2018-10-05 09:13:34</closed>
+	</bug>
+	<bug>
+		<id>915</id>
+		<title>View expired exception on dataset_list page</title>
+		<body>There is an issue seems to be related to loading an empty dataset list. When logging in and displaying an empty list, the following error is thrown as the page refreshes:   &gt; javax.faces.application.ViewExpiredException: /dataset/dataset_list.xhtml - No saved view state could be found for the view identifier: /dataset/dataset_list.xhtml &gt;&gt;at org.apache.myfaces.lifecycle.RestoreViewExecutor.execute(RestoreViewExecutor.java:183) at org.apache.myfaces.lifecycle.LifecycleImpl.executePhase(LifecycleImpl.java:196) at org.apache.myfaces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:143) at javax.faces.webapp.FacesServlet.service(FacesServlet.java:198) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at uk.ac.exeter.QuinCe.web.User.AuthenticatedFilter.doFilter(AuthenticatedFilter.java:85)         ... at java.lang.Thread.run(Thread.java:748)</body>
+		<created>2018-08-06 13:15:25</created>
+		<closed>2018-08-10 11:29:50</closed>
+	</bug>
+	<bug>
+		<id>907</id>
+		<title>selecting autocomplete values auto-submit new instrument form</title>
+		<body>This is caused by a a bug in primefaces after changes to the JQuery library, see:  https://github.com/primefaces/primefaces/issues/2448  To verify issue:  * Click new instrument * Click the input-field, and select a name from your previously added names * The form will reload, saying there must be a name  The issue is fixed in primefaces 6.2</body>
+		<created>2018-06-28 11:03:35</created>
+		<closed>2018-08-10 09:11:27</closed>
+	</bug>
+	<bug>
+		<id>863</id>
+		<title>delete_instrument.sh - /dev/0 does not exist</title>
+		<body>In the `delete_instrument.sh` script, some outputs are redirected to `/dev/0` to silence them. This doesn't exist on MacOS - `/dev/null` is probably a better alternative.</body>
+		<created>2018-05-04 18:53:00</created>
+		<closed>2018-05-09 07:27:28</closed>
+	</bug>
+	<bug>
+		<id>858</id>
+		<title>Auto QC always fails on differential equilibrator pressure</title>
+		<body>Running Denis's sample data file, every equilibrator pressure value is flagged as being out of range.  I suspect that this is because the QC routine looks at the differential pressure directly (-0.17) rather than checking the calculated true equilibrator pressure. Needs to be investigated though.</body>
+		<created>2018-04-28 19:47:25</created>
+		<closed>2018-08-10 11:15:03</closed>
+	</bug>
+	<bug>
+		<id>844</id>
+		<title>Month is off by one in table on plot page</title>
+		<body>Dates in October are listed as September, etc. ![screen shot 2018-04-26 at 11 15 46](https://user-images.githubusercontent.com/733650/39297217-3fd8ed60-4943-11e8-933c-2415d02171c5.png) </body>
+		<created>2018-04-26 09:16:30</created>
+		<closed>2018-04-26 09:31:17</closed>
+	</bug>
+	<bug>
+		<id>838</id>
+		<title>User QC flags seem are reset during recalculation</title>
+		<body>It seems that user QC flags are often reset during the automatic QC phase of data recalculation (after a data set is edited). This should not be happening, obviously.</body>
+		<created>2018-04-23 07:20:56</created>
+		<closed>2018-04-24 11:23:34</closed>
+	</bug>
+	<bug>
+		<id>825</id>
+		<title>Test server failed on new created/updated migration</title>
+		<body>Error message logged:  ``` :clean :compileJavaNote: /home/centos/QuinCe/WebApp/src/uk/ac/exeter/QuinCe/web/jobs/JobsBean.java uses or overrides a deprecated API. Note: Recompile with -Xlint:deprecation for details.  :processResources :classes :war :flywayMigrate DB: Incorrect table definition; there can be only one TIMESTAMP column with CURRENT_TIMESTAMP in DEFAULT or ON UPDATE clause (SQL State: HY000 - Error Code: 1293) Migration of schema `quince_dev` to version 2 - created and modified fields issue 737 failed! Please restore backups and roll back database and code! :flywayMigrate FAILED  FAILURE: Build failed with an exception.  * What went wrong: Execution failed for task ':flywayMigrate'. &gt; Error occurred while executing flywayMigrate    Migration V2__created_and_modified_fields_issue_737.sql failed  --------------------------------------------------------------  SQL State  : HY000  Error Code : 1293  Message    : Incorrect table definition; there can be only one TIMESTAMP column with CURRENT_TIMESTAMP in DEFAULT or ON UPDATE clause  Location   : db_migrations/V2__created_and_modified_fields_issue_737.sql (/home/centos/QuinCe/build/resources/main/db_migrations/V2__created_and_modified_fields_issue_737.sql)  Line       : 18  Statement  : ALTER TABLE calibration ADD COLUMN modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP    Incorrect table definition; there can be only one TIMESTAMP column with CURRENT_TIMESTAMP in DEFAULT or ON UPDATE clause  * Try: Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.  * Get more help at https://help.gradle.org  BUILD FAILED in 5s 5 actionable tasks: 5 executed ```</body>
+		<created>2018-04-14 06:12:33</created>
+		<closed>2018-04-16 09:31:10</closed>
+	</bug>
+	<bug>
+		<id>813</id>
+		<title>Data files can be deleted from the database even if there's a data set related to it</title>
+		<body>The database should have its foreign keys configured so that this cannot happen.  Although this only applies when editing the database directly, we should still put in the safeguard.</body>
+		<created>2018-04-09 09:18:59</created>
+		<closed>2018-04-26 13:26:15</closed>
+	</bug>
+	<bug>
+		<id>806</id>
+		<title>Lat/Lon are reversed during data extract</title>
+		<body>When data is read from files, the longitude and latitude parameters are switched.</body>
+		<created>2018-04-05 14:28:02</created>
+		<closed>2018-04-09 10:52:39</closed>
+	</bug>
+	<bug>
+		<id>802</id>
+		<title>Fix plot legends</title>
+		<body> &lt;img width="1044" alt="screen shot 2018-04-04 at 00 26 13" src="https://user-images.githubusercontent.com/733650/38279085-05dae25e-379f-11e8-8b17-64c34c5276cc.png"&gt; The popup plot legend is off the side of the plots. This occurs after the plots have been resized.</body>
+		<created>2018-04-03 22:25:45</created>
+		<closed>2018-04-26 14:03:00</closed>
+	</bug>
+	<bug>
+		<id>800</id>
+		<title>Reduce ajax data traffic on plot page form</title>
+		<body>See #799 for an explanation of the issue.  On the Plot Page, this is a fatal issue and so needs fixing immediately.  We will create separate forms for all ajax calls, and clear data from those forms prior to submission where it does not need sending back to the server.  The separate forms will be: - [x] Table metadata form - [x] Table data form - [x] Plot 1 data form - [x] Plot 2 data form - [x] Map 1 data form - [x] Map 2 data form - [x] Flag setting actions - [x] Finish button - [x] The data table offset has gone wonky - overlaps the footer toolbar - [x] Fix the calibration data page</body>
+		<created>2018-03-28 09:13:48</created>
+		<closed>2018-04-05 12:22:38</closed>
+	</bug>
+	<bug>
+		<id>797</id>
+		<title>Jobs page not working</title>
+		<body>The table listing jobs on the Jobs page is not working - it's always empty. </body>
+		<created>2018-03-27 11:26:26</created>
+		<closed>2018-04-05 14:06:29</closed>
+	</bug>
+	<bug>
+		<id>783</id>
+		<title>JSON error for seabird date on new instrument</title>
+		<body>When setting up a new instrument with the seabird date format (hours from start of file): If you start with a . (dot) a parse error occurs. The system don't seem to recover before you log out and back in.  Error in the javascript console:   &gt; VM6505:1 Uncaught SyntaxError: Unexpected token S in JSON at position 27 &gt;     at JSON.parse (&lt;anonymous&gt;) &gt;     at updateStartTime (newInstrument.js.xhtml:1103) &gt;     at Object.onco (upload_file.xhtml:184) &gt;     at Object.complete (core.js.xhtml?ln=primefaces&amp;v=6.0:3) &gt;     at i (jquery.js.xhtml?ln=primefaces&amp;v=6.0:25) &gt;     at Object.fireWith (jquery.js.xhtml?ln=primefaces&amp;v=6.0:25) &gt;     at cf (jquery.js.xhtml?ln=primefaces&amp;v=6.0:25) &gt;     at XMLHttpRequest.i (jquery.js.xhtml?ln=primefaces&amp;v=6.0:25)  </body>
+		<created>2018-03-19 09:55:55</created>
+		<closed>2018-03-23 11:47:47</closed>
+	</bug>
+	<bug>
+		<id>773</id>
+		<title>Data reduction corrections</title>
+		<body>After running a comparison with Denis Pierrot's software we found some issues with the data reduction routines and application of gas standards.  The calculations were fixed in situ - the code just need cleaning up.  For the gas standards, QuinCe currently interpolates only between the two closest standard concentrations. It should calculate a linear regression across all standards to reduce the effect of small variations.</body>
+		<created>2018-03-09 15:32:30</created>
+		<closed>2018-06-06 21:12:43</closed>
+	</bug>
+	<bug>
+		<id>770</id>
+		<title>Time zones differ between table and plot</title>
+		<body>In the QC page, the time displayed on the graph legend is different to that displayed in the table. Determine which is correct and fix the other one.</body>
+		<created>2018-03-08 13:27:37</created>
+		<closed>2018-03-12 14:40:28</closed>
+	</bug>
+	<bug>
+		<id>768</id>
+		<title>Script db_restore_from_prod not removing nonexistent files from filestore</title>
+		<body>The db_restore_from_prod - script should restore a pristine database and filestore. Currently, the options give to rsync for syncing the file store, does not remove files added locally. This will lead to inconsistencies in the QuinCe data.  Possible fix: Add `--delete` to the rsync options to make sure files are removed from the file store.  To test:  - add a file to your local filestore - run ./scripts/db_restore_from_prod.sh - Verify only files in the filestore on poseidon now exists in your local file store</body>
+		<created>2018-03-06 13:39:01</created>
+		<closed>2018-04-09 07:59:14</closed>
+	</bug>
+	<bug>
+		<id>767</id>
+		<title>Only the most recent external standards are used</title>
+		<body>The Data Reduction Job uses only the most recently deployed standards, regardless of the date of the data set being processed (`CalibrationDB.getCurrentCalibrations`).  A method to get the calibrations based on a date is being developed for issue #579, and should be applied here too. </body>
+		<created>2018-03-06 10:05:36</created>
+		<closed>2019-02-21 12:12:48</closed>
+	</bug>
+	<bug>
+		<id>745</id>
+		<title>Log Out always redirects to localhost</title>
+		<body>When clicking Log Out from the test server, you are redirected to localhost:8080/QuinCe instead of the IP you are on. This should be changed to go to the IP / domain that you are on.   To test:  - Log in at http://158.39.77.86:8080/QuinCe/ - Click Log out - Verify you land at the same address where you logged in</body>
+		<created>2018-02-26 21:16:44</created>
+		<closed>2018-02-27 18:58:08</closed>
+	</bug>
+	<bug>
+		<id>735</id>
+		<title>Duplicate standards error</title>
+		<body>Adding a standard deployment at the same date/time as a previous deployment for that same standard throws an error. I assume this is the same for sensor calibrations too.   ``` Something horrible has happened. Please accept my apologies. Details of the horrible thing are below. If the horrible thing keeps happening, please copy the details into an email and send it to quince@uib.no. uk.ac.exeter.QuinCe.utils.DatabaseException: Error while storing calibration at uk.ac.exeter.QuinCe.data.Instrument.Calibration.CalibrationDB.addCalibration(CalibrationDB.java:85) at uk.ac.exeter.QuinCe.web.Instrument.CalibrationBean.storeEnteredCalibration(CalibrationBean.java:159) at uk.ac.exeter.QuinCe.web.Instrument.CalibrationBean.addCalibration(CalibrationBean.java:144) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.apache.el.parser.AstValue.invoke(AstValue.java:247) at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:267) at org.apache.myfaces.view.facelets.el.ContextAwareTagMethodExpression.invoke(ContextAwareTagMethodExpression.java:96) at org.apache.myfaces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:74) at javax.faces.component.UICommand.broadcast(UICommand.java:120) at javax.faces.component.UIViewRoot._broadcastAll(UIViewRoot.java:1172) at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:365) at javax.faces.component.UIViewRoot._process(UIViewRoot.java:1658) at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:862) at org.apache.myfaces.lifecycle.InvokeApplicationExecutor.execute(InvokeApplicationExecutor.java:42) at org.apache.myfaces.lifecycle.LifecycleImpl.executePhase(LifecycleImpl.java:196) at org.apache.myfaces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:143) at javax.faces.webapp.FacesServlet.service(FacesServlet.java:198) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at uk.ac.exeter.QuinCe.web.User.AuthenticatedFilter.doFilter(AuthenticatedFilter.java:85) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:528) at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1099) at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:670) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1520) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1476) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748) Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '6-EXTERNAL_STANDARD-STD2-1483228800000' for key 'PRIMARY' at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) at java.lang.reflect.Constructor.newInstance(Constructor.java:423) at com.mysql.jdbc.Util.handleNewInstance(Util.java:400) at com.mysql.jdbc.Util.getInstance(Util.java:383) at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:973) at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3847) at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3783) at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2447) at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2594) at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545) at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1901) at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1193) at org.apache.tomcat.dbcp.dbcp2.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:197) at org.apache.tomcat.dbcp.dbcp2.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:197) at uk.ac.exeter.QuinCe.data.Instrument.Calibration.CalibrationDB.addCalibration(CalibrationDB.java:83) ... 43 more com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '6-EXTERNAL_STANDARD-STD2-1483228800000' for key 'PRIMARY' at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) at java.lang.reflect.Constructor.newInstance(Constructor.java:423) at com.mysql.jdbc.Util.handleNewInstance(Util.java:400) at com.mysql.jdbc.Util.getInstance(Util.java:383) at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:973) at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3847) at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3783) at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2447) at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2594) at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545) at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1901) at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1193) at org.apache.tomcat.dbcp.dbcp2.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:197) at org.apache.tomcat.dbcp.dbcp2.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:197) at uk.ac.exeter.QuinCe.data.Instrument.Calibration.CalibrationDB.addCalibration(CalibrationDB.java:83) at uk.ac.exeter.QuinCe.web.Instrument.CalibrationBean.storeEnteredCalibration(CalibrationBean.java:159) at uk.ac.exeter.QuinCe.web.Instrument.CalibrationBean.addCalibration(CalibrationBean.java:144) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.apache.el.parser.AstValue.invoke(AstValue.java:247) at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:267) at org.apache.myfaces.view.facelets.el.ContextAwareTagMethodExpression.invoke(ContextAwareTagMethodExpression.java:96) at org.apache.myfaces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:74) at javax.faces.component.UICommand.broadcast(UICommand.java:120) at javax.faces.component.UIViewRoot._broadcastAll(UIViewRoot.java:1172) at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:365) at javax.faces.component.UIViewRoot._process(UIViewRoot.java:1658) at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:862) at org.apache.myfaces.lifecycle.InvokeApplicationExecutor.execute(InvokeApplicationExecutor.java:42) at org.apache.myfaces.lifecycle.LifecycleImpl.executePhase(LifecycleImpl.java:196) at org.apache.myfaces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:143) at javax.faces.webapp.FacesServlet.service(FacesServlet.java:198) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at uk.ac.exeter.QuinCe.web.User.AuthenticatedFilter.doFilter(AuthenticatedFilter.java:85) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:528) at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1099) at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:670) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1520) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1476) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748) ```</body>
+		<created>2018-02-22 08:45:17</created>
+		<closed>2018-04-25 13:14:06</closed>
+	</bug>
+	<bug>
+		<id>718</id>
+		<title>Dropped calibrations during data extraction</title>
+		<body>Some "external standard" records are not extracted when a dataset is defined.</body>
+		<created>2018-02-09 09:21:38</created>
+		<closed>2018-02-09 13:44:36</closed>
+	</bug>
+	<bug>
+		<id>717</id>
+		<title>Data Set/Data File lists don't update properly</title>
+		<body>When a user has multiple instruments, the lists for the data sets and data files don't update properly when switching between them.  Steps to reproduce:  1. Log in 2. Show data sets for instrument 1 3. Switch to files tab - shows files for instrument 1 4. Change to instrument 2 5. Switch back to data sets tab - instrument 2 selected with list for instrument 1</body>
+		<created>2018-02-09 09:09:38</created>
+		<closed>2018-02-21 12:36:31</closed>
+	</bug>
+	<bug>
+		<id>713</id>
+		<title>Map hover values are undefined</title>
+		<body>![screen shot 2018-02-08 at 12 42 32](https://user-images.githubusercontent.com/733650/35971288-cb480604-0ccd-11e8-851d-23efa32f148a.png) </body>
+		<created>2018-02-08 11:44:31</created>
+		<closed>2018-02-08 14:07:02</closed>
+	</bug>
+	<bug>
+		<id>710</id>
+		<title>Property-property plots do not display all points</title>
+		<body>When viewing a property-property plot (i.e. X axis is something other than date/time), not all points are displayed.</body>
+		<created>2018-02-07 14:05:33</created>
+		<closed>2018-02-08 11:36:49</closed>
+	</bug>
+	<bug>
+		<id>704</id>
+		<title>File upload hangs if date parsing fails</title>
+		<body>If uploading a file with a date that fails to parse, the upload screen hangs.  To reproduce:  Define a file with date format of `dd/MM/yyyy` Upload a file with date format of `dd/MM/yy` </body>
+		<created>2018-02-06 18:18:16</created>
+		<closed>2018-04-26 12:39:46</closed>
+	</bug>
+	<bug>
+		<id>703</id>
+		<title>Separate date columns may not work correctly</title>
+		<body>The first time a data file with separate year, month and day columns was used in the first release, the month was off by one. We need to work out if this is still an issue with the new approach to dates.</body>
+		<created>2018-02-06 12:28:07</created>
+		<closed>2018-04-26 08:47:38</closed>
+	</bug>
+	<bug>
+		<id>699</id>
+		<title>Data file breaks variable assignment page</title>
+		<body>The attached file does not work in the variable assignments page - none of the data gets loaded in. [AM20171011_2.txt](https://github.com/BjerknesClimateDataCentre/QuinCe/files/1698631/AM20171011_2.txt) </body>
+		<created>2018-02-06 10:32:01</created>
+		<closed>2018-02-07 13:52:28</closed>
+	</bug>
+	<bug>
+		<id>683</id>
+		<title>Data Sets page doesn't work if there are no instruments</title>
+		<body>Ref #669 </body>
+		<created>2018-01-31 09:30:21</created>
+		<closed>2018-01-31 11:19:30</closed>
+	</bug>
+	<bug>
+		<id>680</id>
+		<title>Clicks on calibration plots aren't working</title>
+		<body>Fix them...</body>
+		<created>2018-01-30 15:27:35</created>
+		<closed>2018-02-02 11:45:24</closed>
+	</bug>
+	<bug>
+		<id>669</id>
+		<title>Handle missing instrument info</title>
+		<body>1. Chosen instrument in user prefs but not in db 2. First new instrument for a user can't be navigated.</body>
+		<created>2018-01-30 10:32:55</created>
+		<closed>2018-01-31 11:19:30</closed>
+	</bug>
+	<bug>
+		<id>664</id>
+		<title>Uploading 2nd file for new instrument shows first</title>
+		<body>If you upload a second file for a new instrument, the preview shown for the guessed file format displays the first file instead.</body>
+		<created>2018-01-23 13:00:22</created>
+		<closed>2018-01-23 13:55:54</closed>
+	</bug>
+	<bug>
+		<id>639</id>
+		<title>Run Type not added to file_column table for Shcuster data set</title>
+		<body>When adding instrument for the Schuster data set (and possibly other), the run type is not added to the file columns. This leads to the ExtractDataSetJob failing:   &gt; uk.ac.exeter.QuinCe.data.Files.DataFileException: java.lang.ArrayIndexOutOfBoundsException: -1 at uk.ac.exeter.QuinCe.data.Dataset.DataSetRawData.createRecord(DataSetRawData.java:701) at uk.ac.exeter.QuinCe.data.Dataset.DataSetRawData.getNextRecord(DataSetRawData.java:268) at uk.ac.exeter.QuinCe.jobs.files.ExtractDataSetJob.execute(ExtractDataSetJob.java:96) at uk.ac.exeter.QuinCe.jobs.JobThread.run(JobThread.java:85) Caused by: java.lang.ArrayIndexOutOfBoundsException: -1 at java.util.ArrayList.elementData(ArrayList.java:422) at java.util.ArrayList.get(ArrayList.java:435) at uk.ac.exeter.QuinCe.data.Dataset.NoAverageDataSetRawData.getSelectedTime(NoAverageDataSetRawData.java:176) at uk.ac.exeter.QuinCe.data.Dataset.DataSetRawData.createRecord(DataSetRawData.java:656)  </body>
+		<created>2018-01-19 09:34:55</created>
+		<closed>2018-01-22 13:21:27</closed>
+	</bug>
+	<bug>
+		<id>635</id>
+		<title>Error in latitude value sanity test</title>
+		<body>There is a test that latitude values are sane, but it tests that value is between -180 and 180, while it should test -90 and 90:       if (value &lt; -180 || value &gt; 180) {         throw new PositionException("Invalid latitude value " + value);     }  should be       if (value &lt; -90 || value &gt; 90) {         throw new PositionException("Invalid latitude value " + value);     } </body>
+		<created>2018-01-18 09:51:26</created>
+		<closed>2018-01-18 09:55:49</closed>
+	</bug>
+	<bug>
+		<id>633</id>
+		<title>Missing break; - statement in LatitudeSpecification.java</title>
+		<body>In the latitude-specification getValue function there is a missing break; - statement. This makes position - formats specifying N/S or E/W always fall through to the default, throwing a InvalidPositionFormatException. Adding break; fixes the issue around line 67 in LatitudeSpecification.java:       case FORMAT_0_90: {         String hemisphere = line.get(getHemisphereColumn());         value = value * hemisphereMultiplier(hemisphere);     }     default: {         throw new InvalidPositionFormatException(format);     }  should be      case FORMAT_0_90: {         String hemisphere = line.get(getHemisphereColumn());         value = value * hemisphereMultiplier(hemisphere);         break;     }     default: {         throw new InvalidPositionFormatException(format);     } </body>
+		<created>2018-01-18 09:27:20</created>
+		<closed>2018-01-18 09:43:27</closed>
+	</bug>
+	<bug>
+		<id>629</id>
+		<title>Error clicking View Deployments </title>
+		<body>At the Instruments - tab your instruments are listed. For each instruments there is a View deployments - button. However, when you click View deployments you'll get an error, like:   &gt; Internal Error &gt; Something horrible has happened. Please accept my apologies. Details of the horrible thing are below. If the horrible thing keeps happening, please copy the details into an email and send it to quince@uib.no. &gt; uk.ac.exeter.QuinCe.utils.RecordNotFoundException: No external standard names found for instrument 21 at uk.ac.exeter.QuinCe.data.Instrument.Calibration.ExternalStandardDB.getTargets(ExternalStandardDB.java:77) at uk.ac.exeter.QuinCe.data.Instrument.Calibration.CalibrationDB.getTargets(CalibrationDB.java:155) at uk.ac.exeter.QuinCe.data.Instrument.Calibration.CalibrationDB.getCurrentCalibrations(CalibrationDB.java:104) at uk.ac.exeter.QuinCe.web.Instrument.CalibrationBean.loadCurrentCalibrations(CalibrationBean.java:177) at uk.ac.exeter.QuinCe.web.Instrument.CalibrationBean.start(CalibrationBean.java:68) at  ...  </body>
+		<created>2018-01-16 09:09:47</created>
+		<closed>2018-01-31 17:31:39</closed>
+	</bug>
+	<bug>
+		<id>627</id>
+		<title>Hour of day date-preview using DD instead of dd</title>
+		<body>The Hour of day preview fails if the day of year to preview is &gt; 99. The offending line is in  NewInstrumentBean.java around line 85:   `private static final DateTimeFormatter PREVIEW_DATE_TIME_FORMATTER =  DateTimeFormatter.ofPattern("yyyy-MM-DD HH:mm:ss");`  should be  `private static final DateTimeFormatter PREVIEW_DATE_TIME_FORMATTER =  DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");` </body>
+		<created>2018-01-15 10:27:15</created>
+		<closed>2018-01-18 09:44:44</closed>
+	</bug>
+	<bug>
+		<id>623</id>
+		<title>Error navigating to Files - tab with no instrument defined</title>
+		<body>When no instrument is defined, you get an error going to the Files - tab. The Files - tab should probably be hidden if no instrument is defined.  Error output:   &gt; javax.el.ELException: Error reading 'listFiles' on type uk.ac.exeter.QuinCe.web.files.DataFilesBean &gt;  &gt; viewId=/data_file/file_list.xhtml &gt; location=/home/jhe052/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/QuinCe/data_file/file_list.xhtml &gt; phaseId=RENDER_RESPONSE(6) &gt;  &gt; Caused by: &gt; uk.ac.exeter.QuinCe.utils.MissingParamException - instrumentID parameter is null &gt; at uk.ac.exeter.QuinCe.utils.MissingParam.checkPositive(MissingParam.java:63) &gt;  &gt; /data_file/file_list.xhtml at line 24 and column 134 value="#{dataFilesBean.listFiles}" </body>
+		<created>2018-01-08 14:14:53</created>
+		<closed>2018-01-31 11:19:30</closed>
+	</bug>
+	<bug>
+		<id>596</id>
+		<title>Very long jobs auto-restarted while still running?</title>
+		<body>There seems to be a way that jobs can be re-started while they're still running, but I'm not certain of it yet.  The likely cause is the feature that re-starts jobs accidentally left in a `RUNNING` state. It's supposed to detect jobs that are marked as running but no longer have a thread (meaning that the job died) and restart it. It's likely that the thread detection isn't working.</body>
+		<created>2017-11-29 09:57:50</created>
+		<closed>2019-01-17 12:17:31</closed>
+	</bug>
+	<bug>
+		<id>584</id>
+		<title>It's possible to have a hemisphere assigned without the corresponding lat/lon</title>
+		<body>1. Assign a lat/lon with a separate hemisphere column (and assign the hemisphere) 2. Unassign the Latitude column 3. The Hemisphere column is not deassigned.  ![screen shot 2017-11-22 at 16 16 57](https://user-images.githubusercontent.com/733650/33134657-96a7acc0-cfa0-11e7-8d1f-01b8727e6d4d.png) </body>
+		<created>2017-11-22 15:17:28</created>
+		<closed>2018-04-09 10:50:07</closed>
+	</bug>
+	<bug>
+		<id>558</id>
+		<title>Switching instruments on the Datasets list doesn't work</title>
+		<body>Fix! :)</body>
+		<created>2017-11-08 08:53:09</created>
+		<closed>2018-02-07 15:04:03</closed>
+	</bug>
+	<bug>
+		<id>538</id>
+		<title>Fake gas standards bugger up the CO2 calculation</title>
+		<body>For the fixed stations, adding a fake gas standard at the start and end of a data set that should give a zero adjustment to the CO2 actually does something very weird. This is concerning for the whole gas standard algorithm, so check it.  ![screen shot 2017-10-13 at 10 26 02](https://user-images.githubusercontent.com/733650/31537011-0831941a-b001-11e7-9d89-e6d25d0cabad.png) </body>
+		<created>2017-10-13 08:28:00</created>
+		<closed>2018-09-11 14:57:56</closed>
+	</bug>
+	<bug>
+		<id>535</id>
+		<title>Disable New Data Set button if no files</title>
+		<body>If there aren't any (non-archived) files for an instrument, disable the New Data Set button</body>
+		<created>2017-10-11 13:32:36</created>
+		<closed>2018-02-01 10:20:02</closed>
+	</bug>
+	<bug>
+		<id>531</id>
+		<title>Empty data files aren't explicitly detected</title>
+		<body>We get this error: `The file could not be processed: startDate parameter is null`  It would be nice to actually say it's an empty file. G O Sars example attached. [GOS_2015-117-0913dat.txt](https://github.com/BjerknesClimateDataCentre/QuinCe/files/1344402/GOS_2015-117-0913dat.txt)  This issue should handle the following cases in a "sensible way":  - [x] File with no content at all - [x] File with only header data - [x] File cut off at random place in the data - [x] File with errors parsing dates (Issue #704) - [x] Empty lines at the end of the file (should just work, issue #364) </body>
+		<created>2017-09-29 12:58:01</created>
+		<closed>2018-04-26 12:39:45</closed>
+	</bug>
+	<bug>
+		<id>528</id>
+		<title>New instrument not added to data files list page</title>
+		<body>I guess the bean has it cached somewhere.</body>
+		<created>2017-09-26 12:04:39</created>
+		<closed>2018-01-31 17:21:47</closed>
+	</bug>
+	<bug>
+		<id>517</id>
+		<title>metho="post"</title>
+		<body>I think this typo is floating around in a few places. Squash it.</body>
+		<created>2017-09-15 09:25:37</created>
+		<closed>2018-03-20 13:17:51</closed>
+	</bug>
+	<bug>
+		<id>485</id>
+		<title>Run Type is stored with a column name</title>
+		<body>The Run Type is stored in the database with whatever column name was last entered in the app. It doesn't really matter because it's never shown, but it should be fixed to 'Run Type'</body>
+		<created>2017-08-05 14:15:21</created>
+		<closed>2018-03-21 12:01:24</closed>
+	</bug>
+	<bug>
+		<id>484</id>
+		<title>Date/Time menu entries not filtered correctly</title>
+		<body>In the new Instrument - interface:  If you choose Date, it should disappear from the menu but it doesn't. Might also happen with others, so check them all.</body>
+		<created>2017-08-05 13:57:18</created>
+		<closed>2018-03-22 11:56:18</closed>
+	</bug>
+	<bug>
+		<id>475</id>
+		<title>Assigning combined date and time gives error</title>
+		<body>If the Combined date and time is assigned, the summary on the left shows "error". ![screen shot 2017-07-31 at 15 02 50](https://user-images.githubusercontent.com/733650/28778860-58c20cd2-7601-11e7-82bc-a79a21d0594b.png) </body>
+		<created>2017-07-31 13:03:19</created>
+		<closed>2018-03-23 12:07:07</closed>
+	</bug>
+	<bug>
+		<id>468</id>
+		<title>Empty file data in new instrument</title>
+		<body>New instrument: uploading a new file sometimes gives empty data in the preview. Could be a parsing issue - check for exceptions.  (G O Sars CO2 data)</body>
+		<created>2017-07-26 12:54:24</created>
+		<closed>2018-03-22 11:56:18</closed>
+	</bug>
+	<bug>
+		<id>461</id>
+		<title>Null pointer exception</title>
+		<body>`java.lang.NullPointerException         at uk.ac.exeter.QuinCe.data.Files.DataFileDB.getUserFiles(DataFileDB.java:338)         at uk.ac.exeter.QuinCe.web.files.FileListBean.updateFileList(FileListBean.java:101)`</body>
+		<created>2017-07-13 08:37:14</created>
+		<closed>2017-07-18 10:35:55</closed>
+	</bug>
+	<bug>
+		<id>447</id>
+		<title>Marking rows as IGNORED screws up the table</title>
+		<body>Because when the data table queries the server to load new records at the bottom, suddenly those marked IGNORED are no longer returned in the query. So the table is a bunch of rows shorter than the front end thinks it is. Also, if you scroll back to the rows you marked IGNORED, they're gone.</body>
+		<created>2017-06-13 13:12:01</created>
+		<closed>2018-01-22 12:58:50</closed>
+	</bug>
+	<bug>
+		<id>444</id>
+		<title>Empty WOCE comment</title>
+		<body>The user can currently give a blank WOCE comment when overriding the QC flags. This should not be allowed.</body>
+		<created>2017-06-01 08:36:05</created>
+		<closed>2018-01-30 12:38:20</closed>
+	</bug>
+	<bug>
+		<id>438</id>
+		<title>Header lines steps by 2</title>
+		<body>When uploading a sample file for an instrument, the spinner for setting the number of header lines frequently jumps in steps of 2. It shouldn't.</body>
+		<created>2017-05-10 17:26:24</created>
+		<closed>2018-04-09 07:42:34</closed>
+	</bug>
+	<bug>
+		<id>430</id>
+		<title>0-360 lon data extraction probably doesn't work</title>
+		<body>I haven't checked, but I don't think 0-360 longitudes are converted to -180:180 longitudes on import. They should be.</body>
+		<created>2017-04-24 14:42:08</created>
+		<closed>2018-04-06 11:49:44</closed>
+	</bug>
+	<bug>
+		<id>428</id>
+		<title>Dates not formatted</title>
+		<body>For some reason, dates are shown as their millisecond value instead of nice formatted dates. Fix it.</body>
+		<created>2017-04-07 17:48:12</created>
+		<closed>2017-04-07 19:12:10</closed>
+	</bug>
+	<bug>
+		<id>426</id>
+		<title>Session expiry on data page</title>
+		<body>There are no regular updates on the data page, so it's possible for the session to expire. This makes the page unresponsive. The simplest workaround is to probably have a NOOP ajax request that gets called periodically if there's been no other action.</body>
+		<created>2017-03-28 11:43:16</created>
+		<closed>2017-04-21 12:18:07</closed>
+	</bug>
+	<bug>
+		<id>424</id>
+		<title>Deleted files stay in list</title>
+		<body>When the user deletes a file, it should trigger the file list update immediately - otherwise the file stays in the list for a while and the user doesn't know that it succeeded.</body>
+		<created>2017-03-28 07:02:21</created>
+		<closed>2018-01-30 12:42:55</closed>
+	</bug>
+	<bug>
+		<id>423</id>
+		<title>Verification email sending not working</title>
+		<body>Cannot find AddressException class in SimpleEmail constructor - don't know why.</body>
+		<created>2017-03-27 15:00:34</created>
+		<closed>2017-04-07 17:49:15</closed>
+	</bug>
+	<bug>
+		<id>422</id>
+		<title>Missing lat/lon/time should be fatal</title>
+		<body>Check the extract routines config. Once this is done, 20160601... can be added to the alpha testing data sets.</body>
+		<created>2017-03-27 14:22:16</created>
+		<closed>2018-01-30 12:43:07</closed>
+	</bug>
+	<bug>
+		<id>421</id>
+		<title>Unknown status</title>
+		<body>During file processing, the status is occasionally "Unknown" in the file list.</body>
+		<created>2017-03-27 14:15:18</created>
+		<closed>2018-01-30 12:43:22</closed>
+	</bug>
+	<bug>
+		<id>419</id>
+		<title>Force user to enter a WOCE comment</title>
+		<body>For BAD/Questionable, the user *must* enter a comment. For Good or Ignore, the comment will always be emptied. Which needs handling on the back end. (Good is already handled)</body>
+		<created>2017-03-27 14:09:57</created>
+		<closed>2018-01-22 12:55:35</closed>
+	</bug>
+	<bug>
+		<id>415</id>
+		<title>Make WOCE dialog modal</title>
+		<body>On the data screen.</body>
+		<created>2017-03-27 12:59:30</created>
+		<closed>2018-01-22 13:04:40</closed>
+	</bug>
+	<bug>
+		<id>414</id>
+		<title>Good QC flag override doesn't work</title>
+		<body>Overriding a Needs Flag to Good doesn't seem to update anything.</body>
+		<created>2017-03-27 11:57:43</created>
+		<closed>2017-03-27 13:51:27</closed>
+	</bug>
+	<bug>
+		<id>400</id>
+		<title>JobManager.killFileJobs doesn't understand the new format job parameters</title>
+		<body>Fix it!</body>
+		<created>2017-03-14 10:07:04</created>
+		<closed>2017-03-14 13:33:27</closed>
+	</bug>
+	<bug>
+		<id>399</id>
+		<title>BS097A graphs fail</title>
+		<body>The fCO2 graph fails to draw for BS097A</body>
+		<created>2017-03-13 14:37:40</created>
+		<closed>2017-03-14 10:16:11</closed>
+	</bug>
+	<bug>
+		<id>398</id>
+		<title>High Delta check fails when it shouldn't</title>
+		<body>The High Delta check fails in the automatic QC for BS098C.txt between runs - on Eq. Pressure and fCO2. They shouldn't, so see why they do.</body>
+		<created>2017-03-13 14:35:47</created>
+		<closed>2017-03-13 15:40:59</closed>
+	</bug>
+	<bug>
+		<id>390</id>
+		<title>Session expiry on login page gives error</title>
+		<body>1. Start webapp 2. Load the login page 3. Restart the webapp 4. Error  This is related to session expiry, probably.</body>
+		<created>2017-03-07 13:35:52</created>
+		<closed>2017-03-30 12:26:21</closed>
+	</bug>
+	<bug>
+		<id>382</id>
+		<title>Scroll highlight doesn't work on short scrolls</title>
+		<body>If you click the graph to move only a couple of rows in the table, the flashy highlight doesn't work.</body>
+		<created>2017-02-24 14:58:05</created>
+		<closed>2017-04-10 19:26:02</closed>
+	</bug>
+	<bug>
+		<id>373</id>
+		<title>WOCE flags aren't preserved after QC screen finished</title>
+		<body>The QC screen automatically triggers data reduction and qc when it's closed. This obliterates any previously set WOCE flags.  I thought that WOCE flags were only overwritten if the QC flag changes from its old value, but maybe it doesn't work.</body>
+		<created>2017-02-22 18:24:40</created>
+		<closed>2017-02-22 19:26:21</closed>
+	</bug>
+	<bug>
+		<id>367</id>
+		<title>Double-clicking a graph causes a JS error</title>
+		<body>The default doubleclick-to-zoom-out behaviour has been disabled. However, a double click on a graph now produces a Javascript error.</body>
+		<created>2017-02-21 13:24:54</created>
+		<closed>2018-01-30 12:55:36</closed>
+	</bug>
+	<bug>
+		<id>364</id>
+		<title>Handle empty line at end of input file</title>
+		<body>As per title</body>
+		<created>2017-02-21 08:24:14</created>
+		<closed>2018-04-13 06:56:47</closed>
+	</bug>
+	<bug>
+		<id>363</id>
+		<title>Nuka Arctica inconsistent columns</title>
+		<body>Nuka Arctica data has a special run type called SHUT DOWN, which does not contain the full set of columns. Need a way to handle this.  Also check GO TO SLEEP and WAKE UP</body>
+		<created>2017-02-21 08:11:44</created>
+		<closed>2017-11-29 18:17:38</closed>
+	</bug>
+	<bug>
+		<id>362</id>
+		<title>Popup menu doesn't close properly</title>
+		<body>It closes if you click outside the menu, but not if you re-click the user name</body>
+		<created>2017-02-21 08:01:16</created>
+		<closed>2017-03-10 14:04:33</closed>
+	</bug>
+	<bug>
+		<id>339</id>
+		<title>DataReductionJob failing</title>
+		<body>Data Reduction jobs triggered from the UI are failing. Find out why, and how big the problem is. And then fix it.</body>
+		<created>2017-02-14 10:07:30</created>
+		<closed>2017-02-15 08:41:36</closed>
+	</bug>
+	<bug>
+		<id>320</id>
+		<title>Table filter buttons get out of sync</title>
+		<body>The data table always reverts to the first filter option, but the control remembers what the user had pressed. Either revert the control or look up the control value to determine which columns are shown when the page loads.</body>
+		<created>2016-12-26 12:07:02</created>
+		<closed>2017-03-14 12:57:46</closed>
+	</bug>
+	<bug>
+		<id>319</id>
+		<title>Table scroll highlight not working</title>
+		<body>When we scroll to a row in the table, the flashing highlight doesn't work.</body>
+		<created>2016-12-26 11:22:42</created>
+		<closed>2016-12-28 17:08:22</closed>
+	</bug>
+	<bug>
+		<id>316</id>
+		<title>Javascript error when selecting rows</title>
+		<body>&lt;img width="673" alt="screen shot 2016-12-21 at 18 29 10" src="https://cloud.githubusercontent.com/assets/733650/21401247/73f292c4-c7ab-11e6-8d36-a0f9b3631af0.png"&gt; </body>
+		<created>2016-12-21 18:30:05</created>
+		<closed>2016-12-26 11:29:18</closed>
+	</bug>
+	<bug>
+		<id>307</id>
+		<title>Using Back and Forward links breaks the data screen</title>
+		<body>If you go back from the data screen then forward, everything breaks.</body>
+		<created>2016-12-14 08:46:28</created>
+		<closed>2018-01-30 13:05:24</closed>
+	</bug>
+	<bug>
+		<id>304</id>
+		<title>Fix messages in QC edit popup</title>
+		<body>The override flag popup gets the messages wrong frequently.</body>
+		<created>2016-12-12 08:53:31</created>
+		<closed>2016-12-16 07:09:10</closed>
+	</bug>
+	<bug>
+		<id>291</id>
+		<title>Double-clicking graph also triggers single click</title>
+		<body>Double-clicking the graph to reset the zoom also triggers the single click scroll action. Find a way to stop it.</body>
+		<created>2016-11-10 09:06:17</created>
+		<closed>2017-02-21 13:21:52</closed>
+	</bug>
+	<bug>
+		<id>284</id>
+		<title>Cannot change graph</title>
+		<body>Changing the graph gives a Javascript error</body>
+		<created>2016-11-07 16:21:03</created>
+		<closed>2016-12-16 07:09:37</closed>
+	</bug>
+	<bug>
+		<id>271</id>
+		<title>Graph click not working properly</title>
+		<body>In BS098C.txt, clicking the points in the thick bar at the end of the voyage doesn't scroll the table to the right place. </body>
+		<created>2016-10-20 14:13:14</created>
+		<closed>2017-03-10 11:49:43</closed>
+	</bug>
+	<bug>
+		<id>265</id>
+		<title>Negative true moisture</title>
+		<body>`BS091A_uploadfix.txt` has negative true moisture at certain points. Need to find out why. </body>
+		<created>2016-10-17 10:03:52</created>
+		<closed>2017-03-09 13:28:04</closed>
+	</bug>
+	<bug>
+		<id>264</id>
+		<title>Handle thousands separators</title>
+		<body>We don't seem to be able to handle numbers with thousand separators (eg Begnuela Stream atmos pressure = 1,020.2). We should. </body>
+		<created>2016-10-11 10:16:03</created>
+		<closed>2018-03-22 11:56:47</closed>
+	</bug>
+	<bug>
+		<id>261</id>
+		<title>Intake temperature on the X axis is reversed</title>
+		<body>If (mean) Intake Temp is selected on the Y axis, it's reversed. Example BS098C.txt, Intake temp vs Δ temp: ![skjermbilde 2016-10-04 kl 15 35 27](https://cloud.githubusercontent.com/assets/733650/19076232/35d1668c-8a48-11e6-91a9-0e45f889a32c.png) </body>
+		<created>2016-10-04 13:35:52</created>
+		<closed>2016-10-20 09:38:33</closed>
+	</bug>
+	<bug>
+		<id>260</id>
+		<title>MySQL time zone</title>
+		<body>At the moment, timestamps are stored in the time zone of the server on which MySQL is running, and converted to UTC on the way out. This is fine as long as the server's time zone never changes, but it will for daylight savings time.  All times should be stored in the database as 'raw' UTC. </body>
+		<created>2016-09-28 13:17:06</created>
+		<closed>2018-01-22 13:07:27</closed>
+	</bug>
+	<bug>
+		<id>257</id>
+		<title>Add flow columns to data table</title>
+		<body>It's currently possible to plot the air/water flow, but they aren't  shown in the data table below. </body>
+		<created>2016-09-20 13:08:09</created>
+		<closed>2016-12-26 12:26:03</closed>
+	</bug>
+	<bug>
+		<id>251</id>
+		<title>Fix graph labels</title>
+		<body>Graph legend labels have values Y4, Y5 etc. Set the labels explicitly when the plot is drawn. </body>
+		<created>2016-09-08 12:25:26</created>
+		<closed>2017-02-27 15:41:05</closed>
+	</bug>
+	<bug>
+		<id>248</id>
+		<title>Fix issues in QC_Routines</title>
+		<body>There are a few issues in QC_Routines that need to be fixed. We should do this before releasing QuinCe. </body>
+		<created>2016-08-30 09:08:20</created>
+		<closed>2018-11-30 20:21:01</closed>
+	</bug>
+	<bug>
+		<id>237</id>
+		<title>Files should be touched whenever they're used</title>
+		<body>The `last_touched` timestamp should be updated on files whenever they're opened, exported etc. </body>
+		<created>2016-08-22 08:15:13</created>
+		<closed>2016-12-26 12:49:20</closed>
+	</bug>
+	<bug>
+		<id>233</id>
+		<title>Re-uploading an existing file causes an internal error</title>
+		<body></body>
+		<created>2016-08-12 11:16:56</created>
+		<closed>2017-03-10 13:52:00</closed>
+	</bug>
+	<bug>
+		<id>230</id>
+		<title>"Select new file" and session expiry</title>
+		<body>When uploading a file: 1. Select a file 2. See the calibrations/standards preview 3. Let the session expire 4. Select New File 5. Try to upload - error with no list (see screenshot)  ![skjermbilde 2016-08-12 kl 09 53 09](https://cloud.githubusercontent.com/assets/733650/17616058/97a64940-6072-11e6-8a13-a02bd643e7c2.png) </body>
+		<created>2016-08-12 07:52:52</created>
+		<closed>2018-01-30 13:22:05</closed>
+	</bug>
+	<bug>
+		<id>229</id>
+		<title>IGNORED/BAD records not visible on data screen</title>
+		<body>The IGNORED/BAD flags on the data screen part don't actually display those records. </body>
+		<created>2016-08-11 19:13:34</created>
+		<closed>2016-08-12 07:59:03</closed>
+	</bug>
+	<bug>
+		<id>218</id>
+		<title>Single sensor plots have two values</title>
+		<body>When we plot the mean Intake Temp etc., and when there is only one sensor, we should plot only one data set. We seem to be plotting both the mean and the single sensor. </body>
+		<created>2016-08-04 11:43:12</created>
+		<closed>2018-01-30 13:23:37</closed>
+	</bug>
+	<bug>
+		<id>216</id>
+		<title>File with no measurements</title>
+		<body>If you have a file (crossing) with no plottable measurements, the data screen gets very upset. </body>
+		<created>2016-08-02 07:38:59</created>
+		<closed>2018-01-30 13:24:53</closed>
+	</bug>
+	<bug>
+		<id>196</id>
+		<title>Data screen error handling</title>
+		<body>Implement error handling in the JS and Ajax calls on the data screen page </body>
+		<created>2016-07-13 19:57:18</created>
+		<closed>2018-01-30 13:28:37</closed>
+	</bug>
+	<bug>
+		<id>185</id>
+		<title>Add IGNORED/NEEDS FLAG value to stat bars/file summary</title>
+		<body>The stat bars seem to be showing IGNORED and NEEDS FLAG values as UNKNOWN.  Also see if the file stats can be updated. </body>
+		<created>2016-07-04 12:44:50</created>
+		<closed>2016-12-09 16:03:08</closed>
+	</bug>
+	<bug>
+		<id>182</id>
+		<title>Cancel button doesn't work on file spec page</title>
+		<body>New Instrument, second page (for the file format etc.) - the Cancel button does nothing. </body>
+		<created>2016-06-28 10:02:45</created>
+		<closed>2016-12-09 16:04:34</closed>
+	</bug>
+	<bug>
+		<id>178</id>
+		<title>Select New File doesn't work</title>
+		<body>After a file upload fails, you can click 'Select New File'. This hides the errors, but doesn't re-show the file selection box. </body>
+		<created>2016-06-22 13:33:10</created>
+		<closed>2016-08-05 09:43:23</closed>
+	</bug>
+	<bug>
+		<id>177</id>
+		<title>Deleting files that have been processed fails</title>
+		<body>Trying to delete a file that's been through data reduction and qc fails, because it doesn't delete all the data from the `raw_data`, `data_reduction` and `qc` tables first. </body>
+		<created>2016-06-22 13:17:46</created>
+		<closed>2016-08-23 13:44:14</closed>
+	</bug>
+	<bug>
+		<id>168</id>
+		<title>No spinner on graph refresh</title>
+		<body>The update spinner isn't showing up when a new graph is being prepared. </body>
+		<created>2016-06-16 09:08:55</created>
+		<closed>2018-01-30 13:39:34</closed>
+	</bug>
+	<bug>
+		<id>166</id>
+		<title>Add axis labels to plots</title>
+		<body>The plots currently don't have axis labels, and they should. The labels will have to come in the data fro the AJAX request, but independently of the CSV data. </body>
+		<created>2016-06-16 08:19:41</created>
+		<closed>2016-08-01 12:21:39</closed>
+	</bug>
+	<bug>
+		<id>165</id>
+		<title>Data Access Security</title>
+		<body>All requests for file/instruments/calibrations should ensure that the user has access to those items. </body>
+		<created>2016-06-15 08:55:31</created>
+		<closed>2018-01-30 13:39:33</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>Multiple resize events fired on data screen</title>
+		<body>When the data screen is resized, multiple resize events get fired during the drag. This needs to be prevented. Look at CMS's answer in the following:  http://stackoverflow.com/questions/2854407/javascript-jquery-window-resize-how-to-fire-after-the-resize-is-completed </body>
+		<created>2016-06-09 14:12:28</created>
+		<closed>2018-01-30 13:40:29</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>Handle missing values in data reduction and QC</title>
+		<body>Missing/invalid values during data reduction need to be detected so that exceptions don't get thrown - the record should be marked bad and calculations should continue. This should auto-set a Bad flag on the QC field AND the WOCE field, since without a new file upload the record CANNOT be good. </body>
+		<created>2016-03-21 20:18:35</created>
+		<closed>2016-08-04 20:19:56</closed>
+	</bug>
+	<bug>
+		<id>135</id>
+		<title>setFlag methods do no checking</title>
+		<body>The `setFlag`/`setWoceFlag` methods in the `DataRecord` and `QCRecord` classes do not check the passed in flag to make sure it's valid. They should. Note that `DataRecord` will need slightly different checks on `setFlag` as it can have extra values. </body>
+		<created>2016-02-25 14:19:13</created>
+		<closed>2016-03-29 23:36:46</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>Handle resizing on file list page</title>
+		<body>The table on the file list page should be redrawn when the window is resized.  We agree to remove the internal scrollbar from the table, using instead the default browser scrollbar. As this list, and other lists, can get long, the controls on the bottom should be moved to above the table. This applies to the dataset, files and instrument list pages. </body>
+		<created>2016-02-23 17:31:49</created>
+		<closed>2018-04-11 09:24:27</closed>
+	</bug>
+	<bug>
+		<id>130</id>
+		<title>Thread name not set on jobs</title>
+		<body>The thread name is not set when job threads are allocated and executed. </body>
+		<created>2016-02-16 18:52:18</created>
+		<closed>2016-03-11 12:59:23</closed>
+	</bug>
+	<bug>
+		<id>123</id>
+		<title>Ajax refreshes don't handle errors</title>
+		<body>The jobs page and file list page do auto-updates, but don't handle errors or the server disappearing. </body>
+		<created>2016-01-31 17:47:03</created>
+		<closed>2018-01-30 13:49:10</closed>
+	</bug>
+	<bug>
+		<id>118</id>
+		<title>current_job in data_file not updating</title>
+		<body>...At the end of the Extraction job. No idea why. Possibly a lock somewhere. </body>
+		<created>2016-01-27 19:51:04</created>
+		<closed>2016-04-17 20:55:58</closed>
+	</bug>
+	<bug>
+		<id>112</id>
+		<title>Pressing Cancel on the Delete File confirm causes an exception</title>
+		<body>Fix it! </body>
+		<created>2016-01-27 19:46:05</created>
+		<closed>2017-02-14 09:51:45</closed>
+	</bug>
+	<bug>
+		<id>100</id>
+		<title>Can select blank instrument</title>
+		<body>On the upload page, selecting the 'blank' instrument will get processed, because I can't get `getSelectedValue` working right now (no internet). </body>
+		<created>2016-01-27 19:32:32</created>
+		<closed>2017-03-13 12:10:52</closed>
+	</bug>
+	<bug>
+		<id>97</id>
+		<title>getDates in RawDataFile includes ignored lines</title>
+		<body>It shouldn't. </body>
+		<created>2016-01-27 19:29:24</created>
+		<closed>2017-03-10 14:23:07</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>POST forms</title>
+		<body>All forms must be defined with `method="post"` </body>
+		<created>2016-01-27 18:58:50</created>
+		<closed>2017-02-16 12:49:07</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>Jobs list error handling</title>
+		<body>At the minute, errors result in -1 and a stack trace. Think of something better. </body>
+		<created>2016-01-27 18:58:15</created>
+		<closed>2018-01-30 13:55:14</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>User menu height</title>
+		<body>Currently fixed in the CSS. It should be dynamic for the number of entries. This probably means calculating the height through JS in the page, with it knowing how many menu entries there are. </body>
+		<created>2016-01-27 18:55:41</created>
+		<closed>2016-12-27 15:45:54</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>getCalibrationList error handling</title>
+		<body>In `CalibrationsBean`, `getCalibrationsList` gets the list from the database on demand and returns it. Any exceptions are thrown. There is almost certainly a better way to handle this. </body>
+		<created>2016-01-27 18:38:00</created>
+		<closed>2018-01-30 13:58:59</closed>
+	</bug>
+	<bug>
+		<id>81</id>
+		<title>No clashing dates</title>
+		<body>Don't allow calibrations or standards to have the same dates. (Independently, idiot.) </body>
+		<created>2016-01-27 18:33:23</created>
+		<closed>2017-03-14 10:31:09</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>Error checking on SensorCode class</title>
+		<body>There is no error checking on the `SensorCode` class </body>
+		<created>2016-01-27 18:28:02</created>
+		<closed>2018-01-30 14:00:27</closed>
+	</bug>
+	<bug>
+		<id>63</id>
+		<title>Buttons with long text</title>
+		<body>Buttons with long text get truncated. Consider using min-width property. </body>
+		<created>2015-11-28 11:02:15</created>
+		<closed>2016-01-27 17:49:39</closed>
+	</bug>
+	<bug>
+		<id>56</id>
+		<title>Sample file column menu doesn't follow scroll</title>
+		<body>If you show the column menu then horizontally scroll the table, the menu stays where it is. Hiding the menu on outside click will probably do the job. </body>
+		<created>2015-11-26 11:25:03</created>
+		<closed>2018-01-30 14:07:37</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>Sample file upload failures</title>
+		<body>The sample file upload frequently fails with a `FileNotFoundException`. Not really sure why, but it needs fixing. </body>
+		<created>2015-11-25 17:43:03</created>
+		<closed>2015-11-28 10:51:52</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>Track sample file extraction thread in thread pool</title>
+		<body>The Sample File Extraction thread for new instruments is not tracked by the Job Thread Pool. Make it so. </body>
+		<created>2015-11-10 11:45:01</created>
+		<closed>2018-01-30 14:07:36</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>First login fails</title>
+		<body>When the application is first started, the first attempt to log in doesn't work - it goes straight back to the login page. After that it's fine.  This may or may not be intermittent. </body>
+		<created>2015-11-10 10:10:32</created>
+		<closed>2018-01-30 14:07:36</closed>
+	</bug>
+	<bug>
+		<id>41</id>
+		<title>Don't allow two instruments with the same name</title>
+		<body>Check on the Names page.  Note that this is per-user only. </body>
+		<created>2015-11-07 19:14:37</created>
+		<closed>2017-02-15 16:07:44</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>Pointer on user menu</title>
+		<body>The pointer on the user menu is a text selector. Should be a link clicky one.  Also check that the text can't be selected. </body>
+		<created>2015-11-07 18:49:03</created>
+		<closed>2016-12-27 15:45:33</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>Fix labels on separator tabs (file_spec.xhtml)</title>
+		<body>The labels are `for` the wrong ids. </body>
+		<created>2015-11-07 17:36:07</created>
+		<closed>2015-11-07 17:54:01</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>Prevent starting New Instrument in the middle</title>
+		<body>It's possible to directly type an URL to get to the middle of the New Instrument page sequence without having started it first. Figure out how to stop it.  The general idea would be to check the underlying session bean and see what stage we're at, and go back to the latest stage. </body>
+		<created>2015-11-07 16:53:07</created>
+		<closed>2018-01-30 14:07:36</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>Instrument sensor names - auto move entered names to top</title>
+		<body>If you enter a name for the second sensor but not the first, the page will complain about a missing value. Use javascript to auto-move it to the first entry before the form gets submitted. </body>
+		<created>2015-11-06 17:10:29</created>
+		<closed>2017-02-16 13:04:51</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>Fix Job unit tests for added config parameter in constructor</title>
+		<body></body>
+		<created>2015-11-04 16:59:28</created>
+		<closed>2018-01-30 14:02:08</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>Keep track of running threads</title>
+		<body>The Job Manager doesn't track running threads, so if all the threads mysteriously disappear, the job thread pool will never have anything in. Set up something to recreate threads if we lose track of them. </body>
+		<created>2015-11-04 15:29:29</created>
+		<closed>2015-11-04 16:21:53</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>Thread names are not set when jobs are started</title>
+		<body>Also check that the thread name is reset when the thread is returned to the pool </body>
+		<created>2015-11-04 14:52:18</created>
+		<closed>2016-12-27 18:27:58</closed>
+	</bug>
+</bugs>

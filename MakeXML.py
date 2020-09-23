@@ -71,6 +71,8 @@ def make(fullname, nlang):
         try:
             if(detect(title) != nlang):
                 if(body != ""):
+                    bodynostack = re.sub('```(.*?)```','',body)
+                    bodynourl = re.sub("https?://[\w!?/+\-_~=;.,*&@#$%()'[\]]+", '', bodynostack)
                     if(detect(body) != nlang):
                         print("\tNot " + nlang +".")
                         continue

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="webmagic">
+	<bug id="701" opendate="2017-11-29 05:27:36" fixdate="2017-12-02 03:16:47">
+		<buginformation>
+			<summary>Https下无法抓取只支持TLS1.2的站点</summary>
+			<description>WebMagic默认的HttpClient只会用TLSv1去请求，对于某些只支持TLS1.2的站点（例如 `https://juejin.im/`） ，就会报错：  ``` javax.net.ssl.SSLException: Received fatal alert: protocol_version at sun.security.ssl.Alerts.getSSLException(Alerts.java:208) at sun.security.ssl.Alerts.getSSLException(Alerts.java:154) at sun.security.ssl.SSLSocketImpl.recvAlert(SSLSocketImpl.java:2023) at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1125) at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1375) at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1403) at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1387) at org.apache.http.conn.ssl.SSLConnectionSocketFactory.createLayeredSocket(SSLConnectionSocketFactory.java:394) at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:353) at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:141) at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353) at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380) at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) at us.codecraft.webmagic.downloader.HttpClientDownloader.download(HttpClientDownloader.java:85) ```  现在的修改方式是在`HttpClientGenerator`中构建`SSLConnectionSocketFactory`时加上支持。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>webmagic-core/src/test/java/us/codecraft/webmagic/downloader/HttpClientDownloaderTest.java</file>
+			<file>webmagic-core/src/test/java/us/codecraft/webmagic/downloader/SSLCompatibilityTest.java</file>
+			<file>webmagic-core/src/main/java/us/codecraft/webmagic/downloader/HttpClientGenerator.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

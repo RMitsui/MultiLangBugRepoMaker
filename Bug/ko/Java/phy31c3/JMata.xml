@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>100</id>
+		<title>whenInput 바로 뒤에서 dontSwitch를 정의할 수 없음</title>
+		<body>- defineBaseRule이 생기면서 input에 대해 아무 동작하지 않게끔 덮어쓰기 동작이 가능해야 됨 - 기존엔 아무 동작하지 않는 정의를 의미없는 정의라 보고 허용하지 않음 - 이젠 해줘야됨</body>
+		<created>2018-03-18 13:48:30</created>
+		<closed>2018-03-18 14:18:31</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>오류가 있는 머신 정의에 대한 처리</title>
+		<body>**오류 케이스** - A라는 상태에서 B라는 상태로 전이하는 규칙이 있음 - 그런데 B 상태에 대한 정의는 존재하지 않음 - 이 경우 런타임 시 NullPointerException 발생 (존재하지 않는 상태(B)의 진입 동작을 호출하는 시점)</body>
+		<created>2017-04-05 14:30:51</created>
+		<closed>2017-06-17 16:16:45</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>시작 상태에 기민한 전이 규칙이 있을 경우 제대로 작동 안하는 버그</title>
+		<body>- 시작 상태에 기민한 전이 규칙이 있으면 해당 규칙이 작동하지 않음</body>
+		<created>2017-04-02 13:20:26</created>
+		<closed>2017-04-02 15:20:01</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>RejectedExecutionException 발생 케이스 추적</title>
+		<body>- Executor Shutdown 상태에서 요청이 들어올 경우 발생 - 해당 루틴 추적</body>
+		<created>2016-11-25 06:29:37</created>
+		<closed>2016-12-08 05:42:48</closed>
+	</bug>
+	<bug>
+		<id>19</id>
+		<title>onExit 호출 안됨</title>
+		<body>- 기본 퇴장함수 (justSwitchTo로 상태 전이 시 사용) 호출 안됨 </body>
+		<created>2016-10-18 02:23:42</created>
+		<closed>2016-10-20 17:02:51</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>JMata release 상태 보완</title>
+		<body>- 현재 JMata.release() 호출 후에도 머신 빌드 등의 동작을 수행 가능 - release 플래그 같은걸 만들어서 release() 호출 후에는 JMata 사용 불가능 하도록 만들어야 됨 </body>
+		<created>2016-08-11 04:57:03</created>
+		<closed>2016-10-21 09:09:23</closed>
+	</bug>
+	<bug>
+		<id>7</id>
+		<title>머신 종료 시 태그 삭제 구현</title>
+		<body>- 어떤 태그의 모든 머신 인스턴스가 종료되면 해당 태그를 머신 맵에서 삭제 </body>
+		<created>2016-08-11 04:37:50</created>
+		<closed>2016-10-20 17:00:53</closed>
+	</bug>
+	<bug>
+		<id>2</id>
+		<title>상태 정의 중 입력 신호 중복 검사 더 철저히</title>
+		<body>상태 정의 자료 구조 - 입력 신호에 대한 동작을 정의한 맵이 분산 되어 있음 (JMConsumer, JMBiConsumer) - 입력 신호 하나 당 두 맵 모두에 대해 중복 검사를 실시 해야 됨 </body>
+		<created>2016-08-02 15:00:41</created>
+		<closed>2016-08-03 09:33:39</closed>
+	</bug>
+</bugs>

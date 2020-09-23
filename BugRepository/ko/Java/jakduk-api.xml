@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="jakduk-api">
+	<bug id="328" opendate="2018-09-10 14:35:40" fixdate="2018-09-17 14:31:49">
+		<buginformation>
+			<summary>검색어 인덱싱 안됨</summary>
+			<description>``` Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.jakduk.api.model.elasticsearch.EsSearchWord` (no Creators, like default construct, exist): cannot deserialize from Object value (no delegate- or property-based Creator)  at [Source: (byte[])"{"word":"검색","registerDate":"2018-09-10T23:31:41.752"}"; line: 1, column: 2] at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:67) ~[jackson-databind-2.9.6.jar!/:2.9.6] at com.fasterxml.jackson.databind.DeserializationContext.reportBadDefinition(DeserializationContext.java:1451) ~[jackson-databind-2.9.6.jar!/:2.9.6] at com.fasterxml.jackson.databind.DeserializationContext.handleMissingInstantiator(DeserializationContext.java:1027) ~[jackson-databind-2.9.6.jar!/:2.9.6] at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1297) ~[jackson-databind-2.9.6.jar!/:2.9.6] at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:326) ~[jackson-databind-2.9.6.jar!/:2.9.6] at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:159) ~[jackson-databind-2.9.6.jar!/:2.9.6] at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4013) ~[jackson-databind-2.9.6.jar!/:2.9.6] at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3091) ~[jackson-databind-2.9.6.jar!/:2.9.6] at com.jakduk.api.common.util.ObjectMapperUtils.readValue(ObjectMapperUtils.java:39) ~[classes!/:na] at com.jakduk.api.listener.ElasticsearchListener.receive(ElasticsearchListener.java:80) ~[classes!/:na] at sun.reflect.GeneratedMethodAccessor343.invoke(Unknown Source) ~[na:na] at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_144]  ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/jakduk/api/model/embedded/UserPictureInfo.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/admin/JakduCommentWriteRequest.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/AdminRestController.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/UserProfileResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/home/HomeGallery.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/HomeDescription.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/WriteArticleComment.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/admin/JakduWriteList.java</file>
+			<file>src/main/java/com/jakduk/api/model/rabbitmq/EmailPayload.java</file>
+			<file>src/test/java/com/jakduk/api/auth/AuthMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/jakdu/JakduScheduleResponse.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/BoardLog.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/AttendanceLeague.java</file>
+			<file>src/main/java/com/jakduk/api/service/UserService.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/admin/HomeDescriptionRequest.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/SimpleWriter.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/admin/FootballClubRequest.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/WriteArticle.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/UserPasswordFindForm.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/CommonWriter.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/GetArticle.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/admin/MyJakduRequest.java</file>
+			<file>src/test/java/com/jakduk/api/rabbitmq/RabbitMQPublisherTest.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/StatsRestController.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/ArticleCommentLog.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/ArticleOnList.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/search/SearchCommentResult.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/GetArticleDetailResponse.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsGallerySource.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/ArticleStatus.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/LinkedItem.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/UserProfile.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/JakduScheduleScore.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/admin/LeagueAttendanceForm.java</file>
+			<file>src/main/java/com/jakduk/api/model/aggregate/BoardFeelingCount.java</file>
+			<file>src/test/java/com/jakduk/api/board/ArticleCommentMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/GallerySimple.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/Gallery.java</file>
+			<file>src/main/java/com/jakduk/api/model/aggregate/SupporterCount.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/Mail.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/UserPasswordResetForm.java</file>
+			<file>src/main/java/com/jakduk/api/common/util/AuthUtils.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsTermsBucket.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/UserOnPasswordUpdate.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/GetArticleFeelingUsersResponse.java</file>
+			<file>src/main/java/com/jakduk/api/configuration/security/JakdukAuthority.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/AuthRestController.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/gallery/GalleryUploadResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/ArticleLog.java</file>
+			<file>src/main/java/com/jakduk/api/common/board/category/BoardCategoryGenerator.java</file>
+			<file>src/main/java/com/jakduk/api/service/AdminService.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/gallery/LinkedItemForm.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/LocalName.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/BoardRestController.java</file>
+			<file>src/main/java/com/jakduk/api/configuration/rabbitmq/RabbitMQ.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/GetBoardCategoriesResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/gallery/GalleryOnList.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsJakduComment.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/JakduComment.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/ArticleSimple.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/Jakdu.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsArticleSource.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/UserPasswordFindResponse.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/AttendanceClub.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/UserSimple.java</file>
+			<file>src/test/java/com/jakduk/api/board/ArticleMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/search/ArticleSource.java</file>
+			<file>src/main/java/com/jakduk/api/common/rabbitmq/RabbitMQPublisher.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/User.java</file>
+			<file>src/test/java/com/jakduk/api/board/BoardCategoryTests.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsParentArticle.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/gallery/SurroundingsGallery.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/search/SearchArticleResult.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/LoginSocialUserForm.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/UserFeelingResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/home/HomeArticleComment.java</file>
+			<file>src/main/java/com/jakduk/api/listener/EmailListener.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/GalleryOnBoard.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/GetArticlesTopsResponse.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/LocalSimpleName.java</file>
+			<file>src/main/java/com/jakduk/api/service/GalleryService.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/RestErrorResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/admin/JakduScheduleWrite.java</file>
+			<file>src/main/java/com/jakduk/api/common/board/category/BoardCategory.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsSearchWord.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/LoginEmailUserForm.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/HomeRestController.java</file>
+			<file>src/main/java/com/jakduk/api/controller/ViewExceptionHandler.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/DeleteArticleResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/BoardGallerySimple.java</file>
+			<file>src/test/java/com/jakduk/api/search/SearchMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/JakduScheduleGroup.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/UserPasswordForm.java</file>
+			<file>src/main/java/com/jakduk/api/service/JakduService.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsArticle.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/CommonFeelingUser.java</file>
+			<file>src/main/java/com/jakduk/api/common/rabbitmq/ElasticsearchRoutingKey.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/GetArticlesResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/JakduRestController.java</file>
+			<file>src/main/java/com/jakduk/api/service/SearchService.java</file>
+			<file>src/test/java/com/jakduk/api/mail/MailRepositoryTests.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/ArticleDetail.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsCommentSource.java</file>
+			<file>src/test/java/com/jakduk/api/home/HomeMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/AttemptSocialUser.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/ArticleCommentSimple.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/Token.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/GalleryRestController.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/home/HomeLatestItemsResponse.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/ArticleComment.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/search/SearchUnifiedResponse.java</file>
+			<file>src/main/java/com/jakduk/api/mail/EmailService.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/UserProfileEditForm.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/stats/SupportersDataResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/GetArticleComment.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/RestExceptionHandler.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/SearchRestController.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsGallery.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/GetArticleDetailCommentsResponse.java</file>
+			<file>src/main/java/com/jakduk/api/model/aggregate/CommonCount.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/SocialProfile.java</file>
+			<file>src/main/java/com/jakduk/api/common/util/FileUtils.java</file>
+			<file>src/main/java/com/jakduk/api/service/ArticleService.java</file>
+			<file>src/test/java/com/jakduk/api/user/UserMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/ArticleOnRSS.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/ArticleGallery.java</file>
+			<file>src/main/java/com/jakduk/api/configuration/security/UserDetailServiceImpl.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/admin/JakduCommentsResponse.java</file>
+			<file>src/test/java/com/jakduk/api/notification/NotificationTest.java</file>
+			<file>src/main/java/com/jakduk/api/common/rabbitmq/EmailRoutingKey.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/gallery/GalleryDetail.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/home/HomeArticle.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/search/SearchGalleryResult.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/Competition.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/ArticleItem.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/UserPicture.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/gallery/GalleriesResponse.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/JakduSchedule.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/admin/AttendanceClubForm.java</file>
+			<file>src/test/java/com/jakduk/api/user/UserRepositoryTests.java</file>
+			<file>src/main/java/com/jakduk/api/configuration/security/UserDetailsImpl.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/gallery/GalleryResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/user/SessionUser.java</file>
+			<file>src/main/java/com/jakduk/api/configuration/JakdukProperties.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/Encyclopedia.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/Article.java</file>
+			<file>src/main/java/com/jakduk/api/exception/ServiceException.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/ArticleOnSitemap.java</file>
+			<file>src/main/java/com/jakduk/api/listener/ElasticsearchListener.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/WriteArticleResponse.java</file>
+			<file>src/main/java/com/jakduk/api/model/aggregate/BoardTop.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/Sequence.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/FootballClubOrigin.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/GalleryStatus.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/board/LatestArticle.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/search/PopularSearchWordResult.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsComment.java</file>
+			<file>src/main/java/com/jakduk/api/model/db/FootballClub.java</file>
+			<file>src/main/java/com/jakduk/api/exception/ServiceError.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/UserRestController.java</file>
+			<file>src/main/java/com/jakduk/api/service/CommonService.java</file>
+			<file>src/main/java/com/jakduk/api/model/simple/JakduOnSchedule.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="295" opendate="2017-10-12 03:58:39" fixdate="2017-10-12 14:38:23">
+		<buginformation>
+			<summary>게시물 상세 에러</summary>
+			<description>게시물 상세 누르면.. ``` {"code":"NOT_FOUND_USER","message":"회원을 찾을 수 없습니다."} ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/jakduk/api/common/util/AuthUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="293" opendate="2017-10-11 12:31:01" fixdate="2017-10-12 14:18:38">
+		<buginformation>
+			<summary>그림 이름 바꾸기가 안됨</summary>
+			<description>게시판에서 그림 업로드 하고 이름 바꾸기 해서 저장하면 안바뀌어져 있음</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/jakduk/api/common/util/AuthUtils.java</file>
+			<file>src/main/java/com/jakduk/api/service/GalleryService.java</file>
+			<file>src/main/java/com/jakduk/api/model/embedded/GalleryStatus.java</file>
+			<file>src/test/java/com/jakduk/api/board/ArticleCommentMvcTests.java</file>
+			<file>src/test/java/com/jakduk/api/auth/TestMvcConfig.java</file>
+			<file>src/test/java/com/jakduk/api/auth/AuthMvcTests.java</file>
+			<file>src/test/java/com/jakduk/api/board/ArticleMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/BoardRestController.java</file>
+			<file>src/main/java/com/jakduk/api/common/Constants.java</file>
+			<file>src/test/java/com/jakduk/api/search/SearchMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/service/ArticleService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="291" opendate="2017-10-10 02:43:19" fixdate="2017-10-11 14:26:33">
+		<buginformation>
+			<summary>검색 기능 복구</summary>
+			<description>몽고DB document 형식이 바뀌면서 그게 맞게 수정해 줘야 함</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsTermsBucket.java</file>
+			<file>src/test/java/com/jakduk/api/search/SearchMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/common/rabbitmq/ElasticsearchRoutingKey.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/search/SearchBoardResult.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsArticleSource.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/search/ArticleSource.java</file>
+			<file>src/test/java/com/jakduk/api/board/ArticleMvcTests.java</file>
+			<file>src/main/java/com/jakduk/api/service/SearchService.java</file>
+			<file>src/main/java/com/jakduk/api/common/Constants.java</file>
+			<file>src/main/java/com/jakduk/api/common/rabbitmq/RabbitMQPublisher.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsParentArticle.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsCommentSource.java</file>
+			<file>src/test/java/com/jakduk/api/common/RabbitMQRoutingKeyTest.java</file>
+			<file>src/test/java/com/jakduk/api/rabbitmq/RabbitMQPublisherTest.java</file>
+			<file>src/test/java/com/jakduk/api/search/SearchServiceTest.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsGallerySource.java</file>
+			<file>src/main/java/com/jakduk/api/listener/ElasticsearchListener.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/vo/search/SearchUnifiedResponse.java</file>
+			<file>src/main/java/com/jakduk/api/restcontroller/SearchRestController.java</file>
+			<file>src/main/java/com/jakduk/api/model/elasticsearch/EsSearchWord.java</file>
+			<file>src/main/java/com/jakduk/api/service/ArticleService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="269" opendate="2017-08-07 01:01:39" fixdate="2017-08-09 14:18:57">
+		<buginformation>
+			<summary>글 목록에서 싫어요 갯수 0 으로 나옴</summary>
+			<description>&lt;img width="751" alt="2017-08-07 10 00 41" src="https://user-images.githubusercontent.com/1825642/29008777-591af5da-7b57-11e7-9a40-71c815f288d9.png"&gt;  저 글은 싫어요가 하나 있지만, 목록에서는 싫어요가 0으로 나옴. api 잘못인듯</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/jakduk/api/model/etc/BoardFeelingCount.java</file>
+			<file>src/test/java/com/jakduk/api/board/BoardFreeRepositoryTests.java</file>
+			<file>src/main/java/com/jakduk/api/repository/board/free/BoardFreeRepositoryCustom.java</file>
+			<file>src/main/java/com/jakduk/api/service/BoardFreeService.java</file>
+			<file>src/main/java/com/jakduk/api/dao/BoardDAO.java</file>
+			<file>src/main/java/com/jakduk/api/repository/board/free/BoardFreeRepositoryImpl.java</file>
+			<file>src/test/java/com/jakduk/api/BoardTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="251" opendate="2017-07-17 12:02:12" fixdate="2017-07-27 16:05:53">
+		<buginformation>
+			<summary>검색어 엘라스틱서치에 색인할때 에러</summary>
+			<description>``` 2017-07-17 17:04:07.440  WARN 6667 --- [SimpleAsyncTaskExecutor-1] s.a.r.l.ConditionalRejectingErrorHandler : Execution of Rabbit message listener failed.  org.springframework.amqp.rabbit.listener.exception.ListenerExecutionFailedException: Retry Policy Exhausted         at org.springframework.amqp.rabbit.retry.RejectAndDontRequeueRecoverer.recover(RejectAndDontRequeueRecoverer.java:45) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.config.StatelessRetryOperationsInterceptorFactoryBean$1.recover(StatelessRetryOperationsInterceptorFactoryBean.java:66) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.config.StatelessRetryOperationsInterceptorFactoryBean$1.recover(StatelessRetryOperationsInterceptorFactoryBean.java:59) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.retry.interceptor.RetryOperationsInterceptor$ItemRecovererCallback.recover(RetryOperationsInterceptor.java:141) ~[spring-retry-1.2.0.RELEASE.jar!/:na]         at org.springframework.retry.support.RetryTemplate.handleRetryExhausted(RetryTemplate.java:512) ~[spring-retry-1.2.0.RELEASE.jar!/:na]         at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:350) ~[spring-retry-1.2.0.RELEASE.jar!/:na]         at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:179) ~[spring-retry-1.2.0.RELEASE.jar!/:na]         at org.springframework.retry.interceptor.RetryOperationsInterceptor.invoke(RetryOperationsInterceptor.java:115) ~[spring-retry-1.2.0.RELEASE.jar!/:na]         at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.3.9.RELEASE.jar!/:4.3.9.RELEASE]         at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213) ~[spring-aop-4.3.9.RELEASE.jar!/:4.3.9.RELEASE]         at com.sun.proxy.$Proxy112.invokeListener(Unknown Source) ~[na:na]         at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.invokeListener(SimpleMessageListenerContainer.java:1276) [spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:726) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:1219) [spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:1189) [spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1500(SimpleMessageListenerContainer.java:97) [spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1421) [spring-rabbit-1.7.3.RELEASE.jar!/:na]         at java.lang.Thread.run(Thread.java:748) [na:1.8.0_131] Caused by: org.springframework.amqp.AmqpRejectAndDontRequeueException: org.springframework.amqp.rabbit.listener.exception.ListenerExecutionFailedException: Listener threw exception         ... 18 common frames omitted Caused by: org.springframework.amqp.rabbit.listener.exception.ListenerExecutionFailedException: Listener threw exception         at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.wrapToListenerExecutionFailedExceptionIfNeeded(AbstractMessageListenerContainer.java:915) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:825) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:745) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$001(SimpleMessageListenerContainer.java:97) [spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$1.invokeListener(SimpleMessageListenerContainer.java:189) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at sun.reflect.GeneratedMethodAccessor447.invoke(Unknown Source) ~[na:na]         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_131]         at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_131]         at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333) ~[spring-aop-4.3.9.RELEASE.jar!/:4.3.9.RELEASE]         at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-4.3.9.RELEASE.jar!/:4.3.9.RELEASE]         at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157) ~[spring-aop-4.3.9.RELEASE.jar!/:4.3.9.RELEASE]         at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:91) ~[spring-retry-1.2.0.RELEASE.jar!/:na]         at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:286) ~[spring-retry-1.2.0.RELEASE.jar!/:na]         ... 12 common frames omitted Caused by: org.springframework.amqp.support.converter.MessageConversionException: Failed to convert Message content         at org.springframework.amqp.support.converter.Jackson2JsonMessageConverter.fromMessage(Jackson2JsonMessageConverter.java:175) ~[spring-amqp-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.adapter.AbstractAdaptableMessageListener.extractMessage(AbstractAdaptableMessageListener.java:236) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter$MessagingMessageConverterAdapter.extractPayload(MessagingMessageListenerAdapter.java:216) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.support.converter.MessagingMessageConverter.fromMessage(MessagingMessageConverter.java:118) ~[spring-amqp-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.toMessagingMessage(MessagingMessageListenerAdapter.java:116) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:102) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:822) ~[spring-rabbit-1.7.3.RELEASE.jar!/:na]         ... 23 common frames omitted Caused by: com.fasterxml.jackson.databind.JsonMappingException: Can not construct instance of java.time.LocalDateTime: no long/Long-argument constructor/factory method to deserialize from Number value (1500278645433)  at [Source: {"word":"h9","registerDate":1500278645433}; line: 1, column: 29] (through reference chain: com.jakduk.core.model.elasticsearch.EsSearchWord["registerDate"])         at com.fasterxml.jackson.databind.JsonMappingException.from(JsonMappingException.java:270) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.DeserializationContext.instantiationException(DeserializationContext.java:1456) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.DeserializationContext.handleMissingInstantiator(DeserializationContext.java:1012) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.ValueInstantiator.createFromLong(ValueInstantiator.java:267) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.std.StdValueInstantiator.createFromLong(StdValueInstantiator.java:355) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromNumber(BeanDeserializerBase.java:1247) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.BeanDeserializer._deserializeOther(BeanDeserializer.java:161) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:150) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.SettableBeanProperty.deserialize(SettableBeanProperty.java:504) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.BeanDeserializer._deserializeWithErrorWrapping(BeanDeserializer.java:511) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.BeanDeserializer._deserializeUsingPropertyBased(BeanDeserializer.java:400) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1191) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:314) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:148) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:3798) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:2880) ~[jackson-databind-2.8.8.jar!/:2.8.8]         at org.springframework.amqp.support.converter.Jackson2JsonMessageConverter.convertBytesToObject(Jackson2JsonMessageConverter.java:194) ~[spring-amqp-1.7.3.RELEASE.jar!/:na]         at org.springframework.amqp.support.converter.Jackson2JsonMessageConverter.fromMessage(Jackson2JsonMessageConverter.java:164) ~[spring-amqp-1.7.3.RELEASE.jar!/:na]         ... 29 common frames omitted ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>api/src/test/java/com/jakduk/api/search/SearchServiceTest.java</file>
+			<file>api/src/main/java/com/jakduk/api/restcontroller/SearchRestController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="250" opendate="2017-07-16 04:21:15" fixdate="2017-07-27 14:59:03">
+		<buginformation>
+			<summary>그림 이름 변경 안됨</summary>
+			<description>글수정 -&gt; 그림 이름 바꾸고 저장 -&gt; 글 상세로 보면 바뀌지 않음.  추가적으로 기본적으로 이름을 쓰지 않으면 글 제목으로 설정이 되어야 함.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>api/src/main/java/com/jakduk/api/restcontroller/GalleryRestController.java</file>
+			<file>api/src/main/java/com/jakduk/api/service/BoardFreeService.java</file>
+			<file>api/src/main/java/com/jakduk/api/restcontroller/UserRestController.java</file>
+			<file>api/src/main/java/com/jakduk/api/vo/board/BoardCommentForm.java</file>
+			<file>api/src/main/java/com/jakduk/api/configuration/ApiSecurityConfig.java</file>
+			<file>api/src/main/java/com/jakduk/api/service/GalleryService.java</file>
+			<file>api/src/main/java/com/jakduk/api/restcontroller/BoardRestController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="243" opendate="2017-06-29 11:12:03" fixdate="2017-07-07 12:42:49">
+		<buginformation>
+			<summary>내정보 수정으로 아바타 교체하면, 세션에도 바꿀것</summary>
+			<description>이전 이미지가 계속 노출되고 있음. 재로그인 하기 전까지 그대로임.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>api/src/main/java/com/jakduk/api/service/UserService.java</file>
+			<file>api/src/main/java/com/jakduk/api/common/util/AuthUtils.java</file>
+			<file>api/src/main/java/com/jakduk/api/restcontroller/UserRestController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

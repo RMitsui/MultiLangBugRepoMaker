@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="greco">
+	<bug id="177" opendate="2016-01-26 12:28:25" fixdate="2016-01-27 08:46:05">
+		<buginformation>
+			<summary>En el site, en mi cuenta, sale un error si selecciono reservas del mes anterior.</summary>
+			<description>Si estamos en enero y selecciono el mes anterior, resta 1 al valor numérico de mes y queda en 0 que es un valor no admitido. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/ReservationDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="171" opendate="2016-01-20 15:06:43" fixdate="2016-01-21 14:50:24">
+		<buginformation>
+			<summary>Requerir código de activación cuando se modifique la cuenta de correo.</summary>
+			<description>Si el usuario, bien desde la consola, bien desde el site, modifica la cuenta de correo, se generará un nuevo código de activación que le será enviado a su cuenta y que necesitará introducir para hacer login. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/MailProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/MailProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditAccountCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="170" opendate="2016-01-20 11:14:49" fixdate="2016-01-20 11:16:02">
+		<buginformation>
+			<summary>Cambio de correo a la cuenta de Google Apps</summary>
+			<description>Pasar a utilizar la nueva cuenta de Google asociada al dominio alnura.es </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/MailProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="163" opendate="2016-01-04 11:28:05" fixdate="2016-01-04 11:51:47">
+		<buginformation>
+			<summary>Pruebas de github y las ramas</summary>
+			<description>Issue creado para pruebas. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/utils/EMail.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="158" opendate="2015-12-17 11:27:40" fixdate="2015-12-17 11:38:14">
+		<buginformation>
+			<summary>Recurso reservable con mínimo que, al restar de la hora actual, queda antes del inicio</summary>
+			<description>Si tenemos un recurso con inicio 9:00 y fin cualquiera. Mínimo de reserva =2h y son las 10:00 da un error. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/ResourceDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="154" opendate="2015-12-10 16:42:45" fixdate="2015-12-11 11:06:58">
+		<buginformation>
+			<summary>Error al abrir página de reservas bajo ciertas circunstancias </summary>
+			<description>Si tenemos un recurso con las siugentes características:  Disponibilidad: 14:55-15:55 Antelación: 24 minutos. Hora actual posterior al fin de diponibilidad. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/engine/DailySchedule.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/ResourceItem.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ResourceDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="150" opendate="2015-12-09 16:56:55" fixdate="2015-12-21 11:44:12">
+		<buginformation>
+			<summary>Si pulso F5 en página de finalización, crea nuevas suscripciones para mismo usuario.</summary>
+			<description>Si desde un site me suscribo a la comunidad y en la página de "hemos enviado un correo a su admin..." pulsamos F5, no hay ningún control y crea dos suscripciones para un mismo usuario, dejando el sistema inconsistente. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="145" opendate="2015-12-03 10:48:11" fixdate="2015-12-18 11:52:10">
+		<buginformation>
+			<summary>Búsqueda de reservas/edición comunidad. Recolocar página.</summary>
+			<description>Cuando pulsamos buscar (resevas), o, al editar comunidad, cuando volvemos de la edición de recursos, debería haber un marcador al inicio de las respectivas tablas al que ir en lugar de al inicio de página. En un móvil no se ve el resultado. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/AdmReservationCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/AdmReservationBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditResourceCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="140" opendate="2015-11-30 11:05:29" fixdate="2015-11-30 11:44:09">
+		<buginformation>
+			<summary>Site comunidad. En las reservas no sale nada si no hay resultado</summary>
+			<description>En la página de edición de cuenta, al pulsar en buscar, si no hay resultados, no sale nada. Debería aparecer un mensaje indicando que la búsqueda no proporciona resultado alguno. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/EditAccountCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditAccountBBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="139" opendate="2015-11-27 13:30:51" fixdate="2015-11-30 09:27:46">
+		<buginformation>
+			<summary>Contacto admin. El mensaje debe borrarse una vez enviado.</summary>
+			<description>Borrar el mensaje enviado para evitar nuevos envíos. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/ContactBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/ContactCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="138" opendate="2015-11-27 13:28:28" fixdate="2015-11-30 10:07:33">
+		<buginformation>
+			<summary>Contacto admin. El sistema debe avisar si el mensaje es vacío</summary>
+			<description>El mensaje que se envíe debe suprimir blancos por delante y detrás y no permitir envío de consultas en blanco. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/ContactCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="137" opendate="2015-11-27 13:26:40" fixdate="2015-11-30 10:25:02">
+		<buginformation>
+			<summary>Contacto admin. Correo sin remitente</summary>
+			<description>En el correo que se envía desde la opción  "contacta al admin" no se indica el correo del usuario que lanzó la consulta. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/MailProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="135" opendate="2015-11-27 12:34:41" fixdate="2015-11-30 15:28:57">
+		<buginformation>
+			<summary>Reservas confirmadas. Muestra antiguas</summary>
+			<description>La lista de reservas confirmadas (página "mis reservas"), debería mostrar solo aquellas reservas cuya hora de fin sea anterior a la hora actual (teniendo en cuenta el locale de la comunidad). De igual manera, las reservas que no salgan en esta lista debería poder localizarse en el histórico de reservas (página "Mi cuenta"). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/ReservationDAOImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="134" opendate="2015-11-27 11:02:50" fixdate="2015-12-01 10:47:48">
+		<buginformation>
+			<summary>Confirmación de preserva eliminada.</summary>
+			<description>Si se confirma una reserva que, mientras el suscriptor tenía la página de "mis reservas", ha sido eliminada bien por el administrador  o porque caduca, se envía correo de confirmación, aparece mensaje pero la reserva no se realiza.  Hay que hacer que si un prereserva ya no exisite y se pulsa confirmar, se avise de esta circunstancia y no se envíe correo no se muestre un mensaje indicando que se produjo esta circunstancia. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/MyReservationsCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/ReservationItem.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="133" opendate="2015-11-27 10:48:37" fixdate="2015-12-01 11:52:37">
+		<buginformation>
+			<summary>Correo de confirmación de reserva. No indica tipo de recurso.</summary>
+			<description>En el correo, en la lista de reservas confirmadas se indica el nombre de tipo de recurso y no la descripción. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/MailProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ReservationDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/ReservationItem.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="129" opendate="2015-11-26 16:22:17" fixdate="2015-12-09 11:41:44">
+		<buginformation>
+			<summary>Fallo al establecer antelación</summary>
+			<description>Parece que para la antelación toma como referencia la hora de fin del último periodo reservable y no la de inicio. De esta manera, para unidades de reserva de una hora, si ponemos dos horas de antelación podemos reservar 1 hora y, si ponemos 1, no podremos reservar nunca ninguna. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/helpers/ResourceItem.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ResourceDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="128" opendate="2015-11-26 14:45:18" fixdate="2015-12-09 10:44:20">
+		<buginformation>
+			<summary>Limitar a 15 minutos el tiempo mínimo de reserva.</summary>
+			<description>El tiempo mínimo de reserva y, por tanto, la unidad de reserva, no puede ser inferior a 10 minutos. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/validators/MaxtimeValidator.java</file>
+			<file>greco-console/src/main/java/com/greco/validators/MintimeValidator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="119" opendate="2015-11-20 11:28:30" fixdate="2015-12-09 09:31:52">
+		<buginformation>
+			<summary>Edición de comunidad. Error al eliminar recursos con reservas.</summary>
+			<description>Si tratamos de eliminar un recurso que tiene reservas pendientes, al pulsar el botón guardar, aparece un mensaje de error en el growl. El problema es que el growl es demasiado grande y se solapa con botones de aplicación que, una vez que desaparece el growl, dejan de ser utilizables. Es importante corregir este punto pq uno de los botones es el botón deshacer. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/EditCommunityCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="118" opendate="2015-11-20 10:55:30" fixdate="2015-12-09 08:59:50">
+		<buginformation>
+			<summary>Error Java si tras deshacer creo nuevo recurso.</summary>
+			<description>En la edición de comunidad, pulso en deshacer (haya o no cambios en la lista de recursos.), e intento crear un recurso. Al pulsar en Hecho aparece un error java.  HTTP Status 500 -  type Exception report  message  description The server encountered an internal error () that prevented it from fulfilling this request.  exception  javax.servlet.ServletException: java.lang.UnsupportedOperationException     javax.faces.webapp.FacesServlet.service(FacesServlet.java:659)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50)     org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:108)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)     org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)     org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:344)     org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:261)  root cause  javax.faces.el.EvaluationException: java.lang.UnsupportedOperationException     javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:101)     com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)     org.primefaces.application.DialogActionListener.processAction(DialogActionListener.java:45)     javax.faces.component.UICommand.broadcast(UICommand.java:315)     javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)     javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)     com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)     com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)     com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)     javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50)     org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:108)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)     org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)     org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:344)     org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:261)  root cause  java.lang.UnsupportedOperationException     java.util.AbstractList.add(AbstractList.java:148)     java.util.AbstractList.add(AbstractList.java:108)     com.greco.beans.ResourcesSBean.add(ResourcesSBean.java:151)     com.greco.beans.NewResourceCBean.add(NewResourceCBean.java:61)     sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)     sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     java.lang.reflect.Method.invoke(Method.java:606)     org.apache.el.parser.AstValue.invoke(AstValue.java:262)     org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278)     com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105)     javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87)     com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)     org.primefaces.application.DialogActionListener.processAction(DialogActionListener.java:45)     javax.faces.component.UICommand.broadcast(UICommand.java:315)     javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)     javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)     com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)     com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)     com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)     javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118)     org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50)     org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:108)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)     org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)     org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)     org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)     org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:344)     org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:261)  note The full stack trace of the root cause is available in the JBoss Web/7.0.13.Final logs. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/ResourcesSBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="116" opendate="2015-11-19 11:51:14" fixdate="2015-12-07 16:30:28">
+		<buginformation>
+			<summary>Editar recurso. Considera blancos delante y detrás del nombre.</summary>
+			<description>No debería permitir que se crearan, dentro de una misma comunidad, recursos con el mismo nombre y tipo pero con la diferencia de blancos delante o detrás del nombre.  https://github.com/amartingu72/greco/wiki/TC-Validar-valor-%C3%BAnico-al-crear-recurso </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/validators/DuplicatedCommunityValidator.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/NewResourceBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/CommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/CommunityDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/NewResourceCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ResourceDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/ResourceDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/validators/DuplicatedResourceValidator.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/ResourceItem.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="115" opendate="2015-11-19 11:23:35" fixdate="2015-12-07 11:56:54">
+		<buginformation>
+			<summary>Error al guardar los recursos de una comunidad. No guarda la unidades</summary>
+			<description>Si creamos o editamos un recurso de una comunidad y asignamos una unidad de tiempo distinto de Horas a la antelación o los tiempos máximo y mínimo de reserva, no se guardan. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/EditResourceCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/CommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ResourceDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/TimeUnitItem.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditResourceBBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="114" opendate="2015-11-19 11:17:14" fixdate="2015-12-07 10:31:47">
+		<buginformation>
+			<summary>Crear / editar comunidad. Columna tipo de recurso erronea.</summary>
+			<description>En la tabla de recursos, la columna de tipo de recurso debería tener la descripción en lugar del nombre. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/ResourceTypesSBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="109" opendate="2015-11-18 16:23:45" fixdate="2015-12-04 13:26:59">
+		<buginformation>
+			<summary>Edición de comunidad. Admite blancos delante y detrás.</summary>
+			<description>SI ponemos un blanco delante y otro detrás en el nombre, el cambio se recoge como tal. El sistema debería obviar los blancos de delante y detrás.  https://github.com/amartingu72/greco/wiki/TC-Editar-comunidad-con-valores-medios </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/helpers/CommunityItem.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/CommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/CommunityDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/CountriesSBean.java</file>
+			<file>greco-console/src/main/java/com/greco/converters/Trim.java</file>
+			<file>greco-console/src/main/java/com/greco/validators/DuplicatedCommunityValidator.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/CommunityDAOImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="108" opendate="2015-11-18 15:38:27" fixdate="2015-12-04 13:26:59">
+		<buginformation>
+			<summary>Crear comunidad. No controla blancos en el nombre</summary>
+			<description>El sistema permite dos comunidades con el mismo nombre en un código postal si la diferencia está en blancos antes o despues del nombre. Esto no debería ser así y el sistema debería ignorar estos blancos antes de realizar la validación  https://github.com/amartingu72/greco/wiki/TC-Validar-valor-%C3%BAnico-al-crear-comunidad </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/helpers/CommunityItem.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/CommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/CommunityDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/CountriesSBean.java</file>
+			<file>greco-console/src/main/java/com/greco/converters/Trim.java</file>
+			<file>greco-console/src/main/java/com/greco/validators/DuplicatedCommunityValidator.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/CommunityDAOImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="96" opendate="2015-11-13 13:50:02" fixdate="2015-12-02 15:40:08">
+		<buginformation>
+			<summary>Longitud de nickname no coincide.</summary>
+			<description>En BBDD: 32 caracteres. En alta desde consola permite 16. En edición desde consola, no tiene límite y falla. En edición desde site, no tiene límite y falla.  Cerrar todos a 16 caracteres. No pueden escribir más de 16 y no cuentan los blancos delante ni detrás. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/UserDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditAccountCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditAccountBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/converters/ToLowerCaseConverter.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/NewAccountCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="82" opendate="2015-10-14 15:07:35" fixdate="2015-10-15 10:14:16">
+		<buginformation>
+			<summary>Las unidades de tiempo de reserva no pueden ser días</summary>
+			<description>El tiempo de reserva de un recurso no puede exceder de 24 horas. De esta manera, las unidades de tiempo de reserva solo pueden se horas y minutos. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/TimeUnitsSBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/TimeUnitItem.java</file>
+			<file>greco-console/src/main/java/com/greco/validators/MaxtimeValidator.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditResourceCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="81" opendate="2015-10-13 15:25:59" fixdate="2015-10-14 16:10:59">
+		<buginformation>
+			<summary>No se controla la antelación de reserva.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/helpers/ResourceItem.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ResourceDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="78" opendate="2015-10-07 10:55:19" fixdate="2015-10-13 09:22:11">
+		<buginformation>
+			<summary>Tarda demasiado entre que se selecciona una reserva y queda marcada como pre-reserva.</summary>
+			<description>Buscar el problema. Aprovechar para cambiar colores. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/TimeTableCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2015-10-06 10:25:50" fixdate="2015-10-06 12:52:56">
+		<buginformation>
+			<summary>Olvidé mi contraseña no está implementado en sites</summary>
+			<description>"Olvidé  mi contraseña" no está implementado en welcome.xhtml. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/PwdForgottenCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="73" opendate="2015-10-05 11:05:15" fixdate="2015-10-06 16:00:47">
+		<buginformation>
+			<summary>En la consulta de miembros desde openshift , no pone fecha de mañana por defecto.</summary>
+			<description>En la consulta de miembros desde openshift , no pone fecha de mañana por defecto.. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/MailProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/MemberItem.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="68" opendate="2015-10-02 10:38:01" fixdate="2015-10-14 14:23:26">
+		<buginformation>
+			<summary>Limitación de reservas por usuario</summary>
+			<description>No se ha incluido la limitación de reservas por usuario. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/TimeTableCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/ReservationDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/UserItem.java</file>
+			<file>greco-console/src/main/java/com/greco/engine/DailySchedule.java</file>
+			<file>greco-console/src/main/java/com/greco/services/except/reservation/ReservationTimeExceededException.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/UserSBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/TimeUnitDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ReservationDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/TimeUnitDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/TimeUnitItem.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/ProfileItem.java</file>
+			<file>greco-console/src/main/java/com/greco/engine/ITimeUnits.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/ReservationDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2015-09-21 09:38:43" fixdate="2015-09-24 10:04:53">
+		<buginformation>
+			<summary>Faltan opciones de baja y refresco en la fase de creación de una nueva comunidad</summary>
+			<description>Además no funciona la opción de añadir un nuevo recurso </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/NewCommunityBBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="59" opendate="2015-09-15 16:10:01" fixdate="2015-09-28 16:02:08">
+		<buginformation>
+			<summary>Incluir el nombre de la comunidad para que sea visible en todo momento</summary>
+			<description>Todas las páginas deben incluir el nombre de la comunidad administrada (consola), o de aquella en la que se ha hecho login (sites). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/MyReservationsBBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="58" opendate="2015-09-10 15:21:34" fixdate="2015-09-11 13:10:57">
+		<buginformation>
+			<summary>Eliminar la descripción de la cuenta</summary>
+			<description>Eliminar descripción como un atributo de la cuenta. En cambio, incluiremos en la consola aquellas comunidades en la que está suscrito. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserCommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/MemberItem.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditAccountBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/UserCommunitiesDAO.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/UserCommunityDataProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="57" opendate="2015-09-09 16:10:22" fixdate="2015-09-10 10:35:00">
+		<buginformation>
+			<summary>Evitar problemas de concurrencia en la pantalla de miembros</summary>
+			<description>Considerar el problema de actualizar desde dos sesiones distintas. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/except/user/NoMemberException.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserCommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/UserCommunitiesDAO.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/UserCommunityDataProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="55" opendate="2015-09-08 16:35:49" fixdate="2015-09-10 10:35:32">
+		<buginformation>
+			<summary>Error al eliminar suscripción desde pestaña de búsqueda</summary>
+			<description>No actualiza contadores y se marcha al tab inicial en lugar de permanecer. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="53" opendate="2015-09-08 16:33:14" fixdate="2015-09-08 16:34:02">
+		<buginformation>
+			<summary>Busqueda avanzada entra en conflicto con pestaña de suscripciones</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/helpers/MemberItem.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="51" opendate="2015-08-28 09:43:37" fixdate="2015-09-04 13:16:54">
+		<buginformation>
+			<summary>No funciona la baja de miembro desde consola.</summary>
+			<description>En la opción búsqueda, no funciona el botón de baja. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="48" opendate="2015-08-21 11:16:42" fixdate="2015-09-14 11:28:08">
+		<buginformation>
+			<summary>Error en la selección de comnunidad</summary>
+			<description>En la selección de comunidad de la consola solo deberían aparecer aquellas comunidades en las que l usuario que ha hecho login sea administrador. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserCommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/UserCommunitiesDAO.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/CommunitiesSBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/UserCommunityDataProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="43" opendate="2015-08-04 12:50:51" fixdate="2015-08-05 11:50:52">
+		<buginformation>
+			<summary>Tanto las pre-reservas como las reservas confirmadas no se filtran por comunidad.</summary>
+			<description>Si estoy dado de alta como miembro en dos comunidades, mis reservas en una comunidad se ven en la otra. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/ReservationsBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/engine/IReservationStatus.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/CommunityItem.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/CommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/CommunityDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/engine/ReservationUnit.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ResourceDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ReservationDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/ReservationDAO.java</file>
+			<file>greco-console/src/main/java/com/greco/services/ReservationDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/ReservationDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/MyReservationsBBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2015-08-03 12:07:08" fixdate="2015-08-03 12:45:00">
+		<buginformation>
+			<summary>Error en comunidades nuevas</summary>
+			<description>Al crear una nueva comunidad y hacer login, me lleva una los recursos de una comuinidad que no tiene que ver.   Para reproducir:  Com:32 Usuario:lola@isban.es La comunidad que toma al hacer login es la 15. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/LoginBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/MyReservationsBBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="38" opendate="2015-07-31 12:46:24" fixdate="2015-08-04 06:56:57">
+		<buginformation>
+			<summary>Al crear la comunidad no se indica URL de página</summary>
+			<description>Cuando creamos una comunidad debería generarse un nuevo campo no editable que permitiese localizar la URL de sitio.  Nota: Si creamos una comunidad y no asignamos recursos, cuando el usuario vaya a la URL de comunidad deberá aparecer un mensaje que diga que todavía no se han creado recursos. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/ResourceDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/NewCommunityCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/LoginBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditCommunityBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/MailProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2015-07-31 12:42:22" fixdate="2015-08-04 10:56:42">
+		<buginformation>
+			<summary>No funciona check box de comunidad activa en función móvil.</summary>
+			<description>No es posible seleccionar el check que activa la comunidad. Tener en cuenta que el miembros si que funciona. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/EditCommunityBBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="32" opendate="2015-07-31 09:53:57" fixdate="2015-08-05 11:48:08">
+		<buginformation>
+			<summary>No mostrar como disponibles para reserva intervalos de tiempo antiguos</summary>
+			<description>La consulta de disponibilidad no debe permitir reservar intervalos de tiempo cuya hora de fin sea anterior a la hora actual.  Hay que tener en cuenta esta situación en la confirmación de cesta. Recordar que el usuario puede mantener una reserva en su cesta demasiado tiempo. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/ReservationsBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/engine/IReservationStatus.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/CommunityItem.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/CommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/CommunityDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/engine/ReservationUnit.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ResourceDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ReservationDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/ReservationDAO.java</file>
+			<file>greco-console/src/main/java/com/greco/services/ReservationDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/ReservationDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/MyReservationsBBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2015-07-31 08:48:16" fixdate="2015-09-23 11:16:26">
+		<buginformation>
+			<summary>Los miembros no pueden darse de baja de una comunidad</summary>
+			<description>Un miembro no puede darse de baja (a sí mismo) de una comunidad. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserCommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditAccountCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/UserCommunitiesDAO.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/UserCommunityDataProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="28" opendate="2015-07-30 12:33:58" fixdate="2015-10-05 14:42:08">
+		<buginformation>
+			<summary>No se envía mensaje con notificación de expulsión.</summary>
+			<description>Baja de un miembro no voluntaria, es decir, realizada por un administrador desde la consola. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/MailProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="26" opendate="2015-07-30 12:19:35" fixdate="2015-10-06 11:00:55">
+		<buginformation>
+			<summary>El cambio de estado de un suscriptor debe enviar notificación por correo.</summary>
+			<description>Ver caso de uso asociado. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/MailProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/MailProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2015-07-30 12:18:40" fixdate="2015-10-06 11:00:14">
+		<buginformation>
+			<summary>Notificar por correo al cambiar el rol de un miembro de una comunidad</summary>
+			<description>Ver caso de uso. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/services/impl/MailProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/MailProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="20" opendate="2015-07-30 07:38:22" fixdate="2015-09-18 12:29:49">
+		<buginformation>
+			<summary>Eliminar recurso.</summary>
+			<description>Caso de uso sin implementar. El caso de uso está definido pero faltaría la gestión de excepciones de la que no hay especificación. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/NewResourceBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/ResourceDAO.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/CommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/CommunityDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/ResourceDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/ReservationDAO.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/ResourceItem.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/ReservationDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditResourceBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditCommunityCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/ResourceDAOImpl.java</file>
+			<file>greco-entities/src/main/java/com/greco/entities/Resource.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditCommunityBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/ResourcesSBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/NewResourceCBean.java</file>
+			<file>greco-console/src/test/java/com/greco/services/helpers/ResourceItemTest.java</file>
+			<file>greco-entities/src/main/java/com/greco/entities/Community.java</file>
+			<file>greco-entities/src/main/java/com/greco/entities/User.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditResourceCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="17" opendate="2015-07-27 12:44:06" fixdate="2015-08-28 09:41:49">
+		<buginformation>
+			<summary>La suscripción debe incluir un campo específico por cada comunidad.</summary>
+			<description>Un miembro puede requerir enviar información concreta de cada comunidad donde se suscriba. Esta información será visible desde la página de suscripción de la consola de administración. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/SubscribeMeCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/UserDataProvider.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/NoMemberBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/UserCommunitiesDAO.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/SubscribeMeBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/LazyMembersShorter.java</file>
+			<file>greco-entities/src/main/java/com/greco/entities/Reservation.java</file>
+			<file>greco-entities/src/main/java/com/greco/entities/UsersCommunity.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/MemberItem.java</file>
+			<file>greco-console/src/main/java/com/greco/repositories/impl/UserCommunitiesDAOImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditCommunityBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/ProfileItem.java</file>
+			<file>greco-console/src/main/java/com/greco/services/helpers/LazyMembersDataModel.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/NoMemberCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/UserCommunityDataProvider.java</file>
+			<file>greco-entities/src/main/java/com/greco/entities/Community.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserCommunityDataProviderImpl.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditMembershipCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="9" opendate="2015-07-20 12:48:00" fixdate="2015-07-22 06:55:06">
+		<buginformation>
+			<summary>Crear cuenta de adminitrador. Barra de scroll no debería estar</summary>
+			<description>Al crear una cuenta de administrador, en la página de welcome, aparece una barra de scroll horizontal que no debería estar, </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/NewAccountCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7" opendate="2015-07-20 12:32:00" fixdate="2015-07-20 12:32:44">
+		<buginformation>
+			<summary>Creación de cuenta de usuario. No valida email único.</summary>
+			<description>Permite emails duplicados. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/NewAccountCBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6" opendate="2015-07-20 10:44:51" fixdate="2015-07-20 11:58:51">
+		<buginformation>
+			<summary>Error en las validaciones al registrar un nuevo usuario.</summary>
+			<description>Limitar la longitud del texto que se puede introducir (maxlength) en la página de creación de un usuario. La cuenta de correo debe ser única. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/SubscribeMeCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/utils/EMail.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5" opendate="2015-07-17 12:33:08" fixdate="2015-11-03 15:29:49">
+		<buginformation>
+			<summary>Seguridad. Contraseña en claro en la base de datos.</summary>
+			<description>Encriptar la contraseña almacenada en base de datos. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>greco-console/src/main/java/com/greco/beans/EditAccountCBean.java</file>
+			<file>greco-console/src/main/java/com/greco/beans/EditAccountBBean.java</file>
+			<file>greco-console/src/main/java/com/greco/services/impl/UserDataProviderImpl.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

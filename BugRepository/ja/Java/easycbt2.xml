@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="easycbt2">
+	<bug id="94" opendate="2019-01-31 22:30:54" fixdate="2019-02-07 00:30:46">
+		<buginformation>
+			<summary>randomize出来てない気がする</summary>
+			<description>対象questionsのrandomizeの10件とするべきところ 対象questionsの10件のrandomizeとなっている気がする。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/easycbt2/service/QuestionService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2018-09-27 03:21:28" fixdate="2018-10-07 11:54:15">
+		<buginformation>
+			<summary>テキストタイプの回答にカンマが入ったとき、回答が不正に分割されてしまう。</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/easycbt2/service/TakeExaminationService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="72" opendate="2018-09-19 22:17:57" fixdate="2018-10-11 00:28:44">
+		<buginformation>
+			<summary>バリデーションエラーで元の画面に戻った後フォームがクリアされてしまう</summary>
+			<description>メンテナンス画面全般</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/easycbt2/form/QuestionCategoryForm.java</file>
+			<file>src/main/java/easycbt2/form/QuestionChoiceForm.java</file>
+			<file>src/main/java/easycbt2/form/QuestionForm.java</file>
+			<file>src/main/java/easycbt2/repository/QuestionCategoriesAuthPublicRepository.java</file>
+			<file>src/main/java/easycbt2/service/QuestionCategoriesAuthPublicService.java</file>
+			<file>src/main/java/easycbt2/controller/maintenance/QuestionMaintenanceController.java</file>
+			<file>src/main/java/easycbt2/form/QuestionTextForm.java</file>
+			<file>src/main/java/easycbt2/controller/maintenance/QuestionCategoriesMaintenanceController.java</file>
+			<file>src/main/java/easycbt2/controller/maintenance/ExaminationMaintenanceController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="71" opendate="2018-09-19 22:17:09" fixdate="2018-09-19 22:43:43">
+		<buginformation>
+			<summary>SINGLE_CHOICEでも複数正解を設定できてしまう。</summary>
+			<description>MULTIPLE_CHOICEで正解が1つは問題なし</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/easycbt2/form/QuestionChoiceForm.java</file>
+			<file>src/main/java/easycbt2/controller/maintenance/QuestionMaintenanceController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="66" opendate="2018-08-27 03:33:18" fixdate="2018-09-27 00:43:45">
+		<buginformation>
+			<summary>2つのExaminationを同時に始めると、前者が無効になる</summary>
+			<description>無効になって、回答したのにしてないことになる。 HttpSessionを使って管理しているため。 HttpSessionと違うExaminationのときは、回答自体も無効にして、その旨表示する。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/easycbt2/controller/ExaminationController.java</file>
+			<file>src/main/java/easycbt2/form/TakeExaminationForm.java</file>
+			<file>src/main/java/easycbt2/service/TakeExaminationService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2018-06-15 12:10:42" fixdate="2018-06-25 22:19:38">
+		<buginformation>
+			<summary>Examinationが重複して表示される場合がある</summary>
+			<description>examinations_auth_public examinations_auth_users 両方に同じexaminationを登録すると、二重に表示される。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/easycbt2/service/QuestionService.java</file>
+			<file>src/test/java/easycbt2/service/QuestionServiceTest.java</file>
+			<file>src/main/java/easycbt2/service/ExaminationService.java</file>
+			<file>src/main/java/easycbt2/model/Examination.java</file>
+			<file>src/main/java/easycbt2/model/Question.java</file>
+			<file>src/test/java/easycbt2/service/ExaminationServiceTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

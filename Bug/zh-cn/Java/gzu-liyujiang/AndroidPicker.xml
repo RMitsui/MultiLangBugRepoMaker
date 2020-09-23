@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>142</id>
+		<title>SinglePicker的setItems方法调用多次的时候会出现重复数据</title>
+		<body>SinglePicker.java文件中  /**      * 设置数据项      */     public void setItems(List&lt;T&gt; items) {         if (null == items || items.size() == 0) {             return;         }         this.items = items;          itemStrings.clear();    //添加这行应该就可以了         for (T item : items) {             itemStrings.add(formatToString(item));         }         if (null != wheelView) {             wheelView.setItems(itemStrings, selectedItemIndex);         }     }</body>
+		<created>2017-09-01 10:14:46</created>
+		<closed>2017-09-04 02:13:25</closed>
+	</bug>
+	<bug>
+		<id>112</id>
+		<title>关于日期 DatePicker 的一个建议</title>
+		<body>只有setRangeEnd()方法会调用 initYearData(), 而setRangeStart()没有，如果二者设置顺序颠倒，会出现2010年的默认值@gzu-liyujiang</body>
+		<created>2017-05-06 08:34:42</created>
+		<closed>2017-05-13 13:15:41</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>华为手机型号H30-T10,日期选择，地区选择会出现末尾省略号，滑动了就好了</title>
+		<body>日期选择器打开后显示的部分只能显示年的前两位，后两位是省略号，上下滑动就好了，地区选择我用的是两级联动的，最左侧的也是后面是省略号，右侧的上半部分包括我默认选择的城市是完整显示，下半部分也是后面省略号，都是滑动到看不到，然后滑出来就好了</body>
+		<created>2017-04-11 08:56:46</created>
+		<closed>2017-09-01 02:16:24</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>地址、单项选择第一项都无法选中</title>
+		<body>如题，比如单项选择、地址选择 第一个item都无法设置选中效果哈</body>
+		<created>2016-11-15 06:37:39</created>
+		<closed>2016-11-23 12:12:34</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>使用LinkagePicker（我只用到了一二级Picker）时会触发java.lang.IndexOutOfBoundsException</title>
+		<body>demo中提供的例子也有这个bug。其中地址选择（只包括地级、县级）那一项很容易就引发这个bug。 当一级picker的选中项为第一项时，同时二级picker的选中项不为第一项时，这个时候迅速向下滑动一级picker，百分之九十都会引发java.lang.IndexOutOfBoundsException. </body>
+		<created>2016-10-19 07:09:12</created>
+		<closed>2016-11-02 05:40:52</closed>
+	</bug>
+	<bug>
+		<id>55</id>
+		<title>年月日选择时bug</title>
+		<body>当开始年份和结束年份相同是，结束月份不起作用，默认都是12个月 changeMonthData这个方法判断逻辑问题 </body>
+		<created>2016-10-09 13:02:12</created>
+		<closed>2016-10-14 06:17:18</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>刚弹出日期选择时，滚动年份，月份和日都自动变成1</title>
+		<body>比如设定开始日期为2016-10-08日，点击按钮弹出日期选择器，然后滚动年份，这时，变成xxxx-01-01,为什么会这样？故意设定的吗？我觉得除非是平年的2月29日（自动改为28），否则月份和日应该不会自动修正。谢谢作者开发这么好的项目。 </body>
+		<created>2016-10-08 05:38:34</created>
+		<closed>2016-10-14 06:12:37</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>年月日时分 的设置默认值 "时”，“分” 没有补零</title>
+		<body>年月日时分 的设置默认值 "时”，“分” 没有补零 </body>
+		<created>2016-09-18 03:19:34</created>
+		<closed>2016-10-14 06:10:19</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>省市区联动bug</title>
+		<body>关于有的市没有区，这样City里面没有County时候，控件选择后会报数组越界Error. 还请处理下~ </body>
+		<created>2016-08-04 09:39:01</created>
+		<closed>2016-10-14 06:33:39</closed>
+	</bug>
+	<bug>
+		<id>1</id>
+		<title>Android 4.1.2 could'nt scroll picker</title>
+		<body>my huaiweic8815 rooted can't scroll picker to choose item 5.1 dont have this bug </body>
+		<created>2015-10-23 03:04:26</created>
+		<closed>2016-01-14 06:26:50</closed>
+	</bug>
+</bugs>

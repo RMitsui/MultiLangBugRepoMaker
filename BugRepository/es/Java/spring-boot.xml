@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="spring-boot">
+	<bug id="3570" opendate="2015-07-21 13:25:13" fixdate="2015-07-31 13:32:38">
+		<buginformation>
+			<summary>Actuator HAL links contain 2 identical entries for env</summary>
+			<description>E.g.  ``` "env": [       {         "href": "http://localhost:9000/env"       },       {         "href": "http://localhost:9000/env"       }     ], ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-actuator/src/main/java/org/springframework/boot/actuate/autoconfigure/EndpointWebMvcHypermediaManagementContextConfiguration.java</file>
+			<file>spring-boot-actuator/src/main/java/org/springframework/boot/actuate/autoconfigure/LinksEnhancer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2480" opendate="2015-02-11 05:12:55" fixdate="2015-02-25 02:08:00">
+		<buginformation>
+			<summary>ElasticsearchAutoConfiguration doesn't close local Node</summary>
+			<description>The `ElasticsearchAutoConfiguration` currently closes the `Client` but in the case of a `Node` this has no effect. Really the node should be closed in such cases to that `.close()` on the context works. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-samples/spring-boot-sample-data-elasticsearch/src/main/java/sample/data/elasticsearch/SampleElasticsearchApplication.java</file>
+			<file>spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/elasticsearch/ElasticsearchAutoConfiguration.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

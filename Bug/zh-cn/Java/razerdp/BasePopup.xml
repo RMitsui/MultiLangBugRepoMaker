@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>338</id>
+		<title>输入法适配，弹出pop后，点击外部取消pop,然后再点，弹出时pop就会被输入法就会遮挡住。只有先手动关闭软键盘，再关闭pop,下次才能弹出才不会被遮挡。</title>
+		<body>  - 系统版本（必须）/ System version (required)：魅族16X android 8.1.0  魅族16S android9 vivoZ3X android9  - 库版本（必须）/ Library version (required)：:2.2.4.1   </body>
+		<created>2020-08-11 06:39:51</created>
+		<closed>2020-08-13 06:37:26</closed>
+	</bug>
+	<bug>
+		<id>336</id>
+		<title>部分华为手机 横屏状态无法弹出pop</title>
+		<body> - 系统版本（必须）/ System version (required)：Android9 / Android 8.10  - 库版本（必须）/ Library version (required)：2.2.4.1 - 手机 ：华为畅享9plus、荣耀8C  activity横屏时，无法弹起pop(有背景阴影，但看不见pop).  2.2.3无此问题， 其他手机暂未发现此问题 </body>
+		<created>2020-08-11 02:36:16</created>
+		<closed>2020-08-13 06:37:17</closed>
+	</bug>
+	<bug>
+		<id>314</id>
+		<title>代码问题</title>
+		<body>`razerdp.basepopup.BasePopupHelper#applyToPopupWindow`  源码如下:  ```java  private void applyToPopupWindow() {      if (mPopupWindow == null || mPopupWindow.mPopupWindowProxy == null) return;      mPopupWindow.mPopupWindowProxy.setSoftInputMode(isAutoShowInputMethod() ? WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE : WindowManager.LayoutParams.SOFT_INPUT_STATE_UNCHANGED      mPopupWindow.mPopupWindowProxy.setSoftInputMode(mSoftInputMode);      mPopupWindow.mPopupWindowProxy.setAnimationStyle(animationStyleRes);  } ```  这里调用了2次`setSoftInputMode`, 是否有问题?</body>
+		<created>2020-07-15 03:33:22</created>
+		<closed>2020-07-19 04:21:43</closed>
+	</bug>
+	<bug>
+		<id>313</id>
+		<title>2.2.3下 相对位置无效</title>
+		<body>### 提issue前请去[**WIKI#常见问题**](https://www.yuque.com/razerdp/basepopup/dgf6ry)找找相关问题，避免重复提问  ## 提issue前请务必参考以下格式填写，否则该问题可能会【被忽略】   - 系统版本（必须）：android 7.0  - 库版本（必须）：2.2.3  - 问题描述/重现步骤（必须）：2.2.3下 相对位置无效 ，2.2.1 ok  - 问题代码/截图（可选）： //为 layout中的一个ImageView   AppCompatImageView iv_supervise =(AppCompatImageView) findViewById(R.id.iv_supervise);  demoPop = new DemoPop(this);         demoPop.setPopupGravity(BasePopupWindow.GravityMode.RELATIVE_TO_ANCHOR, Gravity.BOTTOM);         demoPop.showPopupWindow(iv_supervise);  - 报错信息（可选）： 没有 ---</body>
+		<created>2020-07-04 11:17:06</created>
+		<closed>2020-07-19 04:29:02</closed>
+	</bug>
+	<bug>
+		<id>310</id>
+		<title>在外部使用setPopupGravity无效</title>
+		<body>  - 系统版本（必须）：10  - 库版本（必须）：2.2.3  - 问题描述/重现步骤（必须）： xxxPop.setPopupGravity(Gravity.CENTER).showPopupWindow() 反之如果在内部使用则无问题，如果外置到show之前就不行，没有使用showPopupWindow(v) --- </body>
+		<created>2020-07-02 14:16:29</created>
+		<closed>2020-07-19 04:29:14</closed>
+	</bug>
+	<bug>
+		<id>297</id>
+		<title>issue测试页面的 #224bug</title>
+		<body>### 提issue前请去[**WIKI#常见问题**](https://github.com/razerdp/BasePopup/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)找找相关问题，避免重复提问 ### 提issue前请务必参考以下格式填写，否则该问题优先级将会降低   - 系统版本：华为p9 plus  - 库版本：发布【Candy】- 2.2.4.0517  - 问题描述/重现步骤：有视频  - 问题代码/截图：软键盘挡住输入框了，这儿适配了么，未适配的话可忽略  - 报错信息：视频连接 https://gitee.com/andmy/other/blob/master/video/VID_20200618_165621.mp4       --- </body>
+		<created>2020-06-18 09:45:39</created>
+		<closed>2020-07-19 04:21:42</closed>
+	</bug>
+	<bug>
+		<id>296</id>
+		<title>backpressEnable(false)无效 &amp; QuickPopupBuilder添加KeyEventListener</title>
+		<body>### 提issue前请去[**WIKI#常见问题**](https://github.com/razerdp/BasePopup/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)找找相关问题，避免重复提问 ### 提issue前请务必参考以下格式填写，否则该问题优先级将会降低   - 系统版本：10.0  - 库版本：2.2.3  - 问题描述/重现步骤：2.2.3最新DEMOQuickPopupBuilder 设置了backpressEnable(false)没生效  - 问题代码/截图：  - 报错信息：  --- </body>
+		<created>2020-06-18 04:29:02</created>
+		<closed>2020-07-19 04:21:42</closed>
+	</bug>
+	<bug>
+		<id>285</id>
+		<title>关于系统5.0和5.1的状态栏问题</title>
+		<body> 下图为理想效果图 ![1588733463(1)](https://user-images.githubusercontent.com/24773777/81134501-8ac8e500-8f87-11ea-97d9-f6f830321a8e.jpg) 理想效果图应该入上图所示，但在5.0的系统上，状态栏直接覆盖了弹窗，而在5.1的系统中，弹窗直接覆盖了状态栏。 下图为5.0 ![1588733701(1)](https://user-images.githubusercontent.com/24773777/81134680-1478b280-8f88-11ea-8572-6bea82593dde.jpg) 下图为5.1 ![1588733761(1)](https://user-images.githubusercontent.com/24773777/81135017-29097a80-8f89-11ea-8e73-4b75e6409ed8.jpg)  7.0系统则正常 ![1588734139(1)](https://user-images.githubusercontent.com/24773777/81135052-48080c80-8f89-11ea-8139-4361d3acca46.jpg)      - 系统版本：5.0 , 5.1  - 库版本：2.2.2.2  - 问题描述/重现步骤：  - 问题代码/截图：      setBackground(R.drawable.B2000000);         setPopupGravity(Gravity.RIGHT);         setPopupWindowFullScreen(true);         setShowAnimation(AnimationUtils.loadAnimation(context, R.anim.anim_right_in));         setDismissAnimation(AnimationUtils.loadAnimation(context, R.anim.anim_right_out));  - 报错信息：  --- </body>
+		<created>2020-05-06 03:04:07</created>
+		<closed>2020-07-19 04:31:34</closed>
+	</bug>
+	<bug>
+		<id>275</id>
+		<title>可能是内存泄露</title>
+		<body> - 系统版本：  - 库版本：2.2.2.2  - 问题描述/重现步骤：  - 问题代码/截图：  - 报错信息：  --- 项目中发现内存泄露，查看内存信息发现是BasePopup产生的。 具体情况如下，我继承自BaseLazyPopupWindow(Fragment),fragment会作为ownerAnchorParent被保存起来，最后也没有释放。但是会绑定宿主activity的lifecycle(我感觉应该绑定fragment的lifecycle),这样在一个页面一个Activity的情况下不会出现问题，但是我的app是单activity 多fragment 的，这样就会出现泄露。不知道我分析的对不对。感谢开源</body>
+		<created>2020-04-01 10:21:49</created>
+		<closed>2020-04-05 13:59:04</closed>
+	</bug>
+	<bug>
+		<id>267</id>
+		<title>isShowing()' on a null object reference</title>
+		<body> - 系统版本：Android 10  - 库版本：2.2.2.2  - 问题描述/重现步骤： **Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean razerdp.basepopup.PopupWindowProxy.isShowing()' on a null object reference**  ```java         if (loadingPopup != null &amp;&amp; loadingPopup.isShowing()) {             loadingPopup.dismiss();         } ```  **Fix:** ```java     /**      * PopupWindow是否处于展示状态      */     public boolean isShowing() {           return mPopupWindow == null ? false : mPopupWindow.isShowing();     } ```  </body>
+		<created>2020-03-11 06:50:07</created>
+		<closed>2020-03-11 08:04:45</closed>
+	</bug>
+	<bug>
+		<id>266</id>
+		<title>背景设置为0，显示popupwindow，状态栏的图标全变白</title>
+		<body> - 系统版本：Android8.1.0  - 库版本：2.2.2.2  - 问题描述/重现步骤： 第一个问题：背景设置为0，显示popupwindow，状态栏的图标全变白 第二个问题：设置setPopupWindowFullScreen为False时，弹出的popupwindow会显示非常大的间距  - [问题代码/截图]：  &gt; 正常状态  ![S00310-16511811](https://user-images.githubusercontent.com/55750427/76295429-8d90bc00-62ef-11ea-9e38-76403fa27bbc.jpg)  &gt; 第一个问题  ![S00310-16355362](https://user-images.githubusercontent.com/55750427/76294675-42c27480-62ee-11ea-86b5-089cc8fa1f60.jpg)  &gt; 第二个问题  ![S00310-16414037](https://user-images.githubusercontent.com/55750427/76294683-448c3800-62ee-11ea-92a5-996b3315bce4.jpg)    - 报错信息：无报错  --- </body>
+		<created>2020-03-10 08:45:19</created>
+		<closed>2020-04-20 16:39:03</closed>
+	</bug>
+	<bug>
+		<id>224</id>
+		<title>想实现autocompletetextview类似的EditText模糊查找数据功能</title>
+		<body>### 提issue前请去[**WIKI#常见问题**](https://github.com/razerdp/BasePopup/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)找找相关问题，避免重复提问 ### 提issue前请务必参考以下格式填写，否则该问题优先级将会降低   - 系统版本：  - 库版本：  - 问题描述/重现步骤：  - 问题代码/截图：  - 报错信息：  --- 想实现autocompletetextview类似的EditText模糊查找数据功能，弹出popupwindow后EditText的键盘输入事件被popwindow拦截了</body>
+		<created>2019-09-11 11:51:05</created>
+		<closed>2020-05-24 10:56:19</closed>
+	</bug>
+	<bug>
+		<id>210</id>
+		<title>setOutSideTouchable（true）显示不正常</title>
+		<body>### 提issue前请去[**WIKI#常见问题**](https://github.com/razerdp/BasePopup/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)找找相关问题，避免重复提问 ### 提issue前请务必参考以下格式填写，否则该问题优先级将会降低   - 系统版本：android p  - 库版本：release 2.2.1  - 问题描述/重现步骤：调用setOutSideTouchable（true）方法，再showPopupWindow（view)时，位置发生偏移，去掉该方法或者setOutSideTouchable（false）则正常显示。  - 问题代码/截图： ![微信图片_20190727222844](https://user-images.githubusercontent.com/11664870/61995671-feb39400-b0bd-11e9-8176-81388d0703d5.png) ![微信图片_20190727222855](https://user-images.githubusercontent.com/11664870/61995674-070bcf00-b0be-11e9-996c-253955d32969.png)  调用代码如下：   ```                      productPop = new ProductPop(getActivity(), condictionDataList);             productPop.setOutSideDismiss(true);             productPop.setPopupGravity(Gravity.BOTTOM);             productPop.setBackgroundColor(0);             productPop.setOutSideTouchable(true);             productPop.showPopupWindow(container); ```    - 报错信息：  --- </body>
+		<created>2019-07-27 14:33:39</created>
+		<closed>2020-02-24 12:02:13</closed>
+	</bug>
+	<bug>
+		<id>188</id>
+		<title>在横屏应用点出弹框，然后在有弹框的情况下，点击菜单栏键，退回到桌面后，再重新回到应用，出现弹窗变形错位甚至失去焦点的问题。</title>
+		<body>### 提issue前请去[**WIKI#常见问题**](https://github.com/razerdp/BasePopup/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)找找相关问题，避免重复提问 ### 提issue前请务必参考以下格式填写，否则该问题优先级将会降低   - 系统版本：8.1.0  - 库版本：2.2.0  - 问题描述/重现步骤：在横屏应用点出弹框，然后在有弹框的情况下，点击菜单栏键，退回到桌面后，再重新回到应用，出现弹窗变形错位甚至失去焦点的问题。  - 问题代码/截图：  - 报错信息：  --- </body>
+		<created>2019-05-17 08:14:06</created>
+		<closed>2020-04-07 15:11:45</closed>
+	</bug>
+	<bug>
+		<id>186</id>
+		<title>can not blur the whole screen on tablet landscape</title>
+		<body>### 提issue前请去[**WIKI#常见问题**](https://github.com/razerdp/BasePopup/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)找找相关问题，避免重复提问 ### 提issue前请务必参考以下格式填写，否则该问题优先级将会降低   - 系统版本：8.1  - 库版本：2.2.0  - 问题描述/重现步骤：畫面不能完全被模糊  - [问题代码/截图：](https://ibb.co/8x1d6nS)  - 报错信息：  --- 使用demo app android emulator nexus 7 </body>
+		<created>2019-05-16 08:58:36</created>
+		<closed>2019-05-17 04:29:00</closed>
+	</bug>
+	<bug>
+		<id>171</id>
+		<title>使用recyclerview做布局，数据太多，显示充满整个屏幕并且覆盖住anchorview</title>
+		<body>  - 系统版本：Android 9  - 库版本：2.1.9  - 问题描述/重现步骤：继承BasePopupWindow，设置布局文件，布局文件包含一个recycyerview控件，设置数据后，show  - 问题代码/截图： ![image](https://user-images.githubusercontent.com/3785432/55716875-a1baa200-5a2a-11e9-9ac7-865bda8b49f6.png) - 报错信息：  </body>
+		<created>2019-04-08 10:20:28</created>
+		<closed>2019-05-07 09:27:37</closed>
+	</bug>
+	<bug>
+		<id>109</id>
+		<title>2.1.1 InputPopup如果Edittext在底部，弹出键盘后和键盘有距离</title>
+		<body>``` class InputPopup(context: Context) : BasePopupWindow(context), View.OnClickListener {      init {         bindEvent()     }      override fun onCreateShowAnimation(): Animation? {         return null     }      override fun onCreateDismissAnimation(): Animation? {         return null     }      override fun onCreateContentView(): View {         setPopupWindowFullScreen(true)         return createPopupById(R.layout.popup_input)     }      override fun onClick(v: View?) {     }      fun bindEvent() {         setAutoShowInputMethod(findViewById(R.id.etComment),true)     } } ``` ```  &lt;android.support.constraint.ConstraintLayout android:background="#5566aa" android:id="@+id/layoutInput" android:layout_gravity="bottom" android:layout_height="wrap_content" android:layout_width="match_parent" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"&gt;  &lt;EditText android:background="@drawable/input_popup_edit_bg" android:hint="请输入评论" android:id="@+id/etComment" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:layout_marginEnd="10dp" android:layout_marginStart="10dp" android:layout_marginTop="5dp" android:layout_width="0dp" android:padding="5dp" android:textColor="@color/text_dark" android:textColorHint="@color/text_dark_alpha_44" android:textCursorDrawable="@null" android:textSize="14sp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/tvWriteComment" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/&gt;  &lt;TextView android:background="@drawable/input_popup_button_bg" android:id="@+id/tvWriteComment" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:layout_marginEnd="5dp" android:layout_width="wrap_content" android:paddingBottom="5dp" android:paddingEnd="10dp" android:paddingStart="10dp" android:paddingTop="5dp" android:text="评论" android:textColor="@android:color/white" android:textSize="14sp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@id/etComment"/&gt; &lt;/android.support.constraint.ConstraintLayout&gt; ```</body>
+		<created>2018-12-14 09:55:51</created>
+		<closed>2018-12-15 02:06:36</closed>
+	</bug>
+	<bug>
+		<id>89</id>
+		<title>多个popupWindows叠加的时候，activity onPause然后重新onResume会导致popupWindows叠加顺序改变</title>
+		<body>### 该问题是怎么引起的？  显示了两个popupWindows，然后在popupWindows不消失的情况下新打开了另一个activity，然后关掉这个新的activity，会导致popupWindows叠加顺序改变，之前在底部的popupWindows到了最上层了    ### 重现步骤  导入demo源码，在ScalePopup49行添加一行代码： ```                 new DialogPopup((Activity) getContext()).showPopupWindow(); ``` 运行之后，在缩放Popup 点击第一个，手机锁屏，然后解锁，可以看到这时候显示的是 test1 的列表   ### 报错信息/系统版本  木有报错信息，魅蓝m1 note, Android版本5.1，flyme6.3.0.2A  ```java  ```   ### 建议或优化点  不知道啥问题 </body>
+		<created>2018-10-24 08:45:49</created>
+		<closed>2018-12-06 09:19:01</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>被软键盘顶起之后 按返回键取消软键盘 布局还是被顶起来的样子下不去</title>
+		<body>设置了  setAutoShowInputMethod(true); 和getInputView()</body>
+		<created>2017-06-26 00:50:14</created>
+		<closed>2018-10-08 08:33:21</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>v1.6.3 的改动似乎没有效果。</title>
+		<body>anima view在pop的布局设置为其中的子view。并不能精确位置。小米miui8（android7.0） 。 有的地方anima view就是和pop的view相同，可以精确位置。但是有的地方就是不行。</body>
+		<created>2017-04-01 04:05:36</created>
+		<closed>2017-04-08 09:29:36</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>326</id>
+		<title>来料导入</title>
+		<body>根据产品号获取waferSource代码修改</body>
+		<created>2020-09-21 08:54:08</created>
+		<closed>2020-09-21 08:54:43</closed>
+	</bug>
+	<bug>
+		<id>307</id>
+		<title>LOT装箱</title>
+		<body>修复装箱时没有对晶圆片数做累加</body>
+		<created>2020-09-04 09:38:09</created>
+		<closed>2020-09-04 09:38:14</closed>
+	</bug>
+	<bug>
+		<id>296</id>
+		<title>拆箱</title>
+		<body>为备货的箱号插箱时不对备货数量（reservedQty）进行扣减</body>
+		<created>2020-08-28 03:25:55</created>
+		<closed>2020-08-28 03:26:40</closed>
+	</bug>
+	<bug>
+		<id>282</id>
+		<title>来料导入优化</title>
+		<body>修复 LCD CP未测（-2.5未测）模板导入数据不完整的问题</body>
+		<created>2020-08-17 07:44:14</created>
+		<closed>2020-08-17 07:52:59</closed>
+	</bug>
+	<bug>
+		<id>267</id>
+		<title>晶圆管理</title>
+		<body>1、晶圆接收MMS_DOCUMENT_HIS没有记录历史问题修复； 2、晶圆接收、发料功能多条单据时，单据数量充足，部分单据没有用到，但是MMS_DOCUMENT_LINE_HIS记录多余历史问题修复； ![image](https://user-images.githubusercontent.com/55224413/89367575-fdbf3480-d70b-11ea-9105-5d99777b0753.png) </body>
+		<created>2020-08-05 03:08:41</created>
+		<closed>2020-08-05 03:13:20</closed>
+	</bug>
+	<bug>
+		<id>264</id>
+		<title>晶圆接收</title>
+		<body>晶圆接收发料单数量回写修复 ![image](https://user-images.githubusercontent.com/55224413/89256852-947de980-d657-11ea-8856-3a387ae57e60.png) </body>
+		<created>2020-08-04 05:37:48</created>
+		<closed>2020-08-04 05:40:13</closed>
+	</bug>
+	<bug>
+		<id>263</id>
+		<title>发料数量问题修正</title>
+		<body>页面上有3个单据，就匹配到了一个物料批次。 物料批次会扣除3个单据上的数量。而不管这个单据是否已经满足了消耗。。。 造成单据上的数量混乱。</body>
+		<created>2020-08-03 11:31:40</created>
+		<closed>2020-08-04 05:40:25</closed>
+	</bug>
+	<bug>
+		<id>251</id>
+		<title>晶圆发料handled_qty字段数量错误bug修正</title>
+		<body></body>
+		<created>2020-07-27 07:12:33</created>
+		<closed>2020-07-27 08:15:36</closed>
+	</bug>
+	<bug>
+		<id>234</id>
+		<title>晶圆发料和晶圆接收页面显示异常</title>
+		<body></body>
+		<created>2020-07-03 07:53:24</created>
+		<closed>2020-07-23 09:31:20</closed>
+	</bug>
+	<bug>
+		<id>231</id>
+		<title>修复中间表数据同步bug</title>
+		<body> 去除erp同步单据时多同步的一行表中没有的字段</body>
+		<created>2020-06-18 09:12:03</created>
+		<closed>2020-06-18 09:28:17</closed>
+	</bug>
+	<bug>
+		<id>171</id>
+		<title>修改DBLINK的使用方式</title>
+		<body>1. 当前同步数据会在for循环中，update dblink的数据。会导致dblink的开启的数量过多。改成in方式的一次性修改，</body>
+		<created>2020-01-14 08:29:01</created>
+		<closed>2020-01-14 10:53:10</closed>
+	</bug>
+	<bug>
+		<id>170</id>
+		<title>重构接收物批次</title>
+		<body>以前的接收物料批次是只考虑了一次性接收不大的量情况下，对物料对状态模型都会产生重复查询。消耗了性能，使用了连接。比如每次接收50个，就会对同种数据产生重复查询。 此处进行重构，可以对一个物料内批量接收物料批次。减少查询。 增加接收时候，对reseverd栏位等的赋值相关。不需要额外在更新</body>
+		<created>2020-01-13 07:31:48</created>
+		<closed>2020-01-14 10:53:09</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>成品真空包打印</title>
+		<body>真空包打印，成品真空包没有工单号，修改打印代码 ![image](https://user-images.githubusercontent.com/55224413/71389065-d19beb00-2635-11ea-8b09-4dca7c4eea97.png) </body>
+		<created>2019-12-24 02:12:04</created>
+		<closed>2019-12-24 02:12:49</closed>
+	</bug>
+	<bug>
+		<id>159</id>
+		<title>称重</title>
+		<body>多箱称重后的箱再次进行单箱称重，没有清除箱的事务信息（Reserved20）</body>
+		<created>2019-12-19 08:49:28</created>
+		<closed>2019-12-19 08:50:04</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>GC 没有同步单据的DDATE即创建时间</title>
+		<body></body>
+		<created>2019-09-24 08:05:09</created>
+		<closed>2019-09-24 08:16:25</closed>
+	</bug>
+	<bug>
+		<id>117</id>
+		<title>GC要求 在出货检的时候，要把被包装的批次里面的装箱检一起改掉</title>
+		<body>1. 当前只改了包装批次的装箱检栏位，需要吧被包装批次的装箱检栏位一起修改</body>
+		<created>2019-09-23 06:38:05</created>
+		<closed>2019-09-23 06:47:32</closed>
+	</bug>
+	<bug>
+		<id>113</id>
+		<title>没有记录拆包历史</title>
+		<body></body>
+		<created>2019-09-23 03:22:39</created>
+		<closed>2019-09-23 03:51:15</closed>
+	</bug>
+	<bug>
+		<id>112</id>
+		<title>追加包装没有验证包装规则</title>
+		<body></body>
+		<created>2019-09-23 03:20:52</created>
+		<closed>2019-09-23 03:40:40</closed>
+	</bug>
+	<bug>
+		<id>109</id>
+		<title>拆包没有记录包装批的历史</title>
+		<body></body>
+		<created>2019-09-17 07:07:18</created>
+		<closed>2019-09-17 07:28:01</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>online栏位的只读会影响到queryForm</title>
+		<body>online栏位上的只读标识，设置了，当这个栏位是查询条件时，会无法输入。</body>
+		<created>2019-05-28 05:39:18</created>
+		<closed>2019-05-28 06:34:04</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>EditTable在有个列是fixed状态下无法取到formValue</title>
+		<body>EditTable在有个列是fixed状态下无法取到formValue</body>
+		<created>2019-04-22 17:10:42</created>
+		<closed>2019-04-22 17:13:01</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>EntityContorller级联更新BUG</title>
+		<body></body>
+		<created>2019-04-04 08:53:52</created>
+		<closed>2019-04-04 09:12:09</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>整理NBTable和NBFields</title>
+		<body>- [x] 当前NBTable上的whereClause和initWhereClause没起作用 - [x] 去除NBField的栏位是否保存栏位。 - [x] 参考值分成2个栏位进行填写。系统栏位参考值还是用户栏位参考值</body>
+		<created>2019-04-03 10:50:31</created>
+		<closed>2019-04-11 11:07:26</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>EntityDrawer缺少Button</title>
+		<body>EntityDrawer没有确认和取消的button</body>
+		<created>2019-04-03 03:54:03</created>
+		<closed>2019-04-11 11:09:42</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>页面定义ID生成规则的时候，Line无法自动递增SEQ</title>
+		<body>页面定义ID生成规则Line的时候，无法自动递增SEQ</body>
+		<created>2019-03-07 14:27:20</created>
+		<closed>2019-04-03 08:10:58</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>当前页面操作没有传递username给后台。</title>
+		<body>RequestHeader里面没有传递username. 导致后台很多操作上的记录没有记录操作人。 ![image](https://user-images.githubusercontent.com/14329149/53142321-6ffe9080-35ce-11e9-800f-951585ba7d6e.png) </body>
+		<created>2019-02-21 03:50:42</created>
+		<closed>2019-02-25 04:17:08</closed>
+	</bug>
+	<bug>
+		<id>19</id>
+		<title>保存的时候，会把关联关系级联删除掉。</title>
+		<body>因为当前client端不会传输级联关系的对象。如table对应的fields。会导致保存的时候，将fields的数据清掉。会导致很多已经分配了数据的对象，关联数据为空。</body>
+		<created>2019-01-16 06:51:36</created>
+		<closed>2019-01-16 13:38:32</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>查找form出现问题</title>
+		<body>因为当前的select组件没有指定宽度。而是用100%在显示。就会导致如下图显示错位的异常： ![image](https://user-images.githubusercontent.com/14329149/50582753-bde4fb00-0e9f-11e9-9bb0-79a5ae48ec4d.png) </body>
+		<created>2019-01-02 07:05:05</created>
+		<closed>2019-01-17 04:24:34</closed>
+	</bug>
+	<bug>
+		<id>15</id>
+		<title>导入UI.jsx与实际Ui.jsx文件名不一致</title>
+		<body>![image](https://user-images.githubusercontent.com/11208441/50433842-a93fba80-0915-11e9-923b-ee0b35b27729.png) </body>
+		<created>2018-12-26 05:55:36</created>
+		<closed>2019-01-02 05:20:48</closed>
+	</bug>
+	<bug>
+		<id>14</id>
+		<title>RefTable级联关系的issue</title>
+		<body>1. 当动态表有动态tab的时候，当前因为没有触发onvalueChange事件，是通过form.setFieldsValue进行赋值，会导致动态tab无法加载值。导致显示问题。如图 ![image](https://user-images.githubusercontent.com/14329149/49727847-3810ce00-fcac-11e8-836f-026c756a5693.png)  2. 当选择动态TAB之后，再选择一个动态表无法将原动态tab栏位清空。如图。NBOrg下是没有动态tab的，但是上次的信息还是没有清空。 ![image](https://user-images.githubusercontent.com/14329149/49727915-5c6caa80-fcac-11e8-9582-4c3f0d6d5834.png) </body>
+		<created>2018-12-10 10:50:10</created>
+		<closed>2019-08-05 10:26:28</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>EntityTable的新增按钮问题</title>
+		<body>按钮不止新增一个。基本的默认的页面都必须具备导入，导出，新增的按钮。故不能放在右上角。应该在Table上面加个tableGroup。如图，画红线的地方。 ![image](https://user-images.githubusercontent.com/14329149/48314064-12d26680-e5ff-11e8-8aea-9ab6c6176b8c.png) </body>
+		<created>2018-11-11 14:14:09</created>
+		<closed>2018-11-12 12:10:30</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>queryForm当出现过多query栏位时。当前最多只能显示3个。</title>
+		<body></body>
+		<created>2018-11-11 13:35:57</created>
+		<closed>2018-11-12 12:10:48</closed>
+	</bug>
+	<bug>
+		<id>2</id>
+		<title>当列过少时，出现固定列会出现多个的问题</title>
+		<body></body>
+		<created>2018-11-11 09:02:33</created>
+		<closed>2018-11-12 08:35:58</closed>
+	</bug>
+</bugs>

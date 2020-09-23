@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="HMCL">
+	<bug id="492" opendate="2018-11-30 23:08:57" fixdate="2018-12-02 06:56:12">
+		<buginformation>
+			<summary>[HMCL3.2.114]安装游戏之后没有显示游戏</summary>
+			<description>图片为证 ![qq 20181201070333](https://user-images.githubusercontent.com/42583700/49319431-cca26000-f537-11e8-9223-fd3399a6fa4e.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/StringArgument.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/Argument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="489" opendate="2018-11-18 06:18:45" fixdate="2018-12-02 12:03:45">
+		<buginformation>
+			<summary>加载版本列表失败</summary>
+			<description> ![g m7p vf7twj4 w39c 1_a](https://user-images.githubusercontent.com/40971680/48669292-9084fd80-eb3c-11e8-89e7-993d721bf69b.png) 没有办法安装新版本了，大概资源挂了 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/io/FileUtils.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Settings.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/task/FinalizedCallback.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/game/ModpackHelper.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/task/Task.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/SettingsPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/SettingsView.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/download/DefaultGameBuilder.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/task/FinalizedTask.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="481" opendate="2018-10-23 05:31:58" fixdate="2019-05-09 11:28:48">
+		<buginformation>
+			<summary>NPE</summary>
+			<description>* 启动器版本：3.2.110 * 操作系统：Windows 7 * Java 版本：1.8.0_131 * 错误截图（最好请将整个电脑屏幕的截图发上来）：/ * 游戏版本（如果是启动通过启动器自带的自动安装功能安装的游戏）：/ * 对游戏做的修改（是否自行通过安装器安装 Rift 等 API，以及 mod）：/ * 游戏崩溃报告（如果有）：/ * 启动器崩溃报告（如果有）：/ * 启动器日志文件（在启动器设置中打开日志文件夹并将文件夹内所有文件打包发在这里）： ``` [20:51:28] [org.jackhuang.hmcl.Launcher.main/INFO] *** HMCL 3.2.110 *** [20:51:28] [org.jackhuang.hmcl.Launcher.main/INFO] Operating System: Windows 7 6.1 [20:51:28] [org.jackhuang.hmcl.Launcher.main/INFO] Java Version: 1.8.0_131, Oracle Corporation [20:51:28] [org.jackhuang.hmcl.Launcher.main/INFO] Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation [20:51:28] [org.jackhuang.hmcl.Launcher.main/INFO] Java Home: C:\Program Files\Java\jre1.8.0_131 [20:51:28] [org.jackhuang.hmcl.Launcher.main/INFO] Current Directory: D:\2345Downloads [20:51:28] [org.jackhuang.hmcl.Launcher.main/INFO] HMCL Directory: C:\Users\Administrator\AppData\Roaming\.hmcl [20:51:28] [org.jackhuang.hmcl.Launcher.main/INFO] Memory: 853MB [20:51:28] [org.jackhuang.hmcl.Launcher.lambda$main$2/INFO] Metaspace: 8MB [20:51:31] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINE] Executing task: org.jackhuang.hmcl.game.GameRepository.refreshVersionsAsync(GameRepository.java:81) [20:51:31] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINE] Executing task: org.jackhuang.hmcl.game.GameRepository.refreshVersionsAsync(GameRepository.java:81) [20:51:31] [org.jackhuang.hmcl.ui.Controllers.initialize/INFO] Start initializing application [20:51:31] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] RefreshingVersionsEvent [source=HMCLGameRepository [versions=null, baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft]] gets fired [20:51:31] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] RefreshingVersionsEvent [source=HMCLGameRepository [versions=null, baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft]] gets fired [20:51:31] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=null, baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=è‡ªå·±æ•´åˆçš„å®¢æˆ·ç«¯]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=null, baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=1.13]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=null, baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=rd-20090515]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=null, baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=1.8.9-forge1.8.9-11.15.1.1855]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=null, baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=1.8.9]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=[1.13, 1.8.9, 1.8.9-forge1.8.9-11.15.1.1855, rd-20090515, è‡ªå·±æ•´åˆçš„å®¢æˆ·ç«¯], baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=è‡ªå·±æ•´åˆçš„å®¢æˆ·ç«¯]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] RefreshedVersionsEvent [source=HMCLGameRepository [versions=[1.13, 1.8.9, 1.8.9-forge1.8.9-11.15.1.1855, rd-20090515, è‡ªå·±æ•´åˆçš„å®¢æˆ·ç«¯], baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=[1.13, 1.8.9, 1.8.9-forge1.8.9-11.15.1.1855, rd-20090515, è‡ªå·±æ•´åˆçš„å®¢æˆ·ç«¯], baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=1.13]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=[1.13, 1.8.9, 1.8.9-forge1.8.9-11.15.1.1855, rd-20090515, è‡ªå·±æ•´åˆçš„å®¢æˆ·ç«¯], baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=rd-20090515]] gets fired [20:51:32] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINER] Task finished: org.jackhuang.hmcl.game.GameRepository.refreshVersionsAsync(GameRepository.java:81) [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=[1.13, 1.8.9, 1.8.9-forge1.8.9-11.15.1.1855, rd-20090515, è‡ªå·±æ•´åˆçš„å®¢æˆ·ç«¯], baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=1.8.9-forge1.8.9-11.15.1.1855]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] LoadedOneVersionEvent [source=HMCLGameRepository [versions=[1.13, 1.8.9, 1.8.9-forge1.8.9-11.15.1.1855, rd-20090515, è‡ªå·±æ•´åˆçš„å®¢æˆ·ç«¯], baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft], version=Version [id=1.8.9]] gets fired [20:51:32] [org.jackhuang.hmcl.event.EventBus.fireEvent/INFO] RefreshedVersionsEvent [source=HMCLGameRepository [versions=[1.13, 1.8.9, 1.8.9-forge1.8.9-11.15.1.1855, rd-20090515, è‡ªå·±æ•´åˆçš„å®¢æˆ·ç«¯], baseDirectory=C:\Users\Administrator\AppData\Roaming\.minecraft]] gets fired [20:51:32] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINER] Task finished: org.jackhuang.hmcl.game.GameRepository.refreshVersionsAsync(GameRepository.java:81) [20:51:38] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINE] Executing task: org.jackhuang.hmcl.ui.account.AccountAdvancedListItem$1.invalidated(AccountAdvancedListItem.java:53) [20:51:38] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINE] Executing task: org.jackhuang.hmcl.game.AccountHelper$SkinLoadTask [20:51:38] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINER] Task finished: org.jackhuang.hmcl.game.AccountHelper$SkinLoadTask [20:51:38] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINE] Executing task: org.jackhuang.hmcl.ui.account.AccountAdvancedListItem$1.invalidated(AccountAdvancedListItem.java:53) [20:51:39] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINE] Executing task: org.jackhuang.hmcl.ui.Controllers.initialize(Controllers.java:212) [20:51:43] [org.jackhuang.hmcl.ui.construct.Navigator.navigate/INFO] Navigate to ProfileList@2d5774a2 [20:51:44] [org.jackhuang.hmcl.util.CrashReporter.uncaughtException/SEVERE] Uncaught exception in thread JavaFX Application Thread java.lang.NullPointerException at org.jackhuang.hmcl.ui.decorator.DecoratorController.onNavigated(DecoratorController.java:279) at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) at javafx.event.Event.fireEvent(Event.java:198) at javafx.scene.Node.fireEvent(Node.java:8413) at org.jackhuang.hmcl.ui.construct.Navigator.lambda$new$0(Navigator.java:50) at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295) at java.security.AccessController.doPrivileged(Native Method) at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294) at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191) at java.lang.Thread.run(Unknown Source) [20:51:44] [org.jackhuang.hmcl.util.CrashReporter.uncaughtException/SEVERE] ---- Hello Minecraft! Crash Report ----   Version: 3.2.110   Time: 2018-10-21 20:51:44   Thread: Thread[JavaFX Application Thread,5,main]    Content:      java.lang.NullPointerException at org.jackhuang.hmcl.ui.decorator.DecoratorController.onNavigated(DecoratorController.java:279) at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) at javafx.event.Event.fireEvent(Event.java:198) at javafx.scene.Node.fireEvent(Node.java:8413) at org.jackhuang.hmcl.ui.construct.Navigator.lambda$new$0(Navigator.java:50) at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295) at java.security.AccessController.doPrivileged(Native Method) at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294) at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191) at java.lang.Thread.run(Unknown Source)   -- System Details --   Operating System: Windows 7 6.1   Java Version: 1.8.0_131, Oracle Corporation   Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation  [20:51:45] [org.jackhuang.hmcl.upgrade.IntegrityChecker.isSelfVerified/INFO] Successfully verified current JAR ``` * 问题描述（如何触发问题）：/</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/construct/Navigator.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/decorator/DecoratorController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="403" opendate="2018-07-27 03:34:49" fixdate="2018-08-06 10:55:59">
+		<buginformation>
+			<summary>OSX 下窗口不能移动</summary>
+			<description>窗口不能移动不能调整，就像粘在我桌面上了一样。可以正常操作。  macOS High Sierra 10.13.6</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/Decorator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="136" opendate="2017-05-01 07:03:47" fixdate="2018-07-03 12:44:29">
+		<buginformation>
+			<summary>窗口显示异常</summary>
+			<description>![image](https://cloud.githubusercontent.com/assets/17294071/25574265/579d124e-2e7f-11e7-9386-b5b1f085846f.png) * 如图 * 当时目录路径中有&amp;等字符，可能是路径的问题 @huanghongxun :octocat: </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="131" opendate="2017-03-22 16:28:02" fixdate="2017-06-11 05:16:52">
+		<buginformation>
+			<summary>[Mac OS]窗口边框闪烁问题依旧</summary>
+			<description>这个问题真的很坑啊XD </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="124" opendate="2017-02-25 23:52:20" fixdate="2017-06-11 05:16:52">
+		<buginformation>
+			<summary>[Linux&amp;Mac]启动器界面异常</summary>
+			<description>1.打开窗口阴影看起来会有多个启动器一样 ![_2017-02-26_07-35-36](https://cloud.githubusercontent.com/assets/17371317/23335727/5243a8dc-fbf6-11e6-994b-264d83f2b381.png) 2.标签提示的阴影会越来越浓，直到完全黑色 第一次指向某标签时 ![_2017-02-26_07-38-15](https://cloud.githubusercontent.com/assets/17371317/23335760/148fc7cc-fbf7-11e6-8d3c-f435cf33aca7.png) 第五次指向同一标签时 （为什么不是第二次？因为效果更明显） ![_2017-02-26_07-38-41](https://cloud.githubusercontent.com/assets/17371317/23335758/0a856b92-fbf7-11e6-876c-259335f40fcf.png) 3.“启动Minecraft”按钮文字有点淡 （这个不是异常，只是顺便提一下） MAC也有这个问题 #122  系统 XUbuntu 16.10 “Yakkety Yak” 内核 Linux 4.8.0-39 桌面环境 Xfce 4.12（Xfwm4 窗口管理器，LightDM 登录器，GTK 界面） JAVA Orcale JDK 1.8.0_121 HMCL 2.7.5.17 （更新真的不推送了？自己写了一个小程序获取开发版本，不过俺只会易语言，而且怎么也没办法在Linux程序中发送GET报文，无奈只好用Wine+Windows程序）</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="122" opendate="2017-02-24 04:52:05" fixdate="2017-06-11 05:16:52">
+		<buginformation>
+			<summary>[mac]启动器主界面怪异</summary>
+			<description>mac下启动界面长这样 ![image](https://cloud.githubusercontent.com/assets/4977935/23290952/b6f13a50-fa8f-11e6-913b-f08130d5f6e6.png)  取消窗口阴影就好了</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2016-04-09 07:16:08" fixdate="2016-04-09 09:29:46">
+		<buginformation>
+			<summary>正版登出后“密码”后面的背景无法显示</summary>
+			<description>![](https://cloud.githubusercontent.com/assets/13145126/14402362/f3899d08-fe65-11e5-8fef-328ed15dc74b.png) @huanghongxun  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/ui/LogWindow.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainPagePanel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="38" opendate="2016-02-28 05:20:19" fixdate="2016-02-28 05:43:15">
+		<buginformation>
+			<summary>启动Bug</summary>
+			<description>![image](https://cloud.githubusercontent.com/assets/7685264/13377633/ea41988a-de1d-11e5-9fc0-c9b5416bf7bc.png) commit f811d4c 自行Gradle构建 使用2.4.0.45可以启动 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/ui/WebFrame.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/ui/SwingUtils.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/AbstractMinecraftLoader.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/system/ProcessThread.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/LaunchingUIDaemon.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2016-02-26 07:13:41" fixdate="2016-02-26 15:43:51">
+		<buginformation>
+			<summary>Mod兼容问题</summary>
+			<description>Description: Initializing game  Reika.DragonAPI.Exception.InstallationException: ChromatiCraft was not installed correctly: You are running Java 8, and need to use the JVM argument '-XX:+UseG1GC' or you will suffer memory allocation-related crashes. Note that you may have to remove other GC arguments, such as '-XX:+UseConcMarkSweepGC', which is commonly auto-specified by launchers. Current Java Args: [-XX:-OmitStackTraceInFastThrow, -XX:+CMSIncrementalMode, -Xmx12288m, -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump, -XX:-UseAdaptiveSizePolicy, -XX:+UseConcMarkSweepGC, -Dfml.ignoreInvalidMinecraftCertificates=true, -Xmn128m, -Dfml.ignorePatchDiscrepancies=true, -Djava.library.path=F:\Games\Minecraft\1.7.x\Novel Inpact.minecraft\versions\1.7.10-Forge10.13.4.1614-1.7.10\1.7.10-Forge10.13.4.1614-1.7.10-natives] Try consulting http://www.minecraftforum.net/topic/1969694-for information. This is not a ChromatiCraft bug. Do not post it to http://www.minecraftforum.net/topic/1969694- unless you are really stuck.     at Reika.ChromatiCraft.ChromatiCraft.preload(ChromatiCraft.java:303)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)     at java.lang.reflect.Method.invoke(Unknown Source)     at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532)     at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)     at java.lang.reflect.Method.invoke(Unknown Source)     at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)     at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)     at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)     at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)     at com.google.common.eventbus.EventBus.post(EventBus.java:275)     at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212)     at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)     at java.lang.reflect.Method.invoke(Unknown Source)     at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)     at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)     at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)     at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)     at com.google.common.eventbus.EventBus.post(EventBus.java:275)     at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119)     at cpw.mods.fml.common.Loader.preinitializeMods(Loader.java:556)     at cpw.mods.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:243)     at net.minecraft.client.Minecraft.func_71384_a(Minecraft.java:480)     at net.minecraft.client.Minecraft.func_99999_d(Minecraft.java:878)     at net.minecraft.client.main.Main.main(SourceFile:148)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)     at java.lang.reflect.Method.invoke(Unknown Source)     at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)     at net.minecraft.launchwrapper.Launch.main(Launch.java:28)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)     at java.lang.reflect.Method.invoke(Unknown Source)     at org.jackhuang.hellominecraft.launcher.Launcher.main(Launcher.java:112)  这是reikamod的报错，可HMCL默认的JVM启动参数里有-XX:+UseConcMarkSweepGC这一条 以及在 http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1291655-reikas-mods-tech-worldgen-civilization-and-more?page=1307#c26474 这楼提到的-XX:+CMSIncrementalMode参数也是默认参数  而且似乎这几条默认的参数在HMCL里都没法去掉？希望改进 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/system/IOUtils.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/AbstractMinecraftLoader.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/CrashReporter.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/version/LibraryDownloadInfo.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/version/MinecraftVersion.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="26" opendate="2016-02-16 07:20:40" fixdate="2016-02-27 04:24:04">
+		<buginformation>
+			<summary>配置文件存储行为在Linux下的问题</summary>
+			<description>在linux下使用此启动器，hmcl.log和hmcl.json都不会存储至jar所在的文件夹内，却存储到了"~"，即用户的主文件夹内 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/ui/SwingUtils.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/HMCLGameLauncher.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/ui/wizard/api/displayer/WizardDisplayerImpl.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/CrashReporter.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/Main.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/HeaderTab.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/modpack/ModpackWizard.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainPagePanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/Launcher.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/modpack/ModpackInitializationPanel.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

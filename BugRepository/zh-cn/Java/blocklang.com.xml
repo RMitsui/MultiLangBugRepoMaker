@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="blocklang.com">
+	<bug id="490" opendate="2020-08-05 05:35:49" fixdate="2020-08-06 00:48:13">
+		<buginformation>
+			<summary>使用 github 帐号登录时，如果出错则应显示详细信息</summary>
+			<description>现在是直接调转到 `/error` 页面，没有给出任何友好提示。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/config/WebSecurityConfig.java</file>
+			<file>server/src/main/java/com/blocklang/core/controller/UserSession.java</file>
+			<file>server/src/main/java/com/blocklang/core/controller/LoggedUserController.java</file>
+			<file>server/src/main/java/com/blocklang/core/oauth2/CustomOAuth2UserService.java</file>
+			<file>server/src/main/java/com/blocklang/core/constant/LoginStatus.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="347" opendate="2019-12-15 01:08:46" fixdate="2019-12-16 01:21:30">
+		<buginformation>
+			<summary>生成的页面模型信息的存储路径有误</summary>
+			<description>1. 缺失 `pages` 文件夹 2. 文件路径应为 `pages/main.json`，但当前为 `main/main.json`  ![image](https://user-images.githubusercontent.com/624517/70856585-69088c00-1f1a-11ea-9928-cc5c6c0dba82.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/release/task/ProjectModelWriteTask.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="307" opendate="2019-11-18 08:53:11" fixdate="2019-11-18 09:10:10">
+		<buginformation>
+			<summary>往依赖中添加项，然后再删掉，则应该显示未修改</summary>
+			<description>![图片](https://user-images.githubusercontent.com/624517/69037921-c399ef80-0a23-11ea-9d0c-eb34cce06c0f.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/develop/service/impl/ProjectServiceImpl.java</file>
+			<file>server/src/test/java/com/blocklang/develop/service/impl/ProjectServiceImplTest.java</file>
+			<file>server/src/test/java/com/blocklang/develop/service/impl/ProjectDependenceServiceImplTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="214" opendate="2019-08-18 07:29:41" fixdate="2019-08-18 07:53:56">
+		<buginformation>
+			<summary>DEPENDENCE.json 文件修改后，在项目的提交视图中却没有显示出来</summary>
+			<description>![图片](https://user-images.githubusercontent.com/624517/63221530-e6222f80-c1cc-11e9-928e-51050728e97d.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/develop/service/impl/ProjectResourceServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="185" opendate="2019-08-02 06:58:03" fixdate="2019-08-08 09:55:03">
+		<buginformation>
+			<summary>没有为组件仓库添加 tag 而解析失败时，不显示多余的“解析失败”</summary>
+			<description>![图片](https://user-images.githubusercontent.com/624517/62350630-df8d8a00-b535-11e9-9d53-e6b65b9ff54d.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/marketplace/service/impl/PublishServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="98" opendate="2019-05-13 08:01:14" fixdate="2019-05-22 12:12:51">
+		<buginformation>
+			<summary>eclipse 控制台偶尔会刷屏，显示一堆错误信息</summary>
+			<description>但是无法还原出错场景。需进一步跟踪。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/core/filter/RouterFilter.java</file>
+			<file>server/src/main/java/com/blocklang/core/filter/Resources.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="97" opendate="2019-05-13 07:33:12" fixdate="2019-05-13 09:56:23">
+		<buginformation>
+			<summary>创建页面中 name 的校验信息显示有误</summary>
+			<description>![image](https://user-images.githubusercontent.com/624517/57603445-51d47b00-7594-11e9-9de1-7ebf07eab7ef.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/develop/controller/GroupController.java</file>
+			<file>server/src/main/java/com/blocklang/develop/controller/PageController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="96" opendate="2019-05-13 07:30:41" fixdate="2019-05-13 09:56:23">
+		<buginformation>
+			<summary>创建分组时，校验 key 值重复的提示信息显示有误</summary>
+			<description>检查 key 和 name 的校验  ![image](https://user-images.githubusercontent.com/624517/57603348-0c17b280-7594-11e9-95e2-fec6c77d8889.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/develop/controller/GroupController.java</file>
+			<file>server/src/main/java/com/blocklang/develop/controller/PageController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="94" opendate="2019-05-13 02:24:40" fixdate="2019-05-13 04:45:23">
+		<buginformation>
+			<summary>提交页面的目录缺少分隔符</summary>
+			<description>![图片](https://user-images.githubusercontent.com/624517/57592442-4ae44300-7569-11e9-9589-bc135ef1bfd3.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/test/java/com/blocklang/develop/service/impl/ProjectResourceServiceImplTest.java</file>
+			<file>server/src/main/java/com/blocklang/develop/service/impl/ProjectResourceServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="52" opendate="2019-04-12 23:29:47" fixdate="2019-04-13 01:05:13">
+		<buginformation>
+			<summary>当项目名为 b 时，会出现截断资源文件不正确的问题</summary>
+			<description>在后台 dojo 的资源文件以 b 字母开头l(bootstrap.js)，如果以 `a/b` 访问，则资源会截取为 ootstrap.js</description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/test/java/com/blocklang/core/filter/RouterFilterTest.java</file>
+			<file>server/src/main/java/com/blocklang/core/filter/RouterFilter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2019-03-29 02:41:03" fixdate="2019-04-14 08:49:55">
+		<buginformation>
+			<summary>当使用 qq 登录进入到完善用户信息页面后，再使用 github 用户登录，会报错</summary>
+			<description>![github_login](https://user-images.githubusercontent.com/624517/55205768-21689580-520f-11e9-81e5-817f6da1b9e5.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/core/oauth2/CustomOAuth2AuthorizationCodeGrantRequestEntityConverter.java</file>
+			<file>server/src/main/java/com/blocklang/core/controller/UserSession.java</file>
+			<file>server/src/main/java/com/blocklang/core/controller/LoggedUserController.java</file>
+			<file>server/src/main/java/com/blocklang/core/oauth2/CustomOAuth2UserService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="24" opendate="2019-03-27 12:51:58" fixdate="2019-04-14 08:49:45">
+		<buginformation>
+			<summary>当使用qq登录跳转到完善用户页面后，下次再访问主页直接进入完善用户信息页面</summary>
+			<description>~~应该是跳转到公共首页~~ 这个逻辑没有问题</description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/core/oauth2/CustomOAuth2AuthorizationCodeGrantRequestEntityConverter.java</file>
+			<file>server/src/main/java/com/blocklang/core/controller/UserSession.java</file>
+			<file>server/src/main/java/com/blocklang/core/controller/LoggedUserController.java</file>
+			<file>server/src/main/java/com/blocklang/core/oauth2/CustomOAuth2UserService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="10" opendate="2019-03-17 08:47:13" fixdate="2019-04-17 13:42:29">
+		<buginformation>
+			<summary>从创建发行版页面跳转到发行版列表页面后，页面没有按预期效果布局</summary>
+			<description>![list_release_1](https://user-images.githubusercontent.com/624517/55118307-d96f4300-5128-11e9-87a5-f64974e8bf46.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>server/src/main/java/com/blocklang/release/task/AbstractCommandTask.java</file>
+			<file>server/src/test/java/com/blocklang/release/task/AppBuildContextTest.java</file>
+			<file>server/src/main/java/com/blocklang/config/WebSocketConfig.java</file>
+			<file>server/src/main/java/com/blocklang/release/model/ProjectReleaseTask.java</file>
+			<file>server/src/main/java/com/blocklang/release/task/AppBuildContext.java</file>
+			<file>server/src/main/java/com/blocklang/release/service/impl/BuildServiceImpl.java</file>
+			<file>server/src/main/java/com/blocklang/release/controller/ReleaseController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

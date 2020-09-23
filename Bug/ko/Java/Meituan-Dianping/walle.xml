@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>241</id>
+		<title>无法打开原理介绍链接！</title>
+		<body>首先非常感谢您选用Walle。  Walle还有很多不足，在已经关闭的issue中我们解决了很多问题，在提交新issue时，可以去已经[关闭的issue中寻求答案](https://github.com/Meituan-Dianping/walle/issues?q=is%3Aissue+is%3Aclosed)。  为了更好的帮助我们定位问题，请在提issue时携带尽可能多的日志或者说明。</body>
+		<created>2018-07-18 04:27:10</created>
+		<closed>2018-08-01 04:51:12</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>// 渠道&amp;额外信息配置文件，与channelFile互斥     configFile = new File("${project.getProjectDir()}/news.json") </title>
+		<body>配置json文件中的alias 属性命名的中文，打包出现乱码</body>
+		<created>2017-08-07 01:33:01</created>
+		<closed>2017-08-08 04:51:56</closed>
+	</bug>
+	<bug>
+		<id>141</id>
+		<title>Error:Could not find any matches for com.meituan.android.walle:library:latest.integration as no versions of com.meituan.android.walle:library are available. </title>
+		<body>我在集成walle的时候完全按照说明来的，使用版本为1.1.4  。总是不能成功，错误信息如标题；  请问下是什么原因呢？</body>
+		<created>2017-07-19 07:45:28</created>
+		<closed>2017-08-08 04:51:56</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>插件获取最新版本aar，一旦发版导致所有用户被迫升级</title>
+		<body>Error:A problem occurred configuring project ':app'. &gt; Failed to notify project evaluation listener.    &gt; Could not find payload_reader.jar (com.meituan.android.walle:payload_reader:1.1.4).      Searched in the following locations:          https://jcenter.bintray.com/com/meituan/android/walle/payload_reader/1.1.4/payload_reader-1.1.4.jar    </body>
+		<created>2017-06-30 08:55:50</created>
+		<closed>2017-08-08 04:51:56</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>fileSHA1 无效</title>
+		<body>配置了fileSHA1.但是貌似无效.所有打包出来的文件sha1都是一样的.而且自己校验一下.没有一个包是匹配的. 使用的是Android Studio2.3、Gradle 3.4.1        walle {     // 指定渠道包的输出路径     apkOutputFolder = new File("${project.buildDir}/outputs/channels");     // 定制渠道包的APK的文件名称     apkFileNameFormat = '${appName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}-${fileSHA1}.apk';     // 配置渠道文件列表，也可以通过channelList来配置     channelFile = "app/channel"; }</body>
+		<created>2017-03-22 04:19:48</created>
+		<closed>2017-03-23 01:47:35</closed>
+	</bug>
+	<bug>
+		<id>70</id>
+		<title>使用gradle 2.3打包报错</title>
+		<body>&lt;pre&gt; hyhedeMacBook-Air:walle hyhe$ ./gradlew :walle-cli:clean :walle-cli:shadowJar Parallel execution with configuration on demand is an incubating feature.  FAILURE: Build failed with an exception.  * What went wrong: Could not resolve all dependencies for configuration ':walle-cli:runtime'. &gt; org.gradle.api.internal.artifacts.configurations.ConfigurationInternal.getModule()Lorg/gradle/api/internal/artifacts/ModuleInternal;  * Try: Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.  BUILD FAILED &lt;/pre&gt;</body>
+		<created>2017-03-07 02:51:30</created>
+		<closed>2017-03-07 05:49:46</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>怎么分abi打包？</title>
+		<body>如果我的配置里面写了 splits {         abi {             enable true             reset()             include 'armeabi', 'x86'             universalApk false         }     } 每次打包出来都是x86的，怎么打出armeabi的？</body>
+		<created>2017-03-03 09:02:18</created>
+		<closed>2017-03-03 10:32:57</closed>
+	</bug>
+	<bug>
+		<id>56</id>
+		<title>打包命令bug</title>
+		<body> 我在terminal执行 ./gradlew clean assembleReleaseChannels -PchannelList=200001000021 想要打单个渠道包，但是打包的结果是工程目录下channle文件夹里面的50个渠道包，并没有打出渠道号是200001000021的渠道包 </body>
+		<created>2017-02-27 08:28:08</created>
+		<closed>2017-02-27 08:38:44</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>打单个渠道包会把所有的渠道包都打好了。。。</title>
+		<body>#### 问题一 我执行这个命令 **./gradlew clean assembleReleaseChannels -PchannelList=meituan** 结果它顺带把我channel文件里的所有渠道包都打好了</body>
+		<created>2017-02-24 03:36:31</created>
+		<closed>2017-02-27 02:00:04</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>从代码上看，channelFile和channelList是并且的关系</title>
+		<body>```java         if (channelListProperty != null &amp;&amp; channelListProperty.trim().length() &gt; 0) {             channelList.addAll(channelListProperty.split(",").collect { it.trim() })         }         if (channelFileProperty != null &amp;&amp; channelFileProperty.trim().length() &gt; 0) {             channelList.addAll(getChannelListFromFile(targetProject, channelFileProperty))         } ```</body>
+		<created>2017-02-14 09:56:23</created>
+		<closed>2017-02-15 01:34:52</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>Could not find method walle()</title>
+		<body>我根据文档配置后，Sync项目后，报下面的错误： Error:(239, 0) Could not find method walle() for arguments [build_8e710nlujanxx3jeuass6znpr$_run_closure3@76a8173f] on project ':app' of type org.gradle.api.Project. 我已经加上apply plugin: 'walle'了。 希望能解答一下，谢谢~</body>
+		<created>2017-02-14 03:28:32</created>
+		<closed>2017-02-15 01:47:54</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>gradle3.3中没有getAndroidGradlePluginVersion()</title>
+		<body>com.android.tools.build:gradle:2.3.0-beta2  gradle3.3中getAndroidGradlePluginVersion 被com.android.builder.Version.ANDROID_GRADLE_PLUGIN_VERSION替代，导致插件出错 可以使用getGradle().getGradleVersion()或com.android.builder.Version.ANDROID_GRADLE_PLUGIN_VERSION</body>
+		<created>2017-01-19 06:34:33</created>
+		<closed>2017-01-19 07:10:48</closed>
+	</bug>
+</bugs>

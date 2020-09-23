@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="MediathekView">
+	<bug id="431" opendate="2019-07-29 06:18:33" fixdate="2019-08-09 09:29:11">
+		<buginformation>
+			<summary>NullPointerExceptions beim Einstellen der Minuten in der Blacklist</summary>
+			<description>Folgende Exceptions treten auf beim Ändern der Minuten im Blacklist-Panel:  ```bash Exception in thread "JavaFX Application Thread" java.lang.NullPointerException         at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)         at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)         at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)         at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)         at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913)         at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)         at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578)         at mediathek.daten.ListeFilme.lambda$fillSenderList$4(ListeFilme.java:281)         at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:428)         at java.base/java.security.AccessController.doPrivileged(Native Method)         at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:427)         at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)         at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)         at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:277)         at java.base/java.lang.Thread.run(Thread.java:834) Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mediathek/daten/ListeFilme.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="342" opendate="2018-08-16 19:22:21" fixdate="2018-08-27 05:50:25">
+		<buginformation>
+			<summary>Download: Beschränkung der Bandbreite funktioniert nicht</summary>
+			<description>Aus [Forum](https://forum.mediathekview.de/topic/1636/maximale-bandbreite-funktioniert-nicht-richtig): Die Beschränkung der Bandbreite pro Download funktioniert seit 13.1.0 nicht mehr korrekt.  Die tatsächliche Bandbreite liegt teilweise weit unter der eingestellten Bandbreite.  Bei meinen Tests ließ sich das Problem mit Downloads in den Abos gut nachstellen. Manuell erzeugte Downloads hatten selten die eingestellte Bandbreite!</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mediathek/gui/bandwidth/MVBandwidthMonitorLWin.java</file>
+			<file>src/main/java/mediathek/controller/ThrottlingInputStream.java</file>
+			<file>src/main/java/mediathek/gui/dialogEinstellungen/PanelDownload.java</file>
+			<file>src/main/java/mediathek/config/MVConfig.java</file>
+			<file>src/main/java/mediathek/gui/messages/DownloadRateLimitChangedEvent.java</file>
+			<file>src/main/java/mSearch/tool/ApplicationConfiguration.java</file>
+			<file>src/main/java/mediathek/gui/GuiDownloads.java</file>
+			<file>src/main/java/mSearch/tool/Listener.java</file>
+			<file>src/main/java/mediathek/controller/starter/StarterClass.java</file>
+			<file>src/main/java/mediathek/controller/starter/DirectHttpDownload.java</file>
+			<file>src/main/java/mediathek/controller/starter/Start.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="337" opendate="2018-08-13 00:20:45" fixdate="2018-08-14 06:06:34">
+		<buginformation>
+			<summary>MediathekView 13.1.2 startet nicht wenn keine Konfig vorhanden ist</summary>
+			<description>Wird MediathekView 13.1.2 ohne Konfigurations-Order gestartet crash es mit folgendem Output und hängt an der Stelle ohne zu starten  . ========== ========== ========== ========== ========== . DURATION 0:  Start  [870.00 ms] .    Klasse:  Main.getPlatformWindow . ========== ========== ========== ========== ========== . Konfig existiert nicht! . Es gibt kein Backup . Weder Konfig noch Backup konnte geladen werden! Exception in thread "AWT-EventQueue-0" java.lang.IllegalStateException: Toolkit not initialized         at com.sun.javafx.application.PlatformImpl.runLater(PlatformImpl.java:273)         at com.sun.javafx.application.PlatformImpl.runLater(PlatformImpl.java:268)         at javafx.application.Platform.runLater(Platform.java:83)         at mSearch.daten.ListeFilme.fillSenderList(ListeFilme.java:312)         at mediathek.daten.ListeBlacklist.filterListe(ListeBlacklist.java:189)         at mediathek.daten.ListeBlacklist.filterListAndNotifyListeners(ListeBlacklist.java:214)         at mediathek.daten.ListeBlacklist.clear(ListeBlacklist.java:118)         at mediathek.config.Daten.clearKonfig(Daten.java:410)         at mediathek.config.Daten.allesLaden(Daten.java:392)         at mediathek.MediathekGui.loadDaten(MediathekGui.java:304)         at mediathek.MediathekGui.&lt;init&gt;(MediathekGui.java:196)         at mediathek.Main.getPlatformWindow(Main.java:255)         at mediathek.Main.lambda$startGuiMode$0(Main.java:240)         at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)         at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)         at java.awt.EventQueue.access$500(EventQueue.java:97)         at java.awt.EventQueue$3.run(EventQueue.java:709)         at java.awt.EventQueue$3.run(EventQueue.java:703)         at java.security.AccessController.doPrivileged(Native Method)         at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)         at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)         at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)         at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)         at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)         at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)         at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)         at java.awt.EventDispatchThread.run(EventDispatchThread.java:82) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mediathek/MediathekGui.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="336" opendate="2018-08-12 09:18:09" fixdate="2018-08-14 06:06:34">
+		<buginformation>
+			<summary>Downloadliste nach Update auf 13.1.2 leer</summary>
+			<description>Wie im [Forum](https://forum.mediathekview.de/topic/1621/nach-update-auf-13-1-2-ist-die-downloadseite-leer) gemeldet, ist die Liste der Downloads nach einem Update auf Version 13.1.2 leer.  Ursache ist #335  Durch die Korrektur eines Schreibfehlers werden die Einträge in der Downloadliste aus der mediathek.xml nicht mehr berücksichtigt. Vor 13.1.2 hieß das relevante XML-Tag "Downlad", ab 13.1.2 heißt es "Download".  Wollen wir es aussitzen? Ansonsten bleibt meiner Meinung nach nur, dass beide Schreibvarianten beim Einlesen der XML-Datei unterstützt werden, damit die, die Updaten keine Probleme haben, und auch die, die schon mit 13.1.2 die Downloadliste erweitert haben, keine Probleme bekommen.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mediathek/MediathekGui.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="259" opendate="2017-06-01 04:14:58" fixdate="2018-08-03 06:36:07">
+		<buginformation>
+			<summary>Kollision von Vordergrund- und Hintergrundfarben </summary>
+			<description>Von Georg-J aus dem Forum: &gt;Vorraussetzungen: &gt;Windows 7, 64 Bit, Design: Windows - klassisch &gt;MediathekView 13.0.1, Look&amp;Feel: Windows  Screenshots sieht man im Forumsbeitrag: https://forum.mediathekview.de/topic/459/kollision-von-vordergrund-und-hintergrundfarben</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mediathek/tool/cellrenderer/CellRendererFilme.java</file>
+			<file>src/main/java/mediathek/javafx/filterpanel/FilmActionPanel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="258" opendate="2017-06-01 04:12:38" fixdate="2018-08-02 14:54:39">
+		<buginformation>
+			<summary>Beschreibungsfenster zeigt standardmäßig Ende statt Beginn des Textes</summary>
+			<description>Zitat von Georg-J aus dem Forum: &gt; Bei der Auswahl eines Filmes scrollt das Beschreibungsfenster automatisch ans Ende anstatt den Anfang des Beschreibungstextes zu zeigen. Man muss erst manuell hoch scrollen um die Beschreibung von Anfang an lesen zu können. Alternativ könnte man auch die Höhe des Beschreibungsfensters vergrößern, wenn MV dies ermöglichen würde.  https://forum.mediathekview.de/topic/460/beschreibungsfenster-zeigt-standardm%C3%A4%C3%9Fig-ende-statt-beginn-des-textes</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mediathek/javafx/filterpanel/FilmActionPanel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="223" opendate="2017-02-19 08:14:15" fixdate="2017-03-06 04:55:08">
+		<buginformation>
+			<summary>Bug Report: Sporadisch erscheinen Abo-Hits nicht im Downloads-Reiter</summary>
+			<description>Der Rechner hat 4-GB Speicher und x32 BS/Java und MV 13.0.0:  ``` C:\&gt;systeminfo | findstr /B /C:"OS Name" /C:"OS Version" OS Name:                   Microsoft Windows 7 Ultimate OS Version:                6.1.7601 Service Pack 1 Build 7601  C:\&gt;java -version java version "1.8.0_121" Java(TM) SE Runtime Environment (build 1.8.0_121-b13) Java HotSpot(TM) Client VM (build 25.121-b13, mixed mode) ``` --- ---  Ab und zu werden Abo-Hits nicht im Downloads-Reiter eingetragen, obwohl sie als solchen identifiziert worden waren.  Ich habe dieses Verhalten nur erlebt, nachdem ich die Filmliste manuell aktualisiert hatte, und MV habe weiterverarbeiten lassen.  Täte ich MV normal herunterfahre, und anschließend neu starten, wird/werden besagte(s) Abo(s) richtig angelegt (und im DL-Reiter angezeigt). Als Workaround kann das (soll) Abo-Hit auch als manueller Download neu angelegt werden; eine Warnung (von einem existierenden DL) wird wie unten abgebildet dann aber nicht gezeigt.  ![zdf_abo_erscheint_im_dl-reiter_nicht](https://cloud.githubusercontent.com/assets/23268595/23100361/15a1c872-f64d-11e6-8ea6-07f11b998a54.PNG)   Das Verhalten habe ich ab und zu einige mal in den letzten Wochen erlebt ... und allmählich zur Auffassung gekommen, es als Bug zu melden.  Wenn es vorkommt, kann ich kein Unterschied zu anderen Hits feststellen.    So schaut's aus (hinsichtlich Warnhinweis) bei einem richtig verarbeitendem Abo-Hit (zeitgleich mit obigem Bild):   ![zdf_abo_erscheint_im_dl-reiter_doch](https://cloud.githubusercontent.com/assets/23268595/23100298/baddd9ae-f64b-11e6-9116-156b09be3ade.PNG)   Die Blacklist ist so eingestellt:  ![zdf_abo_erscheint_im_dl-reiter_nicht_blacklist](https://cloud.githubusercontent.com/assets/23268595/23100417/e6411456-f64d-11e6-8590-f01ae2ef6ffb.PNG)  --- ---  _{Edit}_ Hier ein SWR-Beispiel vom gleichen Zeitraum; **Notepad++** zeigt downloadAbos.txt:  ![swr_abo_erscheint_im_dl-reiter_nicht](https://cloud.githubusercontent.com/assets/23268595/23100842/0ad11c12-f658-11e6-8a55-ef0d69b64954.PNG)   --- ---  Könnte ein Zusammenhang mit dem [hier](https://github.com/mediathekview/MediathekView/issues/218) beschriebenem Verhalten vorhanden sein?</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mediathek/daten/ListeBlacklist.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

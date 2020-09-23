@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>440</id>
+		<title>Benachrichtigungen anzeigen  Einstellung überlebt kein Neustart</title>
+		<body>Die Einstellung "Benachrichtigungen anzeigen" in den Einstellungen überlebt keinen Neustart.</body>
+		<created>2019-08-13 10:50:18</created>
+		<closed>2019-08-27 18:36:53</closed>
+	</bug>
+	<bug>
+		<id>431</id>
+		<title>NullPointerExceptions beim Einstellen der Minuten in der Blacklist</title>
+		<body>Folgende Exceptions treten auf beim Ändern der Minuten im Blacklist-Panel:  ```bash Exception in thread "JavaFX Application Thread" java.lang.NullPointerException         at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)         at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654)         at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)         at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)         at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913)         at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)         at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578)         at mediathek.daten.ListeFilme.lambda$fillSenderList$4(ListeFilme.java:281)         at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:428)         at java.base/java.security.AccessController.doPrivileged(Native Method)         at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:427)         at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)         at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)         at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:277)         at java.base/java.lang.Thread.run(Thread.java:834) Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException Exception in thread "JavaFX Application Thread" java.lang.NullPointerException ```</body>
+		<created>2019-07-29 06:18:33</created>
+		<closed>2019-08-09 09:29:11</closed>
+	</bug>
+	<bug>
+		<id>419</id>
+		<title>FFMPEG aktualisieren</title>
+		<body>Mit den ausgelieferten FFMPEG-Versionen funktionieren die ORF-Downloads nicht mehr.  Laut [Forum](https://forum.mediathekview.de/topic/2427/bei-mir-bei-sendungen-seit-12-5/) behebt Version 4.1.3 das Problem. Die ausgelieferten Versionen für alle Plattform müssen aktualisiert werden.</body>
+		<created>2019-05-20 17:04:45</created>
+		<closed>2019-08-09 10:27:47</closed>
+	</bug>
+	<bug>
+		<id>360</id>
+		<title>Falsche Zeichen im User-Agent "blockien" alle Downloads | Incorrect characters in the user-agent "block" all downloads</title>
+		<body>Wegen den ORF-Problemen habe ich vor längerer Zeit den User-Agent auf `Gebührenzahler` geändert und alles funktionierte wieder wie gewollt. Selbiges habe ich noch einmal machen müssen nach dem Update auf 13.1.x... _--&gt; btw: Es wäre nett gewesen irgendwo zu erwähnen, dass der User-Agent beim Update auf 13.1.x nicht übernommen wird (das hätte einige Stunden an Recherche erspart)!_ ...und jetzt funktioniert auf einmal (keine Ahnung seit welchem Update genau - verwende momentan 13.2.0) kein einziger Download, egal von welchem Sender!  Nach einigem herumprobieren ist klar, dass das `ü` im User-Agent den Start jedes Downloads verhindert/blockiert. Auch `"Gebührenzahler"` und `'Gebührenzahler'` funktioniert nicht. Einzig mit `Gebuehrenzahler` war ein Downloaden wieder möglich. Interessant an der ganzen Geschichte - und was mich darin bestärkt, dass es ein Bug ist - ist, dass das Abspielen im VLC mit dem Zusatz `http-user-agent="Gebührenzahler"` sowohl vor als auch mit 13.1.x  und 13.2.0 funktioniert.  ---  Because of the ORF problems, I changed the user agent to `"Gebührenzahler"` a long time ago and everything worked again as intended. I had to do the same thing again after the update to 13.1.x ... _-&gt; btw: It would have been nice to mention somewhere that the user agent is not kept after the update to 13.1.x (that would have spared some hours of research)!_ ...and now (no idea since which update exactly - i use currently 13.2.0) not a single download works, no matter what channel!  After some experimenting it is clear that the `ü` in the user agent prevents/blocks the start of each download. Also `"Gebührenzahler"` and `'Gebührenzahler'` does not work. Only with `Gebuehrenzahler` a download was possible again. Interesting in the whole story - and what reinforces me that it is a bug - is, that playing in the VLC with the addition `http-user-agent="Gebührenzahler"` worked before and with 13.1.x and 13.2.0.</body>
+		<created>2018-09-01 14:39:03</created>
+		<closed>2019-01-15 06:42:49</closed>
+	</bug>
+	<bug>
+		<id>342</id>
+		<title>Download: Beschränkung der Bandbreite funktioniert nicht</title>
+		<body>Aus [Forum](https://forum.mediathekview.de/topic/1636/maximale-bandbreite-funktioniert-nicht-richtig): Die Beschränkung der Bandbreite pro Download funktioniert seit 13.1.0 nicht mehr korrekt.  Die tatsächliche Bandbreite liegt teilweise weit unter der eingestellten Bandbreite.  Bei meinen Tests ließ sich das Problem mit Downloads in den Abos gut nachstellen. Manuell erzeugte Downloads hatten selten die eingestellte Bandbreite!</body>
+		<created>2018-08-16 19:22:21</created>
+		<closed>2018-08-27 05:50:25</closed>
+	</bug>
+	<bug>
+		<id>337</id>
+		<title>MediathekView 13.1.2 startet nicht wenn keine Konfig vorhanden ist</title>
+		<body>Wird MediathekView 13.1.2 ohne Konfigurations-Order gestartet crash es mit folgendem Output und hängt an der Stelle ohne zu starten  . ========== ========== ========== ========== ========== . DURATION 0:  Start  [870.00 ms] .    Klasse:  Main.getPlatformWindow . ========== ========== ========== ========== ========== . Konfig existiert nicht! . Es gibt kein Backup . Weder Konfig noch Backup konnte geladen werden! Exception in thread "AWT-EventQueue-0" java.lang.IllegalStateException: Toolkit not initialized         at com.sun.javafx.application.PlatformImpl.runLater(PlatformImpl.java:273)         at com.sun.javafx.application.PlatformImpl.runLater(PlatformImpl.java:268)         at javafx.application.Platform.runLater(Platform.java:83)         at mSearch.daten.ListeFilme.fillSenderList(ListeFilme.java:312)         at mediathek.daten.ListeBlacklist.filterListe(ListeBlacklist.java:189)         at mediathek.daten.ListeBlacklist.filterListAndNotifyListeners(ListeBlacklist.java:214)         at mediathek.daten.ListeBlacklist.clear(ListeBlacklist.java:118)         at mediathek.config.Daten.clearKonfig(Daten.java:410)         at mediathek.config.Daten.allesLaden(Daten.java:392)         at mediathek.MediathekGui.loadDaten(MediathekGui.java:304)         at mediathek.MediathekGui.&lt;init&gt;(MediathekGui.java:196)         at mediathek.Main.getPlatformWindow(Main.java:255)         at mediathek.Main.lambda$startGuiMode$0(Main.java:240)         at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)         at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)         at java.awt.EventQueue.access$500(EventQueue.java:97)         at java.awt.EventQueue$3.run(EventQueue.java:709)         at java.awt.EventQueue$3.run(EventQueue.java:703)         at java.security.AccessController.doPrivileged(Native Method)         at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)         at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)         at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)         at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)         at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)         at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)         at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)         at java.awt.EventDispatchThread.run(EventDispatchThread.java:82) </body>
+		<created>2018-08-13 00:20:45</created>
+		<closed>2018-08-14 06:06:34</closed>
+	</bug>
+	<bug>
+		<id>336</id>
+		<title>Downloadliste nach Update auf 13.1.2 leer</title>
+		<body>Wie im [Forum](https://forum.mediathekview.de/topic/1621/nach-update-auf-13-1-2-ist-die-downloadseite-leer) gemeldet, ist die Liste der Downloads nach einem Update auf Version 13.1.2 leer.  Ursache ist #335  Durch die Korrektur eines Schreibfehlers werden die Einträge in der Downloadliste aus der mediathek.xml nicht mehr berücksichtigt. Vor 13.1.2 hieß das relevante XML-Tag "Downlad", ab 13.1.2 heißt es "Download".  Wollen wir es aussitzen? Ansonsten bleibt meiner Meinung nach nur, dass beide Schreibvarianten beim Einlesen der XML-Datei unterstützt werden, damit die, die Updaten keine Probleme haben, und auch die, die schon mit 13.1.2 die Downloadliste erweitert haben, keine Probleme bekommen.</body>
+		<created>2018-08-12 09:18:09</created>
+		<closed>2018-08-14 06:06:34</closed>
+	</bug>
+	<bug>
+		<id>296</id>
+		<title>BR-Untertitel werden falsch heruntergeladen</title>
+		<body>Im [Forum](https://forum.mediathekview.de/topic/1117/br-sendungen-mit-untertiteln-beim-download-keine-datei-mit-endung-srt) wurde gemeldet, dass bei BR-Filmen mit Untertitel diese beim Abspielen  nicht angezeigt werden.  Der BR stellt die Untertitel über vtt-Dateien bereit. Beim Download wird die vtt-Endung aktuell durch ttml ersetzt, so dass die Untertitel beim Abspielen nicht angezeigt werden. Wenn die Datei als vtt vorliegt, funktioniert das Abspielen korrekt.</body>
+		<created>2018-01-14 16:02:48</created>
+		<closed>2018-08-14 06:13:51</closed>
+	</bug>
+	<bug>
+		<id>284</id>
+		<title>Exception bei Aufbau der Downloadliste</title>
+		<body>Im [Forum](https://forum.mediathekview.de/topic/908/mediathekview-bleibt-pl%C3%B6tzlich-bei-blacklist-h%C3%A4ngen) wurde gemeldet, dass beim Aufbau der Downloadliste ein Fehler auftritt und diese nicht korrekt erstellt wird.  Auszug aus Log (vollständig siehe Forumseintrag):  &gt; .  Filme in Downloads eintragen &gt; Exception in thread "AWT-EventQueue-0" java.lang.StringIndexOutOfBoundsException &gt; : String index out of range: -1 &gt;         at java.lang.String.substring(Unknown Source) &gt;         at mSearch.daten.DatenFilm.getUrlNormalKlein(DatenFilm.java:439) &gt;         at mSearch.daten.DatenFilm.getUrlFuerAufloesung(DatenFilm.java:213) &gt;         at mSearch.daten.ListeFilme.getFilmByUrl_klein_hoch_hd(ListeFilme.java:2 &gt; 94) &gt;         at mediathek.daten.ListeDownloads.lambda$filmEintragen$1(ListeDownloads. &gt; java:71)  Das Problem lässt sich nachvollziehen, wenn manuell ein Download für einen ZDF-Film erzeugt wird und MV neu gestartet wird.</body>
+		<created>2017-11-05 20:21:55</created>
+		<closed>2017-11-17 22:31:56</closed>
+	</bug>
+	<bug>
+		<id>277</id>
+		<title>Themenfilter funktioniert bei "ss"/"ß" nicht korrekt</title>
+		<body>Im [Forum](https://forum.mediathekview.de/topic/882/fehlt-und-fehlt-doch-nicht-problem-mit-thema) wurde gemeldet, dass die Combobox zum Filtern des Themas bei Themen, die mal mit "ss" und mal mit "ß" gelistet sind, nicht funktioniert.  Analyse:  - in der Themenliste wird der Collator für `Locale.GERMANY` verwendet (siehe `ListeFilme.themenLaden`), so dass "ss" und "ß" als gleich angesehen werden.  - bei der Filterung nach Auswahl des Themas wird jedoch mit `String.equalsIgnoreCase` (siehe `Filter.filterAufFilmPruefen`) verglichen, so dass "ss" und "ß" als unterschiedlich angesehen werden.  Damit die Filterung korrekt funktioniert, müssen beide Stellen mit der gleichen Logik vergleichen.</body>
+		<created>2017-10-25 19:39:08</created>
+		<closed>2018-08-27 05:55:04</closed>
+	</bug>
+	<bug>
+		<id>259</id>
+		<title>Kollision von Vordergrund- und Hintergrundfarben </title>
+		<body>Von Georg-J aus dem Forum: &gt;Vorraussetzungen: &gt;Windows 7, 64 Bit, Design: Windows - klassisch &gt;MediathekView 13.0.1, Look&amp;Feel: Windows  Screenshots sieht man im Forumsbeitrag: https://forum.mediathekview.de/topic/459/kollision-von-vordergrund-und-hintergrundfarben</body>
+		<created>2017-06-01 04:14:58</created>
+		<closed>2018-08-03 06:36:07</closed>
+	</bug>
+	<bug>
+		<id>258</id>
+		<title>Beschreibungsfenster zeigt standardmäßig Ende statt Beginn des Textes</title>
+		<body>Zitat von Georg-J aus dem Forum: &gt; Bei der Auswahl eines Filmes scrollt das Beschreibungsfenster automatisch ans Ende anstatt den Anfang des Beschreibungstextes zu zeigen. Man muss erst manuell hoch scrollen um die Beschreibung von Anfang an lesen zu können. Alternativ könnte man auch die Höhe des Beschreibungsfensters vergrößern, wenn MV dies ermöglichen würde.  https://forum.mediathekview.de/topic/460/beschreibungsfenster-zeigt-standardm%C3%A4%C3%9Fig-ende-statt-beginn-des-textes</body>
+		<created>2017-06-01 04:12:38</created>
+		<closed>2018-08-02 14:54:39</closed>
+	</bug>
+	<bug>
+		<id>223</id>
+		<title>Bug Report: Sporadisch erscheinen Abo-Hits nicht im Downloads-Reiter</title>
+		<body>Der Rechner hat 4-GB Speicher und x32 BS/Java und MV 13.0.0:  ``` C:\&gt;systeminfo | findstr /B /C:"OS Name" /C:"OS Version" OS Name:                   Microsoft Windows 7 Ultimate OS Version:                6.1.7601 Service Pack 1 Build 7601  C:\&gt;java -version java version "1.8.0_121" Java(TM) SE Runtime Environment (build 1.8.0_121-b13) Java HotSpot(TM) Client VM (build 25.121-b13, mixed mode) ``` --- ---  Ab und zu werden Abo-Hits nicht im Downloads-Reiter eingetragen, obwohl sie als solchen identifiziert worden waren.  Ich habe dieses Verhalten nur erlebt, nachdem ich die Filmliste manuell aktualisiert hatte, und MV habe weiterverarbeiten lassen.  Täte ich MV normal herunterfahre, und anschließend neu starten, wird/werden besagte(s) Abo(s) richtig angelegt (und im DL-Reiter angezeigt). Als Workaround kann das (soll) Abo-Hit auch als manueller Download neu angelegt werden; eine Warnung (von einem existierenden DL) wird wie unten abgebildet dann aber nicht gezeigt.  ![zdf_abo_erscheint_im_dl-reiter_nicht](https://cloud.githubusercontent.com/assets/23268595/23100361/15a1c872-f64d-11e6-8ea6-07f11b998a54.PNG)   Das Verhalten habe ich ab und zu einige mal in den letzten Wochen erlebt ... und allmählich zur Auffassung gekommen, es als Bug zu melden.  Wenn es vorkommt, kann ich kein Unterschied zu anderen Hits feststellen.    So schaut's aus (hinsichtlich Warnhinweis) bei einem richtig verarbeitendem Abo-Hit (zeitgleich mit obigem Bild):   ![zdf_abo_erscheint_im_dl-reiter_doch](https://cloud.githubusercontent.com/assets/23268595/23100298/baddd9ae-f64b-11e6-9116-156b09be3ade.PNG)   Die Blacklist ist so eingestellt:  ![zdf_abo_erscheint_im_dl-reiter_nicht_blacklist](https://cloud.githubusercontent.com/assets/23268595/23100417/e6411456-f64d-11e6-8590-f01ae2ef6ffb.PNG)  --- ---  _{Edit}_ Hier ein SWR-Beispiel vom gleichen Zeitraum; **Notepad++** zeigt downloadAbos.txt:  ![swr_abo_erscheint_im_dl-reiter_nicht](https://cloud.githubusercontent.com/assets/23268595/23100842/0ad11c12-f658-11e6-8a55-ef0d69b64954.PNG)   --- ---  Könnte ein Zusammenhang mit dem [hier](https://github.com/mediathekview/MediathekView/issues/218) beschriebenem Verhalten vorhanden sein?</body>
+		<created>2017-02-19 08:14:15</created>
+		<closed>2017-03-06 04:55:08</closed>
+	</bug>
+	<bug>
+		<id>192</id>
+		<title>ffmpeg und flvstreamer</title>
+		<body>ffmpeg.exe und flvstreamer.exe fehlen im bin-Ordner Werden für den  Download von xxx.m3u8 Filmen benötigt  </body>
+		<created>2017-01-01 19:20:26</created>
+		<closed>2017-01-06 07:03:13</closed>
+	</bug>
+	<bug>
+		<id>188</id>
+		<title>Versionsstring im About Fenster korrigieren</title>
+		<body>im moment wird 13 (0-0) angezeigt. Da sollte nur 13.0.0 hin.</body>
+		<created>2016-12-28 00:43:50</created>
+		<closed>2016-12-31 13:28:04</closed>
+	</bug>
+	<bug>
+		<id>175</id>
+		<title>Javafehler beim drücken des Hilfe Buttons mittig auf dem Filmlistenscreen</title>
+		<body>![auswahl_001](https://cloud.githubusercontent.com/assets/1862815/21000474/62e50b8c-bd1b-11e6-95ea-8b98e639ed81.png)  Fehler: https://p.elaon.de/VczrH/ ``` 07:42:03.718 [ERROR] [system.err] Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException 07:42:03.718 [ERROR] [system.err]       at mediathek.file.GetFile.getHilfeSuchen(GetFile.java:54) 07:42:03.718 [ERROR] [system.err]       at mediathek.gui.MVFilterPanel.lambda$new$1(MVFilterPanel.java:93) 07:42:03.718 [ERROR] [system.err]       at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022) 07:42:03.718 [ERROR] [system.err]       at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348) 07:42:03.718 [ERROR] [system.err]       at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402) 07:42:03.719 [ERROR] [system.err]       at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259) 07:42:03.719 [ERROR] [system.err]       at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252) 07:42:03.719 [ERROR] [system.err]       at java.awt.AWTEventMulticaster.mouseReleased(AWTEventMulticaster.java:289) 07:42:03.719 [ERROR] [system.err]       at java.awt.Component.processMouseEvent(Component.java:6533) 07:42:03.719 [ERROR] [system.err]       at javax.swing.JComponent.processMouseEvent(JComponent.java:3324) 07:42:03.719 [ERROR] [system.err]       at java.awt.Component.processEvent(Component.java:6298) 07:42:03.719 [ERROR] [system.err]       at java.awt.Container.processEvent(Container.java:2236) 07:42:03.719 [ERROR] [system.err]       at java.awt.Component.dispatchEventImpl(Component.java:4889) 07:42:03.719 [ERROR] [system.err]       at java.awt.Container.dispatchEventImpl(Container.java:2294) 07:42:03.719 [ERROR] [system.err]       at java.awt.Component.dispatchEvent(Component.java:4711) 07:42:03.719 [ERROR] [system.err]       at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888) 07:42:03.719 [ERROR] [system.err]       at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525) 07:42:03.719 [ERROR] [system.err]       at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466) 07:42:03.720 [ERROR] [system.err]       at java.awt.Container.dispatchEventImpl(Container.java:2280) 07:42:03.720 [ERROR] [system.err]       at java.awt.Window.dispatchEventImpl(Window.java:2746) 07:42:03.720 [ERROR] [system.err]       at java.awt.Component.dispatchEvent(Component.java:4711) 07:42:03.720 [ERROR] [system.err]       at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758) 07:42:03.720 [ERROR] [system.err]       at java.awt.EventQueue.access$500(EventQueue.java:97) 07:42:03.720 [ERROR] [system.err]       at java.awt.EventQueue$3.run(EventQueue.java:709) 07:42:03.720 [ERROR] [system.err]       at java.awt.EventQueue$3.run(EventQueue.java:703) 07:42:03.720 [ERROR] [system.err]       at java.security.AccessController.doPrivileged(Native Method) 07:42:03.720 [ERROR] [system.err]       at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76) 07:42:03.720 [ERROR] [system.err]       at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86) 07:42:03.720 [ERROR] [system.err]       at java.awt.EventQueue$4.run(EventQueue.java:731) 07:42:03.720 [ERROR] [system.err]       at java.awt.EventQueue$4.run(EventQueue.java:729) 07:42:03.720 [ERROR] [system.err]       at java.security.AccessController.doPrivileged(Native Method) 07:42:03.721 [ERROR] [system.err]       at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76) 07:42:03.721 [ERROR] [system.err]       at java.awt.EventQueue.dispatchEvent(EventQueue.java:728) 07:42:03.721 [ERROR] [system.err]       at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201) 07:42:03.721 [ERROR] [system.err]       at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116) 07:42:03.721 [ERROR] [system.err]       at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105) 07:42:03.721 [ERROR] [system.err]       at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) 07:42:03.721 [ERROR] [system.err]       at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93) 07:42:03.721 [ERROR] [system.err]       at java.awt.EventDispatchThread.run(EventDispatchThread.java:82) ```</body>
+		<created>2016-12-08 06:55:04</created>
+		<closed>2016-12-09 10:05:22</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>Alle Server und Links hartcoded im Quellcode anpassen</title>
+		<body>Alle Server aus der akt.xml und diff.xml ausprobieren. Die hardcoded Links im Quellcode anpassen auf die neuen Verteilerserver.</body>
+		<created>2016-11-28 21:42:59</created>
+		<closed>2016-11-30 19:07:11</closed>
+	</bug>
+	<bug>
+		<id>156</id>
+		<title>zip-file in distributions</title>
+		<body>das Startscript funktioniert (zumindest unter Linux) nicht, da das jar: MediathekView-13.jar die Versionsnummer im Namen trägt. Eins von beiden muss angepasst werden.  </body>
+		<created>2016-11-22 07:45:27</created>
+		<closed>2016-12-04 12:43:15</closed>
+	</bug>
+	<bug>
+		<id>155</id>
+		<title>Fehlermeldung beim Download einiger Sendungen</title>
+		<body>Seit einigen Tagen bekomme ich unter Ubuntu 16.10 Fehlermeldungen beim Download einiger Sendungen.  Ich habe einen Screenshot von der Meldung erstellt: ![bildschirmfoto vom 2016-11-20 12-23-11](https://cloud.githubusercontent.com/assets/6171135/20462383/fd83b36c-af1c-11e6-8a4c-171c973a153d.png)  Das Problem tritt bei den letzten 4 Sendungen in der Liste auf dem Screenshot auf. Wenn man bei Google nach der Meldung sucht, kommen Einträge bezüglich https. Möglicherweise wurde da senderseitig kürzlich was umgestellt.  Sollten weitere Informationen oder Tests benötigt werden, stehe ich gerne bereit.</body>
+		<created>2016-11-20 11:29:35</created>
+		<closed>2016-12-03 10:47:50</closed>
+	</bug>
+	<bug>
+		<id>145</id>
+		<title>Kein Debuggen möglich</title>
+		<body>Kein debuggen von Mediathekview in NetBeans möglich.</body>
+		<created>2016-11-10 19:52:07</created>
+		<closed>2016-11-10 20:11:42</closed>
+	</bug>
+	<bug>
+		<id>134</id>
+		<title>[TODO] Windows Executabels</title>
+		<body># EN The actual gradle implementation with #132 is missing a generation for new Windows executables on build. Ant hadn't it too but to really automate the building we need this. One solution could be the gradle launch4j plugin but this has a problem it can only build one single Windows executable per build. See for this: https://github.com/TheBoegl/gradle-launch4j/issues/7  # DE Dem Bauen des Projekts mit gradle wie wir es aktuell haben fehlt eine Neu-Erzeugung der `EXE`-Dateien für Windows. Ant hatte dies zwar auch nicht aber um das bauen vollständig zu automatisieren brauchen wir das. Eine Lösungsmöglichkeit könnte das Gradle Launch4J Plugin sein, das Problem damit ist aber, dass es immer nur eine Windows `EXE` Datei pro Build erzeugen kann. Siehe hierzu auch: https://github.com/TheBoegl/gradle-launch4j/issues/7</body>
+		<created>2016-11-06 16:01:44</created>
+		<closed>2016-12-31 13:28:03</closed>
+	</bug>
+</bugs>

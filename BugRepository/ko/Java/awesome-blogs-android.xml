@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="awesome-blogs-android">
+	<bug id="63" opendate="2017-09-03 04:40:50" fixdate="2017-11-26 23:03:54">
+		<buginformation>
+			<summary>hidden 포스트 여전히 노출되는 버그</summary>
+			<description>블로거의 글, 다음 글, 최근 읽은 글, 검색등에 노출되는 현상</description>
+		</buginformation>
+		<fixedfiles>
+			<file>api/src/main/java/org/petabytes/api/source/remote/Entry.java</file>
+			<file>api/src/main/java/org/petabytes/api/source/local/AwesomeBlogsLocalSource.java</file>
+			<file>api/src/main/java/org/petabytes/api/source/local/Entry.java</file>
+			<file>api/src/main/java/org/petabytes/api/source/remote/Feed.java</file>
+			<file>api/src/main/java/org/petabytes/api/Api.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="58" opendate="2017-07-24 06:55:33" fixdate="2017-08-05 17:25:36">
+		<buginformation>
+			<summary>안드로이드 4.2에서 검색화면 진입 시 종료되는 현상</summary>
+			<description>플레이스토어 리뷰어 제보  * Android version 4.2  * Galaxy Win </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/AwesomeBlogsApp.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="46" opendate="2017-03-26 17:30:17" fixdate="2017-03-26 17:33:01">
+		<buginformation>
+			<summary>FCM 토큰이 빈 문자로 채워져있는 현상</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/debug/java/org/petabytes/awesomeblogs/DebugAwesomeBlogsApp.java</file>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/AwesomeBlogsApp.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2017-03-22 02:27:32" fixdate="2017-03-23 16:50:00">
+		<buginformation>
+			<summary>앱 최초 설치 시, 다이제스트 알람 즉시 등록되지 않는 버그</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/fcm/InstanceIdService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2017-03-19 01:06:34" fixdate="2017-03-19 08:00:52">
+		<buginformation>
+			<summary>다이제스트 알림이 두 번 발생하는 버그</summary>
+			<description>참고 #34 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/digest/DigestService.java</file>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/digest/StartUpReceiver.java</file>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/AwesomeBlogsApp.java</file>
+			<file>app/src/debug/java/org/petabytes/awesomeblogs/DebugCoordinator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="8" opendate="2017-02-22 03:11:15" fixdate="2017-02-22 08:23:21">
+		<buginformation>
+			<summary>[Crashlytics #3] SummaryView, 본문 내 링크가 상대경로 일 때 실행할 수 있는 액티비티를 찾지 못하는 버그</summary>
+			<description>``` Fatal Exception: android.content.ActivityNotFoundException Activity found to handle Intent { act=android.intent.action.VIEW dat=/2017/02/15/using-shs-as-webfonts.html }  Raw Text android.app.Instrumentation.checkStartActivityResult (Instrumentation.java:1878)  android.app.Activity.startActivity (Activity.java:4535)  org.petabytes.awesomeblogs.summary.SummaryCoordinator.lambda$onMoreClick$5 (SourceFile:93)  org.petabytes.awesomeblogs.summary.SummaryCoordinator$$Lambda$6.onClick (Unknown Source)  android.view.View.performClick (View.java:5702)  com.android.internal.os.ZygoteInit.main (ZygoteInit.java:1120) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/feeds/FeedsCoordinator.java</file>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/util/Alerts.java</file>
+			<file>markDownView/src/main/java/eu/fiskur/markdownview/MarkdownView.java</file>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/summary/SummaryCoordinator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1" opendate="2017-02-12 12:16:39" fixdate="2017-02-14 04:22:01">
+		<buginformation>
+			<summary>빌드하고 실행하면 앱 죽음.</summary>
+			<description>``` E/AndroidRuntime: FATAL EXCEPTION: main                   Process: org.petabytes.awesomeblogs.debug, PID: 3262                   java.lang.IllegalArgumentException: Unknown pattern character 'X'                       at java.text.SimpleDateFormat.validatePatternCharacter(SimpleDateFormat.java:323)                       at java.text.SimpleDateFormat.validatePattern(SimpleDateFormat.java:312)                       at java.text.SimpleDateFormat.&lt;init&gt;(SimpleDateFormat.java:365)                       at org.petabytes.awesomeblogs.feeds.EntryGradientCoordinator.attach(EntryGradientCoordinator.java:49)                       at com.squareup.coordinators.Binding.onViewAttachedToWindow(Binding.java:38)                       at com.squareup.coordinators.Coordinators.bind(Coordinators.java:43)                       at org.petabytes.awesomeblogs.feeds.FeedsCoordinator$1.create(FeedsCoordinator.java:72)                       at org.petabytes.awesomeblogs.feeds.FeedsCoordinator$1.create(FeedsCoordinator.java:66)                       at org.petabytes.coordinator.PagerAdapter.instantiateItem(PagerAdapter.java:27)                       at fr.castorflex.android.verticalviewpager.VerticalViewPager.addNewItem(VerticalViewPager.java:729)                       at fr.castorflex.android.verticalviewpager.VerticalViewPager.populate(VerticalViewPager.java:879)                       at fr.castorflex.android.verticalviewpager.VerticalViewPager.populate(VerticalViewPager.java:811)                       at fr.castorflex.android.verticalviewpager.VerticalViewPager.onMeasure(VerticalViewPager.java:1334)                       at android.view.View.measure(View.java:18788)                       at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5951)                       at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)                       at android.view.View.measure(View.java:18788)                       at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5951)                       at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)                       at android.view.View.measure(View.java:18788)                       at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5951)                       at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)                       at android.support.v7.widget.ContentFrameLayout.onMeasure(ContentFrameLayout.java:139)                       at android.view.View.measure(View.java:18788)                       at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5951)                       at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1465)                       at android.widget.LinearLayout.measureVertical(LinearLayout.java:748)                       at android.widget.LinearLayout.onMeasure(LinearLayout.java:630)                       at android.view.View.measure(View.java:18788)                       at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5951)                       at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)                       at android.view.View.measure(View.java:18788)                       at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5951)                       at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1465)                       at android.widget.LinearLayout.measureVertical(LinearLayout.java:748)                       at android.widget.LinearLayout.onMeasure(LinearLayout.java:630)                       at android.view.View.measure(View.java:18788)                       at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5951)                       at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)                       at com.android.internal.policy.PhoneWindow$DecorView.onMeasure(PhoneWindow.java:2643)                       at android.view.View.measure(View.java:18788)                       at android.view.ViewRootImpl.performMeasure(ViewRootImpl.java:2100)                       at android.view.ViewRootImpl.measureHierarchy(ViewRootImpl.java:1216)                       at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1452)                       at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1107)                       at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:6013)                       at android.view.Choreographer$CallbackRecord.run(Choreographer.java:858)                       at android.view.Choreographer.doCallbacks(Choreographer.java:670)                       at android.view.Choreographer.doFrame(Choreographer.java:606)                       at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:844)                       at android.os.Handler.handleCallback(Handler.java:739)                       at android.os.Handler.dispatchMessage(Handler.java:95)                       at android.os.Looper.loop(Looper.java:148)                       at android.app.ActivityThread.main(ActivityThread.java:5417)                       at java.lang.reflect.Method.invoke(Native Method)                   at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteI I/Process: Sending signal. PID: 3262 SIG: 9 Application terminated. ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/feeds/EntryDiagonalCoordinator.java</file>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/feeds/EntryRowsCoordinator.java</file>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/util/Dates.java</file>
+			<file>app/src/main/java/org/petabytes/awesomeblogs/feeds/EntryGradientCoordinator.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

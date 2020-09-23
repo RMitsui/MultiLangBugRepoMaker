@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>157</id>
+		<title>AM的hook中killApplicationProcess的处理有问题</title>
+		<body>原处理逻辑如下：  String targetPkg = (String) args[index];                     if (isPackagePlugin(targetPkg)) {                         PluginManager.getInstance().killApplicationProcess(targetPkg);                         return true;    }  但是实际上args[index]这个参数是processName，并非插件包名。 </body>
+		<created>2016-03-30 10:44:35</created>
+		<closed>2016-03-31 10:03:20</closed>
+	</bug>
+	<bug>
+		<id>148</id>
+		<title>使用umeng微信分享无法分享</title>
+		<body>插件应用中的微信分享失败 </body>
+		<created>2016-03-18 05:19:08</created>
+		<closed>2016-03-28 09:58:14</closed>
+	</bug>
+	<bug>
+		<id>145</id>
+		<title>Android 6.0下在插件中发Notification会导致插件系统崩溃</title>
+		<body>Android 6.0下在插件中发Notification会导致插件系统崩溃  原因是给notification指定的icon中，未找到图标  ``` 03-15 18:59:39.149  7068  7068 E MyCrashHandler: uncaughtExceptionandroid.app.RemoteServiceException: Bad notification posted from package com.example.TestPlugin: Couldn't create icon: StatusBarIcon(icon=Icon(typ=RESOURCE pkg=com.qihoo.secstore id=0x7f0200d8) visible user=0 num=26 ) 03-15 18:59:39.149  7068  7068 E MyCrashHandler:  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1507) 03-15 18:59:39.149  7068  7068 E MyCrashHandler:  at android.os.Handler.dispatchMessage(Handler.java:102) 03-15 18:59:39.149  7068  7068 E MyCrashHandler:  at android.os.Looper.loop(Looper.java:148) 03-15 18:59:39.149  7068  7068 E MyCrashHandler:  at android.app.ActivityThread.main(ActivityThread.java:5417) 03-15 18:59:39.149  7068  7068 E MyCrashHandler:  at java.lang.reflect.Method.invoke(Native Method) 03-15 18:59:39.149  7068  7068 E MyCrashHandler:  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726) 03-15 18:59:39.149  7068  7068 E MyCrashHandler:  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616) ```  在插件中定位问题在hook的时候没有将 插件发出的广播 识别出来。代码的位置在如图：  ![bug](https://cloud.githubusercontent.com/assets/1757180/13775657/b85a5fe4-eae0-11e5-8330-bc5519edc040.png)  在Android 6.0中，之前的判断策略全部失效，并且多了一个mSmallIcon的内部变量，指向了插件的资源，导致在系统中崩溃。  请Andy大神尽快修复一下吧，多谢 </body>
+		<created>2016-03-15 11:05:39</created>
+		<closed>2016-03-29 03:55:14</closed>
+	</bug>
+	<bug>
+		<id>140</id>
+		<title>BUG Fatal Exception</title>
+		<body>03-07 17:05:19.766 15989-16091/com.example.TestPlugin:PluginP02 D/Environment: tfprimary = 0 03-07 17:05:19.806 15989-16091/com.example.TestPlugin:PluginP02 E/AndroidRuntime: FATAL EXCEPTION: Thread-314                                                                                   Process: com.example.TestPlugin:PluginP02, PID: 15989                                                                                   java.util.MissingFormatArgumentException: Format specifier: s                                                                                       at java.util.Formatter.getArgument(Formatter.java:1111)                                                                                       at java.util.Formatter.doFormat(Formatter.java:1076)                                                                                       at java.util.Formatter.format(Formatter.java:1042)                                                                                       at java.util.Formatter.format(Formatter.java:1011)                                                                                       at java.lang.String.format(String.java:1999)                                                                                       at java.lang.String.format(String.java:1973)                                                                                       at com.morgoo.helper.Log.e(Log.java:248)                                                                                       at com.morgoo.droidplugin.pm.IPluginManagerImpl.loadAllPlugin(IPluginManagerImpl.java:155)                                                                                       at com.morgoo.droidplugin.pm.IPluginManagerImpl.onCreateInner(IPluginManagerImpl.java:113)                                                                                       at com.morgoo.droidplugin.pm.IPluginManagerImpl.access$000(IPluginManagerImpl.java:81)                                                                                       at com.morgoo.droidplugin.pm.IPluginManagerImpl$1.run(IPluginManagerImpl.java:107) </body>
+		<created>2016-03-07 09:11:53</created>
+		<closed>2016-03-07 09:40:18</closed>
+	</bug>
+	<bug>
+		<id>130</id>
+		<title>IMountServiceHookHandle$mkdirs中的beforeInvoke()逻辑似乎有问题?</title>
+		<body>嗨，拜读了您的代码，涨了不少姿势，十分感谢！  我有个疑惑，IMountServiceHookHandle$mkdirs中的beforeInvoke()中，您的想法应该是判断路径如果是插件的路径，就重定向为框架中的插件路径吧，isAndroiDataHostPath这个内部变量判断时，如果路径是"Android/obb/com.test.xxx"岂非也会为 true, 那根本走不进去"Android/obb"的替换逻辑块中额。  期待你的回复，再次感谢～ </body>
+		<created>2016-02-16 08:44:00</created>
+		<closed>2016-02-25 03:29:19</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>偶现Crash现象</title>
+		<body>在使用过程中偶现此crash bug： java.util.ConcurrentModificationException                                                                             at java.util.HashMap$HashIterator.nextEntry(HashMap.java:792)                                                                             at java.util.HashMap$ValueIterator.next(HashMap.java:824)                                                                             at com.morgoo.droidplugin.am.RunningProcesList.isPersistentApplication(RunningProcesList.java:97)                                                                             at com.morgoo.droidplugin.am.MyActivityManagerService.runProcessGC(MyActivityManagerService.java:413)                                                                             at com.morgoo.droidplugin.am.MyActivityManagerService.selectStubActivityInfo(MyActivityManagerService.java:277)                                                                             at com.morgoo.droidplugin.pm.IPluginManagerImpl.selectStubActivityInfo(IPluginManagerImpl.java:1204)                                                                             at com.morgoo.droidplugin.pm.IPluginManagerImpl.selectStubActivityInfoByIntent(IPluginManagerImpl.java:1220)                                                                             at com.morgoo.droidplugin.pm.IPluginManager$Stub.onTransact(IPluginManager.java:532)                                                                             at android.os.Binder.execTransact(Binder.java:351)                                                                             at dalvik.system.NativeStart.run(Native Method) </body>
+		<created>2015-12-23 10:34:08</created>
+		<closed>2016-02-22 07:11:20</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>插件以快捷方式存在</title>
+		<body>插件以快捷方式存在， 只要启动过主程序，每次通过快捷方式启动插件，插件都会重启，而不会直接进入之前的插件界面。 </body>
+		<created>2015-10-27 08:53:09</created>
+		<closed>2015-11-06 10:54:21</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>应用重复启动问题怎么解决啊？</title>
+		<body>插件与插件，插件与宿主之间的互相调用会导致应用（或者页面）的重复启动，使用各种lanuchMode和flag都无效，不知道要怎么实现单例？ </body>
+		<created>2015-10-11 01:50:31</created>
+		<closed>2015-11-06 10:46:58</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>宿主程序由zygote64启动，而插件apk中只有armabi平台的so库。则报dlopen failed错误。</title>
+		<body>前提：arm64位手机运行Android5.1.1操作系统，TestPlugin程序由 Zygote64启动，但是Apk插件只有armabi的so库，并能正确安装。但是在启动过程中报错。  报错： 09-21 19:34:42.751: E/art(21056): dlopen("/data/data/com.example.TestPlugin/Plugin/com.lspr/lib/libLSPR.so", RTLD_LAZY) failed: dlopen failed: "/data/data/com.example.TestPlugin/Plugin/com.lspr/lib/libLSPR.so" is 32-bit instead of 64-bit  原因：so库和宿主程序应该运行在同一平台，32位或者64位手机系统。 DroidPlugin程序出错原因，没有避免这种情况出现。经调试发现：IPluginManagerImpl.java中  private String findSoPath(Set&lt;String&gt; soPaths) 函数处理有问题。  ---  private String findSoPath(Set&lt;String&gt; soPaths) {         System.out.println("findSoPath:soPaths-----&gt;&gt;&gt;" + soPaths);         System.out.println("findSoPath:soPaths:CPU_ABI-----&gt;&gt;&gt;" + Build.CPU_ABI);         System.out.println("findSoPath:soPaths:CPU_ABI2----&gt;&gt;&gt;" + Build.CPU_ABI2);         if (soPaths != null &amp;&amp; soPaths.size() &gt; 0) {             for (String soPath : soPaths) {                 if (soPath.contains(Build.CPU_ABI)) {                     System.out.println("1:ERROR:soPath:" + soPath);                     return soPath;                 }             }             for (String soPath : soPaths) {                 if (soPath.contains(Build.CPU_ABI2)) {                     System.out.println("2:ERROR:soPath:" + soPath);                     return soPath;                 }             }         }         return null;     }  ---  随机加载Build.CPU_ABI2 有可能为""; 这样soPath.contains(Build.CPU_ABI2)一定为真；  Android系统是5.1.1 *****************************_Android.os.Build.java**_******************************************************** static {         /*          \* Adjusts CPU_ABI and CPU_ABI2 depending on whether or not a given process is 64 bit.          \* 32 bit processes will always see 32 bit ABIs in these fields for backward          \* compatibility.          */         final String[] abiList;         if (VMRuntime.getRuntime().is64Bit()) {             abiList = SUPPORTED_64_BIT_ABIS;         } else {             abiList = SUPPORTED_32_BIT_ABIS;         }  ```     CPU_ABI = abiList[0];     if (abiList.length &gt; 1) {         CPU_ABI2 = abiList[1];     } else {         CPU_ABI2 = "";     } ```  ---  log记录  ---  09-24 20:05:16.252: I/System.out(8480): copyNativeLibs:nativeLibraryDir:/data/data/com.example.TestPlugin/Plugin/com.lspr/lib 09-24 20:05:16.252: I/System.out(8480): copyNativeLibs:apkfile:/data/data/com.example.TestPlugin/Plugin/com.lspr/apk/base-1.apk 09-24 20:05:16.254: I/System.out(8480): findSoPath:soPaths-----&gt;&gt;&gt;[lib/armeabi-v7a/libLSPR.so, lib/armeabi/libLSPR.so] 09-24 20:05:16.254: I/System.out(8480): findSoPath:soPaths:CPU_ABI-----&gt;&gt;&gt;arm64-v8a 09-24 20:05:16.254: I/System.out(8480): findSoPath:soPaths:CPU_ABI2----&gt;&gt;&gt; 09-24 20:05:16.254: I/System.out(8480): 2:ERROR:soPath:lib/armeabi-v7a/libLSPR.so 09-24 20:05:16.254: I/System.out(8480): return soPath:lib/armeabi-v7a/libLSPR.so 09-24 20:05:16.254: I/System.out(8480): copyNativeLibs:file:--&gt;&gt;/data/data/com.example.TestPlugin/Plugin/com.lspr/lib/libLSPR.so  --- </body>
+		<created>2015-09-27 13:21:57</created>
+		<closed>2015-09-30 05:17:31</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>apk存在多个架构so库时存在时，需要分开拷贝</title>
+		<body>如果apk里面存在多个架构so库，IPluginManagerImpl里copyNativeLibs方法没有拷贝到对应文件夹下，会出现segment fault问题  for (String soName : soList.keySet()) {                 Log.e(TAG, "==========so name=" + soName);                 Set&lt;String&gt; soPaths = soList.get(soName);                 String soPath = findSoPath(soPaths);                 //----分平台架构文件夹拷贝                 String tmpSoPath = soPath;                 tmpSoPath = tmpSoPath.replace("lib/","");                 tmpSoPath = tmpSoPath.substring(0,tmpSoPath.indexOf('/'));                 String tmpLibRootFolder = nativeLibraryDir + File.separator +tmpSoPath;  ```             if (soPath != null) {                 {                     File file = new File(tmpLibRootFolder);                     if(file.exists()){                      }else{                         file.mkdirs();                     }                 }                 File file = new File(tmpLibRootFolder, soName);                 //----                 if (file.exists()) {                     file.delete();                 } ```  ...... ..... ..... </body>
+		<created>2015-09-25 17:59:36</created>
+		<closed>2015-11-12 07:47:09</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>插件apk的本地H5页面使用了assert目录下的css,用DroidPlugin打开后不会被识别</title>
+		<body>插件apk的assert目录下有一个index.html, 其中对 **_css的引用**_ 是这么写的:  ```     &lt;link href="file:///android_asset/css.css" type="text/css" rel="stylesheet" /&gt; ```  意思是引用了assert目录下的一个css样式表.   用DroidPlugin打开后样式错乱, **_css没有被识别**_ . </body>
+		<created>2015-09-16 07:37:30</created>
+		<closed>2015-10-10 08:01:48</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>50</id>
+		<title>CreateDefaultCharToDB &amp; SaveDefaultCharToDB　Error</title>
+		<body>[09:27:35] [Server thread/ERROR]: SaveDefaultCharToDB java.sql.SQLException: Field 'uuid' doesn't have a default value     at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1073) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3593) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3525) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1986) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2140) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2626) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2111) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2407) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2325) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2310) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.chantake.MituyaProject.Player.PlayerInstance.SaveCharToDB(PlayerInstance.java:1531) [MituyaProject-5.6.jar:?]     at com.chantake.MituyaProject.Player.PlayerInstance.SaveAll(PlayerInstance.java:1191) [MituyaProject-5.6.jar:?]     at com.chantake.MituyaProject.MituyaProject.SavePlayerInstance(MituyaProject.java:629) [MituyaProject-5.6.jar:?]     at com.chantake.MituyaProject.MituyaProject.SaveAll(MituyaProject.java:619) [MituyaProject-5.6.jar:?]     at com.chantake.MituyaProject.Tool.Timer.AutoSave.run(AutoSave.java:48) [MituyaProject-5.6.jar:?]     at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftTask.run(CraftTask.java:71) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftScheduler.mainThreadHeartbeat(CraftScheduler.java:350) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.MinecraftServer.z(MinecraftServer.java:694) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.DedicatedServer.z(DedicatedServer.java:316) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.MinecraftServer.y(MinecraftServer.java:623) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.MinecraftServer.run(MinecraftServer.java:526) [spigot-1.8.jar:git-Spigot-e497721-a1ce164] ##     at java.lang.Thread.run(Unknown Source) [?:1.8.0_31]  [13:11:03] [Server thread/ERROR]: CreateDefaultCharToDB java.sql.SQLException: Field 'uuid' doesn't have a default value     at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1073) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3593) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3525) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1986) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2140) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2626) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2111) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2407) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2325) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2310) ~[spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at com.chantake.MituyaProject.Player.PlayerInstance.CreateCharTableToDB(PlayerInstance.java:1405) [MituyaProject-5.6.jar:?]     at com.chantake.MituyaProject.Player.PlayerInstance.LoadCharFromDB(PlayerInstance.java:1269) [MituyaProject-5.6.jar:?]     at com.chantake.MituyaProject.Player.PlayerInstance.Login(PlayerInstance.java:1121) [MituyaProject-5.6.jar:?]     at com.chantake.MituyaProject.Bukkit.Listener.MituyaProjectPlayerListener.onPlayerJoin(MituyaProjectPlayerListener.java:301) [MituyaProject-5.6.jar:?]     at sun.reflect.GeneratedMethodAccessor163.invoke(Unknown Source) ~[?:?]     at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_31]     at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_31]     at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:301) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.PlayerList.onPlayerJoin(PlayerList.java:263) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.PlayerList.a(PlayerList.java:148) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.LoginListener.b(LoginListener.java:109) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.LoginListener.c(LoginListener.java:41) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.NetworkManager.a(NetworkManager.java:159) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.ServerConnection.c(ServerConnection.java:82) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.MinecraftServer.z(MinecraftServer.java:785) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.DedicatedServer.z(DedicatedServer.java:316) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.MinecraftServer.y(MinecraftServer.java:623) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at net.minecraft.server.v1_8_R1.MinecraftServer.run(MinecraftServer.java:526) [spigot-1.8.jar:git-Spigot-e497721-a1ce164]     at java.lang.Thread.run(Unknown Source) [?:1.8.0_31] </body>
+		<created>2015-02-16 13:43:06</created>
+		<closed>2015-02-16 13:48:38</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>tp publicにて[承認]としている時checkがoffだと通ってしまう</title>
+		<body>checkがoffだった場合tp publicの値が[承認]であると許可メッセージが表示されず通常の[許可]状態と変わらなくなってしまう  対策案  CheckのForce版を作成しtp時に使用することで対策可能 </body>
+		<created>2015-02-03 05:55:51</created>
+		<closed>2015-02-07 21:48:44</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>［バグ］ハーベストネザーでホーム設定(/home set)が出来てしまう</title>
+		<body>タイトルの通り、ハーベストネザーで/home機能が使えちゃってます。 更新時に問題が起きてしまう可能性があるので、最長でも次回ハーベスト更新前に 対処の方お願いします。 </body>
+		<created>2015-02-03 05:54:33</created>
+		<closed>2015-02-07 21:48:51</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>nnの変換がおかしい</title>
+		<body></body>
+		<created>2015-01-31 03:11:12</created>
+		<closed>2015-02-02 16:13:06</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>BANが正常に機能しない</title>
+		<body>BANを行ったプレイヤーが参加出来てしまっている ログアウト時のみ正常に動作が出来ない模様 </body>
+		<created>2015-01-30 14:22:16</created>
+		<closed>2015-01-31 02:54:07</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>ウィザースケルトンの頭が無料で買える</title>
+		<body>コマンドショップ397:1を購入すると0マインでウィザースケルトンの頭が手に入ってしまいます。 </body>
+		<created>2015-01-30 13:21:44</created>
+		<closed>2015-01-31 11:52:39</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>ガチャ本開封時、スタックしてても全て消費される</title>
+		<body>１つづつ消費するように出来ませんか？ </body>
+		<created>2015-01-30 12:40:54</created>
+		<closed>2015-02-07 21:48:49</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>コマンドショップsellでの価格の不具合</title>
+		<body>現在sellコマンドは停止中です。  itemID 98：3（模様付き{入り}石レンガ{Cracked Stone Bricks}）によって錬金できてしまう不具合。 　レシピはハーフ石レンガ２つ。＝丸石４個で３個作れてしまう。  石の価格は8 ４個で32  模様石レンガの売却価格は450 ３個で1350  最低単位で1318mineの錬金が可能。  ＤＢにアクセスできる人お願いします。 </body>
+		<created>2015-01-30 12:13:32</created>
+		<closed>2015-02-25 05:14:51</closed>
+	</bug>
+</bugs>

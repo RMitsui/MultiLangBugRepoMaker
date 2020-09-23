@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>97</id>
+		<title>VMwareプラットフォームでIPv4アドレスのないネットワークアダプタがあると起動エラーとなる</title>
+		<body>現在の実装では、VMwareプラットフォームでサーバを起動する場合、VMware Toolsで取得できる全てのネットワークアダプタにIPv4アドレスが割り当てられていないと、起動時にエラーとなってしまう。  ネットワークアダプタはvCenterで追加したアダプタだけでなく、仮想マシン内で作成した仮想ネットワークアダプタも対象となる。  IPv4アドレスが割り当てあられているかどうかをチェックするネットワークアダプタは、PLATFORM_VMWARE テーブルや VMWARE_NETWORK テーブルで指定されたもののみを対象とするように修正する。 </body>
+		<created>2017-03-22 03:02:30</created>
+		<closed>2017-03-23 06:17:02</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>無効にしたユーザがAPIを利用できてしまう</title>
+		<body>management-tool でユーザを無効にすると、PCC画面上でログインできなくなるものの、APIを使って操作はできてしまう。</body>
+		<created>2017-02-26 04:58:37</created>
+		<closed>2017-03-06 08:47:39</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>UltraMonkeyロードバランサを停止した際、WARNレベルのログが出力されている</title>
+		<body>UltraMonkeyロードバランサを停止した際、WARNレベルで次のようなログが出力されている。  &gt; [ECOMMON-000212] Could not delete cname. </body>
+		<created>2016-11-27 13:35:29</created>
+		<closed>2016-11-27 14:23:05</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>AWSロードバランサのリスナーのプロトコルをSSLに変更できない</title>
+		<body>AWSロードバランサで、SSLプロトコルのリスナーを作成できるが、既存のリスナーのプロトコルをSSLに変更できない。  プロトコルのチェック部分が間違っている。</body>
+		<created>2016-11-20 08:44:26</created>
+		<closed>2016-11-20 08:47:49</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>プラットフォーム情報取得APIでシステム内部の情報を取得できてしまう</title>
+		<body>プラットフォーム情報を取得するAPIの ListPlatform と DescribePlatform において、利用者が知るべきでないPCC内部の情報を取得できてしまう。  利用者が知ってよい情報のみを取得できるようにする。 </body>
+		<created>2016-10-21 00:55:48</created>
+		<closed>2016-10-21 06:31:44</closed>
+	</bug>
+	<bug>
+		<id>78</id>
+		<title>認証が必要なプロキシ環境下ではIaaS Gatewayが動作しない</title>
+		<body>プロキシを経由でAWSなど外部のクラウドのAPIを利用する際、データベースのPROXYテーブルにプロキシ情報を登録する必要がある。  PROXYテーブルにはプロキシのホスト名やポートだけでなくユーザ名やパスワードも登録できるようになっているが、IaaS Gatewayではユーザ名とパスワードを用いずにプロキシに接続するようになっているため、認証が必要なプロキシ環境下では動作しない。  具体的には次のソースコード。 https://github.com/primecloud-controller-org/primecloud-controller/blob/master/iaas-gw/src/iaasgw/common/pccConnections.py </body>
+		<created>2016-10-14 03:10:01</created>
+		<closed>2016-10-17 00:54:08</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>AddAwsAddress と DeleteAwsAddress API に不要なパラメータが必須になっている</title>
+		<body>AddAwsAddress と DeleteAwsAddress API で、FarmNo パラメータの指定が必須になっているが、実際は必須ではない。 </body>
+		<created>2016-07-27 06:59:37</created>
+		<closed>2016-07-27 07:01:57</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>Elastic IPを利用しているとEditInstance APIでエラーが出る</title>
+		<body>Elastic IPを利用しているサーバのインスタンスタイプなどを変更するためにEditInstance APIを実行する際、利用しているものと同じElastic IPを指定して実行するとエラーが発生する。  Elastic IPを指定しないとサーバとの関連付けが外れてしまう。 </body>
+		<created>2016-07-27 05:49:08</created>
+		<closed>2016-07-27 05:52:38</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>ListAwsAddress APIで別のユーザのリソースを参照できてしまう</title>
+		<body>ListAwsAddress APIの実装において、ユーザに関する条件を付けずにデータベースから取得した値を返すようになっている。  これだと、同じPlatformで別のユーザのAwsAddressを参照できてしまう。 </body>
+		<created>2016-07-27 02:10:25</created>
+		<closed>2016-07-27 05:43:30</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>IaaS Gatewayでエラーが発生すると、データと状態との間に不整合が生じる</title>
+		<body>#40 の件ですが、結局何も対応していないため、改めて対応しましょう。 </body>
+		<created>2016-07-03 13:53:40</created>
+		<closed>2016-07-16 09:59:08</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>サブネットを選択すると、以降変更できなくなる</title>
+		<body>AWSプラットフォームのインスタンスを作成した後、サブネットを一度選択すると、以降は変更できなくなる。 インスタンスを起動していなければ変更できるべき。 </body>
+		<created>2016-06-30 13:47:07</created>
+		<closed>2016-06-30 14:19:19</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>IaaS Gatewayのデータベースアクセスでエラーが起きる</title>
+		<body>ドキュメントに従いVersion 2.6.1を新規インストールした環境において、management-tool の pcc-enable-user-aws.sh を実行すると次のエラーが発生する。  ``` 2016/06/25 21:28:57 [ERROR] IAAS GATEWAY ERR:AttributeError: 'MySQLConnection' object has no attribute 'get_characterset_info' 2016/06/25 21:28:57 [ERROR] キーのインポートでエラーが発生しました。keyName:user1 platformNo:1 jp.primecloud.auto.exception.AutoException: [EIAASGWP-300001] EIAASGWP-300001         at jp.primecloud.auto.iaasgw.IaasGatewayWrapper.handleException(IaasGatewayWrapper.java:389)         at jp.primecloud.auto.iaasgw.IaasGatewayWrapper.excGateway(IaasGatewayWrapper.java:160)         at jp.primecloud.auto.iaasgw.IaasGatewayWrapper.describeKeyPairs(IaasGatewayWrapper.java:166)         at jp.primecloud.auto.tool.management.iaasgw.IaasGatewayScriptService.importKeyPair(IaasGatewayScriptService.java:55)         at jp.primecloud.auto.tool.management.main.IaasGatewayMain.importExecute(IaasGatewayMain.java:62)         at jp.primecloud.auto.tool.management.main.Main.main(Main.java:164) Caused by: jp.primecloud.auto.iaasgw.IaasgwException: AttributeError: 'MySQLConnection' object has no attribute 'get_characterset_info'         at jp.primecloud.auto.iaasgw.IaasGatewayWrapper.excGateway(IaasGatewayWrapper.java:150)         ... 4 more ``` </body>
+		<created>2016-06-25 16:00:17</created>
+		<closed>2016-07-03 10:36:45</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>サービス用のDISKが追加できない。</title>
+		<body>CentOS6.5のイメージを利用してサービスを起動するとEBSディスクの追加処理に失敗する。 lvm部分の処理に失敗している  該当部分のpuppetのログは以下の内容  ``` puppet-master[1534]: (//ddd.afdsa.dev.primecloud-controller.org//Stage[main]/Dbserver::Mysql::Mount/Lvm::Config[/mnt/db]/Physical_volume[/dev/sdg1]/ensure) change fro m absent to present failed: Execution of '/sbin/pvcreate /dev/sdg1' returned 5:   Device /dev/sdg1 not found (or ignored by filtering).  ``` </body>
+		<created>2015-07-01 07:44:12</created>
+		<closed>2015-07-01 08:10:09</closed>
+	</bug>
+</bugs>

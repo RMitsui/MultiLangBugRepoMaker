@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="kGenProg">
+	<bug id="600" opendate="2019-04-01 07:35:30" fixdate="2019-10-03 02:10:42">
+		<buginformation>
+			<summary>java9以上の環境でクラスローダが死ぬ</summary>
+			<description>```sh build assemble cd example/CloseToZero01 java -jar ../../build/libs/kGenProg-1.3.2.jar ```  上記コマンドを実行すると，以下のエラーがでる． ``` io.reactivex.exceptions.OnErrorNotImplementedException: The exception was not handled due to missing onError handler in the subscribe() method call. Further reading: https://github.com/ReactiveX/RxJava/wiki/Error-Handling | java.lang.RuntimeException: Cannot find extension class loader. at io.reactivex.internal.functions.Functions$OnErrorMissingConsumer.accept(Functions.java:704) at io.reactivex.internal.functions.Functions$OnErrorMissingConsumer.accept(Functions.java:701) at io.reactivex.internal.observers.ConsumerSingleObserver.onError(ConsumerSingleObserver.java:46) at io.reactivex.internal.operators.single.SingleCache.onError(SingleCache.java:146) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onError(SingleMap.java:69) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:60) at io.reactivex.internal.operators.single.SingleCache.onSuccess(SingleCache.java:134) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:64) at io.reactivex.internal.operators.single.SingleJust.subscribeActual(SingleJust.java:30) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:34) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleCache.subscribeActual(SingleCache.java:65) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:34) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleCache.subscribeActual(SingleCache.java:65) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.Single.subscribe(Single.java:3481) at io.reactivex.Single.subscribe(Single.java:3402) at jp.kusumotolab.kgenprog.ga.variant.LazyVariant.subscribe(LazyVariant.java:27) at jp.kusumotolab.kgenprog.ga.variant.VariantStore.createVariant(VariantStore.java:188) at jp.kusumotolab.kgenprog.ga.variant.VariantStore.createInitialVariant(VariantStore.java:158) at jp.kusumotolab.kgenprog.ga.variant.VariantStore.&lt;init&gt;(VariantStore.java:38) at jp.kusumotolab.kgenprog.KGenProgMain.run(KGenProgMain.java:66) at jp.kusumotolab.kgenprog.CUILauncher.launch(CUILauncher.java:65) at jp.kusumotolab.kgenprog.CUILauncher.main(CUILauncher.java:30) Caused by: java.lang.RuntimeException: Cannot find extension class loader. at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.findExtClassLoader(SkippingMemoryClassLoader.java:38) at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.findExtClassLoader(SkippingMemoryClassLoader.java:42) at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.findExtClassLoader(SkippingMemoryClassLoader.java:42) at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.&lt;init&gt;(SkippingMemoryClassLoader.java:27) at jp.kusumotolab.kgenprog.project.test.TestThread.run(TestThread.java:98) at jp.kusumotolab.kgenprog.project.test.LocalTestExecutor.exec(LocalTestExecutor.java:29) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:57) ... 21 more Exception in thread "main" io.reactivex.exceptions.OnErrorNotImplementedException: The exception was not handled due to missing onError handler in the subscribe() method call. Further reading: https://github.com/ReactiveX/RxJava/wiki/Error-Handling | java.lang.RuntimeException: Cannot find extension class loader. at io.reactivex.internal.functions.Functions$OnErrorMissingConsumer.accept(Functions.java:704) at io.reactivex.internal.functions.Functions$OnErrorMissingConsumer.accept(Functions.java:701) at io.reactivex.internal.observers.ConsumerSingleObserver.onError(ConsumerSingleObserver.java:46) at io.reactivex.internal.operators.single.SingleCache.onError(SingleCache.java:146) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onError(SingleMap.java:69) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:60) at io.reactivex.internal.operators.single.SingleCache.onSuccess(SingleCache.java:134) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:64) at io.reactivex.internal.operators.single.SingleJust.subscribeActual(SingleJust.java:30) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:34) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleCache.subscribeActual(SingleCache.java:65) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:34) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleCache.subscribeActual(SingleCache.java:65) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.Single.subscribe(Single.java:3481) at io.reactivex.Single.subscribe(Single.java:3402) at jp.kusumotolab.kgenprog.ga.variant.LazyVariant.subscribe(LazyVariant.java:27) at jp.kusumotolab.kgenprog.ga.variant.VariantStore.createVariant(VariantStore.java:188) at jp.kusumotolab.kgenprog.ga.variant.VariantStore.createInitialVariant(VariantStore.java:158) at jp.kusumotolab.kgenprog.ga.variant.VariantStore.&lt;init&gt;(VariantStore.java:38) at jp.kusumotolab.kgenprog.KGenProgMain.run(KGenProgMain.java:66) at jp.kusumotolab.kgenprog.CUILauncher.launch(CUILauncher.java:65) at jp.kusumotolab.kgenprog.CUILauncher.main(CUILauncher.java:30) Caused by: java.lang.RuntimeException: Cannot find extension class loader. at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.findExtClassLoader(SkippingMemoryClassLoader.java:38) at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.findExtClassLoader(SkippingMemoryClassLoader.java:42) at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.findExtClassLoader(SkippingMemoryClassLoader.java:42) at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.&lt;init&gt;(SkippingMemoryClassLoader.java:27) at jp.kusumotolab.kgenprog.project.test.TestThread.run(TestThread.java:98) at jp.kusumotolab.kgenprog.project.test.LocalTestExecutor.exec(LocalTestExecutor.java:29) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:57) ... 21 more 2019-04-01 16:33:37 [main] [INFO]  KGenProgMain - entered the era of 1st generation. Exception in thread "main" java.lang.RuntimeException: Cannot find extension class loader. at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.findExtClassLoader(SkippingMemoryClassLoader.java:38) at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.findExtClassLoader(SkippingMemoryClassLoader.java:42) at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.findExtClassLoader(SkippingMemoryClassLoader.java:42) at jp.kusumotolab.kgenprog.project.test.SkippingMemoryClassLoader.&lt;init&gt;(SkippingMemoryClassLoader.java:27) at jp.kusumotolab.kgenprog.project.test.TestThread.run(TestThread.java:98) at jp.kusumotolab.kgenprog.project.test.LocalTestExecutor.exec(LocalTestExecutor.java:29) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:57) at io.reactivex.internal.operators.single.SingleCache.onSuccess(SingleCache.java:134) at io.reactivex.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:64) at io.reactivex.internal.operators.single.SingleJust.subscribeActual(SingleJust.java:30) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:34) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleCache.subscribeActual(SingleCache.java:65) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:34) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.internal.operators.single.SingleCache.subscribeActual(SingleCache.java:65) at io.reactivex.Single.subscribe(Single.java:3495) at io.reactivex.Single.subscribe(Single.java:3481) at io.reactivex.Single.subscribe(Single.java:3402) at jp.kusumotolab.kgenprog.ga.variant.LazyVariant.subscribe(LazyVariant.java:27) at jp.kusumotolab.kgenprog.ga.variant.VariantStore.createVariant(VariantStore.java:188) at jp.kusumotolab.kgenprog.ga.variant.VariantStore.createInitialVariant(VariantStore.java:158) at jp.kusumotolab.kgenprog.ga.variant.VariantStore.&lt;init&gt;(VariantStore.java:38) at jp.kusumotolab.kgenprog.KGenProgMain.run(KGenProgMain.java:66) at jp.kusumotolab.kgenprog.CUILauncher.launch(CUILauncher.java:65) at jp.kusumotolab.kgenprog.CUILauncher.main(CUILauncher.java:30) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/SkippingMemoryClassLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="573" opendate="2019-02-02 05:52:51" fixdate="2019-04-01 09:08:39">
+		<buginformation>
+			<summary>tomlを使わずにkGenProgを実行した時の挙動が変</summary>
+			<description>Configの値が出力されるだけで，GAのループにすら入らない 原因不明  再現コマンド ```bash cd example/CloseToZero01/ java -jar ../../build/libs/kGenProg-1.2.0.jar  -s src/example/CloseToZero.java -t src/example/CloseToZeroTest.java -r ./ ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/SourcePath.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="564" opendate="2019-01-28 07:22:09" fixdate="2019-02-02 07:33:47">
+		<buginformation>
+			<summary>古い個体が優先的に残される</summary>
+			<description>tomida実験で発見したバグ (a.k.a. じじい-oriented問題)  新たに生成したFitnessが変化しない個体が残されず， 古い個体が優先的に選ばれている．  どうあるべきかから検討すべき．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/selection/DefaultVariantSelection.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/ga/selection/EliteAndOldVariantSelectionTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/selection/EliteAndOldVariantSelection.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/ga/selection/DefaultVariantSelectionTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="541" opendate="2019-01-18 07:41:38" fixdate="2019-01-28 06:02:28">
+		<buginformation>
+			<summary>題材とKGPが同libを利用する場合にバグる</summary>
+			<description>kgpと題材が同lib/別verを利用する際にバグる． テスト実行時のクラスローダのバグである．  ### 内藤実験で発生したシナリオ 題材closure-compilerはguava-19に依存，kgpはguava-26に依存する． guavaの19と26は互換性がない．  kgpによってguava-26がロードされてしまうので， テスト実行時，すなわち19を期待する題材を実行する際に26が利用されてしまう．  ### 根本原因 題材実行時ののクラスローダ（MemoryClassLoader）が， kgpのシステムクラスローダにまでロード処理を委譲してしまうのが問題．  ### 直し方？ コンパイル時はうまくクラスローダの切り分けができているので， その実装を参考にすると直せるかもしれない．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/MemoryClassLoaderTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/SkippingMemoryClassLoader.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestThread.java</file>
+			<file>example/BuildSuccess23/test/example/FooTest.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/LocalTestExecutorTest.java</file>
+			<file>example/BuildSuccess23/src/example/Foo.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/MemoryClassLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="530" opendate="2019-01-14 03:20:38" fixdate="2019-01-15 01:17:01">
+		<buginformation>
+			<summary>題材がクラスローダのバイナリresourceを読む場合に死ぬ</summary>
+			<description>単なるFS上のresourceファイルを読む場合は正しく動作するが (#529) ， ClassLoaderが抱えているバイナリresourceを読む場合はうまく動作しない．  springフレームワークを用いる題材で発生するバグ．  `MemoryClassLoader#getResourceAsStream` のOverrideが必須．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/LocalTestExecutorTest.java</file>
+			<file>example/BuildSuccess22/test/example/FooTest.java</file>
+			<file>example/BuildSuccess22/src/example/Bar.java</file>
+			<file>example/BuildSuccess22/src/example/Foo.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/MemoryClassLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="514" opendate="2019-01-08 01:43:33" fixdate="2019-01-08 03:51:40">
+		<buginformation>
+			<summary>ClassPathオブジェクトのequalsに潜在バグ</summary>
+			<description>`Path` のラッパーである `ClassPath` オブジェクトの `equals` メソッドが単純な文字列で比較しており， 潜在バグになっている．  ```java    @Override    public boolean equals(Object o) {     return this.toString()         .equals(o.toString()); ```  以下のような場合にequalsはfalseを返してしまう - 相対パスと絶対パスの比較 - `./a.jar` と `a.jar` の比較 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/factory/EclipseProjectFactoryTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/ClassPath.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="468" opendate="2018-12-18 11:39:33" fixdate="2019-05-04 07:19:45">
+		<buginformation>
+			<summary>Variant の isSyntaxValid() の結果が不適切</summary>
+			<description>Variant が文法的に正しいかどうかの判定を `GeneratedSourceCode` か `GenerationFailedSourceCode` かで判定している． ただ，枝切りによって `GenerationFailedSourceCode` と判定された場合，文法的には正しいのに `isSyntaxValid()` の結果が false になる</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/variant/Variant.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/codegeneration/ReproducedStatus.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/KGenProgMain.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/codegeneration/DefaultSourceCodeGeneration.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/ReproducedSourceCode.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/variant/VariantStore.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/GeneratedSourceCode.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/ga/codegeneration/DefaultSourceCodeGenerationTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="423" opendate="2018-11-15 08:23:21" fixdate="2018-12-28 08:53:23">
+		<buginformation>
+			<summary>classpathの指定周りでバグ</summary>
+			<description> ビルド時のCP    → 意図通り正しく動いている  テスト実行時のCP  → cpで指定されたjunitではなく，kgpに同梱されているjunitが解決されている </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/LocalTestExecutorTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestThread.java</file>
+			<file>example/BuildSuccess16/test/example/FooTest.java</file>
+			<file>example/BuildSuccess16/src/example/Foo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="418" opendate="2018-11-14 09:40:02" fixdate="2019-01-05 14:06:32">
+		<buginformation>
+			<summary>JUnitのannotationタイムアウトでスレッドがkillされない</summary>
+			<description>#408 の修正により，テストが無限ループした際のJUnitの打ち切りがうまく働くようになった． 一方で，タイムアウト発生後の別のテストがやたら遅くなった．  前提：QSortは無限ループを発生させやすいテストである．  QSortを実行しない場合のMainTestの結果 ![image](https://user-images.githubusercontent.com/5342911/48473665-4a7a2200-e83c-11e8-9d17-8c30ce864698.png)  QSortを実行した場合のMainTestの結果 ![image](https://user-images.githubusercontent.com/5342911/48473792-8f05bd80-e83c-11e8-8f84-099c00b0b9c2.png)  倍くらい遅くなる．マウス動作が苦しいレベル． CPUが100％にへばりつくので，謎プロセスが残ってる？</description>
+		</buginformation>
+		<fixedfiles>
+			<file>example/BuildSuccess19/src/example/FooTest.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/KGenProgMainTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/factory/JUnitLibraryResolver.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/LocalTestExecutor.java</file>
+			<file>example/GCD01/src/example/GreatestCommonDivider.java</file>
+			<file>example/BuildSuccess20/src/example/Foo.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestThread.java</file>
+			<file>example/BuildSuccess20/src/example/FooTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/variant/VariantStore.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/LocalTestExecutorTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/jdt/InsertTimeoutRuleFieldOperation.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/testutil/ExampleAlias.java</file>
+			<file>example/BuildSuccess19/src/example/Foo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="404" opendate="2018-11-07 08:45:27" fixdate="2018-12-25 09:53:11">
+		<buginformation>
+			<summary>GAパラメタのデフォルト値が適切でない</summary>
+			<description>#377 でGAパラメタの「意味」が変わったが，「デフォルト値」が元のまんま． ``` 意味asis：個々の親が生成する子の数 意味tobe：1世代で生成する子の総数  デフォルト値asis：10 デフォルト値tobe：10 ```  よって，デフォルトで親100個から子10個を生み出して，次の世代を10個に絞る，という GAらしからぬ挙動になっている． 親がやたら残るので，GAにおける進化らしい挙動になっていない．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/Configuration.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="357" opendate="2018-10-15 04:38:27" fixdate="2018-10-16 04:29:29">
+		<buginformation>
+			<summary>クラスパスにディレクトリを指定するとビルドに失敗する</summary>
+			<description>タイトルの通り． クラスパスにディレクトリを指定した場合，`TargetProject` にはそのディレクトリに含まれるすべてのクラスファイルがクラスパスとして登録されている． しかし，クラスパスとしてクラスファイルを直接指定すると，コンパイルの際にクラスファイルのパッケージが分からないためビルドに失敗する．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/ProjectBuilderTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/factory/DefaultProjectFactory.java</file>
+			<file>example/BuildSuccess13/src/example/Foo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="288" opendate="2018-08-31 11:42:55" fixdate="2018-09-27 02:04:54">
+		<buginformation>
+			<summary>failするテストが成功扱いになっている</summary>
+			<description>Math73が題材． 失敗テストが存在しないことになってしまって，当然FL無理，バグ直らない．  mvnではテストが失敗する（当然Defects4jにもそのテストがfailと明記されている） ```sh $ mvn -Dtest=org.apache.commons.math.analysis.solvers.BrentSolverTest test ... [INFO] Surefire report directory: C:\pbl\workspace\kGenProg\example\Math73\target\surefire-reports  -------------------------------------------------------  T E S T S ------------------------------------------------------- Running org.apache.commons.math.analysis.solvers.BrentSolverTest Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.1 sec &lt;&lt;&lt; FAILURE!  Results :  Failed tests:   testBadEndpoints(org.apache.commons.math.analysis.solvers.BrentSolverTest)  Tests run: 6, Failures: 1, Errors: 0, Skipped: 0  [INFO] ------------------------------------------------------------------------ [INFO] BUILD FAILURE [INFO] ------------------------------------------------------------------------ [INFO] Total time: 5.280 s [INFO] Finished at: 2018-08-31T20:30:28+09:00 [INFO] ------------------------------------------------------------------------ ```  上記のテストレポート ``` ------------------------------------------------------------------------------- Test set: org.apache.commons.math.analysis.solvers.BrentSolverTest ------------------------------------------------------------------------------- Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.104 sec &lt;&lt;&lt; FAILURE! testBadEndpoints(org.apache.commons.math.analysis.solvers.BrentSolverTest)  Time elapsed: 0.022 sec  &lt;&lt;&lt; FAILURE! junit.framework.AssertionFailedError: Expecting IllegalArgumentException - non-bracketing at junit.framework.Assert.fail(Assert.java:47) at org.apache.commons.math.analysis.solvers.BrentSolverTest.testBadEndpoints(BrentSolverTest.java:334) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ```  failするテストの中身 ```java     public void testBadEndpoints() throws Exception {       ...         try {  // no bracket             solver.solve(f, 1, 1.5, 1.2);             fail("Expecting IllegalArgumentException - non-bracketing");         } catch (IllegalArgumentException ex) {             // expected         }     } ```  KGPでのJUnitの結果 ```json org.apache.commons.math.analysis.solvers.BrentSolverTest.testBadEndpoints={   "executedTestFQN": "org.apache.commons.math.analysis.solvers.BrentSolverTest.testBadEndpoints",   "wasFailed": false,   "coverages": [     //   ] } ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestThread.java</file>
+			<file>example/BuildSuccess11/src/example/FooTest.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/TestExecutorTest.java</file>
+			<file>example/BuildSuccess11/src/example/Foo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="287" opendate="2018-08-31 10:51:23" fixdate="2018-09-26 03:02:33">
+		<buginformation>
+			<summary>KGP実行時のテストの指定方法が不完全</summary>
+			<description>KGPのパラメタ指定で以下2つの区別がついていない．  a. どのテストをビルドするか b. どのテストを実行するか  現在a=bの状態．  ここでfailするテスト（a=b=`XTest`）のみの最小構成でKGPを起動した場合を考える． テストとしては`XTest`のみがビルドされる． `XTest`が他のテストユーティリティ`Util`に依存を持っている場合， `Util`がビルドされておらずクラスロードに失敗しテストも死ぬ．  起動パラメタでaとbを区別させないといけない． ```sh # ファイル名として「どのテストを実行するか」を指定する $ kgp -r Math70 -s src/main/java -t src/test/java -T src/test/java/org/apache/.../BrentSolverTest.java  # あるいはFQNで指定（mvn等はこっち） $ kgp -r Math70 -s src/main/java -t src/test/java -T org.apache...BrentSolverTest ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/Configuration.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestExecutor.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/ConfigurationBuilderTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestThread.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/TestExecutorTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="285" opendate="2018-08-30 13:47:51" fixdate="2018-09-27 01:54:53">
+		<buginformation>
+			<summary>行番号のズレに由来するバグ</summary>
+			<description>derived from #269   ``` // lineNumber=176 // [org.apache.commons.math3.dfp.DfpField, org.apache.commons.math3.dfp.DfpField$RoundingMode]  Exception in thread "main" java.lang.IndexOutOfBoundsException: Index: 175, Size: 56 at java.util.ArrayList.rangeCheck(ArrayList.java:657) at java.util.ArrayList.get(ArrayList.java:433) at jp.kusumotolab.kgenprog.project.test.TestResults.getTestFQNs(TestResults.java:149) at jp.kusumotolab.kgenprog.project.test.TestResults.lambda$2(TestResults.java:129) at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193) at java.util.HashMap$KeySpliterator.forEachRemaining(HashMap.java:1553) at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481) at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471) at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708) at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) at java.util.stream.LongPipeline.reduce(LongPipeline.java:438) at java.util.stream.LongPipeline.sum(LongPipeline.java:396) at java.util.stream.ReferencePipeline.count(ReferencePipeline.java:526) at jp.kusumotolab.kgenprog.project.test.TestResults.getNumberOfTests(TestResults.java:131) at jp.kusumotolab.kgenprog.project.test.TestResults.getNumberOfFailedTestsExecutingTheStatement(TestResults.java:179) at jp.kusumotolab.kgenprog.fl.Ochiai.exec(Ochiai.java:43) at jp.kusumotolab.kgenprog.KGenProgMain.run(KGenProgMain.java:121) at jp.kusumotolab.kgenprog.Trial.main(Trial.java:60) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>example/BuildSuccess03/src/example/BarTest.java</file>
+			<file>example/BuildSuccess03/src/example/Bar.java</file>
+			<file>example/BuildSuccess03/src/example/BazTest.java</file>
+			<file>example/BuildSuccess03/src/example/FooTest.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/PatchGeneratorTest.java</file>
+			<file>example/BuildSuccess03/src/example/Foo.java</file>
+			<file>example/BuildSuccess03/src/example/Baz.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestResults.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/TestExecutorTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="233" opendate="2018-08-09 03:36:01" fixdate="2018-08-09 06:37:53">
+		<buginformation>
+			<summary>jacocoで書き換えたclassファイルがロックされている</summary>
+			<description>潜在バグ．  jacocoで書き換えしたclassファイルのInputStreamを閉じていないので， GAの次イテレートでの書き換えにfailする．  現在，テストを別プロセスで実行されているので顕在化していないが，明らかなバグ．  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestExecutor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="150" opendate="2018-07-09 03:49:05" fixdate="2018-08-20 21:14:15">
+		<buginformation>
+			<summary>Mac環境で古いclassファイルの削除が失敗する</summary>
+			<description>コンパイル時間とファイルの更新時間が数十ミリ秒しか違わないので，ファイルの更新日時が丸め稀れることにより，誤って古いファイルと見なされてしまう</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/TestProcessBuilderTest.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/MemoryClassLoaderTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestExecutorMain.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/ProjectBuilder.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/fl/OchiaiTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/build/JavaSourceFromString.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/PerformanceTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/fl/FaultLocalization.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/SourceCodeValidation.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestExecutor.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/ProjectBuilderTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/KGenProgMain.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/build/CompilationUnit.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestProcessBuilder.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/BuildResults.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/build/CompilationPackage.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/EmptyBuildResults.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/fl/Ochiai.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/TestResultsTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/build/JavaMemoryObject.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/ga/DefaultCodeValidationTest.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/TestExecutorTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/DefaultCodeValidation.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestThread.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/build/InMemoryClassManager.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/TestExecutorMainTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/MemoryClassLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="128" opendate="2018-06-27 09:37:27" fixdate="2018-07-11 10:01:51">
+		<buginformation>
+			<summary>KGenProgMainで成功したVariantが残されていない</summary>
+			<description>APRの毎世代ループで成功Variantが保持されておらず， 複数の成功Variantを出力することができない． 単一の成功Variantなら出力できる．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/ga/SiglePointCrossover.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/jdt/JDTOperation.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/KGenProgMain.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/KGenProgMainTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="123" opendate="2018-06-27 09:04:46" fixdate="2018-07-10 09:06:10">
+		<buginformation>
+			<summary>TestProcessBuilderでビルド失敗時の処理がない</summary>
+			<description>TestProcessBuilder.java L57  ビルド結果を確認してビルドの成否を判断すべき  ### how to solve α: ビルド失敗していたらOptionalで包んで返す．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>example/example00/src/jp/kusumotolab/BuggyCalculatorTest.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/TestProcessBuilderTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/fl/Ochiai.java</file>
+			<file>example/example00/src/jp/kusumotolab/BuggyCalculator.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestProcessBuilder.java</file>
+			<file>example/example00/src/jp/kusumotolab/NonCompilableClass.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/fl/OchiaiTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/EmptyTestResults.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestResults.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/ga/DefaultCodeValidationTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="119" opendate="2018-06-27 08:52:58" fixdate="2018-07-04 06:41:38">
+		<buginformation>
+			<summary>TestProcessBuilderでtmpがexample配下に存在していることを期待してしまっている</summary>
+			<description>TestProcessBuilder L65  こういう場合にバグる模様 ```java rootPath = "example/example01" tmpDir   = "example/example01/tmp"  // これはOK．tmpがrootPath配下に存在する． tmpDir   = "tmp"                    // これがバグる tmpDir   = System.getProperty("java.io.tmpdir") // これも当然out ```  加え，絶対パスと相対パスの間でのバグも存在するので注意． relativiseによる相対パスの減算で失敗している． </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestResults.java</file>
+			<file>src/test/java/jp/kusumotolab/kgenprog/project/test/TestProcessBuilderTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestProcessBuilder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="118" opendate="2018-06-27 08:49:47" fixdate="2018-07-06 09:02:20">
+		<buginformation>
+			<summary>KGenProgMainでTestProcessBuilder生成時にoutdirが指定されていない</summary>
+			<description>KGenProgMain L44  ### how? α: 何も考えずに $TMP にぶち込む β: CUIでoutdirを指定できるようにする  ### そもそも名前がおかしい workingdirであるべき outdirだと正常な結果が書き込まれるフォルダに見える． </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/project/test/TestProcessBuilder.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/KGenProgMain.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="116" opendate="2018-06-27 08:43:13" fixdate="2018-08-10 01:26:15">
+		<buginformation>
+			<summary>CUILauncherでクラスパスが必須パラメータになってしまっている</summary>
+			<description>CPはオプショナルであるべき．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/kusumotolab/kgenprog/CUILauncher.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="84" opendate="2018-06-06 07:58:12" fixdate="2018-08-09 06:44:26">
+		<buginformation>
+			<summary>CUILauncherでrootDirを指定する方法が存在しない</summary>
+			<description>see https://github.com/kusumotolab/kGenProg/wiki/20180606-meeting  `--root-dir` オプションを追加したにも関わらず，`rootDir` を使用していない． `@Deprecated` な `rootDir` を指定しない `TargetProject` のコンストラクタを呼び出している.  - [x] 適切なコンストラクタを呼び出す - [x] 適切なテストも追加</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/kusumotolab/kgenprog/CUILauncherTest.java</file>
+			<file>src/main/java/jp/kusumotolab/kgenprog/CUILauncher.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

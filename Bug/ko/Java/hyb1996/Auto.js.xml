@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>327</id>
+		<title>Android8.0上无法创建桌面快捷方式</title>
+		<body></body>
+		<created>2018-04-02 06:59:27</created>
+		<closed>2018-12-01 09:52:21</closed>
+	</bug>
+	<bug>
+		<id>323</id>
+		<title>内存会随着脚本运行一直上升而不会出现下降</title>
+		<body>脚本运行多了就会出现这个问题，是不是运行时缓存不会自动清理啊？而且从来不释放，一般都保持在350兆到600兆，手机就会特别卡了。</body>
+		<created>2018-03-29 01:53:21</created>
+		<closed>2018-03-30 04:48:36</closed>
+	</bug>
+	<bug>
+		<id>314</id>
+		<title>3.1.0 Beta版的问题</title>
+		<body>[x] 1. 某些情况下engines.execScriptFile() 错误。猜测是cwd()的问题。例如使用悬浮窗运行会出现该问题。 [x] 2. threads.shutDownAll()和exit无效。子线程设定的定时器仍然运行。 [x] 3. 悬浮窗生成代码会生成untilFind().waitFor()的错误代码 [x] 4. 出现图色功能用不了的情况。应该是opencv的问题。 5. http请求会超时 6. 加入UiObject.clickCenter()函数。 7. 增加Webview和auto.js交互的api [x] 8. 编辑器中不显示正则表达式的问题 9. 编辑器在某些机型会崩溃的问题 [x] 10. 音量向上建无法停止脚本 [x] 11. 请求截图权限有时会卡住 [x] 12. 请求截图以后currentPackage()会变成auto.js</body>
+		<created>2018-03-15 04:36:38</created>
+		<closed>2018-12-01 09:55:30</closed>
+	</bug>
+	<bug>
+		<id>288</id>
+		<title>Crash后再启动识图功能失效，除非重启手机</title>
+		<body>在任何情况下都会出现这个问题，包括进程被系统加速器杀死后也会触发这个问题。  没有啥具体可以提供的信息，这是我开发的时候通过日志试出来的……可以识别的图片无法识别</body>
+		<created>2018-01-30 12:56:52</created>
+		<closed>2018-03-15 14:38:16</closed>
+	</bug>
+	<bug>
+		<id>281</id>
+		<title>找图功能的Region参数无效</title>
+		<body>代码如下，point里面是region区域，但是找到的坐标在规定的区域外面。 ```typescript     const x = 0;     const y = 1;     const point = [195 + x * 515, 135 + y * 203, 505, 200];     const p = images.findImage(images.captureScreen(), getImage('jjtp-failed'), {         region: point     });     console.log(point);     console.log(p); ```</body>
+		<created>2018-01-21 10:33:18</created>
+		<closed>2018-02-01 08:36:17</closed>
+	</bug>
+	<bug>
+		<id>268</id>
+		<title>控件布局差了一个状态栏</title>
+		<body>s8 7.0  ![](https://s1.ax1x.com/2018/01/10/pMLHJg.png)</body>
+		<created>2018-01-10 05:06:54</created>
+		<closed>2018-04-03 08:11:38</closed>
+	</bug>
+	<bug>
+		<id>262</id>
+		<title>编辑器的问题</title>
+		<body>1. 光标乱跳: 具体变现为输入过程光标不跟随输入的字符。可能是以下代码导致的： ```javascript editor.on("keyup", function(editor, event) {     if (!ExcludedIntelliSenseTriggerKeys[(event.keyCode || event.which).toString()] )     {         editor.execCommand("autocomplete");     } }); ```  2. 输入的字符自动删掉: 具体变现为某些情况下，在一行的开始位置无法输入字符，只要输入一个字符就会自动删掉。原因可能和1相同。  3. 无法全选复制：点击全选后没有显示复制、剪切的菜单。可能需要重写InputConnection。  4. 没有对自定义函数和变量的自动补全: 看CodeMirror插件中是否有这个。没有的话用正则粗暴解决。  5. xml格式化代码问题: 格式化代码时会将xml格式弄乱。需要修改js beautifier。  6. 无法使用输入法进行选择、复制、粘贴: 点击输入法的选择、复制、粘贴等键时无反应。可能需要重写InputConnection。  </body>
+		<created>2018-01-07 07:03:13</created>
+		<closed>2018-02-27 01:42:38</closed>
+	</bug>
+	<bug>
+		<id>249</id>
+		<title>sublime test plugin 异常</title>
+		<body>在手机上脚本还在正常运行,但是电脑上抛出如下异常,并`disconnected` ```&lt;class 'Exception'&gt; : Extra data: line 1 column 57 - line 2 column 1 (char 56 - 134) Traceback (most recent call last):   File "autojs in C:\Users\yujieshui\AppData\Roaming\Sublime Text 3\Installed Packages\autojs.sublime-package", line 45, in listen   File "./python3.3/json/__init__.py", line 316, in loads   File "./python3.3/json/decoder.py", line 354, in decode ValueError: Extra data: line 1 column 57 - line 2 column 1 (char 56 - 134) ``` </body>
+		<created>2017-12-02 13:45:52</created>
+		<closed>2018-12-01 08:48:47</closed>
+	</bug>
+	<bug>
+		<id>233</id>
+		<title>Bug report</title>
+		<body>试用了一段时间, 反馈一下碰到的问题.   *)app自带bug report功能用不了, 递交不到github. *)app里编辑器在转屏时,会丢失当前编辑内容.  需要在旋转屏幕前手动存档.   *)悬浮窗UI工具看到的控件, 在脚本里用选择器搜索,经常找不到. , 经过尝试,发现两个trick.可以帮助定位控件.一是用id严格匹配筛选条件,即使控件有唯一idName. 用 id(packageName:id/idName).findOne 替代 id(idName).findOne, 二是用loop+.find()等寻, 代替 .findOne(). (脚本和UI工具搜索算法不一样? 能提高脚本中的控件搜索效率? )  *)用Tasker设置定时任务, 调用autojs脚本. 亮屏状态下脚本运行没有问题. 但如果执行时手机处在屏保状态. 脚本执行完launchApp和某个点击控件动作后就停止. 屏幕解锁后继续运行时出错. 怎么在锁屏状态下运行完程序?  *)图形函数RequestScreenCapture() crash. (ROM LineageOS14.1,android7.1.2). 问题在screencapture.java里 mImageReader = ImageReader.newInstance(screenWidth, screenHeight, PixelFormat.RGBA_8888, 1);  virtualdisplay 生成pixel.format是BGRA_8888, code 0x5, ImageReader不支持BGRA格式. 设置成RGBA_8888, 0x1 读取出错. 查了一下, 这个问题可能和rom有关,(CyanogenMod 上常见).   autojs能添加对BGRA_8888图片格式支持?     Version: 163 Android: 25 java.lang.UnsupportedOperationException: The producer output buffer format 0x5 doesn't match the ImageReader's configured buffer format 0x1. at android.media.ImageReader.nativeImageSetup(Native Method) at android.media.ImageReader.acquireNextSurfaceImage(ImageReader.java:340) at android.media.ImageReader.acquireNextImage(ImageReader.java:394) at android.media.ImageReader.acquireLatestImage(ImageReader.java:287) at com.stardust.autojs.runtime.api.image.ScreenCapturer$2.onImageAvailable(ScreenCapturer.java:93) at android.media.ImageReader$ListenerHandler.handleMessage(ImageReader.java:687) at android.os.Handler.dispatchMessage(Handler.java:102) at android.os.Looper.loop(Looper.java:154) at com.stardust.autojs.runtime.api.Loopers$2.run(Loopers.java:57) at java.lang.Thread.run(Thread.java:761) at com.stardust.lang.ThreadCompat.run(ThreadCompat.java:61)  *)图形处理capturescreen()截屏成功率低.(flymeOS android 6) 用50ms的采样率截屏,延时能 有1秒.如何能提高截屏成功率? (帮助文档里提到该函数耗时在1ms以内, 实在是不可及.)    Log: 10:49:49.578/D: capture rate: 50(ms) Log: 10:49:49.622/D: sample 0: timestamp=1504406989621; dt = 0 Log: 10:49:49.680/D: sample 1: timestamp=1504406989679; dt = 58 Log: 10:49:49.733/D: sample 2: timestamp=1504406989733; dt = 54 Log: 10:49:50.358/D: sample 3: timestamp=1504406990358; dt = 625 Log: 10:49:51.355/D: sample 4: timestamp=1504406991354; dt = 996 Log: 10:49:51.639/D: sample 5: timestamp=1504406991639; dt = 285 Log: 10:49:51.692/D: sample 6: timestamp=1504406991692; dt = 53 Log: 10:49:52.351/D: sample 7: timestamp=1504406992350; dt = 658 Log: 10:49:53.348/D: sample 8: timestamp=1504406993347; dt = 997 Log: 10:49:54.343/D: sample 9: timestamp=1504406994342; dt = 995 Log: 10:49:55.346/D: sample 10: timestamp=1504406995346; dt = 1004   *)capturescreen()返回的image.timestamp是不是截屏时间戳? (以nano sec为单位?)  记录截屏时间间隔dt, 为什么和用系统时间Date().getTime()返回的偏差很大 ? (0~70ms )  Log: 00:32:23.806/D: sample 6 : img.timestamp=140716243900132; dt = 174311041 Log: 00:32:23.838/D: system : t=1504369943772; dt = 173 Log: 00:32:23.974/D: sample 7 : img.timestamp=140716348173424; dt = 104273292 Log: 00:32:24.001/D: system : t=1504369943943; dt = 171 Log: 00:32:24.753/D: sample 8 : img.timestamp=140717190255216; dt = 842081792 Log: 00:32:24.784/D: system : t=1504369944717; dt = 774  *) findColor()在区域查色时,如果用threshold开关, 参数格式用数值0xRRGGBB, 会返回错误结果.即总能 返回非空point object. 如果用单数字格式thresold: 123 则没有问题.  可以在示例脚本"区域找色2"里测试. findColor()添加threshold: 0x020202, 再改目标色,会发现总能找到.但颜色不匹配.  (这个bug用了较长时间才发现)   var point = findColor(image,testColor,{  region: testRect,   algorithm: "diff",   threshold: 0x020202,   threads:8   })  *)使用图形函数功能经常闪退 .   Version: 163 Android: 22 java.lang.IllegalStateException: buffer was freed at java.nio.DirectByteBuffer.checkNotFreed(DirectByteBuffer.java:557) at java.nio.DirectByteBuffer.checkIsAccessible(DirectByteBuffer.java:549) at java.nio.DirectByteBuffer.get(DirectByteBuffer.java:162) at com.stardust.autojs.runtime.api.image.ColorIterator$SequentialIterator.nextColor(ColorIterator.java:111) at com.stardust.autojs.runtime.api.image.ColorFinder$FindColorRunnable.run(ColorFinder.java:217) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587) at java.lang.Thread.run(Thread.java:818)   附带问题:   *)对没有accessibility service接口的UI控件,autojs有可能扩展支持? (比如cocos-2d js的UI文本控件,能从 android.view.View根控件访问到么? )  *)会不会支持更多图形处理功能和OCR?   期待尽快出新版 (all above is on 2.0.16 beta2.1)      </body>
+		<created>2017-09-04 07:18:18</created>
+		<closed>2018-12-01 08:54:28</closed>
+	</bug>
+	<bug>
+		<id>232</id>
+		<title>开启通知监听的函数无法使用，只要监听到通知就立即崩溃</title>
+		<body>版本Auto.js 2.0.16 Beta2.1 开启通知监听的函数无法使用，只要监听到通知就立即崩溃，没有成功产生日志 崩溃后手机按键失效，屏幕能正常点击。重启手机后正常。 Version: 163 Android: 19 java.lang.NullPointerException at java.lang.AbstractStringBuilder.&lt;init&gt;(AbstractStringBuilder.java:86) at java.lang.StringBuilder.&lt;init&gt;(StringBuilder.java:95) at com.stardust.autojs.ScriptEngineService.getScriptTrace(ScriptEngineService.java:251) at com.stardust.autojs.ScriptEngineService.access$100(ScriptEngineService.java:40) at com.stardust.autojs.ScriptEngineService$1.onException(ScriptEngineService.java:72) at com.stardust.autojs.execution.ScriptExecutionObserver.onException(ScriptExecutionObserver.java:29) at com.stardust.autojs.execution.ScriptExecutionObserver$Wrapper.onException(ScriptExecutionObserver.java:66) at com.stardust.autojs.execution.RunnableScriptExecution.execute(RunnableScriptExecution.java:41) at com.stardust.autojs.execution.RunnableScriptExecution.execute(RunnableScriptExecution.java:32) at com.stardust.autojs.execution.RunnableScriptExecution.run(RunnableScriptExecution.java:27) at java.lang.Thread.run(Thread.java:841) at com.stardust.lang.ThreadCompat.run(ThreadCompat.java:61)  </body>
+		<created>2017-09-04 06:50:17</created>
+		<closed>2017-09-24 14:26:25</closed>
+	</bug>
+	<bug>
+		<id>202</id>
+		<title>监听58"转转"APP时,currentActivity() 无法正确获取"我发布的"名称(低概率能正确获取)</title>
+		<body>TYPE_WINDOW_STATE_CHANGED: 正确界面名称: com.wuba.zhuanzhuan.activity.MyIssuedActivity 却拿到的名称: com.wuba.zhuanzhuan.components.ZZLoadingDialog  初步调试发现,ZZLoadingDialog这个加载中的界面一瞬间就消失了,所以应该是 notificationTimeout="100" 事件的通知频率问题.  一瞬间太短了,notificationTimeout现在的时间不知道还能否再降低?不知道是否影响性能?  初步阅读源码后,还是没找到解决方案.</body>
+		<created>2017-06-23 07:20:53</created>
+		<closed>2018-01-07 06:29:55</closed>
+	</bug>
+	<bug>
+		<id>198</id>
+		<title>源码无法编译</title>
+		<body>六一快乐，源码无法编译</body>
+		<created>2017-06-01 07:13:52</created>
+		<closed>2017-06-20 16:21:18</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>Crash</title>
+		<body>java.lang.NullPointerException: Attempt to invoke virtual method 'void com.stardust.scriptdroid.droid.runtime.action.Action.setResult(java.lang.Object)' on a null object reference at com.stardust.scriptdroid.droid.runtime.action.ActionPerformAccessibilityDelegate.onAccessibilityEvent(ActionPerformAccessibilityDelegate.java:55) at com.stardust.scriptdroid.service.AccessibilityWatchDogService.onAccessibilityEvent(AccessibilityWatchDogService.java:82) at android.accessibilityservice.AccessibilityService$1.onAccessibilityEvent(AccessibilityService.java:658) at android.accessibilityservice.AccessibilityService$IAccessibilityServiceClientWrapper.executeMessage(AccessibilityService.java:751) at com.android.internal.os.HandlerCaller$MyHandler.handleMessage(HandlerCaller.java:37) at android.os.Handler.dispatchMessage(Handler.java:102) at android.os.Looper.loop(Looper.java:148) at android.app.ActivityThread.main(ActivityThread.java:5461) at java.lang.reflect.Method.invoke(Native Method) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616) at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:102)   -  Device info: --- &lt;table&gt; &lt;tr&gt;&lt;td&gt;App version&lt;/td&gt;&lt;td&gt;1.17.0226&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;App version code&lt;/td&gt;&lt;td&gt;35&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android build version&lt;/td&gt;&lt;td&gt;ef090410a2&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android release version&lt;/td&gt;&lt;td&gt;6.0.1&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android SDK version&lt;/td&gt;&lt;td&gt;23&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android build ID&lt;/td&gt;&lt;td&gt;OnePlus3-userdebug 6.0.1 M4B30X ef090410a2 test-keys&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device brand&lt;/td&gt;&lt;td&gt;OnePlus&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device manufacturer&lt;/td&gt;&lt;td&gt;OnePlus&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device name&lt;/td&gt;&lt;td&gt;OnePlus3&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device model&lt;/td&gt;&lt;td&gt;ONEPLUS A3000&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device product name&lt;/td&gt;&lt;td&gt;OnePlus3&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device hardware name&lt;/td&gt;&lt;td&gt;qcom&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;ABIs&lt;/td&gt;&lt;td&gt;[arm64-v8a, armeabi-v7a, armeabi]&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;ABIs (32bit)&lt;/td&gt;&lt;td&gt;[armeabi-v7a, armeabi]&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;ABIs (64bit)&lt;/td&gt;&lt;td&gt;[arm64-v8a]&lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;   </body>
+		<created>2017-03-04 10:05:19</created>
+		<closed>2017-03-22 02:42:09</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>Crash</title>
+		<body>java.lang.RuntimeException: Unable to start activity ComponentInfo{com.stardust.scriptdroid/com.stardust.scriptdroid.ui.edit.EditActivity}: java.lang.IllegalStateException: Derived class did not call super.onRestoreInstanceState() at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2551) at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2625) at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:4233) at android.app.ActivityThread.access$800(ActivityThread.java:183) at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1490) at android.os.Handler.dispatchMessage(Handler.java:111) at android.os.Looper.loop(Looper.java:194) at android.app.ActivityThread.main(ActivityThread.java:5667) at java.lang.reflect.Method.invoke(Native Method) at java.lang.reflect.Method.invoke(Method.java:372) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:962) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:757) Caused by: java.lang.IllegalStateException: Derived class did not call super.onRestoreInstanceState() at android.view.View.dispatchRestoreInstanceState(View.java:13941) at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3020) at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3020) at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3020) at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3020) at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3020) at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3020) at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3020) at android.view.View.restoreHierarchyState(View.java:13917) at com.android.internal.policy.impl.PhoneWindow.restoreHierarchyState(PhoneWindow.java:2115) at android.app.Activity.onRestoreInstanceState(Activity.java:1048) at android.app.Activity.performRestoreInstanceState(Activity.java:1003) at android.app.Instrumentation.callActivityOnRestoreInstanceState(Instrumentation.java:1169) at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2518) ... 11 more   -  Device info: --- &lt;table&gt; &lt;tr&gt;&lt;td&gt;App version&lt;/td&gt;&lt;td&gt;1.17.0226&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;App version code&lt;/td&gt;&lt;td&gt;35&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android build version&lt;/td&gt;&lt;td&gt;C00B158&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android release version&lt;/td&gt;&lt;td&gt;5.1&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android SDK version&lt;/td&gt;&lt;td&gt;22&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android build ID&lt;/td&gt;&lt;td&gt;TIT-AL00C00B158&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device brand&lt;/td&gt;&lt;td&gt;HUAWEI&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device manufacturer&lt;/td&gt;&lt;td&gt;HUAWEI&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device name&lt;/td&gt;&lt;td&gt;HWTIT-AL00&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device model&lt;/td&gt;&lt;td&gt;HUAWEI TIT-AL00&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device product name&lt;/td&gt;&lt;td&gt;TIT-AL00&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device hardware name&lt;/td&gt;&lt;td&gt;mt6735&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;ABIs&lt;/td&gt;&lt;td&gt;[arm64-v8a, armeabi-v7a, armeabi]&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;ABIs (32bit)&lt;/td&gt;&lt;td&gt;[armeabi-v7a, armeabi]&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;ABIs (64bit)&lt;/td&gt;&lt;td&gt;[arm64-v8a]&lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;   </body>
+		<created>2017-03-03 12:47:30</created>
+		<closed>2017-03-20 06:45:59</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>Crash</title>
+		<body>java.lang.ArrayIndexOutOfBoundsException: length=27; index=-1 at java.util.ArrayList.get(ArrayList.java:310) at com.stardust.scriptdroid.ui.edit.completion.InputMethodEnhanceBar$1.onClick(InputMethodEnhanceBar.java:59) at android.view.View.performClick(View.java:4848) at android.widget.TextView.performAccessibilityActionInternal(TextView.java:8883) at android.view.View$AccessibilityDelegate.performAccessibilityAction(View.java:21211) at android.support.v4.view.AccessibilityDelegateCompatJellyBean.performAccessibilityAction(AccessibilityDelegateCompatJellyBean.java:109) at android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl.performAccessibilityAction(AccessibilityDelegateCompat.java:299) at android.support.v4.view.AccessibilityDelegateCompat.performAccessibilityAction(AccessibilityDelegateCompat.java:513) at android.support.v7.widget.RecyclerViewAccessibilityDelegate$1.performAccessibilityAction(RecyclerViewAccessibilityDelegate.java:96) at android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl$1.performAccessibilityAction(AccessibilityDelegateCompat.java:280) at android.support.v4.view.AccessibilityDelegateCompatJellyBean$1.performAccessibilityAction(AccessibilityDelegateCompatJellyBean.java:97) at android.view.View.performAccessibilityAction(View.java:8167) at android.view.AccessibilityInteractionController.perfromAccessibilityActionUiThread(AccessibilityInteractionController.java:626) at android.view.AccessibilityInteractionController.access$500(AccessibilityInteractionController.java:53) at android.view.AccessibilityInteractionController$PrivateHandler.handleMessage(AccessibilityInteractionController.java:1149) at android.view.accessibility.AccessibilityInteractionClient.waitForResultTimedLocked(AccessibilityInteractionClient.java:667) at android.view.accessibility.AccessibilityInteractionClient.getPerformAccessibilityActionResultAndClear(AccessibilityInteractionClient.java:624) at android.view.accessibility.AccessibilityInteractionClient.performAccessibilityAction(AccessibilityInteractionClient.java:517) at android.view.accessibility.AccessibilityNodeInfo.performAction(AccessibilityNodeInfo.java:1244) at com.stardust.scriptdroid.droid.runtime.action.SearchTargetAction.performAction(SearchTargetAction.java:35) at com.stardust.scriptdroid.droid.runtime.action.SearchTargetAction.perform(SearchTargetAction.java:27) at com.stardust.scriptdroid.droid.runtime.action.FilterAction.perform(FilterAction.java:89) at com.stardust.scriptdroid.droid.runtime.action.ActionPerformAccessibilityDelegate.onAccessibilityEvent(ActionPerformAccessibilityDelegate.java:54) at com.stardust.scriptdroid.service.AccessibilityWatchDogService.onAccessibilityEvent(AccessibilityWatchDogService.java:82) at android.accessibilityservice.AccessibilityService$1.onAccessibilityEvent(AccessibilityService.java:659) at android.accessibilityservice.AccessibilityService$IAccessibilityServiceClientWrapper.executeMessage(AccessibilityService.java:752) at com.android.internal.os.HandlerCaller$MyHandler.handleMessage(HandlerCaller.java:37) at android.os.Handler.dispatchMessage(Handler.java:111) at android.os.Looper.loop(Looper.java:194) at android.app.ActivityThread.main(ActivityThread.java:5667) at java.lang.reflect.Method.invoke(Native Method) at java.lang.reflect.Method.invoke(Method.java:372) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:962) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:757)   -  Device info: --- &lt;table&gt; &lt;tr&gt;&lt;td&gt;App version&lt;/td&gt;&lt;td&gt;1.17.0226&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;App version code&lt;/td&gt;&lt;td&gt;35&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android build version&lt;/td&gt;&lt;td&gt;C00B158&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android release version&lt;/td&gt;&lt;td&gt;5.1&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android SDK version&lt;/td&gt;&lt;td&gt;22&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Android build ID&lt;/td&gt;&lt;td&gt;TIT-AL00C00B158&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device brand&lt;/td&gt;&lt;td&gt;HUAWEI&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device manufacturer&lt;/td&gt;&lt;td&gt;HUAWEI&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device name&lt;/td&gt;&lt;td&gt;HWTIT-AL00&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device model&lt;/td&gt;&lt;td&gt;HUAWEI TIT-AL00&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device product name&lt;/td&gt;&lt;td&gt;TIT-AL00&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Device hardware name&lt;/td&gt;&lt;td&gt;mt6735&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;ABIs&lt;/td&gt;&lt;td&gt;[arm64-v8a, armeabi-v7a, armeabi]&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;ABIs (32bit)&lt;/td&gt;&lt;td&gt;[armeabi-v7a, armeabi]&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;ABIs (64bit)&lt;/td&gt;&lt;td&gt;[arm64-v8a]&lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;   </body>
+		<created>2017-03-03 12:42:32</created>
+		<closed>2017-03-22 02:41:38</closed>
+	</bug>
+</bugs>

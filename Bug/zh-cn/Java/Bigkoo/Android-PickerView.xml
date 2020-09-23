@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>528</id>
+		<title>设置2级无联动时，设置默认选中项不好使 setSelectOptions</title>
+		<body>设置2级无联动时setNPicker，设置默认选中项不好使 setSelectOptions， 第一种方式： .setSelectOptions(2,2)                        .build();  第二种方式： pvOptions.setSelectOptions(2,2); 两种方式都不好使。 通过setPicker设置一级，这个好使.</body>
+		<created>2018-03-29 09:11:05</created>
+		<closed>2018-04-02 01:24:56</closed>
+	</bug>
+	<bug>
+		<id>527</id>
+		<title>使用wheelView布局，滚动界面最顶端或者最低端出现了一个空白的选项，onItemSelected回调值-1</title>
+		<body>使用wheelView布局，setAdapter后，滚动界面到最顶端或者最低端，再继续滚动会出现了一个空白的选项，onItemSelected回调值-1，数据在30条以上出现，几条数据没出现，请问下什么原因？ ![device-2018-03-29-152219](https://user-images.githubusercontent.com/11647342/38075571-5ae72034-3365-11e8-8afb-fca0f278b617.png) ![whe](https://user-images.githubusercontent.com/11647342/38075582-64fe3fee-3365-11e8-8067-8b42c97e5b6b.png)  </body>
+		<created>2018-03-29 07:25:32</created>
+		<closed>2018-04-02 01:29:44</closed>
+	</bug>
+	<bug>
+		<id>525</id>
+		<title>setSubmitText有Bug</title>
+		<body>在OptionsPickerBuilder當中設定 .setSubmitText("Sure") 沒有作用,看了程式碼發現 .setSubmitText() 與 .setCancelTest() 都對Cancel做設定了。  //===source code=======      public OptionsPickerBuilder setSubmitText(String textContentCancel) {         mPickerOptions.textContentCancel = textContentCancel;         return this;     }      public OptionsPickerBuilder setCancelText(String textContentCancel) {         mPickerOptions.textContentCancel = textContentCancel;         return this;     } </body>
+		<created>2018-03-25 15:27:43</created>
+		<closed>2018-03-26 10:29:41</closed>
+	</bug>
+	<bug>
+		<id>507</id>
+		<title>农历月份显示不正确</title>
+		<body>我选的公历3月6号，切换农历后应该是正月十九，实际显示的是二月十九</body>
+		<created>2018-03-06 03:20:29</created>
+		<closed>2018-03-06 04:47:32</closed>
+	</bug>
+	<bug>
+		<id>487</id>
+		<title>setBackgroundId有bug</title>
+		<body>setBackgroundId传递的并不是id而是int型的color才有效,并且无法设置为transparent，因为Color.TRANSPARENT=0;源码中等于是跳过的</body>
+		<created>2018-01-26 06:53:24</created>
+		<closed>2018-04-10 06:33:35</closed>
+	</bug>
+	<bug>
+		<id>420</id>
+		<title>设置isDialog(true)的时候再设置setDialogOutSideCancelable(true)并没有效果</title>
+		<body>设置isDialog(true)的时候再设置setDialogOutSideCancelable(true)并没有效果 因为BasePickerView中,只设置了mDialog.setCancelable(cancelable),这个是点击返回键关闭dialog 要设置点击屏幕空白处禁止返回需要mDialog.setCanceledOnTouchOutside(cancelable); 望修改@xiaosong520</body>
+		<created>2017-11-08 02:49:17</created>
+		<closed>2017-11-08 07:06:58</closed>
+	</bug>
+	<bug>
+		<id>418</id>
+		<title>设置起止日期bug</title>
+		<body>如果把起止日期设置为今天的前后五天，比如以今天 2017年11月3日，前到2017年10月29，后到2017年11月8。这时候如果滑动一下年份2017，那么日期就会超过设定的范围，到2017年11月30号了</body>
+		<created>2017-11-03 09:24:54</created>
+		<closed>2017-11-15 06:15:15</closed>
+	</bug>
+	<bug>
+		<id>369</id>
+		<title>一处代码错误</title>
+		<body>WheelTime类，第590行，`if (month &gt; startDay) {`应该为`if (day &gt; startDay) {`</body>
+		<created>2017-08-24 02:56:42</created>
+		<closed>2017-08-28 01:40:37</closed>
+	</bug>
+	<bug>
+		<id>349</id>
+		<title>BUG</title>
+		<body>时间选择器，当只设置选择月和日时，设置为当前系统时间，最后选择完成的时间，年份一定是1990，而非我之前设置的时间年份，这样会导致，2月份的日期是不准确的  </body>
+		<created>2017-08-02 12:58:29</created>
+		<closed>2017-08-10 06:11:34</closed>
+	</bug>
+	<bug>
+		<id>282</id>
+		<title>java.lang.IndexOutOfBoundsException: Invalid index 3, size is 3</title>
+		<body>05-24 15:48:24.992 32185-32185/? E/CrashReport: java.lang.IndexOutOfBoundsException: Invalid index 3, size is 3                                                     at java.util.ArrayList.throwIndexOutOfBoundsException(ArrayList.java:255)                                                     at java.util.ArrayList.get(ArrayList.java:308)                                                     at com.zmsoft.ccd.module.main.order.detail.fragment.OrderDetailFragment$7.onOptionsSelect(OrderDetailFragment.java:668)                                                     at com.zmsoft.ccd.lib.widget.pickerview.OptionsPickerView.returnData(OptionsPickerView.java:503)                                                     at com.zmsoft.ccd.lib.widget.pickerview.OptionsPickerView.onClick(OptionsPickerView.java:494)                                                     at android.view.View.performClick(View.java:4788)                                                     at android.view.View$PerformClick.run(View.java:19923)                                                     at android.os.Handler.handleCallback(Handler.java:739)                                                     at android.os.Handler.dispatchMessage(Handler.java:95)                                                     at android.os.Looper.loop(Looper.java:135)                                                     at android.app.ActivityThread.main(ActivityThread.java:5401)                                                     at java.lang.reflect.Method.invoke(Native Method)                                                     at java.lang.reflect.Method.invoke(Method.java:372)                                                     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:919)                                                     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:714) 05-24 15:48:24.992 32185-32185/? E/CrashReport: #++++++++++++++++++++++++++++++++++++++++++#</body>
+		<created>2017-05-24 08:24:09</created>
+		<closed>2017-08-10 06:12:48</closed>
+	</bug>
+</bugs>

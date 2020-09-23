@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="metawal-core-geonetwork">
+	<bug id="197" opendate="2015-01-07 14:31:48" fixdate="2015-01-15 15:31:56">
+		<buginformation>
+			<summary>Association de ressources, contenu du panneau des Ressources associées et de la vue simplifiée</summary>
+			<description>Quand on associe deux jeux de données, si le type d'initiative est absent ou n'est pas défini, la relation n'apparait pas dans le panneau des ressources associées. ![image 826](https://cloud.githubusercontent.com/assets/6093597/5646995/2278bcd6-9682-11e4-8633-3367078886ab.png) Si le type d'initiative est spécifié, la relation apparait. ![image 825](https://cloud.githubusercontent.com/assets/6093597/5647005/37e75ce4-9682-11e4-8db0-533cbe1b05d5.png) Comment l'élément est facultatif, la relation devrait apparaitre dans tous les cas. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>services/src/main/java/org/fao/geonet/guiservices/metadata/GetRelated.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2" opendate="2013-12-02 16:14:06" fixdate="2014-01-07 10:56:35">
+		<buginformation>
+			<summary>Impression / Problème d'accès</summary>
+			<description>quand on imprime avec l’icône (en haut à droite d’une fiche), il demande un login/mot de passe </description>
+		</buginformation>
+		<fixedfiles>
+			<file>web/src/test/java/v370/UserCustomSearchesMigrationTest.java</file>
+			<file>services/src/main/java/org/fao/geonet/api/usersearches/model/PaginatedUserSearchResponse.java</file>
+			<file>services/src/test/java/org/fao/geonet/api/usersearches/UserSearchesApiTest.java</file>
+			<file>web/src/main/webapp/WEB-INF/classes/setup/sql/migrate/v370/UserCustomSearchesMigration.java</file>
+			<file>services/src/main/java/org/fao/geonet/api/usersearches/model/UserSearchDto.java</file>
+			<file>domain/src/main/java/org/fao/geonet/repository/UserSearchRepository.java</file>
+			<file>domain/src/main/java/org/fao/geonet/domain/converter/UserSearchFeaturedTypeConverter.java</file>
+			<file>domain/src/main/java/org/fao/geonet/repository/specification/UserSearchSpecs.java</file>
+			<file>services/src/main/java/org/fao/geonet/api/usersearches/UserSearchesApi.java</file>
+			<file>domain/src/main/java/org/fao/geonet/domain/UserSearchFeaturedType.java</file>
+			<file>domain/src/test/java/org/fao/geonet/repository/UserSearchRepositoryTest.java</file>
+			<file>domain/src/main/java/org/fao/geonet/domain/UserSearch.java</file>
+			<file>domain/src/main/java/org/fao/geonet/entitylistener/UserSearchEntityListenerManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1" opendate="2013-12-02 16:09:43" fixdate="2014-01-24 15:19:32">
+		<buginformation>
+			<summary>Vue simplifiée / généalogie non affichée</summary>
+			<description>Généalogie pas passée dans la vue simplifiée (bien dans la vue par défaut) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>services/src/main/java/org/fao/geonet/api/standards/StandardsApi.java</file>
+			<file>core/src/main/java/org/fao/geonet/kernel/schema/MetadataSchema.java</file>
+			<file>core/src/main/java/org/fao/geonet/kernel/SchemaManager.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

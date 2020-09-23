@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="OpenRTP-aist">
+	<bug id="315" opendate="2020-05-25 10:08:36" fixdate="2020-06-07 05:13:12">
+		<buginformation>
+			<summary>RTC.xmlが正常に保存できない</summary>
+			<description>**Describe the bug** 1. コード生成したときにRTC.xmlが保存されていないことがある 2. RTC.xmlを保存しようとしたときに以下の画面が表示される場合がある ![image](https://user-images.githubusercontent.com/6216077/82802679-3e076880-9eba-11ea-8f72-a305b581e3fe.png)  **To Reproduce** Steps to reproduce the behavior: 1. RTCBuilderでコンポーネント名等を入力 2. コード生成ボタンを押す 3. 1の問題発生 4. RTC.xmlを編集 5. Ctrl+Sでファイルを保存 6. 2の問題発生  **Reproducibility** 100％  **Expected behavior** 正常に保存できるようにする  **Screenshots or Logs**   **Environment**  - OS: Windows  - OpenRTM-aist master branch  **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.toolscommon.profiles/src/org/openrtp/namespaces/rtc/version03/RtcProfile.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="310" opendate="2020-05-18 18:06:17" fixdate="2020-05-26 13:30:42">
+		<buginformation>
+			<summary>Configuration変更ダイアログのスライダーで0.01刻みが動作しない</summary>
+			<description>**Describe the bug** RTSEのConfiguration編集ダイアログにて、0.01刻みのスライダー設定を持つRTCを操作すると、刻みが 0.1になり、かつ、スライダー両端の◀▶ボタンでの上下操作を受け付けない。  **To Reproduce** Steps to reproduce the behavior: 1. 0.01刻み幅を持つスライダーRTCを起動 2. RTSEのConfiguration編集ダイアログを開く 3. スライダーバーを操作 → 0.1刻みで値が変動 4. 両端の値変更ボタンを操作 → 操作は受け付けられず値も変更されない  **Reproducibility** 100%  **Expected behavior** RTCBで設定した任意の刻み幅でスライダーを変更できるようにする。   **Environment**  - OS: Windows 10  - OpenRTM-aist Version 1.2.1  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/views/configurationview/configurationwrapper/ConfigurationWidget.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/dialog/ConfigurationDialog.java</file>
+			<file>jp.go.aist.rtm.systemeditor/test/jp/go/aist/rtm/systemeditor/ui/views/configurationview/configurationwrapper/ConfigurationConditionTest.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/views/configurationview/configurationwrapper/ConfigurationCondition.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="287" opendate="2020-03-18 03:47:20" fixdate="2020-04-02 04:29:20">
+		<buginformation>
+			<summary>RTSystemEditorでSave Asでファイル名の指定ができない。</summary>
+			<description>**Describe the bug** UbuntuでOpenRTPを実行し、RTSystemEditorを起動して作業をして何等かの手順で「Save As」を選らんで開くダイアログから「参照」ボタンを押すとダイアログを開いた場合、そのダイアログにファイル名を指定する場所がないのでファイル名が指定できないため、既存のファイルへの上書きしかできない。(前もって空ファイルを作るか）参照せずにファイルを指定するしかない。  **To Reproduce** Ubuntu 18.04でOpenRTPをインストールし、それが使える環境で 1. ターミナルを開く 2. openrtpと入力しEnterキーを押す 3. ワークスペースの選択等をしてOpenRTPを起動する 4. パースペクティブから[RT System Editor]を選び、RTSystemEditorを起動する。 5. 上方のアイコンメニューより[Open New System Editor]をクリックし、新規System Editorを開く 6. 中央に開いたSystem Diagramを右クリックし[Save As...]を選ぶ 7. 開いたダイアログの[参照]ボタンを押す 8. 開いたダイアログにファイル名を指定する入力ボックスがないことを確認する  同様に18.04では[ファイル(F)]メニューから[別名保存]を選んで、[参照]ボタンを押しても同じようにファイル名を指定することができません。(16.04ではなぜか上部のテキストベースのメニューが表示されなかったので確認ができてません。)  Windows 10の環境では同じ操作をした場合、ファイル名が入力できるダイアログが表示されます。  **Reproducibility** 100%  **Expected behavior** 最後に開くダイアログのどこかにファイル名を入力する入力ボックスが表示される。  **Screenshots or Logs** If applicable, add screenshots or logs to help explain your problem.  **Environment**  - OS: Ubuntu 16.04 32bit/Ubunt 18.04  -- Windows 10では問題ない  - OpenRTP Version 1.2.1   **Additional context** Add any other context about the problem here. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/dialog/ProfileInformationDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="284" opendate="2020-02-25 02:43:15" fixdate="2020-03-18 02:27:22">
+		<buginformation>
+			<summary>英語環境と日本語環境でRTSystemEditorのConnector Profileに表示されるメッセージの意味が異なる</summary>
+			<description>**Describe the bug** 英語版と日本語版でConnectorプロファイルダイアログが開いた時の、そのダイアログ内の上部に表示されるメッセージが同じ意味でない。 日本語版では”Connector Profileを入力してください。” 英語版では"Property Name is duplicated." のメッセージが表示される。  **To Reproduce** Steps to reproduce the behavior: 1. ConsoleIn/ConsoleOutサンプルコンポーネントを起動 2. OpenRTPを起動する 3. パースペクティブよりRTSystemEditorを選択 4. Name Serviceを起動 5. System Editorを開く 6. Name Service Viewから、ConsoleIn0/ConsoleOut0コンポーネントをSystem DiagramにDrag&amp;Drop 7. ConsoleIn/ConsoleOutコンポーネントのOutとInを接続 8. 開かれるDialogをチェックし上部のメッセージを確認 9. 上記を英語版の環境と日本語版の環境で実行して、Dialogを比較する   **Reproducibility** 100%  **Expected behavior** 同じ意味のメッセージが表示されるべき * 英語版で、”Please Input Connector Profile”とするか 　日本語版を"Property名が複製されました" とするか、どっちかだが、たぶん前者が正しい。   **Screenshots or Logs** If applicable, add screenshots or logs to help explain your problem. ![rtm12_en](https://user-images.githubusercontent.com/52995055/75210193-cbf08c00-57c3-11ea-8293-28525b1cff1e.png) ![rtm12](https://user-images.githubusercontent.com/52995055/75210213-d743b780-57c3-11ea-9836-e40d46b45bbd.png)    **Environment**  - Windows 10 Pro日本語版、英語版 buid 1909  - Ubuntu 18.04  **Additional context** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/dialog/ServiceConnectorCreaterDialog.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/dialog/DataConnectorCreaterDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="278" opendate="2020-02-06 08:49:14" fixdate="2020-03-09 14:13:28">
+		<buginformation>
+			<summary>RT System Editor/RTC Builderの空白は取る必要あり。正式名称は空白がないです。</summary>
+			<description>**Describe the bug** 色々な表示で、正式名称である"RTSystemEditor"が使われてなく、"RT System Editor"となっているところ、また同様に”RTCBuilder”ではなく、”RTC Builder”になっているところがある。  **To Reproduce** まず、パースペクティブの選択肢がそうなっているので、”パースペクティブを開く”ボタンを押すと、表示される選択肢がそうなっている。 **Reproducibility** 100% **Expected behavior** ”RTSystemEditor”や"RTCBuilder"となるべき  **Screenshots or Logs** 簡単にでるので、特にスクリーンショットはなし  **Environment**  - OS:関係なし、どのOSでも  - OpenRTM-aist Version 1.2.1  **Additional context** パースペクティブ以外のところでもあった覚えがあるので、ソース側のサーチをしてください。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/NewWizard.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="276" opendate="2020-02-04 08:05:55" fixdate="2020-03-09 14:14:19">
+		<buginformation>
+			<summary>FSMコンポーネントでイベント名を設定しない場合に状態遷移しない</summary>
+			<description>**Describe the bug** 例えば以下のようにイベント名を設定しない遷移を設定した場合に、コード生成後に修正をしないとnode4からnode6に遷移しない。  ![image](https://user-images.githubusercontent.com/6216077/73725028-ec529b00-476f-11ea-94a9-c23bef29e01a.png)    **To Reproduce** Steps to reproduce the behavior: 1. RTC BuilderでFSMポートを設定する 2. あるノード(node4)から他のノード(node6)に遷移を設定する 3. 遷移にイベント名は設定しない 4. 生成したコードには以下のようにnode6への遷移が定義されないクラスが記述される  ```Python @StaticFSM.FSM_SUBSTATE(Top) class node4(StaticFSM.Link):     def onEntry(self):         return RTC.RTC_OK      def onExit(self):         return RTC.RTC_OK ```  **Reproducibility** 100％  **Expected behavior** イベント名を定義していない場合`onInit`関数で遷移するようにする。  ```Python @StaticFSM.FSM_SUBSTATE(Top) class node4(StaticFSM.Link):     def onInit(self):         self.set_state(StaticFSM.State(node6))         return RTC.RTC_OK      def onEntry(self):         return RTC.RTC_OK      def onExit(self):         return RTC.RTC_OK ```  **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist master branch   **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/stateName/src/State_01.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/stateEntry/src/State02.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/eventCond/src/FinalState.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/eventCond/src/State02.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/stateEntry/src/FinalState.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/eventName/src/FinalState.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/eventName/src/State02.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/src/jp/go/aist/rtm/rtcbuilder/java/manager/TemplateHelperJava.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/basic/src/FinalState.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/eventName/src/State01.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/stateName/src/FinalState.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/eventCond/src/State01.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/template/TemplateHelper.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/basic/src/State02.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/stateName/src/State_02.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/stateEntry/src/State01.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/basic/src/State01.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.python/src/jp/go/aist/rtm/rtcbuilder/python/manager/TemplateHelperPy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="268" opendate="2020-01-20 14:48:33" fixdate="2020-02-11 14:04:49">
+		<buginformation>
+			<summary>[RTCB]終了状態のコード生成</summary>
+			<description>FSM型RTCのコード生成を行う際に，FSMエディタで定義した｢終了状態｣についても，コード生成を行うように修正を行う (Java版については対応済みなので，C++版，Python版について修正を行う)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/fsm/StateParam.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/fsm/EventParam.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/fsm/TransitionParam.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="267" opendate="2020-01-20 14:47:54" fixdate="2020-02-17 16:00:14">
+		<buginformation>
+			<summary>[RTCB]Eventポートの｢変数名｣｢ポート名｣を生成コードに反映させる</summary>
+			<description>RTCBuilderのFSMタブで指定した｢変数名｣｢ポート名｣を生成コードに反映させる． それぞれの情報は通常のInPort/OutPortと同様にコード生成を行う． </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/stateName/src/ModuleNameImpl.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/basic/src/ModuleNameImpl.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/eventName/src/ModuleNameImpl.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/template/TemplateHelper.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/stateEntry/src/ModuleNameImpl.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.java/resource/FSM/eventCond/src/ModuleNameImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="261" opendate="2020-01-07 09:25:32" fixdate="2020-01-20 14:40:16">
+		<buginformation>
+			<summary>FSMタブの新規作成ボタンを押した後に何もせずにFSM Editorを閉じると二度とFSM Editorを表示できなくなる</summary>
+			<description>**Describe the bug** 新規作成ボタンを押してもFSM Editorが表示されない場合がある。  **To Reproduce** Steps to reproduce the behavior: 1. RTC BuilderでFSMタブの新規作成ボタンを押す 2. 何もせずにFSM Editorを閉じる 3. 新規作成ボタンを押す。 4. See error  **Reproducibility** 100％  **Expected behavior** 上記の場合に新規作成ボタンを押すとFSM Editorが表示されるようにする。  **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist master branch   **Additional context** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/FSMEditorFormPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="252" opendate="2019-12-16 06:31:08" fixdate="2020-08-05 07:20:56">
+		<buginformation>
+			<summary>RTSystemEditor起動中にネットワークが変わった場合に動作が不安定になる</summary>
+			<description>**Describe the bug** RT System Editor起動中に無線LANの接続先を切り替えるなどしてIPアドレスが変わった場合に、ポートの接続が失敗する、画面が固まるなどの不具合が発生する。  **To Reproduce** Steps to reproduce the behavior: 1. RTSystemEditorを起動する 2. 無線LANの接続先を切り替える 3. RTSystemEditor上でデータポートを接続する 4. See error  **Reproducibility** 100％  **Expected behavior** RTCにコンポーネントオブザーバーを登録する際に、ネットワーク切り替え前の情報で登録しようとするため、到達不能なIPアドレスでアクセスしようとして問題が発生する。  以下のような対処法が考えられる。  1. RTSE側でネットワークの切り替えを検知して対処する 2. OpenRTM-aist側でコンポーネントオブザーバーをデフォルトでオフにする、もしくはコンポーネントオブザーバーの機能を削除する  コンポーネントオブザーバーはトラブルが多すぎるため、機能の削除がいいと思います。  **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist 1.2.1   **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/SystemDiagramImpl.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/manager/ToolsCommonPreferenceManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="245" opendate="2019-11-19 03:31:16" fixdate="2019-11-25 08:12:51">
+		<buginformation>
+			<summary>サービスインターフェースがRequiredの場合のテスト用Pythonスクリプトのimport文を修正する</summary>
+			<description>**Describe the bug** 言語をPython、サービスポートのインターフェース型にRequiredに設定した場合にテストを実行できない。 これはRTC本体がRequired、テスト用スクリプトがProvidedに対応しなければならないが、サービスを定義した`***_idl_example.py`が生成されず`test/***Test.py`でもimportしないため。  **To Reproduce** Steps to reproduce the behavior: 1. RTC Builderで言語をPythonに設定する 2. サービスポートを設定、インターフェース型にRequiredを設定する 3. コード生成する 4. See error  **Reproducibility** 100％  **Expected behavior** 1. `test`フォルダ以下に`***_idl_example.py`を生成する 2. `test/***Test.py`で`***_idl_example`をインポートする(Providedインターフェスに設定した場合のRTC本体と同様)  **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist master branch   **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder.python/src/jp/go/aist/rtm/rtcbuilder/python/manager/PythonGenerateManager.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.python/src/jp/go/aist/rtm/rtcbuilder/python/util/RTCUtilPy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="230" opendate="2019-11-01 08:22:25" fixdate="2019-12-02 15:04:38">
+		<buginformation>
+			<summary>[RTCB]Python版RTC生成時にファイルの過不足が発生する場合がある</summary>
+			<description>**Describe the bug** - 独自データ型IDLを持つRTC作成時に生成される下記５ファイルが不完全だったり、不要なのに生成される場合がある   - Windows用　：idlcompile.bat, delete.bat   - Linux用　：idlcompile.sh, postinst.in, prerm.in  - 上記には、CPackで生成したmsi,deb,rpmを使ってインストールする際のIDLコンパイルで必要なファイルを含んでいる - これらのファイルの一部でも生成されると、IDLコンパイルに関する記述がCMakeLists.txt内にも追記されているため、CPackでのパッケージ作成時にエラーが発生している  **To Reproduce** - 下記の３つのRTCのうちの２つ（NG例）で不具合を確認 - 確認手順は、リンク先のRTC.xmlをインポートしてコードを生成する。独自IDLを使用する場合は個別に指定する必要がある。  - testOriginalServicepy ・・・サービスポートで独自IDLを利用（OK例） https://github.com/Nobu19800/testOpenRTM-aist/tree/master/testOriginalServicepy 上記５ファイル全て生成される   - testOriginalPortpy ・・・データポートで独自IDLを利用（NG例） https://github.com/Nobu19800/testOpenRTM-aist/tree/master/testOriginalPortpy 生成されるファイル(OK) --&gt; idlcompile.bat, delete.bat, idlcompile.sh 必要なのに生成されない --&gt; postinst.in, prerm.in  - testServiceConsumerpy ・・・サービスポートでManipulator*.idlを利用（NG例） https://github.com/Nobu19800/testOpenRTM-aist/tree/master/testServiceConsumerpy 不要なのに生成される --&gt; postinst.in, prerm.in   **Environment**  - OS: Windows10  - OpenRTM-aist Version 1.2.1  - OpenRTM-aist 1.2.1-RC191025 msi でインストールした環境  **Additional context** - この動作確認で使用する「idlcompile.bat」の変更もお願いします。 - Windows環境ではPythonディレクトリ下にomniidl.exeがインストールされなくなりました - これまでのidlcompile.batのomniidl.exe実行部分を抜粋すると、下記となっています。 ```   %f:python.exe=%omniidl.exe -bpython -I"%RTM_ROOT%\rtm\idl" idl/test.idl  ``` - 新しいidlcompile.batは、下記２行となるように修正をお願します。 ``` @echo off omniidl.exe -bpython -I"%RTM_ROOT%\rtm\idl" idl/test.idl  ``` - OpenRTM-aist 1.2.1 に反映させますので、 RELENG_1_2 ブランチへの修正をお願いします </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder.python/src/jp/go/aist/rtm/rtcbuilder/python/manager/PythonGenerateManager.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/util/ValidationUtil.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.python/src/jp/go/aist/rtm/rtcbuilder/python/manager/TemplateHelperPy.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.python/src/jp/go/aist/rtm/rtcbuilder/python/manager/PythonCMakeGenerateManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="224" opendate="2019-10-28 03:32:27" fixdate="2019-10-28 14:36:16">
+		<buginformation>
+			<summary>[RTCB]BuildViewでDataPortの背景色が変更されない</summary>
+			<description>RTCBuilderでInPortもしくはOutPortを追加した際に，BuildView内のポート表示の背景色が指定された色とならない． ただし，ServicePortも定義されている場合には，背景色が指定された色で表示される．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/figure/OutPortBaseFigure.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/figure/PortFigureBase.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editpart/InPortEditPart.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/figure/InPortBaseFigure.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/figure/InPortFigure.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editpart/OutPortEditPart.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="209" opendate="2019-09-27 10:04:54" fixdate="2019-10-01 02:20:27">
+		<buginformation>
+			<summary>FSM用エディタが編集ボタンを押した回数だけウィンドウが増える？</summary>
+			<description>**Describe the bug** #95 、#96 でFSMエディタが複数回起動する問題は解決したはずなのですが、今動作確認すると何故か複数起動する。  **To Reproduce** Steps to reproduce the behavior: 1. RTCBのFSMタブの編集ボタンを数回押す   **Reproducibility**   **Expected behavior**   **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist master branch  **Additional context** こちらの環境の問題の可能性もあるため、動作確認をして問題がなければこのissueは閉じてください。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/FSMEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/fsm/editor/SCXMLGraphEditor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="193" opendate="2019-09-19 04:37:48" fixdate="2019-09-19 06:41:56">
+		<buginformation>
+			<summary>.appveryor.ymlを変更していないのに結果比較の画面が出てくる</summary>
+			<description>**Describe the bug** `.appveryor.yml`を変更していないのにコード生成で結果比較の画面が表示される。  ![image](https://user-images.githubusercontent.com/6216077/65213748-5977d380-dae2-11e9-8a88-904e604f704b.png)   **To Reproduce** Steps to reproduce the behavior: 1. RTC Builderでコード生成する 2. 再度コード生成する   **Reproducibility** 100％  **Expected behavior** 変更をしていないのに結果比較画面を出さないようにする。  **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist 2.0   **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/test/jp/go/aist/rtm/rtcbuilder/_test/generateCode/IDLModuleTest.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/util/StringUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="182" opendate="2019-09-18 09:44:54" fixdate="2019-09-22 02:26:37">
+		<buginformation>
+			<summary>データ型にTimedCameraImage等を指定すると実行時にエラーになる</summary>
+			<description>**Describe the bug** RTC Builderで以下の条件でコード生成して実行するとエラーになる。  * データ型に`Img::TimedCameraImage`を指定する * 言語にPythonを指定する  **To Reproduce** Steps to reproduce the behavior: 上記の通り。  **Reproducibility** 100％  **Expected behavior** OpenRTM-aistのインストールディレクトリのIDLファイルを使う場合に対応するモジュールをインポートするように修正する。  例えば、`Img::～`型使用時に生成するPythonスクリプトに以下を追加するようにする  ```Python import Img ``` この変更はRELENG_1_2にも反映する。  **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist 1.2  **Additional context** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder.python/src/jp/go/aist/rtm/rtcbuilder/python/manager/PythonGenerateManager.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.python/src/jp/go/aist/rtm/rtcbuilder/python/util/RTCUtilPy.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder.python/src/jp/go/aist/rtm/rtcbuilder/python/manager/TemplateHelperPy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="175" opendate="2019-09-17 09:31:28" fixdate="2019-09-25 03:14:40">
+		<buginformation>
+			<summary>イベントリストの表示がおかしい</summary>
+			<description>**Describe the bug** FSMタブのイベントリストの表示がおかしくなる。  **To Reproduce**  1. FSMを有効にしてSCXMLを新規作成する 2. FSM Editorで以下のように状態遷移を定義する。 ![image](https://user-images.githubusercontent.com/6216077/65028485-151bf480-d977-11e9-8355-19cb0822afac.png)  3. 一旦FSM Editorを閉じて、編集ボタンを押して再度開く 4. ノードの名前を変更してFSM Editorを閉じる ![image](https://user-images.githubusercontent.com/6216077/65028660-5ca28080-d977-11e9-9ecf-3c05a105560f.png)  5. 保存する 6. 何故かイベントリスト内の表示が変化しない   ![image](https://user-images.githubusercontent.com/6216077/65028810-9ffcef00-d977-11e9-8f12-9aa8db24ac7b.png)  7. 編集ボタンを押してFSM Editorを開く 8. `event1`のTransition Editorを開く 9.  何も変更をせずにTransition Editor、FSM Editorを閉じる 10. 何故かイベント名が増殖する。 ![image](https://user-images.githubusercontent.com/6216077/65029034-008c2c00-d978-11e9-978c-ae811ecd542a.png)       **Reproducibility** 100％  **Expected behavior** 以下の操作に対して不具合が起こらないようにする。  - ノード名の変更 - イベント名の変更    **Screenshots or Logs**   **Environment**  - OS:  Windows 10  - OpenRTM-aist master branch  **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/fsm/editor/editor/scxml/eleditor/SCXMLStateEditor.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/FSMEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/fsm/editor/editor/scxml/eleditor/SCXMLEditorRoot.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="165" opendate="2019-08-22 03:50:10" fixdate="2019-09-26 14:09:25">
+		<buginformation>
+			<summary>独自IDLを使う場合のBuilderの生成するコードの問題</summary>
+			<description>データポートとサービスポートの両方で同じ独自IDLを指定した場合， #157 の問題に加えて，そのIDLファイルの名前が xxx.idl の場合，xxxSVC_impl.h と xxxSVC_impl.cpp にクラスの宣言や定義が書かれないとい問題に遭遇しています．  データポートで独自IDLを設定した後に，サービスポートのインタフェースで「インタフェース型」を選ぼうとすると，選択肢の中に同じ名前が二つ現れます．それぞれを選択すると，「IDLファイル」欄のパスが切り替わります．一つは，データポートの設定の際に指定したIDLファイル，もう一つは，C:\Users\ユーザ名\AppData\Roaming\.openrtp\idl にコピーされた同名のファイルです．前者を選んだ場合に問題が発生しています．  これは既知の問題でしょうか？   ところで，C:\Users\ユーザ名\AppData\Roaming\.openrtp\idl にIDLファイルをコピーして使う狙いは何でしょうか？参照しているRTC外部のIDLファイルの名前や中身を変更したつもりでも，コード生成でそれが反映されず，混乱してしまいます．ユーザが指定したIDLを使うだけの方がわかりやすいと思うのですが．  Windowsでmsiでインストールした1.2.0の64bit版を使っています．</description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/generator/param/RtcParam.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/Generator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="147" opendate="2019-07-29 01:57:02" fixdate="2019-08-12 09:48:08">
+		<buginformation>
+			<summary>RTC Builderのサービスポートのヒントのインスタンス名、変数名が同じ</summary>
+			<description>**Describe the bug** 以下のようにRTC Builderのサービスポートのヒントのインスタンス名、変数名が同じになっている。  ![image](https://user-images.githubusercontent.com/6216077/62016845-4dad1680-b1ef-11e9-8d70-2d2b5e271578.png)    **To Reproduce**  **Reproducibility**   **Expected behavior** 説明を修正する。  **Screenshots or Logs**   **Environment**   **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/IMessageConstants.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="142" opendate="2019-07-24 06:51:41" fixdate="2019-08-06 08:11:39">
+		<buginformation>
+			<summary>RTCBの「コンフィギュレーション」タブにて、2回目以降のAddでデータ型が空になる</summary>
+			<description>**Describe the bug** RTCBの「コンフィギュレーション」タブにて、2回目以降のパラメータAddで、これまでは1回目のパラメータのデータ型がそのまま2回目のパラメータのデータ型になっていたが、これが空になる。  **Reproducibility** 100%  **Expected behavior** 2回目以降のパラメータのAddで、1回目に指定されたデータ型が引き継がれるようにする。  **Environment**  - OS: Windows 10 64bit  - OpenRTM-aist Version 1.2.0  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/ConfigurationEditorFormPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="140" opendate="2019-07-23 06:46:19" fixdate="2019-08-06 08:11:58">
+		<buginformation>
+			<summary>RTCBの「データポート」タブにて、2回目以降のAddでデータ型が空になる</summary>
+			<description>**Describe the bug** RTCBの「データポート」タブにて、これまで2回目以降データポートの「Add」を押すと、直前に設定した「データ型」がデフォルトで設定されていたが、1.2のRTCBでは空になる。  **To Reproduce** 通常通りRTCを作成、2個目以降のデータポートを作成。  **Reproducibility** 100％  **Expected behavior** 上述の通り。  **Environment**  - OS: Widnows10 64bit  - OpenRTM-aist Version 1.2.0  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/DataPortEditorFormPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="126" opendate="2019-07-17 06:00:06" fixdate="2019-07-25 09:33:20">
+		<buginformation>
+			<summary>RTCBuilderのコード生成時に何も変更していないのに結果比較の画面が出る</summary>
+			<description>**Describe the bug** RTC Builderでコード生成を2回以上実行したときに以前と違う部分については結果比較の画面が表示されるが、何も変更していなくても表示されてしまう。  **To Reproduce** Steps to reproduce the behavior: 1. RTC Builderでコードを生成する(言語は問わない) 2. もう一度コード生成ボタンを押す  **Reproducibility** 100％  **Expected behavior** 仕様の動作でないのであれば、変更がない場合は画面は表示しないようにする。  **Screenshots or Logs** 以下のように何を比較しているのか不明です。 ![image](https://user-images.githubusercontent.com/6216077/61350641-3b53e400-a8a3-11e9-8a2a-110b2d905771.png) ![image](https://user-images.githubusercontent.com/6216077/61350672-532b6800-a8a3-11e9-93d3-ac5ea7f88b40.png) ![image](https://user-images.githubusercontent.com/6216077/61350677-5888b280-a8a3-11e9-8665-c5deb2352e1e.png) ![image](https://user-images.githubusercontent.com/6216077/61350681-5c1c3980-a8a3-11e9-87e8-7c6d4ed886fe.png)   **Environment**  - OS: Windows 10  - OpenRTM-aist masterブランチ  **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/DocumentEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/ActivityEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/ConfigurationEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/generator/param/ParamUtil.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/DataPortEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/ServicePortEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/Generator.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/util/StringUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="118" opendate="2019-07-10 06:51:41" fixdate="2019-07-18 09:11:00">
+		<buginformation>
+			<summary>RTCBuilder「基本」タブのChoreonoidの位置が他のRTCタイプからずれている</summary>
+			<description>**Describe the bug** RTCBuilder「基本」タブのChoreonoidの位置が他のRTCタイプからずれている。  **Expected behavior** DataFlow, FSM, MultiModeと上下中央そろっていてほしい。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/BasicEditorFormPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="95" opendate="2019-06-14 10:03:10" fixdate="2019-06-17 14:22:55">
+		<buginformation>
+			<summary>FSM用エディタが編集ボタンを押した回数だけウィンドウが増える</summary>
+			<description>**Describe the bug** RTC BuilderのFSMタブの編集ボタンを押した回数だけFSM用エディタのウィンドウが表示される。  **To Reproduce** Steps to reproduce the behavior: 1. RTC BuilderでFSMを有効にしてRTCを作成 2. FSMタブの新規作成ボタンでSCXMLを新規作成 3. 編集ボタンを押す。 4. 編集ボタンを再度押すと同じウィンドウが押した回数だけ増える。  **Reproducibility** 100％  **Expected behavior** FSM用エディタは編集ボタンを複数回押しても1つしか表示しないようにする。 既に表示中の場合に編集ボタンを押した場合はFSMエディタのウィンドウが前面に出るようにする。  **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist 2.0  **Additional context** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/FSMEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/fsm/editor/SCXMLGraphEditor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="90" opendate="2019-06-12 02:00:34" fixdate="2019-06-29 05:37:42">
+		<buginformation>
+			<summary>1.2.0付属のRTSEで、エディタ上のRTC選択時に1回のクリックで選択されない</summary>
+			<description>**Describe the bug** 1.2.0付属のRTSystemEditor、OpenRTP-aistのRTSE（Windows）いずれも、エディタ上のRTCを選択しようとクリックしても、1回で選択されないケースが散見される。  **To Reproduce** 1. 1.2.0でOpenRTP-aist、またはRTSystemEditorを起動。 2. ~~RTCを複数起動~~データポートのあるRTCを起動する 3. ~~いくつかのRTCを選択のためにクリック~~マウスカーソルがデータポートの上を通過後にRTCをクリックする    **Reproducibility** この時、1回で選択されないRTCが多数存在する。まれに、1回で選択可能なRTCも存在する。 ただし、1回のクリックで選択できなRTCについても、常に2回のクリックが必要なわけではなく、たまに1回のクリックで選択可能。 ちなみに、1回のクリックで選択できないケースの時、マウスカーソルが片不一致のポートを接続するときに表示される禁止マーク付きマウスカーソルになるため、選択できないことが事前にわかる。  **Expected behavior** 1.1.2のOpenRTP-aistのRTSEやRTSystemEditorではこの現象は起きない。 ウインドウ外にフォーカスがある場合、同じEclipse上で他のView等にフォーカスがある場合でも、必ずRTCは1回のクリックで選択が可能であった。  原因は、ポート接続モードへの出入りイベントが関係していると考えられる。マウスオーバーイベント周りの挙動は以下の通り。  - ポートにマウスオーバー     - 1.1.2：ポート接続モードのマウスカーソルになる     - 1.2.0：ポート接続モードのマウスカーソルになる（おなじ） - ポートからマウスアウト     - 1.1.2：通常のマウスカーソルに戻る（正しい）     - 1.2.0：接続禁止マウスカーソルになる - 1.2.0において、接続禁止後のマウスカーソル出現後、他のウインドウなどにフォーカスを映し、再びRTSEのエディタ部分にマウスを持ってくると、接続禁止状態マウスカーソルが表示され、１クリックでRTCを選択できない。（このほかにも多様なケース有り。）  **Screenshots or Logs** なし  **Environment**  - OS: Windows 10, 64bit  - OpenRTM-aist 1.2.0 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/editpart/AutoConnectorCreationTool.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="84" opendate="2019-06-06 09:08:02" fixdate="2019-06-11 07:52:41">
+		<buginformation>
+			<summary>サービスポートのプロバイダのコード(xxx_idl_example.py)の問題</summary>
+			<description>**Describe the bug** プロバイダ側のサービスポートを設定したPythonコード`xxx_idl_example.py`に以下の問題がある。  - 先頭付近に記載しているファイル名が違う ```Python """  @file MyService_idl_examplefile.py #&lt;-fileは不要  @brief Python example implementations generated from MyService.idl  @date $Date$ """ ```  - print文がPython2のままのためPython3でエラーになる。  ```Python     print orb.object_to_string(objref) ```  **To Reproduce** Steps to reproduce the behavior: 1. RTCBuilderでプロバイダ側のサービスポートを設定する 2. Pythonのコードを生成する   **Reproducibility** 100％  **Expected behavior**  - ファイル内に記載しているファイル名を修正する。 ```Python """  @file MyService_idl_example.py #&lt;-fileは不要  @brief Python example implementations generated from MyService.idl  @date $Date$ """ ```  - Python3でもエラーにならないように括弧を記述する  ```Python     print(orb.object_to_string(objref)) ```  **Screenshots or Logs**   **Environment**  - OS:  Windows 10  - OpenRTM-aist 2.0  - ...  **Additional context** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder.python/test/jp/go/aist/rtm/rtcbuilder/python/_test/TestBase.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="79" opendate="2019-05-28 10:14:27" fixdate="2019-07-09 01:14:43">
+		<buginformation>
+			<summary>[RTCB]データ型にImg型またはJARA_ARM型を指定したC++版RTCがビルドエラーになる</summary>
+			<description>**Describe the bug** - データポートのデータ型に「JARA_ARM::TimedJointPos」を指定してC++ RTCを生成し、ビルドすると下記エラーになります。 ``` 'ULONG' : あいまいなシンボルです。 ``` - 上記は、ヘッダーファイルの下記namespace文をコメントアウトすればビルドが通ります ``` using namespace JARA_ARM; ```  - データポートのデータ型に「Img::CameraDeviceProfile」を指定してC++ RTCを生成し、ビルドすると下記エラーになります。このエラーの対応方法は分かっておりません。 ``` 3&gt;C:\Program Files\OpenRTM-aist\1.2.0\rtm/Timestamp.h(40): error C2039: 'tm' : 'Img::CameraDeviceProfile' のメンバーではありません。 3&gt;          c:\program files\openrtm-aist\1.2.0\rtm\idl\CameraCommonInterface.hh(456) : 'Img::CameraDeviceProfile' の宣言を確認してください。 ```  **Reproducibility** vc2010とvc2015環境で同じエラーになることを確認  **Environment**  - OS: Windows10  - OpenRTM-aist Version 1.2.0    </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/test/jp/go/aist/rtm/rtcbuilder/_test/generateCode/ServicePortTest.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/manager/CXXConverter.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/Generator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="73" opendate="2019-05-27 15:00:52" fixdate="2019-07-23 11:18:35">
+		<buginformation>
+			<summary>[RTSE]OpenRTM-aist-1.1.2付属のEdgeコンポーネントを起動し，カメラコンポーネントと接続すると，システムエディタ上の表示がおかしくなってしまう</summary>
+			<description>1.1.2のEdgeコンポーネントは，カメラと接続するとバッファオーバーフローでCORBA自体が異常終了してしまうが，この時，RTSEの表示がおかしくなってしまう． </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/CorbaStatusObserverImpl.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/editpart/SystemDiagramEditPart.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/CorbaComponentImpl.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/synchronizationframework/SynchronizationSupport.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/SystemDiagramImpl.java</file>
+			<file>jp.go.aist.rtm.nameserviceview/src/jp/go/aist/rtm/nameserviceview/model/nameservice/impl/NamingObjectNodeImpl.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/AbstractSystemDiagramEditor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="50" opendate="2019-05-16 00:26:20" fixdate="2019-05-18 10:34:41">
+		<buginformation>
+			<summary>存在しないデータ型を指定してもコード生成時にエラーにならない</summary>
+			<description>**Describe the bug** 以下のように存在しないデータ型を設定してもコード生成時にエラーにならない。 ビルド時には当然エラーになる。  ![image](https://user-images.githubusercontent.com/6216077/57817860-5aa79580-77bc-11e9-8b5a-9b4de978c04b.png)   **To Reproduce** Steps to reproduce the behavior: 1. RTC Builderでプロジェクトを作成 2. InPort、もしくはOutPort追加 3. データ型を直接文字で入力して存在しない名前に設定する 4. コード生成をする  **Reproducibility** 100％  **Expected behavior** エラーメッセージを出す。  **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist 1.2.0   **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/BasicEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/DataPortEditorFormPage.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/ui/editors/IMessageConstants.java</file>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/util/ValidationUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2019-05-08 02:16:24" fixdate="2019-05-25 09:58:33">
+		<buginformation>
+			<summary>JavaのRTCでidlj実行時にインクルードパスにBasicDataType.idl等を配置したパスを指定する</summary>
+			<description>**Describe the bug** RTCBuilderでJavaのコード生成時に、build_***.xmlで以下のようなエラーが発生する場合がある。  ```      [exec] idl/test.idl (行1): java.io.FileNotFoundException: BasicDataType.idl      [exec] #include "BasicDataType.idl"      [exec]          ^      [exec] idl/test.idl (行6): RTC/Timeは宣言されていない型です。      [exec]         RTC::Time tm;      [exec]                   ^ ```  **To Reproduce** Steps to reproduce the behavior: 1. RTC Builderで独自データ型を持つJavaのRTCを作成 2. build_***.xmlを実行  **Reproducibility** 100％  **Expected behavior** BasicDataType.idl等はインストールしているものを使用するため、以下のようにBasicDataType.idlを配置したパスを指定する必要がある。  ``` &lt;target name="idlcompile"  depends="mkdir"&gt; &lt;exec executable="${java.home}/../bin/idlj"&gt; &lt;arg line="-i '${env.RTM_JAVA_ROOT}/rtm/idl' -td 'src' -fall 'idl/test.idl'"/&gt; &lt;/exec&gt; &lt;/target&gt; ```  ただし、Ubuntuの場合には`${env.RTM_JAVA_ROOT}/rtm/idl`にIDLファイルが配置されないため以下のissueで別途修正する。  - https://github.com/OpenRTM/OpenRTM-aist-Java/issues/22  **Screenshots or Logs**  **Environment**  - OS: Windows 10  - OpenRTM-aist 1.2  **Additional context** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.rtcbuilder/src/jp/go/aist/rtm/rtcbuilder/generator/param/RtcParam.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7" opendate="2019-01-29 01:00:50" fixdate="2019-03-08 09:32:55">
+		<buginformation>
+			<summary>[RTSE]システムダイアグラム上にポート名等の文字が残る</summary>
+			<description>**Describe the bug** RTCを強制終了、再起動、システムダイアグラム上へのドラッグアンドドロップをすると、システムダイアグラム上に文字が残ることがある。  ![](https://user-images.githubusercontent.com/19547996/51525000-b1d2d480-1e72-11e9-9d48-56fcdaf53c36.png)   **To Reproduce** Steps to reproduce the behavior: 1. RTCを強制終了、再起動する 2. RTCをシステムダイアグラム上にドラッグアンドドロップする 3. 1.、2.を繰り返す 4. システムダイアグラム上に終了済みのRTCのポート名等が残る  **Reproducibility** 上記手順を繰り返した場合にほぼ確実に発生  **Expected behavior**   **Screenshots or Logs**   **Environment**  - OS: Windows 10  - OpenRTM-aist 1.2  - ...  **Additional context**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/corba/CorbaUtil.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/CorbaStatusObserverImpl.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/CorbaComponentImpl.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/util/RTMixin.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/synchronizationframework/mapping/AttributeMapping.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/editpart/ComponentEditPart.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/synchronizationframework/mapping/OneReferenceMapping.java</file>
+			<file>jp.go.aist.rtm.nameserviceview/src/jp/go/aist/rtm/nameserviceview/model/nameservice/impl/NamingContextNodeImpl.java</file>
+			<file>jp.go.aist.rtm.nameserviceview/src/jp/go/aist/rtm/nameserviceview/model/nameservice/impl/NamingObjectNodeImpl.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/CorbaObserverImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1" opendate="2019-01-22 02:08:22" fixdate="2019-01-29 06:44:42">
+		<buginformation>
+			<summary>システムダイアグラム上のRTCが消えない、OpenRTPが固まる</summary>
+			<description>システムダイアグラム上にRTCを表示している状態でRTCのプロセスを終了させるとOpenRTPが固まる、もしくはシステムダイアグラム上にRTCが残り続ける現象が発生します。  対象：RELENG_1_2ブランチ</description>
+		</buginformation>
+		<fixedfiles>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/SystemDiagramEditorContributor.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/views/configurationview/ConfigurationView.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/core/util/CoreSwitch.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/SystemDiagramEditor.java</file>
+			<file>jp.go.aist.rtm.systemeditor/test/jp/go/aist/rtm/systemeditor/ui/views/configurationview/mock/ComponentMock.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/views/managercontrolview/ManagerControlView.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/editpolicy/SystemXYLayoutEditPolicy.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/editpart/SystemDiagramEditPart.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/editpart/ToolTipHelper.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/CorbaComponentImpl.java</file>
+			<file>jp.go.aist.rtm.systemeditor/test/CorbaTest.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/manager/validation/RTCManagerValidator.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/command/ECMoveLineCommand.java</file>
+			<file>jp.go.aist.rtm.systemeditor/test/jp/go/aist/rtm/systemeditor/ui/dialog/CreateComponentDialogTest.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/manager/impl/RTCManagerImpl.java</file>
+			<file>jp.go.aist.rtm.systemeditor/test/jp/go/aist/rtm/systemeditor/ui/util/CompositeOfflineLoadTest.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/editpart/ColorHelper.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/factory/ComponentCommandCreator.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/views/executioncontextview/ExecutionContextView.java</file>
+			<file>jp.go.aist.rtm.systemeditor/test/jp/go/aist/rtm/systemeditor/ui/util/RtsProfileHandlerTest.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/core/util/CoreAdapterFactory.java</file>
+			<file>jp.go.aist.rtm.systemeditor/test/jp/go/aist/rtm/systemeditor/ui/action/DecomposeComponentActionTest.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/ComponentFactoryImpl.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/editor/figure/ComponentLayout.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/core/impl/CoreFactoryImpl.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/CorbaExecutionContextImpl.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/util/RtsProfileHandler.java</file>
+			<file>jp.go.aist.rtm.toolscommon/src/jp/go/aist/rtm/toolscommon/model/component/impl/ComponentPackageImpl.java</file>
+			<file>jp.go.aist.rtm.systemeditor/src/jp/go/aist/rtm/systemeditor/ui/views/actionorderview/ActionOrderView.java</file>
+			<file>jp.go.aist.rtm.systemeditor/test/jp/go/aist/rtm/systemeditor/ui/action/AllDisconnectActionTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

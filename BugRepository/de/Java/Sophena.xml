@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Sophena">
+	<bug id="93" opendate="2019-06-27 11:44:02" fixdate="2020-06-24 14:33:05">
+		<buginformation>
+			<summary>Wärmebelegungsdichte ohne Pufferspeicherverluste berechnen</summary>
+			<description>Die Wärmebelegungsdichte berechnet sich aus dem Wert der „Genutzten Wärme“ dividiert durch die Trassenlänge. Derzeit werden die Pufferspeicherverluste als "Genutzte Wärme" angesehen, so dass die Wärmebelegungsdichte bei steigenden Pufferspeicherverlusten größer wird. Die Wärmebelegungsdichte muss aber unabhängig von den Pufferspeicherverlusten sein!</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena-core/src/main/java/sophena/math/energetic/UsedHeat.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="85" opendate="2018-10-24 12:26:12" fixdate="2018-10-26 07:44:38">
+		<buginformation>
+			<summary>Beim Duplizieren eines Wärmeerzeugers wird der gleiche Rang vergeben</summary>
+			<description>Beim Duplizieren eines Wärmeerzeugers wird der gleiche Rang vergeben, eigentlich müsste aber der Rang hochgezählt werden (höchster derzeit vergebener Rang + 1)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/navigation/actions/DuplicateAction.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="80" opendate="2018-09-19 12:13:06" fixdate="2018-10-05 08:36:24">
+		<buginformation>
+			<summary>Zeilentausch u.ä.</summary>
+			<description>- [x] bei Weitere Ergebnisse - Effizienz sollen die Zeilen "Erzeugte Wärme" und "Erzeugter Strom" getauscht werden, da das intuitiver ist - [x] bei den Energieträgern ist ein Tippfehler: "Planzenöl" - [ ] bei den Investitionen fehlen noch die Tabellen für die neuen Produktbereiche Wärmepumpe,  Solarthermische Anlage, Elektrischer Wärmeerzeuger, Sonstige Wärmequelle, Sonstiges Zubehör - [x] bei den Investionen sollen leere Tabellen per Voreinstellung minimiert werden    </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/editors/costs/DisplaySection.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/single/EfficiencyTable.java</file>
+			<file>sophena/src/sophena/rcp/editors/costs/OverviewPage.java</file>
+			<file>sophena/src/sophena/rcp/Labels.java</file>
+			<file>sophena/src/sophena/rcp/utils/UI.java</file>
+			<file>sophena/src/sophena/rcp/editors/costs/EntrySection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="75" opendate="2018-08-07 10:30:16" fixdate="2018-10-05 08:28:08">
+		<buginformation>
+			<summary>Ergebnis-Wirtschaftlichkeit: Leichte Korrekturen</summary>
+			<description>- [x] Die Zeile "Kosten -Erlöse" muss jetzt, da wir Wärmeerlöse haben, umgekehrt berechnet werden (also Erlöse-Kosten) und soll "Jahresüberschuss" heißen - [x] Bei der Berechnung der Zeile "Wärmegestehungskosten" dürfen weiterhin die Wärmeerlöse nicht berücksichtigt werden, d.h. Berechnung nach der Formel (Kosten-Stromerlöse)/Genutzte Wärme </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena-core/src/main/java/sophena/calc/CostCalculator.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/single/ResultEditor.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/compare/Page.java</file>
+			<file>sophena/src/sophena/rcp/editors/CostSettingsPanel.java</file>
+			<file>sophena-core/src/main/java/sophena/calc/CostResult.java</file>
+			<file>sophena-core/src/main/java/sophena/io/excel/CostSheet.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/compare/CostTable.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/single/CostResultPage.java</file>
+			<file>sophena-core/src/main/java/sophena/io/excel/ComparisonSheet.java</file>
+			<file>sophena-core/src/test/java/sophena/math/costs/ProductCostTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2018-08-07 10:22:45" fixdate="2018-09-05 14:28:21">
+		<buginformation>
+			<summary>Ergebnis-Wärme: Prozentangabe nicht korrekt</summary>
+			<description>Bei hohen Pufferspeicherverlusten (z.B. Eingabe 20%) ergeben die Prozentwerte der Erzeuger aufsummiert über 100%. Vermutlich fällt dieser Fehler bei geringen Pufferspeicherverlusten nicht auf.  Außerdem soll - nachdem jetzt die Zeile mit dem Pufferspeicher abgesetzt ist - die Überschrift wieder "Nennleistung" und nicht "Nennleistung/Volumen" heißen. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena-core/src/main/java/sophena/io/excel/HeatSheet.java</file>
+			<file>sophena-core/src/main/java/sophena/calc/EnergyResult.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/single/BoilerTableSection.java</file>
+			<file>sophena-core/src/main/java/sophena/math/energetic/GeneratedHeat.java</file>
+			<file>sophena-core/src/main/java/sophena/calc/EnergyCalculator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="70" opendate="2018-08-03 13:28:00" fixdate="2018-08-13 15:27:17">
+		<buginformation>
+			<summary>Volllaststunden eines Abnehmers werden bei einer Änderung des Gebäudetyps nicht geändert</summary>
+			<description>Wenn bei einem bestehenden Abnehmer der Gebäudetyp geändert wird, werden zwar die Volllaststunden des neuen Gebäudetyps eingeblendet, wenn man aber den Abnehmer speichert und neu öffnet, sind wieder die Volllaststunden des ursprünglichen Gebäudetyps da.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/editors/consumers/HeatDemandSection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="65" opendate="2018-07-04 12:26:17" fixdate="2018-09-07 15:36:42">
+		<buginformation>
+			<summary>Eingabe des Nutzungsgrads bei BHKW ausblenden</summary>
+			<description>Bei BHKW kann man wie bei Kesseln manuell den Nutzungsgrad eingeben, dieser wird dann jedoch nicht in den Berechnungen verwendet. Daher soll entweder die Nutzungsgradeingabe gesperrt oder ganz ausgeblendet werden.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/editors/producers/InfoPage.java</file>
+			<file>sophena/src/sophena/rcp/editors/producers/UtilisationRateSwitch.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/single/BoilerTableSection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="62" opendate="2018-07-03 08:06:09" fixdate="2018-07-14 11:35:19">
+		<buginformation>
+			<summary>Anzeige des max. Abscheidegrads bei Rauchgasreinigungen</summary>
+			<description>In der Detailansicht von Rauchgasreinigungen in der Produktdatenbank wird der max. Abscheidegrad als Absolutwert angezeigt, dahinter steht aber %. Richtig wäre eine Anzeige als Prozentwert.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/editors/basedata/products/FlueGasCleaningWizard.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2018-07-02 12:45:16" fixdate="2018-10-05 08:26:34">
+		<buginformation>
+			<summary>Heizlast bei einem Lastgang</summary>
+			<description>Wenn bei einem Abnehmer ein Lastgang importiert wird, berechnet Sophena die daraus resultierende Heizlast anhand der Volllaststunden des angegebenen Gebäudetyps. Das ist nicht richtig. Stattdessen sollte hier als Heizlast die maximale Heizlast aus dem Lastgang verwendet werden.  Deswegen sollen bei Abnehmern ein Lastgang immer separat erfasst werden, d.h. initial gibt es 3 Möglichkeiten:  -     verbrauchsgebundene Ermittlung -     bedarfgebundene Ermittlung -     Import eines Lastgangs  Wenn ein Abnehmer über einen Lastgang beschrieben wird, werden nur die dann relevanten Felder angezeigt und Gebäudetyp, Vollaststunden etc kann wegfallen. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/editors/consumers/InfoPage.java</file>
+			<file>sophena/src/sophena/rcp/wizards/ConsumerProfileWizard.java</file>
+			<file>sophena-core/src/main/java/sophena/io/datapack/Upgrade2.java</file>
+			<file>sophena/src/sophena/rcp/editors/consumers/InfoSection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="49" opendate="2018-02-16 13:09:00" fixdate="2018-02-16 13:17:45">
+		<buginformation>
+			<summary>92: Eine bei einem Abnehmer erfasste Hausübergabestation erscheint in den Investitionen und in der Wirtschaftlichkeit, auch wenn der Abnehmer deaktiviert wird.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/calc/CostResultItem.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="48" opendate="2018-02-16 13:01:00" fixdate="2018-02-16 13:04:53">
+		<buginformation>
+			<summary>93: Beim Löschen einer Hausübergabestation bleibt die Investitionssumme bestehen.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/editors/consumers/TransferStationSection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="47" opendate="2018-01-29 16:34:01" fixdate="2018-02-16 12:57:57">
+		<buginformation>
+			<summary>94: Beim Löschen eines Pufferspeichers bleibt die Investitionssumme und das Puffervolumen bestehen.</summary>
+			<description>Der Pufferspeicher kann aber auch ohne Produkt konfiguriert werden: der Nutzer könnte zuerst eine Investitionssumme angegeben, dann ein Produkt ohne/mit Preisangabe auswählen und dieses löschen -&gt; was soll dann passieren? Auch das Volumen kann vor der Produktauswahl festgelegt werden...  -&gt; Beim Löschen sollen die Werte immer explizit zurückgesetzt werden</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/editors/producers/InfoPage.java</file>
+			<file>sophena/src/sophena/model/ProductCosts.java</file>
+			<file>sophena/src/sophena/rcp/editors/heatnets/BufferTankSection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2018-01-22 11:51:55" fixdate="2018-11-15 09:27:44">
+		<buginformation>
+			<summary>82: Abnehmer: Beim Import eines Lastgangs mit Werten im 5-stelligen Bereich werden bei der Achsenbeschriftung der y-Achse Werte wie 2,56E4 angezeigt.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/charts/ProducerProfileChart.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/single/BoilerChart.java</file>
+			<file>sophena/src/sophena/rcp/charts/LoadProfileChart.java</file>
+			<file>sophena/src/sophena/rcp/editors/consumers/HeatDemandSection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="23" opendate="2018-01-22 11:02:04" fixdate="2018-10-05 08:28:50">
+		<buginformation>
+			<summary>51: Wirtschaftlichkeit: Anschlusskosten in den Projekt-Kosteneinstellungen werden nicht berücksichtigt</summary>
+			<description>Sie müssten jedoch bei der Berechnung der Wirtschaftlichkeit bei den kapitalgebundenen Kosten (Zeile 2, mit und ohne Förderung) vor deren Berechnung von den zugrundegelegten Investitionskosten abgezogen werden. Die angezeigten Investitionskosten bleiben unverändert.  diese werden als Summe für alle Abnehmer angeben</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/editors/results/single/CostResultPage.java</file>
+			<file>sophena/src/sophena/rcp/editors/CostSettingsPanel.java</file>
+			<file>sophena/src/sophena/calc/CostCalculator.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/single/ResultEditor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="9" opendate="2018-01-22 10:33:31" fixdate="2018-04-30 12:36:18">
+		<buginformation>
+			<summary>17: Investitionen: Beim Deaktivieren eines Kessels taucht er trotzdem unter Investitionen auf (aber nicht im Ergebnis)</summary>
+			<description>Kein Rechenfehler, aber nicht logisch  Dies ist (jetzt) dann der Fall, wenn der Tab `Investitionen` bereits offen ist und dann ein Kessel aktiviert/deaktiviert wird. Mann könnte einen `Refresh`-Button hinzufügen, alles andere (Event-Bus etc.) wird recht kompliziert.  **-&gt; Umsetzung ähnlich wie bei den Ergebnissen: bei Doppelklick den Tab schließen und wieder Öffnen -&gt; dies wäre eine gute Lösung**</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sophena/src/sophena/rcp/editors/costs/CostEditor.java</file>
+			<file>sophena/src/sophena/rcp/utils/Editors.java</file>
+			<file>sophena/src/sophena/rcp/editors/results/single/ResultEditor.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

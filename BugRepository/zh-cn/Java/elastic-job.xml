@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="elastic-job">
+	<bug id="310" opendate="2017-05-09 03:55:07" fixdate="2017-05-09 06:25:24">
+		<buginformation>
+			<summary>配置检查本机与注册中心的时间误差秒后，创建过多sequence节点</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-common/elastic-job-common-core/src/test/java/com/dangdang/ddframe/job/reg/zookeeper/ZookeeperRegistryCenterQueryWithoutCacheTest.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/main/java/com/dangdang/ddframe/job/reg/zookeeper/ZookeeperRegistryCenter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="283" opendate="2017-04-13 13:12:50" fixdate="2017-04-13 13:15:07">
+		<buginformation>
+			<summary>作业不设置overwrite且本地配置与注册中心不一致时，作业启动的cron应以注册中心为准 v2.1.0</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/api/JobSchedulerTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/schedule/SchedulerFacade.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/schedule/SchedulerFacadeTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/api/JobScheduler.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="276" opendate="2017-04-13 07:21:27" fixdate="2017-04-14 07:56:02">
+		<buginformation>
+			<summary>开启失效转移且分片任务执行后，任务会重复执行 by v2.1.0</summary>
+			<description>总共4个分片，但是每次0这个分片总是在4个分片执行完后，多了个线程把0这个分片又重新执行了一次 ，也就是每次一个轮训就要有一个分片被多执行一次，每次重复执行的那次的线程名称明显可以看出可其他的不太一致（当failover设置为true时存在此问题，failover为false是没有此问题） 下面是任务输出的信息：   [ob-myTestJob7-3] com.boot.job.MyJob    : ==========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=2, shardingParameter=C)  [ob-myTestJob7-2] com.boot.job.MyJob    : ========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=1, shardingParameter=B)  [ob-myTestJob7-4] com.boot.job.MyJob    : ========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=3, shardingParameter=D)  [ob-myTestJob7-1] com.boot.job.MyJob    : =========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=0, shardingParameter=A)  [stJob7_Worker-1] com.boot.job.MyJob    : =========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=0, shardingParameter=A)  [ob-myTestJob7-5] com.boot.job.MyJob    : ==========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=0, shardingParameter=A)  [ob-myTestJob7-7] com.boot.job.MyJob    : =========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=2, shardingParameter=C) [ob-myTestJob7-6] com.boot.job.MyJob     : ==========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=1, shardingParameter=B)  [ob-myTestJob7-8] com.boot.job.MyJob    : ========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=3, shardingParameter=D)  [stJob7_Worker-1] com.boot.job.MyJob   : =========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=0, shardingParameter=A)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/sharding/ExecutionService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="275" opendate="2017-04-13 06:56:42" fixdate="2017-04-13 12:49:22">
+		<buginformation>
+			<summary>2.1.0停掉zk以后，再重新启动，任务不会继续执行</summary>
+			<description>2.1.0停掉zk以后，再重新启动，任务不会继续执行</description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/instance/ShutdownListenerManagerTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/instance/ShutdownListenerManager.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/schedule/JobScheduleControllerTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/instance/InstanceService.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/schedule/SchedulerFacade.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/instance/InstanceServiceTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/schedule/JobScheduleController.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/schedule/SchedulerFacadeTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/listener/RegistryCenterConnectionStateListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="204" opendate="2016-12-30 11:11:27" fixdate="2016-12-30 11:19:05">
+		<buginformation>
+			<summary>异步事件执行消息顺序不一致导致数据库数据不准确</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-common/elastic-job-common-core/src/main/java/com/dangdang/ddframe/job/event/rdb/JobEventRdbStorage.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/test/java/com/dangdang/ddframe/job/event/rdb/JobEventRdbStorageTest.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/main/java/com/dangdang/ddframe/job/executor/AbstractElasticJobExecutor.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/main/java/com/dangdang/ddframe/job/event/type/JobExecutionEvent.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/test/java/com/dangdang/ddframe/job/event/rdb/JobEventRdbSearchTest.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/main/java/com/dangdang/ddframe/job/event/rdb/DatabaseType.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/test/java/com/dangdang/ddframe/job/event/JobExecutionEventTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="189" opendate="2016-12-03 15:00:36" fixdate="2016-12-07 04:09:47">
+		<buginformation>
+			<summary>管理后台执行失效操作，但任务还在执行</summary>
+			<description>elastic-job-lite-console 版本：2.0.3 操作前状态：运行状态 现象：在管理后台点击“失效”按钮，前台返回操作成功，但是后台任务还在执行，已确认和任务逻辑无关，Job里面什么逻辑都不写也是一样。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/sharding/ShardingService.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/sharding/ShardingServiceTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="165" opendate="2016-11-11 15:20:37" fixdate="2016-11-11 15:22:51">
+		<buginformation>
+			<summary>所有服务节点都disable时会导致分片线程死锁</summary>
+			<description>修改为服务节点都disable时不进行分片，直接返回</description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/sharding/ShardingService.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/sharding/ShardingServiceTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="158" opendate="2016-11-09 06:50:35" fixdate="2016-11-11 15:57:27">
+		<buginformation>
+			<summary>作业在暂停时错过分片时机将不会再分片</summary>
+			<description>情况如下图： ![1](https://cloud.githubusercontent.com/assets/5645103/20129588/ccb31974-a68b-11e6-8e25-33736772b5e8.jpg) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/server/ServerService.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/sharding/ShardingServiceTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/sharding/ShardingService.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/server/ServerServiceTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="149" opendate="2016-10-31 07:01:20" fixdate="2016-11-03 14:51:55">
+		<buginformation>
+			<summary>运维平台删除作业，偶尔会遇到删除不全的情况</summary>
+			<description>![image](https://cloud.githubusercontent.com/assets/9999969/19846422/16d56142-9f7a-11e6-91c8-31b97eec02a0.png)  ![image](https://cloud.githubusercontent.com/assets/9999969/19846529/1353024e-9f7b-11e6-9e12-100084a63ed5.png) 在运维平台 作业服务器一栏上，点击删除，偶尔会出现没有删除完全的情况，如图索引匹配服务的config只剩下leader节点，从而导致了bug#147的产生，只能手动删除这个节点,或者重新运行这个作业来解决</description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-lifecycle/src/test/java/com/dangdang/ddframe/job/lite/lifecycle/internal/operate/JobOperateAPIImplTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/storage/JobNodePath.java</file>
+			<file>elastic-job-lite/elastic-job-lite-lifecycle/src/main/java/com/dangdang/ddframe/job/lite/lifecycle/internal/operate/JobOperateAPIImpl.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/storage/JobNodePathTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-console/src/main/java/com/dangdang/ddframe/job/lite/console/controller/JobOperationController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="146" opendate="2016-10-28 08:00:55" fixdate="2016-10-28 08:07:56">
+		<buginformation>
+			<summary>作业的线程池复用问题</summary>
+			<description>修改之前的作业执行时，每次执行实例使用一个新的线程池，造成了没有必要的浪费。 修正为每个作业使用同一个线程池。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/executor/handler/ExecutorServiceHandler.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/test/EmbedZookeeperTestExecutionListener.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/job/lite/fixture/handler/SimpleExecutorServiceHandler.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/executor/AllExecutorTests.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/util/AllUtilTests.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/election/LeaderElectionService.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/integrate/AbstractBaseStdJobTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/executor/AbstractElasticJobExecutor.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/sharding/ShardingService.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/executor/handler/impl/DefaultExecutorServiceHandler.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/main/java/com/dangdang/ddframe/job/cloud/scheduler/mesos/StatisticsProcessor.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/main/java/com/dangdang/ddframe/job/cloud/scheduler/mesos/TaskLaunchProcessor.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/event/JobEventBus.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/execution/ExecutionService.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/main/java/com/dangdang/ddframe/job/cloud/scheduler/state/running/RunningService.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/util/concurrent/ExecutorServiceObject.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/util/concurrent/ExecutorServiceObjectTest.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-executor/src/main/java/com/dangdang/ddframe/job/cloud/executor/TaskExecutor.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/executor/handler/ExecutorServiceHandlerRegistry.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/executor/handler/ExecutorServiceHandlerRegistryTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="145" opendate="2016-10-26 11:22:43" fixdate="2016-10-28 14:04:19">
+		<buginformation>
+			<summary>修改作业日志的数据库连接后日志还是会写入老的数据库</summary>
+			<description>elastic-job-console控制端修改作业日志的数据库连接后日志还是会写入原来的数据库；虽然zk中的配置已经更新了，但是没有清除listeners的缓存；  `  ```     private final ConcurrentHashMap&lt;String, JobEventListener&gt; listeners = new ConcurrentHashMap&lt;&gt;();      void register(final Collection&lt;JobEventConfiguration&gt; jobEventConfigs) {         for (JobEventConfiguration each : jobEventConfigs) {             register(each.createJobEventListener());         }     }      private void register(final JobEventListener listener) {         if (null != listener &amp;&amp; null == listeners.putIfAbsent(listener.getIdentity(), listener)) {             eventBus.register(listener);         }     } ```  ` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/config/ConfigurationListenerManager.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/event/JobEventBusTest.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/event/rdb/JobEventRdbDataSourceFactoryTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/event/JobEventBus.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/event/rdb/JobEventRdbDataSourceFactory.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/schedule/JobScheduleController.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/test/java/com/dangdang/ddframe/job/lite/internal/config/ConfigurationListenerManagerTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="123" opendate="2016-08-02 10:27:22" fixdate="2016-08-12 11:18:37">
+		<buginformation>
+			<summary>单机跑定时任务，zk断开后重连，没有触发leader选举</summary>
+			<description>单机跑定时任务，在任务里打断点，过一两分钟等待zk session超时断开后，会触发重连zk，但此时会一直出现  com.dangdang.ddframe.job.internal.election.LeaderElectionService - Elastic job: leader node is electing, waiting for 100 ms at server 'xxx.xxx.xxx'，没有触发leader选举，导致程序一直卡在等待选举leader的死循环里，不会再继续往下执行。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/server/JobOperationListenerManager.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/internal/election/LeaderElectionService.java</file>
+			<file>elastic-job-api/src/main/java/com/dangdang/ddframe/job/api/executor/AbstractElasticJobExecutor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="115" opendate="2016-06-22 10:38:01" fixdate="2016-11-11 09:38:07">
+		<buginformation>
+			<summary>console,新增注册中心， 没有连接成功，后台一直报错，然后删除。 但是后台还是一直报错。</summary>
+			<description>删除后，应该结束此注册中心的 试探拦截。 失败了就结束了。 别再后台老重试了。我都删除了，后台就没必要连接了。   ] 2016-06-22 18:35:48,282 --http-bio-8080-exec-9-SendThread(192.168.10.163:2128)-- [org.apache.zookeeper.ClientCnxn] Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect  java.net.ConnectException: Connection refused: no further information     at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method) ~[na:1.8.0_45]     at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717) ~[na:1.8.0_45]     at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361) ~[zookeeper-3.4.6.jar:3.4.6-1569965]     at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081) ~[zookeeper-3.4.6.jar:3.4.6-1569965] [WARN ] 2016-06-22 18:35:48,446 --http-bio-8080-exec-3-SendThread(192.168.10.163:2128)-- [org.apache.zookeeper.ClientCnxn] Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect  java.net.ConnectException: Connection refused: no further information     at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method) ~[na:1.8.0_45]     at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717) ~[na:1.8.0_45]     at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361) ~[zookeeper-3.4.6.jar:3.4.6-1569965]     at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081) ~[zookeeper-3.4.6.jar:3.4.6-1569965] [INFO ] 2016-06-22 18:35:49,383 --http-bio-8080-exec-9-SendThread(192.168.10.163:2128)-- [org.apache.zookeeper.ClientCnxn] Opening socket connection to server 192.168.10.163/192.168.10.163:2128. Will not attempt to authenticate using SASL (unknown error)  [INFO ] 2016-06-22 18:35:49,550 --http-bio-8080-exec-3-SendThread(192.168.10.163:2128)-- [org.apache.zookeeper.ClientCnxn] Opening socket connection to server 192.168.10.163/192.168.10.163:2128. Will not attempt to authenticate using SASL (unknown error)  [WARN ] 20 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-common/elastic-job-common-core/src/main/java/com/dangdang/ddframe/job/reg/zookeeper/ZookeeperRegistryCenter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="92" opendate="2016-05-18 14:51:55" fixdate="2016-05-19 08:43:47">
+		<buginformation>
+			<summary>1.0.6版本，修改分片参数后，导致仅单一节点执行的监听报异常</summary>
+			<description>资源:  1台服务器(job和zk在一起), 不能发图我就发代码了。 代码如下： 1.   main方法    public static void main(final String[] args) {        ZookeeperConfiguration zkConfig = new ZookeeperConfiguration("localhost:2181", "cy-job", 1000, 3000, 3);      CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(zkConfig);        regCenter.init();                                                                                         ```  JobConfiguration jc1 = new JobConfiguration("999", SimpleJobDemo.class, 3, "0/10 * * * * ?");             jc1.setShardingItemParameters("0=a,1=b,2=c");                                                             new JobScheduler(regCenter, jc1, new OnceJobListener(1000, 10000)).init();                               ```   }                                                                                                                                    1. 监听使用的是仅单一节点执行的监听    public class OnceJobListener extends AbstractDistributeOnceElasticJobListener {        public OnceJobListener(long startedTimeoutMilliseconds, long completedTimeoutMilliseconds) {        super(startedTimeoutMilliseconds, completedTimeoutMilliseconds);    }        @Override    public void doBeforeJobExecutedAtLastStarted(JobExecutionMultipleShardingContext shardingContext) {        System.out.println("任务执行前监听");    }        @Override    public void doAfterJobExecutedAtLastCompleted(JobExecutionMultipleShardingContext shardingContext) {        System.out.println("任务执行后监听");    }    } 2. 启动job    监听日志正常输出 3. 修改分片参数    我是在监控平台帮分片修改为1，分片序号修改为0=a，保存。 4. 控制台监听报异常  [JOB] 2016-05-18-22:26:23.486 [DEFAULT.999_Scheduler_Worker-1] ERROR c.d.d.j.p.j.t.s.AbstractSimpleElasticJob - Elastic job: exception occur in job processing... com.dangdang.ddframe.job.exception.JobTimeoutException: Job timeout. timeout mills is 10000.     at com.dangdang.ddframe.job.api.listener.AbstractDistributeOnceElasticJobListener.afterJobExecuted(AbstractDistributeOnceElasticJobListener.java:99) ~[elastic-job-core-1.0.6.jar:na]     at com.dangdang.ddframe.job.internal.schedule.JobFacade.afterJobExecuted(JobFacade.java:225) ~[elastic-job-core-1.0.6.jar:na]     at com.dangdang.ddframe.job.internal.job.AbstractElasticJob.execute(AbstractElasticJob.java:68) ~[elastic-job-core-1.0.6.jar:na]     at org.quartz.core.JobRunShell.run(JobRunShell.java:202) [quartz-2.2.2.jar:na]     at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) [quartz-2.2.2.jar:na] [JOB] 2016-05-18-22:26:23.492 [DEFAULT.999_Scheduler_Worker-1] DEBUG c.d.d.r.e.RegExceptionHandler - Elastic job: ignored exception for: KeeperErrorCode = NoNode for /cy-job/999/offset/0 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/exception/JobTimeoutException.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/guarantee/GuaranteeServiceTest.java</file>
+			<file>elastic-job-example/src/main/java/com/dangdang/example/elasticjob/fixture/repository/FooRepository.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/sharding/ShardingService.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/guarantee/GuaranteeService.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/reg/zookeeper/ZookeeperRegistryCenter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="81" opendate="2016-04-07 08:16:14" fixdate="2016-04-07 08:20:06">
+		<buginformation>
+			<summary>使用集中清理作业上次结束状态代替各自清理，各自清理可能导致作业机下线而产生未清理的结束状态</summary>
+			<description>原来是作业主节点集中清理上次结束状态，后来为了提速改为作业节点各自清理自己的上次运行状态。 参见#62。 如果各自清理上次运行状态，则一旦作业还未来得及启动时即崩溃，那么改作业将不会清理上次运行状态，导致本该执行的失效转移不执行。 本次修复是回到 #62 优化之前的状态。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/plugin/job/type/ElasticJobAssert.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/execution/ExecutionServiceTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/job/AbstractElasticJob.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/execution/ExecutionService.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/schedule/JobFacadeTest.java</file>
+			<file>elastic-job-spring/src/main/java/com/dangdang/ddframe/job/spring/schedule/SpringJobScheduler.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/schedule/JobFacade.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2016-03-22 02:22:58" fixdate="2016-03-28 13:50:43">
+		<buginformation>
+			<summary>流式处理且失效转移时，失效转移的分片项不能执行一次即停止</summary>
+			<description>机器一处理5-9分片的数据，机器二处理0-4分片的数据，前提条件：所有分片数据均能一直取到数据， 当机器二down机，进入失效转移阶段，理论上机器一由于一直能取到数据，不会处理失效转移的分片数据，但是机器一会由于重新需要分片，跳出流式处理循环，在下一次execute中，会遇到jobFacade.failoverIfNecessary(); 这样导致会接受分片4的失效转移数据，从而进入4分片的流式处理阶段，导致正常的5-9分片数据得不到处理 ![image](https://cloud.githubusercontent.com/assets/17996475/13940460/6458748e-f018-11e5-8b49-f3ded6810463.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/failover/FailoverService.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/schedule/JobFacadeTest.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/execution/ExecutionContextServiceTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/execution/ExecutionContextService.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/schedule/JobFacade.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="69" opendate="2016-03-17 10:41:15" fixdate="2016-03-17 10:42:23">
+		<buginformation>
+			<summary>分片时如在Zk中有的作业服务器sharding节点不存在将导致无法重新分片</summary>
+			<description>之前使用事务删除所有的sharding节点，但如果有的server节点下sharding不存在，则事务将不会提交，导致删除所有的sharding节点失败，而导致无法重新分片。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/sharding/ShardingServiceTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/sharding/ShardingService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="64" opendate="2016-03-10 03:21:53" fixdate="2016-11-10 15:28:59">
+		<buginformation>
+			<summary>Spring命名空间，若注册多个同Class的作业Bean，会导致作业Bean查找不准确</summary>
+			<description>目前作业的spring命名空间是使用作业类型查找bean，如果注册两个或以上的相同类型的bean，会导致查找不准确，多个bean会全部对应至第一个bean。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/main/java/com/dangdang/ddframe/job/lite/spring/namespace/parser/common/AbstractJobBeanDefinitionParser.java</file>
+			<file>elastic-job-lite/elastic-job-lite-core/src/main/java/com/dangdang/ddframe/job/lite/api/JobScheduler.java</file>
+			<file>elastic-job-example/elastic-job-example-jobs/src/main/java/com/dangdang/ddframe/job/example/job/simple/SpringSimpleJob.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/job/lite/spring/integrate/AbstractJobSpringIntegrateTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/job/lite/fixture/FooSimpleElasticJob.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/job/lite/spring/integrate/AllSpringIntegrateTests.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/job/lite/spring/integrate/JobSpringNamespaceWithEventTraceRdbTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/job/lite/spring/integrate/JobSpringNamespaceWithListenerTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/job/lite/spring/namespace/AllSpringNamespaceTests.java</file>
+			<file>elastic-job-example/elastic-job-example-jobs/src/main/java/com/dangdang/ddframe/job/example/job/dataflow/SpringDataflowJob.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/main/java/com/dangdang/ddframe/job/lite/spring/schedule/SpringJobScheduler.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/AllLiteSpringTests.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/job/lite/spring/integrate/JobSpringNamespaceWithJobPropertiesTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/test/java/com/dangdang/ddframe/job/lite/AllSpringJobTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2016-01-08 09:56:06" fixdate="2016-01-29 06:06:44">
+		<buginformation>
+			<summary>任务在控制台暂停之后，无法恢复运行</summary>
+			<description>问题： 1、控制台暂停任务之后，点击恢复，本次任务无法继续运行 2、控制台暂停任务之后，重设任务执行时间，也无法再次运行 原因： AbstractElasticJob中的stop属性一旦被修改为true之后，没有在任务状态发生变化时，同步变化 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/config/ConfigurationListenerManagerTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/reg/base/CoordinatorRegistryCenter.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/execution/ExecutionServiceTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/api/Stopable.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/failover/FailoverService.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/server/JobOperationListenerManagerTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/server/JobOperationListenerManager.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/api/JobScheduler.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/config/ConfigurationListenerManager.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/failover/FailoverServiceTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/job/AbstractElasticJob.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/execution/ExecutionService.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/integrate/AbstractBaseStdJobTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/config/ConfigurationService.java</file>
+			<file>elastic-job-spring/src/test/java/com/dangdang/ddframe/job/spring/AbstractJobSpringIntegrateTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/api/ElasticJob.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/schedule/JobRegistry.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2015-11-27 10:03:19" fixdate="2015-11-27 10:17:04">
+		<buginformation>
+			<summary>注册中心宕机较长时间后重新恢复，作业无法继续执行</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/job/internal/server/ServerServiceTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/server/ServerService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="13" opendate="2015-10-17 17:34:13" fixdate="2015-10-21 14:49:46">
+		<buginformation>
+			<summary>作业抛出运行时异常后，后续不会继续触发</summary>
+			<description>job抛出运行时异常后，后续不会继续触发。相当于任务停止。  在job中添加try catch 可以解决此问题。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/api/AbstractOneOffElasticJob.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1" opendate="2015-09-25 05:10:21" fixdate="2015-09-25 11:48:05">
+		<buginformation>
+			<summary>复杂网络环境下IP地址获取不准确的问题</summary>
+			<description>问题发生位置 工程：elastic-job-core，类：com.dangdang.ddframe.job.internal.env.RealLocalHostService，方法：getLocalHost(). ![Uploading 1.jpg…]()  说明：对于一般性网络环境，代码段：InetAddress.getLocalHost();，可以正确的获取到本机的ip。 对于复杂的企业环境，企业网络管理员可能会进行部门子网、小组子网的划分，并最终链入企业主路由； 这样一台员工主机可能会有多个内网ip，代码段：InetAddress.getLocalHost();默认会返回当前主机链接到最近网络拓扑路径的路由所分配的子网ip。  综上，代码段：InetAddress.getLocalHost();得到的ip可能与实际链接到zookeeper的ip出现不一致。 可以想象的到，错误的将子网路由ip作为链接到zookeeper的ip，会导致同子网下，不同机器链接zookkeeper出现判断错误。  建议修改代码：https://github.com/amao12580/RSSReader/blob/master/core.base/src/main/java/per/rss/core/base/util/IPUtils.java </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/env/LocalHostService.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/failover/FailoverService.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/env/RealLocalHostService.java</file>
+			<file>elastic-job-spring/src/main/java/com/dangdang/ddframe/job/spring/schedule/SpringJobFactory.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/api/AbstractElasticJob.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

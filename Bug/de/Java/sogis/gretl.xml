@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>26</id>
+		<title>Fix building on Travis</title>
+		<body>- see log - use different maven repo for geotools: https://repo.osgeo.org/repository/release/</body>
+		<created>2020-04-28 11:40:56</created>
+		<closed>2020-05-18 11:11:42</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>Überbleibsel aus früheren Zeiten</title>
+		<body>Diese Zeile muss wohl nicht mehr so lauten: https://github.com/sogis/gretl/blob/bcac81d72ed93b05efd43645108ba9b58deb6334/Jenkinsfile#L14</body>
+		<created>2019-05-28 10:24:50</created>
+		<closed>2019-06-08 12:28:45</closed>
+	</bug>
+	<bug>
+		<id>4</id>
+		<title>Db2Db Task: Manchmal Fehlermeldung, wenn Umlaute im SQL-Skript vorkommen</title>
+		<body>Wenn man das angehängte SQL-Skript [awjf_biotopbaeume_pub_biotopbaeume_biotopbaum.sql.txt](https://github.com/sogis/gretl/files/2894261/awjf_biotopbaeume_pub_biotopbaeume_biotopbaum.sql.txt) in einem Db2Db Task verwendet, Meldet GRETL:  ``` Exception while executing processAllTransferSets() ch.so.agi.gretl.util.GretlException: Wrong encoding (not UTF-8) detected in File /home/gradle/project/awjf_biotopbaeume_pub_biotopbaeume_biotopbaum.sql ```  Gemäss Noemi hat es damit zu tun, dass der Db2Db Task das SQL-Skript in mehreren Teilen einliest; wenn am Ende eines solchen Teils der Datei ungünstigerweise gerade ein spezielles Zeichen wie ein Umlaut steht, kommt es zu dieser nicht ganz präzisen Fehlermeldung.  Workaround ist, irgendwo eher am Anfang der Datei z.B. einen Leerschlag einzufügen.</body>
+		<created>2019-02-22 13:45:13</created>
+		<closed>2019-03-16 08:56:36</closed>
+	</bug>
+</bugs>

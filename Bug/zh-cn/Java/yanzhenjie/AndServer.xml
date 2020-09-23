@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>196</id>
+		<title>@RequestMapping path问题</title>
+		<body>有子path时，一定要写在@RequestMapping(path = "/user")上，然后再添加子path，如@PostMapping(path ="/aa", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)，这样调用action才能成功；要是没写@RequestMapping(path = "/user")，直接写成@PostMapping(path ="/user/aa", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)的话，调用会返回404，这个bug我调了半天。。。</body>
+		<created>2019-06-26 01:41:55</created>
+		<closed>2019-07-02 01:25:34</closed>
+	</bug>
+	<bug>
+		<id>175</id>
+		<title>参数值有“=”时无法获取到参数值</title>
+		<body>![1234561](https://user-images.githubusercontent.com/8955999/56027504-c2476c80-5d48-11e9-8b83-4cad947e5c1c.png) ![1234562](https://user-images.githubusercontent.com/8955999/56027512-c5daf380-5d48-11e9-8872-2d2cf33087dd.png) </body>
+		<created>2019-04-12 09:31:20</created>
+		<closed>2019-07-02 01:25:34</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>POST请求参数解析Missing问题</title>
+		<body>按照Content-Type的定义，其指令格式为 media-type; [charset|boundary] https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type  文件StandardRequest.java第394行对请求的media type做全等判断， 仅判断了application/x-www-form-urlencoded字符串，这样当有些请求带charset时就会解析不到参数了。</body>
+		<created>2019-03-12 06:55:19</created>
+		<closed>2019-07-02 01:25:33</closed>
+	</bug>
+	<bug>
+		<id>160</id>
+		<title>一个空指针问题</title>
+		<body>java.lang.NullPointerException                                                                         at com.yanzhenjie.andserver.http.session.StandardSessionManager.&lt;init&gt;(StandardSessionManager.java:36)                                                                         at com.yanzhenjie.andserver.DispatcherHandler.&lt;init&gt;(DispatcherHandler.java:74)                                                                         at com.yanzhenjie.andserver.Server$1.run(Server.java:89)                                                                         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)                                                                         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)                                                                         at java.lang.Thread.run(Thread.java:841)</body>
+		<created>2019-03-01 09:58:39</created>
+		<closed>2019-07-02 01:25:33</closed>
+	</bug>
+	<bug>
+		<id>145</id>
+		<title>当遇到POST提交参数中有base64编码图片时，可能存在问题</title>
+		<body>当客户端是C#的时候，请求的body一般是手动组装，如果imageBase64 字符串没有进行encode的时候，参数值中会出现 “=” 号，那么下面这段代码可能存在问题：  ```     @NonNull     private static MultiValueMap&lt;String, String&gt; parseParameters(@NonNull String input) {         MultiValueMap&lt;String, String&gt; parameters = new LinkedMultiValueMap&lt;&gt;();         StringTokenizer tokenizer = new StringTokenizer(input, "&amp;");         while (tokenizer.hasMoreElements()) {             String element = tokenizer.nextToken();             int end = element.lastIndexOf("=");              if (end &gt; 0) {                 String key = element.substring(0, end);                 if (end + 1 &lt;= element.length()) {                     String value = element.substring(end + 1, element.length());                     parameters.add(key, UrlCoder.urlDecode(value, Charsets.UTF_8));                 }             }         }         return parameters;     } ```  `int end = element.lastIndexOf("=");` 这里定位到最后一个 '=' 会导致截取的参数名不正确，从而引发 `ParamMissingException`   [test_data.txt](https://github.com/yanzhenjie/AndServer/files/2772336/test_data.txt)  </body>
+		<created>2019-01-18 09:29:17</created>
+		<closed>2019-01-23 07:30:21</closed>
+	</bug>
+	<bug>
+		<id>134</id>
+		<title>get参数解析错误</title>
+		<body>例如 get请求中有一个data参数值为{"a":"="}  请求 http://127.0.0.1/example?data=%7B"a"%3A"%3D"%7D  使用参数注解 @RequestParam("data") String data  调试得到这个请求的参数 key为 data={"a":" value为 "}  这显然是不对的。  也就是如果请求参数的值中含有=这个字符串，解析会失败。</body>
+		<created>2018-12-11 13:11:02</created>
+		<closed>2019-01-22 02:18:16</closed>
+	</bug>
+	<bug>
+		<id>115</id>
+		<title>@DeleteMapping报错</title>
+		<body>W/System.err: java.lang.ClassCastException: org.apache.httpcore.message.BasicHttpRequest cannot be cast to org.apache.httpcore.HttpEntityEnclosingRequest W/System.err:     at com.yanzhenjie.andserver.http.StandardRequest.getBody(StandardRequest.java:412) W/System.err:     at com.yanzhenjie.andserver.http.multipart.StandardMultipartResolver.isMultipart(StandardMultipartResolver.java:111) W/System.err:     at com.yanzhenjie.andserver.DispatcherHandler.handle(DispatcherHandler.java:123) W/System.err:     at com.yanzhenjie.andserver.DispatcherHandler.handle(DispatcherHandler.java:118) W/System.err:     at org.apache.httpcore.protocol.HttpService.doService(HttpService.java:400) W/System.err:     at org.apache.httpcore.protocol.HttpService.handleRequest(HttpService.java:313) W/System.err:     at org.apache.httpcore.impl.bootstrap.Worker.run(Worker.java:65) W/System.err:     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112) W/System.err:     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587) W/System.err:     at java.lang.Thread.run(Thread.java:818)</body>
+		<created>2018-10-08 09:32:22</created>
+		<closed>2018-12-03 04:02:32</closed>
+	</bug>
+	<bug>
+		<id>112</id>
+		<title>@Website 不能支持多个的问题</title>
+		<body>被@Website 注解的类在apt生成的WebsiteRegister类中只能注册一个的问题</body>
+		<created>2018-09-29 08:08:02</created>
+		<closed>2018-12-03 04:02:32</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>onError:bind failed: EADDRINUSE (Address already in use) 版本 ：1.1.3</title>
+		<body>完全按照sample的用法调用shutdown，然后收到server stop回调后再调用start接口，偶现onError:bind failed: EADDRINUSE (Address already in use)，概率还不算小，基本每天都会碰到。</body>
+		<created>2018-03-18 07:50:50</created>
+		<closed>2018-05-15 05:10:19</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>定义接口之后无法访问The resource [//login] does not exist.</title>
+		<body>andServer = (Server) AndServer.serverBuilder()                 .inetAddress(NetUtils.getLocalIPAddress())                 .port(8848)                 .timeout(10, TimeUnit.SECONDS)                 .listener(mListener)                 .registerHandler("/login",new LoginHandler())                 .build();          InetAddress address = NetUtils.getLocalIPAddress();         address.getHostAddress();         andServer.startup();  启动服务没问题但是访问接口会返回的是 The resource [//login] does not exist.</body>
+		<created>2018-03-16 08:49:37</created>
+		<closed>2018-03-16 13:59:25</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>assets下的网页无法打开</title>
+		<body>你好，HttpRequestPauser中getRequestPath方法在上一次的改动中导致了返回值多一个‘/’，打开部署的网站显示The resource [//index.html] does not exist.</body>
+		<created>2018-03-13 04:58:49</created>
+		<closed>2018-03-16 13:59:25</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>短时间内多次请求同一接口，每次请求传参都不同，发现返回的结果会错乱，A请求传的参数会出现在B请求中</title>
+		<body>短时间内多次请求同一接口，每次请求传参都不同，发现返回的结果会错乱，A请求传的参数会出现在B请求中</body>
+		<created>2018-01-15 09:34:52</created>
+		<closed>2019-07-02 01:29:53</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>onError:bind failed: EADDRINUSE (Address already in use)   版本 ：1.1.0</title>
+		<body>开启Server失败，回调了onError方法 @Override         public void onError(Exception e) {    }    是在重启应用的时候出现的，重启好几次应用一直回调onError（），退出应用的时候，已经调用了mServer.shutdown()</body>
+		<created>2018-01-10 01:53:36</created>
+		<closed>2018-05-15 05:10:55</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>StorageWebsite  中文路径无法访问</title>
+		<body>中文路径如何启动服务器</body>
+		<created>2017-12-12 04:30:12</created>
+		<closed>2018-03-11 04:34:51</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="mobile.forestviolate.user">
+	<bug id="93" opendate="2016-11-08 09:47:21" fixdate="2016-11-09 16:22:48">
+		<buginformation>
+			<summary>Подложка Kosmosnimki сдвинута</summary>
+			<description>Подложка из источника http://dev.citorus.ru/siren/relief имеет несовместимую с мобильным СК, что приводит к сдвигу подложки.  @PoohE - предлагаю поменять на ОСМ или на Спутник.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/MainApplication.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/SettingsConstants.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/RegionSyncService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="91" opendate="2016-11-07 14:33:21" fixdate="2016-11-07 15:34:50">
+		<buginformation>
+			<summary>Пустой список сообщений</summary>
+			<description>Чистая установка. В списке нет ни одного сообщения (карта тоже пустая). Пользователь - анонимный.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/util/RegionSyncService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="87" opendate="2016-10-26 09:26:52" fixdate="2016-11-07 12:43:43">
+		<buginformation>
+			<summary>При переключении языка создается второй аккаунт в системе</summary>
+			<description>Сейчас 2 аккаунта: 1. Сохрани лес 2. Safe forest  Это приводит к паденю при синхронизации </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/Constants.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/LoginFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MessageListFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/MapUtil.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/PreferencesActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/AccountActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/RegionSyncService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="86" opendate="2016-10-18 09:22:56" fixdate="2016-10-19 14:03:45">
+		<buginformation>
+			<summary>Падение при первом запуске</summary>
+			<description>``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.safeforest/com.nextgis.safeforest.activity.MainActivity}: java.lang.IllegalArgumentException: No view found for id 0x7f0e009f (com.nextgis.safeforest:id/login_frame) for fragment LoginFragment{41db7498 #0 id=0x7f0e009f NGWLogin}     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2215)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2264)     at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3755)     at android.app.ActivityThread.access$900(ActivityThread.java:144)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1211)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:136)     at android.app.ActivityThread.main(ActivityThread.java:5139)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:796)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:612)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.IllegalArgumentException: No view found for id 0x7f0e009f (com.nextgis.safeforest:id/login_frame) for fragment LoginFragment{41db7498 #0 id=0x7f0e009f NGWLogin}     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1070)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1241)     at android.support.v4.app.FragmentManagerImpl.dispatchActivityCreated(FragmentManager.java:2053)     at android.support.v4.app.FragmentController.dispatchActivityCreated(FragmentController.java:165)     at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:543)     at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1171)     at android.app.Activity.performStart(Activity.java:5241)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2178)     ... 12 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="83" opendate="2016-07-13 13:03:33" fixdate="2016-10-19 14:03:46">
+		<buginformation>
+			<summary>Поворот экрана закрывает диалог выбора слоев/подложек</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MessageListFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="80" opendate="2016-06-12 20:23:16" fixdate="2016-06-14 12:38:27">
+		<buginformation>
+			<summary>После работы с клавиатурой карта не ресайзится</summary>
+			<description>На смартфоне - небольшой экран, после ввода сообщения, часть занятая клавиатурой так и не заполнена картой. На планшете такого не было. ![screenshot_2016-06-12-22-31-35](https://cloud.githubusercontent.com/assets/1708122/15993614/ff09f500-30fc-11e6-91e0-d6ae567e1dfd.png) ![screenshot_2016-06-12-22-32-30](https://cloud.githubusercontent.com/assets/1708122/15993616/1a50aa0c-30fd-11e6-9bff-91e9a4efc204.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="79" opendate="2016-06-12 16:47:03" fixdate="2016-06-13 17:12:34">
+		<buginformation>
+			<summary>Не обновляется таблица при изменении статуса сообщения</summary>
+			<description>Создал точку. В списке (таблице) оповещений появился статус - карандашик. Значит идет отправка. Смотрю на сервере точка уже есть. Значит статус должен был поменяться на треугольничек. А он не поменялся.  Иконка статуса поменялась только при применении фильтра - отключил показ других типов сообщений. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MessageListFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="78" opendate="2016-06-12 16:43:49" fixdate="2016-06-13 17:12:34">
+		<buginformation>
+			<summary>Не сохраняются координаты точки</summary>
+			<description>Создал пару точек (рубка и пожар) все кроме координат сохранилось.  http://176.9.38.120/fv/api/resource/83/feature/72 http://176.9.38.120/fv/api/resource/83/feature/73  ![screenshot_2016-06-12-20-26-38](https://cloud.githubusercontent.com/assets/1708122/15992459/204ba25a-30de-11e6-9ca1-3936f1474b4f.png)  Фильтр на сервере точно не причем. Вот тоже для администратора: http://176.9.38.120/fv/api/resource/64/feature/72 http://176.9.38.120/fv/api/resource/64/feature/73 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2016-06-12 16:37:19" fixdate="2016-06-16 13:22:12">
+		<buginformation>
+			<summary>В диалоге списка слоев отображены подложки </summary>
+			<description>Сейчас нет возможности отключить ненужные пользователю слои, которые могут приводить к торможению: - лесоделение - Ландсат - полигоны инспекторов  В диалоге выбора слоев надо отдельно перечислить слои и под чертой - подложки в виде радиокнопки, чтобы можно было только выбрать одну.  ![screenshot_2016-06-12-20-17-26](https://cloud.githubusercontent.com/assets/1708122/15992433/4b35459e-30dd-11e6-9ac7-aaecb68ad433.png)  Предлагаю по-умолчанию вообще только точки сообщений показывать - тогда программа будет отзывчевее. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/RegionSyncService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2016-06-12 16:30:47" fixdate="2016-06-14 12:38:27">
+		<buginformation>
+			<summary>Качество картинок первого экрана</summary>
+			<description>Первый запуск сопровождается экраном с 4-мя страницами с объяснением как пользоваться программой. 3 страницы из 4-х имеют картинки низкого качества, что выглядит неинформативно и некрасиво.  ![screenshot_2016-06-12-20-07-20](https://cloud.githubusercontent.com/assets/1708122/15992404/424a856c-30dc-11e6-85ca-8f5df0434ed3.png)  ![screenshot_2016-06-12-20-07-34](https://cloud.githubusercontent.com/assets/1708122/15992406/4998fce0-30dc-11e6-991b-5133a1b72bc2.png)  ![screenshot_2016-06-12-20-08-09](https://cloud.githubusercontent.com/assets/1708122/15992408/4d702fbe-30dc-11e6-8ed1-15a03b40ac9d.png)  Как минимум картинки должны растягиваться таким образом, что бы не вылезать за границу экрана. Т.е. должна учитываться ширина и высота. Кроме того, необходимо ввести ограничение - 90-85% от площади. Т.е. marging 5-7% от краев. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/IntroActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="73" opendate="2016-06-04 19:01:41" fixdate="2016-06-07 16:03:19">
+		<buginformation>
+			<summary>Не загружаются оповещения от пользователей</summary>
+			<description>В связи с новым способом работы со  слоем оповещения - через фильтры, чтение из слоя сообщений граждан запрещено - надо через фильтр. Сейчас это не реализовано и сообщения не подгружаются. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/util/MapUtil.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/mapui/MessageLayerUI.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/RegionSyncService.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/Constants.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="71" opendate="2016-05-19 12:14:13" fixdate="2016-05-20 12:30:24">
+		<buginformation>
+			<summary>Падение при регистрации пользователя</summary>
+			<description>``` java.lang.NullPointerException     at com.nextgis.maplibui.fragment.NGWLoginFragment$LocalTextWatcher.afterTextChanged(NGWLoginFragment.java:354)     at com.nextgis.safeforest.fragment.LoginFragment$EmailWatcher.afterTextChanged(LoginFragment.java:345)     at android.widget.TextView.sendAfterTextChanged(TextView.java:7455)     at android.widget.TextView$ChangeWatcher.afterTextChanged(TextView.java:9315)     at android.text.SpannableStringBuilder.sendAfterTextChanged(SpannableStringBuilder.java:970)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:497)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:435)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:30)     at android.view.inputmethod.BaseInputConnection.replaceText(BaseInputConnection.java:678)     at android.view.inputmethod.BaseInputConnection.commitText(BaseInputConnection.java:196)     at com.android.internal.widget.EditableInputConnection.commitText(EditableInputConnection.java:183)     at com.android.internal.view.IInputConnectionWrapper.executeMessage(IInputConnectionWrapper.java:318)     at com.android.internal.view.IInputConnectionWrapper$MyHandler.handleMessage(IInputConnectionWrapper.java:87)     at android.os.Handler.dispatchMessage(Handler.java:99)     at android.os.Looper.loop(Looper.java:155)     at android.app.ActivityThread.main(ActivityThread.java:5520)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1029)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:796)     at dalvik.system.NativeStart.main(Native Method) ```  ``` java.lang.NullPointerException     at com.nextgis.maplibui.fragment.NGWLoginFragment$LocalTextWatcher.afterTextChanged(NGWLoginFragment.java:354)     at com.nextgis.safeforest.fragment.LoginFragment$PasswordWatcher.afterTextChanged(LoginFragment.java:337)     at android.widget.TextView.sendAfterTextChanged(TextView.java:7455)     at android.widget.TextView$ChangeWatcher.afterTextChanged(TextView.java:9315)     at android.text.SpannableStringBuilder.sendAfterTextChanged(SpannableStringBuilder.java:970)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:497)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:435)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:30)     at android.view.inputmethod.BaseInputConnection.replaceText(BaseInputConnection.java:678)     at android.view.inputmethod.BaseInputConnection.commitText(BaseInputConnection.java:196)     at com.android.internal.widget.EditableInputConnection.commitText(EditableInputConnection.java:183)     at com.android.internal.view.IInputConnectionWrapper.executeMessage(IInputConnectionWrapper.java:318)     at com.android.internal.view.IInputConnectionWrapper$MyHandler.handleMessage(IInputConnectionWrapper.java:87)     at android.os.Handler.dispatchMessage(Handler.java:99)     at android.os.Looper.loop(Looper.java:155)     at android.app.ActivityThread.main(ActivityThread.java:5520)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1029)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:796)     at dalvik.system.NativeStart.main(Native Method) ```  ``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.safeforest/com.nextgis.safeforest.activity.MainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.support.v7.widget.SwitchCompat.isChecked()' on a null object reference     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2325)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2387)     at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3947)     at android.app.ActivityThread.access$900(ActivityThread.java:151)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1309)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5258)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698) Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.support.v7.widget.SwitchCompat.isChecked()' on a null object reference     at com.nextgis.maplibui.fragment.NGWLoginFragment$LocalTextWatcher.afterTextChanged(NGWLoginFragment.java:354)     at com.nextgis.safeforest.fragment.LoginFragment$URLWatcher.afterTextChanged(LoginFragment.java:353)     at android.widget.TextView.sendAfterTextChanged(TextView.java:7695)     at android.widget.TextView.setText(TextView.java:4066)     at android.widget.TextView.setText(TextView.java:3915)     at android.widget.EditText.setText(EditText.java:85)     at android.widget.TextView.setText(TextView.java:3890)     at android.widget.TextView.onRestoreInstanceState(TextView.java:3790)     at android.view.View.dispatchRestoreInstanceState(View.java:13740)     at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2893)     at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2893)     at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2893)     at android.view.View.restoreHierarchyState(View.java:13718)     at android.support.v4.app.Fragment.restoreViewState(Fragment.java:471)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1105)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1241)     at android.support.v4.app.FragmentManagerImpl.dispatchActivityCreated(FragmentManager.java:2053)     at android.support.v4.app.FragmentController.dispatchActivityCreated(FragmentController.java:165)     at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:543)     at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1236)     at android.app.Activity.performStart(Activity.java:6006)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2288)     ... 11 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/LoginFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="55" opendate="2016-03-05 20:38:30" fixdate="2016-03-07 16:36:33">
+		<buginformation>
+			<summary>Из финальной версии убрать пункт меню "Синхронизация"</summary>
+			<description>При нажатии на пункт ничего видимого не происходит - это будет сбивать пользователя с толку. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="54" opendate="2016-03-05 20:34:42" fixdate="2016-03-07 15:35:08">
+		<buginformation>
+			<summary>После перезапуска приложения заново начинается первоначальная установка</summary>
+			<description>Перешел на главный экрна. Вызвал стандартное окно запущенных приложений. Смахнул приложение. Запускаю заново - первоначальная установка. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/display/MessageFeatureRenderer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="52" opendate="2016-03-05 20:01:37" fixdate="2016-03-08 09:18:40">
+		<buginformation>
+			<summary>Формат даты в баллуне по оповещению</summary>
+			<description>Сейчас формат довольно странный. Необходимо выводить локализованный формат даты. ![screenshot_2016-03-05-23-07-35](https://cloud.githubusercontent.com/assets/1708122/13550079/34c98586-e326-11e5-8252-a848de18f611.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="51" opendate="2016-03-05 19:58:38" fixdate="2016-03-08 09:44:08">
+		<buginformation>
+			<summary>Отправка сообщения без почты и телефона, ФИО</summary>
+			<description>У меня в настройках сбилось ФИО и телефон. Т.е. они просто пустые. Однако отправка выполняется с пустыми данными. Должно быть собщение, что бы исправили эти данные. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="49" opendate="2016-03-05 19:50:37" fixdate="2016-03-07 16:32:04">
+		<buginformation>
+			<summary>Не верно работает перемещение точки в центр экрана</summary>
+			<description>При клике ни появляется точка с "таскалкой". Если чуть сдвинуть, то отрисовывается, но не в центре экрана. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="47" opendate="2016-03-05 19:36:24" fixdate="2016-03-07 15:35:08">
+		<buginformation>
+			<summary>Не выйти из режима ввода фото</summary>
+			<description>Нажимаю добавить фото - появляется иконка фото прямо на карте (что не есть хорошо, потому что зеленая иконка на зеленом фоне не видна). Жму на иконку - открываетсч приложение камеры. Добавляю фото - фото появляется рядом с иконкой. Больше ничего сделать нельзя, кроме добавления нового фото.  При повороте экрана фото исчезает, но если опять на нажать на создать фото - открывается ранее созданные фотки. ![screenshot_2016-03-05-22-41-12](https://cloud.githubusercontent.com/assets/1708122/13549939/a9a5f816-e322-11e5-9abf-0d575924788e.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2016-02-04 13:12:01" fixdate="2016-02-04 15:57:58">
+		<buginformation>
+			<summary>Не заполнены данные аккаунта</summary>
+			<description>Захожу -&gt; Настройки -&gt; Изменить настройки аккаунта Поля ФИО и телефон не заполнены. И даже не понятно, что ФИО и телефон это и есть поля ввода.  Нужно что бы был текст с названием поля ввода и само поле ввода с текущим значением, которое можно поменять.  Уточнение по багу: оказываются поля заполняются. А не были они заполнены после первоначальной установки. Хотя данные вводились. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/LoginFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/AccountActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="35" opendate="2016-01-18 09:13:23" fixdate="2016-01-26 08:47:52">
+		<buginformation>
+			<summary>При вводе рубки программа виснет</summary>
+			<description>Невозможно что либо ввести в диалог "Контактные данные". Поля не выделяются, набор на клавиатуре не реагирует. Загрузка процессора 25-30% </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/UiUtil.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="34" opendate="2016-01-18 09:08:04" fixdate="2016-02-02 09:28:37">
+		<buginformation>
+			<summary>Зависание интерфейса при запуске</summary>
+			<description>После запуска программы появляется главное окно. Записи в списко добавляются только через 40-60 секунд (причем запись всего одна!) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="28" opendate="2015-11-11 14:04:00" fixdate="2016-01-18 13:02:01">
+		<buginformation>
+			<summary>В активити неверно отображаются координаты</summary>
+			<description>Почему-то широта - "не число". Хотя точка была поставлена на карту вручную. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/util/UiUtil.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/ViewMessageFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/adapter/MessageCursorAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="27" opendate="2015-11-11 14:02:33" fixdate="2015-12-10 16:54:45">
+		<buginformation>
+			<summary>Не запоминаются введенные ранее контактные данные</summary>
+			<description>Контактные данные, введенные в диалог при отправке сообщения должны запоминаться. Но диалог должен все равно открываться. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/Constants.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="26" opendate="2015-11-11 14:01:24" fixdate="2015-12-10 16:12:26">
+		<buginformation>
+			<summary>Для незарегистрированного пользователя не валидируются поля почты и телефона</summary>
+			<description>Я ввел просто слово "тест" в обоих полях. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/dialog/UserDataDialog.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/Constants.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="22" opendate="2015-11-11 13:47:36" fixdate="2015-12-08 10:06:27">
+		<buginformation>
+			<summary>В диалоге ввода контактных данных нет кнопки отмена</summary>
+			<description>Еще нужен текст над элементами: "Укажите ваши контактные данные, чтобы с вами мог связаться диспетчер (фамилия, имя и телефон - обязательно)" </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/dialog/UserDataDialog.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/CreateMessageActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/dialog/YesNoDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="19" opendate="2015-11-11 13:39:38" fixdate="2016-01-16 12:49:20">
+		<buginformation>
+			<summary>При выборе ориентировки клавиатура закрывает поле ввода</summary>
+			<description>![screenshot_2015-11-11-16-34-46](https://cloud.githubusercontent.com/assets/1708122/11092238/acbdbf88-8892-11e5-91d0-a15962ade441.png). В идеале поджимать размер активити, если нельзя - то поле и индикацию угда поворота - перенести вверх.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MessageCompassActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="17" opendate="2015-10-16 19:49:04" fixdate="2015-10-24 09:53:17">
+		<buginformation>
+			<summary>Первоначальную загрузку выполнять в сервисе</summary>
+			<description>При повороте экрана прилодение падате, так как активити пересоздается, а ссылка передается в функции загрузки геоданных. Необходимо выполнять работу в сервисе, а активити подключаться к нему для получения процента выполнения и текущей задачи </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/util/InitialSyncService.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/util/Constants.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/adapter/InitStepListAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/InitialSyncFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="12" opendate="2015-09-07 19:05:13" fixdate="2015-09-09 13:20:24">
+		<buginformation>
+			<summary>Сохранять координаты района в аккаунте</summary>
+			<description>Если удалить приложение, но оставить аккаунт, то bbox который пишется при создании приложения в настройки теряется и потом приложение стартует сразу со второго этапа, а настройки выбираются по-умолчанию. Надо записать bbox в свойства аккаунта и брать его оттуда. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="10" opendate="2015-09-03 13:03:23" fixdate="2016-01-14 13:08:32">
+		<buginformation>
+			<summary>При  регистрации пользователя проверять, что все поля заполнены</summary>
+			<description>Сейчас не проверяется телефон (мы его не храним на сервере, т.к. он зависит от устройства) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/safeforest/util/Constants.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/fragment/LoginFragment.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/dialog/UserDataDialog.java</file>
+			<file>app/src/main/java/com/nextgis/safeforest/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

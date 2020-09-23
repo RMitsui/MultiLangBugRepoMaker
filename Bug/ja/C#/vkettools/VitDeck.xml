@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>175</id>
+		<title>Release.batが空白を含むパスで実行すると失敗する</title>
+		<body>ログファイルの出力先の指定がまずいので空白を含むパスにローカルリポジトリを置いているとバッチが途中でこける `set BAT_LOG=%~dp0release.log`→`set BAT_LOG="%~dp0release.log"`</body>
+		<created>2019-08-31 07:41:00</created>
+		<closed>2019-09-07 04:36:39</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>アップデート用のReleaseInfoのURLが無効な場合NullReferenceExceptionが発生する</title>
+		<body>アップデート用のReleaseInfoのURLが無効な場合NullReferenceExceptionが発生する。 例：`private static string releaseUrl = "h";` ``` NullReferenceException: Object reference not set to an instance of an object VitDeck.Main.JsonReleaseInfo.FetchInfo (System.String releaseUrl) (at Assets/VitDeck/Main/JsonReleaseInfo.cs:43) VitDeck.Main.GUI.InfoWindow.OnEnable () (at Assets/VitDeck/Main/GUI/InfoWindow.cs:32) UnityEditor.EditorWindow:GetWindow(Boolean, String) VitDeck.Main.GUI.InfoWindow:ShowWindow() (at Assets/VitDeck/Main/GUI/InfoWindow.cs:25) VitDeck.Main.GUI.MainMenu:Information() (at Assets/VitDeck/Main/GUI/MainMenu.cs:15) ```</body>
+		<created>2019-08-23 10:33:18</created>
+		<closed>2019-08-25 13:57:32</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>バージョンアップ後にInfoウインドウの現在のバージョン表記が更新されない</title>
+		<body>VketToolsからのフィードバック アップデート後にInfoWindow内のWindowのバージョン番号が更新されない。 アップデート処理後に表示バージョン番号の更新が必要。  ![image](https://user-images.githubusercontent.com/46106857/63348797-fdac1480-c394-11e9-92d7-4db4458352b7.png) </body>
+		<created>2019-08-20 12:54:57</created>
+		<closed>2019-08-25 13:57:28</closed>
+	</bug>
+	<bug>
+		<id>150</id>
+		<title>テンプレートから連続で作成すると、一部フォルダが削除されずに残る場合がある。</title>
+		<body>#42 の類似。 テンプレートから連続で作成すると、一部フォルダが削除されずに残る場合がある。  テンプレートの作成手順を見直して残った場合でも次回処理直前に何か残っていれば一括削除できるようにしておきたい。</body>
+		<created>2019-08-10 10:22:00</created>
+		<closed>2019-08-22 12:37:49</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>エクスポーター起動時、ルールセットが存在しない場合にNullReferenceExceptionが発生する。</title>
+		<body> ルールセットが取得できない場合のnullチェック漏れ。 https://github.com/vkettools/VitDeck/blob/46d911183192dbd3ef02fe16941b1e884b60a180/VitDeck/Assets/VitDeck/Main/ValidatedExporter/GUI/ValidatedExporterGUI.cs#L53  修正コード ```csharp                     var ruleSet = Validator.Validator.GetRuleSet(selectedSetting.ruleSetName);                     ruleSetName = ruleSet != null ? ruleSet.RuleSetName : ""; ```</body>
+		<created>2019-07-01 02:14:21</created>
+		<closed>2019-07-02 12:14:15</closed>
+	</bug>
+	<bug>
+		<id>124</id>
+		<title>ValidatorのResultLogのテキストエリアが書き換え可能</title>
+		<body>ユーザーが手動で書き換えられてしまうため、ReadOnlyに修正する。</body>
+		<created>2019-06-27 13:18:44</created>
+		<closed>2019-06-29 14:21:05</closed>
+	</bug>
+	<bug>
+		<id>122</id>
+		<title>AssetRestorerでComponentがnullの場合の処理が不足している</title>
+		<body>#121 の調査で発見。 `AssetRestorer`のHideAllComponentsメソッドでGetComponentsInChildrenの戻り値にnullが入っている可能性が考慮されていない。 </body>
+		<created>2019-06-27 05:02:07</created>
+		<closed>2019-07-04 15:46:50</closed>
+	</bug>
+	<bug>
+		<id>121</id>
+		<title>[B02][B03]Scriptコンポーネントの参照先がMissingの場合にNullPointerExceptionが発生する。</title>
+		<body>`obj.GetComponents&lt;Component&gt;();`でコンポーネントの参照先がMissingの場合はnullが返るが、これを考慮できていない。</body>
+		<created>2019-06-27 04:53:54</created>
+		<closed>2019-06-29 14:38:57</closed>
+	</bug>
+	<bug>
+		<id>120</id>
+		<title>[B02][B03]Scriptコンポーネントの参照先がMissingの場合にNullPointerExceptionが発生する。</title>
+		<body>`obj.GetComponents&lt;Component&gt;();`でコンポーネントの参照先がMissingの場合はnullが返るが、これを考慮できていない。</body>
+		<created>2019-06-27 04:53:54</created>
+		<closed>2019-06-27 05:27:22</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>作成したRuleSetにIRule以外のフィールドがあるとIndexOutOfRangeExceptionが発生する</title>
+		<body>作成したRuleSetにIRule以外のフィールドがあるとIndexOutOfRangeExceptionが発生する。 プロパティの追加では発生しない。 発生する： `public string circleID;` 発生しない：` public string CircleID { get; set; }`  &lt;details&gt; IndexOutOfRangeException: Index has to be between upper and lower bound of the array. System.Array.GetValue (Int32 index) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Array.cs:487) VitDeck.Validator.BaseRuleSet.&lt;GetRules&gt;m__1 (System.Reflection.FieldInfo field) (at Assets/VitDeck/Validator/Rules/BaseRuleSet.cs:40) System.Linq.SortSequenceContext`2[System.Reflection.FieldInfo,VitDeck.Validator.ValidationAttribute].Initialize (System.Reflection.FieldInfo[] elements) System.Linq.QuickSort`1[System.Reflection.FieldInfo].PerformSort () System.Linq.QuickSort`1+&lt;Sort&gt;c__Iterator21[System.Reflection.FieldInfo].MoveNext () VitDeck.Validator.BaseRuleSet.GetRules () (at Assets/VitDeck/Validator/Rules/BaseRuleSet.cs:41) VitDeck.Validator.Validator.Validate (IRuleSet ruleSet, System.String baseFolder, Boolean forceOpenScene) (at Assets/VitDeck/Validator/Validator.cs:21) VitDeck.Validator.GUI.ValidatorWindow.OnValidate () (at Assets/VitDeck/Validator/GUI/ValidatorGUI.cs:182) VitDeck.Validator.GUI.ValidatorWindow.OnGUI () (at Assets/VitDeck/Validator/GUI/ValidatorGUI.cs:118) System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:222) Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation. System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:232) System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MethodBase.cs:115) UnityEditor.HostView.Invoke (System.String methodName, System.Object obj) (at C:/buildslave/unity/build/Editor/Mono/HostView.cs:295) UnityEditor.HostView.Invoke (System.String methodName) (at C:/buildslave/unity/build/Editor/Mono/HostView.cs:288) UnityEditor.HostView.InvokeOnGUI (Rect onGUIPosition) (at C:/buildslave/unity/build/Editor/Mono/HostView.cs:255)  &lt;/details&gt;</body>
+		<created>2019-06-26 08:04:11</created>
+		<closed>2019-08-10 13:42:03</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>ProductInfoのCreateメニューがある</title>
+		<body>.assetは一つあればよいのでCreateメニューが残っているのは問題。</body>
+		<created>2019-06-23 10:01:34</created>
+		<closed>2019-06-23 10:06:28</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>アセット名の使用禁止文字のメッセージに使用可能文字が含まれる場合がある。</title>
+		<body>再現パターン アセット名:`test.-_test` マッチパターン:`@"[0-9a-zA-Z _\-]+"` （半角英数と`_` `-`スペースのみ許可）  期待する結果：`_` `-`は許可され`.`のみ検出される。  実際 メッセージ上のみの模様。 ![image](https://user-images.githubusercontent.com/46106857/59960087-950ffb00-94fd-11e9-86b7-054e92577411.png) </body>
+		<created>2019-06-22 05:58:17</created>
+		<closed>2019-06-23 15:53:39</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>TestComponentWhitelistRuleのテストコードの参照が間違っている。</title>
+		<body>テストコードの参照が間違っている。 ``` var failResult = invalidRule2.Validate(target); Assert.That(failResult.Issues.Count, Is.EqualTo(4)); ```  正しいコードでもテスト結果に問題ないことは確認済み。</body>
+		<created>2019-06-22 05:32:01</created>
+		<closed>2019-06-22 14:05:30</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>AnimatorControllerの保護解除時にHideFlagsが正常な値になっていない</title>
+		<body>![image](https://user-images.githubusercontent.com/7193342/59959472-ecf53480-94f2-11e9-8645-0fcef1b06bb7.png)</body>
+		<created>2019-06-22 04:38:12</created>
+		<closed>2019-06-23 08:53:09</closed>
+	</bug>
+	<bug>
+		<id>86</id>
+		<title>[A01] アセット名の検証でパスの区切り文字も検証対象になっている。</title>
+		<body>アセット名の検証でパスの区切り文字も検証対象になっている。 パスに含まれるフォルダは別オブジェクトとして検証されるので、パスの最後の区切り文字の後のファイル名またはフォルダ名のみを対象とするよう修正したい。  "[a-zA-Z0-9_-]+"で検索した場合： ``` ## [!!]アセット名(Assets/VitDeck/Templates/Sample_template/TemplateAssets/{BOOTHID}_{NAME}/Animations/New Animator Controller.controller)に使用禁止文字(////Template/{}{}//  .)が含まれています。 (New Animator Controller) ```</body>
+		<created>2019-06-17 04:10:24</created>
+		<closed>2019-06-23 15:53:42</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>サンプルテンプレートの修正</title>
+		<body>サンプルテンプレートの以下の問題を修正する。 Shadersフォルダ用の`Shaders.meta`が余分に含まれている。 プレハブ`Sample_object_prefab`のマテリアルの参照が切れている。</body>
+		<created>2019-06-01 13:55:32</created>
+		<closed>2019-06-01 14:09:51</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>Unity上でシェーダーファイルを含むフォルダが削除されず残る場合がある。</title>
+		<body>#41 #17 より テンプレートのコピー対象に.shaderファイルがある場合、シェーダーファイルを含むフォルダがロード後に残る場合がある。 自動テスト時に発生。必ず同じフォルダが残るわけではない。</body>
+		<created>2019-05-25 10:48:05</created>
+		<closed>2019-08-26 14:40:23</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>保護解除時にアセットのHideFlagsが正常な値になっていない</title>
+		<body>アセットの種類および親子関係によってデフォルトのHideFlags値が異なるので、AssetGuardianでの保護解除時に適切に設定する必要がある。 </body>
+		<created>2019-05-25 05:04:17</created>
+		<closed>2019-06-02 13:25:49</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>置換ルールのキーの重複時にExceptionが出る。</title>
+		<body>#17 テストより TemplatePropertyの置換ルールのIDが重複している場合、Exceptionが出るがメッセージから原因が分かりにくい。 Exceptionの代わりにエラーメッセージを表示すべき。</body>
+		<created>2019-05-22 13:09:25</created>
+		<closed>2019-05-25 11:11:36</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>テンプレート情報ファイルのTemplateNameが未設定だとリストに表示されない。</title>
+		<body>テンプレートファイルはあるがテンプレート情報ファイルのTemplateNameが未設定だとリストに表示されない。  空文字はUnityのPOPUPに表示されないため、No Nameなど何らかの代替文字を表示する必要がある。</body>
+		<created>2019-05-22 12:56:04</created>
+		<closed>2019-05-25 11:11:10</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>置換文字列にファイル名に使用できない文字を入力可能</title>
+		<body>#17 テストより 置換文字列に`/`などファイル名フォルダ名に使用できない文字が入力されていた場合、置換に失敗する。  置換開始時に置換文字列の検証が必要。</body>
+		<created>2019-05-22 12:34:28</created>
+		<closed>2019-05-25 11:10:58</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>長すぎる置換文字を入力するとUnityが強制終了する。</title>
+		<body>#17 テストより 置換後のパスが生成可能なパス長かコピー前にチェックする必要がある。</body>
+		<created>2019-05-22 12:28:09</created>
+		<closed>2019-05-25 11:10:42</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>置換後のパスが重複する場合の処理がない</title>
+		<body>#17 テストより 以下の場合、先に処理された方しか置換されず中途半端なコピーとなる。 - BOOTHIDとNAMEに同じ文字列を入力している - {BOOTHID}.matと{NAME}.matが同一フォルダーにある </body>
+		<created>2019-05-22 12:23:48</created>
+		<closed>2019-05-25 11:10:25</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>URLButtonの画像がない場合アセットのロードがupdate毎に発生する。</title>
+		<body>https://github.com/vkettools/VitDeck/blob/20b26de5f92aca603d9d1746630b7589733a982e/VitDeck/Assets/VitDeck/Utilities/CustomGUILayout.cs#L18-L25  画像がない場合は適当なTexture2Dを生成してロードが発生しないようにする。 `_URLButtonImage = AssetDatabase.LoadAssetAtPath&lt;Texture2D&gt;(imageFolder + "/Link_icon.png") ?? new Texture2D(16,16); `</body>
+		<created>2019-05-14 12:21:38</created>
+		<closed>2019-05-19 08:34:01</closed>
+	</bug>
+</bugs>

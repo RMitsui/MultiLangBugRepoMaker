@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="DPHackaton">
+	<bug id="177" opendate="2016-05-26 14:37:12" fixdate="2016-05-26 18:32:24">
+		<buginformation>
+			<summary>Si el calcular las clasificaciones es dependiente del Club donde esté el Runner...</summary>
+			<description>... (**1**)¿Qué pasaría si un runner participa en una carrera y luego lo echan del club? ¿Cómo se calcularía entonces la clasificación si "falla"? (**2**)¿Y si además de que lo echasen, antes de calcular la clasificación, se metiese en otro club que no es con el que participó en esa carrera? </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Workspace/Acme-Orienteering/src/main/java/services/ClassificationService.java</file>
+			<file>Workspace/Acme-Orienteering/src/main/java/services/EnteredService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="160" opendate="2016-05-24 16:38:42" fixdate="2016-05-26 22:26:21">
+		<buginformation>
+			<summary>[views] Cuando mostramos la clasificación, sólo se filtra por raceId, sin contar con el clubId</summary>
+			<description>Esto hace que el resultado de la búsqueda sea mostrar los resultados de todos los participantes de la carrera sin importar el club del que provengan. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Workspace/Acme-Orienteering/src/main/java/services/ParticipatesService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="159" opendate="2016-05-24 16:29:46" fixdate="2016-05-26 22:26:11">
+		<buginformation>
+			<summary>[views] Al apuntarse a una carrera, nos devuelve a la lista de todos los participantes.</summary>
+			<description>Debería devolvernos a una vista de los participantes de la carrera dónde te has inscrito. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Workspace/Acme-Orienteering/src/main/java/repositories/ParticipatesRepository.java</file>
+			<file>Workspace/Acme-Orienteering/src/main/java/controllers/runner/ParticipatesRunnerController.java</file>
+			<file>Workspace/Acme-Orienteering/src/main/java/services/ParticipatesService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="119" opendate="2016-05-21 09:34:29" fixdate="2016-05-21 12:24:37">
+		<buginformation>
+			<summary>Fallo al crear carpeta de mensajes</summary>
+			<description>Al crear una nueva cartpeta de mensajes da un error de validación </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Workspace/Acme-Orienteering/src/main/java/services/FolderService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="100" opendate="2016-05-19 12:39:28" fixdate="2016-05-21 12:24:26">
+		<buginformation>
+			<summary>Comprobar que en participates/edit</summary>
+			<description>- no se pueda poner tiempos en caso de que sea futuro - botón de borrar </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Workspace/Acme-Orienteering/src/main/java/controllers/referee/ParticipatesRefereeController.java</file>
+			<file>Workspace/Acme-Orienteering/src/main/java/services/ParticipatesService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="98" opendate="2016-05-19 12:32:28" fixdate="2016-05-21 06:16:32">
+		<buginformation>
+			<summary>Cambiar puntos que se asignan automáticamente al rellenar los resultados de los clubs en una carrera</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>Workspace/Acme-Orienteering/src/main/java/services/ClassificationService.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>318</id>
+		<title>demo 单任务点击2次开始取消 ，第二次取消程序奔溃</title>
+		<body>E/AndroidRuntime: FATAL EXCEPTION: main     Process: com.liulishuo.okdownload.sample, PID: 32646     kotlinx.coroutines.channels.ClosedSendChannelException: Channel was closed         at kotlinx.coroutines.channels.Closed.getSendException(AbstractChannel.kt:1048)         at kotlinx.coroutines.channels.AbstractSendChannel.offer(AbstractChannel.kt:166)         at com.liulishuo.okdownload.kotlin.DownloadTaskExtensionKt$spChannel$progressListener$1.invoke(DownloadTaskExtension.kt:351)         at com.liulishuo.okdownload.kotlin.DownloadTaskExtensionKt$spChannel$progressListener$1.invoke(Unknown Source:16)         at com.liulishuo.okdownload.kotlin.listener.DownloadListener1ExtensionKt$createListener1$1.progress(DownloadListener1Extension.kt:90)         at com.liulishuo.okdownload.core.listener.assist.Listener1Assist.fetchProgress(Listener1Assist.java:103)         at com.liulishuo.okdownload.core.listener.DownloadListener1.fetchProgress(DownloadListener1.java:100)         at com.liulishuo.okdownload.kotlin.DownloadTaskExtensionKt$createReplaceListener$10.invoke(DownloadTaskExtension.kt:404)         at com.liulishuo.okdownload.kotlin.DownloadTaskExtensionKt$createReplaceListener$10.invoke(Unknown Source:14)         at com.liulishuo.okdownload.kotlin.listener.DownloadListenerExtensionKt$createListener$1.fetchProgress(DownloadListenerExtension.kt:176)         at com.liulishuo.okdownload.core.dispatcher.CallbackDispatcher$DefaultTransmitListener$9.run(CallbackDispatcher.java:333)         at android.os.Handler.handleCallback(Handler.java:907)         at android.os.Handler.dispatchMessage(Handler.java:105)         at android.os.Looper.loop(Looper.java:216)         at android.app.ActivityThread.main(ActivityThread.java:7625)         at java.lang.reflect.Method.invoke(Native Method)         at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:524)         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:987)   操作步骤：1 点击开始   2点击暂停  3.点击开始  4点击暂停( demo 奔溃)单任务Activity   </body>
+		<created>2019-10-20 13:47:23</created>
+		<closed>2019-10-26 07:20:05</closed>
+	</bug>
+	<bug>
+		<id>304</id>
+		<title>ConcurrentModificationException</title>
+		<body>### OkDownload Version  v1.0.5  ### Problem Describe  Find ConcurrentModificationException in FileDownloader module through bugly.  ### Log  There is the whole log from LogCat when I occur the problem(I know we can use [this tool][okcat-wiki-url] to let log more readable):  ``` java.util.ArrayList$Itr.next(ArrayList.java:866)  com.liulishuo.okdownload.core.download.DownloadCall.boolean cancel()(SourceFile:102) com.liulishuo.okdownload.core.dispatcher.DownloadDispatcher.void handleCanceledCalls(java.util.List,java.util.List)(SourceFile:294) com.liulishuo.okdownload.core.dispatcher.DownloadDispatcher.void cancelLocked(com.liulishuo.okdownload.core.IdentifiedTask[])(SourceFile:237) com.liulishuo.okdownload.core.dispatcher.DownloadDispatcher.void cancel(com.liulishuo.okdownload.core.IdentifiedTask[])(SourceFile:205) com.liulishuo.filedownloader.FileDownloader.void pause(com.liulishuo.filedownloader.FileDownloadListener)(SourceFile:202) ```  [issues-url]: https://github.com/lingochamp/okdownload/issues [wiki-url]: https://github.com/lingochamp/okdownload/wiki [okcat-wiki-url]: https://github.com/lingochamp/okdownload/wiki/Debug-OkDownload </body>
+		<created>2019-09-18 07:37:45</created>
+		<closed>2019-10-26 07:18:28</closed>
+	</bug>
+	<bug>
+		<id>256</id>
+		<title>Cannot read instance length with range 0-0 and response code 200</title>
+		<body>### OkDownload Version  v1.0.5  ### Problem Describe  The trail connect is a GET method with range 0-0 and read file length from Content-Range response header, however, it doesn't work if the response code is 200 instead of 206.  ### Log  No need. </body>
+		<created>2019-04-26 07:40:15</created>
+		<closed>2019-09-05 14:15:15</closed>
+	</bug>
+	<bug>
+		<id>154</id>
+		<title>Progress issue in FileDownloader library when restart paused task</title>
+		<body>### OkDownload Version  v1.0.4  ### Problem Describe  I start a task and pause it, the progress is from 0 to 60%, then I restart the task, the progress is from 0 to 40%. </body>
+		<created>2018-09-05 08:08:32</created>
+		<closed>2018-09-05 09:35:48</closed>
+	</bug>
+	<bug>
+		<id>143</id>
+		<title>空指针异常</title>
+		<body>### OkDownload Version  v1.0.3  ### Problem Describe 空指针异常应该是在多线程的情况下产生的，但目前不知道怎么修改。 不明白BlockInfo.getTotalLength 中为啥要做clone，直接遍历去长度不就可以了 。  ### Log  java.lang.NullPointerException: Attempt to invoke virtual method 'long com.liulishuo.okdownload.core.breakpoint.BlockInfo.d()' on a null object reference at com.liulishuo.okdownload.core.breakpoint.BreakpointInfo.g(BreakpointInfo.java:143) at com.liulishuo.okdownload.core.listener.assist.Listener1Assist$Listener1Model.onInfoValid(Listener1Assist.java:151) at com.liulishuo.okdownload.core.listener.assist.Listener1Assist.a(Listener1Assist.java:62) at com.liulishuo.okdownload.core.listener.DownloadListener1.downloadFromBeginning(DownloadListener1.java:77) at com.liulishuo.okdownload.core.listener.DownloadListenerBunch.downloadFromBeginning(DownloadListenerBunch.java:66) at com.liulishuo.okdownload.core.dispatcher.CallbackDispatcher$DefaultTransmitListener$4.run(CallbackDispatcher.java:248) at android.os.Handler.handleCallback(Handler.java:836) at android.os.Handler.dispatchMessage(Handler.java:103) at android.os.Looper.loop(Looper.java:232) at android.app.ActivityThread.main(ActivityThread.java:6802) at java.lang.reflect.Method.invoke(Native Method) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1103) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:964)  [issues-url]: https://github.com/lingochamp/okdownload/issues [wiki-url]: https://github.com/lingochamp/okdownload/wiki [okcat-wiki-url]: https://github.com/lingochamp/okdownload/wiki/Debug-OkDownload </body>
+		<created>2018-08-23 03:10:23</created>
+		<closed>2019-10-29 17:35:48</closed>
+	</bug>
+	<bug>
+		<id>129</id>
+		<title>IOException: The current offset on block-info isn't update correct, 0 != 1797255 on 1</title>
+		<body>### OkDownload Version  v1.0.4-SNAPSHOT  ### Problem Describe  I occur some problem, I also search on [issues][issues-url] and [wiki][wiki-url], I even checked the source code, but it can't help, so my real problem is:  `MultiPointOutputStream#inspectStreamState` has  a vulnerability causes `MultiPointOutputStream#syncRunnable` finishing in advance, and other blocks cannot do sync work. Finally, `IOException(The current offset on block-info isn't update correct, 0 != 1797255 on x)` will be thrown during `MultiPointOutputStream#inspectComplete`.  ### Log  There is the whole log from LogCat when I occur the problem(I know we can use [this tool][okcat-wiki-url] to let log more readable):  ``` 20:48:16.667      CallbackDispatcher  D  -----&gt; start trial task(1) {range=[bytes=0-0]} 20:48:17.047      CallbackDispatcher  D  &lt;----- finish trial task(1) code[206]{accept-ranges=[bytes], access-control-allow-origin=[*], access-control-expose-headers=[X-Log, X-Reqid], access-control-max-age=[2592000], cache-control=[public, max-age=31536000, no-cache], content-disposition=[inline; filename="pt20180802p03.zip"; filename*=utf-8' 'pt20180802p03.zip], content-length=[1], content-range=[bytes 0-0/5391765], content-transfer-encoding=[binary], content-type=[application/zip], date=[Tue, 07 Aug 2018 12:48:12 GMT], expires=[0], server=[nginx], x-log=[mc.g;1s.gh:12;PFDS:13;AUTHPROXY_jjh_out:16;IO:17], x-qiniu-zone=[0], x-reqid=[hw8AAIjaU3n0E0cV], x-ser=[BC54_dx-lt-yd-shandong-jinan-5-cache-6, BC80_dx-jiangsu-yancheng-3-cache-8], x-svr=[IO]} 20:48:17.047      DownloadDispatcher  D  is file conflict after run: 1 20:48:17.049            DownloadCall  D  breakpoint invalid: download from beginning because of local check is dirty 1 fileExist[false] infoRight[false] outputStreamSupport[true] com.liulishuo.okdownload.core.d.a@1f7d142a 20:48:17.049      CallbackDispatcher  D  downloadFromBeginning: 1 20:48:17.050          FileDownloader  D  create a okhttp connection with https://cc-b.llscdn.com/ssk-prod/z/pt20180802p03.zip 20:48:17.050          FileDownloader  D  create a okhttp connection with https://cc-b.llscdn.com/ssk-prod/z/pt20180802p03.zip 20:48:17.051       HeaderInterceptor  D  AssembleHeaderRange (1) block(2) downloadFrom(3594510) currentOffset(0) 20:48:17.051      CallbackDispatcher  D  -----&gt; start connection task(1) block(2) {range=[bytes=3594510-5391764], user-agent=[OkDownload/1.0.4-SNAPSHOT]} 20:48:17.051          ProgressAssist  D  contentLength: 5391765 callbackMinIntervalBytes: 89862 20:48:17.051       HeaderInterceptor  D  AssembleHeaderRange (1) block(0) downloadFrom(0) currentOffset(0) 20:48:17.053      CallbackDispatcher  D  -----&gt; start connection task(1) block(0) {range=[bytes=0-1797254], user-agent=[OkDownload/1.0.4-SNAPSHOT]} 20:48:17.057          FileDownloader  D  create a okhttp connection with https://cc-b.llscdn.com/ssk-prod/z/pt20180802p03.zip 20:48:17.057       HeaderInterceptor  D  AssembleHeaderRange (1) block(1) downloadFrom(1797255) currentOffset(0) 20:48:17.057      CallbackDispatcher  D  -----&gt; start connection task(1) block(1) {range=[bytes=1797255-3594509], user-agent=[OkDownload/1.0.4-SNAPSHOT]} 20:48:17.437      CallbackDispatcher  D  &lt;----- finish connection task(1) block(2) code[206]{accept-ranges=[bytes], access-control-allow-origin=[*], access-control-expose-headers=[X-Log, X-Reqid], access-control-max-age=[2592000], cache-control=[public, max-age=31536000, no-cache], content-disposition=[inline; filename="pt20180802p03.zip"; filename*=utf-8' 'pt20180802p03.zip], content-length=[1797255], content-range=[bytes 3594510-5391764/5391765], content-transfer-encoding=[binary], content-type=[application/zip], date=[Tue, 07 Aug 2018 12:48:13 GMT], expires=[0], server=[nginx], x-log=[mc.g;1s.gh:12;PFDS:13;AUTHPROXY_jjh_out:16;IO:17], x-qiniu-zone=[0], x-reqid=[hw8AAIjaU3n0E0cV], x-ser=[BC54_dx-lt-yd-shandong-jinan-5-cache-6, BC80_dx-jiangsu-yancheng-3-cache-8], x-svr=[IO]} 20:48:17.437      CallbackDispatcher  D  fetchStart: 1 20:48:17.439      CallbackDispatcher  D  &lt;----- finish connection task(1) block(0) code[206]{accept-ranges=[bytes], access-control-allow-origin=[*], access-control-expose-headers=[X-Log, X-Reqid], access-control-max-age=[2592000], cache-control=[public, max-age=31536000, no-cache], content-disposition=[inline; filename="pt20180802p03.zip"; filename*=utf-8' 'pt20180802p03.zip], content-length=[1797255], content-range=[bytes 0-1797254/5391765], content-transfer-encoding=[binary], content-type=[application/zip], date=[Tue, 07 Aug 2018 12:48:13 GMT], expires=[0], server=[nginx], x-log=[mc.g;1s.gh:12;PFDS:13;AUTHPROXY_jjh_out:16;IO:17], x-qiniu-zone=[0], x-reqid=[hw8AAIjaU3n0E0cV], x-ser=[BC54_dx-lt-yd-shandong-jinan-5-cache-6, BC80_dx-jiangsu-yancheng-3-cache-8], x-svr=[IO]} 20:48:17.439      CallbackDispatcher  D  fetchStart: 1 20:48:17.446  MultiPointOutputStream  D  Create new file: data.zip 20:48:17.471  MultiPointOutputStream  D  OutputStream start flush looper task[1] with syncBufferIntervalMills[2000] syncBufferSize[65536] 20:48:17.476      CallbackDispatcher  D  &lt;----- finish connection task(1) block(1) code[206]{accept-ranges=[bytes], access-control-allow-origin=[*], access-control-expose-headers=[X-Log, X-Reqid], access-control-max-age=[2592000], cache-control=[public, max-age=31536000, no-cache], content-disposition=[inline; filename="pt20180802p03.zip"; filename*=utf-8' 'pt20180802p03.zip], content-length=[1797255], content-range=[bytes 1797255-3594509/5391765], content-transfer-encoding=[binary], content-type=[application/zip], date=[Tue, 07 Aug 2018 12:48:13 GMT], expires=[0], server=[nginx], x-log=[mc.g;1s.gh:12;PFDS:13;AUTHPROXY_jjh_out:16;IO:17], x-qiniu-zone=[0], x-reqid=[hw8AAIjaU3n0E0cV], x-ser=[BC54_dx-lt-yd-shandong-jinan-5-cache-6, BC80_dx-jiangsu-yancheng-3-cache-8], x-svr=[IO]} 20:48:17.476      CallbackDispatcher  D  fetchStart: 1 20:48:17.596  MultiPointOutputStream  D  OutputStream sync success (1) block(0)  syncLength(48237) currentOffset(48237) 20:48:19.624  MultiPointOutputStream  D  OutputStream sync success (1) block(0)  syncLength(745472) currentOffset(793709) 20:48:20.799  MultiPointOutputStream  D  runSync state change isNoMoreStream[true] newNoMoreStreamBlockList[[0]] 20:48:20.809  MultiPointOutputStream  D  Create output stream write from (1) block(1) 1797255 20:48:20.825  MultiPointOutputStream  D  OutputStream sync success (1) block(0)  syncLength(1003546) currentOffset(1797255) 20:48:20.826  MultiPointOutputStream  D  OutputStream close task[1] block[0] 20:48:20.826      CallbackDispatcher  D  fetchEnd: 1 20:48:20.826           DownloadChain  D  release connection com.liulishuo.okdownload.core.b.b@16b9ff64 task[1] block[0] 20:48:22.953  MultiPointOutputStream  D  Create output stream write from (1) block(2) 3594510 20:48:23.016  MultiPointOutputStream  D  OutputStream done but no need to ensure sync, because the syncFuture.isDone[true] task[1] block[1] 20:48:23.018  MultiPointOutputStream  D  OutputStream close task[1] block[1] 20:48:23.020           DownloadCache  D  catch unknown error java.io.IOException: The current offset on block-info isn't update correct, 0 != 1797255 on 1 20:48:23.021           DownloadChain  D  release connection com.liulishuo.okdownload.core.b.b@45a65cd task[1] block[1] 20:48:23.229  MultiPointOutputStream  D  OutputStream done but no need to ensure sync, because the syncFuture.isDone[true] task[1] block[2] 20:48:23.230  MultiPointOutputStream  D  OutputStream close task[1] block[2] 20:48:23.231      CallbackDispatcher  D  taskEnd: 1 ERROR java.io.IOException: The current offset on block-info isn't update correct, 0 != 1797255 on 1 ``` The pivotal log is: ``` 20:48:20.799  MultiPointOutputStream  D  runSync state change isNoMoreStream[true] newNoMoreStreamBlockList[[0]] 20:48:20.809  MultiPointOutputStream  D  Create output stream write from (1) block(1) 1797255 20:48:20.825  MultiPointOutputStream  D  OutputStream sync success (1) block(0)  syncLength(1003546) currentOffset(1797255) 20:48:20.826  MultiPointOutputStream  D  OutputStream close task[1] block[0] 20:48:20.826      CallbackDispatcher  D  fetchEnd: 1 20:48:20.826           DownloadChain  D  release connection com.liulishuo.okdownload.core.b.b@16b9ff64 task[1] block[0] 20:48:22.953  MultiPointOutputStream  D  Create output stream write from (1) block(2) 3594510 ``` The first log above indicates that there are no more streams in this download task and then the `MultiPointOutputStream#syncRunnable` will be end. This is because that there is just one OutputStream in `MultiPointOutputStream#outputStreamMap` and the other two are not been created, we can confirm that from log with time `20:48:20.809` and `20:48:22.953`.  I think `MultiPointOutputStream#inspectStreamState` is not correct and I will send a pull request to solve this problem later.   [issues-url]: https://github.com/lingochamp/okdownload/issues [wiki-url]: https://github.com/lingochamp/okdownload/wiki [okcat-wiki-url]: https://github.com/lingochamp/okdownload/wiki/Debug-OkDownload </body>
+		<created>2018-08-09 06:06:29</created>
+		<closed>2018-08-23 03:34:29</closed>
+	</bug>
+	<bug>
+		<id>121</id>
+		<title>SpeedCalculator.endTask()触发了NullPointerException</title>
+		<body>### OkDownload Version   v1.0.3  问题描述  hello。在我项目中，我用`OkDownload`去下载十多个问题，并且是并行下载，最大并行数为2。我在使用这个库的时候遇到一些问题，当我调用`DownloadTask.Cancel()`函数时，会触发一个`NullPointerException`异常。我使用的是监听器为`DownloadListener4WithSpeed`。   日志   ``` java.lang.NullPointerException: Attempt to invoke virtual method 'void com.liulishuo.okdownload.SpeedCalculator.endTask()' on a null object reference                                                                    at com.liulishuo.okdownload.core.listener.assist.Listener4SpeedAssistExtend.dispatchTaskEnd(Listener4SpeedAssistExtend.java:85)                                                                    at com.liulishuo.okdownload.core.listener.assist.Listener4Assist.taskEnd(Listener4Assist.java:104)                                                                    at com.liulishuo.okdownload.core.listener.DownloadListener4.taskEnd(DownloadListener4.java:116)                                                                    at com.liulishuo.okdownload.core.listener.DownloadListenerBunch.taskEnd(DownloadListenerBunch.java:115)                                                                    at com.liulishuo.okdownload.core.dispatcher.CallbackDispatcher$DefaultTransmitListener$11.run(CallbackDispatcher.java:367)                                                                    at android.os.Handler.handleCallback(Handler.java:751)                                                                    at android.os.Handler.dispatchMessage(Handler.java:95)                                                                    at android.os.Looper.loop(Looper.java:154)                                                                    at android.app.ActivityThread.main(ActivityThread.java:6119)                                                                    at java.lang.reflect.Method.invoke(Native Method)                                                                    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:886)                                                                    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:776) ``` </body>
+		<created>2018-07-16 01:52:01</created>
+		<closed>2018-10-12 09:59:48</closed>
+	</bug>
+	<bug>
+		<id>107</id>
+		<title>okdownload 崩溃</title>
+		<body>我使用的是1.0.3的代码现在发现有如下问题 ![image](https://user-images.githubusercontent.com/1260653/42070881-04105302-7b8b-11e8-9b9d-4e93bdd6720a.png)  </body>
+		<created>2018-06-26 02:30:30</created>
+		<closed>2018-07-04 08:31:40</closed>
+	</bug>
+	<bug>
+		<id>89</id>
+		<title>对单个下载任务进行频繁开始，取消下载操作会报空指针异常！</title>
+		<body>### OkDownload Version  v1.0.3  ### Problem Describe  I occur some problem, I also search on [issues][issues-url] and [wiki][wiki-url], I even checked the source code, but it can't help, so my real problem is:...  ### Log  There is the whole log from LogCat when I occur the problem(I know we can use [this tool][okcat-wiki-url] to let log more readable):  ``` ```  [issues-url]: https://github.com/lingochamp/okdownload/issues [wiki-url]: https://github.com/lingochamp/okdownload/wiki [okcat-wiki-url]: https://github.com/lingochamp/okdownload/wiki/Debug-OkDownload </body>
+		<created>2018-06-05 02:09:49</created>
+		<closed>2018-09-06 06:13:33</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>Directory Traversal Vulnerability in OkDownload</title>
+		<body>### OkDownload Version  v1.0.3  ### Problem Describe  We have found a directory traversal vulnerability in OkDownload, which may cause remote code execution. For consideration of security, we do not reveal the detail of this vulnerability currently. Welcome contact me by Email: leadroyal#qq.com</body>
+		<created>2018-05-29 04:08:19</created>
+		<closed>2018-09-06 09:45:12</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>First download for a resource, and kill the process within 1.5s after task is started, wrong complete status for the resource after process launch again</title>
+		<body>### OkDownload Version  v1.0.2-SNAPSHOT  ### Problem Describe  在show each block progress 页面中，点击下载，然后App立刻被强制杀死，重新打开显示状态Completed,数据库中breakpoint表中没有任何信息，但是cache 文件夹下存在该下载文件，但确信的是该下载文件是不完整的。  ### Log  There is the whole log from LogCat when I occur the problem(I know we can use [this tool][okcat-wiki-url] to let log more readable):  ``` ```  [issues-url]: https://github.com/lingochamp/okdownload/issues [wiki-url]: https://github.com/lingochamp/okdownload/wiki [okcat-wiki-url]: https://github.com/lingochamp/okdownload/wiki/Debug-OkDownload </body>
+		<created>2018-05-29 03:18:33</created>
+		<closed>2018-05-30 16:08:39</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>Re-attachListener for UnifiedListenerManager no process callback for DownloadListener1 DownloadListener4 DownloadListener4WithSpeed case</title>
+		<body>场景：12个页面，每个页面有50个左右下载任务。在进入每个页面时都重新build task并attach listerner，退出当前页面时detachListerer，但是不会cancle下载。 这样在几个页面进出几次之后，停留在一个页面观察下载，一段时间后不再返回Listerner信息。这时退出页面再次进入也不会再返回Listener信息。  ``` DownloadTask task = new DownloadTask.Builder(                                     entity.getDownloadRecordTable().getMp4_url(),                                     entity.getDownloadRecordTable().getParent_path(),                                     entity.getDownloadRecordTable().getFilename())                                     .setPriority(DOWNLOAD_PRIORITY_VIDEO)                                     .setPassIfAlreadyCompleted(true)                                     .build();  mUnifiedListenerManager.attachListener(task, taskDownloadListener); ``` ``` mUnifiedListenerManager.detachListener(taskDownloadListener); ```</body>
+		<created>2018-05-01 23:46:59</created>
+		<closed>2018-05-05 14:59:25</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>没搞明白是怎么样给okhttp设置请求头的？</title>
+		<body>.setHeaderMapFields(map)好像没看到有把设置的请求头带过去</body>
+		<created>2018-04-25 06:20:28</created>
+		<closed>2018-04-26 15:42:46</closed>
+	</bug>
+	<bug>
+		<id>41</id>
+		<title>目标存储路径是文件，而不是文件夹情况下的异常处理设计不太合理</title>
+		<body>在`DownloadTask.java`中  ```java try {     ...     if (file.exists() &amp;&amp; file.isFile()) {     // it have already provided file for it. throw new IllegalArgumentException("If you want filename from " + "response please make sure you provide path is directory " + file.getPath());     }     ... } finally {     this.id = OkDownload.with().breakpointStore().findOrCreateId(this); } ``` 此处判断`file.exists() &amp;&amp; file.isFile()`抛出`IllegalArgumentException`异常， 当此判断条件成立时，因为加了finally，所以代码还会执行 `this.id = OkDownload.with().breakpointStore().findOrCreateId(this);` 而此时会抛出 ```log E/AndroidRuntime: FATAL EXCEPTION: main     Process: com.xxx.sample.webdownloader, PID: 16251     java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.liulishuo.okdownload.core.download.DownloadStrategy$FilenameHolder.get()' on a null object reference         at com.liulishuo.okdownload.DownloadTask.getFilename(DownloadTask.java:230)         at com.liulishuo.okdownload.core.breakpoint.KeyToIdMap.generateKey(KeyToIdMap.java:63)         at com.liulishuo.okdownload.core.breakpoint.KeyToIdMap.get(KeyToIdMap.java:43)         at com.liulishuo.okdownload.core.breakpoint.BreakpointStoreOnCache.findOrCreateId(BreakpointStoreOnCache.java:146)         at com.liulishuo.okdownload.core.breakpoint.BreakpointStoreOnSQLite.findOrCreateId(BreakpointStoreOnSQLite.java:100)         at com.liulishuo.okdownload.DownloadTask.&lt;init&gt;(DownloadTask.java:190)         at com.liulishuo.okdownload.DownloadTask$Builder.build(DownloadTask.java:838) ``` 从而掩盖了 `throw new IllegalArgumentException("If you want filename from " + "response please make sure you provide path is directory " + file.getPath());` 的异常信息。  导致追查问题时不方便。</body>
+		<created>2018-04-24 09:20:54</created>
+		<closed>2018-04-26 14:28:47</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>断点续传进度有误</title>
+		<body>在demo的SingleDownload中，我下载了百分之五六十，然后点击取消，关掉app，刷掉进程。然后重新进去，个别时候没有进度需要重新下载，个别时候进度只有百分之二三十左右，但是我退出之前显示的进度确实百分之五六十。不知道这个问题是出在哪里。</body>
+		<created>2018-04-23 02:58:57</created>
+		<closed>2018-04-26 13:56:28</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>不支持Partial Content的服务器会导致Crash</title>
+		<body>如果服务器没有返回Content-Range字段，并且以200而非206状态返回，同时返回了Transfer-Encoding: chunked，会导致BreakpointRemoteCheck中的instanceLength为-1，并抛出异常无法下载</body>
+		<created>2018-04-18 02:49:15</created>
+		<closed>2018-04-26 17:23:37</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>java.lang.IllegalArgumentException: Info not on store!</title>
+		<body>Hi! Thank you for the library! I couldn't understand couple things because it is not well documented. Could you please help me?  1) What is the difference between RemitStore and BreakpointStore.  I tried to initialize OkDownload like following: ``` OkDownload.setSingletonInstance(OkDownload.Builder(appContext)                                 .downloadStore(BreakpointStoreOnSQLite(appContext).createRemitSelf())                                // .downloadStore(BreakpointStoreOnSQLite(appContext)) // and like this                                 .build()) ``` But data is not written to the database. I have added implementation "com.liulishuo.okdownload:sqlite:1.0.1-SNAPSHOT" in build.gradle but couldn't use it. How can I add sqlite support?  2) How can I cancel a task (delete completely all information about task)?  Right now I am doing like this: ``` tasks[task].cancel()  OkDownload.with().breakpointStore().remove(task.id) ``` But I am getting the FATAL Exception: `java.lang.IllegalArgumentException: Info not on store!`  Hope to hear from u soon.</body>
+		<created>2018-04-17 09:18:06</created>
+		<closed>2018-04-17 16:41:48</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>5.0以下版本下载报错，高版本可以正常下载</title>
+		<body>Could not find method android.system.Os.ftruncate, referenced from method com.liulishuo.okdownload.core.file.DownloadUriOutputStream.setLength</body>
+		<created>2018-02-27 05:09:59</created>
+		<closed>2018-03-11 16:24:02</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>当任务开始时，获取到块的下载速度异常大</title>
+		<body>文件大小：1MB ![qq 20180214171233](https://user-images.githubusercontent.com/28668856/36196092-8e52bcee-11aa-11e8-8f12-e30fd67cc5d5.png)  文件大小：50MB ![qq 20180214171802](https://user-images.githubusercontent.com/28668856/36196260-1f1ad612-11ab-11e8-9db8-1ca8b6622b3e.png)  下载开始一段时间后就不会出现这种情况 </body>
+		<created>2018-02-14 09:16:04</created>
+		<closed>2018-03-26 17:14:18</closed>
+	</bug>
+	<bug>
+		<id>4</id>
+		<title>sample crash</title>
+		<body>In sample project, when I click 'start' button on Single Download page, it does't work, and then I click 'cancel' button, but the project crash.  01-09 11:14:13.819 12251-12251/com.liulishuo.okdownload.sample E/AndroidRuntime: FATAL EXCEPTION: main                                                                                  Process: com.liulishuo.okdownload.sample, PID: 12251                                                                                  java.lang.NullPointerException: Attempt to read from field 'com.liulishuo.okdownload.core.breakpoint.BreakpointInfo com.liulishuo.okdownload.core.listener.assist.Listener4Assist$Listener4Model.info' on a null object reference                                                                                      at com.liulishuo.okdownload.core.listener.assist.Listener4Assist.taskEnd(Listener4Assist.java:127)                                                                                      at com.liulishuo.okdownload.core.listener.DownloadListener4.taskEnd(DownloadListener4.java:87)                                                                                      at com.liulishuo.okdownload.core.dispatcher.CallbackDispatcher$1$10.run(CallbackDispatcher.java:191)                                                                                      at android.os.Handler.handleCallback(Handler.java:739)                                                                                      at android.os.Handler.dispatchMessage(Handler.java:95)                                                                                      at android.os.Looper.loop(Looper.java:135)                                                                                      at android.app.ActivityThread.main(ActivityThread.java:5290)                                                                                      at java.lang.reflect.Method.invoke(Native Method)                                                                                      at java.lang.reflect.Method.invoke(Method.java:372)                                                                                      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:911)                                                                                      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:706)</body>
+		<created>2018-01-09 03:17:32</created>
+		<closed>2018-01-09 09:41:52</closed>
+	</bug>
+</bugs>

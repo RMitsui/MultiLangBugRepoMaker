@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="TournamentManager">
+	<bug id="77" opendate="2019-02-14 11:19:25" fixdate="2019-02-18 06:56:48">
+		<buginformation>
+			<summary>Datenbank "Mongo"</summary>
+			<description>Die DB sollte zuerst den Nachnamen, dann den Vornamen anzeigen.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/JoueurIndividuel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="72" opendate="2019-02-03 21:42:49" fixdate="2019-02-05 21:48:15">
+		<buginformation>
+			<summary>SuperMelee-Turnier soll beim Speichern in der Datenbank Klassenname speichern</summary>
+			<description>Um später unterschiedliche Turnierformen korrekt laden zu können, soll jede Turnierinstanz in der Datenbank den Klassennamen speichern.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/partie/Partie.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMeleeClubChampionship.java</file>
+			<file>src/manual/installMongoDB.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/components/SuperMeleeMatchdayTable.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/AbstractTournament.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/common/storage/mongo/DatabaseClient.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/factories/SupermeleeMenuFactory.java</file>
+			<file>src/manual/main.java</file>
+			<file>src/main/java/org/dos/tournament/application/TournamentManagerUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="71" opendate="2019-02-03 21:40:32" fixdate="2019-02-05 21:48:15">
+		<buginformation>
+			<summary>Sicherstellen, dass immer nur ein Turnier im Zugriff ist</summary>
+			<description>Aktuell wird nicht geprüft, ob bereits ein Turnier in der GUI angezeigt wird. Hier muss eine Prüfung her, die verhindert, dass Turniere übereinander geöffnet werden. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/partie/Partie.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMeleeClubChampionship.java</file>
+			<file>src/manual/installMongoDB.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/components/SuperMeleeMatchdayTable.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/AbstractTournament.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/common/storage/mongo/DatabaseClient.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/factories/SupermeleeMenuFactory.java</file>
+			<file>src/manual/main.java</file>
+			<file>src/main/java/org/dos/tournament/application/TournamentManagerUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="70" opendate="2019-02-03 21:38:09" fixdate="2019-02-05 21:48:15">
+		<buginformation>
+			<summary>Id des Turniers wird beim Laden nicht korrekt verarbeitet</summary>
+			<description>Wenn ein Turnier aus der Datenbank geladen wird, wird es bei Änderungen unter einer neuen tid gespeichert. Somit gibt es dann zwei Stände, was nicht korrekt ist.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/partie/Partie.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMeleeClubChampionship.java</file>
+			<file>src/manual/installMongoDB.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/components/SuperMeleeMatchdayTable.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/AbstractTournament.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/common/storage/mongo/DatabaseClient.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/factories/SupermeleeMenuFactory.java</file>
+			<file>src/manual/main.java</file>
+			<file>src/main/java/org/dos/tournament/application/TournamentManagerUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="69" opendate="2019-02-03 21:35:48" fixdate="2019-02-05 21:48:14">
+		<buginformation>
+			<summary>Fehler beim Import von Ergebnissen</summary>
+			<description>Beim Laden eines Turniers aus der Datenbank werden die Ergebnisse zwar geladen, jedoch nicht in der Tabelle angezeigt.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/partie/Partie.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMeleeClubChampionship.java</file>
+			<file>src/manual/installMongoDB.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/components/SuperMeleeMatchdayTable.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/AbstractTournament.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/common/storage/mongo/DatabaseClient.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/factories/SupermeleeMenuFactory.java</file>
+			<file>src/manual/main.java</file>
+			<file>src/main/java/org/dos/tournament/application/TournamentManagerUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="64" opendate="2019-01-02 16:00:22" fixdate="2019-01-02 19:47:17">
+		<buginformation>
+			<summary>Teilnehmer aus Datenbank können mehrfach hinzugefügt werden.</summary>
+			<description>Wenn die Teilnehmer in der Datenbank gespeichert sind, dann werden auch Spieler angeboten, die bereits als Teilnehmer des Turniers erfasst wurden. In der Auswahl sollen nur Teilnehmer angezeigt werden, die  1. zu den Filterkriterien passen und 1. noch nicht als Teilnehmer erfasst sind,</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/application/dialogs/petanque/player/DialogJoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/common/storage/mongo/DatabaseClient.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/player/DialogAssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/IParticipant.java</file>
+			<file>src/main/java/org/dos/tournament/common/storage/Storage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="55" opendate="2018-12-07 16:59:31" fixdate="2018-12-16 16:31:43">
+		<buginformation>
+			<summary>Nummernvergabe ist nicht korrekt</summary>
+			<description>Nummern werden doppelt vergeben, wenn zwischendurch, d.h. bei der Eingabe neuer TN, TN gelöscht werden. ![grafik](https://user-images.githubusercontent.com/45695223/49661592-be79a580-fa49-11e8-843f-f11e6599d1fa.png)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/application/dialogs/petanque/player/DialogJoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/JoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/components/SuperMeleeMatchdayTable.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/controls/TableHeaderColumnContent.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/player/DialogAssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/tablemodels/ParticipantsTableModel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="49" opendate="2018-11-30 10:31:57" fixdate="2018-11-30 20:45:53">
+		<buginformation>
+			<summary>Auslosung "Neue Runde"</summary>
+			<description>geht nicht mehr</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/application/dialogs/petanque/player/DialogJoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/components/SuperMeleeMatchdayTable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="46" opendate="2018-11-09 08:19:01" fixdate="2018-11-11 12:37:42">
+		<buginformation>
+			<summary>Auslosung "neue Runde" funktioniert nicht.</summary>
+			<description>Nach dem Anlegen neuer Spieler (30 Spieler) wurde die erste Runde erfolgreich gespielt und eingetragen.- Danach wurde die zweite Runde ausgelost. Da jedoch ein Spieler nicht mehr mitspielen wollte, wurde er auf den Status "Inaktive" gesetzt. Danach wurde "Runde neu auswählen" markiert. Es erschien das Fenster "Fortschritt..." mit der Meldung "Auslosung läuft.. zwei".-  Nach ca. 4 Minuten wurde abgebrochen, da nichts mehr lief.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMeleeClubChampionship.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverPlayTripletteTandem.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/partie/TestPartie.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/AssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/Attendee.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/AbstractResult.java</file>
+			<file>src/test/java/org/dos/tournament/common/player/TestAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/common/movement/regulations/AbstractRegulationDecorator.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/DefaultMatchdayPanel.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/utils/NumericAssociationId.java</file>
+			<file>src/main/java/org/dos/tournament/resources/package-info.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/DefaultCompetitorResult.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/TestSuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/petanque/player/DialogJoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverMeetTeammateTwice.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/tablemodels/LeaderboardTableModel.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/Triplette.java</file>
+			<file>src/main/java/org/dos/tournament/common/movement/regulations/Regulation.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/AbstractTeamParticipant.java</file>
+			<file>src/test/java/org/dos/tournament/common/player/TestAssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverMeetTeammateTandem.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/AbstractTotalResult.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/IResult.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/tablemodels/ParticipantsTableModel.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/factories/SupermeleeMenuFactory.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/TestsuitePetanque.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/matchday/Matchday.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/utils/NumericParticipantId.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/partie/Partie.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/matchday/TestMatchday.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/petanque/movement/DialogSetRoundManually.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/utils/TournamentGrid.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/utils/IParticipantId.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/team/TestTriplette.java</file>
+			<file>src/main/java/org/dos/tournament/common/movement/regulations/AbstractCoreRule.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/AbstractEncounter.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/branch/package-info.java</file>
+			<file>src/main/java/org/dos/tournament/application/package-info.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/Doublette.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/partie/CompetitorPartieResult.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/player/DialogAssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/AbstractPetanqueTeam.java</file>
+			<file>src/main/java/org/dos/tournament/common/package-info.java</file>
+			<file>src/test/java/org/dos/tournament/TestsuiteCommonFeatures.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/utils/TournamentUtils.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/partie/TestCompetitorPartieResult.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/result/PetanqueResult.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/EvaluatePetanque.java</file>
+			<file>src/main/java/org/dos/tournament/application/TournamentManagerUI.java</file>
+			<file>src/test/java/org/dos/tournament/common/competition/TestDefaultCompetitorResult.java</file>
+			<file>src/test/java/org/dos/tournament/common/competition/TestDefaultCompetitorResultCompare.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/result/PetanqueSuperMeleeClubChampionshipResult.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/JoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverMeetOpponentTandem.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/components/SuperMeleeMatchdayTable.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/ITotalResult.java</file>
+			<file>src/main/java/org/dos/tournament/branch/boardgames/movement/TableBasedIndividual.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverMeetOpponentTwice.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/result/PetanqueMatchResult.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/test/java/org/dos/tournament/TestsuiteTournamentManager.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/CoreRuleSuperMeleeAllIndicesUnique.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/IEncounter.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/utils/ParticipantStatus.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/team/TestDoublette.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/IParticipant.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/TestSuperMeleeClubChampionship.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverPlayTripletteTwice.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/AbstractParticipant.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="43" opendate="2018-11-05 09:47:03" fixdate="2018-11-11 12:37:42">
+		<buginformation>
+			<summary>Taste „Some short description“</summary>
+			<description>Beim Drücken der Taste „Some short description“ friert das Programm ein und ich muss dass Pgm über den „Task-Manager“ beenden.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMeleeClubChampionship.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverPlayTripletteTandem.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/partie/TestPartie.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/AssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/Attendee.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/AbstractResult.java</file>
+			<file>src/test/java/org/dos/tournament/common/player/TestAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/common/movement/regulations/AbstractRegulationDecorator.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/DefaultMatchdayPanel.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/utils/NumericAssociationId.java</file>
+			<file>src/main/java/org/dos/tournament/resources/package-info.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/DefaultCompetitorResult.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/TestSuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/petanque/player/DialogJoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverMeetTeammateTwice.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/tablemodels/LeaderboardTableModel.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/Triplette.java</file>
+			<file>src/main/java/org/dos/tournament/common/movement/regulations/Regulation.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/AbstractTeamParticipant.java</file>
+			<file>src/test/java/org/dos/tournament/common/player/TestAssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverMeetTeammateTandem.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/AbstractTotalResult.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/IResult.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/tablemodels/ParticipantsTableModel.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/factories/SupermeleeMenuFactory.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/TestsuitePetanque.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/matchday/Matchday.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/utils/NumericParticipantId.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/partie/Partie.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/matchday/TestMatchday.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/petanque/movement/DialogSetRoundManually.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/utils/TournamentGrid.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/utils/IParticipantId.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/team/TestTriplette.java</file>
+			<file>src/main/java/org/dos/tournament/common/movement/regulations/AbstractCoreRule.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/AbstractEncounter.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/branch/package-info.java</file>
+			<file>src/main/java/org/dos/tournament/application/package-info.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/Doublette.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/partie/CompetitorPartieResult.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/player/DialogAssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/AbstractPetanqueTeam.java</file>
+			<file>src/main/java/org/dos/tournament/common/package-info.java</file>
+			<file>src/test/java/org/dos/tournament/TestsuiteCommonFeatures.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/utils/TournamentUtils.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/partie/TestCompetitorPartieResult.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/result/PetanqueResult.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/EvaluatePetanque.java</file>
+			<file>src/main/java/org/dos/tournament/application/TournamentManagerUI.java</file>
+			<file>src/test/java/org/dos/tournament/common/competition/TestDefaultCompetitorResult.java</file>
+			<file>src/test/java/org/dos/tournament/common/competition/TestDefaultCompetitorResultCompare.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/result/PetanqueSuperMeleeClubChampionshipResult.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/JoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverMeetOpponentTandem.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/components/SuperMeleeMatchdayTable.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/ITotalResult.java</file>
+			<file>src/main/java/org/dos/tournament/branch/boardgames/movement/TableBasedIndividual.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverMeetOpponentTwice.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/result/PetanqueMatchResult.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/test/java/org/dos/tournament/TestsuiteTournamentManager.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/CoreRuleSuperMeleeAllIndicesUnique.java</file>
+			<file>src/main/java/org/dos/tournament/common/competition/IEncounter.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/utils/ParticipantStatus.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/team/TestDoublette.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/IParticipant.java</file>
+			<file>src/test/java/org/dos/tournament/branch/petanque/tournament/TestSuperMeleeClubChampionship.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/regulations/RuleSuperMeleeNeverPlayTripletteTwice.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/AbstractParticipant.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="27" opendate="2018-10-22 20:47:13" fixdate="2018-10-23 20:21:46">
+		<buginformation>
+			<summary>Gegner-Regel funktioniert nicht</summary>
+			<description>Beim Losen der zweiten Runde kann es vorkommen, dass ein Spieler gegen einen Spieler trifft, gegen den er bereits gespielt hat.  Bei 30 Spielern kommt es bereits in der zweiten Runde zu der Situation, dass Spieler erneut gegeneinander antreten.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/application/common/controls/ToggleButton.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/player/DialogAssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/petanque/tournament/movement/SuperMeleeClubChampionship.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/DefaultMatchdayPanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/TournamentManagerUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="21" opendate="2018-10-17 19:20:07" fixdate="2018-10-21 20:15:41">
+		<buginformation>
+			<summary>Fenster "Teilnehmer bearbeiten"</summary>
+			<description>Fenster auf ursprüngliche Größe verändern.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/petanque/tournament/partie/Partie.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/player/petanque/DialogJoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/PetanqueSuperMeleePanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/dialogs/player/DialogAssociationAttendee.java</file>
+			<file>src/main/java/org/dos/tournament/petanque/tournament/matchday/Matchday.java</file>
+			<file>src/main/java/org/dos/tournament/petanque/tournament/movement/SuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/tablemodels/PetanqueMatchdayTableModel.java</file>
+			<file>src/main/java/org/dos/tournament/petanque/tournament/movement/SuperMeleeClubChampionship.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7" opendate="2018-10-14 10:47:46" fixdate="2018-10-14 11:27:24">
+		<buginformation>
+			<summary>Ergebniseingabe im Petanqueturnier erlaubt unentschieden</summary>
+			<description>In einem Spiel kann es kein Unentschieden z.B. 13:13 geben.   Diese Ergebnis darf nicht eingegeben werden.   Es kann sein, dass Ergebnisse korrigiert werden müssen. Sollte es dann zu der Erfassung eines gleichen Wertes kommen, ist der andere Wert zu löschen.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/application/common/panels/DefaultMatchdayPanel.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/utils/tablecelleditor/PetanqueTableCellEditor.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/tablemodels/PetanqueMatchdayTableModel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5" opendate="2018-10-14 10:29:11" fixdate="2019-01-06 17:21:41">
+		<buginformation>
+			<summary>Tagessieger bekommt keine Punkte im Monatsturnier</summary>
+			<description>Der Tagessieger des Turniers bekommt derzeit noch keine zusätzlichen Punkte.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dos/tournament/application/petanque/panels/tablemodels/LeaderboardTableModel.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMeleeClubChampionship.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/team/JoueurIndividuel.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/components/SuperMeleeMatchdayTable.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/IResult.java</file>
+			<file>src/main/java/org/dos/tournament/common/result/ConstantScoreResult.java</file>
+			<file>src/main/java/org/dos/tournament/branch/petanque/tournament/movement/SuperMelee.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/IParticipant.java</file>
+			<file>src/main/java/org/dos/tournament/application/common/panels/DefaultMatchdayPanel.java</file>
+			<file>src/main/java/org/dos/tournament/common/player/AbstractParticipant.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

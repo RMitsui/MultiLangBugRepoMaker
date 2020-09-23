@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="JMata">
+	<bug id="100" opendate="2018-03-18 13:48:30" fixdate="2018-03-18 14:18:31">
+		<buginformation>
+			<summary>whenInput 바로 뒤에서 dontSwitch를 정의할 수 없음</summary>
+			<description>- defineBaseRule이 생기면서 input에 대해 아무 동작하지 않게끔 덮어쓰기 동작이 가능해야 됨 - 기존엔 아무 동작하지 않는 정의를 의미없는 정의라 보고 허용하지 않음 - 이젠 해줘야됨</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/kr/co/plasticcity/jmata/JMBuilder.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMStateImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="46" opendate="2017-04-05 14:30:51" fixdate="2017-06-17 16:16:45">
+		<buginformation>
+			<summary>오류가 있는 머신 정의에 대한 처리</summary>
+			<description>**오류 케이스** - A라는 상태에서 B라는 상태로 전이하는 규칙이 있음 - 그런데 B 상태에 대한 정의는 존재하지 않음 - 이 경우 런타임 시 NullPointerException 발생 (존재하지 않는 상태(B)의 진입 동작을 호출하는 시점)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/kr/co/plasticcity/jmata/function/JMPredicate.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMMachineImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMState.java</file>
+			<file>tests/InvalidMachineDefineTest.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMLog.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMStateImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMata.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="44" opendate="2017-04-02 13:20:26" fixdate="2017-04-02 15:20:01">
+		<buginformation>
+			<summary>시작 상태에 기민한 전이 규칙이 있을 경우 제대로 작동 안하는 버그</summary>
+			<description>- 시작 상태에 기민한 전이 규칙이 있으면 해당 규칙이 작동하지 않음</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/kr/co/plasticcity/jmata/JMMachineImpl.java</file>
+			<file>tests/JMataTest.java</file>
+			<file>src/kr/co/plasticcity/jmata/annotation/State.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2016-11-25 06:29:37" fixdate="2016-12-08 05:42:48">
+		<buginformation>
+			<summary>RejectedExecutionException 발생 케이스 추적</summary>
+			<description>- Executor Shutdown 상태에서 요청이 들어올 경우 발생 - 해당 루틴 추적</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/kr/co/plasticcity/jmata/JMBuilder.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMStateCreater.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMata.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMStateImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMMachineImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMState.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMMachine.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMataImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMBuilderImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMLog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="19" opendate="2016-10-18 02:23:42" fixdate="2016-10-20 17:02:51">
+		<buginformation>
+			<summary>onExit 호출 안됨</summary>
+			<description>- 기본 퇴장함수 (justSwitchTo로 상태 전이 시 사용) 호출 안됨 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/kr/co/plasticcity/jmata/JMStateImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="8" opendate="2016-08-11 04:57:03" fixdate="2016-10-21 09:09:23">
+		<buginformation>
+			<summary>JMata release 상태 보완</summary>
+			<description>- 현재 JMata.release() 호출 후에도 머신 빌드 등의 동작을 수행 가능 - release 플래그 같은걸 만들어서 release() 호출 후에는 JMata 사용 불가능 하도록 만들어야 됨 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/kr/co/plasticcity/jmata/JMataImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMata.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7" opendate="2016-08-11 04:37:50" fixdate="2016-10-20 17:00:53">
+		<buginformation>
+			<summary>머신 종료 시 태그 삭제 구현</summary>
+			<description>- 어떤 태그의 모든 머신 인스턴스가 종료되면 해당 태그를 머신 맵에서 삭제 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/kr/co/plasticcity/jmata/function/JMConsumer.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMMachineImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/function/JMBiConsumer.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMMachine.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMataImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2" opendate="2016-08-02 15:00:41" fixdate="2016-08-03 09:33:39">
+		<buginformation>
+			<summary>상태 정의 중 입력 신호 중복 검사 더 철저히</summary>
+			<description>상태 정의 자료 구조 - 입력 신호에 대한 동작을 정의한 맵이 분산 되어 있음 (JMConsumer, JMBiConsumer) - 입력 신호 하나 당 두 맵 모두에 대해 중복 검사를 실시 해야 됨 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/kr/co/plasticcity/jmata/JMBuilder.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMStateCreater.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMStateImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMMachineImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMState.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMMachine.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMataImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMBuilderImpl.java</file>
+			<file>src/kr/co/plasticcity/jmata/JMata.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

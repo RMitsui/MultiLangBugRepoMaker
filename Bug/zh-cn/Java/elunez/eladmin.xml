@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>347</id>
+		<title>运维管理两个错误，一个是不同服务器部署，获取服务器信息错误。二、部署到linux中后，上传的war包名称前会自动多一个tmp导致部署失败，</title>
+		<body>问题一 ScpClientUtil  static synchronized public ScpClientUtil getInstance(String ip, int port, String username, String passward) { //if (instance == null) { return new ScpClientUtil(ip, port, username, passward); //} //return instance; }   ![image](https://user-images.githubusercontent.com/50815165/81296118-03bd5f00-90a4-11ea-8a39-3fbb7be0ea7a.png) </body>
+		<created>2020-05-07 12:48:04</created>
+		<closed>2020-05-08 08:36:29</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>后台代码生成错误</title>
+		<body>1:我有一张司机表，在数据库中的字段名为“driver_mobile”, model里面的属性名称为“driverMobile” 2:我选择这张表，选择“driver_mobile”的精确查询条件，执行生成代码 生成的Specification类代码如下（这在执行查询时会报错）： @Override         public Predicate toPredicate(Root&lt;DriverInfo&gt; root, CriteriaQuery&lt;?&gt; criteriaQuery, CriteriaBuilder cb) {              List&lt;Predicate&gt; list = new ArrayList&lt;Predicate&gt;();              if(!ObjectUtils.isEmpty(driverInfo.getDriverMobile())){                 /**                 * 精确                 */                 list.add(cb.equal(root.get("driver_mobile").as(String.class),driverInfo.getDriverMobile()));             }                 Predicate[] p = new Predicate[list.size()];                 return cb.and(list.toArray(p));         }  正确的结果应该是： @Override         public Predicate toPredicate(Root&lt;DriverInfo&gt; root, CriteriaQuery&lt;?&gt; criteriaQuery, CriteriaBuilder cb) {              List&lt;Predicate&gt; list = new ArrayList&lt;Predicate&gt;();              if(!ObjectUtils.isEmpty(driverInfo.getDriverMobile())){                 /**                 * 精确                 */                 list.add(cb.equal(root.get("driverMobile").as(String.class),driverInfo.getDriverMobile()));             }                 Predicate[] p = new Predicate[list.size()];                 return cb.and(list.toArray(p));         }  </body>
+		<created>2019-05-23 02:50:09</created>
+		<closed>2019-05-24 01:55:05</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>用户管理中的岗位显示异常</title>
+		<body>当数据权限设置成一个根节点一个子节点时，数据能查到但是显示会异常（子节点数据不会显示） ![image](https://user-images.githubusercontent.com/42142420/58219524-d3b76780-7d3d-11e9-8f94-8e9978ccb073.png)  显示如下 ![image](https://user-images.githubusercontent.com/42142420/58219595-1b3df380-7d3e-11e9-8264-f3c1e37ed270.png)  </body>
+		<created>2019-05-23 01:35:47</created>
+		<closed>2019-05-23 02:29:27</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>我使用你线上演示项目的时候发现了一个bug</title>
+		<body>如果我把你普通用户角色的权限全部删除，然后我再去登陆，登陆页面就卡住了，然后我看了一下网络信息，发现一直在循环请求登陆接口，应该是你登陆逻辑那块地方有什么问题。</body>
+		<created>2019-02-17 06:00:10</created>
+		<closed>2019-02-28 02:06:14</closed>
+	</bug>
+</bugs>

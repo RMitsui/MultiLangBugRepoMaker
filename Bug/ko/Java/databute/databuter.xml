@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>128</id>
+		<title>EntryOperationSuccessMessageHandler가 모든 타입을 검사하지 않음</title>
+		<body></body>
+		<created>2019-07-30 18:47:29</created>
+		<closed>2019-07-30 19:44:58</closed>
+	</bug>
+	<bug>
+		<id>107</id>
+		<title>ZooKeeper에 저장하는 클러스터 노드 정보에 클라이언트용 정보 추가 필요</title>
+		<body>ZooKeeper에 저장하는 클러스터 노드 정보에 클라이언트용 정보가 추가되어있지 않아 클라이언트가 다른 클러스터 노드에 접속 할 수없음.</body>
+		<created>2019-07-27 07:17:00</created>
+		<closed>2019-07-27 07:36:38</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>Handshake 프로토콜에서 이상 노드 감지하여 연결 해제.</title>
+		<body>Handshake 프로토콜에서 이상 노드 감지하여 연결 해제. 노드에 설정된 bucket의 사이즈가 기존 유지중인 bucket의 사이즈와 다른 경우, 버그를 유발할 수 있으므로 연결을 해제한다.</body>
+		<created>2019-07-26 17:12:32</created>
+		<closed>2019-07-28 08:40:08</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>클러스터 노드 세션과 연결이 끊어지면 클러스터 노드 세션 그룹에서 해당 세션 제거</title>
+		<body>클러스터 노드 세션과 연결이 끊어지면 해당 세션을 완전히 제거해야 이미 닫힌 채널에 패킷을 보내는 일이 발생하지 않는다.</body>
+		<created>2019-07-26 16:40:33</created>
+		<closed>2019-07-27 05:19:31</closed>
+	</bug>
+	<bug>
+		<id>84</id>
+		<title>클라이언트 세션과 연결이 끊어지면 클라이언트 세션 그룹에서 해당 세션 제거</title>
+		<body>클라이언트 세션과 연결이 끊어지면 해당 세션을 완전히 제거해야 이미 닫힌 채널에 패킷을 보내는 일이 발생하지 않는다.</body>
+		<created>2019-07-26 16:39:43</created>
+		<closed>2019-07-27 05:18:21</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>버킷 factor가 업데이트된 후 버킷을 저장하지 못하면 빈 factor가 발생함</title>
+		<body>새로운 액티브 버킷을 생성할 때 버킷 factor를 업데이트 할 때 ZooKeeper에 바로 반영되기 때문에 그 후 버킷을 저장하지 못할 경우 빈 factor가 발생함. 이를 해결하기 위해서, 액티브 버킷을 저장할 때에는 버킷 전체에 lock을 걸어, 한 노드만 버킷을 생성하고, 만약 실패했다면 factor 카운터를 초기화해야 한다.</body>
+		<created>2019-07-26 16:18:30</created>
+		<closed>2019-07-29 14:01:06</closed>
+	</bug>
+</bugs>

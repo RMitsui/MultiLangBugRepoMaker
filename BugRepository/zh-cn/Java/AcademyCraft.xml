@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="AcademyCraft">
+	<bug id="726" opendate="2019-01-26 02:10:38" fixdate="2019-01-28 04:19:42">
+		<buginformation>
+			<summary>[Bug] 服务器进入玩家报错</summary>
+			<description>[10:05:08] [Server thread/INFO]: 玩家 **** join the game. [10:05:10] [Server thread/ERROR]: Error during network message. java.lang.reflect.InvocationTargetException: null         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_192]         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_192]         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_192]         at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_192]         at cn.lambdalib2.s11n.network.NetworkMessage$2.invoke(NetworkMessage.java:230) ~[NetworkMessage$2.class:?]         at cn.lambdalib2.s11n.network.NetworkMessage.invokeListener(NetworkMessage.java:157) ~[NetworkMessage.class:?]         at cn.lambdalib2.s11n.network.NetworkMessage.processMessage(NetworkMessage.java:138) ~[NetworkMessage.class:?]         at cn.lambdalib2.s11n.network.NetworkMessage.access$000(NetworkMessage.java:54) ~[NetworkMessage.class:?]         at cn.lambdalib2.s11n.network.NetworkMessage$Handler.lambda$onMessage$0(NetworkMessage.java:381) ~[NetworkMessage$Handler.class:?]         at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_192]         at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_192]         at net.minecraft.util.Util.func_181617_a(Util.java:50) [h.class:?]         at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:842) [MinecraftServer.class:?]         at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:472) [nz.class:?]         at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:779) [MinecraftServer.class:?]         at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:633) [MinecraftServer.class:?]         at java.lang.Thread.run(Thread.java:748) [?:1.8.0_192] Caused by: java.lang.ArrayIndexOutOfBoundsException: 1         at cn.academy.analyticUtil.AnalyticDataListener.serverIpCollector(AnalyticDataListener.java:87) ~[AnalyticDataListener.class:?]         ... 17 more   更多信息 Windows Server 2016 CatServer version Personal-46e42f6 (MC: 1.12.2) (Implementing API version 1.12.2-R0.1-SNAPSHOT, Forge version 14.23.5.2796) 1.1.0beta2</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/analyticUtil/AnalyticDataListener.java</file>
+			<file>src/main/java/cn/academy/analyticUtil/AnalyticDto.java</file>
+			<file>src/main/java/cn/academy/analyticUtil/AnalyticInfoSender.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="701" opendate="2019-01-12 06:53:08" fixdate="2020-07-15 02:40:41">
+		<buginformation>
+			<summary>[Bug] 电击使电磁炮第一人称视角的手部特效位置错位</summary>
+			<description> ![qq 20190112145251](https://user-images.githubusercontent.com/46082179/51070291-c399c800-1679-11e9-9739-2b82b2af98d1.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/client/render/misc/RailgunHandEffect.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="698" opendate="2019-01-07 14:15:03" fixdate="2019-01-09 19:59:20">
+		<buginformation>
+			<summary>[Bug] 使用转移传送时服务器报错</summary>
+			<description>See #688   使用转移传送（似乎拿不可以放置的物品的时候会出现） [18:52:46] [Netty Server IO #0/INFO]: Ignored network message null, execute, reason: Can't find server context</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/ability/vanilla/teleporter/skill/ShiftTeleport.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="694" opendate="2019-01-06 16:04:15" fixdate="2019-01-13 13:50:16">
+		<buginformation>
+			<summary>[Bug] 判定扇叶被阻挡的区域需向外扩展一格</summary>
+			<description>**Describe the bug** 目前是以主机前方的方块为中心，15乘15乘1的区域。 从截图可以看到此时扇叶末端是嵌入方块内的，但该方块不在判定区域内。  **To Reproduce** Steps to reproduce the behavior: 1. Go to '...' 2. Click on '....' 3. Scroll down to '....' 4. See error  **Expected behavior** A clear and concise description of what you expected to happen.  **Screenshots** ![2019-01-06_23 57 25](https://user-images.githubusercontent.com/13258510/50738508-b9a63e00-120f-11e9-8388-00472fd630df.png)    **Desktop (please complete the following information):**  - OS: [e.g. Windows, MacOS, Linux]  - MC Version and Forge version: [e.g. 14.23.4.2705-1.12.2]  - Version [e.g. 1.1.0beta1]  **Additional context** Add any other context about the problem here. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/block/tileentity/TileWindGenMain.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="674" opendate="2018-12-31 10:09:45" fixdate="2019-01-07 14:56:05">
+		<buginformation>
+			<summary>[Bug] 电气使的超电磁炮细节显示</summary>
+			<description>我记得旧版的超电磁炮在可以发射的时候右手的地方会有一个电圈的特效，现在没有了。哇没有参照物了，我得重新学习放电磁炮了（555 希望能重新加入awa 不知道是不是bug..</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/client/render/misc/RailgunHandEffect.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="616" opendate="2018-08-08 04:32:29" fixdate="2019-01-13 06:06:04">
+		<buginformation>
+			<summary>[Bug] When destroyTerrain=false, some skills' exp won't grow</summary>
+			<description>这会导致某些以之为前置要求的技能无法学习，从而影响游戏体验。典型例子如转移传送。  建议关闭地形破坏时，转移传送释放出方块后会以物品形式掉落，而不是直接放置方块。这样可以免于其被直接禁止使用。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/ability/vanilla/teleporter/skill/ShiftTeleport.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="533" opendate="2016-10-12 15:08:23" fixdate="2016-10-27 18:12:16">
+		<buginformation>
+			<summary>[bug]当坐在诸如车、船、马上之时，传送使的大部分技能会失去效果</summary>
+			<description>已知包括标记传送、穿透传送、坐标传送、高速闪现在内的大部分位移技能全部无效，但是CP会被扣除。具体表现为传送出去一瞬间就被拉回载具上。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/vanilla/teleporter/util/TPSkillHelper.java</file>
+			<file>src/main/java/cn/academy/vanilla/teleporter/skill/Flashing.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="518" opendate="2016-09-08 08:02:21" fixdate="2016-10-28 06:01:32">
+		<buginformation>
+			<summary>[1.0.4]矢量反射的特效在退出游戏后不会消失</summary>
+			<description>当开启矢量反射后，退出世界而不关闭游戏，进入任意世界，矢量反射的波纹仍然会存在。  注：可能涉及底层。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/ability/api/context/ContextManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="490" opendate="2016-08-16 02:43:28" fixdate="2018-01-24 13:45:42">
+		<buginformation>
+			<summary>[1.0.4]虚能融合机虚相位液体容量显示错误</summary>
+			<description>Ex. 一次操作中放入了5000mm的虚相位液体，在成功获得中纯度水晶后还剩2000mm，然而关闭游戏后再打开，可以看到里面不含任何的液体（也就是2000mm的虚相位液体消失），事实上液体仍然存在，只需要丢入一个液体单元和一块低纯度水晶后机器仍可以完成生产中纯度水晶的工作，同时也会正常显示液体容量 另外，经过第二次尝试，发现只要回到标题界面后液体显示就会错误，同时无论之前经过什么操作，即使仅仅是放入了液体，回到标题界面之后液体就会消失。 如图： ![2016-08-16_10 37 09](https://cloud.githubusercontent.com/assets/20895139/17686310/153b8c84-639e-11e6-870a-d1f9700fcc20.png) ![2016-08-16_10 37 23](https://cloud.githubusercontent.com/assets/20895139/17686311/15a823c6-639e-11e6-91ab-553de56fbe90.png) ![2016-08-16_10 37 36](https://cloud.githubusercontent.com/assets/20895139/17686314/1861b56e-639e-11e6-8778-442a15db6cb6.png) ![2016-08-16_10 37 40](https://cloud.githubusercontent.com/assets/20895139/17686313/16be0456-639e-11e6-885d-ca8d5b18088d.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/core/network/MessageMachineInfoSync.java</file>
+			<file>src/main/java/cn/academy/core/block/TileGeneratorBase.java</file>
+			<file>src/main/java/cn/academy/energy/block/TilePhaseGen.java</file>
+			<file>src/main/java/cn/academy/core/network/NetworkManager.java</file>
+			<file>src/main/java/cn/academy/crafting/block/TileImagFusor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="482" opendate="2016-08-11 09:46:38" fixdate="2017-03-04 12:59:35">
+		<buginformation>
+			<summary>[1.0.4] 金属处理机OUT槽满的情况下仍耗费能量</summary>
+			<description>金属处理机的IN口放置的矿物处理后费掉一定电量，处理后的矿物从OUT口出来，但是OUT口满64（一组）个之后，处理机就不会再处理了，IN口的矿物数量不变，OUT口的矿石也不再增加，但是电量还是继续消耗. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/crafting/block/TileMetalFormer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="471" opendate="2016-08-08 01:32:50" fixdate="2017-03-04 09:36:48">
+		<buginformation>
+			<summary>[1.0.4]AC的能源桥有一个小bug</summary>
+			<description>出现在EU/IF的能源桥上，导线从发电机（目前只尝试了发电机）连接到能源桥后，导线自动延展到能源桥上，但是敲掉能源桥后导线延展出的分支并没有消退，而且之后敲掉导线再放回同一个位置延展仍然存在，上图～ ![2016-08-08_09 26 34](https://cloud.githubusercontent.com/assets/20895139/17466938/062867e8-5d4b-11e6-9707-7d4d14fe8fe5.png) ![2016-08-08_09 26 45](https://cloud.githubusercontent.com/assets/20895139/17466939/07129656-5d4b-11e6-9feb-d958a11d5a03.png) ![2016-08-08_09 26 49](https://cloud.githubusercontent.com/assets/20895139/17466942/0737ec94-5d4b-11e6-840a-b43efd918486.png) ![2016-08-08_09 26 55](https://cloud.githubusercontent.com/assets/20895139/17466941/07131e5a-5d4b-11e6-8aa4-017813aa407f.png) ![2016-08-08_09 26 58](https://cloud.githubusercontent.com/assets/20895139/17466940/0713209e-5d4b-11e6-8398-8a4ce0944107.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/support/ic2/TileEUInput.java</file>
+			<file>src/main/java/cn/academy/support/ic2/TileEUOutput.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="459" opendate="2016-07-31 04:33:12" fixdate="2016-08-06 08:58:58">
+		<buginformation>
+			<summary>[1.0.3]数据终端的应用数总显示为0</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/terminal/client/TerminalUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="445" opendate="2016-07-25 01:43:26" fixdate="2017-03-04 09:23:21">
+		<buginformation>
+			<summary>[1.0.3]服务器中有些技能的特效与声音其他人不可见</summary>
+			<description>RT，比如原子崩坏的光盾，电击使的电弧激发等 1.0.2就存在了，然而1.0.3只是修复了原子崩坏的电子光束 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/vanilla/meltdowner/CatMeltdowner.java</file>
+			<file>src/main/java/cn/academy/vanilla/teleporter/skill/Flashing.java</file>
+			<file>src/main/java/cn/academy/vanilla/meltdowner/skill/MDDamageHelper.java</file>
+			<file>src/main/java/cn/academy/vanilla/teleporter/CatTeleporter.java</file>
+			<file>src/main/java/cn/academy/vanilla/teleporter/util/TPSkillHelper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="329" opendate="2016-05-12 15:01:55" fixdate="2016-07-26 07:56:57">
+		<buginformation>
+			<summary>[1.0.0] Block-removing problem while teleporting</summary>
+			<description>&gt; 关于传送使的一个bug &gt; -在使用转移传送可能会移除其他方块（基岩），这可能会导致服务器查询失效（或单机玩家痛苦欲绝！） &gt;  &gt; 完毕 - by 572679942 572679942@qq.com  [Translation Needed] </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/vanilla/teleporter/skills/ShiftTeleport.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="299" opendate="2016-04-15 18:44:32" fixdate="2016-07-06 06:31:46">
+		<buginformation>
+			<summary>[1.0pr3_1] [严重]发现一个利用机器可刷任何物品的BUG</summary>
+			<description>上次我服务器里那个发现抛硬币BUG的玩家已经升为管理了，这次我和他发现了个更为严重的BUG，如题 由于这个BUG的严重性，应该还没人发现，所以我不方便细说 利用虚能融合机，金属处理机，甚至风力的主机，只要能放东西进去的都行， 服务器和单机经测试都可以刷，大致就是经过几个步骤复制一个你放进去的物品，无论放多少一次只能复制一个 考虑了很久要不要公开BUG，毕竟不是刷硬币那么简单 请问一下如何在不公开的情况下提交 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/core/container/TechUIContainer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="285" opendate="2016-03-05 13:52:10" fixdate="2016-05-07 14:05:30">
+		<buginformation>
+			<summary>高速闪现同时按下多个方向键会出现无法消除的实体——残留</summary>
+			<description>![image](https://cloud.githubusercontent.com/assets/13158903/13547844/5aacc5d8-e31c-11e5-9681-fc7f5cd891c7.png) 如图所示，重新进入世界后恢复 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/vanilla/teleporter/skills/Flashing.java</file>
+			<file>src/main/java/cn/academy/ability/api/context/ContextManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="270" opendate="2016-02-12 15:16:47" fixdate="2016-04-19 13:43:22">
+		<buginformation>
+			<summary>频率变送器的退出有逻辑错误</summary>
+			<description>打开频率变送器后，直接右击普通方块退出，要按两下Alt才能再打开数据终端 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/energy/client/app/AppFreqTransmitter.java</file>
+			<file>src/main/java/cn/academy/terminal/client/TerminalUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="260" opendate="2016-02-05 04:13:33" fixdate="2016-05-07 14:05:30">
+		<buginformation>
+			<summary>[1.0pr3_1]有关巡航光束炮的两个BUG</summary>
+			<description>1.在开启后若击杀了一个生物，便会停止技能，不再继续。 2.当CP不足以释放巡航光束炮的第一次攻击时，会在玩家周围创造一个不消失的光球（重新进入存档后消失） </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/vanilla/meltdowner/skill/ElectronMissile.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="255" opendate="2016-02-01 15:29:41" fixdate="2016-02-12 14:51:29">
+		<buginformation>
+			<summary>[1.0pr3_1]coin will double after using it if you change into another item</summary>
+			<description>将硬币掷出后切换到其他物品，会获得两个硬币。 并且经由此途径刷出的硬币无法与原硬币堆叠 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/core/AcademyCraft.java</file>
+			<file>src/main/java/cn/academy/vanilla/electromaster/entity/EntityCoinThrowing.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="193" opendate="2015-10-29 23:27:54" fixdate="2015-11-01 15:16:27">
+		<buginformation>
+			<summary>能源桥在局域网联机时GUI总是显示在主机上</summary>
+			<description>版本1.0pr2 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/support/BlockConverterBase.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="118" opendate="2015-07-30 14:59:26" fixdate="2015-08-01 05:48:00">
+		<buginformation>
+			<summary>A problem about coin in the survival mode</summary>
+			<description>在生存模式下，如果硬币所在的位置不在第一格且第一格有物品的情况下，那么扔出去硬币在收回来的时候，会变成第一格的物品_(:з」∠)_ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/cn/academy/terminal/app/settings/PropertyElements.java</file>
+			<file>src/main/java/cn/academy/vanilla/electromaster/skill/MineDetect.java</file>
+			<file>src/main/java/cn/academy/core/ModuleCoreClient.java</file>
+			<file>src/main/java/cn/academy/ability/client/ui/PresetEditUI.java</file>
+			<file>src/main/java/cn/academy/vanilla/electromaster/entity/EntityCoinThrowing.java</file>
+			<file>src/main/java/cn/academy/energy/block/TileNode.java</file>
+			<file>src/main/java/cn/academy/core/util/DamageHelper.java</file>
+			<file>src/main/java/cn/academy/energy/client/gui/matrix/GuiMatrix.java</file>
+			<file>src/main/java/cn/academy/core/client/ui/DebugConsole.java</file>
+			<file>src/main/java/cn/academy/ability/api/data/CPData.java</file>
+			<file>src/main/java/cn/academy/test/RangeDamageTest.java</file>
+			<file>src/main/java/cn/academy/terminal/app/settings/SettingsUI.java</file>
+			<file>src/main/java/cn/academy/vanilla/electromaster/skill/CurrentCharging.java</file>
+			<file>src/main/java/cn/academy/energy/client/render/block/RenderCatEngine.java</file>
+			<file>src/main/java/cn/academy/ability/api/ctrl/ClientController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

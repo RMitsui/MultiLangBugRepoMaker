@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="poi-tl">
+	<bug id="370" opendate="2020-04-19 18:24:05" fixdate="2020-06-16 06:39:27">
+		<buginformation>
+			<summary>文档合并时xml命名空间不全时抛出异常</summary>
+			<description>比如，主文档的xml命名空间中没有图片，合并文档的包含图片，或者超链接等，当进行合并时因为xml命名空间不全，导致解析xml失败，抛出异常</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue370.java</file>
+			<file>src/main/java/com/deepoove/poi/xwpf/DefaultXmlOptions.java</file>
+			<file>src/main/java/com/deepoove/poi/xwpf/NiceXWPFDocument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="313" opendate="2019-10-18 09:12:47" fixdate="2019-11-12 15:08:14">
+		<buginformation>
+			<summary>通过模板生成模板存在【bug】</summary>
+			<description>再对通过模板生成的模板进行使用时，无法同时插入两个表格，并且插入一个表格时还会将生成模板的文档的其它的内容删除，只剩一个表格，这个如何解决？</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/deepoove/poi/policy/AbstractRenderPolicy.java</file>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue313.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="161" opendate="2018-12-04 10:40:38" fixdate="2019-05-29 10:27:31">
+		<buginformation>
+			<summary>占位符问题</summary>
+			<description>![e7089c9d0d4c17eaa9f9b86cc4eee65](https://user-images.githubusercontent.com/44364528/49436324-d0faa180-f7f3-11e8-8691-bba37c93d6df.png) 填充后，有些占位符会只剩下左边，而且数据没填充成功。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue111.java</file>
+			<file>src/main/java/com/deepoove/poi/resolver/RunningRunParagraph.java</file>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue161.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="111" opendate="2018-08-28 13:30:14" fixdate="2019-05-29 17:47:26">
+		<buginformation>
+			<summary>poi-tl生成模板文档后再生成文档</summary>
+			<description>比如{测试一}申请{测试二}测试三，那替换的标签会变成{测试一}申请{测试二}</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue111.java</file>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue161.java</file>
+			<file>src/main/java/com/deepoove/poi/resolver/RunningRunParagraph.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

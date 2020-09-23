@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Mycat-Server">
+	<bug id="1435" opendate="2017-04-10 06:50:52" fixdate="2018-06-11 12:31:51">
+		<buginformation>
+			<summary>Avg 函数别名结果不对</summary>
+			<description>mycat1.6 Avg 函数别名结果不对：  mysql&gt; select avg(cust_id) GG from customer t;  +---------------+ | GG            | +---------------+ | 2001243655000 | +---------------+ 1 row in set 没有别名结果是正确的： mysql&gt; select avg(cust_id)  from customer t; +----------------+ | AVG0           | +----------------+ | 200124365.5000 | +----------------+ 1 row in set </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/io/mycat/sqlengine/mpp/UnsafeRowGrouper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="87" opendate="2015-01-08 03:00:58" fixdate="2015-06-12 12:37:51">
+		<buginformation>
+			<summary>最近测试MyCat时发现的几个问题</summary>
+			<description>测试环境：  硬件：CPU E7500, 内存 4G 软件：WIN7 64位系统，JDK1.7.0_72 64位，MySQL Community 5.6.22.0单实例  测试使用的表按照《MyCat_In_Action_中文版》中快速上手部分使用的SQL进行创建，schema.xml使用默认设置，没有进行修改。  测试出现的问题：  一、普通表，以hotnews表为例  向hotnews表插入5条数据，其ID为1、2、3、4、5  1.1 查询SQL：SELECT \* from hotnews where id &gt; 1; 结果：只查到了ID为4的数据  同样，以id&gt;1为条件执行update和delete时也只影响ID为4的数据。  1.2 查询SQL：select \* from hotnews where id between 1 and 3; 结果： java.lang.ClassCastException: com.alibaba.druid.sql.ast.expr.SQLIdentifierExpr cannot be cast to com.alibaba.druid.sql.ast.expr.SQLPropertyExpr     at org.opencloudb.parser.druid.MycatSchemaStatVisitor.getColumn(MycatSchemaStatVisitor.java:111)     at org.opencloudb.parser.druid.MycatSchemaStatVisitor.visit(MycatSchemaStatVisitor.java:23)     at com.alibaba.druid.sql.ast.expr.SQLBetweenExpr.accept0(SQLBetweenExpr.java:48)     at com.alibaba.druid.sql.ast.SQLObjectImpl.accept(SQLObjectImpl.java:40)     at com.alibaba.druid.sql.ast.SQLObjectImpl.acceptChild(SQLObjectImpl.java:62)         ...  二、子表，以orders表为例  2.1 使用Insert语句向orders表中插入数据有一定概率5分钟后报ERROR 1064&lt;HY000&gt; can't find &lt;root&gt; parent sharding node for sql，这个已经有人反映过了。  2.2 以customer_id以外的列作为条件进行update delete或者select时会报错，比如执行SQL：select \* from orders where id = 1; 结果： java.lang.NullPointerException     at org.opencloudb.route.util.RouterUtil.ruleCalculate(RouterUtil.java:411)     at org.opencloudb.route.util.RouterUtil.findRouteWithcConditionsForTables(RouterUtil.java:703)     at org.opencloudb.route.util.RouterUtil.tryRouteForOneTable(RouterUtil.java:577)         ...  2.3 以customer_id为条件进行update delete或者select时会报错，比如执行SQL：update orders set note = "abc" where customer_id = 1; 结果： java.lang.IllegalArgumentException: can't find datanode for sharding column:SHARDING_ID val:1     at org.opencloudb.route.util.RouterUtil.ruleCalculate(RouterUtil.java:415)     at org.opencloudb.route.util.RouterUtil.findRouteWithcConditionsForTables(RouterUtil.java:703)     at org.opencloudb.route.util.RouterUtil.tryRouteForOneTable(RouterUtil.java:577) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/opencloudb/route/RouteService.java</file>
+			<file>src/main/java/org/opencloudb/parser/druid/impl/DruidUpdateParser.java</file>
+			<file>src/test/java/org/opencloudb/route/HintTest.java</file>
+			<file>src/main/java/org/opencloudb/parser/druid/MycatSchemaStatVisitor.java</file>
+			<file>src/main/java/org/opencloudb/route/util/RouterUtil.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

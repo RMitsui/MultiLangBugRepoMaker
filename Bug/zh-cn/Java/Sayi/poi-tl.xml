@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>370</id>
+		<title>文档合并时xml命名空间不全时抛出异常</title>
+		<body>比如，主文档的xml命名空间中没有图片，合并文档的包含图片，或者超链接等，当进行合并时因为xml命名空间不全，导致解析xml失败，抛出异常</body>
+		<created>2020-04-19 18:24:05</created>
+		<closed>2020-06-16 06:39:27</closed>
+	</bug>
+	<bug>
+		<id>313</id>
+		<title>通过模板生成模板存在【bug】</title>
+		<body>再对通过模板生成的模板进行使用时，无法同时插入两个表格，并且插入一个表格时还会将生成模板的文档的其它的内容删除，只剩一个表格，这个如何解决？</body>
+		<created>2019-10-18 09:12:47</created>
+		<closed>2019-11-12 15:08:14</closed>
+	</bug>
+	<bug>
+		<id>309</id>
+		<title>导出带图片Word，IO资源没有关闭BUG</title>
+		<body>我调用这个方法导出带图片的word ```java XWPFTemplate template = XWPFTemplate.compile(inputStream2, Configure.createDefault()).render(mainEdaMajorEvent); ``` 但是图片资源IO在``template.close()``时没有关闭</body>
+		<created>2019-10-11 06:51:02</created>
+		<closed>2019-11-12 04:52:11</closed>
+	</bug>
+	<bug>
+		<id>296</id>
+		<title>大规模并发场景下循环合并文档存在内存溢出情况。。</title>
+		<body>![image](https://user-images.githubusercontent.com/16648073/65028303-725f7800-d96e-11e9-8464-076f792cabc5.png) </body>
+		<created>2019-09-17 09:13:34</created>
+		<closed>2020-03-10 02:24:37</closed>
+	</bug>
+	<bug>
+		<id>295</id>
+		<title>DocxRenderData里面包含TextRenderData使用换行不好使？</title>
+		<body> ![image](https://user-images.githubusercontent.com/7259482/64958871-91a0cb80-d8c2-11e9-8a13-ec22deb1d361.png) ![image](https://user-images.githubusercontent.com/7259482/64958905-9feee780-d8c2-11e9-9fef-89d5fe0cc3f7.png)   </body>
+		<created>2019-09-16 12:43:27</created>
+		<closed>2019-11-13 14:39:14</closed>
+	</bug>
+	<bug>
+		<id>249</id>
+		<title>子模板新增了xsi:nil标签，合并到主模板丢失</title>
+		<body>您好，最近有在尝试学习POI工具。在使用表格标签和文档标签整合的时候出现问题，会抛出异常，但是文本内容和文件整合一起没有问题。请问，表格和文件不可以放在一起吗？ (主要问题部分)模板如下： ![image](https://user-images.githubusercontent.com/39696529/59012855-22e7b700-886b-11e9-8f2c-26d960aad9ba.png) 代码是这样写的 ![image](https://user-images.githubusercontent.com/39696529/59013057-a6090d00-886b-11e9-9ea6-fdae5bb5bdaa.png) </body>
+		<created>2019-06-06 06:59:54</created>
+		<closed>2019-11-20 07:43:19</closed>
+	</bug>
+	<bug>
+		<id>247</id>
+		<title>超链接文档合并出现无法识别的内容</title>
+		<body>当使用片段表达式时(即{{+xxxx}})，在片段模板中若存在超链接文本，则合并到主模板后，程序未报任何异常，但生成的最终word文档报以下错误： ![image](https://user-images.githubusercontent.com/22047888/58860204-2ef23e00-86de-11e9-8669-102dfe965e2d.png)。  另： 希望能够在同一word模板中支持循环操作，而不是循环的内容需要放入另一模板中，若循环部分较多则需要创建多个片段模板，文件数量会大幅增加 </body>
+		<created>2019-06-04 07:40:27</created>
+		<closed>2019-11-13 14:34:09</closed>
+	</bug>
+	<bug>
+		<id>225</id>
+		<title>当循环模版包含形状元素时，Office 365打开生成的合并文档报错</title>
+		<body>当循环模版包含形状元素时，打开生成的合并文档是成功的，但是有报错信息。 我用的版本是1.4.2。 循环模版代码： datas.put("segment", new DocxRenderData(..., ...));  打开后显示的错误信息： ![image](https://user-images.githubusercontent.com/3163516/57181946-66e24780-6ecc-11e9-94cb-92c24fdb7a34.png) ![image](https://user-images.githubusercontent.com/3163516/57181968-b0329700-6ecc-11e9-965d-f01c0e404acd.png)  Segment 文件: [segment.docx](https://github.com/Sayi/poi-tl/files/3144576/segment.docx)  请问是否有什么解决方法，或者后续清理可以避免出现这个问题？ </body>
+		<created>2019-05-04 16:35:11</created>
+		<closed>2020-03-20 06:27:59</closed>
+	</bug>
+	<bug>
+		<id>221</id>
+		<title>多个文档合并对前面合并的文档生成了列表符</title>
+		<body>模板结构  * document.docx   * +illegalSegment.docx   * +areaSegment.docx   * +classifySegment.docx  **document.docx**  ![image-20190425113211421](https://ws4.sinaimg.cn/large/006tNc79gy1g2eq1infpqj30b60lkab2.jpg)  **illegalSegment.docx**  ![image-20190425113401698](https://ws1.sinaimg.cn/large/006tNc79gy1g2eq3fejrlj30pq0aaq3k.jpg)  **areaSegment.docx**  ![image-20190425113919753](https://ws2.sinaimg.cn/large/006tNc79gy1g2eq8xfp8bj309y06w0ss.jpg)  **classifySegment.docx**  ![image-20190425113518869](https://ws3.sinaimg.cn/large/006tNc79gy1g2eq4rjy2zj3076042jrb.jpg)    当最后一个classifySegment合并完以后，areaSgement中的两个图片被加上了**列表符**  ![image-20190425114037997](https://ws3.sinaimg.cn/large/006tNc79gy1g2eqaaq7ncj310u0u0go8.jpg)  ![image-20190425114048455](https://ws2.sinaimg.cn/large/006tNc79gy1g2eqahcq01j30xf0u0tbe.jpg)    不合并最后一个classifySegment就没这个问题。      Office版本：  ![image-20190425114123190](https://ws3.sinaimg.cn/large/006tNc79gy1g2eqb2mahkj30k60iwmym.jpg)</body>
+		<created>2019-04-25 03:42:40</created>
+		<closed>2019-05-05 03:33:32</closed>
+	</bug>
+	<bug>
+		<id>212</id>
+		<title>XWPFTemplate render(Object model)异常没有往外抛，只是有打印出来</title>
+		<body>像这样业务层拿不到异常默认会当做成功处理，生产上是有问题的  `2019-04-04 10:14:53,592 ERROR com.deepoove.poi.el.Dot (main:[]) 90 Connot find the key:exchangePlanPower from Prefix-Model EL:null 2019-04-04 10:14:54,667 ERROR com.deepoove.poi.policy.DynamicTableRenderPolicy (main:[]) 59 dynamic table error:null java.lang.NullPointerException: null at com.deepoove.poi.util.TableTools.mergeCellsVertically(TableTools.java:74) ~[poi-tl-1.4.2.jar:?] at com.pmpr.background.poi.DetailTablePolicy.render(DetailTablePolicy.java:41) ~[classes/:?] at com.deepoove.poi.policy.DynamicTableRenderPolicy.render(DynamicTableRenderPolicy.java:57) [poi-tl-1.4.2.jar:?] at com.deepoove.poi.render.RenderAPI.doRender(RenderAPI.java:103) [poi-tl-1.4.2.jar:?] at com.deepoove.poi.render.RenderAPI.render(RenderAPI.java:72) [poi-tl-1.4.2.jar:?] at com.deepoove.poi.XWPFTemplate.render(XWPFTemplate.java:156) [poi-tl-1.4.2.jar:?] `</body>
+		<created>2019-04-04 02:18:45</created>
+		<closed>2019-05-22 16:10:25</closed>
+	</bug>
+	<bug>
+		<id>208</id>
+		<title>模板里有回城会导致下一个{{}}异常</title>
+		<body>content = 666; 回车  title:{{content}}  渲染后-&gt; 回车  title:{666content}}</body>
+		<created>2019-04-02 11:09:26</created>
+		<closed>2019-05-22 16:11:41</closed>
+	</bug>
+	<bug>
+		<id>172</id>
+		<title>word文档合并异常：word中带有图表</title>
+		<body>模板生成的多个XWPFDocument进行合并后导出word在office中打开需要修复提示文档内容损坏，wps则可以打开，求解 ![image](https://user-images.githubusercontent.com/25969983/50537993-22077680-0ba3-11e9-8227-6d16a09f3f94.png) </body>
+		<created>2018-12-29 11:51:35</created>
+		<closed>2020-07-02 07:47:57</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>占位符问题</title>
+		<body>![e7089c9d0d4c17eaa9f9b86cc4eee65](https://user-images.githubusercontent.com/44364528/49436324-d0faa180-f7f3-11e8-8691-bba37c93d6df.png) 填充后，有些占位符会只剩下左边，而且数据没填充成功。</body>
+		<created>2018-12-04 10:40:38</created>
+		<closed>2019-05-29 10:27:31</closed>
+	</bug>
+	<bug>
+		<id>157</id>
+		<title>多个文档模板的问题</title>
+		<body>一个文档中需要有多个文档模板时，比如有 {{+students}} 和 {{+teachers}}， 如果 students 为 null 时，生成的文件中  {{+students}} 的部分为空，无论 HashMap 里是否 put 了 teachers,  {{+teachers}} 部分总是不会被渲染。 怎么解决？</body>
+		<created>2018-11-26 08:44:35</created>
+		<closed>2018-11-27 06:38:42</closed>
+	</bug>
+	<bug>
+		<id>151</id>
+		<title>MiniTableRenderPolicy 数据中存在空值导致后面的数据不渲染</title>
+		<body>MiniTableRenderPolicy.renderRow 方法在判断cellText时使用break 是否应该使用continue更为合理 ![image](https://user-images.githubusercontent.com/4743854/48473360-3e3d9700-e833-11e8-9183-a79dd4793305.png) </body>
+		<created>2018-11-14 09:32:42</created>
+		<closed>2018-11-14 14:45:38</closed>
+	</bug>
+	<bug>
+		<id>143</id>
+		<title>向页眉添加图片，图片显示失败</title>
+		<body>使用默认标签“@”向页眉添加图片时，生成的word文件中页眉图片无法显示，提示“当前无法显示此图”</body>
+		<created>2018-11-07 09:24:51</created>
+		<closed>2018-11-14 14:47:40</closed>
+	</bug>
+	<bug>
+		<id>129</id>
+		<title>图片重复问题</title>
+		<body>一个word模板有多张图片，多个模板合并后图片错乱、重复，只有我有遇到这个问题吗？困扰了好多天了，求大神指点 ![tim 20181023111434](https://user-images.githubusercontent.com/27758845/47333298-f6ed3c00-d6b4-11e8-87d0-13e8e378cdf9.png) </body>
+		<created>2018-10-23 03:15:46</created>
+		<closed>2018-10-24 08:16:39</closed>
+	</bug>
+	<bug>
+		<id>126</id>
+		<title>建议对表格数据判空一下</title>
+		<body>当表中的数据为空时，查询的结果为null，此时会出现空指针异常  #![image](https://user-images.githubusercontent.com/12372048/46800369-018d0480-cd8a-11e8-8d3d-a6e5d2dcdcdd.png) </body>
+		<created>2018-10-11 11:16:38</created>
+		<closed>2018-10-23 02:44:22</closed>
+	</bug>
+	<bug>
+		<id>124</id>
+		<title>合并任意一行最后几个格子会出现数组越界错误</title>
+		<body>只要包括最后一个格子就会出现此错误。</body>
+		<created>2018-10-09 08:48:14</created>
+		<closed>2018-10-23 03:15:55</closed>
+	</bug>
+	<bug>
+		<id>111</id>
+		<title>poi-tl生成模板文档后再生成文档</title>
+		<body>比如{测试一}申请{测试二}测试三，那替换的标签会变成{测试一}申请{测试二}</body>
+		<created>2018-08-28 13:30:14</created>
+		<closed>2019-05-29 17:47:26</closed>
+	</bug>
+	<bug>
+		<id>105</id>
+		<title>表格进行合并后,打开word,手工挪动列宽,发现已合并的列又分开</title>
+		<body>我是 直接在 PaymentExample 这例子操作，        1  付款通知书.docx 里删除掉所有有内容，新建一个4*4表，其中第一行第一列格子填写{{detail_table}}       2 更改 DetailTablePolicy.java的render 如下：      @Override     public void render(XWPFTable table, Object data) {     for(int i =0;i &lt; 8;i ++)  {     XWPFTableRow tableRowThree = table.createRow();    tableRowThree.getCell(0).setText("col one, row three");    tableRowThree.getCell(1).setText("col two, row three");    tableRowThree.getCell(2).setText("col three, row three");    }  NiceXWPFDocument.mergeCellsVertically(table, 0, 4 , 9 );          }  其他都不变， 生成的WORD表格，打开看是正常，但是如果改变列宽，就发现已可并的列，又分开 请问是否还有其他要操作或设置？  </body>
+		<created>2018-08-13 07:11:16</created>
+		<closed>2018-10-25 03:11:37</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>文档模版循环合并时报错</title>
+		<body>2018-07-19 10:06:40.907 ERROR 4176 --- [io-11111-exec-9] com.deepoove.poi.policy.RenderPolicy     : merge docx error  org.apache.xmlbeans.XmlException: Unable to parse xml bean at org.apache.poi.POIXMLTypeLoader.parse(POIXMLTypeLoader.java:179) at org.apache.poi.POIXMLTypeLoader.parse(POIXMLTypeLoader.java:137) at org.openxmlformats.schemas.wordprocessingml.x2006.main.CTBody$Factory.parse(Unknown Source) at com.deepoove.poi.NiceXWPFDocument.merge(NiceXWPFDocument.java:442) at com.deepoove.poi.policy.DocxRenderPolicy.render(DocxRenderPolicy.java:52) at com.deepoove.poi.render.RenderAPI.render(RenderAPI.java:139) at com.deepoove.poi.XWPFTemplate.render(XWPFTemplate.java:154) at cn.com.open.face2face.web.ClazzController.exportStudentStudyResult(ClazzController.java:815) at cn.com.open.face2face.web.ClazzController$$FastClassBySpringCGLIB$$3708a.invoke(&lt;generated&gt;) at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:667) at cn.com.open.face2face.web.ClazzController$$EnhancerBySpringCGLIB$$52d593d2.exportStudentStudyResult(&lt;generated&gt;) at sun.reflect.GeneratedMethodAccessor617.invoke(Unknown Source) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:45005) at java.lang.reflect.Method.invoke(Method.java:498) at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133) at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97) at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967) at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872) at javax.servlet.http.HttpServlet.service(HttpServlet.java:661) at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:111) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:317) at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:114) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at cn.com.open.face2face.web.filter.JWTAuthenticationFilter.doFilter(JWTAuthenticationFilter.java:53) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214) at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177) at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:347) at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:263) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) at org.apache.catalina.core.StandardContextValve.__invoke(StandardContextValve.java:96) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:40002) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:677) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1468) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748) Caused by: org.xml.sax.SAXParseException: 元素类型 "xml-fragment" 必须由匹配的结束标记 "&lt;/xml-fragment&gt;" 终止。 at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203) at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177) at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400) at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327) at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472) at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(XMLDocumentFragmentScannerImpl.java:1749) at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2967) at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602) at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112) at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505) at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842) at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771) at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141) at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:243) at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339) at org.apache.poi.util.DocumentHelper.readDocument(DocumentHelper.java:150) at org.apache.poi.POIXMLTypeLoader.parse(POIXMLTypeLoader.java:176) ... 110 common frames omitted </body>
+		<created>2018-07-19 02:10:48</created>
+		<closed>2018-08-02 07:10:11</closed>
+	</bug>
+	<bug>
+		<id>75</id>
+		<title>关于自定义语法前后缀</title>
+		<body>_目前需求是嵌入不定数量的图片，通过{{+template}}语法实现_  因为项目之前使用freemarker做的，模板大部分做好了，所以自己配置了一下语法前后缀： ```java  Configure.newBuilder().buildGramer("${", "}").build(); ``` 以适配freemarker模板。  结果循环数据渲染待嵌入的模板时，发现解析待嵌入的模板时使用的是默认配置： https://github.com/Sayi/poi-tl/blob/e0b483d9cd4b8e3cf1609b7d41376abeeecdf7db/src/main/java/com/deepoove/poi/policy/DocxRenderPolicy.java#L73 ```java  for (int i = 0; i &lt; dataList.size(); i++) {                 XWPFTemplate temp = XWPFTemplate.compile(docx);                 temp.render(dataList.get(i));                 docs.add(temp.getXWPFDocument());  } ``` 这个地方会解析不到子模板的自定义语法占位符,算是个小bug吧。  可以考虑在此处 https://github.com/Sayi/poi-tl/blob/e0b483d9cd4b8e3cf1609b7d41376abeeecdf7db/src/main/java/com/deepoove/poi/policy/DocxRenderPolicy.java#L50 方法调用时传入主模板配置： ```java List&lt;NiceXWPFDocument&gt; docMerges = getMergedDocxs((DocxRenderData) data,template.getConfig()); ```  </body>
+		<created>2018-06-29 03:09:35</created>
+		<closed>2018-07-10 08:22:09</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>图片文件无法删除</title>
+		<body>模板文件加载外部图片后，图片资源似乎没有被释放，无法删除。代码类似：  XWPFTemplate template = XWPFTemplate.compile(....); try (FileOutputStream out = new FileOutputStream(file)) {             .....             template.render(datas);             template.write(out);         } finally {             if (template != null) {                 template.close();             }         }  </body>
+		<created>2018-05-30 07:37:52</created>
+		<closed>2018-06-26 17:56:20</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>表格嵌套表格问题获取table对象为null问题</title>
+		<body>我在使用DynamicTableRenderPolicy来自定义渲染表格时，因为被渲染的表格是嵌套在另外一个表格里的，重载render(XWPFTable table, Object data)这个函数时，发现table总是获取的null，请问这是什么问题？</body>
+		<created>2018-05-18 03:50:11</created>
+		<closed>2018-11-01 16:24:25</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>pages 列不能自适应宽度</title>
+		<body>生成的docx，在mac pages不能自动自适应</body>
+		<created>2017-11-28 08:31:00</created>
+		<closed>2019-05-28 03:27:25</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>表格内嵌套表格生成出错</title>
+		<body>您好，我在生成嵌套表格时遇到一些问题，样式如下： ![default](https://user-images.githubusercontent.com/17630155/33155632-1567b988-d02d-11e7-9362-6cda6b9e65c8.jpg)  堆栈如下： java.lang.IndexOutOfBoundsException: Index: 11, Size: 4  at java.util.ArrayList.rangeCheckForAdd(ArrayList.java:661) at java.util.ArrayList.add(ArrayList.java:473) at com.deepoove.poi.NiceXWPFDocument.insertNewTable(NiceXWPFDocument.java:158) at com.deepoove.poi.policy.SimpleTableRenderPolicy.render(SimpleTableRenderPolicy.java:86) at com.deepoove.poi.render.RenderAPI.render(RenderAPI.java:126) at com.deepoove.poi.XWPFTemplate.render(XWPFTemplate.java:140) 看了下是bodyElements.add(i, newT)时下标越界了。 尝试将嵌入的表格移到外边，可正常生成，希望能得到您的帮助，谢谢</body>
+		<created>2017-11-23 01:03:06</created>
+		<closed>2017-11-23 07:37:34</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>使用Micsoft office 2007 打开out.docx(word) 报错</title>
+		<body> An error has occurred. See error log for more details. java.lang.NullPointerException  1.唯独只有这个名字的out.docx就报错。 2.使用高版本的Micsoft Office 能打开不报错。</body>
+		<created>2017-07-04 09:14:39</created>
+		<closed>2018-01-10 08:52:26</closed>
+	</bug>
+	<bug>
+		<id>4</id>
+		<title>V0.0.4java.lang.ClassNotFoundException:org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSignedTwips</title>
+		<body>0.0.4版本升级了poi组件到3.16导致 </body>
+		<created>2017-06-30 11:22:22</created>
+		<closed>2017-07-04 08:46:30</closed>
+	</bug>
+</bugs>

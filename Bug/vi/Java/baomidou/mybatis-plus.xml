@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>2811</id>
+		<title>LambdaQueryChainWrapper使用func时遇到的强转异常</title>
+		<body>### 当前使用版本(必填,否则不予处理)  3.3.2  ### 该问题是如何引起的？(确定最新版也有问题再提!!!) 继承ServiceImpl后调用lambdaQuery()获取到LambdaQueryChainWrapper 再调用func时，会爆出强转异常 java.lang.ClassCastException: com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper cannot be cast to com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper  ### 重现步骤(如果有就写完整) 1、demoService extends ServiceImpl&lt;DemoType,DemoTypeMapper&gt; 2、demoService.lambdaQuery().func(e -&gt; {     if (input.getDemoTypeIds().size() == 1) {         e.eq(DemoType::getDemoTypeId, input.getDemoTypeIds().get(0));     } else {         e.in(DemoType::getDemoTypeId, input.getDemoTypeIds());     } }).list(); 或者 3、new LambdaQueryChainWrapper&lt;&gt;(demoTypeMapper).func(e -&gt; {     if (input.getDemoTypeIds().size() == 1) {         e.eq(DemoType::getDemoTypeId, input.getDemoTypeIds().get(0));     } else {         e.in(DemoType::getDemoTypeId, input.getDemoTypeIds());     } }).list(); 都会爆出强转异常  ### 报错信息 java.lang.ClassCastException: com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper cannot be cast to com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper  </body>
+		<created>2020-08-18 02:50:44</created>
+		<closed>2020-08-24 04:49:56</closed>
+	</bug>
+	<bug>
+		<id>2740</id>
+		<title>分页中使用size=-1不限制查询数量导致排序失效</title>
+		<body>### 当前使用版本(必填,否则不予处理) v3.3.2  ### 该问题是如何引起的？(确定最新版也有问题再提!!!) 由于前端展示方式不同，需要对同一数据表分页查询和查询所有（都按time倒序），就让前端传`size=-1`来查询所有， 但是`size=-1`的时候，page中设置的排序失效。 看了下`PaginationInterceptor#intercept`方法源码 ``` /*  * 不需要分页的场合，如果 size 小于 0 返回结果集  */ if (null == page || page.getSize() &lt; 0) {     return invocation.proceed(); } ... String buildSql = concatOrderBy(originalSql, page); ``` 处理排序的地方语句没有执行。 个人觉得在查询所有的情况下（size为负）也需要处理排序，虽然可以通过在`QueryWrapper`中设置排序，但如果排序由前端传入就需要从page中转到wrapper中才能生效  ### 重现步骤(如果有就写完整) 前端未自定义排序时，在page中设置了默认time倒序 ``` if (page.getOrders().isEmpty()) {     page.addOrder(OrderItem.desc("time"));   }   ```  ### 报错信息   </body>
+		<created>2020-07-20 09:33:29</created>
+		<closed>2020-08-24 04:49:54</closed>
+	</bug>
+</bugs>

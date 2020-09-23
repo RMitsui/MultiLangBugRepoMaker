@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="primecloud-controller">
+	<bug id="97" opendate="2017-03-22 03:02:30" fixdate="2017-03-23 06:17:02">
+		<buginformation>
+			<summary>VMwareプラットフォームでIPv4アドレスのないネットワークアダプタがあると起動エラーとなる</summary>
+			<description>現在の実装では、VMwareプラットフォームでサーバを起動する場合、VMware Toolsで取得できる全てのネットワークアダプタにIPv4アドレスが割り当てられていないと、起動時にエラーとなってしまう。  ネットワークアダプタはvCenterで追加したアダプタだけでなく、仮想マシン内で作成した仮想ネットワークアダプタも対象となる。  IPv4アドレスが割り当てあられているかどうかをチェックするネットワークアダプタは、PLATFORM_VMWARE テーブルや VMWARE_NETWORK テーブルで指定されたもののみを対象とするように修正する。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>auto-project/auto-process/src/main/java/jp/primecloud/auto/process/vmware/VmwareMachineProcess.java</file>
+			<file>auto-project/auto-process/src/main/java/jp/primecloud/auto/process/vmware/VmwareProcessClient.java</file>
+			<file>auto-project/auto-process/src/main/java/jp/primecloud/auto/process/vmware/VmwareCustomizeProcess.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="93" opendate="2017-02-26 04:58:37" fixdate="2017-03-06 08:47:39">
+		<buginformation>
+			<summary>無効にしたユーザがAPIを利用できてしまう</summary>
+			<description>management-tool でユーザを無効にすると、PCC画面上でログインできなくなるものの、APIを使って操作はできてしまう。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/ApiFilter.java</file>
+			<file>auto-project/auto-data/src/main/java/jp/primecloud/auto/entity/crud/BaseApiCertificate.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="87" opendate="2016-11-27 13:35:29" fixdate="2016-11-27 14:23:05">
+		<buginformation>
+			<summary>UltraMonkeyロードバランサを停止した際、WARNレベルのログが出力されている</summary>
+			<description>UltraMonkeyロードバランサを停止した際、WARNレベルで次のようなログが出力されている。  &gt; [ECOMMON-000212] Could not delete cname. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>auto-project/auto-service/src/main/java/jp/primecloud/auto/service/impl/LoadBalancerServiceImpl.java</file>
+			<file>auto-project/auto-process/src/main/java/jp/primecloud/auto/process/lb/ComponentLoadBalancerProcess.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="83" opendate="2016-11-20 08:44:26" fixdate="2016-11-20 08:47:49">
+		<buginformation>
+			<summary>AWSロードバランサのリスナーのプロトコルをSSLに変更できない</summary>
+			<description>AWSロードバランサで、SSLプロトコルのリスナーを作成できるが、既存のリスナーのプロトコルをSSLに変更できない。  プロトコルのチェック部分が間違っている。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>auto-project/auto-service/src/main/java/jp/primecloud/auto/service/impl/LoadBalancerServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="80" opendate="2016-10-21 00:55:48" fixdate="2016-10-21 06:31:44">
+		<buginformation>
+			<summary>プラットフォーム情報取得APIでシステム内部の情報を取得できてしまう</summary>
+			<description>プラットフォーム情報を取得するAPIの ListPlatform と DescribePlatform において、利用者が知るべきでないPCC内部の情報を取得できてしまう。  利用者が知ってよい情報のみを取得できるようにする。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/response/platform/PlatformCloudstackResponse.java</file>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/response/platform/PlatformVcloudResponse.java</file>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/platform/DescribePlatform.java</file>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/response/platform/PlatformOpenstackResponse.java</file>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/platform/ListPlatform.java</file>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/response/platform/PlatformVmwareResponse.java</file>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/response/platform/PlatformAzureResponse.java</file>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/response/platform/PlatformNiftyResponse.java</file>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/response/platform/PlatformAwsResponse.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="68" opendate="2016-07-27 06:59:37" fixdate="2016-07-27 07:01:57">
+		<buginformation>
+			<summary>AddAwsAddress と DeleteAwsAddress API に不要なパラメータが必須になっている</summary>
+			<description>AddAwsAddress と DeleteAwsAddress API で、FarmNo パラメータの指定が必須になっているが、実際は必須ではない。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/address/AddAwsAddress.java</file>
+			<file>auto-project/auto-process/src/main/java/jp/primecloud/auto/iaasgw/IaasGatewayWrapper.java</file>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/address/DeleteAwsAddress.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="67" opendate="2016-07-27 05:49:08" fixdate="2016-07-27 05:52:38">
+		<buginformation>
+			<summary>Elastic IPを利用しているとEditInstance APIでエラーが出る</summary>
+			<description>Elastic IPを利用しているサーバのインスタンスタイプなどを変更するためにEditInstance APIを実行する際、利用しているものと同じElastic IPを指定して実行するとエラーが発生する。  Elastic IPを指定しないとサーバとの関連付けが外れてしまう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/instance/EditInstance.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="66" opendate="2016-07-27 02:10:25" fixdate="2016-07-27 05:43:30">
+		<buginformation>
+			<summary>ListAwsAddress APIで別のユーザのリソースを参照できてしまう</summary>
+			<description>ListAwsAddress APIの実装において、ユーザに関する条件を付けずにデータベースから取得した値を返すようになっている。  これだと、同じPlatformで別のユーザのAwsAddressを参照できてしまう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>auto-project/auto-api/src/main/java/jp/primecloud/auto/api/address/ListAwsAddress.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2016-06-30 13:47:07" fixdate="2016-06-30 14:19:19">
+		<buginformation>
+			<summary>サブネットを選択すると、以降変更できなくなる</summary>
+			<description>AWSプラットフォームのインスタンスを作成した後、サブネットを一度選択すると、以降は変更できなくなる。 インスタンスを起動していなければ変更できるべき。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>auto-project/auto-ui/src/main/java/jp/primecloud/auto/ui/WinServerEdit.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

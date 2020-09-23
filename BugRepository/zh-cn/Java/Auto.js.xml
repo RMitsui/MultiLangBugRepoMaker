@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Auto.js">
+	<bug id="323" opendate="2018-03-29 01:53:21" fixdate="2018-03-30 04:48:36">
+		<buginformation>
+			<summary>内存会随着脚本运行一直上升而不会出现下降</summary>
+			<description>脚本运行多了就会出现这个问题，是不是运行时缓存不会自动清理啊？而且从来不释放，一般都保持在350兆到600兆，手机就会特别卡了。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>autojs/src/main/java/com/stardust/autojs/core/image/ImageWrapper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="232" opendate="2017-09-04 06:50:17" fixdate="2017-09-24 14:26:25">
+		<buginformation>
+			<summary>开启通知监听的函数无法使用，只要监听到通知就立即崩溃</summary>
+			<description>版本Auto.js 2.0.16 Beta2.1 开启通知监听的函数无法使用，只要监听到通知就立即崩溃，没有成功产生日志 崩溃后手机按键失效，屏幕能正常点击。重启手机后正常。 Version: 163 Android: 19 java.lang.NullPointerException at java.lang.AbstractStringBuilder.&lt;init&gt;(AbstractStringBuilder.java:86) at java.lang.StringBuilder.&lt;init&gt;(StringBuilder.java:95) at com.stardust.autojs.ScriptEngineService.getScriptTrace(ScriptEngineService.java:251) at com.stardust.autojs.ScriptEngineService.access$100(ScriptEngineService.java:40) at com.stardust.autojs.ScriptEngineService$1.onException(ScriptEngineService.java:72) at com.stardust.autojs.execution.ScriptExecutionObserver.onException(ScriptExecutionObserver.java:29) at com.stardust.autojs.execution.ScriptExecutionObserver$Wrapper.onException(ScriptExecutionObserver.java:66) at com.stardust.autojs.execution.RunnableScriptExecution.execute(RunnableScriptExecution.java:41) at com.stardust.autojs.execution.RunnableScriptExecution.execute(RunnableScriptExecution.java:32) at com.stardust.autojs.execution.RunnableScriptExecution.run(RunnableScriptExecution.java:27) at java.lang.Thread.run(Thread.java:841) at com.stardust.lang.ThreadCompat.run(ThreadCompat.java:61)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/stardust/widget/EWebView.java</file>
+			<file>common/src/main/java/com/stardust/util/TextUtils.java</file>
+			<file>autojs/src/main/java/com/stardust/autojs/ScriptEngineService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="198" opendate="2017-06-01 07:13:52" fixdate="2017-06-20 16:21:18">
+		<buginformation>
+			<summary>源码无法编译</summary>
+			<description>六一快乐，源码无法编译</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/stardust/scriptdroid/ui/main/task/TaskManagerFragment.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Creacion-admin-de-votaciones">
+	<bug id="39" opendate="2017-01-10 04:11:17" fixdate="2017-01-10 04:12:10">
+		<buginformation>
+			<summary>Acceso no restringido borrando encuestas</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/services/SurveyService.java</file>
+			<file>src/main/java/controllers/SurveyController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="37" opendate="2017-01-10 04:07:49" fixdate="2017-01-10 04:08:48">
+		<buginformation>
+			<summary>Falta de seguridad añadiendo preguntas o mostrando detalles</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/controllers/QuestionController.java</file>
+			<file>src/main/java/services/SurveyService.java</file>
+			<file>src/main/java/controllers/SurveyController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2017-01-10 03:59:42" fixdate="2017-01-10 04:05:44">
+		<buginformation>
+			<summary>Falta de seguridad al crear y listar encuestas</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/controllers/SurveyController.java</file>
+			<file>src/main/java/controllers/AdminController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2017-01-09 19:53:01" fixdate="2017-01-09 19:53:40">
+		<buginformation>
+			<summary>Al registrar o editar una encuesta, esta se hace sin usernameCreator</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/controllers/APIController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="29" opendate="2017-01-09 09:21:46" fixdate="2017-01-09 09:27:34">
+		<buginformation>
+			<summary>Error NullPointerException cuando una fecha es introducida vacía al guardar una Survey</summary>
+			<description>Una vez se intenta crear una Survey, el sistema detecta un error NullPointerException al guardar una votación dejando alguna fecha en blanco (de comienzo o de fin).</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/controllers/SurveyController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="28" opendate="2017-01-09 08:11:20" fixdate="2017-01-09 08:12:16">
+		<buginformation>
+			<summary>list() de SurveyController no funciona</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/controllers/SurveyController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="26" opendate="2017-01-09 08:09:16" fixdate="2017-01-09 08:12:45">
+		<buginformation>
+			<summary>Algunas referencias a Survey no unificadas (/vote)</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/controllers/SurveyController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2017-01-09 08:00:01" fixdate="2017-01-09 08:01:46">
+		<buginformation>
+			<summary>Diversidad de llamadas referidas a la misma entidad (Survey)</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/controllers/SurveyController.java</file>
+			<file>src/main/java/domain/Survey.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="21" opendate="2017-01-07 18:41:37" fixdate="2017-01-07 18:52:40">
+		<buginformation>
+			<summary>Error 404 cuando un código postal es introducido erróneamente</summary>
+			<description>Al crear una encuesta, si se introduce un código postal incorrecto (menos o más de cinco dígitos o caracteres distintos de éstos), retorna un mensaje 404.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/controllers/SurveyController.java</file>
+			<file>src/main/java/domain/Survey.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="19" opendate="2017-01-04 20:20:30" fixdate="2017-01-04 20:35:47">
+		<buginformation>
+			<summary>Fallo en el acceso remoto a la base de datos</summary>
+			<description>Al intentar acceder de manera remota a la base de datos lanza un fallo. por lo que parece no se crean las tablas de forma correcta.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/utilities/internal/DatabaseUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="9" opendate="2016-12-20 17:46:26" fixdate="2017-01-04 15:15:55">
+		<buginformation>
+			<summary>Funcionalidad de la Query allFinishedSurveys incorrecta</summary>
+			<description>Buenas. Revisando el código del repositorio de Survey, he podido comprobar que la query "allFinishedSurveys" debe devolver una lista de Surveys cuya fecha de finalización sea igual a la fecha actual del sistema. Sin embargo, el código JPQL busca aquellas Surveys cuya fecha de finalización sea igual a una fecha pasada como parámetro. ¿Coincide realmente la query escrita con el enunciado de ésta?  Además, el nombre del método "allFinishedSurveys" hace entender al usuario que dicha query recogerá todas las Surveys cuya fecha de finalización es más antigua que la fecha actual. Sin embargo, la nuestra recoge las Surveys cuya fecha de finalización sea exactamente la misma que la actual. ¿No tendría más funcionalidad implementándose de la primera forma?  Saludos.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/services/SurveyService.java</file>
+			<file>src/main/java/repositories/SurveyRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="4" opendate="2016-11-28 16:40:51" fixdate="2017-01-03 10:40:06">
+		<buginformation>
+			<summary>Error a la hora de borrar votaciones</summary>
+			<description>Al no poder acceder de manera exitosa a la base de datos no es posible borrar votaciones creadas </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/services/SurveyService.java</file>
+			<file>src/main/java/controllers/SurveyController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1" opendate="2016-11-08 19:19:12" fixdate="2016-11-08 21:47:07">
+		<buginformation>
+			<summary>Problemas importación trabajo año anterior</summary>
+			<description>Problema al importar el trabajo del año pasado del grupo 2 de la asignatura de EGC, debido a problemas con el pom.xml.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/services/requestsHttp.java</file>
+			<file>src/main/java/converters/StringToSurveyConverter.java</file>
+			<file>src/test/java/services/SurveyServiceTest.java</file>
+			<file>src/main/java/utilities/internal/CustomPrintStyle.java</file>
+			<file>src/main/java/controllers/SurveyController.java</file>
+			<file>src/main/java/security/Authority.java</file>
+			<file>src/main/java/domain/Question.java</file>
+			<file>src/main/java/security/LoginService.java</file>
+			<file>src/main/java/security/UserAccount.java</file>
+			<file>src/main/java/domain/CheckToken.java</file>
+			<file>src/main/java/controllers/WelcomeController.java</file>
+			<file>src/main/java/converters/StringToQuestionConverter.java</file>
+			<file>src/main/java/controllers/AbstractController.java</file>
+			<file>src/main/java/utilities/internal/CustomToStringBuilder.java</file>
+			<file>src/main/java/services/SurveyService.java</file>
+			<file>src/test/java/utilities/AbstractTest.java</file>
+			<file>src/main/java/services/QuestionService.java</file>
+			<file>src/main/java/utilities/internal/DatabaseUtil.java</file>
+			<file>src/main/java/utilities/DatabaseConfig.java</file>
+			<file>src/main/java/utilities/HashPassword.java</file>
+			<file>src/main/java/security/LoginController.java</file>
+			<file>src/test/java/services/QuestionServiceTest.java</file>
+			<file>src/main/java/security/Credentials.java</file>
+			<file>src/main/java/controllers/AdministratorController.java</file>
+			<file>src/main/java/utilities/QueryDatabase.java</file>
+			<file>src/main/java/converters/QuestionToStringConverter.java</file>
+			<file>src/main/java/repositories/QuestionRepository.java</file>
+			<file>src/main/java/repositories/SurveyRepository.java</file>
+			<file>src/main/java/utilities/PopulateDatabase.java</file>
+			<file>src/main/java/utilities/internal/ConsoleReader.java</file>
+			<file>src/main/java/domain/Survey.java</file>
+			<file>src/main/java/security/UserAccountRepository.java</file>
+			<file>src/main/java/converters/SurveyToStringConverter.java</file>
+			<file>src/main/java/domain/DomainEntity.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

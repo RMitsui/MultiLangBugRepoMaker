@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>102</id>
+		<title>"确认采购价格"页面的原料管理和产品管理页面没有更新</title>
+		<body></body>
+		<created>2017-03-02 05:05:49</created>
+		<closed>2017-03-04 17:54:36</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>输入订单价格时，某些输入会出现偏差</title>
+		<body>例如单价输入18.9，系统中记录的则是18.89 </body>
+		<created>2016-09-20 04:58:59</created>
+		<closed>2017-03-15 01:03:50</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>查询食堂原料入库单时，起止日期不准确</title>
+		<body>输入9-2号并不能得出当天的入库单，必须要输入9-1,9-3才能得到9月2号的结果。 </body>
+		<created>2016-09-20 04:50:57</created>
+		<closed>2017-03-15 01:06:13</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>输入入库单时，有时会遇到“订单被他人更新，请刷新”的错误，可此时只有一个人在输入</title>
+		<body></body>
+		<created>2016-09-19 02:37:58</created>
+		<closed>2016-09-19 03:39:19</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>食堂产品入库多个产品，只有第一个被输入数据库</title>
+		<body></body>
+		<created>2016-09-15 03:43:49</created>
+		<closed>2016-09-19 03:40:26</closed>
+	</bug>
+	<bug>
+		<id>89</id>
+		<title>糕点房产品入库详情页异常</title>
+		<body></body>
+		<created>2016-09-15 03:43:28</created>
+		<closed>2016-09-20 04:00:10</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>食堂原料出库详情页 点击出现异常</title>
+		<body>``` 食堂产品出库详情页 同样点击出现异常 糕点房原料出库详情页 异常 root cause org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [SELECT ci.*, cii.quantity, cii.total_value, m.sent_quantity FROM canteen_item_outbound_to_items_mapping_records as m LEFT JOIN canteen_item_inventories as cii ON m.canteen_item_id = cii.canteen_item_id LEFT JOIN canteen_items as ci ON ci.id = cii.canteen_item_id WHERE canteen_item_outbound_records_id = ? ]; 不良的类型值 double : 肉类; nested exception is org.postgresql.util.PSQLException: 不良的类型值 double : 肉类 org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:102) org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73) org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81) org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81) org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:645) org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:680) org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:712) org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:722) org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:772) org.cdltax.canteen.master.persistence.CanteenItemManager.queryShowOutboundRecordDetailById(CanteenItemManager.java:888) org.cdltax.canteen.master.service.CanteenItemManagementServiceImpl.showOutboundRecordDetailById(CanteenItemManagementServiceImpl.java:187) org.cdltax.canteen.master.controller.CanteenItemOutboundController.handleItemOutboundDetailRequest(CanteenItemOutboundController.java:145) sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) java.lang.reflect.Method.invoke(Unknown Source) org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221) org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110) org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:817) org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:731) org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959) org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893) org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:968) org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:859) javax.servlet.http.HttpServlet.service(HttpServlet.java:621) org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:844) javax.servlet.http.HttpServlet.service(HttpServlet.java:728) root cause ``` </body>
+		<created>2016-09-15 03:43:12</created>
+		<closed>2016-09-20 04:00:21</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>原料录入了，可查看库存页面下没有记录</title>
+		<body></body>
+		<created>2016-09-15 03:41:25</created>
+		<closed>2016-09-20 04:00:35</closed>
+	</bug>
+	<bug>
+		<id>86</id>
+		<title>产品出库的用途怎么写入数据库？</title>
+		<body></body>
+		<created>2016-09-15 03:41:08</created>
+		<closed>2016-09-20 05:18:57</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>创建日期成了不可描述码</title>
+		<body>食堂原料 待入库采购订单 创建日期 食堂 &gt; 采购需求管理 &gt; 确认采购价格 创建日期 食堂 &gt; 审批管理 &gt; 采购订单审批 创建日期 食堂 &gt; 原料管理 &gt; 入库单 出库日期 糕点房 &gt; 采购需求管理 &gt; 确认采购价格 创建日期 糕点房 &gt; 审批管理 &gt; 采购订单审批 创建日期 糕点房 &gt; 原料管理 &gt; 入库单 创建日期 </body>
+		<created>2016-09-15 03:39:29</created>
+		<closed>2016-09-19 03:40:58</closed>
+	</bug>
+	<bug>
+		<id>84</id>
+		<title>为原料订单页面增加“供应商”</title>
+		<body></body>
+		<created>2016-09-15 03:39:06</created>
+		<closed>2016-09-22 03:09:56</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>食堂-基础数据管理-产品名称（一点这个就跳入糕点房的分类）</title>
+		<body></body>
+		<created>2016-09-15 03:33:52</created>
+		<closed>2019-05-03 03:52:53</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>材料名称不允许重复</title>
+		<body>输入重复材料名，应该给出错误信息 </body>
+		<created>2016-09-15 03:17:53</created>
+		<closed>2019-05-03 03:59:48</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>IE11，在基础材料页添加数据， 表格不会自动更新</title>
+		<body>同样操作在Chrome中就没有问题，添加数据后表格会自动更新 </body>
+		<created>2016-09-15 03:06:29</created>
+		<closed>2016-09-15 03:48:51</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>IE11中输入框中输入中文，生成的表格会显示乱码</title>
+		<body>进入“基础数据”， 在任意输入框输入中文，生成的表格显示乱码。 </body>
+		<created>2016-09-15 03:05:59</created>
+		<closed>2016-09-15 03:48:16</closed>
+	</bug>
+</bugs>

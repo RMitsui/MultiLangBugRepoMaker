@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Sentinel">
+	<bug id="128" opendate="2018-09-05 07:24:38" fixdate="2018-09-05 11:03:36">
+		<buginformation>
+			<summary>【bug】熔断降级的异常比例为1时，不会被隔离</summary>
+			<description>extends #109 你好！上次关于#109的这个bug，后来被整改了。 ### Bug描述 但是整改得并不正确.....经我测试，仅限于异常比例小于1的情况下正确。 但是当抛出的异常比例为100%时，设定的阈值小于1，此时会出现DegradeException，但是服务不会进入timeWindow被隔离。 ### 举个栗子 同样以com.alibaba.csp.sentinel.demo.degrade.ExceptionRatioDegradeDemo这个Demo为例，直接设定每次都抛出异常，结果如下（不知怎么上传图片，直接copy过来了）： `Connected to the target VM, address: '127.0.0.1:51393', transport: 'socket' begin to statistic!!! 1536131534343, oneSecondTotal:34, oneSecondPass:5, oneSecondBlock:29, oneSecondBizException:5 1536131535345, oneSecondTotal:49, oneSecondPass:5, oneSecondBlock:44, oneSecondBizException:5 1536131536345, oneSecondTotal:48, oneSecondPass:5, oneSecondBlock:43, oneSecondBizException:5 1536131537344, oneSecondTotal:48, oneSecondPass:5, oneSecondBlock:43, oneSecondBizException:5 1536131538346, oneSecondTotal:49, oneSecondPass:5, oneSecondBlock:44, oneSecondBizException:5 1536131539346, oneSecondTotal:48, oneSecondPass:5, oneSecondBlock:43, oneSecondBizException:5 1536131540346, oneSecondTotal:48, oneSecondPass:5, oneSecondBlock:43, oneSecondBizException:5 1536131541348, oneSecondTotal:49, oneSecondPass:5, oneSecondBlock:44, oneSecondBizException:5 1536131542348, oneSecondTotal:48, oneSecondPass:5, oneSecondBlock:43, oneSecondBizException:5` ### 整改措施 问题还是出在：com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule的passCheck方法中，在原来的Fixed处：commit 6799da270ddd7391ea12dd3f456824a2d6a1d9d5 ``` double realSuccess = success - exception;  //186             if (realSuccess &lt;= 0) {   //187                 return exception &lt; RT_MAX_EXCEED_N;             } ``` 不应该修改，还是应该保留原来的代码： ``` if (success &lt;= 0) {                 return exception &lt; RT_MAX_EXCEED_N;             } ``` 请确认...</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sentinel-core/src/main/java/com/alibaba/csp/sentinel/slots/block/degrade/DegradeRule.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="109" opendate="2018-08-30 03:41:25" fixdate="2018-09-03 03:55:40">
+		<buginformation>
+			<summary>【bug】熔断降级的异常比例 与实际阈值不符</summary>
+			<description>Type: bug report 你好，我最近在整合Sentinel的一个项目中，发现设置的异常阈值，跟实际异常出现的比例并不符合。 就以官方的这个ExceptionRatioDegradeDemo为例子，在该例子中，根据产生异常的比例的代码片段： `if (count % 2 == 0) {                                 // biz code raise an exception.                                 throw new RuntimeException("throw runtime ");                             }` 很明显，产生异常的比例就为50%了嘛。我将原代码中DegradeRule的阈值设为0.4。那么应该就会出现服务降级了吧？实际并没有。（不知道怎么上传图片，你们可以试试）。 就在这个demo中，后来经我反复调整阈值，发现异常产生比例为0.5时，阈值的临界值为0.33 。 同样的操作，发现异常产生的比例为0.25时，阈值的临界值为0.23. 异常产生的比例为0.33时，阈值的临界值为0.26。 异常比例为1时（即100%），阈值的临界值为0.50  不知是该demo的问题还是我本地测试的问题，烦请指教！  谢谢！ demo地址：https://github.com/alibaba/Sentinel/blob/master/sentinel-demo/sentinel-demo-basic/src/main/java/com/alibaba/csp/sentinel/demo/degrade/ExceptionRatioDegradeDemo.java</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sentinel-core/src/main/java/com/alibaba/csp/sentinel/node/Node.java</file>
+			<file>sentinel-core/src/main/java/com/alibaba/csp/sentinel/slots/block/degrade/DegradeRule.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="99" opendate="2018-08-28 09:30:44" fixdate="2018-08-29 09:49:30">
+		<buginformation>
+			<summary>流控规则页面BUG</summary>
+			<description>## Issue Description  Type: bug report  ### Describe what happened (or what feature you want)  - bug位置: 控制台 &gt; 流控规则 - bug发生条件: 修改"超时时间"时, 如果多次点击保存, 会导致:  1. 实时监控无法正常显示, 需要重启控制台后才能显示. 2. 簇点链路新增流控规则后无法显示新增规则, 需要重启控制台后才能显示. 3. 多次刷新页面之后会使簇点链路内的资源和流控规则内的规则会消失. 4. 重新修改规则时会卡住无法保存, 弹窗不会自动关闭, 顶部的进度条会卡在最后一段. 5. 等待一段时间之后控制台会卡住无法刷新,长时间处于等待响应的状态.  ### Describe what you expected to happen   ### How to reproduce it (as minimally and precisely as possible)  1. 参照描述  ### Tell us your environment 0.2.0-SNAPSHOT版本的sentinel-dashboard  ### Anything else we need to know?    </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sentinel-core/src/main/java/com/alibaba/csp/sentinel/slots/block/flow/FlowRule.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="20" opendate="2018-08-01 08:39:12" fixdate="2018-08-01 14:08:26">
+		<buginformation>
+			<summary>客户端连接控制台端口问题</summary>
+			<description>&lt;!-- Here is for bug reports and feature requests ONLY!   If you're looking for help, please check our mail list and the Gitter room. --&gt;  ## Issue Description  Type: *bug report* or *feature request*  ### Describe what happened (or what feature you want) 同一台机器 （springboot+dubbo） consumer ：-Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=bos-web-provider -Dcsp.sentinel.api.port=8719 provider ： -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=bos-app-provider  -Dcsp.sentinel.api.port=8720 引入包     &lt;dependency&gt;       &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt;       &lt;artifactId&gt;sentinel-dubbo-adapter&lt;/artifactId&gt;       &lt;version&gt;${sentinel.adapter.version}&lt;/version&gt;     &lt;/dependency&gt;     &lt;dependency&gt;       &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt;       &lt;artifactId&gt;sentinel-transport-simple-http&lt;/artifactId&gt;       &lt;version&gt;${sentinel.http.version}&lt;/version&gt;     &lt;/dependency&gt; 通过控制台显示，只显示了1个应用的信息，机器端口号为8719 如果不设置-Dcsp.sentinel.api.port=8720，能显示两个，但是配置限流规则后，flowRules只有在provider端能看到，consumer端flowRules为空 ### Describe what you expected to happen 通过端口，针对不同的应用配置对应的生效的限流规则  ### How to reproduce it (as minimally and precisely as possible)  1.  2.  3.   ### Tell us your environment   ### Anything else we need to know?    </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sentinel-transport/sentinel-transport-common/src/main/java/com/alibaba/csp/sentinel/transport/config/TransportConfig.java</file>
+			<file>sentinel-transport/sentinel-transport-simple-http/src/main/java/com/alibaba/csp/sentinel/transport/heartbeat/SimpleHttpHeartbeatSender.java</file>
+			<file>sentinel-transport/sentinel-transport-simple-http/src/main/java/com/alibaba/csp/sentinel/transport/command/SimpleHttpCommandCenter.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

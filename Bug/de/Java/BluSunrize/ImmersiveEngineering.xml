@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>4222</id>
+		<title>[1.14+] Fluid Pumps are not default configured to input from the bottom</title>
+		<body>### Description of the issue: When placing a pump, it does not automatically configure to input at the bottom. The issue occurs due to the initializer here:  https://github.com/BluSunrize/ImmersiveEngineering/blob/1.14/src/main/java/blusunrize/immersiveengineering/common/blocks/metal/FluidPumpTileEntity.java#L72-L73  </body>
+		<created>2020-08-17 08:46:20</created>
+		<closed>2020-08-18 14:17:30</closed>
+	</bug>
+	<bug>
+		<id>4211</id>
+		<title>[1.16.1] The Vacuum Tube crafting animation of Automated Workbench bug</title>
+		<body>Game Version+ IE version + Forge version: [1.16.1] - [3.1-112] - [32.0.108]  Bug description   Vacuum Tube during crafting have wrong animation, recipe needs glass, redstone, Nickel plate, copper wire but when it crafting the animation shown 4 glasses instead of the ingredients needs  Step to see the glitch  `Step 1:` Form the Automated Workbench multiblock and give it some power `Step 2:` Give it the required ingredients for the vacuum tube `Step 3:` Watch the animation.  ![90255818-0253bd80-de6f-11ea-9787-8534d09358e4](https://user-images.githubusercontent.com/68932626/90256468-fe746b00-de6f-11ea-9469-fc1a115b415c.png) </body>
+		<created>2020-08-14 13:29:55</created>
+		<closed>2020-08-18 15:20:48</closed>
+	</bug>
+	<bug>
+		<id>4201</id>
+		<title>Multiblocks only form when facing North</title>
+		<body>### Before reporting: As discovered on Forgecraft, only the default orientation of a multiblock will form. Tested and reproduced in 1.14 and 1.16, for the Crusher and the Bottling Machine.  Version 3.1.1-pre.33</body>
+		<created>2020-08-12 06:19:56</created>
+		<closed>2020-08-12 06:32:34</closed>
+	</bug>
+	<bug>
+		<id>4198</id>
+		<title>Hemp Seed Problems</title>
+		<body>### Description of the issue: 1. IE's hemp seeds are not part of the `forge:seeds` tag 2. They are currently named "Industrial Hemp", because they take the name of their block 3. They also don't show up in Creative or JEI, because the hemp block doesn't do anything in `fillItemGroup`  This issue affects all current builds for 1.14, 1.15, 1.16</body>
+		<created>2020-08-11 15:03:33</created>
+		<closed>2020-08-11 19:46:11</closed>
+	</bug>
+	<bug>
+		<id>4197</id>
+		<title>Excavator ticks down depletion on empty veins</title>
+		<body>### Description of the issue: First,I set excavator_yield to **128** through the config.  When I used CoreSampleDrill for the first time, it showed Expected Yield: 98ores. ![image](https://user-images.githubusercontent.com/25812011/89911192-b7923580-dc23-11ea-98f3-d7a9484c3ce9.png)  But when I put down the bucket wheel, only 91 ore was excavated and no longer produced. ![image](https://user-images.githubusercontent.com/25812011/89911300-d7c1f480-dc23-11ea-8731-fe963caf6258.png) ![image](https://user-images.githubusercontent.com/25812011/89911309-dabce500-dc23-11ea-9245-8cbada6c4636.png)  Using CoreSampleDrill again, it shows Expected Yield: -45ores ![image](https://user-images.githubusercontent.com/25812011/89911382-f0caa580-dc23-11ea-98b4-f363a793594d.png)  nbt data: ![image](https://user-images.githubusercontent.com/25812011/89911413-fa540d80-dc23-11ea-8ffa-344acd39c63e.png)   --- There are two main problems in this process 1. The mineral vein cannot be fully excavated 2. Expected is displayed as a negative number  ### Versions &amp; Modlist minecraft:1.16.1 forge:106 ie:3.1-112  no more mod, only one</body>
+		<created>2020-08-11 14:46:44</created>
+		<closed>2020-08-19 11:43:58</closed>
+	</bug>
+	<bug>
+		<id>4190</id>
+		<title>NPE in JEI plugin</title>
+		<body>&lt;https://gist.github.com/malte0811/00260bb4ce89f9b42d43fd98d2209c84&gt;    While joining a dedicated server. `ImmersiveEngineering-1.16.1-3.1-c1074723.jar`</body>
+		<created>2020-08-09 20:37:52</created>
+		<closed>2020-08-13 10:41:00</closed>
+	</bug>
+	<bug>
+		<id>4187</id>
+		<title>[1.16.1] excavator wheel not forming</title>
+		<body>I'm not really sure if the new updates changed something, but after 3 times rebuilding the excavator, i think that this is a bug or something. Every time I right-click the excavator, only the engine part forms but the wheel doesn't and the excavator won't start. I already updated to the latest version of IE and Forge ![2020-08-08_21 54 09](https://user-images.githubusercontent.com/69411490/89725212-fc1e9680-d9c1-11ea-8c9f-f92611b35892.png) ![2020-08-08_21 54 19](https://user-images.githubusercontent.com/69411490/89725215-ff198700-d9c1-11ea-89c9-0638735d7ec2.png) </body>
+		<created>2020-08-09 05:02:34</created>
+		<closed>2020-08-09 08:23:59</closed>
+	</bug>
+	<bug>
+		<id>4185</id>
+		<title>[1.16.1] Failure to serialize MineralArgument?</title>
+		<body>I was wondering if I should be worried about this. I'm preparing a new server and this recurs in the logs (always the three lines together)--even if the world is completely fresh. It's a dedicated headless server running Debian Buster. There isn't a stack trace and it doesn't crash or hang. While nothing seems amiss at first glance, the server isn't open yet so players haven't actually played on it yet. If there's a problem with world generation, that's the sort of thing we'd like to figure out beforehand! I believe the custom minerals may be missing, I haven't seen them yet even though I have been underground.  ``` [09Aug2020 01:06:52.050] [Netty Epoll Server IO #1/ERROR] [net.minecraft.command.arguments.ArgumentTypes/]: Could not serialize net.minecraftforge.server.command.ModIdArgument@4df6dac1 (class net.minecraftforge.server.command.ModIdArgument) - will not be sent to client! [09Aug2020 01:06:52.051] [Netty Epoll Server IO #1/ERROR] [net.minecraft.command.arguments.ArgumentTypes/]: Could not serialize net.minecraftforge.server.command.EnumArgument@328d89bf (class net.minecraftforge.server.command.EnumArgument) - will not be sent to client! [09Aug2020 01:06:52.051] [Netty Epoll Server IO #1/ERROR] [net.minecraft.command.arguments.ArgumentTypes/]: Could not serialize blusunrize.immersiveengineering.common.util.commands.CommandMineral$MineralArgument@629e8167 (class blusunrize.immersiveengineering.common.util.commands.CommandMineral$MineralArgument) - will not be sent to client! ```  Immersive Engineering: 3.1-112 Forge: 32.0.106  Other mods: https://gist.github.com/Protected/a4622884ee760fad0b680b406dbf3b1c (Filenames because I failed to make the thing crash as suggested in the template here.) </body>
+		<created>2020-08-09 01:41:24</created>
+		<closed>2020-08-09 08:23:58</closed>
+	</bug>
+	<bug>
+		<id>4175</id>
+		<title>[1.15] Texture issuue with the mirrored bucket wheel</title>
+		<body>### Description of the issue: ![2020-08-05_17 42 17](https://user-images.githubusercontent.com/52493793/89441664-6a0a5a00-d745-11ea-8314-adb7de7ef006.png) ![2020-08-05_17 42 23](https://user-images.githubusercontent.com/52493793/89441671-6b3b8700-d745-11ea-97f0-772c6a35094a.png) ![2020-08-05_17 42 36](https://user-images.githubusercontent.com/52493793/89441676-6d054a80-d745-11ea-9008-86697c868019.png)  ### Versions &amp; Modlist MC Version: 1.15.2 Forge Version: 31.2.30 IE Version: 1.15.2-3.1-111</body>
+		<created>2020-08-05 16:59:42</created>
+		<closed>2020-08-05 20:20:13</closed>
+	</bug>
+	<bug>
+		<id>4170</id>
+		<title>[1.16.1/109] IE Manual Blueprints Page Crash (Russian Localization Version)</title>
+		<body>### Description of the issue: Game crashes while trying to view the second page of Blueprints Section of IE Manual (Link from Overview And Resources -&gt; Workbench &amp; Blueprints, page 1). RUSSIAN LOCALIZATION ISSUE, UK version is OK. So it may be just the translation issue, but still.  ### Crashlog: https://gist.github.com/Agory7000/3f65b7302aca2b40afde76912e4cb5ee  ### Versions &amp; Modlist IE Version: 0.16-109 Minecraft Version: 1.16.1 Minecraft Version ID: 1.16.1 Operating System: Windows 10 (amd64) version 10.0 Java Version: 1.8.0_51, Oracle Corporation Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation  Modlist: forge-1.16.1-32.0.88-client.jar Minecraft {minecraft@1.16.1 DONE} Powah-1.16.1-2.1.3.jar Powah {powah@2.1.3 DONE} MouseTweaks_2.13_mc1.16.1.jar Mouse Tweaks {mousetweaks@2.13 DONE} ImmersiveEngineering_0.16_109.jar Immersive Engineering {immersiveengineering@0.16-109 DONE} durability101_1.16_0.0.3.jar Durability101 {durability101@0.0.3 DONE} Lollipop-1.16.1-2.1.3.jar Lollipop {lollipop@2.1.3 DONE} engineersdecor_1.16.1_1.1.1_b5.jar Engineer's Decor {engineersdecor@1.1.1-b5 DONE} Hwyla_forge_1.10.10_B77_1.16.1.jar Waila {waila@1.10.10-B77_1.16.1 DONE} jei_1.16.1_7.0.0.6.jar Just Enough Items {jei@7.0.0.6 DONE} forge-1.16.1-32.0.88-universal.jar Forge {forge@32.0.88 DONE} Xaeros_Minimap_20.16.0.1_Forge_1.16.1.jar Xaero's Minimap {xaerominimap@20.16.0 DONE} refinedstorage_1.16.1_1.9.2.jar Refined Storage {refinedstorage@1.9.2 DONE} gravestone_1.16.1_1.0.5.jar Gravestone Mod {gravestone@1.16.1-1.0.5 DONE} ironchest_1.16.1_11.0.1.jar Iron Chests {ironchest@1.16.1-11.0.1 DONE} NaturesCompass_1.16.1_1.8.5.jar Nature's Compass {naturescompass@1.16.1-1.8.5 DONE}</body>
+		<created>2020-08-05 00:11:02</created>
+		<closed>2020-08-05 19:42:41</closed>
+	</bug>
+	<bug>
+		<id>4168</id>
+		<title>[1.16.1] scaffolding in water</title>
+		<body>Only a visual issue which might have been here since the beginning but most of the scaffolding blocks look like this:  ![2020-08-04_17 45 58](https://user-images.githubusercontent.com/69208677/89315008-a0c76e00-d67a-11ea-841a-23f4dbbd8be6.png)  Some scaffolding blocks like the stairs and slabs don't have this. I have checked if optifine had something to do with it but it is just part of the mod. </body>
+		<created>2020-08-04 15:54:55</created>
+		<closed>2020-08-17 12:59:39</closed>
+	</bug>
+	<bug>
+		<id>4161</id>
+		<title>[1.15] Heavy Plated Shield UI is mangled</title>
+		<body>### Description of the issue: As you can see in the screenshot, the status graphics for the Heavy Shield make no sense. ![2020-08-03_09 39 24](https://user-images.githubusercontent.com/52493793/89163844-25789600-d56e-11ea-8d59-d21be8692b3f.png)   ### Versions &amp; Modlist: MC Version: 1.15.2 Forge Version: 31.2.30 IE Version: 0.15-108  Other mods: JEI Immersive-Posts Abnormals-Core AutoRegLib Bamboo-Blocks Buzzier-Bees Create Extraboats Pamhc2foodcore Quark Swamp-Expansion The-Loader Upgrade-Aquatic</body>
+		<created>2020-08-03 08:46:22</created>
+		<closed>2020-08-03 12:59:36</closed>
+	</bug>
+	<bug>
+		<id>4152</id>
+		<title>[1.16.1] Client crash upon unloading of wire connector</title>
+		<body>### Before reporting: This seems to be similar to #4111, but the crash log looks different  ### Description of the issue: Having chunks unload due to view distance when walking away causes a client crash - the dedicated server continued on running. I have not experienced this before when walking the same direction. I have, so far, unfortunately been unable to reproduce the issue. I do have the suspicion, that the wire network was partially loaded for some time before being completely unloaded, because I spent quite some time in the area right before the chunk that would cause it to completely unload. It then crashed when I walked that one chunk further.  ### Crashlog: [crash-2020-07-30_19.51.04-client.txt](https://github.com/BluSunrize/ImmersiveEngineering/files/5002973/crash-2020-07-30_19.51.04-client.txt)   ### Versions &amp; Modlist IE 0.16-109 on commit https://github.com/BluSunrize/ImmersiveEngineering/commit/c9a0852410f5c5b4244ac6477728a80f36006b72 - I just built that jar locally for the newer Forge version, as it wasn't available on CurseForge yet; running on Forge 32.0.97</body>
+		<created>2020-07-30 18:07:02</created>
+		<closed>2020-08-01 08:24:19</closed>
+	</bug>
+	<bug>
+		<id>4141</id>
+		<title>[1.16.1 - IE v0.16-109] Unable to plant hemp seeds with automatic planter(s) </title>
+		<body>### Before reporting: Searched with key words "Plant", "Hemp", and "Seed" (included in this title to help with searches) https://imgur.com/a/dLo8Pcc  ### Description of the issue:  Unable to plant IE Hemp seeds with any other mods version of an 'auto planter'. My base isnt running on power at all so a garden cloche isnt an option until later in the game, but makeing an automated farm is easy to do with other mods available. Examples of it not working with Pedestals, Industrial Foregoing, Quark, and Cyclic First two images are of IF as it wont even accept the items into its inventory to plant, the last is an overview of all the options each not able to plant IE hemp but able to plant wheat and netherwart. https://imgur.com/a/HK7u9ks  ### Crashlog: N/A  ### Versions &amp; Modlist Forge: 32.0.75 IE: ImmersiveEngineering-0.16-109 https://pastebin.com/eFJwcgic .zip instance for your own testing convenience https://www.dropbox.com/s/n2ro3pojmfpvmeq/IE%20Seed%20Planting%20Test-1.0.zip?dl=0 </body>
+		<created>2020-07-28 14:43:30</created>
+		<closed>2020-08-03 21:26:45</closed>
+	</bug>
+	<bug>
+		<id>4118</id>
+		<title>[1.16.1] Structural Cable Connectors don't rotate properly</title>
+		<body>### Description of the issue: Rotating a Structural Cable Connector with an Engineer's Hammer rotates the model around the wrong axis  ![grafik](https://user-images.githubusercontent.com/6273249/88078652-fda42e00-cb7c-11ea-8656-c199b5b66d15.png) Model before rotating  ![grafik](https://user-images.githubusercontent.com/6273249/88078713-11e82b00-cb7d-11ea-8a44-2cccb4956b49.png) Right-click  ![grafik](https://user-images.githubusercontent.com/6273249/88078775-21677400-cb7d-11ea-9755-74b512814a2c.png) Shift + right-click  It seems to rotate around the south-west corner. Placing it on the side of a block makes it rotate around the bottom-right corner  ### Versions &amp; Modlist MC 1.16.1 running Forge 32.0.69 and IE 0.16-109 </body>
+		<created>2020-07-21 16:11:12</created>
+		<closed>2020-08-05 10:47:33</closed>
+	</bug>
+	<bug>
+		<id>4072</id>
+		<title>[1.15.2] Inverted Redstone control on Diesel Generator resets on world reload</title>
+		<body>### Description of the issue: Using the Engineer's Hammer, I have set the redstone control switch to be Inverted on my diesel generator and attached a signal to it. When I relog, that setting is reversed and I must again hammer the switch to set it to 'Inverted'  Additionally I applied the recent release upgrade and now I I am completely unable to affect the setting of that switch via the engineer's hammer; clicking, right clicking, shift right clicking, no effect.  ### Versions &amp; Modlist  MC: 1.15.2 Forge: forge-31.2.31 IE: originally noticed this with ImmersiveEngineering-0.15-103 and confirmed that bug not only still exists with ImmersiveEngineering-0.15-105, but has gotten worse in that I am unable to again re-Invert the generator's control on world load.  Modlist: https://pastebin.com/7YPdd7Zn  </body>
+		<created>2020-07-13 18:50:17</created>
+		<closed>2020-07-13 20:10:17</closed>
+	</bug>
+	<bug>
+		<id>4066</id>
+		<title>[1.15.2] Buckets of Creosote Oil cannot be used as a furnace fuel</title>
+		<body>#### Description of the issue: In one of the 1.12.2 versions Creosote Oil buckets gained the ability to be used as a furnace fuel (smelt 4 items), however this appears to no longer work in both the 1.14 and 1.15 versions.  ### Versions &amp; Modlist Minecraft 1.14.4 Forge 28.2.23 ImmersiveEngineering-0.14-102  Minecraft 1.15.2 Forge 31.2.31 ImmersiveEngineering-0.15-103  ![IEBug](https://user-images.githubusercontent.com/46273243/87250203-4fd4a900-c431-11ea-9186-d9965cf81e91.gif)</body>
+		<created>2020-07-12 15:18:42</created>
+		<closed>2020-07-12 15:38:24</closed>
+	</bug>
+	<bug>
+		<id>4065</id>
+		<title>[mc 1.15.2] minecraft bees are confused by wooden posts</title>
+		<body>### Description of the issue: Every single wooden post I have, just about, has a bee flying straight into it, that is very difficult to dislodge from its intent to fly straight at the post -- shuffle them to the side and they continue flying straight at the post from the west instead of the north, etc, _even if you poke them and they get angry_.  ### Versions &amp; Modlist Forge 31.2.31 ImmersiveEngineering 0.15-103  additional mods https://pastebin.com/9PfnDGp1 . couldn't seem to get F3+C to generate a crashlog so I took this list from the most recent. Forge has been updated since then to the above mentioned version.  Personally I preferred the Forestry bees -- these new bees the size of a small terrier, are themselves terrifying. :D</body>
+		<created>2020-07-11 16:53:36</created>
+		<closed>2020-07-11 19:27:49</closed>
+	</bug>
+	<bug>
+		<id>4056</id>
+		<title>[1.15.2] [0.15-105 #12] Screwdriver Settings on Redstone Probe Not Applied</title>
+		<body>Tried to set send/receive colors on redstone probe using new screwdriver GUI. It allows you to select the colors but when you close the GUI, nothing changes. If you open the GUI again, the colors are back to the original white for both directions.  Test Server Jenkins Build 12  Minecraft 1.15.2 Forge 31.2.9 Titanium 2.4.1 Immersive Engineering 0.15-105-ccc47249 Transport 1.15.2-2.3.0 AutoRegLib 1.5-40 Quark r2.1-244 Just Enough Items 6.0.0.4  VoxelMap 1.9.20  </body>
+		<created>2020-07-06 17:55:33</created>
+		<closed>2020-07-08 18:51:52</closed>
+	</bug>
+	<bug>
+		<id>4046</id>
+		<title>[1.15.2] Hemp seeds not dropping w/Forge 31.2.30 </title>
+		<body>### Description of the issue: Hemp seeds from **tall grass** do not appear to drop with later versions of Forge. Tests below were in fresh worlds, with no other mods installed. Latest log included even though there was no crash, in case the information in it is relevant.  MC: 1.15.2 Mods: No other mods installed - Forge 31.2.30   - ImmersiveEngineering-0.15-99 - No hemp seeds drop   - ImmersiveEngineering-0.15-103 - No hemp seeds drop - Forge 31.2.20   - ImmersiveEngineering-0.15-99 - Hemp seeds drop   - ImmersiveEngineering-0.15-103 - Hemp seeds drop  ### Crashlog: No crash but a few WARN/STDERR, I'm including for brevity.  [latest.log](https://github.com/BluSunrize/ImmersiveEngineering/files/4866459/latest.log)  ### Additional Notes: I believe this started prior to Forge 31.2.30 maybe .27 but I can't be 100% sure.  ### Edits: It occurred to me after creating this issue that you might only be building off the release version of Forge, and not (yet) concerned about the 'latest' builds. If that's the case, my apologies, I'll understand if this is closed. </body>
+		<created>2020-07-02 20:21:17</created>
+		<closed>2020-07-05 16:09:25</closed>
+	</bug>
+	<bug>
+		<id>4043</id>
+		<title>[1.14] Balloon height offset does nothing.</title>
+		<body>### Description of the issue: Right-clicking with a balloon while sneaking will change its name to reflect the selected height offset (eg. "Balloon (+2)"), but when placing it on the ground, for example, the balloon will always be on top of the clicked block, but not above it with the given offset.   ### Versions &amp; Modlist MC Version 1.14.4 Forge Version 28.2.16 IE Version 0.14.102</body>
+		<created>2020-07-02 10:17:15</created>
+		<closed>2020-07-07 16:54:26</closed>
+	</bug>
+	<bug>
+		<id>4038</id>
+		<title>[1.15.2] Arc Furnace Recipes that require multiple of an input item consume only 1</title>
+		<body>### Description of the issue: In recipes that require several of an input item, such as Mekanism Bronze (screenshot below), the Arc Furnace only consumes the Alloy item, and one of the 3 Copper seen in the screenshot. The craft will however not start if there is less than 3 copper in the Arc Furnace.   The issue also occurs with Create Brass, which is 3 Copper and 1 Zinc.  ### Versions &amp; Modlist Happens in Enigmatica 0.5.1+  - Forge-1.15.2-31.2.20 - ImmersiveEngineering-0.15-103 - Mekanism-1.15.2-9.10.8.421 - create-mc1.15.2_v0.2.4d</body>
+		<created>2020-06-30 20:09:07</created>
+		<closed>2020-07-07 16:54:26</closed>
+	</bug>
+	<bug>
+		<id>4035</id>
+		<title>[1.15.2] [0.15-105 #15] Squeezer's piston has rendering issues on its mirrored form</title>
+		<body>### Description of the issue: When assembling a Squeezer with the barrels at the left side, the inner piston head has a few rendering issues. This does not occur when the barrels are on the right side. This is purely visual; hitboxes are normal on both mirrors.  ![Reversed Squeezer Glitch](https://user-images.githubusercontent.com/5566692/85956596-33c70700-b95d-11ea-8040-e29e0e939f0e.png)  ### Versions &amp; Modlist forge-1.15.2-31.2.9 ImmersiveEngineering-0.15-105-8f2d7b4d jei-1.15.2-6.0.0.4</body>
+		<created>2020-06-28 19:37:22</created>
+		<closed>2020-06-29 12:38:54</closed>
+	</bug>
+	<bug>
+		<id>4034</id>
+		<title>[1.15.2] [0.15-105 #15] Silo has rotated hitboxes on support beams</title>
+		<body>### Description of the issue: When assembling a Silo, its support beams (Treated Wood blocks) have their hitboxes rotated 90 degrees. This happens when hammering any of its four sides.  This is a reoccurrence of #3875 on 1.15.2.  ![Silo Hitbox](https://user-images.githubusercontent.com/5566692/85956371-ce264b00-b95b-11ea-97cb-66515f6141dc.png)  ### Versions &amp; Modlist forge-1.15.2-31.2.9 [ImmersiveEngineering-0.15-105-8f2d7b4d](https://ci.blamejared.com/job/Immersive%20Engineering/job/1.15/15/) jei-1.15.2-6.0.0.4 </body>
+		<created>2020-06-28 19:28:54</created>
+		<closed>2020-06-29 11:48:57</closed>
+	</bug>
+	<bug>
+		<id>4030</id>
+		<title>[1.12] Multiblock still drop items while in creative</title>
+		<body>### Description of the issue: As a creative player, when breaking a multiblock part items are still dropping while they should not. This is systematic. It's reproduced on all Poles, Coke oven, Blast furnace, Advanced furnace and Fluid tank. Single item multiblocks like the Fluid pump and Blast furnace pre-heater don't reproduce the issue. Other multiblocks like Crusher, Metal Press, etc. were not tested.  ### Crashlog: not applicable  ### Versions &amp; Modlist ImmersiveEngineering-0.12-98 forge-14.23.5.2854</body>
+		<created>2020-06-23 23:21:31</created>
+		<closed>2020-06-24 04:30:14</closed>
+	</bug>
+	<bug>
+		<id>4020</id>
+		<title>[1.15.2] [0.15-105 #10] Wonky Heavy Plated Shield blocking animation while holding it in offhand in 3rd person view</title>
+		<body>The blocking animation of the heavy plated shield is broken in third person view when blocking with it in offhand. ![2020-06-21_17 31 15](https://user-images.githubusercontent.com/52840858/85285350-1099e480-b491-11ea-838e-c020a8df8b9a.png) The blocking animation of the heavy plated shield is, however, fine in first person view when blocking with it it in offhand. ![2020-06-22_14 16 37](https://user-images.githubusercontent.com/52840858/85286566-28726800-b493-11ea-86be-aa105e5db476.png) The blocking animation of the heavy plated shield is fine in both view modes when blocking with it in the main hand.  ![2020-06-22_14 16 56](https://user-images.githubusercontent.com/52840858/85286644-4b048100-b493-11ea-8d66-fb97697ac6c8.png) ![2020-06-22_14 17 01](https://user-images.githubusercontent.com/52840858/85286652-4dff7180-b493-11ea-9353-b285e9150873.png) Discovered on a server, replicated in singleplayer.   </body>
+		<created>2020-06-22 12:20:52</created>
+		<closed>2020-06-28 16:15:10</closed>
+	</bug>
+	<bug>
+		<id>4017</id>
+		<title>[1.14] [1.15.2] [0.15-105 #10] Breaker switch Inverting/Rotating</title>
+		<body>### Description of the issue: Breaker Switch does not accept any type of tool manipulation it only reacts to turn function on/off, no alternative function ( inverting ) or rotating  ### Versions &amp; Modlist ImmersiveEngineering 1.14-102 Jei 1.14.4-6.0.0.27  And 1.15 ImmersiveEngineering 0.15-105-a2b2b71a jei-1.15.2-6.0.0.4 </body>
+		<created>2020-06-21 16:43:46</created>
+		<closed>2020-06-22 13:39:02</closed>
+	</bug>
+	<bug>
+		<id>4015</id>
+		<title>[1.14] Commands fail to execute</title>
+		<body>### Description of the issue: Commands like `/ie mineral get ~ ~` for example, fail to execute, returning the message `An unexpected error occurred trying to execute that command`. The only exception is `/ie mineral list`.  ### Versions &amp; Modlist MC Version 1.14.4 Forge Version 28.2.16 IE Version 0.14.102</body>
+		<created>2020-06-20 13:53:05</created>
+		<closed>2020-06-20 15:20:24</closed>
+	</bug>
+	<bug>
+		<id>4012</id>
+		<title>[1.15.2] [0.15-105 #9] Rendering issues when looking at turntable sides with a hammer</title>
+		<body>### Description of the issue: When holding the Engineer's Hammer, and looking at a Turntable's sides to see the orientation settings, transparent objects suffer rendering issues, moving them far from the player's view.  Here's an example demonstrating some transparent blocks and the Garden Cloche:  **Looking away** ![image](https://user-images.githubusercontent.com/5566692/85168328-98d57b00-b240-11ea-8469-09e363dda360.png)  **Looking at Turntable's side** ![image](https://user-images.githubusercontent.com/5566692/85168377-ac80e180-b240-11ea-8b4c-75330706cedc.png)  ### Versions &amp; Modlist forge-1.15.2-31.2.9 ImmersiveEngineering-0.15-105-e51d080a jei-1.15.2-6.0.0.4 </body>
+		<created>2020-06-19 18:24:44</created>
+		<closed>2020-06-21 09:28:20</closed>
+	</bug>
+	<bug>
+		<id>4010</id>
+		<title>[1.14] Garden Cloche doesn't accept Bone Meal in the fertilizer slot.</title>
+		<body>### Description of the issue: According to the Engineer's Manual, the left slot in the Garden Cloche GUI, under the water level indicator, should accept a fertilizer, but Bone Meal won't be accepted in the slot. Using a hopper to introduce Bone Meal into the items input of the Cloche doesn't work either.  ### Versions &amp; Modlist MC Version 1.14.4 Forge Version 28.2.16 IE Version 0.14.102</body>
+		<created>2020-06-19 15:42:37</created>
+		<closed>2020-06-25 17:56:18</closed>
+	</bug>
+	<bug>
+		<id>4003</id>
+		<title>[1.14] Core Samples aren't marking the map</title>
+		<body>### Description of the issue: When clicking on a Core Sample with a map, the map won't register the coordinates of the sample as stated in the Manual.  ### Versions &amp; Modlist MC Version 1.14.4 Forge Version 28.2.16 IE Version 0.14.102</body>
+		<created>2020-06-18 15:44:34</created>
+		<closed>2020-06-21 09:13:53</closed>
+	</bug>
+	<bug>
+		<id>4002</id>
+		<title>[1.15.2] [0.15-103] The sound of Treatened Fences, Stairs and Scafolding has a stone sound</title>
+		<body>Description of the issue: The sound of Treatened Fences, Stairs and Scafolding has a stone sound, instead of wood sound when placing or walking on them.   Screenshot: https://imgur.com/a/GcqcrTk  Versions &amp; Modlist forge-1.15.2-31.2.20 ImmersiveEngineering-0.15-103</body>
+		<created>2020-06-18 15:34:18</created>
+		<closed>2020-06-28 16:24:12</closed>
+	</bug>
+	<bug>
+		<id>3999</id>
+		<title>[1.14] Acquiring Hemp Seeds with the Pick Up key</title>
+		<body>### Description of the issue: When using the pick up on Hemp (by default the middle mouse button) it won't switch to Hemp Seeds in survival, and in creative it creates an odd Hemp Seed which won't stack with other Hemp Seeds, nor feed into the composter.  ### Versions &amp; Modlist MC Version 1.14.4 Forge Version 28.2.16 IE Version 0.14.102</body>
+		<created>2020-06-18 08:36:33</created>
+		<closed>2020-06-21 09:13:52</closed>
+	</bug>
+	<bug>
+		<id>3998</id>
+		<title>[1.14] Conveyors can't insert into Covered Vertical Conveyors.</title>
+		<body>### Description of the issue: At least for the Covered Vertical Conveyor, it can't be inserted into by other conveyors from the sides. But it works with hoppers.  Evidence: ![2020-06-18_09 12 13](https://user-images.githubusercontent.com/52493793/84996079-b4f3f200-b144-11ea-8e48-e1924dcd415d.png)  ### Versions &amp; Modlist MC Version 1.14.4 Forge Version 28.2.16 IE Version 0.14.102</body>
+		<created>2020-06-18 08:19:20</created>
+		<closed>2020-06-28 12:54:47</closed>
+	</bug>
+	<bug>
+		<id>3996</id>
+		<title>[1.15.2] [0.15-104 #8] Shears not counted towards tools in toolbox</title>
+		<body>### Description of the issue: Vanilla Shears are not counted as a Tool so when placed in a Engineers Toolbox so they only go into the "anything" slots and not tools .  ### Versions &amp; Modlist Forge-1.15.2-31.2.9 ImmersiveEngineering-0.15-104-492e4a5a jei-1.15.2-6.0.0.4 </body>
+		<created>2020-06-17 21:15:43</created>
+		<closed>2020-06-28 12:54:46</closed>
+	</bug>
+	<bug>
+		<id>3994</id>
+		<title>[1.15.2] [0.15-104 #8] Combining Hammers/Cutters in a crafting grid duplicates the item</title>
+		<body>### Description of the issue: Repairing the Engineer's Hammer or the Wire Cutters on a crafting grid leaves the previous tool in the grid, **duplicating** the item. Steel tools and other durability equipment do not suffer this issue.  ### Versions &amp; Modlist forge-1.15.2-31.2.9 ImmersiveEngineering-0.15-104-492e4a5a jei-1.15.2-6.0.0.4</body>
+		<created>2020-06-16 19:15:24</created>
+		<closed>2020-06-20 15:20:23</closed>
+	</bug>
+	<bug>
+		<id>3973</id>
+		<title>[1.14] Not all Conveyor Belts are inserting into inventories</title>
+		<body>### Description of the issue: Splitting conveyors nor vertical conveyors will push items into crates or routers adjacent to their outputs.  ### Versions &amp; Modlist MC Version 1.14.4 Forge Version 28.2.16 IE Version 0.14.97 </body>
+		<created>2020-06-13 14:16:11</created>
+		<closed>2020-06-13 21:32:57</closed>
+	</bug>
+	<bug>
+		<id>3972</id>
+		<title>[1.14] Assemblers ignore the redstone signal</title>
+		<body>### Description of the issue: When the Assembler is loaded with ingredients, it will keep consuming them and outputting the products no matter the state of a lever attached to the side.  ### Versions &amp; Modlist MC Version 1.14.4 Forge Version 28.2.16 IE Version 0.14.97</body>
+		<created>2020-06-13 13:32:25</created>
+		<closed>2020-06-13 19:50:14</closed>
+	</bug>
+	<bug>
+		<id>3969</id>
+		<title>Concrete Recipe Consumes the Bucket</title>
+		<body>### Before reporting: I checked for any other duplicates of this issue, I didn't see any so apologies if I missed it. ### Description of the issue: When crafting concrete in the latest jenkins build ( this is on the community server) the bucket is consumed. ### Versions &amp; Modlist  ImmersiveEngineering-0.15-101-54258617 Quark Transport Titanium Autoreglib JEI</body>
+		<created>2020-06-13 00:44:20</created>
+		<closed>2020-06-13 21:45:13</closed>
+	</bug>
+	<bug>
+		<id>3955</id>
+		<title>[1.15.2] Hemp plant textures completely opaque</title>
+		<body>### Description of the issue: Hemp plants render with opaque textures, with white areas where transparency should be. ![2020-06-11_18 16 08](https://user-images.githubusercontent.com/13003285/84449306-a1abc880-ac12-11ea-90fb-7bc4dc577d23.jpg)     ### Crashlog: N/A  ### Versions &amp; Modlist Forge: 31.2.9 IE: 0.15-99 </body>
+		<created>2020-06-11 23:37:54</created>
+		<closed>2020-06-12 11:41:29</closed>
+	</bug>
+	<bug>
+		<id>3954</id>
+		<title>[1.14] Links in the manual have become invalid</title>
+		<body>### Description of the issue: A variety of links in the manual show up as "Invalid link". When clicking them anyway, the console logs the following error: ``` [23:59:04] [Client thread/ERROR] [immersiveengineering/]: Unknown anchor start in entry immersiveengineering:refinery (link from immersiveengineering:buzzsaw) ``` (This was produced specifically with the link labeled "Biodiesel" on page 2 of the Buzzsaw entry).  My current assumption is that the rewrite of the text-splitter took away the default "start" anchors? Explicitely defined ones (such as in `workbench.json`) seem to still be present and working.  Currently tested on commit `36d7e163`</body>
+		<created>2020-06-11 22:02:41</created>
+		<closed>2020-06-12 13:06:34</closed>
+	</bug>
+	<bug>
+		<id>3949</id>
+		<title>[1.14/1.15] Silver Bullets don't do bonus damage</title>
+		<body>### Description of the issue: Silver bullets no longer do bonus damage to undead. This is a bug that needs to be addressed, because they are otherwise pretty useless (since they do the same damage as normal bullets but cost silver to make)</body>
+		<created>2020-06-11 07:52:08</created>
+		<closed>2020-06-11 22:21:30</closed>
+	</bug>
+	<bug>
+		<id>3948</id>
+		<title>[1.14] Bounding Box issues on the Refinery</title>
+		<body>### Description of the issue: The bounding boxes for the Refinery are out of place for refineries facing West or East, both mirrored and unmirrored. All display this same offset behavior: ![image1](https://i.imgur.com/2d3fDva.jpg) ![image2](https://i.imgur.com/KcLZrJO.jpg) ![image3](https://i.imgur.com/AT0TjSs.png)  Tested on commit 2bbd5fc2 on brach 1.14</body>
+		<created>2020-06-11 07:50:15</created>
+		<closed>2020-06-11 08:41:52</closed>
+	</bug>
+	<bug>
+		<id>3909</id>
+		<title>[1.15] Buzzsaw blade transparent in Workbench</title>
+		<body> ### Description of the issue: When the Buzzsaw is rendering in the Workbench's model, the outline of the blade is normal, but the rest of the blade is transparent.  https://imgur.com/a/VbAWqi9  ### Versions &amp; Modlist Forge: 31.2.8 IE: 0.15-99 </body>
+		<created>2020-06-06 23:47:20</created>
+		<closed>2020-06-07 19:01:20</closed>
+	</bug>
+	<bug>
+		<id>3908</id>
+		<title>[1.15] WorkBench crashes when putting Blueprint in slot</title>
+		<body>### Description of the issue: When placing a Blueprint in the input slot, the client crashes.  ### Crashlog: https://gist.github.com/SkySom/2a5f6f0e8c919aaaadbb280eaed2a507  ### Versions &amp; Modlist Forge: 31.2.8 IE: 0.15-99 </body>
+		<created>2020-06-06 23:43:45</created>
+		<closed>2020-06-07 19:02:28</closed>
+	</bug>
+	<bug>
+		<id>3907</id>
+		<title>[1.15] breaker switch visual and rotation</title>
+		<body> ### Description of the issue: placing down a breaker switch if not standing close and aiming for bottom or top of the block, the visual of the breaker switch will shift over one block to the south east. it is also locked into the north/south or south/north rotation, no east-west.    ### Versions &amp; Modlist forge 31.8.2 ImmersiveEngineering-0.15-99  log list, including modlist https://paste.ee/p/naD0y </body>
+		<created>2020-06-06 23:23:45</created>
+		<closed>2020-06-07 19:02:09</closed>
+	</bug>
+	<bug>
+		<id>3422</id>
+		<title>[1.12.2][0.12-89]CraftTweaker removing one bullet recipe from a blueprint results all bullets removed</title>
+		<body>I'm using CraftTweaker to change the recipe for DragonsBreath with the following lines of code.  ``` // remove DragonBreath Bullet recipe var  dragonsbreath = &lt;immersiveengineering:bullet:2&gt;.withTag({bullet: "dragonsbreath"}); mods.immersiveengineering.Blueprint.removeRecipe(dragonsbreath); // add new recipe for DragonBreath Bullet mods.immersiveengineering.Blueprint.addRecipe("specialBullet", &lt;immersiveengineering:bullet:2&gt;.withTag({bullet: "dragonsbreath"}), [     &lt;immersiveengineering:bullet:1&gt;, &lt;grimoireofgaia:misc_soul_fire&gt;*64, &lt;grimoireofgaia:misc_soul_fiery&gt;*32, &lt;ore:dustAluminum&gt;*64 ]); ```  This results all bullets being removed and only the new Dragonsbreath left.   I find all bullets are the same id differentiated with NBT tag. but this IItemStack in removeRecipe function seems to ignore NBT tag. so it's unable to remove specific bullet recipe without touch others.</body>
+		<created>2019-03-20 07:56:12</created>
+		<closed>2019-07-23 14:19:48</closed>
+	</bug>
+	<bug>
+		<id>3421</id>
+		<title>[1.12] Compat module TiC in combination with Moar Tinkers</title>
+		<body>possible duplicate with #2562  I know it's only a stacktrace and no major problem, but here's what I was told to report anywys:  `[18:30:32] [Server thread/ERROR] [immersiveengineering]: Compat module for tconstruct could not be preInitialized. Report this and include the error message below! slimeknights.tconstruct.library.TinkerAPIException: [TCon API] Could not register Material "constantan": It was already registered by Moar Tinkers         at slimeknights.tconstruct.library.TinkerRegistry.error(TinkerRegistry.java:951) ~[TinkerRegistry.class:?]         at slimeknights.tconstruct.library.TinkerRegistry.addMaterial(TinkerRegistry.java:129) ~[TinkerRegistry.class:?]         at slimeknights.tconstruct.library.MaterialIntegration.preInit(MaterialIntegration.java:101) ~[MaterialIntegration.class:?]         at blusunrize.immersiveengineering.common.util.compat.TConstructHelper.preInit(TConstructHelper.java:92) ~[TConstructHelper.class:?]         at blusunrize.immersiveengineering.common.util.compat.IECompatModule.doModulesPreInit(IECompatModule.java:94) [IECompatModule.class:?]         at blusunrize.immersiveengineering.ImmersiveEngineering.preInit(ImmersiveEngineering.java:93) [ImmersiveEngineering.class:?]         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_202]`  Moar Tinkers' Constantan conflicts with the one of immersive engineering. That's all. </body>
+		<created>2019-03-19 17:37:49</created>
+		<closed>2019-09-01 08:59:14</closed>
+	</bug>
+	<bug>
+		<id>3371</id>
+		<title>Workbench eats items inside including Blueprint if you break the right side of the bench instead of the left side.</title>
+		<body>Workbench eats items inside including Blueprint if you break the right side of the bench instead of the left side.  Pretty much you need to break it on the left (the main block) or you lose both contents and blueprints.   Version: ImmersiveEngineering-0.12-88</body>
+		<created>2019-01-29 22:28:39</created>
+		<closed>2020-06-28 14:13:36</closed>
+	</bug>
+	<bug>
+		<id>2720</id>
+		<title>[MC 1.12.2][IE 0.12 - 76] - Vertical Conveyor belt Recipe gives 1 instead of 3</title>
+		<body>Hello,  its probably a bug with the Recipe. You get only 1 Vertical Conveyor belt instead of 3. The recipe needs 3 normal Conveyor belts and gives you 1 Vertical back. I am pretty sure it was 3 a while back.  My Forge Version is 14.23.1.2555</body>
+		<created>2018-01-04 22:34:08</created>
+		<closed>2018-01-06 19:39:10</closed>
+	</bug>
+	<bug>
+		<id>2600</id>
+		<title>[1.12.2] EntityChemthrowerShot causes ClassCastExceptions with non-living Entities</title>
+		<body>Immersive Engineering version 0.12-74-281 Forge version 1.12.2-14.23.0.2528 Crash Report: https://gist.github.com/mallrat208/93bfbe1cfd1b16d73d677a3597ed5f4a   When EntityChemthrowerShot impacts an Entity that is not an instance of EntityLivingBase, the game experiences a ticking entity crash due to a ClassCastException. Anything from an Arrow to a Fishing Lure that hits Chemthrower Particles can cause this crash to happen and it's fairly easy to trigger. The problem bit of code is [here](https://github.com/BluSunrize/ImmersiveEngineering/blob/master/src/main/java/blusunrize/immersiveengineering/common/entities/EntityChemthrowerShot.java#L135 ). Adding in a secondary check if the mop.entityHit an instanceof EntityLivingBase before actually casting it would be a super quick fix.</body>
+		<created>2017-11-10 07:53:19</created>
+		<closed>2017-11-13 16:11:36</closed>
+	</bug>
+	<bug>
+		<id>2596</id>
+		<title>[1.10.2] Chemical Thrower healing not working when pvp is disabled</title>
+		<body>IE version: 0.10-61 Forge version: 12.18.3.2511  When you have pvp disabled on a server the healing from a Chemical Thrower filled with Healing Potion (II) does not work on other players or yourself. It works fine on non-undead mobs. It also works fine when pvp is enabled.  Minecraft does allow you to heal other players with healing splash potions when pvp is disabled so I think it is a bug with the Chemical Thrower.  I wonder if this also applies to other beneficial effects from the Chemical Thrower. I may test some other effects and report here if they have the same problem.</body>
+		<created>2017-11-08 14:53:12</created>
+		<closed>2019-07-23 14:19:48</closed>
+	</bug>
+	<bug>
+		<id>2593</id>
+		<title>Exploit / Dupe Bug using Vanilla Mechanics</title>
+		<body>### Description of the issue: Using a piston on any multiblock structure moves the block but does not break the multiblock structure, exactly like it did with Moving Wands from Not enough wands. (Check screenshots for explanation)   ### Versions &amp; Modlist Immersive Engineering v0.12-74 Forge v14.23.0.2517 (1.12.2, All The Mods 3)  I suppose I don't need to state other mods since this is between IE and Vanilla mechanics  Now to the Pictures ! :) ![2017-11-06_22 29 19](https://user-images.githubusercontent.com/11724469/32465205-ff597bb4-c342-11e7-8a7a-fe990e15f6c1.png) ![2017-11-06_22 29 23](https://user-images.githubusercontent.com/11724469/32465217-08f1ad18-c343-11e7-9f75-31a17853f59d.png) The Coke oven is normal, and nothing has been modified ![2017-11-06_22 29 35](https://user-images.githubusercontent.com/11724469/32465253-1f8a1e7a-c343-11e7-9dfb-e24f91ceaf8b.png) ![2017-11-06_22 29 36](https://user-images.githubusercontent.com/11724469/32465259-25e3c62c-c343-11e7-8e2b-58e59ba32cd4.png) ![2017-11-06_22 29 48](https://user-images.githubusercontent.com/11724469/32465287-40cf7472-c343-11e7-981b-ca78b8652ffc.png) I activate the piston, and as you can see the multiblock texture is still there while the blocks have been moved ![2017-11-06_22 30 14](https://user-images.githubusercontent.com/11724469/32465294-4c67cb2c-c343-11e7-9137-38d4b79de50a.png) ![2017-11-06_22 30 30](https://user-images.githubusercontent.com/11724469/32465307-592b0806-c343-11e7-9d42-ae9bbeee62c5.png) And here I am, standing inside the oven. This makes it possible to "Dupe" the blocks, since you can get back 26 coke bricks out of 27 (For the coke oven), and also it breaks the game since it makes it possible to accelerate the core (When such a mechanic is in the pack)  I hope my bug report will be useful, and that my screenshots are detailed enough, and I wish you a nice day ;)</body>
+		<created>2017-11-06 21:42:41</created>
+		<closed>2017-11-12 17:40:30</closed>
+	</bug>
+	<bug>
+		<id>985</id>
+		<title>Engineer's Manual: Null Crash when a given IRecipe does not match any of the expected recipe types</title>
+		<body>pastebin crash log : http://pastebin.com/BgWxaPAb </body>
+		<created>2016-03-02 12:28:41</created>
+		<closed>2016-03-06 20:57:46</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>Crash when connecting a fourth wire to a LV connector</title>
+		<body>http://pastebin.com/HMUQUquU  If you need any more information, let me know. </body>
+		<created>2015-06-25 00:43:19</created>
+		<closed>2015-06-25 08:36:45</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>Revolver Inventory Crash</title>
+		<body>When you move the revovler in your inventory while in the revovler's GUI and the close the inventory, you get a crash.  http://pastebin.com/daPjA824 </body>
+		<created>2015-06-24 17:24:16</created>
+		<closed>2015-06-25 10:58:51</closed>
+	</bug>
+	<bug>
+		<id>71</id>
+		<title>HV Transformer attached on a Wooden Post</title>
+		<body>If you attache a HV Transformer on a Wooden Post, the model has not the right bounding box. ![2015-06-24_18 22 37](https://cloud.githubusercontent.com/assets/5838137/8335538/9b62715a-1a9e-11e5-97b3-5f4f4cb56cc2.png) </body>
+		<created>2015-06-24 16:28:44</created>
+		<closed>2015-06-25 10:59:04</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>Inconsistent book back button</title>
+		<body>I've noticed inconsistent behaviour when pressing the back button in the top left of the book.  For instance when on the page Industrial Hemp it takes me back to Overview and Resources category, however when on the Ores page for example, it take me back to the starting page (titled Engineer's Manual).  The behaviour of that button is different depending on each page seemingly randomly. </body>
+		<created>2015-06-24 14:01:54</created>
+		<closed>2015-06-25 10:54:17</closed>
+	</bug>
+</bugs>

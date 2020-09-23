@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="weixin-java-tools">
+	<bug id="1420" opendate="2020-02-29 09:32:05" fixdate="2020-03-08 13:13:19">
+		<buginformation>
+			<summary>小程序 云开发 batchDownloadFile方法的接口地址不对</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/api/impl/WxMaCloudServiceImpl.java</file>
+			<file>weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/api/WxMaCloudService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="479" opendate="2018-03-05 05:48:32" fixdate="2018-03-11 12:39:55">
+		<buginformation>
+			<summary>修复公众号模板消息发送时pagepath问题</summary>
+			<description>https://mp.weixin.qq.com/wiki?action=doc&amp;id=mp1433751277&amp;t=0.8724972468714212#5 官方接口文档中的参数名称错误（文档中为 pagepath，实际应为 path）</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/bean/template/WxMpTemplateMessage.java</file>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/util/json/WxMpTemplateMessageGsonAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="355" opendate="2017-10-17 05:32:23" fixdate="2017-10-23 02:56:00">
+		<buginformation>
+			<summary>2.8.0 微信支付签名bug</summary>
+			<description>微信支付签名的工具类错误的将sign_type字段排除在签名字段之外,导致微信支付签名失败</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/service/impl/WxPayServiceAbstractImpl.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/result/WxPayBaseResult.java</file>
+			<file>weixin-java-pay/src/test/java/com/github/binarywang/wxpay/util/SignUtilsTest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPayUnifiedOrderRequest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPayRefundRequest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPayBaseRequest.java</file>
+			<file>weixin-java-pay/src/test/java/com/github/binarywang/wxpay/service/impl/WxPayServiceAbstractImplTest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/config/WxPayConfig.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/util/SignUtils.java</file>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/bean/menu/WxMpSelfMenuInfo.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/constant/WxPayConstants.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

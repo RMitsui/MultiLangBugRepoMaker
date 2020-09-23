@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>1328</id>
+		<title>TimeUtils.java NullPointerException</title>
+		<body>## Describe the bug  A clear and concise description of what the bug is.  - The version of AndroidUtilCode: utilcode:1.29.0 - The device: Samsung Galaxy A50 - The version of device: API 29  ## The code of bug  &lt;!-- e.g.  ```java CrashUtils.init(); ``` --&gt; ```     public static void setLastSync(Context context, String syncValue, String syncKey) {         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());         Date date = new Date();         String lastSyncDate = dateFormat.format(date);         SharedPreferencesUtil saveSyncDate = new SharedPreferencesUtil(context, syncValue);         saveSyncDate.saveSharedPreferences(syncKey, lastSyncDate);     }      public static long getLastSyncWithTimeSpanByNow(Context context, String syncValue, String syncKey) {         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());         SharedPreferencesUtil getSyncDate = new SharedPreferencesUtil(context, syncValue);         String lastSyncDateWas = getSyncDate.loadStringSharedPreference(syncKey);         return TimeUtils.getTimeSpanByNow(lastSyncDateWas, dateFormat, TimeConstants.DAY);     } ```  ## The stack of crash  Caused by java.lang.NullPointerException Attempt to invoke virtual method 'int java.lang.String.length()' on a null object reference  ``` java.text.SimpleDateFormat.parseInternal (SimpleDateFormat.java:1739) java.text.SimpleDateFormat.parse (SimpleDateFormat.java:1726) java.text.DateFormat.parse (DateFormat.java:360) com.blankj.utilcode.util.TimeUtils.string2Millis (TimeUtils.java:120) com.blankj.utilcode.util.TimeUtils.getTimeSpan (TimeUtils.java:260) com.blankj.utilcode.util.TimeUtils.getTimeSpanByNow (TimeUtils.java:471) com.ahmer.reb.Helper.getLastSyncWithTimeSpanByNow (Helper.java:106) com.ahmer.reb.activity.AhmerActivity.onCreate (AhmerActivity.java:77) android.app.Activity.performCreate (Activity.java:7955) android.app.Activity.performCreate (Activity.java:7944) android.app.Instrumentation.callActivityOnCreate (Instrumentation.java:1307) android.app.ActivityThread.performLaunchActivity (ActivityThread.java:3423) android.app.ActivityThread.handleLaunchActivity (ActivityThread.java:3595) android.app.servertransaction.LaunchActivityItem.execute (LaunchActivityItem.java:83) android.app.servertransaction.TransactionExecutor.executeCallbacks (TransactionExecutor.java:135) android.app.servertransaction.TransactionExecutor.execute (TransactionExecutor.java:95) android.app.ActivityThread$H.handleMessage (ActivityThread.java:2147) android.os.Handler.dispatchMessage (Handler.java:107) android.os.Looper.loop (Looper.java:237) android.app.ActivityThread.main (ActivityThread.java:7814) java.lang.reflect.Method.invoke (Method.java) com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run (RuntimeInit.java:493) com.android.internal.os.ZygoteInit.main (ZygoteInit.java:1075)  ```</body>
+		<created>2020-09-16 07:11:30</created>
+		<closed>2020-09-16 09:27:26</closed>
+	</bug>
+	<bug>
+		<id>1326</id>
+		<title>ImageUtils view2Bitmapt图片变形了</title>
+		<body> ![image](https://user-images.githubusercontent.com/16134482/92888691-21327900-f448-11ea-9cc8-19c5ba0a4d50.png) 我传一个LinearLayout的View进去，展示的图片变形  </body>
+		<created>2020-09-11 08:02:50</created>
+		<closed>2020-09-15 03:22:47</closed>
+	</bug>
+	<bug>
+		<id>1325</id>
+		<title>权限申请不够灵活，申请的权限中包含了一下不需要的权限，导致用户体验较差</title>
+		<body>## 描述 Bug  权限申请能否提供API 自由配置申请哪些权限，比如： 在申请 PHONE权限时，由于用户对权限敏感，申请了一些不需要的权限，如 permission.CALL_PHONE在我的APP 中是多余的权限，因去掉     private static final String[] GROUP_PHONE         = {             permission.READ_PHONE_STATE, permission.READ_PHONE_NUMBERS, permission.CALL_PHONE,             permission.READ_CALL_LOG, permission.WRITE_CALL_LOG, permission.ADD_VOICEMAIL,             permission.USE_SIP, permission.PROCESS_OUTGOING_CALLS, permission.ANSWER_PHONE_CALLS     };    ## 相关代码  &lt;!-- 例如 ```java CrashUtils.init(); ``` --&gt; ``` put your code here ``` ![image](https://user-images.githubusercontent.com/11812893/92877569-dd3a7680-f43d-11ea-9553-a3dd2ae7fd1e.png) 能否去掉这个注解，或是提供其它API灵活配置要申请的权限  </body>
+		<created>2020-09-11 06:51:47</created>
+		<closed>2020-09-11 07:01:10</closed>
+	</bug>
+	<bug>
+		<id>1319</id>
+		<title>BarUtils.setStatusBarColor 在华为手机上不兼容</title>
+		<body>## 描述 Bug 我的 CustomDialog extends Dialog, 然后在CustomDialog使用BarUtils.setStatusBarColor 设置系统状态栏颜色，发现在华为手机上不兼容，所设置的颜色未生效，并且挡住了我APP的其他内容了。  - AndroidUtilCode 的版本：utilcodex:1.29.0 - 出现 Bug 的设备型号：HUAWEI Mate 30 5G - 设备的 Android 版本：API 29  ## 相关代码          Window window = this.getWindow();         WindowManager.LayoutParams lp = window.getAttributes();         lp.width = WindowManager.LayoutParams.MATCH_PARENT;         lp.height = WindowManager.LayoutParams.MATCH_PARENT;         window.setAttributes(lp);          BarUtils.setStatusBarColor(window, ColorUtils.getColor(R.color.colorPrimary));         BarUtils.setStatusBarLightMode(window, false);   ## 异常堆栈  无  ## 截图 ![image](https://user-images.githubusercontent.com/23623339/92297439-d7dab900-ef71-11ea-9765-819f9f15bbef.png)   </body>
+		<created>2020-09-05 04:15:06</created>
+		<closed>2020-09-07 08:51:32</closed>
+	</bug>
+	<bug>
+		<id>1315</id>
+		<title>Utils.getApp() 报错</title>
+		<body> 1 java.lang.Throwable.&lt;init&gt;(Throwable.java:66) -- 2 java.lang.Throwable.&lt;init&gt;(Throwable.java:108) 3 java.lang.Exception.&lt;init&gt;(Exception.java:60) 4 java.lang.reflect.InvocationTargetException.&lt;init&gt;(InvocationTargetException.java:50) 5 com.android.qihooSandbox.QihooBridge.invokeOriginalMethodNative(Native Method) 6 com.android.qihooSandbox.QihooBridge.handleHookedMethod(QihooBridge.java:776) 7 java.lang.StringBuilder.toString(Native Method) 8 java.lang.StackTraceElement.toString(StackTraceElement.java:229) 9 com.android.qihooSandbox.QihooBridge.stackArrayToString(QihooBridge.java:744) 10 com.android.qihooSandbox.QihooBridge.outputErrorMessage(QihooBridge.java:708) 11 com.android.qihooSandbox.QihooBridge.handleHookedMethod(QihooBridge.java:821) 12 java.lang.Class.forName(Native Method) 13 java.lang.Class.forName(Class.java:172) 14 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInActivityThreadStaticField(UtilsActivityLifecycleImpl.java:345) 15 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:336) 16 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 17 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 18 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 19 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 20 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 21 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 22 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 23 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 24 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 25 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 26 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 27 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 28 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 29 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 30 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 31 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 32 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 33 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 34 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 35 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 36 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 37 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 38 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 39 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 40 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 41 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 42 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 43 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 44 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 45 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 46 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 47 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 48 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 49 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 50 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 51 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 52 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 53 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 54 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 55 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 56 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 57 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 58 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 59 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 60 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 61 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 62 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 63 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 64 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 65 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 66 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 67 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 68 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 69 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 70 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 71 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 72 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 73 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 74 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 75 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 76 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 77 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 78 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 79 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 80 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 81 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 82 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 83 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 84 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 85 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 86 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 87 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 88 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 89 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 90 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 91 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 92 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 93 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 94 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 95 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 96 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 97 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 98 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 99 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 100 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 101 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 102 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 103 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 104 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 105 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 106 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 107 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 108 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 109 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 110 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 111 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 112 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 113 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 114 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 115 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 116 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 117 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 118 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 119 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 120 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 121 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 122 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 123 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 124 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 125 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 126 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 127 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 128 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 129 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 130 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 131 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 132 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 133 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 134 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 135 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 136 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 137 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 138 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 139 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 140 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 141 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 142 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 143 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 144 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 145 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 146 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 147 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 148 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 149 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 150 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 151 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 152 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 153 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 154 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 155 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 156 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 157 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 158 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 159 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 160 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 161 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 162 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 163 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 164 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 165 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 166 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 167 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 168 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 169 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 170 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 171 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 172 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 173 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 174 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 175 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 176 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 177 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 178 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 179 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 180 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 181 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 182 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 183 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 184 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 185 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 186 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 187 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 188 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 189 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 190 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 191 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 192 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 193 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 194 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 195 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 196 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 197 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 198 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 199 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 200 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 201 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 202 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 203 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 204 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 205 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 206 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 207 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 208 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 209 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 210 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 211 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 212 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 213 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 214 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifecycleImpl.java:369) 215 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThread(UtilsActivityLifecycleImpl.java:340) 216 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getApplicationByReflect(UtilsActivityLifecycleImpl.java:94) 217 com.blankj.utilcode.util.UtilsBridge.getApplicationByReflect(UtilsBridge.java:87) 218 com.blankj.utilcode.util.Utils.getApp(Utils.java:70) 219 com.blankj.utilcode.util.UtilsActivityLifecycleImpl.getActivityThreadInLoadedApkField(UtilsActivityLifec...too long be cutted!   </body>
+		<created>2020-09-03 10:20:24</created>
+		<closed>2020-09-04 03:18:08</closed>
+	</bug>
+	<bug>
+		<id>1312</id>
+		<title>问个关于bus扫描正则问题</title>
+		<body> onlyScanLibRegex   ^([:]|(com\\.bnd)).+$ 我在根项目是这样配置的. 然后build完毕后.json文件空的. 要扫描的bus是在aar文件内.  我注释掉这行, 全扫描项目看到是扫描到了的  scan dir xxxxxx 就是不知道dir这样的该怎么写正则匹配到哦,有谁知道么 </body>
+		<created>2020-08-29 06:28:39</created>
+		<closed>2020-08-29 08:14:32</closed>
+	</bug>
+	<bug>
+		<id>1311</id>
+		<title>安卓10获取不到剪切板内容</title>
+		<body>安卓10获取不到剪切板内容</body>
+		<created>2020-08-26 03:15:08</created>
+		<closed>2020-08-27 04:53:39</closed>
+	</bug>
+	<bug>
+		<id>1310</id>
+		<title>KeyboardUtils.hideSoftInput无法隐藏输入法</title>
+		<body>## 描述 Bug  简洁地描述下 Bug。 调用KeyboardUtils.showSoftInput弹出的键盘，按home键后不消失，调用KeyboardUtils.hideSoftInput也无法隐藏  - AndroidUtilCode 的版本：utilcodex:1.28.0&lt;!-- 例如 utilcode:1.16.3 或 utilcodex:1.16.3（这里面是注释，内容需要放在外面） --&gt; - 出现 Bug 的设备型号：小米5&lt;!-- 例如 Nexus 5X --&gt; - 设备的 Android 版本：Android8.0&lt;!-- 例如 API 27 --&gt;  ## 相关代码  &lt;!-- 例如 ```java CrashUtils.init(); ``` --&gt; ``` put your code here  KeyboardUtils.showSoftInput(); KeyboardUtils.showSoftInput(et_content); KeyboardUtils.hideSoftInput(et_content); KeyboardUtils.hideSoftInput(getActivity()); 上面几个方法换着试了还是不行 ```  ## 异常堆栈  &lt;!-- 例如 ``` Caused by: java.lang.NullPointerException: u should init first    at com.blankj.utilcode.util.Utils.getApp(Utils.java:98)    at com.blankj.utilcode.util.CrashUtils.&lt;clinit&gt;(CrashUtils.java:55)    at com.blankj.utilcode.util.CrashUtils.init(CrashUtils.java:168)     at com.blankj.androidutilcode.UtilsApp.initCrash(UtilsApp.java:71)     at com.blankj.androidutilcode.UtilsApp.onCreate(UtilsApp.java:33)  ``` --&gt;  ``` put the stack of crash here ```  ## 截图  如果有的话请添加屏幕截图以帮助解释问题。   ## 请删除当前行及以下内容  感谢支持 [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode). </body>
+		<created>2020-08-25 07:18:06</created>
+		<closed>2020-08-27 07:19:50</closed>
+	</bug>
+	<bug>
+		<id>1309</id>
+		<title>FragmentUtils.replace 方法展示空白</title>
+		<body>## 描述 Bug  简洁地描述下 Bug。  - AndroidUtilCode 的版本：&lt;!-- 例如 utilcode:1.16.3 或 utilcodex:1.16.3（这里面是注释，内容需要放在外面） --&gt;1.29.0 - 出现 Bug 的设备型号：&lt;!-- 例如 Nexus 5X --&gt;Xiaomi MINOTELTE - 设备的 Android 版本：&lt;!-- 例如 API 27 --&gt;9  ## 相关代码  &lt;!-- 例如 ```java CrashUtils.init(); ``` --&gt; ``` FragmentUtils.replace(getSupportFragmentManager(), fragment, R.id.frameLayout, true); ```  ## showHide正常显示  &lt;!-- 例如 ``` Caused by: java.lang.NullPointerException: u should init first    at com.blankj.utilcode.util.Utils.getApp(Utils.java:98)    at com.blankj.utilcode.util.CrashUtils.&lt;clinit&gt;(CrashUtils.java:55)    at com.blankj.utilcode.util.CrashUtils.init(CrashUtils.java:168)     at com.blankj.androidutilcode.UtilsApp.initCrash(UtilsApp.java:71)     at com.blankj.androidutilcode.UtilsApp.onCreate(UtilsApp.java:33)  ``` --&gt;  ``` FragmentUtils.showHide(fragment, fragments); ```  </body>
+		<created>2020-08-24 09:05:19</created>
+		<closed>2020-09-09 09:21:23</closed>
+	</bug>
+	<bug>
+		<id>1308</id>
+		<title>计算机检测报病毒</title>
+		<body>火绒检测下,项目报病毒 ![image](https://user-images.githubusercontent.com/28987014/90995122-94855f80-e5ed-11ea-94ee-55404d71876a.png) </body>
+		<created>2020-08-24 01:38:48</created>
+		<closed>2020-08-24 10:12:37</closed>
+	</bug>
+	<bug>
+		<id>1307</id>
+		<title>使用了该库，华为审核报有病毒</title>
+		<body>![Snipaste_2020-08-21_14-33-25](https://user-images.githubusercontent.com/65217924/90860951-87822980-e3bd-11ea-878c-22006d13f085.png) </body>
+		<created>2020-08-21 06:49:49</created>
+		<closed>2020-08-24 03:23:15</closed>
+	</bug>
+	<bug>
+		<id>1304</id>
+		<title>权限请求无效</title>
+		<body>## 权限请求无效  我升级到新版1.29.0版本之后，在权限请求的回调rationale中做了一个本地Dialog弹窗, 在用户点击“确定”按钮的时候调用了```shouldRequest.again(true)```，之后系统并不会弹出授权弹框。单步调试时也你的API确实调用了```activity.requestPermissions(sInstance.mPermissionsRequest.toArray(new String[size]), 1)```，但就是没有授权弹框。后面使用1.28.6版本，发现还是一样。最终我回退到了原来使用的版本1.26.0。  - AndroidUtilCode 的版本：utilcodex:1.29.0 或者 utilcodex:1.28.6 - 出现 Bug 的设备型号：本地所有测试机</body>
+		<created>2020-08-14 04:17:41</created>
+		<closed>2020-08-24 08:21:53</closed>
+	</bug>
+	<bug>
+		<id>1302</id>
+		<title>项目添加版本1.27.0    1.28.0  1.29.0   无法引用google gson 注解  @SerializedName    @Expose    annotations类无法引用</title>
+		<body>项目添加版本1.27.0    1.28.0  1.29.0   无法引用google gson 注解  @SerializedName    @Expose    annotations类无法引用 ![image](https://user-images.githubusercontent.com/27655065/90110145-5d0dec00-dd7f-11ea-89e2-6c22977be83f.png) ![image](https://user-images.githubusercontent.com/27655065/90110179-67c88100-dd7f-11ea-903f-4a0079d60893.png) ![image](https://user-images.githubusercontent.com/27655065/90110218-73b44300-dd7f-11ea-873c-6ab4b007690f.png)  </body>
+		<created>2020-08-13 08:10:18</created>
+		<closed>2020-08-13 08:31:12</closed>
+	</bug>
+	<bug>
+		<id>1300</id>
+		<title>ConvertUtils.byte2FitMemorySize(FileUtils.getLength(文件夹))存在崩溃</title>
+		<body> ` FileUtils.getDirLength(final File dir) `  return 了个-1，这应该return 0 吧</body>
+		<created>2020-08-13 06:40:22</created>
+		<closed>2020-08-27 07:23:11</closed>
+	</bug>
+	<bug>
+		<id>1299</id>
+		<title>getAppsInfo方法中PackageInfo转为AppInfo这部分代码耗时严重</title>
+		<body>## 描述 Bug  测试的几款手机读取都比较慢，耗时定位在 ```java  for (PackageInfo pi : installedPackages) {             AppInfo ai = getBean(pm, pi);             if (ai == null) continue;             list.add(ai);         } ``` 这部分代码  ## 相关代码  ```java     public static List&lt;AppInfo&gt; getAppsInfo() {         long currentTime = System.currentTimeMillis();         List&lt;AppInfo&gt; list = new ArrayList&lt;&gt;();         PackageManager pm = Utils.getApp().getPackageManager();         if (pm == null) return list;         List&lt;PackageInfo&gt; installedPackages = pm.getInstalledPackages(0);         for (PackageInfo pi : installedPackages) {             AppInfo ai = getBean(pm, pi);             if (ai == null) continue;             list.add(ai);         }         return list;         Log.i("test",""----&gt;读取时间："+(System.currentTimeMillis() - currentTime)+",app数量："+list.size());     } ``` --&gt; ``` put your code here ```  ## 这边的测试结果，miui12 带系统应用254个app，去掉177.  ```  ----&gt;读取时间：8458,app数量：177 ```     </body>
+		<created>2020-08-11 08:03:37</created>
+		<closed>2020-09-04 03:19:13</closed>
+	</bug>
+	<bug>
+		<id>1297</id>
+		<title>努比亚手机屏幕适配失效</title>
+		<body>努比亚手机屏幕适配失效  - AndroidUtilCode 的版本：1.25.7 - 出现 Bug 的设备型号：NX563J - 设备的 Android 版本：7.1.1  </body>
+		<created>2020-08-10 03:28:53</created>
+		<closed>2020-09-01 08:00:42</closed>
+	</bug>
+	<bug>
+		<id>1296</id>
+		<title>KeyboardUtils.hideSoftInpu 有问题</title>
+		<body>## 描述 Bug  目的是隐藏软键盘，activity本来没有EditText，启动时不调用KeyboardUtils.hideSoftInpu是没问题的。但是调用了后，此Activity就会弹出输入键盘。估计是代码里面new 了EditText 的原因吧。   - AndroidUtilCode 的版本：com.blankj:utilcodex:1.29.0 - 出现 Bug 的设备型号：杂牌 - 设备的 Android 版本：7.1  ## 相关代码  ```java KeyboardUtils.hideSoftInpu(activity) ```  </body>
+		<created>2020-08-07 02:02:13</created>
+		<closed>2020-09-04 06:19:34</closed>
+	</bug>
+	<bug>
+		<id>1293</id>
+		<title>SpanUtils.setClickSpan设置图片点击后背景颜色异常，如何设置</title>
+		<body>## Describe the bug  A clear and concise description of what the bug is.  - The version of AndroidUtilCode: &lt;!-- e.g. utilcode:1.16.3 or utilcodex:1.16.3 --&gt; - The device: &lt;!-- e.g. Nexus 5X --&gt; - The version of device: &lt;!-- API 27 --&gt;  ## The code of bug  &lt;!-- e.g.  ```java CrashUtils.init(); ``` --&gt; ``` put your code here ```  ## The stack of crash  &lt;!-- e.g.  ``` Caused by: java.lang.NullPointerException: u should init first    at com.blankj.utilcode.util.Utils.getApp(Utils.java:98)    at com.blankj.utilcode.util.CrashUtils.&lt;clinit&gt;(CrashUtils.java:55)    at com.blankj.utilcode.util.CrashUtils.init(CrashUtils.java:168)     at com.blankj.androidutilcode.UtilsApp.initCrash(UtilsApp.java:71)     at com.blankj.androidutilcode.UtilsApp.onCreate(UtilsApp.java:33)  ``` --&gt;  ``` put the stack of crash here ```  ## Screenshots  If applicable, add screenshots to help explain your problem.   ## Please delete the current line and the following.  Thank you for supporting [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode). </body>
+		<created>2020-08-05 06:43:14</created>
+		<closed>2020-09-04 08:21:55</closed>
+	</bug>
+	<bug>
+		<id>1290</id>
+		<title>Oppo CPH1819 toast的时候报异常。</title>
+		<body>## Describe the bug  A clear and concise description of what the bug is.  - The version of AndroidUtilCode: utilcode:1.28.4 - The device: oppo CPH1819 - The version of device:  android 9.0  ## The code of bug  错误日志  /Resources: ColorStateList oppo:color/oppo_primary_text_dark has unresolved theme attributes! Consider using Resources.getColorStateList(int, Theme) or Context.getColorStateList(int).     java.lang.RuntimeException         at android.content.res.Resources.getColorStateList(Resources.java:1045)         at skin.support.content.res.SkinCompatResources.getSkinColorStateList(SkinCompatResources.java:152)         at skin.support.content.res.SkinCompatResources.getColorStateList(SkinCompatResources.java:244)         at skin.support.widget.SkinCompatTextHelper.applyTextColorResource(SkinCompatTextHelper.java:127)         at skin.support.widget.SkinCompatTextHelper.onSetTextAppearance(SkinCompatTextHelper.java:97)         at skin.support.widget.SkinCompatTextView.setTextAppearance(SkinCompatTextView.java:49)         at com.color.internal.widget.ColorToastLayout.onFinishInflate(ColorToastLayout.java:100)         at android.view.LayoutInflater.rInflate(LayoutInflater.java:913)         at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:861)         at android.view.LayoutInflater.inflate(LayoutInflater.java:515)         at android.view.LayoutInflater.inflate(LayoutInflater.java:423)         at android.view.LayoutInflater.inflate(LayoutInflater.java:374)         at android.widget.Toast.makeText(Toast.java:310)         at android.widget.Toast.makeText(Toast.java:296)         at com.nono.android.common.utils.ToastUtils$ToastFactory.makeNormalToast(ToastUtils.java:467)         at com.nono.android.common.utils.ToastUtils$ToastFactory.makeToast(ToastUtils.java:453)   </body>
+		<created>2020-08-03 09:02:35</created>
+		<closed>2020-08-03 09:38:27</closed>
+	</bug>
+	<bug>
+		<id>1289</id>
+		<title>BusUtils 消息发送异常</title>
+		<body>## 描述 Bug  在kotlin 中调用此代码， BusUtils.post，在对应的接收地方，收不到消息 Java代码中调用正常  - AndroidUtilCode 的版本：com.blankj:utilcodex:1.29.0   ## 相关代码  &lt;!-- 例如 ```java  BusUtils.post ``` --&gt; ``` put your code here   BusUtils.post(ConstStaticUtils.KEY_REFRESH_ADDRESS_LIST)      @BusUtils.Bus(tag = ConstStaticUtils.KEY_REFRESH_ADDRESS_LIST)     public fun refresh() {         page = 1         loadData()     }    </body>
+		<created>2020-08-03 08:37:02</created>
+		<closed>2020-08-03 09:36:25</closed>
+	</bug>
+	<bug>
+		<id>1277</id>
+		<title>SpanUtils.setClickSpan()内存泄露</title>
+		<body>## 描述 Bug  SpanUtils.setClickSpan()会内存泄露。导致内存泄漏的原因： https://stackoverflow.com/questions/28539216/android-textview-leaks-with-setmovementmethod  ## 请删除当前行及以下内容  感谢支持 [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode). </body>
+		<created>2020-07-09 09:44:15</created>
+		<closed>2020-09-04 07:50:51</closed>
+	</bug>
+	<bug>
+		<id>1275</id>
+		<title>BarUtils的setStatusBarCustom(@NonNull final View fakeStatusBar)方法是不是没写完啊</title>
+		<body>只设置了布局参数，没对状态栏做任何改变 </body>
+		<created>2020-07-07 09:07:34</created>
+		<closed>2020-09-01 08:00:24</closed>
+	</bug>
+	<bug>
+		<id>1274</id>
+		<title>ImageUtils compressByQuality系列，建议不要返回 Bitmap</title>
+		<body>## 描述 Bug  简洁地描述下 Bug。  - AndroidUtilCode 的版本：&lt;!-- 例如 utilcode:1.16.3 或 utilcodex:1.16.3（这里面是注释，内容需要放在外面） --&gt; - 出现 Bug 的设备型号：&lt;!-- 例如 Nexus 5X --&gt; - 设备的 Android 版本：&lt;!-- 例如 API 27 --&gt;  ## 相关代码  测试了下，ImageUtils#compressByQuality系列，压缩是没有问题的，但结果通过下列代码得到 Bitmap 后，导致压缩结果不是预期的   ``` java // compressByQuality 代码（结果返回） byte[] bytes = baos.toByteArray(); return BitmapFactory.decodeByteArray(bytes, 0, bytes.length); ```   比如预期压缩结果为 1MB，简单测试代码演示   ``` java // 原 compressByQuality 代码内日志 byte[] bytes = baos.toByteArray(); Log.e("压缩后 bytes 大小", bytes.length); Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);  // compressByQuality 方法外，文件保存（ImageUtils#save 方法） ByteArrayOutputStream baos = new ByteArrayOutputStream(); bitmap.compress(CompressFormat.JPEG, 100, baos); Log.e("压缩结果 Bitmap 大小：", baos.size()); ```   测试结果  ``` E (ImageUtils.compressByQuality): 压缩后 bytes 大小: 1014.82KB I (ImageUtils.compressByQuality): 压缩结果 Bitmap 大小：2.34MB ```  不好意思，简化了下代码。根据实践预期是压缩到 1MB，但实际保存到文件时，却不止 1MB  建议直接返回 ``` byte[] bytes = baos.toByteArray(); ``` 的结果</body>
+		<created>2020-07-06 03:32:49</created>
+		<closed>2020-07-07 02:55:45</closed>
+	</bug>
+	<bug>
+		<id>1273</id>
+		<title>屏幕适配的方法去掉了吗?</title>
+		<body>adaptWidth : 适配宽度 adaptHeight: 适配高度 closeAdapt : 关闭适配（pt 等同于 dp） pt2Px      : pt 转 px px2Pt      : px 转 pt   屏幕适配的这个方法去掉了吗?我是用的   implementation 'com.blankj:utilcodex:1.29.0,找不到这些方法了</body>
+		<created>2020-07-05 14:06:34</created>
+		<closed>2020-09-04 08:33:27</closed>
+	</bug>
+	<bug>
+		<id>1268</id>
+		<title>SnackbarUtils 内存泄露</title>
+		<body>SnackbarUtils 在demo里面快速点击多次，然后结束当前页面，就提示内存泄露了。</body>
+		<created>2020-06-29 07:38:09</created>
+		<closed>2020-06-30 00:37:51</closed>
+	</bug>
+	<bug>
+		<id>1267</id>
+		<title>1.2.9demo apk跑起来，locationutil页面 值都为unknown</title>
+		<body>## 描述 Bug  简洁地描述下 Bug。  - AndroidUtilCode 的版本： utilcode:1.29.0 - 出现 Bug 的设备型号：mi 9 - 设备的 Android 版本：api 29  1.29.0 demo apk跑起来，locationutil页面 值都为unknown ## 截图  ![image](https://user-images.githubusercontent.com/17867071/85968406-a258a300-b9f7-11ea-9aad-8ee6b3806b38.png) 权限、位置都是打开了的</body>
+		<created>2020-06-29 02:59:57</created>
+		<closed>2020-09-04 08:09:43</closed>
+	</bug>
+	<bug>
+		<id>1266</id>
+		<title>ActivityUtils.startActivity(this, b, bundle)传值失败</title>
+		<body>## 描述 Bug  简洁地描述下 Bug。  - AndroidUtilCode 的版本：1.29.0以及之前版本 - 出现 Bug 的设备型号：三星手机SM-J700F - 设备的 Android 版本：Android6.0.1版本  在使用ActivityUtils.startActivity(this, b, bundle);传值的时候（String类型），可以正常跳转页面但不能收到传递的值，但是下面这个方法是可以的（调转页面并收到传递的值），不知道是我使用工具类有问题，还是确实存在bug，麻烦看一下，谢谢           ## 相关代码          Intent intent = new Intent();         intent.setClass(this, b);         if (bundle != null) intent.putExtras(bundle);         startActivity(intent, bundle); </body>
+		<created>2020-06-20 17:38:14</created>
+		<closed>2020-06-20 20:30:19</closed>
+	</bug>
+	<bug>
+		<id>1265</id>
+		<title>java.util.zip.ZipException: error in opening zip file</title>
+		<body>## 描述 Bug 首先这个文件是存在的， 解压文件报错，当解压一个2.2GB的文件是出错。 是否和文件大小有关系，之前解压小文件没有问题。  - AndroidUtilCode 的版本： utilcode:1.29.0 - 出现 Bug 的设备型号：通常手机 - 设备的 Android 版本：&lt;!-- 例如 API 27 --&gt;  ## 相关代码     ZipUtils.unzipFile(file1, file2);  ## 异常堆栈   2020-06-19 13:09:31.792 4214-4618/com.bfhd.enstudy W/System.err: java.util.zip.ZipException: error in opening zip file 2020-06-19 13:09:31.792 4214-4618/com.bfhd.enstudy W/System.err:     at java.util.zip.ZipFile.open(Native Method) 2020-06-19 13:09:31.792 4214-4618/com.bfhd.enstudy W/System.err:     at java.util.zip.ZipFile.&lt;init&gt;(ZipFile.java:238) 2020-06-19 13:09:31.792 4214-4618/com.bfhd.enstudy W/System.err:     at java.util.zip.ZipFile.&lt;init&gt;(ZipFile.java:152) 2020-06-19 13:09:31.792 4214-4618/com.bfhd.enstudy W/System.err:     at java.util.zip.ZipFile.&lt;init&gt;(ZipFile.java:166) 2020-06-19 13:09:31.792 4214-4618/com.bfhd.enstudy W/System.err:     at com.blankj.utilcode.util.ZipUtils.unzipFileByKeyword(ZipUtils.java:290) 2020-06-19 13:09:31.792 4214-4618/com.bfhd.enstudy W/System.err:     at com.blankj.utilcode.util.ZipUtils.unzipFile(ZipUtils.java:256) </body>
+		<created>2020-06-19 05:14:35</created>
+		<closed>2020-06-19 08:53:46</closed>
+	</bug>
+	<bug>
+		<id>1261</id>
+		<title>BusUtils crash</title>
+		<body>- The version of AndroidUtilCode: 1.29.0 - The device:  Xiaomi Redmi 4A - The version of device: 7.1.2 I post a event from activity to Service and see crash `BusUtils.post(Event.RequestVideoPlaybackStateAndDataMessage); ` &gt;  &gt; Caused by: java.lang.IllegalArgumentException: Wrong number of arguments; expected 1, got 0 &gt;         at java.lang.reflect.Method.invoke(Native Method) &gt;         at com.blankj.utilcode.util.BusUtils.realInvokeMethod(BusUtils.java:279) &gt;         at com.blankj.utilcode.util.BusUtils.access$100(BusUtils.java:29) &gt;         at com.blankj.utilcode.util.BusUtils$1.run(BusUtils.java:236) &gt;         at com.blankj.utilcode.util.ThreadUtils.runOnUiThread(ThreadUtils.java:70) &gt;         at com.blankj.utilcode.util.BusUtils.invokeMethod(BusUtils.java:241) &gt;         at com.blankj.utilcode.util.BusUtils.invokeBus(BusUtils.java:191) &gt;         at com.blankj.utilcode.util.BusUtils.postInner(BusUtils.java:179) &gt;         at com.blankj.utilcode.util.BusUtils.postInner(BusUtils.java:169) &gt;         at com.blankj.utilcode.util.BusUtils.post(BusUtils.java:80) &gt;         at com.blankj.utilcode.util.BusUtils.post(BusUtils.java:76)  </body>
+		<created>2020-06-16 05:45:56</created>
+		<closed>2020-06-16 07:03:28</closed>
+	</bug>
+	<bug>
+		<id>1259</id>
+		<title>getMeid返回值错误</title>
+		<body>## 描述 Bug  PhoneUtils.getMEID()方法获取的MEID与设备的实际值不一致； 获取到的是IMEI2的值  - AndroidUtilCode 的版本：utilcodex:1.28.6 - 出现 Bug 的设备型号：oppoA83 - 设备的 Android 版本：7.1.1  ## 相关代码 PhoneUtils.getMEID() 获取到的meid与通过拨号盘的*#06#获取的imei2一致  &gt; 我代码逻辑是只返回小的那个，并不是返回 1 还是 2  我的意思是获取到的MEID与真实的值不一样</body>
+		<created>2020-06-12 06:36:20</created>
+		<closed>2020-09-07 12:42:13</closed>
+	</bug>
+	<bug>
+		<id>1257</id>
+		<title>华为9.0、10.0系统，安全键盘下toast无法正常提示</title>
+		<body>## 描述 Bug  华为9.0、10.0系统，安全键盘下toast无法正常提示 </body>
+		<created>2020-06-10 08:06:37</created>
+		<closed>2020-06-12 02:18:27</closed>
+	</bug>
+	<bug>
+		<id>1255</id>
+		<title>PermissionUtils失效</title>
+		<body>## 描述 Bug 升级版本后PermissionUtils失效，直接走PermissionUtils.SimpleCallback的onDenied()回调。老版本utilcode:1.23.7无此问题，可以正常请求权限  - AndroidUtilCode 的版本： utilcode:1.29.0 - 出现 Bug 的设备型号：小米8，MIUI11.0.8正式版 - 设备的 Android 版本：android10  ## 相关代码  ```java         PermissionUtils.permission(PermissionConstants.CAMERA)                 .callback(new PermissionUtils.SimpleCallback() {                     @Override                     public void onGranted() {                         Toast.makeText(UtilsTestActivity.this, "权限申请成功", Toast.LENGTH_SHORT).show();                     }                      @Override                     public void onDenied() {                         Toast.makeText(UtilsTestActivity.this, "权限申请失败", Toast.LENGTH_SHORT).show();                      }                 })                 .request(); ```   </body>
+		<created>2020-06-05 03:21:08</created>
+		<closed>2020-06-10 10:10:19</closed>
+	</bug>
+	<bug>
+		<id>1254</id>
+		<title>BusUtils: The bus of tag &lt;updateSwitch&gt; is not exists.</title>
+		<body>报错误BusUtils: The bus of tag &lt;updateSwitch&gt; is not exists.  接受的函数 A界面 @BusUtils.Bus(tag = "updateSwitch")     public void onEventMassage() { } B界面 BusUtils.post("updateSwitch"); </body>
+		<created>2020-06-03 10:17:16</created>
+		<closed>2020-06-04 12:34:57</closed>
+	</bug>
+	<bug>
+		<id>1249</id>
+		<title>com.blankj.utilcode.util.IntentUtil类，getInstallAppIntent()返回null问题</title>
+		<body>![image](https://user-images.githubusercontent.com/21003314/83092006-09b8c580-a0cf-11ea-9c0c-1156927e99c0.png) 小问题，看图就明白。 版本implementation 'com.blankj:utilcodex:1.28.0' </body>
+		<created>2020-05-28 02:37:20</created>
+		<closed>2020-05-28 02:55:44</closed>
+	</bug>
+	<bug>
+		<id>1246</id>
+		<title>Environment.getDownloadCacheDirectory()</title>
+		<body>Environment.getDownloadCacheDirectory() 路径测试时为 /data/cache 测试的设备 NEXUS 5 API 29 </body>
+		<created>2020-05-20 11:50:07</created>
+		<closed>2020-05-21 05:56:52</closed>
+	</bug>
+	<bug>
+		<id>1245</id>
+		<title>BarUtil 设置0透明度的颜色</title>
+		<body>版本  'com.blankj:utilcode:1.28.4'                   BarUtils.setStatusBarColor(this, getResources().getColor(R.color.white));//#FFFFFF         BarUtils.setStatusBarColor(this, 0xFFFFFFFF);         BarUtils.setStatusBarColor(this, 0x00FFFFFF);         BarUtils.setStatusBarColor(this, getResources().getColor(R.color.white_0));//00FFFFFF         BarUtils.setStatusBarColor(this, getResources().getColor(R.color.white_f));//#FFFFFFFF  我试了这几种都没有纯色的效果,需要怎么写呢?  </body>
+		<created>2020-05-20 06:29:39</created>
+		<closed>2020-05-20 06:56:08</closed>
+	</bug>
+	<bug>
+		<id>1244</id>
+		<title>copyOrMoveDir函数srcDir.listFiles()NPE异常</title>
+		<body>## 描述 Bug ``` Attempt to get length of null array com.blankj.utilcode.util.FileUtils.copyOrMoveDir(FileUtils.java:433) 该函数获取listFiles遍历时出现空指针异常 ```  - AndroidUtilCode 的版本：utilcodex:1.28.4 - 出现 Bug 的设备型号：黑鲨游戏手机2 - 设备的 Android 版本：API29  ## 相关代码  ``` kotlin if (FileUtils.isFileExists(mCacheDir) &amp;&amp; mCacheDir.list()?.isNotEmpty() == true) {     LogUtils.i("we need move moments from cache/sharktime to files/sharktime")     val startMs = System.currentTimeMillis()     FileUtils.moveDir(mCacheDir, mFileDir) { srcFile, destFile -&gt;         LogUtils.i("move $srcFile to $destFile")         //不保留旧数据，return false         return@moveDir false     }     LogUtils.i("move moments finished, it takes ${System.currentTimeMillis() - startMs} ms.") } ```  ## 异常堆栈 ``` 1 com.blankj.utilcode.util.FileUtils.copyOrMoveDir(FileUtils.java:433) 2 com.blankj.utilcode.util.FileUtils.copyOrMoveDir(FileUtils.java:438) 3 com.blankj.utilcode.util.FileUtils.moveDir(FileUtils.java:404) 4 com.blackshark.discovery.global.GlobalVM$moveDataFromCache2Files$1.invokeSuspend(GlobalVM.kt:728) 5 kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) 6 kotlinx.coroutines.DispatchedTask.run(Dispatched.kt:238) 7 kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:594) 8 kotlinx.coroutines.scheduling.CoroutineScheduler.access$runSafely(CoroutineScheduler.kt:60) 9 kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:742) ```  ## 截图 Bugly后台数据上报，无发生现场，但出错逻辑清晰，listFiles得到的File数组为空，导致遍历时发生NPE</body>
+		<created>2020-05-19 02:08:56</created>
+		<closed>2020-05-21 06:20:47</closed>
+	</bug>
+	<bug>
+		<id>1243</id>
+		<title>权限方法的问题</title>
+		<body>## 描述 Bug  简洁地描述下 Bug。  - AndroidUtilCode 的版本：utilcode 1.27.0 - 出现 Bug 的设备型号：一加6T - 设备的 Android 版本：API28  ## 相关代码   ```java     PermissionUtils.permission(PermissionContant.ALLPermission).callback(new PermissionUtils.SimpleCallback() {                  @Override                 public void onGranted() {                     new Handler().postDelayed(new Runnable() {                         @Override                         public void run() {                             initSplash();                          }                     }, ANIMATION_DURATION);                 }                  @Override                 public void onDenied() {                     initSplash();                 }             }).request(); ``` ```java   //判断是否开启定位权限         PermissionUtils.permission(PermissionContant.LocationPERMISSON).callback(new PermissionUtils.SimpleCallback() {              @Override             public void onGranted() {                 AMapUtil.initLocation(TakePicCheckInActivity.this, new AMapUtil.LocationListener() {                     @Override                     public void getLocation(AMapLocation aMapLocation) {                         LogUtils.d("签到页定位刷新");                         currentLatLng = new LatLng(aMapLocation.getLatitude(), aMapLocation.getLongitude());                         outter:                         for (CompanySignPointDto pointBean : checkInPointList) {                             float distance = AMapUtils.calculateLineDistance(currentLatLng, new LatLng(Double.valueOf(pointBean.getLatitude()), Double.valueOf(pointBean.getLongitude())));                             // 两点距离大于半径才显示                             noGps(NO_LOCATION);                             if (distance &lt; pointBean.getRadius()) {                                 //物料校验                                 if (null != wayBillDetailBean &amp;&amp; null != pointBean &amp;&amp; null != pointBean.getMaterialCodeList() &amp;&amp; (pointBean.getMaterialCodeList().contains(wayBillDetailBean.getMaterialCode()) || pointBean.getMaterialCodeList().get(0).equals("ALL"))) {                                     noGps(IN_LOCATION);                                 } else {                                     noGps(NO_LOCATION);                                 }                                   break outter;                             }                          }                     }                      @Override                     public void failureGetLoaction(int errorCode) {                         noGps(IN_LOCATION);                     }                 });             }              @Override             public void onDenied() {                 noGps(NO_GPS_PREMISSION);              }         }).request(); ```  ## 异常堆栈  1. 初始化获取权限的时候，直接就执行initSplash()的方法，没有延时 2. 定位权限获取不到  </body>
+		<created>2020-05-15 01:56:45</created>
+		<closed>2020-05-19 10:50:03</closed>
+	</bug>
+	<bug>
+		<id>1242</id>
+		<title>AppUtils.installApp(file); 的问题</title>
+		<body>## 描述 Bug  使用 com.blankj.utilcode.util.AppUtils#installApp(java.io.File) 传入apk文件的File对象，然后就空指针异常闪退。只有某个客户的手机发生这个问题，我自己的模拟器都没法重现 看不出来是哪里的问题导致的  - AndroidUtilCode 的版本：utilcode:1.23.7 - 出现 Bug 的设备型号：三星 SM N9600也就是三星NOTE9 - 设备的 Android 版本：Android 10,level 29  ## 相关代码  AppUtils.installApp(file);  ## 异常堆栈  # main(2) java.lang.NullPointerException Attempt to invoke virtual method 'android.content.res.XmlResourceParser android.content.pm.ProviderInfo.loadXmlMetaData(android.content.pm.PackageManager, java.lang.String)' on a null object reference 1 android.support.v4.content.FileProvider.parsePathStrategy(FileProvider.java:584) 2 android.support.v4.content.FileProvider.getPathStrategy(FileProvider.java:558) 3 android.support.v4.content.FileProvider.getUriForFile(FileProvider.java:400) 4 com.blankj.utilcode.util.AppUtils.getInstallAppIntent(AppUtils.java:975) 5 com.blankj.utilcode.util.AppUtils.installApp(AppUtils.java:84) 6 com.xxx.yyy.UpdateService$3.run(UpdateService.java:266) 7 android.app.Activity.runOnUiThread(Activity.java:6972) 8 com.xxx.yyy.UpdateService.installApp(UpdateService.java:214) 9 com.xxx.yyy.UpdateService.downloadApk(UpdateService.java:139) 10 com.xxx.yyy.UpdateService.access$100(UpdateService.java:46) 11 com.xxx.yyy.UpdateService$1$1.okClick(UpdateService.java:80) 12 com.weilai.framework.ui.DialogConfirm$3.onClick(DialogConfirm.java:79) 13 android.view.View.performClick(View.java:7870) 14 android.widget.TextView.performClick(TextView.java:14966) 15 android.view.View.performClickInternal(View.java:7839) 16 android.view.View.access$3600(View.java:886) 17 android.view.View$PerformClick.run(View.java:29363) 18 android.os.Handler.handleCallback(Handler.java:883) 19 android.os.Handler.dispatchMessage(Handler.java:100) 20 android.os.Looper.loop(Looper.java:237) 21 android.app.ActivityThread.main(ActivityThread.java:7811) 22 java.lang.reflect.Method.invoke(Native Method) 23 com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:493) 24 com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1076)  ## 截图  无</body>
+		<created>2020-05-13 06:22:26</created>
+		<closed>2020-05-21 06:20:59</closed>
+	</bug>
+	<bug>
+		<id>1241</id>
+		<title>SpanUtils  设置点击span后，点击文本的背景颜色会变 这个怎么设置呢</title>
+		<body>SpanUtils  设置点击span后，点击文本的背景颜色会变 这个怎么设置呢</body>
+		<created>2020-05-09 03:50:38</created>
+		<closed>2020-05-09 07:20:01</closed>
+	</bug>
+	<bug>
+		<id>1240</id>
+		<title>升级到Bus Plugin2.5后，收不到事件，切回2.4又可以了。</title>
+		<body>## 描述 Bug  [Bus Plugin v2.5](https://github.com/Blankj/AndroidUtilCode/blob/master/CHANGELOG.md) 升级到Bus Plugin2.5后，收不到事件，切回2.4又可以了。  - AndroidUtilCode 的版本：    classpath 'com.blankj:bus-gradle-plugin:2.5'      implementation 'com.blankj:utilcodex:1.28.4'  - 出现 Bug 的设备型号：Huawei Mate 10 Pro - 设备的 Android 版本：API 29  ## 相关代码  post: ```kotlin             when (type) {                 PushConstant.XXXTX -&gt; {                     RingtoneHelper.defaultNotificationMediaPlayer()                     LogHelper.debugLog(dataStr)                     val data = Gson().fromJson(dataStr, ChatPushData::class.java)                      BusUtils.post(BusTagConstant.CHAT_PUSH, data.other)                 }             } ```   ```kotlin      override fun onStart() {         super.onStart()         if (isRegEventBus) {             BusUtils.register(this)         }     }      override fun onStop() {         super.onStop()         if (isRegEventBus) {             BusUtils.unregister(this)         }     }      @Bus(tag = BusTagConstant.CHAT_PUSH, threadMode = BusUtils.ThreadMode.MAIN)     fun refreshChatList(otherKey: String) {         LogHelper.debugLog("bus &gt;&gt;&gt; refreshChatList")         getChatList()        //BusUtils.removeSticky( BusTagConstant.CHAT_PUSH)     } ```</body>
+		<created>2020-05-09 00:36:59</created>
+		<closed>2020-05-19 10:27:20</closed>
+	</bug>
+	<bug>
+		<id>1239</id>
+		<title>IntentUtils 获取跳转的intent不应该默认添加isNewTask</title>
+		<body>例如这个方法：getLaunchAppDetailsSettingsIntent 场景： 跳到设置，让用户去授权，客户返回app后，在onActivityResult重新判断客户有没有授权，做一些操作 bug: 因为你自动Intent.FLAG_ACTIVITY_NEW_TASK，导致onActivityResult无法获取回调，所以客户回到app界面就什么反应都没有! 建议：要吗去掉添加isNewTask，或者增加重载方法暴露boolean参数，表示是否要isNewTask这个flag！</body>
+		<created>2020-05-08 09:00:17</created>
+		<closed>2020-05-21 06:24:57</closed>
+	</bug>
+	<bug>
+		<id>1238</id>
+		<title>Security Flaws raised in the AndroidUtilcode library </title>
+		<body>## Hi Blankj team,   We are using the Androidutilcode thirdparty library in our code and when the application is scanned for vulnerability, we found below issues, can you please help us in resolving these flaws.  A clear and concise description of what the bug is.  1) com/.../util/AppUtils.java  Log.d("AppUtils", "isAppRoot() called" + result.errorMsg); 2) com/.../util/NetworkUtils.java 97  Log.d("NetworkUtils", "isAvailableByPing() called" + result.errorMsg); 3) com/.../util/NetworkUtils.java 100 Log.d("NetworkUtils", "isAvailableByPing() called" + result.successMsg);  ### Recommendations Avoid directly embedding user input in log files when possible. Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data. Only write custom blacklisting code when absolutely necessary. Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.  4)  com/.../util/EncryptUtils.java 166 MessageDigest md = MessageDigest.getInstance("MD5"); 5) com/.../util/FileUtils.java 925 MessageDigest md = MessageDigest.getInstance("MD5");  ### Description The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the disclosure of sensitive information.  6) com/.../util/ZipUtils.java 234  ### Recommendations Validate all untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible. When using black lists, be sure that the sanitizing routine performs a sufficient number of iterations to remove all instances of disallowed characters.  7) com/.../util/LogUtils.java 316 ### Recommendations Configure the XML parser to disable external entity resolution.   - The version of AndroidUtilCode: &lt;!-- e.g. utilcode:1.16.3 or utilcodex:1.16.3 --&gt; - The device: &lt;!-- e.g. Nexus 5X --&gt; - The version of device: &lt;!-- API 27 --&gt;  ## The code of bug  &lt;!-- e.g.  ```java CrashUtils.init(); ``` --&gt; ``` put your code here ```  ## The stack of crash  &lt;!-- e.g.  ``` Caused by: java.lang.NullPointerException: u should init first    at com.blankj.utilcode.util.Utils.getApp(Utils.java:98)    at com.blankj.utilcode.util.CrashUtils.&lt;clinit&gt;(CrashUtils.java:55)    at com.blankj.utilcode.util.CrashUtils.init(CrashUtils.java:168)     at com.blankj.androidutilcode.UtilsApp.initCrash(UtilsApp.java:71)     at com.blankj.androidutilcode.UtilsApp.onCreate(UtilsApp.java:33)  ``` --&gt;  ``` put the stack of crash here ```  ## Screenshots  If applicable, add screenshots to help explain your problem.   ## Please delete the current line and the following.  Thank you for supporting [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode). </body>
+		<created>2020-05-07 09:19:03</created>
+		<closed>2020-05-07 09:44:34</closed>
+	</bug>
+	<bug>
+		<id>1236</id>
+		<title>UriUtils#uri2file转换不太完整啊，还缺少好几个</title>
+		<body>```java             if (path.startsWith("/files_path/")) {                 file = new File(PathUtils.getInternalAppFilesPath()                         + path.replace("/files_path/", "/"));             } else if (path.startsWith("/cache_path/")) {                 file = new File(PathUtils.getInternalAppCachePath()                         + path.replace("/cache_path/", "/"));             } else if (path.startsWith("/external_files_path/")) {                 file = new File(PathUtils.getExternalAppFilesPath()                         + path.replace("/external_files_path/", "/"));             } else if (path.startsWith("/external_cache_path/")) {                 file = new File(PathUtils.getExternalAppCachePath()                         + path.replace("/external_cache_path/", "/"));             } else {                 file = UriUtils.uri2File(uri);             } ```</body>
+		<created>2020-05-07 02:39:31</created>
+		<closed>2020-05-21 06:25:33</closed>
+	</bug>
+	<bug>
+		<id>1234</id>
+		<title>LanguageUtils.applyLanguage(locale)方法未生效</title>
+		<body>## 描述 Bug  简洁地描述下 Bug。  - AndroidUtilCode 的版本：1.27.5 - 出现 Bug 的设备型号：&lt;!-- 例如 Nexus 5X --&gt; - 设备的 Android 版本：&lt;!-- 例如 API 27 --&gt;  ## 相关代码  ``` LanguageUtils.applyLanguage(locale) ```  为什么LanguageUtils.applyLanguage(locale)方法会调用isAppliedLanguage()方法?这样的话会造成切换语言不生效的问题(例如中文切到英文，英文再切回中文)，去除掉就好了  ## 截图  如果有的话请添加屏幕截图以帮助解释问题。 </body>
+		<created>2020-04-28 08:23:24</created>
+		<closed>2020-05-03 03:59:41</closed>
+	</bug>
+	<bug>
+		<id>1230</id>
+		<title>FileUtils.isFileExists(FilePath) 判断有问题</title>
+		<body>## FileUtils.isFileExists(path)判断有问题  文件实际存在，isFileExists()判断是False不存在,New File(path).exists()判断true存在是正确的  使用版本：com.blankj:utilcodex:1.26.0 手机：小米10 Pro Android 10</body>
+		<created>2020-04-22 11:38:08</created>
+		<closed>2020-04-22 11:46:23</closed>
+	</bug>
+	<bug>
+		<id>1229</id>
+		<title>FragmentUtils</title>
+		<body>## 描述 Bug FragmentUtils 中popto函数不能出栈到指定fragment 使用hack FragmentManagerImpl 也不能正确pop的  - AndroidUtilCode 的版本：utilcodex:1.28.0 - 出现 Bug 的设备型号：小米10 - 设备的 Android 版本：API 28 ## 相关代码  &lt;!-- 例如 ```java          FragmentUtils.popTo(mFragmentManager, fragment.getClass(), false);  ## 异常堆栈  &lt;!-- 例如  ## 截图  如果有的话请添加屏幕截图以帮助解释问题。   </body>
+		<created>2020-04-22 06:54:22</created>
+		<closed>2020-04-23 02:51:39</closed>
+	</bug>
+	<bug>
+		<id>1223</id>
+		<title>[BUG] 1.28.x 汇总</title>
+		<body># 版本变更 1.27.x 重构版本经过多次的 BUG 修复已趋于稳定，欢迎大家使用 1.28.x。 * 最新版本：1.29.0 * 1.28.0 版本变更详情: https://github.com/Blankj/AndroidUtilCode/releases/tag/1.28.0 * 1.28.1   * 修复 [ImageUtils的getBitmap(final InputStream is, final int maxWidth, final int maxHeight)方法有OOM的风险](https://github.com/Blankj/AndroidUtilCode/issues/1225)   * 修复 [PermissionUtils#callback 获取 topActivity 为 TransActivity](https://github.com/Blankj/AndroidUtilCode/issues/1207)   * 修复 FileUtils#listFilesInDir(final String dirPath, Comparator&lt;File&gt; comparator) 没有使用 comparator 参数. * 1.28.2   * 修复 ImageUtils#isImage 不正确的 BUG   * 修复 UriUtils#uri2File 不支持华为、Unknown URI 的 BUG   * 使用黑科技让 SnackbarUtils 支持从顶部弹出   * 修复 TransActivity 不支持小于 SDK 21 的 BUG   * GsonUtils 去掉判空注解 * 1.28.3   * 修复 tinker 适配问题，tinker 需要自己手动调用 Utils#init * 1.28.4   * 修复 [LanguageUtils.applyLanguage(locale)方法未生效](https://github.com/Blankj/AndroidUtilCode/issues/1234)   * 修复 BarUtils#isNavBarVisible * 1.28.5   * 修复 [FileUtils#copyOrMoveDird NPE](https://github.com/Blankj/AndroidUtilCode/issues/1244)   * [IntentUtils#getLaunchAppDetailsSettingsIntent support isNewTask](https://github.com/Blankj/AndroidUtilCode/issues/1239)   * 新增 ImageUtils#save2Album, NetworkUtils#getSSID, UtilsTransActivity4MainProcess   * Publish bus plugin v2.6. Publish api plugin v1.4. * 1.28.6   * 修复 BusUtils#postSticky 如果存在相同 tag 多次重复 post 的 bug   * 新增 IntentUtils#getInstallAppIntent 支持 uri 参数 * 1.29.0   * 修复 IntentUtils#getInstallAppIntent 文件是否存在判断写反的 bug # BUG 描述模板  **拷贝如下模板到下方来提交 BUG**  &lt;pre&gt; ## 描述 Bug  简洁地描述下 Bug。 - AndroidUtilCode 的版本：例如 utilcode:1.28.0 或 utilcodex:1.28.0 - 出现 Bug 的设备型号： 例如 Nexus 5X - 设备的 Android 版本：例如 API 27  ## 相关代码  ``` put your code here ```  ## 异常堆栈  ``` put the stack of crash here ```  ## 截图  如果有的话请添加屏幕截图以帮助解释问题。 &lt;/pre&gt;</body>
+		<created>2020-04-12 19:45:51</created>
+		<closed>2020-05-28 03:07:13</closed>
+	</bug>
+	<bug>
+		<id>1220</id>
+		<title>FragmentUtils.getTopIsInStack(...)</title>
+		<body>FragmentUtils.getTopIsInStack(...)  1.27.5版本修改后任然存在问题：返回的fragment永远都是传入的fragment</body>
+		<created>2020-04-09 09:05:05</created>
+		<closed>2020-04-09 20:38:23</closed>
+	</bug>
+	<bug>
+		<id>1217</id>
+		<title>FileUtils.isFileExists() Android 10 判断 App-specific 文件是否存在时，结果有误</title>
+		<body>## 描述 Bug  简洁地描述下 Bug。  - AndroidUtilCode 的版本：&lt;!-- 例如 utilcode:1.27.3 （） --&gt; - 出现 Bug 的设备型号：&lt;!-- 例如 Mate10  --&gt; - 设备的 Android 版本：&lt;!-- 例如 API 29 --&gt;  ## 相关代码 String ERROR_LOG_FILE = App.getInstance().getExternalCacheDir() + "/error.txt"  创建文件写入数据后 FileUtils.isFileExists(ERROR_LOG_FILE)  结果始终为false  直接 使用FileUtils.isFileExists(FileUtils.getFileByPath(ERROR_LOG_FILE))  结果判断为true  因为是应用自身，App-specific  目录，期间未获取 WRITE_EXTERNAL_STORAGE  </body>
+		<created>2020-04-08 07:21:11</created>
+		<closed>2020-04-09 20:39:55</closed>
+	</bug>
+	<bug>
+		<id>1216</id>
+		<title>升级1.27.3后CleanUtils.cleanInternalCache()失效</title>
+		<body>之前如果清除缓存的话，我这边是先通过FileUtils.getSize(cacheDir)获取缓存文件大小，当确定清除缓存后就调用CleanUtils.cleanInternalCache()，然后再调用FileUtils.getSize(cacheDir)此时缓存被清除显示缓存大小为0，升级1.27.3后，调用CleanUtils.cleanInternalCache()后FileUtils.getSize(cacheDir)缓存值还是原来的，没被清除</body>
+		<created>2020-04-08 01:07:45</created>
+		<closed>2020-04-08 06:40:42</closed>
+	</bug>
+	<bug>
+		<id>1215</id>
+		<title>[BUG]</title>
+		<body>## Describe the bug  A clear and concise description of what the bug is.  - The version of AndroidUtilCode: utilcodex:1.27.2 - The device: Emulator Pixel2 - The version of device: API 29  ## The code of bug Before I use this code  ```java private static final int MULTIPLE_PERMISSIONS = 1;     private static final String[] permissions = new String[]{             Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE     };  private void permissions() { if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) +                     ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {                                 new RunProgram(this).execute();             } else {                                 if (checkPermissions()) {                     new RunProgram(this).execute();                 }             }         }  private boolean checkPermissions() {            int result;            List&lt;String&gt; listPermissionsNeeded = new ArrayList&lt;&gt;();            for (String p : permissions) {                result = ContextCompat.checkSelfPermission(getApplication(), p);                if (result != PackageManager.PERMISSION_GRANTED) {                    listPermissionsNeeded.add(p);                }            }            if (!listPermissionsNeeded.isEmpty()) {                ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[0]), MULTIPLE_PERMISSIONS);                return false;            }            return true;        }         @Override        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissionsList, @NonNull int[] grantResults) {            if (requestCode == MULTIPLE_PERMISSIONS) {                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {                    new RunProgram(this).execute();                } else {                    StringBuilder permissionsDenied = new StringBuilder();                    for (String per : permissionsList) {                        if (grantResults[0] == PackageManager.PERMISSION_DENIED) {                            permissionsDenied.append("\n").append(per);                        }                    }                    ToastUtils.showLong("Please allow the permission for app works properly");                }                return;            }            super.onRequestPermissionsResult(requestCode, permissions, grantResults);        } ``` After using your PermissionUtils: ```java private void permissions() {         PermissionUtils.permission(PermissionConstants.STORAGE).rationale(new PermissionUtils.OnRationaleListener() {             @Override             public void rationale(UtilsTransActivity activity, ShouldRequest shouldRequest) {                 shouldRequest.again(true);                            }         }).callback(new PermissionUtils.FullCallback() {             @Override             public void onGranted(List&lt;String&gt; permissionsGranted) {                 new RunProgram(SplashActivity.this).execute();             }              @Override             public void onDenied(List&lt;String&gt; permissionsDeniedForever, List&lt;String&gt; permissionsDenied) {                 if (!permissionsDenied.isEmpty() || !permissionsDeniedForever.isEmpty()) {                     finish();                 }             }         }).theme(new PermissionUtils.ThemeCallback() {             @Override             public void onActivityCreate(Activity activity) {                 ScreenUtils.setFullScreen(activity);             }         }).request(); ``` And Manifest: ```java &lt;activity android:name=".activity.SplashActivity"             android:theme="@style/AppTheme.NoActionBar"&gt;             &lt;intent-filter&gt;                 &lt;action android:name="android.intent.action.MAIN" /&gt;                  &lt;category android:name="android.intent.category.LAUNCHER" /&gt;             &lt;/intent-filter&gt;         &lt;/activity&gt; ``` ## The stack of crash I'm facing this issue, I twice checked every things but no effect ``` --------- beginning of crash 2020-04-06 14:03:00.905 6734-6734/com.ahmer.whatsapp E/AndroidRuntime: FATAL EXCEPTION: main     Process: com.ahmer.whatsapp, PID: 6734     java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity.         at androidx.appcompat.app.AppCompatDelegateImpl.createSubDecor(AppCompatDelegateImpl.java:842)         at androidx.appcompat.app.AppCompatDelegateImpl.ensureSubDecor(AppCompatDelegateImpl.java:805)         at androidx.appcompat.app.AppCompatDelegateImpl.onPostCreate(AppCompatDelegateImpl.java:528)         at androidx.appcompat.app.AppCompatActivity.onPostCreate(AppCompatActivity.java:127)         at android.app.Instrumentation.callActivityOnPostCreate(Instrumentation.java:1373)         at android.app.ActivityThread.handleStartActivity(ActivityThread.java:3321)         at android.app.servertransaction.TransactionExecutor.performLifecycleSequence(TransactionExecutor.java:221)         at android.app.servertransaction.TransactionExecutor.cycleToPath(TransactionExecutor.java:201)         at android.app.servertransaction.TransactionExecutor.executeLifecycleState(TransactionExecutor.java:173)         at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:97)         at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2016)         at android.os.Handler.dispatchMessage(Handler.java:107)         at android.os.Looper.loop(Looper.java:214)         at android.app.ActivityThread.main(ActivityThread.java:7356)         at java.lang.reflect.Method.invoke(Native Method)         at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:492)         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:930) ``` Please help </body>
+		<created>2020-04-06 09:10:50</created>
+		<closed>2020-04-07 06:17:47</closed>
+	</bug>
+	<bug>
+		<id>1214</id>
+		<title>[BUG] AdaptScreenUtils 错误日志</title>
+		<body>## 描述 Bug  E/AdaptScreenUtils: getMetricsFromField: java.lang.ClassCastException: java.lang.Object cannot be cast to android.util.DisplayMetrics  简洁地描述下 Bug。  - AndroidUtilCode 的版本：1.27.1 - 出现 Bug 的设备型号：HUAWEI Mate 30 Pro  - 设备的 Android 版本： Android 10  ## 相关代码 没有堆栈信息，日志没有看到相关代码的调用  从报错可以看出是在AdaptScreenUtils类的这个方法里报的错 private static DisplayMetrics getMetricsFromField(final Resources resources, final Field field) {         try {             return (DisplayMetrics) field.get(resources);         } catch (Exception e) {             Log.e("AdaptScreenUtils", "getMetricsFromField: " + e);             return null;         }     } </body>
+		<created>2020-04-02 09:03:56</created>
+		<closed>2020-04-03 03:23:08</closed>
+	</bug>
+	<bug>
+		<id>1213</id>
+		<title>[BUG] 1.27.x 汇总</title>
+		<body># 版本变更 升级到 1.27.x 版本发生了重构，所带来的 bug 可能比较多，在此深表歉意，目前已修复差不多了 :-) * 最新版本：1.27.6 * 1.27.0 版本变更详情: https://github.com/Blankj/AndroidUtilCode/releases/tag/1.27.0 * 1.27.1:   * 修复 ActivityUtils finish 堆栈不正确的 BUG   * 修复 PathUtils 中判断 SD 卡状态反了的 BUG * 1.27.2:   * 修复 UtilsActivityLifecycleImpl 的 HashMap#remove IllegalStateException Bug   * 修复 ShadowUtils 阴影低版本问题 * 1.27.3:   * 修改 GsonUtils#getGson() 为 public   * 修复 LogUtils 写入文件不起作用   * 修复 CrashUtils 设置的 DefaultUncaughtExceptionHandler 导致的卡死现象   * 修复 Utils#getApp 多进程获取为空的问题 * 1.27.4   * 修复 [CleanUtils#cleanInternalCache() 失效](https://github.com/Blankj/AndroidUtilCode/issues/1216)   * 修复 FileUtils#isFileExists 传入 File 结果不对 * 1.27.5   * 修复 ActivityUtils finish 不正确的 BUG * 1.27.6   * 修复 FileUtils#isFileExists   * 修复 FragmentUtils#getTop   # BUG 描述模板  **拷贝如下模板到下方来提交 BUG**  &lt;pre&gt; ## 描述 Bug  简洁地描述下 Bug。 - AndroidUtilCode 的版本：例如 utilcode:1.27.0 或 utilcodex:1.27.0 - 出现 Bug 的设备型号： 例如 Nexus 5X - 设备的 Android 版本：例如 API 27  ## 相关代码  ``` put your code here ```  ## 异常堆栈  ``` put the stack of crash here ```  ## 截图  如果有的话请添加屏幕截图以帮助解释问题。 &lt;/pre&gt;</body>
+		<created>2020-04-02 03:12:39</created>
+		<closed>2020-04-12 19:46:08</closed>
+	</bug>
+	<bug>
+		<id>1212</id>
+		<title> PermissionUtils.permission().rationale UtilsTransActivity </title>
+		<body>rationale  ![image](https://user-images.githubusercontent.com/17565737/78204433-14d6e700-74cc-11ea-8c9c-399ec505bec9.png) 升级到1.27.0  新增的UtilsTransActivity参数是什么作用，我原有的写法要不要做兼容。 </body>
+		<created>2020-04-02 02:24:54</created>
+		<closed>2020-04-02 03:10:07</closed>
+	</bug>
+	<bug>
+		<id>336</id>
+		<title>【Bug】SpanUtils</title>
+		<body>你好，在使用SpanUtils的过程中，发现appendImage方法有点问题，当一次性拼接多个图片时，且BOTTOM对其方式时，会多出一片空白，猜测CustomDynamicDrawableSpan里面计算Drawable位置有问题  ![测试代码](https://user-images.githubusercontent.com/16833189/33869324-0ba61c80-df43-11e7-84b1-967ab8e4986a.png)  ![显示效果](https://user-images.githubusercontent.com/16833189/33869337-2329c2ee-df43-11e7-9931-7ec5e8cbf5aa.png)   </body>
+		<created>2017-12-12 05:52:04</created>
+		<closed>2017-12-28 10:13:12</closed>
+	</bug>
+</bugs>

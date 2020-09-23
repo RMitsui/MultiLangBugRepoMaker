@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="cosin">
+	<bug id="340" opendate="2020-06-09 02:46:21" fixdate="2020-08-25 05:44:17">
+		<buginformation>
+			<summary>技能组启动之后看不到技能组下的坐席</summary>
+			<description>技能组启动之后看不到技能组下的坐席，客服已经在线，并且设置了角色和组织架构 ![image](https://user-images.githubusercontent.com/3889632/84100422-6eb0db80-aa3e-11ea-8985-957001ffa3bc.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/proxy/OnlineUserProxy.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/service/StatsController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/IMController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="256" opendate="2019-12-26 09:53:01" fixdate="2019-12-26 13:47:20">
+		<buginformation>
+			<summary>设置主动邀请后，点击“现在咨询”，弹出“坐席不可用，连接失败”</summary>
+			<description># 描述    ## 现在行为  ## 预期行为  # 解决方案  # 环境  - 代码版本:   Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/AgentController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/basic/MainContext.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/peer/im/ComposeMw2.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/middleware/visitor/ACDVisBindingMw.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="253" opendate="2019-12-24 05:36:04" fixdate="2019-12-25 11:52:32">
+		<buginformation>
+			<summary>text接入的访客对话窗口协议识别错误</summary>
+			<description># 描述  提交[公司信息说明](http://chatopera.mikecrm.com/lVtMuGN)后优先处理解决！  ## 现在行为  ## 预期行为  # 解决方案  # 环境  - 代码版本:   Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/proxy/BlackEntityProxy.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/socketio/handler/IMEventHandler.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/persistence/repository/AgentServiceRepository.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/EntIMController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/model/BlackEntity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="227" opendate="2019-11-13 08:49:44" fixdate="2019-11-19 23:09:35">
+		<buginformation>
+			<summary>分配坐席时，没有优先分配到上一次服务的坐席</summary>
+			<description># 描述  ![image](https://user-images.githubusercontent.com/3538629/68747454-886b7b00-0635-11ea-9ab8-ab816e883498.png)  ## 现在行为  ## 预期行为  # 解决方案  # 环境  * 代码版本: Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/api/ApiServiceQueneController.java</file>
+			<file>contact-center/app/src/test/java/com/chatopera/cc/acd/ACDComposeContextTest.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/api/ApiAgentUserController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/ACDAgentService.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/visitor/ACDVisBindingMw.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/AgentAuditController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/admin/OrganController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/proxy/UserProxy.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/proxy/AgentUserProxy.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/LoginController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/api/ApiAppsController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/admin/AdminController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/service/ChatServiceController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/activemq/SocketioConnEventSubscription.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/ACDQueueService.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/api/ApiUserController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/IMController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/aspect/AgentStatusAspect.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/proxy/OnlineUserProxy.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/ACDServiceRouter.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/AgentController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/socketio/message/Message.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/ACDPolicyService.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/visitor/ACDVisSessionCfgMw.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/util/HashMapUtils.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/ACDComposeContext.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/util/OnlineUserUtils.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/model/AgentStatus.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/visitor/ACDVisBodyParserMw.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/AgentSettingsController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/schedule/WebIMTask.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/ApplicationController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/ACDWorkMonitor.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/socketio/handler/IMEventHandler.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/ACDMessageHelper.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/agent/ACDAgentMw1.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/basic/MainUtils.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/socketio/util/HumanUtils.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/aspect/AgentUserAspect.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/basic/MainContext.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/ACDChatbotService.java</file>
+			<file>public/plugins/chatbot/classes/ChatbotEventHandler.java</file>
+			<file>contact-center/app/src/test/java/com/chatopera/cc/basic/MainContextTest.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/basic/Constants.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/socketio/handler/AgentEventHandler.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/visitor/ACDVisServiceMw.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/peer/im/ComposeMw1.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/cache/Cache.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/aspect/OnlineUserAspect.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/AppsController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/controller/apps/AgentQualityController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/interceptor/UserInterceptorHandler.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/acd/visitor/ACDVisAllocatorMw.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/persistence/repository/AgentStatusRepository.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/proxy/AgentProxy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="124" opendate="2018-10-25 10:26:21" fixdate="2018-10-25 10:26:46">
+		<buginformation>
+			<summary>[cc] 配置接入网站渠道后，机器人客服不工作</summary>
+			<description># 描述  ## 现在行为  ## 预期行为  # 解决方案  # 环境  * 代码版本: Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/admin/channel/WebIMController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="117" opendate="2018-10-24 10:22:54" fixdate="2018-10-24 13:42:22">
+		<buginformation>
+			<summary>[cc] 机器人客服回复卡顿</summary>
+			<description># 描述  ## 现在行为 在配置好了机器人后，会有回复卡顿的情况。  ## 预期行为  # 解决方案  # 环境  * 代码版本: Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/resource/MediaController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/config/IMServerConfiguration.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/im/handler/ChatbotEventHandler.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="114" opendate="2018-10-23 12:32:38" fixdate="2018-10-23 12:34:35">
+		<buginformation>
+			<summary>[cc] 关联联系人查看历史会话，地域显示错误</summary>
+			<description># 描述  ## 现在行为  ![image](https://user-images.githubusercontent.com/3538629/47360702-bc11f500-d702-11e8-9535-95d950d32213.png)  ![image](https://user-images.githubusercontent.com/3538629/47360721-c16f3f80-d702-11e8-8461-2e7fa98f8b2d.png)  ## 预期行为  # 解决方案  # 环境  * 代码版本: Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/im/handler/IMEventHandler.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="112" opendate="2018-10-23 10:12:57" fixdate="2018-10-23 11:04:56">
+		<buginformation>
+			<summary>[cc] 访客端异常，坐席暂时不可用</summary>
+			<description># 描述  ![image](https://user-images.githubusercontent.com/3538629/47353639-52d4b680-d6ef-11e8-9b0b-c84f2fd19856.png)   ## 现在行为 ``` Caused by: java.lang.IllegalArgumentException: Target object must not be null         at org.springframework.util.Assert.notNull(Assert.java:134)         at org.springframework.beans.AbstractNestablePropertyAccessor.setWrappedInstance(AbstractNestablePropertyAccessor.java:205)         at org.springframework.beans.BeanWrapperImpl.setWrappedInstance(BeanWrapperImpl.java:151)                                                                     at org.springframework.beans.AbstractNestablePropertyAccessor.setWrappedInstance(AbstractNestablePropertyAccessor.java:194)         at org.springframework.beans.AbstractNestablePropertyAccessor.&lt;init&gt;(AbstractNestablePropertyAccessor.java:133)         at org.springframework.beans.BeanWrapperImpl.&lt;init&gt;(BeanWrapperImpl.java:101)         at org.springframework.data.util.DirectFieldAccessFallbackBeanWrapper.&lt;init&gt;(DirectFieldAccessFallbackBeanWrapper.java:35)         at org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation.getId(JpaMetamodelEntityInformation.java:146)         at org.springframework.data.repository.core.support.AbstractEntityInformation.isNew(AbstractEntityInformation.java:51)         at org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation.isNew(JpaMetamodelEntityInformation.java:227)         at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:507)         at sun.reflect.GeneratedMethodAccessor210.invoke(Unknown Source)         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)         at java.lang.reflect.Method.invoke(Method.java:498)         at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.executeMethodOn(RepositoryFactorySupport.j ava:504)         at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:489 )          at com.sun.proxy.$Proxy147.save(Unknown Source)         at com.chatopera.cc.app.persistence.impl.AgentUserService.save(AgentUserService.java:38)         at com.chatopera.cc.app.im.util.IMServiceUtils.shiftOpsType(IMServiceUtils.java:39)         at com.chatopera.cc.app.im.handler.IMEventHandler.onConnect(IMEventHandler.java:87)         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)         at java.lang.reflect.Method.invoke(Method.java:498) ```  ![image](https://user-images.githubusercontent.com/3538629/47353390-bb6f6380-d6ee-11e8-9198-b1831964749b.png)   ## 预期行为  # 解决方案  # 环境  * 代码版本: Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/im/util/IMServiceUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="98" opendate="2018-10-16 06:47:46" fixdate="2018-10-16 10:03:16">
+		<buginformation>
+			<summary>[cc] 访问不到网站渠道的详情</summary>
+			<description># 描述  见文档 https://docs.chatopera.com/omni-channel-customer-support-system.html  网页聊天控件  ![image](https://user-images.githubusercontent.com/3538629/46997414-361a0b00-d152-11e8-8233-aac2b591211f.png)  现在这个链接点进来报错 ![image](https://user-images.githubusercontent.com/3538629/46997498-6eb9e480-d152-11e8-848d-7eeff55e4a25.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/admin/channel/WebIMController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="88" opendate="2018-09-25 08:13:47" fixdate="2018-10-17 10:33:21">
+		<buginformation>
+			<summary>[cc] 移动端 聊天昵称显示异常</summary>
+			<description># 描述  ![image](https://user-images.githubusercontent.com/7746790/46001485-f7a6a880-c0dd-11e8-8442-57596bc94421.png)  ## 现在行为  ## 预期行为  # 解决方案  # 环境  * 代码版本: Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/im/handler/IMEventHandler.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/util/OnlineUserUtils.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/apps/internet/IMController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="80" opendate="2018-09-14 03:45:43" fixdate="2018-09-18 03:04:34">
+		<buginformation>
+			<summary>[cc]会话历史-排队队列页面显示错误</summary>
+			<description># 描述  ## 现在行为 ![ae21193dedae3d27a14f939bc6528fe](https://user-images.githubusercontent.com/40993206/45528616-ab24b880-b813-11e8-90fe-6ea74596ea46.png)  ## 预期行为  # 解决方案  # 环境  * 代码版本: Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/apps/service/ChatServiceController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/apps/agent/AgentController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="48" opendate="2018-09-04 09:00:12" fixdate="2018-09-04 09:01:37">
+		<buginformation>
+			<summary>[cc] 坐席并发比取整错误</summary>
+			<description># 描述 向下取整导致错误。  ![image](https://user-images.githubusercontent.com/3538629/45021356-eed53080-b063-11e8-819b-295d44e53847.png)   ## 现在行为  ## 预期行为  # 解决方案  # 环境  * 代码版本: Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/webim/web/handler/api/rest/ApiDailplanRunController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="46" opendate="2018-09-04 02:06:49" fixdate="2018-10-19 05:17:46">
+		<buginformation>
+			<summary>[cc] 坐席工作台-服务小结点击立即提交没反应，会话历史-服务小结有数据</summary>
+			<description># 描述 坐席工作台-服务小结多次点击立即提交没反应，但是会话历史-服务小结有多次点击的数据 ## 现在行为   ![bc93c5914e5ea11e505fe61cf678512](https://user-images.githubusercontent.com/40993206/45006089-c29cbe00-b029-11e8-8b4b-49f9d94820a5.png) ![6be33878c322071391ffcecc751f2e2](https://user-images.githubusercontent.com/40993206/45006151-11e2ee80-b02a-11e8-83a4-056bdef75e99.png)   ## 预期行为  # 解决方案  # 环境  * 代码版本: Git commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/webim/web/handler/apps/agent/AgentController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/webim/service/repository/ServiceSummaryRepository.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/webim/web/handler/apps/service/OnlineUserController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="35" opendate="2018-09-03 07:33:33" fixdate="2020-01-16 08:42:02">
+		<buginformation>
+			<summary>[cc]导出联系人 生成的表格里面无信息 </summary>
+			<description># 描述 全部联系人 和全部客户选项里，选中需要导出的联系人，点击导出时生成的xls文件名修改为“春松客服联系人” 并且现在导出的表格中都无数据。 ## 现在行为 xls表格命名是优客服的。并且表格是空的 ## 预期行为 表格名称修改为春松客服联系人，导出的表格里显示选中的联系人信息 # 解决方案  # 环境  * 代码版本: The commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/apps/contacts/ContactsController.java</file>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/apps/kbs/TopicController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2018-09-03 07:27:41" fixdate="2018-10-23 11:04:57">
+		<buginformation>
+			<summary>[cc]网页端在线对话,客服发送图片时，客服名字变了</summary>
+			<description># 描述 网页端在线对话,客服发送图片时，客服名字变了，而发送文字和表情时没变化。 ## 现在行为  ![](https://user-images.githubusercontent.com/40993206/44576442-2240d100-a7c1-11e8-8cb6-86ad3fa1b468.png)  ## 预期行为 名称统一 # 解决方案  # 环境  * 代码版本: The commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/apps/agent/AgentController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2018-09-03 07:17:41" fixdate="2020-01-16 08:46:12">
+		<buginformation>
+			<summary>[cc]当前在线用户所用浏览器不能正确识别 </summary>
+			<description># 描述 用不同浏览器与客服聊天，却都显示chrome ## 现在行为 如下图，一个是QQ浏览器 一个是谷歌浏览器  ![](https://user-images.githubusercontent.com/40993206/44763062-069c4880-ab7c-11e8-86f5-6880e6468ce4.png)  ## 预期行为  # 解决方案  # 环境  * 代码版本: The commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/util/UKTools.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="20" opendate="2018-09-03 07:11:23" fixdate="2018-09-26 09:16:17">
+		<buginformation>
+			<summary>[cc]系统管理员-系统设置页面出现“优客服”</summary>
+			<description># 描述  ## 现在行为  ![](https://user-images.githubusercontent.com/40993206/44780695-1c7a2f80-abb5-11e8-92f2-cfb194bacdca.png)  ![](https://user-images.githubusercontent.com/40993206/44780703-1edc8980-abb5-11e8-9e92-10305b3359b4.png)  ## 预期行为 优客服三个字改成春松客服 # 解决方案  # 环境  * 代码版本: The commit hash (`git rev-parse HEAD`) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>contact-center/app/src/main/java/com/chatopera/cc/app/handler/apps/test/TestController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

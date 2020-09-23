@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="BibleQuote-for-Android">
+	<bug id="136" opendate="2018-05-05 06:10:29" fixdate="2018-05-08 00:22:13">
+		<buginformation>
+			<summary>Некорректное обновление БД при установке 1.2.85</summary>
+			<description>Некорректно написана миграция БД, что привело к отсутствию полей, тригеров и виртуальных таблиц в БД при установке с нуля.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>bible/src/main/java/com/BibleQuote/dal/DbLibraryHelper.java</file>
+			<file>bible/src/main/java/com/BibleQuote/dal/repository/bookmarks/DbTagsRepository.java</file>
+			<file>bible/src/main/java/com/BibleQuote/dal/repository/bookmarks/DbBookmarksRepository.java</file>
+			<file>bible/src/main/java/com/BibleQuote/dal/repository/migration/Migration_1_2.java</file>
+			<file>bible/src/main/java/com/BibleQuote/dal/repository/migration/Migration_2_3.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/DataConstants.java</file>
+			<file>bible/src/main/java/com/BibleQuote/dal/repository/migration/Migration.java</file>
+			<file>bible/src/test/java/com/BibleQuote/dal/repository/migration/MigrationTest.java</file>
+			<file>bible/src/main/java/com/BibleQuote/di/module/DataModule.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/FsUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="135" opendate="2018-04-22 13:09:36" fixdate="2018-04-22 13:14:09">
+		<buginformation>
+			<summary>Перенести встроенные модули в папку приложения</summary>
+			<description>Периодически возникают проблемы с копированием встроенных модулей на устройство в папку /sdcard/BibleQuote. Из-за этого люди получают пустой экран в списке модулей. Перенести встроенные модули в папку, выделенную приложению системой.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>bible/src/main/java/com/BibleQuote/BibleQuoteApp.java</file>
+			<file>bible/src/main/java/com/BibleQuote/dal/DbLibraryHelper.java</file>
+			<file>bible/src/main/java/com/BibleQuote/presentation/ui/splash/SplashActivity.java</file>
+			<file>bible/src/main/java/com/BibleQuote/presentation/ui/splash/SplashView.java</file>
+			<file>bible/src/main/java/com/BibleQuote/data/logger/FileLogger.java</file>
+			<file>bible/src/main/java/com/BibleQuote/di/module/AppModule.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/DataConstants.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/PreferenceHelper.java</file>
+			<file>bible/src/main/java/com/BibleQuote/presentation/ui/splash/SplashPresenter.java</file>
+			<file>bible/src/test/java/com/BibleQuote/presentation/ui/splash/SplashPresenterTest.java</file>
+			<file>bible/src/main/java/com/BibleQuote/dal/repository/XmlTskRepository.java</file>
+			<file>bible/src/main/java/com/BibleQuote/di/module/DataModule.java</file>
+			<file>bible/src/main/java/com/BibleQuote/dal/repository/FsLibraryLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="125" opendate="2016-09-25 05:41:58" fixdate="2016-09-28 06:21:37">
+		<buginformation>
+			<summary>Ошибка при переходе на следующую главу свайпом</summary>
+			<description>Если перейти в конец главы и свайпом перейти на следующую, то следующая откроется тоже в конце  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>bible/src/main/java/com/BibleQuote/ui/presenters/IViewPresenter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/ui/widget/ReaderWebView.java</file>
+			<file>bible/src/main/java/com/BibleQuote/ui/ReaderActivity.java</file>
+			<file>bible/src/main/java/com/BibleQuote/ui/presenters/ReaderViewPresenter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/listeners/IReaderViewListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="121" opendate="2016-09-22 16:49:15" fixdate="2016-09-22 16:55:36">
+		<buginformation>
+			<summary>NullPointerException при установке текущего номера стиха</summary>
+			<description>java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Integer com.BibleQuote.domain.entity.Chapter.getNumber()' on a null object reference     at com.BibleQuote.managers.Librarian.setCurrentVerseNumber(Librarian.java:216)     at com.BibleQuote.ui.presenters.ReaderViewPresenter.setCurrentVerse(ReaderViewPresenter.java:87)     at com.BibleQuote.ui.ReaderActivity.onReaderViewChange(ReaderActivity.java:237)     at com.BibleQuote.ui.widget.ReaderWebView$ViewHandler.handleMessage(ReaderWebView.java:426)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:234)     at android.app.ActivityThread.main(ActivityThread.java:5526)     at java.lang.reflect.Method.invoke(Native Method)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>bible/src/main/java/com/BibleQuote/managers/Librarian.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="101" opendate="2016-01-27 13:19:52" fixdate="2016-01-27 15:39:01">
+		<buginformation>
+			<summary>Ошибка при удалении закладки</summary>
+			<description>java.lang.ClassCastException: com.BibleQuote.ui.BookmarksActivity cannot be cast to android.support.v7.app.ActionBarActivity     at com.BibleQuote.ui.fragments.BookmarksFragment.onItemLongClick(BookmarksFragment.java:171)     at android.widget.AbsListView.performLongPress(AbsListView.java:3562)     at android.widget.AbsListView$CheckForLongPress.run(AbsListView.java:3508)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5602)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>bible/src/main/java/com/BibleQuote/ui/fragments/BookmarksFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="93" opendate="2016-01-17 13:36:14" fixdate="2016-01-23 10:18:15">
+		<buginformation>
+			<summary>Ссылки не открываются</summary>
+			<description>Открывается не текст по ссылке, а окно выбора места Писания </description>
+		</buginformation>
+		<fixedfiles>
+			<file>bible/src/test/java/com/BibleQuote/utils/textFormatters/NoStrongTextFormatterTest.java</file>
+			<file>bible/src/main/java/com/BibleQuote/entity/BibleReference.java</file>
+			<file>bible/src/test/java/com/BibleQuote/entity/BibleReferenceTest.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/textFormatters/NoStrongTextFormatter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="92" opendate="2015-12-05 17:06:37" fixdate="2016-01-23 10:18:15">
+		<buginformation>
+			<summary>Удалять все теги при шаринге</summary>
+			<description>Остаются теги, которые внесены в фильтр модуля. Надо удалять все. Также остаются лишние пробелы. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>bible/src/test/java/com/BibleQuote/utils/textFormatters/ModuleTextFormatterTest.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/textFormatters/ModuleTextFormatter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/textFormatters/NoStrongTextFormatter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/managers/Librarian.java</file>
+			<file>bible/src/test/java/com/BibleQuote/utils/textFormatters/StripTagsTextFormatterTest.java</file>
+			<file>bible/src/main/java/com/BibleQuote/controllers/FsBookController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="90" opendate="2015-09-16 08:13:15" fixdate="2015-11-28 17:58:18">
+		<buginformation>
+			<summary>Не отображаются цифры в тексте</summary>
+			<description>Цитаты скрывает цифры, даже если модуль не содержит номера Стронга </description>
+		</buginformation>
+		<fixedfiles>
+			<file>bible/src/main/java/com/BibleQuote/utils/share/BaseShareBuilder.java</file>
+			<file>bible/src/main/java/com/BibleQuote/managers/Librarian.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/textFormatters/ModuleTextFormatter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/textFormatters/NoStrongTextFormatter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/ui/fragments/TTSPlayerFragment.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/textFormatters/StripTagsTextFormatter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/modules/Chapter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/share/ShareBuilder.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/share/ClipboardShare.java</file>
+			<file>bible/src/main/java/com/BibleQuote/controllers/FsChapterController.java</file>
+			<file>bible/src/main/java/com/BibleQuote/ui/widget/ReaderWebView.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/textFormatters/IShareTextFormatter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/share/ActionSendShare.java</file>
+			<file>bible/src/main/java/com/BibleQuote/utils/textFormatters/ITextFormatter.java</file>
+			<file>bible/src/main/java/com/BibleQuote/dal/FsLibraryContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="87" opendate="2015-01-12 07:41:42" fixdate="2016-01-23 11:39:33">
+		<buginformation>
+			<summary>NullPointerException при выборе языка модуля</summary>
+			<description>``` java.lang.NullPointerException     at com.BibleQuote.managers.Librarian.getTextLocale(Librarian.java:479)     at com.BibleQuote.ui.fragments.TTSPlayerFragment.onCreateView(TTSPlayerFragment.java:72)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:870)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1080)     at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:622)     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1416)     at android.support.v4.app.FragmentManagerImpl$1.run(FragmentManager.java:420)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:136)     at android.app.ActivityThread.main(ActivityThread.java:5103)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:790)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:606)     at dalvik.system.NativeStart.main(Native Method) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>bible/src/main/java/com/BibleQuote/managers/Librarian.java</file>
+			<file>bible/src/main/java/com/BibleQuote/ui/fragments/TTSPlayerFragment.java</file>
+			<file>bible/src/main/java/com/BibleQuote/tts/controllers/TTSPlayerController.java</file>
+			<file>bible/src/main/java/com/BibleQuote/ui/base/BibleQuoteActivity.java</file>
+			<file>bible/src/main/java/com/BibleQuote/modules/Module.java</file>
+			<file>bible/src/main/java/com/BibleQuote/ui/ReaderActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="79" opendate="2014-06-18 04:29:15" fixdate="2014-06-18 05:08:13">
+		<buginformation>
+			<summary>Перестал выделятся текст для копирования</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/BibleQuote/ui/widget/ReaderWebView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2014-01-13 06:46:11" fixdate="2014-06-17 19:52:37">
+		<buginformation>
+			<summary>Не работает блокировка отключения экрана</summary>
+			<description>Всегда тухнет экран, галочка не меняет ничего, точно так же и переворот экрана, эти функции не работают. Думал проблема в прошивке была у меня 4.2.2 откатился назад на 4.1.2 таже самая ситуация. Не могу читать и работать с программой, ради этого нет желания ставить отключение дисплея через 2 минуты. Пожалуйста проверьте и исправьте  Отправлено с устройства Samsung </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/BibleQuote/managers/bookmarks/repository/IBookmarksRepository.java</file>
+			<file>src/com/BibleQuote/async/AsyncManager.java</file>
+			<file>src/com/BibleQuote/dal/repository/FsModuleRepository.java</file>
+			<file>src/com/BibleQuote/managers/Librarian.java</file>
+			<file>src/com/BibleQuote/controllers/FsBookController.java</file>
+			<file>src/com/BibleQuote/utils/Share/ClipboardShare.java</file>
+			<file>src/com/BibleQuote/managers/bookmarks/repository/prefBookmarksRepository.java</file>
+			<file>src/com/BibleQuote/dal/repository/CacheRepository.java</file>
+			<file>src/com/BibleQuote/ui/dialogs/BookmarksDialog.java</file>
+			<file>src/com/BibleQuote/exceptions/BQUniversalException.java</file>
+			<file>src/com/BibleQuote/managers/bookmarks/repository/dbBookmarksRepository.java</file>
+			<file>src/com/BibleQuote/utils/Share/ActionSendShare.java</file>
+			<file>src/com/BibleQuote/dal/ILibraryUnitOfWork.java</file>
+			<file>src/com/BibleQuote/utils/Share/BaseShareBuilder.java</file>
+			<file>src/com/BibleQuote/utils/UpdateManager.java</file>
+			<file>src/com/BibleQuote/ui/widget/listview/item/TagItem.java</file>
+			<file>src/com/BibleQuote/listeners/IReaderViewListener.java</file>
+			<file>src/com/BibleQuote/ui/widget/listview/itemview/ItemView.java</file>
+			<file>src/com/BibleQuote/controllers/CacheModuleController.java</file>
+			<file>src/com/BibleQuote/ui/base/BibleQuoteActivity.java</file>
+			<file>src/com/BibleQuote/managers/History/IHistoryManager.java</file>
+			<file>src/com/BibleQuote/listeners/ChangeBooksEvent.java</file>
+			<file>src/com/BibleQuote/utils/modules/LinkConverter.java</file>
+			<file>src/com/BibleQuote/ui/ReaderActivity.java</file>
+			<file>src/com/BibleQuote/controllers/IChapterController.java</file>
+			<file>src/com/BibleQuote/entity/BibleReference.java</file>
+			<file>src/com/BibleQuote/dal/repository/IBookRepository.java</file>
+			<file>src/com/BibleQuote/utils/NotifyDialog.java</file>
+			<file>src/com/BibleQuote/dal/repository/FsChapterRepository.java</file>
+			<file>src/com/BibleQuote/managers/bookmarks/Bookmark.java</file>
+			<file>src/com/BibleQuote/ui/widget/ReaderWebView.java</file>
+			<file>src/com/BibleQuote/ui/LibraryActivity.java</file>
+			<file>src/com/BibleQuote/ui/fragments/BookmarksFragment.java</file>
+			<file>src/com/BibleQuote/ui/HistoryActivity.java</file>
+			<file>src/com/BibleQuote/controllers/FsChapterController.java</file>
+			<file>src/com/BibleQuote/exceptions/ExceptionHelper.java</file>
+			<file>src/com/BibleQuote/managers/tags/repository/ITagRepository.java</file>
+			<file>src/com/BibleQuote/async/command/InitApplication.java</file>
+			<file>src/com/BibleQuote/async/AsyncOpenChapter.java</file>
+			<file>src/com/BibleQuote/dal/FsLibraryContext.java</file>
+			<file>src/com/BibleQuote/controllers/IModuleController.java</file>
+			<file>src/com/BibleQuote/async/AsyncOpenModule.java</file>
+			<file>src/com/BibleQuote/dal/LibraryUnitOfWork.java</file>
+			<file>src/com/BibleQuote/managers/GoogleAnalyticsHelper.java</file>
+			<file>src/com/BibleQuote/ui/AboutActivity.java</file>
+			<file>src/com/BibleQuote/ui/CrossReferenceActivity.java</file>
+			<file>src/com/BibleQuote/entity/search/SearchProcessor.java</file>
+			<file>src/com/BibleQuote/ui/widget/listview/item/Item.java</file>
+			<file>src/com/BibleQuote/ui/widget/listview/itemview/SubtitleItemView.java</file>
+			<file>src/com/BibleQuote/utils/DevicesKeyCodes.java</file>
+			<file>src/com/BibleQuote/ui/widget/listview/itemview/TextItemView.java</file>
+			<file>src/com/BibleQuote/ui/HelpActivity.java</file>
+			<file>src/com/BibleQuote/async/AsyncRefreshModules.java</file>
+			<file>src/com/BibleQuote/dal/LibraryContext.java</file>
+			<file>src/com/BibleQuote/managers/History/SimpleHistoryManager.java</file>
+			<file>src/com/BibleQuote/ui/SplashActivity.java</file>
+			<file>src/com/BibleQuote/controllers/TSKController.java</file>
+			<file>src/com/BibleQuote/managers/bookmarks/repository/dbBookmarksTagsRepository.java</file>
+			<file>src/com/BibleQuote/dal/repository/fsHistoryRepository.java</file>
+			<file>src/com/BibleQuote/ui/fragments/TagsFragment.java</file>
+			<file>src/com/BibleQuote/ui/BookmarksActivity.java</file>
+			<file>src/com/BibleQuote/ui/SearchActivity.java</file>
+			<file>src/com/BibleQuote/exceptions/TskNotFoundException.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2013-12-06 11:08:11" fixdate="2014-06-18 05:08:13">
+		<buginformation>
+			<summary>Исправить вызов запроса по добавлению тегов</summary>
+			<description>android.database.sqlite.SQLiteException: near "не": syntax error: , while compiling: SELECT \* FROM tags WHERE name = "25 В надмении своем нечестивый пренебрегает Господа: "не взыщет"; во всех помыслах его: "нет Бога!" (Пс.9:25)" at android.database.sqlite.SQLiteCompiledSql.native_compile(Native Method) at android.database.sqlite.SQLiteCompiledSql.compile(SQLiteCompiledSql.java:92) at android.database.sqlite.SQLiteCompiledSql.&lt;init&gt;(SQLiteCompiledSql.java:65) at android.database.sqlite.SQLiteProgram.&lt;init&gt;(SQLiteProgram.java:83) at android.database.sqlite.SQLiteQuery.&lt;init&gt;(SQLiteQuery.java:49) at android.database.sqlite.SQLiteDirectCursorDriver.query(SQLiteDirectCursorDriver.java:42) at android.database.sqlite.SQLiteDatabase.rawQueryWithFactory(SQLiteDatabase.java:1356) at android.database.sqlite.SQLiteDatabase.queryWithFactory(SQLiteDatabase.java:1235) at android.database.sqlite.SQLiteDatabase.query(SQLiteDatabase.java:1189) at android.database.sqlite.SQLiteDatabase.query(SQLiteDatabase.java:1271) at com.BibleQuote.managers.tags.repository.dbTagRepository.addRow(dbTagRepository.java:162) at com.BibleQuote.managers.tags.repository.dbTagRepository.add(dbTagRepository.java:23) at com.BibleQuote.managers.bookmarks.BookmarksManager.getTagsIDs(BookmarksManager.java:76) at com.BibleQuote.managers.bookmarks.BookmarksManager.add(BookmarksManager.java:36) at com.BibleQuote.ui.dialogs.BookmarksDialog.addBookmarks(BookmarksDialog.java:78) at com.BibleQuote.ui.dialogs.BookmarksDialog.access$000(BookmarksDialog.java:37) at com.BibleQuote.ui.dialogs.BookmarksDialog$2.onClick(BookmarksDialog.java:54) at com.android.internal.app.AlertController$ButtonHandler.handleMessage(AlertController.java:159) at android.os.Handler.dispatchMessage(Handler.java:99) at android.os.Looper.loop(Looper.java:123) at android.app.ActivityThread.main(ActivityThread.java:3687) at java.lang.reflect.Method.invokeNative(Native Method) at java.lang.reflect.Method.invoke(Method.java:507) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:867) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:625) at dalvik.system.NativeStart.main(Native Method) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/BibleQuote/managers/tags/repository/dbTagRepository.java</file>
+			<file>src/com/BibleQuote/dal/FsLibraryContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="51" opendate="2013-02-12 09:02:53" fixdate="2013-02-12 16:36:51">
+		<buginformation>
+			<summary>Не работает TTS</summary>
+			<description>Установлен русский SVOX, но при запуске чтения сообщает что русский язык не поддерживается </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/BibleQuote/tts/controllers/TTSPlayerController.java</file>
+			<file>src/com/BibleQuote/controls/ReaderWebView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="26" opendate="2012-02-11 19:02:20" fixdate="2012-02-15 14:16:44">
+		<buginformation>
+			<summary>toUpperCase()</summary>
+			<description>Найти все места, где присваивается ModuleID и проверить, чтобы он назначался в верхнем регистре. Убрать moduleID.toUpperCase() в FsModuleRepository.getModuleByID(стр.121) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/BibleQuote/managers/AsyncOpenChapter.java</file>
+			<file>src/com/BibleQuote/dal/repository/FsModuleRepository.java</file>
+			<file>src/com/BibleQuote/activity/Reader.java</file>
+			<file>src/com/BibleQuote/managers/Librarian.java</file>
+			<file>src/com/BibleQuote/managers/AsyncOpenModule.java</file>
+			<file>src/com/BibleQuote/dal/FsLibraryContext.java</file>
+			<file>src/com/BibleQuote/activity/Books.java</file>
+			<file>src/com/BibleQuote/utils/FsUtils.java</file>
+			<file>src/com/BibleQuote/entity/ItemList.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

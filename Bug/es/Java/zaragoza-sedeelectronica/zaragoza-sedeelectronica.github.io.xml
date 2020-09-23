@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>42</id>
+		<title>¿Problemas con la publicación de la agenda cultural?</title>
+		<body>Buenas,  Llevo cosa de una semana en la que no veo novedades en los eventos musicales/culturales de la fuente de datos que utilizo para la web y apps de http://www.mosica.es/. Parece que hay algún tipo de problema, ya que en la web del ayuntamiento sí aparecen.  Utilizo esta url  http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.json?start=0&amp;srsname=wgs84&amp;rows=2000 y realizo una búsqueda en el JSON de respuesta para hacerme con los eventos musicales: Dentro de _result_, selecciono los eventos que tienen en _temas_ el _titie_ igual a _Música_. ¿Puede ser que no se estén publicando muchos eventos en ese endpoint? </body>
+		<created>2016-06-02 11:36:14</created>
+		<closed>2020-03-11 10:12:29</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>Error al recuperar algunos cientos de filas en la agenda</title>
+		<body>Parece que hay algunos datos corruptos o algo en la agenda  Por alguna razón al lanzar peticiones como:  `curl -X GET --header "Accept: application/json" "http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza?rf=html&amp;results_only=false&amp;srsname=wgs84&amp;rows=500"`  Me devuelve esta respuesta:  ``` {   "error": "No row with the given identifier exists: [es.actividades.agenda.entidades.Entidad#13199]" } ```  O esta otra:  `curl -X GET --header "Accept: application/json" "http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza?rf=html&amp;results_only=false&amp;srsname=wgs84&amp;rows=3000"`  ``` {   "error": "Null value was assigned to a property of primitive type setter of es.actividades.agenda.entidades.Precio.hasCurrencyValue" } ``` </body>
+		<created>2016-03-29 09:53:31</created>
+		<closed>2016-03-29 10:48:19</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>Falla una petición al API de la agenda</title>
+		<body>Me he dado cuenta que las peticiones a http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.json llevan un par de días fallando, por si acaso he entrado a http://www.zaragoza.es/docs-api/#!/Agenda_Zaragoza/get_recurso_cultura_ocio_evento_zaragoza por si había cambiado algo y veo que desde ahí también da errores  &gt; { &gt; error: "Parametros incorrectos" &gt; } </body>
+		<created>2016-02-24 13:25:26</created>
+		<closed>2016-02-25 07:31:04</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>¿por qué la consulta de detalle de contratos devuelve duplicados?</title>
+		<body>https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/sparql/queries/perfil-contratante/Detalle_Completo.sparql  Para reproducirlo basta ejecutarla desde el punto sparql  http://www.zaragoza.es/ciudad/risp/sparql.htm  gracias! </body>
+		<created>2015-11-17 14:30:33</created>
+		<closed>2020-03-11 10:21:45</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>[SOLR] imagen_s con 'null' en la url</title>
+		<body>Petición:  ``` curl 'http://www.zaragoza.es/buscador/select?fl=uri,title,id,description,fechaInicio_dt,fechaFinal_dt,imagen_s,lugar_t,coordenadas_p_0_coordinate,coordenadas_p_1_coordinate,coordenadas_p&amp;fq=temas_smultiple:(%22musica%22),(%22Musica%22)&amp;json.wrf=angular.callbacks._0&amp;q=*:*+AND+-tipocontenido_s:estatico+AND+category:Actividades+AND+fechaInicio_dt:%5B*+TO+NOW%2B7DAY%5D+AND+fechaFinal_dt:%5BNOW%2B7DAY+TO+*%5D&amp;rows=100&amp;start=0&amp;wt=json' -H 'Pragma: no-cache' -H 'DNT: 1' -H 'Accept-Encoding: gzip, deflate, sdch' -H 'Accept-Language: en-US,en;q=0.8,es;q=0.6,ca;q=0.4,gl;q=0.2' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.52 Safari/537.36' -H 'Accept: */*' -H 'Referer: http://localhost:8100/' -H 'Cookie: JSESSIONID=fb405cddbf2f73de1b3f0fefada1496924c7a627a656354b768bc76a5d2f4bc6.e34LaxmMchmNe34Lch0Pc30Pbh10; ORA_WX_SESSION=66EDF98B673E3B82E8CFE9B40E2156BD0799097E-5#5; __gads=ID=0bc30acd63d0ef98:T=1428684110:S=ALNI_Mb0T1cDISLyzFrBMPgqkMZ0qAP34g; __unam=7839962-14ca43588b3-54a20c8b-5; cookiesession1=6F5A08D3L8TKMABAVKTHICKYSW1O82D0; WT_FPC=id=29dd347ce4f18f2b7b61427018528855:lv=1443027243164:ss=1443026405258; _ga=GA1.2.1318703100.1422040168' -H 'Connection: keep-alive' -H 'Cache-Control: no-cache' --compressed ```  Extracto de la respuesta (ver `imagen_s`):   ```     {         "uri": "http://www.zaragoza.es/ciudad/actividades/ficha_Agenda?codigo=145644",         "id": "acto-145644",         "imagen_s": "http://www.zaragoza.es/cont/paginas/actividades/null",         "title": "75 Feria General",         "lugar_t": "&lt;div&gt;Todos los días de 11:30 a 20:30&lt;/div&gt; Feria de Zaragoza Ctra. Madrid, Km.311 902 400 224",         "fechaInicio_dt": "2015-10-10T22:00:00Z",         "fechaFinal_dt": "2015-10-17T22:00:00Z",         "coordenadas_p_0_coordinate": 41.64479794393874,         "coordenadas_p_1_coordinate": -0.9307268763255305,         "coordenadas_p": "41.64479794393874,-0.9307268763255305",         "description": " 75 aniversario. \n   \n Con cerca de 60.000 m2 brutos de exposición, los distintos pabellones son el lugar ideal para promocionar, presentar y vender sus productos y servicios a un público visitante de carácter eminentemente familiar, don de podrán encontrar GASTRONOMÍA, HOGAR, MENAJE Y DECORACIÓN, AUTOMOCIÓN, EXPOSICIONES TEMÁTICAS, ARTE Y CULTURA, OCIO,.... \n   \n Además contaremos con el tradicional y exitoso Pabellón de las Fuerzas Armadas, junto con la participación de Guardia Civil y Policía Nacional, el innovador Pabellón de la Ciencia y las mejores Atracciones Infantiles .   Todos los días de 11:30 a 20:30  Feria de Zaragoza Ctra. Madrid, Km.311 902 400 224"     }, ``` </body>
+		<created>2015-10-06 17:10:01</created>
+		<closed>2015-10-07 07:12:38</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>Ciertas imágenes se devuelven con espacios y dan un 404 en la web del ayuntamiento</title>
+		<body>Por ejemplo, el API de SPARQL nos devuelve esta ruta:  http://zaragoza.es/cont/paginas/actividades/imagen/novelas%20con%20sentimiento%20resize17.gif  Si entramos en el enlace obtenemos un error 404. Nos pasa con muchas imágenes. </body>
+		<created>2015-10-05 17:09:32</created>
+		<closed>2015-10-14 05:57:58</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>[Swagger] El Model y Model Schema no aparece cuando son listas</title>
+		<body>Ejemplo de Model con lista: ![screenshot 2015-04-17 14 49 42](https://cloud.githubusercontent.com/assets/472092/7202267/003ebf70-e511-11e4-8033-283a6fcb0158.png)  Ejemplo de ModelSchema con lista: ![screenshot 2015-04-17 14 48 57](https://cloud.githubusercontent.com/assets/472092/7202270/042292ba-e511-11e4-9262-07c716901b3b.png) </body>
+		<created>2015-04-17 12:50:15</created>
+		<closed>2015-07-30 08:43:01</closed>
+	</bug>
+	<bug>
+		<id>11</id>
+		<title>[Swagger] La sección de Agenda Zaragoza se despliega de forma raruna</title>
+		<body>Esto no tiene ninguna prioridad. Simplemente me ha hecho gracias que al acceder a la documentación   http://www.zaragoza.es/docs-api y clicar la "Agenda Zaragoza", se despliegan elementos entremezclados con el resto de endpoints... Adjunto captura de Google Chrome. Lo he testeado también en Safari y Firefox Developer Edition, y se replica.  ![screenshot 2015-04-17 14 43 47](https://cloud.githubusercontent.com/assets/472092/7202202/6a3d81be-e510-11e4-9d1a-22c22b3aab05.png) </body>
+		<created>2015-04-17 12:46:14</created>
+		<closed>2015-07-30 08:43:18</closed>
+	</bug>
+</bugs>

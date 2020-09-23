@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Fragmentation">
+	<bug id="455" opendate="2017-07-26 09:05:06" fixdate="2017-07-27 13:20:46">
+		<buginformation>
+			<summary>跳转动画问题</summary>
+			<description>之前用的1.0X以下的，准备升级到1.0.8 最新，发现一些问题： 一 1，loadRootFragment(R.id.fl_container, ExamApplyMainFragment.newInstance(gradeUnitId)); 2，ExamApplyMainFragment重写onCreateFragmentAnimator   return new DefaultNoAnimator(); 3，start到下个fragment,ExamApplyMainFragment会出现window的背景，而本身的内容不可见。 二。 loadRootFragment(R.id.fl_container, ExamApplyMainFragment.newInstance(gradeUnitId),false,true);//第四个参数,ExamApplyMainFragment的onEnterAnimationEnd不执行。。。是这样的？？  三。先前的_mActivity是SupportActivity,现在都改成FragmentActivity了，我Fragment操作了Toolbar,((AppCompatActivity)_mActivity).setSupportActionBar(toolbar);  ActionBar actionBar=((AppCompatActivity)_mActivity).getSupportActionBar(); 现在要进行强制转换了？ 或者 实现自己的基类？         </description>
+		</buginformation>
+		<fixedfiles>
+			<file>fragmentation_core/src/main/java/me/yokeyword/fragmentation/SupportFragmentDelegate.java</file>
+			<file>fragmentation_core/src/main/java/me/yokeyword/fragmentation/TransactionDelegate.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

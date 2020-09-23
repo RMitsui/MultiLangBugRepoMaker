@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>78</id>
+		<title>이미지 압축하기 도움말 개행 필요</title>
+		<body># 이미지 압축하기 도움말 개행 필요 ![image](https://user-images.githubusercontent.com/20942871/43367689-0d0912e6-938c-11e8-97e8-8b34b156834b.png) </body>
+		<created>2018-07-29 15:04:07</created>
+		<closed>2018-07-29 15:28:46</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>윈도우 버전에서 이미지 압축 기능 에러</title>
+		<body># 윈도우 버전에서 이미지 압축 기능 에러  ```` 2018-07-30_00-00-47_다운받은_만화_압축_실패.txt  java.util.zip.ZipException: duplicate entry:  at java.util.zip.ZipOutputStream.putNextEntry(Unknown Source) at util.ImageCompress.compress(ImageCompress.java:47) at util.ImageCompress.compress(ImageCompress.java:26) at downloader.Downloader.download(Downloader.java:167) at downloader.Preprocess.connector(Preprocess.java:54) at ui.UI.showMenu(UI.java:63) at main.Main.main(Main.java:9) ```` * 압축 파일명이 `.zip`으로만 되어있는것으로 보아 StringUtils 사용 과정에서 발생한 에러로 추정</body>
+		<created>2018-07-29 15:02:14</created>
+		<closed>2018-07-29 16:33:30</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>ZipEntry에 한글 파일은 무시하고 압축됨</title>
+		<body></body>
+		<created>2018-07-22 09:50:50</created>
+		<closed>2018-07-22 10:14:46</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>병합시 모든 파일 병합 필요</title>
+		<body> 현재 만화를 2화 이상 다운받을때 마지막 화에만 병합이 적용됨  모든 파일에 병합기능이 적용될수 있도록 개선필요</body>
+		<created>2018-07-01 15:58:56</created>
+		<closed>2018-07-22 11:01:16</closed>
+	</bug>
+	<bug>
+		<id>73</id>
+		<title>마루마루에서 쿠키 검사로 로봇 연결 차단</title>
+		<body># 마루마루에서 쿠키 검사로 로봇 연결 차단 * 쿠키 연결이 없는 모든 접속을 차단 중. * MMDownloader 이외의 모든 다운로더도 동일 현상  * 로그 ```` 2018-06-12_22-37-28_흑의_창조소환사_-전생자의_반역-_9화_003.txt  java.io.IOException: Server returned HTTP response code: 403 for URL: http://wasabisyrup.com/storage/gallery/9B_Cjlo45jM/p2_zOC-cblCweE.jpg at sun.reflect.GeneratedConstructorAccessor1.newInstance(Unknown Source) at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) at java.lang.reflect.Constructor.newInstance(Constructor.java:423) at sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1944) at sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1939) at java.security.AccessController.doPrivileged(Native Method) at sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:1938) at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1508) at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492) at downloader.Downloader$Worker.download(Downloader.java:432) at downloader.Downloader$Worker.run(Downloader.java:391) at downloader.Downloader.lambda$download$1(Downloader.java:145) at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) at java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:948) at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481) at java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:291) at java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:731) at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289) at java.util.concurrent.ForkJoinPool.helpComplete(ForkJoinPool.java:1870) at java.util.concurrent.ForkJoinPool.awaitJoin(ForkJoinPool.java:2045) at java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:404) at java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:734) at java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:160) at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:174) at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418) at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:583) at downloader.Downloader.lambda$download$2(Downloader.java:145) at java.util.concurrent.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1386) at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289) at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056) at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692) at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157) Caused by: java.io.IOException: Server returned HTTP response code: 403 for URL: http://wasabisyrup.com/storage/gallery/9B_Cjlo45jM/p2_zOC-cblCweE.jpg at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1894) at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492) at sun.net.www.protocol.http.HttpURLConnection.getHeaderField(HttpURLConnection.java:3000) at java.net.URLConnection.getHeaderFieldLong(URLConnection.java:629) at java.net.URLConnection.getContentLengthLong(URLConnection.java:501) at java.net.URLConnection.getContentLength(URLConnection.java:485) at downloader.Downloader$Worker.download(Downloader.java:431) ... 23 more ```` </body>
+		<created>2018-06-12 14:03:09</created>
+		<closed>2018-06-12 17:00:49</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>최신버전 다운로드 시 다운로드 진행 표시가 잘못됨</title>
+		<body># 최신버전 다운로드 시 다운로드 진행 표시가 잘못됨 * MB로 표시가 되어야 하는데 KB 정보가 나옴</body>
+		<created>2018-02-04 11:04:11</created>
+		<closed>2018-04-22 08:20:47</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>Java 1.8_161업데이트 이후, Windows 환경에서 exe 실행 시 자바 다운로드 페이지로 이동함</title>
+		<body># Java 1.8_161업데이트 이후, Windows 환경에서 exe 실행 시 자바 다운로드 페이지로 이동함 * jar로는 작동하는것으로 보아 exe포팅 과정에서 jre 범위가 잘못 설정된 것으로 추측</body>
+		<created>2018-01-18 22:40:43</created>
+		<closed>2018-01-19 09:35:25</closed>
+	</bug>
+	<bug>
+		<id>63</id>
+		<title>FileOutputStream 부분은 싱글 스레드로 전환</title>
+		<body># FileOutputStream 부분은 싱글 스레드로 전환 * 인풋스트림은 멀티스레딩 하는게 좋으나, 일반적인 HDD에서 헤드 이동을 고려하면, 출력 과정은 싱글스레드가 훨씬 유리하다.</body>
+		<created>2018-01-05 08:07:05</created>
+		<closed>2018-04-29 04:29:14</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>null 체크 부분 수정 필요</title>
+		<body>https://github.com/occidere/MMDownloader/blob/88e55a5cd8195ee25bc69250e5223becd7f169c1/src/downloader/Preprocess.java#L107  `e.text()`가 진짜로 `null`이면 `.trim()`을 호출하는 순간 에러가 발생할 확률이 높음.</body>
+		<created>2017-12-28 23:16:31</created>
+		<closed>2017-12-30 11:12:50</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>오타 수정할 것</title>
+		<body>https://github.com/occidere/MMDownloader/blob/88e55a5cd8195ee25bc69250e5223becd7f169c1/src/downloader/Preprocess.java#L57</body>
+		<created>2017-12-28 23:13:29</created>
+		<closed>2017-12-30 11:10:34</closed>
+	</bug>
+	<bug>
+		<id>57</id>
+		<title>스레드 개수가 총 페이지 수를 넘지 않도록 조정 필요</title>
+		<body># 스레드 개수가 총 페이지 수를 넘지 않도록 조정 필요 https://github.com/occidere/MMDownloader/blob/88e55a5cd8195ee25bc69250e5223becd7f169c1/src/downloader/Downloader.java#L132  * 과도한 스레드 풀 설정 시 `ForkJoin` 이 비효율적으로 느려짐  * 예상 수정 방침 ```` numberOfThreads = Math.min(numberOfPages, numberOfThreads); ````</body>
+		<created>2017-12-23 01:39:46</created>
+		<closed>2017-12-30 11:10:47</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>0.4.5.0 베타버전에서 다운로드 저장 경로에 파일명이 표시가 안됨</title>
+		<body># 0.4.5.0 베타버전에서 다운로드 저장 경로에 파일명이 표시가 안됨 ex) C:/Users/사용자/Marumaru/만화/만화 1화/ -&gt; C:/Users/사용자/Marumaru/만화/만화 1화/**001.jpg**</body>
+		<created>2017-12-08 08:45:13</created>
+		<closed>2017-12-20 09:36:29</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>폴더 생성 정규식 수정 필요</title>
+		<body># 폴더 생성 정규식 수정 필요 * 현재 상태 https://github.com/occidere/MMDownloader/blob/58bd6da68272d9ca9b465dd10f6e47649e8bd378/src/downloader/Downloader.java#L370 1. 만화 제목이 `"Something"_blahblah` 인 경우 `"`를 걸러내지 못함 2. 제목에 `\`가 포함된 경우 자동으로 서브 디렉토리를 생성해버림 -&gt; 아예 제거할 것  ### 폴더 명명 규칙 * ` \ / : * ? &lt; &gt; | . "`이 없어야 함 * 정규식을 `[\\\\/:*?&lt;&gt;|.\"]`로 수정할 것</body>
+		<created>2017-12-04 09:02:36</created>
+		<closed>2017-12-20 09:37:00</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>단편만화 중 회차번호가 없어서 폴더 생성 시 디렉토리 못찾는 버그 발생</title>
+		<body>## 단편만화 중 회차번호가 없어서 폴더 생성 시 디렉토리 못찾는 버그 발생  단편 만화 중 회차 번호가 없어서 path/title titleNo/가 path/title / 처럼 되버리고 실제 시스템에서는 공백을 알아서 제거해버려서 폴더 인식을 못하는 버그 발생. </body>
+		<created>2017-11-22 01:52:31</created>
+		<closed>2017-11-22 02:00:55</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>이전버전 부터 파싱실패가 뜹니다</title>
+		<body>주소를 입력하세요: http://marumaru.in/b/manga/147728 [Error] 2017-10-30_11-51-50_Jsoup_파싱_실패.txt 총 0개  이런식으로 파싱실패가뜨내요 다른주소를써도똑같구요  </body>
+		<created>2017-10-30 15:55:04</created>
+		<closed>2017-11-14 07:57:57</closed>
+	</bug>
+	<bug>
+		<id>43</id>
+		<title>MMDownloader.properties가 없는 상태에서 실행 시 에러 발생</title>
+		<body>## MMDownloader.properties가 없는 상태에서 실행 시 에러 발생 처음에 Properties 접근 시 발생하는 문제같음 -&gt; 파일 없을 시 생성 후 종료하는 방식으로 코드 수정 필요 </body>
+		<created>2017-10-25 03:27:02</created>
+		<closed>2017-10-25 11:30:52</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>가비지 최적화 필요</title>
+		<body>### 가비지 최적화 필요 100화가 넘는 만화 다운로드 시, 뒤로 갈 수록 점점 느려짐. 인터넷 속도의 영향 보다 내부 객체의 가비지에 영향을 많이 받게 되는 것으로 추정중 #### 추가점? 1. 다운로드 속도를 알 수 있게 130KB/S 처럼 속도 내용도 출력할 수 있게 모듈 생성 2. 원활한 디버깅을 위해 메모리 사용량을 출력할 수 있게</body>
+		<created>2017-10-24 00:55:09</created>
+		<closed>2018-03-02 14:19:55</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>업데이트 다운로드 시 폴더가 제대로 구분되지 않는 문제 발생</title>
+		<body># 업데이트 다운로드 시 폴더가 제대로 구분되지 않는 문제 발생  원래 다운로드를 하면 Marumaru/MMDownloader.exe 이렇게 되야 되는데, 지금은 MarumaruMMDownloader.exe 처럼 폴더와 파일명 사이가 분리되지 않은 상태로 다운됨</body>
+		<created>2017-09-07 14:25:47</created>
+		<closed>2017-09-07 14:49:26</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>저장경로 변경 시 폴더가 제대로 생성되지 않는 버그</title>
+		<body># 저장경로 변경 시 폴더가 제대로 생성되지 않는 버그 예를들어 C:￦Users￦사용자￦Download 로 변경 한 경우 이미지(jpg) 저장하는 FileOutputStream에서 FileNotFoundException 발생. ## 원인 추측 * 변경 후 폴더 생성하는 코드 누락 * 폴더 명(다운로드, Downloads)의 이중성으로 인해 오류 발생</body>
+		<created>2017-09-05 09:03:25</created>
+		<closed>2017-12-08 04:30:48</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>현재 UserAgent가 Moblie인 경우 트래픽 관리에 잡혀서 캡차를 입력해야 하는 문제 발생</title>
+		<body>UserAgent를 일반 Desktop 용으로 변경해볼 것</body>
+		<created>2017-08-14 10:25:47</created>
+		<closed>2017-08-14 10:41:28</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>여러편 다운로드시 멈춤현상 발생 후 Ctrl+C 로 프로세스 죽이면 다시 정상 다운로드 됨</title>
+		<body>여러편 한번에 다운로드 하는데 계속 멈춰있는 상황 발생 평소같으면 timeout이 발생하나, 그러지 않고 계속 데드록 처럼 멈춰있음 이 때, **Ctrl + C 를 눌러 프로세스를 죽이면 다시 정상 다운로드** 됨. # 원인 추론  1. 마루마루 서버와 통신하는 스레드가 대기상태로 wait -&gt; 이게 종료가 안되고 계속 잔류 -&gt; 이걸 죽이니 실행 (제일 가능성 높음) 2. 다른 프로세스들과 병렬실행도중 데드록 발생 (이 프로그램이 멀티스레딩 등을 안해서 가능성은 낮음) 3. 프로그램 내 Full GC 발생 (여태까지 해오던 방식인데, 초창기 버전 소스코드에선 발생하지 않은것으로 보아 Full GC까진 도달하지 않았으리라 추측)</body>
+		<created>2017-05-11 09:51:12</created>
+		<closed>2018-03-02 12:29:37</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>업데이트 다운로드시 항상 윈도우 버전만 다운로드됨</title>
+		<body>다운로드 부분을 LATEST_WINDOWS로 해놔서 그랬음. filename으로 수정할 것</body>
+		<created>2017-05-08 03:10:07</created>
+		<closed>2017-05-10 02:17:34</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>업데이트 다운로드시 Marumaru폴더가 없어서 에러 발생</title>
+		<body>미리 mkdirs(); 해주는거 까먹음 긴급처리요망</body>
+		<created>2017-05-08 02:46:37</created>
+		<closed>2017-05-10 02:18:17</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>새로운 아카이브주소로 자동 리디렉션이 안되는 경우 발생</title>
+		<body>- 무직전생 만화의 경우 www.shencomics.com 이 wasabisyrup.com으로 자동 리디렉션이 안됨. - 한글 주소가 포함됬을때 발생하던 문제는 해결됬으나, 이렇게 자동 리디렉션이 안될 시 똑같이 이상한 용량으로 다운로드 되는 경우가 발생함. - 현재 기존에 남겨두었던 메서드를 다시 활용하여 수동으로 최신 아카이브를 맞춰주게 함. - 추후 조정작업 필요.</body>
+		<created>2017-04-23 14:55:29</created>
+		<closed>2017-06-26 12:44:12</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>한글이 포함된 이미지 주소 다운로드 불가</title>
+		<body></body>
+		<created>2017-03-29 13:42:54</created>
+		<closed>2017-03-29 17:01:54</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>전권보기 리스트 파싱시 일부 주소 파싱 안됨</title>
+		<body>ex) 미나모토 군 이야기 시리즈의 경우 과거 태그와 현재 태그가 다름 ![image](https://cloud.githubusercontent.com/assets/20942871/24453025/25540252-14c1-11e7-9fc2-c85ea71a76e9.png)  파싱 정규식 변경 필요</body>
+		<created>2017-03-29 11:49:35</created>
+		<closed>2017-03-29 17:02:15</closed>
+	</bug>
+	<bug>
+		<id>19</id>
+		<title>이미지 URL주소에 한글 등이 포함된 경우 제대로 다운로드가 안됨</title>
+		<body>인코딩 타입의 문제로 MS949 말고 UTF-8을 이용해야 함 ex) http://wasabisyrup.com/archives/543204 /storage/gallery/543204/m0015-사본.jpg" 같은 경우</body>
+		<created>2017-03-29 06:27:35</created>
+		<closed>2017-03-29 17:02:31</closed>
+	</bug>
+	<bug>
+		<id>15</id>
+		<title>만화 업데이트 주소 넣을 시 제목(폴더명) 파싱 오류</title>
+		<body>ex) http://marumaru.in/b/mangaup/198811 의 경우 마돈나는 유리 케이스 안 15, 16화 (완결) 만화 업데이트 알림 -Total. 19,610 처럼 제목이 파싱됨 -&gt; html 코드 파싱 규칙 수정 필요</body>
+		<created>2017-03-15 05:06:18</created>
+		<closed>2017-03-15 12:20:47</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>만화 주소에 아스키 코드 이외의 값 들어있는 경우 정상 다운로드가 안됨</title>
+		<body>갱스터 3~4화 이미지 주소들이 전부 /storage/gallery/0v_81m1fCXg/╝÷┴ñ╡╩_GANGSTA3_000a_GsP-0GAEw38..jpg 이런식이여서 저걸 처리를 못하는중</body>
+		<created>2017-02-23 09:03:06</created>
+		<closed>2018-04-29 06:00:48</closed>
+	</bug>
+	<bug>
+		<id>11</id>
+		<title>전체보기 주소 파싱 알고리즘 수정 필요</title>
+		<body>일부 만화에서 각 회차별 주소가 라인별로 나눠져 있는 경우 발견 ex) 갱스터(http://marumaru.in/b/manga/89761) while문의 break를 빼는 등의 방향으로 수정 필요</body>
+		<created>2017-02-23 07:27:04</created>
+		<closed>2017-02-23 08:18:35</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>인풋스트림을 이용한 다운로드 과정 코드 수정 필요</title>
+		<body>* 이미지 다운로드 중 모종의 이유로 인해 실패했을때, 다음 파일들은 시도도 못해보고 종료됨 * 인풋스트림을 이용해 다운로드 과정상 에러가 발생하더라도 다음 이미지 다운로드로 넘어갈 수 있게 try...catch문 수정이 필요 * 사례: https://github.com/occidere/MMDownloader/issues/6</body>
+		<created>2017-02-22 14:46:40</created>
+		<closed>2017-02-23 08:19:08</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>일부 만화 다운로드시 HTTP Code 522 반환</title>
+		<body>카구야님은 고백 받고 싶어 44화 13번째 이미지 다운로드 중 발생 (http://wasabisyrup.com/storage/gallery/ZFz3a2kxJVU/m0065%20copy_91RiXqUzm5w.jpg) ![image](https://cloud.githubusercontent.com/assets/20942871/23216076/060c365a-f958-11e6-8201-ef11bfab20e0.png)  </body>
+		<created>2017-02-22 14:41:14</created>
+		<closed>2017-02-22 14:44:54</closed>
+	</bug>
+	<bug>
+		<id>6</id>
+		<title>일부 만화 여러편 다운로드시 403 에러 발생</title>
+		<body>"사실 나는" 1화 ~159화 다운로드 시 403 Forbidden 발생 ![image](https://cloud.githubusercontent.com/assets/20942871/23149495/9d30b7ba-f82f-11e6-9bc0-bb40b51b0a17.png)  HtmlUnit 의 WebClient 작업중 발생하는 것으로 보아 마루마루 사이트의 서버 문제이거나, 주소 파싱 과정에서 에러가 발생하여 잘못된 주소를 전달했을 가능성도 있음</body>
+		<created>2017-02-21 03:13:56</created>
+		<closed>2017-02-21 05:18:27</closed>
+	</bug>
+</bugs>

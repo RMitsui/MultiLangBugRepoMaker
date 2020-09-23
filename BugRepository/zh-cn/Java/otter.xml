@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="otter">
+	<bug id="607" opendate="2018-09-13 03:51:48" fixdate="2018-09-18 02:22:31">
+		<buginformation>
+			<summary>主备配置 有成功的吗？</summary>
+			<description>在主备配置中，尝试各种，始终不成功。但是用主库直接部署otter却可以。  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>shared/push/src/main/java/com/alibaba/otter/common/push/datasource/media/MediaPushDataSource.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="605" opendate="2018-09-12 08:13:25" fixdate="2018-09-20 02:25:42">
+		<buginformation>
+			<summary>v4.2.16版本中异构库表明同步有问题</summary>
+			<description>在4.2.15中增加“支持一下mysql异构库表名的同步”功能，在新版本中该功能对于表名不同的情况下无法进行ddl的更新</description>
+		</buginformation>
+		<fixedfiles>
+			<file>node/etl/src/main/java/com/alibaba/otter/node/etl/common/db/utils/DdlUtils.java</file>
+			<file>node/etl/src/test/java/com/alibaba/otter/node/etl/common/db/DdlUtilsTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

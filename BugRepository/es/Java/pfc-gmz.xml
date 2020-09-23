@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="pfc-gmz">
+	<bug id="37" opendate="2017-03-02 21:34:01" fixdate="2017-05-02 21:41:48">
+		<buginformation>
+			<summary>Esta hardcodeado el rol del usuario logueado. Siempre aparece "Administrador"</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/controllers/util/UserRoles.java</file>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/controllers/HttpSessionController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2017-02-20 20:16:02" fixdate="2017-03-01 22:36:44">
+		<buginformation>
+			<summary>Notificaciones repetidas</summary>
+			<description>Si un paciente debe orden el sistema genera una notificación el día N. Si para el día N+1 no se cargó dicha órden, el sistema vuelve a notificar lo mismo, y así sucesivamente.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/gestores/batch/SesionesTranscurridasScheduler.java</file>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/controllers/NotificacionController.java</file>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/gestores/NotificacionFacade.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="24" opendate="2017-02-18 21:50:34" fixdate="2017-05-02 21:38:44">
+		<buginformation>
+			<summary>La numeración de las sesiones dentro de un tratamiento no se corresponde con el órden cronológico de las mismas.</summary>
+			<description>Para un tratamiento X se crean tres sesiones en el siguiente orden:  1. Se crea sesión en la fecha 15/02 ---&gt; nro sesión "1" 2. Se crea sesión en la fecha 17/02 ---&gt; nro sesión "2" 3. Se crea sesión en la fecha 16/02 ---&gt; nro sesión "3"  Cuando deberían tener la siguiente numeración:  -Sesión del 15/02 ---&gt; nro "1" -Sesión del 17/02 ---&gt; nro "3" -Sesión del 16/02 ---&gt; nro "2"</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/controllers/AbstractSesionController.java</file>
+			<file>src/test/java/ar/edu/utn/frsf/kinesio/gestores/SesionFacadeTest.java</file>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/gestores/SesionFacade.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="9" opendate="2016-09-26 03:22:20" fixdate="2017-05-02 21:39:12">
+		<buginformation>
+			<summary>El sistema muestra la tabla y deja agregar ordenes méddicas a un tratamiento de tipo Particular</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/gestores/TratamientoFacade.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6" opendate="2016-04-10 18:42:16" fixdate="2016-04-11 02:55:12">
+		<buginformation>
+			<summary>La lista de ordenes en tratamiento/Edit.xhtml y orden/List.xhtml no se actualiza al crear/eliminar ordenes</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/gestores/OrdenMedicaFacade.java</file>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/controllers/SesionController.java</file>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/entities/Agenda.java</file>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/controllers/OrdenMedicaController.java</file>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/controllers/OrdenMedicaListViewController.java</file>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/controllers/EditTratamientoController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="3" opendate="2016-03-15 23:39:48" fixdate="2016-03-16 14:25:41">
+		<buginformation>
+			<summary>Al cancelar la creación de un nuevo tratamiento, no limpia los errores</summary>
+			<description>Idem para edit paciente y edit tratamiento. Copiar lo hecho en creación paciente </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/ar/edu/utn/frsf/kinesio/controllers/TratamientoController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

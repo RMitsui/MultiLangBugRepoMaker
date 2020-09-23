@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>40</id>
+		<title>Incongruencia de datos en PopulateDatabase.xml</title>
+		<body></body>
+		<created>2017-01-10 04:19:26</created>
+		<closed>2017-01-10 04:20:08</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>Acceso no restringido borrando encuestas</title>
+		<body></body>
+		<created>2017-01-10 04:11:17</created>
+		<closed>2017-01-10 04:12:10</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>Acceso no restringido borrando preguntas</title>
+		<body></body>
+		<created>2017-01-10 04:09:41</created>
+		<closed>2017-01-10 04:10:59</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>Falta de seguridad añadiendo preguntas o mostrando detalles</title>
+		<body></body>
+		<created>2017-01-10 04:07:49</created>
+		<closed>2017-01-10 04:08:48</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>Falta de seguridad al crear y listar encuestas</title>
+		<body></body>
+		<created>2017-01-10 03:59:42</created>
+		<closed>2017-01-10 04:05:44</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>Fallos en tests JUnit</title>
+		<body></body>
+		<created>2017-01-09 19:54:54</created>
+		<closed>2017-01-09 19:56:19</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>Al registrar o editar una encuesta, esta se hace sin usernameCreator</title>
+		<body></body>
+		<created>2017-01-09 19:53:01</created>
+		<closed>2017-01-09 19:53:40</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>Vista de detalles innacesible</title>
+		<body></body>
+		<created>2017-01-09 19:47:14</created>
+		<closed>2017-01-09 19:49:20</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>Error NullPointerException cuando una fecha es introducida vacía al guardar una Survey</title>
+		<body>Una vez se intenta crear una Survey, el sistema detecta un error NullPointerException al guardar una votación dejando alguna fecha en blanco (de comienzo o de fin).</body>
+		<created>2017-01-09 09:21:46</created>
+		<closed>2017-01-09 09:27:34</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>list() de SurveyController no funciona</title>
+		<body></body>
+		<created>2017-01-09 08:11:20</created>
+		<closed>2017-01-09 08:12:16</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>Algunas referencias a Survey no unificadas (/vote)</title>
+		<body></body>
+		<created>2017-01-09 08:09:16</created>
+		<closed>2017-01-09 08:12:45</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>Diversidad de llamadas referidas a la misma entidad (Survey)</title>
+		<body></body>
+		<created>2017-01-09 08:00:01</created>
+		<closed>2017-01-09 08:01:46</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>Error 404 cuando un código postal es introducido erróneamente</title>
+		<body>Al crear una encuesta, si se introduce un código postal incorrecto (menos o más de cinco dígitos o caracteres distintos de éstos), retorna un mensaje 404.</body>
+		<created>2017-01-07 18:41:37</created>
+		<closed>2017-01-07 18:52:40</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>Error en la hora del sistema</title>
+		<body>El sistema una vez desplegado muestra una hora menos, lo que puede incurrir en un error a la hora de realizar accesos a la base de datos.</body>
+		<created>2017-01-04 22:14:20</created>
+		<closed>2017-01-04 23:05:03</closed>
+	</bug>
+	<bug>
+		<id>19</id>
+		<title>Fallo en el acceso remoto a la base de datos</title>
+		<body>Al intentar acceder de manera remota a la base de datos lanza un fallo. por lo que parece no se crean las tablas de forma correcta.</body>
+		<created>2017-01-04 20:20:30</created>
+		<closed>2017-01-04 20:35:47</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>Actualizar el script.sql</title>
+		<body>Actualizar el script.sql para poder acceder a la base de datos de manera remota ya que se añadió un campo (código posta CP). [script.sql](https://github.com/AgoraUS-G1-1617/Creacion-admin-de-votaciones/blob/master/script.sql)</body>
+		<created>2016-12-26 10:39:15</created>
+		<closed>2017-01-03 10:35:58</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>Funcionalidad de la Query allFinishedSurveys incorrecta</title>
+		<body>Buenas. Revisando el código del repositorio de Survey, he podido comprobar que la query "allFinishedSurveys" debe devolver una lista de Surveys cuya fecha de finalización sea igual a la fecha actual del sistema. Sin embargo, el código JPQL busca aquellas Surveys cuya fecha de finalización sea igual a una fecha pasada como parámetro. ¿Coincide realmente la query escrita con el enunciado de ésta?  Además, el nombre del método "allFinishedSurveys" hace entender al usuario que dicha query recogerá todas las Surveys cuya fecha de finalización es más antigua que la fecha actual. Sin embargo, la nuestra recoge las Surveys cuya fecha de finalización sea exactamente la misma que la actual. ¿No tendría más funcionalidad implementándose de la primera forma?  Saludos.</body>
+		<created>2016-12-20 17:46:26</created>
+		<closed>2017-01-04 15:15:55</closed>
+	</bug>
+	<bug>
+		<id>5</id>
+		<title>Redirección en cambio de idioma</title>
+		<body>Buenas.  A la hora de cambiar de idioma la aplicación, bien sea de Inglés a Español o viceversa, ésta redirige a la página principal. Por ejemplo, si accedemos al apartado "sobre nosotros" (https://beta.cavotacion.agoraus1.egc.duckdns.org/welcome/aboutus.do) y cambiamos el idioma, nos redirige a la página principal, teniendo que rehacer el camino que se haya hecho.  En este caso no es crítico, pero en cuanto la aplicación avance pudiera ser un problema.  Saludos.</body>
+		<created>2016-11-29 18:13:56</created>
+		<closed>2017-01-10 04:17:30</closed>
+	</bug>
+	<bug>
+		<id>4</id>
+		<title>Error a la hora de borrar votaciones</title>
+		<body>Al no poder acceder de manera exitosa a la base de datos no es posible borrar votaciones creadas </body>
+		<created>2016-11-28 16:40:51</created>
+		<closed>2017-01-03 10:40:06</closed>
+	</bug>
+	<bug>
+		<id>2</id>
+		<title>Error base de datos</title>
+		<body>Error al ejecutar el trabajo del curso anterior y registrar una entidad en la base de datos. Muestra un error de tipo 400.</body>
+		<created>2016-11-09 07:17:31</created>
+		<closed>2017-01-09 09:30:38</closed>
+	</bug>
+	<bug>
+		<id>1</id>
+		<title>Problemas importación trabajo año anterior</title>
+		<body>Problema al importar el trabajo del año pasado del grupo 2 de la asignatura de EGC, debido a problemas con el pom.xml.</body>
+		<created>2016-11-08 19:19:12</created>
+		<closed>2016-11-08 21:47:07</closed>
+	</bug>
+</bugs>

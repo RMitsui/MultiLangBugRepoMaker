@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>701</id>
+		<title>Https下无法抓取只支持TLS1.2的站点</title>
+		<body>WebMagic默认的HttpClient只会用TLSv1去请求，对于某些只支持TLS1.2的站点（例如 `https://juejin.im/`） ，就会报错：  ``` javax.net.ssl.SSLException: Received fatal alert: protocol_version at sun.security.ssl.Alerts.getSSLException(Alerts.java:208) at sun.security.ssl.Alerts.getSSLException(Alerts.java:154) at sun.security.ssl.SSLSocketImpl.recvAlert(SSLSocketImpl.java:2023) at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1125) at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1375) at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1403) at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1387) at org.apache.http.conn.ssl.SSLConnectionSocketFactory.createLayeredSocket(SSLConnectionSocketFactory.java:394) at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:353) at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:141) at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353) at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380) at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) at us.codecraft.webmagic.downloader.HttpClientDownloader.download(HttpClientDownloader.java:85) ```  现在的修改方式是在`HttpClientGenerator`中构建`SSLConnectionSocketFactory`时加上支持。</body>
+		<created>2017-11-29 05:27:36</created>
+		<closed>2017-12-02 03:16:47</closed>
+	</bug>
+	<bug>
+		<id>610</id>
+		<title>UrlUtils中的getCharset方法，正则表达式大小写敏感，获取网页编码失败</title>
+		<body>实测中发现有网页编码属性charset存在大小写混乱的状况，导致获取不到网页编码。</body>
+		<created>2017-06-20 03:49:21</created>
+		<closed>2017-07-22 09:28:01</closed>
+	</bug>
+	<bug>
+		<id>609</id>
+		<title>Request 使用fastjson反序列化异常</title>
+		<body>Exception in thread "main" com.alibaba.fastjson.JSONException: default constructor not found. class us.codecraft.webmagic.model.HttpRequestBody</body>
+		<created>2017-06-19 02:10:42</created>
+		<closed>2017-06-24 03:31:33</closed>
+	</bug>
+	<bug>
+		<id>605</id>
+		<title>0.7.1版本重复调用onSuccess()函数</title>
+		<body>0.7.1版本Spider.java中，Spider.run()方法当页面成功时会调用onSuccess(),而onDownloadSuccess()方法中也会调用onSuccess()，导致监控的数据产生重复</body>
+		<created>2017-06-16 06:01:10</created>
+		<closed>2017-06-17 02:28:16</closed>
+	</bug>
+	<bug>
+		<id>596</id>
+		<title>http proxy 407 Proxy Authentication Required</title>
+		<body>version: 0.7.0 按照协议，请求应该含有Proxy-Authorization这个头，但是请求不含有（含有的是Authorization 这个头），哪个版本fix下？</body>
+		<created>2017-06-10 08:40:46</created>
+		<closed>2017-06-17 08:09:06</closed>
+	</bug>
+	<bug>
+		<id>583</id>
+		<title>RedisScheduler无法使用</title>
+		<body>0.7.0版本中对`RedisScheduler`做了重构，使用了`jedis.sadd`来直接进行去重。  但是sadd的javadoc如下： ``` Integer reply, specifically: 1 if the new element was added 0 if the element was already a member of the set ```  所以这里是用法反了，应该改为： ```java public boolean isDuplicate(Request request, Task task) {         Jedis jedis = pool.getResource();         try {             return jedis.sadd(getSetKey(task), request.getUrl()) == 0;         } finally {             pool.returnResource(jedis);         }     } ```</body>
+		<created>2017-06-01 14:24:21</created>
+		<closed>2017-06-01 14:39:50</closed>
+	</bug>
+	<bug>
+		<id>559</id>
+		<title>[BUG] 默认取捕获组1引出的问题</title>
+		<body>几天前改项目Bug，发现RegexSelector的某处默认选择了捕获组1，随之发现判断捕获组数量的方案有问题，从开始的只处理非捕获组的情况，渐渐改善成可以处理零宽度断言，到最后可以处理模式修饰符、注释等，本来尝试了通过反射去做的，最后选择了使用groupCount方法去取得捕获组数量。 这种方案虽然解决了捕获组数量的正确计算问题，但是此处还是存在bug，由于添加捕获组的方式是在正则表达式两端添加小括弧，这样使得在某种情况下（例如：注释模式下，后边的小括号可能被吃掉）有bug，其他情况还没有考虑。 最后提出一个问题，当没有捕获组1的时候，将默认捕获组改为0，这样可否？有没有违背最开始的设计？ @code4craft  Pull request 参见 #556</body>
+		<created>2017-05-05 03:04:22</created>
+		<closed>2017-06-03 03:44:37</closed>
+	</bug>
+	<bug>
+		<id>544</id>
+		<title>redis 中获取 post 类型的 request 报错</title>
+		<body>Request{url='https://www.facebook.com/ajax/growth/friend_browser/checkbox.php?dpr=1134867026559159', method='POST', extras={nameValuePair=[{"name":"__a","value":"1"},{"name":"network_context","value":"1"},{"name":"__user","value":"100015592750268"},{"name":"fb_dtsg","value":"AQHudIngKalc:AQFujVWTcZL-"},{"name":"big_pics","value":"1"},{"name":"work_ids[0]","value":"134867026559159"}], statusCode=0}, priority=0} error java.lang.ClassCastException: com.alibaba.fastjson.JSONArray cannot be cast to [Lorg.apache.http.NameValuePair; at us.codecraft.webmagic.downloader.HttpClientDownloader.selectRequestMethod(HttpClientDownloader.java:173)   我的测试代码如下 Object o = request.getExtra("nameValuePair"); NameValuePair[] nameValuePair = (NameValuePair[]) o; 如果从redis中获取到的request 其中nameValuePair的值为 JSONARRAY 不能转为 NameValuePair。 在 0.6.2-SNAPSHOT 可以使用 Request 的param 设值，就没有这个问题了。 谢谢！</body>
+		<created>2017-04-22 03:12:35</created>
+		<closed>2017-05-06 01:08:15</closed>
+	</bug>
+	<bug>
+		<id>532</id>
+		<title>JS渲染的内容webmagic能爬虫到吗？</title>
+		<body>大家有没有发现之前我们写的爬虫都有一个共性，就是只能爬取单纯的html代码，如果页面是JS渲染的该怎么办呢？ 例如访问百度页面的控制台下的内容：  &gt; 一张网页，要经历怎样的过程，才能抵达用户面前？ 一位新人，要经历怎样的成长，才能站在技术之巅？ 探寻这里的秘密； 体验这里的挑战； 成为这里的主人； 加入百度，加入网页搜索，你，可以影响世界。 请将简历发送至 %c ps_recruiter@baidu.com（ 邮件标题请以“姓名-应聘XX职位-来自console”命名） color:red 职位介绍：http://www.xttblog.com 百度一下，你就知道  像这些JS渲染的内容webmagic能爬虫到吗？</body>
+		<created>2017-04-12 05:49:44</created>
+		<closed>2017-06-03 23:51:22</closed>
+	</bug>
+	<bug>
+		<id>525</id>
+		<title>抓取带端口的url时，cookie设置无效</title>
+		<body>因为带端口的URL，例如：`http://www.example.com:8080/page`时， 使用`UrlUtils.getDomain()`时，会保留端口号`www.example.com:8080`，这个在HttpClient中会识别错误，导致无法正确携带cookie。设置为`www.example.com`则正确，考虑到domain的定义，这里将`UrlUtils.getDomain()`中去掉port了。</body>
+		<created>2017-04-08 15:15:57</created>
+		<closed>2017-04-08 15:24:21</closed>
+	</bug>
+	<bug>
+		<id>509</id>
+		<title>为什么href中的内容变成空了</title>
+		<body>比如html中有个 `` &lt;a href="magnet:?xt=urn:btih:a779a79a2b76dd4fe50c19db4a119f7611ba5fce&amp;dn=Blood.Ties.2013.BDRemux.1080p-MediaClub.mkv&amp;tr=http%3A%2F%2Fhot-torrent.org%3A2710%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&amp;tr=http%3A%2F%2Fretracker.local%2Fannounce" class="btn  btn-primary btn-sm"&gt; `` 无论用正则还是xpath获取出它的href都是空，获取outerHtml发现变成了 `` &lt;a href="" class="btn  btn-primary btn-sm"&gt; `` 程序内部到底做了什么处理？</body>
+		<created>2017-03-27 05:19:57</created>
+		<closed>2017-04-15 03:41:20</closed>
+	</bug>
+	<bug>
+		<id>507</id>
+		<title>0.6.1版本 日志信息出现WARN信息</title>
+		<body>@code4craft  黄大大 我更新为0.6.1版本后程序可以跑，但是出现下面的WARN 在网上查了下，说的是要加一行代码什么的？不知道是我一个人遇到这种情况了吗？ 17-03-26 19:40:46,765 WARN  org.apache.http.client.protocol.ResponseProcessCookies(ResponseProcessCookies.java:129) ## Invalid cookie header: "Set-Cookie: ncbi_sid=CE8E2FB38D7A8A31_0040SID; domain=.nih.gov; path=/; expires=Mon, 26 Mar 2018 11:40:19 GMT". Invalid 'expires' attribute: Mon, 26 Mar 2018 11:40:19 GMT 17-03-26 19:40:46,766 WARN  org.apache.http.client.protocol.ResponseProcessCookies(ResponseProcessCookies.java:129) ## Invalid cookie header: "Set-Cookie: WebEnv=16U1kqV3qNpHL3GrD46xGkUKFCwvbwkTLAnWhxuHyILITP4RqZI4tAXqe8zdnoarQ0Rgv_nbmY-6y1O6NKDyCybuRGOVrCDCuHmQu%40CE8E2FB38D7A8A31_0040SID; domain=.nlm.nih.gov; path=/; expires=Sun, 26 Mar 2017 19:40:19 GMT". Invalid 'expires' attribute: Sun, 26 Mar 2017 19:40:19 GMT</body>
+		<created>2017-03-26 11:47:20</created>
+		<closed>2017-04-16 02:16:03</closed>
+	</bug>
+	<bug>
+		<id>491</id>
+		<title>RegexSelector在某些情况下抛出ArrayIndexOutOfBoundsException</title>
+		<body>RegexSelector在运行某些表达式时候抛出ArrayIndexOutOfBoundsException：  ``` java.lang.ArrayIndexOutOfBoundsException: 1  at us.codecraft.webmagic.selector.RegexResult.get(RegexResult.java:28) at us.codecraft.webmagic.selector.RegexSelector.select(RegexSelector.java:50) ```  测试的Case代码: ``` public class RegexSelectorTest {     @Test     public void testRegexWithZeroWidthAssertions() {         String regex = "^.*(?=\\?)";         String source = "hello world?xxxx";         RegexSelector regexSelector = new RegexSelector(regex);         String select = regexSelector.select(source);         Assertions.assertThat(select).isEqualTo("hello world");     } } ```  看了下RegexSelector代码，发现在判断是否增加默认的一个group时候，没有考虑正则中零宽断言的情况。</body>
+		<created>2017-03-16 16:05:12</created>
+		<closed>2017-03-16 22:57:05</closed>
+	</bug>
+	<bug>
+		<id>490</id>
+		<title>为什么 us.codecraft.webmagic.proxy 包下面 Proxy 构造函数不是 public</title>
+		<body>为什么 us.codecraft.webmagic.proxy 包下面 Proxy 构造函数不是 public ?  请问是基于什么原因考虑的？  我在不同 package 下，要实现自己的 ProxyPool，岂不是很尴尬？</body>
+		<created>2017-03-16 01:45:21</created>
+		<closed>2017-03-17 00:49:17</closed>
+	</bug>
+	<bug>
+		<id>475</id>
+		<title>webmagic-selenium 0.6.1 无法启动</title>
+		<body>我在使用webmagic-selenium 0.6.1 进行异步下载的时候，报出下面的异常，看了源码，不知为何一定要读下面这个配置。如果您有时间，还请不吝赐教。谢谢   &gt; java.io.FileNotFoundException: \Users\Bingo\Documents\workspace\webmagic\webmagic-selenium\config.ini (系统找不到指定的路径。)  at java.io.FileInputStream.open0(Native Method)  at java.io.FileInputStream.open(FileInputStream.java:195)  at java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:138)  at java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:93)  at java.io.FileReader.&lt;init&gt;(FileReader.java:58)  at us.codecraft.webmagic.downloader.selenium.WebDriverPool.configure(WebDriverPool.java:67)  at us.codecraft.webmagic.downloader.selenium.WebDriverPool.get(WebDriverPool.java:192)  at us.codecraft.webmagic.downloader.selenium.SeleniumDownloader.download(SeleniumDownloader.java:78)  at us.codecraft.webmagic.Spider.processRequest(Spider.java:404)  at us.codecraft.webmagic.Spider$1.run(Spider.java:321)  at us.codecraft.webmagic.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)  at java.lang.Thread.run(Thread.java:745)</body>
+		<created>2017-03-03 05:10:55</created>
+		<closed>2017-03-04 06:47:57</closed>
+	</bug>
+	<bug>
+		<id>458</id>
+		<title>httpClient二次使用代理认证失败</title>
+		<body>打扰大神了，webmagic在HttpClientDownloader的getHttpClient方法根据domain缓存了httpClient，第一次获取httpClient认证代理后可以使用，第二次以后从map缓存中拿到的httpClient请求时返回407状态码（我改了代码不从缓存中拿就没问题），我是使用squid3搭建的代理，不知道这是webmagic的httpclient的问题还是我的代理有问题呢？</body>
+		<created>2017-02-08 11:38:10</created>
+		<closed>2017-04-15 03:42:48</closed>
+	</bug>
+	<bug>
+		<id>455</id>
+		<title>0.6.1设置cookie不生效</title>
+		<body>怀疑是升级HttpClient导致，待测试。</body>
+		<created>2017-02-06 09:53:27</created>
+		<closed>2017-02-25 15:19:21</closed>
+	</bug>
+	<bug>
+		<id>419</id>
+		<title>抓取https链接线程无法结束导致进程一直运行</title>
+		<body>发现在使用代理ip爬取https链接时，出现爬取线程无法结束一直处于runnable状态，导致最后整个程序无法结束的情况。通过jConsole查看runnable 线程的调用栈信息，类似这篇文章[http://zhoujinhuang.iteye.com/blog/2109067](http://zhoujinhuang.iteye.com/blog/2109067) 描述的，阻塞在SocketInputStream.socketRead0方法中。最后下载源码，临时在HttpClientGenerator.generateClient(...)中做了如下修改，不在出现问题。麻烦作者关注一下这个问题，谢谢 ![_ 4fg w 91bnww 5i4 kj](https://cloud.githubusercontent.com/assets/6845769/21130350/c09d3922-c142-11e6-9db3-3a88c0817d90.png)  </body>
+		<created>2016-12-13 06:45:45</created>
+		<closed>2016-12-18 03:01:38</closed>
+	</bug>
+	<bug>
+		<id>417</id>
+		<title>BUILD FAILURE</title>
+		<body>[INFO] ------------------------------------------------------------------------ [ERROR] Failed to execute goal org.apache.maven.plugins:maven-javadoc-plugin:2.9.1:jar (attach-javadocs) on project webmagic-extension: MavenReportException: Error while creating archive: [ERROR] Exit code: 1 - /webmagic/webmagic-extension/src/main/java/us/codecraft/webmagic/monitor/SpiderMonitor.java:49: warning: no @throws for javax.management.JMException [ERROR] public synchronized SpiderMonitor register(Spider... spiders) throws JMException { [ERROR] ^ [ERROR] /webmagic/webmagic-extension/src/main/java/us/codecraft/webmagic/utils/DoubleKeyMap.java:105: warning: no description for @return [ERROR] * @return [ERROR] ^ [ERROR]  /webmagic/webmagic-extension/src/main/java/us/codecraft/webmagic/handler/CompositePageProcessor.java:12: error: unknown tag: date [ERROR] * @date 14-4-5 [ERROR] ^ [ERROR] /webmagic/webmagic-extension/src/main/java/us/codecraft/webmagic/handler/SubPageProcessor.java:7: error: unknown tag: date [ERROR] * @date 14-4-5 [ERROR] ^ [ERROR] /webmagic/webmagic-extension/src/main/java/us/codecraft/webmagic/downloader/PhantomJSDownloader.java:40: warning: no description for @param [ERROR] * @param phantomJsCommand [ERROR] ^ [ERROR] /webmagic/webmagic-extension/src/main/java/us/codecraft/webmagic/configurable/ExpressionType.java:5: error: unknown tag: date [ERROR] * @date 14-4-5 [ERROR] ^ [ERROR] /webmagic/webmagic-extension/src/main/java/us/codecraft/webmagic/configurable/ExtractRule.java:10: error: unknown tag: date [ERROR] * @date 14-4-5 [ERROR] ^ [ERROR]  [ERROR] Command line was: /usr/lib/jvm/java-8-openjdk/jre/../bin/javadoc @options @packages [ERROR]  [ERROR] Refer to the generated Javadoc files in '/home/dmitry/projects/tmp/webmagic/webmagic-extension/target/apidocs' dir. [ERROR] -&gt; [Help 1] [ERROR]  [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch. [ERROR] Re-run Maven using the -X switch to enable full debug logging. [ERROR]  [ERROR] For more information about the errors and possible solutions, please read the following articles: [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException [ERROR]  [ERROR] After correcting the problems, you can resume the build with the command [ERROR]   mvn &lt;goals&gt; -rf :webmagic-extension </body>
+		<created>2016-12-11 13:27:46</created>
+		<closed>2017-02-25 10:21:51</closed>
+	</bug>
+	<bug>
+		<id>400</id>
+		<title>FileCacheQueueScheduler 调用 pushWhenNoDuplicate() 时报 NullPointerException 异常</title>
+		<body>代码比较简单，就是设置了一下各个部件，对应文件夹 `/Users/brian/todo/data/webmagic` 已创建好，代码如下：  ``` public static void main(String[] args) {         String pipelinePath = "/Users/brian/todo/data/webmagic";         int crawlSize = 1000000;         Spider.create(new ZhihuUserPageProcessor())                 .setScheduler(new FileCacheQueueScheduler(pipelinePath)                         .setDuplicateRemover(new BloomFilterDuplicateRemover(crawlSize)))                 .addPipeline(new FilePipeline(pipelinePath))                 .addUrl(generateMemberUrl("hydro-ding"))                 .thread(1)                 .run();     } ```  然而报空指针异常：  ``` Exception in thread "main" java.lang.NullPointerException at us.codecraft.webmagic.scheduler.FileCacheQueueScheduler.pushWhenNoDuplicate(FileCacheQueueScheduler.java:182) at us.codecraft.webmagic.scheduler.DuplicateRemovedScheduler.push(DuplicateRemovedScheduler.java:36) at us.codecraft.webmagic.Spider.addRequest(Spider.java:453) at us.codecraft.webmagic.Spider.addUrl(Spider.java:476) ```  我单步进去，发现 `FileCacheQueueScheduler` 类的第 182 行报错，`queue` 没有被初始化。  ``` protected void pushWhenNoDuplicate(Request request, Task task) {         queue.add(request);         fileUrlWriter.println(request.getUrl());     } ```  打断点发现前面的初始化方法 `private void init(Task task)` 并没有被执行，`init(Task task)` 调用`readFile()`，`queue` 在 `readFile()` 里初始化的。`init` 没执行，所以空指针了。</body>
+		<created>2016-11-24 16:46:50</created>
+		<closed>2016-11-28 13:49:45</closed>
+	</bug>
+	<bug>
+		<id>386</id>
+		<title>SeleniumDownloader对代理不支持的情况下设置代理服务会造成爬虫空指针错误</title>
+		<body>初步判断为代理配置的结构性问题 0.5.3代码中, 释放代理服务是在 Spider里做的, 而设置代理是在 HttpClientDownloader里. 这造成了Downloader如果不用代理,爬虫一定会出错.  SeleniumDownloader 在 0.5.2版本中没有对代理做配置项,所以使用中出现此BUG.  建议代理统一配置在 Spider中全局处理, Downloader中通过其它方式 比如request.getExtra(Request.PROXY)获取代理. </body>
+		<created>2016-10-14 02:58:49</created>
+		<closed>2017-06-03 23:44:43</closed>
+	</bug>
+	<bug>
+		<id>385</id>
+		<title>POST请求中包含中文参数时有问题，请求会失败。</title>
+		<body>POST请求中包含中文参数时有问题，请求会失败。  尝试性解决方案如下，在HttpClientDownloader中新建一个getHttpUriRequest方法  ``` if(request.getEntity()!=null&amp;&amp;request.getExtras()==null&amp;&amp;HttpConstant.Method.POST.equals(request.getMethod())){ //处理相应的post请求                 httpUriRequest = getHttpUriRequestPostChinese(request, site, headers);                           }else{                 httpUriRequest = getHttpUriRequest(request, site, headers);             } ```  ```  protected HttpUriRequest getHttpUriRequestPostChinese(Request request, Site site, Map&lt;String, String&gt; headers) {         HttpPost httppost = new HttpPost(request.getUrl());         if (headers != null) {             for (Map.Entry&lt;String, String&gt; headerEntry : headers.entrySet()) {                 httppost.addHeader(headerEntry.getKey(), headerEntry.getValue());             }         }         RequestConfig.Builder requestConfigBuilder = RequestConfig.custom()                 .setConnectionRequestTimeout(site.getTimeOut())                 .setSocketTimeout(site.getTimeOut())                 .setConnectTimeout(site.getTimeOut())                 .setCircularRedirectsAllowed(true)                 .setMaxRedirects(10)                 .setCookieSpec(CookieSpecs.BEST_MATCH);         if (site.getHttpProxyPool() != null &amp;&amp; site.getHttpProxyPool().isEnable()) {             HttpHost host = site.getHttpProxyFromPool();             requestConfigBuilder.setProxy(host);             //RequestConfig config = RequestConfig.custom().setProxy(host).build();             //httppost.setConfig(config);          }else if(site.getHttpProxy()!= null){             HttpHost host = site.getHttpProxy();             requestConfigBuilder.setProxy(host);             //RequestConfig config = RequestConfig.custom().setProxy(host).build();             //httppost.setConfig(config);         } //        RequestConfig config = RequestConfig.custom().setProxy(proxy).build();         httppost.setConfig(requestConfigBuilder.build());         httppost.setEntity(request.getEntity());           return httppost;      } ```  URL相同，POST参数不同情况下去重规则:  在DuplicateRemovedScheduler中如下:  ```  @Override     public void push(Request request, Task task) {         logger.trace("get a candidate url {}", request.getUrl());         if (!duplicatedRemover.isDuplicate(request, task) || shouldReserved(request)) {             logger.debug("push to queue {}", request.getUrl());             pushWhenNoDuplicate(request, task);         }     }  protected boolean shouldReserved(Request request) {         return (request.getExtra(Request.CYCLE_TRIED_TIMES) != null&amp;&amp;request.getEntity()!=null&amp;&amp;request.getMethod().equals(HttpConstant.Method.POST));     } ``` </body>
+		<created>2016-10-12 04:10:34</created>
+		<closed>2017-04-15 03:42:38</closed>
+	</bug>
+	<bug>
+		<id>354</id>
+		<title>site.setHttpProxyPool(httpProxyList, true)发生数组越界</title>
+		<body>site.setHttpProxyPool(httpProxyList, true)发生数组越界，代码： &lt;pre&gt;&lt;code&gt; @Override     public Site getSite() {         List&lt;String[]&gt; httpProxyList  = new ArrayList&lt;String[]&gt;();         httpProxyList.add(new String[]{"127.0.0.1","8888"});         site.setHttpProxyPool(httpProxyList, true);         return site;     }&lt;/pre&gt;&lt;/code&gt; 错误内容: &lt;pre&gt;&lt;code&gt;Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 2     at us.codecraft.webmagic.proxy.SimpleProxyPool.addProxy(SimpleProxyPool.java:159)     at us.codecraft.webmagic.proxy.SimpleProxyPool.&lt;init&gt;(SimpleProxyPool.java:63)     at us.codecraft.webmagic.Site.setHttpProxyPool(Site.java:489)     at us.codecraft.webmagic.processor.example.BaiduBaikePageProcessor.getSite(BaiduBaikePageProcessor.java:39)     at us.codecraft.webmagic.Spider.&lt;init&gt;(Spider.java:131)     at us.codecraft.webmagic.Spider.create(Spider.java:121)     at us.codecraft.webmagic.processor.example.BaiduBaikePageProcessor.main(BaiduBaikePageProcessor.java:45)&lt;/pre&gt;&lt;/code&gt; </body>
+		<created>2016-07-23 00:20:04</created>
+		<closed>2017-02-25 11:26:34</closed>
+	</bug>
+	<bug>
+		<id>346</id>
+		<title>有些代码没有更新到Maven库中</title>
+		<body>比如commons-lang版本问题，新的版本已经使用3.0版本，但是在Maven库中的代码仍然使用2.6和3.0版本，这将会导致下列错误： Exception in thread "pool-1-thread-1" java.lang.NoClassDefFoundError: org/apache/commons/lang/StringUtils     at us.codecraft.webmagic.downloader.HttpClientDownloader.getHtmlCharset(HttpClientDownloader.java:212)     at us.codecraft.webmagic.downloader.HttpClientDownloader.getContent(HttpClientDownloader.java:194)     at us.codecraft.webmagic.downloader.HttpClientDownloader.handleResponse(HttpClientDownloader.java:182)     at us.codecraft.webmagic.downloader.HttpClientDownloader.download(HttpClientDownloader.java:96)     at us.codecraft.webmagic.Spider.processRequest(Spider.java:409)     at us.codecraft.webmagic.Spider$1.run(Spider.java:322)     at us.codecraft.webmagic.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)     at java.lang.Thread.run(Thread.java:745) Caused by: java.lang.ClassNotFoundException: org.apache.commons.lang.StringUtils     at java.net.URLClassLoader.findClass(URLClassLoader.java:381)     at java.lang.ClassLoader.loadClass(ClassLoader.java:424)     at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)     at java.lang.ClassLoader.loadClass(ClassLoader.java:357)     ... 10 more  建议解决方法（2选1）： 1、更新Maven库中的代码 2、说明在App的pom文件中依赖commons-langs2.6版本 </body>
+		<created>2016-07-11 08:49:17</created>
+		<closed>2016-11-19 04:26:36</closed>
+	</bug>
+	<bug>
+		<id>319</id>
+		<title>mvn install时，报错，未知标记: Deprecated</title>
+		<body>请问是什么原因，下载然后执行mvn install -Dmaven.test.skip=true时报以上错误  另外，发现us.codecraft.webmagic.site的474行，参数列表写错了，这个mvn竟然也报错 </body>
+		<created>2016-05-23 14:11:18</created>
+		<closed>2016-05-24 05:17:54</closed>
+	</bug>
+	<bug>
+		<id>317</id>
+		<title>获取不到@Formatter,fieldExtractor得到formatter错误</title>
+		<body>获取不到@Formatter,fieldExtractor得到formatter错误 </body>
+		<created>2016-05-20 06:19:33</created>
+		<closed>2017-06-03 02:48:50</closed>
+	</bug>
+	<bug>
+		<id>314</id>
+		<title>webmagic-core工程中依赖org.apache.commons.lang3不可用，求指导！</title>
+		<body>工具：idea 搭建方式：Maven 随意搭建一个项目后，通过pom文件依赖webmagic-core与webmagic-extension；在运行官网的demo时： 提示java.lang.NoClassDefFoundError: org/apache/commons/lang/StringUtils。 PS:工程中已经引入org.apache.commons.lang3这个jar包了，但是webmagic-core始终报错，郁闷。 ![26](https://cloud.githubusercontent.com/assets/11717630/15275298/46df2756-1afa-11e6-989b-2077d194d03c.png) </body>
+		<created>2016-05-15 16:20:27</created>
+		<closed>2016-06-08 06:27:34</closed>
+	</bug>
+	<bug>
+		<id>308</id>
+		<title>使用代理不好用呢？</title>
+		<body>.setHttpProxy(new HttpHost("**_.**_._**._*",1111)) 这样设定后代理，没有用？ </body>
+		<created>2016-05-10 08:18:24</created>
+		<closed>2017-03-01 13:54:04</closed>
+	</bug>
+	<bug>
+		<id>301</id>
+		<title>在使用annotation时，解析json出问题</title>
+		<body>我在使用annotation解析json时，因为代码中只获取page.getHtml()而不是获取page.getJson()，所以不能正常解析json内容。问题代码出现在PageModelExtractor的processSingle方法中  我是在这里遇到问题，第346行-357行  `String value;` `switch(PageModelExtractor.SyntheticClass_1.$SwitchMap$us$codecraft$webmagic$model$Extractor$Source[fieldExtractor.getSource().ordinal()]) {` `case 1:` `value = page.getHtml().selectDocument(fieldExtractor.getSelector());` `break;` `case 2:` `if(isRaw) {` `value = page.getHtml().selectDocument(fieldExtractor.getSelector());` `} else {` `value = fieldExtractor.getSelector().select(html);` `}` `break;` </body>
+		<created>2016-04-28 03:21:26</created>
+		<closed>2016-11-19 04:59:50</closed>
+	</bug>
+	<bug>
+		<id>263</id>
+		<title>请问，webmagic怎么使用有用户名和密码验证的代理IP</title>
+		<body>请问，webmagic怎么使用有用户名和密码验证的代理IP，如下（httpClient实现方式）： //设置代理IP和代理端口 httpClient.getHostConfiguration().setProxy(ip, port); httpClient.getParams().setAuthenticationPreemptive(true); //设置用户名和密码 Credentials upcreds = new UsernamePasswordCredentials("name","password"); httpClient.getState().setProxyCredentials(AuthScope.ANY,upcreds); </body>
+		<created>2016-03-02 01:42:56</created>
+		<closed>2017-05-29 09:47:03</closed>
+	</bug>
+	<bug>
+		<id>250</id>
+		<title>注解模式下的json不能解析啥时候更新，虽然我自己已经解决了</title>
+		<body></body>
+		<created>2016-01-22 09:30:22</created>
+		<closed>2017-06-03 23:33:01</closed>
+	</bug>
+	<bug>
+		<id>249</id>
+		<title>【BUG提交】post问题</title>
+		<body>post时如果data没有，消息头不会带Content-Length:0 然后有些网站设置了校验，结果报411 </body>
+		<created>2016-01-22 09:25:33</created>
+		<closed>2017-06-03 06:47:03</closed>
+	</bug>
+	<bug>
+		<id>245</id>
+		<title>jsoup从1.8.1升级到1.8.2或以上，会报错</title>
+		<body>Exception in thread "pool-2-thread-2" java.lang.NoSuchMethodError: org.jsoup.select.Elements.get(I)Lorg/jsoup/nodes/Element;     at us.codecraft.xsoup.XEvaluators$IsNthOfType.calculatePosition(XEvaluators.java:30)     at org.jsoup.select.Evaluator$CssNthEvaluator.matches(Evaluator.java:419)     at us.codecraft.xsoup.CombiningEvaluator$And.matches(CombiningEvaluator.java:53)     at us.codecraft.xsoup.CombiningEvaluator$And.matches(CombiningEvaluator.java:53)     at org.jsoup.select.Collector$Accumulator.head(Collector.java:42)     at org.jsoup.select.NodeTraversor.traverse(NodeTraversor.java:31)     at org.jsoup.select.Collector.collect(Collector.java:24)     at us.codecraft.xsoup.DefaultXPathEvaluator.evaluate(DefaultXPathEvaluator.java:27)     at us.codecraft.webmagic.selector.XpathSelector.selectList(XpathSelector.java:32)     at us.codecraft.webmagic.selector.HtmlNode.selectElements(HtmlNode.java:80)     at us.codecraft.webmagic.selector.HtmlNode.xpath(HtmlNode.java:43)  使用page.getHtml().xpath().get()，1.8.1一直使用正常。升级到1.8.2以上就会报这个异常。但不是每个地方都报。 这里有相关兼容性报告,应该是Removed了get method导致的： http://upstream.rosalinux.ru/java/compat_reports/jsoup/1.8.1_to_1.8.2/bin_compat_report.html </body>
+		<created>2016-01-09 11:04:10</created>
+		<closed>2016-05-08 12:56:28</closed>
+	</bug>
+	<bug>
+		<id>204</id>
+		<title>V0.5.2解析页面出现内存泄露OOM</title>
+		<body>Html newpage = new Html(“...\u000a.....”); newpage.parse(...) 在解析页面中含有\u000a等特殊符号是，导致Jsoup解析页面内存泄露，内存瞬间消耗几百兆，而且内存一直不释放。 建议: 更新Jsoup依赖包。 </body>
+		<created>2015-04-13 06:43:00</created>
+		<closed>2015-06-02 05:19:43</closed>
+	</bug>
+	<bug>
+		<id>201</id>
+		<title>RedisScheduler使用Post是HttpClientDownloader在namevaluepair强型转化出错</title>
+		<body>``` JAVA Object extraNameValuePair=request                     .getExtra("nameValuePair");             NameValuePair[] nameValuePair=null;             if (extraNameValuePair instanceof NameValuePair[])                  nameValuePair = (NameValuePair[]) extraNameValuePair;             else{                 JSONArray arr = JSON.parseArray(String.valueOf(extraNameValuePair));                 nameValuePair = new NameValuePair[arr.size()];                 for (int i = 0; i &lt; nameValuePair.length; i++) {                     JSONObject obj = (JSONObject) arr.get(i);                     nameValuePair[i] = new BasicNameValuePair(obj.getString("name"),                             obj.getString("value"));                 }             }             if (nameValuePair != null &amp;&amp; nameValuePair.length &gt; 0) {                 requestBuilder.addParameters(nameValuePair);             } ``` </body>
+		<created>2015-04-06 04:19:12</created>
+		<closed>2017-03-18 03:19:26</closed>
+	</bug>
+	<bug>
+		<id>200</id>
+		<title>Selectable.nodes.get(0).xpath("@href") 出错</title>
+		<body>这样是没有问题的。  ``` Java     page.getHtml().xpath("//a[1]/@href"); ```  但如下使用时提示：java.lang.NullPointerException  ``` Java    page.getHtml().xpath("//a[1]").nodes().get(0).xpath("@href"); ```  `page.getHtml().xpath("//a[1]").nodes().get(0)`可以返回正确的对象。 </body>
+		<created>2015-03-23 09:06:36</created>
+		<closed>2016-05-08 12:58:08</closed>
+	</bug>
+	<bug>
+		<id>163</id>
+		<title>Site类中的setHttpProxy()方法被废弃了吗？</title>
+		<body>0.5.2版本Site的setHttpProxy()方法被废弃了吗？ HttpClientDownloader访问网页时，没有使用到我设置的代理 现在只能使用ProxyPool来设置代理 </body>
+		<created>2014-10-08 09:07:12</created>
+		<closed>2016-01-18 13:12:42</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>注解模式下JsonPath无法正常工作</title>
+		<body>原因是`page.getHtml()`会先将json转换为html，再解析就失败了。 现在感觉`Selectable`用继承来实现不同格式的解析就是一个失败的策略，跳来跳去太混乱了。决定在0.6.0中重写了。 </body>
+		<created>2014-09-29 07:09:44</created>
+		<closed>2016-12-03 03:27:49</closed>
+	</bug>
+	<bug>
+		<id>144</id>
+		<title>Bug:TargetUrl的SourceRegion根本无法正式识别</title>
+		<body>我在0.4.2设置了TargetUrl。运行良好，但是升级到5.2后，开始出问题。   莫名奇妙的不运行了，Debug后到这一个函数。    ``` private void extractLinks(Page page, Selector urlRegionSelector, List&lt;Pattern&gt;  urlPatterns) {         List&lt;String&gt; links;         if (urlRegionSelector == null) {             links = page.getHtml().links().all();         } else {             links = page.getHtml().selectList(urlRegionSelector).links().all();         }         for (String link : links) {             for (Pattern targetUrlPattern : urlPatterns) {                 Matcher matcher = targetUrlPattern.matcher(link);                 if (matcher.find()) {                     page.addTargetRequest(new Request(matcher.group(1)));                 }             }         }     } ```  错误在这个函数`links = page.getHtml().selectList(urlRegionSelector).links().all();`   targetUrl的SourceRegion是写成sourceRegion="//a[@class*=\"page-next\"]/@href" 再Debug中执行到这一句是成功的     `page.getHtml().selectList(urlRegionSelector).toString()` 返回我想要的地址，但是执行上面那句话，加了links后 `page.getHtml().selectList(urlRegionSelector).links().all();` 爆出   ·java.lang.unsupportedException`  这就意味着我不管设置什么sourceRegion都不行，也不返回错误，然后崩溃。 </body>
+		<created>2014-07-18 05:18:48</created>
+		<closed>2017-02-25 15:14:34</closed>
+	</bug>
+	<bug>
+		<id>139</id>
+		<title>File相关PipeLine持久化的问题</title>
+		<body>JsonFilePipeline中拼接文件路径的时候默认使用了"/"作为文件夹分隔符，改为`PATH_SEPERATOR`.  ``` java  String path = this.path +"/" + task.getUUID() + "/"; ```  改为：  ``` java String path = this.path + PATH_SEPERATOR + task.getUUID() + PATH_SEPERATOR; ``` </body>
+		<created>2014-06-25 06:54:15</created>
+		<closed>2016-01-18 13:11:52</closed>
+	</bug>
+	<bug>
+		<id>129</id>
+		<title>Type convert error in JsonPathSelector</title>
+		<body>In JsonPathSelector, I just return `Object object` as a List&lt;String&gt; when it is an instance of List. But actually it will return a `net.minidev.json.JSONArray` and it is an ArrayList&lt;Object&gt;. So when the user iterate the result, they will get an ClassCastException.  ``` java @Override public List&lt;String&gt; selectList(String text) {     List&lt;String&gt; list = new ArrayList&lt;String&gt;();     Object object = jsonPath.read(text);     if (object == null) {         return list;     }     if (object instanceof List) {         return (List&lt;String&gt;) object;     } else {         list.add(object.toString());     }     return list; } ```  I just change it to   ``` java if (object instanceof List) {     List&lt;Object&gt; items = (List&lt;Object&gt;) object;     for (Object item : items) {         list.add(String.valueOf(item));     } } else { ``` </body>
+		<created>2014-05-27 13:19:00</created>
+		<closed>2014-05-27 23:12:07</closed>
+	</bug>
+	<bug>
+		<id>124</id>
+		<title>Ignore content in json when bracket when remove padding</title>
+		<body>For some case, the jsonp data can have a bracket ")" in quotes, like:  ``` json callback("key","I'm so happy:)") ```  But the remove padding use `tokenQueue.chompBalanced('(', ')');` in Jsoup, so the result will be "("key","I'm so happy:".  I will add a method `chompBalancedNotInQuotes` in Xsoup and fix it. </body>
+		<created>2014-05-08 09:28:59</created>
+		<closed>2014-05-09 02:17:17</closed>
+	</bug>
+	<bug>
+		<id>122</id>
+		<title>JsonFilePipeline不能自动新建文件夹</title>
+		<body>`JsonFilePipeline`不能像`FilePipeline`一样自动对尚不存在的的文件夹进行新建 </body>
+		<created>2014-05-08 07:06:49</created>
+		<closed>2014-05-08 07:13:01</closed>
+	</bug>
+	<bug>
+		<id>117</id>
+		<title>Check isDuplicate error in RedisScheduler</title>
+		<body>In 0.5.0, I refactor RedisScheduler, but there is a bug:  ``` java protected boolean isDuplicate(Request request, Task task) {     Jedis jedis = pool.getResource();     try {         boolean isDuplicate = !jedis.sismember(getSetKey(task), request.getUrl());         if (!isDuplicate) {             jedis.sadd(getSetKey(task), request.getUrl());         }         return isDuplicate;     } finally {         pool.returnResource(jedis);     } } ```  It should be   ``` java boolean isDuplicate = jedis.sismember(getSetKey(task), request.getUrl()); ``` </body>
+		<created>2014-04-29 12:23:04</created>
+		<closed>2014-04-29 12:34:13</closed>
+	</bug>
+	<bug>
+		<id>110</id>
+		<title>[Important] Worker thread will block main loop/主分发线程会被工作线程阻塞</title>
+		<body>In Spider, the main loop poll all urls from scheduler and dispatch them to worker thread. But in the threadpool ExecutorService, there is a bug:  ``` java public static ExecutorService newFixedThreadPool(int threadSize) {     if (threadSize &lt;= 0) {         throw new IllegalArgumentException("ThreadSize must be greater than 0!");     }     if (threadSize == 1) {         return MoreExecutors.sameThreadExecutor();     }     return new ThreadPoolExecutor(threadSize - 1, threadSize - 1, 0L, TimeUnit.MILLISECONDS,             new SynchronousQueue&lt;Runnable&gt;(), new ThreadPoolExecutor.CallerRunsPolicy()); } ```  `ThreadPoolExecutor.CallerRunsPolicy` will call main thread to process request so the dispatching of urls will stop and other threads will be blocked.  ---  在WebMagic的多线程实现中，由一个主线程负责URL分发，多个子线程负责请求的处理。但是存在一个问题：WebMagic使用的线程池使用了`ThreadPoolExecutor.CallerRunsPolicy`这一策略，这表示当线程池跑满后会用主线程来运行请求，这就导致其他线程执行结束后会一直等待。这会对性能有巨大影响。 </body>
+		<created>2014-04-25 08:48:33</created>
+		<closed>2014-04-25 10:46:52</closed>
+	</bug>
+	<bug>
+		<id>107</id>
+		<title>Only one url from sourceRegion can be extracted</title>
+		<body>In Annotation Mode, the `sourceRegion` can be specified for TargetUrl.  But only the first of urls can be extracted.  ``` java private void extractLinks(Page page, Selector urlRegionSelector, List&lt;Pattern&gt; urlPatterns) {     List&lt;String&gt; links;     if (urlRegionSelector == null) {         links = page.getHtml().links().all();     } else {         links = urlRegionSelector.selectList(page.getHtml().toString());     }     for (String link : links) {         for (Pattern targetUrlPattern : urlPatterns) {             Matcher matcher = targetUrlPattern.matcher(link);             if (matcher.find()) {                 page.addTargetRequest(new Request(matcher.group(1)));             }         }     } } ```  I changed `links = urlRegionSelector.selectList(page.getHtml().toString());` to `links = page.getHtml().selectList(urlRegionSelector).links().all();` to fix it. </body>
+		<created>2014-04-18 09:47:19</created>
+		<closed>2014-04-19 14:58:43</closed>
+	</bug>
+	<bug>
+		<id>104</id>
+		<title>Urls will be lost when call setScheduler()</title>
+		<body>When call `Spider.setScheduler()`, the urls in old scheduler will be lost. Try to fix it by polling all urls from old scheduler and pushing to the new one.  ``` java public Spider setScheduler(Scheduler scheduler) {     checkIfRunning();     Scheduler oldScheduler = this.scheduler;     this.scheduler = scheduler;     Request request;     while ((request = oldScheduler.poll(this)) != null) {         this.scheduler.push(request, this);     }     return this; } ``` </body>
+		<created>2014-04-16 11:44:39</created>
+		<closed>2014-04-16 11:49:01</closed>
+	</bug>
+	<bug>
+		<id>100</id>
+		<title>ObjectFormatter property does not work when field is String</title>
+		<body>In 0.4.3 and below, there is a check for type detection in formatter.  ``` java if (!fieldExtractor.isMulti() &amp;&amp; !String.class.isAssignableFrom(field.getType())) { } ```  It will cause the custom ObjectFormatter not work when the field is of the type `String`. </body>
+		<created>2014-04-13 15:02:01</created>
+		<closed>2014-04-13 15:22:30</closed>
+	</bug>
+	<bug>
+		<id>99</id>
+		<title>page.addTargetRequests(requests, priority)处理问题</title>
+		<body>在处理优先级时的方法 page.addTargetRequests(requests, priority);中for循环中的break因该改为continue吧  ``` java public void addTargetRequests(List&lt;String&gt; requests, long priority) {         synchronized (targetRequests) {             for (String s : requests) {                 if (StringUtils.isBlank(s) || s.equals("#") || s.startsWith("javascript:")) {                     break;                 }                 s = UrlUtils.canonicalizeUrl(s, url.toString());                 targetRequests.add(new Request(s).setPriority(priority));             }         }     }  ``` </body>
+		<created>2014-04-13 14:34:23</created>
+		<closed>2014-04-13 15:04:39</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>ModelPageProcessor处理多个PageModelExtractor的问题</title>
+		<body>在ModelPageProcessor中看到如下代码，感觉有问题  ``` java public void process(Page page) {         for (PageModelExtractor pageModelExtractor : pageModelExtractorList) {             extractLinks(page, pageModelExtractor.getHelpUrlRegionSelector(), pageModelExtractor.getHelpUrlPatterns());             extractLinks(page, pageModelExtractor.getTargetUrlRegionSelector(), pageModelExtractor.getTargetUrlPatterns());             Object process = pageModelExtractor.process(page);             if (process == null || (process instanceof List &amp;&amp; ((List) process).size() == 0)) {                 page.getResultItems().setSkip(true);             }             postProcessPageModel(pageModelExtractor.getClazz(), process);             page.putField(pageModelExtractor.getClazz().getCanonicalName(), process);         }     } ```  处理page的时候遍历每一个pageModelExtractor，如果任何一个pageModelExtractor和这个page的url不匹配，则page.getResultItems().setSkip(true);这句话就会被执行。 这样，一个page除非和每一个pageModelExtractor都匹配，否则都会被skip掉。感觉这样不合理。 </body>
+		<created>2014-04-04 11:07:15</created>
+		<closed>2014-04-04 22:29:50</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>Remove log4j.xml from packaged jar/在发布的jar包中删除log4j.xml</title>
+		<body>log4j.xml is packaged in released jars. It will cause log4j.properties not working in user applications.  I will remove it from packaged jars by some setting in maven.  现在log4j.xml被打包到了发布的jar包中，这样会导致用户程序的log4j.properties文件不起作用。  希望通过maven配置，在打包时去掉这个文件。 </body>
+		<created>2014-04-04 03:25:09</created>
+		<closed>2014-04-04 15:40:46</closed>
+	</bug>
+	<bug>
+		<id>81</id>
+		<title>addTargetRequests的时候 如果isBlank直接退出循环，不继续添加</title>
+		<body>addTargetRequests的时候 如果isBlank直接退出循环，不继续添加。 看了下代码，if里的break搞错了吧^^ public void addTargetRequests(List&lt;String&gt; requests) {         synchronized (targetRequests) {             for (String s : requests) {                 if (StringUtils.isBlank(s) || s.equals("#") || s.startsWith("javascript:")) {                     break;                 }                 s = UrlUtils.canonicalizeUrl(s, url.toString());                 targetRequests.add(new Request(s));             }         }     } </body>
+		<created>2014-04-01 08:32:35</created>
+		<closed>2014-04-01 12:13:46</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>Parsing error when separate chars in quotes cause in xsoup</title>
+		<body>Separate chars such as "/" "|" will be recognized first.   For example, in XPath:  ``` java       "//div/regex('/code4craft/(\w+)')" ```  "/" in '/code4craft/(\w+)' will be recognized as a separator and cause parsing error. </body>
+		<created>2014-03-29 12:59:56</created>
+		<closed>2014-03-29 13:00:38</closed>
+	</bug>
+	<bug>
+		<id>73</id>
+		<title>Selectable 的一个问题</title>
+		<body>``` java Selectable requests = page.getHtml().xpath("//a"); System.out.println(requests.links().all().size()); System.out.println("####################################"); System.out.println(requests.links().all().size()); ```  result： 177 ######   1  第二次输出的永远都是1   我跟了一下代码发现是下面这个方法导致的 Html.java  ``` java public String getText() {     if (strings != null &amp;&amp; strings.size() &gt; 0) {          return strings.get(0);     }     return document.html(); } ```  为什么要 `get(0)` ，而不是把`strings`合并到一起 </body>
+		<created>2014-03-19 03:53:29</created>
+		<closed>2014-03-21 14:19:22</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>A little confused about the parameter spawnUrl of Spider</title>
+		<body>When downloading page faild and retrying, the `page.getRawText()` will be null. But when the parameter `spawnUrl` is false, the `Spider` will omit to retry. I consider  `spawnUrl` is not related to retry action. I wonder whether it's right.  the `processRequest` in `Spider`  ``` java protected void processRequest(Request request) {         Page page = downloader.download(request, this);         if (page == null) {             sleep(site.getSleepTime());             return;         }         // for cycle retry         if (page.getRawText() == null) {             extractAndAddRequests(page);             sleep(site.getSleepTime());             return;         }         ... } ```  the `extractAndAddRequests` fuction:  ``` java protected void extractAndAddRequests(Page page) {   if (spawnUrl &amp;&amp; CollectionUtils.isNotEmpty(page.getTargetRequests())) {     for (Request request : page.getTargetRequests()) {       addRequest(request);     }   } } ``` </body>
+		<created>2014-03-03 08:27:30</created>
+		<closed>2014-03-04 05:48:30</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>cycleTriedTimes cannot increase when http downloading failed</title>
+		<body>This value of  `addToCycleRetry` in `HttpClientDownloader` was not changed when downloading failed again. It must be a mistake. Please check it. Thanks. ;-) </body>
+		<created>2014-03-01 04:11:15</created>
+		<closed>2014-03-04 05:48:15</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>Update HttpClient version to 4.3.3</title>
+		<body>HttpClient 4.3.2 has a GZIP decoding performance defect (Introduced by me :( ). It will be updated to 4.3.3. [https://issues.apache.org/jira/browse/HTTPCLIENT-1461](https://issues.apache.org/jira/browse/HTTPCLIENT-1461) </body>
+		<created>2014-02-28 13:16:32</created>
+		<closed>2014-02-28 13:20:39</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>NullpointerException when call HttpClientDownloader.download(url)</title>
+		<body>Thanks to [@ywooer](http://my.oschina.net/ywooer) for report! </body>
+		<created>2013-12-04 14:09:58</created>
+		<closed>2013-12-04 14:11:49</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>Downloader thread hang up when timeout/下载线程僵死问题</title>
+		<body>The socket timeout is not set in 0.4.0~0.4.1, so when connection success but data is not received completely, the thread will hang up for data. Try `setSocketTimeout` to fix.  在0.4.0到0.4.1版本中，没有设置socket超时时间，会导致下载线程僵死。使用`setSocketTimeout`进行修复。 </body>
+		<created>2013-12-03 01:57:48</created>
+		<closed>2013-12-03 15:26:39</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>Spider does not exit when success</title>
+		<body>Sometimes the thread does not exit when success in multi-thread mode. I guess there is some problem in the wait-notify mechanism:  ``` java if (request == null) {                 if (threadAlive.get() == 0 &amp;&amp; exitWhenComplete) {                     break;                 }                 // wait until new url added                 waitNewUrl();             } ``` </body>
+		<created>2013-11-12 08:36:10</created>
+		<closed>2013-11-27 15:44:23</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>Close reader in FileCacheQueueScheduler</title>
+		<body>The reader in FileCacheQueueScheduler has not been closed as read. </body>
+		<created>2013-11-08 06:54:12</created>
+		<closed>2013-11-08 06:59:33</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>EOFExcetion when download http://baike.baidu.com/</title>
+		<body>When download url like [http://baike.baidu.com/search/word?word=httpclient&amp;pic=1&amp;sug=1&amp;enc=utf8](http://baike.baidu.com/search/word?word=httpclient&amp;pic=1&amp;sug=1&amp;enc=utf8), an EOFExcetion will be thrown because the response with 302 state code also has a header "Content-Encoding:gzip". It is treated as gzip entity but actually it has no entity. It will cause some error in RedirectExc in HttpClient. </body>
+		<created>2013-11-05 22:56:13</created>
+		<closed>2013-11-05 22:59:42</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>HttpClientPool does not have a Httpclientpool</title>
+		<body>BUG: Every time calling generateClient() a new PoolingClientConnectionManager will be created.  FIX: Try to reuse the PoolingClientConnectionManager.  ``` java private HttpClient generateClient(Site site) {    PoolingClientConnectionManager connectionManager = new PoolingClientConnectionManager(schemeRegistry); } ``` </body>
+		<created>2013-10-14 15:06:26</created>
+		<closed>2013-10-15 11:02:50</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>Annotation extactor does not work</title>
+		<body>``` Exception in thread "main" java.lang.IllegalArgumentException: String input must not be null   at org.jsoup.helper.Validate.notNull(Validate.java:26)   at org.jsoup.parser.TreeBuilder.initialiseParse(TreeBuilder.java:24)   at org.jsoup.parser.TreeBuilder.parse(TreeBuilder.java:40)   at org.jsoup.parser.HtmlTreeBuilder.parse(HtmlTreeBuilder.java:37)   at org.jsoup.parser.Parser.parse(Parser.java:90)   at org.jsoup.Jsoup.parse(Jsoup.java:58) ``` </body>
+		<created>2013-09-08 13:01:34</created>
+		<closed>2013-09-08 14:20:12</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>Update implements of fixRelativeUrl</title>
+		<body>FixRelative now has some bug. It can't fix url such as "http://github.com/code4craft/webmaigc/../../" UrlChange fixRelativeUrl to Java URI api.  </body>
+		<created>2013-09-06 11:28:53</created>
+		<closed>2013-09-06 13:35:40</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>UrlUtils.getCharset bug</title>
+		<body>when fetch http://www.gdwest.com/a/151/ and use UrlUtils.getCharset to get charset for all content return gb2312", not gb2312  suggest code below:  private static final Pattern patternForCharset = Pattern             .compile("\&lt;meta\\s*http-equiv=[\\\"\\']content-type[\\\"\\']\\s*content\\s*=\\s*[\"'][a-z]*/[a-z]*\\s*;\\s*charset=([a-z\\d\\-]*)[\\\"\\'\\&gt;]", Pattern.CASE_INSENSITIVE);     public static String getCharset(String content) {         Matcher matcher = patternForCharset.matcher(content);         if (matcher.find()) {             String charset = matcher.group(1);             if (Charset.isSupported(charset)) {                 return charset;             }         }         return null;     } </body>
+		<created>2013-09-04 06:44:36</created>
+		<closed>2013-09-06 13:19:38</closed>
+	</bug>
+</bugs>

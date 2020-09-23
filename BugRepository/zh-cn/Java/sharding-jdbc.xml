@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="sharding-jdbc">
+	<bug id="382" opendate="2017-09-18 15:11:33" fixdate="2017-09-19 05:59:00">
+		<buginformation>
+			<summary>查询未分表的表失败</summary>
+			<description>Please answer these questions before submitting your issue. Thanks!  ### Which version of Sharding-Jdbc do you using? 1.5.3 ### Expected behavior 使用mybaits作为orm框架 单个数据源包含分表和没有分表的表 查询没有分表的表正常 ### Actual behavior 单个数据源查询未分表的表失败  ### Steps to reproduce the behavior 1.启动项目 2Controller包下的的mapping 3点击控制台的输出 http://localhost:8081/nosdSelect ### Please provide the reproduce example codes (such as github link) if possible. https://git.oschina.net/lxhs/com.study.demo.git</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/routing/router/ParsingSQLRouter.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/api/rule/ShardingRule.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="379" opendate="2017-09-15 10:40:34" fixdate="2017-09-18 14:00:32">
+		<buginformation>
+			<summary>链接获取后不会自动释放链接，然后报错连接池没有空闲链接，程序卡死</summary>
+			<description>Please answer these questions before submitting your issue. Thanks!  ### Which version of Sharding-Jdbc do you using? 1.5.3和1.5.4快照版  ### Expected behavior 正常应该会自动获取链接，释放链接，但是实际没有，链接全部是busy.... ### Actual behavior 不会释放链接，程序卡死 ### Steps to reproduce the behavior 项目启动后随便查询数据库，大概到获取到第100个就获取不到了，一共是一百个链接，下一个查询就会卡死，程序报错没有空闲链接 ### Please provide the reproduce example codes (such as github link) if possible. 我是使用这个demo发现还是存在这个问题的，你可以试试 https://github.com/Max010230/ShardingTest</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/core/connection/MasterSlaveConnection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="370" opendate="2017-09-11 06:39:23" fixdate="2017-09-12 07:14:38">
+		<buginformation>
+			<summary>无法插入其他自增主键的表，从1.4.2升级到1.5.3出现的bug</summary>
+			<description>Please answer these questions before submitting your issue. Thanks!  ### Which version of Sharding-Jdbc do you using? 1.5.3 ### Expected behavior 自增主键的表应该能正常插入，现在不能正常插入。 ### Actual behavior 抛出异常：详情看demo java.sql.SQLException: Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement(). ### Steps to reproduce the behavior 重现步骤  1.执行demo中的sql文件建表 2.配置application.properties中的数据库连接信息  3.运行DemoSjApplication类里的主函数 3.打开 [http://localhost:8080/](http://localhost:8080/) 返回json串则正常添加，否则出现上述所说的异常。。 /* pom文件里注释1.5.3 的引入，切换为 1.4.2则可正常返回 根据tangmin721 所说的，我测试了下，1.5.2是正常的，1.5.3就不行了。 */  ### Please provide the reproduce example codes (such as github link) if possible. demo地址：[https://github.com/pptom/demo-sj](https://github.com/pptom/demo-sj)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/core/statement/ShardingPreparedStatement.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="292" opendate="2017-07-13 11:10:28" fixdate="2017-07-14 17:09:20">
+		<buginformation>
+			<summary>内存方式处理GROUP BY语句如有分页信息则需改写</summary>
+			<description>内存方式处理的GROUP BY语句需要修改分页信息，需将全部数据加载至内存并分组以及聚合。然后再从内存中获取LIMIT（或rownum）的数据，才能保证结果的正确性  所谓内存方式处理GROUP BY即使GROUP BY 与ORDER BY的顺序不一致的SQL。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/parsing/parser/dialect/sqlserver/SQLServerParser.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="239" opendate="2017-04-05 09:05:54" fixdate="2017-06-26 07:49:19">
+		<buginformation>
+			<summary>limit在多个查询中，只有一个结果集不为空时，返回的分页结果不对</summary>
+			<description>limit查询如：limit 20,10，查询到多个结果集，其中只有一个不为空时，在ShardingResultSets中filterResultSets方法返回的list只有一个结果集： ``` private List&lt;ResultSet&gt; filterResultSets(final List&lt;ResultSet&gt; resultSets) throws SQLException {         List&lt;ResultSet&gt; result = new ArrayList&lt;&gt;(resultSets.size());         for (ResultSet each : resultSets) {             if (each.next()) {                 result.add(new WrapperResultSet(each));             }         }         return result;     } ``` 此时，type值为SINGLE。 ``` private Type generateType() {         if (this.resultSets.isEmpty()) {             return Type.EMPTY;         } else if (1 == this.resultSets.size()) {             return Type.SINGLE;         } else {             return Type.MULTIPLE;         }     } ``` 此时直接返回了唯一的结果集（limit 0,30）</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/merger/ShardingResultSetsTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/merger/ShardingResultSets.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/merger/ResultSetFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="194" opendate="2016-11-24 04:21:00" fixdate="2016-11-28 13:42:36">
+		<buginformation>
+			<summary>jdbc接口中资源释放错误</summary>
+			<description>jdbc中，Connection，Statement，Resultset等接口中的close方法中部分组件异常造成另外一部分组件的close方法没有被调用。  **问题复现步骤:**  1.执行一组多分片查询 2.用模拟连接池，对这次查询的一组连接里中间的连接模拟close阶段抛出异常  **期望的表现:**  模拟出来的所有连接都正常关闭  **观察到的表现:**  部分连接没有关闭  **屏幕截图和动态GIF图**  无 **Sharding-JDBC版本:** [1.4.0] **操作系统及版本:** [OSX  10.11.6]</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/ShardingConnectionTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/AbstractStatementAdapter.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/util/ThrowableSQLExceptionMethod.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/AbstractConnectionAdapter.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/AbstractResultSetAdapter.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/util/SQLUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="180" opendate="2016-11-18 00:10:50" fixdate="2017-01-20 10:22:25">
+		<buginformation>
+			<summary>批量执行Update返回值不准确</summary>
+			<description>批量执行Update 返回执行条数不准确。返回数据的行数是真实的SQL执行，但按照`JDBC`的规范应该返回逻辑SQL的执行。目前在特定条件返回的数组会多。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/ShardingPreparedStatement.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/ShardingPreparedStatementTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/executor/PreparedStatementExecutor.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/executor/wrapper/PreparedStatementExecutorWrapper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="149" opendate="2016-09-28 10:08:17" fixdate="2016-09-29 01:25:01">
+		<buginformation>
+			<summary>INSERT IGNORE INTO时如果数据重了忽略时返回的成-1了，应该返回0</summary>
+			<description>发生版本：1.3.2 之前的1.3.1还是正确的0  &lt;!--- @huboard:{"custom_state":"archived"} --&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/StatementAdapterTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/AbstractStatementAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="141" opendate="2016-09-01 08:27:17" fixdate="2016-09-01 08:40:01">
+		<buginformation>
+			<summary>多线程执行器参数设置无效</summary>
+			<description>多线程执行器的参数设置没有达到应有的效果 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/statically/pstatement/StaticShardingBothForPStatementWithDMLTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/statically/pstatement/StaticShardingBothForPStatementWithAggregateTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/db/AbstractShardingDataBasesOnlyDBUnitTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/dynamic/statement/DynamicShardingBothForStatementWithSelectTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/statically/statement/StaticShardingBothForStatementWithDMLTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/statically/pstatement/StaticShardingBothForPStatementWithGroupByTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/dynamic/statement/DynamicShardingBothForStatementWithAggregateTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/dynamic/pstatement/DynamicShardingBothForPStatementWithSelectTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/ShardingDataSource.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/dynamic/statement/DynamicShardingBothForStatementWithDMLTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/executor/PreparedStatementExecutorTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/statically/pstatement/StaticShardingBothForPStatementWithSelectTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/tbl/AbstractShardingTablesOnlyDBUnitTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/dynamic/pstatement/DynamicShardingBothForPStatementWithDMLTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/config/ShardingPropertiesConstant.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/statically/statement/StaticShardingBothForStatementWithSelectTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/nullable/AbstractShardingNullableDBUnitTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/executor/ExecutorEngine.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/masterslave/AbstractShardingMasterSlaveDBUnitTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/dbtbl/statically/statement/StaticShardingBothForStatementWithAggregateTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/executor/StatementExecutorTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/hint/AbstractShardingDataBasesOnlyHintDBUnitTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="124" opendate="2016-07-18 16:03:06" fixdate="2016-07-25 08:51:21">
+		<buginformation>
+			<summary>一个查询时的小bug，没深入分析是否会影响结果</summary>
+			<description>Bug修复建议： com.dangdang.ddframe.rdb.sharding.jdbc.adapter.AbstractStatementAdapter中的重写的getUpdateCount方法     @Override     public final int getUpdateCount() throws SQLException {         int result = 0;         for (Statement each : getRoutedStatements()) {             result += each.getUpdateCount();         }         return result;     } 应该修改为     @Override     public final int getUpdateCount() throws SQLException {         int result = -1;         for (Statement each : getRoutedStatements()) {             if(each.getUpdateCount() == -1){                 continue;             }             result += each.getUpdateCount();         }         return result;     }  Bug说明： 测试时，发现当多表查询时，每个表中都没有结果时 1、each.getUpdateCount()会返回-1。若多个查询statement均没有结果时，result += each.getUpdateCount()返回-4（2库，表水平分2），此时，会调用org.apache.ibatis.logging.jdbc.ResultSetLogger的invoke(Object proxy, Method method, Object[] params)方法，将resultSet设置为close  2、在org.apache.ibatis.executor.resultset.DefaultResultSetHandler中代码逻辑中，若获取到的getUpdateCount不是-1，会继续返回resultSet，然后继续调用getMetaData if (stmt.getConnection().getMetaData().supportsMultipleResultSets()) {         // Crazy Standard JDBC way of determining if there are more results         if (!((!stmt.getMoreResults()) &amp;&amp; (stmt.getUpdateCount() == -1))) {           ResultSet rs = stmt.getResultSet();           return rs != null ? new ResultSetWrapper(rs, configuration) : null;         } }  3、此时org.apache.ibatis.logging.jdbc.ResultSetLogger的invoke(Object proxy, Method method, Object[] params)方法,proxy=resultSet{close=true}，method=getMetaData，导致异常，异常信息：java.sql.SQLException: Operation not allowed after ResultSet closed  org.apache.ibatis.logging.jdbc.ResultSetLogger相关代码如下 public Object invoke(Object proxy, Method method, Object[] params) throws Throwable {     try {       if (Object.class.equals(method.getDeclaringClass())) {         return method.invoke(this, params);       }         Object o = method.invoke(rs, params);       if ("next".equals(method.getName())) {         if (((Boolean) o)) {           rows++;           if (isTraceEnabled()) {             ResultSetMetaData rsmd = rs.getMetaData();             final int columnCount = rsmd.getColumnCount();             if (first) {               first = false;               printColumnHeaders(rsmd, columnCount);             }             printColumnValues(columnCount);           }         } else {           debug("     Total: " + rows, false);         }       }       clearColumnInfo();       return o;     } catch (Throwable t) {       throw ExceptionUtil.unwrapThrowable(t);     }   } </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/StatementAdapterTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/AbstractStatementAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="118" opendate="2016-07-02 02:19:10" fixdate="2016-10-18 06:40:48">
+		<buginformation>
+			<summary>同一个线程内读写分离问题</summary>
+			<description>同一个方法内同时有读写操作时 如果读操作在前 方法内的所有读写操作都会走从库 如果写操作在前 之后的所有读写操作都走主库   &lt;!--- @huboard:{"custom_state":"archived"} --&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/ShardingConnectionTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/ShardingConnection.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/AllJDBCTests.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/MasterSlaveDataSource.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/fixture/TestDataSource.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="89" opendate="2016-06-01 08:07:31" fixdate="2016-06-01 09:15:48">
+		<buginformation>
+			<summary>读写分离和分片的hint一起使用导致冲突问题</summary>
+			<description>由于使用一个HintManager，导致读写分离和分片一起使用时相互影响，目前已通过标记的方式隔离，API未做改动。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/hint/HintManagerHolder.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/masterslave/AbstractShardingMasterSlaveDBUnitTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/masterslave/pstatement/ShardingMasterSlaveForPStatementWithSelectTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/single/SingleTableRouter.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/integrate/masterslave/pstatement/ShardingMasterSlaveForPStatementWithDMLTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/api/HintManager.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/hint/HintManagerHolderTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/MasterSlaveDataSource.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/MasterSlaveDataSourceTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="81" opendate="2016-05-24 12:51:11" fixdate="2016-05-24 12:53:47">
+		<buginformation>
+			<summary>关联表查询使用or查询条件解析结果异常</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/parser/visitor/or/OrVisitor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="59" opendate="2016-05-06 01:01:29" fixdate="2016-10-18 02:31:07">
+		<buginformation>
+			<summary>向含有text字段类型的分表中插入数据时失败</summary>
+			<description> # **MyBatis+MySQL，向含有text字段类型的分表中插入数据数据时失败，异常信息如下：** Caused by: java.sql.SQLException: Invalid argument value: java.io.NotSerializableException at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:998) at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:937) at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:926) at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:872) at com.mysql.jdbc.PreparedStatement.setSerializableObject(PreparedStatement.java:3887) at com.mysql.jdbc.PreparedStatement.setObject(PreparedStatement.java:3603) at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_setObject(FilterChainImpl.java:2923) at com.alibaba.druid.filter.FilterAdapter.preparedStatement_setObject(FilterAdapter.java:1298) at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_setObject(FilterChainImpl.java:2920) at com.alibaba.druid.filter.FilterAdapter.preparedStatement_setObject(FilterAdapter.java:1298) at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_setObject(FilterChainImpl.java:2920) at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.setObject(PreparedStatementProxyImpl.java:411) at com.alibaba.druid.pool.DruidPooledPreparedStatement.setObject(DruidPooledPreparedStatement.java:476) at com.dangdang.ddframe.rdb.sharding.jdbc.ShardingPreparedStatement.setParameters(ShardingPreparedStatement.java:188) at com.dangdang.ddframe.rdb.sharding.jdbc.ShardingPreparedStatement.routeSQL(ShardingPreparedStatement.java:163) at com.dangdang.ddframe.rdb.sharding.jdbc.ShardingPreparedStatement.routeIfNeed(ShardingPreparedStatement.java:151) at com.dangdang.ddframe.rdb.sharding.jdbc.ShardingPreparedStatement.getRoutedPreparedStatements(ShardingPreparedStatement.java:138) at com.dangdang.ddframe.rdb.sharding.jdbc.ShardingPreparedStatement.execute(ShardingPreparedStatement.java:107)  Caused by: java.io.NotSerializableException: java.io.StringReader at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1184) at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:348) at com.mysql.jdbc.PreparedStatement.setSerializableObject(PreparedStatement.java:3876)  &lt;!--- @huboard:{"custom_state":"archived"} --&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/util/ParameterListTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/parser/visitor/SQLVisitor.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/ShardingPreparedStatement.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/parser/result/router/ConditionContext.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/AbstractPreparedStatementAdapter.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/executor/MergeUnit.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/parser/jaxb/Limit.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/PreparedStatementAdapterTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/SQLRouteEngine.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/single/SingleTableRouter.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/adapter/AbstractPreparedStatementAdapterTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/util/ParameterList.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/parser/visitor/basic/mysql/MySQLSelectVisitor.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/parser/result/router/SQLBuilder.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/mixed/CartesianTableReference.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/merger/pipeline/reducer/IteratorResultSetTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/parser/result/merger/Limit.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/parser/result/SQLParsedResultTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/jdbc/util/JdbcMethodInvocation.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/PreparedSQLRouter.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/parser/visitor/basic/mysql/AbstractMySQLVisitor.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/mixed/CartesianDataSource.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/single/SingleRoutingDataSource.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/binding/BindingRoutingTableFactor.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/merger/resultset/memory/AbstractMemoryResultSet.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/single/SingleRoutingTableFactor.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/parser/SQLParserFactory.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/jdbc/AllJDBCTests.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/SQLExecutionUnit.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2016-03-02 07:28:57" fixdate="2016-03-14 10:09:41">
+		<buginformation>
+			<summary>OR表达式下会出现重复结果问题</summary>
+			<description>假设有两个分表：tb0, tb1； 按照id字段取模。现在有where查询条件 id = 0 or id = 2，则导致在分表tb0上执行两次这样的条件查询，出现重复结果： &lt;0,2&gt;, &lt;0, 2&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/router/SelectSingleTableTest.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/SQLRouteEngine.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/SQLExecutionUnit.java</file>
+			<file>sharding-jdbc-core/src/main/java/com/dangdang/ddframe/rdb/sharding/router/SQLRouteResult.java</file>
+			<file>sharding-jdbc-config-parent/sharding-jdbc-config-common/src/test/java/com/dangdang/ddframe/rdb/sharding/config/common/internal/TableRuleTest.java</file>
+			<file>sharding-jdbc-core/src/test/java/com/dangdang/ddframe/rdb/sharding/router/AbstractBaseRouteSqlTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

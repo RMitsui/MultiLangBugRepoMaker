@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="zest-writer">
+	<bug id="308" opendate="2016-12-28 14:38:31" fixdate="2016-12-29 00:42:38">
+		<buginformation>
+			<summary>Les fenêtre de statistique fonctionnent uniquement après avoir quitté le contenu</summary>
+			<description>Pour reproduire :  # Comparateur de taille des extraits  - Depuis le menu *Fichier, Importer un contenu, Depuis ZdS*, importer par exemple `https://zestedesavoir.com/tutoriels/857/lastronomie-depuis-mon-canape/`. - clic-droit sur l'arbre, *statistiques, comparateur de taille des extraits* ;     - la fenêtre ne s'ouvre pas. - ouvrez n'importe quel autre contenu depuis la page d'accueil ; - ouvrez de nouveau *l'astronomie depuis mon canapé* ; - clic-droit sur l'arbre, *statistiques, comparateur de taille des extraits* ;     - cette fois-ci la fenêtre s'ouvre et présente l'histogramme.  # Comparateur d'indices de lisibilité  - Depuis le menu *Fichier, Importer un contenu, Depuis ZdS*, importer par exemple `https://zestedesavoir.com/tutoriels/857/lastronomie-depuis-mon-canape/`. - clic-droit sur l'arbre, *statistiques, comparer les indices de lisibilité* ;     - la fenêtre ne s'ouvre pas. - ouvrez n'importe quel autre contenu depuis la page d'accueil ; - ouvrez de nouveau *l'astronomie depuis mon canapé* ; - clic-droit sur l'arbre, *statistiques, comparer les indices de lisibilité* ;     - cette fois-ci la fenêtre s'ouvre et présente l'histogramme.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/task/DownloadZdsService.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/MetaAttribute.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="305" opendate="2016-12-28 02:00:12" fixdate="2016-12-28 09:50:11">
+		<buginformation>
+			<summary>Les onglets sont dupliqués lorsqu'on renomme des extraits</summary>
+			<description>Pour reproduire :  - créer un nouveau contenu ; - créer 2 nouveau extraits, `a` et `b` ; - double-cliquez sur ces derniers pour ouvrir les onglets correspondants ; - renommer `b` en `c` (le nom de l'onglet `b` est changé en conséquence) ; - double-cliquez de nouveau sur les extraits :     - 2 nouveaux onglets `a` et `c` apparaissent, duplicatas des 2 onglets déjà présents.  Suite de #277.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/MdTreeCell.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="304" opendate="2016-12-28 01:49:15" fixdate="2016-12-28 10:29:00">
+		<buginformation>
+			<summary>Le nom de l'espace de travail est modifié si on annule ou réinitialise</summary>
+			<description>Pour reproduire :  # Annulation  - Cliquez sur le menu *Édition, Préférences*, puis dans l'onglet *Général*, modifier l'espace de travail ; - cliquez maintenant sur *annuler*, puis confirmez sur la pop-up qui s'ouvre ; - rendez-vous de nouveau sur le menu *Édition, Préférences*, onglet *Général* :     - le nouvel espace de travail est affiché, alors que le changement est annulé.  # Réinitialisation  - Cliquez sur le menu *Édition, Préférences*, puis dans l'onglet *Général*, modifier l'espace de travail ; - cliquez maintenant sur *Réinitialiser les options*, puis confirmez sur la pop-up qui s'ouvre ; - rendez-vous de nouveau sur le menu *Édition, Préférences*, onglet *Général* :     - le nouvel espace de travail est affiché, alors que le changement est réinitialisé.  ---  Fait suite à #289.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/OptionsDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="300" opendate="2016-12-28 00:54:35" fixdate="2016-12-28 09:50:11">
+		<buginformation>
+			<summary>L'indice de temps de lecture est dupliqué</summary>
+			<description>Dans la barre d'état, l'indice de temps de lecture est dupliqué systématiquement :  ![](http://i.imgur.com/8JDTWyJ.png)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/FunctionTreeFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="292" opendate="2016-12-10 17:08:12" fixdate="2016-12-13 10:31:51">
+		<buginformation>
+			<summary>Un tableau avancé → la prévisualisation est inutilisable</summary>
+			<description>Un screenshot vaut mieux qu'un long discours. Ce tableau fonctionne parfaitement sur le site, où il a été conçu.  ![capture d ecran de 2016-12-10 18-06-59](https://cloud.githubusercontent.com/assets/5786268/21074848/9218d8ea-bf03-11e6-89f8-a16cd5e253f1.png)  PS : le rendu espéré :  ![capture d ecran de 2016-12-10 18-09-27](https://cloud.githubusercontent.com/assets/5786268/21074860/e6b810f0-bf03-11e6-9ae6-d172090d2d46.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/TestMarkdown.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="287" opendate="2016-11-01 19:55:08" fixdate="2016-11-06 09:43:07">
+		<buginformation>
+			<summary>Empécher la création de conteneurs de 2ème niveau pour les articles</summary>
+			<description>Pour reproduire :  - créer un article ; - créer un nouveau conteneur ; - dans ce conteneur, créer un autre conteneur ; - publier le contenu sur ZdS ;     - Erreur de publication.  Cela est du au fait que sur ZdS, les tutoriels ont 2 niveaux de conteneurs (*partie* et *section*), tandis que les articles ont un seul niveau (*section*).  Il faut donc empêcher la création de conteneurs de 2ème niveau sur les articles.  Note : Comme il est possible de transformer un tutoriel en article, il faut également faire cette vérification à ce moment.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/MdTreeCell.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="281" opendate="2016-11-01 14:10:18" fixdate="2016-12-13 13:59:46">
+		<buginformation>
+			<summary>Le champ de description de la fenetre de nouveau contenu a un comportement étrange</summary>
+			<description>Pour reproduire :  - créer un nouveau contenu ; - dans le champ description, taper un texte de 200 caractères (longueur max autorisée sur ZdS) :  ``` ça fait un moment que nous n'avons pas donné de nouvelles ici et pourtant, vous pouvez me croire, le développement est resté bien actif. Nous avons bien travaillé et nous avons décidé de sortir une no ```  - ...     - ce qui apparait dans le champ est : `ça fait un moment que nous n'avons pas donné de nouvelles ici et pourtant, vous ` ; - coller `pouvez me croire, le développement est resté bien actif. Nous avons bien travaillé et nous avons décidé de sortir une no`     - impossible de coller le texte ; - coller `pouvez me croire, le développement est resté bien actif.` ;     - cela fonctionne ; - **taper** la suite du texte : ` Nous avons bien travaillé` ;     - à `travail`, le champ est rempli avec : `ça fait un moment que nous n'avons pas donné de nouvelles ici et pourtant, vous ` (80 caractères).  Sans doute lié au bugfix de #272.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/EditContentDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="280" opendate="2016-11-01 14:08:59" fixdate="2016-12-29 22:48:35">
+		<buginformation>
+			<summary>[perte de donnée] changer de contenu supprime les onglets non sauvegardés</summary>
+			<description>Pour reproduire :  - créer un nouveau tutoriel ; - ouvrir l'extrait *Introduction*, et taper du texte ; - sans sauvegarder, ouvrir l'extrait *Conclusion* ; - Se rendre sur la page d'accueil et ouvrir un autre contenu ;     - l'onglet *Introduction est fermé sans confirmation*.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/FunctionTreeFactory.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="273" opendate="2016-10-27 18:22:10" fixdate="2016-11-06 09:14:49">
+		<buginformation>
+			<summary>Mettre à jour le dossier online au moment du téléversement</summary>
+			<description>La mise à jour du dossier offline se fait au démarrage de ZW, elle devrait se fait au moment de l'ouverture de la fenêtre de téléversement. # Pour reproduire - sur ZdS, créer un nouveau contenu ; - lancer ZW ; - sur ZdS, supprimer le contenu précédemment créé ; - sur ZW, créer un nouveau contenu (n'importe quel nom) ; - téléverser-le sur ZdS (Ctrl-U) ;   - constater que le contenu nouvellement créé sur ZdS apparaît malgré sa suppression ; - sélectionner ce dernier ;   - une pop-up "Erreur d'import apparaît". </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/MetadataContent.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="272" opendate="2016-10-27 18:07:28" fixdate="2016-10-30 22:26:25">
+		<buginformation>
+			<summary>Vérifier le nom et la description du contenu lors de la création / édition</summary>
+			<description>Lors de la création de contenus sur le site : - la taille du nom est doit être supérieure à 0 et inférieure à 80 caractères ; - la taille de la description doit être inférieure à 160 caractères ; - le slug doit être valide.  Lorsqu'on crée un nouveau contenu sur ZW, ou qu'on le renomme, la taille du nom et de la description n'est pas vérifiée, donc le téléversement vers ZdS échoue.  # Pour reproduire  ## Scénario 1 : pas de nom  - Créer un nouveau contenu et dans _Nom_ laisser le champ vide ; - puis téléversez-le sur ZdS (Ctrl-U), en sélectionnant `---Nouveau contenu---` ;   - une pop-up "Erreur d'import" apparaît.  ## Scénario 2 : nom trop long  - Créer un nouveau contenu et dans _Nom_ tapez :  ``` 12345678901234567890123456789012345678901234567890123456789012345678901234567890too_long_from_here ``` - puis téléversez-le sur ZdS (Ctrl-U), en sélectionnant `---Nouveau contenu---` ;   - une pop-up "Erreur d'import" apparaît.  ## Scénario 3 : slug invalide  - Créer un nouveau contenu et dans _Nom_ tapez `&amp;^$` ; - puis téléversez-le sur ZdS (Ctrl-U), en sélectionnant `---Nouveau contenu---` ;   - une pop-up "Erreur d'import" apparaît.  ## Scénario 4 : description trop longue  - Créer un nouveau contenu et dans _Description_ tapez :  ``` 12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890too_long_from_here ``` - puis téléversez-le sur ZdS (Ctrl-U), en sélectionnant `---Nouveau contenu---` ;   - une pop-up "Erreur d'import" apparaît.  ## Scénario 5, 6, 7 et 8 : édition  Répéter l'opération en créant un nouveau contenu (n'importe quels nom et description), puis éditer-le en changeant son nom et sa description tel qu'indiqué dans les précédents scénarios.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/EditContentDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="261" opendate="2016-10-08 13:19:30" fixdate="2016-10-24 18:56:03">
+		<buginformation>
+			<summary>Problème d'actualisation de contenu lors du clic sur un contenu de la page d'accueil.</summary>
+			<description>Pour reproduire : - créez un nouveau contenu ; - créez un nouvel extrait ; - supprimez cet extrait ; - revenez sur le menu d'accueil et cliquez sur le contenu nouvellement créé ;   - l'extrait nouvellement créé apparaît alors qu'il était supprimé. - cliquez encore une fois sur le contenu nouvellement créé ;   - cette fois-ci l'extrait n’apparaît plus. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/MdTreeCell.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="258" opendate="2016-10-08 12:31:24" fixdate="2016-10-24 07:13:59">
+		<buginformation>
+			<summary>Le rennomage des Introductions et Conclusions n'est pas effectif</summary>
+			<description>Pour reproduire : - créez un nouveau contenu ; - renommez l'introduction (clic-droit sur l'extrait dans l'arbre des contenus) en _intro_ ; - dans la page d'accueil, cliquez sur le contenu nouvellement créé.   - _intro_ est automatiquement renommé en _Introduction_.  Le renommage de ces extrait n'est donc pas effectif. S'il est nécessaire que les extraits _Introduction_ et _Conclusion_ se nomment ainsi, il devrait pas être possible de les renommer. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/MetaAttribute.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="257" opendate="2016-10-08 12:19:56" fixdate="2016-10-24 18:11:01">
+		<buginformation>
+			<summary>La suppression d'un extrait ne retire pas l'onglet correspondant</summary>
+			<description>Pour reproduire : - créez un nouveau contenu ; - créez un nouvel extrait et ouvrez-le ; - supprimez cet extrait via l'arbre de contenu ;   - l'onglet correspondant à l'extrait est toujours ouvert. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/MdTreeCell.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="256" opendate="2016-10-08 11:23:44" fixdate="2016-10-25 12:06:22">
+		<buginformation>
+			<summary>Afficher l'arbre de contenu lorsqu'on ferme tous les onglets</summary>
+			<description>Pour reproduire : - ouvrir un contenu ; - appuyer sur le bouton `Plein écran` ; - fermer l'onglet ; - on passe donc à l'onglet d'accueil, mais :   - comme l'arbre de contenu n'est pas affiché, les clics sur les tutoriels n'ont aucun effet ;   - comme la barre de boutons n'est plus là, on ne peut pas afficher de nouveau l'arbre de contenus.  On ne peut donc rien faire, il est nécessaire de fermer l'application.  Proposition : lorsqu'on ferme tous les onglets, afficher de nouveau l'arbre des contenus. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="253" opendate="2016-09-27 15:42:42" fixdate="2016-10-22 12:05:14">
+		<buginformation>
+			<summary>ZW pense que sa version est obsolète lorsque elle est plus récente</summary>
+			<description>Lorsque on teste une nouvelle version en pre-release qui n'est pas encore publiée officiellement, la fonction de vérification de mise à jour informe que la version est obsolète, ce qui n'est pas le cas. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="234" opendate="2016-09-21 14:26:38" fixdate="2016-10-25 11:45:50">
+		<buginformation>
+			<summary>La fonction rechercher avec sélection ne prend pas en compte le 1er mot</summary>
+			<description>Pour reproduire : - Créer un nouveau contenu et taper `foo foo` ; - sélectionner le 2ème `foo` (sans l'espace devant) ; - Ctrl-F, Rechercher : `foo`, Sélection uniquement. - constater qu'aucune occurrence de `foo` n'a été trouvée.  ![](http://i.imgur.com/DwxSzLj.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/FindReplaceDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="229" opendate="2016-09-21 13:58:12" fixdate="2016-09-24 21:31:39">
+		<buginformation>
+			<summary>Il est impossible de remplacer un mot par une chaine vide</summary>
+			<description>C'est un comportement anormal. Il est utile de faire cela si on cherche à supprimer une expression qui apparaît plusieurs fois dans le texte.  Pour reproduire : - Créez un nouveau contenu et tapez `foo bar` ; - Ctrl-F, Rechercher : `foo`, remplacer : `` ; - Constater que `foo` n'a pas été supprimé.  _Ubuntu 15.10, ZW 3.1_ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/FindReplaceDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="228" opendate="2016-09-21 13:48:45" fixdate="2016-10-25 11:45:50">
+		<buginformation>
+			<summary>L'option Mot entier uniquement de la fenêtre Remplacer ne fonctionne pas dans certains cas</summary>
+			<description>Pour reproduire : - Créez un nouveau contenu et tapez `foo bar baz` ; - Ctrl-F, Rechercher : `foo`, Mot entier uniquement ; - Constater que `foo` n'est pas sélectionné.  Edit : cela fonctionne lorsque le mot est entre 2 espaces, dans l'exemple ci-dessus, `bar` est trouvé.  ![L'option Mot entier uniquement de la fenêtre Remplacer ne fonctionne pas](http://i.imgur.com/6FnE16X.png)  _Ubuntu 15.10, ZW 3.1_ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/FindReplaceDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="209" opendate="2016-07-18 12:49:24" fixdate="2016-09-19 12:22:45">
+		<buginformation>
+			<summary>Support multi-écran</summary>
+			<description>Ayant plusieurs écrans, je remarque que le support du multi-écran n'est pas top. Plusieurs points à notés: - De nombreuse fenêtre n'ont pas le bon `Owner`, ou n'en ont pas du tout, ce qui a pour effet de placer cette nouvelle fenêtre sur l'écran du centre au millieu. J'ai fais les tests, si on place les owners juste, c'est OK. - Lorsque dans les options `Démarrer avec le fenêtre agrandie` est sur `Oui`, Zest Writer démarre sur l'écran du centre. Ceci sera plus compliqué à mettre en place, car il faudra mémoriser dans le fichier de configuration l'écran sur le quelle se trouvais Zest Writer. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="185" opendate="2016-07-05 09:07:28" fixdate="2016-09-12 11:49:32">
+		<buginformation>
+			<summary>Erreur lorsqu'on quitte un tutoriel avec plusieurs onglet non enregistrés</summary>
+			<description>La pop-up de confirmation de fermeture enregistre uniquement l'onglet actif, ce qui engendre certains problèmes. ### Pour reproduire #### Scénario 1 : Création d'un nouveau tutoriel - créer un nouveau tutoriel nommé _test_ ; - sélectionner la partie _Introduction_ et tapez _intro_ ; - sans enregistrer, sélectionner la partie _Conclusion_ et tapez _conclu_ ; - sans enregistrer, créer un nouveau tutoriel nommé _test2_; - À la pop-up _Voulez vous enregistrer les modifications_, cliquez sur _Non_ ; - Revenez à la page d'accueil.  L'onglet _Introduction_ est enregistré et fermé, tendis que _Conclusion_ n'est pas enregistré et reste ouvert. Sur la page d'accueil, le nouveau tutoriel _test2_ n'est pas présent alors qu'il a bien été créé dans le dossier offline. #### Scénario 2 : Ouverture d'un autre tutoriel - créer un nouveau tutoriel nommé _test2_ ; - enregistrez-le ; - créer un nouveau tutoriel nommé _test_ ; - sélectionner la partie _Introduction_ et tapez _intro_ ; - sans enregistrer, sélectionner la partie _Conclusion_ et tapez _conclu_ ; - sans enregistrer, allez sur l'onglet d'accueil et ouvrez _test2_ ; - À la pop-up _Voulez vous enregistrer les modifications_, cliquez sur _Non_ ;  _Test2_ est bien ouvert mais l'onglet _Introduction_ de _test_ est encore ouvert et pas encore enregistré. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/FunctionTreeFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="176" opendate="2016-07-01 09:34:59" fixdate="2016-07-01 14:09:28">
+		<buginformation>
+			<summary>L'outil de correction corrige du texte formaté inline et en italique</summary>
+			<description>![](http://i.imgur.com/4BsWInx.png) Lignes 1 et 4 : ok ; lignes 2 et 3 : pas ok.  Pour reproduire :  Créez un nouveau contenu, tapez le texte ci-dessous et effectuez la correction de texte :  ``` Tapez sudo apt-get get install vim dans un terminal.  Tapez `sudo apt-get get install vim` dans un terminal.  Tapez *sudo apt-get get install vim* dans un terminal.  Tapez dans un terminal :      sudo apt-get get install vim ```  Note : [Cette ligne de code](https://github.com/firm1/zest-writer/blob/master/src/main/java/com/zestedesavoir/zestwriter/utils/Corrector.java#L126) devrait pourtant empêcher cela. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/TestCorrect.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/utils/Corrector.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="162" opendate="2016-06-29 17:12:05" fixdate="2016-07-04 11:27:03">
+		<buginformation>
+			<summary>Les contenus nouvellement téléchargés n'apparaissent pas sur la page d'accueil</summary>
+			<description>Pour reproduire : - Créer un nouveau contenu ; - mettez ce contenu en ligne ; - renommez votre dossier _offline_ en __offline_ (pour faire un backup et nettoyer le dossier) ; - cliquez sur _Téléchargez les contenus_.  Les contenus sur ZdS sont bien téléchargés dans _offline_, mais n'apparaissent pas sur la page d'accueil : il est nécessaire de les ouvrir un par un. Il serait pratique de tous les voir.  Revenir en situation initiale : - supprimer le dossier _offline_ ; - renommez le dossier de backup __offline_\* en _offline_ ; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="161" opendate="2016-06-29 16:54:07" fixdate="2016-07-01 15:08:19">
+		<buginformation>
+			<summary>Erreur de rendu sur certaines expressions mathématiques</summary>
+			<description>Des barres verticales apparaissent sur certaines expressions mathématiques, telles que `x = \frac {-b \pm \sqrt{b^2 - 4ac}}{2a}` :  ![](http://i.imgur.com/pFEUnRg.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="159" opendate="2016-06-29 10:49:53" fixdate="2016-07-02 18:30:36">
+		<buginformation>
+			<summary>Le fait de renommer un contenu devrait modifier le nom de son dossier</summary>
+			<description>Lorsque on renomme un contenu, le nom du dossier reste inchangé. Celui-ci devrait être renommé avec le nouveau nom du contenu car cela pose problème par la suite : - Créer un contenu nommé _toto_ (le dossier toto est créé) ; - renommer-le en _tata_ (le titre change mais le dossier reste inchangé) ; - téléverser le tutoriel sur ZdS (le contenu _tata_ apparaît sur ZdS) ; - cliquer sur _télécharger les contenus_ (le contenu _tata_ est téléchargé).  Le dossier _offline_ contient maintenant les dossiers _toto_ et _tata_, ce qui est confus.  Pour aller encore plus loin : - Ouvrir le dossier _tata_ via ZW (ZW expose sur la page d'accueil les contenus _tata_ et _tata_, ce qui est très confus).  Note : #131 permettrait de mieux comprendre le problème et maîtriser ce qu'il se passe. Ici, ce serait jouer à la roulette russe que de supprimer le mauvais contenu via ZW car on ne peut pas les différencier. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/MdTreeCell.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/ContentNode.java</file>
+			<file>src/test/java/TestModel.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/Content.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/Container.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="156" opendate="2016-06-28 19:31:57" fixdate="2016-06-29 11:09:42">
+		<buginformation>
+			<summary>Crash de l'application sur OS X</summary>
+			<description>Quand j'ouvre l'application sur OS X, l'application Crash au démarrage.  Voici les logs :  ``` Exception in Application constructor java.lang.reflect.InvocationTargetException     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     at java.lang.reflect.Method.invoke(Method.java:498)     at com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:389)     at com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:328)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     at java.lang.reflect.Method.invoke(Method.java:498)     at sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:767) Caused by: java.lang.RuntimeException: Unable to construct Application instance: class com.zestedesavoir.zestwriter.MainApp     at com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:907)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$155(LauncherImpl.java:182)     at java.lang.Thread.run(Thread.java:745) Caused by: java.lang.reflect.InvocationTargetException     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)     at java.lang.reflect.Constructor.newInstance(Constructor.java:423)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:819)     at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)     at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)     at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) Caused by: java.lang.RuntimeException: Could not create      at com.zestedesavoir.zestwriter.utils.LocalDirectorySaver.openDirCreateIfNecessary(LocalDirectorySaver.java:36)     at com.zestedesavoir.zestwriter.utils.LocalDirectorySaver.&lt;init&gt;(LocalDirectorySaver.java:21)     at com.zestedesavoir.zestwriter.utils.LocalDirectoryFactory.&lt;init&gt;(LocalDirectoryFactory.java:20)     at com.zestedesavoir.zestwriter.utils.Configuration.loadWorkspace(Configuration.java:162)     at com.zestedesavoir.zestwriter.utils.Configuration.initConf(Configuration.java:111)     at com.zestedesavoir.zestwriter.utils.Configuration.&lt;init&gt;(Configuration.java:41)     at com.zestedesavoir.zestwriter.MainApp.&lt;init&gt;(MainApp.java:62)     ... 10 more Exception running application com.zestedesavoir.zestwriter.MainApp logout ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/OptionsDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/ImageInputDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="148" opendate="2016-06-27 19:11:24" fixdate="2016-06-28 14:30:15">
+		<buginformation>
+			<summary>Bouton "Annuler" dans les statistiques mal nommé</summary>
+			<description>Sur la page des statistiques, le bouton en bas à droite contient "Annuler", or ça devrais plutôt être "Fermé". </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/MdTreeCell.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="144" opendate="2016-06-27 19:00:32" fixdate="2016-06-28 07:20:55">
+		<buginformation>
+			<summary>Dark thème</summary>
+			<description>Petit problème dans les fenêtres qui concerne les indices de Flesh et de Gunning.  Le problème est que ... c'est pas très dark :p </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="142" opendate="2016-06-27 18:49:23" fixdate="2016-06-28 16:32:56">
+		<buginformation>
+			<summary>Fenêtre "A propos" redimensionnable</summary>
+			<description>Je ne sais pas s'il s'agit d'une régression, mais il me semblais avoir interdit le redimensionnement de la fenêtre `A propos`. Or j'arrive à la redimensionner. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/CustomAlert.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/CustomDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="140" opendate="2016-06-27 16:34:47" fixdate="2016-06-28 16:32:56">
+		<buginformation>
+			<summary>Le texte est parfois tronqué</summary>
+			<description>Sur Ubuntu Mate 15  En rapport avec #119.  ![](http://i.imgur.com/9Gifrr5.png)  ![](http://i.imgur.com/to4uMFO.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/CustomDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/OptionsDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="130" opendate="2016-06-26 16:26:29" fixdate="2016-06-27 05:21:29">
+		<buginformation>
+			<summary>La mise à jour de la page d'accueil peut mal fonctionner</summary>
+			<description>Lorsqu'un tutoriel est déjà ouvert, le bouton _Nouveau tutoriel_ ne fonctionne pas.  Pour reproduire : - Créer un nouveau tutoriel ; - double-cliquez sur _Introduction_ ; - créez un autre nouveau tutoriel ;  La page d'accueil est affichée, mais cette dernière n'est pas jour, bien que le nouveau tutoriel est physiquement présent dans le dossier tutoriel.  Le tutoriel apparaît dans le menu si on utilise la fonction _Ouvrir_, ou bien si on redémarre z-w.  _Sous Ubuntu Mate 16_ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/FunctionTreeFactory.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/MdTreeCell.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="129" opendate="2016-06-26 16:18:47" fixdate="2016-06-27 04:24:50">
+		<buginformation>
+			<summary>La fonction supprimer le tutoriel ne fonctionne pas</summary>
+			<description>Pour reproduire : - créer un nouveau tutoriel vide ; - supprimez-le.  La popup _Êtes-vous sur de supprimer le tutoriel_ apparaît, mais après confirmation le tutoriel est toujours présent, sur la page d'accueil, sur le panneau de gauche ainsi que dans le dossier tutoriels.  _Sous Ubuntu Mate 16_ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/MdTreeCell.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/utils/Configuration.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="119" opendate="2016-06-16 23:20:49" fixdate="2016-06-22 08:48:03">
+		<buginformation>
+			<summary>Le texte ne revient pas à la lignes sur les fenêtres modales</summary>
+			<description>Sur les popups d'information, de warning et d'erreur, ainsi que sur la fenêtre _À propos_, le texte ne revient pas à la ligne. De ce fait, il est souvent impossible de lire le texte jusqu'au bout (les fenêtres n'étant pas redimensionnables).  ![texte_tronque](https://cloud.githubusercontent.com/assets/1665542/16136209/00848fc4-3429-11e6-9981-0d9650cb629a.png) - _zest-writer-all-1.1.0.jar_ - Ubuntu Mate 16.04 LTS - Java 1.8.0_91 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/MdTreeCell.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/CustomFXMLLoader.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/BaseDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/CustomAlert.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/FunctionTreeFactory.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/ImageInputDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/LoginDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/GoogleLoginDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/OptionsDialog.java</file>
+			<file>src/test/java/TestConfig.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/CustomDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/CustomStyledClassedTextArea.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="117" opendate="2016-06-11 14:06:06" fixdate="2016-06-22 09:08:19">
+		<buginformation>
+			<summary>Prévisualisation morte sur OS X</summary>
+			<description>Version : 1.1 OS : OS X  Plus aucune prévisualisation lorsque j'ouvre un fichier.  &lt;img width="1440" alt="capture d ecran 2016-06-11 a 16 06 12" src="https://cloud.githubusercontent.com/assets/1913901/15985467/762b87ee-2fee-11e6-84f4-6fc920dfe525.png"&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="114" opendate="2016-05-10 16:54:36" fixdate="2016-05-17 15:07:11">
+		<buginformation>
+			<summary>Les formules de Math rendent mal dans certains cas</summary>
+			<description>En testant un simpe `$ x^2 $` on a ce genre de résultat, pas beau.  ![](http://zestedesavoir.com/media/galleries/1594/53d48c34-0d3f-474b-aed7-2ecbac679998.png)  Après avoir faire des essais, ça ne vient pas de katex, puisqu'en testant une page d'exemple sous firefox/chrome je n'ai pas le souci. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="113" opendate="2016-05-10 16:51:29" fixdate="2016-05-17 13:00:58">
+		<buginformation>
+			<summary>La selection d'un mot rajoute des espaces</summary>
+			<description>&gt; La sélection de mots est étrange dans l'éditeur (Ctrl+flèches ou au double clic) : j'ai l'espace d'avant qui vient avec. C'est pas le comportement standard.  IL s'agit d'un problème au niveau de [RichTextFx](https://github.com/TomasMikula/RichTextFX/issues/197) il faudrait idéalement utiliser un workaround </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/Textual.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/ContentNode.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/MetaAttribute.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/Extract.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/utils/Configuration.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/MetaContent.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/Container.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/CustomStyledClassedTextArea.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/IconFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="112" opendate="2016-05-10 16:50:15" fixdate="2016-05-11 22:24:58">
+		<buginformation>
+			<summary>Il y'a des changements de taille dans l'éditeur</summary>
+			<description>&gt; J'ai des changements de taille du texte bizarre quand je change d'onglet dans l'éditeur.  Il faudrait réussir à reproduire le problème </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/FunctionTreeFactory.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="111" opendate="2016-05-10 16:49:21" fixdate="2016-05-11 23:26:16">
+		<buginformation>
+			<summary>Prévoir un avertissement lorsqu'on quitte l'application</summary>
+			<description>Via le forum:  &gt; J'ai un avertissement à la fermeture via le menu et Ctrl+Q, mais pas via Alt+F4 ou la croix de la fenêtre.  Voir conseil de @WinXaito [ici](https://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=15#p109418) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="106" opendate="2016-05-08 12:56:09" fixdate="2016-05-09 14:11:01">
+		<buginformation>
+			<summary>L'upload sur ZdS ne semble plus fonctionner</summary>
+			<description>Beaucoup de membre l'on indiqué, l'upload sur le site ne semble plus fonctionner. Certain dise également que le download ne fonctionne pas.  Je te laisse regardé ceci, car je n'ai pas trop suivi tout ce qui est connexion au site. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/task/UploadContentService.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="91" opendate="2016-04-26 05:59:19" fixdate="2016-05-02 15:30:07">
+		<buginformation>
+			<summary>Rendre la vérification de mise à jour non bloquante</summary>
+			<description>Il faudrait rendre la vérification de mise à jour non bloquante (c'est à dire le transformer en service) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/utils/Configuration.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="90" opendate="2016-04-26 05:54:49" fixdate="2016-05-09 14:21:11">
+		<buginformation>
+			<summary>Necessité de redemarrer l'appli pour prendre en compte le changement de dossier via les préférences</summary>
+			<description>Via le forum  &gt; faut-il forcément redémarrer l'application pour qu'il prennent en compte le changement du dossier de travail des préférences dans le menu fichier-&gt;ouvrir? </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/OptionsDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="88" opendate="2016-04-25 14:06:48" fixdate="2016-05-05 15:32:17">
+		<buginformation>
+			<summary>Conflit de touches</summary>
+			<description>Via le forum  &gt; J'ai un bug de saisie bizarre. Quand je saisis une accolade }, avec la combinaison Alt Gr + }, la suite de caractère ~}~ est insérée. On dirait un mêli-mêlo avec le raccourci Ctrl + =. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="79" opendate="2016-04-23 09:26:57" fixdate="2016-04-25 10:28:09">
+		<buginformation>
+			<summary>Problème de synchronisation</summary>
+			<description>&gt; Alors pour l'occasion j'ai testé zest writer et j'ai croisé un petit soucis, lorsque je veux uploader un tuto, il l'upload bien mais il ne synchronise pas avec le tuto actuel, ce qui fait qu'on a des doublons ^^ VOici ce que m'affiche le soft : &gt;  &gt; ![](http://www.image-heberg.fr/files/146131771829899.png) &gt;  &gt; Bonne soirée :)  Reporté par Dryusdan sur le [forum](https://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=10#p107021) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/task/LoginService.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/utils/ZdsHttp.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/task/UploadContentService.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/model/MetadataContent.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="69" opendate="2016-04-22 09:03:02" fixdate="2016-04-23 13:56:34">
+		<buginformation>
+			<summary>Impossible d'avoir le rendu dans certains cas</summary>
+			<description>Ce bug touche @artragis, et j'a réussi à le reproduire et donc a comprendre d’où il vient, il s'agit du fait que sur certains systèmes la webview n'arrive pas à charger le chemin vers la ressource contenant les static.  A corriger donc maintenant que c'est identifié </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/dialogs/BaseDialog.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MenuController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/com/IconFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="39" opendate="2016-04-01 04:27:22" fixdate="2016-04-08 15:23:05">
+		<buginformation>
+			<summary>Prévisualisation des lignes de codes décalées</summary>
+			<description>&gt; Enfin, les numéros de ligne des blocs de code sont décalés (la ligne est trop basse par rapport au numéro), sur la prévisualisation, chez moi. &gt;  &gt; ![Numéros de ligne décalés](http://raw.carrade.eu/s/1459434257.png) &gt; :Ce n'est pas en face. Mon perfectionnisme est contrarié. &gt;  &gt; _(Sous GNU/Linux, Ubuntu 14.10, KDE Plasma 5.9.0.)_ &gt; Source:[AmauryPi](http://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=8#p104594) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="38" opendate="2016-04-01 04:26:27" fixdate="2016-04-08 14:34:40">
+		<buginformation>
+			<summary>Interprétation des balises codes problématique</summary>
+			<description>via [le forum](https://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=8#p104594)  &gt; Actuellement, le défilement de la zone d'écriture et de prévisualisation n'est pas synchronisé : sans forcément le faire systématiquement, il serait agréable qu'il défile automatiquement jusqu'en bas quand on est en bas du fichier, permettant ainsi de voir la prévisualisation en continu. &gt;  &gt; En terme de rapports de bug, si j'écris :  &gt;  &gt; ``` markdown &gt; `Set&lt;Class&lt;? extends Object&gt;&gt;` &gt; ``` &gt;  &gt; ...Zest Markdown prévisualise `Set&gt;`. Il semble interpréter les balises HTML (ou ce qu'il croit en être).   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2016-03-07 14:15:27" fixdate="2016-03-07 18:55:26">
+		<buginformation>
+			<summary>Les images des blocs customs sont absents dans le rendu</summary>
+			<description>&gt; Dans les bloc information, erreur, etc. on a pas les images comme sur le site </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="29" opendate="2016-03-07 14:11:38" fixdate="2016-03-09 14:37:37">
+		<buginformation>
+			<summary>Impossible d'utiliser l'outil de création de tableau</summary>
+			<description>&gt; le comportement de l'outil tableau est erratique : si j'ajoute une colonne, je perd tout, si j'ajoute une lignes certaines cases sont modifiées, etc. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/zestedesavoir/zestwriter/view/TableController.java</file>
+			<file>src/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="27" opendate="2016-02-23 09:47:10" fixdate="2016-02-25 07:34:08">
+		<buginformation>
+			<summary>Utiliser la même police que le site pour le rendu HTML</summary>
+			<description>Parce que là c'est vraiment moche ^^ (Linux CentOS 7, jdk 1.8.0_72, compilé depuis les sources).  Sinon, l'éditeur est vraiment cool et pratique à utiliser, merci :+1: ! </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="23" opendate="2016-02-22 15:05:29" fixdate="2016-02-28 08:57:08">
+		<buginformation>
+			<summary>Le double clic sur un contenu ne devrait rien ouvrir</summary>
+			<description>Bloquer le double clic sur un contenu. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/zestedesavoir/zestwriter/utils/readability/SentenceExtractor.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/Corrector.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/ZdsHttp.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/LocalDirectorySaver.java</file>
+			<file>src/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/TextAnalyser.java</file>
+			<file>src/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/LocalDirectoryFactory.java</file>
+			<file>src/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+			<file>src/com/zestedesavoir/zestwriter/model/ExtractFile.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="22" opendate="2016-02-22 15:04:02" fixdate="2016-02-28 08:57:08">
+		<buginformation>
+			<summary>Problème lors des drag'n drop</summary>
+			<description>L'image parle d'elle même  ![](http://i.imgur.com/ZaBVUj7.png)  Il y'a certainement des conditions qui sont mal faites. Il faudrait repasser sur tous les cas. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/zestedesavoir/zestwriter/utils/readability/SentenceExtractor.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/Corrector.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/ZdsHttp.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/LocalDirectorySaver.java</file>
+			<file>src/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/TextAnalyser.java</file>
+			<file>src/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/LocalDirectoryFactory.java</file>
+			<file>src/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+			<file>src/com/zestedesavoir/zestwriter/model/ExtractFile.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="9" opendate="2016-02-11 10:37:11" fixdate="2016-02-28 21:38:14">
+		<buginformation>
+			<summary>Fermer un dossier ce n'est pas le supprimer</summary>
+			<description>&gt; Sur un dossier ouvert dans l'arborescence, "Clic droit &gt; Supprimer" ne fait que le fermer, ce qui est bien, mais du coup, il faudrait renommer ça en "Fermer" ou "Retirer du panneau". </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/zestedesavoir/zestwriter/model/ExtractFile.java</file>
+			<file>src/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="8" opendate="2016-02-11 10:35:48" fixdate="2016-02-28 08:57:08">
+		<buginformation>
+			<summary>Eviter de supprimer un extrait en essayant de le déplacer</summary>
+			<description>&gt; Le drag n' drop est totalement chaotique, j'ai supprimé un extrait en voulant en déplacer un. Le fichier n'est pas supprimé par ailleurs (et c'est peut-être mieux ainsi), mais ce comportement est pour le moins étrange. Surtout que j'ai réussi à supprimer la conclusion (qui ne peut pas l'être par clic droit !). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/zestedesavoir/zestwriter/utils/readability/SentenceExtractor.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/Corrector.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/ZdsHttp.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/LocalDirectorySaver.java</file>
+			<file>src/com/zestedesavoir/zestwriter/MainApp.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/TextAnalyser.java</file>
+			<file>src/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+			<file>src/com/zestedesavoir/zestwriter/utils/LocalDirectoryFactory.java</file>
+			<file>src/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+			<file>src/com/zestedesavoir/zestwriter/model/ExtractFile.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7" opendate="2016-02-11 10:34:42" fixdate="2016-02-15 23:33:07">
+		<buginformation>
+			<summary>Correction du rendu des citations</summary>
+			<description>Il y a un bug étrange avec les citations (la source est mise en forme, mais pas le contenu de la citation). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6" opendate="2016-02-11 10:33:41" fixdate="2016-02-18 17:36:06">
+		<buginformation>
+			<summary>Proposer un rendu adapté pour les balises Mathématiques</summary>
+			<description>Une façon simple serait de charger le fichiers js de MathJax directement dans la Webview. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/zestedesavoir/zestwriter/view/MdConvertController.java</file>
+			<file>src/com/zestedesavoir/zestwriter/view/MdTextController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

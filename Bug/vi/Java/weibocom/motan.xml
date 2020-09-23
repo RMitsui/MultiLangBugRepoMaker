@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>161</id>
+		<title>NettyServerChannelManage 对channel 的限制不够严谨</title>
+		<body>``` @Override     public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {         Channel channel = ctx.getChannel();          String channelKey = getChannelKey((InetSocketAddress) channel.getLocalAddress(),                 (InetSocketAddress) channel.getRemoteAddress());          if (channels.size() &gt; maxChannel) {             // 超过最大连接数限制，直接close连接             LoggerUtil.warn("NettyServerChannelManage channelConnected channel size out of limit: limit={} current={}",                     maxChannel, channels.size());              channel.close();         } else {             channels.put(channelKey, channel);             ctx.sendUpstream(e);         }     } ```  在这里,`if (channels.size() &gt; maxChannel)` 其实应该是`if (channels.size() &gt;= maxChannel)` 当 第max+1个连接过来的时候,这里会判断发现原来的 channel 数刚好等于 max, 所以还会再增加一个 channel. </body>
+		<created>2016-07-30 05:56:13</created>
+		<closed>2016-11-17 03:21:11</closed>
+	</bug>
+	<bug>
+		<id>127</id>
+		<title>为什么使用BigDecimal作为参数，传到服务器端值就变成0了</title>
+		<body></body>
+		<created>2016-06-22 05:39:00</created>
+		<closed>2016-11-17 03:19:55</closed>
+	</bug>
+	<bug>
+		<id>123</id>
+		<title>使用zk作为注册中心，链接中断后临时节点无法再建立</title>
+		<body>使用zookeeper作为注册中心时，应用与注册中心链接中断超过一个sessionTimeout时间，应用与zookeeper的链接恢复后该应用注册的临时节点消失 </body>
+		<created>2016-06-20 05:38:23</created>
+		<closed>2016-07-20 06:31:19</closed>
+	</bug>
+	<bug>
+		<id>89</id>
+		<title>RequestIdGenerator获得请求id溢出问题</title>
+		<body>RequestIdGenerator 该类 请求获得id 是否存在溢出可能性？有可能出现到最大值后都是负数。   public class RequestIdGenerator {     private static volatile AtomicLong offset = new AtomicLong(0);  ``` private static final ReentrantLock lock = new ReentrantLock();  /**  * 获取 requestId  *  * @return  */ public static long getRequestId() {     long increId = offset.incrementAndGet();     if (increId &lt; 0) {         try {             lock.lock();             if (offset.get() &lt; 0) {                 offset.set(0);             }             return offset.incrementAndGet();         } catch (Exception e) {             //ignore error         } finally {             lock.unlock();         }     }     return offset.get();  }  public static long getRequestIdFromClient() {     // TODO 上下文 requestid     return 0;  } ```  } </body>
+		<created>2016-05-24 05:21:12</created>
+		<closed>2016-07-20 06:23:25</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>motan消费端部署在tomcat中，无法正常shutdown tomcat</title>
+		<body>执行tomcat的shutdown.sh，无法正常关闭tomcat，只能kill进程。有什么办法吗？ </body>
+		<created>2016-05-20 02:03:52</created>
+		<closed>2019-08-13 04:29:47</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>URL类getBooleanParameter里如果value为空返回null</title>
+		<body>考虑到返回类型为Boolean，修改为下面代码更好： if (value == null) {             return Boolean.FALSE ;         } </body>
+		<created>2016-05-12 12:34:05</created>
+		<closed>2016-07-20 06:12:56</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>loadbalance LocalFirstLoadBalance</title>
+		<body>1. LocalFirstLoadBalance.searchLocalReferer        long local = ipToLong(localhost);     放在循环里面是不是有点浪费？ 2. LocalFirstLoadBalance.doSelectToHolder        if (localReferers.isEmpty()) {            Collections.sort(localReferers, new LowActivePriorityComparator&lt;T&gt;());            refersHolder.addAll(localReferers);        }    也不太对劲 </body>
+		<created>2016-05-11 08:29:41</created>
+		<closed>2016-05-12 13:06:06</closed>
+	</bug>
+	<bug>
+		<id>6</id>
+		<title>多线程bug</title>
+		<body>_ReflectUtil.class_  ``` private static final Map&lt;String, Class&lt;?&gt;&gt; name2ClassCache = new HashMap&lt;String, Class&lt;?&gt;&gt;(); ... Class&lt;?&gt; clz = name2ClassCache.get(className); if (clz != null) {     return clz; } clz = forNameWithoutCache(className); if (clz != null) {     // 应该没有内存消耗过多的可能，除非有些代码很恶心，创建特别多的类     name2ClassCache.put(className, clz); } ```  hashmap在多线程并发put/get时应该有问题 </body>
+		<created>2016-04-25 06:59:10</created>
+		<closed>2016-04-25 08:33:30</closed>
+	</bug>
+</bugs>

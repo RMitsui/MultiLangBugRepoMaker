@@ -1,0 +1,986 @@
+eca3be118465fe38ddd0cea9f23e0c69de53134f, Merge pull request #120 from typesafe-query/release/0.6.1, Wed Mar 16 13:04:35 2016 +0900
+dc7b12e912dfcb4a7ac1b7e102bc68a3b6a1c921, Merge pull request #121 from typesafe-query/Issues#119, Wed Mar 16 12:55:25 2016 +0900
+a44612adfbe2ec61e7c9a2f78512e512edadfd8b, LobDBColumn追加、metagenerator対応, Wed Mar 16 12:49:51 2016 +0900
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/LobDBColumn.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/LobDBColumnImpl.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+924a3737addda59606956f750fdcbbef14c5e33a, Release v0.6.1, Wed Mar 16 11:49:40 2016 +0900
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+105c5f13359b33f179aae554b593c701107993dc, Issues#84, Sat Mar 5 00:57:08 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/DBColumn.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/VirtualDBTable.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/BooleanDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DateDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/StringDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/VirtualDBTableImple.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/TypesafeQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/TypesafeQueryFactory.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DB2TypesafeQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultTypesafeQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/MySQLTypesafeQuery.java
+
+fab9b5493e2575da5a2e488095d03f697d73b4a5, Merge pull request #116 from typesafe-query/Issues#109_change_resultset_unvisible, Fri Mar 4 10:36:11 2016 +0900
+6942a86ad7ab2f0a321d29f2ce5d141133e2687c, ResultSetを外部に公開しないように修正, Fri Mar 4 10:31:43 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/DefaultResultData.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/DefaultSQLRunner.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/ResultData.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/mapper/BeanResultMapper.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/mapper/MapResultMapper.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/mapper/ResultMapper.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/translator/DefaultDialectTranslator.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/translator/DialectTranslator.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/SelectQueryTest.java
+
+2ef8e8d56b6afd3b04767c99a452edc3c6f9b509, Issues#112 @defaultWhereを殺して論理削除対応, Thu Mar 3 23:00:51 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelDescription.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelHandler.java
+R082	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/DefaultWhere.java	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/Invalid.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/FinderTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/ModelHandlerTest.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser2.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser2_.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser_.java
+M	typesafe-query-core/src/test/java/com/sample/model/RolePK.java
+M	typesafe-query-core/src/test/java/com/sample/model/Role_.java
+M	typesafe-query-core/src/test/java/com/sample/model/TypeModel3.java
+M	typesafe-query-core/src/test/resources/create-tables.sql
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+8ed7b502aaf8dfdca58f31b9ff6736acf70c7a9e, release 0.7.0, Tue Mar 1 21:42:30 2016 +0900
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+6a0eb1fa1c08067cb54bde0d3b84b6b8985efc60, Merge pull request #88 from typesafe-query/release/0.6.0, Tue Mar 1 21:30:24 2016 +0900
+d1acdd32e75c4524bbd11bdc2b98587eccf86104, Merge pull request #107 from typesafe-query/Issues#35, Tue Mar 1 21:21:56 2016 +0900
+e9c85e7ed97e71df17b85976f33cbc7a30c8068f, Issues#35 DefaultFinderのgetExps()をちょっと素敵に, Tue Mar 1 09:44:28 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+
+bd0d46362e3baa2aa8238c62295d30d6cb17416c, Issues35 全ての対応型での論理削除テスト追加, Fri Feb 26 14:50:39 2016 +0900
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/FinderTest.java
+A	typesafe-query-core/src/test/java/com/sample/model/TypeModel3.java
+A	typesafe-query-core/src/test/java/com/sample/model/TypeModel3_.java
+M	typesafe-query-core/src/test/resources/create-tables.sql
+M	typesafe-query-core/src/test/resources/delete-tables.sql
+
+1cc92fe9f20b688cf7f5604b3105c30dc0e86d73, Issues#35 日付型にも対応, Thu Feb 25 19:14:34 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+7db89c885d2ce5fb5c83963e08e2ef3e62415539, Issues#35 テスト定義、メタプロセッサーで'not'の判定を修正, Thu Feb 25 10:30:52 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/FinderTest.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser2.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser2_.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser_.java
+M	typesafe-query-core/src/test/java/com/sample/model/GeneratedIdTable_.java
+M	typesafe-query-core/src/test/java/com/sample/model/RolePK.java
+M	typesafe-query-core/src/test/java/com/sample/model/Role_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Unit_.java
+M	typesafe-query-core/src/test/java/com/sample/model/UserInfo_.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+aefbd3211ba12d0dead8207f400239f956c23fe6, Issues#35 default条件使うか切り替えれるようになりました, Wed Feb 24 17:07:20 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Finder.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+849f043199807ec2433e217c7bbbe8f2bf015fda, Issues#35 Tableで指定したデフォルト条件がfindで適用されるように, Wed Feb 24 15:34:02 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelDescription.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/DefaultWhere.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+60d907f29110808474c175604548735ad2008865, Merge pull request #95 from typesafe-query/Issues#13, Wed Feb 24 15:57:30 2016 +0900
+eb4c3e09c5b862fd298d27b57abd9e3d62280bc4, Issues#13 QにIntervalUnitのエイリアスを定義, Wed Feb 24 15:46:08 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/enums/IntervalUnit.java
+
+3f808c401f75634396512ba7c4a5967c68b44b21, Issues#13 テストの修正漏れしてごめんなさい, Tue Feb 23 12:49:20 2016 +0900
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/AddFuncTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/ModFuncTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/SubtractFuncTest.java
+
+95b004f949e08ef78273424e3e17a0f8bf185487, Issues#13 Func共通化、IntervalのUnitをenumに変更, Tue Feb 23 12:43:59 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/enums/IntervalUnit.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/DateDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DateDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/AddFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/CalculationFuncBase.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/DivideFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/ModFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/MultiplyFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/SubtractFunc.java
+
+b025e4ee85d34189d1c9ba5aadc3634c08e81782, Issues#13 日付の計算対応, Mon Feb 22 11:44:26 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/DateDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/NumberDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DateDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/AddFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/DivideFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/MultiplyFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/SubtractFunc.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/AddFuncTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/DivideFuncTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/MultiplyFuncTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/SubtractFuncTest.java
+
+b59a018c63cc35b17b69d1de52ea07333146ddea, Issues#13 まずは数値列の計算のみ対応, Fri Feb 19 16:15:35 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/NumberDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/AddFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/DivideFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/ModFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/MultiplyFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/SubtractFunc.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/AddFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/DivideFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/ModFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/MultiplyFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/SubtractFuncTest.java
+
+a19807904d22b2dd6a2b36e71d2876be7dcc0579, Merge pull request #104 from typesafe-query/Issues#25_change_external_file_policy, Wed Feb 24 15:42:29 2016 +0900
+31e498d5c758aadaa9ba648001eaeb4100bbbd76, Merge pull request #105 from typesafe-query/Issues#31_change_specified_column_on_save, Wed Feb 24 15:42:17 2016 +0900
+ae8fbc2a252cba4c4c1204c5eef2e908f9ca0d63, Issues#31 Modelの更新で特定の項目のみ更新, Wed Feb 24 15:00:53 2016 +0900
+M	pom.xml
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelBase.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/JDBCTypeObject.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/ModelBaseTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/ModelHandlerTest.java
+
+ad8e7ec63831fcc58487d9fc6f094d82ef4037c0, Issues#25 ファイルルートを設定で変えられるようにする, Wed Feb 24 13:30:18 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Settings.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultResourceQuery.java
+
+48de28271720a3bcc9aeec00010d06a18c5658df, Merge pull request #98 from typesafe-query/Issues#6_db_type_converter, Wed Feb 24 12:25:41 2016 +0900
+2a1142de9596649a067bd0d730e39f0fe8cc759f, パッケージ変更, Tue Feb 23 12:32:30 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/Converter.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/package-info.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/extra/package-info.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/package-info.java
+R073	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/TypeConverter.java	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/TypeConverter.java
+R086	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/BigDecimalToDoubleConverter.java	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/basic/BigDecimalToDoubleConverter.java
+R086	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/BigDecimalToFloatConverter.java	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/basic/BigDecimalToFloatConverter.java
+R087	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/DateToLocalDateTypeConverter.java	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/basic/DateToLocalDateTypeConverter.java
+R087	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/TimeToLocalTimeTypeConverter.java	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/basic/TimeToLocalTimeTypeConverter.java
+R087	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/TimestampToLocalDateTimeTypeConverter.java	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/basic/TimestampToLocalDateTimeTypeConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/basic/package-info.java
+R088	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/extra/Char1ToBooleanTypeConverter.java	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/extra/Char1ToBooleanTypeConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/extra/package-info.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/convert/package-info.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/translator/DefaultDialectTranslator.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/translator/DialectTranslator.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/QueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultBatchQueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/ReusableQueryExecutor.java
+M	typesafe-query-core/src/test/java/com/sample/model/TypeModel.java
+
+c45b6cbbb12cca0ba93381465fe15473fefdde08, BLOB CLOBにマッピングできることの確認, Tue Feb 23 11:28:50 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/translator/DefaultDialectTranslator.java
+M	typesafe-query-core/src/test/java/com/sample/model/InnerModel.java
+
+ad5bc85af473a42e5698319f8544500cf9074e9b, デフォルトコンバーター、フィールド指定コンバーター実装, Sun Feb 21 11:21:08 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DBManager.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelDescription.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/Converter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/TypeConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/BigDecimalToDoubleConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/BigDecimalToFloatConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/DateToLocalDateTypeConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/TimeToLocalTimeTypeConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/TimestampToLocalDateTimeTypeConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/basic/package-info.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/extra/Char1ToBooleanTypeConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/extra/package-info.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/convert/package-info.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/DefaultSQLRunner.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/JDBCTypeObject.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/SQLRunner.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/converter/DefaultJdbcValueConverter.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/converter/JdbcValueConverter.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/mapper/BeanResultMapper.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/translator/DefaultDialectTranslator.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/translator/DialectTranslator.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/QueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultBatchQueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultSearchedCase.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultSimpleCase.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/QueryUtils.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/ReusableQueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/util/ClassUtils.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/util/Pair.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/util/Tuple.java
+M	typesafe-query-core/src/test/java/com/sample/model/TypeModel.java
+
+5472bd0d6bb5a627cd2cb5116444062158f77a4e, Merge pull request #103 from typesafe-query/Issues#23_fix_resueable_query, Wed Feb 24 12:13:21 2016 +0900
+73512f234e14a02e2aab44ebd81347678c422f19, Issues#23 reuseとbatchの仕組みを変更, Tue Feb 23 17:39:28 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/BatchModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultBulk.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ReusableModelHandler.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/handler/BatchModelHandlerHandler.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/handler/ReusableModelHandlerHandler.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/helper/BatchMetaHelper.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/MetaClass.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/SQLQuery.java
+R052	typesafe-query-core/src/main/java/com/github/typesafe_query/helper/BatchQueryExecutorHelper.java	typesafe-query-core/src/main/java/com/github/typesafe_query/query/handler/BatchQueryHandler.java
+R053	typesafe-query-core/src/main/java/com/github/typesafe_query/helper/ReusableQueryExecutorHelper.java	typesafe-query-core/src/main/java/com/github/typesafe_query/query/handler/ReusableQueryHandler.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/handler/package-info.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/AbstractQueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/AbstractSQLQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultBatchQueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/ReusableQueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/SimpleQueryExecutor.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/ResourceQueryTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/StringQueryTest.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser2_.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser_.java
+M	typesafe-query-core/src/test/java/com/sample/model/GeneratedIdTable_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Role_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Unit_.java
+M	typesafe-query-core/src/test/java/com/sample/model/UserInfo_.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+c8341acb0fe8c4beac21c606826689fbbc330cca, Merge pull request #101 from typesafe-query/Issues#97_add_fetch_method, Wed Feb 24 12:00:00 2016 +0900
+46de558bc171153c5cd1efb57017dd9feb9137cd, Merge pull request #89 from typesafe-query/Issues#60_fix_null_pointer_when_connection_is_null, Wed Feb 24 11:56:59 2016 +0900
+22d457ed26b5146af8b69342124b944fff5f9aa5, Merge pull request #90 from typesafe-query/Issues#82, Wed Feb 24 11:55:44 2016 +0900
+d6bde5b49bc6891defb33c2cff47c8af4a988474, Issues#97 １件毎に処理する仕組みを実装, Tue Feb 23 13:47:22 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Finder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/DefaultSQLRunner.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/SQLRunner.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/QueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultBatchQueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/ReusableQueryExecutor.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/FinderTest.java
+
+6b5d9da8a4c8b8b0fe6a421e84b832fd57a6b834, Issues#82 UNION句実装, Wed Feb 17 23:23:42 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/TypesafeQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultTypesafeQuery.java
+
+c71efb632ad47396673f0654fcea333289056f47, Issues#60 Connectionがnullのときにわかりやすいエラーにする, Wed Feb 17 17:00:46 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ConnectionHolder.java
+
+ab278851f203ce313ee881848da4eebb314fec7c, Milestone v0.6.0, Wed Feb 17 16:45:17 2016 +0900
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+9c6a8c5873ebdb9b04850a92ee38564cbb119e09, Merge pull request #80 from typesafe-query/0.5.0, Wed Feb 17 16:28:42 2016 +0900
+5ee336a3b3eef937b21d62c8d23cf814a21cad91, Merge pull request #81 from typesafe-query/Issues#58, Wed Feb 17 15:55:24 2016 +0900
+af2d2acf0c508f6e07ceb95a7638e2365c863821, Merge pull request #83 from typesafe-query/Issues#79, Wed Feb 17 15:52:48 2016 +0900
+dc9327e96e02dd3f4eedccf5c8ce3514a509fa0e, Issues#58 Any、All、Someの型推論対応, Fri Feb 5 18:50:40 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/TypesafeQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultTypesafeQuery.java
+
+3e469598ef01df82adba619324b02066a7955c64, Issues#79 select句を使用したinsert機能を実装, Thu Feb 4 12:48:55 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Bulk.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultBulk.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/Into.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/BulkTest.java
+
+7a6884c1df5a1301b89e724fab2970454c22c22e, Merge tag '0.4.0' into Issues#58, Fri Jan 29 17:11:30 2016 +0900
+0346b382961fc765503629e975fbc5afccb360d5, Issues#58 ANY SOME ALL 関数をタイプセーフに, Fri Jan 29 17:00:12 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+
+ec561d3e223f3a251a452b80534d0431e15d8f22, Issues#58 ANY SOME ALL 関数の追加, Fri Jan 29 16:13:48 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/BooleanDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/ComparableDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/BooleanDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DateDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/StringDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/AllFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/AnyFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/SomeFunc.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/AllFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/AnyFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/SomeFuncTest.java
+
+5660247052003fe0e79df3b4d7112ce25a765ff4, v0.5.0, Fri Jan 29 14:56:40 2016 +0900
+M	README.md
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+7586f802937f97fd3075d25af080e27050012725, Merge pull request #69 from typesafe-query/0.4.0, Fri Jan 29 14:55:41 2016 +0900
+44cee7a13c9815b777d61e425420b4c3e39a548d, release v0.4.0, Fri Jan 29 14:51:15 2016 +0900
+M	README.md
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+5ca6eea851d884f70f6c741eb28ba9b41c849f9c, Merge pull request #77 from typesafe-query/Issues#9, Fri Jan 29 14:49:03 2016 +0900
+2250a4af3d0aabb15091227096fcbdf476d044ed, Issues#9 java.time対応, Fri Jan 29 14:43:23 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+
+8587c15ed1d515786752cae5eec334cd1227b7c7, Merge pull request #75 from typesafe-query/Issues#56_delete_createGeneratedKey, Fri Jan 29 14:39:01 2016 +0900
+fdf1ba59ba15bfb4f77cd8ca63002c498e7f9a76, Merge pull request #78 from typesafe-query/Issues#17_setting_file, Fri Jan 29 14:38:10 2016 +0900
+c2224c4bffde387acf3cf70057c163af2cbc2271, Merge pull request #71 from typesafe-query/Issues#68_getQuery_to_getSQL_at_DBTable, Fri Jan 29 14:37:46 2016 +0900
+45a52b8d2d5949806260eadf7fa9c1034566eb88, Merge pull request #74 from typesafe-query/Issues#57, Fri Jan 29 14:37:07 2016 +0900
+fefe1a750d4c1142545da9c8d3779e062d3e5ba5, Issues#9 CURRENT~達をメソッドから定数に変更, Fri Jan 29 14:18:34 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+
+46c7e540488ec5299d82f6f056be5d650710da6f, Issues#17 設定をファイルから読み込む, Fri Jan 29 12:49:46 2016 +0900
+M	typesafe-query-core/pom.xml
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Settings.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultResourceQuery.java
+A	typesafe-query-core/src/test/resources/META-INF/typesafe-query.yml
+
+da8b2c4734d81f45f02ad10608c67728e005a262, Issues#9 CURRENT_DATE、CURRENT_TIME、CURRENT_TIMESTAMP追加, Fri Jan 29 12:22:16 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+
+2374dd61cc0c17bbab7db4eb770d27c40307fd30, Issues#56 createByGeneratedKeyを廃止。, Fri Jan 29 11:53:39 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelBase.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelDescription.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelHandler.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/AutoIncrement.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/DefaultSQLRunner.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/ModelHandlerTest.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser2_.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser_.java
+A	typesafe-query-core/src/test/java/com/sample/model/GeneratedIdTable.java
+A	typesafe-query-core/src/test/java/com/sample/model/GeneratedIdTable_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Role_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Unit_.java
+M	typesafe-query-core/src/test/java/com/sample/model/UserInfo_.java
+M	typesafe-query-core/src/test/resources/create-tables.sql
+M	typesafe-query-core/src/test/resources/delete-tables.sql
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+cada4b8232ae108606c36215c853d6593f1371b4, Issues#57 ltrim関数、rtim関数追加, Fri Jan 29 10:44:50 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/StringDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/StringDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/LtrimFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/RtrimFunc.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/LtrimFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/RtrimFuncTest.java
+
+ba7404915ea6918effb67cad472238e5469b8542, Issues #68 getQueryをgetSQLに統一, Wed Jan 27 23:01:50 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/DBTable.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DBTableImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/SubQueryDBTableImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultTypesafeQuery.java
+
+e6c0c6762074b10834fea6344ee1e1ad1e1ac1d9, v0.4.0, Thu Jan 21 09:41:33 2016 +0900
+3bf2d7033c26d0bfce3a5e2b534b0c7dc7fa5586, Merge pull request #50 from typesafe-query/0.3.0, Thu Jan 21 09:30:40 2016 +0900
+2c5ac5ec9ec0bceba1bf79617e1a277cc5976d22, Release v0.3.0, Thu Jan 21 09:24:19 2016 +0900
+M	README.md
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+da158ec5beab43ee954d43af98123110d5a44ba1, Merge pull request #59 from typesafe-query/v0.3.0/Issues#47, Thu Jan 21 09:16:28 2016 +0900
+01c67e25f64afb838d35ae101e4032fccae7cf4b, Merge pull request #61 from typesafe-query/v0.3.0/Issues#27, Thu Jan 21 09:16:12 2016 +0900
+fed8084d24cfc052fed10797d11bbc3e5658f991, Merge pull request #63 from typesafe-query/v0.3.0_#45, Thu Jan 21 09:15:53 2016 +0900
+55f4cc0f5544a365cb6da4d1be503c7eccb6b2b4, Merge pull request #64 from typesafe-query/v0.3.0/Issues#22, Thu Jan 21 09:15:36 2016 +0900
+42af4f9ee7ce1c01341ee0a5d3ae1deb6843f888, Merge pull request #67 from typesafe-query/v0.3.0_#52_#1, Thu Jan 21 09:15:14 2016 +0900
+4691c7a357c3fb5574cbc2f596e5cc0d6d585fdf, Merge pull request #66 from typesafe-query/v0.3.0/Issues#10, Thu Jan 21 09:14:54 2016 +0900
+e8f78ee40f512d9275918a25f43ac170b597908b, Issues#10 count関数ではテーブル名を除外するよう修正, Wed Jan 20 20:05:20 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+
+c7e7083805b8c1087411eb359dd3b150bdfe66bd, #52 fat jar 対応, Wed Jan 20 10:37:55 2016 +0900
+M	typesafe-query-tools/pom.xml
+
+190bda943666580483de77e03b43e6905bdc29f2, #1 複数形も出力する, Wed Jan 20 10:36:58 2016 +0900
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+c254f373e989162ee5375f8d3e15046025e397b9, Issues#10 アスタリスク列をメタクラスに定義されるよう修正, Tue Jan 19 20:51:26 2016 +0900
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+ea9a333a161eaaa695b0105de62cf2811cecc1f1, テストエラーを修正, Tue Jan 19 19:39:32 2016 +0900
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/ModelBaseTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/ModelHandlerTest.java
+
+768a68186d7e7d86719d99a6dda378cacab696e0, Isseus#45 booleanではなく例外になる, Tue Jan 19 19:30:03 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultModelHandler.java
+
+e794726d51d2815d9a8f1ca3b475dac3b7f89b72, Issues#22, Tue Jan 19 19:13:33 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/NamedQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/ResourceQuery.java
+R088	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultNamedQuery.java	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultResourceQuery.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/ResourceQueryTest.java
+
+b6d90b58ced98275324e64dfcef528faf22a2490, Merge branch '0.3.0' of https://github.com/typesafe-query/typesafe-query into 0.3.0, Mon Jan 18 22:40:51 2016 +0900
+a818f3de06d243f5badc2ee4be1f544b53c7606a, Issues #27 スキーマ名対応, Mon Jan 18 22:27:10 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/Table.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/DBTable.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/BooleanDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DBTableImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DateDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/StringDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/SubQueryDBTableImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultTypesafeQuery.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/meta/impl/DefaultDBTableImplTest.java
+A	typesafe-query-core/src/test/java/com/sample/model/ApUser2.java
+A	typesafe-query-core/src/test/java/com/sample/model/ApUser2_.java
+M	typesafe-query-core/src/test/resources/create-tables.sql
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+cc99187609e833aa9e12d280fe77ee852196625a, null引数の場合NullPointerでOK。空配列のときは条件を指定しない, Mon Jan 18 21:39:51 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultBulk.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/BulkTest.java
+
+152af327500370cbbceddcc7425b5e992960503e, Issues #47 Bulkの検索条件をデフォルトandでつなぐようにする, Mon Jan 18 21:23:02 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Bulk.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultBulk.java
+
+7ef7a9ce84a50b00c3d34a5ae8d2a471786c9886, Merge branch 'master' into 0.3.0, Sun Jan 17 22:11:01 2016 +0900
+f121018eefa6ea712e5b67dd8cd11f99030c7b14, Merge pull request #51 from typesafe-query/0.2.0, Sun Jan 17 22:10:07 2016 +0900
+bbc547a9a0f68d5cd3404ada1f9266ad55d7694d, v0.2.0, Sun Jan 17 22:06:54 2016 +0900
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+c436e0ac9cddd8f07dbfd8f43a1cc6897dfe3fce, javadocコメント修正, Sun Jan 17 22:06:43 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Finder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+
+954c4ce85c0d84e31fba7955c297e7ca6284ae90, Merge pull request #42 from typesafe-query/0.2.0, Sun Jan 17 22:00:23 2016 +0900
+a2320db5afd3bc3d4ea25f06ee434054dcb7e1f0, v0.3.0, Sun Jan 17 21:58:46 2016 +0900
+00d58561cd1508d83730fd8b2e7406176ca28483, Merge pull request #46 from typesafe-query/v0.2.0/Issues#39_change_Bulk_class_to_interface, Sun Jan 17 21:57:13 2016 +0900
+35cb3233db5f2db2a43f568f4ee4e0c1d2be00b5, Merge pull request #48 from typesafe-query/Issues#7_count_func, Sun Jan 17 21:57:01 2016 +0900
+5162dd33a5abef4848ff92492ad0a1f79c142d5e, Merge branch '0.2.0' into Issues#7_count_func, Sun Jan 17 21:53:35 2016 +0900
+ae35d29843c9522f3a91c97714fdc0c37e29288c, Merge branch '0.2.0' into v0.2.0/Issues#39_change_Bulk_class_to_interface, Sun Jan 17 21:47:15 2016 +0900
+9a0adbce1002cda31976e559147589b37da8b96c, Merge pull request #44 from typesafe-query/v0.2.0/Isseus#24, Sun Jan 17 21:42:47 2016 +0900
+1e68bfa506c9ae1b9b07aba0801803e8f68c2e42, 追加したクラスのIDBTable修正漏れ, Sun Jan 17 21:41:24 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultBulk.java
+
+419cebbc05e57d829ad9c14e94b75ee27b952c0c, Merge branch '0.2.0' into v0.2.0/Isseus#24, Sun Jan 17 21:39:10 2016 +0900
+d195a2495904317b7efbf69a520ea553cff4f910, Merge branch '0.2.0' into v0.2.0/Issues#39_change_Bulk_class_to_interface, Sun Jan 17 21:33:55 2016 +0900
+0a3d070ef9fe5aaabcf0a90e5389031e64035111, Merge pull request #49 from typesafe-query/Issues#16_change_meata_interface_name, Sun Jan 17 21:31:18 2016 +0900
+587d3129d919fab08da968d0776914b9bdc339c2, Merge branch '0.2.0' into Issues#7_count_func, Sun Jan 17 21:22:14 2016 +0900
+8d24286f17266d898799dafd1ed3a5c8cef9432b, Isses #16 インターフェース名からIを外す, Sun Jan 17 21:22:12 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/BatchModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Bulk.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ReusableModelHandler.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/BooleanDBColumn.java
+R055	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IComparableDBColumn.java	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/ComparableDBColumn.java
+R074	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IDBColumn.java	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/DBColumn.java
+R089	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IDBTable.java	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/DBTable.java
+R054	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IDateDBColumn.java	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/DateDBColumn.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IBooleanDBColumn.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/INumberDBColumn.java
+D	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IStringDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/MetaClass.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/NumberDBColumn.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/StringDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/BooleanDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/ComparableDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DBTableImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DateDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/StringDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/SubQueryDBTableImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/Case.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/Join.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/QueryContext.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/SQLBuilder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/TypesafeQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/TypesafeQueryFactory.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DB2TypesafeQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultCase.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultQueryContext.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultSimpleCase.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultTypesafeQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/InnerJoin.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/MySQLTypesafeQuery.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/OrderImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/OuterJoin.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/BasicExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/BetweenExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/ComparableExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/EqExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/GeExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/GtExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/InExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/IsNotNullExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/IsNullExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/LeExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/LikeExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/LtExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotBetweenExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotEqExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotInExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotLikeExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/CoalesceFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/ConcatFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/SubstringFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/sql/DefaultSQLBuilder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/sql/MySQLSQLBuilder.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/SimpleCaseTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/AndExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/BasicExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/BetweenExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/EqExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/GeExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/GtExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/InExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/IsNotNullExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/IsNullExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/LeExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/LtExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotBetweenExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotEqExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotInExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotLikeExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/OrExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/CoalesceFuncTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/ConcatFuncTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/SubstringFuncTest.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Role_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Unit_.java
+M	typesafe-query-core/src/test/java/com/sample/model/UserInfo_.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+470f4d1b387ffbd6a8396558576f85ec12cb4a88, Issues#7 DBColumnImplの引数無しコンストラクタ消し忘れをこっそり修正, Sat Jan 16 09:01:38 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DBColumnImpl.java
+
+32fd85e66e6658a5359a317e895429b1728f09d8, Issues#7 Count関数の戻りがINumberDBColumn<Long>になるよう修正, Sat Jan 16 08:56:45 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IComparableDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/INumberDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/ComparableDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+
+ac3dc6974cbfa654e9067abb0c64b42ef6cd07a1, Issues #39 Bulkのインターフェース化, Fri Jan 15 17:46:18 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Bulk.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultBulk.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Role_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Unit_.java
+M	typesafe-query-core/src/test/java/com/sample/model/UserInfo_.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+b7e9fed2f24a74bffff2015013104b4b8d1463f4, Issues #24, Fri Jan 15 17:29:06 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/BatchModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultModelHandler.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelBase.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelDescription.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ReusableModelHandler.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/ModelBaseTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/ModelHandlerTest.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser.java
+M	typesafe-query-core/src/test/java/com/sample/model/ApUser_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Role_.java
+M	typesafe-query-core/src/test/java/com/sample/model/Unit_.java
+M	typesafe-query-core/src/test/java/com/sample/model/UserInfo_.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+
+1854bb5e55e3fb2ac7b36effc0d31227d4fb2a03, Merge branch '0.2.0' of https://github.com/typesafe-query/typesafe-query into 0.2.0, Fri Jan 15 15:42:19 2016 +0900
+7f33c72ce869cace6d1865238e22812e2cfc9f62, Merge pull request #43 from typesafe-query/release0.1.0, Fri Jan 15 15:31:50 2016 +0900
+e82b64fbb0b617dd81193bbd78b624e297917335, Merge pull request #40 from typesafe-query/Issues#4_ModelHandler_methods_are_returning_boolean_result, Fri Jan 15 15:27:22 2016 +0900
+0eccef3fa07aa02fa7636560f0e0a55785c370cb, Merge pull request #41 from typesafe-query/Issues#15_func_returns, Fri Jan 15 15:27:04 2016 +0900
+1e61be03b905ca10a213567e7fa07b21e46e2140, Merge pull request #37 from typesafe-query/Issues#2_change_argument_of_where_method_and_at_finder, Fri Jan 15 15:26:35 2016 +0900
+e8110f2a7831cf73c004e6b653505af0068bd47b, v0.1.0, Fri Jan 15 15:25:12 2016 +0900
+M	README.md
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+42462d9d404526fbdcd4cc83d3cbb305eab3a43f, Merge pull request #36 from typesafe-query/Issues#3_change_CI_to_travis, Fri Jan 15 15:21:40 2016 +0900
+66ba0a8b9d6b218ccdc4f72e48db4fa707c11fc3, v0.2.0 用ブランチ, Fri Jan 15 13:49:22 2016 +0900
+66b2722c156dfaf1692ae06da00f671a515c3085, Issues #15 INumberDBColumnの一部Functionの戻りの型がおかしい, Fri Jan 15 11:13:44 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/INumberDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+
+4de6624631d31255b9a55d96fa42e666ca3aec36, Issues #4 ModelHandlerのメソッドの戻りをbooleanにする, Fri Jan 15 11:03:43 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelHandler.java
+
+2cbf2b4fad60182cc713e57b864a12c9a170f2ea, Issues #2 Finderのwhereをデフォルトandでつなぐ, Fri Jan 15 10:55:02 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Finder.java
+
+8c8d6e09f201142558d89662ef2107244d4901b1, Issues #3 CIをtravisに変更する, Fri Jan 15 10:32:04 2016 +0900
+A	.travis.yml
+M	README.md
+
+adb1d1bbc999728764e19a6d3904d7915efe756b, TODO FIXMEにGithubのIssue番号を追記, Thu Jan 14 14:23:08 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Bulk.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ConnectionHolder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/SQLRunner.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/converter/DefaultJdbcValueConverter.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/mapper/BeanResultMapper.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/ReusableQueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/util/DateTimeUtils.java
+M	typesafe-query-core/src/test/java/com/sample/model/InnerModel.java
+
+ad8f85887ae61dd2ff4a90f8c56e4a68178f869d, Merge pull request #26 from waffle-iron/master, Thu Jan 14 13:47:29 2016 +0900
+0de498b0c1ac7579abbb40575ab152b9a4bd0b27, add waffle.io badge, Wed Jan 13 21:43:35 2016 -0700
+M	README.md
+
+55f4f7f32924f3e1116890704f0d88095bbc5598, Issues#7 Count function added, Wed Jan 13 12:29:47 2016 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IComparableDBColumn.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/ComparableDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/CountFunc.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/CountFuncTest.java
+
+a1bc17befc5427fa32892aa0623dd83540fa94c2, v0.0.5, Wed Oct 14 17:06:26 2015 +0900
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/converter/DefaultJdbcValueConverter.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/jdbc/mapper/MapResultMapperTest.java
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+0bb310edae2862e4e72277c3db5f010c4575a61f, v0.0.4, Tue Oct 13 12:13:58 2015 +0900
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/util/ClassUtils.java
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+ffc00c82734c61a5126a43e3a4acbd7af4f4fc84, service file for annotation processor, Fri Oct 9 17:56:03 2015 +0900
+A	typesafe-query-tools/src/main/java/META-INF/services/javax.annotation.processing.Processor
+
+53b2d3f8e6d5ceee22f8b0658e0b0da1b6a251c1, Exp test added., Wed Sep 16 15:05:15 2015 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/BetweenExp.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/AndExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/BetweenExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/EqExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/GeExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/GtExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/InExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/LeExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/LtExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotBetweenExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotEqExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotExistsExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotInExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotLikeExpTest.java
+
+393c037ae244ccaf30e13ff20112f1e7e6e8bd71, Added org info in pom. and README modified., Wed Sep 16 14:02:26 2015 +0900
+M	README.md
+M	pom.xml
+M	typesafe-query-core/pom.xml
+M	typesafe-query-dropwizard/pom.xml
+M	typesafe-query-tools/pom.xml
+
+9110374f9d335753d537d6e0b0d78c8b33fb8de0, v0.0.1, Mon Sep 14 11:59:47 2015 +0900
+M	README.md
+M	pom.xml
+
+5f17d1fbe5523cec81bc5ac92222a67c86dfbd2a, func and exp test added, Fri Sep 11 17:29:21 2015 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultQueryContext.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/BetweenExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/ExistsExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/InExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotBetweenExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotExistsExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotInExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/AbsFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/AvgFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/CoalesceFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/ConcatFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/LengthFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/LowerFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/MaxFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/MinFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/SqrtFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/SubstringFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/ToNumberFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/TrimFunc.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/UpperFunc.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/AndExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/BasicExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/BetweenExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/InExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/IsNotNullExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/IsNullExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotBetweenExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotInExpTest.java
+M	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/OrExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/AbsFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/AvgFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/CoalesceFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/ConcatFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/LengthFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/LowerFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/MaxFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/MinFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/SqrtFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/SubstringFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/ToNumberFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/TrimFuncTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/function/UpperFuncTest.java
+
+ac0a08a3ffdd4ee505a7ae8e8e607a2741c62af4, coverage settings added, Fri Sep 11 15:24:46 2015 +0900
+M	README.md
+M	pom.xml
+
+4449c2f38463a145f55d636ca26b01359fb22056, semaphore settings added, Fri Sep 11 14:13:12 2015 +0900
+M	README.md
+M	pom.xml
+
+2148bcbdb62ba36afbfb8833e6c4e4de2d3927f2, Fixed:javadoc build error, Fri Sep 11 14:02:56 2015 +0900
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Finder.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelHandler.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/BooleanDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/ComparableDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DateDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/StringDBColumnImpl.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/InvalidQueryException.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/QueryException.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultQueryContext.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/OuterJoin.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/ReusableQueryExecutor.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/ComparableExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/CompositeExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/EqExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/GeExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/GtExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/InExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/LeExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/LikeExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/LtExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotBetweenExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotEqExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotExistsExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotInExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotLikeExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/OrExp.java
+M	typesafe-query-core/src/main/java/com/github/typesafe_query/util/ClassUtils.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/util/Field.java
+M	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/util/JavaClass.java
+
+81c61b7e90174cd13e2bdc98078998271ea8056d, first commit, Fri Sep 11 12:45:07 2015 +0900
+A	.gitignore
+A	LICENSE
+A	NOTICE
+A	README.md
+A	pom.xml
+A	typesafe-query-core/README.md
+A	typesafe-query-core/pom.xml
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/BatchModelHandler.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/Beta.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/Bulk.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/ConnectionHolder.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/DBManager.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/DefaultFinder.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/Finder.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelDescription.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/ModelHandler.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/Q.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/ReusableModelHandler.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/Settings.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/Column.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/Embedded.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/EmbeddedId.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/Id.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/Table.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/annotation/Transient.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/helper/BatchMetaHelper.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/helper/BatchQueryExecutorHelper.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/helper/ReusableQueryExecutorHelper.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/DefaultSQLRunner.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/SQLRunner.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/SQLRunnerFactory.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/converter/DefaultJdbcValueConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/converter/JdbcValueConverter.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/mapper/BeanResultMapper.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/mapper/MapResultMapper.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/jdbc/mapper/ResultMapper.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IBooleanDBColumn.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IComparableDBColumn.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IDBColumn.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IDBTable.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IDateDBColumn.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/INumberDBColumn.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/IStringDBColumn.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/MetaClass.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/BooleanDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/ComparableDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DBTableImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/DateDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/NumberDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/StringDBColumnImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/SubQueryDBTableImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/meta/impl/package-info.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/BatchQueryExecutor.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/Case.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/Exp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/Func.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/InvalidQueryException.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/Join.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/NamedQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/Order.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/Param.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/QueryContext.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/QueryException.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/QueryExecutor.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/SQLBuilder.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/SQLQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/SearchedCase.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/SimpleCase.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/StringQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/TypesafeQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/TypesafeQueryFactory.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/AbstractQueryExecutor.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/AbstractSQLQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DB2TypesafeQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultBatchQueryExecutor.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultCase.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultNamedQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultQueryContext.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultSearchedCase.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultSimpleCase.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultStringQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/DefaultTypesafeQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/InnerJoin.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/MySQLTypesafeQuery.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/OrderImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/OuterJoin.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/ParamImpl.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/QueryUtils.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/ReusableQueryExecutor.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/SimpleQueryExecutor.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/AndExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/BasicExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/BetweenExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/ComparableExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/CompositeExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/EqExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/ExistsExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/GeExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/GtExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/InExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/IsNotNullExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/IsNullExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/LeExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/LikeExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/LtExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotBetweenExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotEqExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotExistsExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotInExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/NotLikeExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/OrExp.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/expression/package-info.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/AbsFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/AvgFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/CoalesceFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/ConcatFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/LengthFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/LowerFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/MaxFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/MinFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/SqrtFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/SubstringFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/ToNumberFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/TrimFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/UpperFunc.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/function/package-info.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/package-info.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/sql/DefaultSQLBuilder.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/internal/sql/MySQLSQLBuilder.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/query/package-info.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/util/ClassUtils.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/util/DateTimeUtils.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/util/LRUCache.java
+A	typesafe-query-core/src/main/java/com/github/typesafe_query/util/Tuple.java
+A	typesafe-query-core/src/main/resources/.keep
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/BulkTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/FinderTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/ModelHandlerTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/NamedQueryTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/SelectQueryTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/SimpleCaseTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/StringQueryTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/AndExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/BetweenExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/InExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/IsNotNullExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/IsNullExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotBetweenExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/NotInExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/query/internal/expression/OrExpTest.java
+A	typesafe-query-core/src/test/java/com/github/typesafe_query/util/SQLUtils.java
+A	typesafe-query-core/src/test/java/com/sample/model/ApUser.java
+A	typesafe-query-core/src/test/java/com/sample/model/ApUser_.java
+A	typesafe-query-core/src/test/java/com/sample/model/InnerModel.java
+A	typesafe-query-core/src/test/java/com/sample/model/InnerModel2.java
+A	typesafe-query-core/src/test/java/com/sample/model/Role.java
+A	typesafe-query-core/src/test/java/com/sample/model/RolePK.java
+A	typesafe-query-core/src/test/java/com/sample/model/Role_.java
+A	typesafe-query-core/src/test/java/com/sample/model/TypeModel.java
+A	typesafe-query-core/src/test/java/com/sample/model/TypeModel2.java
+A	typesafe-query-core/src/test/java/com/sample/model/Unit.java
+A	typesafe-query-core/src/test/java/com/sample/model/Unit_.java
+A	typesafe-query-core/src/test/java/com/sample/model/UserInfo.java
+A	typesafe-query-core/src/test/java/com/sample/model/UserInfo_.java
+A	typesafe-query-core/src/test/resources/NamedQueryTest.named._addSQL.sql
+A	typesafe-query-core/src/test/resources/NamedQueryTest.named.sql
+A	typesafe-query-core/src/test/resources/NamedQueryTest.named_param.sql
+A	typesafe-query-core/src/test/resources/create-tables.sql
+A	typesafe-query-core/src/test/resources/delete-tables.sql
+A	typesafe-query-dropwizard/pom.xml
+A	typesafe-query-dropwizard/src/main/java/com/github/typesafe_query/dropwizard/Transactional.java
+A	typesafe-query-dropwizard/src/main/java/com/github/typesafe_query/dropwizard/TransactionalApplicationListener.java
+A	typesafe-query-dropwizard/src/main/java/com/github/typesafe_query/dropwizard/TypesafeQueryBundle.java
+A	typesafe-query-dropwizard/src/main/resources/.keep
+A	typesafe-query-dropwizard/src/test/java/.keep
+A	typesafe-query-dropwizard/src/test/resources/.keep
+A	typesafe-query-tools/pom.xml
+A	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/MetaProcessor.java
+A	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/Utils.java
+A	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/util/CodeUtils.java
+A	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/util/Field.java
+A	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/util/JavaClass.java
+A	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/util/Method.java
+A	typesafe-query-tools/src/main/java/com/github/typesafe_query/tools/util/Qualifiers.java
+A	typesafe-query-tools/src/main/resources/.keep
+A	typesafe-query-tools/src/test/java/.keep
+A	typesafe-query-tools/src/test/resources/.keep

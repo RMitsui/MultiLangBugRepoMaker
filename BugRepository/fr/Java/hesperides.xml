@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="hesperides">
+	<bug id="836" opendate="2020-02-12 11:06:50" fixdate="2020-02-12 13:15:31">
+		<buginformation>
+			<summary>Lors d'un PUT /properties, on ne détecte pas comme invalide lorsqu'une propriété est mentionné une 2e fois avec un espace à la fin</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/SaveProperties.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="832" opendate="2020-02-11 09:57:35" fixdate="2020-02-11 16:16:06">
+		<buginformation>
+			<summary>Impossible de purger les propriétés inutilisées d'un module dont le `propertiesVersionId` est à `null`</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/PropertiesController.java</file>
+			<file>core/application/src/test/java/org/hesperides/core/application/platforms/PlatformUseCasesTest.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/PlatformQueries.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/PlatformProjectionRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="813" opendate="2019-12-02 11:00:00" fixdate="2019-12-18 10:39:14">
+		<buginformation>
+			<summary>Les commentaires ne sont plus enregistrés lors de la mise à jour de propriétés</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/TechnoTemplatesController.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformHistory.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/events/GetEvents.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/PropertiesController.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/ModulesController.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/ModuleTemplatesController.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/UsersController.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/UpdateProperties.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/PlatformsController.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/commands/PlatformAggregate.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformClient.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/commands/PlatformCommands.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/TechnosController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="792" opendate="2019-10-22 13:41:44" fixdate="2019-10-23 15:58:40">
+		<buginformation>
+			<summary>Le diff ne tient pas compte des propriétés globales dans les valeurs finales</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/properties/PropertyValuationBuilder.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/properties/PropertyValuationContext.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/properties/PropertyType.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/visitors/PropertyVisitorsSequence.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="784" opendate="2019-10-10 15:46:46" fixdate="2019-10-11 09:57:21">
+		<buginformation>
+			<summary>Sauvegarder une propriété @required non valorisée ayant le même non qu'une propriété globale valorisée</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/queries/PropertyView.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/queries/AbstractPropertyView.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/AbstractValuedPropertyView.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/GlobalPropertyUsageView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="779" opendate="2019-10-07 15:53:51" fixdate="2019-10-15 12:36:17">
+		<buginformation>
+			<summary>Eviter la création de doublons à la réception d'une requête dupliquée</summary>
+			<description>Un module a été créé en double par un appel effectué 2 fois "au même moment", ce qui rend la lecture de ce module impossible et crée une corruption de données.  Une solution serait de ne plus utiliser d'UUID comme identifiant d'agrégat mais un hash de la clé fonctionnelle pour qu'Axon rejette automatiquement la réception de 2ème commande.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/authorizations/ApplicationDirectoryGroupsDocument.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/modules/commands/ModuleAggregate.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/FakeMongoConfiguration.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/monitoring/CustomMongoHealthIndicatorAutoConfiguration.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/ModuleClient.java</file>
+			<file>core/application/src/test/java/org/hesperides/core/application/modules/ModuleUseCasesTest.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/events/EventRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/modules/ModuleDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/technos/scenarios/CreateTechnos.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/modules/MongoModuleProjectionRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/events/MongoEventRepository.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/commons/TestContext.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/PlatformDocument.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/commands/PlatformCommands.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/technos/TechnoClient.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/commons/DbCleaner.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/events/EventDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/CreateModules.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/technos/commands/TechnoAggregate.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/TemplateContainer.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformClient.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/events/queries/EventQueries.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/technos/MongoTechnoProjectionRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/technos/TechnoDocument.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/technos/TechnoUseCases.java</file>
+			<file>tests/mongo-integration/src/test/java/org/hesperides/test/mongo_integration/config/IntegTestConfig.java</file>
+			<file>commons/src/main/java/org/hesperides/commons/SpringProfiles.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/modules/ModuleUseCases.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/Platform.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/authorizations/MongoAuthorizationProjectionRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/commands/PlatformAggregate.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/events/commands/EventCommands.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="767" opendate="2019-09-30 09:41:52" fixdate="2019-09-30 16:14:01">
+		<buginformation>
+			<summary>Empêcher l'accès aux fichiers d'instances présentes uniquement dans un module archivé</summary>
+			<description>Actuellement, il est possible de récupérer le fichier d'une instance qui n'existe pas mais qui a existé dans un module qui a été archivé.  Pour reproduire le cas : * Associer un module à une plateforme * Créer une instance A * Mettre à jour le module * Créer une instance B * Supprimer l'instance A * Accéder au fichier de l'instance A  Devrait être rejeté, ce n'est pas le cas</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/builders/InstanceBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/FileBuilder.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/modules/ModuleDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/builders/DeployedModuleBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/ModuleHistory.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/commons/TestContextCleaner.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/DeployedModule.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFile.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/FileClient.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/templatecontainers/builders/TemplateContainerBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/technos/TechnoHistory.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/technos/TechnoDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/UpdatePlatforms.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/templatecontainers/builders/TemplateBuilder.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/PlatformQueries.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="765" opendate="2019-09-26 17:46:25" fixdate="2019-09-27 07:45:20">
+		<buginformation>
+			<summary>/applications/using_module/{module_name}/{module_version}/{version_type} returns platforms that used to contain the target module</summary>
+			<description>C'est parce qu'on ignore pas les _deployed modules_ avec un ID nul dans `MongoPlatformRepository.findPlatformsUsingModule`...</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/ModulePlatformView.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/modules/exceptions/ModuleUsedByPlatformsException.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/GetPlatforms.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="752" opendate="2019-09-16 08:57:58" fixdate="2019-09-18 07:04:41">
+		<buginformation>
+			<summary>La page de diff peut inclure des propriétés globales non référencées par le module ciblé</summary>
+			<description>Signalé le 11 septembre par Olivier B.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/properties/PropertyValuationBuilder.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/PropertyType.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/GetPropertiesDiff.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="721" opendate="2019-07-31 08:26:09" fixdate="2019-07-31 14:49:05">
+		<buginformation>
+			<summary>Les ACLs par application ne lèvent pas les restrictions sur les actions permises et l'accès aux mdp</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/security/entities/User.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/commons/CommonSteps.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/applications/scenarios/CreateApplications.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/security/ApplicationDirectoryGroupsUseCases.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/exceptions/DuplicatePlatformException.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/commons/AuthorizationCredentialsConfig.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="710" opendate="2019-07-23 14:37:44" fixdate="2019-08-07 10:29:49">
+		<buginformation>
+			<summary>Bug du GET /properties globales avec timestamp - les propriétés historiques sont écrasées dans `getValuedProperties`</summary>
+			<description>Cette méthode contient un bug : https://github.com/voyages-sncf-technologies/hesperides/blob/master/core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java#L161  En effet l'objet `PlatformView platform` contient bien les bonnes propriétés historiques, mais elles sont ignorées et les propriétés retournées sont au final issues des appels à `queries.getGlobalProperties` / `queries.getDeployedModuleProperties` qui ignorent le _timestamp_</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/exceptions/InvalidDiffSourceException.java</file>
+			<file>tests/mongo-integration/src/test/java/org/hesperides/test/mongo_integration/CucumberMongoIntegTests.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/security/entities/springauthorities/ApplicationProdRole.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/test/bdd/CucumberTests.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/diff/PropertiesDiffOutput.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/IterableValuedPropertyIO.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/IterablePropertyItemIO.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/diff/AbstractDifferingPropertyOutput.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/AbstractValuedPropertyIO.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/diff/IterableDifferingProperty.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/PropertiesController.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/diff/AbstractDifferingProperty.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/diff/NonDifferingPropertyOutput.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/diff/PropertyDiffValueOutput.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/PresentationConfiguration.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/diff/DualDifferingPropertyOutput.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/GetPropertiesDiff.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformHistory.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/PlatformProjectionRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/diff/PropertiesDiff.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/modules/entities/Module.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/PlatformsController.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/PlatformView.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/diff/PropertiesDiffTest.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformClient.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/security/LdapCNSearcher.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/properties/PropertyValuationBuilder.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/modules/queries/ModuleQueries.java</file>
+			<file>tests/mongo-integration/src/test/java/org/hesperides/test/mongo_integration/config/IntegTestConfig.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/AbstractValuedProperty.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/security/groups/LdapSearchContext.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/SaveProperties.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/exceptions/DeployedModuleNotFoundException.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/diff/IterableDifferingPropertyOutput.java</file>
+			<file>commons/src/main/java/org/hesperides/commons/SpringProfiles.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/ValuedPropertyIO.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/PlatformQueries.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/GetInstancesModel.java</file>
+			<file>core/application/src/test/java/org/hesperides/core/application/files/FileUseCasesTest.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/diff/SimpleDifferingProperty.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="701" opendate="2019-07-18 13:35:16" fixdate="2019-08-16 15:21:41">
+		<buginformation>
+			<summary>Lors de la sauvegarde de template, on ne valide pas qu'une propriété simple ne doit pas avoir le même nom qu'une propriété itérable</summary>
+			<description>Exemple de template: ``` {{#appenders.file-rolling-vsctlayout}}     &lt;appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="{{appendername}}"&gt;         &lt;File&gt;${log.instance.dir}/espaceclient/{{filename}}.log&lt;/File&gt;         &lt;Append&gt;true&lt;/Append&gt;         &lt;triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy"&gt;             &lt;maxFileSize&gt;{{roll.threshold|@comment "taille du fichier déclenchant une rotation (kilo-octet)" @default 5000}}KB&lt;/maxFileSize&gt;         &lt;/triggeringPolicy&gt;         &lt;rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy"&gt;             &lt;fileNamePattern&gt;${log.instance.dir}/espaceclient/{{filename}}.log-%i&lt;/fileNamePattern&gt;             &lt;maxIndex&gt;{{roll.max-index|@comment "nombre maximal de fichiers '.log-%i'" @default 5}}&lt;/maxIndex&gt;         &lt;/rollingPolicy&gt;         &lt;Encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder"&gt;             &lt;layout class="com.vsct.component.log.layout.logback.VsctLayout"/&gt;         &lt;/Encoder&gt;     &lt;/appender&gt; {{/appenders.file-rolling-vsctlayout}}      Mon iterable : {{appenders.file-rolling-vsctlayout}} ``` Stacktrace: ``` 2019-07-18 15:29:53.376 ERROR 11312 --- [nio-8080-exec-5] o.h.c.p.e.GlobalExceptionHandler         : Unexpected error (path=uri=/rest/applications/KTN/platforms/KTN1/properties): 2019-07-18 15:29:53.378 ERROR 11312 --- [nio-8080-exec-5] o.h.c.p.e.GlobalExceptionHandler         : java.lang.ClassCastException: org.hesperides.core.domain.templatecontainers.queries.PropertyView cannot be cast to org.hesperides.core.domain.templatecontainers.queries.IterablePropertyView  java.lang.ClassCastException: org.hesperides.core.domain.templatecontainers.queries.PropertyView cannot be cast to org.hesperides.core.domain.templatecontainers.queries.IterablePropertyView at org.hesperides.core.domain.platforms.queries.views.properties.IterableValuedPropertyView.excludePropertyWithOnlyDefaultValue(IterableValuedPropertyView.java:59) at org.hesperides.core.domain.platforms.queries.views.properties.AbstractValuedPropertyView.lambda$excludePropertiesWithOnlyDefaultValue$2(AbstractValuedPropertyView.java:88) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Template.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/exceptions/PropertyWithSameNameAsIterablePropertyException.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/templatecontainers/scenarios/CreateTemplates.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="685" opendate="2019-07-01 12:12:22" fixdate="2019-07-09 16:19:03">
+		<buginformation>
+			<summary>/applications/using_module renvoie des plateformes qui n'utilisent plus le module en question</summary>
+			<description>Il semble que la requête renvoie les plateformes ayant utilisé le module fourni en paramètre, donc archivé, et _sans tenir compte de la version ou du type de version_. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/GetPlatformsUsingModule.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/test/bdd/CucumberTests.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="662" opendate="2019-06-05 14:16:24" fixdate="2019-06-05 15:02:20">
+		<buginformation>
+			<summary>Les caractères HTML échappés dans le JSON de la sortie de GET /files posent problème</summary>
+			<description>**Ressource**: `GET /rest/files/applications/$APP/platforms/$PLATFORM/$PATH/$MODULE/$VERSION/instances/$INSTANCE?isWorkingCopy=false&amp;simulate=false`  **Sortie**: `[{"location":"...file_path...","url":"/rest/files/applications/...?isWorkingCopy\u003dfalse\u0026template_namespace\u003dmodules%23module%23version%23RELEASE\u0026simulate\u003dfalse"`  **Problème**: Ces URLs ne sont pas directement employables par `curl` par exemple  **Solution**: https://stackoverflow.com/a/4147245/636849</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/PresentationConfiguration.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFiles.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="639" opendate="2019-05-13 14:04:53" fixdate="2019-06-13 13:09:29">
+		<buginformation>
+			<summary>Get module template non fonctionnel dans Swagger</summary>
+			<description>Pour être rétrocompatible avec le legacy, on a autorisé l'argument `template_name` à être tout et n'importe quoi, ce qui donne ça : ![image](https://user-images.githubusercontent.com/4296630/57627685-beea0f80-7598-11e9-933e-2c442a315776.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/templates/DeleteModuleTemplates.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/ModuleTemplatesController.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/templates/GetModuleTemplates.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/CreateModules.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/ModuleClient.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="638" opendate="2019-05-10 13:54:53" fixdate="2019-05-13 17:26:53">
+		<buginformation>
+			<summary>La restauration de plateforme ne fonctionne pas</summary>
+			<description>* Erreur 404 systématique * Il faut empêcher la restauration de plateforme existante * Le bouton du front ne déclenche pas l'appel =&gt; https://github.com/voyages-sncf-technologies/hesperides-gui/issues/194 * sensitivité à la casse</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/Platform.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/RestorePlatforms.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/inmemory/platforms/InmemoryPlatformRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/commands/PlatformAggregate.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/commands/PlatformCommands.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="623" opendate="2019-04-26 14:37:02" fixdate="2019-04-30 09:08:29">
+		<buginformation>
+			<summary>Bug majeur : lors d'une copie de plateforme les deployed modules inactifs de l'historique sont inclus</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/DeployedModuleView.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="597" opendate="2019-04-15 16:08:26" fixdate="2019-04-15 16:16:46">
+		<buginformation>
+			<summary>Valeur par défaut et valorisation vide</summary>
+			<description>On doit tenir compte de la valeur par défaut d'une propriété lorsque cette propriété n'est pas valorisée ET si elle est valorisée avec du vide.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/SimplePropertyVisitor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="564" opendate="2019-03-28 14:05:16" fixdate="2019-03-29 09:25:21">
+		<buginformation>
+			<summary>Conservation d'un historique de valorisations de propriétés de modules déployées sur une plateforme</summary>
+			<description>La fonctionnalité a été implémentée dans `PlatformDocument.updateModules` mais : - il manque les tests BDDs - ce n'est pas une logique de fenêtre glissante -&gt; bug</description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/GetProperties.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/technos/scenarios/templates/UpdateTechnoTemplates.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/UpdatePlatforms.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/commons/CommonSteps.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/InfiniteMustacheRecursion.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/CreateModules.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/commons/HesperidesScenario.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFile.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/PlatformDocument.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/TechnosController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="547" opendate="2019-03-18 09:38:22" fixdate="2019-03-18 13:45:01">
+		<buginformation>
+			<summary>Un propriété itérable n'est pas écrasée par une propriété globale ayant le même nom même si elle n'est pas valorisée</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileValuationContext.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFile.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="540" opendate="2019-03-14 13:09:11" fixdate="2019-03-14 14:00:40">
+		<buginformation>
+			<summary>Propriété faisant référence à une propriété ayant une annotation</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="528" opendate="2019-03-12 15:25:33" fixdate="2019-03-12 16:59:16">
+		<buginformation>
+			<summary>Lors de valorisation d'un fichier, les valeurs sont échappées</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/AbstractProperty.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/FilesController.java</file>
+			<file>core/application/src/test/java/org/hesperides/core/application/files/UnescapeValuesMustacheFactoryTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="504" opendate="2019-02-13 14:30:02" fixdate="2019-03-28 11:06:47">
+		<buginformation>
+			<summary>Vérifier les valorisations de propriétés contenant @pattern</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/queries/PropertyView.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/exceptions/GlobalExceptionHandler.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/exceptions/PropertyPatternNotMatchedException.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/queries/IterablePropertyView.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/SaveProperties.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/exceptions/RequiredPropertyNotValorisedException.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/queries/AbstractPropertyView.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/exceptions/InvalidPropertyValorisationException.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformClient.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="496" opendate="2019-02-08 14:53:09" fixdate="2019-02-08 16:05:50">
+		<buginformation>
+			<summary>Valorisation de propriété avec une autre propriété</summary>
+			<description>Il est déjà possible de valoriser une propriété au niveau du module avec une propriété globale mais pas avec une autre propriété valorisée au niveau du module.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/ValuedProperty.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/GlobalPropertyUsageView.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/Platform.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="493" opendate="2019-02-07 16:42:04" fixdate="2019-02-07 17:15:05">
+		<buginformation>
+			<summary>Propriété globale utilisée dans la valorisation d'une propriété de module</summary>
+			<description>Lorsqu'on valorise une propriété de module avec plusieurs propriétés dont une propriété globale, cette propriété globale est considérée comme utilisée par le module.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/ValuedPropertyView.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/IterableValuedPropertyView.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/GetGlobalPropertiesUsage.java</file>
+			<file>commons/src/main/java/org/hesperides/commons/ValueUtils.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/templatecontainers/IterablePropertyDocument.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/ValuedProperty.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/templatecontainers/PropertyDocument.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/AbstractValuedPropertyView.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/templatecontainers/AbstractPropertyDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/modules/ModuleDocument.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/GlobalPropertyUsageView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="490" opendate="2019-02-06 17:54:31" fixdate="2019-02-07 15:40:45">
+		<buginformation>
+			<summary>Une seule propriété d'instance détectée lorsqu'il y en a plusieurs dans une valeur de propriété valorisée</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/InstancesModelOutput.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/PlatformIO.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/templatecontainers/IterablePropertyDocument.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/ModulePlatformsOutput.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/DeployedModule.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/ValuedProperty.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/queries/AbstractPropertyView.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/DeployedModuleDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/templatecontainers/PropertyDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformBuilder.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/templatecontainers/AbstractPropertyDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/PlatformDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/modules/ModuleDocument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="489" opendate="2019-02-06 14:10:12" fixdate="2019-02-07 15:40:46">
+		<buginformation>
+			<summary>Règle d'extraction des propriétés d'instance</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/DeployedModule.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/ValuedProperty.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/DeployedModuleDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformBuilder.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/PlatformDocument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="486" opendate="2019-02-05 14:19:14" fixdate="2019-02-06 13:22:29">
+		<buginformation>
+			<summary>GetProperties ne doit retourner que les propriétés valorisées</summary>
+			<description>Mais pas les propriétés non valorisées ayant une valeur par défaut</description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/GetProperties.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/ValuedPropertyView.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/IterableValuedPropertyView.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/ValuedPropertyIO.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/ValuedProperty.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/PlatformQueries.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformBuilder.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/AbstractValuedPropertyView.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/IterablePropertyItemView.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/PlatformsController.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/ValuedPropertyDocument.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/GlobalPropertyUsageView.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/PlatformProjectionRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="485" opendate="2019-02-05 11:40:52" fixdate="2019-02-06 12:58:22">
+		<buginformation>
+			<summary>Propriétés obfusquées sur les plateformes de production même quand ce ne sont pas des mots de passe</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/IterableValuedPropertyDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/UpdatePlatforms.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/ValuedPropertyView.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/ModuleBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/AbstractValuedPropertyDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/DeployedModule.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/properties/ValuedProperty.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/ValuedPropertyIO.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/IterableValuedPropertyIO.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/CreateModules.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/ValuedPropertyDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformBuilder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="482" opendate="2019-02-04 17:15:04" fixdate="2019-02-05 09:48:28">
+		<buginformation>
+			<summary>Model d'instance et de propriétés valorisées non iso</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/InstancesModelOutput.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/AbstractValuedPropertyIO.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/PropertiesIO.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/ValuedPropertyIO.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/IterableValuedPropertyIO.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/properties/IterablePropertyItemIO.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformBuilder.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/platforms/InstanceIO.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/GlobalPropertyUsageView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="481" opendate="2019-02-04 17:13:07" fixdate="2019-02-05 13:19:41">
+		<buginformation>
+			<summary>Mise à jour du groupe logique avec copie de propriétés</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/Platform.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="478" opendate="2019-02-04 10:47:53" fixdate="2019-02-04 11:17:12">
+		<buginformation>
+			<summary>Les plateformes contenant un point dans leur nom ne sont pas récupérables</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/PlatformsController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="476" opendate="2019-02-01 15:30:59" fixdate="2019-02-04 14:48:05">
+		<buginformation>
+			<summary>Le nom des propriétés est sensible à la casse</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/IterableValuedPropertyDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/AbstractValuedPropertyDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/ValuedPropertyDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/templatecontainers/builders/PropertyBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformBuilder.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/properties/GlobalPropertyUsageView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="474" opendate="2019-01-31 15:43:16" fixdate="2019-02-01 08:22:08">
+		<buginformation>
+			<summary>GetFiles : même module dans plusieurs groupes logiques</summary>
+			<description>Bug lors de la récupération des fichiers dans le cas où un même module est déployé plusieurs fois sur une même plateforme (dans des groupes logiques distincts).</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFiles.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/queries/views/PlatformView.java</file>
+			<file>core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="472" opendate="2019-01-31 11:02:13" fixdate="2019-01-31 15:24:17">
+		<buginformation>
+			<summary>Conserver les propriétés valorisées lors d'un changement de nom de module </summary>
+			<description>Permettre de conserver la valorisation des propriétés lorsqu'on met à jour le nom d'un module d'une plateforme : upgrade module = nom et/ou version et/ou type de version différent.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/CopyModules.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/CreateModules.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/UpdatePlatforms.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/Platform.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="469" opendate="2019-01-30 14:33:18" fixdate="2019-01-31 10:29:05">
+		<buginformation>
+			<summary>Conserver les propriétés valorisées lors d'un changement de type de version de module</summary>
+			<description>Permettre de conserver la valorisation des propriétés lorsqu'on met à jour le type de version d'un module d'une plateforme : upgrade module = même nom + version et/ou type de version différent.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/UpdatePlatforms.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/ReleaseModules.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/modules/scenarios/templates/GetModuleTemplates.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/entities/Platform.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/ValuedPropertyDocument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="467" opendate="2019-01-29 16:23:35" fixdate="2019-01-30 14:39:46">
+		<buginformation>
+			<summary>Valorisation d'une propriété définie plusieurs fois avec le même nom mais un commentaire différent</summary>
+			<description>Comment reproduire le bug : * Déclarer 2 propriétés ayant le même nom mais un commentaire distinct * Valoriser cette propriété (il n'y a qu'une valorisation possible parce que la valorisation se fait par rapport au nom de la propriété) * Lors de la récupération du fichier (ou des fichiers =&gt; location), une seule des 2 propriétés est valorisée</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/IterableValuedPropertyDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/AbstractValuedPropertyDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/templatecontainers/PropertyDocument.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/documents/ValuedPropertyDocument.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFiles.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="457" opendate="2019-01-08 16:57:38" fixdate="2019-01-10 15:37:16">
+		<buginformation>
+			<summary>Propriétés prédéfinies</summary>
+			<description>À tester et implémenter :  {{hesperides.application.name}} {{hesperides.application.version}} {{hesperides.platform.name}}  {{hesperides.module.name}} {{hesperides.module.version}} {{hesperides.module.path}} {{hesperides.module.path.full}} {{hesperides.module.path.0}} {{hesperides.module.path.1}} etc ...  {{hesperides.instance.name}}</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/templatecontainers/builders/PropertyBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFiles.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="455" opendate="2019-01-08 14:30:22" fixdate="2019-01-10 15:37:15">
+		<buginformation>
+			<summary>Concaténation de location et filename avec /</summary>
+			<description>location + filename = location/filename location +/filename = location/filename location/ + filename = location/filename location/ + /filename = location/filename</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/files/InstanceFileViewTest.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/files/InstanceFileView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="454" opendate="2019-01-08 13:57:35" fixdate="2019-01-10 15:37:15">
+		<buginformation>
+			<summary>Valorisation d'une propriété itérable dans une propriété itérable (iterable-ception)</summary>
+			<description>Non testé</description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/templatecontainers/builders/PropertyBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFile.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="453" opendate="2019-01-07 17:39:09" fixdate="2019-01-10 15:37:14">
+		<buginformation>
+			<summary>Valorisation de propriété d'instance avec propriété globale</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/UpdatePlatforms.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFiles.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/files/InstanceFileView.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/templatecontainers/builders/PropertyBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformBuilder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="452" opendate="2019-01-07 17:04:59" fixdate="2019-01-10 15:37:14">
+		<buginformation>
+			<summary>Valorisation de propriétés filename et location avec des propriétés globales ou d'instance</summary>
+			<description>Encore mieux : propriété globale utilisée en tant que valeur de propriété d'instance</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/application/src/main/java/org/hesperides/core/application/files/FileUseCases.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/UpdatePlatforms.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/CreatePlatforms.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/files/scenarios/GetFiles.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/files/InstanceFileView.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/templatecontainers/builders/PropertyBuilder.java</file>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/PlatformBuilder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="451" opendate="2019-01-07 14:46:25" fixdate="2019-01-10 15:37:14">
+		<buginformation>
+			<summary>Mise à jour de plateforme : version et isProd ne sont pas pris en compte</summary>
+			<description>La modification de version de l'application et du flag isProd n'est pas prise en compte lors de la mise à jour de plateforme.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/main/java/org/hesperides/test/bdd/platforms/scenarios/UpdatePlatforms.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="414" opendate="2018-11-15 15:48:12" fixdate="2019-06-13 17:56:06">
+		<buginformation>
+			<summary>Le endpoint actuator /mappings ne fonctionne pas pour cause de boucle infinie</summary>
+			<description>Ce bug apparaît dès que l'on consulte http://localhost:8080/rest/manage/mappings  Pour plus de contexte sur ce bug: https://github.com/spring-projects/spring-boot/issues/15183  La raison pour laquelle nous utilisons Gson est documentée ici: https://github.com/voyages-sncf-technologies/hesperides/blob/master/documentation/lightweight-architecture-decision-records/use_gson.md</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/PresentationConfiguration.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="349" opendate="2018-09-12 12:58:42" fixdate="2018-10-26 13:42:10">
+		<buginformation>
+			<summary>Gestion des créations après suppressions</summary>
+			<description>Si on crée une entité après l'avoir supprimée, Axon rejète cette création parce la clé a déjà été utilisée.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/modules/queries/ModuleQueries.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/modules/MongoModuleProjectionRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/modules/MongoTemplateProjectionRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/modules/commands/ModuleAggregate.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/technos/TechnoProjectionRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/platforms/MongoPlatformProjectionRepository.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/technos/commands/TechnoCommands.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/technos/commands/TechnoAggregate.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/technos/queries/TechnoQueries.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/commands/PlatformAggregate.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/modules/commands/ModuleCommands.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/modules/ModuleProjectionRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/technos/MongoTechnoProjectionRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="336" opendate="2018-09-06 14:19:19" fixdate="2018-10-26 13:41:44">
+		<buginformation>
+			<summary>Erreur lors de l'appel pour afficher un template dont le nom contient un slash</summary>
+			<description>http://deadbabyboy:50080/rest/modules/wdi-monitor/SNAPSHOT/workingcopy/templates/conf/agencies/domains.json http://localhost:8080/rest/modules/wdi-monitor/SNAPSHOT/workingcopy/templates/conf/agencies/domains.json</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/controllers/ModuleTemplatesController.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/modules/scenarios/CreateModules.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/modules/scenarios/templates/GetModuleTemplates.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="329" opendate="2018-09-05 12:31:20" fixdate="2018-09-06 13:49:20">
+		<buginformation>
+			<summary>Gestion des % dans le nom des templates</summary>
+			<description>Le % dans l'url, encodé en %25, est rejeté par défaut par Spring par sécurité, alors qu'il est accepté dans le legacy.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/security/HttpFirewallConfiguration.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="327" opendate="2018-09-03 11:51:41" fixdate="2018-09-05 08:13:03">
+		<buginformation>
+			<summary>Split non sensible à la casse</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="326" opendate="2018-09-03 09:45:11" fixdate="2018-09-05 08:13:02">
+		<buginformation>
+			<summary>Tabulation après valeur sans guillemet</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{propriété | @comment foo[tab]bar}}  Donne, dans le model, la propriété suivante :      comment: foo  Alors qu'on renvoie dans la nouvelle appli :      comment: foo[tab]bar</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="324" opendate="2018-09-03 09:06:44" fixdate="2018-09-03 10:04:15">
+		<buginformation>
+			<summary>Guillemets ouverts dans une annotation et fermés dans une autre</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{propriété | @comment "comment | @default 12"}}  Donne, dans le model, la propriété suivante :      comment: comment | @default 12     default: [vide]  Alors qu'on renvoie dans la nouvelle appli :      comment: null     default: [vide]</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="323" opendate="2018-08-29 12:52:02" fixdate="2018-09-03 10:04:15">
+		<buginformation>
+			<summary>Les annotations doivent être précédées d'un espace pour être détecté sauf dans le cas de la première annotation.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="322" opendate="2018-08-28 15:33:23" fixdate="2018-09-03 10:04:15">
+		<buginformation>
+			<summary>Supprimer les références vers les technos lors de leur suppression</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/technos/MongoTechnoProjectionRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="321" opendate="2018-08-28 12:45:17" fixdate="2018-09-03 10:04:15">
+		<buginformation>
+			<summary>Commentaire contenant une simple quotes entre deux simples quotes</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{prop| | @comment 'Aujourd'hui' }}  Donne, dans le model, la propriété suivante :      comment: Aujourd  Alors qu'on renvoie dans la nouvelle appli :      comment: Aujourd'hui</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="320" opendate="2018-08-28 10:05:49" fixdate="2018-09-03 10:04:15">
+		<buginformation>
+			<summary>Commentaire entouré de simples quotes mais qui contient des double quotes</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{prop|@comment 'exemple: "ZZZ'}}  Donne, dans le model, la propriété suivante :      comment: exemple: "ZZZ  Alors qu'on renvoie dans la nouvelle appli :      comment: exemple:</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="319" opendate="2018-08-28 09:04:21" fixdate="2018-09-03 10:04:15">
+		<buginformation>
+			<summary>Diff dans le model d'un module lorsqu'une techno rattachée a été modifiée</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/templatecontainers/TemplateSamples.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/technos/contexts/TechnoContext.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/templatecontainers/TemplateIO.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/technos/scenarios/DeleteATechno.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/modules/scenarios/GetModel.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/modules/MongoModuleRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/technos/MongoTechnoProjectionRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="318" opendate="2018-08-28 08:32:17" fixdate="2018-09-03 10:04:15">
+		<buginformation>
+			<summary>Annotation @required suivie de "|"</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{mur.url|@required|url du service mur}}  Donne, dans le model, la propriété suivante :      comment: null     required: false  Alors qu'on renvoie une erreur dans la nouvelle appli.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="317" opendate="2018-08-27 15:40:42" fixdate="2018-09-03 10:04:15">
+		<buginformation>
+			<summary>Propriété : prise en compte des espaces de début et de fin dans les valeurs entre guillemets</summary>
+			<description>Sauf pour les commentaires apparemment...</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="315" opendate="2018-08-24 14:08:26" fixdate="2018-08-27 14:54:00">
+		<buginformation>
+			<summary>Annotation collée au commentaire</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{sumo.rules.generation|true ou false@required}}  Donne, dans le model, la propriété suivante :      comment: true ou false|     required: false  Alors qu'on renvoie dans la nouvelle appli :      comment: true ou false     required: true</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="314" opendate="2018-08-24 14:04:34" fixdate="2018-08-27 14:54:00">
+		<buginformation>
+			<summary>Mélange de l'ancien format de commentaire avec les nouvelles annotations</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{propriété|un commentaire|@default ERROR}}  Donne, dans le model, la propriété suivante :      comment: un commentaire|     default: [vide]  Alors qu'on renvoie dans la nouvelle appli :      comment: un commentaire|     default: ERROR</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="313" opendate="2018-08-24 13:57:28" fixdate="2018-08-27 14:53:59">
+		<buginformation>
+			<summary>Commentaire entouré de simple quotes contenant une simple quote échapée</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{tn.customer.file.api.login| @comment 'Login pour l\'authentification à l\'api'}}  Donne, dans le model, la propriété suivante :      comment: Login pour l'authentification à l'api  Alors qu'on renvoie dans la nouvelle appli :      comment: null</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="312" opendate="2018-08-24 13:53:04" fixdate="2018-08-27 14:53:59">
+		<buginformation>
+			<summary>Commentaire sans annotation contenant un arobase</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{http.proxy | Format : [protocol://][user:password@]proxyhost[:port]}}  Donne, dans le model, la propriété suivante :      comment: Format : [protocol://][user:password  Alors qu'on renvoie dans la nouvelle appli :      comment: Format : [protocol://][user:password@]proxyhost[:port]</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/technos/MongoTechnoProjectionRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="311" opendate="2018-08-24 13:48:52" fixdate="2018-08-27 14:53:59">
+		<buginformation>
+			<summary>Annotation qui commence mais ne se termine pas avec des guillemets</summary>
+			<description>Dans le legacy, une propriété déclarée comme ceci :      {{propriété | @comment \"comment | @default 12}}  Donne, dans le model, la propriété suivante :      comment: null     default: [vide]  Alors qu'on renvoie dans la nouvelle appli :      comment: null     default: 12</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="307" opendate="2018-08-22 12:49:50" fixdate="2018-08-24 12:46:30">
+		<buginformation>
+			<summary>Diff avec annotation collée au texte</summary>
+			<description>Si une propriété est définie comme ceci :      {{comment typo|@commentForgot space @required @password}}  Dans le legacy, le commentaire est à null. Dans la nouvelle appli, il contient "space".</description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/Property.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/templatecontainers/entities/AbstractProperty.java</file>
+			<file>core/domain/src/test/java/org/hesperides/core/domain/templatecontainers/entities/PropertyTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="244" opendate="2018-06-19 17:38:19" fixdate="2018-10-24 11:23:34">
+		<buginformation>
+			<summary>Lorsqu'une techno est mise à jour ou supprimée, le model des modules qui l'utilisent n'est pas mis à jour</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/templatecontainers/TemplateSamples.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/technos/contexts/TechnoContext.java</file>
+			<file>core/presentation/src/main/java/org/hesperides/core/presentation/io/templatecontainers/TemplateIO.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/technos/scenarios/DeleteATechno.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/modules/scenarios/CreateModules.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/modules/scenarios/GetModel.java</file>
+			<file>core/domain/src/main/java/org/hesperides/core/domain/platforms/commands/PlatformAggregate.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/technos/MongoTechnoRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/modules/MongoModuleRepository.java</file>
+			<file>core/infrastructure/src/main/java/org/hesperides/core/infrastructure/mongo/technos/MongoTechnoProjectionRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="210" opendate="2018-05-31 10:32:18" fixdate="2018-06-12 13:23:12">
+		<buginformation>
+			<summary>templateName contenant .sh retourne une erreur 406</summary>
+			<description>Lors d'un GET pour récupérer les détails d'un template (module ou techno), si le nom du template se termine par un .sh, l'exception suivante se lève : org.springframework.web.HttpMediaTypeNotAcceptableException.  Le TemplateIO se construit normalement, c'est lors de l'envoi de la donnée que l'erreur se lève.  Pour le moment, cette erreur ne se retrouve que sur les templateName se terminant par .sh (les cas suivants de créent pas d'erreur, par exemple : ".s" ".sha" ".co", etc) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>presentation/src/main/java/org/hesperides/presentation/PresentationConfiguration.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="122" opendate="2018-03-05 13:27:18" fixdate="2018-03-06 12:10:31">
+		<buginformation>
+			<summary>Ajouter le concept de "user" dans les events.</summary>
+			<description>Dans le legacy, chaque event est associé à un user.  On n'a pas ce concept dans le reboot de l'application. Il faut l'ajouter.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>infrastructure/src/main/java/org/hesperides/infrastructure/redis/eventstores/legacy/LegacyModuleCreatedEvent.java</file>
+			<file>domain/src/main/java/org/hesperides/domain/modules/commands/ModuleAggregate.java</file>
+			<file>presentation/src/main/java/org/hesperides/presentation/controllers/TemplateController.java</file>
+			<file>infrastructure/src/test/java/org/hesperides/infrastructure/redis/eventstores/legacy/AbstractLegacyCodecTest.java</file>
+			<file>application/src/test/java/org/hesperides/application/ModuleUseCasesTest.java</file>
+			<file>domain/src/main/java/org/hesperides/domain/security/User.java</file>
+			<file>domain/src/test/java/org/hesperides/domain/modules/commands/ModuleAggregateTest.java</file>
+			<file>application/src/main/java/org/hesperides/application/ModuleUseCases.java</file>
+			<file>infrastructure/src/main/java/org/hesperides/infrastructure/redis/eventstores/legacy/LegacyModuleUpdatedEvent.java</file>
+			<file>infrastructure/src/test/java/org/hesperides/infrastructure/redis/eventstores/legacy/LegacyModuleCreatedEventTest.java</file>
+			<file>infrastructure/src/main/java/org/hesperides/infrastructure/redis/modules/RedisTemplateRepository.java</file>
+			<file>infrastructure/src/main/java/org/hesperides/infrastructure/redis/eventstores/legacy/LegacyCodec.java</file>
+			<file>domain/src/main/java/org/hesperides/domain/modules/commands/ModuleCommands.java</file>
+			<file>presentation/src/main/java/org/hesperides/presentation/controllers/ModuleController.java</file>
+			<file>tests/bdd/src/test/java/org/hesperides/tests/bdd/commons/tools/HesperideTestRestTemplate.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="83" opendate="2017-09-06 15:08:06" fixdate="2017-09-06 15:46:22">
+		<buginformation>
+			<summary>NPE on timeline request on snapshot events</summary>
+			<description>FR : Quand je demande l'état d'une plateforme à un instant T dans une liste d'événements avec snapshot, j'obtiens un NullPointerException.  EN: I get a NullPointerException when I try to get a plateform state at a given moment (timeline) on snapshot events.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/vsct/dt/hesperides/resources/HesperidesApplicationResourceTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

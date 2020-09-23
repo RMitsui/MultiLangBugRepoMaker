@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>83</id>
+		<title>[BUG] Related ticket is not working as expected</title>
+		<body>**Describe the bug** When a related ticket is loaded into the sale, if it has promotions associated the total amount could not match the one in the original ticket. When trying to remove an item it could lead as to removing the wrong one when other items are added later.  **To Reproduce** Steps to reproduce the behavior: 1. Go to New sale 2. Load a related ticket with multiple items 3. Add new products into the sale 4. Try to remove one of them  **Expected behavior** The selected item should be removed and the total amount should be the same as the original.  **Screenshots** N/A  **Additional context** N/A  **Tech notes** Looks like the related ticket is being loaded with its item but the itemCounter in the ShopCart Bean is being initialized by 1, so when adding/modifying the item number may collide with the ones in the original. </body>
+		<created>2020-01-09 00:04:59</created>
+		<closed>2020-01-09 00:38:53</closed>
+	</bug>
+	<bug>
+		<id>81</id>
+		<title>[BUG] Cannot search by supplier and supplier tickets delete feature is not working</title>
+		<body>**Describe the bug** A user cannot remove a supplier ticket. The search for supplier tickets doesn't take into account the supplier filter.  **To Reproduce** Steps to reproduce the behavior: 1. Go to supplier/tickets 2. Click on Advanced search 3. Select a supplier 4. Click search 5. No tickets for that supplier are filtered  Second issue: 1. Go to supplier/tickets 2. Click on remove 3. The ticket is still there  **Expected behavior** The ticket should be removed and the filter by supplier should work.  **Screenshots** N/A  **Additional context** N/A  **Tech notes** After the changes in persistence the removal of entities has stopped working because no flush was being performed. The filter is not working because we're not converting from entity to long for the use on the search filter. </body>
+		<created>2020-01-04 22:02:52</created>
+		<closed>2020-01-04 22:18:20</closed>
+	</bug>
+	<bug>
+		<id>63</id>
+		<title>[BUG] Las ofertas no se disparan desde la carga de productos</title>
+		<body>**Describe the bug** Cuando se carga un nuevo producto a la venta la oferta no se dispara, sin embargo al modificar la línea si lo hace  **To Reproduce** Steps to reproduce the behavior: 1. Ingresar a una venta nueva 2. Cargar un id o código de producto en oferta 3. Cargar la cantidad necesaria para generar la oferta 4. El producto se carga sin la oferta  **Expected behavior** El producto debería cargarse con la oferta independeintemente de donde se cargue.  **Screenshots** N/A  **Additional context** N/A  **Tech notes** Additional tech notes that where discovered during the developer analysis. </body>
+		<created>2019-04-09 02:10:53</created>
+		<closed>2019-04-09 02:27:40</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>[BUG] Eliminar línea de producto no borra el descuento</title>
+		<body>**Describe the bug** Al eliminar el ítem de una línea con descuento por oferta, la línea de descuento por la misma queda en su lugar. Tampoco se actualiza la oferta al modificar la cantidad del producto en cuestión  **To Reproduce** Steps to reproduce the behavior: 1. Abrir una venta nueva 2. Ingresar un ítem que tenga oferta configurada y con los parámetros adecuados 3. Eliminar el ítem del producto 4. El item de oferta queda en la venta  **Expected behavior** El ítem de la oferta debería borrarse / actualizarse según sea el caso  **Screenshots** N/A  **Additional context** N/A  **Tech notes** Las condiciones de oferta solo se evalúan al ingresar un ítem desde el cuadro superior, ingresar el mismo desde el cuadro de búsqueda o modificar su cantidad no disparan las reglas de ofertas. </body>
+		<created>2019-03-27 03:01:35</created>
+		<closed>2019-03-27 03:30:10</closed>
+	</bug>
+	<bug>
+		<id>56</id>
+		<title>[BUG] El alta rápida de Marcas, Rubros y SubRubros causa problemas</title>
+		<body>**Describe the bug** Cuando se da de alta una nueva marca en la carga o edición de productos y luego se desea guardar ese producto el sistema arroja un error. Lo mismo sucede cuando se da de alta un rubro. Dar de alta SubRubros no funciona y la lista desplegable muestra todos los subrubros.  **To Reproduce** Steps to reproduce the behavior: 1. Ir a editar un producto 2. Crear una marca nueva 3. Seleccionar esa marca y guardar el producto 4. El sistema arroja un "Error al guardar" Nora: Lo mismo sucede con los rubros y sub rubros  **Expected behavior** La marca se debería poder crear y seleccionar sin que esto cause problemas al guardar el producto.  **Additional context** N/A  **Tech notes** Aparentemente esto se debe a que al crear un nuevo elemento no se está yendo a la base de datos para obtener su ID y esto hace que se setee como nulo en el producto y por restricción de base de datos el mismo no es almacenado. El filtro de SubRubros se rompe debido a la misma razón. </body>
+		<created>2019-03-22 01:25:00</created>
+		<closed>2019-03-22 03:32:56</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>[BUG] La búsqueda de productos no contempla algunos caracteres</title>
+		<body>**Describe the bug** Existen productos cuya descripción contiene caracteres como "-" o "/" y para las cuales cuando se realiza la búsqueda no se tienen en cuenta y el sistema no las encuentra. Tampoco realiza la búsqueda por códigos de fabricante cuando se selecciona la opción "Buscar todo"  **To Reproduce** Steps to reproduce the behavior: Precondición: Tener cargado un producto con algunos de esos caracteres("/" o "-" por ejemplo) 1. Ir a la búsqueda de productos 2. Ingresar esa parte de la descricpión en el cuadro de búsqueda 3. Seleccionar la opción "Buscar todo" 4. No encontrará ese producto  Para códigos de fábrica: 1. Ir a la búsqueda de productos 2. Ingresar el código de fabricante en el cuadro de búsqueda 3. Seleccionar la opción "Buscar todo" 4. No encontrará ese producto  **Expected behavior** Esa clase de productos debería poder encontrarse como resultados de búsqueda  **Screenshots** N/A  **Additional context** N/A  **Tech notes** El hecho de que no busque cuando existen guiones o barras o cosas por el estilo es que el sistema estaba separando los términos utilizando la expresión regular "\W" que toma como separador de palabras justamente a esos caracteres. El arreglo consistiría en utilizar "\s" de forma tal de solo hacer la separación de los términos en base a los espacios en blanco. Para buscar por códigos de fabricante se debe incluir dentro de la búsqueda ya que actualmente no se contempla. </body>
+		<created>2019-03-05 13:30:46</created>
+		<closed>2019-03-05 15:09:26</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>Error en las ofertas con operador "Igual a" y campo de caracteres</title>
+		<body>**Descripción:**  Cuando se carga una oferta con un campo de caracteres y el operador es "igual a" no permite luego cargar ningún producto en las ventas.  Ej:  Campo: Nombre de marca Operador: Igual a Valor: "algo"  **Resultado obtenido** No se pueden agregar ítems a las facturas  **Resultado esperado** - Un error de validación al cargar esa combinación - No permitir seleccionar combinaciones inválidas de operador y campo.  **Notas técnicas** El error en la venta se produce porque las condiciones de oferta son evaluadas al momento de agregar un nuevo producto a la misma y si alguna condición no es válida falla sin advertir al usuario. La validación debería hacerse en el cuadro de edición de ofertas en lugar de esperar hasta llegar a la venta. La operación de String == valor no está soportada así que debería asegurarse esa restricción.</body>
+		<created>2019-03-02 00:53:20</created>
+		<closed>2019-03-03 00:06:23</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>Funcionalidad de productos sustitutos no funciona correctamente</title>
+		<body>El ABM de sustitutos funciona de manera correcta, pero al querer agregar un producto sustituto a la venta (apretando el botón con el check correspondiente al sustituto) no lo agrega en la venta sino que agrega el primero seleccionado.  Otra cuestión a considerar sería que si no hay stock del producto "padre" jamás vamos a ver a su sustituto y ese sería uno de los casos en los que sería bueno que aparezca.  Las búsquedas de productos en otros formularios relacionados falla (muestra una pantalla en blanco en la parte de abm de remitos y en la de ingresos una pantalla roja haciendo inutilizable esa función)</body>
+		<created>2017-12-01 01:19:46</created>
+		<closed>2019-03-03 03:20:51</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>Corregir pantallas de edición de rubros y sub-rubros</title>
+		<body>Las pantallas tienen todo el código comentado y falla al querer editar un rubro o sub rubro.</body>
+		<created>2017-09-24 03:07:37</created>
+		<closed>2017-09-25 20:24:09</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>No hace correctamente el submit en los datos de observacion y número de remito</title>
+		<body>Cuando se registra una venta el dato del remito y remitente no es enviado al servidor a menos que el usuario presione enter antes de guardar. </body>
+		<created>2014-09-20 23:12:51</created>
+		<closed>2014-09-24 03:15:53</closed>
+	</bug>
+	<bug>
+		<id>3</id>
+		<title>Capturar excepcion al hacer un timeout de sesión de usuario</title>
+		<body>Se debe capturar la excepción que se genera cuando la sesión del usuario expiró por inactividad. Se debe agregar  un filter y redireccionar a la pantalla de login. </body>
+		<created>2014-09-04 21:36:39</created>
+		<closed>2014-09-05 23:08:53</closed>
+	</bug>
+	<bug>
+		<id>1</id>
+		<title>Error al ingresar en nueva venta varias veces</title>
+		<body>Al ingresar al menú Ventas/Nueva venta por primera vez se visualiza la pantalla de nueva venta, pero si se ingresa nuevamente el sistema arroja un error:  Advertencia:   StandardWrapperValve[Faces Servlet]: Servlet.service() for servlet Faces Servlet threw exception org.jboss.weld.exceptions.IllegalStateException: WELD-000214 Attempt to call begin() on a long-running conversation     at org.jboss.weld.context.conversation.ConversationImpl.begin(ConversationImpl.java:91)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     at java.lang.reflect.Method.invoke(Method.java:606)     at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:46)     at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:101)     at org.jboss.weld.proxies.Conversation$-606689180$Proxy$_$$_WeldClientProxy.begin(Unknown Source)     at ar.com.gtsoftware.controller.ventas.NuevaVentaBean.initConversation(NuevaVentaBean.java:102)     at ar.com.gtsoftware.controller.ventas.NuevaVentaBean$Proxy$_$$_WeldClientProxy.initConversation(Unknown Source)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     at java.lang.reflect.Method.invoke(Method.java:606)     at javax.el.ELUtil.invokeMethod(ELUtil.java:326)     at javax.el.BeanELResolver.invoke(BeanELResolver.java:536)     at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256)     at com.sun.el.parser.AstValue.invoke(AstValue.java:269)     at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304)     at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)     at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)     at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105)     at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87)     at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)     at javax.faces.component.UICommand.broadcast(UICommand.java:315)     at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)     at javax.faces.component.UIViewRoot.processDecodes(UIViewRoot.java:931)     at com.sun.faces.lifecycle.ApplyRequestValuesPhase.execute(ApplyRequestValuesPhase.java:78)     at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)     at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)     at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)     at org.apache.catalina.core.StandardWrapper.service(StandardWrapper.java:1682)     at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:318)     at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:160)     at org.apache.catalina.core.StandardPipeline.doInvoke(StandardPipeline.java:734)     at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:673)     at com.sun.enterprise.web.WebPipeline.invoke(WebPipeline.java:99)     at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:174)     at org.apache.catalina.connector.CoyoteAdapter.doService(CoyoteAdapter.java:357)     at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:260)     at com.sun.enterprise.v3.services.impl.ContainerMapper.service(ContainerMapper.java:188)     at org.glassfish.grizzly.http.server.HttpHandler.runService(HttpHandler.java:191)     at org.glassfish.grizzly.http.server.HttpHandler.doHandle(HttpHandler.java:168)     at org.glassfish.grizzly.http.server.HttpServerFilter.handleRead(HttpServerFilter.java:189)     at org.glassfish.grizzly.filterchain.ExecutorResolver$9.execute(ExecutorResolver.java:119)     at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeFilter(DefaultFilterChain.java:288)     at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeChainPart(DefaultFilterChain.java:206)     at org.glassfish.grizzly.filterchain.DefaultFilterChain.execute(DefaultFilterChain.java:136)     at org.glassfish.grizzly.filterchain.DefaultFilterChain.process(DefaultFilterChain.java:114)     at org.glassfish.grizzly.ProcessorExecutor.execute(ProcessorExecutor.java:77)     at org.glassfish.grizzly.nio.transport.TCPNIOTransport.fireIOEvent(TCPNIOTransport.java:838)     at org.glassfish.grizzly.strategies.AbstractIOStrategy.fireIOEvent(AbstractIOStrategy.java:113)     at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.run0(WorkerThreadIOStrategy.java:115)     at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.access$100(WorkerThreadIOStrategy.java:55)     at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy$WorkerThreadRunnable.run(WorkerThreadIOStrategy.java:135)     at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:564)     at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:544)     at java.lang.Thread.run(Thread.java:745) </body>
+		<created>2014-08-29 05:09:15</created>
+		<closed>2014-08-29 05:26:31</closed>
+	</bug>
+</bugs>

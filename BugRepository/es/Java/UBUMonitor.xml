@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="UBUMonitor">
+	<bug id="97" opendate="2020-09-14 21:36:15" fixdate="2020-09-16 20:41:38">
+		<buginformation>
+			<summary>Error en los nodos totales de salida y añadir el numero de discusiones creadas.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/view/chart/forum/ForumNetwork.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="87" opendate="2020-08-31 11:17:33" fixdate="2020-09-03 12:49:59">
+		<buginformation>
+			<summary>No se recoge los cursos recientes</summary>
+			<description>Los datos de cursos recientes no se recoger. La función core_course_get_recent_courses no funciona, hay que realizarlo por AJAX.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/webservice/webservices/WebService.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/load/PopulateCourse.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/load/Constants.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/Controller.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/LoginController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/load/Login.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="82" opendate="2020-06-05 20:32:02" fixdate="2020-06-06 18:10:45">
+		<buginformation>
+			<summary>Revisar la actualización de usuarios no matriculados</summary>
+			<description>No se muestran los usuarios al no actualizar los registros del curso</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/view/chart/logs/BoxplotLogTime.java</file>
+			<file>src/test/java/es/ubu/lsi/ubumonitor/WebServiceTest.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/UserDataController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/WelcomeController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/view/chart/gradeitems/BoxPlot.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/view/chart/logs/BoxplotLog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="81" opendate="2020-06-05 20:30:31" fixdate="2020-06-06 18:10:38">
+		<buginformation>
+			<summary>Los usuarios no son correctos outlayers de los boxplot de calificaciones</summary>
+			<description>Los usuarios no son correctos outlayers de los boxplot de calificaciones</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/view/chart/logs/BoxplotLogTime.java</file>
+			<file>src/test/java/es/ubu/lsi/ubumonitor/WebServiceTest.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/smile/XMeans.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/smile/SmileAdapter.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/smile/KMeans.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/Algorithm.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/smile/DeterministicAnnealing.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/analysis/methods/SilhouetteMethod.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/smile/DBSCANSmile.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/view/chart/gradeitems/BoxPlot.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/AlgorithmParameters.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/UserDataController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/smile/GMeans.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/WelcomeController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/smile/Spectral.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/smile/DENCLUE.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/data/ClusteringParameter.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/view/chart/logs/BoxplotLog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="79" opendate="2020-05-23 18:58:29" fixdate="2020-05-26 15:28:00">
+		<buginformation>
+			<summary>Ordenar alumnos por orden alfabético</summary>
+			<description>En la ordenación de alumnos, aquellos cuyos nombres comienzan por una vocal acentuada aparecen al final del listado. A la hora de hacer la ordenación no debería suceder esto. Si tenemos dos alumnos de apellidos «Serrano» y «Álvarez», el alumno de apellido «Álvarez» debería aparecer por delante del alumno de apellido «Serrano». Tal como se hace la ordenación ahora «Álvarez» aparece por detrás de «Serrano». </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/export/builder/CSVEnrolledUser.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/model/Course.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/view/chart/logs/TableLog.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/view/chart/gradeitems/GradeReportTable.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/export/builder/CSVCourse.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/export/builder/CSVGrade.java</file>
+			<file>src/test/java/es/ubu/lsi/ubumonitor/WebServiceTest.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/WelcomeController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/load/Connection.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/export/builder/CSVRole.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/SelectionUserController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/model/EnrolledUser.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/load/CreatorUBUGradesController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/webservice/webservices/WSFunctionAbstract.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/export/builder/CSVGroup.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/MenuController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="78" opendate="2020-04-21 11:44:01" fixdate="2020-06-23 19:11:13">
+		<buginformation>
+			<summary>Gestionar entradas rol profesor y estudiante</summary>
+			<description>Informar con un mensaje amigable  las entradas a los cursos con distinto rol de profesor para evitar mensajes de error de bajo nivel.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/chart/DendogramChart.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/util/Tree.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/HierarchicalClustering.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="63" opendate="2020-01-09 11:30:03" fixdate="2020-02-27 08:46:16">
+		<buginformation>
+			<summary>Bug exportación datos de un evento a csv</summary>
+			<description>Adjunto captura de pantalla con la descripción del error ![imagen](https://user-images.githubusercontent.com/1453744/72063903-05843b00-32db-11ea-855c-38c3b45119af.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/ubulogs/LogCreator.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringChart.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2019-07-22 12:30:20" fixdate="2019-11-04 11:28:53">
+		<buginformation>
+			<summary>Errores al guardar en cache con los directorios y ficheros que contengan caracteres reservados de Windows</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/datasets/heatmap/HeatmapDataSet.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/HierarchicalClustering.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/HierarchicalController.java</file>
+			<file>src/controllers/datasets/stackedbar/StackedBarDataSet.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/GeneralController.java</file>
+			<file>src/export/CSVBuilderAbstract.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/controllers/MainController.java</file>
+			<file>src/controllers/WelcomeController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2019-07-19 17:10:43" fixdate="2019-07-19 20:45:22">
+		<buginformation>
+			<summary>Se queda el temporizador ejecutando cuando se cierra la aplicación</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/HierarchicalClustering.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/HierarchicalController.java</file>
+			<file>src/controllers/Loader.java</file>
+			<file>src/controllers/Controller.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/util/Tree.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="59" opendate="2019-06-27 12:48:03" fixdate="2019-06-27 13:31:06">
+		<buginformation>
+			<summary>Bug cuando no existe valores en los rangos de calificación</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/ubugrades/CreatorGradeItems.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/Clustering3DChart.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="56" opendate="2019-06-14 15:45:16" fixdate="2019-06-14 18:16:00">
+		<buginformation>
+			<summary>Salta excepción con los filtros de los usuarios no muestra ningun usuario.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/HierarchicalClustering.java</file>
+			<file>src/controllers/ubulogs/GroupByAbstract.java</file>
+			<file>src/controllers/I18n.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/util/Tree.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/KMeansPlusPlus.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="55" opendate="2019-06-10 09:26:30" fixdate="2019-06-10 11:43:47">
+		<buginformation>
+			<summary>En el ultimo acceso aparece nunca en todos los usuarios</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/ubugrades/CreatorUBUGradesController.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="54" opendate="2019-06-10 09:24:17" fixdate="2019-06-10 11:44:04">
+		<buginformation>
+			<summary>No ordena bien los usuarios por apellidos y nombre despues de filtrar</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/ubugrades/CreatorUBUGradesController.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="50" opendate="2019-05-23 11:36:26" fixdate="2019-05-29 21:13:04">
+		<buginformation>
+			<summary>En el campo de host del login, poner un valor predefinido</summary>
+			<description>Poner un texto prompt con una host predefinido para saber si hay que poner https:// antes o no.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringChart.java</file>
+			<file>src/controllers/ubulogs/GroupByAbstract.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringSilhouette.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/util/ExportUtil.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/AbstractChart.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="47" opendate="2019-05-22 23:06:22" fixdate="2019-05-29 21:13:21">
+		<buginformation>
+			<summary>En el boton quitar seleccion, quitar tambien los logs </summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/ubulogs/logcreator/logtypes/AttemptCmidUser.java</file>
+			<file>src/model/MoodleUser.java</file>
+			<file>src/model/Logs.java</file>
+			<file>src/webservice/gradereport/GradereportUserGetGradeItems.java</file>
+			<file>src/webservice/mod/ModQuizGetQuizzesByCourses.java</file>
+			<file>src/model/BBDD.java</file>
+			<file>src/controllers/ubulogs/logcreator/ComponentEvent.java</file>
+			<file>src/controllers/ubulogs/DownloadLogController.java</file>
+			<file>src/model/Group.java</file>
+			<file>src/model/Stats.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/controllers/ubulogs/StackedBarDataSetComponent.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/Course.java</file>
+			<file>src/webservice/ParametersCoursesids.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/util/CSVClustering.java</file>
+			<file>src/controllers/WelcomeController.java</file>
+			<file>src/model/Course.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="45" opendate="2019-05-20 10:13:36" fixdate="2019-05-22 22:18:26">
+		<buginformation>
+			<summary>No se muestran los iconos de los componentes</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/ubulogs/logcreator/Event.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/AlgorithmExecuter.java</file>
+			<file>src/controllers/ubulogs/logcreator/Component.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2019-05-18 17:22:08" fixdate="2019-05-18 17:30:02">
+		<buginformation>
+			<summary>Ocultar los botones en funcion de si esta seleccionado las calificaciones o los logs</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/ubulogs/GroupByAbstract.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/AlgorithmExecuter.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/AlgorithmParameters.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringTable.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/OptimalController.java</file>
+			<file>src/controllers/ubulogs/StackedBarDataset.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="38" opendate="2019-05-18 11:42:11" fixdate="2019-05-18 17:30:05">
+		<buginformation>
+			<summary>Obliga a cerrar la aplicacion si se selecciona un curso que no esta matriculado como profesor</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/Connector.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/data/ClusterWrapper.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/util/ExportUtil.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/AlgorithmExecuter.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/util/JSArray.java</file>
+			<file>src/controllers/WelcomeController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringGraph.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2019-05-13 10:34:40" fixdate="2019-05-15 11:05:35">
+		<buginformation>
+			<summary>Valores nulos al cambiar el tipo en el group by del choicebox</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/DBSCAN.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/util/SimplePropertySheetItem.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/MultiKMeansPlusPlus.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/FuzzyKMeans.java</file>
+			<file>src/controllers/ubulogs/GroupByAbstract.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/AlgorithmExecuter.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/Algorithm.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/AlgorithmParameters.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/exception/IllegalParamenterException.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringTable.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/data/ClusteringParameter.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/algorithm/KMeansPlusPlus.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="35" opendate="2019-05-11 21:21:51" fixdate="2019-05-13 10:34:03">
+		<buginformation>
+			<summary>Arreglar la clasificacion de logs</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/ubulogs/logcreator/Event.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/UserGrouping.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/UserRoleAffected.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/UserAffected.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/UserAffectedCourse.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/UserSectionCourse.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/UserCourse.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/ReferencesLog.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/UserScaleCourse.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/Course.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/UserOptionAffectedCmid.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2019-05-10 22:31:26" fixdate="2019-05-11 21:20:52">
+		<buginformation>
+			<summary>No funciona correctamente al agrupar por dia los logs</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/model/LogStats.java</file>
+			<file>src/controllers/ubulogs/GroupByYearWeek.java</file>
+			<file>src/controllers/ubulogs/GroupByAbstract.java</file>
+			<file>src/controllers/ubulogs/GroupByDay.java</file>
+			<file>src/controllers/ubulogs/GroupByYear.java</file>
+			<file>src/controllers/ubulogs/GroupByYearQuarter.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/UserDataController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/collector/ActivityCollector.java</file>
+			<file>src/controllers/ubulogs/GroupByYearMonth.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/collector/LogCollector.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/data/Datum.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/controllers/ubulogs/TypeTimes.java</file>
+			<file>src/model/LogLine.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringTable.java</file>
+			<file>src/controllers/ubulogs/StackedBarDataset.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringGraph.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2019-04-26 21:28:06" fixdate="2019-05-15 20:15:44">
+		<buginformation>
+			<summary>Arreglar el problema de cuando se cambia la contraseña de moodle con los caches</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/controllers/ubulogs/StackedBarDataset.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/data/UserData.java</file>
+			<file>src/persistence/Encryption.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringSilhouette.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/collector/GradesCollector.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/data/ClusterWrapper.java</file>
+			<file>src/controllers/LoginController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/AlgorithmExecuter.java</file>
+			<file>src/controllers/Controller.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringController.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/controller/ClusteringGraph.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/clustering/data/Datum.java</file>
+			<file>src/main/java/es/ubu/lsi/ubumonitor/util/JSArray.java</file>
+			<file>src/controllers/WelcomeController.java</file>
+			<file>src/controllers/Languages.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="28" opendate="2019-04-26 16:40:59" fixdate="2019-04-26 17:42:29">
+		<buginformation>
+			<summary>Al cambiar de asignatura no carga correctamente otra</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/clustering/data/Datum.java</file>
+			<file>src/clustering/controller/UserDataController.java</file>
+			<file>src/clustering/controller/collector/LogCollector.java</file>
+			<file>src/clustering/controller/collector/DataCollector.java</file>
+			<file>src/clustering/util/CSVClustering.java</file>
+			<file>src/clustering/controller/collector/ActivityCollector.java</file>
+			<file>src/clustering/controller/ClusteringController.java</file>
+			<file>src/clustering/controller/collector/GradesCollector.java</file>
+			<file>src/clustering/data/UserData.java</file>
+			<file>src/controllers/WelcomeController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="26" opendate="2019-04-11 16:36:32" fixdate="2019-04-18 13:58:17">
+		<buginformation>
+			<summary>No carga al cambiar de asignatura despues de cargar una</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/model/BBDD.java</file>
+			<file>src/clustering/util/CSVClustering.java</file>
+			<file>src/controllers/LoginController.java</file>
+			<file>src/controllers/Controller.java</file>
+			<file>src/controllers/WelcomeController.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="24" opendate="2019-04-05 12:28:22" fixdate="2019-04-11 16:35:40">
+		<buginformation>
+			<summary>La funcion gradereport_user_get_grade_items no funciona si esta oculto las retroalimentaciones en el calificador</summary>
+			<description>Un bug no resuelto aun en la funcion gradereport_user_get_grade_items de la API de moodle que retorna un mensaje de error si el usuario oculta las retroalimentaciones en el calificador. https://tracker.moodle.org/browse/MDL-64298  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/model/EnrolledUser.java</file>
+			<file>src/controllers/Controller.java</file>
+			<file>src/controllers/WelcomeController.java</file>
+			<file>src/controllers/MainController.java</file>
+			<file>test/webserviceTest/DownloadLogTest.java</file>
+			<file>src/model/GradeItem.java</file>
+			<file>src/clustering/algorithm/Algorithms.java</file>
+			<file>src/model/BBDD.java</file>
+			<file>src/model/Stats.java</file>
+			<file>src/controllers/ubulogs/DownloadLogController.java</file>
+			<file>src/controllers/ubulogs/UBULogController.java</file>
+			<file>src/controllers/ubulogs/FilterLogs.java</file>
+			<file>src/model/MoodleUser.java</file>
+			<file>src/clustering/algorithm/DBSCAN.java</file>
+			<file>src/controllers/ubulogs/TypeTimes.java</file>
+			<file>test/webserviceTest/GradeItemsTest.java</file>
+			<file>src/model/Course.java</file>
+			<file>src/controllers/ubulogs/logcreator/LogCreator.java</file>
+			<file>src/model/mod/Module.java</file>
+			<file>src/clustering/algorithm/FuzzyKMeans.java</file>
+			<file>src/clustering/algorithm/KMeansPlusPlus.java</file>
+			<file>src/model/mod/ModuleType.java</file>
+			<file>src/controllers/ubugrades/CreatorGradeItems.java</file>
+			<file>src/controllers/ubugrades/CreatorUBUGradesController.java</file>
+			<file>src/controllers/ubulogs/logcreator/logtypes/ReferencesLog.java</file>
+			<file>src/model/LogLine.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="23" opendate="2019-04-05 12:22:05" fixdate="2019-04-05 16:15:58">
+		<buginformation>
+			<summary>No se ordena bien el listado de alumnos por apellidos y luego nombre</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/model/EnrolledUser.java</file>
+			<file>src/clustering/controller/collector/LogCollector.java</file>
+			<file>src/clustering/controller/Connector.java</file>
+			<file>src/clustering/util/CSVClustering.java</file>
+			<file>src/clustering/controller/ClusteringController.java</file>
+			<file>src/model/Course.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="21" opendate="2019-04-04 14:13:56" fixdate="2019-04-04 14:28:08">
+		<buginformation>
+			<summary>No se muestra las calificaciones en el boxplot general</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/model/Stats.java</file>
+			<file>src/model/GradeItem.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="18" opendate="2019-04-03 18:12:55" fixdate="2019-04-04 14:28:01">
+		<buginformation>
+			<summary>Error al parsear el JSON de funcion gradereport_user_get_grades_table de la API de moodle</summary>
+			<description>  04-02@17:09:08 ERROR (WelcomeController.java:251)     - Error al cargar los datos de los alumnos: {}  org.json.JSONException: Unterminated string at 1048576 [character 1048577 line 1]                  at org.json.JSONTokener.syntaxError(JSONTokener.java:505)                  at org.json.JSONTokener.nextString(JSONTokener.java:320)                  at org.json.JSONTokener.nextValue(JSONTokener.java:428)                  at org.json.JSONObject.&lt;init&gt;(JSONObject.java:245)                  at org.json.JSONTokener.nextValue(JSONTokener.java:431)                  at org.json.JSONObject.&lt;init&gt;(JSONObject.java:245)                  at org.json.JSONTokener.nextValue(JSONTokener.java:431)                  at org.json.JSONArray.&lt;init&gt;(JSONArray.java:125)                  at org.json.JSONTokener.nextValue(JSONTokener.java:434)                  at org.json.JSONObject.&lt;init&gt;(JSONObject.java:245)                  at org.json.JSONTokener.nextValue(JSONTokener.java:431)                  at org.json.JSONArray.&lt;init&gt;(JSONArray.java:125)                  at org.json.JSONTokener.nextValue(JSONTokener.java:434)                  at org.json.JSONObject.&lt;init&gt;(JSONObject.java:245)                  at org.json.JSONObject.&lt;init&gt;(JSONObject.java:399)                  at controllers.ubugrades.CreatorUBUGradesController.createGradeItems(CreatorUBUGradesController.java:332)                  at controllers.WelcomeController$1.call(WelcomeController.java:235)                  at controllers.WelcomeController$1.call(WelcomeController.java:1)                  at javafx.graphics/javafx.concurrent.Task$TaskCallable.call(Unknown Source)                  at java.base/java.util.concurrent.FutureTask.run(Unknown Source)                  at java.base/java.lang.Thread.run(Unknown Source) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/clustering/controller/Connector.java</file>
+			<file>src/webservice/WebService.java</file>
+			<file>src/clustering/controller/ClusteringController.java</file>
+			<file>src/clustering/algorithm/AlgorithmParameters.java</file>
+			<file>src/clustering/data/UserData.java</file>
+			<file>src/clustering/controller/AlgorithmExecuter.java</file>
+			<file>src/clustering/util/SimplePropertySheetItem.java</file>
+			<file>src/clustering/data/ClusterWrapper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="4" opendate="2019-02-11 10:17:06" fixdate="2019-02-11 19:31:25">
+		<buginformation>
+			<summary>Exception javaEOFException al intentar desencriptar el fichero</summary>
+			<description>Errir de java.io.EOFException al desencriptar el fichero del curso seleccionado.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/clustering/algorithm/MultiKMeansPlusPlus.java</file>
+			<file>src/clustering/algorithm/FuzzyKMeans.java</file>
+			<file>src/clustering/algorithm/Algorithms.java</file>
+			<file>src/clustering/algorithm/KMeansPlusPlus.java</file>
+			<file>src/model/Role.java</file>
+			<file>src/persistence/Encryption.java</file>
+			<file>src/model/Group.java</file>
+			<file>src/clustering/algorithm/Algorithm.java</file>
+			<file>src/clustering/algorithm/DBSCAN.java</file>
+			<file>src/clustering/algorithm/AlgorithmParameters.java</file>
+			<file>src/controllers/WelcomeController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2" opendate="2019-02-07 23:41:58" fixdate="2019-02-08 17:51:01">
+		<buginformation>
+			<summary>Error en el login con Nombres de Usuario que no son email.</summary>
+			<description>No consigue loguear si el Nombre de Usuario no es un email como ocurre en el servidor de moodle de UBUVirtual.  Por ejemplo, entrar con la cuenta de usuario llamado "profesor1" da este error:  02-08@00:41:11 ERROR (LoginController.java:212)     - Error al obtener los datos del usuario. org.json.JSONException: JSONArray[0] not found. at org.json.JSONArray.get(JSONArray.java:192) at webservice.MoodleUserWS.setMoodleUser(MoodleUserWS.java:62) at controllers.LoginController$1.call(LoginController.java:201) at javafx.concurrent.Task$TaskCallable.call(Task.java:1423) at java.util.concurrent.FutureTask.run(Unknown Source) at java.lang.Thread.run(Unknown Source)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/clustering/controller/ClusteringController.java</file>
+			<file>src/model/Session.java</file>
+			<file>src/webservice/MoodleUserWS.java</file>
+			<file>src/controllers/LoginController.java</file>
+			<file>src/controllers/MainController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

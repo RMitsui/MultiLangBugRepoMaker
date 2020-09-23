@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="meeting-room-booking">
+	<bug id="122" opendate="2016-09-01 04:10:08" fixdate="2016-09-02 05:21:17">
+		<buginformation>
+			<summary>前月や次月に移動すると「ご指定のページが見つかりません」と表示される</summary>
+			<description>undefined  written by kawasaki </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/co/ixui/tamura/service/ReservationService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="120" opendate="2016-08-09 07:24:08" fixdate="2016-09-01 07:00:40">
+		<buginformation>
+			<summary>現在の状況(試験サーバと本番サーバが分かれていない状況)だとCircleCIでSeleniumテストをする意味が薄い</summary>
+			<description>普通のユニットテストに切り替える  written by kawasaki </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/co/ixui/tamura/test/feature/LoginTest.java</file>
+			<file>src/test/java/jp/co/ixui/tamura/controller/signup/SignupControllerTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="110" opendate="2016-07-25 23:44:29" fixdate="2016-07-29 07:38:04">
+		<buginformation>
+			<summary>「戻る」ボタン押下時のリンク先の修正</summary>
+			<description>移動した月で新規予約を選択し、そこから戻る場合その月のカレンダーに戻るようにする。 日付ごとの予約確認画面から戻る場合確認している月のカレンダーに戻るようにする。  written by tamura </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/co/ixui/tamura/controller/reservation/ReservationController.java</file>
+			<file>src/main/java/jp/co/ixui/tamura/service/ReservationService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="99" opendate="2016-07-20 06:49:11" fixdate="2016-07-20 06:57:34">
+		<buginformation>
+			<summary>テストコードの接続先を環境変数化する</summary>
+			<description>ローカルであればlocalhost、CircleCIであればHerokuとなるようにする  written by kawasaki </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/co/ixui/tamura/test/feature/LoginTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="93" opendate="2016-07-19 02:31:24" fixdate="2016-07-20 03:41:57">
+		<buginformation>
+			<summary>ログインに関するテストが通っていない</summary>
+			<description>Basic認証周りの影響と思われる  written by kawasaki </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/jp/co/ixui/tamura/test/feature/LoginTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="73" opendate="2016-07-15 05:30:43" fixdate="2016-07-19 00:10:26">
+		<buginformation>
+			<summary>修正時に時間を変えてない場合ダブりチェックに引っかかるのを修正</summary>
+			<description>ダブりチェックの対象にその予約自体も入っているためひっかかるようになっている </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/co/ixui/tamura/controller/reservation/ReservationController.java</file>
+			<file>src/main/java/jp/co/ixui/tamura/controller/reservation/ReservationForm.java</file>
+			<file>src/main/java/jp/co/ixui/tamura/controller/reservation/validator/DuplicationValidator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="51" opendate="2016-07-12 03:39:23" fixdate="2016-07-14 01:57:56">
+		<buginformation>
+			<summary>DBの文字化けを解消</summary>
+			<description>登録すると文字列が???となるのを修正 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/co/ixui/tamura/DatabaseConfig.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="46" opendate="2016-07-11 07:16:36" fixdate="2016-07-11 07:51:27">
+		<buginformation>
+			<summary>ログアウト処理</summary>
+			<description>遷移先を/loginに変更 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/co/ixui/tamura/controller/login/LoginController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2016-07-11 01:10:14" fixdate="2016-07-11 07:22:58">
+		<buginformation>
+			<summary>ログイン済みの状態でログイン画面を表示した場合はカレンダー表示へ遷移させる</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/jp/co/ixui/tamura/service/UserService.java</file>
+			<file>src/main/java/jp/co/ixui/tamura/filter/SessionExpiredFilter.java</file>
+			<file>src/main/java/jp/co/ixui/tamura/controller/signup/SignupController.java</file>
+			<file>src/main/java/jp/co/ixui/tamura/ApplicationController.java</file>
+			<file>src/main/java/jp/co/ixui/tamura/controller/login/LoginController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="HMCL">
+	<bug id="548" opendate="2019-04-24 09:57:42" fixdate="2019-05-01 16:13:41">
+		<buginformation>
+			<summary>启动器的皮肤预览异常</summary>
+			<description>* 启动器版本：3.2.119 * 操作系统：Ubuntu 19.04 * Java 版本：Oracle JDK 1.8.0_212 * 错误截图：无 * 游戏版本：与游戏版本无关 * 对游戏做的修改：与Mod无关 * 游戏崩溃报告：无 * 启动器崩溃报告：无 * 启动器日志文件：[https://paste.ubuntu.com/p/3dPVxQZWf7/](https://paste.ubuntu.com/p/3dPVxQZWf7/)(其中`http://textures.minecraft.net/texture/8e938ce6114781d34a2f1af3db75c3a5b460066ccc3c98af238dace2e37a4265`是我的旧皮肤,`http://textures.minecraft.net/texture/1ad4323b934859428da0e229531175abe487ca8100dfdf8968660189e694c3cf`是我的新皮肤) * 问题描述：我更换了皮肤,在启动器中依然显示了原来的皮肤,刷新后正常,但重启启动器后依旧显示原来的皮肤,在游戏中正常.   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/javafx/ObservableCache.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/auth/yggdrasil/YggdrasilAccount.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/javafx/ObservableOptionalCache.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="545" opendate="2019-04-02 15:27:46" fixdate="2019-04-03 09:02:20">
+		<buginformation>
+			<summary>试图删除游戏版本时消息框重复显示</summary>
+			<description>在游戏列表内试图删除游戏版本时 消息框需要点击两次才能关闭</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/construct/RipplerContainer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="538" opendate="2019-03-05 08:35:49" fixdate="2019-03-05 11:32:35">
+		<buginformation>
+			<summary>希望能够在下载forge时提供forge官网作为api的选项</summary>
+			<description>现在hmcl的forge下载似乎仅提供bmcl接口，但forge官网速度其实并不慢，而且bmcl下载1.7forge时返回404（1.12正常）  # 问题提交  *完整地填下面的问题提交表对我们很重要，这可以加快我们分析问题原因的速度。*  * 启动器版本：3.2.127 * 操作系统：win 7 * Java 版本：Java 8, jdk1.8.0_181 * 游戏版本（如果是启动通过启动器自带的自动安装功能安装的游戏）：mc 1.7.10 * 对游戏做的修改（是否自行通过安装器安装 Rift 等 API，以及 mod）：无，尝试下载forge时错误 * 启动器日志文件（出现问题后点击启动器设置中的【导出启动器日志】按钮）： * 问题描述（如何触发问题）：安装mc 1.7.10版本，选择自动安装forge10.13.4.1614 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/download/forge/ForgeBMCLVersionList.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="537" opendate="2019-02-24 02:57:36" fixdate="2019-04-25 03:17:49">
+		<buginformation>
+			<summary>设置页面滚动问题和模组页面UI</summary>
+			<description>* 启动器版本：3.2.124 * 操作系统：Windows 10 Home 1809 (17763.346) * Java 版本：1.8.0_181 * 错误截图（最好请将整个电脑屏幕的截图发上来）： ![hmcl](https://user-images.githubusercontent.com/25317916/53294470-b815f100-3822-11e9-89a0-a787a8542361.gif)   ![2019-02-24_11-07-20](https://user-images.githubusercontent.com/25317916/53294588-6ec6a100-3824-11e9-964d-302578e57948.png) * 问题描述（如何触发问题）：     * 打开启动器设置页面，然后向下滑动     * 打开模组界面   建议：模组页面的复选框可以考虑居中对齐...</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/account/AccountListItemSkin.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/GameListItemSkin.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/profile/ProfileListItemSkin.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="534" opendate="2019-02-23 10:52:41" fixdate="2019-02-23 11:13:45">
+		<buginformation>
+			<summary>游戏目录列表显示异常</summary>
+			<description>如下图，游戏目录列表显示异常。通过 git bisect 确认问题在 e3d2a4bf9de291d3482983b10ad0345d0dac6970 提交引入。  ![default](https://user-images.githubusercontent.com/8373027/53285489-046a1e00-379c-11e9-8b77-d19aa112957d.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/profile/ProfileListItemSkin.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="533" opendate="2019-02-23 08:06:24" fixdate="2019-02-23 10:42:51">
+		<buginformation>
+			<summary>3.2.124 填写账号报错</summary>
+			<description>``` ---- Hello Minecraft! Crash Report ----   Version: 3.2.124   Time: 2019-02-23 16:05:15   Thread: Thread[TexturesDownload-3,5,main]    Content:      java.lang.NullPointerException at org.jackhuang.hmcl.game.TexturesLoader.getTexturePath(TexturesLoader.java:90) at org.jackhuang.hmcl.game.TexturesLoader.loadTexture(TexturesLoader.java:101) at org.jackhuang.hmcl.game.TexturesLoader.lambda$skinBinding$3(TexturesLoader.java:160) at org.jackhuang.hmcl.util.javafx.MultiStepBinding$AsyncMappedBinding.lambda$new$0(MultiStepBinding.java:155) at org.jackhuang.hmcl.util.InvocationDispatcher.lambda$null$0(InvocationDispatcher.java:38) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at java.lang.Thread.run(Thread.java:748)   -- System Details --   Operating System: Windows 10 10.0   Java Version: 1.8.0_202, Oracle Corporation   Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation   JVM Max Memory: 3810525184   JVM Total Memory: 110100480   JVM Free Memory: 35449520 ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/game/TexturesLoader.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/auth/yggdrasil/Texture.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="532" opendate="2019-02-19 14:34:41" fixdate="2019-02-19 15:15:57">
+		<buginformation>
+			<summary>无法正版登陆</summary>
+			<description>启动器无法正版登陆，有时报错密码错误，有时报错无法解析，反复检查密码都是正确的，并且在其他启动器和官方启动器登陆并启动成功 * 启动器版本：3.2.123 * 操作系统：Windows10 1809 * Java 版本：1.8_192 * 错误截图（最好请将整个电脑屏幕的截图发上来）： ![image](https://user-images.githubusercontent.com/32028165/53022300-e3e94d80-3495-11e9-8778-a7f8c5b687e5.png)  * 游戏版本（如果是启动通过启动器自带的自动安装功能安装的游戏）：1.13.2 * 对游戏做的修改（是否自行通过安装器安装 Rift 等 API，以及 mod）：optifine * 游戏崩溃报告（如果有）： * 启动器崩溃报告（如果有）： * 启动器日志文件（在启动器设置中打开日志文件夹并将文件夹内所有文件打包发在这里）：[hmcl-exported-logs-2019-02-19T22-32-16.log](https://github.com/huanghongxun/HMCL/files/2880423/hmcl-exported-logs-2019-02-19T22-32-16.log) * 问题描述（如何触发问题）：  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/auth/yggdrasil/User.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="526" opendate="2019-02-13 07:20:14" fixdate="2019-02-13 12:10:26">
+		<buginformation>
+			<summary>启动器账户头像Steve模型不显示头盔层</summary>
+			<description>* 启动器版本：3.2.121 * 操作系统：Windows7 64位旗舰版 * Java 版本：java1.8.0_181 * 错误截图（最好请将整个电脑屏幕的截图发上来）： ![截图](https://upload.cc/i1/2019/02/13/Y6snBe.png) * 游戏版本（如果是启动通过启动器自带的自动安装功能安装的游戏）：1.12.2 * 对游戏做的修改（是否自行通过安装器安装 Rift 等 API，以及 mod）：forge 1.12.2-14.23.4.2759 * 游戏崩溃报告（如果有）：无 * 启动器崩溃报告（如果有）：无 * 启动器日志文件（在启动器设置中打开日志文件夹并将文件夹内所有文件打包发在这里）： * 问题描述（如何触发问题）：启动启动器时我发现头像有点不太对劲，，然后就，，只有在Steve模型发现不能显示双层头颅。。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/game/TexturesLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="512" opendate="2019-01-21 10:03:51" fixdate="2019-01-22 08:54:41">
+		<buginformation>
+			<summary>读取大型整合包的存档时启动器卡死</summary>
+			<description>### 环境  * 启动器版本：3.2.112 * 操作系统：Windows 10 简体中文 64位 * Java 版本：Oracle JDK 1.8.0_192 * 游戏版本：不影响复现 * 对游戏做的修改：大量 mod。具体内容不影响复现  ### 问题描述  用 HMCL 打开一个装了大量 mod，并且至少拥有一个存档的整合包。点击进入游戏管理页面。 ![hmcl-1](https://user-images.githubusercontent.com/12008103/51465268-8ed8ef80-1da2-11e9-81eb-d531ab224a64.png) 如果耐心等待的话最终还是能正常显示的。卡死的时间取决于电脑配置、拥有多少存档和 mod 增加了多少物品/方块。 加载出来后如果关闭游戏管理页面再打开，又需要重新等。  ### 复现步骤  1. 下载这个存档 [New World.zip](https://github.com/huanghongxun/HMCL/files/2778359/New.World.zip) 并解压到 saves 文件夹中。 2. 打开启动器并点击拥有上述那个存档的版本。 3. 好了。等吧。  ### 问题原因  HMCL 显示版本管理面板时会读取所有存档的 `level.dat` 以取得世界名字等信息。而 Forge 保存存档时会额外在 `level.dat` 中写入一大堆数据，例如安装的 mod 列表，mod 添加的所有方块物品实体药水附魔etc。我上面作为示例提供的 `level.dat` 就有 180 多 KB： ![hmcl-2](https://user-images.githubusercontent.com/12008103/51465885-cbf1b180-1da3-11e9-8f67-70dbc8ee379b.png) OpenNBT 读取这么大的 nbt 文件时需要花费大量时间（实际上不止 OpenNBT，连 NBTExplorer 打开这个文件都要卡好久），而这部分 IO 没有做异步处理，于是启动器就卡死了。 （我折腾了老半天才定位到是存档的问题……）  ### 解决办法  1. 异步+延迟加载+缓存所有从硬盘读取信息的操作 _（包括 mod 列表。说真的有多少人打开版本管理时只是想改个内存分配什么的。mod 和存档管理相对并没有那么常用吧）_ 2. 读取 `level.dat` 时遇到名字叫 `FML` 的 compound 就跳过不解析里面的内容。估计是综合来看最好的解决办法了 _（毕竟性能问题不是因为 OpenNBT 代码写的烂才导致的，所以直接优化没用，只能绕过）_。但这就需要 OpenNBT 支持才行了。可能跟作者沟通一下？或者自己 fork 一个版本或干脆自己实现一个简单版解析库什么的。  ### 相关代码  * [Steveice10/OpenNBT](https://github.com/Steveice10/OpenNBT) * [HMCLCore/src/main/java/org/jackhuang/hmcl/game/World.java](https://github.com/huanghongxun/HMCL/blob/c41737364c4a702b57a295bbbccd7385e12984d3/HMCLCore/src/main/java/org/jackhuang/hmcl/game/World.java)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/World.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="503" opendate="2018-12-21 17:13:31" fixdate="2018-12-22 18:53:12">
+		<buginformation>
+			<summary>[BUG] Java10 UI错位</summary>
+			<description># 问题提交  *完整地填下面的问题提交表对我们很重要，这可以加快我们分析问题原因的速度。*  * 启动器版本：3.2.116 https://github.com/huanghongxun/HMCL/commit/97e90de71e1356b65c8ccb4f00c123665e695820 * 操作系统：Windows 10 * Java 版本：10.0.2 * 错误截图（最好请将整个电脑屏幕的截图发上来）： ![TIM截图20181222010727.png](https://i.loli.net/2018/12/22/5c1d1dfb08426.png) * 游戏版本（如果是启动通过启动器自带的自动安装功能安装的游戏）：/ * 对游戏做的修改（是否自行通过安装器安装 Rift 等 API，以及 mod）：/ * 游戏崩溃报告（如果有）：/ * 启动器崩溃报告（如果有）：/ * 启动器日志文件（在启动器设置中打开日志文件夹并将文件夹内所有文件打包发在这里）： [hmcl.log](https://github.com/huanghongxun/HMCL/files/2703587/hmcl.log) * 问题描述（如何触发问题）： 使用Java10打开HMCL，点击任意按钮，UI会变得越来越不正常（上部内容上移，下部内容下移）。3.2.112发行版、3.2.116测试版均存在这一问题。 注：IDEA未编译css导致的错误已解决，在Java8下一切正常。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/decorator/DecoratorSkin.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="501" opendate="2018-12-15 18:20:16" fixdate="2018-12-18 05:45:02">
+		<buginformation>
+			<summary>损坏的皮肤图像导致NPE</summary>
+			<description>重现方法：手动编辑 ~/.hmcl/skins 下的皮肤缓存，使其损坏，或者让验证服务器传回损坏的皮肤图像。  ``` [02:12:11] [org.jackhuang.hmcl.util.CrashReporter.uncaughtException/SEVERE] Uncaught exception in thread JavaFX Application Thread java.lang.NullPointerException at org.jackhuang.hmcl.game.AccountHelper.getHead(AccountHelper.java:104) at org.jackhuang.hmcl.ui.account.AccountListItem.&lt;init&gt;(AccountListItem.java:63) at org.jackhuang.hmcl.util.javafx.MappedObservableList$MappedObservableListUpdater.map(MappedObservableList.java:105) at org.jackhuang.hmcl.util.javafx.MappedObservableList$MappedObservableListUpdater.onChanged(MappedObservableList.java:86) at javafx.collections.WeakListChangeListener.onChanged(WeakListChangeListener.java:88) at com.sun.javafx.binding.ListExpressionHelper$SingleListChange.fireValueChangedEvent(ListExpressionHelper.java:300) at com.sun.javafx.binding.ListExpressionHelper.fireValueChangedEvent(ListExpressionHelper.java:109) at javafx.beans.property.ListPropertyBase.fireValueChangedEvent(ListPropertyBase.java:200) at javafx.beans.property.ListPropertyBase.lambda$new$0(ListPropertyBase.java:56) at com.sun.javafx.collections.ListListenerHelper$SingleChange.fireValueChangedEvent(ListListenerHelper.java:164) at com.sun.javafx.collections.ListListenerHelper.fireValueChangedEvent(ListListenerHelper.java:73) at javafx.collections.ObservableListBase.fireChange(ObservableListBase.java:233) at javafx.collections.ListChangeBuilder.commit(ListChangeBuilder.java:482) at javafx.collections.ListChangeBuilder.endChange(ListChangeBuilder.java:541) at javafx.collections.ObservableListBase.endChange(ObservableListBase.java:205) at javafx.collections.ModifiableObservableListBase.setAll(ModifiableObservableListBase.java:90) at javafx.beans.binding.ListExpression.setAll(ListExpression.java:370) at com.sun.javafx.binding.ContentBinding.bind(ContentBinding.java:53) at javafx.beans.binding.Bindings.bindContent(Bindings.java:1020) at javafx.beans.property.ReadOnlyListProperty.bindContent(ReadOnlyListProperty.java:94) at org.jackhuang.hmcl.ui.Controllers.getAccountListPage(Controllers.java:104) at org.jackhuang.hmcl.ui.LeftPaneController.lambda$0(LeftPaneController.java:55) at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) at javafx.event.Event.fireEvent(Event.java:198) at javafx.scene.Node.fireEvent(Node.java:8413) at org.jackhuang.hmcl.ui.construct.AdvancedListItem.lambda$0(AdvancedListItem.java:37) at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218) at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) at javafx.event.Event.fireEvent(Event.java:198) at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3470) at javafx.scene.Scene$ClickGenerator.access$8100(Scene.java:3398) at javafx.scene.Scene$MouseHandler.process(Scene.java:3766) at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485) at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762) at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494) at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:394) at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:295) at java.security.AccessController.doPrivileged(Native Method) at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:432) at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389) at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:431) at com.sun.glass.ui.View.handleMouseEvent(View.java:555) at com.sun.glass.ui.View.notifyMouse(View.java:937) at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) at com.sun.glass.ui.gtk.GtkApplication.lambda$null$5(GtkApplication.java:139) at java.lang.Thread.run(Thread.java:748) ```  原因是 `javafx.scene.image.Image.getPixelReader()` 在图像损坏或未完成加载的情况下，会返回null。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/game/AccountHelper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="499" opendate="2018-12-15 17:36:09" fixdate="2018-12-18 05:45:02">
+		<buginformation>
+			<summary>Curse整合包更新失败并丢失数据</summary>
+			<description>当Curse整合包modpack.cfg中files里的fileName为空字符串时，整合包会更新失败，并且游戏版本被删除，造成数据丢失。  ``` [01:26:11] [org.jackhuang.hmcl.task.TaskExecutor.executeTask/FINE] Task failed: 安装 Curse 整合包 java.io.IOException: Unable to delete mod file /home/yushijinhun/hmclbug181216/minecraft/versions/Enigmatica 2-1.53/mods at org.jackhuang.hmcl.mod.CurseInstallTask.execute(CurseInstallTask.java:119) at org.jackhuang.hmcl.task.TaskExecutor.lambda$8(TaskExecutor.java:172) at org.jackhuang.hmcl.util.function.ExceptionalRunnable.lambda$0(ExceptionalRunnable.java:32) at java.util.concurrent.FutureTask.run(FutureTask.java:266) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at java.lang.Thread.run(Thread.java:748) ```  https://github.com/huanghongxun/HMCL/blob/176968d88367cc59e8a943caf6d93e83ef1f84f3/HMCLCore/src/main/java/org/jackhuang/hmcl/mod/CurseInstallTask.java#L119  https://github.com/huanghongxun/HMCL/blob/176968d88367cc59e8a943caf6d93e83ef1f84f3/HMCLCore/src/main/java/org/jackhuang/hmcl/mod/CurseInstallTask.java#L81-L83</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/mod/CurseInstallTask.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="492" opendate="2018-11-30 23:08:57" fixdate="2018-12-02 06:56:12">
+		<buginformation>
+			<summary>[HMCL3.2.114]安装游戏之后没有显示游戏</summary>
+			<description>图片为证 ![qq 20181201070333](https://user-images.githubusercontent.com/42583700/49319431-cca26000-f537-11e8-9223-fd3399a6fa4e.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/Argument.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/StringArgument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="467" opendate="2018-10-05 14:38:58" fixdate="2018-10-06 04:21:41">
+		<buginformation>
+			<summary>安装游戏版本失败</summary>
+			<description>安装1.13.1版本游戏失败（hmcl版本3.1.83与3.2.104均出现此错误） ![default](https://user-images.githubusercontent.com/22958783/46541359-6d84ee00-c8ee-11e8-87ed-33af2bc49353.PNG)  点击确定后不出现游戏版本，而是一直转圈。  以下是HMCL 3.2.104错误信息 关闭HMCL再打开出现以下错误 ``` ---- Hello Minecraft! Crash Report ----   Version: 3.2.104   Time: 2018-10-05 22:25:26   Thread: Thread[JavaFX Application Thread,5,main]    Content:      java.lang.IllegalArgumentException: Comparison method violates its general contract! at java.util.TimSort.mergeLo(TimSort.java:777) at java.util.TimSort.mergeAt(TimSort.java:514) at java.util.TimSort.mergeForceCollapse(TimSort.java:457) at java.util.TimSort.sort(TimSort.java:254) at java.util.Arrays.parallelSort(Arrays.java:1113) at java.util.stream.SortedOps$OfRef.opEvaluateParallel(SortedOps.java:158) at java.util.stream.AbstractPipeline.opEvaluateParallelLazy(AbstractPipeline.java:704) at java.util.stream.AbstractPipeline.sourceSpliterator(AbstractPipeline.java:431) at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:499) at org.jackhuang.hmcl.ui.MainPage.loadVersions(MainPage.java:169) at org.jackhuang.hmcl.ui.MainPage.&lt;init&gt;(MainPage.java:146) at org.jackhuang.hmcl.ui.Controllers.getMainPage(Controllers.java:125) at org.jackhuang.hmcl.ui.Controllers.initialize(Controllers.java:138) at org.jackhuang.hmcl.Launcher.start(Launcher.java:62) at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863) at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326) at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295) at java.security.AccessController.doPrivileged(Native Method) at com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294) at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177) at java.lang.Thread.run(Thread.java:748)   -- System Details --   Operating System: Windows 7 6.1   Java Version: 1.8.0_181, Oracle Corporation   Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation  ``` 删除1.13.1文件夹后 再次关闭打开出现以下错误 ``` ---- Hello Minecraft! Crash Report ----   Version: 3.2.104   Time: 2018-10-05 22:27:32   Thread: Thread[JavaFX Application Thread,5,main]    Content:      java.lang.NullPointerException at org.jackhuang.hmcl.game.DefaultGameRepository.hasVersion(DefaultGameRepository.java:59) at org.jackhuang.hmcl.game.DefaultGameRepository.getVersion(DefaultGameRepository.java:64) at org.jackhuang.hmcl.game.HMCLGameRepository.getVersionIconImage(HMCLGameRepository.java:156) at org.jackhuang.hmcl.ui.versions.GameAdvancedListItem.lambda$null$1(GameAdvancedListItem.java:41) at org.jackhuang.hmcl.ui.FXUtils.runLaterIf(FXUtils.java:104) at org.jackhuang.hmcl.ui.versions.GameAdvancedListItem.lambda$new$2(GameAdvancedListItem.java:40) at org.jackhuang.hmcl.ui.FXUtils.lambda$onChange$1(FXUtils.java:85) at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:361) at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81) at javafx.beans.property.ReadOnlyStringPropertyBase.fireValueChangedEvent(ReadOnlyStringPropertyBase.java:72) at javafx.beans.property.ReadOnlyStringWrapper.fireValueChangedEvent(ReadOnlyStringWrapper.java:103) at javafx.beans.property.StringPropertyBase.markInvalid(StringPropertyBase.java:110) at javafx.beans.property.StringPropertyBase.set(StringPropertyBase.java:144) at org.jackhuang.hmcl.setting.Profiles.lambda$loadVersion$10(Profiles.java:208) at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295) at java.security.AccessController.doPrivileged(Native Method) at com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294) at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177) at java.lang.Thread.run(Thread.java:748)   -- System Details --   Operating System: Windows 7 6.1   Java Version: 1.8.0_181, Oracle Corporation   Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation ``` 关闭后再打开恢复正常 versions文件夹内容 ``` 1.10 1.10.2 1.10.2-All the Mods 1.10.2-AOE 1.10.2-AOE-1.1.5 1.10.2-forge2511-Age_of_Progression 1.10.2-forge2511-AOE-1.1.2 1.10.2-forge2511-ATM-E 1.10.2-forge2511-simple_life_2 1.10.2-forge2511_bxztest 1.10.2-forge2511_Farming_Valley 1.10.2-forge2511简单生活BXZ 1.10.2-FTB_Beyond 1.10.2-LiteLoader1.10.2 1.12.2 1.12.2_Modern_Skyblock-3.4.2 1.6.4 1.6.4-Forge9.11.1.1345 1.7.10 1.7.10-1614 1.7.10-1614-test 1.7.10-F1614-L 1.7.10-FL1614_04 1.7.10-Forge10.13.4.1614-1.7.10 1.7.10-Forge1614 1.7.10-Forge1614.1 1.7.10Agrarian_Skies_2 1.7.10forge1614test 1.7.10forge1614_ATlauncher 1.7.10forge1614_FTBInfinity 1.7.10Forge1614_FTBInfinity-2.6.0 1.7.10Forge1614_FTBInfinity-3.0.1 1.7.10forge1614_FTBInfinity_server 1.8 1.8-forge1577 1.8.9 1.8.9-forge1902 1.9 ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/platform/JavaVersion.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/download/forge/ForgeVersionList.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/versioning/VersionNumber.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/MainPage.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/download/optifine/OptiFineBMCLVersionList.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/mod/ModManager.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/GameList.java</file>
+			<file>HMCLCore/src/test/java/org/jackhuang/hmcl/util/VersionNumberTest.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/download/liteloader/LiteLoaderBMCLVersionList.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/WorldListItem.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/download/liteloader/LiteLoaderVersionList.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/game/LauncherHelper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="463" opendate="2018-10-01 15:19:09" fixdate="2018-10-02 10:34:31">
+		<buginformation>
+			<summary>整合包导出功能失效</summary>
+			<description>版本3.1.83，在导出整合包后没有报错，产生了一个正常的zip文件，但是其中的modpack.zip中的minecraft文件夹中仅包含一个pack.json文件，无论在导出时勾选了哪些选项。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/game/HMCLModpackManager.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/game/HMCLModpackExportTask.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/io/Zipper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="461" opendate="2018-10-01 09:34:28" fixdate="2018-10-02 04:16:03">
+		<buginformation>
+			<summary>3.2.104的一个问题</summary>
+			<description>在该版本下使用自动安装功能后所安装的东西不显示，具体见GIF ![GIF.gif](https://i.loli.net/2018/10/01/5bb1e9f8221ea.gif)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/VersionPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/construct/Navigator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="450" opendate="2018-09-11 11:00:07" fixdate="2018-09-12 13:37:42">
+		<buginformation>
+			<summary>linux桌面冻结</summary>
+			<description>OS：debian de：xfce4 游戏管理-右上角的文件夹-打开xx文件夹，会造成系统桌面冻结，无法做任何操作，只能切换tty，重启系统</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/FXUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="446" opendate="2018-09-08 13:49:19" fixdate="2018-09-08 14:14:32">
+		<buginformation>
+			<summary>启动器实例中的“自动安装”项目发生混乱</summary>
+			<description>在具有多个游戏实例的情况下，游戏实例内的“自动安装”项目内容发生混乱，视频中有反映这一问题。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/InstallerListPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="382" opendate="2018-07-13 09:04:47" fixdate="2018-07-13 10:39:03">
+		<buginformation>
+			<summary>JAVA</summary>
+			<description> JAVA路径不能保存    也就是说无法自定义路径     启动器是3.1.76</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/VersionSettingsController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="377" opendate="2018-07-11 00:27:53" fixdate="2018-07-11 04:46:40">
+		<buginformation>
+			<summary>修改全局配置会导致独立配置被覆盖</summary>
+			<description>只要进入某个带全局配置的版本设置页面（不做任何修改），就会导致其他版本独立设置被覆盖 这属于逻辑上的判断问题 正确情况应该是：修改某个配置时含有全局标识的配置文件时同时修改，不含全局标识的配置文件保持不变，只允许单独修改！ 这个问题在多版本测试mod时问题很严重！ ![gif](https://user-images.githubusercontent.com/25012170/42544417-477fc552-84e4-11e8-8e8b-9eff82530a79.gif) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/VersionSettingsController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="336" opendate="2018-06-01 08:34:52" fixdate="2018-06-06 11:46:34">
+		<buginformation>
+			<summary>[Bug]版本过多时无法显示滚动条</summary>
+			<description>刚开启启动器时如果默认路径版本过多滚动条不显示，鼠标滚轮同样无效 切换界面或刷新就又会出来 ![233.png](https://i.loli.net/2018/06/01/5b110428bddeb.png) 附带的反馈： 1.点击启动器设置时会瞬卡 2.版本读取速度真的有点慢，希望能优化下   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/MainPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/FXUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="325" opendate="2018-04-26 12:54:34" fixdate="2018-05-20 11:40:40">
+		<buginformation>
+			<summary>无法添加https开头的认证服务器</summary>
+			<description>![image](https://user-images.githubusercontent.com/38757441/39306892-847e9740-49b5-11e8-9c83-75ed6b55acd8.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/construct/URLValidator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="324" opendate="2018-04-25 15:59:01" fixdate="2018-04-26 14:16:02">
+		<buginformation>
+			<summary>导出整合包时“包含启动器”选项无效</summary>
+			<description>如题，我之前使用的是2.x版本的HMCL，能正常导出整合包并且包含启动器.下载整合包之后直接打开整合包中的HMCL-2.X.jar便可开始游戏.但是我刚更新的3.1.59版本即使点选“包含启动器”选项，导出的整合包也无法包含启动器的jar包. 系统：macOS10.13.4 启动器版本：HMCL 3.1.59 minecraft版本：1.10.2-LiteLoader1.10.2-forge12.18.3.2477</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/export/ModpackInfoPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Settings.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/export/ExportWizardProvider.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="321" opendate="2018-04-19 05:21:49" fixdate="2018-04-26 14:15:49">
+		<buginformation>
+			<summary>初次启动问题会出现两次“新建账户”窗口</summary>
+			<description>初次启动HMCL时会出现两次“新建账户”窗口，这麻烦而没有必要。保留一次即可。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/LeftPaneController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="269" opendate="2018-02-06 03:59:40" fixdate="2018-02-06 08:40:42">
+		<buginformation>
+			<summary>无法启动</summary>
+			<description>之前安装过optifine和forge，但是看不到光影选项，版本3.027 *** 日志  ``` ---- Hello Minecraft! Crash Report ----   Version: 3.0.28   Time: 2018-02-06 11:58:05   Thread: Thread[JavaFX Application Thread,5,main]    Content:      org.jackhuang.hmcl.game.VersionNotFoundException: Version '1.11.2' does not exist. at org.jackhuang.hmcl.game.DefaultGameRepository.getVersion(DefaultGameRepository.java:64) at org.jackhuang.hmcl.game.Version.resolve(Version.java:161) at org.jackhuang.hmcl.game.Version.resolve(Version.java:147) at org.jackhuang.hmcl.game.GameRepository.getVersionJar(GameRepository.java:129) at org.jackhuang.hmcl.ui.MainPage.loadVersions(MainPage.java:187) at org.jackhuang.hmcl.ui.MainPage.loadVersions(MainPage.java:179) at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295) at java.security.AccessController.doPrivileged(Native Method) at com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294) at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) at com.sun.glass.ui.gtk.GtkApplication.lambda$null$48(GtkApplication.java:139) at java.lang.Thread.run(Thread.java:748)   -- System Details --   Operating System: Linux 4.13.0-26-generic   Java Version: 1.8.0_161, Oracle Corporation   Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/DefaultGameRepository.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/Version.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/SimpleVersionProvider.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/GameRepository.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/task/FileDownloadTask.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/FileUtils.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/VersionProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="257" opendate="2018-01-31 16:33:38" fixdate="2018-02-01 08:04:25">
+		<buginformation>
+			<summary>传入XstartOnFirstThread参数导致macOS下启动后无法操作问题</summary>
+			<description>系统版本：**macOS 10.13.3** Java版本：**jdk1.8.0_112 / jdk-9**  症状： 先前一直使用本git下release中的最新版`HMCL-2.5.3.88.jar`来启动，一切正常。 最近从一些论坛上找到了ci.to2mbn.org中Jenkins下编译的`2.7.9.54`和`3.0.24`版本，发现无法正常启动。  1.12.2原版表现为正常配置并启动后，显示游戏界面，能听到音乐，但是鼠标无法选中窗口，无法操作，左上角红黄绿按钮呈现灰色，无法关闭，终端ps命令查找进程号并kill才能关闭。切换回`2.5.3.88`版本后恢复正常。 1.12.2+forge版本表现为无法启动。  打印两者启动时的命令并逐一比对差异，发现2.7+版本在启动时会加入`-XstartOnFirstThread`命令。传入该参数启动即会出现上述症状，不传入该参数可以正常启动。 游戏设置界面中找不到能取消传入该参数的选项。  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/export/ModpackInfoPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/LogWindow.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/download/ModpackPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/VersionListItem.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/launch/DefaultGameLauncher.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/download/InstallersPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/Decorator.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/ModController.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/version/Arguments.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/AccountsPage.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/StrUtils.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/Arguments.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/VersionSettingsController.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/MainPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/ProfilePage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/YggdrasilAccountLoginPane.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/export/ModpackFileSelectionPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/InstallerController.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/InstallerItem.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/VersionPage.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/sys/FileUtils.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/wizard/DefaultWizardDisplayer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="253" opendate="2018-01-27 11:07:11" fixdate="2018-01-27 13:27:29">
+		<buginformation>
+			<summary>3.0 启动器显示不完整</summary>
+			<description>![image](https://user-images.githubusercontent.com/31089906/35471358-c1a48ede-0394-11e8-8283-564f68ef6e78.png)  下载源：https://ci.to2mbn.org/job/HMCLKotlin/ `Build #21` Log：[hmcl.log](https://github.com/huanghongxun/HMCL/files/1670005/hmcl.log) 系统信息：macOS 10.13.2</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="208" opendate="2017-09-17 04:32:49" fixdate="2018-02-02 06:41:35">
+		<buginformation>
+			<summary>HMCL3.0 kotlin最新版本bug报告</summary>
+			<description>### 问题描述: 导入curseforge的modpack后，启动游戏，未能正确启动forge和导入mod，而是直接进入原版客户端。 ### 问题定位： 1. 猜想应该是forge_installter.jar未能执行正确 2. 执行正确后未将生成文件复制到正确文件目录 3. 配置文件问题 ### 操作系统 macOS Sierra Version 10.12.6 ### 临时解决办法 我现在是这么解决的：使用3.0导入模组包，下载完毕后再用2.5.3设置到对应游戏目录，并下载与模组包对应的forge版本。之后就可以正常运行了。  @huanghongxun 希望大大能够解决，感觉只要能导入模组包，并正常运行，3.0勉强就可以release一个测试版了。😄</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/download/DefaultGameBuilder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="190" opendate="2017-08-25 16:14:53" fixdate="2017-08-26 00:36:40">
+		<buginformation>
+			<summary>日志出现 对实体 "version" 的引用必须以 ';' 分隔符结尾。</summary>
+			<description>#186 没有解决,日志依然不会记录 *只是这次不是输出Read Dead End了* 两次**都**出现了`对实体 "version" 的引用必须以 ';' 分隔符结尾。 崩溃报告 ``` [09:53:15] [Forge Version Check/INFO] [ForgeVersionCheck]: [codechickenlib] Starting version check at http://chickenbones.net/Files/notification/version.php?query=forge[Fatal Error] :131:177: 对实体 "version" 的引用必须以 ';' 分隔符结尾。 [09:53:15] [log4j-handler/ERROR]  ---- Hello Minecraft! Crash Report ----   Version: 2.7.8.39   Time: 2017-08-25 09:53:15   Thread: Thread[log4j-handler,6,main]    Content:      java.lang.Error: org.xml.sax.SAXParseException; lineNumber: 131; columnNumber: 177; 对实体 "version" 的引用必须以 ';' 分隔符结尾。     at org.jackhuang.hmcl.util.Log4jHandler.run(Log4jHandler.java:81) Caused by: org.xml.sax.SAXParseException; lineNumber: 131; columnNumber: 177; 对实体 "version" 的引用必须以 ';' 分隔符结尾。     at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1239)     at org.jackhuang.hmcl.util.Log4jHandler.run(Log4jHandler.java:77)   -- System Details --   Operating System: Ubuntu 17.04 \n \l     Java Version: 1.8.0_144, Oracle Corporation   Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation  [09:53:16] [ProcessMonitor/ERROR]  ---- Hello Minecraft! Crash Report ----   Version: 2.7.8.39   Time: 2017-08-25 09:53:16   Thread: Thread[ProcessMonitor,6,main]    Content:      java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@5f2fc1ae rejected from java.util.concurrent.ThreadPoolExecutor@51e8343b[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 132]     at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2063)     at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:830)     at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1379)     at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:112)     at java.util.concurrent.Executors$DelegatedExecutorService.submit(Executors.java:678)     at org.jackhuang.hmcl.util.Log4jHandler.newLogLine(Log4jHandler.java:115)     at org.jackhuang.hmcl.ui.LaunchingUIDaemon$PrintlnProcessor.accept(LaunchingUIDaemon.java:179)     at org.jackhuang.hmcl.ui.LaunchingUIDaemon$PrintlnProcessor.accept(LaunchingUIDaemon.java:166)     at org.jackhuang.hmcl.api.event.EventHandler.fire(EventHandler.java:59)     at org.jackhuang.hmcl.util.sys.ProcessThread.println(ProcessThread.java:97)     at org.jackhuang.hmcl.util.sys.ProcessThread.run(ProcessThread.java:80)   -- System Details --   Operating System: Ubuntu 17.04 \n \l     Java Version: 1.8.0_144, Oracle Corporation   Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation ``` 完整日志 ``` [09:52:48] [AWT-EventQueue-0/INFO] Start generating launching command... [09:52:48] [Game Launcher/INFO] Building process [09:52:48] [Game Launcher/INFO] Logging in... [09:52:48] [Game Launcher/INFO] Detecting libraries... [09:52:48] [Game Launcher/INFO] Unpacking natives... [09:52:48] [Game Launcher/INFO] *** Make shell command *** [09:52:48] [Game Launcher/INFO] On making head command. [09:52:49] [Game Launcher/INFO] Java Version: 1.8.0_144 [09:52:49] [Game Launcher/INFO] Java Platform: 64 [09:52:49] [Game Launcher/INFO] System Platform: 64 [09:52:49] [Game Launcher/INFO] System Physical Memory: 3848 [09:52:49] [Game Launcher/INFO] On making launcher args. [09:52:49] [Game Launcher/INFO] Starting process [09:52:49] [Game Launcher/INFO] /usr/lib/jvm/java-8-oracle/jre/bin/java -Dminecraft.client.jar=/home/su226/.minecraft/versions/1.12.1/1.12.1.jar -Dminecraft.launcher.version=2.7.8.39 "-Dminecraft.launcher.brand=Hello Minecraft! Launcher" -XX:+UseG1GC -XX:-UseAdaptiveSizePolicy -XX:-OmitStackTraceInFastThrow -Xmn128m -Xmx2048m -Djava.library.path=/home/su226/.minecraft/versions/1.12.1f/1.12.1f-natives -Dfml.ignoreInvalidMinecraftCertificates=true -Dfml.ignorePatchDiscrepancies=true -Duser.home=/home/su226 -cp /home/su226/.minecraft/libraries/net/minecraftforge/forge/1.12.1-14.22.0.2460/forge-1.12.1-14.22.0.2460.jar:/home/su226/.minecraft/libraries/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar:/home/su226/.minecraft/libraries/org/ow2/asm/asm-all/5.2/asm-all-5.2.jar:/home/su226/.minecraft/libraries/jline/jline/2.13/jline-2.13.jar:/home/su226/.minecraft/libraries/com/typesafe/akka/akka-actor_2.11/2.3.3/akka-actor_2.11-2.3.3.jar:/home/su226/.minecraft/libraries/com/typesafe/config/1.2.1/config-1.2.1.jar:/home/su226/.minecraft/libraries/org/scala-lang/scala-actors-migration_2.11/1.1.0/scala-actors-migration_2.11-1.1.0.jar:/home/su226/.minecraft/libraries/org/scala-lang/scala-compiler/2.11.1/scala-compiler-2.11.1.jar:/home/su226/.minecraft/libraries/org/scala-lang/plugins/scala-continuations-library_2.11/1.0.2/scala-continuations-library_2.11-1.0.2.jar:/home/su226/.minecraft/libraries/org/scala-lang/plugins/scala-continuations-plugin_2.11.1/1.0.2/scala-continuations-plugin_2.11.1-1.0.2.jar:/home/su226/.minecraft/libraries/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1.jar:/home/su226/.minecraft/libraries/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar:/home/su226/.minecraft/libraries/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1.jar:/home/su226/.minecraft/libraries/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar:/home/su226/.minecraft/libraries/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar:/home/su226/.minecraft/libraries/lzma/lzma/0.0.1/lzma-0.0.1.jar:/home/su226/.minecraft/libraries/net/sf/jopt-simple/jopt-simple/5.0.3/jopt-simple-5.0.3.jar:/home/su226/.minecraft/libraries/java3d/vecmath/1.5.2/vecmath-1.5.2.jar:/home/su226/.minecraft/libraries/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.jar:/home/su226/.minecraft/libraries/com/mojang/patchy/1.1/patchy-1.1.jar:/home/su226/.minecraft/libraries/oshi-project/oshi-core/1.1/oshi-core-1.1.jar:/home/su226/.minecraft/libraries/net/java/dev/jna/jna/4.4.0/jna-4.4.0.jar:/home/su226/.minecraft/libraries/net/java/dev/jna/platform/3.4.0/platform-3.4.0.jar:/home/su226/.minecraft/libraries/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.jar:/home/su226/.minecraft/libraries/net/sf/jopt-simple/jopt-simple/5.0.3/jopt-simple-5.0.3.jar:/home/su226/.minecraft/libraries/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar:/home/su226/.minecraft/libraries/com/paulscode/codecwav/20101023/codecwav-20101023.jar:/home/su226/.minecraft/libraries/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar:/home/su226/.minecraft/libraries/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar:/home/su226/.minecraft/libraries/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar:/home/su226/.minecraft/libraries/io/netty/netty-all/4.1.9.Final/netty-all-4.1.9.Final.jar:/home/su226/.minecraft/libraries/com/google/guava/guava/21.0/guava-21.0.jar:/home/su226/.minecraft/libraries/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar:/home/su226/.minecraft/libraries/commons-io/commons-io/2.5/commons-io-2.5.jar:/home/su226/.minecraft/libraries/commons-codec/commons-codec/1.10/commons-codec-1.10.jar:/home/su226/.minecraft/libraries/net/java/jinput/jinput/2.0.5/jinput-2.0.5.jar:/home/su226/.minecraft/libraries/net/java/jutils/jutils/1.0.0/jutils-1.0.0.jar:/home/su226/.minecraft/libraries/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar:/home/su226/.minecraft/libraries/com/mojang/authlib/1.5.25/authlib-1.5.25.jar:/home/su226/.minecraft/libraries/com/mojang/realms/1.10.17/realms-1.10.17.jar:/home/su226/.minecraft/libraries/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar:/home/su226/.minecraft/libraries/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.jar:/home/su226/.minecraft/libraries/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar:/home/su226/.minecraft/libraries/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar:/home/su226/.minecraft/libraries/it/unimi/dsi/fastutil/7.1.0/fastutil-7.1.0.jar:/home/su226/.minecraft/libraries/org/apache/logging/log4j/log4j-api/2.8.1/log4j-api-2.8.1.jar:/home/su226/.minecraft/libraries/org/apache/logging/log4j/log4j-core/2.8.1/log4j-core-2.8.1.jar:/home/su226/.minecraft/libraries/org/lwjgl/lwjgl/lwjgl/2.9.4-nightly-20150209/lwjgl-2.9.4-nightly-20150209.jar:/home/su226/.minecraft/libraries/org/lwjgl/lwjgl/lwjgl_util/2.9.4-nightly-20150209/lwjgl_util-2.9.4-nightly-20150209.jar:/home/su226/.minecraft/libraries/com/mojang/text2speech/1.10.3/text2speech-1.10.3.jar:/home/su226/.minecraft/versions/1.12.1/1.12.1.jar net.minecraft.launchwrapper.Launch --username su226 --version "HMCL 2.7.8.39" --gameDir /home/su226/.minecraft/versions/1.12.1f --assetsDir /home/su226/.minecraft/assets --assetIndex 1.12 --uuid &lt;access token&gt; --accessToken &lt;access token&gt; --userType Legacy --tweakClass net.minecraftforge.fml.common.launcher.FMLTweaker --versionType Forge --height 480 --width 854 [09:52:49] [Game Launcher/INFO] Have started the process [09:52:50] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker [09:52:50] [main/INFO] [LaunchWrapper]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker [09:52:50] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLTweaker [09:52:50] [main/INFO] [FML]: Forge Mod Loader version 14.22.0.2460 for Minecraft 1.12.1 loading [09:52:50] [main/INFO] [FML]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.8.0_144, running on Linux:amd64:4.10.0-32-generic, installed at /usr/lib/jvm/java-8-oracle/jre [09:52:50] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in CodeChickenLib-1.12-3.1.2.297-universal.jar. This is not recommended, @Mods should be in a separate jar from the coremod. [09:52:50] [main/ERROR] [FML]: Coremod codechicken.lib.asm.CCLCorePlugin: Unable to class load the plugin java.lang.ClassNotFoundException: codechicken.lib.asm.CCLCorePlugin [09:52:50] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in CTM-MC1.12-0.2.2.7.jar. This is not recommended, @Mods should be in a separate jar from the coremod. [09:52:50] [main/WARN] [FML]: The coremod team.chisel.ctm.client.asm.CTMCorePlugin does not have a MCVersion annotation, it may cause issues with this version of Minecraft [09:52:50] [main/WARN] [FML]: The coremod CTMCorePlugin (team.chisel.ctm.client.asm.CTMCorePlugin) is not signed! [09:52:50] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in ImmersiveEngineering-0.12-71.jar. This is not recommended, @Mods should be in a separate jar from the coremod. [09:52:50] [main/WARN] [FML]: The coremod blusunrize.immersiveengineering.common.asm.IELoadingPlugin does not have a MCVersion annotation, it may cause issues with this version of Minecraft [09:52:50] [main/WARN] [FML]: The coremod IELoadingPlugin (blusunrize.immersiveengineering.common.asm.IELoadingPlugin) is not signed! [09:52:50] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in InventoryTweaks-1.63+beta.108.jar. This is not recommended, @Mods should be in a separate jar from the coremod. [09:52:50] [main/WARN] [FML]: The coremod invtweaks.forge.asm.FMLPlugin does not have a MCVersion annotation, it may cause issues with this version of Minecraft [09:52:50] [main/INFO] [FML]: Loading tweaker optifine.OptiFineForgeTweaker from OptiFine-1.12.1_HD_U_C5.jar [09:52:50] [main/ERROR] [FML]: The coremod TMIForgeLoader is requesting minecraft version 1.8 and minecraft is 1.12.1. It will be ignored. [09:52:50] [main/INFO] [FML]: Loading tweaker net.minecraftxray.loader.XRayTweaker from XRay-58.jar [09:52:50] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker [09:52:50] [main/INFO] [LaunchWrapper]: Loading tweak class name optifine.OptiFineForgeTweaker [09:52:50] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftxray.loader.XRayTweaker [09:52:50] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker [09:52:50] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker [09:52:50] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker [09:52:50] [main/INFO] [LaunchWrapper]: Calling tweak class optifine.OptiFineForgeTweaker [09:52:50] [main/INFO] [STDOUT]: [optifine.OptiFineForgeTweaker:dbg:56]: OptiFineForgeTweaker: acceptOptions [09:52:50] [main/INFO] [STDOUT]: [optifine.OptiFineForgeTweaker:dbg:56]: OptiFineForgeTweaker: injectIntoClassLoader [09:52:50] [main/INFO] [STDOUT]: [optifine.OptiFineClassTransformer:dbg:266]: OptiFine ClassTransformer [09:52:50] [main/INFO] [STDOUT]: [optifine.OptiFineClassTransformer:dbg:266]: OptiFine URL: file:/home/su226/.minecraft/versions/1.12.1f/mods/OptiFine-1.12.1_HD_U_C5.jar [09:52:50] [main/INFO] [STDOUT]: [optifine.OptiFineClassTransformer:dbg:266]: OptiFine ZIP file: /home/su226/.minecraft/versions/1.12.1f/mods/OptiFine-1.12.1_HD_U_C5.jar [09:52:50] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftxray.loader.XRayTweaker [09:52:50] [main/INFO] [LaunchWrapper]: XRayTweaker v58 [09:52:50] [main/INFO] [LaunchWrapper]: Detected Minecraft version: 1.12.1 [09:52:50] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper [09:52:54] [main/INFO] [FML]: Found valid fingerprint for Minecraft Forge. Certificate fingerprint e3c3d50c7c986df74c645c0ac54639741c90a557 [09:52:54] [main/INFO] [FML]: Found valid fingerprint for Minecraft. Certificate fingerprint cd99959656f753dc28d863b46769f7f8fbaefcfc [09:52:54] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper [09:52:54] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper [09:52:54] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker [09:52:54] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper [09:52:55] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper [09:52:55] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker [09:52:55] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker [09:52:55] [main/INFO] [STDOUT]: [optifine.OptiFineForgeTweaker:dbg:56]: OptiFineForgeTweaker: getLaunchArguments [09:52:55] [main/INFO] [LaunchWrapper]: Launching wrapped minecraft {net.minecraft.client.main.Main} [09:52:56] [main/INFO]: &lt;player&gt; [09:52:57] [main/INFO] [STDOUT]: [team.chisel.ctm.client.asm.CTMTransformer:preTransform:154]: Transforming Class [net.minecraft.block.Block], Method [getExtendedState] [09:52:57] [main/INFO] [STDOUT]: [team.chisel.ctm.client.asm.CTMTransformer:finishTransform:166]: Transforming net.minecraft.block.Block Finished. [09:53:01] [main/INFO] [Config]: [OptiFine] *** Reflector Forge *** [09:53:01] [main/INFO] [Config]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient [09:53:02] [main/INFO] [STDOUT]: [team.chisel.ctm.client.asm.CTMTransformer:preTransform:154]: Transforming Class [net.minecraftforge.client.ForgeHooksClient], Method [getDamageModel] [09:53:02] [main/INFO] [STDOUT]: [team.chisel.ctm.client.asm.CTMTransformer:finishTransform:166]: Transforming net.minecraftforge.client.ForgeHooksClient Finished. [09:53:02] [main/INFO] [STDOUT]: [team.chisel.ctm.client.asm.CTMTransformer:preTransform:154]: Transforming Class [net.minecraft.client.renderer.texture.TextureMap], Method [registerSprite] [09:53:02] [main/INFO] [STDOUT]: [team.chisel.ctm.client.asm.CTMTransformer:finishTransform:166]: Transforming net.minecraft.client.renderer.texture.TextureMap Finished. [09:53:02] [main/INFO] [Config]: [OptiFine] *** Reflector Vanilla *** [09:53:03] [main/WARN]: Skipping bad option: lastServer: [09:53:03] [main/INFO]: LWJGL Version: 2.9.4 [09:53:04] [main/INFO] [Config]: [OptiFine]  [09:53:04] [main/INFO] [Config]: [OptiFine] OptiFine_1.12.1_HD_U_C5 [09:53:04] [main/INFO] [Config]: [OptiFine] Build: 20170807-181132 [09:53:04] [main/INFO] [Config]: [OptiFine] OS: Linux (amd64) version 4.10.0-32-generic [09:53:04] [main/INFO] [Config]: [OptiFine] Java: 1.8.0_144, Oracle Corporation [09:53:04] [main/INFO] [Config]: [OptiFine] VM: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation [09:53:04] [main/INFO] [Config]: [OptiFine] LWJGL: 2.9.4 [09:53:04] [main/INFO] [Config]: [OptiFine] OpenGL: GeForce GTX 960M/PCIe/SSE2, version 4.5.0 NVIDIA 375.66, NVIDIA Corporation [09:53:04] [main/INFO] [Config]: [OptiFine] OpenGL Version: 4.5.0 [09:53:04] [main/INFO] [Config]: [OptiFine] Maximum texture size: 16384x16384 [09:53:04] [Thread-3/INFO] [Config]: [OptiFine] Checking for new version [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] ShadersMod version: 2.4.12 [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] OpenGL Version: 4.5.0 NVIDIA 375.66 [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] Vendor:  NVIDIA Corporation [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] Renderer: GeForce GTX 960M/PCIe/SSE2 [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0  [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] GL_MAX_DRAW_BUFFERS: 8 [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8 [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32 [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] Load ShadersMod configuration. [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] Save ShadersMod configuration. [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] Shaders can not be loaded, Fast Render is enabled. [09:53:04] [main/INFO] [shadersmod.common.SMCLog]: [Shaders] No shaderpack loaded. [09:53:04] [Thread-3/INFO] [Config]: [OptiFine] Version found: C5 [09:53:04] [main/INFO] [FML]: Forge Mod Loader has detected optifine OptiFine_1.12.1_HD_U_C5, enabling compatibility features [09:53:05] [main/INFO] [FML]: -- System Details -- Details:     Minecraft Version: 1.12.1     Operating System: Linux (amd64) version 4.10.0-32-generic     Java Version: 1.8.0_144, Oracle Corporation     Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation     Memory: 15728640 bytes (15 MB) / 260046848 bytes (248 MB) up to 2147483648 bytes (2048 MB)     JVM Flags: 5 total; -XX:+UseG1GC -XX:-UseAdaptiveSizePolicy -XX:-OmitStackTraceInFastThrow -Xmn128m -Xmx2048m     IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0     FML:      Loaded coremods (and transformers):  Inventory Tweaks Coremod (InventoryTweaks-1.63+beta.108.jar)   invtweaks.forge.asm.ContainerTransformer IELoadingPlugin (ImmersiveEngineering-0.12-71.jar)   blusunrize.immersiveengineering.common.asm.IEClassTransformer CTMCorePlugin (CTM-MC1.12-0.2.2.7.jar)   team.chisel.ctm.client.asm.CTMTransformer     GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 375.66' Renderer: 'GeForce GTX 960M/PCIe/SSE2' [09:53:05] [main/INFO] [FML]: MinecraftForge v14.22.0.2460 Initialized [09:53:05] [main/INFO] [FML]: Starts to replace vanilla recipe ingredients with ore ingredients. [09:53:05] [main/INFO] [FML]: Replaced 1036 ore ingredients [09:53:06] [main/INFO] [FML]: Found 0 mods from the command line. Injecting into mod discoverer [09:53:06] [main/INFO] [FML]: Searching /home/su226/.minecraft/versions/1.12.1f/mods for mods [09:53:06] [main/INFO] [FML]: Also searching /home/su226/.minecraft/versions/1.12.1f/mods/1.12.1 for mods [09:53:07] [main/WARN] [chickenchunks]: Mod chickenchunks is missing the required element 'version' and a version.properties file could not be found. Falling back to metadata version 2.4.0.70 [09:53:08] [main/WARN] [codechickenlib]: Mod codechickenlib is missing the required element 'version' and a version.properties file could not be found. Falling back to metadata version 3.1.2.297 [09:53:08] [main/WARN] [enderstorage]: Mod enderstorage is missing the required element 'version' and a version.properties file could not be found. Falling back to metadata version 2.4.0.121 [09:53:08] [Thread-4/INFO] [FML]: Using sync timing. 200 frames of Display.update took 101776276 nanos [09:53:10] [main/WARN] [veinminer]: Mod veinminer is missing the required element 'version' and a version.properties file could not be found. Falling back to metadata version 0.38.1 [09:53:10] [main/WARN] [veinminermodsupport]: Mod veinminermodsupport is missing the required element 'version' and a version.properties file could not be found. Falling back to metadata version 0.38.1 [09:53:10] [main/INFO] [FML]: Forge Mod Loader has identified 34 mods to load [09:53:10] [main/INFO] [FML]: FML has found a non-mod file TooManyItems-non-Forge-1.8.zip in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible. [09:53:10] [main/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, appliedenergistics2, brandonscore, chameleon, chickenchunks, chisel, codechickenlib, cofhcore, cofhworld, ctm, draconicevolution, enderstorage, forestry, waila, immersiveengineering, ic2, inventorytweaks, jei, journeymap, mantle, nbtedit, redstoneflux, storagedrawers, tconstruct, thermalcultivation, thermaldynamics, thermalexpansion, thermalfoundation, veinminer, veinminermodsupport, wailaharvestability] at CLIENT [09:53:10] [main/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, appliedenergistics2, brandonscore, chameleon, chickenchunks, chisel, codechickenlib, cofhcore, cofhworld, ctm, draconicevolution, enderstorage, forestry, waila, immersiveengineering, ic2, inventorytweaks, jei, journeymap, mantle, nbtedit, redstoneflux, storagedrawers, tconstruct, thermalcultivation, thermaldynamics, thermalexpansion, thermalfoundation, veinminer, veinminermodsupport, wailaharvestability] at SERVER [09:53:11] [main/INFO] [brandonscore]: Brandon's Core online! Waiting for Draconic Evolution to join the party.... [09:53:11] [main/INFO] [projectintelligence]: ... [09:53:11] [main/INFO] [brandonscore]: Aww... Im sad now... [09:53:12] [main/INFO] [draconicevolution]: Hello Minecraft!!! [09:53:13] [main/INFO] [Pulsar-tconstruct]: Skipping Pulse chiselsandbitsIntegration; missing dependency: chiselsandbits [09:53:13] [main/INFO] [Pulsar-tconstruct]: Skipping Pulse craftingtweaksIntegration; missing dependency: craftingtweaks [09:53:13] [main/INFO] [Pulsar-tconstruct]: Skipping Pulse theoneprobeIntegration; missing dependency: theoneprobe [09:53:14] [main/INFO] [tconstruct]: Preparing to take over the world [09:53:15] [main/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Applied Energistics 2, FMLFileResourcePack:Brandon's Core, FMLFileResourcePack:Chameleon, FMLFileResourcePack:ChickenChunks, FMLFileResourcePack:Chisel, FMLFileResourcePack:CodeChicken Lib, FMLFileResourcePack:CoFH Core, FMLFileResourcePack:CoFH World, FMLFileResourcePack:CTM, FMLFileResourcePack:Draconic Evolution, FMLFileResourcePack:EnderStorage, FMLFileResourcePack:Forestry, FMLFileResourcePack:Waila, FMLFileResourcePack:Immersive Engineering, FMLFileResourcePack:IndustrialCraft 2, FMLFileResourcePack:Inventory Tweaks, FMLFileResourcePack:Just Enough Items, FMLFileResourcePack:JourneyMap, FMLFileResourcePack:Mantle, FMLFileResourcePack:NBTEdit, FMLFileResourcePack:Redstone Flux, FMLFileResourcePack:Storage Drawers, FMLFileResourcePack:Tinkers' Construct, FMLFileResourcePack:Thermal Cultivation, FMLFileResourcePack:Thermal Dynamics, FMLFileResourcePack:Thermal Expansion, FMLFileResourcePack:Thermal Foundation, FMLFileResourcePack:Vein Miner, FMLFileResourcePack:Mod Support, FMLFileResourcePack:Waila Harvestability [09:53:15] [main/INFO] [FML]: Processing ObjectHolder annotations [09:53:15] [main/INFO] [FML]: Found 1250 ObjectHolder annotations [09:53:15] [main/INFO] [FML]: Identifying ItemStackHolder annotations [09:53:15] [main/INFO] [FML]: Found 0 ItemStackHolder annotations [09:53:15] [main/INFO] [FML]: Configured a dormant chunk cache size of 0 [09:53:15] [Forge Version Check/INFO] [ForgeVersionCheck]: [codechickenlib] Starting version check at http://chickenbones.net/Files/notification/version.php?query=forge[Fatal Error] :131:177: 对实体 "version" 的引用必须以 ';' 分隔符结尾。 [09:53:15] [log4j-handler/ERROR]  ---- Hello Minecraft! Crash Report ----   Version: 2.7.8.39   Time: 2017-08-25 09:53:15   Thread: Thread[log4j-handler,6,main]    Content:      java.lang.Error: org.xml.sax.SAXParseException; lineNumber: 131; columnNumber: 177; 对实体 "version" 的引用必须以 ';' 分隔符结尾。     at org.jackhuang.hmcl.util.Log4jHandler.run(Log4jHandler.java:81) Caused by: org.xml.sax.SAXParseException; lineNumber: 131; columnNumber: 177; 对实体 "version" 的引用必须以 ';' 分隔符结尾。     at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1239)     at org.jackhuang.hmcl.util.Log4jHandler.run(Log4jHandler.java:77)   -- System Details --   Operating System: Ubuntu 17.04 \n \l     Java Version: 1.8.0_144, Oracle Corporation   Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation  [09:53:16] [ProcessMonitor/ERROR]  ---- Hello Minecraft! Crash Report ----   Version: 2.7.8.39   Time: 2017-08-25 09:53:16   Thread: Thread[ProcessMonitor,6,main]    Content:      java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@5f2fc1ae rejected from java.util.concurrent.ThreadPoolExecutor@51e8343b[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 132]     at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2063)     at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:830)     at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1379)     at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:112)     at java.util.concurrent.Executors$DelegatedExecutorService.submit(Executors.java:678)     at org.jackhuang.hmcl.util.Log4jHandler.newLogLine(Log4jHandler.java:115)     at org.jackhuang.hmcl.ui.LaunchingUIDaemon$PrintlnProcessor.accept(LaunchingUIDaemon.java:179)     at org.jackhuang.hmcl.ui.LaunchingUIDaemon$PrintlnProcessor.accept(LaunchingUIDaemon.java:166)     at org.jackhuang.hmcl.api.event.EventHandler.fire(EventHandler.java:59)     at org.jackhuang.hmcl.util.sys.ProcessThread.println(ProcessThread.java:97)     at org.jackhuang.hmcl.util.sys.ProcessThread.run(ProcessThread.java:80)   -- System Details --   Operating System: Ubuntu 17.04 \n \l     Java Version: 1.8.0_144, Oracle Corporation   Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/LaunchingUIDaemon.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="158" opendate="2017-06-29 08:10:35" fixdate="2017-07-03 00:52:58">
+		<buginformation>
+			<summary>用旧的正版mojang邮箱密码登录后，游戏里显示的不是我的角色名字，是邮箱</summary>
+			<description>测试了几次，有时候是我的名字，有时候又成邮箱了，是bug吗</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/auth/YggdrasilAuthenticator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="153" opendate="2017-06-23 04:45:25" fixdate="2017-06-24 09:31:25">
+		<buginformation>
+			<summary>启动器没法使用各版本独立</summary>
+			<description>已经在设置里设置了，版本隔离，但是启动时还是会直接在.minecraft目录下生成游戏文件，希望能解决Ver 2.7.7.29</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/util/HMCLGameProvider.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/util/HMCLAssetService.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/version/MinecraftVersion.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/version/MinecraftVersionManager.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/util/HMCLMinecraftService.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/version/MinecraftClassicVersion.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/service/IMinecraftProvider.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="136" opendate="2017-05-01 07:03:47" fixdate="2018-07-03 12:44:29">
+		<buginformation>
+			<summary>窗口显示异常</summary>
+			<description>![image](https://cloud.githubusercontent.com/assets/17294071/25574265/579d124e-2e7f-11e7-9386-b5b1f085846f.png) * 如图 * 当时目录路径中有&amp;等字符，可能是路径的问题 @huanghongxun :octocat: </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="131" opendate="2017-03-22 16:28:02" fixdate="2017-06-11 05:16:52">
+		<buginformation>
+			<summary>[Mac OS]窗口边框闪烁问题依旧</summary>
+			<description>这个问题真的很坑啊XD </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="120" opendate="2017-02-22 09:10:48" fixdate="2017-02-25 04:26:53">
+		<buginformation>
+			<summary>无法根据Json调用非对应版本资源文件</summary>
+			<description>打个比方说，我把1.7.10.jar改名叫fuckhmcl.jar并且把对应的json改名，在json里面把 `  "assets": "1.7.10",`改成`  "assets": "fuckhmcl",`，把.minecraft\assets\indexes\1.7.10.json改名为相对应的名称json，就无法读取资源文件。  另外还有一个小问题，如果mc崩溃那么HMCL不会记住用户名。。什么毛病</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/util/HMCLAssetService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="113" opendate="2017-02-17 13:51:26" fixdate="2017-02-18 05:06:04">
+		<buginformation>
+			<summary>打开"启动器设置"启动器颜色变为橙色</summary>
+			<description>系统:Xubuntu16.10(Linux4.8.0-37) JAVA:Orcale JDK 1.8.0_121 启动器:2.7.2.0（刚去MCBBS下的） 我本来设置的深蓝色，打开启动器时正常，切换到"游戏设置"时正常 但是我切换到"启动器设置"时主题变为橙色，主题一栏显示为"橙色" ，调回深蓝色后再次切换到"启动器设置"时正常。 ![optimized](https://cloud.githubusercontent.com/assets/17371317/23067540/c96b82d8-f55a-11e6-92c8-1eee7f0b4535.gif) （为了省大小，质量只能将就了，但还是可以看出问题）</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/LauncherSettingsPanel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="82" opendate="2016-06-26 18:16:35" fixdate="2017-02-09 05:16:22">
+		<buginformation>
+			<summary>无法下载TypeSafe库</summary>
+			<description>@huanghongxun  ![default](https://cloud.githubusercontent.com/assets/18393082/16363907/b32a54e4-3c0b-11e6-9eb8-869e986a30e5.PNG)  也试了 HMCL-2.4.1.450.exe, 都是每次启动都会提示这个下载失败， 但是，如果我在浏览器里直接输入这个网址（http://files.minecraftforge.net/maven/com/typesafe/config/1.2.1/config-1.2.1.jar http://files.minecraftforge.net/maven/com/typesafe/akka/akka-actor_2.11/2.3.3/akka-actor_2.11-2.3.3.jar），都是无效的，提示 404 Not Found。 而且，游戏可以正常玩， 不知道这是不是Bug,能不能请作者修改一下，（本人有些强迫症）谢谢！ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/core/java/org/jackhuang/hellominecraft/launcher/core/version/MinecraftLibrary.java</file>
+			<file>HMCL/src/core/java/org/jackhuang/hellominecraft/launcher/core/download/MojangDownloadProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="66" opendate="2016-05-07 03:38:33" fixdate="2016-05-08 01:45:25">
+		<buginformation>
+			<summary>一个问题</summary>
+			<description>在配置中所有游戏版本运行路径均为各版本独立的情况下依然在.minecraft文件夹下生成资源包文件夹 这是1.8留下来的功能把←_←应该添加一个检测机制，在所有版本运行路径都是各版本独立的情况下不生成资源包文件夹。 @huanghongxun  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/download/MinecraftDownloadService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/asset/AssetsMojangLoader.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/mod/ModpackManager.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/install/PackMinecraftInstaller.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/HMCLMinecraftService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/MCUtils.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/Settings.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/asset/MinecraftAssetService.java</file>
+			<file>HMCSM/src/main/java/org/jackhuang/hellominecraft/svrmgr/setting/SettingsManager.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/service/IMinecraftProvider.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/install/MinecraftInstallerService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/GameSettingsPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/LaunchingUIDaemon.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/system/OS.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/version/MinecraftVersionManager.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/install/optifine/OptiFineInstaller.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/GameLauncher.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/Profile.java</file>
+			<file>HMCSM/src/main/java/org/jackhuang/hellominecraft/svrmgr/setting/PlayerList.java</file>
+			<file>HMCSM/src/main/java/org/jackhuang/hellominecraft/svrmgr/ui/MainWindow.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/AbstractMinecraftLoader.java</file>
+			<file>HMCSM/src/main/java/org/jackhuang/hellominecraft/svrmgr/server/BackupManager.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/upgrade/AppDataUpgrader.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/system/FileUtils.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/system/IOUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="65" opendate="2016-05-05 08:05:32" fixdate="2016-05-08 02:04:42">
+		<buginformation>
+			<summary>打包mod会报错</summary>
+			<description>![image](https://cloud.githubusercontent.com/assets/11675398/15038933/4b31c7aa-125d-11e6-8e73-bb248e8c4881.png) 无论选择包含或不包含启动器，选择包含不包含不需要文件，是否写备注都是报错 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/system/ZipEngine.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="53" opendate="2016-03-26 00:54:52" fixdate="2016-03-26 05:03:06">
+		<buginformation>
+			<summary>HMCSM启动时会弹出很多输入框</summary>
+			<description>HMCSM0.8.7.38在启动时会弹出很多对话框，需要一直按取消才能进入主页面，如下图： ![default](https://cloud.githubusercontent.com/assets/17371317/14056973/828ab868-f32e-11e5-9973-d808d0aad1e8.PNG) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCSM/src/main/java/org/jackhuang/hellominecraft/svrmgr/util/MonitorServiceImpl.java</file>
+			<file>HMCSM/src/main/java/org/jackhuang/hellominecraft/svrmgr/ui/MainWindow.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/CrashReporter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="46" opendate="2016-03-05 07:10:46" fixdate="2016-03-05 13:44:06">
+		<buginformation>
+			<summary>整合包附带的HMCL无法在不安装整合包的情况下正常退出</summary>
+			<description>打开HMCL，提示“是否安装整合包”；点“否”，提示“找不到MC，是否下载”；点“否”，又重新弹出“是否安装整合包”……其间无法通过HMCL的UI结束HMCL，只能用命令kill进程或者终端里系统中断。HMCL版本：2.4.1.24 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/mod/ModpackManager.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/tasks/TaskWindow.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/HMCLMinecraftService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainPagePanel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2016-03-01 14:50:31" fixdate="2016-03-03 12:26:41">
+		<buginformation>
+			<summary>新建不了配置</summary>
+			<description>如题，新建后点确认啥事都没有发生，嗯啥事都没有 版本：ci上的最新 （不知道是不是只是我一个人的问题;( </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/tasks/TaskList.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/GameSettingsPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/service/IMinecraftAssetService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/asset/IAssetsHandler.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/asset/AssetsMojangLoader.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/Profile.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/asset/MinecraftAssetService.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/tasks/Task.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="34" opendate="2016-02-23 13:08:37" fixdate="2016-02-24 06:10:32">
+		<buginformation>
+			<summary>windows读写锁导致下载资源文件失败，但是HMCL不报错</summary>
+			<description>由于其它进程(有些情况下是另一个HMCL)在读写assets文件夹导致资源文件被锁住，导致下载资源文件失败，但是HMCL不报错；建议下载结束后再校验一次。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/tasks/TaskList.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/tasks/download/FileDownloadTask.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2016-02-23 06:19:14" fixdate="2016-02-23 12:32:38">
+		<buginformation>
+			<summary>“找不到MC，是否打开下载列表”，点“是”没反应</summary>
+			<description>当目录下没有.minecraft文件夹时，会提示“找不到MC，是否打开下载列表”，点“是”没反应  2.4.0.45 如果46修复了就无视吧，下载不到46 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/system/Java.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainPagePanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/GameSettingsPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/LaunchingUIDaemon.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/NewTabPane.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/Selectable.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/InstallerPanel.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/ui/WebFrame.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/GameLauncher.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/AnimatedPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/GameDownloadPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/LauncherSettingsPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainFrame.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/LaunchingState.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/AbstractMinecraftLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="26" opendate="2016-02-16 07:20:40" fixdate="2016-02-27 04:24:04">
+		<buginformation>
+			<summary>配置文件存储行为在Linux下的问题</summary>
+			<description>在linux下使用此启动器，hmcl.log和hmcl.json都不会存储至jar所在的文件夹内，却存储到了"~"，即用户的主文件夹内 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/Launcher.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/HeaderTab.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainPagePanel.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/ui/SwingUtils.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/CrashReporter.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/Main.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/HMCLGameLauncher.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/ui/wizard/api/displayer/WizardDisplayerImpl.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/modpack/ModpackInitializationPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/modpack/ModpackWizard.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2016-02-13 04:18:59" fixdate="2016-02-13 10:05:26">
+		<buginformation>
+			<summary>2个bug</summary>
+			<description>版本:2.4.0.48 1. 导入整合包时整合包介绍乱码 2. ![图](https://public.lightpic.info/image/8A63_56BEAFE50.jpg)在启动器内点击标题栏更新后文件信息里的版本号仍然是2.3.5.7  @huanghongxun  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/Main.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/mod/ModpackManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="23" opendate="2016-02-10 10:14:47" fixdate="2016-02-10 15:09:15">
+		<buginformation>
+			<summary>json配置文件不更新</summary>
+			<description>最近版本（HMCL-2.4.0.23）在使用时，每当修改完一个选项后，切换选项卡或关闭程序都会导致配置丢失（而不是被保存），我也并不能找到保存按钮- - </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/service/IMinecraftProvider.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainPagePanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/GameSettingsPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/Config.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/Selectable.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/NewProfileWindow.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/Settings.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/version/MinecraftVersionManager.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/DefaultMinecraftService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/AnimatedPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/Profile.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/LauncherSettingsPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainFrame.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="22" opendate="2016-02-10 09:54:45" fixdate="2016-02-10 10:15:49">
+		<buginformation>
+			<summary>配置删除BUG</summary>
+			<description>删除配置时，显示“真的要删除配置%s么“ 大概是字符串格式化忘写了吧- - </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/lang/SupportedLocales.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="20" opendate="2016-02-09 14:34:18" fixdate="2016-02-10 06:59:17">
+		<buginformation>
+			<summary>HMCL2.4.0.21 作者显示错误</summary>
+			<description>“启动器设置”中“关于作者”后的几行内容行首均出现多余的“\n" </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/VersionSetting.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/GameSettingsPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/LaunchingUIDaemon.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/Profile.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/mod/MinecraftModService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/service/IMinecraftModService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainFrame.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/api/PluginManager.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="eladmin">
+	<bug id="347" opendate="2020-05-07 12:48:04" fixdate="2020-05-08 08:36:29">
+		<buginformation>
+			<summary>运维管理两个错误，一个是不同服务器部署，获取服务器信息错误。二、部署到linux中后，上传的war包名称前会自动多一个tmp导致部署失败，</summary>
+			<description>问题一 ScpClientUtil  static synchronized public ScpClientUtil getInstance(String ip, int port, String username, String passward) { //if (instance == null) { return new ScpClientUtil(ip, port, username, passward); //} //return instance; }   ![image](https://user-images.githubusercontent.com/50815165/81296118-03bd5f00-90a4-11ea-8a39-3fbb7be0ea7a.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>eladmin-system/src/main/java/me/zhengjie/modules/mnt/rest/DatabaseController.java</file>
+			<file>eladmin-system/src/main/java/me/zhengjie/modules/mnt/util/ScpClientUtil.java</file>
+			<file>eladmin-system/src/main/java/me/zhengjie/modules/mnt/service/impl/DeployServiceImpl.java</file>
+			<file>eladmin-system/src/main/java/me/zhengjie/modules/mnt/rest/DeployController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

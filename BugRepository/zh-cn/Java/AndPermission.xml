@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="AndPermission">
+	<bug id="483" opendate="2019-09-16 13:24:42" fixdate="2019-10-08 13:36:56">
+		<buginformation>
+			<summary>频繁申请RECORD_AUDIO出现权限状态错误的情况</summary>
+			<description>如果调用频繁会崩溃，只能限制调用次数。 目前看来是RecordAudioTest创建的文件占用问题。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>permission/src/main/java/com/yanzhenjie/permission/checker/RecordAudioTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="436" opendate="2019-04-16 07:27:42" fixdate="2019-10-08 13:36:55">
+		<buginformation>
+			<summary>老板，内存泄漏了</summary>
+			<description>Instance of com.yanzhenjie.permission.bridge.RequestExecutor 就是这个线程造成的</description>
+		</buginformation>
+		<fixedfiles>
+			<file>support/src/main/java/com/yanzhenjie/permission/bridge/RequestExecutor.java</file>
+			<file>x/src/main/java/com/yanzhenjie/permission/bridge/RequestExecutor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="385" opendate="2018-11-27 07:41:30" fixdate="2019-02-22 07:37:10">
+		<buginformation>
+			<summary>由于连续启动录音器会存在失败的情况，所以反复调用这里的录音权限判断会经常出现一次判断有录音权限紧接着又判断为无录音权限的情况</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>permission/src/main/java/com/yanzhenjie/permission/checker/RecordAudioTest.java</file>
+			<file>permission/src/main/java/com/yanzhenjie/permission/checker/StrictChecker.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="267" opendate="2018-05-22 07:43:14" fixdate="2018-05-30 09:12:17">
+		<buginformation>
+			<summary>有个问题,从设置回来后重新检测申请权限居然不回调失败?</summary>
+			<description> 我在设置的回调中重新检测申请权限,如果我在设置界面什么都不做或者权限只开启一部分返回的话 ,重新检测权限就不走onDenied方法, 如果我在设置页面把权限开启了就会走到onGranted方法中了, 我是小米手机 6.0的系统 ```java     private void setPermission(final List&lt;String&gt; permissions) {         AndPermission.with(this)                 .runtime()                 .setting()                 .onComeback(new Setting.Action() {                     @Override                     public void onAction() {                         permissionCallback.PermissionReRequest();                     }                 })                 .start();     } ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>permission/src/main/java/com/yanzhenjie/permission/runtime/setting/RuntimeSetting.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="181" opendate="2018-02-27 08:38:35" fixdate="2018-03-27 02:39:32">
+		<buginformation>
+			<summary>连续调用权限问题</summary>
+			<description>请求第一个权限以后, 回调了onGranted方法,在第一个权限的onGranted方法中继续请求第二个权限,这时第二个权限的回调不会执行,目前解决方法是在第一个方法的onGranted回调中延迟250毫秒左右再请求第二个权限</description>
+		</buginformation>
+		<fixedfiles>
+			<file>permission/src/main/java/com/yanzhenjie/permission/MRequest.java</file>
+			<file>permission/src/main/java/com/yanzhenjie/permission/PermissionActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="105" opendate="2017-10-16 08:36:17" fixdate="2017-10-17 05:24:30">
+		<buginformation>
+			<summary>依赖最新版本1.1.1，界面卡死，对话框出不来</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>permission/src/main/java/com/yanzhenjie/permission/PermissionActivity.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>255</id>
+		<title>艦隊：ケッコンカッコカリ直後に表示が更新されない</title>
+		<body>api_req_kaisou/marriage で艦隊窓を更新するようにする　だけ</body>
+		<created>2019-02-07 14:15:52</created>
+		<closed>2019-05-06 07:13:15</closed>
+	</bug>
+	<bug>
+		<id>225</id>
+		<title>装備一覧：CSV出力について、補強スロットの装備が検出されない</title>
+		<body></body>
+		<created>2018-06-06 15:57:48</created>
+		<closed>2018-06-10 04:23:33</closed>
+	</bug>
+	<bug>
+		<id>224</id>
+		<title>おにぎり交換直後に装備させると「12cm単装砲」または「なし」として表示される</title>
+		<body>食材をおにぎりに交換した際、出撃せずにそのまま装備させると「12cm単装砲」もしくは「なし」として表示される  アイテム使用時は、以下の順に API が呼ばれる：  ``` api_req_member/itemuse api_get_member/useitem api_get_member/material api_get_member/basic ```  任務等と違い `api_get_member/slot_item` は呼ばれないため、 `api_req_member/itemuse.api_data.api_getitem[].api_slotitem` を参照して自力で追加する必要がある</body>
+		<created>2018-06-05 03:39:41</created>
+		<closed>2018-06-10 04:23:33</closed>
+	</bug>
+	<bug>
+		<id>222</id>
+		<title>必要経験値計算：テンプレートの対潜兵装が3スロ前提になっている</title>
+		<body>普通に失念していた 動的生成するほうはスロットに合わせているが、固定のほうがそうでなかった</body>
+		<created>2018-05-23 11:41:02</created>
+		<closed>2018-06-10 04:23:34</closed>
+	</bug>
+	<bug>
+		<id>215</id>
+		<title>レコード：任務での新規艦取得時に初期装備が記録されない</title>
+		<body>対応するかはともかく、気づいたので残しておく  任務から新規艦を得るチャンスが（多分） Z1 以来だったので失念していた  ステータスは図鑑を開くなどによって概ね補完できるが、初期装備はその限りではない</body>
+		<created>2018-04-25 04:40:44</created>
+		<closed>2018-05-13 21:02:49</closed>
+	</bug>
+	<bug>
+		<id>203</id>
+		<title>戦闘：照明弾エラー？</title>
+		<body>http://electronicobserver.blog.fc2.com/blog-entry-99.html#comment3028 (´・ω・`)</body>
+		<created>2018-02-27 22:09:21</created>
+		<closed>2018-03-01 04:17:44</closed>
+	</bug>
+	<bug>
+		<id>202</id>
+		<title>デッキビルダー：5スロコピーがおかしい？</title>
+		<body>今のところこちら側からは ix が2つつく デッキビルダー側のフォーマットを確認する</body>
+		<created>2018-02-26 02:38:50</created>
+		<closed>2018-02-26 23:47:45</closed>
+	</bug>
+	<bug>
+		<id>198</id>
+		<title>任務：複数種廃棄の任務進捗がずれる？</title>
+		<body>廃棄量が条件以下でも達成表示になることがある 最後の一種で発生？ 検証中</body>
+		<created>2018-02-12 14:13:18</created>
+		<closed>2018-02-26 02:04:53</closed>
+	</bug>
+	<bug>
+		<id>185</id>
+		<title>通常艦隊　開幕夜戦で夜戦支援が認識されない</title>
+		<body>手元で修正済み、後でコミットします </body>
+		<created>2017-11-25 08:14:55</created>
+		<closed>2017-11-25 14:59:27</closed>
+	</bug>
+	<bug>
+		<id>181</id>
+		<title>帰投直後に装備が更新されない？</title>
+		<body>* 帰投後にドロップ艦が無装備扱いになる * 改装直後に無装備扱いになる  との報告がある。 装備変更をすると更新されるらしい。  現状未確認。後でチェックする</body>
+		<created>2017-11-21 14:19:51</created>
+		<closed>2017-11-23 19:42:10</closed>
+	</bug>
+	<bug>
+		<id>177</id>
+		<title>グループ：補強スロットフィルタにおいて、「なし」に「未開放」が含まれている</title>
+		<body>「なし」を選ぶと「未開放の艦」「未装備の艦」がどちらもヒットする 「未開放」を選ぶと何もヒットしない</body>
+		<created>2017-11-20 18:04:10</created>
+		<closed>2017-11-23 19:43:00</closed>
+	</bug>
+	<bug>
+		<id>176</id>
+		<title>グループ：フィルタ設定で艦種を追加、編集するとエラーが出る</title>
+		<body>『System.InvalidCastException: 'System.Int32' から　'ElectronicObserver.Data.ShipTypes' への無効なキャストです。』</body>
+		<created>2017-11-20 09:52:05</created>
+		<closed>2017-11-20 16:54:20</closed>
+	</bug>
+	<bug>
+		<id>174</id>
+		<title>戦闘：演習の勝利判定が誤る？</title>
+		<body>報告あり 後で確認する </body>
+		<created>2017-11-19 20:37:20</created>
+		<closed>2017-11-20 16:54:16</closed>
+	</bug>
+	<bug>
+		<id>170</id>
+		<title>艦隊名において &amp; が表示されないことがある</title>
+		<body>おそらく描画側の問題 半角 &amp; が表示されない （艦これ本体は送信時に全角＆に変換する？ため、母港に戻れば正しく表示される） （多分）</body>
+		<created>2017-11-17 14:36:41</created>
+		<closed>2018-05-13 21:08:29</closed>
+	</bug>
+	<bug>
+		<id>169</id>
+		<title>艦隊名を &amp; および = を含んだ文字列に変更すると表示がおかしくなる</title>
+		<body> = を含んだ文字列の場合、= 以降が表示されなくなる &amp; を含んだ文字列の場合、例外が発生する　（IndexOutOfRangeException）  母港に遷移すれば正しく表示される  リクエスト文字列のパースに問題がある 現在の処理は Decode -&gt; Split の順であるが、 Split -&gt; Decode とする必要がある</body>
+		<created>2017-11-16 22:34:09</created>
+		<closed>2017-11-17 14:30:57</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>補給資源表示が実際とは異なることがある</title>
+		<body>http://electronicobserver.blog.fc2.com/blog-entry-88.html#comment2525  ケッコン時の処理で多少ずれる模様 見直す</body>
+		<created>2017-10-13 23:50:22</created>
+		<closed>2017-11-06 14:04:49</closed>
+	</bug>
+	<bug>
+		<id>159</id>
+		<title>戦闘：索敵失敗時に前の戦闘の夜戦アイコンが残ってしまう</title>
+		<body>両方とも索敵に失敗していた場合に、前の戦闘で夜戦表示（探照灯・照明弾等）が行われていた場合、そのアイコンが残ってしまう</body>
+		<created>2017-10-08 04:59:00</created>
+		<closed>2017-11-06 23:33:09</closed>
+	</bug>
+	<bug>
+		<id>154</id>
+		<title>艦隊：昼戦砲撃威力が表示されない</title>
+		<body>発生は確認、原因は未調査</body>
+		<created>2017-10-02 02:41:53</created>
+		<closed>2017-11-06 14:03:41</closed>
+	</bug>
+	<bug>
+		<id>153</id>
+		<title>基地航空隊編成：偵察機の制空値が加算されていない</title>
+		<body>もう一度仕様を見直す</body>
+		<created>2017-10-02 02:41:22</created>
+		<closed>2017-11-07 01:14:38</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>保有アイテムが存在しない際に受信エラーが発生する</title>
+		<body>https://twitter.com/andanteyk/status/899962930803818496 http://electronicobserver.blog.fc2.com/blog-entry-86.html#comment2413 </body>
+		<created>2017-08-22 12:04:58</created>
+		<closed>2017-08-23 14:14:13</closed>
+	</bug>
+	<bug>
+		<id>143</id>
+		<title>v2.7.1: The fatigue icon does not restore in fleet tab</title>
+		<body>![default](https://user-images.githubusercontent.com/2221335/29052564-8f64021e-7c1d-11e7-81e2-7515c0f29825.PNG)  As shown in screenshot, the  fatigue icon in fleet tab does not restore when morale raises back.</body>
+		<created>2017-08-08 01:41:55</created>
+		<closed>2017-08-08 02:11:17</closed>
+	</bug>
+	<bug>
+		<id>140</id>
+		<title>設定：「システムプロキシを利用」が変更できない</title>
+		<body>なぜか UI から消えている 機能的には生きているので設定ダイアログだけ調整すればいい  別の使用しない設定と間違えて消してしまった可能性？ 一応理由を考えてみる</body>
+		<created>2017-07-29 07:38:07</created>
+		<closed>2017-08-05 08:14:53</closed>
+	</bug>
+	<bug>
+		<id>139</id>
+		<title>ブラウザ：SSのクリップボードへのコピーに失敗することがある</title>
+		<body>https://twitter.com/Nishisonic/status/887986831966453760 https://msdn.microsoft.com/ja-jp/library/system.windows.forms.clipboard.setimage(v=vs.110).aspx  別のプロセスに占有されていてクリップボードがクリアできないのが原因らしい 解決できないとしてもエラーメッセージを改善すべき</body>
+		<created>2017-07-20 11:36:54</created>
+		<closed>2017-08-05 08:18:53</closed>
+	</bug>
+	<bug>
+		<id>138</id>
+		<title>泊地修理：入渠終了時にタイマーがリセットされる可能性</title>
+		<body>まだ確認していないが多分発生する HP回復検知処理において、入渠終了による回復を除外しなければならない</body>
+		<created>2017-07-08 11:44:08</created>
+		<closed>2017-08-06 09:54:15</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>グループ：列ヘッダの文字列を省略しないようにする</title>
+		<body>末尾の "..." が邪魔なので表示しないように</body>
+		<created>2017-06-27 14:47:58</created>
+		<closed>2017-08-06 09:54:41</closed>
+	</bug>
+	<bug>
+		<id>116</id>
+		<title>レコード：デフォルトレコードの文字コード問題</title>
+		<body>設定文字コードが shift-jis 以外の時、デフォルトレコードからの読み込みが正しく行われない</body>
+		<created>2017-04-06 23:09:01</created>
+		<closed>2017-04-17 18:07:11</closed>
+	</bug>
+	<bug>
+		<id>115</id>
+		<title>デッキビルダーへのコピーが正しく動作しない</title>
+		<body>3スロ以下の艦娘の拡張スロットへの搭載装備が正しく反映されない</body>
+		<created>2017-03-27 11:10:25</created>
+		<closed>2017-03-31 16:51:58</closed>
+	</bug>
+	<bug>
+		<id>98</id>
+		<title>ブラウザ：ズーム「ぴったり」が動作しない</title>
+		<body></body>
+		<created>2016-11-24 15:09:03</created>
+		<closed>2016-12-03 17:02:21</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>ブラウザ：アイテム購入画面が開けない</title>
+		<body>アイテムを購入しようとすると、購入確認画面が開かずそのまま閉じる</body>
+		<created>2016-11-20 06:01:38</created>
+		<closed>2016-11-21 15:50:18</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>起動時にタスクバーに表示されない</title>
+		<body>起動直後に別のプログラムにフォーカスがあると、タスクバーに表示されなくなることがある。 一度フォーカスされると以降表示されるようになる。 </body>
+		<created>2016-11-19 21:11:11</created>
+		<closed>2017-04-22 12:11:14</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>Tool Window (like "装備一覧") - window disappear when click on "File" menu.</title>
+		<body>![74eo-bug-tool-window](https://cloud.githubusercontent.com/assets/2091529/19619552/f6c248ce-98a4-11e6-9c3a-9de5a9da6c1e.gif)  Sometimes when I click the "File" menu of some tool window (eg: "装備一覧", "舰船图鉴" ) the menu would display but the tool window disappears. This bug doesn't happen right after I start 74EO, and I can't find a way to actively trigger it.  I found a workaround to make the window stop disappearing: enable and disable "Always on top" for 74EO. See the GIF on top for the behavior of the bug and the workaround. </body>
+		<created>2016-10-22 13:16:46</created>
+		<closed>2017-05-13 14:36:49</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>ブラウザ：キャッシュクリア時にフリーズする</title>
+		<body>キャッシュをクリアしようとすると操作不能になる。 原因不明 </body>
+		<created>2016-10-21 09:28:13</created>
+		<closed>2017-04-20 16:12:47</closed>
+	</bug>
+	<bug>
+		<id>81</id>
+		<title>羅針盤：敵連合艦隊戦時の表示不具合</title>
+		<body>・「ボス戦闘/敵連合」の文字が赤くならない ・戦闘が開始しても敵艦隊候補表示のままで、艦隊パラメータが出ない </body>
+		<created>2016-10-20 16:03:51</created>
+		<closed>2016-10-21 13:23:33</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>装備一覧：ソートすると項目が分離してしまうことがある</title>
+		<body>「全個数」「余個数」などの列でソートすると、稀に項目が分離してしまうことがある。 </body>
+		<created>2016-07-16 05:21:38</created>
+		<closed>2017-02-25 15:48:58</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>Condition timer not working correctly</title>
+		<body>After finishing a battle with combined fleet and come back to home port, ships in fleet 2 are actually in yellow-face condition, but the condition timer remind me that they are recover from bad-condition. ![qq 20160523222533](https://cloud.githubusercontent.com/assets/8273026/15474206/6ba678b8-2136-11e6-92f3-17edb3fc4a44.png)  If I refresh by coming back to home port, the timer work fine then ![qq 20160523222543](https://cloud.githubusercontent.com/assets/8273026/15474237/8afbb5de-2136-11e6-8489-f86c8fbebf7e.png) The timer of fleet 1 seems work fine all the time. </body>
+		<created>2016-05-23 14:35:57</created>
+		<closed>2017-06-24 12:01:03</closed>
+	</bug>
+</bugs>

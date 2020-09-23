@@ -1,0 +1,669 @@
+a85c1df087f018fb752811f2d61872a5f3782ae5, "Feten" JSON Endpoint (API) hinzu gefügt, closes #70, Thu Aug 27 12:58:03 2020 +0200
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/FeteController.java
+
+14bcb7c85a597c015f80bf7ba7963d8a0ab708c7, Liste der Feten hinzu gefügt, Layout korrigiert. Closes #83, closes #69, Thu Aug 27 12:05:55 2020 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Fete.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+M	fetenarchiv-web/src/main/resources/templates/feten/index.html
+M	fetenarchiv-web/src/main/resources/templates/fragments/layout.html
+
+2a0a7f266783c695880bb2f7fafa58336a1440fd, BUGGY - in der Navigation "Mediafiles" vs. "Veterinarians" ? Zudem unter "http://localhost:8080/feten" keine Objekte. Überprüfen!, Wed Aug 26 17:01:54 2020 +0200
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/FeteController.java
+A	fetenarchiv-web/src/main/resources/templates/feten/index.html
+
+473addbafb06d00fd307e072923380abbb0a7aef, Anlegen der CRUD-Tests für den MediaMapService - closes #82, Wed Aug 26 16:10:05 2020 +0200
+A	fetenarchiv-daten/src/test/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaMapServiceTest.java
+
+6edbbbb9498c80b364707b29dabc106740b4a5e0, Ergänzung des KontaktControllerTest, Anlegen des TerminControllerTest. Closes #67, closes #68, Wed Aug 26 15:34:38 2020 +0200
+M	README.md
+M	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktControllerTest.java
+A	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/TerminControllerTest.java
+
+ca1d747f06f2cd9c4e018d32e1f37ebe2e9c5589, Change to Java 11 docker image on CircleCI, Wed Aug 26 14:47:17 2020 +0200
+M	.circleci/config.yml
+
+db2fef3cbf61982b51ecb46654a7b926b6151ca0, Update auf Java 11 - inkl. Update auf Spring Boot 2.3.3 - inkl. skip repackaging für fetenarchiv-daten - Update bezüglich spring-boot-maven-plugin configuration - Upgrade des mockito-plugin für das wro4j-maven-plugin - (Re-)Integration des maven-surefire-plugins Version 2.22.2 (inkl. Junit5-support) im parent-pom, Wed Aug 26 14:46:00 2020 +0200
+M	fetenarchiv-daten/pom.xml
+M	fetenarchiv-web/pom.xml
+M	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaControllerTest.java
+M	pom.xml
+
+be893361f8233fc83b336e3e7219b1d524f1320b, Fixed test errors, Wed Aug 26 13:31:57 2020 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Basis.java
+M	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaControllerTest.java
+
+d13dd03d76b86e2653d03d1cf37eff368804fc70, closes #57 #67, Mon Aug 24 13:16:32 2020 +0200
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/TerminController.java
+M	fetenarchiv-web/src/main/resources/templates/kontakte/kontaktDetails.html
+
+e3ccfe54d9b12b733c6cc302ca3b7d60750eedcf, bei 7:44 - 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937848' (Abschnitt 8, Lektion 221), Fri Aug 21 14:49:37 2020 +0200
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+A	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/TerminController.java
+R100	fetenarchiv-web/src/main/resources/templates/medien/mediaAnlegenOderUpdatenForm.html	fetenarchiv-web/src/main/resources/templates/medien/mediaAnlegenOderAendernForm.html
+A	fetenarchiv-web/src/main/resources/templates/medien/terminAnlegenOderAendernForm.html
+
+fb6bf3fd474edb0c87f6669a6f91f37f98fc4be2, Der Spring Formatter nutzt den dem Thymeleaf Text-Input, um über den Titel das passende Objekt zu finden. Ohne den Formatter versucht Spring ein Objekt "MediaTyp" zu generieren und setzt dazu den Input-String von Thymeleaf als Long 'id' - das kann nicht funktionieren., Fri Aug 21 14:02:22 2020 +0200
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+A	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/formatters/MediaTypFormatter.java
+
+ac4cfa0009af456657dbc92c54947137ba0a6611, Mediendatei neu anlegen hinzu gefügt, Mediendatei ändern hinzu gefügt Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937840' (Abschnitt 8, Lektion 219) closes #56, Fri Aug 21 13:03:18 2020 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Basis.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+M	fetenarchiv-web/src/main/resources/templates/kontakte/kontaktDetails.html
+M	fetenarchiv-web/src/main/resources/templates/medien/mediaAnlegenOderUpdatenForm.html
+M	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaControllerTest.java
+
+bb42a80df43b9ec758fdc32fdd2eb4e51a9e8208, Builder pattern zu eigenen Klassen hinzu gefügt #56, Fri Aug 21 11:47:19 2020 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Adresse.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Basis.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Fete.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Kontakt.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaTyp.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Ort.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Person.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Termin.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+D	fetenarchiv-web/src/main/resources/templates/media/index.html
+A	fetenarchiv-web/src/main/resources/templates/medien/mediaAnlegenOderUpdatenForm.html
+A	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaControllerTest.java
+
+c5577fcea144ab2f8bcaf231109e98392f6bc4cf, Builder pattern zu MediaTyp hinzu gefügt #56 Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937840' (Abschnitt 8, Lektion 219), Wed Jul 29 10:57:58 2020 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaTyp.java
+
+9ecb564b337eb8be04ebd043b2d50e0f1740f07b, @ModelAttribute stellt die angefragten Daten für jede Methode innerhalb der Klasse unter der angegebenen Variable sicher. #56 Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937834' (Abschnitt 8, Lektion 218), Wed Jul 29 10:51:50 2020 +0200
+A	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/FeteController.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+
+94a9186afb8454e69c4a4d7b0cacfe908805ee64, Einfügen/Updaten eines Kontaktes. Closes #55 Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937832' (Abschnitt 8, Lektion 217), Thu Jul 23 01:11:52 2020 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Basis.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktController.java
+M	fetenarchiv-web/src/main/resources/templates/kontakte/findKontakte.html
+R057	fetenarchiv-web/src/main/resources/templates/kontakte/createOrUpdateKontaktForm.html	fetenarchiv-web/src/main/resources/templates/kontakte/kontaktAnlegenOderUpdatenForm.html
+M	fetenarchiv-web/src/main/resources/templates/kontakte/kontaktDetails.html
+M	fetenarchiv-web/src/main/resources/templates/kontakte/kontaktListe.html
+M	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktControllerTest.java
+
+7df87d539df222b080df0c6c2f94f1f234d15994, Fixed find by like. Closes #64 Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937828' (Abschnitt 8, Lektion 216), Thu Jul 16 16:52:04 2020 +0200
+M	fetenarchiv-web/src/main/resources/templates/kontakte/kontaktDetails.html
+R056	fetenarchiv-web/src/main/resources/templates/kontakte/kontakteList.html	fetenarchiv-web/src/main/resources/templates/kontakte/kontaktListe.html
+
+1733fdf9184f6b2136bdd55408ce3c9829fafe4c, Merge branch 'master' of github.com:Mesqualito/fetenarchiv, Wed Jul 8 16:10:31 2020 +0200
+6431f008cbc42ed72f6a36069970993a540ad083, Test-Driven Development - Kontakte finden analog zu 215: "https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937824" closes #54, Wed Jul 8 12:00:54 2020 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Kontakt.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/repositories/KontaktRepository.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/KontaktService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktMapService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/KontaktSDJpaService.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktController.java
+M	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktControllerTest.java
+
+8053a92c72e77882f72087fa630fad80cda6be4a, SECURITY: disallow binding between e.g. webforms and Spring! Analog zu 214: "https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937768", Tue Jul 7 12:49:51 2020 +0200
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktController.java
+
+a7c150f18df2489963f99a1d7cbf7790775bb0ba, Merge branch 'master' of https://github.com/Mesqualito/fetenarchiv, Tue Jul 7 12:40:44 2020 +0200
+d9adde9fd2b08b58d4f2365add9515e21fc1603e, Merge pull request #63 from Mesqualito/fix-MediaType, Tue Jul 7 12:37:51 2020 +0200
+23cbf1e3ba451c038667061946916d9fc4059e89, Analog zu 213: "https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937762", Tue Jul 7 12:35:13 2020 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaTyp.java
+M	fetenarchiv-web/pom.xml
+
+a849deb6f902cb71fe1a18a64b8031ed7a8aef1a, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937768' (Abschnitt 8, Lektion 214 - wdh.), Fri Mar 6 14:40:55 2020 +0100
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktController.java
+
+64c5eed34180022b1316f87394b1f63cf26462b3, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11937756' (Abschnitt 8, Lektion 216), Sun Feb 2 20:57:06 2020 +0100
+A	.mvn/wrapper/MavenWrapperDownloader.java
+A	.mvn/wrapper/maven-wrapper.jar
+A	.mvn/wrapper/maven-wrapper.properties
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Termin.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/KontaktService.java
+M	fetenarchiv-web/pom.xml
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktController.java
+M	fetenarchiv-web/src/main/less/header.less
+M	fetenarchiv-web/src/main/less/responsive.less
+M	fetenarchiv-web/src/main/less/typography.less
+A	fetenarchiv-web/src/main/resources/templates/kontakte/createOrUpdateKontaktForm.html
+A	fetenarchiv-web/src/main/resources/templates/kontakte/findKontakte.html
+A	fetenarchiv-web/src/main/resources/templates/kontakte/kontaktDetails.html
+A	fetenarchiv-web/src/main/resources/templates/kontakte/kontakteList.html
+M	fetenarchiv-web/src/main/wro/wro.properties
+M	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktControllerTest.java
+A	mvnw
+M	pom.xml
+
+6f17e778e2a9632c523592405e5df9f34d6620e9, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11934754' (Abschnitt 8, Lektion 196), Wed Sep 11 11:57:33 2019 +0200
+M	pom.xml
+
+42b9843588fac2b2438022b4ffdf04e73911b7d2, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11934754' (Abschnitt 8, Lektion 196), Wed Sep 11 11:44:01 2019 +0200
+M	pom.xml
+
+48add1c30c9198079ae133ebe2b4f86915634683, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11934754' (Abschnitt 8, Lektion 196), Wed Sep 11 11:31:39 2019 +0200
+M	pom.xml
+
+b6c647e3eac80582eaaa84addd5a711a445ad574, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11929644' (Abschnitt 8, Lektion 195), Wed Sep 11 11:12:20 2019 +0200
+M	README.md
+
+248a5325681b64eeb90aeb33249a01b0bc665cb2, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11929644' (Abschnitt 8, Lektion 195), Wed Sep 11 11:09:37 2019 +0200
+M	README.md
+
+4556d7128168491f1c337c84132f7619cc966e20, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11592722' (Abschnitt 8, Lektion 194) Fetenarchiv mit CircleCI zu continous integration project umbauen., Wed Sep 11 10:52:06 2019 +0200
+M	pom.xml
+
+c23bf4c6668d980bc9eee8e7195bfc9c298efad4, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11592722' (Abschnitt 8, Lektion 194) Fetenarchiv mit CircleCI zu continous integration project umbauen., Wed Sep 11 10:42:02 2019 +0200
+M	.circleci/config.yml
+
+a89d41c41990ffd8b1462761fe59fb1fb37d5631, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11592722' (Abschnitt 8, Lektion 194) Fetenarchiv mit CircleCI zu continous integration project umbauen., Wed Sep 11 10:28:37 2019 +0200
+M	fetenarchiv-daten/pom.xml
+M	pom.xml
+
+3c7c58bf245fbedcb407c2b6539f77f641150684, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11592722' (Abschnitt 8, Lektion 194) Fetenarchiv mit CircleCI zu continous integration project umbauen., Wed Sep 11 10:12:39 2019 +0200
+M	pom.xml
+
+6b7ad2ba61ab0dc10c40eb2dfeb6655df98591ed, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11592722' (Abschnitt 8, Lektion 194) Fetenarchiv mit CircleCI zu continous integration project umbauen., Wed Sep 11 10:04:20 2019 +0200
+A	.circleci/config.yml
+
+9ccacdb1979bf1cee3fe57627ae8d897d1a37582, Merge branch 'master' of github.com:Mesqualito/fetenarchiv, Wed Sep 11 09:51:32 2019 +0200
+cc9f955cdb2fa736fa0bbfdb86b5ee4f720322f8,  Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11592712' (Abschnitt 10, Lektion 192), Tue Sep 10 16:05:52 2019 +0200
+M	fetenarchiv-web/pom.xml
+A	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktControllerTest.java
+
+2fdc3a98a0125af121857067ac01ae578c2e4793,  Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11592712' (Abschnitt 10, Lektion 192)  - Junit5 environment with Mockito testing, Tue Sep 10 15:44:39 2019 +0200
+M	fetenarchiv-daten/pom.xml
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/KontaktSDJpaService.java
+A	fetenarchiv-daten/src/test/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/KontaktSDJpaServiceTest.java
+
+ccf245c5b64415aabddec7486b36849286e385e8, Merge branch 'master' of github.com:Mesqualito/fetenarchiv, Mon Sep 9 09:22:37 2019 +0200
+09ceb84d2dc0cf2daa31a852ba0d5b68a11fd7a8, Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11592708' (Abschnitt 8, Lektion 191), Thu Sep 5 23:23:33 2019 +0200
+M	fetenarchiv-daten/pom.xml
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktMapService.java
+A	fetenarchiv-daten/src/test/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktMapServiceTest.java
+A	fetenarchiv-web/src/main/resources/templates/notimplemented.html
+
+c4e328a990c16c185375371ca09513b3b787d968, Merge branch 'master' of github.com:Mesqualito/fetenarchiv, Thu Sep 5 22:26:29 2019 +0200
+57d6123703a18fa3c3eb9b271ad5a8139fe1064e,  Analog zu 'https://www.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/11592692' (Abschnitt 10, Lektion 189)  - Umbau auf JUnit5 Test framework (ohne junit5-vintage - pure Junit5), Thu Sep 5 17:02:17 2019 +0200
+M	fetenarchiv-daten/pom.xml
+M	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplicationTests.java
+
+22db45546298b3bdc2221d5396170c2c1102ec9f, Umbau wie unter - https://blog.frankel.ch/multiple-modules-spring-boot-apps/ - http://maven.apache.org/guides/mini/guide-configuring-plugins.html und - https://maven.apache.org/plugins/maven-help-plugin/plugin-info.html beschrieben, Thu Sep 5 16:44:03 2019 +0200
+M	fetenarchiv-daten/pom.xml
+M	fetenarchiv-web/pom.xml
+M	pom.xml
+
+9606e145449bd43d48db7726180dcfd91561a05a, Merge branch 'master' of github.com:Mesqualito/fetenarchiv, Mon Aug 5 10:48:14 2019 +0200
+882be16930d54558ae104e45fb2b92de0c6910e6, git: amending the message of older or multiple commit messages (see: https://help.github.com/en/articles/changing-a-commit-message#amending-older-or-multiple-commit-messages) Change "pick" to "reword" (...) and 'git push --force' Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/lecture/11353914' (Abschnitt 8, Lektion 175), Mon Jul 29 13:13:34 2019 +0200
+M	ext_doc/Entity-Analogien.txt
+
+81e1191e2c374a42d745e6fc477d921c3140ba50, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/lecture/11353900' (Abschnitt 9, Lektion 174) Closes #51, Mon Jul 29 12:41:45 2019 +0200
+M	ext_doc/Entity-Analogien.txt
+M	fetenarchiv-daten/pom.xml
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Adresse.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Basis.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Fete.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Kontakt.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaTyp.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Ort.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Person.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Termin.java
+M	fetenarchiv-web/pom.xml
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+
+5dd87ee914744a18fab5336336403f580b01810d, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/lecture/11309080' (Abschnitt 8, Lektion 165) Closes #48, Wed Jun 12 16:51:55 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Fete.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/repositories/OrtRepository.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AdresseMapService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/FeteMapService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktMapService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaMapService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypMapService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OrtMapService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/TerminMapService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/OrtSDJpaService.java
+M	fetenarchiv-web/pom.xml
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplication.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+M	fetenarchiv-web/src/main/resources/application.properties
+
+238894cc5280812dbc3633a6568e99bb620681b9, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/lecture/11309074' (Abschnitt 8, Lektion 164) Closes #47, Wed Jun 12 15:33:02 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Termin.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/TerminMapService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/TerminSDJpaService.java
+
+fd1f5938fc640c5025ae0b994ec27d675b099dd7, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/lecture/11309068' (Abschnitt 8, Lektion 163) Closes #46, Wed Jun 12 14:47:33 2019 +0200
+A	ext_doc/Entity-Analogien.txt
+D	ext_doc/entity-analogy.ods
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/TerminService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/TerminMapService.java
+
+80fe20a650a1a0640c685a648dff13f9ca87c63f, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/lecture/11309062' (Abschnitt 8, Lektion 161) Closes #44, Wed Jun 12 13:34:09 2019 +0200
+R092	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AdresseServiceMap.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AdresseMapService.java
+R091	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/FeteServiceMap.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/FeteMapService.java
+R094	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktServiceMap.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktMapService.java
+R091	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaServiceMap.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaMapService.java
+R092	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypServiceMap.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypMapService.java
+R091	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OrtServiceMap.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OrtMapService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/AdresseSDJpaService.java
+
+a2e3acfc0d47df52d5068bdcca38246bc1ff70d2, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/lecture/11309058' (Abschnitt 8, Lektion 160) Closes #43, Wed Jun 12 13:26:29 2019 +0200
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/MediaSDJpaService.java
+R095	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypSDJpaService.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/MediaTypSDJpaService.java
+
+390d650abfbd1d3d20dd5e39d0efb9f2a680f893, Gute Erklärung zu Weblayern mit RESTful APIs, die vom Backend die DTO's als "Subsets" (Filter und Converter) von und zu JPA-Entities (Java-Analogie zu bestimmten Datenbank-Einträgen; inklusive ORM) bereitgestellt bekommen: https://youtu.be/2aXTGFbQWWg?list=PL5zqnt1ZMVL95co2xogkG9bohbY92zn1_&t=924, Wed Jun 12 13:00:22 2019 +0200
+A	ext_doc/JHipster-generated Backend.png
+A	ext_doc/Spring Boot Components 3 Layer.png
+R100	fetenarchiv-web/src/main/resources/entity-analogy.ods	ext_doc/entity-analogy.ods
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypSDJpaService.java
+
+b25af4092644e1eb4d82c8673256237ce3e7d481, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11309032' (Abschnitt 8, Lektion 158) zzgl. Klassen-Renaming für konsistente Analogien..., Mon May 6 17:42:00 2019 +0200
+R059	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/AdressenService.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/AdresseService.java
+R061	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/FetenService.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/FeteService.java
+R059	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/MediaTypenService.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/MediaTypService.java
+R079	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AdressenServiceMap.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AdresseServiceMap.java
+R080	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/FetenServiceMap.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/FeteServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktServiceMap.java
+R079	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypenServiceMap.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/FeteSDJpaService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/KontaktSDJpaService.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+
+e9587cf8e96a11a5ab22b4bf6d24f3e76f8684c5, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11309028' (Abschnitt 8, Lektion 157) Test erfolgreich!, Mon May 6 17:19:54 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/repositories/KontaktRepository.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/KontaktService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/springdatajpa/KontaktSDJpaService.java
+M	fetenarchiv-web/src/main/resources/entity-analogy.ods
+
+d72f3fb04a65f00081114abc356ad138f7704eb3, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11309022' (Abschnitt 8, Lektion 156), Tue Apr 16 14:53:01 2019 +0200
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/repositories/AdresseRepository.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/repositories/FeteRepository.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/repositories/KontaktRepository.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/repositories/MediaRepository.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/repositories/MediaTypRepository.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/repositories/TerminRepository.java
+
+13c72419f6d79df645674ef200ddefe027dd2fef, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11309020' (Abschnitt 8, Lektion 155), Tue Apr 16 14:30:44 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Adresse.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Kontakt.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Ort.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Termin.java
+
+73dc04593ca49c0faeaca186f01576a5b9c46e99, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11309016' (Abschnitt 8, Lektion 154), Tue Apr 16 13:33:46 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Adresse.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Fete.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Kontakt.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Ort.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/RcType.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/RemoteContact.java
+
+4ac3d2be4b589e6b840dd87df6c58c6e24b278db, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11309012' (Abschnitt 8, Lektion 153), Tue Apr 16 11:24:08 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Adresse.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Basis.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Kontakt.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaTyp.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Person.java
+
+ce28f88c4e807a8f27f37644f642b00666dadccb, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11309006' (Abschnitt 8, Lektion 152), Tue Apr 16 10:26:44 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Basis.java
+
+469b556e24ace36b2fa3b9c52bd9f5537454a353, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11267488' (Abschnitt 7, Lektion 133), Wed Apr 3 23:34:07 2019 +0200
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/IndexController.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktController.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+
+4c1fad161a3c5e63eceb3b40fd63e2522b86c418, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11267472' (Abschnitt 7, Lektion 132), Wed Apr 3 23:09:56 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktServiceMap.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+M	fetenarchiv-web/src/main/resources/entity-analogy.ods
+
+efa999493ced95dfd202f2611536dc1c6d016fce, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11248118' (Abschnitt 7, Lektion 130), Sun Mar 31 15:56:50 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Kontakt.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktServiceMap.java
+
+f0bdb822bfd26c51de6ce21f744c1122da88cfa8, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11248100' (Abschnitt 7, Lektion 128), Sun Mar 31 15:12:01 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/MediaTypenService.java
+
+40c7de8a5806d6db7e831789c3c55ad1d838cf87, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11248062' (Abschnitt 7, Lektion 126) und 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11248080' (Abschnitt 7, Lektion 127), Sun Mar 31 15:04:30 2019 +0200
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Kontakt.java
+
+717132660b537b16d50048bb45416893ae4ca993, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11248056' (Abschnitt 7, Lektion 125), Tue Mar 19 00:05:31 2019 +0100
+M	LICENSE
+R082	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Address.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Adresse.java
+R085	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/BaseEntity.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Basis.java
+R081	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Event.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Fete.java
+R068	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Owner.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Kontakt.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java
+R095	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaType.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaTyp.java
+R096	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Place.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Ort.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Person.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/RcType.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/RemoteContact.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Termin.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/AddressService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/AdressenService.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/EventService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/FetenService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/KontaktService.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/MediaTypeService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/MediaTypenService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/OrtService.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/OwnerService.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/PlaceService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AbstractMapService.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AddressServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AdressenServiceMap.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/EventServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/FetenServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/KontaktServiceMap.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypeServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypenServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OrtServiceMap.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OwnerServiceMap.java
+D	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/PlaceServiceMap.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+A	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/KontaktController.java
+D	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/OwnerController.java
+A	fetenarchiv-web/src/main/resources/entity-analogy.ods
+M	fetenarchiv-web/src/main/resources/templates/fragments/layout.html
+R051	fetenarchiv-web/src/main/resources/templates/owners/index.html	fetenarchiv-web/src/main/resources/templates/kontakte/index.html
+
+5dd5ab73804a85cd688058e2fc03150435cbf421, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11248014', Mon Mar 18 22:58:47 2019 +0100
+M	fetenarchiv-web/pom.xml
+M	fetenarchiv-web/src/main/resources/templates/media/index.html
+
+17d27c8b11de487507912bacaae6286734f2e776, Test mit bootstrap 3.4.1 ('latest' bootstrap 3.x-Release): läuft, Mon Mar 18 22:44:24 2019 +0100
+M	fetenarchiv-web/pom.xml
+M	fetenarchiv-web/src/main/resources/templates/media/index.html
+M	fetenarchiv-web/src/main/wro/wro.xml
+
+f44916a033c274ac975bc31afc7c08f60f04a8cf, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11247998', Mon Mar 18 22:34:30 2019 +0100
+M	fetenarchiv-web/src/main/resources/templates/owners/index.html
+
+6687f17ce9b66d05ed17d0f4137f40452233e35c, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11247984' Intellij's git-Plugin hat trotz 'Refresh File Status' nicht alle neuen Dateien mit aufgenommen., Mon Mar 18 20:08:09 2019 +0100
+M	.gitignore
+A	fetenarchiv-web/pom.xml
+A	fetenarchiv-web/src/main/less/fetenarchiv.less
+A	fetenarchiv-web/src/main/less/header.less
+A	fetenarchiv-web/src/main/less/responsive.less
+A	fetenarchiv-web/src/main/less/typography.less
+A	fetenarchiv-web/src/main/resources/messages/messages.properties
+A	fetenarchiv-web/src/main/resources/messages/messages_de.properties
+A	fetenarchiv-web/src/main/resources/messages/messages_en.properties
+A	fetenarchiv-web/src/main/wro/wro.properties
+A	fetenarchiv-web/src/main/wro/wro.xml
+
+e663d688a0ad010aa7caf07aedc95a29aba42ecf, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11247984', Mon Mar 18 19:59:58 2019 +0100
+M	fetenarchiv-web/src/main/resources/application.properties
+
+d5bbfd0c00d407358b07b818c1c37c88a945582b, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11247966?', Mon Mar 18 19:45:34 2019 +0100
+M	fetenarchiv-web/src/main/resources/templates/fragments/layout.html
+
+9880b3c81f3dd3b4d34d0867dd3c7eeb85900c4b, Um das Projekt mit wro4j zum Laufen zu bekommen und nahe am Kurs (https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11247952) zu bleiben, wurde Gradle entfernt und Maven implementiert, Mon Mar 18 19:24:55 2019 +0100
+D	build.gradle
+D	fetenarchiv-daten/build.gradle
+A	fetenarchiv-daten/pom.xml
+D	fetenarchiv-web/build.gradle
+D	gradle.properties
+D	gradle/wrapper/gradle-wrapper.jar
+D	gradle/wrapper/gradle-wrapper.properties
+D	gradlew
+D	gradlew.bat
+A	pom.xml
+D	settings.gradle
+
+5624ea1e2541256b037aa6e531cf5ab5e38f5159, Entfernen des 'https://github.com/wro4j/wro4j-gradle-plugin' - ich finde keine Möglichkeit, wie beim wro4j-maven-plugin individuelle Pfade fest zu legen, so dass die bisherige Ordnerstruktur beibehalten werden kann., Sat Mar 16 22:57:38 2019 +0100
+M	fetenarchiv-daten/build.gradle
+M	fetenarchiv-web/build.gradle
+
+af967bd41de5be9e9722d6c03c7986450ae0d2e0, Analog zu 'https://www.udemy.com/spring-framework-5-beginner-to-guru/learn/v4/t/lecture/11247966', Fri Mar 15 23:30:29 2019 +0100
+M	fetenarchiv-daten/build.gradle
+M	fetenarchiv-web/build.gradle
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplication.java
+M	fetenarchiv-web/src/main/resources/templates/index.html
+M	gradle.properties
+
+dcb0525451cf303b80f880916f80fc31858b5ea0, WRO4J-Integration mit 'https://github.com/wro4j/wro4j-gradle-plugin' (letzter Commit dort am 4.08.2016!), nach Anleitung unter 'https://github.com/IlyaAI/wro4j-gradle-plugin'., Fri Mar 15 22:01:16 2019 +0100
+M	fetenarchiv-web/build.gradle
+M	fetenarchiv-web/src/main/resources/templates/fragments/layout.html
+
+ac479bf5aa628c0cbaccf5340e28d395a0ed56da, Template-Ressourcen, kopiert aus 'https://github.com/spring-projects/spring-petclinic', Thu Mar 14 00:15:26 2019 +0100
+M	fetenarchiv-web/src/main/resources/static/resources/images/favicon.png
+A	fetenarchiv-web/src/main/resources/static/resources/images/ffw-logo.png
+A	fetenarchiv-web/src/main/resources/static/resources/images/ffw-luelsfeld-wappen.png
+A	fetenarchiv-web/src/main/resources/static/resources/images/wappen-luelsfeld.png
+A	fetenarchiv-web/src/main/resources/templates/fragments/inputField.html
+A	fetenarchiv-web/src/main/resources/templates/fragments/layout.html
+A	fetenarchiv-web/src/main/resources/templates/fragments/selectField.html
+
+d2dd56b4d10fff70c9ca05f2a30c017fd4ceaba6, Statische Beispiel-Ressourcen, kopiert aus 'https://github.com/spring-projects/spring-petclinic', Wed Mar 13 23:29:46 2019 +0100
+A	fetenarchiv-web/src/main/resources/static/resources/fonts/montserrat-webfont.eot
+A	fetenarchiv-web/src/main/resources/static/resources/fonts/montserrat-webfont.svg
+A	fetenarchiv-web/src/main/resources/static/resources/fonts/montserrat-webfont.ttf
+A	fetenarchiv-web/src/main/resources/static/resources/fonts/montserrat-webfont.woff
+A	fetenarchiv-web/src/main/resources/static/resources/fonts/varela_round-webfont.eot
+A	fetenarchiv-web/src/main/resources/static/resources/fonts/varela_round-webfont.svg
+A	fetenarchiv-web/src/main/resources/static/resources/fonts/varela_round-webfont.ttf
+A	fetenarchiv-web/src/main/resources/static/resources/fonts/varela_round-webfont.woff
+A	fetenarchiv-web/src/main/resources/static/resources/images/favicon.png
+A	fetenarchiv-web/src/main/resources/static/resources/images/pets.png
+A	fetenarchiv-web/src/main/resources/static/resources/images/platform-bg.png
+A	fetenarchiv-web/src/main/resources/static/resources/images/spring-logo-dataflow-mobile.png
+A	fetenarchiv-web/src/main/resources/static/resources/images/spring-logo-dataflow.png
+A	fetenarchiv-web/src/main/resources/static/resources/images/spring-pivotal-logo.png
+
+65f732eb9fe635176bf46c7efbf2f76d0b9f3456, 'AbstractMapService' vergibt für die Service-Map-Implementationen automatisch die nächste Long der jeweiligen HashMap bei Ausführung der Methode 'save'., Sat Mar 9 00:07:12 2019 +0100
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AbstractMapService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AddressServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/EventServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypeServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OwnerServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/PlaceServiceMap.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+
+0abae7b29516d0d2e525dfac35d90ab102c42c03, 'save'-Methoden implementiert!, Fri Mar 8 23:29:50 2019 +0100
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/AddressService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/EventService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/MediaTypeService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/PlaceService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AddressServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaTypeServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/PlaceServiceMap.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+M	fetenarchiv-web/src/main/resources/templates/media/index.html
+
+789a07633cc599213e54147f27b70c03cc00adc3, My owner hashmap stays zero when thymeleaf tries to get 'owners' :-(, Fri Mar 8 20:05:35 2019 +0100
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AbstractMapService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/EventServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OwnerServiceMap.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/OwnerController.java
+
+fe8466dad90fa79c0347f40c6954e177c0c52fbd, Merge branch 'master' of github.com:Mesqualito/fetenarchiv, Fri Mar 8 18:51:25 2019 +0100
+b425c4c2fb401a671ee372ce854f23fab735aaeb, https://spring-framework-guru.slack.com/conversation/G85J959B8/p1544809909356300 hilft auch nicht., Fri Mar 8 18:50:10 2019 +0100
+M	fetenarchiv-daten/build.gradle
+M	fetenarchiv-web/src/main/resources/templates/owners/index.html
+
+47fd279b577e51c769adbb8babe817bd560417ce, https://spring-framework-guru.slack.com/conversation/G85J959B8/p1544809909356300 hilft auch nicht., Fri Mar 8 18:28:29 2019 +0100
+M	fetenarchiv-daten/build.gradle
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/OwnerController.java
+
+986b60c6f1dd1add749767316d10a4f5d5fcdb1f, Create CODE_OF_CONDUCT.md, Fri Mar 8 18:09:11 2019 +0100
+A	CODE_OF_CONDUCT.md
+
+b1fa64762092f56f7b683d4e1dc7a0944ab75d52, "Not-safe" thymeleaf operator '?.' entfernt: wir haben zwei Beispiel 'Owner'-Objekte fest im bootstrapping verdrahtet. Dennoch zeigt mir 'localhost:8080/owners/index' diese beiden Objekte nicht an..., Fri Mar 8 17:58:01 2019 +0100
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/OwnerController.java
+M	fetenarchiv-web/src/main/resources/templates/owners/index.html
+
+40252bdac082b4e1eef39b9c54c4032f7261af7a, gradle und Spring Boot in einem Multi-Mode-Projekt ist nicht wirklich klar dokumentiert. Es gibt innerhalb der google-Suche über die letzten 12 Monate eine Vielzahl von funktionierenden Versionen - allerdings immer verschiedenen Versionen von Gradle, dem Spring framework inklusive dem 'io.spring.dependency-management' und dem Spring Boot gradle Plugin zugehörig., Fri Mar 8 17:44:20 2019 +0100
+M	build.gradle
+M	fetenarchiv-daten/build.gradle
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OwnerServiceMap.java
+M	fetenarchiv-web/build.gradle
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/OwnerController.java
+D	fetenarchiv-web/src/main/resources/templates/owner/index.html
+A	fetenarchiv-web/src/main/resources/templates/owners/index.html
+M	settings.gradle
+
+b756822ab52121978955b3353ae694f3ccc8f135, Um die eingebundene DataSourceAutoConfiguration durch 'spring-boot-starter-data-jpa' abzuschalten und den Fehler "Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured'" zu vermeiden, muss an dieser Stelle im Projekt ein 'exclude' für SpringBoot eingebunden werden:, Fri Mar 8 14:52:34 2019 +0100
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplication.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+
+5198756219863b40daec0342d7948b795f259225, Das Spring framework übernimmt:  "autowiring" der benötigten Klassen "by constructor":  die Interfaces zu den verschiedenen Service-Implementierungen  (Map, Speicherung auf Dateiebene, Datenablage in verschiedenen Datenbanken)  werden dem 'DataInitializer'-Objekt zur Verfügung gestellt, Fri Mar 8 14:23:15 2019 +0100
+M	build.gradle
+M	fetenarchiv-daten/build.gradle
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/EventServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OwnerServiceMap.java
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+
+e25dfb84106d89def47522f7e306be040b3da4f1, Einfaches 'Bootstrapping' von Daten. Gradle Spring framework Multi-Module Konfiguration erneut angepasst., Fri Mar 8 14:01:37 2019 +0100
+M	build.gradle
+M	fetenarchiv-daten/build.gradle
+M	fetenarchiv-web/build.gradle
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+M	fetenarchiv-web/src/main/resources/application.properties
+
+59450526a77b06b01b66d78658bd3bad9a678a5b, Gradle Spring framework Multi-Module Konfiguration angepasst., Fri Mar 8 12:55:12 2019 +0100
+M	build.gradle
+M	fetenarchiv-daten/build.gradle
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaServiceMap.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OwnerServiceMap.java
+M	fetenarchiv-web/build.gradle
+A	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/bootstrap/DataInitializer.java
+M	gradle.properties
+
+75e4a322084eb3319a839567764d110db051644b, Spring Boot ist ein 'Configuration Wrapper' um das Spring Framework herum., Fri Mar 8 11:22:51 2019 +0100
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplication.java
+
+037f56e7f9bcea3d88c19bbfcf9216d0eb9a94e5, 'resources/templates/owner/index.html' hinzu gefügt, 'controllers/OwnerController' hinzu gefügt Closes #11, Fri Mar 8 09:49:54 2019 +0100
+M	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+A	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/OwnerController.java
+M	fetenarchiv-web/src/main/resources/application.properties
+M	fetenarchiv-web/src/main/resources/templates/media/index.html
+A	fetenarchiv-web/src/main/resources/templates/owner/index.html
+
+9d80f3b32d5a77872d6619149a16ff7bc52516a8, 'resources/templates/media/index' hinzu gefügt, 'controllers/IndexController' hinzu gefügt Closes #10, Fri Mar 8 09:37:29 2019 +0100
+R088	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/IndexController.java	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/IndexController.java
+A	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/controllers/MediaController.java
+A	fetenarchiv-web/src/main/resources/templates/media/index.html
+
+7bbb6310d2ae6e61be9c505c63721fb7bcacf31f, Ein erstes thymeleaf-template 'index.html' hinzu gefügt, 'IndexController' hinzu gefügt Closes #9, Wed Mar 6 23:37:28 2019 +0100
+A	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/IndexController.java
+M	fetenarchiv-web/src/main/resources/application.properties
+A	fetenarchiv-web/src/main/resources/templates/index.html
+
+5da6f8fb6a74ecc08d7ae8700f7432a385871b23, Map-Services hinzu gefügt Closes #7, Wed Mar 6 22:52:27 2019 +0100
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/AbstractMapService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/EventServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/MediaServiceMap.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/map/OwnerServiceMap.java
+
+08557e25a5f4954df54bc2a9ac665e1478205321, Zum Verständnis des springframework data repositories wird der 'CrudService' als kleiner Nachbau des 'CrudRepositories' der 'spring-data-commons' angelegt und in den verschiedenen Services um die spezifischen Typen ergänzt und ggf. erweitert, Wed Mar 6 22:23:45 2019 +0100
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/CrudService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/EventService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/MediaService.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/OwnerService.java
+
+857076ca85852b2ef48c3a6d69d120066465baad, Start Spring Boot App with individual banner! Text to ASCII Art Generator: http://patorjk.com/software/taag, Wed Mar 6 22:07:58 2019 +0100
+A	fetenarchiv-web/src/main/resources/banner.txt
+
+4d6f186e98d3350b5eaa5867171d91fe65af98af, Erweiterung der Klassen durch die 'BaseEntity', Vergabe von ID's an die Klassen. Closes #5, Wed Mar 6 17:25:13 2019 +0100
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Address.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/BaseEntity.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Event.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaType.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Person.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Place.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/RcType.java
+M	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/RemoteContact.java
+
+aad7b26f476266203e324da5ad4bd5bac566afef, Einbau der ersten Interface für den Service-Layer, Wed Mar 6 16:39:30 2019 +0100
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/EventService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/MediaService.java
+A	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/services/OwnerService.java
+
+9ed19a1de91ab4a14be62f2296f563ff38f18470, [Gradle Release Plugin] - new version commit:  '0.0.2-SNAPSHOT'., Wed Mar 6 15:25:42 2019 +0100
+M	gradle.properties
+
+cf8cbdd48b0b327182cad215017dce83344c3585, [Gradle Release Plugin] - pre tag commit:  '0.0.1'., Wed Mar 6 15:25:26 2019 +0100
+M	gradle.properties
+
+674aa649485cb8e0a3baa3148d242b324cab63e0, [Gradle Release Plugin] - new version commit:  '0.0.3'., Wed Mar 6 15:15:14 2019 +0100
+M	gradle.properties
+
+b568edce56521b33bd2ca52a4b8c877295cbfdec, [Gradle Release Plugin] - pre tag commit:  '0.0.2'., Wed Mar 6 14:55:30 2019 +0100
+M	gradle.properties
+
+171f2bc0e2281a7230a3014042516987701d4037, Einbau des 'gradle-release' Plugins vom Package 'net.researchgate' Closes #3., Wed Mar 6 14:55:20 2019 +0100
+M	build.gradle
+
+626333b053af6af3857022822029f41bbe2cf1f3, Einbau des 'gradle-release' Plugins vom Package 'net.researchgate' Closes #3., Wed Mar 6 14:52:01 2019 +0100
+M	build.gradle
+
+6284b272ece60eae64a80944453c91d2151bd82a, Einbau des 'gradle-release' Plugins vom Package 'net.researchgate' Closes #3., Wed Mar 6 14:38:30 2019 +0100
+M	gradle.properties
+
+c36348c2339f6779db8b2220cf3ae27aefd2340d, Einbau des 'gradle-release' Plugins vom Package 'net.researchgate' Closes #3., Wed Mar 6 14:37:51 2019 +0100
+M	gradle.properties
+
+38ff446e134495d68ff63c2abea254d7902f09ed, Einbau des 'gradle-release' Plugins vom Package 'net.researchgate' Closes #3., Wed Mar 6 14:36:04 2019 +0100
+A	gradle.properties
+
+97af2ad993596cc129e8d5f3f93027c5e5510e9e, Einbau des 'gradle-release' Plugins vom Package 'net.researchgate' Closes #3., Wed Mar 6 14:28:24 2019 +0100
+M	build.gradle
+
+4d4ce920c21495a9a95666f390bc455f63ec9bc2, Umgestaltung ('Refactoring') zu 'Multi-Module Project' Closes #2., Wed Mar 6 14:12:00 2019 +0100
+M	.gitignore
+M	LICENSE
+M	README.md
+M	build.gradle
+A	fetenarchiv-daten/build.gradle
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Address.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Address.java
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Event.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Event.java
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaType.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaType.java
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Owner.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Owner.java
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Person.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Person.java
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Place.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/Place.java
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/model/RcType.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/RcType.java
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/model/RemoteContact.java	fetenarchiv-daten/src/main/java/com/eigenbaumarkt/fetenarchiv/model/RemoteContact.java
+A	fetenarchiv-web/build.gradle
+R100	src/main/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplication.java	fetenarchiv-web/src/main/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplication.java
+R100	src/main/resources/application.properties	fetenarchiv-web/src/main/resources/application.properties
+R100	src/test/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplicationTests.java	fetenarchiv-web/src/test/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplicationTests.java
+M	gradle/wrapper/gradle-wrapper.properties
+M	settings.gradle
+
+a512af147070a603133e4bb2ee550090d4d9d7ce, Plain Old Java Projects... durchstarten! Closes #1., Wed Mar 6 11:22:33 2019 +0100
+M	.gitignore
+A	build.gradle
+A	gradle/wrapper/gradle-wrapper.jar
+A	gradle/wrapper/gradle-wrapper.properties
+A	gradlew
+A	gradlew.bat
+A	settings.gradle
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplication.java
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Address.java
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Event.java
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Media.java
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/model/MediaType.java
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Owner.java
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Person.java
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/model/Place.java
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/model/RcType.java
+A	src/main/java/com/eigenbaumarkt/fetenarchiv/model/RemoteContact.java
+A	src/main/resources/application.properties
+A	src/test/java/com/eigenbaumarkt/fetenarchiv/FetenarchivApplicationTests.java
+
+c2e5290641d657ed0dc58583d2f2c33ccd5edd7c, Initial commit, Wed Mar 6 10:13:47 2019 +0100
+A	.gitignore
+A	LICENSE
+A	README.md

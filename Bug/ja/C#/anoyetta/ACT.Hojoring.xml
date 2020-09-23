@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>84</id>
+		<title>スペスペの文字アウトラインについて</title>
+		<body>スペスペをスキルのリキャスト管理で使っているのですが スペスペの文字のアウトラインがリキャスト時間をアイコンに重ねるにチェックを入れると 文字のアウトラインが適用されなくなります。これは仕様なのでしょうか？ 画像も添付しておきます。 ![default](https://user-images.githubusercontent.com/36393376/45306834-8bae3700-b558-11e8-9a9b-591c33fa040f.png) ![2](https://user-images.githubusercontent.com/36393376/45306847-923cae80-b558-11e8-82c1-d0d0d1ddc2f7.png)  テキストのアウトライン増幅率をいじらずに、リキャスト時間をアイコンに重ねるにチェック入れるか 入れないかでこのようなかんじになっています。 </body>
+		<created>2018-09-10 15:21:10</created>
+		<closed>2018-09-12 08:19:44</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>テロップのデザインモードの表示が消えなくなる場合がある</title>
+		<body>表題の通り。 一時的にオーバーレイを無効にすれば消えるが、お邪魔</body>
+		<created>2018-02-03 16:35:58</created>
+		<closed>2018-02-03 23:32:54</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>テロップのタイトルの変更がツリーに反映されない</title>
+		<body>データ的には更新されているが見た目だけ反映されていない。</body>
+		<created>2018-02-03 16:34:16</created>
+		<closed>2018-02-03 16:55:37</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>「擬似的にマッチする」が動作しない</title>
+		<body>擬似的にマッチする機能が正しく動作しない</body>
+		<created>2018-02-03 16:31:40</created>
+		<closed>2018-02-04 00:36:19</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>[UltraScouter} HPバーとHP値の前後関係について</title>
+		<body>HPバーがHP値の前面にいかないように対策しているが、それの影響で他のオーバーレイが背面にまわってしまうケースがある。これを解消する。  以下、修正方法 * HPバーとHP値を重ねるオプション設定を追加する * 上記のオプションをONにしたらバーと値を同じオーバーレイ内に描画して前後関係を指定する * HPバーに対するHP値の想定的な位置は固定とする HPバーの上下中央, 右づめ とする</body>
+		<created>2018-01-21 08:30:07</created>
+		<closed>2018-01-21 13:00:22</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>[UltraScouter] BOSSのバーが表示されない時がある</title>
+		<body>BOSSの名前やHP値が表示される状況でバー（HPバーか？キャストバーか？）が表示されない。 ターゲット、フォーカスターゲットを外したり、表示のON/OFFを切り替えると復帰する。</body>
+		<created>2017-11-15 15:32:15</created>
+		<closed>2017-11-30 07:51:18</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>[TTSYukkuri] 英語版Windows でAquesTalkが動かない</title>
+		<body>掲題の通り。 IMEの逆変換ができないせいかと思ったらそうではなかった。英語版WindowsでIMEを有効にしても改善しない。英語版Windowsでデバッグする必要がある。</body>
+		<created>2017-11-05 13:46:50</created>
+		<closed>2017-11-09 07:07:12</closed>
+	</bug>
+	<bug>
+		<id>7</id>
+		<title>[TTSYukkuri] Dicordに高密度で発声しているとサーバからDisconnectされるときがある</title>
+		<body>DSharpPlusのバグらしい。 Disconnectを検知して自動的に再接続させるようにしたい。</body>
+		<created>2017-11-05 13:45:18</created>
+		<closed>2018-05-31 08:40:52</closed>
+	</bug>
+	<bug>
+		<id>6</id>
+		<title>[SpecialSpellTimer] 長時間使用しているとマッチングが遅延する</title>
+		<body>再現状況はよくわからない。 ログ密度の高いコンテンツを長時間にわたって繰り返していると発生する様子。 発生時のログには例外が出ていない。 #</body>
+		<created>2017-11-05 13:42:16</created>
+		<closed>2017-11-09 07:07:12</closed>
+	</bug>
+	<bug>
+		<id>5</id>
+		<title>[UltraScouter] BOSS関係で例外が発生する</title>
+		<body>環境に不備があったのが前提だがBOSSInfoで例外が発生する。  2017-11-04 01:14:38.4031 [FATAL] ACT.UltraScouter.Workers.MainWorker.&lt;Start&gt;b15_0() GetOverlayData error. System.NullReferenceException: オブジェクト参照がオブジェクト インスタンスに設定されていません。    場所 ACT.UltraScouter.Workers.BossInfoWorker.GetCombatant()    場所 ACT.UltraScouter.Workers.TargetInfoWorker.GetData()    場所 ACT.UltraScouter.Workers.MainWorker.GetDataDelegate.Invoke()    場所 ACT.UltraScouter.Workers.MainWorker.&lt;Start&gt;b15_0() 2017-11-04 01:14:38.4537 [FATAL] ACT.UltraScouter.Workers.MainWorker.&lt;Start&gt;b15_0() GetOverlayData error. System.NullReferenceException: オブジェクト参照がオブジェクト インスタンスに設定されていません。    場所 ACT.UltraScouter.Workers.BossInfoWorker.GetCombatant()    場所 ACT.UltraScouter.Workers.TargetInfoWorker.GetData()    場所 ACT.UltraScouter.Workers.MainWorker.GetDataDelegate.Invoke()    場所 ACT.UltraScouter.Workers.MainWorker.&lt;Start&gt;b15_0() 2017-11-04 01:14:38.5044 [FATAL] ACT.UltraScouter.Workers.MainWorker.&lt;Start&gt;b15_0() GetOverlayData error. System.NullReferenceException: オブジェクト参照がオブジェクト インスタンスに設定されていません。    場所 ACT.UltraScouter.Workers.BossInfoWorker.GetCombatant()    場所 ACT.UltraScouter.Workers.TargetInfoWorker.GetData()    場所 ACT.UltraScouter.Workers.MainWorker.GetDataDelegate.Invoke()    場所 ACT.UltraScouter.Workers.MainWorker.&lt;Start&gt;b15_0() </body>
+		<created>2017-11-05 00:23:54</created>
+		<closed>2017-11-05 04:26:12</closed>
+	</bug>
+	<bug>
+		<id>4</id>
+		<title>[UltraScouter] HPバーが背面にいってしまう</title>
+		<body>アクティブウィンドウを切り替えるとHPバーが背面にいってしまう場合がある。</body>
+		<created>2017-11-05 00:05:11</created>
+		<closed>2017-11-09 07:07:26</closed>
+	</bug>
+	<bug>
+		<id>3</id>
+		<title>[UltraScouter] ダミーアクションが表示されない時がある</title>
+		<body>ダミーアクションを設定してRESETを押すがすぐに表示されない場合がある。 1分程度遅延して表示される場合がある。</body>
+		<created>2017-11-05 00:04:09</created>
+		<closed>2017-11-30 07:52:40</closed>
+	</bug>
+	<bug>
+		<id>1</id>
+		<title>[UltraScouter] フォントサイズが正しく適用されない</title>
+		<body>13ポイントを指定するが130ポイントになってしまう。 ![pic2](https://user-images.githubusercontent.com/8295826/32410593-e4a5829a-c207-11e7-91cf-7a08ce26764c.jpg) ![pic3](https://user-images.githubusercontent.com/8295826/32410594-e66ff948-c207-11e7-8b29-29e1c121bc89.jpg) </body>
+		<created>2017-11-05 00:01:27</created>
+		<closed>2017-11-09 07:07:26</closed>
+	</bug>
+</bugs>

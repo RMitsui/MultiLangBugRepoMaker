@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>176</id>
+		<title>发现在一款4.0.4的中兴 ZTE N881E手机上抛出异常,是什么原因?</title>
+		<body> java.lang.IllegalArgumentException: protocol TLSv1.1 is not supported  我发起的是不带证书的https请求  具体错误信息: java.lang.IllegalArgumentException: protocol TLSv1.1 is not supported                                                                                  at org.apache.harmony.xnet.provider.jsse.NativeCrypto.checkEnabledProtocols(NativeCrypto.java:390)                                                                                  at org.apache.harmony.xnet.provider.jsse.OpenSSLSocketImpl.setEnabledProtocols(OpenSSLSocketImpl.java:788)                                                                                  at com.yanzhenjie.nohttpmobilead.ssl.CompatSSLSocketFactory.setSupportProtocolAndCipherSuites(CompatSSLSocketFactory.java:61)                                                                                  at com.yanzhenjie.nohttpmobilead.ssl.CompatSSLSocketFactory.createSocket(CompatSSLSocketFactory.java:94)                                                                                  at libcore.net.http.HttpConnection.setupSecureSocket(HttpConnection.java:197)                                                                                  at libcore.net.http.HttpsURLConnectionImpl$HttpsEngine.makeSslConnection(HttpsURLConnectionImpl.java:477)                                                                                  at libcore.net.http.HttpsURLConnectionImpl$HttpsEngine.connect(HttpsURLConnectionImpl.java:432)                                                                                  at libcore.net.http.HttpEngine.sendSocketRequest(HttpEngine.java:282)                                                                                  at libcore.net.http.HttpEngine.sendRequest(HttpEngine.java:232)                                                                                  at libcore.net.http.HttpURLConnectionImpl.connect(HttpURLConnectionImpl.java:80)                                                                                  at libcore.net.http.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:164)                                                                                  at com.yanzhenjie.nohttpmobilead.URLConnectionNetworkExecutor.execute(URLConnectionNetworkExecutor.java:102)                                                                                  at com.yanzhenjie.nohttpmobilead.HttpConnection.createNetwork(HttpConnection.java:169)                                                                                  at com.yanzhenjie.nohttpmobilead.HttpConnection.createConnectionAndWriteData(HttpConnection.java:122)                                                                                  at com.yanzhenjie.nohttpmobilead.HttpConnection.getConnection(HttpConnection.java:77)                                                                                  at com.yanzhenjie.nohttpmobilead.rest.RestProtocol.getHttpProtocol(RestProtocol.java:173)                                                                                  at com.yanzhenjie.nohttpmobilead.rest.RestProtocol.requestCacheOrNetwork(RestProtocol.java:102)                                                                                  at com.yanzhenjie.nohttpmobilead.rest.RestProtocol.request(RestProtocol.java:68)                                                                                  at com.yanzhenjie.nohttpmobilead.rest.SyncRequestExecutor.execute(SyncRequestExecutor.java:41)                                                                                  at com.yanzhenjie.nohttpmobilead.rest.RequestDispatcher.run(RequestDispatcher.java:96)</body>
+		<created>2018-05-03 09:14:37</created>
+		<closed>2018-06-04 04:59:24</closed>
+	</bug>
+	<bug>
+		<id>158</id>
+		<title>TV 有线网络连接时无法联网</title>
+		<body>https://github.com/yanzhenjie/NoHttp/blob/321ab16c28e3eca40d1055da1cafca3aedce0ccf/nohttp/src/main/java/com/yanzhenjie/nohttp/HttpConnection.java#L71  https://github.com/yanzhenjie/NoHttp/blob/321ab16c28e3eca40d1055da1cafca3aedce0ccf/nohttp/src/main/java/com/yanzhenjie/nohttp/tools/NetUtils.java#L95  commit https://github.com/yanzhenjie/NoHttp/commit/2fe9e76abbd4ca96700272b7bb5e83f4033a8438 将 **isNetworkAvailable** 改成了只判断 **wifi 和手机网络**         </body>
+		<created>2018-01-09 10:40:56</created>
+		<closed>2018-02-09 08:15:47</closed>
+	</bug>
+	<bug>
+		<id>157</id>
+		<title>java.lang.NullPointerException</title>
+		<body>Attempt to invoke virtual method 'void com.yanzhenjie.nohttp.rest.Messenger.start()' on a null object reference  com.yanzhenjie.nohttp.rest.RequestDispatcher.run(RequestDispatcher.java:81)   Attempt to invoke virtual method 'void com.yanzhenjie.nohttp.rest.Messenger.response(com.yanzhenjie.nohttp.rest.Response)' on a null object reference com.yanzhenjie.nohttp.rest.RequestDispatcher.run(RequestDispatcher.java:91)   </body>
+		<created>2018-01-05 08:42:12</created>
+		<closed>2018-02-09 08:15:46</closed>
+	</bug>
+</bugs>

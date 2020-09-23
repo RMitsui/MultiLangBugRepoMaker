@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>106</id>
+		<title>Подложка Kosmosnimki сдвинута</title>
+		<body>Подробнее см. nextgis/mobile.forestviolate.user#93</body>
+		<created>2016-11-08 09:48:27</created>
+		<closed>2016-11-11 12:54:47</closed>
+	</bug>
+	<bug>
+		<id>104</id>
+		<title>Окно ввода названия места лесонарушения сразу же закрывается</title>
+		<body>Создать новый акт о лесонарушении --&gt; место совершения лесонарушения --&gt; нарисовать вручную --&gt; нажать галочку в верхней панели. На экране должно показаться окно ввода названия места лесонарушения, там где две радиокнопки, но оно сразу же закрывается. </body>
+		<created>2016-07-05 14:12:03</created>
+		<closed>2016-07-11 22:44:49</closed>
+	</bug>
+	<bug>
+		<id>103</id>
+		<title>Падение при выборе кварталов</title>
+		<body>``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SelectTerritoryActivity}: java.lang.NullPointerException     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2975)     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3004)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2397)     at android.app.ActivityThread.access$900(ActivityThread.java:169)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1280)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.NullPointerException     at com.nextgis.forestinspector.activity.SelectTerritoryActivity.getTerritoryText(SelectTerritoryActivity.java:334)     at com.nextgis.forestinspector.activity.SelectTerritoryActivity.onResume(SelectTerritoryActivity.java:299)     at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1198)     at android.app.Activity.performResume(Activity.java:5530)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2965)     ... 12 more ``` </body>
+		<created>2016-07-05 13:55:25</created>
+		<closed>2016-07-05 17:30:37</closed>
+	</bug>
+	<bug>
+		<id>102</id>
+		<title>Падение при редактировании</title>
+		<body>``` java.lang.NullPointerException     at com.nextgis.forestinspector.fragment.MapEditFragment.onLongPress(MapEditFragment.java:255)     at com.nextgis.maplibui.mapui.MapView.onLongPress(MapView.java:442)     at android.view.GestureDetector.dispatchLongPress(GestureDetector.java:1564)     at android.view.GestureDetector.access$200(GestureDetector.java:47)     at android.view.GestureDetector$GestureHandler.handleMessage(GestureDetector.java:334)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) ```  ``` java.lang.RuntimeException: Unable to pause activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.IndictmentCreatorActivity}: java.lang.NullPointerException     at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3277)     at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3232)     at android.app.ActivityThread.handlePauseActivity(ActivityThread.java:3210)     at android.app.ActivityThread.access$1100(ActivityThread.java:169)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1291)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.NullPointerException     at com.nextgis.maplib.datasource.GeoEnvelope.getMinX(GeoEnvelope.java:288)     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.setRegionFieldValue(DocumentCreatorActivity.java:427)     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.saveControlsToFeature(DocumentCreatorActivity.java:283)     at com.nextgis.forestinspector.activity.IndictmentCreatorActivity.saveControlsToFeature(IndictmentCreatorActivity.java:212)     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.saveTempEditFeature(DocumentCreatorActivity.java:451)     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.onPause(DocumentCreatorActivity.java:221)     at android.app.Activity.performPause(Activity.java:5555)     at android.app.Instrumentation.callActivityOnPause(Instrumentation.java:1239)     at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3263)     ... 12 more ``` </body>
+		<created>2016-07-05 13:51:20</created>
+		<closed>2016-07-11 22:44:49</closed>
+	</bug>
+	<bug>
+		<id>100</id>
+		<title>Акт об обнаружении орудий заготовки не создаётся</title>
+		<body>![fw_akt_obnaruzenia_orudiy_entering](https://cloud.githubusercontent.com/assets/4630662/16564286/53a3aed0-420f-11e6-8949-f4eebb5d4b3c.png) После нажатия кнопки Добавить выдаётся сообщение "Неверные параметры", запись в акт не добавляется. </body>
+		<created>2016-07-04 14:47:58</created>
+		<closed>2016-07-05 10:01:45</closed>
+	</bug>
+	<bug>
+		<id>99</id>
+		<title>На экране создания геометрии вручную 2 нижние панели накладываются</title>
+		<body>Создание акта - ввод геометрии вручную  ![screenshot_2016-07-04-14-55-38](https://cloud.githubusercontent.com/assets/4630662/16558384/07382a60-41ee-11e6-84f3-37af94fa3459.png) </body>
+		<created>2016-07-04 10:49:55</created>
+		<closed>2016-07-04 14:04:25</closed>
+	</bug>
+	<bug>
+		<id>98</id>
+		<title>Падение при вводе геометрии обходом</title>
+		<body>``` java.lang.RuntimeException: Unable to start service com.nextgis.maplibui.service.WalkEditService@423ab790 with Intent { act=com.nextgis.maplibui.WALKEDIT_START cmp=com.nextgis.forestinspector/com.nextgis.maplibui.service.WalkEditService (has extras) }: java.lang.ClassCastException: java.lang.Integer cannot be cast to com.nextgis.maplib.datasource.GeoGeometry     at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:2906)     at android.app.ActivityThread.access$2200(ActivityThread.java:169)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1377)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.ClassCastException: java.lang.Integer cannot be cast to com.nextgis.maplib.datasource.GeoGeometry     at com.nextgis.maplibui.service.WalkEditService.onStartCommand(WalkEditService.java:114)     at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:2889)     ... 10 more ``` </body>
+		<created>2016-07-04 09:01:13</created>
+		<closed>2016-07-05 12:07:29</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>Порядок сортировки в списке</title>
+		<body>Более новые документы должны быть выше по списку </body>
+		<created>2016-06-12 20:47:42</created>
+		<closed>2016-06-13 14:44:08</closed>
+	</bug>
+	<bug>
+		<id>95</id>
+		<title>Падение при заполнении фототаблицы</title>
+		<body>``` java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState     at android.support.v4.app.FragmentManagerImpl.checkStateLoss(FragmentManager.java:1500)     at android.support.v4.app.FragmentManagerImpl.enqueueAction(FragmentManager.java:1518)     at android.support.v4.app.BackStackRecord.commitInternal(BackStackRecord.java:634)     at android.support.v4.app.BackStackRecord.commit(BackStackRecord.java:613)     at android.support.v4.app.DialogFragment.show(DialogFragment.java:139)     at com.nextgis.forestinspector.adapter.PhotoTableAdapter$2.onClick(PhotoTableAdapter.java:264)     at android.view.View.performClick(View.java:4640)     at android.view.View$PerformClick.run(View.java:19421)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) ```  Падение происходит при вводе описания к фото </body>
+		<created>2016-06-12 20:43:41</created>
+		<closed>2016-06-14 16:20:00</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>Диалог целеуказания открывается и сразу скрывается</title>
+		<body>При активации создания актов (лесонарушения или полевых мероприятий) диалог целеуказания моментально скрывается. </body>
+		<created>2016-06-12 20:39:11</created>
+		<closed>2016-06-13 16:37:08</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>Падение при просмотре акта</title>
+		<body>``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.forestinspector/com.nextgis.forestinspector.activity.DocumentViewActivity}: java.lang.ClassCastException: java.lang.Long cannot be cast to java.util.Date     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2462)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2522)     at android.app.ActivityThread.access$900(ActivityThread.java:154)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1389)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:224)     at android.app.ActivityThread.main(ActivityThread.java:5514)     at java.lang.reflect.Method.invoke(Native Method)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616) Caused by: java.lang.ClassCastException: java.lang.Long cannot be cast to java.util.Date     at com.nextgis.forestinspector.activity.DocumentViewActivity.onCreate(DocumentViewActivity.java:125)     at android.app.Activity.performCreate(Activity.java:6271)     at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1108)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2415)     ... 9 more ``` </body>
+		<created>2016-06-04 18:54:42</created>
+		<closed>2016-06-06 13:17:00</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>Падение при вводе регистрационной информации</title>
+		<body>``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.forestinspector/com.nextgis.forestinspector.activity.MainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.support.v7.widget.SwitchCompat.isChecked()' on a null object reference     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2325)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2387)     at android.app.ActivityThread.access$800(ActivityThread.java:151)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1303)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5258)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698) Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.support.v7.widget.SwitchCompat.isChecked()' on a null object reference     at com.nextgis.maplibui.fragment.NGWLoginFragment$LocalTextWatcher.afterTextChanged(NGWLoginFragment.java:354)     at android.widget.TextView.sendAfterTextChanged(TextView.java:7695)     at android.widget.TextView.setText(TextView.java:4066)     at android.widget.TextView.setText(TextView.java:3915)     at android.widget.EditText.setText(EditText.java:85)     at android.widget.TextView.setText(TextView.java:3890)     at com.nextgis.forestinspector.fragment.LoginFragment.onCreateView(LoginFragment.java:68)     at android.support.v4.app.Fragment.performCreateView(Fragment.java:1965)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1078)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:738)     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1624)     at android.support.v4.app.FragmentController.execPendingActions(FragmentController.java:330)     at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:547)     at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1236)     at android.app.Activity.performStart(Activity.java:6006)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2288)     ... 10 more ``` </body>
+		<created>2016-05-19 12:17:33</created>
+		<closed>2016-05-30 10:53:13</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>Падение</title>
+		<body>``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SheetCreatorActivity}: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=1102, result=0, data=null} to activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SheetCreatorActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.nextgis.forestinspector.datasource.DocumentEditFeature.getFieldValueAsString(java.lang.String)' on a null object reference     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3019)     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3050)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2425)     at android.app.ActivityThread.access$900(ActivityThread.java:154)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1321)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5294)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699) Caused by: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=1102, result=0, data=null} to activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SheetCreatorActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.nextgis.forestinspector.datasource.DocumentEditFeature.getFieldValueAsString(java.lang.String)' on a null object reference     at android.app.ActivityThread.deliverResults(ActivityThread.java:3607)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3005)     ... 11 more Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.nextgis.forestinspector.datasource.DocumentEditFeature.getFieldValueAsString(java.lang.String)' on a null object reference     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.onActivityResult(DocumentCreatorActivity.java:410)     at android.app.Activity.dispatchActivityResult(Activity.java:6192)     at android.app.ActivityThread.deliverResults(ActivityThread.java:3603)     ... 12 more ``` </body>
+		<created>2016-04-27 08:04:57</created>
+		<closed>2016-06-01 11:59:34</closed>
+	</bug>
+	<bug>
+		<id>89</id>
+		<title>Падение при resume</title>
+		<body>``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SheetCreatorActivity}: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=1102, result=0, data=null} to activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SheetCreatorActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.nextgis.forestinspector.datasource.DocumentEditFeature.getFieldValueAsString(java.lang.String)' on a null object reference     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3019)     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3050)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2425)     at android.app.ActivityThread.access$900(ActivityThread.java:154)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1321)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5294)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699) Caused by: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=1102, result=0, data=null} to activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SheetCreatorActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.nextgis.forestinspector.datasource.DocumentEditFeature.getFieldValueAsString(java.lang.String)' on a null object reference     at android.app.ActivityThread.deliverResults(ActivityThread.java:3607)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3005)     ... 11 more Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.nextgis.forestinspector.datasource.DocumentEditFeature.getFieldValueAsString(java.lang.String)' on a null object reference     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.onActivityResult(DocumentCreatorActivity.java:410)     at android.app.Activity.dispatchActivityResult(Activity.java:6192)     at android.app.ActivityThread.deliverResults(ActivityThread.java:3603)     ... 12 more ``` </body>
+		<created>2016-04-26 16:14:26</created>
+		<closed>2016-06-01 11:59:34</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>Падение при запуске</title>
+		<body>``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SyncLoginActivity}: java.lang.IllegalStateException: Fragment already added: LoginFragment{3c9f5bcf #0 id=0x7f0e00b2 SyncLogin}     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2305)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2365)     at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3951)     at android.app.ActivityThread.access$900(ActivityThread.java:149)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1290)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5296)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:908)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:703) Caused by: java.lang.IllegalStateException: Fragment already added: LoginFragment{3c9f5bcf #0 id=0x7f0e00b2 SyncLogin}     at android.support.v4.app.FragmentManagerImpl.addFragment(FragmentManager.java:1330)     at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:671)     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1624)     at android.support.v4.app.FragmentController.execPendingActions(FragmentController.java:330)     at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:547)     at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1220)     at android.app.Activity.performStart(Activity.java:6036)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2268)     ... 11 more ``` </body>
+		<created>2016-04-26 16:13:54</created>
+		<closed>2016-05-30 18:38:46</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>Падение при смене пароля</title>
+		<body>``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SyncLoginActivity}: java.lang.IllegalStateException: Fragment already added: LoginFragment{3c9f5bcf #0 id=0x7f0e00b2 SyncLogin}     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2305)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2365)     at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3951)     at android.app.ActivityThread.access$900(ActivityThread.java:149)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1290)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5296)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:908)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:703) Caused by: java.lang.IllegalStateException: Fragment already added: LoginFragment{3c9f5bcf #0 id=0x7f0e00b2 SyncLogin}     at android.support.v4.app.FragmentManagerImpl.addFragment(FragmentManager.java:1330)     at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:671)     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1624)     at android.support.v4.app.FragmentController.execPendingActions(FragmentController.java:330)     at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:547)     at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1220)     at android.app.Activity.performStart(Activity.java:6036)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2268)     ... 11 more  ```  А каким образом сменить пользователя - это о #43?  </body>
+		<created>2016-04-26 13:43:44</created>
+		<closed>2016-05-30 18:42:22</closed>
+	</bug>
+	<bug>
+		<id>86</id>
+		<title>Падение при первоначальной настройке</title>
+		<body>Не очень приоритетная задача.  ``` android.view.WindowManager$BadTokenException: Unable to add window -- token android.view.ViewRootImpl$W@8e7eba2 is not valid; is your activity running?     at android.view.ViewRootImpl.setView(ViewRootImpl.java:576)     at android.view.WindowManagerGlobal.addView(WindowManagerGlobal.java:272)     at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:69)     at android.widget.PopupWindow.invokePopup(PopupWindow.java:1066)     at android.widget.PopupWindow.showAsDropDown(PopupWindow.java:970)     at android.support.v7.internal.widget.AppCompatPopupWindow.showAsDropDown(AppCompatPopupWindow.java:78)     at android.support.v4.widget.PopupWindowCompatKitKat.showAsDropDown(PopupWindowCompatKitKat.java:30)     at android.support.v4.widget.PopupWindowCompat$KitKatPopupWindowImpl.showAsDropDown(PopupWindowCompat.java:92)     at android.support.v4.widget.PopupWindowCompat.showAsDropDown(PopupWindowCompat.java:171)     at android.support.v7.widget.ListPopupWindow.show(ListPopupWindow.java:682)     at android.support.v7.internal.view.menu.MenuPopupHelper.tryShow(MenuPopupHelper.java:163)     at android.support.v7.internal.view.menu.MenuPopupHelper.show(MenuPopupHelper.java:129)     at android.support.v7.widget.ActionMenuPresenter.onSubMenuSelected(ActionMenuPresenter.java:300)     at android.support.v7.internal.view.menu.MenuBuilder.dispatchSubMenuSelected(MenuBuilder.java:306)     at android.support.v7.internal.view.menu.MenuBuilder.performItemAction(MenuBuilder.java:976)     at android.support.v7.internal.view.menu.MenuBuilder.performItemAction(MenuBuilder.java:948)     at android.support.v7.widget.ActionMenuView.invokeItem(ActionMenuView.java:619)     at android.support.v7.internal.view.menu.ActionMenuItemView.onClick(ActionMenuItemView.java:139)     at android.view.View.performClick(View.java:4764)     at android.view.View$PerformClick.run(View.java:19844)     at android.os.Handler.handleCallback(Handler.java:739)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5296)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:908)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:703) ```  Возможно связано с ANR  ``` "main" tid=1     libcore.io.Posix.writeBytes(Native Method)     libcore.io.Posix.write(Posix.java:223)     libcore.io.BlockGuardOs.write(BlockGuardOs.java:313)     libcore.io.IoBridge.write(IoBridge.java:497)     java.io.FileOutputStream.write(FileOutputStream.java:186)     java.io.DataOutputStream.writeLong(DataOutputStream.java:186)     java.io.DataOutputStream.writeDouble(DataOutputStream.java:171)     com.nextgis.maplib.datasource.GeometryRTree$Node.write(GeometryRTree.java:804)     com.nextgis.maplib.datasource.GeometryRTree$Entry.write(GeometryRTree.java:886)     com.nextgis.maplib.datasource.GeometryRTree$Node.write(GeometryRTree.java:810)     com.nextgis.maplib.datasource.GeometryRTree$Node.write(GeometryRTree.java:810)     com.nextgis.maplib.datasource.GeometryRTree$Node.write(GeometryRTree.java:810)     com.nextgis.maplib.datasource.GeometryRTree.save(GeometryRTree.java:177)     com.nextgis.maplib.map.VectorLayer.toJSON(VectorLayer.java:765)     com.nextgis.maplib.map.NGWVectorLayer.toJSON(NGWVectorLayer.java:206)     com.nextgis.forestinspector.map.DocumentsLayer.toJSON(DocumentsLayer.java:251)     com.nextgis.maplib.map.Table.save(Table.java:127)     com.nextgis.forestinspector.map.DocumentsLayer.save(DocumentsLayer.java:325)     com.nextgis.maplib.map.VectorLayer.notifyUpdate(VectorLayer.java:2301)     com.nextgis.maplib.map.MapContentProviderHelper$VectorLayerNotifyReceiver.onReceive(MapContentProviderHelper.java:233)     android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:956)     android.os.Handler.handleCallback(Handler.java:739)     android.os.Handler.dispatchMessage(Handler.java:95)     android.os.Looper.loop(Looper.java:135)     android.app.ActivityThread.main(ActivityThread.java:5296)     java.lang.reflect.Method.invoke(Native Method)     java.lang.reflect.Method.invoke(Method.java:372)     com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:908)     com.android.internal.os.ZygoteInit.main(ZygoteInit.java:703) ``` </body>
+		<created>2016-04-26 10:11:29</created>
+		<closed>2016-06-07 14:24:46</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>Падение при создании аккаунта</title>
+		<body>Android 6  ``` java.lang.NullPointerException: Attempt to invoke virtual method 'int android.accounts.Account.hashCode()' on a null object reference     at android.os.Parcel.readException(Parcel.java:1615)     at android.os.Parcel.readException(Parcel.java:1558)     at android.content.IContentService$Stub$Proxy.setSyncAutomaticallyAsUser(IContentService.java:1010)     at android.content.ContentResolver.setSyncAutomaticallyAsUser(ContentResolver.java:2020)     at android.content.ContentResolver.setSyncAutomatically(ContentResolver.java:2010)     at com.nextgis.forestinspector.MainApplication.onAddAccount(MainApplication.java:428)     at com.nextgis.maplibui.fragment.NGWLoginFragment.onTokenReceived(NGWLoginFragment.java:255)     at com.nextgis.forestinspector.fragment.LoginFragment.onTokenReceived(LoginFragment.java:104)     at com.nextgis.maplibui.fragment.NGWLoginFragment.onLoadFinished(NGWLoginFragment.java:231)     at com.nextgis.maplibui.fragment.NGWLoginFragment.onLoadFinished(NGWLoginFragment.java:49)     at android.support.v4.app.LoaderManagerImpl$LoaderInfo.callOnLoadFinished(LoaderManager.java:476)     at android.support.v4.app.LoaderManagerImpl$LoaderInfo.onLoadComplete(LoaderManager.java:444)     at android.support.v4.content.Loader.deliverResult(Loader.java:126)     at com.nextgis.maplibui.service.HTTPLoader.deliverResult(HTTPLoader.java:89)     at com.nextgis.maplibui.service.HTTPLoader.deliverResult(HTTPLoader.java:37)     at android.support.v4.content.AsyncTaskLoader.dispatchOnLoadComplete(AsyncTaskLoader.java:249)     at android.support.v4.content.AsyncTaskLoader$LoadTask.onPostExecute(AsyncTaskLoader.java:77)     at android.support.v4.content.ModernAsyncTask.finish(ModernAsyncTask.java:466)     at android.support.v4.content.ModernAsyncTask.access$400(ModernAsyncTask.java:48)     at android.support.v4.content.ModernAsyncTask$InternalHandler.handleMessage(ModernAsyncTask.java:483)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:224)     at android.app.ActivityThread.main(ActivityThread.java:5514)     at java.lang.reflect.Method.invoke(Native Method)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616) ``` </body>
+		<created>2016-04-11 14:53:18</created>
+		<closed>2016-04-15 08:18:13</closed>
+	</bug>
+	<bug>
+		<id>84</id>
+		<title>Документ не выбран</title>
+		<body>1. Нажимаем на FAB и выбираем, например, `Акт о лесонарушении` 2. Ничего не заполняем и нажимаем `Назад` 3. Запись появляется в списке документов. Так и должно, мы же её не сохраняли? 4. Как продолжить её редактирование? Если на неё нажать то получаем `Документ не выбран`. 5. Может её как-то можно удалить? </body>
+		<created>2016-04-08 15:10:43</created>
+		<closed>2016-04-15 12:33:07</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>Не сохраняется информация о территории</title>
+		<body>1. Создаю Акт о лесонарушении 2. Выбираю место лесонарушения из списка 3. Жму кнопку `Сохранить` 4. Выбираю потом в списке документов этот акт - информация о территории отсутствует </body>
+		<created>2016-04-08 07:57:26</created>
+		<closed>2016-04-18 08:10:58</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>Ошибка при первоначальной загрузке</title>
+		<body>``` java.lang.RuntimeException: Error receiving broadcast Intent { act=forestviolate.inspector.sync_message flg=0x10 (has extras) } in com.nextgis.forestinspector.MainApplication$1@41607e30     at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:737)     at android.os.Handler.handleCallback(Handler.java:605)     at android.os.Handler.dispatchMessage(Handler.java:92)     at android.os.Looper.loop(Looper.java:137)     at android.app.ActivityThread.main(ActivityThread.java:4424)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:787)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:554)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.IllegalArgumentException: account must not be null     at android.content.ContentResolver.removePeriodicSync(ContentResolver.java:1285)     at com.nextgis.forestinspector.MainApplication$1.onReceive(MainApplication.java:121)     at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:728)     ... 9 more ``` </body>
+		<created>2016-03-31 17:03:45</created>
+		<closed>2016-04-15 07:53:12</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>Caller uid 10161 is different than the authenticator's uid</title>
+		<body>См. nextgis/android_gisapp#361 </body>
+		<created>2016-03-24 08:02:00</created>
+		<closed>2016-04-04 15:08:30</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>Подвисание таблицы перечета</title>
+		<body>1. При создании таблицы перечета выдается надпись "Подождите ...". Однако выбрать выпадающие списки "Категория хлыстов", "Разряд высот" и Выдел(а) нельзя. Предлагаю выводить диалог сверху или сделать так что бы можно было выбирать. 2. При вводе текста Выдел(а) открывается диалог и все подвисает, т.к. таблица перестраивается или что-то подобное. Предлагаю сделать ввод через диалог. 3. При повороте экрана опять все подвисает но не так сильно - тут бы опять выводить про перестроение таблицы. </body>
+		<created>2016-03-05 18:40:52</created>
+		<closed>2016-03-11 14:43:20</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>Падение при вводе территории вручную</title>
+		<body>``` 02-04 13:32:26.701 26402-26402/com.nextgis.forestinspector E/AndroidRuntime: FATAL EXCEPTION: main Process: com.nextgis.forestinspector, PID: 26402 java.lang.NullPointerException     at com.nextgis.forestinspector.overlay.SelectLocationOverlay.panMoveTo(SelectLocationOverlay.java:228)     at com.nextgis.maplibui.mapui.MapView.panMoveTo(MapView.java:261)     at com.nextgis.maplibui.mapui.MapView.onScroll(MapView.java:462)     at android.view.GestureDetector.onTouchEvent(GestureDetector.java:1441)     at com.nextgis.maplibui.mapui.MapView.onTouchEvent(MapView.java:329)     at android.view.View.dispatchTouchEvent(View.java:8135)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:2295)     at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1622)     at android.app.Activity.dispatchTouchEvent(Activity.java:2565)     at android.support.v7.internal.view.WindowCallbackWrapper.dispatchTouchEvent(WindowCallbackWrapper.java:60)     at android.support.v7.internal.view.WindowCallbackWrapper.dispatchTouchEvent(WindowCallbackWrapper.java:60)     at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:2243)     at android.view.View.dispatchPointerEvent(View.java:8343)     at android.view.ViewRootImpl$ViewPostImeInputStage.processPointerEvent(ViewRootImpl.java:4773)     at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:4639)     at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:4197)     at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:4251)     at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:4220)     at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:4331)     at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:4228)     at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:4388)     at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:4197)     at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:4251)     at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:4220)     at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:4228)     at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:4197)     at android.view.ViewRootImpl.deliverInputEvent(ViewRootImpl.java:6564)     at android.view.ViewRootImpl.doProcessInputEvents(ViewRootImpl.java:6481)     at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:6452)     at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:6417)     at android.view.ViewRootImpl$WindowInputEventReceiver.onInputEvent(ViewRootImpl.java:6644)     at android.view.InputEventReceiver.dispatchInputEvent(InputEventReceiver.java:185)     at android.view.InputEventReceiver.nativeConsumeBatchedInputEvents(Native Method)     at android.view ``` </body>
+		<created>2016-02-04 10:27:16</created>
+		<closed>2016-02-05 11:52:13</closed>
+	</bug>
+	<bug>
+		<id>73</id>
+		<title>Не открывается диалог выбора целеуказания</title>
+		<body>В логах   ``` 02-04 13:27:56.841 26402-2656/com.nextgis.forestinspector E/SQLiteLog: (1) near "лесоизменение": syntax error 02-04 13:27:56.841 26402-2656/com.nextgis.forestinspector D/nextgismobile: near "лесоизменение": syntax error (code 1): , while compiling: SELECT _id, objectID, date, forestery, precinct, region, territory FROM fv WHERE status = Новое лесоизменение ORDER BY date DESC ```  Видимно не заковычено значение WHERE </body>
+		<created>2016-02-04 10:23:49</created>
+		<closed>2016-02-05 11:40:41</closed>
+	</bug>
+	<bug>
+		<id>72</id>
+		<title>Падение в фототаблице </title>
+		<body>Из феи  ``` java.lang.NullPointerException     at com.nextgis.forestinspector.fragment.PhotoTableFragment.onCreate(PhotoTableFragment.java:147)     at android.support.v4.app.Fragment.performCreate(Fragment.java:1942)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1040)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:738)     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1624)     at android.support.v4.app.FragmentManagerImpl.executePendingTransactions(FragmentManager.java:570)     at android.support.v4.app.FragmentPagerAdapter.finishUpdate(FragmentPagerAdapter.java:141)     at android.support.v4.view.ViewPager.populate(ViewPager.java:1106)     at android.support.v4.view.ViewPager.setCurrentItemInternal(ViewPager.java:552)     at android.support.v4.view.ViewPager.setCurrentItemInternal(ViewPager.java:514)     at android.support.v4.view.ViewPager.setCurrentItem(ViewPager.java:495)     at android.support.design.widget.TabLayout$ViewPagerOnTabSelectedListener.onTabSelected(TabLayout.java:1764)     at android.support.design.widget.TabLayout.selectTab(TabLayout.java:866)     at android.support.design.widget.TabLayout.selectTab(TabLayout.java:836)     at android.support.design.widget.TabLayout$Tab.select(TabLayout.java:1109)     at android.support.design.widget.TabLayout$1.onClick(TabLayout.java:664)     at android.view.View.performClick(View.java:3623)     at android.view.View$PerformClick.run(View.java:14325)     at android.os.Handler.handleCallback(Handler.java:605)     at android.os.Handler.dispatchMessage(Handler.java:92)     at android.os.Looper.loop(Looper.java:137)     at android.app.ActivityThread.main(ActivityThread.java:4512)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:978)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:745)     at dalvik.system.NativeStart.main(Native Method) ``` </body>
+		<created>2016-01-29 07:48:29</created>
+		<closed>2016-02-03 13:54:55</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>Падени при sql запросе</title>
+		<body>``` java.lang.IllegalStateException: attempt to re-open an already-closed object: android.database.sqlite.SQLiteQuery (mSql = SELECT * FROM kv ORDER BY _id ASC)      at android.database.sqlite.SQLiteClosable.acquireReference(SQLiteClosable.java:33)     at android.database.sqlite.SQLiteQuery.fillWindow(SQLiteQuery.java:82)     at android.database.sqlite.SQLiteCursor.fillWindow(SQLiteCursor.java:164)     at android.database.sqlite.SQLiteCursor.onMove(SQLiteCursor.java:147)     at android.database.AbstractCursor.moveToPosition(AbstractCursor.java:178)     at android.database.CursorWrapper.moveToPosition(CursorWrapper.java:162)     at android.support.v4.widget.CursorAdapter.getView(CursorAdapter.java:247)     at android.widget.AbsListView.obtainView(AbsListView.java:2222)     at android.widget.ListView.makeAndAddView(ListView.java:1774)     at android.widget.ListView.fillDown(ListView.java:672)     at android.widget.ListView.fillGap(ListView.java:636)     at android.widget.AbsListView.trackMotionScroll(AbsListView.java:5271)     at android.widget.AbsListView.scrollIfNeeded(AbsListView.java:3068)     at android.widget.AbsListView.startScrollIfNeeded(AbsListView.java:3013)     at android.widget.AbsListView.onTouchEvent(AbsListView.java:3362)     at android.view.View.dispatchTouchEvent(View.java:5713)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1959)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1720)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1965)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1734)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1965)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1734)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1965)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1734)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1965)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1734)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1965)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1734)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1965)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1734)     at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:2068)     at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1400)     at android.app.Activity.dispatchTouchEvent(Activity.java:2368)     at android.support.v4.app.BaseFragmentActivityDonut.dispatchTouchEvent(BaseFragmentActivityDonut.java)     at android.support.v7.internal.view.WindowCallbackWrapper.dispatchTouchEvent(WindowCallbackWrapper.java:60)     at android.support.v7.internal.view.WindowCallbackWrapper.dispatchTouchEvent(WindowCallbackWrapper.java:60)     at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:2016)     at android.view.View.dispatchPointerEvent(View.java:5893)     at android.view.ViewRootImpl.deliverPointerEvent(ViewRootImpl.java:3136)     at android.view.ViewRootImpl.handleMessage(ViewRootImpl.java:2678)     at android.view.ViewRootImpl.processInputEvents(ViewRootImpl.java:1036)     at android.view.ViewRootImpl.handleMessage(ViewRootImpl.java:2687)     at android.os.Handler.dispatchMessage(Handler.java:99)     at android.os.Looper.loop(Looper.java:137)     at android.app.ActivityThread.main(ActivityThread.java:4512)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:978)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:745)     at dalvik.system.NativeStart.main(Native Method) ```  ``` java.lang.IllegalStateException: attempt to re-open an already-closed object: SQLiteQuery: SELECT * FROM kv WHERE  NAME_LV LIKE '%59%' OR NAME_ULV LIKE '%59%' OR KV LIKE '%59%' ORDER BY _id ASC     at android.database.sqlite.SQLiteClosable.acquireReference(SQLiteClosable.java:55)     at android.database.sqlite.SQLiteQuery.fillWindow(SQLiteQuery.java:58)     at android.database.sqlite.SQLiteCursor.fillWindow(SQLiteCursor.java:152)     at android.database.sqlite.SQLiteCursor.onMove(SQLiteCursor.java:124)     at android.database.AbstractCursor.moveToPosition(AbstractCursor.java:214)     at android.database.CursorWrapper.moveToPosition(CursorWrapper.java:162)     at android.support.v4.widget.CursorAdapter.getView(CursorAdapter.java:247)     at android.widget.AbsListView.obtainView(AbsListView.java:2283)     at android.widget.ListView.measureHeightOfChildren(ListView.java:1263)     at android.widget.ListView.onMeasure(ListView.java:1175)     at android.view.View.measure(View.java:16820)     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5156)     at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1404)     at android.widget.LinearLayout.measureVertical(LinearLayout.java:695)     at android.widget.LinearLayout.onMeasure(LinearLayout.java:588)     at android.view.View.measure(View.java:16820)     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5156)     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310)     at android.support.v7.internal.widget.ContentFrameLayout.onMeasure(ContentFrameLayout.java:135)     at android.view.View.measure(View.java:16820)     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5156)     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310)     at android.view.View.measure(View.java:16820)     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5156)     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310)     at android.view.View.measure(View.java:16820)     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5156)     at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1404)     at android.widget.LinearLayout.measureVertical(LinearLayout.java:695)     at android.widget.LinearLayout.onMeasure(LinearLayout.java:588)     at android.view.View.measure(View.java:16820)     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5156)     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310)     at com.android.internal.policy.impl.PhoneWindow$DecorView.onMeasure(PhoneWindow.java:2295)     at android.view.View.measure(View.java:16820)     at android.view.ViewRootImpl.performMeasure(ViewRootImpl.java:1962)     at android.view.ViewRootImpl.measureHierarchy(ViewRootImpl.java:1156)     at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1341)     at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1043)     at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:5885)     at android.view.Choreographer$CallbackRecord.run(Choreographer.java:771)     at android.view.Choreographer.doCallbacks(Choreographer.java:574)     at android.view.Choreographer.doFrame(Choreographer.java:544)     at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:757)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:149)     at android.app.ActivityThread.main(ActivityThread.java:5234)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:794)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:610)     at dalvik.system.NativeStart.main(Native Method) ``` </body>
+		<created>2016-01-12 07:37:15</created>
+		<closed>2016-01-15 13:09:38</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>Падение при старте приложения</title>
+		<body>Стэктрейс  ``` java.lang.NullPointerException: Attempt to invoke virtual method 'boolean com.nextgis.forestinspector.fragment.DocumentsFragment.isShowIndictments()' on a null object reference     at com.nextgis.forestinspector.activity.MainActivity.onCreateOptionsMenu(MainActivity.java:325)     at android.app.Activity.onCreatePanelMenu(Activity.java:3075)     at android.support.v4.app.FragmentActivity.onCreatePanelMenu(FragmentActivity.java:298)     at android.support.v7.internal.view.WindowCallbackWrapper.onCreatePanelMenu(WindowCallbackWrapper.java:85)     at android.support.v7.app.AppCompatDelegateImplBase$AppCompatWindowCallbackBase.onCreatePanelMenu(AppCompatDelegateImplBase.java:243)     at android.support.v7.internal.view.WindowCallbackWrapper.onCreatePanelMenu(WindowCallbackWrapper.java:85)     at android.support.v7.internal.app.ToolbarActionBar.populateOptionsMenu(ToolbarActionBar.java:448)     at android.support.v7.internal.app.ToolbarActionBar$1.run(ToolbarActionBar.java:65)     at android.os.Handler.handleCallback(Handler.java:739)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:145)     at android.app.ActivityThread.main(ActivityThread.java:6872)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1404)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1199) ``` </body>
+		<created>2015-12-28 07:49:31</created>
+		<closed>2015-12-28 13:08:11</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>При переключении с вкладки карты, в момент ее прорисовки, на другую вкладку интерфейс подвисает на длительное время</title>
+		<body>Нужно останавливать процесс прорисовки в этот момент. </body>
+		<created>2015-12-26 17:51:37</created>
+		<closed>2015-12-26 18:17:39</closed>
+	</bug>
+	<bug>
+		<id>65</id>
+		<title>При повороте экрана рисуется карта на неактивной вкладке</title>
+		<body>... чем вызывает зависание приложения у меня секунд на 10. </body>
+		<created>2015-12-26 12:01:12</created>
+		<closed>2015-12-26 14:06:25</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>Из главного списка документов можно удалить все документы</title>
+		<body>Порядок воспроизведения: Если в списке нет заметок, создаем заметку. Щелчком по чекбоксу выделяем любую заметку. В панели ActionMode нажимаем кнопку "Выделить всё". Все элементы списка выделяются, в том числе и те, у которых чекбокс заблокирован. </body>
+		<created>2015-12-24 16:43:53</created>
+		<closed>2015-12-25 11:57:09</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>Падение при попытке указать территорию через список</title>
+		<body>Переустановил приложение, создал подключение с тестовым логином. Все данные закачались нормально. При создании акта нажал на выбор территории нарушения, в окне выбора территории в FAB нажал Список. Получил падение:  12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime: Process: com.nextgis.forestinspector, PID: 25595 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime: java.lang.IllegalArgumentException: column 'NAME_LV' does not exist 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.database.AbstractCursor.getColumnIndexOrThrow(AbstractCursor.java:303) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.database.CursorWrapper.getColumnIndexOrThrow(CursorWrapper.java:78) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at com.nextgis.forestinspector.activity.SelectParcelsActivity$ParcelCursorAdapter.bindView(SelectParcelsActivity.java:216) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.support.v4.widget.CursorAdapter.getView(CursorAdapter.java:256) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.AbsListView.obtainView(AbsListView.java:2255) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.ListView.measureHeightOfChildren(ListView.java:1263) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.ListView.onMeasure(ListView.java:1175) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1404) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.measureVertical(LinearLayout.java:695) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.onMeasure(LinearLayout.java:588) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.support.v7.internal.widget.ContentFrameLayout.onMeasure(ContentFrameLayout.java:135) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1404) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.measureVertical(LinearLayout.java:695) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.onMeasure(LinearLayout.java:588) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at com.android.internal.policy.impl.PhoneWindow$DecorView.onMeasure(PhoneWindow.java:2291) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl.performMeasure(ViewRootImpl.java:1942) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl.measureHierarchy(ViewRootImpl.java:1132) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1321) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1019) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:5725) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.Choreographer$CallbackRecord.run(Choreographer.java:761) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.Choreographer.doCallbacks(Choreographer.java:574) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.Choreographer.doFrame(Choreographer.java:544) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:747) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.os.Handler.handleCallback(Handler.java:733) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.os.Handler.dispatchMessage(Handler.java:95) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.os.Looper.loop(Looper.java:136) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.app.ActivityThread.main(ActivityThread.java:5086) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at java.lang.reflect.Method.invokeNative(Native Method) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at java.lang.reflect.Method.invoke(Method.java:515) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:785) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:601) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at dalvik.system.NativeStart.main(Native Method) </body>
+		<created>2015-12-14 19:40:05</created>
+		<closed>2015-12-15 09:42:15</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>При создании акта создается вкладка с пустой фототаблицей, тогда как фототаблица не создавалась</title>
+		<body>Независимо от того, нажимали ли кнопку "Заполнить фототаблицу". </body>
+		<created>2015-12-14 18:58:22</created>
+		<closed>2015-12-26 19:07:26</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>Торможение интерфейса при возврате из просмотра созданного акта к главному списку документов</title>
+		<body>Открываем любой акт из главного списка документов и тут же возвращаемся кнопкой Назад к главному списку -- на тестовом логине интерфейс зависает на 3-4 секунды, иной раз и больше. Часто в этот момент экран черный по всей площади программы. </body>
+		<created>2015-12-14 18:55:27</created>
+		<closed>2015-12-24 16:49:46</closed>
+	</bug>
+	<bug>
+		<id>57</id>
+		<title>Ошибка при вводе пней (ведомость перечета)</title>
+		<body>``` java.lang.NullPointerException     at com.nextgis.forestinspector.dialog.SheetListFillerDialog.setFeatureFieldsValues(SheetListFillerDialog.java:160)     at com.nextgis.forestinspector.dialog.ListFillerDialog.saveData(ListFillerDialog.java:461)     at com.nextgis.forestinspector.dialog.ListFillerDialog.addData(ListFillerDialog.java:400)     at com.nextgis.forestinspector.dialog.ListFillerDialog$1.onPositiveClicked(ListFillerDialog.java:223)     at com.nextgis.maplibui.dialog.StyledDialogFragment$1.onClick(StyledDialogFragment.java:238)     at android.view.View.performClick(View.java:4487)     at android.view.View$PerformClick.run(View.java:18746)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:149)     at android.app.ActivityThread.main(ActivityThread.java:5234)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:794)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:610)     at dalvik.system.NativeStart.main(Native Method) ``` </body>
+		<created>2015-12-05 10:30:40</created>
+		<closed>2015-12-15 12:42:55</closed>
+	</bug>
+	<bug>
+		<id>56</id>
+		<title>Экран первой инициализации "зависает"</title>
+		<body>При первой инициализации происходит длительная процедура загрузки данных. Процедура идет в сервисе передавая в активити события. Если приложение ушло в фон, то активити разрушается. При этом при выходе из фона процесс загрузки может быть завершен, а активити об этом не знает и показывает экран первоначальной настройки.  Перезагрузка приложения помогает. Необходимо что бы по завершению процесса записывался флаг, что все скачано. А при ресторе активити он проверялся и если установлен, показывался бы экран со списком/картой </body>
+		<created>2015-12-05 10:13:20</created>
+		<closed>2016-01-18 12:45:48</closed>
+	</bug>
+	<bug>
+		<id>55</id>
+		<title>В форме заполнения акта оставить п.3 пустым</title>
+		<body>1. Ответственность за лесонарушение определяется по факту рассмотрения полученных материалов и их проверке.   ``` пункт в бланке оставить но не заполняется​ ``` </body>
+		<created>2015-12-01 12:15:44</created>
+		<closed>2015-12-14 11:00:16</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>Изменить термин в акте о лесонарушении</title>
+		<body>Лицо, совершившее нарушение – изменить на: «предполагаемое лицо, совершившее нарушение». </body>
+		<created>2015-11-30 09:10:41</created>
+		<closed>2015-12-14 10:00:22</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>При заполнении фототаблицы теряются данные в документе</title>
+		<body>Цитата из отчета по тестированию "при заполнении п.п.1-9 Акта о лесонарушении переходим к функции «заполнить фототаблицу». После добавления фотографий возвращаемся в меню акт о лесонарушении, в котором в пунктах с 1 по 9 все ранее записанные текстовые сведения отсутствуют. Приходится повторно заполнять все пункты акта о лесонарушении" </body>
+		<created>2015-11-30 08:56:57</created>
+		<closed>2016-01-15 11:53:02</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>Включать GPS только при активной вкладке карты</title>
+		<body>При активной вкладке документов GPS не должен включаться, а то сильно садит батарею. </body>
+		<created>2015-11-29 19:26:08</created>
+		<closed>2015-12-07 21:04:17</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>Держать экран включенным только при активной вкладке карты</title>
+		<body>Сейчас даже при активной вкладке "Документы" экран не гаснет. </body>
+		<created>2015-11-29 19:24:52</created>
+		<closed>2015-12-07 17:13:18</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>Если вкладка карты не активна - карту не рисовать</title>
+		<body></body>
+		<created>2015-11-29 19:15:09</created>
+		<closed>2015-12-07 17:07:15</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>Изменить текст в форме ввода перечета пней</title>
+		<body>![screenshot_2015-11-29-20-37-33](https://cloud.githubusercontent.com/assets/1708122/11458820/1edf481c-96d9-11e5-8827-e40bbec72694.png)  Надо написать "Диаметр пня" </body>
+		<created>2015-11-29 17:38:44</created>
+		<closed>2015-12-10 13:33:04</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>При темной теме в настройках темные чекбоксы, должны быть белые.</title>
+		<body></body>
+		<created>2015-11-26 10:59:05</created>
+		<closed>2016-01-24 00:27:10</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>Обращение к записи при пустом слое</title>
+		<body>``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.forestinspector/com.nextgis.forestinspector.activity.DocumentViewActivity}: android.database.CursorIndexOutOfBoundsException: Index 0 requested, with a size of 0     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2316)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2394)     at android.app.ActivityThread.access$800(ActivityThread.java:139)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1293)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:149)     at android.app.ActivityThread.main(ActivityThread.java:5234)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:794)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:610)     at dalvik.system.NativeStart.main(Native Method) Caused by: android.database.CursorIndexOutOfBoundsException: Index 0 requested, with a size of 0     at android.database.AbstractCursor.checkPosition(AbstractCursor.java:426)     at android.database.AbstractWindowedCursor.checkPosition(AbstractWindowedCursor.java:136)     at android.database.AbstractWindowedCursor.getLong(AbstractWindowedCursor.java:74)     at com.nextgis.maplib.datasource.Feature.fromCursor(Feature.java:358)     at com.nextgis.forestinspector.map.DocumentsLayer.getFeature(DocumentsLayer.java:86)     at com.nextgis.forestinspector.activity.DocumentViewActivity.onCreate(DocumentViewActivity.java:83)     at android.app.Activity.performCreate(Activity.java:5411)     at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2268)     ... 11 more ``` </body>
+		<created>2015-11-24 13:38:06</created>
+		<closed>2016-01-23 15:13:21</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>Упоминание акта в ведомости перечета</title>
+		<body>В окне заполнения шапки ведомости перечета в первой строке написано  ``` Акт о лесонарушении ... ```  а надо  ``` Ведомость перечета ... ``` </body>
+		<created>2015-11-19 21:19:02</created>
+		<closed>2015-11-20 10:43:28</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>Ошибки темной темы</title>
+		<body>1. В фототаблице чекбокс белый, рамка белая, текст введенный белый на белом. 2. В Actionmode иконки должны быть белыми.    ![screenshot_2015-11-19-22-59-55](https://cloud.githubusercontent.com/assets/1708122/11283177/7b47deba-8f14-11e5-9e3d-4acf55850bee.png)    ![screenshot_2015-11-19-23-00-09](https://cloud.githubusercontent.com/assets/1708122/11283178/7b4903a8-8f14-11e5-88fa-8d3fec1cd02b.png)    ![screenshot_2015-11-19-23-00-40](https://cloud.githubusercontent.com/assets/1708122/11283180/7b4aa74e-8f14-11e5-83a3-88e3cfe9fb71.png) </body>
+		<created>2015-11-19 20:23:11</created>
+		<closed>2015-11-20 14:04:46</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>Падение приложения при просмотре списков таблиц на повороте экрана</title>
+		<body></body>
+		<created>2015-11-14 18:14:19</created>
+		<closed>2015-11-16 18:21:04</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>При просмотре созданного акта о лесонарушении, который содержит акт об изъятии техники, приложение падает.</title>
+		<body></body>
+		<created>2015-11-11 14:33:32</created>
+		<closed>2015-12-18 13:17:08</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>Second text в toolbar темный</title>
+		<body>![screenshot_2015-11-11-13-10-29](https://cloud.githubusercontent.com/assets/1708122/11088663/0cda83ce-8875-11e5-834a-fbd1a9eca52c.png) </body>
+		<created>2015-11-11 10:07:48</created>
+		<closed>2015-11-17 15:42:38</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>Странное поведение ведомости перечета</title>
+		<body>1. Выделяю отметкой строчку - открывается actiontoolbar 2. Возвращаюсь обратно - стартует редактирование  3. Отменяю диалог    Получается строка с отметкой и непонятно что с ней делать.  Ожидаемое поведение: 1. Правка записи выполняется по клику без запуска actionmode (можно добавить рядом с чеком иконку редактирования) 2. ActionMode предназначен для пакетных операций - удалить выделенные, выделить все, удалить все. </body>
+		<created>2015-11-11 09:54:51</created>
+		<closed>2015-11-14 15:18:34</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>При выделении записи в ведомости перечета action bar закрывает строки</title>
+		<body>![screenshot_2015-11-11-12-51-06](https://cloud.githubusercontent.com/assets/1708122/11088323/7519c11e-8872-11e5-8800-746394dcfcf0.png) </body>
+		<created>2015-11-11 09:44:42</created>
+		<closed>2015-11-12 18:05:59</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>Первоначальную загрузку выполнять в сервисе</title>
+		<body>При повороте экрана прилодение падате, так как активити пересоздается, а ссылка передается в функции загрузки геоданных. Необходимо выполнять работу в сервисе, а активити подключаться к нему для получения процента выполнения и текущей задачи </body>
+		<created>2015-10-16 19:51:02</created>
+		<closed>2015-11-06 20:44:32</closed>
+	</bug>
+</bugs>

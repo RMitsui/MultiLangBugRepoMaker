@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>21</id>
+		<title>对接FaceUnity时遇到的问题</title>
+		<body> 1. onSurfaceCreated回调第一行就执行checkGlError，LOG打印出glError 0x501。是否在七牛SDK中就存在glError（不影响正常流程）。  2. 在demo中mCameraSetting.getCameraId()返回的cameraId永远是1，是否有api能够获取cameraId?  3. onPreviewFrame回调中，使用前置摄像头或后置摄像头返回的视频角度参数（顺时针 0/90/180/270 度）是不变的，而实际上byte[]画面的方向并不一样。  4. onDrawFrame回调中返回的texture是经过处理的，有没有回调可以直接返回OES的texture？</body>
+		<created>2017-08-16 11:35:42</created>
+		<closed>2017-11-13 11:59:15</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>录制的视频 右下角有绿色方块闪现</title>
+		<body>见图:  ![screenshot_20170731-095101](https://user-images.githubusercontent.com/785333/28760117-ab9c6504-75d6-11e7-989c-29fcc504f3f6.png)  </body>
+		<created>2017-07-31 01:58:02</created>
+		<closed>2017-11-13 11:58:57</closed>
+	</bug>
+</bugs>

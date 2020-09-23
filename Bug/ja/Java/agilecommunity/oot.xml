@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>252</id>
+		<title>チェック表(1週間分)に、1ページに収まらないものがある場合、改ページが上手く働かない</title>
+		<body>例えば、火曜日が2ページにまたがるとした場合。 火曜日の2ページ目の内容と、水曜日の1ページ目の内容が同じページに印刷されてしまう。 </body>
+		<created>2015-07-20 13:41:43</created>
+		<closed>2015-08-14 03:32:21</closed>
+	</bug>
+	<bug>
+		<id>242</id>
+		<title>IE8だとサインアウトのアイコンが名前にかぶってしまう</title>
+		<body>恰好悪いのでとっとと直そう。 </body>
+		<created>2015-05-19 10:53:43</created>
+		<closed>2015-05-19 12:08:10</closed>
+	</bug>
+	<bug>
+		<id>240</id>
+		<title>サインアップ、パスワード初期化の案内メールが来ない</title>
+		<body></body>
+		<created>2015-05-18 04:30:04</created>
+		<closed>2015-05-19 10:52:42</closed>
+	</bug>
+	<bug>
+		<id>229</id>
+		<title>TravisCIで作ったパッケージを動かすと、"App Version : v0.0.1-17-g09cc139" と表示される</title>
+		<body>あー。この手順抜けてたわー。 </body>
+		<created>2015-05-13 23:18:00</created>
+		<closed>2015-05-14 13:18:57</closed>
+	</bug>
+	<bug>
+		<id>228</id>
+		<title>メニュー編集画面で画像を貼り付けようとした際、不必要なカーソルが表示される</title>
+		<body>contenteditableなdivの配置位置が間違っている。 ウィンドウの0,0に配置したいんだよなぁ…。 </body>
+		<created>2015-05-13 14:01:40</created>
+		<closed>2015-05-15 09:22:18</closed>
+	</bug>
+	<bug>
+		<id>215</id>
+		<title>管理者で注文を編集できない</title>
+		<body>- メニュー作成画面にある注文編集をクリック。   - 注文数指定画面を表示   - 数量をクリック   - 数量が変更されない (指定画面が閉じない) </body>
+		<created>2015-05-04 01:40:59</created>
+		<closed>2015-05-10 03:41:27</closed>
+	</bug>
+	<bug>
+		<id>208</id>
+		<title>セッション切れ、またはログインしていない状態で、注文画面などにアクセスしても、サインイン画面に戻らない</title>
+		<body>以前はできてた気がするんだけどなぁ。 理由はAPIが、401ではなく、303を返してしまうため。  SecureSocialのSecuredActionの動きを変えないといけないんだけど、 設定でどうにかできるわけではないので、力技(SecuredActionを再実装)で解決する。 </body>
+		<created>2015-04-29 13:17:29</created>
+		<closed>2015-04-29 22:35:31</closed>
+	</bug>
+	<bug>
+		<id>205</id>
+		<title>Assetがブラウザでキャッシュされて新しいAssetを使ってくれない</title>
+		<body>今日試しにリリースして、Firefoxでアクセスしたら、UIが古いままだった。 フッタに出てくるバージョン情報は最新。(なので、古いアプリをリリースしたわけではない) ブラウザのキャッシュを削除した後、再度アクセスしたら新しいUIになった。 ということで、たぶんAsset(javascript,html)がキャッシュされて、更新できてないのが良くないんだと思う。  この手のことを回避するのに確かfingerprintって話があったと思うので、それを適用すればいいはず。  [Reverse routing and fingerprinting for public assets](https://www.playframework.com/documentation/2.4.x/Assets)  Play2.4だと標準の機能として備わっているらしいんだけど、2.2ではどう実装するんだろう。 </body>
+		<created>2015-04-13 02:58:24</created>
+		<closed>2015-04-29 13:40:49</closed>
+	</bug>
+	<bug>
+		<id>198</id>
+		<title>商品のコメントが入力できない</title>
+		<body>しまった…。入力欄なかった。 </body>
+		<created>2015-03-30 23:39:33</created>
+		<closed>2015-05-01 05:52:41</closed>
+	</bug>
+	<bug>
+		<id>186</id>
+		<title>container, row, colの使い方がおかしい</title>
+		<body>containerはroot, そのあとは row -&gt; col -&gt; row .. のようになる必要があるのだが、そうなってない。  注文画面のお弁当の枠が左右ちょんぎれてるように見えるのもそのせい。 なので、まずはそこの整理をする。 </body>
+		<created>2015-03-09 14:54:54</created>
+		<closed>2015-03-10 05:41:33</closed>
+	</bug>
+	<bug>
+		<id>185</id>
+		<title>チェック表を印刷すると、背景色がすべて白になってしまう</title>
+		<body>せっかく弁当ごとに背景色を変えるようにしたのに。 bootstrapのcssで指定されているようだ。しかも !important なので変更ができない。 bootstrapのカスタマイズが必要なんだけど、通常これってどうやるの?? </body>
+		<created>2015-03-09 10:26:07</created>
+		<closed>2015-03-10 12:38:02</closed>
+	</bug>
+	<bug>
+		<id>179</id>
+		<title>v0.1のタグがあるのに、git describeが"v0.0.1-[nnn]-[commitid]" となってしまう</title>
+		<body>git describeすると直近のタグを見つけて、そこから現在のコミットんの情報を生成する。 v0.1が直近のはずなんだけどなぁ…。 </body>
+		<created>2015-03-08 11:39:41</created>
+		<closed>2015-03-16 03:33:43</closed>
+	</bug>
+	<bug>
+		<id>172</id>
+		<title>メニュー作成画面で、メニューに弁当を多く登録すると、表示がおかしくなる</title>
+		<body></body>
+		<created>2015-03-06 10:33:25</created>
+		<closed>2015-03-08 15:02:25</closed>
+	</bug>
+	<bug>
+		<id>167</id>
+		<title>チェック表を印刷すると、最後に白紙のページが入る</title>
+		<body>発注シートなどもそう </body>
+		<created>2015-03-04 05:07:19</created>
+		<closed>2015-03-11 07:45:50</closed>
+	</bug>
+	<bug>
+		<id>165</id>
+		<title>画像が登録されていない商品の画像に "..." と表示される</title>
+		<body>本来は「画像がありません」画像が表示されるべき。 </body>
+		<created>2015-03-03 09:23:55</created>
+		<closed>2015-04-01 14:45:03</closed>
+	</bug>
+	<bug>
+		<id>151</id>
+		<title>商品選択画面で"データがありません"と商品の一覧が同時に出てしまう</title>
+		<body></body>
+		<created>2015-02-28 03:15:34</created>
+		<closed>2015-02-28 04:01:02</closed>
+	</bug>
+	<bug>
+		<id>127</id>
+		<title>メニュー作成にある商品選択画面で、5個以上商品がある場合の折り返しがおかしい</title>
+		<body></body>
+		<created>2015-02-16 03:35:42</created>
+		<closed>2015-02-16 13:31:30</closed>
+	</bug>
+	<bug>
+		<id>102</id>
+		<title>サインアップで送られてきたメールのURLにアクセスすると「無効なリンクです。メールの内容をもう一度確認してください」と表示される</title>
+		<body>法則はない感じ。 </body>
+		<created>2015-01-29 09:10:29</created>
+		<closed>2015-02-02 16:21:19</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>注文表でお弁当とサイドメニューが混在して表示されている</title>
+		<body></body>
+		<created>2015-01-24 13:56:37</created>
+		<closed>2015-02-11 06:45:26</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>チェックシートでお弁当とサイドメニューが混在して表示されている</title>
+		<body></body>
+		<created>2015-01-24 13:56:21</created>
+		<closed>2015-02-08 14:57:16</closed>
+	</bug>
+	<bug>
+		<id>89</id>
+		<title>注文画面でお弁当とサイドメニューが混在して表示されている</title>
+		<body>店名だけでソートしているから。 混乱するので、お弁当とサイドメニューは分けて表示する。 </body>
+		<created>2015-01-24 13:55:14</created>
+		<closed>2015-01-25 15:48:08</closed>
+	</bug>
+	<bug>
+		<id>86</id>
+		<title>IE8で表示すると、タイトルの画像がばかでかく表示されてしまう</title>
+		<body>原因は画像ファイルが大きいから。 FirefoxやChromeはサイズを調整してくれるのだが、 IEでは素直にそのまま表示してしまうらしい。  どちらにしても、画像がばかでかいのはあれなので小さくする。 </body>
+		<created>2015-01-24 11:06:55</created>
+		<closed>2015-01-24 13:02:02</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>サインアップを実行するとアプリが停止する</title>
+		<body>「アカウントをお持ちでない方は サインアップしてください。」からサインアップに移動し、メールアドレスを入力してサインアップをクリックすると、以下のエラーが出力され、アプリが停止しました。 エラーを見るとトークンの生成までは成功しているようです。  ``` [debug] a.s.UserService - doFindByEmailAndProvider email:hoge@gmail.com providerId:userpass [warn] a.s.UserService - doFindByEmailAndProvider LocalUser not found or too many email:hoge@gmail.com providerId:userpass list.size:0 [debug] a.s.UserService - doSaveToken uuid:de8700b8-e756-46c8-83a3-ea9cccd31c93 email:hoge@gmail.com [debug] a.s.UserService - doSaveToken uuid:de8700b8-e756-46c8-83a3-ea9cccd31c93 Uncaught error from thread [play-akka.actor.default-dispatcher-5] shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[play] java.lang.ExceptionInInitializerError         at controllers.Registration.startSignUp(Registration.java:95)         at Routes$$anonfun$routes$1$$anonfun$applyOrElse$26$$anonfun$apply$26.apply(routes_routing.scala:377) [ERROR] [01/12/2015 15:46:18.608] [play-akka.actor.default-dispatcher-5] [ActorSystem(play)] Uncaught error from thread [play-ak        at Routes$$anonfun$routes$1$$anonfun$applyOrElse$26$$anonfun$app ly$26.apply(routes_routing.scala:377) ka.actor.default-dispatcher-5] shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled java.lang.ExceptionInInitializerError         at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183)         at controllers.Registration.startSignUp(Registration.java:95)         at play.core.Router$Routes$$anon$1.invocation(Router.scala:377)         at Routes$$anonfun$routes$1$$anonfun$applyOrElse$26$$anonfun$apply$26.apply(routes_routing.scala:377)         at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56)         at Routes$$anonfun$routes$1$$anonfun$applyOrElse$26$$anonfun$apply$26.apply(routes_routing.scala:377)         at play.GlobalSettings$1.call(GlobalSettings.java:64)         at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183)         at filters.RequireCSRFCheck4NgAction.call(RequireCSRFCheck4NgAction.java:49)         at play.core.Router$Routes$$anon$1.invocation(Router.scala:377)         at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:91)         at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56)         at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:90)         at play.GlobalSettings$1.call(GlobalSettings.java:64)         at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)         at filters.RequireCSRFCheck4NgAction.call(RequireCSRFCheck4NgAction.java:49)         at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)         at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:91)         at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251)         at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:90)         at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249)         at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)         at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32)         at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)         at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:37)         at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251)         at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42)         at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249)         at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386)         at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32)         at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)         at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:37)         at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)         at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42)         at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)         at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386)         at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)         at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) Caused by: java.util.NoSuchElementException: None.get         at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)         at scala.None$.get(Option.scala:313)         at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)         at scala.None$.get(Option.scala:311)         at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)         at securesocial.core.providers.utils.Mailer$.&lt;init&gt;(Mailer.scala:33) Caused by: java.util.NoSuchElementException: None.get         at securesocial.core.providers.utils.Mailer$.&lt;clinit&gt;(Mailer.scala)         at scala.None$.get(Option.scala:313)         ... 22 more         at scala.None$.get(Option.scala:311)         at securesocial.core.providers.utils.Mailer$.&lt;init&gt;(Mailer.scala:33)         at securesocial.core.providers.utils.Mailer$.&lt;clinit&gt;(Mailer.scala)         ... 22 more  [error] a.a.ActorSystemImpl - Uncaught error from thread [play-akka.actor.default-dispatcher-5] shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled java.lang.ExceptionInInitializerError: null         at controllers.Registration.startSignUp(Registration.java:95) ~[classes/:2.2.3]         at Routes$$anonfun$routes$1$$anonfun$applyOrElse$26$$anonfun$apply$26.apply(routes_routing.scala:377) ~[classes/:na]         at Routes$$anonfun$routes$1$$anonfun$applyOrElse$26$$anonfun$apply$26.apply(routes_routing.scala:377) ~[classes/:na]         at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183) ~[play_2.10-2.2.3.jar:2.2.3]         at play.core.Router$Routes$$anon$1.invocation(Router.scala:377) ~[play_2.10-2.2.3.jar:2.2.3]         at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56) ~[play_2.10-2.2.3.jar:2.2.3] Caused by: java.util.NoSuchElementException: None.get         at scala.None$.get(Option.scala:313) ~[scala-library.jar:na]         at scala.None$.get(Option.scala:311) ~[scala-library.jar:na]         at securesocial.core.providers.utils.Mailer$.&lt;init&gt;(Mailer.scala:33) ~[securesocial_2.10-2.1.4.jar:2.1.4]         at securesocial.core.providers.utils.Mailer$.&lt;clinit&gt;(Mailer.scala) ~[securesocial_2.10-2.1.4.jar:2.1.4]         at controllers.Registration.startSignUp(Registration.java:95) ~[classes/:2.2.3]         at Routes$$anonfun$routes$1$$anonfun$applyOrElse$26$$anonfun$apply$26.apply(routes_routing.scala:377) ~[classes/:na] ``` </body>
+		<created>2015-01-12 07:20:44</created>
+		<closed>2015-01-16 13:13:10</closed>
+	</bug>
+	<bug>
+		<id>81</id>
+		<title>メニュー作成、商品選択画面で、商品が左から並ばない場合がある</title>
+		<body>#49 と同じ現象。 </body>
+		<created>2014-12-03 14:05:37</created>
+		<closed>2015-02-02 16:21:38</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>ウィンドウの幅が1248あたりを超えると、店舗選択画面で店舗が画面幅いっぱいに表示されない(横に2つくらいしか表示されなくなる)</title>
+		<body>なんでだろうね? </body>
+		<created>2014-12-01 13:48:34</created>
+		<closed>2014-12-03 14:28:36</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>商品を追加できない</title>
+		<body>商品一覧 -&gt; 商品を追加する -&gt; 値を入力 -&gt; OK をクリックしても、画面が閉じない。商品も登録されない。 </body>
+		<created>2014-12-01 12:53:36</created>
+		<closed>2014-12-01 13:50:22</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>メニューに同じ商品を2つ登録できる</title>
+		<body>そもそも2つ登録すべきではないし、注文画面の動きがおかしくなるので、制限したほうがいい。 </body>
+		<created>2014-11-30 13:26:31</created>
+		<closed>2015-01-28 14:01:36</closed>
+	</bug>
+	<bug>
+		<id>72</id>
+		<title>TYPO baa -&gt; bar</title>
+		<body>恥かしい限り…。 </body>
+		<created>2014-11-30 12:20:38</created>
+		<closed>2014-11-30 12:59:55</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>チェックリスト画面の注文者の並び順が、商品単位になっていない</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Wed Nov 19 07:27:56 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/64_  --- </body>
+		<created>2014-11-29 02:02:38</created>
+		<closed>2014-12-01 13:52:27</closed>
+	</bug>
+	<bug>
+		<id>63</id>
+		<title>[CLOSED] メニュー一覧の「商品を追加する」ボタンが、テーブルと重なって表示されている</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Tue Nov 18 14:28:46 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/63_  --- </body>
+		<created>2014-11-29 02:02:37</created>
+		<closed>2014-11-29 02:03:28</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>[CLOSED] サインアップができない</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Mon Nov 17 10:51:19 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/60_  ---  URL変更に伴うバグ。 </body>
+		<created>2014-11-29 02:02:34</created>
+		<closed>2014-11-29 02:03:28</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>[CLOSED] 注文ができない</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Mon Nov 17 03:40:05 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/59_  ---  利用者が注文しようとするとエラーになる </body>
+		<created>2014-11-29 02:02:32</created>
+		<closed>2014-11-29 02:03:28</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>[CLOSED] 商品の画像がなかった場合に、注文画面、メニュー作成のレイアウトが崩れる</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Sat Nov 15 13:05:03 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/58_  ---  「画像ありません」画像を表示して回避。 </body>
+		<created>2014-11-29 02:02:30</created>
+		<closed>2014-11-29 02:03:28</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>注文画面で、商品が左から並ばない場合がある</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Wed Nov  5 10:00:58 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/49_  ---  商品の枠の高さを統一するのが一番簡単な回避策。 </body>
+		<created>2014-11-29 02:02:12</created>
+		<closed>2014-12-01 13:47:05</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>[CLOSED] チェックリストが表示できない</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Sat Nov  1 09:52:33 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/46_  --- </body>
+		<created>2014-11-29 02:02:09</created>
+		<closed>2014-11-29 02:03:28</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>[CLOSED] サーバのタイムゾーンをUTCにすると、作成したメニューが正しく表示されない</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Tue Oct  7 13:55:08 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/40_  --- </body>
+		<created>2014-11-29 02:02:01</created>
+		<closed>2014-11-29 02:03:52</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>注文すると、注文中のロゴに隠れて、商品名が見えなくなってしまう</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Tue Sep 30 15:23:14 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/37_  --- </body>
+		<created>2014-11-29 02:01:58</created>
+		<closed>2015-02-14 07:14:50</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>[CLOSED] application.confにsmtp.encryptPasswordがないと落ちる</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Tue Sep 30 15:05:48 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/35_  --- </body>
+		<created>2014-11-29 02:01:56</created>
+		<closed>2014-11-29 02:03:52</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>[CLOSED] smtp.passwordが空だとアプリケーションが起動しない</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Fri Sep 26 22:48:42 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/32_  --- </body>
+		<created>2014-11-29 02:01:52</created>
+		<closed>2014-11-29 02:04:06</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>[CLOSED] 画面のテストがこける</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Mon Sep 15 07:20:36 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/24_  --- </body>
+		<created>2014-11-29 02:01:14</created>
+		<closed>2014-11-29 02:04:05</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>[CLOSED] 弁当やサラダをクリックしても、当日合計が計算されない</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Mon Mar 31 03:02:53 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/9_  ---  サーバへのリクエストに失敗している。 queryByStatus でDailyMenuのデータを受け取った際、menu_dateの値を日付に変換をするのを忘れてた。 </body>
+		<created>2014-11-29 02:00:47</created>
+		<closed>2014-11-29 02:04:49</closed>
+	</bug>
+	<bug>
+		<id>6</id>
+		<title>[CLOSED] 準備中のメニューでも注文できてしまう</title>
+		<body>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Sun Mar 30 13:36:42 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/6_  ---  最初面倒だったんで実装しなかったのよ。 </body>
+		<created>2014-11-29 02:00:42</created>
+		<closed>2014-11-29 02:04:58</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>722</id>
+		<title>当Example.Criteria未设置where条件直接查询时，带有逻辑删除注解的表会报错</title>
+		<body>`Example example = new Example(LogicDeleteTable.class);` `Example.Criteria criteria = example.createCriteria();` `logicDeleteTableService.selectByExample(example);` 如上代码所示，criteria 未设置任何查询条件，当LogicDeleteTable存在逻辑删除注解时，会报错。 生成的SQL语法有误：select count(0) from (SELECT `id`,`code`,`pid`,`name`,`level`,`create_time`,`update_time`,`del_flag` FROM `logic_delete_table` WHERE `del_flag` = 0 and) tmp_count 报错信息如下： Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') tmp_count' at line 1</body>
+		<created>2020-01-18 10:21:21</created>
+		<closed>2020-08-08 03:42:38</closed>
+	</bug>
+	<bug>
+		<id>425</id>
+		<title>Example andEqualTo object 如果object为null，会有问题</title>
+		<body>在我查询使用andEqualTo(Object param),当param==null ![image](https://user-images.githubusercontent.com/16514353/46216082-68192800-c371-11e8-8430-251fd4156a9b.png) 那么就会返回SystemMetaObject.NULL_META_OBJECT在第一步，但是这里面也是有属性的，假设这个metaObject的属性恰巧与当前这个表的某个字段相同(比如name)，那么就会拼接上这个属性在sql里面，但是这不是我想要的，请问这是个问题吗？</body>
+		<created>2018-09-28 14:55:41</created>
+		<closed>2018-12-08 02:29:28</closed>
+	</bug>
+	<bug>
+		<id>358</id>
+		<title>readme.md链接错误</title>
+		<body>https://github.com/abel533/Mapper readme.md 介绍的内容中 4.0 更新日志 链接打不开</body>
+		<created>2018-07-13 02:43:42</created>
+		<closed>2018-08-05 13:25:05</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="canal">
+	<bug id="171" opendate="2016-04-25 12:31:55" fixdate="2016-04-29 03:30:09">
+		<buginformation>
+			<summary>客户端高可用存在bug</summary>
+			<description>问题场景  1，canal有两台服务器c1和c2，c1处于激活状态 2，客户端使用ClusterCanalConnector进行消费，也是两台服务器d1和d2，d1处于激活状态 3，c1发生宕机，此时d1会执行【ClusterCanalConnector】的restart()方法。restart中有三步： 第一步，disconnect，会释放running节点； 第二步，线程休眠5秒钟； 第三步，尝试重连，重连的时候会执行initRunning()方法。 4，在d1释放running节点后，d2会被立即触发，执行initRunning()方法，initRunning中也有两大步： 第一步，抢占running节点 第二步，执行processActiveEnter()方法，该方法肯定会报错，因为此时d2连接的canal也是c1，执行initRunning的zk线程会异常退出，此时d2的mutex变量仍然为false，并且没有释放running节点 5，d1后续的重连都没意义了，因为d2没有释放running节点，所以d1的mutext变成了false 6，最终结果是d1和d2都阻塞了 7，此时关闭d2，d1的initRunning方法会被触发，但d1的processActiveEnter方法仍然会报错，d1仍然无法恢复消费 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>client/src/main/java/com/alibaba/otter/canal/client/impl/SimpleNodeAccessStrategy.java</file>
+			<file>client/src/main/java/com/alibaba/otter/canal/client/impl/SimpleCanalConnector.java</file>
+			<file>client/src/main/java/com/alibaba/otter/canal/client/CanalConnectors.java</file>
+			<file>client/src/main/java/com/alibaba/otter/canal/client/impl/ClusterCanalConnector.java</file>
+			<file>client/src/main/java/com/alibaba/otter/canal/client/CanalNodeAccessStrategy.java</file>
+			<file>client/src/main/java/com/alibaba/otter/canal/client/impl/ClusterNodeAccessStrategy.java</file>
+			<file>client/src/main/java/com/alibaba/otter/canal/client/impl/running/ClientRunningMonitor.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

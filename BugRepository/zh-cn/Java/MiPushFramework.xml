@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="MiPushFramework">
+	<bug id="41" opendate="2018-02-01 15:07:07" fixdate="2018-02-02 02:18:14">
+		<buginformation>
+			<summary>点击感叹号闪退</summary>
+			<description>修改权限，应用图标右边的感叹号，点击闪退  #######RuntimeEnvironmentInformation####### crash time= model=MI 5 android version=8.1.0(27) brand=Xiaomi manufacturer=Xiaomi board=msm8996 hardware=qcom device=gemini supported_abis=arm64-v8a &amp; armeabi-v7a &amp; armeabi display=aosp_gemini-userdebug 8.1.0 OPM1.171019.013 c18557063f test-keys #######ForceCloseCrashLog####### FATAL EXCEPTION: main Process: top.trumeet.mipush, PID: 5778 android.util.AndroidRuntimeException: Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want? at android.app.ContextImpl.startActivity(ContextImpl.java:881) at android.app.ContextImpl.startActivity(ContextImpl.java:855) at android.content.ContextWrapper.startActivity(ContextWrapper.java:372) at com.android.settings.widget.EntityHeaderController$1.onClick(EntityHeaderController.java:271) at android.view.View.performClick(View.java:6294) at android.view.View$PerformClick.run(View.java:24774) at android.os.Handler.handleCallback(Handler.java:790) at android.os.Handler.dispatchMessage(Handler.java:99) at android.os.Looper.loop(Looper.java:164) at android.app.ActivityThread.main(ActivityThread.java:6520) at java.lang.reflect.Method.invoke(Native Method) at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:442) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:807) at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:108) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/android/settings/widget/EntityHeaderController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

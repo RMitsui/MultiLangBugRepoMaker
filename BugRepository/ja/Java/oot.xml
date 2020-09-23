@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="oot">
+	<bug id="252" opendate="2015-07-20 13:41:43" fixdate="2015-08-14 03:32:21">
+		<buginformation>
+			<summary>チェック表(1週間分)に、1ページに収まらないものがある場合、改ページが上手く働かない</summary>
+			<description>例えば、火曜日が2ページにまたがるとした場合。 火曜日の2ページ目の内容と、水曜日の1ページ目の内容が同じページに印刷されてしまう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/models/MyServerConfigStartup.java</file>
+			<file>app/Global.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="240" opendate="2015-05-18 04:30:04" fixdate="2015-05-19 10:52:42">
+		<buginformation>
+			<summary>サインアップ、パスワード初期化の案内メールが来ない</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/controllers/Registration.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="215" opendate="2015-05-04 01:40:59" fixdate="2015-05-10 03:41:27">
+		<buginformation>
+			<summary>管理者で注文を編集できない</summary>
+			<description>- メニュー作成画面にある注文編集をクリック。   - 注文数指定画面を表示   - 数量をクリック   - 数量が変更されない (指定画面が閉じない) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/features/pages/admin/SelectUserPage.java</file>
+			<file>test/features/stepdefs/AdminStepDefs.java</file>
+			<file>test/features/pages/admin/dailyMenu/NewPage.java</file>
+			<file>test/features/pages/SelectNumOrdersPage.java</file>
+			<file>app/controllers/Application.java</file>
+			<file>test/features/pages/admin/dailyOrder/EditPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="208" opendate="2015-04-29 13:17:29" fixdate="2015-04-29 22:35:31">
+		<buginformation>
+			<summary>セッション切れ、またはログインしていない状態で、注文画面などにアクセスしても、サインイン画面に戻らない</summary>
+			<description>以前はできてた気がするんだけどなぁ。 理由はAPIが、401ではなく、303を返してしまうため。  SecureSocialのSecuredActionの動きを変えないといけないんだけど、 設定でどうにかできるわけではないので、力技(SecuredActionを再実装)で解決する。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/features/pages/admin/dailyMenu/NewPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="205" opendate="2015-04-13 02:58:24" fixdate="2015-04-29 13:40:49">
+		<buginformation>
+			<summary>Assetがブラウザでキャッシュされて新しいAssetを使ってくれない</summary>
+			<description>今日試しにリリースして、Firefoxでアクセスしたら、UIが古いままだった。 フッタに出てくるバージョン情報は最新。(なので、古いアプリをリリースしたわけではない) ブラウザのキャッシュを削除した後、再度アクセスしたら新しいUIになった。 ということで、たぶんAsset(javascript,html)がキャッシュされて、更新できてないのが良くないんだと思う。  この手のことを回避するのに確かfingerprintって話があったと思うので、それを適用すればいいはず。  [Reverse routing and fingerprinting for public assets](https://www.playframework.com/documentation/2.4.x/Assets)  Play2.4だと標準の機能として備わっているらしいんだけど、2.2ではどう実装するんだろう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/features/pages/admin/dailyMenu/NewPage.java</file>
+			<file>app/Global.java</file>
+			<file>app/controllers/UIViews.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="198" opendate="2015-03-30 23:39:33" fixdate="2015-05-01 05:52:41">
+		<buginformation>
+			<summary>商品のコメントが入力できない</summary>
+			<description>しまった…。入力欄なかった。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/features/support/CucumberUtils.java</file>
+			<file>test/features/pages/admin/menuItem/EditPage.java</file>
+			<file>test/features/stepdefs/AdminStepDefs.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="165" opendate="2015-03-03 09:23:55" fixdate="2015-04-01 14:45:03">
+		<buginformation>
+			<summary>画像が登録されていない商品の画像に "..." と表示される</summary>
+			<description>本来は「画像がありません」画像が表示されるべき。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/controllers/UCAssets.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="102" opendate="2015-01-29 09:10:29" fixdate="2015-02-02 16:21:19">
+		<buginformation>
+			<summary>サインアップで送られてきたメールのURLにアクセスすると「無効なリンクです。メールの内容をもう一度確認してください」と表示される</summary>
+			<description>法則はない感じ。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/controllers/DailyOrderAggregatesTest.java</file>
+			<file>app/utils/controller/ParameterConverter.java</file>
+			<file>app/utils/json/JodaDateOperator.java</file>
+			<file>test/models/DailyOrderItemTest.java</file>
+			<file>app/models/DailyOrderAggregate.java</file>
+			<file>test/controllers/MenuItemsTest.java</file>
+			<file>app/models/LocalToken.java</file>
+			<file>test/features/pages/admin/dailyMenu/NewPage.java</file>
+			<file>app/controllers/DailyOrders.java</file>
+			<file>test/utils/Utils.java</file>
+			<file>app/models/DailyMenu.java</file>
+			<file>test/services/UserServiceTest.java</file>
+			<file>test/models/DailyMenuItemTest.java</file>
+			<file>app/models/annotations/JodaTimestamp.java</file>
+			<file>app/models/annotations/JodaDate.java</file>
+			<file>app/controllers/DailyMenus.java</file>
+			<file>app/Global.java</file>
+			<file>test/controllers/DailyMenusTest.java</file>
+			<file>app/models/LocalUser.java</file>
+			<file>app/models/DailyOrder.java</file>
+			<file>app/utils/json/JodaTimestampOperator.java</file>
+			<file>app/controllers/DailyOrderAggregates.java</file>
+			<file>app/utils/snakeyaml/JodaPropertyConstructor.java</file>
+			<file>test/controllers/DailyOrdersTest.java</file>
+			<file>app/services/UserService.java</file>
+			<file>test/models/DailyOrderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="89" opendate="2015-01-24 13:55:14" fixdate="2015-01-25 15:48:08">
+		<buginformation>
+			<summary>注文画面でお弁当とサイドメニューが混在して表示されている</summary>
+			<description>店名だけでソートしているから。 混乱するので、お弁当とサイドメニューは分けて表示する。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/features/pages/admin/ChecklistPage.java</file>
+			<file>test/features/stepdefs/AdminStepDefs.java</file>
+			<file>test/features/pages/OrderPage.java</file>
+			<file>test/features/stepdefs/UserStepDefs.java</file>
+			<file>test/features/pages/admin/dailyMenu/NewPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="79" opendate="2014-12-01 13:48:34" fixdate="2014-12-03 14:28:36">
+		<buginformation>
+			<summary>ウィンドウの幅が1248あたりを超えると、店舗選択画面で店舗が画面幅いっぱいに表示されない(横に2つくらいしか表示されなくなる)</summary>
+			<description>なんでだろうね? </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/features/pages/admin/ChecklistPage.java</file>
+			<file>test/features/stepdefs/SigninStepDefs.java</file>
+			<file>test/features/pages/admin/HeaderModule.java</file>
+			<file>test/features/pages/admin/IndexPage.java</file>
+			<file>test/features/stepdefs/AdminStepDefs.java</file>
+			<file>test/features/pages/admin/OrderAggregatesPage.java</file>
+			<file>test/features/support/SeleniumUtils.java</file>
+			<file>test/features/pages/OrderPage.java</file>
+			<file>test/features/pages/admin/dailyMenu/NewPage.java</file>
+			<file>test/features/stepdefs/UserStepDefs.java</file>
+			<file>test/features/pages/admin/dailyMenu/SelectItemPage.java</file>
+			<file>test/features/support/JodaTimeConverter.java</file>
+			<file>test/features/pages/admin/dailyMenu/SelectShopPage.java</file>
+			<file>test/features/support/WebBrowser.java</file>
+			<file>test/features/pages/admin/menuItem/IndexPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2014-11-30 13:26:31" fixdate="2015-01-28 14:01:36">
+		<buginformation>
+			<summary>メニューに同じ商品を2つ登録できる</summary>
+			<description>そもそも2つ登録すべきではないし、注文画面の動きがおかしくなるので、制限したほうがいい。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/features/stepdefs/AdminStepDefs.java</file>
+			<file>test/features/pages/admin/dailyMenu/NewPage.java</file>
+			<file>test/controllers/DailyMenusTest.java</file>
+			<file>test/features/pages/admin/dailyMenu/SelectItemPage.java</file>
+			<file>app/models/DailyMenu.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="72" opendate="2014-11-30 12:20:38" fixdate="2014-11-30 12:59:55">
+		<buginformation>
+			<summary>TYPO baa -&gt; bar</summary>
+			<description>恥かしい限り…。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/controllers/DailyOrderAggregatesTest.java</file>
+			<file>test/controllers/DailyOrdersTest.java</file>
+			<file>test/controllers/RegistrationTest.java</file>
+			<file>test/controllers/DailyMenusTest.java</file>
+			<file>test/controllers/MenuItemsTest.java</file>
+			<file>test/models/DailyOrderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2014-11-29 02:02:34" fixdate="2014-11-29 02:03:28">
+		<buginformation>
+			<summary>[CLOSED] サインアップができない</summary>
+			<description>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Mon Nov 17 10:51:19 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/60_  ---  URL変更に伴うバグ。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/controllers/DailyOrderAggregatesTest.java</file>
+			<file>app/controllers/DailyOrderAggregates.java</file>
+			<file>test/controllers/RegistrationTest.java</file>
+			<file>app/models/LocalUser.java</file>
+			<file>app/controllers/Users.java</file>
+			<file>app/services/UserService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="59" opendate="2014-11-29 02:02:32" fixdate="2014-11-29 02:03:28">
+		<buginformation>
+			<summary>[CLOSED] 注文ができない</summary>
+			<description>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Mon Nov 17 03:40:05 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/59_  ---  利用者が注文しようとするとエラーになる </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/controllers/DailyOrders.java</file>
+			<file>app/services/UserService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="58" opendate="2014-11-29 02:02:30" fixdate="2014-11-29 02:03:28">
+		<buginformation>
+			<summary>[CLOSED] 商品の画像がなかった場合に、注文画面、メニュー作成のレイアウトが崩れる</summary>
+			<description>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Sat Nov 15 13:05:03 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/58_  ---  「画像ありません」画像を表示して回避。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/controllers/UCAssets.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2014-11-29 02:02:01" fixdate="2014-11-29 02:03:52">
+		<buginformation>
+			<summary>[CLOSED] サーバのタイムゾーンをUTCにすると、作成したメニューが正しく表示されない</summary>
+			<description>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Tue Oct  7 13:55:08 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/40_  --- </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/models/LocalToken.java</file>
+			<file>app/utils/controller/ParameterConverter.java</file>
+			<file>app/models/DailyOrder.java</file>
+			<file>app/controllers/DailyMenus.java</file>
+			<file>app/Global.java</file>
+			<file>test/controllers/DailyMenusTest.java</file>
+			<file>app/models/LocalUser.java</file>
+			<file>app/controllers/DailyOrders.java</file>
+			<file>test/controllers/DailyOrdersTest.java</file>
+			<file>app/models/DailyMenu.java</file>
+			<file>app/services/UserService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="32" opendate="2014-11-29 02:01:52" fixdate="2014-11-29 02:04:06">
+		<buginformation>
+			<summary>[CLOSED] smtp.passwordが空だとアプリケーションが起動しない</summary>
+			<description>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Fri Sep 26 22:48:42 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/32_  --- </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/Global.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="24" opendate="2014-11-29 02:01:14" fixdate="2014-11-29 02:04:05">
+		<buginformation>
+			<summary>[CLOSED] 画面のテストがこける</summary>
+			<description>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Mon Sep 15 07:20:36 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/24_  --- </description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/features/stepdefs/HeaderStepDefs.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6" opendate="2014-11-29 02:00:42" fixdate="2014-11-29 02:04:58">
+		<buginformation>
+			<summary>[CLOSED] 準備中のメニューでも注文できてしまう</summary>
+			<description>&lt;a href="https://github.com/nobiinu-and"&gt;&lt;img src="https://avatars.githubusercontent.com/u/920978?v=3" align="left" width="96" height="96" hspace="10"&gt;&lt;/img&gt;&lt;/a&gt; **Issue by [nobiinu-and](https://github.com/nobiinu-and)** _Sun Mar 30 13:36:42 2014_ _Originally opened as https://github.com/nobiinu-and/oot/issues/6_  ---  最初面倒だったんで実装しなかったのよ。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/controllers/DailyMenus.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

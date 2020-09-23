@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Sentinel">
+	<bug id="38" opendate="2018-08-05 05:57:35" fixdate="2018-08-05 08:57:34">
+		<buginformation>
+			<summary>配置dashboard参数，接口无法调通问题</summary>
+			<description>&lt;!-- Here is for bug reports and feature requests ONLY!   If you're looking for help, please check our mail list and the Gitter room. --&gt;  ## Issue Description  Type: *bug report*   ### Describe what happened (or what feature you want) 我配置了dashboard的参数，希望能够看到请求的可视化。此时调用其他服务的接口失败。 失败直接原因是：NoClassDefFoundError: Could not initialize class com.alibaba.csp.sentinel.Constants 出错行：master分支 com.alibaba.csp.sentinel.context.ContextUtil 的 113行 Constants.ROOT.addChild(node);  #33 33 ## Describe what you expected to happen 希望在配置了 dashboard 参数后能够调通接口（配置前，能够调通接口）  ### How to reproduce it (as minimally and precisely as possible) 1、引入sentinel-dubbo-adapter，sentinel-transport-simple-http，dubbo 2、配置dashboard的参数   ##便可复现  #33 ## Tell us your environment dubbo.version 2.6.0 sentinel.version  0.1.1-SNAPSHOT or 0.1.0 csp.sentinel.dashboard.server=http://localhost:8080 csp.sentinel.api.port=8878 csp.sentinel.heartbeat.interval.ms=20 csp.sentinel.metric.file.single.size=52428800 csp.sentinel.metric.file.total.count=6  ### Anything else we need to know? 本人新手，希望验证这个issue的时候，大神先自己直接配置一遍走一遍，也许是我本身配置的问题。    </description>
+		</buginformation>
+		<fixedfiles>
+			<file>sentinel-transport/sentinel-transport-simple-http/src/main/java/com/alibaba/csp/sentinel/transport/heartbeat/SimpleHttpHeartbeatSender.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>1540</id>
+		<title>WxDeviceBindDeviceResult 里的 Device类私有, 无法访问</title>
+		<body>### 简要描述 WxDeviceBindDeviceResult.Device 无法访问  ### 模块版本情况 * WxJava 模块名: 微信公众号 * WxJava 版本号: 3.7.0  ### 详细描述 接入WxMpDeviceService , 调用 getBindDevice 获取设备列表 , 返回类里的 Device 是私有的 , 无法访问  ![Snipaste_2020-05-01_14-08-51](https://user-images.githubusercontent.com/56534185/80786176-5b942b80-8bb5-11ea-83a3-b59b94f64f39.png)  </body>
+		<created>2020-05-01 06:09:44</created>
+		<closed>2020-05-03 13:38:31</closed>
+	</bug>
+	<bug>
+		<id>1539</id>
+		<title>您好 微信公众号模块的一个错误响应信息错了</title>
+		<body>https://github.com/Wechat-Group/WxJava/blob/23c1b0b0df621cf29ed57a92ae5fa287ff749f0f/weixin-java-common/src/main/java/me/chanjar/weixin/common/error/WxMpErrorMsgEnum.java#L91   40017 应为 不合法的按钮类型</body>
+		<created>2020-04-30 07:37:07</created>
+		<closed>2020-05-03 13:38:30</closed>
+	</bug>
+	<bug>
+		<id>1473</id>
+		<title>修复多个小程序获取redis里的access_token冲突问题</title>
+		<body>同一个平台下，配置多个小程序，使用redis缓存access_token，在获取access_token时未区分</body>
+		<created>2020-03-26 01:34:43</created>
+		<closed>2020-03-29 05:00:02</closed>
+	</bug>
+	<bug>
+		<id>1445</id>
+		<title>付款码，支付字段receipt 不是必传，传类com.github.binarywang.wxpay.bean.request.WxPayMicropayRequest中字段上加了  @Required</title>
+		<body> 电子发票入口开放标识 | receipt | 否 | String(8) | Y | Y，传入Y时，支付成功消息和支付详情页将出现开票入口。需要在微信支付商户平台或微信公众平台开通电子发票功能，传此字段才可生效   com.github.binarywang.wxpay.bean.request.WxPayMicropayRequest   /**    * &lt;pre&gt;    * 字段名：电子发票入口开放标识.    * 变量名：receipt    * 是否必填：否    * 类型：String(8)    * 示例值：Y    * 描述：Y，传入Y时，支付成功消息和支付详情页将出现开票入口。需要在微信支付商户平台或微信公众平台开通电子发票功能，传此字段才可生效    * &lt;/pre&gt;    **/   @Required   @XStreamAlias("receipt")   private String receipt; 如果不传支付时会报 com.github.binarywang.wxpay.exception.WxPayException: 必填字段 [receipt] 必须提供值  将注解@Required去掉就OK，要么默认设置 为"N" </body>
+		<created>2020-03-17 11:31:06</created>
+		<closed>2020-03-22 10:33:51</closed>
+	</bug>
+	<bug>
+		<id>1427</id>
+		<title>xml2Map method vulnerable to XXE vulnerability</title>
+		<body>Hello thanks for maintaining this open-source project.  [In the past](https://github.com/Wechat-Group/WxJava/issues/903) you have already fixed XXE vulnerabilities and I would also suggest that you look at the SAXReader object used in the [XMLUtils class](https://github.com/Wechat-Group/WxJava/blob/cc8359b22c05590e1fcdd9982de20c4cf7616285/weixin-java-common/src/main/java/me/chanjar/weixin/common/util/XmlUtils.java#L33).  Currently, this XML parsing is not safe, it is possible to modify a little bit [the test example](https://github.com/Wechat-Group/WxJava/blob/cc8359b22c05590e1fcdd9982de20c4cf7616285/weixin-java-common/src/test/java/me/chanjar/weixin/common/util/XmlUtilsTest.java#L22) to add a malicious XML string (XXEs): ```     String xml = "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;\n"+       "&lt;!DOCTYPE test [\n"+       "&lt;!ENTITY xxe SYSTEM \"file:///etc/passwd\"&gt;\n"+       "&lt;!ENTITY xxe2 SYSTEM \"http://localhost/test.php\"&gt;\n"+       "]&gt;\n"+       "&lt;CopyrightCheckResult&gt;\n" +       "&lt;Count&gt;&amp;xxe;&lt;/Count&gt;\n" +       "&lt;ResultList&gt;\n" +       "&lt;item&gt;\n" +       "&lt;ArticleIdx&gt;&amp;xxe2;&lt;/ArticleIdx&gt;\n" +       "&lt;UserDeclareState&gt;0&lt;/UserDeclareState&gt;\n" +       "&lt;AuditState&gt;2&lt;/AuditState&gt;\n" +       "&lt;OriginalArticleUrl&gt;&lt;![CDATA[Url_1]]&gt;&lt;/OriginalArticleUrl&gt;\n" +       "&lt;OriginalArticleType&gt;1&lt;/OriginalArticleType&gt;\n" +       "&lt;CanReprint&gt;1&lt;/CanReprint&gt;\n" +       "&lt;NeedReplaceContent&gt;1&lt;/NeedReplaceContent&gt;\n" +       "&lt;NeedShowReprintSource&gt;1&lt;/NeedShowReprintSource&gt;\n" +       "&lt;/item&gt;\n" +       "&lt;item&gt;\n" +       "&lt;ArticleIdx&gt;2&lt;/ArticleIdx&gt;\n" +       "&lt;UserDeclareState&gt;0&lt;/UserDeclareState&gt;\n" +       "&lt;AuditState&gt;2&lt;/AuditState&gt;\n" +       "&lt;OriginalArticleUrl&gt;&lt;![CDATA[Url_2]]&gt;&lt;/OriginalArticleUrl&gt;\n" +       "&lt;OriginalArticleType&gt;1&lt;/OriginalArticleType&gt;\n" +       "&lt;CanReprint&gt;1&lt;/CanReprint&gt;\n" +       "&lt;NeedReplaceContent&gt;1&lt;/NeedReplaceContent&gt;\n" +       "&lt;NeedShowReprintSource&gt;1&lt;/NeedShowReprintSource&gt;\n" +       "&lt;/item&gt;\n" +       "&lt;/ResultList&gt;\n" +       "&lt;CheckState&gt;2&lt;/CheckState&gt;\n" +       "&lt;/CopyrightCheckResult&gt;"; ```  The xml2Map() method will resolve external entities:  1) the first XXE reads the file /etc/passwd: ``` &lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt; ``` but it might be difficult for an attacker to exfiltrate data due to the way the xml data [is placed into the map](https://github.com/Wechat-Group/WxJava/blob/cc8359b22c05590e1fcdd9982de20c4cf7616285/weixin-java-common/src/main/java/me/chanjar/weixin/common/util/XmlUtils.java#L73).  2) the second XXE requests the webpage http://localhost/test.php: ``` &lt;!ENTITY xxe2 SYSTEM "http://localhost/test.php"&gt; ``` and it's easy to verify "the attack" by checking the webserver localhost logs: ``` 127.0.0.1 - - [04/Mar/2020:15:03:47 +0100] "GET /test.php HTTP/1.1" 200 197 "-" "Java/11.0.4" ```  Eric </body>
+		<created>2020-03-04 14:42:25</created>
+		<closed>2020-03-29 04:58:54</closed>
+	</bug>
+	<bug>
+		<id>1425</id>
+		<title>cpoa bug</title>
+		<body>### 简要描述 __简单概括描述下你所遇到的问题。__  ### 模块版本情况 * WxJava 模块名:  wxcp * WxJava 版本号: 3.7.0  ### 详细描述  WxCpApprovalDetail.java      /**      * 审批流程信息，可能有多个审批节点      */     @SerializedName("sp_record")     private WxCpApprovalRecord[] spRecord;      /**      * 抄送信息，可能有多个抄送节点      */     @SerializedName("notifyer")     private WxCpOperator[] notifyer;  因为是多个节点，所以应该为数组或list，   @Data public class ContentValue implements Serializable {      private static final long serialVersionUID = -5607678965965065261L;      private String text;      @SerializedName("new_number")     private Integer newNumber;      @SerializedName("new_money")     private Double newMoney;   newMoney 经测试可有小数点 ### 日志 __将日志放在 [pastebin](https://paste.ubuntu.com/) 或者其他地方，并将其url地址贴在这里__ </body>
+		<created>2020-03-04 03:44:58</created>
+		<closed>2020-03-08 13:13:07</closed>
+	</bug>
+	<bug>
+		<id>1420</id>
+		<title>小程序 云开发 batchDownloadFile方法的接口地址不对</title>
+		<body></body>
+		<created>2020-02-29 09:32:05</created>
+		<closed>2020-03-08 13:13:19</closed>
+	</bug>
+	<bug>
+		<id>1413</id>
+		<title>行业设置，腾讯官方文档与实际不符，枚举无法干预</title>
+		<body>### 简要描述 获取微信公众号所属行业，采用了枚举的方式，写死部分无法识别也无法修改，另外腾讯更新或者写法不一致后难以第一时间适应 如 String json="{\"primary_industry\":{\"first_class\":\"IT科技\",\"second_class\":\"IT软件与服务\"},\"secondary_industry\":{\"first_class\":\"房地产\",\"second_class\":\"房地产|建筑\"}}"; 枚举无法正确识别 导致 WxMpIndustryGsonAdapter 中报空指针  ### 模块版本情况 * WxJava 模块名: weixin-java-mp * WxJava 版本号: 3.6.0  ### 详细描述  设置所属行业返回内容与腾讯官方文档说的不是一回事，容易出现无法识别情况，建议修改为可外部干预的，避免遇到问题无法修改  本例中 官方文档为  房地产--建筑   实际返回值为   房地产--房地产|建筑 40中每种都试太麻烦 建议在 findBySecondary 方法的末尾 添加 外部识别方法 由使用者自行 处理不能识别的情况  顺带说一句 pom.xml中的地址与当前不符</body>
+		<created>2020-02-26 02:27:40</created>
+		<closed>2020-02-29 10:52:24</closed>
+	</bug>
+	<bug>
+		<id>1362</id>
+		<title>xstream版本Bug</title>
+		<body> ### 简要描述 在tomcat7 jdk1.7下运行会出现ClassNotFound 阻断性错误，  ### 模块版本情况 * WxJava 模块名: weixin-java-mp * WxJava 版本号:3.5，3.6 其他引用了xstream:1.4.11 均可能有此问题  ### 详细描述 tomcat版本7.0.99  jdk版本1.7.71  出现java.lang.NoClassDefFoundError: java/util/Base64$Encoder  ### 解决方案: 升级xstream版本从1.4.11到1.4.11.1  ### 详细日志 15:39:52.653 DEBUG org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver 133 resolveException - Resolving exception from handler [public java.lang.String com.zoe.weiya.controller.WxMpPortalController.post(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)]: org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: java/util/Base64$Encoder 15:39:52.654 DEBUG org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver 133 resolveException - Resolving exception from handler [public java.lang.String com.zoe.weiya.controller.WxMpPortalController.post(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)]: org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: java/util/Base64$Encoder 15:39:52.654 DEBUG org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver 133 resolveException - Resolving exception from handler [public java.lang.String com.zoe.weiya.controller.WxMpPortalController.post(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)]: org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: java/util/Base64$Encoder 15:39:52.655 DEBUG org.springframework.web.servlet.FrameworkServlet 993 processRequest - Could not complete request org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: java/util/Base64$Encoder         at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:978) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at javax.servlet.http.HttpServlet.service(HttpServlet.java:647) [servlet-api.jar:?]         at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at javax.servlet.http.HttpServlet.service(HttpServlet.java:728) [servlet-api.jar:?]         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:303) [catalina.jar:7.0.99]         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208) [catalina.jar:7.0.99]         at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat7-websocket.jar:7.0.99]         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241) [catalina.jar:7.0.99]         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208) [catalina.jar:7.0.99]         at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241) [catalina.jar:7.0.99]         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208) [catalina.jar:7.0.99]         at org.apache.logging.log4j.web.Log4jServletFilter.doFilter(Log4jServletFilter.java:71) [log4j-web-2.9.1.jar:2.9.1]         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241) [catalina.jar:7.0.99]         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208) [catalina.jar:7.0.99]         at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219) [catalina.jar:7.0.99]         at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:110) [catalina.jar:7.0.99]         at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) [catalina.jar:7.0.99]         at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:165) [catalina.jar:7.0.99]         at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:104) [catalina.jar:7.0.99]         at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:1025) [catalina.jar:7.0.99]         at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:116) [catalina.jar:7.0.99]         at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:452) [catalina.jar:7.0.99]         at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1195) [tomcat-coyote.jar:7.0.99]         at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:654) [tomcat-coyote.jar:7.0.99]         at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:317) [tomcat-coyote.jar:7.0.99]         at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:1.7.0_71]         at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:1.7.0_71]         at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-coyote.jar:7.0.99]         at java.lang.Thread.run(Unknown Source) [?:1.7.0_71] Caused by: java.lang.NoClassDefFoundError: java/util/Base64$Encoder         at java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:1.7.0_71]         at java.lang.Class.privateGetDeclaredConstructors(Unknown Source) ~[?:1.7.0_71]         at java.lang.Class.getConstructor0(Unknown Source) ~[?:1.7.0_71]         at java.lang.Class.newInstance(Unknown Source) ~[?:1.7.0_71]         at com.thoughtworks.xstream.core.JVM.&lt;clinit&gt;(JVM.java:187) ~[xstream-1.4.11.jar:1.4.11]         at com.thoughtworks.xstream.converters.reflection.FieldDictionary.init(FieldDictionary.java:52) ~[xstream-1.4.11.jar:1.4.11]         at com.thoughtworks.xstream.converters.reflection.FieldDictionary.&lt;init&gt;(FieldDictionary.java:47) ~[xstream-1.4.11.jar:1.4.11]         at com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider.&lt;init&gt;(PureJavaReflectionProvider.java:52) ~[xstream-1.4.11.jar:1.4.11]         at me.chanjar.weixin.common.util.xml.XStreamInitializer.getInstance(XStreamInitializer.java:44) ~[weixin-java-common-3.6.0.jar:?]         at me.chanjar.weixin.mp.util.xml.XStreamTransformer.registerClass(XStreamTransformer.java:73) ~[weixin-java-mp-3.6.0.jar:?]         at me.chanjar.weixin.mp.util.xml.XStreamTransformer.&lt;clinit&gt;(XStreamTransformer.java:25) ~[weixin-java-mp-3.6.0.jar:?]         at me.chanjar.weixin.mp.bean.message.WxMpXmlMessage.fromXml(WxMpXmlMessage.java:651) ~[weixin-java-mp-3.6.0.jar:?]         at com.zoe.weiya.controller.WxMpPortalController.post(WxMpPortalController.java:59) ~[classes/:?]         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_71]         at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.7.0_71]         at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.7.0_71]         at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.7.0_71]         at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:114) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]         ... 33 more Caused by: java.lang.ClassNotFoundException: java.util.Base64$Encoder         at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1951) ~[catalina.jar:7.0.99]         at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1794) ~[catalina.jar:7.0.99]         at java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:1.7.0_71]         at java.lang.Class.privateGetDeclaredConstructors(Unknown Source) ~[?:1.7.0_71]         at java.lang.Class.getConstructor0(Unknown Source) ~[?:1.7.0_71]         at java.lang.Class.newInstance(Unknown Source) ~[?:1.7.0_71]         at com.thoughtworks.xstream.core.JVM.&lt;clinit&gt;(JVM.java:187) ~[xstream-1.4.11.jar:1.4.11]         at com.thoughtworks.xstream.converters.reflection.FieldDictionary.init(FieldDictionary.java:52) ~[xstream-1.4.11.jar:1.4.11]         at com.thoughtworks.xstream.converters.reflection.FieldDictionary.&lt;init&gt;(FieldDictionary.java:47) ~[xstream-1.4.11.jar:1.4.11]         at com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider.&lt;init&gt;(PureJavaReflectionProvider.java:52) ~[xstream-1.4.11.jar:1.4.11]         at me.chanjar.weixin.common.util.xml.XStreamInitializer.getInstance(XStreamInitializer.java:44) ~[weixin-java-common-3.6.0.jar:?]         at me.chanjar.weixin.mp.util.xml.XStreamTransformer.registerClass(XStreamTransformer.java:73) ~[weixin-java-mp-3.6.0.jar:?]         at me.chanjar.weixin.mp.util.xml.XStreamTransformer.&lt;clinit&gt;(XStreamTransformer.java:25) ~[weixin-java-mp-3.6.0.jar:?]         at me.chanjar.weixin.mp.bean.message.WxMpXmlMessage.fromXml(WxMpXmlMessage.java:651) ~[weixin-java-mp-3.6.0.jar:?]  </body>
+		<created>2020-01-06 08:20:49</created>
+		<closed>2020-01-06 11:57:54</closed>
+	</bug>
+	<bug>
+		<id>1338</id>
+		<title>微信支付发送小程序红包接口有问题</title>
+		<body>参数有问题，需要修复</body>
+		<created>2019-12-26 03:37:07</created>
+		<closed>2019-12-28 08:51:53</closed>
+	</bug>
+	<bug>
+		<id>1324</id>
+		<title>微信广告接口报错 WxMarketingService.addUserAction </title>
+		<body>因为没有在http header里面设置 content-type: application/json，导致微信广告接口返回 {"errcode":900351002,"errmsg":"JSON string is malformed."} </body>
+		<created>2019-12-19 12:42:29</created>
+		<closed>2019-12-22 08:14:02</closed>
+	</bug>
+	<bug>
+		<id>1275</id>
+		<title>微信支付的对账下载有bug</title>
+		<body> ### 简要描述 微信支付对账下载，报数组下标越界异常  ### 模块版本情况 * 模块名: weixin-java-pay * 版本号: 3.5.0  ### 详细描述 如果微信对账下载接口  返回的结算类型是"普通结算对账单"的格式，但是代码里按“开通免充值券后的结算对账单”的类型去解析字符串，多了“订单金额”，“申请退款金额”，“费率备注”，导致异常  </body>
+		<created>2019-11-11 11:06:10</created>
+		<closed>2019-12-28 08:52:38</closed>
+	</bug>
+	<bug>
+		<id>1254</id>
+		<title>WxMaXmlOutMessage类没有默认注册到XStreamTransformer 导致调用toXml方法空指针异常</title>
+		<body>### 简要描述 调用以下两个方法空指针异常： WxMaXmlOutMessage.toXml() WxMaXmlOutMessage.toEncryptedXml()   ### 模块版本情况 * WxJava 模块名: wx-java-miniapp * WxJava 版本号:3.5.0  ### 详细描述 从报错信息来看WxMaXmlOutMessage这个类没有默认注册到XStreamTransformer 导致转化为xml返回给微信的时候调用空指针了。   ### 日志 ![image](https://user-images.githubusercontent.com/24607277/67562692-d0436480-f751-11e9-92b8-559f9e39be35.png) </body>
+		<created>2019-10-25 10:07:24</created>
+		<closed>2019-11-02 14:26:10</closed>
+	</bug>
+	<bug>
+		<id>1207</id>
+		<title>WxCpMessageRouter下public的方法被改成private</title>
+		<body> ### 模块版本情况 * WxJava 模块名: weixin-java-cp * WxJava 版本号:3.5.4.B  ### 详细描述  #897 中把WxCpMessageRouter类下的  ` public WxCpXmlOutMessage route(final WxCpXmlMessage wxMessage, final Map&lt;String, Object&gt; context) ` 改成了private，这是出于什么目的呢？这导致无法在调用处传递context了。 </body>
+		<created>2019-09-17 02:49:21</created>
+		<closed>2019-09-21 15:17:56</closed>
+	</bug>
+	<bug>
+		<id>1171</id>
+		<title>创建会员卡参数错误</title>
+		<body>### 简要描述 Jar 3.5.0对于创建会员中bonus_rule.least_moneyto_use_bonus参数错误， 官方给到的参数：least_money_to_use_bonus  ### 模块版本情况 * WxJava 模块名: weixin-java-mp * WxJava 版本号:3.5.0  ### 详细描述 &lt;img width="383" alt="image" src="https://user-images.githubusercontent.com/3807419/63496942-66aa9e00-c4f5-11e9-95b9-003197c21b93.png"&gt; 官方： ![image](https://user-images.githubusercontent.com/3807419/63496972-732ef680-c4f5-11e9-952e-4847968c3f14.png)   ### 日志 __将日志放在 [pastebin](https://paste.ubuntu.com/) 或者其他地方，并将其url地址贴在这里__ </body>
+		<created>2019-08-22 07:57:07</created>
+		<closed>2019-08-23 09:34:52</closed>
+	</bug>
+	<bug>
+		<id>1169</id>
+		<title>企业微信更新成员事件消息解析有问题</title>
+		<body>企业微信更新成员事件xml解析不了  ### 模块版本情况 * WxJava 模块名: cp * WxJava 版本号: 3.5.0  ### 详细描述 原始报文： ``` &lt;xml&gt; &lt;ToUserName&gt; &lt;![CDATA[myvwk5b2g7zw8lbxkj]]&gt; &lt;/ToUserName&gt; &lt;FromUserName&gt; &lt;![CDATA[sys]]&gt; &lt;/FromUserName&gt; &lt;CreateTime&gt;1565325995&lt;/CreateTime&gt; &lt;MsgType&gt; &lt;![CDATA[event]]&gt; &lt;/MsgType&gt; &lt;Event&gt; &lt;![CDATA[change_contact]]&gt; &lt;/Event&gt; &lt;ChangeType&gt; &lt;![CDATA[update_user]]&gt; &lt;/ChangeType&gt; &lt;UserID&gt; &lt;![CDATA[Test]]&gt; &lt;/UserID&gt; &lt;Department&gt; &lt;![CDATA[4]]&gt; &lt;/Department&gt; &lt;IsLeader&gt;1&lt;/IsLeader&gt; &lt;IsLeaderInDept&gt; &lt;![CDATA[1]]&gt; &lt;/IsLeaderInDept&gt; &lt;/xml&gt; ``` 测试代码： ``` String xml = "&lt;xml&gt;\n" + "\t&lt;ToUserName&gt;\n" + "\t\t&lt;![CDATA[myvwk5b2g7zw8lbxkj]]&gt;\n" + "\t&lt;/ToUserName&gt;\n" + "\t&lt;FromUserName&gt;\n" + "\t\t&lt;![CDATA[sys]]&gt;\n" + "\t&lt;/FromUserName&gt;\n" + "\t&lt;CreateTime&gt;1565325995&lt;/CreateTime&gt;\n" + "\t&lt;MsgType&gt;\n" + "\t\t&lt;![CDATA[event]]&gt;\n" + "\t&lt;/MsgType&gt;\n" + "\t&lt;Event&gt;\n" + "\t\t&lt;![CDATA[change_contact]]&gt;\n" + "\t&lt;/Event&gt;\n" + "\t&lt;ChangeType&gt;\n" + "\t\t&lt;![CDATA[update_user]]&gt;\n" + "\t&lt;/ChangeType&gt;\n" + "\t&lt;UserID&gt;\n" + "\t\t&lt;![CDATA[Test]]&gt;\n" + "\t&lt;/UserID&gt;\n" + "\t&lt;Department&gt;\n" + "\t\t&lt;![CDATA[4]]&gt;\n" + "\t&lt;/Department&gt;\n" + "\t&lt;IsLeader&gt;1&lt;/IsLeader&gt;\n" + "\t&lt;IsLeaderInDept&gt;\n" + "\t\t&lt;![CDATA[1]]&gt;\n" + "\t&lt;/IsLeaderInDept&gt;\n" + "&lt;/xml&gt;";  WxCpXmlMessage wxCpXmlMessage = XStreamTransformer.fromXml(WxCpXmlMessage.class, xml); System.out.println("消息解密后内容为："); System.out.println(wxCpXmlMessage.toString()); ```  错误信息： ``` Exception in thread "main" com.thoughtworks.xstream.converters.ConversionException: Explicit selected converter cannot handle type ---- Debugging information ---- message             : Explicit selected converter cannot handle type item-type           : [Ljava.lang.Long; converter-type      : com.thoughtworks.xstream.converters.SingleValueConverterWrapper class               : me.chanjar.weixin.cp.bean.WxCpXmlMessage required-type       : me.chanjar.weixin.cp.bean.WxCpXmlMessage converter-type[1]   : com.thoughtworks.xstream.converters.reflection.ReflectionConverter line number         : 21 version             : 1.4.11 ------------------------------- ```</body>
+		<created>2019-08-21 08:16:47</created>
+		<closed>2019-08-23 09:35:42</closed>
+	</bug>
+	<bug>
+		<id>1087</id>
+		<title>长链接转短链接接口的小BUG</title>
+		<body>准确来说应该是微信接口的BUG，但可能会在一定条件下瞬间刷爆access_token。  ### 简要描述 长链接转短链接接口中的 `long_url` 如果带有名为 `access_token` 的参数，会直接导致接口返回 `40001`，如果项目的 `autoRefreshToken` 也正好是 `true` ，会直接导致 `java.lang.StackOverflowError` 并刷爆服务号的 `access_token`  ### 模块版本情况  * WxJava 模块名: weixin-java-mp * WxJava 版本号:3.3.0  ### 期待结果 和 实际情况  #### 先说说微信的BUG  使用官方例子调用长链接转短链接（ `long_url` 添加 `access_token` 参数）： ```bash  curl -d "{\"action\":\"long2short\",\"long_url\":\"http://wap.koudaitong.com/v2/showcase/goods?alias=128wi9shh&amp;spm=h56083&amp;redirect_count=1&amp;access_token={random_str}\"}" "https://api.weixin.qq.com/cgi-bin/shorturl?access_token={access_token}" ``` * {random_str} : 随机字符串，网址中的参数名正好被命名成了access_token * {access_token} : 正常可用的微信access_token  返回值 ```json {"errcode":40001,"errmsg":"invalid credential, access_token is invalid or not latest hint: [1l1fVa08158619!]"} ```  修改上面long_url中 `access_token` 的参数名，或者去掉 `access_token` 这个参数（这里改成了 `bccess_token`） ```bash  curl -d "{\"action\":\"long2short\",\"long_url\":\"http://wap.koudaitong.com/v2/showcase/goods?alias=128wi9shh&amp;spm=h56083&amp;redirect_count=1&amp;bccess_token={random_str}\"}" "https://api.weixin.qq.com/cgi-bin/shorturl?access_token={access_token}" ``` * {random_str} : 同上 * {access_token} : 同上  返回值 ```json {"errcode":0,"errmsg":"ok","short_url":"https:\/\/w.url.cn\/s\/AdCvL5R"} ```  #### 再看看项目中的代码  **me.chanjar.weixin.mp.api.impl.BaseWxMpServiceImpl** ```java   ...   public &lt;T, E&gt; T executeInternal(RequestExecutor&lt;T, E&gt; executor, String uri, E data) throws WxErrorException {       ...       if (error.getErrorCode() == 42001 || error.getErrorCode() == 40001 || error.getErrorCode() == 40014) {         this.getWxMpConfigStorage().expireAccessToken();         if (this.getWxMpConfigStorage().autoRefreshToken()) {           return this.execute(executor, uri, data);         }       }   ... ``` 代码中判断到 `40001` 会让当前 `access_token` 失效，并且判断到 `autoRefreshToken` 会继续调用 `this.execute()`方法 ```java   public &lt;T, E&gt; T execute(RequestExecutor&lt;T, E&gt; executor, String uri, E data) throws WxErrorException {   ...       try {         return this.executeInternal(executor, uri, data);       } catch (WxErrorException e) {   ... ``` 也就是回到上一个方法，但同样会返回 `40001`，开始死循环。  ### 日志 ```log Handler dispatch failed; nested exception is java.lang.StackOverflowError org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.StackOverflowError at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:982) at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) at javax.servlet.http.HttpServlet.service(HttpServlet.java:622) at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) Caused by: java.lang.StackOverflowError: null at java.net.SocketInputStream.socketRead0(Native Method) at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) at java.net.SocketInputStream.read(SocketInputStream.java:171) at java.net.SocketInputStream.read(SocketInputStream.java:141) at sun.security.ssl.InputRecord.readFully(InputRecord.java:465) at sun.security.ssl.InputRecord.read(InputRecord.java:503) at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:973) at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:930) at sun.security.ssl.AppInputStream.read(AppInputStream.java:105) at okio.Okio$2.read(Okio.java:139) ```</body>
+		<created>2019-06-25 12:55:48</created>
+		<closed>2019-08-23 09:37:10</closed>
+	</bug>
+	<bug>
+		<id>973</id>
+		<title>服务商版微信红包3.3.0bug</title>
+		<body>WxPaySendRedpackRequest 发送红包的Bean 中需要额外排除 sub_appid 该字段  ```java      protected String[] getIgnoredParamsForSign() {          return new String[]{"sign_type", "sub_appid"};     } ```</body>
+		<created>2019-03-13 03:42:58</created>
+		<closed>2019-03-23 12:20:14</closed>
+	</bug>
+	<bug>
+		<id>966</id>
+		<title>移动端链接快速授权生成预授权链接错误</title>
+		<body>https://mp.weixin.qq.com/safe/bindcomponent?action=bindcomponent&amp;no_scan=1&amp;auth_type=3&amp;component_appid=%s&amp;pre_auth_code=%s&amp;redirect_uri=%s&amp;auth_type=xxx&amp;biz_appid=xxx$#wechat_redirect  项目中配置的移动端快速授权地址模板错误，最后#wechat_redirect前是不是多了个'$'啊，导致回调回来后出现错误。</body>
+		<created>2019-03-11 08:44:39</created>
+		<closed>2019-03-31 09:53:54</closed>
+	</bug>
+	<bug>
+		<id>942</id>
+		<title>下载iphone的声音文件时，微信返回来的文件名为空</title>
+		<body>下载iphone的声音文件时，微信返回来的文件名为空。在当前的代码下，文件名为空时返回null。其实这个时候返回的文件内容是正确的，只是文件名为空而已。 参考#941</body>
+		<created>2019-02-19 10:57:31</created>
+		<closed>2019-03-03 03:23:26</closed>
+	</bug>
+	<bug>
+		<id>936</id>
+		<title>使用沙箱环境退款时URL错误</title>
+		<body>使用JoddHttpImpl，退款时生成的URL是https://api.mch.weixin.qq.com/sandboxnew/secapi/pay/refund ，实际上应该是 https://api.mch.weixin.qq.com/sandboxnew/pay/refund</body>
+		<created>2019-02-02 09:26:47</created>
+		<closed>2019-03-03 03:23:38</closed>
+	</bug>
+	<bug>
+		<id>897</id>
+		<title>企业微信批量删除用户时的消息排重问题</title>
+		<body>在做通讯录管理时,假如批量删除两个用户,在route里面排重的时候, 在控制台打印的两条消息的create_time是一样的,所以经常会把其中一条消息判断为重复消息.最后我在route之前提前设置create_time临时解决了.新手上路,还望大佬指导下!</body>
+		<created>2018-12-26 08:32:56</created>
+		<closed>2019-08-30 10:09:59</closed>
+	</bug>
+	<bug>
+		<id>858</id>
+		<title>批量添加卡券接口后推送的事件被消息排重误判为重复消息</title>
+		<body>发现使用批量添加卡券接口后推送的事件被消息排重误判为重复消息 查看源码使用的排重方法为官网推荐的消息排重规则（FromUserName + CreateTime），但在使用批量添加卡券接口添加多张卡券后，官方推送的消息FromUserName + CreateTime相同，不符合重复消息，微信官方推荐的方法存在问题 </body>
+		<created>2018-11-26 07:08:52</created>
+		<closed>2019-08-30 10:10:54</closed>
+	</bug>
+	<bug>
+		<id>752</id>
+		<title>拉取支付评价的接口报错：商户签名错误</title>
+		<body>调用微信支付里拉取用户评论数据的接口： this.wxService.queryComment(DateUtils.addDays(new Date(), -30), new Date(), 0, 200);  报错： WxPayException(customErrorMsg=null, returnCode=FAIL, returnMsg=商户签名错误, resultCode=null, errCode=null, errCodeDes=null, xmlString=&lt;xml&gt; &lt;return_code&gt;&lt;![CDATA[FAIL]]&gt;&lt;/return_code&gt; &lt;return_msg&gt;&lt;![CDATA[商户签名错误]]&gt;&lt;/return_msg&gt; &lt;/xml&gt;)  将打印出来的请求数据放到微信支付接口签名校验工具里校验，结果如下： 1.接口请求的原始数据去校验，校验失败。 ![image](https://user-images.githubusercontent.com/20501730/45096181-8913a200-b152-11e8-85f7-2f7cda622e16.png)  2.接口请求的原始数据去掉  &lt;sign_type&gt;HMAC-SHA256&lt;/sign_type&gt;，校验成功。 ![image](https://user-images.githubusercontent.com/20501730/45096284-c37d3f00-b152-11e8-8f4b-7c591d417894.png)   结论：从实验结果上，请求数据设置了signType就会签名出错，不清楚是微信本身问题，还是weixin-java-pay的接口问题，  &lt;sign_type&gt;HMAC-SHA256&lt;/sign_type&gt; 本身有默认值，建议去掉这个设置，以便解决这个问题。</body>
+		<created>2018-09-05 13:30:56</created>
+		<closed>2018-09-09 04:56:58</closed>
+	</bug>
+	<bug>
+		<id>726</id>
+		<title>现金红包接口签名错误</title>
+		<body>V3.1.0 调用发送现金红包接口提示签名错误，经排查发现是signType不用参与签名。 接口 WxPayService WxPaySendRedpackResult sendRedpack(WxPaySendRedpackRequest request) throws WxPayException;  解决办法 WxPaySendRedpackRequest覆写ignoreSignType方法 protected boolean ignoreSignType() {     return true;   }</body>
+		<created>2018-08-23 06:23:50</created>
+		<closed>2018-08-23 15:01:38</closed>
+	</bug>
+	<bug>
+		<id>715</id>
+		<title>代理设置代码有问题</title>
+		<body>仔细阅读了下源码，发现关于Proxy只是添加了setDefaultCredentialsProvider的逻辑，没有添加setProxy的逻辑，实验了一下，貌似不灵，求指教。</body>
+		<created>2018-08-17 03:36:18</created>
+		<closed>2018-08-30 03:07:40</closed>
+	</bug>
+	<bug>
+		<id>701</id>
+		<title>企业微信 网页授权登录 使用snsapi_userinfo、snsapi_privateinfo时需要使用agentid</title>
+		<body>文档介绍 https://work.weixin.qq.com/api/doc#10028  企业微信 网页授权登录 使用snsapi_userinfo、snsapi_privateinfo时需要使用agentid</body>
+		<created>2018-08-07 12:54:51</created>
+		<closed>2018-08-09 03:14:19</closed>
+	</bug>
+	<bug>
+		<id>692</id>
+		<title>Invalid AES key length: 31 bytes 异常</title>
+		<body>异常： ``` com.github.binarywang.wxpay.exception.WxPayException: 发生异常，解密退款通知加密信息时出错         at com.github.binarywang.wxpay.service.impl.WxPayServiceAbstractImpl.parseRefundNotifyResult(WxPayServiceAbstractImpl.java:135) ~[weixin-java-pay-2.9.0.jar:na]         at com.xhlcgy.weixin.controller.WxPayController.parseRefundNotifyResult(WxPayController.java:290) ~[classes/:na]         at  Caused by: java.security.InvalidKeyException: Invalid AES key length: 31 bytes         at com.sun.crypto.provider.AESCrypt.init(AESCrypt.java:87) ~[sunjce_provider.jar:1.8.0_112]         at com.sun.crypto.provider.ElectronicCodeBook.init(ElectronicCodeBook.java:94) ~[sunjce_provider.jar:1.8.0_112]         at com.sun.crypto.provider.CipherCore.init(CipherCore.java:591) ~[sunjce_provider.jar:1.8.0_112]         at com.sun.crypto.provider.CipherCore.init(CipherCore.java:467) ~[sunjce_provider.jar:1.8.0_112]         at com.sun.crypto.provider.AESCipher.engineInit(AESCipher.java:313) ~[sunjce_provider.jar:1.8.0_112]         at javax.crypto.Cipher.implInit(Cipher.java:802) ~[na:1.8.0_121]         at javax.crypto.Cipher.chooseProvider(Cipher.java:864) ~[na:1.8.0_121]         at javax.crypto.Cipher.init(Cipher.java:1249) ~[na:1.8.0_121]         at javax.crypto.Cipher.init(Cipher.java:1186) ~[na:1.8.0_121]         at com.github.binarywang.wxpay.bean.notify.WxPayRefundNotifyResult.fromXML(WxPayRefundNotifyResult.java:53) ~[weixin-java-pay-2.9.0.jar:na]         ... 74 common frames omitted ```  在退款成功的通知消息的解析中的WxPayRefundNotifyResult.fromXML(xmlData, this.getConfig().getMchKey())方法中一直出现这个异常，最后发现是mchKey，经过加密之后的字符串是0xxxxxx,开头的，在通过   final String keyMd5String = new BigInteger(1, md5.digest()).toString(16).toLowerCase(); 上面的bigInteger构造自动将 首位的0省略掉，所以字符串是31位，AES才会报错，所以建议更换其他方式转换成32位字符串</body>
+		<created>2018-07-27 08:32:28</created>
+		<closed>2018-08-05 11:59:57</closed>
+	</bug>
+	<bug>
+		<id>646</id>
+		<title>微信申请退款接口组装退款代金券空指针</title>
+		<body>![image](https://user-images.githubusercontent.com/20488236/41863614-e6e6ef74-78d9-11e8-9016-5b0686859050.png) ![image](https://user-images.githubusercontent.com/20488236/41863675-1b77d55a-78da-11e8-86d7-916c90454314.png) 第一张图是退款接口已经返回数据了，但是退款申请失败了，接着下一步组装代金券的时候就空指针了， this.getCouponRefundCount()是null的</body>
+		<created>2018-06-25 16:46:17</created>
+		<closed>2018-06-27 03:34:42</closed>
+	</bug>
+	<bug>
+		<id>591</id>
+		<title>文件上传接口优化，添加支持是否关闭io流的方法</title>
+		<body>@binarywang  在进行批量公众账号图文素材上传的过程中，需要频繁的对一个文件进行读取操作， 发现下次循环的时候，io流已经关闭.希望优化方法 WxMpMaterialServiceImpl ```  @Override   public WxMediaUploadResult mediaUpload(String mediaType, String fileType, InputStream inputStream) throws WxErrorException {     File tmpFile = null;     try {       tmpFile = FileUtils.createTmpFile(inputStream, UUID.randomUUID().toString(), fileType);       return this.mediaUpload(mediaType, tmpFile);     } catch (IOException e) {       throw new WxErrorException(WxError.builder().errorCode(-1).errorMsg(e.getMessage()).build(), e);     } finally {       if (tmpFile != null) {         tmpFile.delete();       }     }   } /* * * 优化新增方法 */   public WxMediaUploadResult mediaUpload(String mediaType, String fileType, InputStream inputStream, boolean isCloseStream) throws WxErrorException {     File tmpFile = null;     try {       tmpFile = FileUtils.createTmpFile(inputStream, UUID.randomUUID().toString(), fileType);       return this.mediaUpload(mediaType, tmpFile);     } catch (IOException e) {       throw new WxErrorException(WxError.builder().errorCode(-1).errorMsg(e.getMessage()).build(), e);     } finally {       if (tmpFile != null) {         tmpFile.delete();       }     }   } ```</body>
+		<created>2018-05-16 01:41:08</created>
+		<closed>2018-05-22 05:59:36</closed>
+	</bug>
+	<bug>
+		<id>555</id>
+		<title>微信支付服务商模式支付验证签名失败</title>
+		<body>我是以服务商模式发起的支付，统一下单什么都成功了，但是一到调起支付的时候就验证签名失败。 问题应该是出在BaseWxPayServiceImpl.java里的再次加密的代码里。服务商模式应该是用subAppId去加密，而不是用appid去加密。 ``` WxPayMpOrderResult payResult = WxPayMpOrderResult.builder().appId(unifiedOrderResult.getAppid()).timeStamp(timestamp).nonceStr(nonceStr).packageValue("prepay_id=" + prepayId).signType(signType).build();                 payResult.setPaySign(SignUtils.createSign(payResult, signType, this.getConfig().getMchKey(), false));                 return payResult;  ``` 参考： https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_sl_api.php?chapter=7_7&amp;index=3 ![image](https://user-images.githubusercontent.com/3250305/39175190-440607c8-47dc-11e8-85c2-1e294cae8f32.png)   https://segmentfault.com/q/1010000011493630 </body>
+		<created>2018-04-24 06:49:10</created>
+		<closed>2018-05-13 15:29:43</closed>
+	</bug>
+	<bug>
+		<id>521</id>
+		<title>微信支付 WxPayOrderNotifyResult 缺少 version 参数</title>
+		<body>微信支付 WxPayOrderNotifyResult中缺少version参数，现在在WxPayUnifiedOrderRequest中有其他没有，开启营销功能时导致其他功能签名错误，如支付通知，查询等 版本3.0.0</body>
+		<created>2018-04-03 12:19:55</created>
+		<closed>2018-05-13 15:30:06</closed>
+	</bug>
+	<bug>
+		<id>485</id>
+		<title>me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage#accessTokenLock空指针问题</title>
+		<body>XStream在做xml反序列化时，如果xml中没有对应属性的话，会将bean中已经有的属性设置成null。 所以me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage#accessTokenLock此处的锁会是空的。 处理办法：me.chanjar.weixin.common.util.xml.XStreamInitializer#getInstance 在该方法初始化Xstream时，加入PureJavaReflectionProvider ![image](https://user-images.githubusercontent.com/18624394/37146640-4d20c458-22ff-11e8-84c2-f416c93faed5.png)  </body>
+		<created>2018-03-08 10:41:35</created>
+		<closed>2018-03-11 12:39:36</closed>
+	</bug>
+	<bug>
+		<id>483</id>
+		<title>公众号demo程序发送一次性订阅消息时空指针</title>
+		<body>模块：weixin-java-mp 版本：develop分支48d3163b33a1d6dde5fa1ac730798b857ae63fae 功能：一次性订阅消息 问题：用户授权后推送订阅模板消息给该用户时demo程序空指针 错误信息： ``` java.lang.NullPointerException at me.chanjar.weixin.mp.api.impl.WxMpServiceHttpClientImpl.getAccessToken(WxMpServiceHttpClientImpl.java:94) at me.chanjar.weixin.mp.api.impl.WxMpServiceBaseImpl.executeInternal(WxMpServiceBaseImpl.java:272) at me.chanjar.weixin.mp.api.impl.WxMpServiceBaseImpl.execute(WxMpServiceBaseImpl.java:239) at me.chanjar.weixin.mp.api.impl.WxMpServiceBaseImpl.post(WxMpServiceBaseImpl.java:228) at me.chanjar.weixin.mp.api.impl.WxMpSubscribeMsgServiceImpl.sendSubscribeMessage(WxMpSubscribeMsgServiceImpl.java:39) at me.chanjar.weixin.mp.demo.WxMpSubscribeMsgServlet.service(WxMpSubscribeMsgServlet.java:50) ``` 分析原因：下面代码只是将配置文件中的配置值装入了wxMpDemoInMemoryConfigStorage中，但父类中的3个Lock并未赋值。 ``` Java @XStreamAlias("xml") class WxMpDemoInMemoryConfigStorage extends WxMpInMemoryConfigStorage {   public static WxMpDemoInMemoryConfigStorage fromXml(InputStream is) {     XStream xstream = XStreamInitializer.getInstance();     xstream.processAnnotations(WxMpDemoInMemoryConfigStorage.class);     WxMpDemoInMemoryConfigStorage wxMpDemoInMemoryConfigStorage = (WxMpDemoInMemoryConfigStorage) xstream.fromXML(is);     return wxMpDemoInMemoryConfigStorage;   }   ... } ```  </body>
+		<created>2018-03-07 15:56:09</created>
+		<closed>2018-03-11 12:39:46</closed>
+	</bug>
+	<bug>
+		<id>480</id>
+		<title>查询取消关注的用户会导致公众号中UserService的userInfo抛出NPE</title>
+		<body>在查询用户信息时，如果一个用户已经取消关注公众号，那么只能拿到openID和其他的辅助信息。在WxMpUserGsonAdapter中，代码段 ```java  switch (sex) {       case 1:         user.setSexDesc("男");         break;       case 2:         user.setSexDesc("女");         break;       default:         user.setSexDesc("未知");     } ``` 会因为获取不到sex字段而导致抛出NPE异常</body>
+		<created>2018-03-05 10:08:21</created>
+		<closed>2018-03-11 12:40:17</closed>
+	</bug>
+	<bug>
+		<id>479</id>
+		<title>修复公众号模板消息发送时pagepath问题</title>
+		<body>https://mp.weixin.qq.com/wiki?action=doc&amp;id=mp1433751277&amp;t=0.8724972468714212#5 官方接口文档中的参数名称错误（文档中为 pagepath，实际应为 path）</body>
+		<created>2018-03-05 05:48:32</created>
+		<closed>2018-03-11 12:39:55</closed>
+	</bug>
+	<bug>
+		<id>448</id>
+		<title>企业付款到余额签名问题</title>
+		<body>WxPayConfig设置了signType时，wxPayService.entPay接口会报SING_ERROR，签名错误，需要修改WxEntPayRequest的isIgnoreSignType为true。</body>
+		<created>2018-01-29 05:13:39</created>
+		<closed>2018-01-31 04:41:26</closed>
+	</bug>
+	<bug>
+		<id>432</id>
+		<title>Multiple entries with same key 问题</title>
+		<body>微信支付收到 Notify 后，报错：  ``` -------------------------------                                                                                                                                                                                                                                                                                                                                                                     com.thoughtworks.xstream.converters.ConversionException:                                                                                                                                          ---- Debugging information ----                                                                                                                                                                   cause-exception     : java.lang.IllegalArgumentException                                                                                                                                          cause-message       : Multiple entries with same key: serialVersionUID=private static final long com.github.binarywang.wxpay.bean.result.BaseWxPayResult.serialVersionUID and serialVersionUID=pr ivate static final long com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult.serialVersionUID. To index multiple values under a key, use Multimaps.index.                               class               : com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult                                                                                                              required-type       : com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult                                                                                                              converter-type      : com.github.binarywang.wxpay.converter.WxPayOrderNotifyResultConverter                                                                                                       line number         : 1                                                                                                                                                                           version             : 1.4.9                                                                                                                                                                       -------------------------------                                                                                                                                                                           at com.thoughtworks.xstream.core.TreeUnmarshaller.convert(TreeUnmarshaller.java:79) ~[xstream-1.4.9.jar:1.4.9]                                                                                    at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:66) ~[xstream-1.4.9.jar:1.4.9]                                                                             at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:50) ~[xstream-1.4.9.jar:1.4.9]                                                                             at com.thoughtworks.xstream.core.TreeUnmarshaller.start(TreeUnmarshaller.java:134) ~[xstream-1.4.9.jar:1.4.9]                                                                                     at com.thoughtworks.xstream.core.AbstractTreeMarshallingStrategy.unmarshal(AbstractTreeMarshallingStrategy.java:32) ~[xstream-1.4.9.jar:1.4.9]                                                    at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1230) ~[xstream-1.4.9.jar:1.4.9]                                                                                                       at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1214) ~[xstream-1.4.9.jar:1.4.9]                                                                                                       at com.thoughtworks.xstream.XStream.fromXML(XStream.java:1085) ~[xstream-1.4.9.jar:1.4.9]                                                                                                         at com.thoughtworks.xstream.XStream.fromXML(XStream.java:1076) ~[xstream-1.4.9.jar:1.4.9]                                                                                                         at com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult.fromXML(WxPayOrderNotifyResult.java:266) ~[weixin-java-pay-2.9.4.BETA.jar:na]                                                   at com.github.binarywang.wxpay.service.impl.BaseWxPayServiceImpl.parseOrderNotifyResult(BaseWxPayServiceImpl.java:126) ~[weixin-java-pay-2.9.4.BETA.jar:na]                               ....... ```  这个类 com.github.binarywang.wxpay.bean.result.BaseWxPayResult 的 serialVersionUID 是不是应该设置为 1L，以防止出现重复的错误。  现在的值是这样设置的：  ```   private static final long serialVersionUID = 5389718115223345496L; ```</body>
+		<created>2018-01-19 08:33:09</created>
+		<closed>2018-01-31 04:40:06</closed>
+	</bug>
+	<bug>
+		<id>383</id>
+		<title>微信支付查询代金券信息返回coupon_state字段应为 string 类型</title>
+		<body>你好： 如题，类com.github.binarywang.wxpay.bean.coupon.WxPayCouponInfoQueryResult  的couponState 应设置成String类型.  官方接口定义如下： https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_5&amp;index=6  谢谢</body>
+		<created>2017-11-22 16:11:29</created>
+		<closed>2017-11-24 04:26:12</closed>
+	</bug>
+	<bug>
+		<id>370</id>
+		<title>WxMpServiceOkHttpImpl/WxCpServiceOkHttpImpl实现使用socks5代理，跟其他实现不一致</title>
+		<body>![image](https://user-images.githubusercontent.com/7044912/32594697-f3fb6576-c567-11e7-8b7d-3c9d8ac40365.png) 这里为什么使用sock5，Apache HTTPclient和jodd都是http，为什么okhttp使用sock5，差点掉坑里……</body>
+		<created>2017-11-09 08:07:11</created>
+		<closed>2017-11-10 10:53:47</closed>
+	</bug>
+	<bug>
+		<id>362</id>
+		<title>okhttp实现的二维码下载代码有问题</title>
+		<body>参考链接样例：https://github.com/Wechat-Group/weixin-java-tools/wiki/MP_%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%AE%A1%E7%90%86 和WxMpQrCodeServiceImplTest测试类进行试运行，不能正常生成二维码图片，而且图片格式和wiki说明也不一致。</body>
+		<created>2017-11-02 12:10:56</created>
+		<closed>2017-11-07 07:35:27</closed>
+	</bug>
+	<bug>
+		<id>355</id>
+		<title>2.8.0 微信支付签名bug</title>
+		<body>微信支付签名的工具类错误的将sign_type字段排除在签名字段之外,导致微信支付签名失败</body>
+		<created>2017-10-17 05:32:23</created>
+		<closed>2017-10-23 02:56:00</closed>
+	</bug>
+	<bug>
+		<id>352</id>
+		<title>java.lang.ClassCastException: xxx cannot be cast to xxx</title>
+		<body>java.lang.ClassCastException: me.chanjar.weixin.mp.bean.message.WxMpXmlMessage cannot be cast to me.chanjar.weixin.mp.bean.message.WxMpXmlMessage at me.chanjar.weixin.mp.bean.message.WxMpXmlMessage.fromXml(WxMpXmlMessage.java:429) at me.chanjar.weixin.mp.bean.message.WxMpXmlMessage.fromEncryptedXml(WxMpXmlMessage.java:451) at com.hzqi.sango.server.wechat.controller.WechatController.post(WechatController.java:72) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133) at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97) at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967) at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872) at javax.servlet.http.HttpServlet.service(HttpServlet.java:661) at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:110) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:208) at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177) at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346) at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:105) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748)</body>
+		<created>2017-10-13 08:27:01</created>
+		<closed>2017-10-23 02:56:13</closed>
+	</bug>
+	<bug>
+		<id>333</id>
+		<title>消息验重问题</title>
+		<body>WxMpMessageRouter的isMsgDuplicated方法。使用msgId来验重是不正确的。这个msgId可能重复，会造成部分人员收不到回信（我们在测试的时候15个人一块语音，这个ID重复了，15个人一块喊语音，有5-6人收不到）。暂时的解决方案是加了FromUser和CreateTime。请官方关注一下。另外WxCpMessageRouter可能会有同样的问题。最后，感谢开源。</body>
+		<created>2017-09-12 03:20:35</created>
+		<closed>2017-11-10 10:54:41</closed>
+	</bug>
+	<bug>
+		<id>305</id>
+		<title>接收不到拍照或发图的事件推送</title>
+		<body>用户拍照或者发图后，后台可以收到image类的用户消息，可是收不到事件推送。 经过排查，发现微信已经推送了事件，我的服务器也接到了加密的事件推送消息，消息解密也完成了， 但是在构建WxCpXmlMessage时遇到了问题：  ``` com.thoughtworks.xstream.converters.reflection.AbstractReflectionConverter$DuplicateFieldException: Duplicate field picList ---- Debugging information ---- field               : picList class               : me.chanjar.weixin.cp.bean.WxCpXmlMessage$SendPicsInfo required-type       : me.chanjar.weixin.cp.bean.WxCpXmlMessage$SendPicsInfo converter-type      : com.thoughtworks.xstream.converters.reflection.ReflectionConverter line number         : 1 class[1]            : me.chanjar.weixin.cp.bean.WxCpXmlMessage version             : 1.4.7 ```  发现解密过的xml里面的确有多个picList：  ```&lt;xml&gt;&lt;ToUserName&gt;&lt;![CDATA[wx45a0972125658be9]]&gt;&lt;/ToUserName&gt;&lt;FromUserName&gt;&lt;![CDATA[xiaohe]]&gt;&lt;/FromUserName&gt;&lt;CreateTime&gt;1502012364&lt;/CreateTime&gt;&lt;MsgType&gt;&lt;![CDATA[event]]&gt;&lt;/MsgType&gt;&lt;AgentID&gt;1000004&lt;/AgentID&gt;&lt;Event&gt;&lt;![CDATA[pic_weixin]]&gt;&lt;/Event&gt;&lt;EventKey&gt;&lt;![CDATA[faceSimilarity]]&gt;&lt;/EventKey&gt;&lt;SendPicsInfo&gt;&lt;PicList&gt;&lt;item&gt;&lt;PicMd5Sum&gt;&lt;![CDATA[aef52ae501537e552725c5d7f99c1741]]&gt;&lt;/PicMd5Sum&gt;&lt;/item&gt;&lt;/PicList&gt;&lt;PicList&gt;&lt;item&gt;&lt;PicMd5Sum&gt;&lt;![CDATA[c4564632a4fab91378c39bea6aad6f9e]]&gt;&lt;/PicMd5Sum&gt;&lt;/item&gt;&lt;/PicList&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;/SendPicsInfo&gt;&lt;/xml&gt;```  这个算是微信那边推送了错误的格式么？我觉得多个照片就该是PicList里面的多个item啊。 @binarywang </body>
+		<created>2017-08-06 09:58:37</created>
+		<closed>2017-08-14 08:33:27</closed>
+	</bug>
+	<bug>
+		<id>300</id>
+		<title>微信多媒体文件没有后缀名时下载失败</title>
+		<body>对于用户发给企业微信的语音消息，在下载时得到的是一个没有后缀名的文件，文件名默认是“voice”。 这导致了wxCpService.mediaDownload(media_id) 这个默认的下载多媒体文件的接口抛出异常。  在[ApacheMediaDownloadRequestExecutor.java](https://github.com/Wechat-Group/weixin-java-tools/blob/master/weixin-java-common/src/main/java/me/chanjar/weixin/common/util/http/apache/ApacheMediaDownloadRequestExecutor.java) 文件中         String fileName = getFileName(response);       if (StringUtils.isBlank(fileName)) {         return null;       }        String[] nameAndExt = fileName.split("\\.");       return FileUtils.createTmpFile(inputStream, nameAndExt[0], nameAndExt[1], super.tmpDirFile);  会抛出ArrayIndexOfBoundsException</body>
+		<created>2017-08-02 06:32:19</created>
+		<closed>2017-08-14 08:33:48</closed>
+	</bug>
+	<bug>
+		<id>209</id>
+		<title>调用【上传临时素材文件】接口返回 44001 多媒体文件为空</title>
+		<body>经我验证在代码： me.chanjar.weixin.common.util.http.MediaUploadRequestExecutor.java中 _HttpEntity entity = MultipartEntityBuilder               .create()               .addBinaryBody("media", file)               .setMode(HttpMultipartMode.RFC6532)               .build();       httpPost.setEntity(entity);       httpPost.setHeader("Content-Type", _ContentType.MULTIPART_FORM_DATA.toString());__ **最后设置的contentType导致，去掉此设置即可。** [参考：](http://stackoverflow.com/questions/29355989/apache-httpclient-post-upload-file-wont-work-with-multipartentitybuilder-upload) _Try removing this line  httppost.setHeader("Content-Type", "multipart/form-data"); Updated  as expected the application is sending invalid Content-Type header  [org.apache.http.headers] http-outgoing-5 &gt;&gt; Content-Type: multipart/form-data Please do not set Content-Type manually and let HttpClient generate it for you based on properties of the HttpEntity enclosed in the request_ </body>
+		<created>2017-05-04 09:56:27</created>
+		<closed>2017-06-18 06:50:51</closed>
+	</bug>
+	<bug>
+		<id>196</id>
+		<title>企业号中的 WxCpMessage转json时丢失safe属性</title>
+		<body>应该是WxCpMessageGsonAdapter中忽略了safe 属性 缺少以下代码 if (StringUtils.isNotBlank(message.getSafe())) {       messageJson.addProperty("safe", message.getSafe());  }</body>
+		<created>2017-04-25 08:57:27</created>
+		<closed>2017-04-28 02:50:25</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>DefaultApacheHttpClientBuilder.java 这个在实际生产环境中会导致大量的thread导致机器使用完线程死机</title>
+		<body>这是亲身经历。 prepare() 这个方法写的有问题，不停的加载创建thread，建议 构建方法中的配置等用静态提到构造函数中，我就这样解决的。  还有一个 路由的问题，路由方法也是 大量创建了thread，导致 thread只增加 不消除，我就直接把 thread取消了，就是那个  check duplicate 的吧，忘记了，如果不行 就用 线程池去做，不然不能用在生产环境中。很快机器就死 </body>
+		<created>2016-10-04 23:42:25</created>
+		<closed>2016-10-31 05:30:52</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>WxMpServiceImpl.executeInternal 方法阻塞导致服务器宕机的问题</title>
+		<body>目前方法的签名是这样的：  protected synchronized &lt;T, E&gt; T executeInternal(RequestExecutor&lt;T, E&gt; executor, String uri, E data) throws WxErrorException {...}  里边执行了一个超耗时的https的阻塞请求，直到微信官方网站返回了执行结果，才会结束这个方法。  所以，如果有多个线程通知执行 execute （然后 executeInternal），比如通过16个线程同时发送100万个模板消息，早晚都一定会发生一大堆线程阻塞在这个方法的起始处。  我们就遇到了这个情况，用 jstack 查看我们的 jvm 的线程状况，大部分都这样： "http-nio-8081-exec-188" #1201 daemon prio=5 os_prio=0 tid=0x00007f99f0498000 nid=0x4822 waiting for monitor entry [0x00007f99c6ef4000]    java.lang.Thread.State: BLOCKED (on object monitor)         at me.chanjar.weixin.mp.api.WxMpServiceImpl.executeInternal(WxMpServiceImpl.java:729)         - waiting to lock &lt;0x00000000c7332ed8&gt; (a me.chanjar.weixin.mp.api.impl.WxMpServiceImpl)         at me.chanjar.weixin.mp.api.WxMpServiceImpl.execute(WxMpServiceImpl.java:705)  于是，整个jvm的线程数量耗尽，导致tomcat假死，服务器资源消耗基本为0。  所以我的问题如下： 1、这里的这个 synchronized 关键字为什么一定要加？ 2、可以去掉不？ 3、如果去掉，会导致什么严重问题？  感谢。 </body>
+		<created>2016-08-16 07:55:15</created>
+		<closed>2017-01-08 09:37:51</closed>
+	</bug>
+</bugs>

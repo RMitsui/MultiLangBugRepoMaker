@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>4298</id>
+		<title>LineChart graph is drawn with incomplete lines</title>
+		<body>When I add points on my LineChart, they are drawn in a right way, but suddenly when I add the 7th and 8th points graph looks like: ![screenshot](https://user-images.githubusercontent.com/17068109/48315418-f8b76a80-e5a3-11e8-8f9b-6479ce99223c.png)   Points: [Entry, x: 30566.0 y: 656.85, Entry, x: 32913.0 y: 656.7, Entry, x: 32929.0 y: 656.5, Entry, x: 32952.0 y: 656.7, Entry, x: 32976.0 y: 657.25, Entry, x: 32979.0 y: 657.4, Entry, x: 32981.0 y: 657.5, Entry, x: 32989.0 y: 657.5] Following is the code:         mChart.setDrawGridBackground(false);         Description description = new Description();         description.setText("");         mChart.setDescription(description);         mChart.setNoDataText("");         mChart.setTouchEnabled(false);         mChart.setDragEnabled(false);         mChart.setScaleEnabled(false);         mChart.setPinchZoom(false);         mChart.setDrawBorders(false);         mChart.setAutoScaleMinMaxEnabled(true);         mChart.setDrawMarkers(false);          xAxis = mChart.getXAxis();         xAxis.removeAllLimitLines();         xAxis.setAxisLineColor(R.color.colorBlanco);         xAxis.setDrawAxisLine(false);         xAxis.enableAxisLineDashedLine(4f, 4f, 0f);         xAxis.enableGridDashedLine(4f, 4f, 0f);         xAxis.setAxisLineColor(ContextCompat.getColor(contexto, R.color.colorBlanco));         xAxis.setGridColor(ContextCompat.getColor(contexto, R.color.colorAtenuadoC));         xAxis.setTextColor(ContextCompat.getColor(contexto, R.color.colorAtenuadoB));         xAxis.setPosition(XAxis.XAxisPosition.TOP);         xAxis.setTextSize(14f);         xAxis.setGridLineWidth(1f);         xAxis.setValueFormatter(xLabelFormatter);         xAxis.setYOffset(0);         xAxis.setAvoidFirstLastClipping(true);          YAxis leftAxis = mChart.getAxisLeft();         leftAxis.setEnabled(false);          rightAxis = mChart.getAxisRight();         rightAxis.removeAllLimitLines();         rightAxis.enableAxisLineDashedLine(0f, 4f, 0f);         rightAxis.enableGridDashedLine(4f, 4f, 0f);         rightAxis.setAxisLineColor(ContextCompat.getColor(contexto, R.color.colorBlanco));         rightAxis.setGridColor(ContextCompat.getColor(contexto, R.color.colorAtenuadoC));         rightAxis.setTextColor(ContextCompat.getColor(contexto, R.color.colorAtenuadoB));         rightAxis.setZeroLineColor(ContextCompat.getColor(contexto, R.color.colorBlanco));         rightAxis.setTextSize(16f);         rightAxis.setDrawZeroLine(false);         rightAxis.setDrawLimitLinesBehindData(false);         rightAxis.setLabelCount(4, true);         rightAxis.setGranularity(0.25f);         rightAxis.setValueFormatter(yLabelFormatter);          mChart.animateX(100);         mChart.getLegend().setEnabled(false);  And set has the following settings:          LineDataSet set = new LineDataSet(points, "");         set.setCircleColor(color);         set.setCircleRadius(0f);         set.setColor(color);         set.setLineWidth(1.1f);         set.setValueTextSize(0f);         set.setAxisDependency(YAxis.AxisDependency.RIGHT);         set.setMode(LineDataSet.Mode.LINEAR);         set.setDrawCircles(false);         set.setDrawCircleHole(false);         set.setDrawValues(false);  Any idea why graph is painted weird?</body>
+		<created>2018-11-11 16:28:53</created>
+		<closed>2018-11-13 12:12:26</closed>
+	</bug>
+	<bug>
+		<id>4023</id>
+		<title>on adding entries and data sets in the menu's add Dynamical data, an error occurred and the app stops</title>
+		<body>&lt;!--- BEFORE YOU SUBMIT please read the following:  Please search open/closed issues before submitting since someone might have asked the same thing before!  If you have a support request or question please submit them on StackOverflow:   https://stackoverflow.com/questions/tagged/mpandroidchart using the tags `android` &amp; `mpandroidchart`  Please also look at the CONTRIBUTING file before opening an issue:   https://github.com/PhilJay/MPAndroidChart/blob/master/CONTRIBUTING.md  Issues on GitHub are only related to problems with MPAndroidChart itself and we cannot answer support questions here. We will close your issue without a response. --&gt;  **Summary** &lt;!-- A clear and concise description of what the bug is. --&gt; When I use the "Add Entry" feature then I hesitate and I want to delete the entry via the "Remove Entry" feature. But the display entry is not lost on the screen. To shorten, I use the "Clear Chart" feature. But the app stops automatically. I do it repeatedly, unfortunately the same problem happens again.  **Expected Behavior** &lt;!-- A clear and concise description of what you expected to happen. --&gt; Want to add an entry and dataset in the Dynamical data adding menu.  **Steps to Reproduce** &lt;!-- Not required, but suggest a fix/ reason for the bug, --&gt; &lt;!-- or ideas how to implement the addition or change --&gt;  Open the menu "Dynamical Data Adding". then click the "Add Entry" feature to add an entry. The next step is to delete the entry using the "Remove Entry" feature then you can not change anything yet. Please use the "Clear Chart" feature to remove it. When you finish deleting all, click the "Add Entry" feature again to add the entry. Then the app will stop automatically.  **Device**  - Device: Redmi Note 5A  - Android Version: 7.1.9  - Library Version: 3.0.3  Below is the crash log -  ``` FATAL EXCEPTION: main Process: com.xxmassdeveloper.mpchartexample, PID: 32230 java.lang.NullPointerException: Attempt to invoke virtual method  'com.github.mikephil.charting.interfaces.datasets.IDataSet com.github.mikephil.charting.data.ChartData.getDataSetByIndex(int)' on a null object reference     at com.xxmassdeveloper.mpchartexample.DynamicalAddingActivity.addEntry (DynamicalAddingActivity.java:54)     at com.xxmassdeveloper.mpchartexample.DynamicalAddingActivity.onOptionsItemSelected (DynamicalAddingActivity.java:169)     at android.app.Activity.onMenuItemSelected(Activity.java:3210)     at android.support.v4.app.FragmentActivity.onMenuItemSelected(FragmentActivity.java:406)     at com.android.internal.policy.PhoneWindow.onMenuItemSelected(PhoneWindow.java:1237)     at com.android.internal.view.menu.MenuBuilder.dispatchMenuItemSelected (MenuBuilder.java:766)     at com.android.internal.view.menu.MenuItemImpl.invoke(MenuItemImpl.java:152)     at com.android.internal.view.menu.MenuBuilder.performItemAction(MenuBuilder.java:909)     at com.android.internal.view.menu.MenuBuilder.performItemAction(MenuBuilder.java:899)     at com.android.internal.view.menu.MenuPopup.onItemClick(MenuPopup.java:128)     at android.widget.AdapterView.performItemClick(AdapterView.java:315)     at android.widget.AbsListView.performItemClick(AbsListView.java:1205)     at android.widget.AbsListView$PerformClick.run(AbsListView.java:3310)     at android.widget.AbsListView$3.run(AbsListView.java:4371)     at android.os.Handler.handleCallback(Handler.java:836)     at android.os.Handler.dispatchMessage(Handler.java:103)     at android.os.Looper.loop(Looper.java:203)     at android.app.ActivityThread.main(ActivityThread.java:6297)     at java.lang.reflect.Method.invoke(Native Method)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1084)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:945) ``` </body>
+		<created>2018-05-10 17:47:30</created>
+		<closed>2018-10-26 16:36:42</closed>
+	</bug>
+	<bug>
+		<id>3959</id>
+		<title>CombinedChart crashes randomly : Attempt to read from null array in BarChartRenderer</title>
+		<body>Hello and thank you for all your work creating this library, @PhilJay, can you tell me if this is a bug or is there something I'm doing wrong.  I'm having a really hard time finding the source of this **random** crash. Thank you very much for your help.  Here is a [link to the stackOverflow](https://stackoverflow.com/questions/49905089/mpandroidchart-combinedchart-crashes-randomly-barchartrenderer) question I created. I provided a sample code and the full stacktrace.</body>
+		<created>2018-04-18 17:18:40</created>
+		<closed>2018-10-26 16:56:15</closed>
+	</bug>
+	<bug>
+		<id>2385</id>
+		<title>if PieEntry(1f, "STRINGKEY") is set then NO COLOR (BUG)</title>
+		<body> i have found a bug,  when ever we enter 1f or less then 1f in the entries....it doesnt add color in the piechart,this issue is not only for my app..but the sample app is also having same issue,  ```     entries.add(new PieEntry(1f, "Monday"));     entries.add(new PieEntry(1f,"Tuesday"));     entries.add(new PieEntry(1f,"Wednesday"));     setPieChart(entries); ```  I will get 3 entities but with no color, Please fix this issue </body>
+		<created>2016-10-21 14:13:53</created>
+		<closed>2016-11-16 09:02:01</closed>
+	</bug>
+	<bug>
+		<id>2167</id>
+		<title>Uneven xAxis label spread</title>
+		<body>I'm having an issue with the spread of the xAxis labels. As can be seen in the image, the spacing between the xAxis labels is uneven. Is there a way to make it so that all of the xAxis labels are evenly spread?  Thanks.  ![Uneven](https://s4.postimg.io/esoaszg5p/issue.png) </body>
+		<created>2016-08-17 16:45:27</created>
+		<closed>2016-09-04 18:40:47</closed>
+	</bug>
+	<bug>
+		<id>2115</id>
+		<title>setCircleRadius(0) not working on v3.0.0</title>
+		<body>setCircleRadius(0) for lineCharts throws an error and crash the app.  ``` java.lang.IllegalArgumentException: width and height must be &gt; 0 at android.graphics.Bitmap.createBitmap(Bitmap.java:829) at android.graphics.Bitmap.createBitmap(Bitmap.java:808) at android.graphics.Bitmap.createBitmap(Bitmap.java:775) at com.github.mikephil.charting.renderer.LineChartRenderer.drawCircles(LineChartRenderer.java:687) at com.github.mikephil.charting.renderer.LineChartRenderer.drawExtras(LineChartRenderer.java:595) at com.github.mikephil.charting.charts.BarLineChartBase.onDraw(BarLineChartBase.java:252) at android.view.View.draw(View.java:16178) at android.view.View.updateDisplayListIfDirty(View.java:15174) at android.view.View.draw(View.java:15948) at android.view.ViewGroup.drawChild(ViewGroup.java:3609) at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3399) at android.view.View.updateDisplayListIfDirty(View.java:15169) at android.view.View.draw(View.java:15948) ```  Edit : Found that there is the setDrawCircles method </body>
+		<created>2016-08-08 08:36:33</created>
+		<closed>2016-08-12 18:51:08</closed>
+	</bug>
+	<bug>
+		<id>2106</id>
+		<title>Line chart not starting at 0 for negative graphs</title>
+		<body>My Values: ![image](https://cloud.githubusercontent.com/assets/1205588/17442815/825c4c46-5aec-11e6-8b9b-df39263bd322.png)  The outputted graph: ![image](https://cloud.githubusercontent.com/assets/1205588/17442881/bad27500-5aec-11e6-87ac-0894b17ea8e8.png)  When the graph is largely positive: ![image](https://cloud.githubusercontent.com/assets/1205588/17442900/d00c652a-5aec-11e6-96cc-4e73e325d255.png)  Let me know if there is anything I can do to help debug. You can view it for yourself in my app https://play.google.com/store/apps/details?id=com.teamtol.livedota&amp;hl=en by going to recent games and clicking on a few. </body>
+		<created>2016-08-05 16:14:03</created>
+		<closed>2018-10-28 03:25:08</closed>
+	</bug>
+	<bug>
+		<id>2071</id>
+		<title>First Dataset Using Second's Alpha Value in Line Chart</title>
+		<body>I noticed some odd behavior when using dual line charts. I wanted to have one data series shown as a line and another data series of discrete values with only the data points plotted. Idea was to make the second graph line invisible setting its alpha value to 0.  - start off e.g. with the dual line chart sample - use ARGB values for the colors of both graphs - first graph's mode set to LINEAR - make the second graph disappear by setting its alpha value to 0 - change first graph's mode to HORIZONTAL_BEZIER or CUBIC_BEZIER - the first graph and its fill disappear  Playing with different alpha values, it turns out that the first graph's color and fill both use the second graph's alpha value if HORIZONTAL_BEZIER or CUBIC_BEZIER mode are selected. ´ (This is using MPAndrroidChart version 3.0.0 beta.)  **Modified Code from the LineChartActivity2 sample:**  ```             set1 = new LineDataSet(yVals1, "DataSet 1");             set1.setAxisDependency(AxisDependency.LEFT);             //set1.setColor(ColorTemplate.getHoloBlue());             set1.setColor(0xffff0000);             set1.setCircleColor(Color.WHITE);             set1.setLineWidth(2f);             set1.setCircleRadius(3f);             set1.setFillAlpha(65);             set1.setDrawFilled(true);             set1.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);             set1.setFillColor(ColorTemplate.getHoloBlue());             set1.setHighLightColor(Color.rgb(244, 117, 117));             set1.setDrawCircleHole(false);              // create a dataset and give it a type             set2 = new LineDataSet(yVals2, "DataSet 2");             set2.setAxisDependency(AxisDependency.RIGHT);             //set2.setColor(Color.RED);             set2.setColor(0x0000ff00);             set2.setCircleColor(Color.WHITE);             set2.setLineWidth(2f);             set2.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);             set2.setCircleRadius(3f);             set2.setFillAlpha(65);             set2.setFillColor(Color.RED);             set2.setDrawCircleHole(false);             set2.setHighLightColor(Color.rgb(244, 117, 117)); ``` </body>
+		<created>2016-07-27 07:09:59</created>
+		<closed>2018-05-19 15:02:14</closed>
+	</bug>
+	<bug>
+		<id>2028</id>
+		<title>V:3.0.0-beta1: Line data set fill issue</title>
+		<body>Hi - I have set both 'LineDataSet.setDrawFilled(true)' and 'LineDataSet.setFillColor(...)' or 'LineDataSet.setFillDrawable(...API18...)' as per 'LineChartActivity1' example. For some weird reason, the area filled comes out as if it is w.r.t Y-axis. Can you help ?  &lt;img width="371" alt="screen shot 2016-07-16 at 4 17 02 am" src="https://cloud.githubusercontent.com/assets/13557123/16890513/04f42772-4b0d-11e6-859e-589c9971c4ce.png"&gt; &lt;img width="382" alt="screen shot 2016-07-16 at 4 23 45 am" src="https://cloud.githubusercontent.com/assets/13557123/16890535/285905d4-4b0d-11e6-83f9-e50ee40e8233.png"&gt; </body>
+		<created>2016-07-15 22:55:44</created>
+		<closed>2018-10-28 03:19:03</closed>
+	</bug>
+	<bug>
+		<id>1969</id>
+		<title>Legend not visible on first draw</title>
+		<body>In the demo  - PieChartActivity: When I set l.setPosition(LegendPosition.BELOW_OF_XXX), the legend was gone, but set in other directions was visible.  Version:3.0.0-beta1 </body>
+		<created>2016-07-07 02:25:08</created>
+		<closed>2016-07-07 14:49:24</closed>
+	</bug>
+	<bug>
+		<id>1911</id>
+		<title>Bar-shadow issue for stacked negative BarChart</title>
+		<body>![screenshot_20160625-103302](https://cloud.githubusercontent.com/assets/6759734/16355718/76fc6562-3ac0-11e6-946c-2d482b955bf8.png) </body>
+		<created>2016-06-25 08:35:04</created>
+		<closed>2018-10-28 03:07:27</closed>
+	</bug>
+	<bug>
+		<id>1895</id>
+		<title>Canvas.clipPath(...) crash when too many filled Entries</title>
+		<body>In Line chart when i increase first seekBar and when it reaches to approx value 350 app restarts it self. I have attached zip file containing video of problem. I tested this thing on Nexus 6. But not able to reproduc on nexus 4. [MPAndroidChart Problem.zip](https://github.com/PhilJay/MPAndroidChart/files/324989/MPAndroidChart.Problem.zip) </body>
+		<created>2016-06-21 07:35:32</created>
+		<closed>2016-07-02 14:03:37</closed>
+	</bug>
+	<bug>
+		<id>1853</id>
+		<title>unable to invalidate combined chart after removing data set</title>
+		<body>Hi Phil, when i'm trying to remove one graph from the combined chart , i'm unable to refresh the chart. I've tried anything: invalidate(), postinvalidate() , removeValues(),notifyDataSetChanged(),notify(),clear(),etc...  this is my code: ![device-2016-06-08-173455](https://cloud.githubusercontent.com/assets/12711000/15898062/769d6892-2d9f-11e6-8c18-b70b2738a59f.png)  public class MainActivity extends AppCompatActivity {     CombinedData data;     boolean mIsCandleOn = false;     boolean mIsLineOn = false;     LineData mLineData;     @Override     protected void onCreate(Bundle savedInstanceState) {         super.onCreate(savedInstanceState);         setContentView(R.layout.activity_main);         final CombinedChart combinedChart = (CombinedChart) findViewById(R.id.chart);         data = new CombinedData(getXAxisValues());         ImageView lineImage = (ImageView) findViewById(R.id.line_graph);         ImageView candleImage = (ImageView) findViewById(R.id.candle_graph);  ```     lineImage.setOnClickListener(new View.OnClickListener()     {         @Override         public void onClick(View v) {             if(!mIsLineOn) {                 data.setData(lineData());                 combinedChart.setData(data);                 combinedChart.animateY(2000);                 Toast.makeText(MainActivity.this,"ON",Toast.LENGTH_SHORT).show();             }             else             {                 String label = "Lina Data 1";                  boolean indicator  = data.removeDataSet(mLineData.getDataSetByLabel(label,true));                 combinedChart.notifyDataSetChanged();                 combinedChart.invalidate();                 //combinedChart.animateX(1000);                 Toast.makeText(MainActivity.this,"OFF" +" "+ indicator,Toast.LENGTH_SHORT).show();             }             mIsLineOn = !mIsLineOn;         }     });      candleImage.setOnClickListener(new View.OnClickListener()     {         @Override         public void onClick(View v) {             if(!mIsCandleOn) {                 data.setData(candleData());                 combinedChart.setData(data);                 combinedChart.animateY(2000);                 Toast.makeText(MainActivity.this,"ON",Toast.LENGTH_SHORT).show();             }             else             {                 data.clearValues();                 combinedChart.clear();                 Toast.makeText(MainActivity.this,"OFF",Toast.LENGTH_SHORT).show();             }             mIsCandleOn =! mIsCandleOn;         }     }); }   private ArrayList&lt;String&gt; getXAxisValues() {     ArrayList&lt;String&gt; labels = new ArrayList&lt;&gt;();     labels.add("JAN");     labels.add("FEB");     labels.add("MAR");     labels.add("APR");     labels.add("MAY");     labels.add("JUN");     return labels; }  // this method is used to create data for line graph public LineData lineData(){     ArrayList&lt;Entry&gt; line = new ArrayList&lt;&gt;();     line.add(new Entry(2f, 0));     line.add(new Entry(4f, 1));     line.add(new Entry(3f, 2));     line.add(new Entry(6f, 3));     line.add(new Entry(9f, 4));     line.add(new Entry(4f, 5));      LineDataSet lineDataSet = new LineDataSet(line, "Lina Data 1");     lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);     lineDataSet.setDrawCubic(true);     lineDataSet.setDrawFilled(true);     LineData lineData = new LineData(getXAxisValues(),lineDataSet);     mLineData=lineData;     lineData.setDrawValues(true);     return lineData; }  // this method is used to create data for candle graph public CandleData candleData() {     ArrayList&lt;CandleEntry&gt; entries = new ArrayList&lt;&gt;();      entries.add(new CandleEntry(0, 4.62f, 2.02f, 2.70f, 4.13f));     entries.add(new CandleEntry(1, 5.50f, 2.70f, 3.35f, 4.96f));     entries.add(new CandleEntry(2, 5.25f, 3.02f, 3.50f, 4.50f));     entries.add(new CandleEntry(3, 6f, 3.25f, 4.40f, 5.0f));     entries.add(new CandleEntry(4, 5.57f, 2f, 2.80f, 4.5f));     entries.add(new CandleEntry(5, 7.25f, 2.92f, 4.10f, 4.90f));      CandleDataSet dataset = new CandleDataSet(entries, "candle Data 2");     dataset.setColors(ColorTemplate.COLORFUL_COLORS);     CandleData candleDate = new CandleData(getXAxisValues(),dataset);     //candleDate.setDrawValues(true);      return candleDate; } ```  } </body>
+		<created>2016-06-08 14:36:18</created>
+		<closed>2016-06-15 19:07:12</closed>
+	</bug>
+	<bug>
+		<id>1842</id>
+		<title>HorizontalBarChart setVisibleXRangeMaxmum not working.</title>
+		<body>Also posted at : [http://stackoverflow.com/questions/37628270/mpandroidchart-horizontalbarchart-setvisiblexrangemaxmum-not-working](http://stackoverflow.com/questions/37628270/mpandroidchart-horizontalbarchart-setvisiblexrangemaxmum-not-working)  I asked this question at stackoverflow two days ago but no one answer.   I just want let the chart show about 10 items in x direction of HorizontalBarChart. I setVisibleXRangeMinimum and setVisibleXRangeMaxmum but it not working. What should i do to make it work??? </body>
+		<created>2016-06-06 03:29:44</created>
+		<closed>2016-06-21 07:40:00</closed>
+	</bug>
+	<bug>
+		<id>1829</id>
+		<title>Scrolling when Y-Axis is Inverted without any Datapoint</title>
+		<body>The Scrolling missbehaves(wrong direction) with an empty chart whithout any datapoint: Code for Reproduction:  `         LineChart chart = (LineChart) getActivity().findViewById(R.id.chart);  ```     LineData data = new LineData();     List&lt;String&gt; values=new ArrayList&lt;&gt;();     for(int x=0;x&lt;=240;x++){         values.add(""+x);     }     data.setXVals(values);     chart.setData(data);     chart.setVisibleXRange(0,30);     chart.setDescription(getResources().getString(R.string.dive_profile));     chart.getAxisRight().setEnabled(false);      YAxis depthAxis = chart.getAxisLeft();     depthAxis.setInverted(true);     depthAxis.setAxisMaxValue(300);     depthAxis.setAxisMinValue(0);      XAxis timeAxis = chart.getXAxis();     timeAxis.setAxisMinValue(0);     timeAxis.setAxisMaxValue(240);     timeAxis.setEnabled(true);     timeAxis.setDrawGridLines(true);       timeAxis.setValues(values);      chart.invalidate();` ```  The following Fix worked for me:  ![bugfix](https://cloud.githubusercontent.com/assets/1231069/15693114/055131d0-2793-11e6-94e4-0f73108ba86e.PNG)  Thank you anyway for your good work!  Cheers Laurin </body>
+		<created>2016-05-31 22:53:28</created>
+		<closed>2016-06-17 22:33:21</closed>
+	</bug>
+	<bug>
+		<id>1779</id>
+		<title>Line chart, missing axis (2.2.2 -&gt; 2.2.4)</title>
+		<body>After updating library to 2.2.4 in my app some of my charts are messed. I can't find differences in the usage between these version so I think this could be a bug.  ![mpchartengine-difference-222vs224](https://cloud.githubusercontent.com/assets/963361/15333315/7245b516-1c69-11e6-9863-ebbbff3ad3c6.jpg)  Here's my styling for the chart  ``````    ```             mChartView = (LineChart) findViewById(R.id.linechart);             mChartView.setVisibility(View.VISIBLE);             mChartView.setBorderWidth(0f);             mChartView.setData(mDataChart);             mChartView.setDrawBorders(false);             mChartView.setDrawGridBackground(false);             mChartView.setDescription(null);              mChartView.setGridBackgroundColor(Color.parseColor("#000000"));             mChartView.getXAxis().setDrawAxisLine(false);             mChartView.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);             mChartView.getAxis(YAxis.AxisDependency.LEFT).setDrawAxisLine(false);             mChartView.getAxis(YAxis.AxisDependency.RIGHT).setEnabled(false);             mChartView.getLegend().setForm(Legend.LegendForm.CIRCLE);             mChartView.getAxis(YAxis.AxisDependency.LEFT).setStartAtZero(false);             mChartView.getAxis(YAxis.AxisDependency.LEFT).setValueFormatter(new           YAxisValueFormatter() {                 @Override                 public String getFormattedValue(float value, YAxis yAxis) {                     DecimalFormat mFormat = new DecimalFormat("###,###,##0.00");                     return mFormat.format(value);                 }             });              MyMarkerView mv = new MyMarkerView(getBaseContext(), R.layout.marker_view);             mChartView.setMarkerView(mv);             mChartView.invalidate(); ``````  ``` ``` </body>
+		<created>2016-05-17 17:58:37</created>
+		<closed>2016-06-25 22:27:51</closed>
+	</bug>
+	<bug>
+		<id>1777</id>
+		<title>HorizontalBarChart: IndexOutOfBoundsException when plotting BarData without entries</title>
+		<body>When you set the data of a bar chart, but the data is actually empty, containing no data, in particular no `xVals` the application will crash with:  ``` java.lang.IndexOutOfBoundsException: Invalid index 0, size is 0 at java.util.ArrayList.throwIndexOutOfBoundsException(ArrayList.java:255) at java.util.ArrayList.get(ArrayList.java:308) at com.github.mikephil.charting.renderer.XAxisRendererHorizontalBarChart.drawLabels(XAxisRendererHorizontalBarChart.java:127) at com.github.mikephil.charting.renderer.XAxisRendererHorizontalBarChart.renderAxisLabels(XAxisRendererHorizontalBarChart.java:68) at com.github.mikephil.charting.charts.BarLineChartBase.onDraw(BarLineChartBase.java:267) at android.view.View.draw(View.java:16178) ... ```  instead of showing "no data" or something... not difficult to work around but ...  To reproduce, use something along the lines:  ``` HorizontalBarChart chart = (HorizontalBarChart) findViewById(R.id.chart); ArrayList&lt;BarEntry&gt; yVals1 = new ArrayList&lt;&gt;(); ArrayList&lt;String&gt; xVals = new ArrayList&lt;&gt;(); BarDataSet set1 = new BarDataSet(yVals1, "DataSet 1"); ArrayList&lt;IBarDataSet&gt; dataSets = new ArrayList&lt;IBarDataSet&gt;(); dataSets.add(set1); chart.setData(new BarData(xVals, dataSets)); chart.notifyDataSetChanged(); // let the chart know it's data changed chart.invalidate(); ```  ```     &lt;com.github.mikephil.charting.charts.HorizontalBarChart         android:id="@+id/chart"         android:layout_width="match_parent"         android:layout_height="match_parent" /&gt; ``` </body>
+		<created>2016-05-15 22:10:00</created>
+		<closed>2016-06-17 22:34:59</closed>
+	</bug>
+	<bug>
+		<id>1755</id>
+		<title>How to remove extra whitespace when using PieChart and maxAngle?</title>
+		<body>I have a StackOverflow question on this with code and pictures that should help:  http://stackoverflow.com/questions/37080602/how-to-remove-extra-whitespace-on-pie-charts-from-mpandroidcharts  But how do you eliminate the extra whitespace created when using maxAngle with PieCharts? </body>
+		<created>2016-05-09 16:03:03</created>
+		<closed>2018-10-28 03:06:21</closed>
+	</bug>
+	<bug>
+		<id>1749</id>
+		<title>The Chart is not redrawn when the data is null after initiating the chart</title>
+		<body>Hi Guys,  i'm using this amazing library, its easy and beautiful, tks. I will try to explain what happens, and below the explanation put the source code.  When I start any of the charts, and use the setData the first time with a null data, the message "The chart data available." is displayed. But if I start the chart, and use the setData chart with data, the char is displayed OK. Then, i call the setData again to "update" the chart with another period, and this period has a  null data, like the first explanation,  the message is not displayed. I call invalidate() after setData, call notifyDataSetChanged() too, but the chart is not redrawn with the correct message, that is no data available. Doing some test, if you setData with some numbers, after that call chart.clear() (internally this set mData to null) and call invalidate(), the chart is not redrawn to.  Explained my code below:  When I create the fragment, my onCreateView is called, and call the createGraph passing invalid as false. When my fragment is showing (and the User clicks on the button to update the date) the update event is called, passing invalid as true. Here is the Code:  public class TravelDistanceLineChart extends BaseFragment {     private LineChart chart;  ``` public TravelDistanceLineChart() { }  @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {     View rootView = inflater.inflate(R.layout.fragment_line_chart, container, false);     ReportLabelFormatter labelformat = new ReportLabelFormatter(ReportLabelFormatter.types.DISTANCE);     chart = (LineChart) rootView.findViewById(R.id.linechart);     chart.setDescription(null);     chart.setLogEnabled(true);     chart.setNoDataText(getString(R.string.nao_ha_graficos));     chart.getAxisRight().setValueFormatter(labelformat);     chart.getAxisLeft().setValueFormatter(labelformat);     createGraph(rootView, false);     Log.d(getClass().getSimpleName(), "Calling onCreateView");     return rootView; } public void update() {     Log.d(getClass().getSimpleName(), "Calling Update");     createGraph(getView(), true); }  protected void createGraph(View view, boolean invalid){     TextInputEditText report_ini_date = (TextInputEditText) getActivity().findViewById(R.id.report_ini_date);     TextInputEditText report_end_date = (TextInputEditText) getActivity().findViewById(R.id.report_end_date);      if(report_ini_date != null &amp;&amp; report_end_date != null) {         chart.setData(MeuCarroApplication.getInstance().reportTravelDistance(report_ini_date.getText().toString(), report_end_date.getText().toString()));     }     if (invalid) {         chart.notifyDataSetChanged();         chart.invalidate();     }     //chart.animateX(1500); } ``` </body>
+		<created>2016-05-06 02:09:59</created>
+		<closed>2016-06-17 22:45:00</closed>
+	</bug>
+	<bug>
+		<id>1604</id>
+		<title>ScatterDataSet.copy() misses some relevant values</title>
+		<body>For example, method should include  ``` copied.setDrawValues( isDrawValuesEnabled() ); ```  Without it, the mDrawValues is lost during the copy. </body>
+		<created>2016-03-20 04:25:03</created>
+		<closed>2018-05-08 15:42:21</closed>
+	</bug>
+	<bug>
+		<id>1484</id>
+		<title>X Axis labels with letters that go below baseline not aligned</title>
+		<body>![device-2016-02-18-151807](https://cloud.githubusercontent.com/assets/4515769/13156949/256f9c0e-d653-11e5-9664-f544cca4bef8.png)  In the above chart, you can see that labels with the letter "p" or "g" (letters that go below the baseline) are not lined up with the rest of the labels. Maybe they have a different line height and it's throwing off the drawing calculations. </body>
+		<created>2016-02-18 20:25:49</created>
+		<closed>2016-06-17 22:47:10</closed>
+	</bug>
+	<bug>
+		<id>1475</id>
+		<title>Setting visibility of a linedataset doesn't remove the values drawn on top of the data entrys</title>
+		<body>Hi,  I'm using a **LineChart** and I'm having an option to toggle visiblity of lines in the chart by using the `lineDataSet.setVisible()` method. However when I set a line to not visible then the values for each entry is still shown (I'm using `lineData.setDrawValues(true)`.   So there is no line visible but the values are still visible. Is there anyway to also toggle the visibilty of the values for each specific line? I don't want use `lineData.setDrawValues(false)` because that affects the whole chart. And I don't want to remove the dataset either, just make it not visible.  Thanks </body>
+		<created>2016-02-13 16:01:56</created>
+		<closed>2016-02-14 08:16:51</closed>
+	</bug>
+	<bug>
+		<id>1031</id>
+		<title>Cubic linechart filling bug</title>
+		<body>I created a simple linechart and everything worked perfectly (see bottom half of the attached image). But when I add foo.setDrawCubic(true); the filling isn't working anymore (see top half of the image). I included the circles to show that everything's the same except the cubic property.  Some older issues here suggest that this problem is fixed, but I experience this behavior in version 2.1.3 as well.  A minor issue I also noticed: the setLineWidth function works differently depending on the drawcubic property (see image, both are created with foo.setLineWidth(2f)).  ![chart_problem](https://cloud.githubusercontent.com/assets/3966464/9876666/0b0b1796-5bb8-11e5-9ec6-6c4c2530925d.png) </body>
+		<created>2015-09-15 12:49:48</created>
+		<closed>2016-04-02 08:03:24</closed>
+	</bug>
+	<bug>
+		<id>745</id>
+		<title>Programmatically deselect value on piechart</title>
+		<body>Hi! If I click a value on a piechart it gets selected, and when I then call highlightValues(...) or highlightTouch(...) with a null argument, it looks deselected. But the next click on the graphic is ignored. It's as if the value is not highlighted but is still selected. Is there a way to really deselect a value (just like a real click would)?  Thanks! </body>
+		<created>2015-06-11 12:05:38</created>
+		<closed>2015-06-12 16:34:43</closed>
+	</bug>
+	<bug>
+		<id>718</id>
+		<title>Entries disappearing while zooming ScatterChart</title>
+		<body>I'm using a ScatterChart with cca. 10k xVals, and about 200 Entries. When I zoom, all entries on the graph disappear except the ones on the far right. When I drag to the far right, they suddenly appear (regardless of the zoom amount). </body>
+		<created>2015-06-05 15:35:46</created>
+		<closed>2016-02-14 19:39:45</closed>
+	</bug>
+	<bug>
+		<id>450</id>
+		<title>Horizontal Bar Chart: setInverted-Method makes bars invisible</title>
+		<body>Tested with the MPAndroidChart Example-App:  I want to inverted the bars. For this a add following code in the onCreate-method of HorizontalBarCharActivity: yl.setInverted(true);  The y-labels are inverted, but the bars disappear. ![error](https://cloud.githubusercontent.com/assets/11516859/6728261/fa399716-ce28-11e4-9df9-c8dfc3814326.png) </body>
+		<created>2015-03-19 10:14:03</created>
+		<closed>2015-04-01 17:26:04</closed>
+	</bug>
+	<bug>
+		<id>449</id>
+		<title>CombinedChart multiple BarDataSet</title>
+		<body>Hi @PhilJay   I'm Trying to use combine chart with multiple bars and line graph  I was expecting to get similar result with the image below, where the multiple bar in one month with line graph on it.  ![multiplebar with linegraph](https://cloud.githubusercontent.com/assets/1313099/6726377/66d88f62-ce51-11e4-95f8-b05e7871de89.png)  But when I was able to render it shows me the image below  ![device_multiplebar_line](https://cloud.githubusercontent.com/assets/1313099/6726491/f2936daa-ce52-11e4-8143-22f007730731.png)  Is there a way to do this correctly? thank you in advance and thank you for this wonderful library. </body>
+		<created>2015-03-19 08:22:17</created>
+		<closed>2016-06-10 15:00:32</closed>
+	</bug>
+	<bug>
+		<id>417</id>
+		<title>Bug (or feature?) in Cubic Line Chart with setDrawFilled true</title>
+		<body>Hi There! I played with examples code and found a strange behavior of the  Cubic Line Chart. When `setDrawCubic` and `setDrawFilled` methods set to `true` the chart filled like this ![screen shot 2015-03-06 at 2 42 18 pm](https://cloud.githubusercontent.com/assets/3179252/6525731/e80a606e-c411-11e4-8e6c-b6d18a188396.png)  But when `setDrawCubic` and `setDrawFilled` methods set to `false` and `true` respectively, all works as expected ![screen shot 2015-03-06 at 2 40 55 pm](https://cloud.githubusercontent.com/assets/3179252/6525687/3337e940-c411-11e4-842a-825d89ecdc29.png)  Of course this happens only when the chart entries added with `xIndex` offset  ``` for (int i = 0; i &lt; count; i++) {             vals1.add(new Entry(val, i + 5));         } ```  Thanks in before. </body>
+		<created>2015-03-06 13:12:48</created>
+		<closed>2015-03-13 22:10:51</closed>
+	</bug>
+	<bug>
+		<id>284</id>
+		<title>Issue with setFillAlpha when used with cubic-lines</title>
+		<body>I am developing an app that is utilising the line chart. I am adding data to my chart and to the LineDataSet I have the following code snippet.   ``` Java LineDataSet set1 = new LineDataSet(yVals, "Total crashes during the week"); set1.disableDashedLine(); set1.setColor(Color.BLUE); set1.setDrawFilled(true); set1.setLineWidth(2f); set1.setDrawCubic(true); set1.setFillColor(Color.BLUE); set1.setFillAlpha(65); ```  I am setting the fill alpha to be 65 so the fill of the line chart is slightly transparent, this does work until I then also use `setDrawCubic(true)`, the fill alpha then seems to get ignored and instead the fill colour is completely opaque.   I get the same result when togging the cubic mode from the MPAndroidChart example app as well.  </body>
+		<created>2014-12-30 02:11:51</created>
+		<closed>2015-03-01 09:30:39</closed>
+	</bug>
+	<bug>
+		<id>271</id>
+		<title>Legend doesn't display correctly on stacked bar charts for small sample size</title>
+		<body>In a stacked bar chart, if there are more groups than there are entries, the legend gets seriously messed up and displays everything incorrectly. This can be verified on the sample app by dragging the slider all the way to the left so that there's only 1 sample and seeing that only 1 group appears on the legend. </body>
+		<created>2014-12-17 14:59:37</created>
+		<closed>2015-02-21 11:15:55</closed>
+	</bug>
+	<bug>
+		<id>255</id>
+		<title>ChartData.getDataSetByLabel method bug</title>
+		<body>hi PhilJay: the ChartData class getDataSetByLabel method should not be add "=",because index may be equals "0"  if (index &lt; =0 || index &gt;= mDataSets.size())             return null; </body>
+		<created>2014-12-05 08:51:42</created>
+		<closed>2014-12-16 10:25:28</closed>
+	</bug>
+	<bug>
+		<id>176</id>
+		<title>Crash when XLabel.setSpaceBetweenLabels(0) and xvalue is ""</title>
+		<body>when there are xVals in BarData of "" (empty string), setting XLabel.setSpaceBetweenLabels(0) will cause the application to hang and eventually crash. </body>
+		<created>2014-10-23 13:21:23</created>
+		<closed>2014-10-30 11:39:05</closed>
+	</bug>
+	<bug>
+		<id>156</id>
+		<title>in LineHart not now connects the first point of the second</title>
+		<body>Help me ![q4brmwffxuw](https://cloud.githubusercontent.com/assets/9252890/4646537/3d06d1dc-5474-11e4-9de2-d5856ac70da5.jpg) </body>
+		<created>2014-10-15 14:05:01</created>
+		<closed>2014-10-15 22:22:12</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>Wrong display for negative values in BarChart</title>
+		<body>Negative values displayed inside a BarChart (maybe the same for other charts) have a wrong position. See linked screenshot. There is a mistake of my side ? (setDrawValueAboveBar is set to true) ![capture](https://cloud.githubusercontent.com/assets/9135797/4593572/f836a3f2-5086-11e4-8191-7aed89fef57b.JPG) </body>
+		<created>2014-10-10 14:10:05</created>
+		<closed>2014-10-15 22:24:13</closed>
+	</bug>
+	<bug>
+		<id>145</id>
+		<title>Memory Leaks Suspect </title>
+		<body>I have been experiencing OOM exception in my app, which is using graph and pie charts, on multiple screen rotation. At first I suspected it was my fault but I have analyzed my app with DDMS heap dump and MAT tool and Leak Suspect report pointed to PieChart objects. I have then decided to check the MPAndroidChart sample app and the Leak Suspect report pointed a couple of problems. However I am not able to crash the sample app by rotating the screen (although it does not consume any other memory apart from charts which might be the cause). Can you analyze the lib with MAT and check the Leak Suspect report?  </body>
+		<created>2014-10-10 12:35:26</created>
+		<closed>2014-10-15 22:23:48</closed>
+	</bug>
+	<bug>
+		<id>137</id>
+		<title>PieChart: extra padding at top</title>
+		<body>Hi @PhilJay,  just wanna to say you many thanks for your great library.  I'm playing with PieChart and I found some extra padding above it when using Legend. Could you please help me to figure out how to fix it?  ![screenshot_2014-10-07-20-53-14](https://cloud.githubusercontent.com/assets/1655573/4546504/28baf2f2-4e44-11e4-915b-1021ee5ab891.png) </body>
+		<created>2014-10-07 17:02:20</created>
+		<closed>2014-10-08 13:42:17</closed>
+	</bug>
+	<bug>
+		<id>135</id>
+		<title>New Issue in Pie Chart after  1.6.5 released</title>
+		<body>Now I can not use pie chart in my app ,The activity that holds the piee chart craches when try to open it.  i don't Know why , The logcat here  ```  java.lang.NullPointerException at com.github.mikephil.charting.charts.PieChart.drawCenterText(PieChart.java:393) at com.github.mikephil.charting.charts.PieChart.onDraw(PieChart.java:145) at android.view.View.draw(View.java:14465) at android.view.View.getDisplayList(View.java:13362) at android.view.View.getDisplayList(View.java:13404) ``` </body>
+		<created>2014-10-06 20:06:38</created>
+		<closed>2014-10-06 21:13:12</closed>
+	</bug>
+	<bug>
+		<id>134</id>
+		<title>Empty Pie Chart crashes the application when click it</title>
+		<body> **When i click on empty Pie Chart it craches my app and this is my logcat:**  ```  java.lang.NullPointerException at com.example.mymoneypocket.reports.NewIVsE$1.onValueSelected(NewIVsE.java:126) at com.github.mikephil.charting.charts.Chart.highlightTouch(Chart.java:1077) at    com.github.mikephil.charting.listener.PieRadarChartTouchListener.onSingleTapUp(PieRadarChartTouchListener.java:123) at android.view.GestureDetector.onTouchEvent(GestureDetector.java:595) at com.github.mikephil.charting.listener.PieRadarChartTouchListener.onTouch(PieRadarChartTouchListener.java:39) at com.github.mikephil.charting.charts.PieRadarChartBase.onTouchEvent(PieRadarChartBase.java:56) ```  **I  also note that the example demo have the same problem!** </body>
+		<created>2014-10-06 15:15:57</created>
+		<closed>2014-10-06 17:02:58</closed>
+	</bug>
+	<bug>
+		<id>125</id>
+		<title>Pinching graph in Fragment will result in error sometimes</title>
+		<body>Hi,PhilJay. Your product really helped me. Thanks a lot. If you already know this issue, I'm sorry for bothering you. When I tried "Charts in Fragment, awesome design" sample, I found this error  FATAL EXCEPTION: main   java.lang.IllegalArgumentException: pointerIndex out of range       at android.view.MotionEvent.nativeGetAxisValue(Native Method)       at android.view.MotionEvent.getX(MotionEvent.java:1974)       at .BarLineChartTouchListener.spacing(BarLineChartTouchListener.java:281)       at .BarLineChartTouchListener.performZoom(BarLineChartTouchListener.java:201)      at .BarLineChartTouchListener.onTouch(BarLineChartTouchListener.java:131)           at .BarLineChartBase.onTouchEvent(BarLineChartBase.java:986)  I would appreciate it if you could fix this issue. </body>
+		<created>2014-09-29 08:03:51</created>
+		<closed>2014-09-29 08:40:01</closed>
+	</bug>
+	<bug>
+		<id>122</id>
+		<title>Y values position bug</title>
+		<body>Hello,  Has you can see the values are out screen.  The values are 0.0004 for example.  Thank you  ![bug](https://cloud.githubusercontent.com/assets/5589240/4421250/0de4d9ea-4582-11e4-9c2d-150d8b24dcbf.png) </body>
+		<created>2014-09-26 14:01:55</created>
+		<closed>2014-09-27 09:54:35</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>Crash when zoom</title>
+		<body>Hello, The problem is with a LineChart  when i zoom(exactly when I release with fingers) the app crash with the error : java.lang.IllegalArgumentException: pointerIndex out of range at android.view.MotionEvent.nativeGetAxisValue(Native Method) at android.view.MotionEvent.getX(MotionEvent.java:1979) com.github.mikephil.charting.listener.BarLineChartTouchListener.spacing(BarLineChartTouchListener.java:323)  Thank you </body>
+		<created>2014-09-25 13:08:58</created>
+		<closed>2014-09-25 15:10:04</closed>
+	</bug>
+	<bug>
+		<id>117</id>
+		<title>Vertical grid line gets clipped</title>
+		<body>![qq 20140925093747](https://cloud.githubusercontent.com/assets/4555502/4398352/82977e52-4454-11e4-8417-914fae10825c.png) As the picture,I hope to draw 5 vertical grid lines,but in fact, it only displays 4 lines there.I read the source code in the class BarLineChartBase.java, it calls clipRect() for the grid line area,but it looks like do not have enough space to draw the fifth vertical line.   ``` // make sure the graph values and grid cannot be drawn outside the     // content-rect     int clipRestoreCount = mDrawCanvas.save();     mDrawCanvas.clipRect(mContentRect);      drawHorizontalGrid();     drawVerticalGrid(); ``` </body>
+		<created>2014-09-25 01:51:43</created>
+		<closed>2014-09-25 08:09:13</closed>
+	</bug>
+	<bug>
+		<id>112</id>
+		<title>About PieChart problem</title>
+		<body>In the PieChartActivity, yVals1 int the method named onProgressChanged do not contain 0; When some of yVals1 are zero and set1.setSliceSpace(3f) , the pie cavaned has some problem. Some part of pie cover others.  The following is my code:     @Override     protected void drawData() {  ```     float angle = mRotationAngle;      ArrayList&lt;PieDataSet&gt; dataSets = mCurrentData.getDataSets();      int cnt = 0;      for (int i = 0; i &lt; mCurrentData.getDataSetCount(); i++) {          PieDataSet dataSet = dataSets.get(i);         ArrayList&lt;Entry&gt; entries = dataSet.getYVals();          for (int j = 0; j &lt; entries.size(); j++) {              float newangle = mDrawAngles[cnt];             float sliceSpace = dataSet.getSliceSpace();             if(Math.round(newangle) == 0){ ```  cnt++; continue; }                 if (!needsHighlight(entries.get(j).getXIndex(), i)) {  ```                 mRenderPaint.setColor(dataSet.getColor(j));                 mDrawCanvas.drawArc(mCircleBox, angle + sliceSpace / 2f, newangle * mPhaseY                         - sliceSpace / 2f, true, mRenderPaint);             }              angle += newangle * mPhaseX;             cnt++;         }     } } ```  You can test it.Thx. </body>
+		<created>2014-09-23 14:55:19</created>
+		<closed>2014-09-27 22:20:44</closed>
+	</bug>
+	<bug>
+		<id>105</id>
+		<title>Bug addDataSet dynamically</title>
+		<body>Hello,   I'm trying to use the new method to add data to chart dynamically. But you can see the bug with autocompletion where parameter are "null d"  Thank you for your help  ![sans titre](https://cloud.githubusercontent.com/assets/5589240/4353216/b4b80d4c-422f-11e4-82ce-eaf3b80282ce.png) ![sans titre](https://cloud.githubusercontent.com/assets/5589240/4353233/e64b939c-422f-11e4-83e7-d79409a226a7.png) </body>
+		<created>2014-09-22 08:10:46</created>
+		<closed>2014-09-22 08:42:45</closed>
+	</bug>
+	<bug>
+		<id>101</id>
+		<title>Invalidate or NotifyDataSetChanged increases the left offset if called more than once.</title>
+		<body>Issue can be seen in Line and Bar chart </body>
+		<created>2014-09-21 09:49:14</created>
+		<closed>2014-09-21 16:20:22</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>Support single Entry for LineChart</title>
+		<body>   Hello, I was in China android developer, your library is especially strong, very much, which encountered some problems, hope to get your help。   I used LineChart time, I modified your demo in LineChartActivity classes, 117 lines setData (45, 100); modified setData (1, 100) ;, is only one data, line graph interface is empty, there is no way to make him appear ， My mail is 120660021@qq.com，I hope to hear from you，Thank you！ </body>
+		<created>2014-09-11 14:15:02</created>
+		<closed>2014-09-21 16:21:49</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>Y values are not displayed properly in grouped barchart</title>
+		<body>This can be seen in the sample app in "Multiple Bars Chart". Go to the options menu and click on "Toggle Values". </body>
+		<created>2014-09-01 11:10:58</created>
+		<closed>2014-09-03 23:14:51</closed>
+	</bug>
+	<bug>
+		<id>53</id>
+		<title>Setting transparent color as background to the chart will result in a black background.</title>
+		<body>I only tested it on the PieChart. Also, in this case, when you select a chart value, the drawing gets messed up. Every item you select gets "expanded", but if you select a new chart value, the previously selected one remains "expanded".   [Great job btw!!] </body>
+		<created>2014-08-21 14:52:44</created>
+		<closed>2014-10-06 13:29:15</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>BUG:PieChart .setTouchEnabled(false) don't work</title>
+		<body>Solve:PieChart.class     @Override     public boolean onTouchEvent(MotionEvent event) {  ```     // use the piecharts own listener     if (mTouchEnabled) {         return mListener.onTouch(this, event);     }     return super.onTouchEvent(event); } ``` </body>
+		<created>2014-08-20 03:46:56</created>
+		<closed>2014-08-20 08:59:58</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>application appTheme conflicts with apps that have custom themes</title>
+		<body>Importing the project without modifying the Library's Manifest results in a conflict in Themes. I would make the application tag in the manifest empty so individual developers don't have to go in and remove it themselves </body>
+		<created>2014-08-19 04:50:27</created>
+		<closed>2014-08-19 17:40:42</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>The first point and the last point are hard to click</title>
+		<body>The first point and the last point ，maybe on the edge，hard to click sometimes！ </body>
+		<created>2014-08-12 07:27:15</created>
+		<closed>2014-08-15 18:55:05</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>NPE when lable is null </title>
+		<body>stacktrace print  ``` 08-02 09:50:21.170  27172-27172/? E/AndroidRuntime﹕ FATAL EXCEPTION: main     java.lang.NullPointerException             at com.github.mikephil.charting.data.ChartData.alreadyCounted(ChartData.java:165)             at com.github.mikephil.charting.data.ChartData.calcTypes(ChartData.java:124)             at com.github.mikephil.charting.data.ChartData.init(ChartData.java:79)             at com.github.mikephil.charting.data.ChartData.&lt;init&gt;(ChartData.java:43)             at com.xxmassdeveloper.mpchartexample.fragments.SimpleFragment.getComplexity(SimpleFragment.java:85)             at com.xxmassdeveloper.mpchartexample.fragments.LineChartFrag.onCreateView(LineChartFrag.java:53)             at android.support.v4.app.Fragment.performCreateView(Fragment.java:1500)             at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:938)             at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1115)             at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)             at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1478)             at android.support.v4.app.FragmentManagerImpl.executePendingTransactions(FragmentManager.java:478)             at android.support.v4.app.FragmentPagerAdapter.finishUpdate(FragmentPagerAdapter.java:141)             at android.support.v4.view.ViewPager.populate(ViewPager.java:1068)             at android.support.v4.view.ViewPager.populate(ViewPager.java:914)             at android.support.v4.view.ViewPager.onMeasure(ViewPager.java:1436)             at android.view.View.measure(View.java:15551)             at android.widget.RelativeLayout.measureChildHorizontal(RelativeLayout.java:681)             at android.widget.RelativeLayout.onMeasure(RelativeLayout.java:461)             at android.view.View.measure(View.java:15551)             at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:4825)             at android.widget.FrameLayout.onMeasure(FrameLayout.java:310)             at android.view.View.measure(View.java:15551)             at android.widget.LinearLayout.measureVertical(LinearLayout.java:847)             at android.widget.LinearLayout.onMeasure(LinearLayout.java:588)             at android.view.View.measure(View.java:15551)             at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:4825)             at android.widget.FrameLayout.onMeasure(FrameLayout.java:310)             at com.android.internal.policy.impl.PhoneWindow$DecorView.onMeasure(PhoneWindow.java:2177)             at android.view.View.measure(View.java:15551)             at android.view.ViewRootImpl.performMeasure(ViewRootImpl.java:1887)             at android.view.ViewRootImpl.measureHierarchy(ViewRootImpl.java:1102)             at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1278)             at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1002)             at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:4400)             at android.view.Choreographer$CallbackRecord.run(Choreographer.java:749)             at android.view.Choreographer.doCallbacks(Choreographer.java:562)             at android.view.Choreographer.doFrame(Choreographer.java:532)             at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:735)             at android.os.Handler.handleCallback(Handler.java:725)             at android.os.Handler.dispatchMessage(Handler.java:92)             at android.os.Looper.loop(Looper.java:137)             at android.app.ActivityThread.main(ActivityThread.java:5041)             at java.lang.reflect.Method.invokeNative(Native Method)             at java.lang.reflect.Method.invoke(Method.java:511)             at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:817)             at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:584)             at dalvik.system.NativeStart.main(Native Method) ```  in `CharData.java`   ``` java     private boolean alreadyCounted(ArrayList&lt;String&gt; countedLabels, String label) {         for (int i = 0; i &lt; countedLabels.size(); i++) {             if (countedLabels.get(i).equals(label))                 return true;         }          return false;     } ``` </body>
+		<created>2014-08-02 01:53:13</created>
+		<closed>2014-08-02 18:19:13</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>Bug when turning off the screen</title>
+		<body>In your example, open a line plot, zoom in and turn off the screen. When tuning the screen on again, it will recalculate the zoom offset, jumping to a new location. For example if you show Y values 30-70, next time you turn the screen on it will display 60-100, turn off and on the screen it will display 90-130 etc. The bug is only when zoomed in. </body>
+		<created>2014-07-29 08:29:19</created>
+		<closed>2014-08-01 12:35:12</closed>
+	</bug>
+	<bug>
+		<id>15</id>
+		<title>Chart error on orientation chagnes</title>
+		<body>The chart is drawn in part when the orientation changes. </body>
+		<created>2014-07-27 15:44:03</created>
+		<closed>2014-08-05 04:38:40</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>Setting background color has no effect</title>
+		<body>hi,  setting the background color doesn't do anything. It just stays white by default in your examples. I am not getting any errors otherwise I could tell you more on that. Appreciate any feedback. By the way, charts are awesome. keep up the work. </body>
+		<created>2014-07-01 13:39:07</created>
+		<closed>2014-10-06 13:29:25</closed>
+	</bug>
+	<bug>
+		<id>6</id>
+		<title>Setting scale minima below 1f not working</title>
+		<body>Setting the scale minima below 1f not working. Scale minima of 1f or higher working. </body>
+		<created>2014-06-14 20:26:15</created>
+		<closed>2015-02-20 15:40:28</closed>
+	</bug>
+	<bug>
+		<id>5</id>
+		<title>Setting y-axis range</title>
+		<body>The setting of the y-axis range works in theory. Nevertheless, a clear structure needs to be implemented that can be understood easily by all library users. Furthermore, the range setting functionality still has issues concerning free-hand drawing. </body>
+		<created>2014-06-07 14:22:38</created>
+		<closed>2014-06-14 22:22:24</closed>
+	</bug>
+	<bug>
+		<id>3</id>
+		<title>Negative values</title>
+		<body>The legend on the y-axis sometimes has problems adjusting correctly to negative values in the chart. This issue only occurs when the legend is rounded. </body>
+		<created>2014-06-01 23:15:59</created>
+		<closed>2014-06-02 09:28:15</closed>
+	</bug>
+	<bug>
+		<id>2</id>
+		<title>MarkerView not working</title>
+		<body>Due to the latest code changes / improvements, the marker-view that can be displayed when selecting values is currently not working. </body>
+		<created>2014-05-30 15:53:43</created>
+		<closed>2014-06-17 10:21:13</closed>
+	</bug>
+	<bug>
+		<id>1</id>
+		<title>Selecting slices in PieCharts with multiple DataSets sometimes changes the color of the slice.</title>
+		<body>Well, the title says it all. </body>
+		<created>2014-05-28 22:47:06</created>
+		<closed>2014-05-29 10:04:21</closed>
+	</bug>
+</bugs>

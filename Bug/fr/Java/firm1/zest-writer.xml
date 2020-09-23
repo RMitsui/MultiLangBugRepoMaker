@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>318</id>
+		<title>Lors de l'externalisation du rendu, le zone d'édition disparaît</title>
+		<body>Lorsque l'on met le rendu dans une fenêtre externe, la zone d'édition disparaît, et même en fermant la fenêtre de rendu la zone d'édition ne revient pas. On est donc obligé de relancer le logiciel.  </body>
+		<created>2017-08-27 12:02:35</created>
+		<closed>2020-08-02 18:18:49</closed>
+	</bug>
+	<bug>
+		<id>308</id>
+		<title>Les fenêtre de statistique fonctionnent uniquement après avoir quitté le contenu</title>
+		<body>Pour reproduire :  # Comparateur de taille des extraits  - Depuis le menu *Fichier, Importer un contenu, Depuis ZdS*, importer par exemple `https://zestedesavoir.com/tutoriels/857/lastronomie-depuis-mon-canape/`. - clic-droit sur l'arbre, *statistiques, comparateur de taille des extraits* ;     - la fenêtre ne s'ouvre pas. - ouvrez n'importe quel autre contenu depuis la page d'accueil ; - ouvrez de nouveau *l'astronomie depuis mon canapé* ; - clic-droit sur l'arbre, *statistiques, comparateur de taille des extraits* ;     - cette fois-ci la fenêtre s'ouvre et présente l'histogramme.  # Comparateur d'indices de lisibilité  - Depuis le menu *Fichier, Importer un contenu, Depuis ZdS*, importer par exemple `https://zestedesavoir.com/tutoriels/857/lastronomie-depuis-mon-canape/`. - clic-droit sur l'arbre, *statistiques, comparer les indices de lisibilité* ;     - la fenêtre ne s'ouvre pas. - ouvrez n'importe quel autre contenu depuis la page d'accueil ; - ouvrez de nouveau *l'astronomie depuis mon canapé* ; - clic-droit sur l'arbre, *statistiques, comparer les indices de lisibilité* ;     - cette fois-ci la fenêtre s'ouvre et présente l'histogramme.</body>
+		<created>2016-12-28 14:38:31</created>
+		<closed>2016-12-29 00:42:38</closed>
+	</bug>
+	<bug>
+		<id>305</id>
+		<title>Les onglets sont dupliqués lorsqu'on renomme des extraits</title>
+		<body>Pour reproduire :  - créer un nouveau contenu ; - créer 2 nouveau extraits, `a` et `b` ; - double-cliquez sur ces derniers pour ouvrir les onglets correspondants ; - renommer `b` en `c` (le nom de l'onglet `b` est changé en conséquence) ; - double-cliquez de nouveau sur les extraits :     - 2 nouveaux onglets `a` et `c` apparaissent, duplicatas des 2 onglets déjà présents.  Suite de #277.</body>
+		<created>2016-12-28 02:00:12</created>
+		<closed>2016-12-28 09:50:11</closed>
+	</bug>
+	<bug>
+		<id>304</id>
+		<title>Le nom de l'espace de travail est modifié si on annule ou réinitialise</title>
+		<body>Pour reproduire :  # Annulation  - Cliquez sur le menu *Édition, Préférences*, puis dans l'onglet *Général*, modifier l'espace de travail ; - cliquez maintenant sur *annuler*, puis confirmez sur la pop-up qui s'ouvre ; - rendez-vous de nouveau sur le menu *Édition, Préférences*, onglet *Général* :     - le nouvel espace de travail est affiché, alors que le changement est annulé.  # Réinitialisation  - Cliquez sur le menu *Édition, Préférences*, puis dans l'onglet *Général*, modifier l'espace de travail ; - cliquez maintenant sur *Réinitialiser les options*, puis confirmez sur la pop-up qui s'ouvre ; - rendez-vous de nouveau sur le menu *Édition, Préférences*, onglet *Général* :     - le nouvel espace de travail est affiché, alors que le changement est réinitialisé.  ---  Fait suite à #289.</body>
+		<created>2016-12-28 01:49:15</created>
+		<closed>2016-12-28 10:29:00</closed>
+	</bug>
+	<bug>
+		<id>300</id>
+		<title>L'indice de temps de lecture est dupliqué</title>
+		<body>Dans la barre d'état, l'indice de temps de lecture est dupliqué systématiquement :  ![](http://i.imgur.com/8JDTWyJ.png)</body>
+		<created>2016-12-28 00:54:35</created>
+		<closed>2016-12-28 09:50:11</closed>
+	</bug>
+	<bug>
+		<id>292</id>
+		<title>Un tableau avancé → la prévisualisation est inutilisable</title>
+		<body>Un screenshot vaut mieux qu'un long discours. Ce tableau fonctionne parfaitement sur le site, où il a été conçu.  ![capture d ecran de 2016-12-10 18-06-59](https://cloud.githubusercontent.com/assets/5786268/21074848/9218d8ea-bf03-11e6-89f8-a16cd5e253f1.png)  PS : le rendu espéré :  ![capture d ecran de 2016-12-10 18-09-27](https://cloud.githubusercontent.com/assets/5786268/21074860/e6b810f0-bf03-11e6-9ae6-d172090d2d46.png)  </body>
+		<created>2016-12-10 17:08:12</created>
+		<closed>2016-12-13 10:31:51</closed>
+	</bug>
+	<bug>
+		<id>287</id>
+		<title>Empécher la création de conteneurs de 2ème niveau pour les articles</title>
+		<body>Pour reproduire :  - créer un article ; - créer un nouveau conteneur ; - dans ce conteneur, créer un autre conteneur ; - publier le contenu sur ZdS ;     - Erreur de publication.  Cela est du au fait que sur ZdS, les tutoriels ont 2 niveaux de conteneurs (*partie* et *section*), tandis que les articles ont un seul niveau (*section*).  Il faut donc empêcher la création de conteneurs de 2ème niveau sur les articles.  Note : Comme il est possible de transformer un tutoriel en article, il faut également faire cette vérification à ce moment.</body>
+		<created>2016-11-01 19:55:08</created>
+		<closed>2016-11-06 09:43:07</closed>
+	</bug>
+	<bug>
+		<id>281</id>
+		<title>Le champ de description de la fenetre de nouveau contenu a un comportement étrange</title>
+		<body>Pour reproduire :  - créer un nouveau contenu ; - dans le champ description, taper un texte de 200 caractères (longueur max autorisée sur ZdS) :  ``` ça fait un moment que nous n'avons pas donné de nouvelles ici et pourtant, vous pouvez me croire, le développement est resté bien actif. Nous avons bien travaillé et nous avons décidé de sortir une no ```  - ...     - ce qui apparait dans le champ est : `ça fait un moment que nous n'avons pas donné de nouvelles ici et pourtant, vous ` ; - coller `pouvez me croire, le développement est resté bien actif. Nous avons bien travaillé et nous avons décidé de sortir une no`     - impossible de coller le texte ; - coller `pouvez me croire, le développement est resté bien actif.` ;     - cela fonctionne ; - **taper** la suite du texte : ` Nous avons bien travaillé` ;     - à `travail`, le champ est rempli avec : `ça fait un moment que nous n'avons pas donné de nouvelles ici et pourtant, vous ` (80 caractères).  Sans doute lié au bugfix de #272.</body>
+		<created>2016-11-01 14:10:18</created>
+		<closed>2016-12-13 13:59:46</closed>
+	</bug>
+	<bug>
+		<id>280</id>
+		<title>[perte de donnée] changer de contenu supprime les onglets non sauvegardés</title>
+		<body>Pour reproduire :  - créer un nouveau tutoriel ; - ouvrir l'extrait *Introduction*, et taper du texte ; - sans sauvegarder, ouvrir l'extrait *Conclusion* ; - Se rendre sur la page d'accueil et ouvrir un autre contenu ;     - l'onglet *Introduction est fermé sans confirmation*.</body>
+		<created>2016-11-01 14:08:59</created>
+		<closed>2016-12-29 22:48:35</closed>
+	</bug>
+	<bug>
+		<id>273</id>
+		<title>Mettre à jour le dossier online au moment du téléversement</title>
+		<body>La mise à jour du dossier offline se fait au démarrage de ZW, elle devrait se fait au moment de l'ouverture de la fenêtre de téléversement. # Pour reproduire - sur ZdS, créer un nouveau contenu ; - lancer ZW ; - sur ZdS, supprimer le contenu précédemment créé ; - sur ZW, créer un nouveau contenu (n'importe quel nom) ; - téléverser-le sur ZdS (Ctrl-U) ;   - constater que le contenu nouvellement créé sur ZdS apparaît malgré sa suppression ; - sélectionner ce dernier ;   - une pop-up "Erreur d'import apparaît". </body>
+		<created>2016-10-27 18:22:10</created>
+		<closed>2016-11-06 09:14:49</closed>
+	</bug>
+	<bug>
+		<id>272</id>
+		<title>Vérifier le nom et la description du contenu lors de la création / édition</title>
+		<body>Lors de la création de contenus sur le site : - la taille du nom est doit être supérieure à 0 et inférieure à 80 caractères ; - la taille de la description doit être inférieure à 160 caractères ; - le slug doit être valide.  Lorsqu'on crée un nouveau contenu sur ZW, ou qu'on le renomme, la taille du nom et de la description n'est pas vérifiée, donc le téléversement vers ZdS échoue.  # Pour reproduire  ## Scénario 1 : pas de nom  - Créer un nouveau contenu et dans _Nom_ laisser le champ vide ; - puis téléversez-le sur ZdS (Ctrl-U), en sélectionnant `---Nouveau contenu---` ;   - une pop-up "Erreur d'import" apparaît.  ## Scénario 2 : nom trop long  - Créer un nouveau contenu et dans _Nom_ tapez :  ``` 12345678901234567890123456789012345678901234567890123456789012345678901234567890too_long_from_here ``` - puis téléversez-le sur ZdS (Ctrl-U), en sélectionnant `---Nouveau contenu---` ;   - une pop-up "Erreur d'import" apparaît.  ## Scénario 3 : slug invalide  - Créer un nouveau contenu et dans _Nom_ tapez `&amp;^$` ; - puis téléversez-le sur ZdS (Ctrl-U), en sélectionnant `---Nouveau contenu---` ;   - une pop-up "Erreur d'import" apparaît.  ## Scénario 4 : description trop longue  - Créer un nouveau contenu et dans _Description_ tapez :  ``` 12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890too_long_from_here ``` - puis téléversez-le sur ZdS (Ctrl-U), en sélectionnant `---Nouveau contenu---` ;   - une pop-up "Erreur d'import" apparaît.  ## Scénario 5, 6, 7 et 8 : édition  Répéter l'opération en créant un nouveau contenu (n'importe quels nom et description), puis éditer-le en changeant son nom et sa description tel qu'indiqué dans les précédents scénarios.</body>
+		<created>2016-10-27 18:07:28</created>
+		<closed>2016-10-30 22:26:25</closed>
+	</bug>
+	<bug>
+		<id>265</id>
+		<title>Il est possible de supprimer le curseur et figer la barre de menus</title>
+		<body>Pour reproduire : - créez un nouveau tutoriel et cliquez sur _Introduction_ ; - ouvrez n'importe-quelle fenêtre pop-pup, par exemple tapant **Ctrl-F** ; - cliquez n'importe-où en dehors de la pop-up ; - fermez la pop-up.   - le curseur n’apparaît plus ;   - les clics sur les boutons de la barre de menus n'ont aucun effet.  _Sous Ubuntu Mate 16_ </body>
+		<created>2016-10-08 14:48:34</created>
+		<closed>2016-10-31 15:27:27</closed>
+	</bug>
+	<bug>
+		<id>261</id>
+		<title>Problème d'actualisation de contenu lors du clic sur un contenu de la page d'accueil.</title>
+		<body>Pour reproduire : - créez un nouveau contenu ; - créez un nouvel extrait ; - supprimez cet extrait ; - revenez sur le menu d'accueil et cliquez sur le contenu nouvellement créé ;   - l'extrait nouvellement créé apparaît alors qu'il était supprimé. - cliquez encore une fois sur le contenu nouvellement créé ;   - cette fois-ci l'extrait n’apparaît plus. </body>
+		<created>2016-10-08 13:19:30</created>
+		<closed>2016-10-24 18:56:03</closed>
+	</bug>
+	<bug>
+		<id>258</id>
+		<title>Le rennomage des Introductions et Conclusions n'est pas effectif</title>
+		<body>Pour reproduire : - créez un nouveau contenu ; - renommez l'introduction (clic-droit sur l'extrait dans l'arbre des contenus) en _intro_ ; - dans la page d'accueil, cliquez sur le contenu nouvellement créé.   - _intro_ est automatiquement renommé en _Introduction_.  Le renommage de ces extrait n'est donc pas effectif. S'il est nécessaire que les extraits _Introduction_ et _Conclusion_ se nomment ainsi, il devrait pas être possible de les renommer. </body>
+		<created>2016-10-08 12:31:24</created>
+		<closed>2016-10-24 07:13:59</closed>
+	</bug>
+	<bug>
+		<id>257</id>
+		<title>La suppression d'un extrait ne retire pas l'onglet correspondant</title>
+		<body>Pour reproduire : - créez un nouveau contenu ; - créez un nouvel extrait et ouvrez-le ; - supprimez cet extrait via l'arbre de contenu ;   - l'onglet correspondant à l'extrait est toujours ouvert. </body>
+		<created>2016-10-08 12:19:56</created>
+		<closed>2016-10-24 18:11:01</closed>
+	</bug>
+	<bug>
+		<id>256</id>
+		<title>Afficher l'arbre de contenu lorsqu'on ferme tous les onglets</title>
+		<body>Pour reproduire : - ouvrir un contenu ; - appuyer sur le bouton `Plein écran` ; - fermer l'onglet ; - on passe donc à l'onglet d'accueil, mais :   - comme l'arbre de contenu n'est pas affiché, les clics sur les tutoriels n'ont aucun effet ;   - comme la barre de boutons n'est plus là, on ne peut pas afficher de nouveau l'arbre de contenus.  On ne peut donc rien faire, il est nécessaire de fermer l'application.  Proposition : lorsqu'on ferme tous les onglets, afficher de nouveau l'arbre des contenus. </body>
+		<created>2016-10-08 11:23:44</created>
+		<closed>2016-10-25 12:06:22</closed>
+	</bug>
+	<bug>
+		<id>253</id>
+		<title>ZW pense que sa version est obsolète lorsque elle est plus récente</title>
+		<body>Lorsque on teste une nouvelle version en pre-release qui n'est pas encore publiée officiellement, la fonction de vérification de mise à jour informe que la version est obsolète, ce qui n'est pas le cas. </body>
+		<created>2016-09-27 15:42:42</created>
+		<closed>2016-10-22 12:05:14</closed>
+	</bug>
+	<bug>
+		<id>239</id>
+		<title>ZW n'arrive pas à se connecter à internet</title>
+		<body>Visiblement, tout ce qui concerne les accès réseau ne fonctionne plus : # Import GitHub - Fichier, importer un contenu, depuis GitHub ; - Tapez `https://github.com/mquandalle/apprendre-meteor` dans la fenêtre qui s'affiche.  L'import ne fonctionne pas (je pars du principe qu'il fonctionnait avec l'URL d'exemple donnée dans [le post annonçant la v3.0](https://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=24#p123743)) :  ![](http://i.imgur.com/gepvEdH.png)  --- # Vérification de mise à jour - Menu Aide, Vérification de mise à jour  ![](http://i.imgur.com/0KZZXaJ.png) # Connection à ZdS  Comme mentionné [plusieurs fois](https://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=24#p123852), impossible de se connecter à ZdS pour télécharger / téléverser les tutoriels, alors que les identifiants sont corrects.  ![Impossible de se connecter à ZdS](http://i.imgur.com/QA6NkCe.png)  Note : semble être la source de #230, donc je ferme ce ticket.  Note 2 : pas \* tout ce qui concerne les accès réseau\* visiblement, parce que la correction de texte, - qui fait appel à une API il me semble - fonctionne.  _Ubuntu 15.10, ZW 3.1_ </body>
+		<created>2016-09-21 15:48:35</created>
+		<closed>2016-09-27 15:39:26</closed>
+	</bug>
+	<bug>
+		<id>237</id>
+		<title>[regression] La correction de texte ne fonctionne plus.</title>
+		<body>Pour reproduire : - Créer un nouveau contenu et taper _Bonjour a vous!_ ; - Cliquer sur le bouton _Corriger le texte_.  Les erreurs ne sont pas mises en valeur.  Edit : Je supprime au moins provisoirement car je n'arrive pas à reproduire en fait... </body>
+		<created>2016-09-21 15:35:50</created>
+		<closed>2016-09-21 15:37:28</closed>
+	</bug>
+	<bug>
+		<id>234</id>
+		<title>La fonction rechercher avec sélection ne prend pas en compte le 1er mot</title>
+		<body>Pour reproduire : - Créer un nouveau contenu et taper `foo foo` ; - sélectionner le 2ème `foo` (sans l'espace devant) ; - Ctrl-F, Rechercher : `foo`, Sélection uniquement. - constater qu'aucune occurrence de `foo` n'a été trouvée.  ![](http://i.imgur.com/DwxSzLj.png) </body>
+		<created>2016-09-21 14:26:38</created>
+		<closed>2016-10-25 11:45:50</closed>
+	</bug>
+	<bug>
+		<id>230</id>
+		<title>Impossible de se connecter à ZdS</title>
+		<body>Comme mentionné [plusieurs fois](https://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=24#p123852), impossible de se connecter à ZdS pour télécharger / téléverser les tutoriels, alors que les identifiants sont corrects.  ![Impossible de se connecter à ZdS](http://i.imgur.com/QA6NkCe.png)  _Ubuntu 15.10, ZW 3.1_ </body>
+		<created>2016-09-21 14:01:14</created>
+		<closed>2016-09-21 15:55:48</closed>
+	</bug>
+	<bug>
+		<id>229</id>
+		<title>Il est impossible de remplacer un mot par une chaine vide</title>
+		<body>C'est un comportement anormal. Il est utile de faire cela si on cherche à supprimer une expression qui apparaît plusieurs fois dans le texte.  Pour reproduire : - Créez un nouveau contenu et tapez `foo bar` ; - Ctrl-F, Rechercher : `foo`, remplacer : `` ; - Constater que `foo` n'a pas été supprimé.  _Ubuntu 15.10, ZW 3.1_ </body>
+		<created>2016-09-21 13:58:12</created>
+		<closed>2016-09-24 21:31:39</closed>
+	</bug>
+	<bug>
+		<id>228</id>
+		<title>L'option Mot entier uniquement de la fenêtre Remplacer ne fonctionne pas dans certains cas</title>
+		<body>Pour reproduire : - Créez un nouveau contenu et tapez `foo bar baz` ; - Ctrl-F, Rechercher : `foo`, Mot entier uniquement ; - Constater que `foo` n'est pas sélectionné.  Edit : cela fonctionne lorsque le mot est entre 2 espaces, dans l'exemple ci-dessus, `bar` est trouvé.  ![L'option Mot entier uniquement de la fenêtre Remplacer ne fonctionne pas](http://i.imgur.com/6FnE16X.png)  _Ubuntu 15.10, ZW 3.1_ </body>
+		<created>2016-09-21 13:48:45</created>
+		<closed>2016-10-25 11:45:50</closed>
+	</bug>
+	<bug>
+		<id>226</id>
+		<title>La fonction Remplacer tout ne met pas à jour la fenêtre de rendu</title>
+		<body>Pour reproduire: - Créer un nouveau contenu ; - Tapez `aaa` ; - Ctrl-F : Rechercher `a`, remplacer par `b` ; - Constater que le rendu affiche `baa`, au lieu de bbb  ![La fonction Remplacer tout ne met pas à jour la fenêtre de rendu](http://i.imgur.com/bBmwai6.png)  _Ubuntu 15.10, ZW 3.1_ </body>
+		<created>2016-09-21 13:37:09</created>
+		<closed>2017-05-02 02:28:36</closed>
+	</bug>
+	<bug>
+		<id>225</id>
+		<title>Problème de rendu sur les smileys</title>
+		<body>Pour reproduire : - Créer un nouveau contenu, - Tapez ceci : `:-) ;-) :-D :-(` - Constater que le rendu est incorrect.  ![Problème de rendu sur les smileys](http://i.imgur.com/N24JdRn.png)  _Ubuntu 15.10, ZW 3.1_ </body>
+		<created>2016-09-21 13:31:03</created>
+		<closed>2016-10-08 13:40:22</closed>
+	</bug>
+	<bug>
+		<id>209</id>
+		<title>Support multi-écran</title>
+		<body>Ayant plusieurs écrans, je remarque que le support du multi-écran n'est pas top. Plusieurs points à notés: - De nombreuse fenêtre n'ont pas le bon `Owner`, ou n'en ont pas du tout, ce qui a pour effet de placer cette nouvelle fenêtre sur l'écran du centre au millieu. J'ai fais les tests, si on place les owners juste, c'est OK. - Lorsque dans les options `Démarrer avec le fenêtre agrandie` est sur `Oui`, Zest Writer démarre sur l'écran du centre. Ceci sera plus compliqué à mettre en place, car il faudra mémoriser dans le fichier de configuration l'écran sur le quelle se trouvais Zest Writer. </body>
+		<created>2016-07-18 12:49:24</created>
+		<closed>2016-09-19 12:22:45</closed>
+	</bug>
+	<bug>
+		<id>192</id>
+		<title>La fonction rechercher/remplacer ne fonctionne plus.</title>
+		<body>Bonjour,  La fonction rechercher/remplacer ne fonctionne plus, il manque juste le label `ui.dialog.fin.label` dans le fichier ui_fr_FR.properties et ui.en.properties. </body>
+		<created>2016-07-06 19:32:49</created>
+		<closed>2016-07-07 07:43:03</closed>
+	</bug>
+	<bug>
+		<id>185</id>
+		<title>Erreur lorsqu'on quitte un tutoriel avec plusieurs onglet non enregistrés</title>
+		<body>La pop-up de confirmation de fermeture enregistre uniquement l'onglet actif, ce qui engendre certains problèmes. ### Pour reproduire #### Scénario 1 : Création d'un nouveau tutoriel - créer un nouveau tutoriel nommé _test_ ; - sélectionner la partie _Introduction_ et tapez _intro_ ; - sans enregistrer, sélectionner la partie _Conclusion_ et tapez _conclu_ ; - sans enregistrer, créer un nouveau tutoriel nommé _test2_; - À la pop-up _Voulez vous enregistrer les modifications_, cliquez sur _Non_ ; - Revenez à la page d'accueil.  L'onglet _Introduction_ est enregistré et fermé, tendis que _Conclusion_ n'est pas enregistré et reste ouvert. Sur la page d'accueil, le nouveau tutoriel _test2_ n'est pas présent alors qu'il a bien été créé dans le dossier offline. #### Scénario 2 : Ouverture d'un autre tutoriel - créer un nouveau tutoriel nommé _test2_ ; - enregistrez-le ; - créer un nouveau tutoriel nommé _test_ ; - sélectionner la partie _Introduction_ et tapez _intro_ ; - sans enregistrer, sélectionner la partie _Conclusion_ et tapez _conclu_ ; - sans enregistrer, allez sur l'onglet d'accueil et ouvrez _test2_ ; - À la pop-up _Voulez vous enregistrer les modifications_, cliquez sur _Non_ ;  _Test2_ est bien ouvert mais l'onglet _Introduction_ de _test_ est encore ouvert et pas encore enregistré. </body>
+		<created>2016-07-05 09:07:28</created>
+		<closed>2016-09-12 11:49:32</closed>
+	</bug>
+	<bug>
+		<id>176</id>
+		<title>L'outil de correction corrige du texte formaté inline et en italique</title>
+		<body>![](http://i.imgur.com/4BsWInx.png) Lignes 1 et 4 : ok ; lignes 2 et 3 : pas ok.  Pour reproduire :  Créez un nouveau contenu, tapez le texte ci-dessous et effectuez la correction de texte :  ``` Tapez sudo apt-get get install vim dans un terminal.  Tapez `sudo apt-get get install vim` dans un terminal.  Tapez *sudo apt-get get install vim* dans un terminal.  Tapez dans un terminal :      sudo apt-get get install vim ```  Note : [Cette ligne de code](https://github.com/firm1/zest-writer/blob/master/src/main/java/com/zestedesavoir/zestwriter/utils/Corrector.java#L126) devrait pourtant empêcher cela. </body>
+		<created>2016-07-01 09:34:59</created>
+		<closed>2016-07-01 14:09:28</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>Les contenus nouvellement téléchargés n'apparaissent pas sur la page d'accueil</title>
+		<body>Pour reproduire : - Créer un nouveau contenu ; - mettez ce contenu en ligne ; - renommez votre dossier _offline_ en __offline_ (pour faire un backup et nettoyer le dossier) ; - cliquez sur _Téléchargez les contenus_.  Les contenus sur ZdS sont bien téléchargés dans _offline_, mais n'apparaissent pas sur la page d'accueil : il est nécessaire de les ouvrir un par un. Il serait pratique de tous les voir.  Revenir en situation initiale : - supprimer le dossier _offline_ ; - renommez le dossier de backup __offline_\* en _offline_ ; </body>
+		<created>2016-06-29 17:12:05</created>
+		<closed>2016-07-04 11:27:03</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>Erreur de rendu sur certaines expressions mathématiques</title>
+		<body>Des barres verticales apparaissent sur certaines expressions mathématiques, telles que `x = \frac {-b \pm \sqrt{b^2 - 4ac}}{2a}` :  ![](http://i.imgur.com/pFEUnRg.png) </body>
+		<created>2016-06-29 16:54:07</created>
+		<closed>2016-07-01 15:08:19</closed>
+	</bug>
+	<bug>
+		<id>159</id>
+		<title>Le fait de renommer un contenu devrait modifier le nom de son dossier</title>
+		<body>Lorsque on renomme un contenu, le nom du dossier reste inchangé. Celui-ci devrait être renommé avec le nouveau nom du contenu car cela pose problème par la suite : - Créer un contenu nommé _toto_ (le dossier toto est créé) ; - renommer-le en _tata_ (le titre change mais le dossier reste inchangé) ; - téléverser le tutoriel sur ZdS (le contenu _tata_ apparaît sur ZdS) ; - cliquer sur _télécharger les contenus_ (le contenu _tata_ est téléchargé).  Le dossier _offline_ contient maintenant les dossiers _toto_ et _tata_, ce qui est confus.  Pour aller encore plus loin : - Ouvrir le dossier _tata_ via ZW (ZW expose sur la page d'accueil les contenus _tata_ et _tata_, ce qui est très confus).  Note : #131 permettrait de mieux comprendre le problème et maîtriser ce qu'il se passe. Ici, ce serait jouer à la roulette russe que de supprimer le mauvais contenu via ZW car on ne peut pas les différencier. </body>
+		<created>2016-06-29 10:49:53</created>
+		<closed>2016-07-02 18:30:36</closed>
+	</bug>
+	<bug>
+		<id>156</id>
+		<title>Crash de l'application sur OS X</title>
+		<body>Quand j'ouvre l'application sur OS X, l'application Crash au démarrage.  Voici les logs :  ``` Exception in Application constructor java.lang.reflect.InvocationTargetException     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     at java.lang.reflect.Method.invoke(Method.java:498)     at com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:389)     at com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:328)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     at java.lang.reflect.Method.invoke(Method.java:498)     at sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:767) Caused by: java.lang.RuntimeException: Unable to construct Application instance: class com.zestedesavoir.zestwriter.MainApp     at com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:907)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$155(LauncherImpl.java:182)     at java.lang.Thread.run(Thread.java:745) Caused by: java.lang.reflect.InvocationTargetException     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)     at java.lang.reflect.Constructor.newInstance(Constructor.java:423)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:819)     at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)     at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)     at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) Caused by: java.lang.RuntimeException: Could not create      at com.zestedesavoir.zestwriter.utils.LocalDirectorySaver.openDirCreateIfNecessary(LocalDirectorySaver.java:36)     at com.zestedesavoir.zestwriter.utils.LocalDirectorySaver.&lt;init&gt;(LocalDirectorySaver.java:21)     at com.zestedesavoir.zestwriter.utils.LocalDirectoryFactory.&lt;init&gt;(LocalDirectoryFactory.java:20)     at com.zestedesavoir.zestwriter.utils.Configuration.loadWorkspace(Configuration.java:162)     at com.zestedesavoir.zestwriter.utils.Configuration.initConf(Configuration.java:111)     at com.zestedesavoir.zestwriter.utils.Configuration.&lt;init&gt;(Configuration.java:41)     at com.zestedesavoir.zestwriter.MainApp.&lt;init&gt;(MainApp.java:62)     ... 10 more Exception running application com.zestedesavoir.zestwriter.MainApp logout ``` </body>
+		<created>2016-06-28 19:31:57</created>
+		<closed>2016-06-29 11:09:42</closed>
+	</bug>
+	<bug>
+		<id>148</id>
+		<title>Bouton "Annuler" dans les statistiques mal nommé</title>
+		<body>Sur la page des statistiques, le bouton en bas à droite contient "Annuler", or ça devrais plutôt être "Fermé". </body>
+		<created>2016-06-27 19:11:24</created>
+		<closed>2016-06-28 14:30:15</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>Modalité des AlertBox</title>
+		<body>Avec les nouvelles AlertBox, elles ne sont plus modale par rapport à la fenêtre un principale, ce qui est assez gênant.  _Edit:_ Pour les pages de statistiques également. </body>
+		<created>2016-06-27 19:02:24</created>
+		<closed>2016-06-29 15:31:03</closed>
+	</bug>
+	<bug>
+		<id>144</id>
+		<title>Dark thème</title>
+		<body>Petit problème dans les fenêtres qui concerne les indices de Flesh et de Gunning.  Le problème est que ... c'est pas très dark :p </body>
+		<created>2016-06-27 19:00:32</created>
+		<closed>2016-06-28 07:20:55</closed>
+	</bug>
+	<bug>
+		<id>142</id>
+		<title>Fenêtre "A propos" redimensionnable</title>
+		<body>Je ne sais pas s'il s'agit d'une régression, mais il me semblais avoir interdit le redimensionnement de la fenêtre `A propos`. Or j'arrive à la redimensionner. </body>
+		<created>2016-06-27 18:49:23</created>
+		<closed>2016-06-28 16:32:56</closed>
+	</bug>
+	<bug>
+		<id>140</id>
+		<title>Le texte est parfois tronqué</title>
+		<body>Sur Ubuntu Mate 15  En rapport avec #119.  ![](http://i.imgur.com/9Gifrr5.png)  ![](http://i.imgur.com/to4uMFO.png) </body>
+		<created>2016-06-27 16:34:47</created>
+		<closed>2016-06-28 16:32:56</closed>
+	</bug>
+	<bug>
+		<id>130</id>
+		<title>La mise à jour de la page d'accueil peut mal fonctionner</title>
+		<body>Lorsqu'un tutoriel est déjà ouvert, le bouton _Nouveau tutoriel_ ne fonctionne pas.  Pour reproduire : - Créer un nouveau tutoriel ; - double-cliquez sur _Introduction_ ; - créez un autre nouveau tutoriel ;  La page d'accueil est affichée, mais cette dernière n'est pas jour, bien que le nouveau tutoriel est physiquement présent dans le dossier tutoriel.  Le tutoriel apparaît dans le menu si on utilise la fonction _Ouvrir_, ou bien si on redémarre z-w.  _Sous Ubuntu Mate 16_ </body>
+		<created>2016-06-26 16:26:29</created>
+		<closed>2016-06-27 05:21:29</closed>
+	</bug>
+	<bug>
+		<id>129</id>
+		<title>La fonction supprimer le tutoriel ne fonctionne pas</title>
+		<body>Pour reproduire : - créer un nouveau tutoriel vide ; - supprimez-le.  La popup _Êtes-vous sur de supprimer le tutoriel_ apparaît, mais après confirmation le tutoriel est toujours présent, sur la page d'accueil, sur le panneau de gauche ainsi que dans le dossier tutoriels.  _Sous Ubuntu Mate 16_ </body>
+		<created>2016-06-26 16:18:47</created>
+		<closed>2016-06-27 04:24:50</closed>
+	</bug>
+	<bug>
+		<id>124</id>
+		<title>Ajouter zest-writer à la catégorie Bureautique</title>
+		<body>Sous Ubuntu Mate, zestwriter est dans la catégorie _Editor_, mais cette catégorie n'est pas reconnue par mon système, du coup il est placé dans _Autre_.  Je propose d'ajouter la catégorie _Bureautique_ pour l’icône soit ajoutée dans le menu correspondant (`Categories=Office;Editor`dans le ZestWriter.desktop).  Correction [probablement ici](https://github.com/firm1/zest-writer/blob/master/build.gradle#L29). </body>
+		<created>2016-06-24 15:46:24</created>
+		<closed>2016-06-26 15:44:19</closed>
+	</bug>
+	<bug>
+		<id>120</id>
+		<title>Impossible d'insérer certaines lettres accentuées.</title>
+		<body>Sous linux, les lettres accentuées nécessitant l'appui de 2 touches sur le clavier (ex : ô -&gt; touche `^` puis `o`, mais pas `é` qui a sa touche dédiée) ne s'affichent pas. </body>
+		<created>2016-06-20 09:46:11</created>
+		<closed>2020-08-02 18:16:57</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>Le texte ne revient pas à la lignes sur les fenêtres modales</title>
+		<body>Sur les popups d'information, de warning et d'erreur, ainsi que sur la fenêtre _À propos_, le texte ne revient pas à la ligne. De ce fait, il est souvent impossible de lire le texte jusqu'au bout (les fenêtres n'étant pas redimensionnables).  ![texte_tronque](https://cloud.githubusercontent.com/assets/1665542/16136209/00848fc4-3429-11e6-9981-0d9650cb629a.png) - _zest-writer-all-1.1.0.jar_ - Ubuntu Mate 16.04 LTS - Java 1.8.0_91 </body>
+		<created>2016-06-16 23:20:49</created>
+		<closed>2016-06-22 08:48:03</closed>
+	</bug>
+	<bug>
+		<id>117</id>
+		<title>Prévisualisation morte sur OS X</title>
+		<body>Version : 1.1 OS : OS X  Plus aucune prévisualisation lorsque j'ouvre un fichier.  &lt;img width="1440" alt="capture d ecran 2016-06-11 a 16 06 12" src="https://cloud.githubusercontent.com/assets/1913901/15985467/762b87ee-2fee-11e6-84f4-6fc920dfe525.png"&gt; </body>
+		<created>2016-06-11 14:06:06</created>
+		<closed>2016-06-22 09:08:19</closed>
+	</bug>
+	<bug>
+		<id>114</id>
+		<title>Les formules de Math rendent mal dans certains cas</title>
+		<body>En testant un simpe `$ x^2 $` on a ce genre de résultat, pas beau.  ![](http://zestedesavoir.com/media/galleries/1594/53d48c34-0d3f-474b-aed7-2ecbac679998.png)  Après avoir faire des essais, ça ne vient pas de katex, puisqu'en testant une page d'exemple sous firefox/chrome je n'ai pas le souci. </body>
+		<created>2016-05-10 16:54:36</created>
+		<closed>2016-05-17 15:07:11</closed>
+	</bug>
+	<bug>
+		<id>113</id>
+		<title>La selection d'un mot rajoute des espaces</title>
+		<body>&gt; La sélection de mots est étrange dans l'éditeur (Ctrl+flèches ou au double clic) : j'ai l'espace d'avant qui vient avec. C'est pas le comportement standard.  IL s'agit d'un problème au niveau de [RichTextFx](https://github.com/TomasMikula/RichTextFX/issues/197) il faudrait idéalement utiliser un workaround </body>
+		<created>2016-05-10 16:51:29</created>
+		<closed>2016-05-17 13:00:58</closed>
+	</bug>
+	<bug>
+		<id>112</id>
+		<title>Il y'a des changements de taille dans l'éditeur</title>
+		<body>&gt; J'ai des changements de taille du texte bizarre quand je change d'onglet dans l'éditeur.  Il faudrait réussir à reproduire le problème </body>
+		<created>2016-05-10 16:50:15</created>
+		<closed>2016-05-11 22:24:58</closed>
+	</bug>
+	<bug>
+		<id>111</id>
+		<title>Prévoir un avertissement lorsqu'on quitte l'application</title>
+		<body>Via le forum:  &gt; J'ai un avertissement à la fermeture via le menu et Ctrl+Q, mais pas via Alt+F4 ou la croix de la fenêtre.  Voir conseil de @WinXaito [ici](https://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=15#p109418) </body>
+		<created>2016-05-10 16:49:21</created>
+		<closed>2016-05-11 23:26:16</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>L'upload sur ZdS ne semble plus fonctionner</title>
+		<body>Beaucoup de membre l'on indiqué, l'upload sur le site ne semble plus fonctionner. Certain dise également que le download ne fonctionne pas.  Je te laisse regardé ceci, car je n'ai pas trop suivi tout ce qui est connexion au site. </body>
+		<created>2016-05-08 12:56:09</created>
+		<closed>2016-05-09 14:11:01</closed>
+	</bug>
+	<bug>
+		<id>105</id>
+		<title>Erreur dans les logs</title>
+		<body>J'ai plusieurs soucis (A chaque lancement de **Zest-Writer**) au niveau du fichier de configuration.  Ces erreurs ne sont pas gênante directement, mais ça reste des erreurs tout de même et ça rend les logs illisible.  `D:\Programmation\java\zest-writer\--debug\.zestwriter\conf.properties n'existe pas` ce chemin est absurde.   Et en regardant de plus près la ligne `95` de la classe `Configuration`, c'est exactement ce que je trouvais illisible pour les plugins, donc de ce que je remarque à pars ajouter des erreurs ça ne fais pas grand chose :p  Les logs:  ``` 2016-05-06 16:40:49 DEBUG Configuration:95 - le fichier de configuartion D:\Programmation\java\zest-writer\--debug\.zestwriter\conf.properties n'existe pas 2016-05-06 16:40:49 ERROR Configuration:121 -  java.io.FileNotFoundException: --debug\.zestwriter\conf.properties (Le chemin d’accès spécifié est introuvable)     at java.io.FileOutputStream.open0(Native Method)     at java.io.FileOutputStream.open(FileOutputStream.java:270)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:213)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:162)     at com.zestedesavoir.zestwriter.utils.Configuration.saveConfFile(Configuration.java:118)     at com.zestedesavoir.zestwriter.utils.Configuration.&lt;init&gt;(Configuration.java:97)     at com.zestedesavoir.zestwriter.MainApp.&lt;init&gt;(MainApp.java:57)     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)     at java.lang.reflect.Constructor.newInstance(Constructor.java:422)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:819)     at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)     at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)     at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) 2016-05-06 16:40:49 ERROR Configuration:121 -  java.io.FileNotFoundException: --debug\.zestwriter\conf.properties (Le chemin d’accès spécifié est introuvable)     at java.io.FileOutputStream.open0(Native Method)     at java.io.FileOutputStream.open(FileOutputStream.java:270)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:213)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:162)     at com.zestedesavoir.zestwriter.utils.Configuration.saveConfFile(Configuration.java:118)     at com.zestedesavoir.zestwriter.utils.Configuration.&lt;init&gt;(Configuration.java:111)     at com.zestedesavoir.zestwriter.MainApp.&lt;init&gt;(MainApp.java:57)     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)     at java.lang.reflect.Constructor.newInstance(Constructor.java:422)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:819)     at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)     at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)     at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) 2016-05-06 16:40:49 ERROR Configuration:121 -  java.io.FileNotFoundException: --debug\.zestwriter\conf.properties (Le chemin d’accès spécifié est introuvable)     at java.io.FileOutputStream.open0(Native Method)     at java.io.FileOutputStream.open(FileOutputStream.java:270)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:213)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:162)     at com.zestedesavoir.zestwriter.utils.Configuration.saveConfFile(Configuration.java:118)     at com.zestedesavoir.zestwriter.utils.Configuration.&lt;init&gt;(Configuration.java:111)     at com.zestedesavoir.zestwriter.MainApp.&lt;init&gt;(MainApp.java:57)     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)     at java.lang.reflect.Constructor.newInstance(Constructor.java:422)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:819)     at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)     at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)     at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) 2016-05-06 16:40:49 ERROR Configuration:121 -  java.io.FileNotFoundException: --debug\.zestwriter\conf.properties (Le chemin d’accès spécifié est introuvable)     at java.io.FileOutputStream.open0(Native Method)     at java.io.FileOutputStream.open(FileOutputStream.java:270)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:213)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:162)     at com.zestedesavoir.zestwriter.utils.Configuration.saveConfFile(Configuration.java:118)     at com.zestedesavoir.zestwriter.utils.Configuration.&lt;init&gt;(Configuration.java:111)     at com.zestedesavoir.zestwriter.MainApp.&lt;init&gt;(MainApp.java:57)     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)     at java.lang.reflect.Constructor.newInstance(Constructor.java:422)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:819)     at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)     at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)     at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) 2016-05-06 16:40:49 ERROR Configuration:121 -  java.io.FileNotFoundException: --debug\.zestwriter\conf.properties (Le chemin d’accès spécifié est introuvable)     at java.io.FileOutputStream.open0(Native Method)     at java.io.FileOutputStream.open(FileOutputStream.java:270)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:213)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:162)     at com.zestedesavoir.zestwriter.utils.Configuration.saveConfFile(Configuration.java:118)     at com.zestedesavoir.zestwriter.utils.Configuration.&lt;init&gt;(Configuration.java:111)     at com.zestedesavoir.zestwriter.MainApp.&lt;init&gt;(MainApp.java:57)     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)     at java.lang.reflect.Constructor.newInstance(Constructor.java:422)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:819)     at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)     at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)     at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) 2016-05-06 16:40:49 ERROR Configuration:121 -  java.io.FileNotFoundException: --debug\.zestwriter\conf.properties (Le chemin d’accès spécifié est introuvable)     at java.io.FileOutputStream.open0(Native Method)     at java.io.FileOutputStream.open(FileOutputStream.java:270)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:213)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:162)     at com.zestedesavoir.zestwriter.utils.Configuration.saveConfFile(Configuration.java:118)     at com.zestedesavoir.zestwriter.utils.Configuration.&lt;init&gt;(Configuration.java:111)     at com.zestedesavoir.zestwriter.MainApp.&lt;init&gt;(MainApp.java:57)     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)     at java.lang.reflect.Constructor.newInstance(Constructor.java:422)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:819)     at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)     at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)     at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) 2016-05-06 16:40:49 ERROR Configuration:121 -  java.io.FileNotFoundException: --debug\.zestwriter\conf.properties (Le chemin d’accès spécifié est introuvable)     at java.io.FileOutputStream.open0(Native Method)     at java.io.FileOutputStream.open(FileOutputStream.java:270)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:213)     at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:162)     at com.zestedesavoir.zestwriter.utils.Configuration.saveConfFile(Configuration.java:118)     at com.zestedesavoir.zestwriter.utils.Configuration.&lt;init&gt;(Configuration.java:111)     at com.zestedesavoir.zestwriter.MainApp.&lt;init&gt;(MainApp.java:57)     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)     at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)     at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)     at java.lang.reflect.Constructor.newInstance(Constructor.java:422)     at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:819)     at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)     at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)     at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) 2016-05-06 16:40:53 INFO  Configuration:163 - Espace de travail chargé en mémoire ``` </body>
+		<created>2016-05-06 16:00:47</created>
+		<closed>2016-05-06 16:38:07</closed>
+	</bug>
+	<bug>
+		<id>104</id>
+		<title>[BLOQUANT] Impossible d'ouvrir un contenu (Onglet)</title>
+		<body>Une fois le contenu chargé, dès que je double clique sur un extrait (j'ai essayé sur plusieurs, cf:log) rien ne se passe. Sauf une jolie erreur dans les log que voici:  ``` .... 2016-05-06 16:40:53 INFO  Configuration:163 - Espace de travail chargé en mémoire 2016-05-06 16:40:54 INFO  MdTextController:73 - PYTHON STARTED 2016-05-06 16:40:55 DEBUG MdTextController:229 - Tentative d'ouverture du contenu stocké dans D:\Kevin\Mes documents\zwriter-workspace\offline\un-mouvement-horloger-comment-est-ce-que-ca-fonctionne 2016-05-06 16:40:55 INFO  MdTextController:316 - Contenu stocké dans D:\Kevin\Mes documents\zwriter-workspace\offline\un-mouvement-horloger-comment-est-ce-que-ca-fonctionne ouvert 2016-05-06 16:40:59 DEBUG MdTextController:171 - Tentative de création d'un nouvel onglet pour Introduction 2016-05-06 16:40:59 ERROR MdTextController:249 -  /D:/Programmation/java/zest-writer/build/resources/main/com/zestedesavoir/zestwriter/fxml/Editor.fxml  javafx.fxml.LoadException:  /D:/Programmation/java/zest-writer/build/resources/main/com/zestedesavoir/zestwriter/fxml/Editor.fxml      at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)     at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2543)     at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)     at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)     at com.zestedesavoir.zestwriter.view.MdTextController.createTabExtract(MdTextController.java:175)     at com.zestedesavoir.zestwriter.view.MdTextController.lambda$openContent$10(MdTextController.java:247)     at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)     at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)     at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)     at javafx.event.Event.fireEvent(Event.java:198)     at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3470)     at javafx.scene.Scene$ClickGenerator.access$8100(Scene.java:3398)     at javafx.scene.Scene$MouseHandler.process(Scene.java:3766)     at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)     at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)     at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:352)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:275)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$354(GlassViewEventHandler.java:388)     at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:387)     at com.sun.glass.ui.View.handleMouseEvent(View.java:555)     at com.sun.glass.ui.View.notifyMouse(View.java:937)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[16,214] Message: L'attribut "xmlns:fx" a déjà été spécifié pour l'élément "SplitPane".     at com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:596)     at javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:88)     at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2513)     ... 36 more 2016-05-06 16:41:02 DEBUG MdTextController:171 - Tentative de création d'un nouvel onglet pour Montre à quartz 2016-05-06 16:41:02 ERROR MdTextController:249 -  /D:/Programmation/java/zest-writer/build/resources/main/com/zestedesavoir/zestwriter/fxml/Editor.fxml  javafx.fxml.LoadException:  /D:/Programmation/java/zest-writer/build/resources/main/com/zestedesavoir/zestwriter/fxml/Editor.fxml      at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)     at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2543)     at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)     at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)     at com.zestedesavoir.zestwriter.view.MdTextController.createTabExtract(MdTextController.java:175)     at com.zestedesavoir.zestwriter.view.MdTextController.lambda$openContent$10(MdTextController.java:247)     at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)     at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)     at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)     at javafx.event.Event.fireEvent(Event.java:198)     at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3470)     at javafx.scene.Scene$ClickGenerator.access$8100(Scene.java:3398)     at javafx.scene.Scene$MouseHandler.process(Scene.java:3766)     at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)     at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)     at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:352)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:275)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$354(GlassViewEventHandler.java:388)     at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:387)     at com.sun.glass.ui.View.handleMouseEvent(View.java:555)     at com.sun.glass.ui.View.notifyMouse(View.java:937)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[16,214] Message: L'attribut "xmlns:fx" a déjà été spécifié pour l'élément "SplitPane".     at com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:596)     at javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:88)     at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2513)     ... 36 more 2016-05-06 16:41:03 DEBUG MdTextController:171 - Tentative de création d'un nouvel onglet pour Introduction 2016-05-06 16:41:03 ERROR MdTextController:249 -  /D:/Programmation/java/zest-writer/build/resources/main/com/zestedesavoir/zestwriter/fxml/Editor.fxml  javafx.fxml.LoadException:  /D:/Programmation/java/zest-writer/build/resources/main/com/zestedesavoir/zestwriter/fxml/Editor.fxml      at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)     at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2543)     at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)     at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)     at com.zestedesavoir.zestwriter.view.MdTextController.createTabExtract(MdTextController.java:175)     at com.zestedesavoir.zestwriter.view.MdTextController.lambda$openContent$10(MdTextController.java:247)     at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)     at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)     at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)     at javafx.event.Event.fireEvent(Event.java:198)     at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3470)     at javafx.scene.Scene$ClickGenerator.access$8100(Scene.java:3398)     at javafx.scene.Scene$MouseHandler.process(Scene.java:3766)     at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)     at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)     at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:352)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:275)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$354(GlassViewEventHandler.java:388)     at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:387)     at com.sun.glass.ui.View.handleMouseEvent(View.java:555)     at com.sun.glass.ui.View.notifyMouse(View.java:937)     at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)     at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)     at java.lang.Thread.run(Thread.java:745) Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[16,214] Message: L'attribut "xmlns:fx" a déjà été spécifié pour l'élément "SplitPane".     at com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:596)     at javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:88)     at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2513)     ... 36 more ```  Cela ne venait pas de la PR de @artragis comme je l'avais imaginé, mais de plus haut dans la branche master. </body>
+		<created>2016-05-06 15:53:14</created>
+		<closed>2016-06-20 20:46:41</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>Rendre la vérification de mise à jour non bloquante</title>
+		<body>Il faudrait rendre la vérification de mise à jour non bloquante (c'est à dire le transformer en service) </body>
+		<created>2016-04-26 05:59:19</created>
+		<closed>2016-05-02 15:30:07</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>Necessité de redemarrer l'appli pour prendre en compte le changement de dossier via les préférences</title>
+		<body>Via le forum  &gt; faut-il forcément redémarrer l'application pour qu'il prennent en compte le changement du dossier de travail des préférences dans le menu fichier-&gt;ouvrir? </body>
+		<created>2016-04-26 05:54:49</created>
+		<closed>2016-05-09 14:21:11</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>Conflit de touches</title>
+		<body>Via le forum  &gt; J'ai un bug de saisie bizarre. Quand je saisis une accolade }, avec la combinaison Alt Gr + }, la suite de caractère ~}~ est insérée. On dirait un mêli-mêlo avec le raccourci Ctrl + =. </body>
+		<created>2016-04-25 14:06:48</created>
+		<closed>2016-05-05 15:32:17</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>Raffraichir dans la memoire de l'app la nouvelle liste des tutoriel après chaque upload</title>
+		<body>Lorsqu'on upload un contenus en tant que nouveau, la liste des infos en ligne n'est pas retéléchargée, ce qui fait qu'on ne retrouve pas les nouveau tutoriel dans la combo pour mise à jour. </body>
+		<created>2016-04-23 13:24:51</created>
+		<closed>2016-04-23 13:59:55</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>Problème de synchronisation</title>
+		<body>&gt; Alors pour l'occasion j'ai testé zest writer et j'ai croisé un petit soucis, lorsque je veux uploader un tuto, il l'upload bien mais il ne synchronise pas avec le tuto actuel, ce qui fait qu'on a des doublons ^^ VOici ce que m'affiche le soft : &gt;  &gt; ![](http://www.image-heberg.fr/files/146131771829899.png) &gt;  &gt; Bonne soirée :)  Reporté par Dryusdan sur le [forum](https://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=10#p107021) </body>
+		<created>2016-04-23 09:26:57</created>
+		<closed>2016-04-25 10:28:09</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>Impossible d'avoir le rendu dans certains cas</title>
+		<body>Ce bug touche @artragis, et j'a réussi à le reproduire et donc a comprendre d’où il vient, il s'agit du fait que sur certains systèmes la webview n'arrive pas à charger le chemin vers la ressource contenant les static.  A corriger donc maintenant que c'est identifié </body>
+		<created>2016-04-22 09:03:02</created>
+		<closed>2016-04-23 13:56:34</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>Gestion des images et émoticones</title>
+		<body>Il serait bien de géré les images et les émoticônes.  Actuellement si on ajoute une émoticône, on a une image par défaut et si on fait `Clic droit -&gt; Copier dans le presse papier`, l'application crash brutalement. </body>
+		<created>2016-04-10 17:46:34</created>
+		<closed>2016-04-23 13:58:50</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>Aller à une ligne particulière en saisissant le numéro de la ligne</title>
+		<body>Aujourd'hui le raccourci clavier Ctrl+L qui es censé permettre d'aller à la ligne ne fonctionne pas, on tape le numéro de ligne, mais on y arrive pas en cliquant sur OK.  Il y'a certainement quelque chose à corriger à [cette ligne](https://github.com/firm1/zest-writer/blob/master/src/main/java/com/zestedesavoir/zestwriter/view/MdConvertController.java#L453) pour ramener le curseur au bon endroit. </body>
+		<created>2016-04-09 08:45:45</created>
+		<closed>2016-04-10 17:58:20</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>Prévisualisation des lignes de codes décalées</title>
+		<body>&gt; Enfin, les numéros de ligne des blocs de code sont décalés (la ligne est trop basse par rapport au numéro), sur la prévisualisation, chez moi. &gt;  &gt; ![Numéros de ligne décalés](http://raw.carrade.eu/s/1459434257.png) &gt; :Ce n'est pas en face. Mon perfectionnisme est contrarié. &gt;  &gt; _(Sous GNU/Linux, Ubuntu 14.10, KDE Plasma 5.9.0.)_ &gt; Source:[AmauryPi](http://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=8#p104594) </body>
+		<created>2016-04-01 04:27:22</created>
+		<closed>2016-04-08 15:23:05</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>Interprétation des balises codes problématique</title>
+		<body>via [le forum](https://zestedesavoir.com/forums/sujet/5354/zest-writer-un-editeur-hors-ligne-pour-vos-contenus-zds/?page=8#p104594)  &gt; Actuellement, le défilement de la zone d'écriture et de prévisualisation n'est pas synchronisé : sans forcément le faire systématiquement, il serait agréable qu'il défile automatiquement jusqu'en bas quand on est en bas du fichier, permettant ainsi de voir la prévisualisation en continu. &gt;  &gt; En terme de rapports de bug, si j'écris :  &gt;  &gt; ``` markdown &gt; `Set&lt;Class&lt;? extends Object&gt;&gt;` &gt; ``` &gt;  &gt; ...Zest Markdown prévisualise `Set&gt;`. Il semble interpréter les balises HTML (ou ce qu'il croit en être).   </body>
+		<created>2016-04-01 04:26:27</created>
+		<closed>2016-04-08 14:34:40</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>Les images des blocs customs sont absents dans le rendu</title>
+		<body>&gt; Dans les bloc information, erreur, etc. on a pas les images comme sur le site </body>
+		<created>2016-03-07 14:15:27</created>
+		<closed>2016-03-07 18:55:26</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>La multi-citation avancée fait planter le programme</title>
+		<body>&gt; Si on écrit ça : `&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; test` le programme plante </body>
+		<created>2016-03-07 14:14:43</created>
+		<closed>2016-10-20 08:53:03</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>Impossible d'utiliser l'outil de création de tableau</title>
+		<body>&gt; le comportement de l'outil tableau est erratique : si j'ajoute une colonne, je perd tout, si j'ajoute une lignes certaines cases sont modifiées, etc. </body>
+		<created>2016-03-07 14:11:38</created>
+		<closed>2016-03-09 14:37:37</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>Utiliser la même police que le site pour le rendu HTML</title>
+		<body>Parce que là c'est vraiment moche ^^ (Linux CentOS 7, jdk 1.8.0_72, compilé depuis les sources).  Sinon, l'éditeur est vraiment cool et pratique à utiliser, merci :+1: ! </body>
+		<created>2016-02-23 09:47:10</created>
+		<closed>2016-02-25 07:34:08</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>Eviter la perte de focus lorsqu'on touche AltGr</title>
+		<body>&gt; Lorsque je saisis du texte, si j'appuie sur Alt+Gr pendant la saisie pour accéder à certains caractères, je perd le focus qui passe sur le menu, ou je me retrouve avec des caractères parasites (par ex. ~~ pour avoir voulu refermer une accolade). </body>
+		<created>2016-02-22 15:07:43</created>
+		<closed>2016-03-05 11:20:02</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>Le double clic sur un contenu ne devrait rien ouvrir</title>
+		<body>Bloquer le double clic sur un contenu. </body>
+		<created>2016-02-22 15:05:29</created>
+		<closed>2016-02-28 08:57:08</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>Problème lors des drag'n drop</title>
+		<body>L'image parle d'elle même  ![](http://i.imgur.com/ZaBVUj7.png)  Il y'a certainement des conditions qui sont mal faites. Il faudrait repasser sur tous les cas. </body>
+		<created>2016-02-22 15:04:02</created>
+		<closed>2016-02-28 08:57:08</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>Le menu contextuel ne fonctionne que sur les sections et pas sur les sous-sections</title>
+		<body></body>
+		<created>2016-02-22 14:59:02</created>
+		<closed>2016-02-28 09:04:36</closed>
+	</bug>
+	<bug>
+		<id>19</id>
+		<title>Problème d'encodage des chaines de caractère sous windows</title>
+		<body>Le screen parle de lui même.  ![](http://i.imgur.com/IZJvOIR.png)  Le problème est certainement du à un mauvais parametrage dans appveyor qui génère l'executable, car en local le problème n'existe pas. </body>
+		<created>2016-02-22 14:58:16</created>
+		<closed>2016-03-05 14:50:22</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>Fermer un dossier ce n'est pas le supprimer</title>
+		<body>&gt; Sur un dossier ouvert dans l'arborescence, "Clic droit &gt; Supprimer" ne fait que le fermer, ce qui est bien, mais du coup, il faudrait renommer ça en "Fermer" ou "Retirer du panneau". </body>
+		<created>2016-02-11 10:37:11</created>
+		<closed>2016-02-28 21:38:14</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>Eviter de supprimer un extrait en essayant de le déplacer</title>
+		<body>&gt; Le drag n' drop est totalement chaotique, j'ai supprimé un extrait en voulant en déplacer un. Le fichier n'est pas supprimé par ailleurs (et c'est peut-être mieux ainsi), mais ce comportement est pour le moins étrange. Surtout que j'ai réussi à supprimer la conclusion (qui ne peut pas l'être par clic droit !). </body>
+		<created>2016-02-11 10:35:48</created>
+		<closed>2016-02-28 08:57:08</closed>
+	</bug>
+	<bug>
+		<id>7</id>
+		<title>Correction du rendu des citations</title>
+		<body>Il y a un bug étrange avec les citations (la source est mise en forme, mais pas le contenu de la citation). </body>
+		<created>2016-02-11 10:34:42</created>
+		<closed>2016-02-15 23:33:07</closed>
+	</bug>
+	<bug>
+		<id>6</id>
+		<title>Proposer un rendu adapté pour les balises Mathématiques</title>
+		<body>Une façon simple serait de charger le fichiers js de MathJax directement dans la Webview. </body>
+		<created>2016-02-11 10:33:41</created>
+		<closed>2016-02-18 17:36:06</closed>
+	</bug>
+</bugs>

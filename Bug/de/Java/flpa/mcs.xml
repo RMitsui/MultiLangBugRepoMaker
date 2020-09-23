@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>99</id>
+		<title>Encoding Issues in German texts</title>
+		<body>After introducing automatic version number replacement in our application texts we faced issues with corrupted german Umlauts. </body>
+		<created>2016-03-03 16:14:39</created>
+		<closed>2016-03-03 16:29:21</closed>
+	</bug>
+	<bug>
+		<id>95</id>
+		<title>MCS recommends update when local version is newer than Github version</title>
+		<body>When I'm running MCS locally with version 0.6.1, I'm notified that there's a newer version on Github (0.6.0). The reason is that the version is not actually parsed but only compared to the Github version string. Since this will happen (almost) always (because we're bumping the version number during a release), it'll get quite annoying :)  If you implementing parsing the version, please keep in mind that our intermediate/non-released version will probably soon be named like this: `v1.0.1-SNAPSHOT` </body>
+		<created>2016-02-12 17:04:49</created>
+		<closed>2016-03-03 16:10:21</closed>
+	</bug>
+	<bug>
+		<id>89</id>
+		<title>24bit WAVs should be rejected by MCS?</title>
+		<body>On my new system I can import them but get various errors because of the known limitation that there's no master-gain control. </body>
+		<created>2016-01-30 13:04:19</created>
+		<closed>2016-02-12 09:39:13</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>User does not get an error dialog when opening the manual is not supported</title>
+		<body>On my current (new) system, opening the manual fails with this error:  ``` Exception in thread "Thread-7" java.lang.UnsupportedOperationException: The BROWSE action is not supported on the current platform!     at java.awt.Desktop.checkActionSupport(Desktop.java:225)     at java.awt.Desktop.browse(Desktop.java:381)     at at.fhtw.mcs.controller.RootController.lambda$13(RootController.java:608)     at java.lang.Thread.run(Thread.java:745) ```  The user should get our regular error dialog in this case. </body>
+		<created>2016-01-28 23:06:16</created>
+		<closed>2016-01-28 23:11:41</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>Fehlerhafte Logik beim Suffix für Filename-Kollisionen</title>
+		<body>So war das nicht gedacht:  ![d](http://stud14.technikum-wien.at/~if14b048/Selection_223.png) Sollte (2), (3) (4) sein </body>
+		<created>2016-01-17 21:08:51</created>
+		<closed>2016-01-28 22:48:50</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>Ändern des Ausgabegeräts verwirft Lautstärke-Anpassungen</title>
+		<body>Sowohl Lautheit als auch Mastervolume-Regler werden dabei zurückgesetzt. </body>
+		<created>2016-01-17 20:02:07</created>
+		<closed>2016-01-28 23:28:04</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>Beim Normalisieren wird die Lautstärke nach dem Löschen des leisesten Tracks nicht nach oben angepasst</title>
+		<body>Wenn der leistete Track gelöscht wird, bleibt die Lautstärke der übrigen Tracks gleich. Wenn nun ein neuer Track geladen wird, ist dieser lauter als die anderen Tracks. </body>
+		<created>2016-01-17 18:58:15</created>
+		<closed>2016-02-12 15:49:37</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>Beim Beenden mittels X-Button erfolgt keine Warnung bei ungespeicherten Änderungen</title>
+		<body>Programm wird (zumindest unter Windows) ohne Warnung beendet. </body>
+		<created>2016-01-17 18:14:23</created>
+		<closed>2016-01-28 23:01:55</closed>
+	</bug>
+	<bug>
+		<id>75</id>
+		<title>MP3 Konverter überschreibt WAV-File mit gleichem Namen</title>
+		<body>Falls wav - File mit gleichem Namen exisitiert, wird dieses ohne Nachzufragen überschrieben. Könnte man auf mehrere Arten lösen: Nachfragen, konvertiertes wav unter anderem Namen speichern (evt. suffix) oder in eigenem Verzeichnis. </body>
+		<created>2016-01-17 18:05:55</created>
+		<closed>2016-02-17 17:20:29</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>Audiodaten auslesen - Mehrkanalfiles werden von uns noch nicht behandelt sollten sie wider Erwarten geöffnet werden können</title>
+		<body>Channel Abfrage um das zu umgehen. </body>
+		<created>2015-12-09 16:15:07</created>
+		<closed>2016-01-16 18:50:16</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>Audioanalyse-Fehler bei MP3</title>
+		<body>Beim Öffnen einer Mp3 gibts einen Fehler durch die Audioanalyse.  ``` Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: Error while opening clip     at at.fhtw.mcs.model.AudioOuput.openClip(AudioOuput.java:29)     at at.fhtw.mcs.model.JavaxJavazoomTrack.&lt;init&gt;(JavaxJavazoomTrack.java:51)     at at.fhtw.mcs.model.TrackFactory.loadTrack(TrackFactory.java:20)     at at.fhtw.mcs.controller.RootController.handleAddTrack(RootController.java:159)     at at.fhtw.mcs.controller.RootController$$Lambda$86/259363142.handle(Unknown Source)     at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)     at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)     at javafx.event.Event.fireEvent(Event.java:198)     at javafx.scene.control.MenuItem.fire(MenuItem.java:462)     at com.sun.javafx.scene.control.skin.ContextMenuContent$MenuItemContainer.doSelect(ContextMenuContent.java:1405)     at com.sun.javafx.scene.control.skin.ContextMenuContent$MenuItemContainer.lambda$createChildren$341(ContextMenuContent.java:1358)     at com.sun.javafx.scene.control.skin.ContextMenuContent$MenuItemContainer$$Lambda$189/757195946.handle(Unknown Source)     at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)     at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)     at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)     at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)     at javafx.event.Event.fireEvent(Event.java:198)     at javafx.scene.Scene$MouseHandler.process(Scene.java:3758)     at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3486)     at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)     at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2495)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:350)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:275)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$350(GlassViewEventHandler.java:385)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$$Lambda$157/2141291667.get(Unknown Source)     at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:404)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:384)     at com.sun.glass.ui.View.handleMouseEvent(View.java:555)     at com.sun.glass.ui.View.notifyMouse(View.java:927)     at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)     at com.sun.glass.ui.gtk.GtkApplication.lambda$null$48(GtkApplication.java:139)     at com.sun.glass.ui.gtk.GtkApplication$$Lambda$41/791885625.run(Unknown Source)     at java.lang.Thread.run(Thread.java:745) Caused by: javax.sound.sampled.UnsupportedAudioFileException: could not get audio input stream from input file     at javax.sound.sampled.AudioSystem.getAudioInputStream(AudioSystem.java:1189)     at at.fhtw.mcs.model.AudioOuput.openClip(AudioOuput.java:24)     ... 49 more ``` </body>
+		<created>2015-12-09 14:16:07</created>
+		<closed>2015-12-09 17:41:05</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>Ende der Audiospur behandeln</title>
+		<body>![Screenshot](http://stud14.technikum-wien.at/~if14b048/Selection_206.png)  Zumindest der PlayPause-Button sollte zurückgesetzt werden. Den Rest sollten wir diskutiern (zB: Progressbar zurücksetzen? oder Loop?) </body>
+		<created>2015-12-09 13:16:55</created>
+		<closed>2016-01-14 09:02:19</closed>
+	</bug>
+	<bug>
+		<id>56</id>
+		<title>Travis Fehlermeldung sollte Testfehlschlag enthalten</title>
+		<body>Ein fehlgeschlagener Test sieht derzeit so aus:  ``` at.fhtw.mcs.util.ExtensionFormatDetectionTest &gt; testWavLowercase FAILED      java.lang.AssertionError at ExtensionFormatDetectionTest.java:14  1 test completed, 1 failed  :test FAILED  FAILURE: Build failed with an exception.  * What went wrong:  Execution failed for task ':test'.  &gt; There were failing tests. See the report at: file:///home/travis/build/flpa/mcs/build/reports/tests/index.html  * Try:  Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.  BUILD FAILED  Total time: 13.325 secs ```  Eclipse schreibt aber die richtige Assertion-Meldung, die ein Problem war:  ``` java.lang.AssertionError: expected:&lt;MP3&gt; but was:&lt;WAV&gt;     at org.junit.Assert.fail(Assert.java:88) ... ```  Ohne die bringt einem der Travis-Output wenig.   Die Frage ist: ist das ein Problem in der Travis config oder kann/soll man das via Gradle regeln? Travis führt einfach `gradle check` aus, `gradle check --info` liefert diese Meldungen (und noch viel mehr... vll auch wieder unübersichtlich)  Falls sich wer damit beschäftigen mag: Bitte gerne, einfach assignen :-) </body>
+		<created>2015-11-26 20:16:38</created>
+		<closed>2015-11-27 19:56:41</closed>
+	</bug>
+	<bug>
+		<id>53</id>
+		<title>Lizenzen für 3rd-party Libraries müssen inkludiert werden</title>
+		<body>Wir verwenden schon im Prototyp 3rd-Party Libraries für die wir wohl eine Lizenzerklärung im Release brauchen. </body>
+		<created>2015-11-26 19:39:32</created>
+		<closed>2015-12-12 01:21:20</closed>
+	</bug>
+	<bug>
+		<id>6</id>
+		<title>testbug</title>
+		<body>jasdfoajsndf </body>
+		<created>2015-11-18 15:33:58</created>
+		<closed>2015-11-18 15:35:25</closed>
+	</bug>
+</bugs>

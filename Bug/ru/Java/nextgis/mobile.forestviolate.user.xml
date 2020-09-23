@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>93</id>
+		<title>Подложка Kosmosnimki сдвинута</title>
+		<body>Подложка из источника http://dev.citorus.ru/siren/relief имеет несовместимую с мобильным СК, что приводит к сдвигу подложки.  @PoohE - предлагаю поменять на ОСМ или на Спутник.</body>
+		<created>2016-11-08 09:47:21</created>
+		<closed>2016-11-09 16:22:48</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>Пустой список сообщений</title>
+		<body>Чистая установка. В списке нет ни одного сообщения (карта тоже пустая). Пользователь - анонимный.</body>
+		<created>2016-11-07 14:33:21</created>
+		<closed>2016-11-07 15:34:50</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>Падение при создании сообщения</title>
+		<body>``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.safeforest/com.nextgis.safeforest.activity.CreateMessageActivity}: android.view.InflateException: Binary XML file line #33: Error inflating class &lt;unknown&gt; at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2975) at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3004) at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2397) at android.app.ActivityThread.access$900(ActivityThread.java:169) at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1280) at android.os.Handler.dispatchMessage(Handler.java:102) at android.os.Looper.loop(Looper.java:146) at android.app.ActivityThread.main(ActivityThread.java:5487) at java.lang.reflect.Method.invokeNative(Native Method) at java.lang.reflect.Method.invoke(Method.java:515) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099) at dalvik.system.NativeStart.main(Native Method) Caused by: android.view.InflateException: Binary XML file line #33: Error inflating class &lt;unknown&gt; at android.view.LayoutInflater.createView(LayoutInflater.java:626) at com.android.internal.policy.impl.PhoneLayoutInflater.onCreateView(PhoneLayoutInflater.java:56) at android.view.LayoutInflater.onCreateView(LayoutInflater.java:675) at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:700) at android.view.LayoutInflater.rInflate(LayoutInflater.java:761) at android.view.LayoutInflater.inflate(LayoutInflater.java:498) at android.view.LayoutInflater.inflate(LayoutInflater.java:398) at android.view.LayoutInflater.inflate(LayoutInflater.java:354) at com.android.internal.policy.impl.PhoneWindow.setContentView(PhoneWindow.java:366) at android.app.Dialog.setContentView(Dialog.java:480) at com.nextgis.safeforest.dialog.YesNoDialog.onCreateDialog(YesNoDialog.java:111) at com.nextgis.safeforest.dialog.UserDataDialog.onCreateDialog(UserDataDialog.java:69) at android.support.v4.app.DialogFragment.getLayoutInflater(DialogFragment.java:307) at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1104) at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1286) at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:758) at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1671) at android.support.v4.app.FragmentController.execPendingActions(FragmentController.java:388) at android.support.v4.app.FragmentActivity.onResume(FragmentActivity.java:501) at com.nextgis.maplibui.activity.NGActivity.onResume(NGActivity.java:155) at com.nextgis.safeforest.activity.CreateMessageActivity.onResume(CreateMessageActivity.java:185) at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1198) at android.app.Activity.performResume(Activity.java:5530) at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2965) ... 12 more Caused by: java.lang.reflect.InvocationTargetException at java.lang.reflect.Constructor.constructNative(Native Method) at java.lang.reflect.Constructor.newInstance(Constructor.java:423) at android.view.LayoutInflater.createView(LayoutInflater.java:600) ... 35 more Caused by: android.content.res.Resources$NotFoundException: File res/drawable/dialog_yes_no_background.xml from drawable resource ID #0x7f020066 at android.content.res.Resources.loadDrawable(Resources.java:3066) at android.content.res.TypedArray.getDrawable(TypedArray.java:602) at android.view.View.&lt;init&gt;(View.java:3694) at android.view.ViewGroup.&lt;init&gt;(ViewGroup.java:480) at android.widget.LinearLayout.&lt;init&gt;(LinearLayout.java:176) at android.widget.LinearLayout.&lt;init&gt;(LinearLayout.java:172) ... 38 more Caused by: java.lang.UnsupportedOperationException: Can't convert to color: type=0x2 at android.content.res.TypedArray.getColor(TypedArray.java:327) at android.graphics.drawable.GradientDrawable.inflate(GradientDrawable.java:970) at android.graphics.drawable.Drawable.createFromXmlInner(Drawable.java:990) at android.graphics.drawable.Drawable.createFromXml(Drawable.java:930) at android.content.res.Resources.loadDrawable(Resources.java:3062) ... 43 more ```</body>
+		<created>2016-11-07 14:31:21</created>
+		<closed>2016-11-07 15:34:50</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>В темной теме текст в поле ввода белый по белому</title>
+		<body>Сообщение от тестера "При создании нового сообщения в темной теме неавторизованным пользователем, текст в поле ФИО отображается белым цветом на белом фоне, из-за чего соответственно не видно что вводит пользователь. После ввода данных в поле ФИО и нажатия кнопки ОК приложение выводит ошибку «Введите ФИО и телефон, чтобы с вами мог связаться диспетчер». При этом поле для ввода номера телефона визуально отсутствует."</body>
+		<created>2016-11-03 21:44:04</created>
+		<closed>2016-11-07 12:43:42</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>При переключении языка создается второй аккаунт в системе</title>
+		<body>Сейчас 2 аккаунта: 1. Сохрани лес 2. Safe forest  Это приводит к паденю при синхронизации </body>
+		<created>2016-10-26 09:26:52</created>
+		<closed>2016-11-07 12:43:43</closed>
+	</bug>
+	<bug>
+		<id>86</id>
+		<title>Падение при первом запуске</title>
+		<body>``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.safeforest/com.nextgis.safeforest.activity.MainActivity}: java.lang.IllegalArgumentException: No view found for id 0x7f0e009f (com.nextgis.safeforest:id/login_frame) for fragment LoginFragment{41db7498 #0 id=0x7f0e009f NGWLogin}     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2215)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2264)     at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3755)     at android.app.ActivityThread.access$900(ActivityThread.java:144)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1211)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:136)     at android.app.ActivityThread.main(ActivityThread.java:5139)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:796)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:612)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.IllegalArgumentException: No view found for id 0x7f0e009f (com.nextgis.safeforest:id/login_frame) for fragment LoginFragment{41db7498 #0 id=0x7f0e009f NGWLogin}     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1070)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1241)     at android.support.v4.app.FragmentManagerImpl.dispatchActivityCreated(FragmentManager.java:2053)     at android.support.v4.app.FragmentController.dispatchActivityCreated(FragmentController.java:165)     at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:543)     at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1171)     at android.app.Activity.performStart(Activity.java:5241)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2178)     ... 12 more ``` </body>
+		<created>2016-10-18 09:22:56</created>
+		<closed>2016-10-19 14:03:45</closed>
+	</bug>
+	<bug>
+		<id>84</id>
+		<title>Не отправляются сообщения незарегистрированного пользователя</title>
+		<body>Если пользователь не зарегистрирован, то в рамках синхронизации происходит обмен данными с сервером. Причем вначале получаются данные с сервера, а потом передаются на сервер.  Незарегистрированный пользователь не имеет доступа к актам инспекторов. В результате получает ошибку 401. Видимо на этом весь процесс прерывается не доходя до отправки сообщения пользователя на сервер.  Решение: Ошибка синхронизации одного слоя не должно прерывать процесс синхронизации. </body>
+		<created>2016-09-20 22:20:30</created>
+		<closed>2016-09-21 11:47:33</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>Поворот экрана закрывает диалог выбора слоев/подложек</title>
+		<body></body>
+		<created>2016-07-13 13:03:33</created>
+		<closed>2016-10-19 14:03:46</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>Регистрация сломана</title>
+		<body>При попытке регистрации с новым email выдаётся сообщение: "Не удалось зарегистрироваться, попробуйте выбрать другую почту" </body>
+		<created>2016-07-12 12:57:28</created>
+		<closed>2016-07-12 13:24:48</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>После работы с клавиатурой карта не ресайзится</title>
+		<body>На смартфоне - небольшой экран, после ввода сообщения, часть занятая клавиатурой так и не заполнена картой. На планшете такого не было. ![screenshot_2016-06-12-22-31-35](https://cloud.githubusercontent.com/assets/1708122/15993614/ff09f500-30fc-11e6-91e0-d6ae567e1dfd.png) ![screenshot_2016-06-12-22-32-30](https://cloud.githubusercontent.com/assets/1708122/15993616/1a50aa0c-30fd-11e6-9bff-91e9a4efc204.png) </body>
+		<created>2016-06-12 20:23:16</created>
+		<closed>2016-06-14 12:38:27</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>Не обновляется таблица при изменении статуса сообщения</title>
+		<body>Создал точку. В списке (таблице) оповещений появился статус - карандашик. Значит идет отправка. Смотрю на сервере точка уже есть. Значит статус должен был поменяться на треугольничек. А он не поменялся.  Иконка статуса поменялась только при применении фильтра - отключил показ других типов сообщений. </body>
+		<created>2016-06-12 16:47:03</created>
+		<closed>2016-06-13 17:12:34</closed>
+	</bug>
+	<bug>
+		<id>78</id>
+		<title>Не сохраняются координаты точки</title>
+		<body>Создал пару точек (рубка и пожар) все кроме координат сохранилось.  http://176.9.38.120/fv/api/resource/83/feature/72 http://176.9.38.120/fv/api/resource/83/feature/73  ![screenshot_2016-06-12-20-26-38](https://cloud.githubusercontent.com/assets/1708122/15992459/204ba25a-30de-11e6-9ca1-3936f1474b4f.png)  Фильтр на сервере точно не причем. Вот тоже для администратора: http://176.9.38.120/fv/api/resource/64/feature/72 http://176.9.38.120/fv/api/resource/64/feature/73 </body>
+		<created>2016-06-12 16:43:49</created>
+		<closed>2016-06-13 17:12:34</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>При первоначальной загрузке подгружаются не все сообщения</title>
+		<body>Сейчас сообщений более 50, но подгрузилось не более 10. Возможно сработал фильтр что бы не отображать старые, но тогда откуда взялось сообщение от 1.1.1970? И почему тогда этот фильтр не сработал на акты от инспекторов?  ![screenshot_2016-06-12-20-30-31](https://cloud.githubusercontent.com/assets/1708122/15992454/eec4c018-30dd-11e6-8ea3-22c07379fb55.png) </body>
+		<created>2016-06-12 16:40:48</created>
+		<closed>2016-07-04 16:58:11</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>В диалоге списка слоев отображены подложки </title>
+		<body>Сейчас нет возможности отключить ненужные пользователю слои, которые могут приводить к торможению: - лесоделение - Ландсат - полигоны инспекторов  В диалоге выбора слоев надо отдельно перечислить слои и под чертой - подложки в виде радиокнопки, чтобы можно было только выбрать одну.  ![screenshot_2016-06-12-20-17-26](https://cloud.githubusercontent.com/assets/1708122/15992433/4b35459e-30dd-11e6-9ac7-aaecb68ad433.png)  Предлагаю по-умолчанию вообще только точки сообщений показывать - тогда программа будет отзывчевее. </body>
+		<created>2016-06-12 16:37:19</created>
+		<closed>2016-06-16 13:22:12</closed>
+	</bug>
+	<bug>
+		<id>75</id>
+		<title>Теряются кнопки на объясняющем экране </title>
+		<body>Кнопка да и подпись к ней плохо видны. А фот FAB хорошо. Надо либо затемнить карту, либо поменять цвет, шрифт, размер.  ![screenshot_2016-06-12-20-16-55](https://cloud.githubusercontent.com/assets/1708122/15992428/efe50634-30dc-11e6-82ab-fdb42ef3fae9.png) </body>
+		<created>2016-06-12 16:33:45</created>
+		<closed>2016-06-13 17:12:34</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>Качество картинок первого экрана</title>
+		<body>Первый запуск сопровождается экраном с 4-мя страницами с объяснением как пользоваться программой. 3 страницы из 4-х имеют картинки низкого качества, что выглядит неинформативно и некрасиво.  ![screenshot_2016-06-12-20-07-20](https://cloud.githubusercontent.com/assets/1708122/15992404/424a856c-30dc-11e6-85ca-8f5df0434ed3.png)  ![screenshot_2016-06-12-20-07-34](https://cloud.githubusercontent.com/assets/1708122/15992406/4998fce0-30dc-11e6-991b-5133a1b72bc2.png)  ![screenshot_2016-06-12-20-08-09](https://cloud.githubusercontent.com/assets/1708122/15992408/4d702fbe-30dc-11e6-8ed1-15a03b40ac9d.png)  Как минимум картинки должны растягиваться таким образом, что бы не вылезать за границу экрана. Т.е. должна учитываться ширина и высота. Кроме того, необходимо ввести ограничение - 90-85% от площади. Т.е. marging 5-7% от краев. </body>
+		<created>2016-06-12 16:30:47</created>
+		<closed>2016-06-14 12:38:27</closed>
+	</bug>
+	<bug>
+		<id>73</id>
+		<title>Не загружаются оповещения от пользователей</title>
+		<body>В связи с новым способом работы со  слоем оповещения - через фильтры, чтение из слоя сообщений граждан запрещено - надо через фильтр. Сейчас это не реализовано и сообщения не подгружаются. </body>
+		<created>2016-06-04 19:01:41</created>
+		<closed>2016-06-07 16:03:19</closed>
+	</bug>
+	<bug>
+		<id>71</id>
+		<title>Падение при регистрации пользователя</title>
+		<body>``` java.lang.NullPointerException     at com.nextgis.maplibui.fragment.NGWLoginFragment$LocalTextWatcher.afterTextChanged(NGWLoginFragment.java:354)     at com.nextgis.safeforest.fragment.LoginFragment$EmailWatcher.afterTextChanged(LoginFragment.java:345)     at android.widget.TextView.sendAfterTextChanged(TextView.java:7455)     at android.widget.TextView$ChangeWatcher.afterTextChanged(TextView.java:9315)     at android.text.SpannableStringBuilder.sendAfterTextChanged(SpannableStringBuilder.java:970)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:497)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:435)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:30)     at android.view.inputmethod.BaseInputConnection.replaceText(BaseInputConnection.java:678)     at android.view.inputmethod.BaseInputConnection.commitText(BaseInputConnection.java:196)     at com.android.internal.widget.EditableInputConnection.commitText(EditableInputConnection.java:183)     at com.android.internal.view.IInputConnectionWrapper.executeMessage(IInputConnectionWrapper.java:318)     at com.android.internal.view.IInputConnectionWrapper$MyHandler.handleMessage(IInputConnectionWrapper.java:87)     at android.os.Handler.dispatchMessage(Handler.java:99)     at android.os.Looper.loop(Looper.java:155)     at android.app.ActivityThread.main(ActivityThread.java:5520)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1029)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:796)     at dalvik.system.NativeStart.main(Native Method) ```  ``` java.lang.NullPointerException     at com.nextgis.maplibui.fragment.NGWLoginFragment$LocalTextWatcher.afterTextChanged(NGWLoginFragment.java:354)     at com.nextgis.safeforest.fragment.LoginFragment$PasswordWatcher.afterTextChanged(LoginFragment.java:337)     at android.widget.TextView.sendAfterTextChanged(TextView.java:7455)     at android.widget.TextView$ChangeWatcher.afterTextChanged(TextView.java:9315)     at android.text.SpannableStringBuilder.sendAfterTextChanged(SpannableStringBuilder.java:970)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:497)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:435)     at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:30)     at android.view.inputmethod.BaseInputConnection.replaceText(BaseInputConnection.java:678)     at android.view.inputmethod.BaseInputConnection.commitText(BaseInputConnection.java:196)     at com.android.internal.widget.EditableInputConnection.commitText(EditableInputConnection.java:183)     at com.android.internal.view.IInputConnectionWrapper.executeMessage(IInputConnectionWrapper.java:318)     at com.android.internal.view.IInputConnectionWrapper$MyHandler.handleMessage(IInputConnectionWrapper.java:87)     at android.os.Handler.dispatchMessage(Handler.java:99)     at android.os.Looper.loop(Looper.java:155)     at android.app.ActivityThread.main(ActivityThread.java:5520)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1029)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:796)     at dalvik.system.NativeStart.main(Native Method) ```  ``` java.lang.RuntimeException: Unable to start activity ComponentInfo{com.nextgis.safeforest/com.nextgis.safeforest.activity.MainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.support.v7.widget.SwitchCompat.isChecked()' on a null object reference     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2325)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2387)     at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3947)     at android.app.ActivityThread.access$900(ActivityThread.java:151)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1309)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:135)     at android.app.ActivityThread.main(ActivityThread.java:5258)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698) Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.support.v7.widget.SwitchCompat.isChecked()' on a null object reference     at com.nextgis.maplibui.fragment.NGWLoginFragment$LocalTextWatcher.afterTextChanged(NGWLoginFragment.java:354)     at com.nextgis.safeforest.fragment.LoginFragment$URLWatcher.afterTextChanged(LoginFragment.java:353)     at android.widget.TextView.sendAfterTextChanged(TextView.java:7695)     at android.widget.TextView.setText(TextView.java:4066)     at android.widget.TextView.setText(TextView.java:3915)     at android.widget.EditText.setText(EditText.java:85)     at android.widget.TextView.setText(TextView.java:3890)     at android.widget.TextView.onRestoreInstanceState(TextView.java:3790)     at android.view.View.dispatchRestoreInstanceState(View.java:13740)     at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2893)     at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2893)     at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2893)     at android.view.View.restoreHierarchyState(View.java:13718)     at android.support.v4.app.Fragment.restoreViewState(Fragment.java:471)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1105)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1241)     at android.support.v4.app.FragmentManagerImpl.dispatchActivityCreated(FragmentManager.java:2053)     at android.support.v4.app.FragmentController.dispatchActivityCreated(FragmentController.java:165)     at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:543)     at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1236)     at android.app.Activity.performStart(Activity.java:6006)     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2288)     ... 11 more ``` </body>
+		<created>2016-05-19 12:14:13</created>
+		<closed>2016-05-20 12:30:24</closed>
+	</bug>
+	<bug>
+		<id>70</id>
+		<title>Падение при resume</title>
+		<body>``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.safeforest/com.nextgis.safeforest.activity.MainActivity}: java.lang.NullPointerException     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2899)     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2928)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2363)     at android.app.ActivityThread.access$600(ActivityThread.java:156)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1340)     at android.os.Handler.dispatchMessage(Handler.java:99)     at android.os.Looper.loop(Looper.java:153)     at android.app.ActivityThread.main(ActivityThread.java:5297)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:833)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:600)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.NullPointerException     at com.nextgis.safeforest.activity.MainActivity.setMarginsToFAB(MainActivity.java:306)     at com.nextgis.safeforest.activity.MainActivity.onResume(MainActivity.java:299)     at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1190)     at android.app.Activity.performResume(Activity.java:5200)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2886)     ... 12 more ``` </body>
+		<created>2016-04-27 08:03:13</created>
+		<closed>2016-05-20 12:30:24</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>Повышенное потребление батареи</title>
+		<body>Варианты: синхронизация раз в 2 часа уменьшить количество слоев включенных по-умолчанию при отображении GPS возможно какие-то циклы </body>
+		<created>2016-04-20 12:47:28</created>
+		<closed>2016-09-23 08:19:15</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>Падение при синхронизации</title>
+		<body>``` java.lang.RuntimeException: Error receiving broadcast Intent { act=com.nextgis.maplib.notify_update flg=0x10 (has extras) } in com.nextgis.maplib.map.MapContentProviderHelper$VectorLayerNotifyReceiver@21af8bb0     at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:778)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:149)     at android.app.ActivityThread.main(ActivityThread.java:5234)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:609)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.NullPointerException     at com.nextgis.maplib.datasource.GeometryRTree.chooseLeaf(GeometryRTree.java:684)     at com.nextgis.maplib.datasource.GeometryRTree.chooseLeaf(GeometryRTree.java:706)     at com.nextgis.maplib.datasource.GeometryRTree.insert(GeometryRTree.java:403)     at com.nextgis.maplib.datasource.GeometryRTree.addItem(GeometryRTree.java:139)     at com.nextgis.maplib.map.VectorLayer.cacheGeometryEnvelope(VectorLayer.java:636)     at com.nextgis.maplib.map.VectorLayer.notifyUpdate(VectorLayer.java:1894)     at com.nextgis.maplib.map.MapContentProviderHelper$VectorLayerNotifyReceiver.onReceive(MapContentProviderHelper.java:189)     at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:768)     ... 9 more ``` </body>
+		<created>2016-04-19 09:04:14</created>
+		<closed>2016-04-20 12:48:58</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>Падение при resume</title>
+		<body>``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.safeforest/com.nextgis.safeforest.activity.MainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'int android.support.design.widget.TabLayout.getSelectedTabPosition()' on a null object reference     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3527)     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3558)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2878)     at android.app.ActivityThread.access$900(ActivityThread.java:181)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1482)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:145)     at android.app.ActivityThread.main(ActivityThread.java:6145)     at java.lang.reflect.Method.invoke(Native Method)     at java.lang.reflect.Method.invoke(Method.java:372)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1399)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1194) Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'int android.support.design.widget.TabLayout.getSelectedTabPosition()' on a null object reference     at com.nextgis.safeforest.activity.MainActivity.isMapShown(MainActivity.java:387)     at com.nextgis.safeforest.fragment.MapFragment.onResume(MapFragment.java:325)     at android.support.v4.app.Fragment.performResume(Fragment.java:2008)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1119)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1259)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1241)     at android.support.v4.app.FragmentManagerImpl.dispatchResume(FragmentManager.java:2063)     at android.support.v4.app.FragmentController.dispatchResume(FragmentController.java:187)     at android.support.v4.app.FragmentActivity.onResumeFragments(FragmentActivity.java:462)     at android.support.v4.app.FragmentActivity.onPostResume(FragmentActivity.java:451)     at android.support.v7.app.AppCompatActivity.onPostResume(AppCompatActivity.java:141)     at android.app.Activity.performResume(Activity.java:6513)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3516)     ... 11 more ``` </body>
+		<created>2016-04-18 08:39:13</created>
+		<closed>2016-04-20 12:48:58</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>Падение при синхронизации</title>
+		<body>Приложение из testfairy (https://tsfr.io/qnu8q5). При синхронизации все время происходит падение. Пользователь неавторизованный. Создано одно сообщение.  вот детали прилетели  ``` java.lang.RuntimeException: Error receiving broadcast Intent { act=com.nextgis.maplib.notify_update flg=0x10 (has extras) } in com.nextgis.maplib.map.MapContentProviderHelper$VectorLayerNotifyReceiver@21af9450     at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:778)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:149)     at android.app.ActivityThread.main(ActivityThread.java:5234)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:609)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.NullPointerException     at com.nextgis.maplib.datasource.GeometryRTree.chooseLeaf(GeometryRTree.java:684)     at com.nextgis.maplib.datasource.GeometryRTree.chooseLeaf(GeometryRTree.java:706)     at com.nextgis.maplib.datasource.GeometryRTree.insert(GeometryRTree.java:403)     at com.nextgis.maplib.datasource.GeometryRTree.addItem(GeometryRTree.java:139)     at com.nextgis.maplib.map.VectorLayer.cacheGeometryEnvelope(VectorLayer.java:636)     at com.nextgis.maplib.map.VectorLayer.notifyUpdate(VectorLayer.java:1894)     at com.nextgis.maplib.map.MapContentProviderHelper$VectorLayerNotifyReceiver.onReceive(MapContentProviderHelper.java:189)     at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:768)     ... 9 more ``` </body>
+		<created>2016-04-06 15:36:35</created>
+		<closed>2016-04-11 15:07:17</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>Caller uid 10161 is different than the authenticator's uid</title>
+		<body>См. nextgis/android_gisapp#361 </body>
+		<created>2016-03-24 08:01:32</created>
+		<closed>2016-04-04 15:08:27</closed>
+	</bug>
+	<bug>
+		<id>55</id>
+		<title>Из финальной версии убрать пункт меню "Синхронизация"</title>
+		<body>При нажатии на пункт ничего видимого не происходит - это будет сбивать пользователя с толку. </body>
+		<created>2016-03-05 20:38:30</created>
+		<closed>2016-03-07 16:36:33</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>После перезапуска приложения заново начинается первоначальная установка</title>
+		<body>Перешел на главный экрна. Вызвал стандартное окно запущенных приложений. Смахнул приложение. Запускаю заново - первоначальная установка. </body>
+		<created>2016-03-05 20:34:42</created>
+		<closed>2016-03-07 15:35:08</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>Формат даты в баллуне по оповещению</title>
+		<body>Сейчас формат довольно странный. Необходимо выводить локализованный формат даты. ![screenshot_2016-03-05-23-07-35](https://cloud.githubusercontent.com/assets/1708122/13550079/34c98586-e326-11e5-8252-a848de18f611.png) </body>
+		<created>2016-03-05 20:01:37</created>
+		<closed>2016-03-08 09:18:40</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>Отправка сообщения без почты и телефона, ФИО</title>
+		<body>У меня в настройках сбилось ФИО и телефон. Т.е. они просто пустые. Однако отправка выполняется с пустыми данными. Должно быть собщение, что бы исправили эти данные. </body>
+		<created>2016-03-05 19:58:38</created>
+		<closed>2016-03-08 09:44:08</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>Не верно работает перемещение точки в центр экрана</title>
+		<body>При клике ни появляется точка с "таскалкой". Если чуть сдвинуть, то отрисовывается, но не в центре экрана. </body>
+		<created>2016-03-05 19:50:37</created>
+		<closed>2016-03-07 16:32:04</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>Не выйти из режима ввода фото</title>
+		<body>Нажимаю добавить фото - появляется иконка фото прямо на карте (что не есть хорошо, потому что зеленая иконка на зеленом фоне не видна). Жму на иконку - открываетсч приложение камеры. Добавляю фото - фото появляется рядом с иконкой. Больше ничего сделать нельзя, кроме добавления нового фото.  При повороте экрана фото исчезает, но если опять на нажать на создать фото - открывается ранее созданные фотки. ![screenshot_2016-03-05-22-41-12](https://cloud.githubusercontent.com/assets/1708122/13549939/a9a5f816-e322-11e5-9abf-0d575924788e.png) </body>
+		<created>2016-03-05 19:36:24</created>
+		<closed>2016-03-07 15:35:08</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>Клавиатура закрывает часть кнопки отправки</title>
+		<body>Кнопка закрывается клавиатурой и в нее тяжело попасть. ![screenshot_2016-02-04-17-00-22](https://cloud.githubusercontent.com/assets/1708122/12816897/19b6f1ee-cb60-11e5-9c18-93a1a7016876.png) </body>
+		<created>2016-02-04 13:55:44</created>
+		<closed>2016-02-04 14:11:35</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>Падение при вводе точки</title>
+		<body>Видимо попыталось дважды добавить. Нужно после нажатия на кнопку отправить блокировать кнопки или закрывать интерфейс отправки.  ``` 02-04 16:55:20.696 26634-26634/com.nextgis.safeforest D/nextgismobile: MessageActivity, saveMessage(), point: X: 4182254.7499999995, Y: 7497068.499999997 02-04 16:55:20.741 26634-26634/com.nextgis.safeforest E/SQLiteDatabase: Error inserting mdate=1454590520698 status=1 _geom_2=[B@43e5c6d8 mtype=2 contact=null, null message=test author=polimax@mail.ru _geom_18=[B@43563e90 _id=10000000 _geom_16=[B@42617b20 _geom=[B@4247f7f8 _geom_4=[B@42565df8 _geom_14=[B@423ac030 _geom_6=[B@42e160d0 _geom_12=[B@426778d8 _geom_8=[B@423a7af8 _geom_10=[B@4252c198   android.database.sqlite.SQLiteConstraintException: PRIMARY KEY must be unique (code 19)       at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)       at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:972)       at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)       at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)       at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1603)       at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1473)       at com.nextgis.maplib.map.VectorLayer.insertInternal(VectorLayer.java:1284)       at com.nextgis.maplib.map.NGWVectorLayer.insertInternal(NGWVectorLayer.java:243)       at com.nextgis.maplib.map.VectorLayer.insert(VectorLayer.java:1262)       at com.nextgis.maplib.map.VectorLayer.insert(VectorLayer.java:1362)       at com.nextgis.maplib.datasource.LayerContentProvider.insert(LayerContentProvider.java:165)       at android.content.ContentProvider$Transport.insert(ContentProvider.java:220)       at android.content.ContentResolver.insert(ContentResolver.java:1195)       at com.nextgis.safeforest.activity.CreateMessageActivity.sendMessage(CreateMessageActivity.java:320)       at com.nextgis.safeforest.activity.CreateMessageActivity.onClick(CreateMessageActivity.java:380)       at android.view.View.performClick(View.java:4640)       at android.view.View$PerformClick.run(View.java:19421)       at android.os.Handler.handleCallback(Handler.java:733)       at android.os.Handler.dispatchMessage(Handler.java:95)       at android.os.Looper.loop(Looper.java:146)       at android.app.ActivityThread.main(ActivityThread.java:5487)       at java.lang.reflect.Method.invokeNative(Native Method)       at java.lang.reflect.Method.invoke(Method.java:515)       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)       at dalvik.system.NativeStart.main(Native Method) ``` </body>
+		<created>2016-02-04 13:51:44</created>
+		<closed>2016-02-04 14:52:26</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>Клавиатура закрывает поле ввода</title>
+		<body>При вводе местоположения через направление и расстояние, клавиатура загораживает поле ввода. ![screenshot_2016-02-04-16-46-48](https://cloud.githubusercontent.com/assets/1708122/12816656/9927ebf6-cb5e-11e5-94c9-0f77ce0d80c9.png)  С этой же клавиатурой но при вводе сообщения - проблем нет (правда там она не цифровая, а полная) </body>
+		<created>2016-02-04 13:44:48</created>
+		<closed>2016-02-04 14:34:02</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>Не заполнены данные аккаунта</title>
+		<body>Захожу -&gt; Настройки -&gt; Изменить настройки аккаунта Поля ФИО и телефон не заполнены. И даже не понятно, что ФИО и телефон это и есть поля ввода.  Нужно что бы был текст с названием поля ввода и само поле ввода с текущим значением, которое можно поменять.  Уточнение по багу: оказываются поля заполняются. А не были они заполнены после первоначальной установки. Хотя данные вводились. </body>
+		<created>2016-02-04 13:12:01</created>
+		<closed>2016-02-04 15:57:58</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>При вводе рубки программа виснет</title>
+		<body>Невозможно что либо ввести в диалог "Контактные данные". Поля не выделяются, набор на клавиатуре не реагирует. Загрузка процессора 25-30% </body>
+		<created>2016-01-18 09:13:23</created>
+		<closed>2016-01-26 08:47:52</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>Зависание интерфейса при запуске</title>
+		<body>После запуска программы появляется главное окно. Записи в списко добавляются только через 40-60 секунд (причем запись всего одна!) </body>
+		<created>2016-01-18 09:08:04</created>
+		<closed>2016-02-02 09:28:37</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>На карте не показываются точки сообщений</title>
+		<body>Возможно из-за #28  </body>
+		<created>2015-11-11 14:13:41</created>
+		<closed>2016-01-18 13:03:12</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>Иконки FAB меню в разных ориентациях отличаются</title>
+		<body>Иконка рубки в горизонтальной ориентации отличается от иконки в вертикальной ориентации. </body>
+		<created>2015-11-11 14:11:31</created>
+		<closed>2015-12-08 10:06:27</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>Не выполняется отправка сообщения</title>
+		<body>Хотя запись и была создана - на сервере она не появилась, даже с ручным запуском синхронизации. Возможно из-за #28  </body>
+		<created>2015-11-11 14:08:57</created>
+		<closed>2016-02-04 14:17:19</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>В активити неверно отображаются координаты</title>
+		<body>Почему-то широта - "не число". Хотя точка была поставлена на карту вручную. </body>
+		<created>2015-11-11 14:04:00</created>
+		<closed>2016-01-18 13:02:01</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>Не запоминаются введенные ранее контактные данные</title>
+		<body>Контактные данные, введенные в диалог при отправке сообщения должны запоминаться. Но диалог должен все равно открываться. </body>
+		<created>2015-11-11 14:02:33</created>
+		<closed>2015-12-10 16:54:45</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>Для незарегистрированного пользователя не валидируются поля почты и телефона</title>
+		<body>Я ввел просто слово "тест" в обоих полях. </body>
+		<created>2015-11-11 14:01:24</created>
+		<closed>2015-12-10 16:12:26</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>В диалоге ввода контактных данных нет кнопки отмена</title>
+		<body>Еще нужен текст над элементами: "Укажите ваши контактные данные, чтобы с вами мог связаться диспетчер (фамилия, имя и телефон - обязательно)" </body>
+		<created>2015-11-11 13:47:36</created>
+		<closed>2015-12-08 10:06:27</closed>
+	</bug>
+	<bug>
+		<id>19</id>
+		<title>При выборе ориентировки клавиатура закрывает поле ввода</title>
+		<body>![screenshot_2015-11-11-16-34-46](https://cloud.githubusercontent.com/assets/1708122/11092238/acbdbf88-8892-11e5-91d0-a15962ade441.png). В идеале поджимать размер активити, если нельзя - то поле и индикацию угда поворота - перенести вверх.  </body>
+		<created>2015-11-11 13:39:38</created>
+		<closed>2016-01-16 12:49:20</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>Первоначальную загрузку выполнять в сервисе</title>
+		<body>При повороте экрана прилодение падате, так как активити пересоздается, а ссылка передается в функции загрузки геоданных. Необходимо выполнять работу в сервисе, а активити подключаться к нему для получения процента выполнения и текущей задачи </body>
+		<created>2015-10-16 19:49:04</created>
+		<closed>2015-10-24 09:53:17</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>Сохранять координаты района в аккаунте</title>
+		<body>Если удалить приложение, но оставить аккаунт, то bbox который пишется при создании приложения в настройки теряется и потом приложение стартует сразу со второго этапа, а настройки выбираются по-умолчанию. Надо записать bbox в свойства аккаунта и брать его оттуда. </body>
+		<created>2015-09-07 19:05:13</created>
+		<closed>2015-09-09 13:20:24</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>При  регистрации пользователя проверять, что все поля заполнены</title>
+		<body>Сейчас не проверяется телефон (мы его не храним на сервере, т.к. он зависит от устройства) </body>
+		<created>2015-09-03 13:03:23</created>
+		<closed>2016-01-14 13:08:32</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>244</id>
+		<title>Zettelkasten lässt sich nicht installieren / starten</title>
+		<body>Wird Zettelkasten mit der Download-Datei "Zettelkasten_3.3.1_Mac-Java8.zip" gestartet, kommt die Meldung, dass das Programm nicht kompatibel sei (macOS 10.13.6 High Sierra + aktuelle Vs. von Java 8) Wird Zettelkasten mit der Download-Datei "Zettelkasten_3.3.1_Mac-Java9+.dmg" gestartet, kommt die Meldung "Cannot determine location of JVM". Das war's. Lezteres ist insofern nachvollziehbar, da Java 9 nicht mit macOS 10.13.6 kompatibel ist.  Aber warum ist die Programmvs. von Zettelkasten, die mit der "…Java8.zip"-Datei kommt, nicht kompatibel mit macOS 10.13.6?</body>
+		<created>2020-05-30 17:34:55</created>
+		<closed>2020-06-28 08:39:18</closed>
+	</bug>
+	<bug>
+		<id>240</id>
+		<title>Updatecheck mit GitHub-API- statt Zettelkasten-Homepage-Abfrage</title>
+		<body>Aktuell ruft der Zettelkasten folgende Datei ab und checkt damit gegen, ob ein Update vorhanden ist: http://zettelkasten.danielluedecke.de/update.txt @sjPlot Diese Datei updatest du aktuell manuell, oder? Was haltet ihr davon zukünftig die aktuelle Version über die Github-API abzurufen? mit curl bekommt man die so (siehe API dazu [hier](https://developer.github.com/v3/repos/releases/#get-the-latest-release)):  `curl --silent "https://api.github.com/repos/sjPlot/Zettelkasten/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'` --&gt; v3.3.1</body>
+		<created>2020-05-26 09:12:01</created>
+		<closed>2020-07-23 11:24:30</closed>
+	</bug>
+	<bug>
+		<id>235</id>
+		<title>Markdown-Export fehlende Beschriftungen</title>
+		<body>Fehler: Beim Markdown-Export steht statt z. B. Literaturangaben, Schlagwörtern, Überschrift jeweils eine null 2 oder null 3. Beispiel: # null 2: Scrum als ultimatives Projektmanagement Tool  # Scrum als ultimatives Projektmanagement-Tool › GEOLITICO   ...  ## null &lt;-- hier müsste Literaturangabe stehen  Geolitico, https://www.geolitico.de/ [ID 1]  ## null &lt;-- hier sind die Schlagwörter  Artefakt ...  null 2. April 2020, 13:16 &lt;-- hier Erstellungsdatum null 3. April 2020, 10:19 &lt;-- hier Änderungsdatum  Version: Zettelkasten-Version: 3.3.1 (Build 78d6775) Windows 10 10.0 (amd64) Java-Version 11.0.7 (AdoptOpenJDK) C:\Program Files\AdoptOpenJDK\jdk-11.0.7.10-hotspot  Hinweis: Das ganze ist ebenfalls unter Linux so. In der Vorversion (mit Java 8) gab es das Problem nicht. </body>
+		<created>2020-05-11 08:26:58</created>
+		<closed>2020-05-24 09:28:11</closed>
+	</bug>
+	<bug>
+		<id>230</id>
+		<title>Empty prompts when exporting notes with note sequence and refreshing bibliography</title>
+		<body>When I export notes as .zkx3 with note sequences selected, there is a window asking yes or no but no text in it, (first pic) when I click "yes", everything seems to be fine. Something similar happens when I import/refresh my BibTex-file (second pic). The export and import work fine.  Ubuntu 18.04.4 LTS Zettelkastenversion: 3.3.0 java-11-openjdk-amd64  ![exporting_notes](https://user-images.githubusercontent.com/12957181/80949026-7e138800-8df3-11ea-9570-358299774c08.png)  ![refreshing_authors](https://user-images.githubusercontent.com/12957181/80949016-79e76a80-8df3-11ea-969b-05c30388304c.png)    </body>
+		<created>2020-05-04 08:42:13</created>
+		<closed>2020-05-04 09:46:31</closed>
+	</bug>
+	<bug>
+		<id>218</id>
+		<title>Suche nach Zetteln über Schlagwörter, Fehler im Fensterstack</title>
+		<body>Wenn ich ZKN3 (3.3.1) unter Windows-10 (aktuelle Version 1909) in Full-Screen-Ansicht öffne und in der Schlagwortliste ein Schlagwort doppelt anklicke, blitzt das Ergebnisfenster kurz auf und verschwindet dann hinter dem Hauptfenster.  </body>
+		<created>2020-04-19 08:30:44</created>
+		<closed>2020-04-19 17:52:50</closed>
+	</bug>
+	<bug>
+		<id>216</id>
+		<title>Import .bib-file ... right parenthesis after (year) missing?</title>
+		<body>Since I use v3.3.1 the year (for a newly imported .bib entry) doesn't have a closing parentheses.   Example:  Sherrill J (1964: They Speak With Other Tongues Westwood, N.J. 07675, U.S.A: Spire Book (Bibkey: sherrill_they_1964)  It worked in v3.2.7 McClung F (2004**)**: The Father Heart of God: Experiencing the Depths of His Love for You. Eugene, Ore.: Harvest House Publishers (Bibkey: mcclung_father_2004)  Maybe this can be fixed, thx </body>
+		<created>2020-04-08 12:16:30</created>
+		<closed>2020-04-10 06:23:03</closed>
+	</bug>
+	<bug>
+		<id>215</id>
+		<title>Anfügen von Zettelkästen mit ID-Dopplungen ist unzuverlässig</title>
+		<body>Wenn man zkx3 Dateien importieren will und sich IDs in den beiden Dokumenten doppeln, sollten Dopplungen, nach Codedoku, gelöscht werden, um die Eindeutigkeit der IDs beizubehalten. Tatsächlich bleibt bei mir aber gefühlt jeder zweite oder dritte Zettel mit identischer ID bestehen.  Doppelte IDs entstanden in dem konkreten Fall durch Verwendung einer Zettelkasten-"Vorlage", also ein Zettelkasten mit angelegten Zetteln, aber leerem Inhalt. Das Template wurde dann kopiert, befüllt und die Kopien anschließend zusammengefügt.  **Vorschlag**:  - Statt Dopplungen zu löschen, sollten diese ggf. eine neue ID zugewiesen bekommen, damit die Infos erhalten bleiben. @strengejacke Gab es damals einen konkreten Grund für die Entscheidung zur Löschung?  - Feststellen der Dopplungen sollte über Mengen laufen, statt über Listeniterationen, dann würden wir die Laufzeit von O(n)^2 auf 2*O(n) reduzieren. Bei großen Zettelkästen würde das, denke ich, auf jeden Fall bemerkbar sein.   </body>
+		<created>2020-04-08 10:42:57</created>
+		<closed>2020-05-07 20:13:07</closed>
+	</bug>
+	<bug>
+		<id>210</id>
+		<title>Cannot run on Ubuntu 19.10, OpenJDk Java 11 </title>
+		<body>Looks like a great program, but I can't get it to run on Ubuntu 19.10, OpenJDk Java 11 .   Output:   luke@luke-ThinkPad-X220:~/Zettelkasten3_linux$ java -jar Zettelkasten.jar WARNING: An illegal reflective access operation has occurred WARNING: Illegal reflective access by com.seaglasslookandfeel.SeaGlassLookAndFeel (file:/home/luke/Zettelkasten3_linux/Zettelkasten.jar) to field javax.swing.border.EtchedBorder.highlight WARNING: Please consider reporting this to the maintainers of com.seaglasslookandfeel.SeaGlassLookAndFeel WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations WARNING: All illegal access operations will be denied in a future release Exception in thread "AWT-EventQueue-0" java.lang.NoClassDefFoundError: sun/swing/plaf/synth/SynthIcon at java.base/java.lang.ClassLoader.defineClass1(Native Method) at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1016) at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:174) at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:800) at java.base/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:698) at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:621) at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:579) at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178) at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) at com.seaglasslookandfeel.SeaGlassLookAndFeel.defineButtons(SeaGlassLookAndFeel.java:1009) at com.seaglasslookandfeel.SeaGlassLookAndFeel.getDefaults(SeaGlassLookAndFeel.java:456) at java.desktop/javax.swing.UIManager.setLookAndFeel(UIManager.java:587) at java.desktop/javax.swing.UIManager.setLookAndFeel(UIManager.java:633) at de.danielluedecke.zettelkasten.ZettelkastenView.setDefaultLookAndFeel(ZettelkastenView.java:3425) at de.danielluedecke.zettelkasten.ZettelkastenView.&lt;init&gt;(ZettelkastenView.java:1166) at de.danielluedecke.zettelkasten.ZettelkastenApp.startup(ZettelkastenApp.java:144) at org.jdesktop.application.Application$1.run(Application.java:171) at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313) at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770) at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721) at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715) at java.base/java.security.AccessController.doPrivileged(Native Method) at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85) at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740) at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203) at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124) at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113) at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109) at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90) Caused by: java.lang.ClassNotFoundException: sun.swing.plaf.synth.SynthIcon at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581) at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178) at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ... 30 more </body>
+		<created>2020-04-05 12:13:43</created>
+		<closed>2020-04-07 14:46:20</closed>
+	</bug>
+	<bug>
+		<id>206</id>
+		<title>Cannot determine location of JVM</title>
+		<body>I can't get the new Zk3 to open, I constantly get, cannot determine location of JVM. I tried to download the latest java update, but still can't open. Is it a bug or me doing something wrong?</body>
+		<created>2020-04-03 05:12:32</created>
+		<closed>2020-04-04 18:32:45</closed>
+	</bug>
+	<bug>
+		<id>191</id>
+		<title>Zettelkasten @ Yahoo! Groups </title>
+		<body>As of December 14, 2019, Yahoo Groups will no longer provide user-created content on the Yahoo Groups websites. New content can no longer be uploaded after 28 October 2019.  de/danielluedecke/zettelkasten/resources/licence.html refers to http://de.groups.yahoo.com/group/zettelkasten/</body>
+		<created>2019-11-12 06:30:31</created>
+		<closed>2020-04-26 17:52:40</closed>
+	</bug>
+	<bug>
+		<id>190</id>
+		<title>Zettelkasten for Windows (exe) fails to start with Coretto 1.8.0.222</title>
+		<body>Zettelkasen starts with an error message: "This application requires a Java Runtime Environment 1.7.0"  Installed Java version (output of java -version): openjdk version "1.8.0_222" OpenJDK Runtime Environment Corretto-8.222.10.3 (build 1.8.0_222-b10) OpenJDK 64-Bit Server VM Corretto-8.222.10.3 (build 25.222-b10, mixed mode)  I suspect the executable wrapper for Windows doesn't recognize openjdk as a JRE, but I'm not sure.  Please let me know if you need more information - I haven't posted any bug reports before ;)</body>
+		<created>2019-11-08 09:52:08</created>
+		<closed>2020-05-07 20:15:58</closed>
+	</bug>
+	<bug>
+		<id>187</id>
+		<title>Schriftartendarstellung bei Java-Anwendungen unter Linux / Ubuntu</title>
+		<body>Wenn die Schriftartendarstellung im Zettelkasten oder in anderen Java-Anwendungen unschön ist, dann hilft es folgende Zeile in die Datei /etc/environment einzufügen (als sudo):  _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'  Nach einem Neustart ist dann Antialiasing in den Java-Anwendungen aktiviert und die Texte in den Java-Anwendungen lassen sich sehr viel besser / angenehmer lesen.</body>
+		<created>2019-08-04 09:52:16</created>
+		<closed>2020-05-02 05:11:12</closed>
+	</bug>
+	<bug>
+		<id>178</id>
+		<title>Bei Programmstart prüfen, ob der zu ladende Zettel existiert</title>
+		<body>Die Einstellungen von Zettelkasten bis Version 3.2.7 bieten an, bei Programmstart den zuletzt benutzten Zettel zu laden. Offensichtlich wird der "zuletzt benutzte Zettel" bei Programmende im Benutzerprofil gespeichert. Das ist im Prinzip sinnvoll, weil es die Arbeit des einzelnen Benutzers erleichtert.   In der aktuellen Programmimplementierung scheint die Bearbeitungshistorie jedoch nicht mit einem bestimmten Dokument assoziiert zu werden. Die daraus entstehenden Probleme habe ich in meinen Kommentaren zu #176 und #151 beschrieben. Andere Issues hier weisen auf vergleichbare Symptome hin.   Man kann sich überlegen, ob man die Informationen zur Bearbeitungshistorie entsprechend im Benutzerprofil erweitert, oder ob man sie ganz dem Dokument zuordnet. Beides hat im Hinblick auf die möglichen Szenarien (x Benutzer arbeiten an y gemeinsam genutzten Zettelkästen) Vor- und Nachteile.   Was auf jeden Fall benötigt wird, ist eine Prüfung bei Programmstart, ob der zu ladende Zettel (unabhängig von den Programmeinstellungen) tatsächlich vorhanden ist.   </body>
+		<created>2018-10-19 07:01:32</created>
+		<closed>2020-04-03 07:28:18</closed>
+	</bug>
+	<bug>
+		<id>171</id>
+		<title>Fehlende Zettelnummern bei XML-Ausgabe</title>
+		<body>Beim Export von Zetteln als XML wird die jeweilige Zettelnummer nicht eingetragen. Es finden sich nur die Zettelnummern der manuellen Querverweise sowie die der Folgezettel. Habe ich da etwas übersehen oder fehlen die Zettelnummern einfach? So, wie es bei mir erscheint, lässt sich ja kein Folgezettel oder manuell verwiesener Zettel finden, weil keine Zettelnummern zu finden sind.</body>
+		<created>2018-08-29 14:57:36</created>
+		<closed>2020-04-02 07:50:15</closed>
+	</bug>
+	<bug>
+		<id>109</id>
+		<title>Hebräisch</title>
+		<body>Gibt es eine Möglichkeit, Hebräisch im Zettelkasten zu nutzen? Bei mir werden an Stelle der hebräischen Buchstaben nur ? angezeigt. In anderen Programmen habe ich keine Probleme mit dem Anzeigen hebräsicher Buchstaben. Danke! </body>
+		<created>2015-12-13 09:14:23</created>
+		<closed>2020-04-19 18:43:24</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>Literaturangabe nicht bearbeitbar</title>
+		<body>Die Änderung, die seltsamerweise nicht angenommen wurde, ist die Korrektur eines Tippfehlers, und zwar statt Großbuchstaben Kleinbuchstaben. Also statt falschem "BUch" z.B. "Buch", oder statt "AUtorenname" Korrektur zu "Autorenname". Offenbar werden Änderungen nicht übernommen, wenn ein Großbuchstabe durch einen Kleinbuchstaben ersetzt wird oder umgekehrt. </body>
+		<created>2015-05-17 19:48:56</created>
+		<closed>2015-05-17 20:41:41</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>Querverweis auf gelöschten Zettel lässt sich nicht entfernen</title>
+		<body>Folgendes habe ich getan: zwei Zettel wurden über die Funktion "Verweise" miteinander verbunden. Nun habe ich einen der Zettel gelöscht mittels "Zettel entfernen". Danach bin ich in den anderen rein gegangen und wollte dort den alten Verweis raus löschen was aber nicht mehr geht. Der gesetzte Verweis läst sich nicht mehr löschen </body>
+		<created>2015-05-17 19:10:28</created>
+		<closed>2015-05-29 12:17:28</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>Tags aus Zotero werden nicht als Schlagwörter importiert</title>
+		<body>Wenn ich in Zotereo Einträge mit Tags verschlagworte und diese über den Export in eine Bibtex-Datei übergeb, wird bei einem Import in Zettelkasten bei Auswahl der Option "Schlagwörter eines Eintrags ebenfalls importieren, wenn vorhanden" eben nicht diese Keywords übernommen.   ![ishot-2](https://cloud.githubusercontent.com/assets/732025/7208157/e2125dd0-e53e-11e4-9d76-72eca3e061ee.jpg)  In der Bibtext-Datei werden die Tags mit dieser Syntax ausgegeben.  `keywords = {Tag1, Tag2},` </body>
+		<created>2015-04-17 18:18:38</created>
+		<closed>2015-08-22 12:13:50</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>Markdown-Zitat wird nicht korrekt nach LaTeX exportiert</title>
+		<body>Betrifft Version 3.2.4  Zitate, die mit Markdown-Syntax (“&gt;“) ausgezeichnet werden, werden nicht korrekt in LaTeX exportiert. In den Einstellungen ist die Markdown-Syntax aktiviert.  Steps to reproduce: Ausgezeichnet wird jeweils eine Überschrift und ein Zitat, zuerst mit Zettelkasten-Syntax, dann mit Markdown:  ``` [h1]Headline[/h1] [q]Zitat, welches korrekt übernommen wird[/q]  # Headline &gt; Zitat , welches nicht korrekt übernommen wird ```  Beim LaTeX-Export wird der Auschnitt folgenderweise exportiert:  ``` \subsection{Headline} \begin{quotation}Zitat, welches korrekt {\"u}bernommen wird\end{quotation} \subsection{Headline} \rangle Zitat , welches nicht korrekt {\"u}bernommen wird ```  „\rangle“ ist offensichtlich falsch, darüber stolpert dann auch der LaTeX-Compiler. </body>
+		<created>2015-04-11 14:44:59</created>
+		<closed>2015-04-11 14:45:51</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>Mehrere Komma-getrennte Suchbegriffe in Suchmaske von Leerzeichen bereinigen</title>
+		<body>`Begriff1, Begriff2` als Eingabe sucht nach `_Begriff2` (_ = Leerzeichen), nicht nach `Begriff2`. </body>
+		<created>2015-03-22 09:35:02</created>
+		<closed>2015-03-22 10:05:04</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>Dateinamen mit Unterstrichen kollidieren mit Markdowninterpretation</title>
+		<body>Bei aktiviertem Markdown können Bilder, die Unterstriche im Dateinamen haben, nicht eingefügt werden, da ein Unterstrichpaar zuerst als kursive Auszeichnung interpretiert und ersetzt wird. Damit stimmt der Dateiname nicht mehr.  `![Bild](2014_09_15_Dateiname.png)`  Zeigt also immer nur ein Viereck mit rotem X an. </body>
+		<created>2015-03-22 06:50:15</created>
+		<closed>2015-10-08 12:22:44</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>Literaturangaben: geschweifte Klammern in bibtex beachten</title>
+		<body>Mir scheint, dass bisher die Autorenangabe "Vicco von Bülow" vom Zettekasten ebenso behandelt wird wie "Vicco {von Bülow}"; ebenso wird "{Frankfurter Allgemeine Zeitung}" als "Zeitung, FA" interpretiert. Es wäre schön, wenn der Zettelkasten die geschweiften Klammern beachten könnte. </body>
+		<created>2015-03-21 19:31:05</created>
+		<closed>2015-10-07 11:59:15</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>Zettelkasten "blockiert" Copy/Paste aus Adobe Reader unter Windows</title>
+		<body></body>
+		<created>2015-03-21 18:40:50</created>
+		<closed>2020-04-20 06:54:28</closed>
+	</bug>
+	<bug>
+		<id>19</id>
+		<title>Zettelkasten startet nicht unter Java 8 auf Windows</title>
+		<body></body>
+		<created>2015-03-21 17:33:27</created>
+		<closed>2015-09-17 18:34:47</closed>
+	</bug>
+	<bug>
+		<id>11</id>
+		<title>GUI-Schärfe auf Retina-Displays</title>
+		<body>Ist eine aktualisierte Version geplant? Bei MacBook Pro ist der Zettelkasten extrem unscharf. </body>
+		<created>2015-01-15 20:24:32</created>
+		<closed>2015-02-07 10:13:44</closed>
+	</bug>
+	<bug>
+		<id>3</id>
+		<title>Gelöschte Querverweise bleiben erhalten</title>
+		<body>Angenommen ein Zettel hat folgenden Inhalt:  &gt; Lorem Ipsum Dolorem Lorem  Und in diesen Zettel wird ein Querverweis eingegeben:  &gt; Lorem Ipsum [z 38]Dolorem[/z] Lorem  und später geändert (bspw. da die Zettelnummer falsch war):  &gt; Lorem Ipsum [z 39]Dolorem[/z] Lorem  Werden nach dem speichern unter _Querverweise_ beide Zettelnummern angezeigt, also:  &gt; Querverweise: 38 · 39  statt  &gt; Querverweise: 39 (← da 38 ja gelöscht wurde)  Es werden in einem Zettel also Querverweise erhalten und weiterhin angezeigt, die nicht mehr existieren (sollen). </body>
+		<created>2014-09-17 19:10:24</created>
+		<closed>2014-11-02 20:54:47</closed>
+	</bug>
+</bugs>

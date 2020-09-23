@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="elastic-job">
+	<bug id="272" opendate="2017-04-11 11:18:57" fixdate="2017-04-11 11:39:39">
+		<buginformation>
+			<summary>Elastic-Job-Lite界面作业维度，只有全部服务器被禁用时，才应显示为被禁用</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-lifecycle/src/test/java/com/dangdang/ddframe/job/lite/lifecycle/internal/statistics/JobStatisticsAPIImplTest.java</file>
+			<file>elastic-job-lite/elastic-job-lite-lifecycle/src/main/java/com/dangdang/ddframe/job/lite/lifecycle/internal/statistics/JobStatisticsAPIImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="269" opendate="2017-04-10 09:41:35" fixdate="2017-04-10 09:52:56">
+		<buginformation>
+			<summary>EventTrace失败记录不受采样率影响并且记录失败时间</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-common/elastic-job-common-core/src/test/java/com/dangdang/ddframe/job/event/rdb/JobEventRdbStorageTest.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/main/java/com/dangdang/ddframe/job/executor/AbstractElasticJobExecutor.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/main/java/com/dangdang/ddframe/job/event/rdb/JobEventRdbStorage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="162" opendate="2016-11-10 07:52:19" fixdate="2016-11-10 14:59:46">
+		<buginformation>
+			<summary>Cloud版本的失效转移仅在TASK_LOST和TASK_ERROR时生效</summary>
+			<description>TASK_FAILED和TASK_ERROR的区别在于，TASK_FAILED是executor执行时异常导致executor关闭，TASK_ERROR是scheduler分配任务失败。 因此，失效转移只需要在TASK_ERROR和TASK_LOST做，TASK_FAILED都是业务异常引起，失效转移只会产生雪崩效应。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/main/java/com/dangdang/ddframe/job/cloud/scheduler/mesos/SchedulerEngine.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/test/java/com/dangdang/ddframe/job/cloud/scheduler/mesos/SchedulerEngineTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="161" opendate="2016-11-10 06:51:38" fixdate="2016-11-10 06:55:21">
+		<buginformation>
+			<summary>Lite版本部署至某些版本的Tomcat无法启动</summary>
+			<description>Elastic Job使用jetty的内嵌server启动restful api，与某些tomcat的servlet api冲突，导致tomcat中的作业不能启动。  将jetty调整至core之外的模块，仅在elastic-job-cloud-scheduler和elastic-job-lite-lifecycle模块引用。对elastic-job-lite-core和elastic-job-cloud-executor再无影响</description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-common/elastic-job-common-restful/src/test/java/com/dangdang/ddframe/job/restful/AllRestfulTests.java</file>
+			<file>elastic-job-common/elastic-job-common-core/src/test/java/com/dangdang/ddframe/job/util/AllUtilTests.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/main/java/com/dangdang/ddframe/job/cloud/scheduler/boot/MasterBootstrap.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/test/java/com/dangdang/ddframe/job/cloud/scheduler/restful/CloudJobRestfulApiTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="143" opendate="2016-10-25 04:20:28" fixdate="2016-10-25 13:08:57">
+		<buginformation>
+			<summary>elastic-job-cloud-scheduler内存泄漏问题</summary>
+			<description>经压测发现running作业与host的map的添加了不同的TaskContext对象，导致无法正确清理，而产生内存泄漏 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/main/java/com/dangdang/ddframe/job/cloud/scheduler/mesos/TaskLaunchProcessor.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/main/java/com/dangdang/ddframe/job/cloud/scheduler/context/TaskContext.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/test/java/com/dangdang/ddframe/job/cloud/scheduler/context/TaskContextTest.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/main/java/com/dangdang/ddframe/job/cloud/scheduler/mesos/LaunchingTasks.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/main/java/com/dangdang/ddframe/job/cloud/scheduler/mesos/SchedulerEngine.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/test/java/com/dangdang/ddframe/job/cloud/scheduler/mesos/JobTaskRequestTest.java</file>
+			<file>elastic-job-cloud/elastic-job-cloud-scheduler/src/test/java/com/dangdang/ddframe/job/cloud/scheduler/mesos/SchedulerEngineTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="127" opendate="2016-09-02 09:32:57" fixdate="2016-09-02 09:47:37">
+		<buginformation>
+			<summary>Spring方式配置作业id无法使用占位符</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/main/java/com/dangdang/ddframe/job/lite/spring/namespace/parser/common/AbstractJobBeanDefinitionParser.java</file>
+			<file>elastic-job-lite/elastic-job-lite-spring/src/main/java/com/dangdang/ddframe/job/lite/spring/namespace/constants/BaseJobBeanDefinitionParserTag.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="63" opendate="2016-03-09 07:18:58" fixdate="2016-03-09 07:19:33">
+		<buginformation>
+			<summary>获取作业TreeCache时可能会获取到前缀相同的其他作业的TreeCache</summary>
+			<description>当job注册名字有部分相同（startWith相同），如job和job1，ZookeeperRegistryCenter的TreeCache获取job1时可能会获取到job的TreeCache。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/reg/zookeeper/ZookeeperRegistryCenter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2016-01-27 13:06:36" fixdate="2016-01-27 13:12:12">
+		<buginformation>
+			<summary>TreeCache使用粒度过粗导致内存溢出</summary>
+			<description>TreeCache缓存namespace所有的数据。如果namespace下内容过多可能造成内存溢出。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/monitor/MonitorService.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/reg/zookeeper/ZookeeperRegistryCenterQueryWithCacheTest.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/reg/zookeeper/ZookeeperRegistryCenterQueryWithoutCacheTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/internal/storage/JobNodeStorage.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/reg/zookeeper/ZookeeperRegistryCenterForLocalPropertiesTest.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/AllTests.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/reg/zookeeper/ZookeeperRegistryCenterModifyTest.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/reg/zookeeper/ZookeeperRegistryCenterForAuthTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/reg/zookeeper/ZookeeperRegistryCenter.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/reg/base/CoordinatorRegistryCenter.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/reg/zookeeper/ZookeeperRegistryCenterMiscellaneousTest.java</file>
+			<file>elastic-job-core/src/main/java/com/dangdang/ddframe/job/api/JobScheduler.java</file>
+			<file>elastic-job-core/src/test/java/com/dangdang/ddframe/reg/AllRegTests.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>87</id>
+		<title>로그아웃하지 않고 브라우저를 닫을 경우 세션을 종료 시켜야 한다.</title>
+		<body>- 로그아웃을 하지 않은채 브라우저를 닫아 버리면 세션이 살아 있어 다시 로그인이 되지 않는 문제가 있다. </body>
+		<created>2016-03-21 10:48:10</created>
+		<closed>2016-03-24 01:46:28</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>수비 플레이어가 포함된 게임에서 공격 플레이어가 게임을 마치면 게임이 종료 되어야 한다.</title>
+		<body>- 현재는 수비 플레이어가 포함된 게임에서 공격 플레이어들이 숫자를 맞춰도 게임이 종료 되지 않는 오류가 있다. - 수비 플레이어는 기본적으로 숫자를 입력하지 못하고 관전만 하기 때문에 게임이 종료 되는 시점에 함께 종료 되어야 한다. - 수비 플레이어도 점수 및 순위에 포함되어야 한다. </body>
+		<created>2016-03-20 11:04:07</created>
+		<closed>2016-03-20 11:52:43</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>게임 종료후 재시작시 랜덤 숫자 값이 변경되지 않는 오류 해결하기</title>
+		<body>- 첫번째 게임이 끝난 후 재시작시 이전에 생성되었던 숫자가 변경되지 않는 오류가 있다. - 게임이 시작되면 수비 플레이어가 입력한 숫자나 새로 만들어진 랜덤 숫자를 이용해야 한다. </body>
+		<created>2016-03-17 12:12:10</created>
+		<closed>2016-03-17 14:16:44</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>게임룸 입장이나 생성시 엔터를 입력하면 스크립트 오류 발생 해결하기</title>
+		<body>- 아래의 스크립트 오류 발생  ``` v_chat.js:89 Uncaught TypeError: Cannot read property 'focus' of undefined(anonymous function) @ v_chat.js:89 ``` </body>
+		<created>2016-03-17 10:33:39</created>
+		<closed>2016-03-17 10:47:25</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>게임룸 진행바가 중간에 꺼지거나 다시 시작되는 문제 해결하기</title>
+		<body>- 게임 진행중 진행바가 중간에 사라지거나 나타나지 않는 문제가 생긴다. </body>
+		<created>2016-03-16 14:59:47</created>
+		<closed>2016-03-24 11:10:17</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>테스트 오류 해결하기</title>
+		<body>- 빌드시 테스트 오류가 발생하는것을 해결해야한다. - [Semaphore error log](https://semaphoreci.com/voyaging/baseball-game/branches/master/builds/5) - [Travis-ci error log](https://travis-ci.org/Hana-Lee/baseball-game/builds/116162974) </body>
+		<created>2016-03-16 03:17:54</created>
+		<closed>2016-03-16 05:26:35</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>게임룸 입장 혹은 게임룸을 신규로 만들때 스크립트 오류발생.</title>
+		<body>- 아래의 오류가 발생한다.  ``` Uncaught TypeError: Cannot read property 'parentNode' of null webix.Scrollable.getScrollState @ webix_debug.js:10813 webix.VirtualRenderStack._getVisibleRange @ webix_debug.js:15918 webix.VirtualRenderStack._render_visible_rows @ webix_debug.js:15808 webix.VirtualRenderStack.render @ webix_debug.js:15777 (anonymous function) @ webix_debug.js:15791 (anonymous function) @ webix_debug.js:241 ```  &lt;!--- @huboard:{"custom_state":"archived"} --&gt; </body>
+		<created>2016-03-12 08:10:32</created>
+		<closed>2016-03-12 10:23:00</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>게임룸에서 마지막 플레이어가 나갈경우 메인화면의 플레이어 리스트 갱신이 안되는 오류</title>
+		<body>- 게임룸에서 마지막 플레이어가 나가면 게임룸이 삭제가 되고 메인 화면의 플레이어 리스트 및 게임룸 리스트가 갱신이 되어야 하는데 게임룸은 갱신이 되지만 플레이어 리스트는 갱신이 되지 않는  오류  &lt;!--- @huboard:{"custom_state":"archived"} --&gt; </body>
+		<created>2016-03-09 13:08:26</created>
+		<closed>2016-03-09 13:08:47</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>채팅 저장 기능 추가 후 게임룸에서 나가기 하면 오류 발생</title>
+		<body># 채팅 저장 기능 추가 후 게임룸에서 나가기 하면 오류 발생  ``` Hibernate: delete from game_room where game_room_id=? [2016-03-02 20:46:25.232] boot - 82871  WARN [http-nio-9090-exec-8] --- SqlExceptionHelper: SQL Error: 23503, SQLState: 23503 [2016-03-02 20:46:25.233] boot - 82871 ERROR [http-nio-9090-exec-8] --- SqlExceptionHelper: Referential integrity constraint violation: "FK_PC13VQMCMJPECXS5W1YKB9FMK: PUBLIC.CHAT FOREIGN KEY(GAME_ROOM_ID) REFERENCES PUBLIC.GAME_ROOM(GAME_ROOM_ID) (1)"; SQL statement: delete from game_room where game_room_id=? [23503-190] [2016-03-02 20:46:25.234] boot - 82871  INFO [http-nio-9090-exec-8] --- AbstractBatchImpl: HHH000010: On release of batch it still contained JDBC statements [2016-03-02 20:46:25.242] boot - 82871 ERROR [http-nio-9090-exec-8] --- [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [/bbg] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["FK_PC13VQMCMJPECXS5W1YKB9FMK: PUBLIC.CHAT FOREIGN KEY(GAME_ROOM_ID) REFERENCES PUBLIC.GAME_ROOM(GAME_ROOM_ID) (1)"; SQL statement: delete from game_room where game_room_id=? [23503-190]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause org.h2.jdbc.JdbcSQLException: Referential integrity constraint violation: "FK_PC13VQMCMJPECXS5W1YKB9FMK: PUBLIC.CHAT FOREIGN KEY(GAME_ROOM_ID) REFERENCES PUBLIC.GAME_ROOM(GAME_ROOM_ID) (1)"; SQL statement: delete from game_room where game_room_id=? [23503-190] ```  &lt;!--- @huboard:{"custom_state":"archived"} --&gt; </body>
+		<created>2016-03-02 11:48:39</created>
+		<closed>2016-03-03 13:07:11</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>다른 플레이어가 로그인 후 페이지 새로고침을 하면 webix unique id 에러발생</title>
+		<body># 다른 플레이어가 로그인 후 페이지 새로고침을 하면 webix unique id 에러발생 - 플레이어 리스트에 이미 등록되어 있는데 다른 플레이어가 페이지 새로 고침을 하면 로그인 알람을 또 다시 보내게 되어 webix unique id 에러가 발생한다. </body>
+		<created>2016-02-29 12:25:17</created>
+		<closed>2016-02-29 12:30:42</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>로그아웃을 해도 로그인 정보가 남아 있는 문제</title>
+		<body># 로그아웃을 하더라도 서버에 로그인 정보가 남아 있는 문제 - 로그인 정보가 삭제 되지 않아 대기중인 플레이어의 목록을 가지고 올때 포함되는 문제가 있음. </body>
+		<created>2016-02-19 13:20:53</created>
+		<closed>2016-02-20 09:31:46</closed>
+	</bug>
+</bugs>

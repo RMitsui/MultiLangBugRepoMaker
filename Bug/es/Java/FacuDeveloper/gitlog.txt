@@ -1,0 +1,888 @@
+1f14e6af1637e59a2e36d861dc23e378e2e432d0, #75 Reducción de líneas de cód. fuente en updateWaterAccumulatedToday(), finalizada [iss75], Wed Sep 9 01:10:03 2020 -0300
+M	app/etc/sql/allInserts.sql
+M	app/src/automaticModules/ClimateDataExtractor.java
+M	app/src/et/Eto.java
+M	app/src/irrigation/WaterMath.java
+M	app/src/servlet/CultivoRestServlet.java
+M	app/src/servlet/IrrigationLogRestServlet.java
+M	app/src/stateless/ClimateLogServiceBean.java
+M	app/src/stateless/CultivoService.java
+M	app/src/stateless/CultivoServiceBean.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+M	app/src/stateless/IrrigationLogServiceBean.java
+
+1cea09ee168d0dacb8a18374487ecc826b7aeb63, #74 Reducción de funcionalidad de getSuggesteIrrigation(), finalizada [iss74], Tue Sep 8 01:56:28 2020 -0300
+M	app/etc/sql/allInserts.sql
+M	app/src/automaticModules/ClimateDataExtractor.java
+M	app/src/irrigation/IrrigationLogGenerator.java
+M	app/src/irrigation/WaterMath.java
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/ClimateLogServiceBean.java
+
+6d53dc672c3ca7ea7846d1af199787fbbc86160f, #73 Separación por responsabilidad del cód. fuente de modify(), InstanciaParcelaRestServlet, terminada [iss73], Fri Sep 4 18:55:27 2020 -0300
+M	app/public/controllers/InstanciaParcelaCtrl.js
+M	app/public/services/InstanciaParcelaSrv.js
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/InstanciaParcelaService.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+
+921a4d99fc2f60da5c01e86da4dc67fc78a38eb8, #72 Ctrles. de fechas en la creación de instancias de parcelas, terminados [iss72], Fri Sep 4 06:00:18 2020 -0300
+M	app/etc/persistence/META-INF/persistence.xml
+M	app/etc/sql/allInserts.sql
+M	app/public/controllers/InstanciaParcelaCtrl.js
+A	app/src/model/DateError.java
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/CultivoServiceBean.java
+A	app/src/stateless/DateErrorServiceBean.java
+M	app/src/stateless/InstanciaParcelaService.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+
+da760ce3df6aa5c8513c8e1a7ca5a2c529fae584, #92 Carga de los regs. históricos de una parcela, corregida [iss92], Sun Aug 23 03:41:40 2020 -0300
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/CultivoServiceBean.java
+
+868c3f947bd2abf328e104c5ba2bda17d5b155e3, #76 Desplazamiento del método getStatus(), finalizado [iss76], Sat Aug 22 22:52:09 2020 -0300
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/InstanceParcelStatusServiceBean.java
+M	app/src/stateless/InstanciaParcelaService.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+A	app/src/testsPassed/instanceParcelStatusTest/InstanceParcelStatusTest.java
+
+c0aeb24fe3816803b3755c77098aa790357a76ac, Cambios en los nombres de las tablas de la BD, Fri Aug 21 01:28:48 2020 -0300
+M	app/public/controllers/InstanciasParcelasCtrl.js
+M	app/public/controllers/ParcelsCtrl.js
+M	app/src/automaticModules/ClimateDataExtractor.java
+M	app/src/irrigation/IrrigationLogGenerator.java
+M	app/src/irrigation/WaterMath.java
+M	app/src/model/ClimateLog.java
+M	app/src/model/IrrigationLog.java
+M	app/src/model/Latitude.java
+M	app/src/model/MaximumInsolation.java
+M	app/src/model/Month.java
+M	app/src/model/Parcel.java
+M	app/src/model/SolarRadiation.java
+M	app/src/model/StatisticalReport.java
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/testsPassed/relatedTestIrrigationLogGenerator/ClimateLogFindTest.java
+M	app/src/testsPassed/relatedTestIrrigationLogGenerator/IrrigationLogExistTest.java
+M	app/src/testsPassed/relatedTestsClimateDataExtractor/ClimateLogCreateTest.java
+M	app/src/testsPassed/relatedTestsClimateDataExtractor/ClimateLogExistTest.java
+M	app/src/testsPassed/relatedTestsClimateDataExtractor/FindCurrentParcelInstanceTest.java
+M	app/src/testsPassed/relatedTestsEt/MaximumInsolationServiceBeanTest.java
+M	app/src/testsPassed/relatedTestsEt/SolarRadiationServiceBeanTest.java
+M	app/src/testsPassed/testsOthers/FindInDevelopmentTest.java
+M	app/src/testsPassed/testsOthers/FindRecentFinishedTest.java
+R100	app/src/testsToDemo/KcTest.java	app/src/testsPassed/testsOthers/KcTest.java
+
+69f8b9f480efc96de4363cc2f775fa8f60452bc5, Merge branch 'iss91' into development, Fri Aug 21 01:02:41 2020 -0300
+334df641e795c15b8fff11127bc34b4cb96ad60c, #91 Error en la persistencia del estado de una parcela, corregido [iss91], Fri Aug 21 00:56:03 2020 -0300
+M	app/public/controllers/InstanciaParcelaCtrl.js
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+
+be68111e7ee14c8558d749d8afa569e4da3e08db, #90 Error en la mod. de la hectárea de una parcela, corregido [iss90], Thu Aug 20 17:51:52 2020 -0300
+M	app/public/services/ParcelSrv.js
+M	app/src/servlet/ParcelRestServlet.java
+
+b6d10f13a4a5a0011648f6f859f3348cbcb8125b, #70, 'Generar mod. de datos Estado de usuario' finalizado [iss70], Tue Jun 9 01:27:42 2020 -0300
+M	app/etc/persistence/META-INF/persistence.xml
+M	app/etc/sql/allInserts.sql
+A	app/src/model/UserStatus.java
+M	app/src/model/Usuario.java
+A	app/src/servlet/UsuarioRestServlet.java
+A	app/src/stateless/UserStatusServiceBean.java
+A	app/src/stateless/UsuarioService.java
+A	app/src/stateless/UsuarioServiceBean.java
+A	app/src/testsPassed/userRelated/UserStatusTest.java
+
+23b64bbb5f59265a0352e1047adc9636ac769c69, #87, fusión terminada [iss87], Mon Jun 8 23:48:21 2020 -0300
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+
+cd6ea29f71dd6fa7dfa0edfc05f89393a78afa99, #71 Falto el archivo ClimateDataExtractor, Fri Jun 5 02:06:43 2020 -0300
+M	app/src/automaticModules/ClimateDataExtractor.java
+
+e3a8aac15622c1d6166d3cd0a85844b31cf788a6, #71 Reducir número de parámetros del método getEto(), Fri Jun 5 01:40:56 2020 -0300
+M	app/src/et/Etc.java
+M	app/src/et/Eto.java
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/testsPassed/relatedTestsEt/EToTest.java
+
+67ee09e047470b3fa8bb936f9d0f3624fd71eadd, Modelos incluidos, Thu Jun 4 17:25:45 2020 -0300
+A	"En revisi\303\263n.md"
+A	Esquema de la BD del sistema/Diagrama del esquema de la BD.png
+A	Esquema de la BD del sistema/Diagrama del esquema de la BD.xml
+R100	Modelo de casos de uso/MCasos de uso: Sistema de riego.png	"Modelado de interacci\303\263n del sistema/Diagrama de casos de uso.png"
+A	"Modelado de interacci\303\263n del sistema/Diagrama de casos de uso.xml"
+A	"Modelado de interacci\303\263n del sistema/obtenerRiegoSugerido().png"
+A	"Modelado de interacci\303\263n del sistema/obtenerRiegoSugerido().xml"
+A	Modelado del dominio del sistema/Modelo de Dominio.png
+R076	Modelo de dominio/Modelo de dominio.pu	Modelado del dominio del sistema/Modelo de dominio.pu
+A	Modelado estructural del sistema/Diagrama de paquete.png
+A	Modelado estructural del sistema/Diagrama de paquete.xml
+D	Modelo de casos de uso/Modelo de caso de uso.drawio
+D	Modelo de dominio/MDominio: Sistema de riego.png
+M	README.md
+
+a739aa31f2c08dca160fb460ec60841dd0d81b6d, Problema #52 resuelto, Wed Mar 11 21:48:08 2020 -0300
+M	app/etc/persistence/META-INF/persistence.xml
+A	app/src/model/StatisticalReport.java
+A	app/src/servlet/StatisticalReportRestServlet.java
+M	app/src/stateless/ClimateLogServiceBean.java
+M	app/src/stateless/CultivoServiceBean.java
+M	app/src/stateless/InstanceParcelStatusServiceBean.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+M	app/src/stateless/IrrigationLogServiceBean.java
+M	app/src/stateless/ParcelServiceBean.java
+M	app/src/stateless/SolarRadiationServiceBean.java
+A	app/src/stateless/StatisticalReportServiceBean.java
+M	app/src/stateless/TypeGroundServiceBean.java
+
+4ba6304d862ae913408ef0f51a727aa066ebb142, Refactorización de lo hecho para resolver el problema #69, Tue Mar 10 22:15:33 2020 -0300
+M	README.md
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/InstanceParcelStatusServiceBean.java
+M	app/src/stateless/InstanciaParcelaService.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+
+12ce79733ac2cf4d80e3f935a6e2a2e5b2012e9a, Problema #69 resuelto., Tue Mar 10 02:45:05 2020 -0300
+M	app/etc/sql/allInserts.sql
+M	app/public/controllers/InstanciaParcelaCtrl.js
+M	app/public/partials/instanciaparcela-form.html
+M	app/public/services/InstanciaParcelaSrv.js
+R099	app/src/climate/ClimateDataExtractor.java	app/src/automaticModules/ClimateDataExtractor.java
+M	app/src/model/InstanciaParcela.java
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/InstanciaParcelaService.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+M	config/common.xml
+A	package-lock.json
+
+a42dcd539277485a46820bd3bef90fa00293dcab, Bug en el cálculo de la fecha de cosecha, arreglado, Mon Mar 9 19:24:53 2020 -0300
+M	app/etc/sql/allInserts.sql
+M	app/src/stateless/CultivoServiceBean.java
+
+43b3af5bd2dd12eaa4f0bd5bc8c928be759ed4f9, Filtro en pantalla de la entidad Instancia de parcela, terminado, #68, Mon Mar 2 22:22:18 2020 -0300
+M	app/etc/sql/allInserts.sql
+M	app/public/controllers/InstanciasParcelasCtrl.js
+M	app/public/partials/instanciasparcelas-list.html
+M	app/public/services/InstanciaParcelaSrv.js
+M	app/public/services/ParcelSrv.js
+M	app/src/climate/ClimateDataExtractor.java
+M	app/src/irrigation/WaterMath.java
+M	app/src/model/ClimateLog.java
+M	app/src/model/Latitude.java
+M	app/src/model/Month.java
+M	app/src/model/Parcel.java
+M	app/src/model/SolarRadiation.java
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/servlet/ParcelRestServlet.java
+M	app/src/stateless/InstanciaParcelaService.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+M	app/src/stateless/IrrigationLogServiceBean.java
+M	app/src/stateless/ParcelServiceBean.java
+
+9f160f00e97804dae202c814069e978d7095330c, Atributo del modelo de datos Parcela, Área modificador por Hectárea, Thu Nov 21 17:57:09 2019 -0300
+M	app/public/controllers/ParcelCtrl.js
+M	app/public/partials/parcel-form.html
+M	app/public/partials/parcel-list.html
+M	app/src/model/Parcel.java
+M	app/src/servlet/ParcelRestServlet.java
+M	app/src/stateless/ParcelServiceBean.java
+
+f938acf0524994fd39493daf5a2346cda3b90129, Modelo de dominio modificado, Thu Nov 21 17:50:53 2019 -0300
+M	Modelo de dominio/MDominio: Sistema de riego.png
+M	Modelo de dominio/Modelo de dominio.pu
+
+2e0c0e2946c1b6ac0df96e501c53439ab52f4b39, Módulo automático de extracción y almacenamiento de datos climáticos, finalizado y en correcto funcionamiento, Thu Nov 21 17:44:55 2019 -0300
+M	app/etc/sql/allInserts.sql
+M	app/src/climate/ClimateDataExtractor.java
+M	app/src/irrigation/IrrigationLogGenerator.java
+M	app/src/irrigation/WaterMath.java
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+M	app/src/stateless/IrrigationLogServiceBean.java
+
+95dae2a197c87c0778832e19fdca71cc62a0a95a, Módulo de creación y almacenamiento automático de regs. históricos de riego, #51, finalizado y en correcto funcionamiento, Tue Nov 19 07:13:39 2019 -0300
+A	app/src/irrigation/IrrigationLogGenerator.java
+M	app/src/irrigation/WaterMath.java
+M	app/src/model/ClimateLog.java
+M	app/src/model/InstanciaParcela.java
+M	app/src/model/IrrigationLog.java
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/servlet/IrrigationLogRestServlet.java
+M	app/src/stateless/ClimateLogServiceBean.java
+M	app/src/stateless/ParcelServiceBean.java
+D	app/src/util/FormatDate.java
+A	app/src/util/UtilDate.java
+
+88a216add18f79d6ef722f4be0654e4ce159d163, Método que establece la cantidad de agua acumulada en el día de hoy para el reg. climático del día de hoy, añadido, Tue Nov 19 04:48:56 2019 -0300
+M	app/src/servlet/IrrigationLogRestServlet.java
+
+edb5a99d943c87cf48b2bd0b60b02e6172caa152, Método que calcula la cantidad de agua acumulada del día de hoy, corregido, Tue Nov 19 04:48:07 2019 -0300
+M	app/src/irrigation/WaterMath.java
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/IrrigationLogServiceBean.java
+
+0c04f200ba270ae702d3a916018a52e94246a978, Inteligencia en caso de que no exista el reg. climático del día anterior, agregada, Tue Nov 19 03:10:31 2019 -0300
+M	app/etc/sql/allInserts.sql
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+
+b19a1c61ec7f8c9b69897d631834a6611134f41a, Control sobre la coincidencia de fechas en la modifación, #67, Tue Nov 19 02:24:16 2019 -0300
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+
+02df1a2c461578343ad781f53c179ec0227bdf1c, Multiplicación de riego sugerido por hectárea de parcela, añadido, #63, Tue Nov 19 02:16:40 2019 -0300
+M	app/etc/sql/allInserts.sql
+M	app/public/partials/instanciasparcelas-list.html
+M	app/src/irrigation/WaterMath.java
+
+2f1226aebf4350dfc01e405d47e04d624bc66baf, No se almacena el registro de riego con riego realizado negativo, #61, Mon Nov 18 22:23:13 2019 -0300
+M	app/public/controllers/InstanciasParcelasCtrl.js
+M	app/public/partials/instanciasparcelas-list.html
+
+79d4923f4c820a79108eccaa05d18d2f6efa9e44, Modelo de datos Reg. histórico de riego, modificado, Mon Nov 18 22:11:05 2019 -0300
+M	app/src/model/IrrigationLog.java
+
+76aa23a0ea087812807136f2246a1fec493031f6, Script SQL con todas las inserciones, creado, Mon Nov 18 22:10:44 2019 -0300
+M	app/build.xml
+M	app/etc/sql/allInserts.sql
+M	app/etc/sql/climateLog.sql
+M	app/etc/sql/instanciasParcelas.sql
+M	app/src/stateless/IrrigationLogServiceBean.java
+M	config/common.xml
+
+af45e5dc14e7bcd027c50f071f2030608190ce47, Área cambiada por hectárea, Mon Nov 18 21:30:19 2019 -0300
+M	app/etc/sql/parcels.sql
+M	app/public/partials/parcel-form.html
+M	app/public/partials/parcel-list.html
+
+7a2b983248656a74082e4060cd34be8dba426e2a, Archivo contando lo que falta, agregado, Mon Nov 18 19:31:04 2019 -0300
+A	"Lo que falta/Reg. hist\303\263rico de parcela.md"
+
+2b2f64da069ae4edd49b578d3b08af1e96e2ad39, Controles sobre creación y modificación de regs. históricos de parcela. #58, #59, #64, #65, #66, Mon Nov 18 19:15:30 2019 -0300
+M	app/public/controllers/InstanciaParcelaCtrl.js
+M	app/public/controllers/InstanciasParcelasCtrl.js
+M	app/public/services/InstanciaParcelaSrv.js
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+
+8dbc3e409a478b2a1033d10bcc856882bc7218a3, Modelo de datos Registro histórico de parcela, modificado, Mon Nov 18 18:39:07 2019 -0300
+M	app/src/model/InstanciaParcela.java
+
+38dbbe0813368d39a16db47af34e5db8744a176b, Nuevas pruebas unitarias, más clase para el cultivo que más se sembró, Mon Nov 18 18:37:04 2019 -0300
+M	app/public/partials/instanciasparcelas-list.html
+A	app/src/model/MaxCrop.java
+M	app/src/stateless/InstanciaParcelaService.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+A	app/src/testsPassed/testsOthers/FindInDevelopmentTest.java
+A	app/src/testsPassed/testsOthers/FindRecentFinishedTest.java
+A	app/src/testsPassed/testsOthers/MaxCropTest.java
+
+b1ba64a5048e4b9e675f2ce88f5f8312bf0adbae, Cálculo del KC, corregido, Mon Nov 18 18:18:40 2019 -0300
+A	app/etc/sql/allInserts.sql
+M	app/src/stateless/CultivoServiceBean.java
+R089	app/src/testsPassed/relatedTestsEt/KcTest.java	app/src/testsToDemo/KcTest.java
+
+3fce2eeb6f82cca9eac855545dc064af354609ec, Problema de biblioteca JAR no encontrada, solucionado, Sun Nov 17 16:33:47 2019 -0300
+M	config/common.properties
+
+9f8fa0d02567945cf1f2da0c8a08129b519f6d21, Estado de reg. histórico de parcela, finalizado, propuesta #57, Sun Nov 17 02:49:00 2019 -0300
+M	app/etc/sql/instanceParcelStatus.sql
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+A	app/src/stateless/InstanceParcelStatusServiceBean.java
+M	app/src/stateless/InstanciaParcelaServiceBean.java
+
+634715053a2a41fddf097fe4d18457696e6e54bc, Problema con el estado en la parte web, solucionado, Sat Nov 16 01:07:46 2019 -0300
+M	app/public/partials/instanciasparcelas-list.html
+
+658f6f7ad633bd00e5fe6f6df6acf100c160395a, Módulo Estado de reg. histórico de parcela, añadido, Sat Nov 16 00:48:05 2019 -0300
+M	app/build.xml
+M	app/etc/persistence/META-INF/persistence.xml
+A	app/etc/sql/instanceParcelStatus.sql
+M	app/etc/sql/instanciasParcelas.sql
+A	app/src/model/InstanceParcelStatus.java
+M	app/src/model/InstanciaParcela.java
+M	app/src/servlet/CultivoRestServlet.java
+M	config/common.xml
+
+817f653fe373b244a5507b24b56f69fa08e88ad4, Modelo de dominio, modificado, Sat Nov 16 00:12:21 2019 -0300
+M	Modelo de dominio/MDominio: Sistema de riego.png
+M	Modelo de dominio/Modelo de dominio.pu
+
+0246688b388e44b368434cbc8f595cf059b04520, Nuevos métodos en la clase IrrigationLogServiceBean, Sat Nov 16 00:08:41 2019 -0300
+M	app/src/stateless/IrrigationLogServiceBean.java
+
+39e27507817b7226e366397d2a23af867f315520, Módulo Reg. histórico de parcela, añadido, Sat Nov 16 00:05:12 2019 -0300
+A	app/public/controllers/InstanciaParcelaCtrl.js
+A	app/public/controllers/InstanciasParcelasCtrl.js
+M	app/public/index.html
+M	app/public/module.js
+M	app/public/partials/cultivos-list.html
+A	app/public/partials/instanciaparcela-form.html
+A	app/public/partials/instanciasparcelas-list.html
+M	app/public/partials/parcel-list.html
+M	app/public/services/CultivoSrv.js
+A	app/public/services/InstanciaParcelaSrv.js
+A	app/public/services/IrrigationLogSrv.js
+M	app/public/services/ParcelSrv.js
+M	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/stateless/CultivoService.java
+M	app/src/stateless/CultivoServiceBean.java
+
+1c3caf94b7d820a361fe9d773d3ae49a108ec152, Carpeta partials del módulo Parcela, eliminada, Fri Nov 15 23:32:13 2019 -0300
+A	app/public/partials/parcel-form.html
+A	app/public/partials/parcel-list.html
+
+b7499ac661f3dab52eeef9f227efd00e01a2e977, Módulo del Cultivo, añadido, Fri Nov 15 22:43:31 2019 -0300
+M	app/etc/sql/insertsCultivo.sql
+A	app/public/controllers/CultivoCtrl.js
+A	app/public/controllers/CultivosCtrl.js
+M	app/public/index.html
+M	app/public/module.js
+A	app/public/partials/cultivo-form.html
+A	app/public/partials/cultivos-list.html
+A	app/public/services/CultivoSrv.js
+M	app/src/model/Cultivo.java
+A	app/src/servlet/CultivoRestServlet.java
+M	app/src/stateless/CultivoServiceBean.java
+
+46935aabacfb0df04fad6c938381dbcf8e0c3201, Mod. de dominio, modificado, nuevo atributo en Cultivo, Fri Nov 15 22:30:11 2019 -0300
+M	Modelo de dominio/MDominio: Sistema de riego.png
+M	Modelo de dominio/Modelo de dominio.pu
+M	app/public/controllers/ParcelCtrl.js
+M	app/public/module.js
+D	app/public/partials/parcel/parcel-form.html
+D	app/public/partials/parcel/parcel-list.html
+M	app/src/climate/ClimateDataExtractor.java
+M	config/common.properties
+
+1b93502f981a1ca83d6ffa172cf58fa2fa29b940, Módulo de Suelo, eliminado, Thu Nov 14 23:22:54 2019 -0300
+D	app/public/controllers/GroundCtrl.js
+D	app/public/controllers/GroundsCtrl.js
+M	app/public/index.html
+M	app/public/module.js
+D	app/public/partials/ground/ground-form.html
+D	app/public/partials/ground/ground-list.html
+D	app/public/services/GroundSrv.js
+D	app/src/model/Ground.java
+D	app/src/servlet/GroundRestServlet.java
+D	app/src/stateless/GroundServiceBean.java
+
+7795f6fa8cb44d67e84426a25b59da27302f3e90, Funciones: Riego sugerido y agua acumulada, terminadas, Wed Nov 13 16:11:47 2019 -0300
+M	app/build.xml
+M	app/etc/persistence/META-INF/persistence.xml
+M	app/etc/sql/climateLog.sql
+M	app/etc/sql/deleteAll.sql
+A	app/etc/sql/instanciasParcelas.sql
+M	app/etc/sql/irrigationLog.sql
+M	app/src/climate/ClimateLogService.java
+A	app/src/irrigation/WaterMath.java
+A	app/src/model/InstanciaParcela.java
+M	app/src/model/IrrigationLog.java
+D	app/src/model/ParcelInstance.java
+A	app/src/servlet/InstanciaParcelaRestServlet.java
+M	app/src/servlet/ParcelRestServlet.java
+M	app/src/stateless/CultivoService.java
+M	app/src/stateless/CultivoServiceBean.java
+A	app/src/stateless/InstanciaParcelaService.java
+A	app/src/stateless/InstanciaParcelaServiceBean.java
+D	app/src/stateless/ParcelInstanceServiceBean.java
+M	app/src/stateless/ParcelServiceBean.java
+A	app/src/testsPassed/relatedTestSuggestedIrrigation/GetTotalIrrigationWaterTest.java
+M	config/common.xml
+
+4806e4659a7bb9acf7f5101ddb5658336f599cf5, Archivos de configuración, modificados, Wed Nov 13 00:46:26 2019 -0300
+M	app/build.xml
+M	config/common.xml
+
+d2bedfcac305d2fb314cb5b729d73233d5351832, Pruebas unitarias, ordenadas, Wed Nov 13 00:44:52 2019 -0300
+A	app/src/testsPassed/relatedTestIrrigationLogGenerator/ClimateLogFindTest.java
+A	app/src/testsPassed/relatedTestIrrigationLogGenerator/IrrigationLogExistTest.java
+M	app/src/testsPassed/relatedTestsClimate/ClimateClientTest.java
+M	app/src/testsPassed/relatedTestsClimate/ClimateLogServiceBeanTest.java
+A	app/src/testsPassed/relatedTestsClimateDataExtractor/ClimateLogCreateTest.java
+M	app/src/testsPassed/relatedTestsClimateDataExtractor/ClimateLogExistTest.java
+M	app/src/testsPassed/relatedTestsClimateDataExtractor/FindCurrentParcelInstanceTest.java
+R100	app/src/test/KcTest.java	app/src/testsPassed/relatedTestsEt/KcTest.java
+M	app/src/testsPassed/relatedTestsEt/SolarRadiationServiceBeanTest.java
+
+3e4b7e638555e81ed9ea4daca20ed65b335de376, Archivos SQL y clase IrrigationLog (modelo de datos), modificados, Wed Nov 13 00:42:06 2019 -0300
+M	app/etc/sql/climateLog.sql
+A	app/etc/sql/forClimateLogFindTest.sql
+M	app/etc/sql/parcels.sql
+M	app/src/model/IrrigationLog.java
+
+4524296ad76ebc51f1331676982fd0a978e3bd26, Modelo de datos Reg. histórico del clima, redefinido, Wed Nov 13 00:20:08 2019 -0300
+M	app/src/model/ClimateLog.java
+
+857450e49a2ee2d8637e817408b2052d68867d28, Modelo de dominio modificado, Tue Nov 12 21:58:14 2019 -0300
+M	Modelo de dominio/MDominio: Sistema de riego.png
+M	Modelo de dominio/Modelo de dominio.pu
+
+6167a51ce76a4104bc5549e100e64704a16c993d, Modelo de dominio modificado, Tue Nov 12 21:57:50 2019 -0300
+M	Modelo de dominio/MDominio: Sistema de riego.png
+M	Modelo de dominio/Modelo de dominio.pu
+
+0af2f4563517612063e84296931b6b2da4e41a2f, Error de precipType, solucionado y por esto el mód. de obt. y alm. de datos climáticos ahora funciona bien, Thu Nov 7 04:42:16 2019 -0300
+M	app/src/model/ClimateLog.java
+
+70d72dcf071d196eaaeba088bb83c7fe632187d0, Modelo de dominio, modificado, Wed Nov 6 05:20:37 2019 -0300
+M	Modelo de dominio/MDominio: Sistema de riego.png
+M	Modelo de dominio/Modelo de dominio.pu
+
+7885e8b770e8711ed3af1d66898707537f93bccc, Módulo para formatear fechas, añadido, Wed Nov 6 04:21:16 2019 -0300
+A	app/src/util/FormatDate.java
+
+686ce0b26121fcf52abbfeb85debec7c389bf33c, Modelo de dominio, modificado, Wed Nov 6 02:57:16 2019 -0300
+M	Modelo de dominio/MDominio: Sistema de riego.png
+M	Modelo de dominio/Modelo de dominio.pu
+
+4d6ebe641d483033daaa44aca6085848ee050e87, Módulo de obtención y almacenamiento de datos climáticos, terminado, en funcionamiento, Tue Nov 5 05:58:12 2019 -0300
+M	app/build.xml
+M	app/etc/persistence/META-INF/persistence.xml
+A	app/etc/sql/climateLog.sql
+M	app/etc/sql/deleteAll.sql
+A	app/etc/sql/deleteClimateLogs.sql
+A	app/etc/sql/parcelLog.sql
+M	app/etc/sql/parcels.sql
+M	app/src/climate/ClimateClient.java
+M	app/src/climate/ClimateDataExtractor.java
+R093	app/src/et/ETc.java	app/src/et/Etc.java
+R098	app/src/et/ETo.java	app/src/et/Eto.java
+M	app/src/model/Cultivo.java
+M	app/src/model/ParcelInstance.java
+M	app/src/stateless/ClimateLogServiceBean.java
+A	app/src/stateless/ParcelInstanceServiceBean.java
+M	app/src/stateless/ParcelServiceBean.java
+M	app/src/testsPassed/relatedTestsClimate/ClimateClientTest.java
+M	app/src/testsPassed/relatedTestsClimate/ClimateLogServiceBeanTest.java
+M	config/common.xml
+
+855584e0970752662e7e08289cc1e6f3ffab054e, Pruebas unitarias, ordenadas, Tue Nov 5 02:36:35 2019 -0300
+D	app/src/testsPassed/KcTest.java
+R100	app/src/testsPassed/ClimateClientTest.java	app/src/testsPassed/relatedTestsClimate/ClimateClientTest.java
+R100	app/src/testsPassed/ClimateLogServiceBeanTest.java	app/src/testsPassed/relatedTestsClimate/ClimateLogServiceBeanTest.java
+A	app/src/testsPassed/relatedTestsClimateDataExtractor/ClimateLogExistTest.java
+A	app/src/testsPassed/relatedTestsClimateDataExtractor/FindCurrentParcelInstanceTest.java
+R100	app/src/testsPassed/EToTest.java	app/src/testsPassed/relatedTestsEt/EToTest.java
+R100	app/src/testsPassed/MaximumInsolationServiceBeanTest.java	app/src/testsPassed/relatedTestsEt/MaximumInsolationServiceBeanTest.java
+R100	app/src/testsPassed/SolarRadiationServiceBeanTest.java	app/src/testsPassed/relatedTestsEt/SolarRadiationServiceBeanTest.java
+
+d35acc31128151620b7af4557ec39f52cae6aa50, Función del cálculo del kc, corregida y con prueba unitaria, Tue Nov 5 02:26:22 2019 -0300
+M	app/src/stateless/CultivoService.java
+M	app/src/stateless/CultivoServiceBean.java
+A	app/src/test/KcTest.java
+
+1cc136a258db37422b86e42e74f0b9ac8e0ab451, Función para el cálculo de la insolación media, terminada, Sun Nov 3 17:12:18 2019 -0300
+M	app/src/stateless/MaximumInsolationServiceBean.java
+
+0721c53897b32f53e48b676f37afce30cffb3810, Función para el cálculo de la radiación media, terminada, Sun Nov 3 17:11:38 2019 -0300
+M	app/src/stateless/SolarRadiationServiceBean.java
+
+edc077bdd66077cf5524668e99b86139e76e5c9e, Modelo de datos Registro histórico de la parcela, creado, Sun Nov 3 17:10:42 2019 -0300
+A	app/src/model/ParcelInstance.java
+
+23a848c9b46c77f737a931314eae7160e4b73d13, Modelo de dominio, redefinido, Sun Nov 3 04:03:22 2019 -0300
+M	Modelo de dominio/MDominio: Sistema de riego.png
+M	Modelo de dominio/Modelo de dominio.pu
+
+e7f217e47b5545b744ec9eefe8e7e93adb6c3f90, Modelo de datos Registro histórico climático, redefinido, Sun Nov 3 04:02:48 2019 -0300
+M	app/src/model/ClimateLog.java
+
+11981befddada190bf24d1f07f8e587728ccb391, Módulo Parcela, modificado, Sat Nov 2 19:26:30 2019 -0300
+M	app/etc/persistence/META-INF/persistence.xml
+M	app/etc/sql/deleteAll.sql
+M	app/etc/sql/parcels.sql
+M	app/public/controllers/ParcelCtrl.js
+M	app/public/partials/parcel/parcel-form.html
+M	app/public/partials/parcel/parcel-list.html
+M	app/public/services/ParcelSrv.js
+D	app/src/model/EtLog.java
+M	app/src/model/IrrigationLog.java
+M	app/src/model/MaximumInsolation.java
+M	app/src/model/SolarRadiation.java
+D	app/src/servlet/CoordTime.java
+D	app/src/servlet/IrrigationWaterRestServlet.java
+M	app/src/servlet/ParcelRestServlet.java
+D	app/src/servlet/WeatherRestServlet.java
+D	app/src/stateless/ClimateClient.java
+D	app/src/stateless/ClimateDataExtractor.java
+D	app/src/stateless/ClimateLogService.java
+M	app/src/stateless/ClimateLogServiceBean.java
+M	app/src/stateless/CultivoService.java
+M	app/src/stateless/CultivoServiceBean.java
+D	app/src/stateless/EtLogServiceBean.java
+M	app/src/stateless/LatitudeServiceBean.java
+M	app/src/stateless/MaximumInsolationServiceBean.java
+M	app/src/stateless/ParcelServiceBean.java
+M	app/src/stateless/SolarRadiationServiceBean.java
+D	app/src/stateless/et/ETc.java
+D	app/src/stateless/et/ETo.java
+D	app/src/test/CultivoServiceBeanTest.java
+R071	app/src/testsToDemo/ClimateClientTest.java	app/src/testsPassed/ClimateClientTest.java
+R094	app/src/testsToDemo/ClimateLogServiceBeanTest.java	app/src/testsPassed/ClimateLogServiceBeanTest.java
+R050	app/src/testsToDemo/EToTest.java	app/src/testsPassed/EToTest.java
+A	app/src/testsPassed/KcTest.java
+M	app/src/testsPassed/MaximumInsolationServiceBeanTest.java
+M	app/src/testsPassed/SolarRadiationServiceBeanTest.java
+D	app/src/testsToDemo/ETcTest.java
+D	app/src/testsToDemo/EtLogServiceBeanTest.java
+
+43da8407bef068d57237df3da688867009521f84, Modelo de datos Usuario, añadido, Sat Nov 2 19:20:49 2019 -0300
+A	app/src/model/Usuario.java
+
+83544352d63ca08626613136273fbc171b42eee0, Modelo de datos Parcela, redefinido, Sat Nov 2 19:20:28 2019 -0300
+M	app/src/model/Parcel.java
+
+fe6b92344e8694c14d32355a8f5c03355c2ad027, Modelo de datos Registro histórico climático, redefinido, Sat Nov 2 19:19:12 2019 -0300
+M	app/src/model/ClimateLog.java
+
+b508d1ca65fbde618dc386bb1f40bb64c1f6f8b9, Ruta a biblioteca DigestUtils, añadida, Sat Nov 2 19:17:28 2019 -0300
+M	config/common.properties
+
+b588d9b0845a81ac3740976d4a5fdb1bd5cee75e, Carpetas climate y et añadidas para la compilacion, Sat Nov 2 19:16:19 2019 -0300
+M	config/common.xml
+
+75496882c5d85d8296944fa2142114e77d5ee603, Clases para la ET separadas, Sat Nov 2 19:15:31 2019 -0300
+A	app/src/et/ETc.java
+A	app/src/et/ETo.java
+
+d4c6d900d2abdcb5b4791c979870ab29fd87780d, Clases para la obtención del pronóstico separadas, Sat Nov 2 19:15:02 2019 -0300
+A	app/src/climate/ClimateClient.java
+A	app/src/climate/ClimateDataExtractor.java
+A	app/src/climate/ClimateLogService.java
+
+892ed3d85831354fbe2e1388eff3b64618a66b2d, Modelo de casos de uso creado, Sat Nov 2 19:13:27 2019 -0300
+A	Modelo de casos de uso/MCasos de uso: Sistema de riego.png
+A	Modelo de casos de uso/Modelo de caso de uso.drawio
+
+877e709cfe3676e3691e048a06d84d463a7cbce0, Modelo de dominio creado, Sat Nov 2 19:13:09 2019 -0300
+A	Modelo de dominio/MDominio: Sistema de riego.png
+A	Modelo de dominio/Modelo de dominio.pu
+
+61f3857ffd0717eb935b8788bcd8ab0e1c71b4a8, Servicio externo del cálculo del agua de riego, terminado, Mon Oct 28 00:36:54 2019 -0300
+A	app/src/servlet/IrrigationWaterRestServlet.java
+M	app/src/stateless/CultivoService.java
+M	app/src/stateless/CultivoServiceBean.java
+
+9f4d7cdedb3e9907c67d841a394ff2d809101607, Mód. de obtención y almacenamiento de datos climáticos, terminado, Sun Oct 27 03:07:30 2019 -0300
+M	app/build.xml
+M	app/etc/sql/deleteAll.sql
+A	app/etc/sql/parcels.sql
+M	app/src/model/ClimateLog.java
+M	app/src/model/EtLog.java
+M	app/src/model/Ground.java
+M	app/src/model/IrrigationLog.java
+M	app/src/model/Latitude.java
+M	app/src/model/MaximumInsolation.java
+M	app/src/model/Month.java
+M	app/src/model/Parcel.java
+M	app/src/model/SolarRadiation.java
+M	app/src/model/TypeGround.java
+D	app/src/stateless/AutomaticDataExtractor.java
+A	app/src/stateless/ClimateDataExtractor.java
+M	app/src/stateless/ClimateLogService.java
+M	config/common.xml
+
+7c1ce69b6d1d6d3361462a99752aef128fee321f, Función del cálculo del coeficiente del cultivo (kc) junto son sus pruebas, todo terminado, Sat Oct 26 01:25:37 2019 -0300
+M	app/build.xml
+M	app/etc/persistence/META-INF/persistence.xml
+M	app/etc/sql/deleteAll.sql
+A	app/etc/sql/insertsCultivo.sql
+M	app/etc/sql/irrigationLog.sql
+M	app/etc/sql/maximumInsolation.sql
+M	app/etc/sql/solarRadiation.sql
+M	app/etc/sql/users.sql
+M	app/src/model/ClimateLog.java
+A	app/src/model/Cultivo.java
+M	app/src/stateless/AutomaticDataExtractor.java
+A	app/src/stateless/CultivoService.java
+A	app/src/stateless/CultivoServiceBean.java
+M	app/src/stateless/et/ETc.java
+M	app/src/stateless/et/ETo.java
+A	app/src/test/CultivoServiceBeanTest.java
+D	app/src/test/ETcTest.java
+D	app/src/test/EToTest.java
+A	app/src/testsToDemo/ETcTest.java
+A	app/src/testsToDemo/EToTest.java
+M	config/common.xml
+
+c0fd9a419ef947e01909bfd312785d3a10178d94, Módulo ETc agregado al seguimiento, Thu Oct 24 05:20:50 2019 -0300
+M	app/src/stateless/et/ETc.java
+M	app/src/test/ETcTest.java
+
+06824dc5340a3340f0d32167ca6542c41579755c, Módulos ETo y ETc terminados, módulo de cálculo de riego, terminado, Thu Oct 24 05:18:32 2019 -0300
+M	app/src/model/Parcel.java
+M	app/src/servlet/ParcelRestServlet.java
+A	app/src/stateless/AutomaticDataExtractor.java
+M	app/src/stateless/ParcelServiceBean.java
+A	app/src/stateless/et/ETc.java
+R055	app/src/stateless/ETo.java	app/src/stateless/et/ETo.java
+A	app/src/test/ETcTest.java
+M	app/src/test/EToTest.java
+R100	app/src/test/MaximumInsolationServiceBeanTest.java	app/src/testsPassed/MaximumInsolationServiceBeanTest.java
+R099	app/src/test/SolarRadiationServiceBeanTest.java	app/src/testsPassed/SolarRadiationServiceBeanTest.java
+R100	app/src/test/ClimateClientTest.java	app/src/testsToDemo/ClimateClientTest.java
+R100	app/src/test/ClimateLogServiceBeanTest.java	app/src/testsToDemo/ClimateLogServiceBeanTest.java
+R095	app/src/test/EtLogServiceBeanTest.java	app/src/testsToDemo/EtLogServiceBeanTest.java
+
+77f350a8c2edfc5c3edae9f31660d73b4ebd6a0b, Modelo de datos Registro histórico de evapotranspiración (ET), terminado, Tue Oct 22 01:55:38 2019 -0300
+M	app/etc/persistence/META-INF/persistence.xml
+M	app/etc/sql/deleteAll.sql
+M	app/src/model/ClimateLog.java
+A	app/src/model/EtLog.java
+M	app/src/model/IrrigationLog.java
+A	app/src/stateless/EtLogServiceBean.java
+M	app/src/test/ClimateLogServiceBeanTest.java
+A	app/src/test/EtLogServiceBeanTest.java
+
+e3718912da135ac8cad92ec495b71c90533f29a5, Ref. realizada sobre el módulo de obt. de datos climáticos y modelo de datos Registro histórico del clima, terminado, Tue Oct 22 00:18:58 2019 -0300
+M	README.md
+M	app/etc/persistence/META-INF/persistence.xml
+R096	app/src/model/Forecast.java	app/src/model/ClimateLog.java
+M	app/src/servlet/WeatherRestServlet.java
+M	app/src/stateless/ClimateClient.java
+A	app/src/stateless/ClimateLogService.java
+A	app/src/stateless/ClimateLogServiceBean.java
+D	app/src/stateless/ForecastServiceBean.java
+M	app/src/test/ClimateClientTest.java
+A	app/src/test/ClimateLogServiceBeanTest.java
+
+c0556b7f446f6a4e642cc300cb96702216c8c328, Módulo de obtención de datos climáticos, desplazado, Mon Oct 21 05:35:43 2019 -0300
+M	app/build.xml
+A	app/etc/sql/irrigationLog.sql
+M	app/src/model/Forecast.java
+M	app/src/model/IrrigationLog.java
+M	app/src/model/Month.java
+M	app/src/servlet/ParcelRestServlet.java
+A	app/src/stateless/ClimateClient.java
+M	app/src/stateless/ETo.java
+A	app/src/test/ClimateClientTest.java
+M	app/src/test/EToTest.java
+M	app/src/test/MaximumInsolationServiceBeanTest.java
+M	app/src/test/SolarRadiationServiceBeanTest.java
+M	config/common.properties
+M	config/common.xml
+
+cc9fcf6d1507fba6b363decb17f4a3670abd8a74, Modelo de datos Registro histórico de riego, terminado, Thu Oct 17 18:04:52 2019 -0300
+M	app/etc/persistence/META-INF/persistence.xml
+A	app/src/model/IrrigationLog.java
+A	app/src/servlet/IrrigationLogRestServlet.java
+A	app/src/stateless/IrrigationLogServiceBean.java
+
+5c14b3000f143c39875173477ff846cc3d8eaf99, Cambios faltantes del módulo Parcel, agregados, Thu Oct 17 17:17:05 2019 -0300
+M	app/public/partials/parcel/parcel-list.html
+
+3b47dc810324a15dbb1e921508c08fecf291a24e, Módulos afectados: DayFifteen (eliminado), Parcel (modificado), Thu Oct 17 17:08:12 2019 -0300
+M	app/build.xml
+A	app/etc/sql/users.sql
+M	app/public/controllers/ParcelCtrl.js
+M	app/public/partials/parcel/parcel-form.html
+M	app/public/services/ParcelSrv.js
+D	app/src/model/DayFifteenMonth.java
+M	app/src/model/MaximumInsolation.java
+M	app/src/model/Parcel.java
+M	app/src/model/SolarRadiation.java
+M	app/src/servlet/ParcelRestServlet.java
+D	app/src/stateless/DayFifteenMonthServiceBean.java
+M	app/src/stateless/MaximumInsolationServiceBean.java
+M	app/src/stateless/ParcelServiceBean.java
+M	app/src/stateless/SolarRadiationServiceBean.java
+M	app/src/test/EToTest.java
+M	config/common.xml
+
+0f4629699b73a925f75eb731781a4485ee8d3caf, Tareas para la obtención de agua de riego terminadas - Fin Sprint 3, Tue Oct 15 00:59:20 2019 -0300
+M	app/build.xml
+M	app/etc/persistence/META-INF/persistence.xml
+A	app/etc/sql/deleteAll.sql
+A	app/etc/sql/maximumInsolation.sql
+A	app/etc/sql/solarRadiation.sql
+M	app/etc/sql/typeGroundInserts.sql
+M	app/public/controllers/ParcelCtrl.js
+M	app/public/partials/ground/ground-form.html
+M	app/public/partials/parcel/parcel-form.html
+M	app/public/partials/parcel/parcel-list.html
+A	app/src/model/DayFifteenMonth.java
+A	app/src/model/Latitude.java
+A	app/src/model/MaximumInsolation.java
+A	app/src/model/Month.java
+M	app/src/model/Parcel.java
+A	app/src/model/SolarRadiation.java
+M	app/src/model/TypeGround.java
+M	app/src/servlet/CoordTime.java
+M	app/src/servlet/WeatherRestServlet.java
+A	app/src/stateless/DayFifteenMonthServiceBean.java
+A	app/src/stateless/ETo.java
+A	app/src/stateless/LatitudeServiceBean.java
+A	app/src/stateless/MaximumInsolationServiceBean.java
+A	app/src/stateless/MonthServiceBean.java
+M	app/src/stateless/ParcelServiceBean.java
+A	app/src/stateless/SolarRadiationServiceBean.java
+A	app/src/test/EToTest.java
+A	app/src/test/MaximumInsolationServiceBeanTest.java
+A	app/src/test/SolarRadiationServiceBeanTest.java
+M	config/common.xml
+
+7a1eec4b71bbc2ed49dd831a84ac7cefcb325aea, Parcela y API climática en funcionamiento, Wed Oct 2 23:00:37 2019 -0300
+M	app/build.xml
+M	app/etc/persistence/META-INF/persistence.xml
+A	app/etc/sql/typeGroundInserts.sql
+D	app/public/controllers/FieldCtrl.js
+M	app/public/controllers/ParcelCtrl.js
+R083	app/public/controllers/FieldsCtrl.js	app/public/controllers/ParcelsCtrl.js
+M	app/public/index.html
+M	app/public/module.js
+D	app/public/partials/field/parcel-form.html
+D	app/public/partials/field/parcel-list.html
+M	app/public/partials/ground/ground-form.html
+M	app/public/partials/ground/ground-list.html
+R052	app/public/partials/field/field-form.html	app/public/partials/parcel/parcel-form.html
+R077	app/public/partials/field/field-list.html	app/public/partials/parcel/parcel-list.html
+D	app/public/services/FieldSrv.js
+M	app/public/services/ParcelSrv.js
+D	app/src/model/Field.java
+A	app/src/model/Forecast.java
+M	app/src/model/Ground.java
+M	app/src/model/Parcel.java
+M	app/src/model/TypeGround.java
+A	app/src/servlet/CoordTime.java
+D	app/src/servlet/FieldRestServlet.java
+M	app/src/servlet/ParcelRestServlet.java
+A	app/src/servlet/WeatherRestServlet.java
+D	app/src/stateless/FieldServiceBean.java
+A	app/src/stateless/ForecastServiceBean.java
+M	app/src/stateless/GroundServiceBean.java
+M	app/src/stateless/ParcelServiceBean.java
+M	app/src/stateless/TypeGroundServiceBean.java
+A	app/src/weatherApiClasses/Daily.java
+A	app/src/weatherApiClasses/Datum.java
+A	app/src/weatherApiClasses/Flags.java
+A	app/src/weatherApiClasses/ForecastResponse.java
+M	config/common.properties
+M	config/common.xml
+
+6cc57224664bbc729dfdcebd9791ff68cd0b45bc, Pant. ABMC de Parcela, terminada, Fri Sep 13 14:48:37 2019 -0300
+M	app/etc/persistence/META-INF/persistence.xml
+M	app/public/controllers/FieldCtrl.js
+M	app/public/controllers/FieldsCtrl.js
+M	app/public/controllers/GroundCtrl.js
+M	app/public/controllers/GroundsCtrl.js
+A	app/public/controllers/ParcelCtrl.js
+M	app/public/index.html
+M	app/public/module.js
+M	app/public/partials/field/field-list.html
+M	app/public/partials/field/parcel-form.html
+M	app/public/partials/field/parcel-list.html
+M	app/public/services/FieldSrv.js
+A	app/public/services/ParcelSrv.js
+M	app/src/model/Field.java
+A	app/src/model/Parcel.java
+M	app/src/servlet/FieldRestServlet.java
+A	app/src/servlet/ParcelRestServlet.java
+M	app/src/stateless/FieldServiceBean.java
+A	app/src/stateless/ParcelServiceBean.java
+
+d1d1007ec18ec671c8291513bf7b8596cbfc8c52, Mapa y coords. en funcionamiento, Thu Sep 12 01:18:14 2019 -0300
+A	app/public/controllers/FieldCtrl.js
+A	app/public/controllers/FieldsCtrl.js
+M	app/public/index.html
+M	app/public/module.js
+A	app/public/partials/field/field-form.html
+A	app/public/partials/field/field-list.html
+A	app/public/partials/field/parcel-form.html
+A	app/public/partials/field/parcel-list.html
+A	app/public/services/FieldSrv.js
+A	app/src/model/Field.java
+A	app/src/servlet/FieldRestServlet.java
+A	app/src/stateless/FieldServiceBean.java
+A	public/css/images/layers-2x.png
+A	public/css/images/layers.png
+A	public/css/images/marker-icon-2x.png
+A	public/css/images/marker-icon.png
+A	public/css/images/marker-shadow.png
+A	public/css/leaflet.css
+A	public/js/angular-leaflet-directive.min.js
+A	public/js/leaflet.js
+
+754c3f304118b34f5cb3bef1d33e9daf35479413, Pagination and TypeGround finished, Thu Sep 5 22:51:19 2019 -0300
+M	app/public/controllers/GroundCtrl.js
+M	app/public/controllers/GroundsCtrl.js
+M	app/public/index.html
+M	app/public/module.js
+A	app/public/pagination/js/paginationComp.js
+A	app/public/pagination/js/paginationModule.js
+A	app/public/pagination/js/paginationSrv.js
+A	app/public/pagination/partials/pagination.html
+M	app/public/partials/ground/ground-form.html
+M	app/public/partials/ground/ground-list.html
+M	app/public/services/GroundSrv.js
+A	app/public/services/TypeGroundSrv.js
+M	app/src/servlet/GroundRestServlet.java
+M	app/src/servlet/TypeGroundRestServlet.java
+M	app/src/stateless/GroundServiceBean.java
+A	app/src/stateless/Page.java
+M	app/src/stateless/TypeGroundServiceBean.java
+
+8ca11dccdfcf42a264234144fdde67ee64f95f53, Limpieza de Cache, Wed Sep 4 22:31:10 2019 -0300
+D	app/build/model/META-INF/persistence.xml
+D	app/build/model/model/Ground.class
+D	app/build/model/model/TypeGround.class
+D	app/build/model/stateless/GroundServiceBean.class
+D	app/build/model/stateless/TypeGroundServiceBean.class
+D	app/build/servlet/servlet/GroundRestServlet.class
+D	app/dist/irrigation.war
+D	app/dist/lib/irrigation.jar
+
+6b5db04b2dfc8a9e21705e588af645f75adfc41e, Back TypeGround finished, Wed Sep 4 22:23:39 2019 -0300
+M	.gitignore
+A	app/src/servlet/TypeGroundRestServlet.java
+M	app/src/stateless/TypeGroundServiceBean.java
+
+ff5402ea143929e0b73f7d539aec5a7d9630a752, Front y Back de Suelo terminado, Wed Sep 4 20:57:31 2019 -0300
+A	.gitignore
+A	app/build.xml
+A	app/build/model/META-INF/persistence.xml
+A	app/build/model/model/Ground.class
+A	app/build/model/model/TypeGround.class
+A	app/build/model/stateless/GroundServiceBean.class
+A	app/build/model/stateless/TypeGroundServiceBean.class
+A	app/build/servlet/servlet/GroundRestServlet.class
+A	app/dist/irrigation.war
+A	app/dist/lib/irrigation.jar
+A	app/etc/persistence/META-INF/persistence.xml
+A	app/etc/sql/db.sql
+A	app/etc/web/WEB-INF/web.xml
+A	app/public/controllers/GroundCtrl.js
+A	app/public/controllers/GroundsCtrl.js
+A	app/public/index.html
+A	app/public/module.js
+A	app/public/partials/404.html
+A	app/public/partials/ground/ground-form.html
+A	app/public/partials/ground/ground-list.html
+A	app/public/services/GroundSrv.js
+A	app/src/model/Ground.java
+A	app/src/model/TypeGround.java
+A	app/src/servlet/GroundRestServlet.java
+A	app/src/stateless/GroundServiceBean.java
+A	app/src/stateless/TypeGroundServiceBean.java
+A	build.xml
+A	config/common.properties
+A	config/common.xml
+A	config/pw
+A	lib/eclipselink-jpa-modelgen_2.1.0.qualifier.jar
+A	lib/hamcrest-core-1.3.jar
+A	lib/junit-4.12.jar
+A	lib/readme.txt
+A	public/css/bootstrap.min.css
+A	public/css/starter-template.css
+A	public/fonts/glyphicons-halflings-regular.eot
+A	public/fonts/glyphicons-halflings-regular.svg
+A	public/fonts/glyphicons-halflings-regular.ttf
+A	public/fonts/glyphicons-halflings-regular.woff
+A	public/fonts/glyphicons-halflings-regular.woff2
+A	public/js/angular-resource.min.js
+A	public/js/angular-route.min.js
+A	public/js/angular.min.js
+A	public/js/bootstrap.min.js
+A	public/js/jquery.min.js
+A	public/js/ui-bootstrap-tpls.min.js
+
+6c8ff23037aa524c4874bbdf990f9e5328504f2a, first commit, Mon Aug 26 02:22:15 2019 -0300
+A	README.md

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>115</id>
+		<title>Fix app crash</title>
+		<body>See https://acra.mytfg.de/acralyzer/_design/acralyzer/index.html#/report-details/ibis/1ce2f26e-232a-4241-b49a-70ce4d1a2e2f (e.g.)  ``` android.view.WindowManager$BadTokenException: Unable to add window -- token android.os.BinderProxy@8369f9a is not valid; is your activity running? at android.view.ViewRootImpl.setView(ViewRootImpl.java:562) at android.view.WindowManagerGlobal.addView(WindowManagerGlobal.java:282) at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:85) at android.app.Dialog.show(Dialog.java:298) at de.opencyclecompass.app.android.ShowDataActivity.openAccuracyAlert(ShowDataActivity.java:147) at de.opencyclecompass.app.android.ShowDataActivity.access$300(ShowDataActivity.java:18) at de.opencyclecompass.app.android.ShowDataActivity$1.run(ShowDataActivity.java:58) at android.os.Handler.handleCallback(Handler.java:739) at android.os.Handler.dispatchMessage(Handler.java:95) at android.os.Looper.loop(Looper.java:135) at android.app.ActivityThread.main(ActivityThread.java:5292) at java.lang.reflect.Method.invoke(Native Method) at java.lang.reflect.Method.invoke(Method.java:372) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699) ``` </body>
+		<created>2016-05-12 22:36:23</created>
+		<closed>2016-05-22 11:41:31</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>Index out of bound exception in tracking database</title>
+		<body>https://acra.mytfg.de/acralyzer/_design/acralyzer/index.html#/report-details/ibis/8f21fcbb-24b7-424d-9e3c-74725caa8cf8  ``` java.lang.RuntimeException: Unable to stop service de.mytfg.jufo.ibis.Tracking@39dd5dc0: android.database.CursorIndexOutOfBoundsException: Index 1 requested, with a size of 1 at android.app.ActivityThread.handleStopService(ActivityThread.java:2943) at android.app.ActivityThread.access$2200(ActivityThread.java:148) at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1395) at android.os.Handler.dispatchMessage(Handler.java:102) at android.os.Looper.loop(Looper.java:135) at android.app.ActivityThread.main(ActivityThread.java:5312) at java.lang.reflect.Method.invoke(Native Method) at java.lang.reflect.Method.invoke(Method.java:372) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:901) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:696) Caused by: android.database.CursorIndexOutOfBoundsException: Index 1 requested, with a size of 1 at android.database.AbstractCursor.checkPosition(AbstractCursor.java:426) at android.database.AbstractWindowedCursor.checkPosition(AbstractWindowedCursor.java:136) at android.database.AbstractWindowedCursor.getDouble(AbstractWindowedCursor.java:86) at de.mytfg.jufo.ibis.GPSDatabase.sendToServer(GPSDatabase.java:109) at de.mytfg.jufo.ibis.Tracking.stopOnlineTracking(Tracking.java:218) at de.mytfg.jufo.ibis.Tracking.disconnect(Tracking.java:249) at de.mytfg.jufo.ibis.Tracking.onDestroy(Tracking.java:243) at android.app.ActivityThread.handleStopService(ActivityThread.java:2926) ... 9 more android.database.CursorIndexOutOfBoundsException: Index 1 requested, with a size of 1 at android.database.AbstractCursor.checkPosition(AbstractCursor.java:426) at android.database.AbstractWindowedCursor.checkPosition(AbstractWindowedCursor.java:136) at android.database.AbstractWindowedCursor.getDouble(AbstractWindowedCursor.java:86) at de.mytfg.jufo.ibis.GPSDatabase.sendToServer(GPSDatabase.java:109) at de.mytfg.jufo.ibis.Tracking.stopOnlineTracking(Tracking.java:218) at de.mytfg.jufo.ibis.Tracking.disconnect(Tracking.java:249) at de.mytfg.jufo.ibis.Tracking.onDestroy(Tracking.java:243) at android.app.ActivityThread.handleStopService(ActivityThread.java:2926) at android.app.ActivityThread.access$2200(ActivityThread.java:148) at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1395) at android.os.Handler.dispatchMessage(Handler.java:102) at android.os.Looper.loop(Looper.java:135) at android.app.ActivityThread.main(ActivityThread.java:5312) at java.lang.reflect.Method.invoke(Native Method) at java.lang.reflect.Method.invoke(Method.java:372) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:901) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:696) ``` </body>
+		<created>2015-09-27 11:04:36</created>
+		<closed>2015-11-15 21:16:36</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>Typo in MainActivity</title>
+		<body>"Willkommen"  _This issue was migrated from GitLab. Original author is Raphael Lehmann._ _It was originally created 2015-05-03 15:40._ </body>
+		<created>2015-08-27 11:16:35</created>
+		<closed>2015-09-07 18:28:33</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>MainActivity scrollable</title>
+		<body>Die MainActivity muss scrollable gemacht werden, damit auch auf kleinen Displays alles angezeigt wird.  _This issue was migrated from GitLab. Original author is Raphael Lehmann._ _It was originally created 2015-04-07 21:05._ </body>
+		<created>2015-08-27 11:16:27</created>
+		<closed>2015-09-07 18:28:33</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>Upload: Token kann nicht verifiziert werden</title>
+		<body>Bei dieser Fehlermeldung wird der Button zum neu generieren eines Tokens nicht freigeschaltet.  _This issue was migrated from GitLab. Original author is Raphael Lehmann._ _It was originally created 2015-03-27 13:47._ </body>
+		<created>2015-08-27 11:16:02</created>
+		<closed>2015-08-27 11:16:02</closed>
+	</bug>
+	<bug>
+		<id>71</id>
+		<title>Geschewindigkeitsanzeige</title>
+		<body>Die Geschwindigkeit wird erst ab 5,2km/h (2 m/s) angezeigt. Sollte behoben werden.  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-03-21 08:54._ </body>
+		<created>2015-08-27 11:15:21</created>
+		<closed>2015-08-27 11:15:21</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>Mehrfacher Upload möglich</title>
+		<body>Mehfacher Upload ist möglich, wenn man nach dem Hochladen den token neu generiert. Bei erfolgreichem Upload sollte der Token-Button disablet werden.   _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-03-18 07:26._ </body>
+		<created>2015-08-27 11:14:39</created>
+		<closed>2015-08-27 11:14:39</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>Overlays fehlen</title>
+		<body>Overlays fehlen, die Kontrollkästchen sind aber in den Settings standartmäßig gesetzt.  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-03-16 17:04._ </body>
+		<created>2015-08-27 11:14:23</created>
+		<closed>2015-08-27 11:14:23</closed>
+	</bug>
+	<bug>
+		<id>63</id>
+		<title>Check for Google Play Services APK</title>
+		<body>Beispiel: (https://developer.android.com/google/gcm/client.html)  ``` private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000; ... @Override public void onCreate(Bundle savedInstanceState) {     super.onCreate(savedInstanceState);      setContentView(R.layout.main);     mDisplay = (TextView) findViewById(R.id.display);      context = getApplicationContext();      // Check device for Play Services APK.     if (checkPlayServices()) {         // If this check succeeds, proceed with normal processing.         // Otherwise, prompt user to get valid Play Services APK.         ...     } }  // You need to do the Play Services APK check here too. @Override protected void onResume() {     super.onResume();     checkPlayServices(); }  /**  * Check the device to make sure it has the Google Play Services APK. If  * it doesn't, display a dialog that allows users to download the APK from  * the Google Play Store or enable it in the device's system settings.  */ private boolean checkPlayServices() {     int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);     if (resultCode != ConnectionResult.SUCCESS) {         if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {             GooglePlayServicesUtil.getErrorDialog(resultCode, this,                     PLAY_SERVICES_RESOLUTION_REQUEST).show();         } else {             Log.i(TAG, "This device is not supported.");             finish();         }         return false;     }     return true; } ```  _This issue was migrated from GitLab. Original author is Raphael Lehmann._ _It was originally created 2015-03-14 23:45._ </body>
+		<created>2015-08-27 11:14:15</created>
+		<closed>2016-05-12 13:32:29</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>Tracking beendet sich scheinbar zufällig</title>
+		<body>Grund ist mir nicht bekannt, da ich das Smartphone idR in der Tasche habe.  _This issue was migrated from GitLab. Original author is Raphael Lehmann._ _It was originally created 2015-03-10 13:40._ </body>
+		<created>2015-08-27 11:13:58</created>
+		<closed>2015-08-27 11:13:58</closed>
+	</bug>
+	<bug>
+		<id>56</id>
+		<title>Delete RDB beim Generieren einer neuen Route</title>
+		<body>Beim Erstellen einer neuen Route sollte die Datenbank gelöscht werden, wenn vorhanden.  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-03-03 13:58._ </body>
+		<created>2015-08-27 11:13:17</created>
+		<closed>2015-08-27 11:13:17</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>Notification bleibt auch bei beendeter App</title>
+		<body>Notification bleibt auch bei beendeter App, beim Klick auf beenden beginnt das Handy GPS zu suchen  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-03-02 21:00._ </body>
+		<created>2015-08-27 11:12:34</created>
+		<closed>2016-05-13 08:18:22</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>Infinity Wert</title>
+		<body>in den avg. Boxen steht öfters "Infinity" km/h, bzw. "-Infinity km/h"  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-03-02 20:40._ </body>
+		<created>2015-08-27 11:12:18</created>
+		<closed>2015-08-27 11:12:18</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>scheinbar random crash durch I/O exc der GPSDatabase</title>
+		<body>Scheinbar zufällig entsteht ein "android.database.sqlite.SQLiteDiskIOException: disk I/O error". Vermutlich wird an irgend einer stelle die ddatenbank nicht richtig geschlossenn oder geöffnet.   _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-03-02 19:07._ </body>
+		<created>2015-08-27 11:12:01</created>
+		<closed>2015-08-27 11:12:01</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>Reset Infoboxen</title>
+		<body>Beim Neustart der ShowDataActivity müssen auch die Werte, wie gefahrene Strecke geresetet werden.  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-03-02 18:51._ </body>
+		<created>2015-08-27 11:11:53</created>
+		<closed>2015-08-27 11:11:53</closed>
+	</bug>
+	<bug>
+		<id>41</id>
+		<title>RoutingActivity Initialisierung</title>
+		<body>Beim starten der RoutingActivity sind alle Textfelder aktiv solange der Schalter "Streckenlänge manuell eingeben" noch nie betätigt wurde.  _This issue was migrated from GitLab. Original author is Raphael Lehmann._ _It was originally created 2015-03-01 21:23._ </body>
+		<created>2015-08-27 11:11:11</created>
+		<closed>2015-08-27 11:11:12</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>Crash bei nicht gesetzter CBCollectData</title>
+		<body>Bei nicht gesetzter CBCollectData stürzt die App ab.  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-02-25 21:47._ </body>
+		<created>2015-08-27 11:10:39</created>
+		<closed>2015-08-27 11:10:39</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>Database on upgrade</title>
+		<body>Die onUpgrade der Databaseklassen mit Inhalt füllen  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-02-25 16:08._ </body>
+		<created>2015-08-27 11:10:30</created>
+		<closed>2015-08-27 11:10:30</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>Notification Button "anzeigen" führt zu crash</title>
+		<body>Beim Klicken auf den Notification Button "anzeigen" folgt ein Crash.  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-02-13 09:54._ </body>
+		<created>2015-08-27 11:09:39</created>
+		<closed>2015-08-27 11:09:40</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>Upload Schalter Öffentlich</title>
+		<body>Der Schalter in Upload, um den Track öffentlich zu machen, funktioniert zum Teil nciht, außerdem wird der schalter im OnCreate nicht auf den letzten Zustand (gespeichert in den UserPrefs) gesetzt.  _This issue was migrated from GitLab. Original author is Raphael Lehmann._ _It was originally created 2015-02-13 09:24._ </body>
+		<created>2015-08-27 11:09:31</created>
+		<closed>2015-08-27 11:09:31</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>accuracy alert popup</title>
+		<body>Das erste alert Popup muss beendet werden, bevor das 2. gestartet wird, oder beides muss sinnvol in ein Popup verpackt werden. Die km-Angaben müssen gerundet werden.  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-02-12 15:58._ </body>
+		<created>2015-08-27 11:09:22</created>
+		<closed>2015-08-27 11:09:23</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>UploadActivity scrollbar machen</title>
+		<body>UploadActivity scrollbar machen, da auf manchen Geräten mit kleinem Display oder großer Schrift die unteren Buttons abgeschnitten werden.  _This issue was migrated from GitLab. Original author is Raphael Lehmann._ _It was originally created 2015-02-12 08:39._ </body>
+		<created>2015-08-27 11:08:58</created>
+		<closed>2015-08-27 11:08:58</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>UploadActivity wird immer beim schließen der ShowDataActivity aufgerufen</title>
+		<body>Die UploadActivity wird immer beim Schließen der ShowDataActivity aufgerufen. Auch, wenn überhaupt kein Track aufgezeichnet wurde oder beim unfreiwilligen Beenden der Activity durch Fehler. Dies solle vermieden werden.  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-02-09 22:32._ </body>
+		<created>2015-08-27 11:08:24</created>
+		<closed>2015-08-27 11:08:24</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>Tracking Lifecycle</title>
+		<body>Der Lifecycle der Tracking Klasse (Service) ist nicht optimal und produziert eine Reihe von Fehlern. Wir sollten überlegen und festhalten wie der Tracking Service laufen soll: - Wann werden Daten zu Upload gesammelt? - Wann werden Daten nur zur internen Verwendung gesammelt? - Wie wird dies den Service mitgeteilt? - Der Tracking Service sollte den Nutzer eindeutig zeigen ob und in welchen Modus er läuft. (z.B. onGoing Notification in onCreate() und erst in onDestroy() beenden)  _This issue was migrated from GitLab. Original author is Raphael Lehmann._ _It was originally created 2015-01-07 23:11._ </body>
+		<created>2015-08-26 23:15:19</created>
+		<closed>2015-08-26 23:15:20</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>Track wird auch hochgeladen, wenn online tracking deaktiviert ist</title>
+		<body>Track wird auch hochgeladen, wenn online tracking deaktiviert ist. Die Message während des trackens ist nicht vorhanden, die Message, dass der Track hochgeladen wurde allerdings schon.  _This issue was migrated from GitLab. Original author is Leonard Rapp._ _It was originally created 2015-01-07 17:28._ </body>
+		<created>2015-08-26 23:15:08</created>
+		<closed>2015-08-26 23:15:09</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="decider-android">
+	<bug id="92" opendate="2015-07-24 18:47:54" fixdate="2015-07-25 19:28:14">
+		<buginformation>
+			<summary>Перезапрос юзера</summary>
+			<description>Если запустить приложение без интернета, затем включить интернет, то юзер в дровере не появится. Надо либо как-то перезапрашивать в цикле, либо может есть событие какое-нибудь, связанное с восстановлением соединения </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gcm/data/DebugPush.java</file>
+			<file>app/src/main/java/org/techteam/decider/gcm/data/PushParser.java</file>
+			<file>app/src/main/java/org/techteam/decider/misc/NetworkStateReceiver.java</file>
+			<file>app/src/main/java/org/techteam/decider/gcm/data/PushCode.java</file>
+			<file>app/src/main/java/org/techteam/decider/gcm/DeciderGcmListenerService.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/CategoriesGetProcessor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="91" opendate="2015-07-24 16:05:22" fixdate="2015-07-26 12:54:55">
+		<buginformation>
+			<summary>Неправильный часовый пояс у дат создания</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/QuestionsListFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/PostView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/QuestionView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="83" opendate="2015-07-23 21:41:05" fixdate="2015-07-25 16:57:40">
+		<buginformation>
+			<summary>Зайти через ВК, выйти и зайти через ВК</summary>
+			<description>```     Process: org.techteam.decider, PID: 28407     java.lang.NullPointerException: Attempt to invoke virtual method 'void android.content.BroadcastReceiver.onReceive(android.content.Context, android.content.Intent)' on a null object reference             at android.support.v4.content.LocalBroadcastManager.executePendingBroadcasts(LocalBroadcastManager.java:297)             at android.support.v4.content.LocalBroadcastManager.access$000(LocalBroadcastManager.java:46)             at android.support.v4.content.LocalBroadcastManager$1.handleMessage(LocalBroadcastManager.java:116)             at android.os.Handler.dispatchMessage(Handler.java:102)             at android.os.Looper.loop(Looper.java:211)             at android.app.ActivityThread.main(ActivityThread.java:5321)             at java.lang.reflect.Method.invoke(Native Method)             at java.lang.reflect.Method.invoke(Method.java:372)             at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1016)             at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:811) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/rest/api/ApiUI.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/lib/AuthTokenGetter.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AddQuestionActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/QuestionsListFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/QuestionView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AuthActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/auth/CanceledAccountManagerFuture.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/content/entities/CategoryEntry.java</file>
+			<file>app/src/main/java/org/techteam/decider/auth/AccountAuthenticator.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/QuestionDetailsActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/EditProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ToolbarActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service_helper/ServiceHelper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="80" opendate="2015-07-23 13:43:23" fixdate="2015-07-23 15:34:07">
+		<buginformation>
+			<summary>Картинка в редактировании профиля пропадает при повороте экрана</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/EditProfileActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2015-07-21 20:27:28" fixdate="2015-07-22 11:55:32">
+		<buginformation>
+			<summary>Edit пользователя не сохраняется при перевороте экрана и делает ненужные запросы на сервер для загрузки данных</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/EditProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/GenderInfo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="73" opendate="2015-07-21 17:25:20" fixdate="2015-07-22 17:13:10">
+		<buginformation>
+			<summary>ProgressDialog'и  должны быть отменяемы по нажатию Назад</summary>
+			<description>И возможно связанные с ними действия тоже </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/EditProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AddQuestionActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="72" opendate="2015-07-21 17:10:02" fixdate="2015-07-21 17:41:10">
+		<buginformation>
+			<summary> java.lang.NullPointerException: Attempt to invoke virtual method 'void com.mikepenz.materialdrawer.Drawer.resetDrawerContent()' on a null object reference</summary>
+			<description>При нажатии на картинку в дровере </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/MainFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="69" opendate="2015-07-21 13:27:38" fixdate="2015-07-21 13:34:24">
+		<buginformation>
+			<summary>Баг с отображением аватарок</summary>
+			<description>В процессе скролла меняются у юзеров </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/views/QuestionView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/CommentView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="68" opendate="2015-07-21 11:19:17" fixdate="2015-07-21 13:41:38">
+		<buginformation>
+			<summary>Убрать возможность редактирования чужого профиля</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ProfileActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="66" opendate="2015-07-20 16:42:04" fixdate="2015-07-20 20:36:47">
+		<buginformation>
+			<summary>Из авторизационного активити можно попасть Назад в главное</summary>
+			<description>что есть UB </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="62" opendate="2015-07-20 13:44:16" fixdate="2015-07-20 14:51:35">
+		<buginformation>
+			<summary>Реализовать функционально кнопки лайка и голосвания в QuestionDetailsActivity</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/adapters/CommentsListAdapter.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/QuestionDetailsActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/QuestionView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2015-07-20 11:44:47" fixdate="2015-07-23 20:03:51">
+		<buginformation>
+			<summary>Проблемы со списками постов. Неопределенное поведение.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/MainFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/UserEditProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/QuestionsListFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/LoginRegisterProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/util/CacheHelper.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/UserGetProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/adapters/QuestionsListAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2015-07-20 09:17:53" fixdate="2015-07-20 11:01:55">
+		<buginformation>
+			<summary>Добавить обновление подсветки выбранного варианта в poll'е и изменение счетчика голосов</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/loaders/LoadIntention.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/PollVoteProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/QuestionsListFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/PollItemView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/PollView.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service/ServiceIntentBuilder.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service_helper/ServiceHelper.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/api/PollVoteRequest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="58" opendate="2015-07-19 14:41:45" fixdate="2015-07-19 14:49:58">
+		<buginformation>
+			<summary>Брать userId из AccountManager, а не из настроек</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/rest/api/ApiUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="57" opendate="2015-07-19 14:31:11" fixdate="2015-07-19 15:24:40">
+		<buginformation>
+			<summary>Добавить обработки ошибок сервера (например, 500)</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/UserEditProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/api/ServerErrorException.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/QuestionDetailsActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/CommentCreateProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AddQuestionActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/ImageUploadProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/QuestionsListFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/CommentsGetProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/QuestionCreateProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/EditProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/CategoriesGetProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/MainFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/PollVoteProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service_helper/ServiceCallback.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/LoginRegisterProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/api/ApiUI.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/UserGetProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/QuestionsGetProcessor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="53" opendate="2015-07-18 21:38:38" fixdate="2015-07-19 09:58:49">
+		<buginformation>
+			<summary>CommentsAdapter игнорит типы entry</summary>
+			<description>Должен вызываться getItemType(position), курсор должен начать отдавать комменты только для  VIEW_TYPE_ENTRY (т.е. все, кроме 0, и getCount()). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/adapters/CommentsListAdapter.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/loaders/CommentsLoader.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/adapters/CursorRecyclerViewAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="52" opendate="2015-07-18 20:42:28" fixdate="2015-07-19 10:12:24">
+		<buginformation>
+			<summary>Все null'ы приходят из БД в виде строк</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/content/entities/UserEntry.java</file>
+			<file>app/src/main/java/org/techteam/decider/content/entities/PollItemEntry.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="51" opendate="2015-07-18 20:05:53" fixdate="2015-07-18 20:06:26">
+		<buginformation>
+			<summary>У Loader'а комментариев не выполняется onLoadFinished</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/QuestionDetailsActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="48" opendate="2015-07-18 17:15:53" fixdate="2015-07-18 17:50:07">
+		<buginformation>
+			<summary>В ProfileActivity необходимо ходить за информацией на сервер</summary>
+			<description>Это решит проблему отсутствия данных при регистрации через соц сеть, а также это в принципе полезно делать, т.к. пользователь может изменить данные на любом устройстве. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/rest/api/ApiUI.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/OperationType.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service/DeciderService.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service_helper/ServiceCallback.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service/ServiceIntentBuilder.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/GetUserProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/QuestionDetailsActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service_helper/ServiceHelper.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/api/GetUserRequest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="46" opendate="2015-07-18 15:30:03" fixdate="2015-07-18 19:18:17">
+		<buginformation>
+			<summary>Падение на entry == null в загрузке комментов после создания комментария</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/CreateCommentProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/CreateQuestionProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/QuestionDetailsActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/content/entities/CommentEntry.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="43" opendate="2015-07-18 11:44:21" fixdate="2015-07-21 10:58:25">
+		<buginformation>
+			<summary>Кнопка назад в Toolbar не работает в новоиспечённых активити</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AddQuestionActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/PreviewImageActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/SocialLoginActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/QuestionDetailsActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/EditProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ToolbarActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="41" opendate="2015-07-18 11:19:10" fixdate="2015-07-18 17:14:25">
+		<buginformation>
+			<summary>apiUI.getCurrentUserId() отдаёт null для VK'шного юзера</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/rest/api/ApiUI.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service_helper/ServiceCallback.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/LoginRegisterProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AuthActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/SocialLoginActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/auth/AccountAuthenticator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2015-07-18 11:02:51" fixdate="2015-07-18 12:09:58">
+		<buginformation>
+			<summary>AuthActivity не показывается, если удалить вручную аккаунт из настроек и попытаться выполнить какой-либо запрос</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/rest/api/ApiUI.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/CreateQuestionProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/MainFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AddQuestionActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/GetCategoriesProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/PollVoteProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/GetQuestionsProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/QuestionsListFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/CreateCommentProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/GetCommentsProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/service_helper/ServiceCallback.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AuthTokenGetter.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/processors/UploadImageProcessor.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/lib/IAuthTokenGetter.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/QuestionDetailsActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="39" opendate="2015-07-17 20:04:14" fixdate="2015-07-18 17:57:44">
+		<buginformation>
+			<summary>Обеспечить совместимость с android версии &lt; 5.0</summary>
+			<description>``` 07-17 22:45:12.374 9465-9465/org.techteam.decider E/AndroidRuntime﹕ FATAL EXCEPTION: main Process: org.techteam.decider, PID: 9465 java.lang.ClassCastException: android.graphics.drawable.ColorDrawable cannot be cast to android.support.v7.widget.RoundRectDrawableWithShadow at android.support.v7.widget.CardViewEclairMr1.getShadowBackground(CardViewEclairMr1.java:159) at android.support.v7.widget.CardViewEclairMr1.getMinWidth(CardViewEclairMr1.java:150) at android.support.v7.widget.CardView.onMeasure(CardView.java:181) at android.view.View.measure(View.java:17387) at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5352) at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) at android.view.View.measure(View.java:17387) at android.widget.LinearLayout.measureHorizontal(LinearLayout.java:1237) at android.widget.LinearLayout.onMeasure(LinearLayout.java:590) at android.view.View.measure(View.java:17387) at android.widget.RelativeLayout.measureChildHorizontal(RelativeLayout.java:719) at android.widget.RelativeLayout.onMeasure(RelativeLayout.java:455) at android.view.View.measure(View.java:17387) at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5352) at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) at android.view.View.measure(View.java:17387) at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5352) at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) at android.support.v7.widget.CardView.onMeasure(CardView.java:196) at android.view.View.measure(View.java:17387) at android.support.v7.widget.RecyclerView$LayoutManager.measureChildWithMargins(RecyclerView.java:5857) at android.support.v7.widget.LinearLayoutManager.layoutChunk(LinearLayoutManager.java:1337) at android.support.v7.widget.LinearLayoutManager.fill(LinearLayoutManager.java:1274) at android.support.v7.widget.LinearLayoutManager.onLayoutChildren(LinearLayoutManager.java:525) at android.support.v7.widget.RecyclerView.dispatchLayout(RecyclerView.java:2118) at android.support.v7.widget.RecyclerView.onLayout(RecyclerView.java:2415) at android.view.View.layout(View.java:15655) at android.view.ViewGroup.layout(ViewGroup.java:4856) at android.support.v4.widget.SwipeRefreshLayout.onLayout(SwipeRefreshLayout.java:562) at android.view.View.layout(View.java:15655) at android.view.ViewGroup.layout(ViewGroup.java:4856) at android.support.v4.view.ViewPager.onLayout(ViewPager.java:1593) at android.view.View.layout(View.java:15655) at android.view.ViewGroup.layout(ViewGroup.java:4856) at android.widget.RelativeLayout.onLayout(RelativeLayout.java:1055) at android.view.View.layout(View.java:15655) at android.view.ViewGroup.layout(ViewGroup.java:4856) at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453) at android.widget.FrameLayout.onLayout(FrameLayout.java:388) at android.view.View.layout(View.java:15655) at android.view.ViewGroup.layout(ViewGroup.java:4856) at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1677) at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1531) at android.widget.LinearLayout.onLayout(LinearLayout.java:1440) at android.view.View.layout(View.java:15655) at android.view.ViewGroup.layout(ViewGroup.java:4856) at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453) at android.widget.FrameLayout.onLayout(FrameLayout.java:388) at android.view.View.layout(View.java:15655) at android.view.ViewGroup.layout(ViewGroup.java:4856) at android.support.v4.widget.DrawerLayout.onLayout(DrawerLayout.java:907) at android.view.View.layout(View.java:15655) at android.view.ViewGroup.layout(ViewGroup.java:4856) at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453) at android.widget.FrameLayout.onLayout(FrameLayout.java:388) at android.view.View.layout(View.java:15655) at ```  ``` 07-17 22:54:32.400 12878-12878/org.techteam.decider I/dalvikvm﹕ Could not find method android.content.res.TypedArray.getChangingConfigurations, referenced from method android.support.v7.internal.widget.TintTypedArray.getChangingConfigurations 07-17 22:54:32.400 12878-12878/org.techteam.decider W/dalvikvm﹕ VFY: unable to resolve virtual method 700: Landroid/content/res/TypedArray;.getChangingConfigurations ()I 07-17 22:54:32.400 12878-12878/org.techteam.decider D/dalvikvm﹕ VFY: replacing opcode 0x6e at 0x0002 07-17 22:54:32.400 12878-12878/org.techteam.decider I/dalvikvm﹕ Could not find method android.content.res.TypedArray.getType, referenced from method android.support.v7.internal.widget.TintTypedArray.getType 07-17 22:54:32.410 12878-12878/org.techteam.decider W/dalvikvm﹕ VFY: unable to resolve virtual method 722: Landroid/content/res/TypedArray;.getType (I)I 07-17 22:54:32.410 12878-12878/org.techteam.decider D/dalvikvm﹕ VFY: replacing opcode 0x6e at 0x0002 07-17 22:54:32.560 12878-12878/org.techteam.decider W/dalvikvm﹕ Unable to resolve superclass of Lcom/mikepenz/materialdrawer/view/BezelImageView$CustomOutline; (1901) 07-17 22:54:32.560 12878-12878/org.techteam.decider W/dalvikvm﹕ Link of class 'Lcom/mikepenz/materialdrawer/view/BezelImageView$CustomOutline;' failed 07-17 22:54:32.560 12878-12878/org.techteam.decider E/dalvikvm﹕ Could not find class 'com.mikepenz.materialdrawer.view.BezelImageView$CustomOutline', referenced from method com.mikepenz.materialdrawer.view.BezelImageView.onSizeChanged 07-17 22:54:32.560 12878-12878/org.techteam.decider W/dalvikvm﹕ VFY: unable to resolve new-instance 7352 (Lcom/mikepenz/materialdrawer/view/BezelImageView$CustomOutline;) in Lcom/mikepenz/materialdrawer/view/BezelImageView; 07-17 22:54:32.560 12878-12878/org.techteam.decider D/dalvikvm﹕ VFY: replacing opcode 0x22 at 0x0006 07-17 22:54:32.560 12878-12878/org.techteam.decider W/dalvikvm﹕ Unable to resolve superclass of Lcom/mikepenz/materialdrawer/view/BezelImageView$CustomOutline; (1901) 07-17 22:54:32.560 12878-12878/org.techteam.decider W/dalvikvm﹕ Link of class 'Lcom/mikepenz/materialdrawer/view/BezelImageView$CustomOutline;' failed 07-17 22:54:32.560 12878-12878/org.techteam.decider D/dalvikvm﹕ DexOpt: unable to opt direct call 0xc5b9 at 0x08 in Lcom/mikepenz/materialdrawer/view/BezelImageView;.onSizeChanged 07-17 22:54:32.610 12878-12878/org.techteam.decider I/dalvikvm﹕ Could not find method android.content.res.Resources.getDrawable, referenced from method com.mikepenz.materialdrawer.util.UIUtils.getCompatDrawable ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/views/PollItemView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="34" opendate="2015-07-17 13:22:44" fixdate="2015-07-18 21:35:48">
+		<buginformation>
+			<summary>Отображать аватарку, имя пользователя и дату в ленте постов</summary>
+			<description>щас там плэйсхолдеры </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/loaders/CommentsLoader.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/CommentView.java</file>
+			<file>app/src/main/java/org/techteam/decider/util/ImageLoaderInitializer.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/PollItemView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/QuestionView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/adapters/CommentsListAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2015-07-17 13:11:41" fixdate="2015-07-18 11:48:00">
+		<buginformation>
+			<summary>Фрагмент с профилем пропускает клики насквозь, позволяя за что-то в фоне голосовать</summary>
+			<description>ещё больше любви к фрагментам </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/views/CommentView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/QuestionView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/ProfileActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/EditProfileActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2015-07-16 18:03:38" fixdate="2015-07-20 16:11:35">
+		<buginformation>
+			<summary>Отображать текущую учётку в дровере</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2015-07-16 17:13:11" fixdate="2015-07-16 19:31:44">
+		<buginformation>
+			<summary>Создание вопроса. Баг с выбором картинки.</summary>
+			<description>При повторном выборе картинки выбирается старая картинка. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/util/image_selector/ImageSelector.java</file>
+			<file>app/src/main/java/org/techteam/decider/rest/api/ApiUI.java</file>
+			<file>app/src/main/java/org/techteam/decider/auth/AccountAuthenticator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2015-07-16 12:21:09" fixdate="2015-07-16 16:24:10">
+		<buginformation>
+			<summary>Создание вопроса. Данные не сохраняются при перевороте экрана.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/AddQuestionFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/content/question/QuestionData.java</file>
+			<file>app/src/main/java/org/techteam/decider/content/question/ImageData.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/MainFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="15" opendate="2015-07-13 12:35:09" fixdate="2015-07-17 15:27:33">
+		<buginformation>
+			<summary>Отсутствует скролл при создании вопроса</summary>
+			<description>Похожая проблема на #9. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AddQuestionActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="14" opendate="2015-07-13 12:08:51" fixdate="2015-07-13 12:27:02">
+		<buginformation>
+			<summary>При повороте экрана на странице вопроса приложение падает (entry == null)</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/QuestionDetailsFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="9" opendate="2015-07-12 11:16:33" fixdate="2015-07-18 14:56:51">
+		<buginformation>
+			<summary>Отсутствует скролл при создании коммента</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/MainFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/AddQuestionActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/fragments/QuestionsListFragment.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/MainActivity.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/PollItemView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/views/QuestionView.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/adapters/CommentsListAdapter.java</file>
+			<file>app/src/main/java/org/techteam/decider/gui/activities/QuestionDetailsActivity.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

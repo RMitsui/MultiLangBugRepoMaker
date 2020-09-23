@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="druid">
+	<bug id="2489" opendate="2018-04-13 08:34:09" fixdate="2018-05-27 13:30:05">
+		<buginformation>
+			<summary>语法解析，DB2 建表语句解析失败</summary>
+			<description>版本：1.1.9 语句： ` SQLUtils.parseStatements(" CREATE TABLE AUDIT.test ( ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1 ))", JdbcConstants.DB2); ` 异常信息： `Exception in thread "main" com.alibaba.druid.sql.parser.ParserException: syntax error, error in :'NULL GENERATED ALWAYS AS IDENTITY (', expect RPAREN, actual IDENTIFIER pos 56, line 1, column 47, token IDENTIFIER GENERATED at com.alibaba.druid.sql.parser.SQLParser.printError(SQLParser.java:284) at com.alibaba.druid.sql.parser.SQLParser.accept(SQLParser.java:292) at com.alibaba.druid.sql.dialect.db2.parser.DB2CreateTableParser.parseCreateTable(DB2CreateTableParser.java:113) at com.alibaba.druid.sql.parser.SQLStatementParser.parseCreate(SQLStatementParser.java:2025) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:161) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:72) at com.alibaba.druid.sql.SQLUtils.parseStatements(SQLUtils.java:464)` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/db2/visitor/DB2OutputVisitor.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/SQLASTVisitorAdapter.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/SQLASTOutputVisitor.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/SQLASTVisitor.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/ast/expr/SQLAggregateExpr.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/postgresql/select/PGSelectTest71_window.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/ast/statement/SQLColumnDefinition.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/db2/parser/DB2CreateTableParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/db2/DB2CreateTableTest_06.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/postgresql/parser/PGSelectParser.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLExprParser.java</file>
+			<file>src/main/java/com/alibaba/druid/util/FnvHash.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/ast/SQLWindow.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/db2/parser/DB2ExprParser.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLSelectParser.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2487" opendate="2018-04-13 08:21:42" fixdate="2018-05-27 13:30:00">
+		<buginformation>
+			<summary>语法解析，DB2 不支持 SELECT INTO</summary>
+			<description>版本1.1.9 如下语句解析出错 `SQLUtils.parseStatements("SELECT * INTO Persons_backup FROM Persons", JdbcConstants.DB2);` 异常 `Exception in thread "main" com.alibaba.druid.sql.parser.ParserException: syntax error, error in :'CT * INTO Persons_backup FROM Perso', expect INTO, actual INTO pos 13, line 1, column 9, token INTO at com.alibaba.druid.sql.parser.SQLParser.printError(SQLParser.java:284) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:423) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:72) at com.alibaba.druid.sql.SQLUtils.parseStatements(SQLUtils.java:464)`</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/db2/DB2SelectTest_34.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/db2/parser/DB2SelectParser.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2388" opendate="2018-03-08 09:50:45" fixdate="2018-03-11 14:46:08">
+		<buginformation>
+			<summary>字符'\'解析问题</summary>
+			<description>版本:1.1.8 描述：   在字符'\\'之后一位的字符如果不能和'\\'形成转义会丢失 举例：    INSERT INTO SUNTEST(ID,NAME) VALUES(1,'\\_ASDFASDF') 在通过 解析器解析之后会变成   INSERT INTO SUNTEST(ID,NAME) VALUES(1,'_ASDFASDF')</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/insert/MySqlInsertTest_26_special.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/Lexer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2337" opendate="2018-02-12 01:37:53" fixdate="2018-03-11 14:45:10">
+		<buginformation>
+			<summary>REVOKE语句输出出错</summary>
+			<description>输出为ROVOKE了</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/visitor/SQLASTOutputVisitor.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/MySqlRevokeTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2251" opendate="2018-01-11 09:11:02" fixdate="2018-02-04 07:49:46">
+		<buginformation>
+			<summary>解析mysql重命名索引语句报错</summary>
+			<description>sql： ``` alter table test.table rename index idx_status to idx_status_2 ```  exception： ``` com.alibaba.druid.sql.parser.ParserException: error pos 35, line 1, column 30, token INDEX at com.alibaba.druid.sql.parser.SQLExprParser.name(SQLExprParser.java:1081) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseAlterTable(MySqlStatementParser.java:2651) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseAlter(MySqlStatementParser.java:2429) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:185) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:78) at com.alibaba.druid.sql.SQLUtils.parseStatements(SQLUtils.java:419) at name.jacktang.JsqlparserTest.parse(JsqlparserTest.java:31) at name.jacktang.JsqlparserTest.access$000(JsqlparserTest.java:17) at name.jacktang.JsqlparserTest$1.load(JsqlparserTest.java:24) at name.jacktang.JsqlparserTest$1.load(JsqlparserTest.java:21) at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3522) at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2315) at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2278) at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2193) ... 4 more ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/alter/MySqlAlterTableTest34_renameIndex.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2118" opendate="2017-11-20 05:44:53" fixdate="2017-12-01 14:23:42">
+		<buginformation>
+			<summary>SQLSERVER 不能使用MERGE语法</summary>
+			<description>jdbc方式正常，为什么druid会报错呢 mybatis+druid 1.1.5报错。jdbcTemplate+hikariCP没问题，NaviCat运行没问题。 MERGE INTO tb_device_category t1 USING ( select distinct device_category, factory_id from temp_device where device_category is not null ) t2  on (t1.name = t2.device_category and t1.factory_id = t2.factory_id) WHEN NOT MATCHED THEN     INSERT (name, factory_id) values (t2.device_category, t2.factory_id);</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/util/FnvHash.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/sqlserver/parser/SQLServerLexer.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLStatementParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/sqlserver/SQLServerMerge_0.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2065" opendate="2017-10-26 08:31:08" fixdate="2017-10-27 15:24:12">
+		<buginformation>
+			<summary>不能解析DDL语句中的CHECK 和 FOREIGN KEY </summary>
+			<description>``` CREATE TABLE IF NOT EXISTS `test_table_normal`(   scoreID INTEGER NOT NULL PRIMARY KEY,   stuID     INTEGER NOT NULL,   KEMUID     INTEGER NOT NULL,   score     FLOAT,   FOREIGN KEY SCORE_ID_FK (stuID) REFERENCES students (stuid),   CONSTRAINT CHK_SCORE_ZIP CHECK (SCORE &gt; 0)   );   ``` 报错： ``` com.alibaba.druid.sql.parser.ParserException: TODO. pos 263, line 7, column 26, token CHECK  at com.alibaba.druid.sql.dialect.mysql.parser.MySqlCreateTableParser.parseConstraint(MySqlCreateTableParser.java:862) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlCreateTableParser.parseCreateTable(MySqlCreateTableParser.java:125) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseCreate(MySqlStatementParser.java:224) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:157) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:68) at com.alibaba.druid.sql.SQLUtils.parseStatements(SQLUtils.java:461) ```  ``` ALTER TABLE test_table_normal ADD FOREIGN KEY (stuID) REFERENCES Persons(stuID); ```  报错： ``` com.alibaba.druid.sql.parser.ParserException: error pos 41, line 2, column 5, token FOREIGN  at com.alibaba.druid.sql.parser.SQLExprParser.name(SQLExprParser.java:1210) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlExprParser.parseColumn(MySqlExprParser.java:472) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseAlterTableAddColumn(MySqlStatementParser.java:2980) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseAlterTable(MySqlStatementParser.java:2583) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseAlter(MySqlStatementParser.java:2455) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:187) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:68) at com.alibaba.druid.sql.SQLUtils.parseStatements(SQLUtils.java:461) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/mysql/parser/MySqlCreateTableParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/createTable/MySqlCreateTableTest89.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/ast/statement/SQLCheck.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2028" opendate="2017-10-04 23:17:16" fixdate="2017-10-07 11:29:03">
+		<buginformation>
+			<summary>不支持 MySQL 建表时存在索引</summary>
+			<description>我在单元测试的时候用的会重新初始化测试数据库已便保证是测试所需的结构和数据。  然而在建表的时候抛错了，语句如下：  ```sql DROP TABLE IF EXISTS `admin`; CREATE TABLE `admin` (   `id` char(20) NOT NULL,   `username` varchar(16) NOT NULL COMMENT '用户名',   `password` varchar(32) NOT NULL COMMENT '密码',   `permission` varchar(255) NOT NULL DEFAULT '' COMMENT '权限',   PRIMARY KEY (`id`) USING BTREE ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员'; ``` 错误如下： ```sql Caused by: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'id`) USING BTREE ) ENGINE=InnoDB DE', expect RPAREN, actual IDENTIFIER pos 224, line 1, column 219, token IDENTIFIER USING : CREATE TABLE `admin` ( `id` char(20) NOT NULL, `username` varchar(16) NOT NULL COMMENT '用户名', `password` varchar(32) NOT NULL COMMENT '密码', `permission` varchar(255) NOT NULL DEFAULT '' COMMENT '权限', PRIMARY KEY (`id`) USING BTREE ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员' at com.alibaba.druid.wall.WallFilter.checkInternal(WallFilter.java:798) at com.alibaba.druid.wall.WallFilter.check(WallFilter.java:780) at com.alibaba.druid.wall.WallFilter.statement_execute(WallFilter.java:413) at com.alibaba.druid.filter.FilterChainImpl.statement_execute(FilterChainImpl.java:2598) at com.alibaba.druid.filter.FilterAdapter.statement_execute(FilterAdapter.java:2473) at com.alibaba.druid.filter.FilterEventAdapter.statement_execute(FilterEventAdapter.java:188) at com.alibaba.druid.filter.FilterChainImpl.statement_execute(FilterChainImpl.java:2598) at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.execute(StatementProxyImpl.java:147) at com.alibaba.druid.pool.DruidPooledStatement.execute(DruidPooledStatement.java:497) at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:470) ... 116 more Caused by: com.alibaba.druid.sql.parser.ParserException: syntax error, error in :'id`) USING BTREE ) ENGINE=InnoDB DE', expect RPAREN, actual IDENTIFIER pos 224, line 1, column 219, token IDENTIFIER USING at com.alibaba.druid.sql.parser.SQLParser.printError(SQLParser.java:285) at com.alibaba.druid.sql.parser.SQLParser.accept(SQLParser.java:293) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlCreateTableParser.parseCreateTable(MySqlCreateTableParser.java:189) at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseCreate(MySqlStatementParser.java:224) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:157) at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:79) at com.alibaba.druid.wall.WallProvider.checkInternal(WallProvider.java:622) at com.alibaba.druid.wall.WallProvider.check(WallProvider.java:576) at com.alibaba.druid.wall.WallFilter.checkInternal(WallFilter.java:785) ... 125 more ``` Druid 版本： ``` &lt;dependency&gt;     &lt;groupId&gt;com.alibaba&lt;/groupId&gt;     &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;     &lt;version&gt;1.1.4&lt;/version&gt;     &lt;scope&gt;runtime&lt;/scope&gt; &lt;/dependency&gt; ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/mysql/parser/MySqlCreateTableParser.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/mysql/parser/MySqlExprParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/createTable/MySqlCreateTableTest81.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1982" opendate="2017-09-18 08:49:58" fixdate="2017-10-03 10:47:33">
+		<buginformation>
+			<summary>无法解析CONCAT</summary>
+			<description>在1.0.31版本下和1.1.3版本下均不能解析如下语句。 select  ID, AUTHORITY_TYPE from t_authority a where authority_type like CONCAT('%', ?) 报错如下  Caused by: com.alibaba.druid.sql.parser.ParserException: ERROR. pos 209, line 1, column 203, token CONCAT at com.alibaba.druid.sql.parser.SQLExprParser.primary(SQLExprParser.java:697) at com.alibaba.druid.sql.parser.SQLExprParser.bitXor(SQLExprParser.java:133) at com.alibaba.druid.sql.parser.SQLExprParser.multiplicative(SQLExprParser.java:213) at com.alibaba.druid.sql.parser.SQLExprParser.additive(SQLExprParser.java:1577) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLExprParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/db2/DB2SelectTest_25_concat.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1762" opendate="2017-06-01 08:45:43" fixdate="2017-06-25 13:28:37">
+		<buginformation>
+			<summary>建表语句的注释无法解析出</summary>
+			<description>使用druid 版本1.0.29  比如我有建表语句 ```sql -- table-name-bean-name:some -- CREATE TABLE `some_table` (   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键' } ``` 我想通过druid的SQLUtils获取 `table-name-bean-name:some` 注释 目的为了做代码生成(表名对应java bean名称)，但是无法获取该表注释，不知道什么方式可以获取 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/parser/Lexer.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLParserUtils.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/bug/Issue1737.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/mysql/parser/MySqlStatementParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/postgresql/select/PGSelectTest51.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/bug/Issue1762.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1604" opendate="2017-02-13 11:46:26" fixdate="2017-10-03 10:46:06">
+		<buginformation>
+			<summary>不支持ODPS字段改名语句解析</summary>
+			<description>alter table table_name change column old_col_name rename to new_col_name; ALTER TABLE table_name CHANGE COLUMN old_col_name new_col_name column_type COMMENT '';</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/odps/OdpsAlterTableChangeColumnTest4.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1496" opendate="2016-11-18 09:11:29" fixdate="2016-11-26 08:16:06">
+		<buginformation>
+			<summary>[ODPS]不支持PURGE</summary>
+			<description>DROP TABLE a PURGE ;</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLStatementParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/odps/OdpsDropTableTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1488" opendate="2016-11-17 08:55:59" fixdate="2016-11-19 15:35:52">
+		<buginformation>
+			<summary>分表表名拼接不对</summary>
+			<description>例子：原始sql是select * from user_0000 where id = 1,解析出来的模板是SELECT * FROM USER WHERE ID = ?,参数是[1],拼接参数结果是SELECT * FROM USER WHERE ID=1,不是原始sql</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/MySqlParameterizedOutputVisitorTest_13.java</file>
+			<file>src/main/java/com/alibaba/druid/sql/dialect/mysql/visitor/MySqlOutputVisitor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1362" opendate="2016-08-09 08:12:48" fixdate="2016-08-10 08:26:39">
+		<buginformation>
+			<summary>SQL解析失败</summary>
+			<description>insert into order (id, name) values (?, ?)   com.alibaba.druid.sql.parser.ParserException: error ORDER     at com.alibaba.druid.sql.parser.SQLExprParser.name(SQLExprParser.java:991)     at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseInsert(MySqlStatementParser.java:1978)     at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseInsert(MySqlStatementParser.java:1)     at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:198)     at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:147)     at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:142)     at com.alibaba.druid.sql.parser.SQLTableNameTest.test_merge_2(SQLTableNameTest.java:69)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)     at java.lang.reflect.Method.invoke(Unknown Source)     at junit.framework.TestCase.runTest(TestCase.java:176)     at junit.framework.TestCase.runBare(TestCase.java:141)     at junit.framework.TestResult$1.protect(TestResult.java:122)     at junit.framework.TestResult.runProtected(TestResult.java:142)     at junit.framework.TestResult.run(TestResult.java:125)     at junit.framework.TestCase.run(TestCase.java:129)     at junit.framework.TestSuite.runTest(TestSuite.java:252)     at junit.framework.TestSuite.run(TestSuite.java:247)     at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)     at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)     at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/alibaba/druid/sql/parser/SQLExprParser.java</file>
+			<file>src/test/java/com/alibaba/druid/bvt/sql/mysql/MySqlInsertTest_13.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

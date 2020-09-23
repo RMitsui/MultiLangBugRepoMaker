@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="DSpace">
+	<bug id="76" opendate="2017-02-14 12:39:49" fixdate="2017-02-16 19:54:53">
+		<buginformation>
+			<summary>Error al "Crear Plantillas" para colecciones</summary>
+			<description>Intenté crear una plantilla y cuando agrego un metadato me da el siguiente mensaje de error:   `The metadata field "dc_type" requires an authority key but none was provided. Value="Articulo"`  Esto se debe a que cuando se agrega un **metadato controlado por autoridad** (en este caso *dc.type*) a la planilla de una collection, el formulario no detecta que es un metadato controlado por autoridad.  &gt; Java stacktrace: java.lang.IllegalArgumentException: The metadata field "dc_type" requires an authority key but none was provided. Value="Articulo" at org.dspace.content.DSpaceObjectServiceImpl.addMetadata(DSpaceObjectServiceImpl.java:262) at org.dspace.content.DSpaceObjectServiceImpl.addMetadata(DSpaceObjectServiceImpl.java:321) at org.dspace.content.DSpaceObjectServiceImpl.addMetadata(DSpaceObjectServiceImpl.java:213) at org.dspace.content.DSpaceObjectServiceImpl.addMetadata(DSpaceObjectServiceImpl.java:299) at org.dspace.app.xmlui.aspect.administrative.FlowItemUtils.processAddMetadata(FlowItemUtils.java:275) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:606) at org.mozilla.javascript.MemberBox.invoke(MemberBox.java:155) at org.mozilla.javascript.NativeJavaMethod.call(NativeJavaMethod.java:243) at org.mozilla.javascript.Interpreter.interpretLoop(Interpreter.java:3237) at org.mozilla.javascript.Interpreter.interpret(Interpreter.java:2394) at org.mozilla.javascript.InterpretedFunction.call(InterpretedFunction.java:162) at org.mozilla.javascript.ContextFactory.doTopCall(ContextFactory.java:393) at org.mozilla.javascript.ScriptRuntime.doTopCall(ScriptRuntime.java:2834) at org.mozilla.javascript.InterpretedFunction.call(InterpretedFunction.java:160) at org.mozilla.javascript.Context.call(Context.java:538) at org.mozilla.javascript.ScriptableObject.callMethod(ScriptableObject.java:1833) at org.mozilla.javascript.ScriptableObject.callMethod(ScriptableObject.java:1803) at org.apache.cocoon.components.flow.javascript.fom.FOM_JavaScriptInterpreter.handleContinuation(FOM_JavaScriptInterpreter.java:698) at org.apache.cocoon.components.treeprocessor.sitemap.CallFunctionNode.invoke(CallFunctionNode.java:94) ...  [Full Stacktrace][1]     [1]: http://pastebin.com/1D53ztEa</description>
+		</buginformation>
+		<fixedfiles>
+			<file>dspace-xmlui/src/main/java/org/dspace/app/xmlui/aspect/administrative/FlowItemUtils.java</file>
+			<file>dspace/modules/xmlui/src/main/java/ar/edu/unlp/sedici/dspace/xmlui/util/XSLTHelper.java</file>
+			<file>dspace-api/src/main/java/org/dspace/content/WorkspaceItemServiceImpl.java</file>
+			<file>dspace-xmlui/src/main/java/org/dspace/app/xmlui/aspect/administrative/item/EditItemMetadataForm.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

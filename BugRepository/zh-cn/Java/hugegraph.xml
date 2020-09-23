@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="hugegraph">
+	<bug id="1049" opendate="2020-06-20 13:01:07" fixdate="2020-07-22 12:43:03">
+		<buginformation>
+			<summary>通过limit限制返回结果条件下仍报索引数超过80W错误</summary>
+			<description>### Expected behavior 期望表现 返回正常结果   ### Actual behavior 实际表现 Too many records(must &lt;= 800000) for the query: Query for SECONDARY_INDEX where id in [] and [INDEX_LABEL_ID == 4, FIELD_VALUES == 26e33582-ba3d-479a-9e10-ccb719377be1]   ### Steps to reproduce the problem 复现步骤 `g.V().hasLabel('process').has('timestamp', between('2020-06-03 04:34:25.000', '2020-06-03 04:39:25.000')).has('environmentId', 'xxxx-xxxx-xxxx-xxxx').limit(100)` - environmentId有单列索引，索引节点数量超过80w  ### Status of loaded data 数据状态  #### Vertex/Edge summary 数据量 - loaded vertices amount: {100万左右} - loaded edges amount: {80左右} - loaded time: {抛出异常}   ### Specifications of environment 环境信息 - hugegraph version: {0.10.4} - operating system: {centos 7.4, 32 CPUs, 128G RAM} - hugegraph backend: {cassandra} </description>
+		</buginformation>
+		<fixedfiles>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/query/ConditionQueryFlatten.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/store/BackendEntryIterator.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/page/QueryList.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/store/memory/InMemoryDBTable.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/page/IdHolder.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/config/CoreOptions.java</file>
+			<file>hugegraph-mysql/src/main/java/com/baidu/hugegraph/backend/store/mysql/MysqlTable.java</file>
+			<file>hugegraph-test/src/main/java/com/baidu/hugegraph/core/EdgeCoreTest.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/query/Query.java</file>
+			<file>hugegraph-rocksdb/src/main/java/com/baidu/hugegraph/backend/store/rocksdb/RocksDBTable.java</file>
+			<file>hugegraph-test/src/main/java/com/baidu/hugegraph/core/VertexCoreTest.java</file>
+			<file>hugegraph-test/src/main/java/com/baidu/hugegraph/core/MultiGraphsTest.java</file>
+			<file>hugegraph-hbase/src/main/java/com/baidu/hugegraph/backend/store/hbase/HbaseTable.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/GraphIndexTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/query/QueryResults.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/query/Aggregate.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/query/ConditionQuery.java</file>
+			<file>hugegraph-cassandra/src/main/java/com/baidu/hugegraph/backend/store/cassandra/CassandraTable.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/page/SortByCountIdHolderList.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/page/PageEntryIterator.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/GraphTransaction.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="864" opendate="2020-02-24 11:34:04" fixdate="2020-02-28 05:53:49">
+		<buginformation>
+			<summary>range查询不同范围得到的结果相同</summary>
+			<description>hugegraph-v0.10 + hbase 顶点量100w，边量1000w  ### Expected behavior 期望表现 使用range查询不同范围的顶点的has_Value属性值： g.V().has('TEST','has_Category','success').range(0,5).values('has_Value') g.V().has('TEST','has_Category','success').range(10,15).values('has_Value') 正常情况下这两个语句得到的结果是不一样的  ### Actual behavior 实际表现 实际上这两个语句得到的结果是完全相同的，换成其他的范围得到的结果还是一样的。  这种情况出现的比较随机，不一定能完全复现 请问是否有人遇到过类似的情况，可以如何解决？</description>
+		</buginformation>
+		<fixedfiles>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/page/QueryList.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/query/Query.java</file>
+			<file>hugegraph-cassandra/src/main/java/com/baidu/hugegraph/backend/store/cassandra/CassandraTable.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/store/memory/InMemoryDBTable.java</file>
+			<file>hugegraph-rocksdb/src/main/java/com/baidu/hugegraph/backend/store/rocksdb/RocksDBTable.java</file>
+			<file>hugegraph-test/src/main/java/com/baidu/hugegraph/core/VertexCoreTest.java</file>
+			<file>hugegraph-hbase/src/main/java/com/baidu/hugegraph/backend/store/hbase/HbaseTable.java</file>
+			<file>hugegraph-mysql/src/main/java/com/baidu/hugegraph/backend/store/mysql/MysqlTable.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/GraphIndexTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/page/IdHolderList.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/GraphTransaction.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="160" opendate="2018-10-31 11:21:08" fixdate="2018-11-01 13:27:11">
+		<buginformation>
+			<summary>异步任务返回值问题</summary>
+			<description>   ### Expected behavior 期望表现 {type something here...} 虽然看到了一个相似的closed的问题，但是有一些新的需求和问题  期望得到**解析的完整**返回值  ### Actual behavior 实际表现 请教一下，比如我想得一个结点的出向点的列表，当出向点的数量非常大时，这时需要用异步执行来查询数据，但是目前查询到的结果并不完整  比如我执行： bin/hugegraph  gremlin-schedule -s 'g.V().hasLabel("person").has("name","xxx").inE().outV().toList()' 可以解析出长度为66150的列表 但是执行： bin/hugegraph  gremlin-schedule -s 'g.V().hasLabel("person").has("name","xxx").inE().outV().count()' 得到结果为956064 两者差别太大，很多结果都没有查询出来  这个是有返回值限制的么？我该如何设置？  另外terminal step我尝试了下，应该只有toList() 和toSet() 两种是么？ 是否有其他的方式呢？     ### Status of loaded data 数据状态  #### Vertex/Edge summary 数据量 - loaded vertices amount: 6千5百万 - loaded edges amount: 7亿 - loaded time: {like 200s}    ### Specifications of environment 环境信息 - hugegraph version: {like v0.7.4} - operating system: {like centos 7.4, 32 CPUs, 64G RAM} - hugegraph backend: {like rocksDB}</description>
+		</buginformation>
+		<fixedfiles>
+			<file>hugegraph-test/src/main/java/com/baidu/hugegraph/core/EdgeCoreTest.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/cache/RamCache.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/SchemaTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/cache/Cache.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/GraphIndexTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/cache/CachedGraphTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/AbstractTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/GraphTransaction.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="147" opendate="2018-10-30 06:01:35" fixdate="2018-11-19 03:26:39">
+		<buginformation>
+			<summary>union操作中查询日期类型报错</summary>
+			<description>### 查询语句 1、`g.E().has("date", P.gte("2016-01-10 10:00:00.000")).count()` 2、`g.E().union(has("date", P.gte("2016-01-10 10:00:00.000"))).count()`   ### Expected behavior 期望表现 结果一样   ### Actual behavior 实际表现 第一条语句成功执行，第二条报错  ``` Exception in thread "main" java.lang.ClassCastException: java.lang.String cannot be cast to java.util.Date at java.util.Date.compareTo(Date.java:131) at org.apache.tinkerpop.gremlin.process.traversal.Compare$5.test(Compare.java:140) at org.apache.tinkerpop.gremlin.process.traversal.Compare$4.test(Compare.java:115) at org.apache.tinkerpop.gremlin.process.traversal.P.test(P.java:71) at org.apache.tinkerpop.gremlin.process.traversal.step.util.HasContainer.testValue(HasContainer.java:113) at org.apache.tinkerpop.gremlin.process.traversal.step.util.HasContainer.test(HasContainer.java:95) at org.apache.tinkerpop.gremlin.process.traversal.step.util.HasContainer.testAll(HasContainer.java:173) at org.apache.tinkerpop.gremlin.process.traversal.step.filter.HasStep.filter(HasStep.java:50) at org.apache.tinkerpop.gremlin.process.traversal.step.filter.FilterStep.processNextStart(FilterStep.java:38) at org.apache.tinkerpop.gremlin.process.traversal.step.util.AbstractStep.hasNext(AbstractStep.java:143) at org.apache.tinkerpop.gremlin.process.traversal.step.util.ExpandableStepIterator.next(ExpandableStepIterator.java:50) at org.apache.tinkerpop.gremlin.process.traversal.step.util.ComputerAwareStep$EndStep.processNextStart(ComputerAwareStep.java:76) at org.apache.tinkerpop.gremlin.process.traversal.step.util.AbstractStep.hasNext(AbstractStep.java:143) at org.apache.tinkerpop.gremlin.process.traversal.util.DefaultTraversal.hasNext(DefaultTraversal.java:192) at org.apache.tinkerpop.gremlin.process.traversal.step.branch.BranchStep.standardAlgorithm(BranchStep.java:94) at org.apache.tinkerpop.gremlin.process.traversal.step.util.ComputerAwareStep.processNextStart(ComputerAwareStep.java:46) at org.apache.tinkerpop.gremlin.process.traversal.step.util.AbstractStep.hasNext(AbstractStep.java:143) at org.apache.tinkerpop.gremlin.process.traversal.step.util.ExpandableStepIterator.hasNext(ExpandableStepIterator.java:42) at org.apache.tinkerpop.gremlin.process.traversal.step.util.ReducingBarrierStep.processAllStarts(ReducingBarrierStep.java:83) at org.apache.tinkerpop.gremlin.process.traversal.step.util.ReducingBarrierStep.processNextStart(ReducingBarrierStep.java:113) at org.apache.tinkerpop.gremlin.process.traversal.step.util.AbstractStep.next(AbstractStep.java:128) at org.apache.tinkerpop.gremlin.process.traversal.step.util.AbstractStep.next(AbstractStep.java:38) at org.apache.tinkerpop.gremlin.process.traversal.util.DefaultTraversal.next(DefaultTraversal.java:200) at com.baidu.hugegraph.example.Example2.traversal(Example2.java:75) at com.baidu.hugegraph.example.Example2.main(Example2.java:50) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/traversal/optimize/HugeGraphStepStrategy.java</file>
+			<file>hugegraph-test/src/main/java/com/baidu/hugegraph/core/EdgeCoreTest.java</file>
+			<file>hugegraph-test/src/main/java/com/baidu/hugegraph/core/VertexCoreTest.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/traversal/optimize/TraversalUtil.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/traversal/optimize/HugeGraphStep.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/traversal/optimize/HugeVertexStepStrategy.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/traversal/optimize/HugeVertexStep.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="144" opendate="2018-10-30 02:26:26" fixdate="2018-11-01 06:17:32">
+		<buginformation>
+			<summary>在无索引的数据上建索引是否会发生数据不一致</summary>
+			<description>后端使用cassandra  1. 向图里添加大量数据 2. 按user的userid创建索引 ``` schema.indexLabel('userById').onV('user').by('userid').secondary().ifNotExist().create(); ``` 3. 继续添加数据  分析了数据库的表结果。建索引前表graph_secondary_indexes为空，表graph_secondary_indexes有3列，分别是 ``` field_values  index_label_id element_ids ``` 建索引后再添加数据，graph_secondary_indexes开始有数据。 通过分析，field_values是属性值,element_ids是属性值对应的顶点id，很显然，有这个表可以快速地通过属性值找到顶点id，通过观察数据发现： 建索引的时候，没有把老数据的相关信息加到表graph_secondary_indexes中。只是建索引后新数据相关信息加到了graph_secondary_indexes中。此时，若要查一个老数据的userid（建索引前添加到cassandra里的），它不在索引中，查询策略是怎么样的？是先查graph_secondary_indexes，查不到再遍历所有？还是查不到直接返回查不到？还是有其他查询方法?</description>
+		</buginformation>
+		<fixedfiles>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/AbstractTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/SchemaTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/cache/CacheManager.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/job/schema/SchemaCallable.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/GraphIndexTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/job/schema/VertexLabelRemoveCallable.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/job/schema/IndexLabelRemoveCallable.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/job/schema/EdgeLabelRemoveCallable.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/Transaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/job/JobBuilder.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/backend/tx/GraphTransaction.java</file>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/HugeGraph.java</file>
+			<file>hugegraph-api/src/main/java/com/baidu/hugegraph/api/job/GremlinAPI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="106" opendate="2018-10-11 14:18:49" fixdate="2018-10-23 09:20:29">
+		<buginformation>
+			<summary>属性字段定义类型为SET通过json传递导致类型检查失败</summary>
+			<description>加载的数据文件中一个属性字段定义类型为SET，通过json数据文件得到的是list，所以在验证中提示错误，无法load数据。请问还有什么需要配置的吗？  json数据格式  ｛“address”：[“北京”，“上海”]｝   反馈自Caohh</description>
+		</buginformation>
+		<fixedfiles>
+			<file>hugegraph-core/src/main/java/com/baidu/hugegraph/structure/HugeElement.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

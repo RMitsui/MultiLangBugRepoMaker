@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Mekanism">
+	<bug id="6324" opendate="2020-07-14 00:09:11" fixdate="2020-07-16 17:33:08">
+		<buginformation>
+			<summary>Dupe glitch.</summary>
+			<description>Dupe glitch. When using the QIO Dashboard. Simply press both the left and right mouse keys rapidly and it item count will occasionally go up by one.  Mekanism-1.16.1-10.0.1.424.jar MekanismAdditions-1.16.1-10.0.1.424.jar MekanismGenerators-1.16.1-10.0.1.424.jar MekanismTools-1.16.1-10.0.1.424.jar </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mekanism/common/network/PacketQIOItemViewerSlotInteract.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6106" opendate="2020-04-26 19:49:40" fixdate="2020-05-04 16:22:46">
+		<buginformation>
+			<summary>Gas Tank client-side container desync</summary>
+			<description>As discussed in Discord.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mekanism/common/inventory/container/MekanismContainer.java</file>
+			<file>src/main/java/mekanism/client/gui/GuiPortableItemDashboard.java</file>
+			<file>src/main/java/mekanism/client/gui/GuiQIODriveArray.java</file>
+			<file>src/main/java/mekanism/client/gui/element/GuiQIOFrequencyDataScreen.java</file>
+			<file>src/main/java/mekanism/common/inventory/container/QIOItemViewerContainer.java</file>
+			<file>src/main/java/mekanism/common/registries/MekanismItems.java</file>
+			<file>src/main/java/mekanism/common/inventory/container/sync/SyncableItemStack.java</file>
+			<file>src/main/java/mekanism/common/registries/MekanismContainerTypes.java</file>
+			<file>src/main/java/mekanism/common/content/qio/TileEntityQIODriveArray.java</file>
+			<file>src/main/java/mekanism/common/item/ItemQIODrive.java</file>
+			<file>src/main/java/mekanism/common/content/qio/QIOFrequency.java</file>
+			<file>src/main/java/mekanism/client/gui/element/GuiItemListSortScreen.java</file>
+			<file>src/main/java/mekanism/client/gui/element/bar/GuiDigitalBar.java</file>
+			<file>src/main/java/mekanism/common/MekanismLang.java</file>
+			<file>src/main/java/mekanism/common/inventory/container/tile/QIODriveArrayContainer.java</file>
+			<file>src/main/java/mekanism/client/ClientRegistration.java</file>
+			<file>src/datagen/main/java/mekanism/client/lang/MekanismLangProvider.java</file>
+			<file>src/main/java/mekanism/client/gui/element/GuiInnerScreen.java</file>
+			<file>src/main/java/mekanism/common/inventory/container/slot/InventoryContainerSlot.java</file>
+			<file>src/main/java/mekanism/client/gui/GuiQIOItemViewer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5754" opendate="2020-01-11 05:09:09" fixdate="2020-01-12 23:52:00">
+		<buginformation>
+			<summary>Render Issue</summary>
+			<description>*Please use the search functionality before reporting an issue. Also take a look at the closed issues!*  #### Issue description: Render error ![image](https://user-images.githubusercontent.com/7188938/72199185-6ba3c600-3473-11ea-905e-76adedc324b4.png) ![image](https://user-images.githubusercontent.com/7188938/72199186-70687a00-3473-11ea-9258-da90780351c6.png)   #### Version (make sure you are on the latest version before reporting): **Forge:30.0.36  **Mekanism:9.9.1.392 **Other relevant version:**   #### If a (crash)log is relevant for this issue, link it here: (_It's almost always relevant_)  [[gist](https://gist.github.com/) / [pastebin](https://pastebin.com/) / etc link here. Please make sure that it isn't set to expire.] </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mekanism/common/CommonPlayerTracker.java</file>
+			<file>src/main/java/mekanism/common/tile/TileEntityFluidicPlenisher.java</file>
+			<file>src/generators/java/mekanism/generators/common/MekanismGenerators.java</file>
+			<file>src/main/java/mekanism/common/network/PacketConfigurationUpdate.java</file>
+			<file>src/main/java/mekanism/common/PacketHandler.java</file>
+			<file>src/main/java/mekanism/common/tile/TileEntityChemicalInfuser.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5729" opendate="2020-01-08 12:44:40" fixdate="2020-01-08 23:50:17">
+		<buginformation>
+			<summary>Digital Miner Filter issue</summary>
+			<description>*Please use the search functionality before reporting an issue. Also take a look at the closed issues!* Checked  #### Issue description: The Tag and ID mod filters don't work ItemStack works  #### Steps to reproduce: 1. Place a digital miner next to my home 2. plug elec cable on its left 3. go to config 4. New Filter &gt; Tag &gt; ore* &gt; check &gt; save &gt; start 5. Or New Filter &gt; Mod ID &gt; 15 (iron_ore) &gt;check &gt; save &gt; start  #### Version (make sure you are on the latest version before reporting): **Forge: 30.30 **Mekanism: 9.9.0.391  **Other relevant version: MC 1.15.1  #### If a (crash)log is relevant for this issue, link it here: (_It's almost always relevant_)  [[gist](https://gist.github.com/) / [pastebin](https://pastebin.com/) / etc link here. Please make sure that it isn't set to expire.] </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mekanism/common/OreDictCache.java</file>
+			<file>src/main/java/mekanism/client/gui/GuiMekanism.java</file>
+			<file>src/main/java/mekanism/client/gui/filter/GuiMItemStackFilter.java</file>
+			<file>src/main/java/mekanism/common/content/miner/ThreadMinerSearch.java</file>
+			<file>src/main/java/mekanism/common/tile/TileEntityLogisticalSorter.java</file>
+			<file>src/main/java/mekanism/common/content/miner/MItemStackFilter.java</file>
+			<file>src/main/java/mekanism/client/gui/filter/GuiFilterBase.java</file>
+			<file>src/main/java/mekanism/common/content/transporter/TransporterFilter.java</file>
+			<file>src/main/java/mekanism/common/network/PacketEditFilter.java</file>
+			<file>src/main/java/mekanism/client/gui/filter/GuiTItemStackFilter.java</file>
+			<file>src/main/java/mekanism/common/content/miner/MModIDFilter.java</file>
+			<file>src/main/java/mekanism/common/content/miner/MTagFilter.java</file>
+			<file>src/main/java/mekanism/common/inventory/container/tile/filter/DMTagFilterContainer.java</file>
+			<file>src/main/java/mekanism/client/gui/GuiLogisticalSorter.java</file>
+			<file>src/main/java/mekanism/client/gui/filter/GuiMModIDFilter.java</file>
+			<file>src/main/java/mekanism/client/gui/GuiDigitalMinerConfig.java</file>
+			<file>src/main/java/mekanism/client/gui/filter/GuiTModIDFilter.java</file>
+			<file>src/main/java/mekanism/client/gui/filter/GuiOredictionificatorFilter.java</file>
+			<file>src/main/java/mekanism/common/content/filter/ITagFilter.java</file>
+			<file>src/main/java/mekanism/client/ClientRegistration.java</file>
+			<file>src/main/java/mekanism/common/inventory/container/tile/filter/LSTagFilterContainer.java</file>
+			<file>src/main/java/mekanism/common/item/ItemDictionary.java</file>
+			<file>src/main/java/mekanism/common/content/miner/MMaterialFilter.java</file>
+			<file>src/main/java/mekanism/client/gui/GuiFilterHolder.java</file>
+			<file>src/main/java/mekanism/client/gui/filter/GuiTextFilterBase.java</file>
+			<file>src/main/java/mekanism/common/content/miner/MinerFilter.java</file>
+			<file>src/main/java/mekanism/common/item/gear/ItemAtomicDisassembler.java</file>
+			<file>src/main/java/mekanism/client/gui/filter/GuiTMaterialFilter.java</file>
+			<file>src/main/java/mekanism/common/util/ItemRegistryUtils.java</file>
+			<file>src/main/java/mekanism/client/gui/filter/GuiMMaterialFilter.java</file>
+			<file>src/main/java/mekanism/common/tile/TileEntityDigitalMiner.java</file>
+			<file>src/main/java/mekanism/common/content/transporter/Finder.java</file>
+			<file>src/main/java/mekanism/client/gui/GuiFormulaicAssemblicator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5449" opendate="2019-05-02 20:20:33" fixdate="2019-05-04 16:59:47">
+		<buginformation>
+			<summary>Digital Miner dupe bug</summary>
+			<description>**Issue description:** You can duplicate items using a Digital Miner  **Steps to reproduce:** 1. Place a Digital Miner in the ground 2. Put items inside a stackable block that holds items in after being broken(Like RFTools Crafter) 3. Put more "RFTools Crafters" in the ground 5. Set a filter in the Digital Miner to mine the Crafters(Fuzzy Mode:ON) 6. Turn on the digital miner 7. All the collected crafters by the miner will be the same as the first (See the video for more info)  **Version (make sure you are on the latest version before reporting):** **Forge:** 1.12.2 - 14.23.5.2836 **Mekanism:** Mekanism-1.12.2-9.7.3.374  **If a (crash)log is relevant for this issue, link it here:**  https://www.youtube.com/watch?v=IKg_pf44QBo </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mekanism/common/tile/TileEntityFactory.java</file>
+			<file>src/main/java/mekanism/common/util/StackUtils.java</file>
+			<file>src/main/java/mekanism/common/entity/EntityRobit.java</file>
+			<file>src/main/java/mekanism/common/util/InventoryUtils.java</file>
+			<file>src/main/java/mekanism/common/content/transporter/StackSearcher.java</file>
+			<file>src/main/java/mekanism/common/tile/TileEntityDigitalMiner.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5448" opendate="2019-05-02 13:54:43" fixdate="2019-05-04 16:37:39">
+		<buginformation>
+			<summary>Gas Generator + Gas Tank = FREEZE</summary>
+			<description>Issue description: **If you insert Ethylene tank into Gas Generator game just FREEZE to death.**   Version (make sure you are on the latest version before reporting): **Forge: **2784** **Mekanism: **Mekanism-1.12.2-9.7.2.373**  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mekanism/generators/common/inventory/container/ContainerGasGenerator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="4938" opendate="2018-02-09 00:18:46" fixdate="2018-04-10 07:04:34">
+		<buginformation>
+			<summary>[1.12.2] Atomic Disassembler in Vein Mode does not fell Menril Trees</summary>
+			<description>#### Issue description:  Atomic Disassembler in Vein Mode does not fell Menril Trees from Integrated Dynamics.  The tree is correctly oredict but Disassembler ignores.  #### Steps to reproduce: 1. Set Atomic Disassembler to Vein Mode 2. Hit Menril Tree 3. ????? 4. No profit  #### Version (make sure you are on the latest version before reporting): **Forge: 14.23.2.2611**  **Mekanism: 9.4.3.330**  **Other relevant version: Integrated Dynamics v0.11.2** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/mekanism/common/item/ItemAtomicDisassembler.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>135</id>
+		<title>设备休眠后后APP显示离线</title>
+		<body> #### 环境 linux 环境 使用miio_client "model":"ydhome.cateye.pr1" 属于非保活门铃 #### 现象 ![image](https://user-images.githubusercontent.com/53296204/64403075-cbdfc100-d0a9-11e9-9599-d771ab534ff0.png) 设备断电休眠之后APP提示设备已离线。同样的丁铃的设备并不会提示离线。 设备端开机起来后有上报props online 是1 。  #### 期望 设备断电休眠后APP上看到是在线   #### 尝试过的解决办法   </body>
+		<created>2019-09-06 05:44:42</created>
+		<closed>2019-09-24 06:17:33</closed>
+	</bug>
+	<bug>
+		<id>132</id>
+		<title>门铃公版插件的微信推送不能使用</title>
+		<body>门铃公版插件的微信推送打开后，通过微信进行绑定公众号，之后门铃的事件微信公众号都没有。 </body>
+		<created>2019-09-06 03:21:02</created>
+		<closed>2019-09-24 06:48:09</closed>
+	</bug>
+	<bug>
+		<id>131</id>
+		<title>BLE_SECURE 从SDK2.1.11升级为SDK2.2.5后出现连接超时的现象</title>
+		<body>蓝牙门锁项目 SDK2.1.11： 连接正常。  更新为最新的SDK2.2.5后： 米家锁如何在首次配对时，弹出设置6位安全密码的框，设置安全密码为111111后进入连接状态；门锁设备大概在3秒左右退出连接，APP在30S左右显示添加失败：  ![image](https://user-images.githubusercontent.com/12733226/64319527-2ec05200-cfef-11e9-8d75-e54dcc47c3d5.png)  麻烦安排解决这个问题，问题必现。  before issue：（不用回答） ### APK 请使用最新版apk验证是否已经修复了此问题？ ### Check 文档了吗？ ### 是否尝试搜索issue？  ---  #### 环境 插件 model 是什么 使用的哪个方法 请分享设备或绑定设备到 346378191，方便复现问题。  #### 现象  请使用 logcat 导出所有进程的 log 简单明了地描述一下实际的现象。  #### 期望  简单明了地描述一下期望的表现。  #### 其他的上下文/日志/截图  提供更多的上下文，有日志或者截图更好。  #### 尝试过的解决办法  尝试过哪些操作？  </body>
+		<created>2019-09-05 07:14:46</created>
+		<closed>2019-09-16 02:51:34</closed>
+	</bug>
+	<bug>
+		<id>129</id>
+		<title>偶尔弹出Toast崩溃</title>
+		<body>before issue：（不用回答） ### APK 请使用最新版apk验证是否已经修复了此问题？ ### Check 文档了吗？ ### 是否尝试搜索issue？  ---  #### 环境 插件 model 是什么： mxiang.cateye.mdb10 使用的哪个方法 请分享设备或绑定设备到 346378191，方便复现问题。  #### 现象  简单明了地描述一下实际的现象。  偶尔弹出Toast 会崩溃 #### 期望  简单明了地描述一下期望的表现。  #### 其他的上下文/日志/截图   ager: getConnectedDevices 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=40:EF:4C:80:27:AF, type=1 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=00:9E:C8:73:F4:F8, type=1 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=4E:46:46:03:21:C7, type=1 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=E8:07:BF:CD:7D:79, type=1 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=BA:98:76:11:72:5A, type=1 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=00:15:A1:05:EE:83, type=1 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=E9:08:EF:6F:09:03, type=1 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=00:12:B7:10:20:39, type=1 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=88:0F:10:95:18:42, type=2 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=4C:49:E3:4B:03:57, type=1 08-21 13:35:17.535 1856-16823/? D/BtGatt.GattService: getDeviceType() - device=E8:B4:C8:95:DD:51, type=3 08-21 13:35:17.655 19351-19430/com.xiaomi.smarthome:core D/BootRequestCheck: 1566365717655 SmartHomeRc4Api.sendRequest Request{method=POST, url=https://api.io.mi.com/app/device/batchdevicedatas, tag=lZb70sHSs6g52p13/WjkGw==} com.xiaomi.smarthome:core 08-21 13:35:17.678 19351-19691/com.xiaomi.smarthome:core D/MIIO: host:api.io.mi.com prefix:nullpath:/device/batchdevicedatas method:POST params:[data:[{"did":"292198389","props":["prop.is_can_open_video"]}]] 08-21 13:35:17.678 19351-19691/com.xiaomi.smarthome:core D/MIIO: {"code":0,"message":"ok","result":{"292198389":{"prop.is_can_open_video":"\"0\""}}} 08-21 13:35:17.680 19776-19776/com.xiaomi.smarthome:plugin0 D/EquipmentProperty: voiceAlarm:  start alarm 3 08-21 13:35:17.680 19776-19776/com.xiaomi.smarthome:plugin0 D/EquipmentProperty: onSuccess: door bell is ready0 08-21 13:35:17.743 1033-1033/? W/wificond: Skip scan ssid for single scan: mo_000116 08-21 13:35:17.838 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE 08-21 13:35:17.838 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF 08-21 13:35:17.865 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD 08-21 13:35:17.865 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON 08-21 13:35:17.865 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK 08-21 13:35:18.054 19351-19430/com.xiaomi.smarthome:core D/BootRequestCheck: 1566365718054 SmartHomeRc4Api.sendRequest Request{method=POST, url=https://api.io.mi.com/app/device/batchdevicedatas, tag=lZb70sHSs6g52p13/WjkGw==} com.xiaomi.smarthome:core 08-21 13:35:18.085 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE 08-21 13:35:18.085 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF 08-21 13:35:18.088 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD 08-21 13:35:18.088 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON 08-21 13:35:18.088 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK 08-21 13:35:18.151 19351-19687/com.xiaomi.smarthome:core D/MIIO: host:api.io.mi.com prefix:nullpath:/device/batchdevicedatas method:POST params:[data:[{"did":"292198389","props":["prop.is_can_open_video"]}]] 08-21 13:35:18.151 19351-19687/com.xiaomi.smarthome:core D/MIIO: {"code":0,"message":"ok","result":{"292198389":{"prop.is_can_open_video":"\"0\""}}} 08-21 13:35:18.153 19776-19776/com.xiaomi.smarthome:plugin0 D/EquipmentProperty: voiceAlarm:  start alarm 3 08-21 13:35:18.155 19776-19776/com.xiaomi.smarthome:plugin0 D/EquipmentProperty: onSuccess: door bell is ready0 08-21 13:35:18.165 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE 08-21 13:35:18.165 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF 08-21 13:35:18.166 19776-19776/com.xiaomi.smarthome:plugin0 W/ResourceType: For resource 0x7f0c0194, entry index(404) is beyond type entryCount(39) 08-21 13:35:18.166 19776-19776/com.xiaomi.smarthome:plugin0 W/ResourceType: Failure getting entry for 0x7f0c0194 (t=11 e=404) (error -75) 08-21 13:35:18.167 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err: android.content.res.Resources$NotFoundException: String resource ID #0x7f0c0194 08-21 13:35:18.168 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at android.content.res.Resources.getText(Resources.java:350) 08-21 13:35:18.169 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at android.content.res.Resources.getString(Resources.java:444) 08-21 13:35:18.169 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at android.widget.ToastInjector.addAppName(ToastInjector.java:49) 08-21 13:35:18.169 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at android.widget.Toast.makeText(Toast.java:284) 08-21 13:35:18.170 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at android.widget.Toast.makeText(Toast.java:267) 08-21 13:35:18.170 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.util.ToastUtil.showMessage(ToastUtil.java:101) 08-21 13:35:18.170 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.activity.base.BaseActivity.showToast(BaseActivity.java:453) 08-21 13:35:18.171 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.activity.base.BaseActivity$5.result(BaseActivity.java:276) 08-21 13:35:18.171 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.EquipmentProperty$2.onSuccess(EquipmentProperty.java:297) 08-21 13:35:18.172 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD 08-21 13:35:18.172 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON 08-21 13:35:18.172 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK 08-21 13:35:18.172 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.EquipmentProperty$2.onSuccess(EquipmentProperty.java:284) 08-21 13:35:18.172 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at com.xiaomi.smarthome.frame.plugin.host.PluginHostApi$5.run(PluginHostApi.java:322) 08-21 13:35:18.172 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at android.os.Handler.handleCallback(Handler.java:793) 08-21 13:35:18.173 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:98) 08-21 13:35:18.173 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at android.os.Looper.loop(Looper.java:173) 08-21 13:35:18.173 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:6698) 08-21 13:35:18.173 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at java.lang.reflect.Method.invoke(Native Method) 08-21 13:35:18.173 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240) 08-21 13:35:18.174 19776-19776/com.xiaomi.smarthome:plugin0 W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:782) 08-21 13:35:18.190 19776-19776/com.xiaomi.smarthome:plugin0 I/Toast: Show toast from OpPackageName:com.xiaomi.smarthome, PackageName:com.xiaomi.smarthome 08-21 13:35:18.206 894-1020/? I/ThermalEngine: handle_thresh_sig: HIS Id HISTORY-CPU4 Sensor tsens_tz_sensor8 Temp 61000 08-21 13:35:18.209 894-1020/? I/ThermalEngine: handle_thresh_sig: HIS Id HISTORY-CPU4 Sensor tsens_tz_sensor8 Temp 59000 08-21 13:35:18.234 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE 08-21 13:35:18.234 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF 08-21 13:35:18.237 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD 08-21 13:35:18.237 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON 08-21 13:35:18.237 534-2327/? I/vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK 08-21 13:35:18.260 894-1020/? I/ThermalEngine: handle_thresh_sig: HIS Id HISTORY-CPU4 Sensor tsens_tz_sensor8 Temp 61000 08-21 13:35:18.275 19776-20173/com.xiaomi.smarthome:plugin0 E/RenderScript: Failed to init thread tls key. 08-21 13:35:18.275 19776-20173/com.xiaomi.smarthome:plugin0 E/RenderScript: RsdCpuReference::create for driver hal failed. 08-21 13:35:18.275 19776-20173/com.xiaomi.smarthome:plugin0 E/RenderScript: Hal init failed,  libRSDriver.so 08-21 13:35:18.278 19776-20173/com.xiaomi.smarthome:plugin0 E/RenderScript: Failed to load default runtime! 08-21 13:35:18.278 19776-20173/com.xiaomi.smarthome:plugin0 E/RenderScript: Errors during thread init (sync mode) 08-21 13:35:18.278 19776-20173/com.xiaomi.smarthome:plugin0 E/RenderScript: rsAssert failed: mExit, in frameworks/rs/rsContext.cpp at 566 08-21 13:35:18.283 19776-1713/com.xiaomi.smarthome:plugin0 A/libc: Fatal signal 11 (SIGSEGV), code 1, fault addr 0xb74 in tid 1713 (RenderThread) 08-21 13:35:18.293 2046-2243/? I/QcrilOemhookMsgTunnel: [1]processOemHookIndication length=21 08-21 13:35:18.293 2046-2046/? D/QcrilMsgTunnelIfaceManager: handleMessage what = 0 08-21 13:35:18.296 2039-2039/? D/QC_RIL_OEM_HOOK: Received Broadcast Intent ACTION_UNSOL_RESPONSE_OEM_HOOK_RAW 08-21 13:35:18.296 2039-2039/? D/QC_RIL_OEM_HOOK: Oem ID in QCRILHOOK UNSOL RESP is QOEMHOOK 08-21 13:35:18.297 2215-2319/? E/wpa_supplicant: eap_proxy: card_state=2 error_code=3 08-21 13:35:18.297 2215-2319/? E/wpa_supplicant: eap_proxy: card_state=1 error_code=0 08-21 13:35:18.297 2215-2323/? E/wpa_supplicant: eap_proxy: card_state=2 error_code=3 08-21 13:35:18.297 2215-2323/? E/wpa_supplicant: eap_proxy: card_state=1 error_code=0 08-21 13:35:18.298 2215-2322/? E/wpa_supplicant: eap_proxy: card_state=2 error_code=3 08-21 13:35:18.298 2215-2322/? E/wpa_supplicant: eap_proxy: card_state=1 error_code=0 08-21 13:35:18.298 2215-2318/? E/wpa_supplicant: eap_proxy: card_state=2 error_code=3 08-21 13:35:18.299 2215-2318/? E/wpa_supplicant: eap_proxy: card_state=1 error_code=0 08-21 13:35:18.300 2063-2063/? D/QC_RIL_OEM_HOOK: Received Broadcast Intent ACTION_UNSOL_RESPONSE_OEM_HOOK_RAW 08-21 13:35:18.300 2063-2063/? D/QC_RIL_OEM_HOOK: Oem ID in QCRILHOOK UNSOL RESP is QOEMHOOK 08-21 13:35:18.300 2063-2063/? D/QC_RIL_OEM_HOOK: Received Broadcast Intent ACTION_UNSOL_RESPONSE_OEM_HOOK_RAW 08-21 13:35:18.300 2063-2063/? D/QC_RIL_OEM_HOOK: Oem ID in QCRILHOOK UNSOL RESP is QOEMHOOK 08-21 13:35:18.316 1891-2547/? D/BluetoothController: onDeviceDeleted 08-21 13:35:18.329 1891-2547/? D/BluetoothController: updateConnected complete 08-21 13:35:18.329 1891-2547/? D/BluetoothController: onDeviceAdded 08-21 13:35:18.332 2046-2243/? I/QcrilOemhookMsgTunnel: [0]processOemHookIndication length=24 08-21 13:35:18.332 2046-2046/? D/QcrilMsgTunnelIfaceManager: handleMessage what = 0  提供更多的上下文，有日志或者截图更好。  #### 尝试过的解决办法  尝试过哪些操作？  </body>
+		<created>2019-08-21 05:43:40</created>
+		<closed>2019-09-24 07:19:58</closed>
+	</bug>
+	<bug>
+		<id>128</id>
+		<title>语音快捷回复页面，新增一条语音快捷回复，退出到直播页面，再次进入语音快捷页面一直提示获取数据</title>
+		<body>  ---  #### 环境 插件 model loock.cateye.v02 可以使用测试账号 15910550249 密码12345678q复现问题 三星s6机型 Android6.0 wifi下  #### 现象  一直加载数据  #### 期望  进入语音快捷回复页面 不用一直加载  #### 其他的上下文/日志/截图  ![image](https://user-images.githubusercontent.com/54298908/63401668-bf513c80-c40a-11e9-8c74-bb5bc12b2621.png)   #### 尝试过的解决办法  尝试过哪些操作？  </body>
+		<created>2019-08-21 03:56:50</created>
+		<closed>2019-08-26 03:11:42</closed>
+	</bug>
+	<bug>
+		<id>127</id>
+		<title>设置页面，点击使用帮助，页面显示空白</title>
+		<body>  ---  #### 环境 插件 model loock.cateye.v02 可以使用测试账号 15910550249 密码12345678q复现问题 三星s6机型 Android6.0 wifi下  #### 现象   #### 期望  应该包含常见的QA  #### 其他的上下文/日志/截图  ![image](https://user-images.githubusercontent.com/54298908/63401520-199dcd80-c40a-11e9-991d-16c25bdcf769.png)   #### 尝试过的解决办法  尝试过哪些操作？  </body>
+		<created>2019-08-21 03:52:14</created>
+		<closed>2019-08-26 03:13:58</closed>
+	</bug>
+	<bug>
+		<id>123</id>
+		<title>点击收到的停留或者有人经过的推送消息，没有跳转到对应的录像详情页</title>
+		<body> ---  #### 环境 插件 model loock.cateye.v02 可以使用测试账号 15910550249 密码12345678q复现问题  #### 现象   #### 期望 直接跳转到对应报警消息的详情页 播放视频 简单明了地描述一下期望的表现。  #### 其他的上下文/日志/截图  提供更多的上下文，有日志或者截图更好。  #### 尝试过的解决办法  尝试过哪些操作？  </body>
+		<created>2019-08-21 03:24:25</created>
+		<closed>2019-08-27 07:04:36</closed>
+	</bug>
+	<bug>
+		<id>122</id>
+		<title>打开省电模式后，猫眼首页点击查看实时画面，没有响应也没有任何提示</title>
+		<body>  #### 环境 插件 model loock.cateye.v02 可以使用测试账号 15910550249 密码12345678q复现问题  #### 现象 先去设置 打开省电模式  回到首页 点击查看实时画面  没有响应 也没提示   #### 期望  弹框给出提示：设备不在线，请检查省电模式开关是否处于打开状态，如果已打开，请等待下次设备被唤醒  #### 其他的上下文/日志/截图  提供更多的上下文，有日志或者截图更好。  #### 尝试过的解决办法  尝试过哪些操作？  </body>
+		<created>2019-08-21 03:21:42</created>
+		<closed>2019-08-27 07:05:15</closed>
+	</bug>
+	<bug>
+		<id>120</id>
+		<title>猫眼首页，点击底部的人脸管理，无响应</title>
+		<body>  ---  #### 环境 插件 model loock.cateye.v02 可以使用测试账号 15910550249 密码12345678q复现问题 三星s6机型  Android6.0  wifi下 #### 现象   #### 期望  点击人脸管理 跳转对应的页面  #### 其他的上下文/日志/截图  提供更多的上下文，有日志或者截图更好。  #### 尝试过的解决办法  尝试过哪些操作？  </body>
+		<created>2019-08-21 03:13:40</created>
+		<closed>2019-08-27 06:35:16</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>被分享的成员操作权限问题：1、可以进入通用设置进行删除设备 2、可以删除录像记录</title>
+		<body>before issue：（不用回答） ### APK 请使用最新版apk验证是否已经修复了此问题？ ### Check 文档了吗？ ### 是否尝试搜索issue？  ---  #### 环境 插件 model loock.cateye.v02 可以使用测试账号 15910550249 密码12345678q复现问题  #### 现象  请使用 logcat 导出所有进程的 log 简单明了地描述一下实际的现象。  #### 期望  1、关闭通用设置入口 不允许删除设备 2.不允许成员删除录像记录  #### 其他的上下文/日志/截图  提供更多的上下文，有日志或者截图更好。  #### 尝试过的解决办法  尝试过哪些操作？  </body>
+		<created>2019-08-21 03:10:51</created>
+		<closed>2019-08-26 02:53:18</closed>
+	</bug>
+	<bug>
+		<id>118</id>
+		<title>米家公版摄像头插件: 直播连接 在 “91%准备开始播放” 之后不动 </title>
+		<body>  #### 环境 插件 model   loock.cateye.v02 已分享设备设备到 346378191，方便复现问题。设备名称 “小米米家智能猫眼”  #### 现象 直播连接，走百分比 走到   “91%准备开始播放”，就停住了，直播也连不上（等了3分钟左右）。  #### 期望  直播连接能成功  #### 其他的上下文/日志/截图  [long_text_2019-08-20-10-49-59.txt](https://github.com/MiEcosystem/NewXmPluginSDK/files/3518481/long_text_2019-08-20-10-49-59.txt)   </body>
+		<created>2019-08-20 02:57:42</created>
+		<closed>2019-09-24 07:16:44</closed>
+	</bug>
+	<bug>
+		<id>116</id>
+		<title>米家摄像头插件包运行闪退</title>
+		<body>#### 环境 插件 model 是什么  mijia.camera.v3  #### 现象 米家摄像头插件包，在指定的米家App Debug包上运行（由米家同学给的支持插件安装摄像头的包），进入插件后白屏闪退。 log:  [error.log](https://github.com/MiEcosystem/NewXmPluginSDK/files/3508475/error.log)  #### 期望 再给我们一个支持插件安装摄像头的没有bug的包。或者指导如何修改，能正常运行起来。</body>
+		<created>2019-08-16 07:22:55</created>
+		<closed>2019-09-24 07:23:50</closed>
+	</bug>
+	<bug>
+		<id>115</id>
+		<title>弹出Toast偶现崩溃</title>
+		<body>home:plugin0 W/ResourceType: For resource 0x7f0c0194, entry index(404) is beyond type entryCount(39) 08-16 14:01:06.967 22900-22900/com.xiaomi.smarthome:plugin0 W/ResourceType: Failure getting entry for 0x7f0c0194 (t=11 e=404) (error -75) 08-16 14:01:06.968 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err: android.content.res.Resources$NotFoundException: String resource ID #0x7f0c0194 08-16 14:01:06.976 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at android.content.res.Resources.getText(Resources.java:350) 08-16 14:01:06.977 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at android.content.res.Resources.getString(Resources.java:444) 08-16 14:01:06.977 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at android.widget.ToastInjector.addAppName(ToastInjector.java:49) 08-16 14:01:06.977 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at android.widget.Toast.makeText(Toast.java:284) 08-16 14:01:06.978 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at android.widget.Toast.makeText(Toast.java:267) 08-16 14:01:06.978 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.util.ToastUtil.showMessage(ToastUtil.java:101) 08-16 14:01:06.978 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.activity.base.BaseActivity.showToast(BaseActivity.java:452) 08-16 14:01:06.979 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.activity.base.BaseActivity.settingOk(BaseActivity.java:394) 08-16 14:01:06.979 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.activity.base.BaseActivity.access$200(BaseActivity.java:61) 08-16 14:01:06.979 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.activity.base.BaseActivity$6.onSuccess(BaseActivity.java:319) 08-16 14:01:06.979 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at com.meetvr.doorbell.android.activity.base.BaseActivity$6.onSuccess(BaseActivity.java:316) 08-16 14:01:06.979 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at com.xiaomi.smarthome.frame.plugin.host.PluginHostApi$5.run(PluginHostApi.java:322) 08-16 14:01:06.980 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at android.os.Handler.handleCallback(Handler.java:793) 08-16 14:01:06.980 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:98) 08-16 14:01:06.980 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at android.os.Looper.loop(Looper.java:173) 08-16 14:01:06.980 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:6698) 08-16 14:01:06.980 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at java.lang.reflect.Method.invoke(Native Method) 08-16 14:01:06.980 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240) 08-16 14:01:06.980 22900-22900/com.xiaomi.smarthome:plugin0 W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:782) 08-16 14:01:07.001 22900-22900/com.xiaomi.smarthome:plugin0 I/Toast: Show toast from OpPackageName:com.xiaomi.smarthome, PackageName:com.xiaomi.smarthome</body>
+		<created>2019-08-16 06:45:13</created>
+		<closed>2019-09-24 07:21:44</closed>
+	</bug>
+	<bug>
+		<id>107</id>
+		<title>菜单中，“检查固件更新”的小红点不正常的出现</title>
+		<body>设备：锁类设备，蓝牙BLE设备 手机操作系统： Android， 米家App 5.5.30 现象：进入插件，手机蓝牙未能连接到锁的情况下，调用接口，显示菜单。在“检查固件更新”这个菜单项上，直接显示了一个小红点（表示有固件可进行更新）。  问题： 由于蓝牙尚未连接，不可能获得到锁的现有固件版本。为什么在“检查固件更新”上会显示小红点。 只有Android会出现此情况，iPhone不会出现。 </body>
+		<created>2019-06-26 07:39:11</created>
+		<closed>2019-09-24 07:02:06</closed>
+	</bug>
+	<bug>
+		<id>104</id>
+		<title>米家App - 保存默认灯光功能在局域网模式下不正确</title>
+		<body>米家版本: 5.5.25 OS: Android Model: yeelink.light.color1 （其他有此功能的灯，功能也不正确，如yeelink.light.strip1, yeelink.light.strip2等） UID: 1858826010 DID: 86938038  测试场景: 1. 远程连接模式 1） 打开米家App -&gt; 打开彩光灯泡插件 (yeelink.light.color1 ) 2） 关灯 3） 打开设置/设备设置/默认状态 -&gt; 点击保存默认灯光 4)  结果 -&gt; 保存失败 (这是正确的行为)  2. 局域网模式 1） 打开米家App -&gt; 打开彩光灯泡插件 (yeelink.light.color1 ) 2） 关灯 3） 打开设置/设备设置/默认状态 -&gt; 点击保存默认灯光 4)  结果 -&gt; 保存成功 (这是错误的行为)  SDK接口，参数一会儿让开发人员更新。</body>
+		<created>2019-06-12 04:11:06</created>
+		<closed>2019-08-30 09:38:06</closed>
+	</bug>
+	<bug>
+		<id>97</id>
+		<title>旧版米家app绑定新开发插件问题</title>
+		<body>你好，我现在使用旧版米家app5.1.39，然后添加我们自己的插件。添加之后打开crash。 插件配置版本： compileSdkVersion 27     buildToolsVersion '26.0.2'      defaultConfig {         //需要配置为插件包名         applicationId "com.miaomiaoce.sensor_ht"         minSdkVersion 19         targetSdkVersion 26         //每次发布版本versionCode必须加1         versionCode 79         versionName "1.0.78"     }  &lt;!-- 支持插件的最低版本，必须 --&gt;         &lt;meta-data android:name="minPluginSdkApiVersion" android:value="76" /&gt;</body>
+		<created>2019-05-21 08:58:31</created>
+		<closed>2019-08-26 03:59:24</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>【新品】+【无项目ID】+【洒哇地咔】+【MT】</title>
+		<body>【新品】+【无项目ID】+【洒哇地咔】+【MT】 我们的安卓app调试过程中发现BaseDevice.callMethod函数偶尔会出现(-104): no did的错误, 出现的概率大概是10几次出现一次, 请问什么情况下可能导致这个问题? 因为配网是能配成功的, 所以我们这边认为应该不是设备端did格式有问题, 因为did错误的话首先配网不会成功. 另外我们这边可能存在网络延迟的问题, 因此会不会由于请求超时而出现no did的错误?</body>
+		<created>2019-05-16 06:58:21</created>
+		<closed>2019-08-30 09:27:10</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>关于华为手机偶尔订阅失败,但小米手机能订阅成功</title>
+		<body>我们这边测试的时候,偶尔出现全体华为手机订阅失败的现象, 但小米手机正常使用, 然后过一段时候会恢复正常, 订阅失败的错误码-8,提示invalid param, 请问这是什么错误?</body>
+		<created>2019-04-22 01:02:21</created>
+		<closed>2019-09-24 07:13:17</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>Android 9.0 新版本debug米家无法安装插件的问题</title>
+		<body>我们用的红米6 ，米家5.4.54测试版，系统是Android 9 ，也更新了下sdk中最新的 plug.gradle，但是仍然不能安装插件，不提示插件安装成功，点击进入插件也不是需要安装的插件，请问是什么原因呢</body>
+		<created>2019-04-19 02:35:58</created>
+		<closed>2019-08-30 09:25:48</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>插件上传后，提示错误</title>
+		<body>![image](https://user-images.githubusercontent.com/37095387/56259840-24b4ba00-6107-11e9-8a70-420dc991d1e8.png)  如图 之前的上传都没有问题，昨天更新代码后，进行上传，上传结束后，提示这个错误</body>
+		<created>2019-04-17 03:53:03</created>
+		<closed>2019-08-28 03:54:48</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>通用设置-定时开关功能异常</title>
+		<body>1、调用的API   /**      * ApiLevel: 8 startSetTimerList(mDeviceStat.did, "set_rgb",      * String.valueOf(0x00ffffff), "set_rgb", String.valueOf(0x00000000),      * mDeviceStat.did, "RGB灯定时器", "RGB灯定时器");      *      * @param deviceId    device id      * @param onMethod    当on timer时间到的时候执行的action，执行原始数据      * @param onParams    on action的参数      * @param offMethod   当off timer时间到的时候执行的action，执行原始数据      * @param offParams   off action参数      * @param identify    定时器的identify，使用device id      * @param displayName 定时的名称,在场景执行日志中显示      * @param timerTitle  定时器标题      */     public void startSetTimerList(String deviceId, String onMethod, String onParams,                                   String offMethod, String offParams, String identify, String displayName,                                   String timerTitle); 2、uid：268240019 3、操作步骤：进入mono1的设备设置界面-定时开关-定时开关列表页面，如果之前设置过定时任务，此时发现不能删除也不能操作。</body>
+		<created>2019-04-02 01:29:43</created>
+		<closed>2019-09-24 07:12:17</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>蓝牙开关弹框</title>
+		<body>手机为英文状态下，在模型机型，如（Mi 8）蓝牙开关弹窗还是为中文状态。 </body>
+		<created>2019-03-29 10:33:23</created>
+		<closed>2019-09-24 07:05:03</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>蓝牙连接</title>
+		<body>有些设备在进行蓝牙连接时候回调中会报-7？如何避免这种超时状态呢？</body>
+		<created>2019-01-24 06:20:41</created>
+		<closed>2019-08-29 10:01:26</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>BLE固件更新问题</title>
+		<body>BLE --OTA升级部分遇到点问题，需要协助一下。      目前情况：     设备固件版本：2.1.5_0001    米家后台固件：2.1.5_0002（已发布） 设置成白名单测试    开发者账号：已加入测试白名单    手机APP能获得到设备的版本号和米家后台已上传固件版本号。 现在升级到99%一直卡住，设备端也没有新的提示。  </body>
+		<created>2019-01-23 15:57:12</created>
+		<closed>2019-09-24 07:09:16</closed>
+	</bug>
+	<bug>
+		<id>65</id>
+		<title>高压锅在做黄焖鸡 做好以后提示居然显示在破壁机图标上了 但是下拉菜单看到是高压锅的提示</title>
+		<body>高压锅在做黄焖鸡 做好以后提示居然显示在破壁机图标上了 但是下拉菜单看到是高压锅的提示 ![_20181217105216](https://user-images.githubusercontent.com/5772086/50064020-ddb2c880-01e9-11e9-8bac-d1062e9f41cb.jpg) ![_20181217105229](https://user-images.githubusercontent.com/5772086/50064021-e0152280-01e9-11e9-94a4-b21f1b27d239.jpg) </body>
+		<created>2018-12-17 02:52:45</created>
+		<closed>2019-08-29 09:59:17</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>插件和设备交互中，突然断开连接。</title>
+		<body>![image](https://user-images.githubusercontent.com/42274809/48121336-9e6e8f00-e2af-11e8-93b1-c2107d776ba5.png) 设备收到disconnect 13 ，查看手册时手机端断开连接，帮忙看一下手机侧为什么断开连接 </body>
+		<created>2018-11-07 09:08:47</created>
+		<closed>2019-09-24 07:08:51</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>调用XmPluginHostApi.instance().getSettingLocale()引起crash,如何处理</title>
+		<body>![image](https://user-images.githubusercontent.com/4638162/46651300-1d4daa80-cbd2-11e8-96fd-992ba418f21a.png) ![image](https://user-images.githubusercontent.com/4638162/46651325-348c9800-cbd2-11e8-834d-5133c2f8411a.png) </body>
+		<created>2018-10-09 06:48:22</created>
+		<closed>2019-08-29 09:54:04</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>米家调试版apk无法安装插件，签名错误</title>
+		<body>红米6A手机，装的GitHub上下的米家调试版，电脑上装的Android studio 3.2 往手机上装调试扩展程序的时候报错，sd卡本地安装插件失败，签名错误，运行自带的实例程序PluginDemo，也是这样，大致是这个意思，请问这是怎么回事，该怎么设置？</body>
+		<created>2018-09-12 00:44:13</created>
+		<closed>2019-08-29 09:57:37</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>米家配置 执行 gradlew installdebug的时候 出现编译不通过报错，</title>
+		<body>* What went wrong: A problem occurred configuring project ':common_ui'. &gt; Could not generate a proxy class for class ss com.android.build.gradle.tasks.BuildArtifactfactReportTask.</body>
+		<created>2018-09-07 03:41:53</created>
+		<closed>2019-08-29 09:53:37</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>米家智能插线板 android端倒计时操作接口报错</title>
+		<body>产品model为：zimi.powerstrip.v2 | 米家智能插线板 | 10007  目前用的apilevel为58，在取消倒计时和重设倒计时都会有下面的错误， 9-03 19:25:16.203 5204-5268/? V/xiaomi: [Thread:8462] JOB: do reconnect.. 09-03 19:25:16.212 5204-5268/? V/xiaomi: [Thread:8462] update the connection status. disconnected -&gt; connecting : ERROR_OK  09-03 19:25:16.234 5204-5268/? V/xiaomi: [Thread:8462] begin to connect to 118.26.252.11:5222 09-03 19:25:16.274 5204-5268/? V/xiaomi: [Thread:8462] tcp connected 09-03 19:25:16.281 5204-5268/? V/xiaomi: [Thread:8462] [slim] open conn: andver=26 sdk=36 hash=eO8RanrLOB7H8iis tz=8:0 Model=EVA-AL10 os=528(C00) 09-03 19:25:16.281 5204-5268/? V/xiaomi: [Thread:8462] connected to 118.26.252.11:5222 in 47 09-03 19:25:16.309 5204-7046/? V/xiaomi: [Thread:8489] setChallenge hash = cfe642cd 09-03 19:25:16.310 5204-7046/? V/xiaomi: [Thread:8489] update the connection status. connecting -&gt; connected : ERROR_OK  09-03 19:25:16.322 5204-7046/? V/xiaomi: [Thread:8489] [Slim] CONN: host = e688 09-03 19:25:16.322 5204-5268/? V/xiaomi: [Thread:8462] JOB: bind the client. 5 09-03 19:25:16.322 5204-5268/? V/xiaomi: [Thread:8462] update the client 5 status. unbind-&gt;binding unknown ERROR_OK null null 09-03 19:25:16.323 5204-5268/? V/xiaomi: [Thread:8462] [Slim]: bind id=tyHWP-17 09-03 19:25:16.363 5204-5268/? V/xiaomi: [Thread:8462] SMACK: channel bind succeeded, chid=5 09-03 19:25:16.364 5204-5268/? V/xiaomi: [Thread:8462] update the client 5 status. binding-&gt;binded OPEN ERROR_OK null null 09-03 19:25:16.365 5204-5268/? V/xiaomi: [Thread:8462] JOB: notify job 09-03 19:25:16.833 1109-1910/? V/WindowManager: Adding Window{5b754b4 u0 com.xiaomi.smarthome/com.xiaomi.smarthome.frame.plugin.runtime.activity.PluginHost </body>
+		<created>2018-09-04 07:17:05</created>
+		<closed>2019-08-29 09:56:57</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>Android Studio3.0.1 Gradle4.4运行工程出现这个问题</title>
+		<body>Error:FAILURE: Build failed with an exception.  * Where: Script 'D:\AndroidSutidoWorkSpace\NewXmPluginSDK-master\NewXmPluginSDK-master\plug.gradle' line: 183  * What went wrong: Execution failed for task ':plugProject:moyu_washer:assembleDebug'. &gt; Process 'command 'D:\BaiduYunDownload\luna_adt\luna_adt\sdk\platform-tools\adb'' finished with non-zero exit value 1  </body>
+		<created>2018-06-26 03:50:57</created>
+		<closed>2019-08-29 09:50:46</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>运行PluginDemo米家扩展程序的问题 </title>
+		<body>运行成功PluginDemo米家扩展程序后点击进入不了小米开发板</body>
+		<created>2018-06-13 01:25:14</created>
+		<closed>2019-08-29 09:50:21</closed>
+	</bug>
+</bugs>

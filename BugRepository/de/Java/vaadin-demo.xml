@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="vaadin-demo">
+	<bug id="280" opendate="2015-11-26 10:18:52" fixdate="2015-11-30 14:40:08">
+		<buginformation>
+			<summary>GenericGrid ignoriert den FieldEnum</summary>
+			<description>Die GenericGrid übernimmt momentan automatisch alle Felder die in der zugewiesenen Bean stehen, und ignroiert die mitgegebenen Fields. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericGrid.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="239" opendate="2015-11-03 14:01:46" fixdate="2015-11-04 12:59:48">
+		<buginformation>
+			<summary>Security an Gaia-Änderungen anpassen für User-Endpunkt</summary>
+			<description>Es müssen einige Änderungen an der Security vorgenommen werden um einen REST-Endpunkt für die User-Erstellung bereitstellen zu können. Dafür wird die Security-Library in die Service-Library integriert. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Service-Lib/src/main/java/de/muenchen/service/TenantService.java</file>
+			<file>I18nService/src/main/java/de/muenchen/vaadin/demo/i18nservice/I18nServiceConfigImpl.java</file>
+			<file>Service-Lib/src/main/java/de/muenchen/service/DatabaseBeforeSaveEventListener.java</file>
+			<file>Service-Lib/src/main/java/de/muenchen/service/RepoBeforeSaveEventListener.java</file>
+			<file>Service-Lib/src/main/java/de/muenchen/service/QueryService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="223" opendate="2015-10-29 08:24:51" fixdate="2015-11-02 07:12:35">
+		<buginformation>
+			<summary>IDs von Komponenten für Selenium</summary>
+			<description>Die wurden von mir bisher komplett ignoriert, und sollen jetzt in den Komponenten gesetzt werden. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/BuergerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/BuergerPartnerForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/BuergerPartnerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/BuergerCreateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/BuergerRWForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/BuergerUpdateForm.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="211" opendate="2015-10-27 10:56:36" fixdate="2015-11-02 13:23:50">
+		<buginformation>
+			<summary>Fetch-Type im MicroService auf LAZY stellen</summary>
+			<description>Momentan ist der Fetch-Type bei Assoziationen überall auf EAGER gestellt. Dies führt zu Fehlverhalten der Suche. Bitte umstellen in allen Domain-Objekten. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/gen/rest/BuergerRepository.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerAddPartnerView.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/gen/domain/Buerger.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="199" opendate="2015-10-22 07:38:09" fixdate="2015-10-27 07:37:21">
+		<buginformation>
+			<summary>BuergerForms anpassen + BuergerPartnerForm</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerDetailView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/node/BuergerForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/BuergerPartnerForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerUpdateView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerTab.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/selected/SelectedBuergerForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/SelectedBuergerPartnerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/selected/SelectedBuergerPartnerForm.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="189" opendate="2015-10-19 07:49:48" fixdate="2015-10-28 12:38:13">
+		<buginformation>
+			<summary>Mandantenfähigkeit über Datenbank</summary>
+			<description>``` Java HibernateEntityManagerFactory hibernateEntityManagerFactory = (HibernateEntityManagerFactory) this.entityManagerFactory; SessionFactoryImpl sessionFactoryImpl = (SessionFactoryImpl) hibernateEntityManagerFactory.getSessionFactory(); EventListenerRegistry registry = sessionFactoryImpl.getServiceRegistry().getService(EventListenerRegistry.class);  registry.getEventListenerGroup(EventType.POST_INSERT).appendListener(postLoadEvent -&gt; {             [...]             }         }); ```  Der Mandant muss über einen Listener an der Datenbank gesetzt werden, und nicht bei REST-Anfrage. Wegen BusinessActions u. Auditing. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Service-Lib/src/main/java/de/muenchen/service/DatabaseBeforeSaveEventListener.java</file>
+			<file>Service-Lib/src/main/java/de/muenchen/service/BaseEntity.java</file>
+			<file>Auditing/src/main/java/de/muenchen/auditing/AuditingServiceProducer.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/gen/domain/Buerger.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="188" opendate="2015-10-19 05:20:20" fixdate="2015-10-21 11:48:20">
+		<buginformation>
+			<summary>MainUI in GUI-Lib auslagern.</summary>
+			<description>Für #180 werden Teile des UIs in der GUI-LIB gebraucht. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/EntityActions.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/BaseUI.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/NavigateActions.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/EntityAssociationListAction.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/BuergerActions.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/EntitySingleActions.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/controller/EntityController.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/BaseComponent.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericGrid.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/BuergerAssociationListActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/MainView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/LoginView.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/EntityListActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/DefaultBuergerView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerComponent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerChildTab.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/BuergerListActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/BuergerAssociationActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/BuergerSingleActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/SelectedBuergerUpdateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerUpdateView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/BuergerCreateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/MainUI.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/SelectedBuergerReadForm.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/EntityAssociationActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/Application.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/SelectedBuergerPartnerReadForm.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="147" opendate="2015-10-07 08:33:00" fixdate="2015-10-14 08:51:35">
+		<buginformation>
+			<summary>Microkomponenten für GUI</summary>
+			<description>Die aktuellen GUI-Komponenten sollten soweit angepasst werden, dass diese auch wirklich mehrfach verwendet werden können. Momentan sind die Komponenten teilweise sehr auf den zweck zu dem sie erstellt wurden ausgelegt. Keyword: **#Decorator-Pattern #schiedermeier** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/BuergerDTOTest.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/EntityActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerCreateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerI18nResolver.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/selected/SelectedBuergerPartnerForm.java</file>
+			<file>I18nService/src/main/java/de/muenchen/vaadin/demo/i18nservice/buttons/Action.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/NavigateActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/selected/SelectedBuergerForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/NavigateAction.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/nodes/forms/FormUtil.java</file>
+			<file>Eventbus/src/main/java/de/muenchen/eventbus/selector/entity/ResponseEntityKey.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/BuergerActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/BuergerDeleteButton.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/EntitySingleActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerDetailView.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/controller/EntityController.java</file>
+			<file>Eventbus/src/main/java/de/muenchen/eventbus/selector/entity/RequestEvent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/node/BuergerForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericGrid.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Buerger.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/KindGrid.java</file>
+			<file>I18nService/src/main/java/de/muenchen/vaadin/demo/i18nservice/buttons/ActionButton.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/SelectedBuergerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/DemoBuergerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerUpdateForm.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Sachbearbeiter.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/BuergerCreateButton.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BaseComponent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/DemoSelectedBuergerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerReadForm.java</file>
+			<file>Eventbus/src/main/java/de/muenchen/eventbus/selector/entity/BaseEntityKey.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/node/FormUtil.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/DemoSelectedBuergerCreateForm.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/EntityListActions.java</file>
+			<file>API-Lib/src/main/java/de/muenchen/vaadin/demo/apilib/domain/Principal.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericConfirmationWindow.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/LoginView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerCreatePartnerView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerGrid.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/DefaultBuergerView.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/local/Buerger.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerCreateChildView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerFallbackDataGenerator.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerChildTab.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerComponent.java</file>
+			<file>Security/src/main/java/de/muenchen/security/entities/User.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/read/BuergerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/BuergerListActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerServiceImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/BuergerAssociationActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/listener/BuergerSingleActions.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/nodes/forms/BuergerForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerCreateView.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/CompanyBaseInfo.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/SelectedBuergerUpdateForm.java</file>
+			<file>Security/src/main/java/de/muenchen/security/entities/Authority.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerUpdateView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerTab.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/GisSpringService.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/BuergerCreateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/node/BuergerSaveButton.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/DemoSelectedBuergerUpdateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/SelectedBuergerReadForm.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/actions/EntityAssociationActions.java</file>
+			<file>I18nService/src/main/java/de/muenchen/vaadin/demo/i18nservice/buttons/SimpleAction.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/forms/SelectedBuergerPartnerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/model/BuergerDatastore.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="144" opendate="2015-10-05 10:09:42" fixdate="2015-10-12 09:35:26">
+		<buginformation>
+			<summary>Reihenfolge der Authentifizierungsdienste und Travis</summary>
+			<description>Travis hat (natürlich) keine Möglichkeit auf das städtische LDAP zuzugreifen. Die Tests schlugen daher alle fehl, weil er keine Verbindung zum LDAP herstellen konnte. Daher hatte ich im Versuch Travis wieder glücklich zu machen, die Reihenfolge der Authentifizierung von `Erst LDAP, dann Datenbank` umgedreht auf `Erst Datenbank, dann LDAP`. Somit laufen die Tests wieder durch. Das Anmelden mit LDAP funktioniert auf diese Weise allerdings nicht mehr lokal. Blöd. Man könnte die alte Reihenfolge weiter verwenden wenn sich irgendwo ein Time-out konfigurieren ließe, oder auch direkt ein Fall-back, der bei nicht erreichen des LDAP dann einfach über die Datenbank geht. Ich denke, dass das fürs Referenzsystem ein wünschenswertes Feature wäre. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Security/src/main/java/de/muenchen/security/configurator/JDBCAuthenticationConfigurator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="141" opendate="2015-10-02 05:00:15" fixdate="2015-10-12 09:14:18">
+		<buginformation>
+			<summary>Grid reagiert nicht korrekt wenn ein selektierter Eintrag von extern gelöscht wird.</summary>
+			<description>Wenn man zwei Grids auf einer Seite zusammen laufen lässt, im unteren der beidne einen Eintrag markiert und den selbigen anschließend im oberen Grid löscht, verschwindet die Toolbar nicht aus der unteren grid. Bei klick auf einen der buttons taucht natürlich eine fehlermeldung auf.  ![bildschirmfoto1](https://cloud.githubusercontent.com/assets/10800158/10239738/5bd33844-68d2-11e5-87f7-058c9346e7a9.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericGrid.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="126" opendate="2015-09-22 12:21:36" fixdate="2015-09-23 07:30:54">
+		<buginformation>
+			<summary>Im GenericGrid wird häufig die delete Methode mit null aufgerufen.</summary>
+			<description>``` java Wrapped by: java.lang.AssertionError: Hallo Arne!, diese Methode wird evtl. öfters mit null aufgerufen.     at de.muenchen.vaadin.guilib.components.GenericGrid.delete(GenericGrid.java:62) ~[classes/:na]     at de.muenchen.vaadin.guilib.components.GenericGrid.accept(GenericGrid.java:84) ~[classes/:na] ```  ``` java     /**      * Delete an entity.      *      * @param id the id      */     public void delete(Object id) {         if (id == null)             throw new AssertionError("Hallo Arne!, diese Methode wird evtl. öfters mit null aufgerufen. vg Peter :)");         getContainerDataSource().removeItem(id);     } ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerGrid.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="114" opendate="2015-09-16 13:50:18" fixdate="2015-09-18 10:21:56">
+		<buginformation>
+			<summary>Dokumentation API</summary>
+			<description>Durch Spring Data Rest wurde die API leicht verändert, hier muss alles noch dokumentiert werden. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClientImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerCreateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerDetailView.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClient.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerUpdateForm.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/hateoas/LocalBuergerAssembler.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerResource.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/ChildTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerGrid.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/domain/BuergerDTO.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/local/Buerger.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerChildTab.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/hateoas/BuergerAssembler.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerServiceImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/PartnerTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerTab.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="109" opendate="2015-09-15 15:09:12" fixdate="2015-09-21 12:12:23">
+		<buginformation>
+			<summary>Travis glücklich machen</summary>
+			<description>TravisCI sollte wieder grün werden. D.h. alle Tests anpassen/überarbeiten/reparieren, sodass diese wieder durchlaufen </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/security/ApplicationSecurity.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/security/TenantService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="106" opendate="2015-09-15 13:50:16" fixdate="2015-10-05 05:44:34">
+		<buginformation>
+			<summary>Erste Anmeldung und ViewChange auf BürgerTable löst 401 aus</summary>
+			<description>1. GUI Starten 2. Anmelden 3. Auf "Bürger Pflege" klicken  Dies löst folgende Fehlermeldung aus:  ``` 2015-09-15 15:46:05.454 ERROR 13939 --- [nio-8081-exec-9] reactor.bus.EventBus                     : 401 Unauthorized; nested exception is reactor.core.support.Exceptions$ValueCause: Exception while signaling value: reactor.bus.Event.class : Event{id=null, headers=null, replyTo=null, key=de.muenchen.eventbus.events.AppEvent@0, data=de.muenchen.eventbus.events.AppEvent@0}  org.springframework.web.client.HttpClientErrorException: 401 Unauthorized; nested exception is reactor.core.support.Exceptions$ValueCause: Exception while signaling value: reactor.bus.Event.class : Event{id=null, headers=null, replyTo=null, key=de.muenchen.eventbus.events.AppEvent@0, data=de.muenchen.eventbus.events.AppEvent@0}     at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:91)     at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:614)     at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:570)     at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:530)     at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:476)     at org.springframework.hateoas.client.Traverson$TraversalBuilder.toObject(Traverson.java:257)     at de.muenchen.vaadin.demo.api.rest.BuergerRestClientImpl.findAll(BuergerRestClientImpl.java:43)     at de.muenchen.vaadin.services.BuergerServiceImpl.findAll(BuergerServiceImpl.java:70)     at de.muenchen.vaadin.ui.controller.BuergerViewController.queryBuerger(BuergerViewController.java:332)     at de.muenchen.vaadin.ui.controller.BuergerViewController.queryEventHandler(BuergerViewController.java:447)     at de.muenchen.vaadin.ui.controller.BuergerViewController$$Lambda$24/17735137.accept(Unknown Source) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClientImpl.java</file>
+			<file>API-Lib/src/main/java/de/muenchen/vaadin/demo/apilib/rest/SecurityRestClientImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/InfoService.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/MainUI.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/InfoServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="103" opendate="2015-09-15 13:08:27" fixdate="2015-09-21 05:45:26">
+		<buginformation>
+			<summary>MUCAudited mit SpringDataRest  reparieren</summary>
+			<description>Das Auditing funktioniert nach der Umstellung auf Spring Data Rest nicht mehr. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClientImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerCreateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerTable.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericFailureNotification.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Augenfarbe.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/domain/Augenfarbe.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/BuergerTest.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerDetailView.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClient.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericSuccessNotification.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericErrorNotification.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/util/VaadinUtil.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Buerger.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerUpdateForm.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/hateoas/LocalBuergerAssembler.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerResource.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerReadForm.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericWarningNotification.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/ChildTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerGrid.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/domain/BuergerDTO.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/local/Buerger.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerChildTab.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/hateoas/BuergerAssembler.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerServiceImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/PartnerTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerTab.java</file>
+			<file>GUI-Lib/src/main/java/de/muenchen/vaadin/guilib/components/GenericNotification.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="102" opendate="2015-09-15 13:07:29" fixdate="2015-09-21 08:26:54">
+		<buginformation>
+			<summary>Partner hinzufügen inkorrekt</summary>
+			<description>Beim hinzufügen eines partners wird der hinzugefügte partner sich selbst ebenfalls als partner hinzugefügt. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerTab.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="92" opendate="2015-09-07 05:50:28" fixdate="2015-09-08 04:59:12">
+		<buginformation>
+			<summary>Navigation nach Kind neu erstellen nicht intuitiv</summary>
+			<description>Nach erstellen eines Kindes wird zurück auf die Suchseite navigiert. Ich hätte erwartet, dass ich wieder auf der Seite des entsprechenden Elternteils lande.  Nachstellen: - Beliebige Person als Elternteil aussuchen und Detailansicht wählen. - Auf Kinder Reiter klicken und "neu" wählen. - Daten ausfüllen und "speichern" klicken. - Statt aus der Detailseite der Eltern ist man nun auf der Suchseite.  Siehe auch #68  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerDetailView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerUpdateView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerTab.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerSelectTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerCreateChildView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerChildTab.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerSearchTable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="91" opendate="2015-09-04 05:52:36" fixdate="2015-09-04 11:17:14">
+		<buginformation>
+			<summary>In Tests wird keine Authentication verwendet.</summary>
+			<description>Dies führt dazu, dass die Tests im aktuellen Stand fehlschlagen, weil der AuditListener bei einer Änderung auf die Authentication zugreift um den Nutzer zu holen, der die Änderung erwirkt hat. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/util/AuditingListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="80" opendate="2015-09-01 04:49:16" fixdate="2015-09-01 09:05:27">
+		<buginformation>
+			<summary>Bürger in Kindtabelle nach bearbeiten des Bürgers</summary>
+			<description>Nach bearbeiten eines Bürgers wird der Bürger bei sich selbst als Kind angezeigt, obwohl er keiner ist... (nur bis aktuallisation der Tabelle) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerUpdateForm.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="77" opendate="2015-08-28 10:22:44" fixdate="2015-08-28 10:57:01">
+		<buginformation>
+			<summary>Event Update Bürger kann nicht dispatcht werden</summary>
+			<description>Bürger können zurzeit nicht bearbeitet werden. Default Fehlermeldung wird ausgegeben (could not dispatch event....) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClientImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2015-08-27 12:44:17" fixdate="2015-08-28 10:19:26">
+		<buginformation>
+			<summary>Bürger sollten älter als 45 sein dürfen ;)</summary>
+			<description>Der Validator für die das Geburtsdatum spuckt bei einem Geburtsdatum von 1970 und jünger einen Fehler. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClientImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClient.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerService.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerResource.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/BuergerResourceAssembler.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/BuergerController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/ChildTable.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/util/EventType.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2015-08-27 08:10:24" fixdate="2015-08-28 10:19:43">
+		<buginformation>
+			<summary>Beim Table Delete fehlt jetzt die Bestätigung</summary>
+			<description>Der alte Clicklistener war:  ``` java  delete.addClickListener(e -&gt; {     BeanItem&lt;Buerger&gt; item = container.getItem(itemId);     GenericConfirmationWindow win = new GenericConfirmationWindow(new BuergerAppEvent(item, itemId, EventType.DELETE), controller, EntityAction.delete);     getUI().addWindow(win);     win.center();     win.focus(); });  ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClientImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerRestClient.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerService.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/BuergerResource.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/BuergerResourceAssembler.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/BuergerController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/ChildTable.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/util/EventType.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/BuergerService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="71" opendate="2015-08-27 05:44:11" fixdate="2015-09-01 04:57:27">
+		<buginformation>
+			<summary>Fehlermeldung und default bei falscher Localization</summary>
+			<description>Sollte im Browser eine Localization eingestellt sein, die wir nicht haben, sollte ein default mit einer entsprechenden Meldung gezogen werden. Ansonsten schaut das so aus und man kann gar nichts machen:  ![local_error](https://cloud.githubusercontent.com/assets/712911/9513329/49daa7bc-4c8f-11e5-9840-1a10cea4d482.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerCreateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerSearchTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/GenericTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/PartnerTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/events/AppEvent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/I18nService.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerTab.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerUpdateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/I18nServiceConfigImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/Application.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/MainUI.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/services/MessageServiceImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerChildTab.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="69" opendate="2015-08-26 13:13:12" fixdate="2015-08-26 14:29:17">
+		<buginformation>
+			<summary>Fehler beim Erstellen eines neuen Bürgers</summary>
+			<description>Wenn man einen Bürger neu erstellt, dann kann man seine Details nicht mehr anschauen. Hier kommt ein CouldNotDispatchEvent Fehler. ![couldnotdispatchevent2](https://cloud.githubusercontent.com/assets/10849776/9494186/f2b05570-4c04-11e5-8bab-dd6f022623f4.png)  ![couldnotdispatchevent](https://cloud.githubusercontent.com/assets/10849776/9494213/141cbe6a-4c05-11e5-8bed-33ca7360081c.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerCreateForm.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="68" opendate="2015-08-26 12:41:00" fixdate="2015-09-08 08:15:20">
+		<buginformation>
+			<summary>Navigation in der GUI überarbeiten</summary>
+			<description>Die Navigation funktioniert nicht korrekt. Das Problem kann man durch folgende Schritt nachvollziehen: 1. BürgerTableView öffnen 2. Einen Bürger mit Kindern in der Tabelle auswählen und zur BürgerReadView wechseln 3. Ein Kind zur Ansicht auswählen und zur BürgerReadView des Kindes wechseln 4. Auf zurück klicken -&gt; Hier gelangt man nun wieder auf die BürgerTableView und nicht zum Elternteil des Kindes zurück  Bei der BürgerCreateView hatte er mich auch schon mal falsch wieder zurück geleitet, doch dies konnte ich nicht mehr replizieren.  Momentan wird die navigation z.B. in der BürgerCreateForm über die Strings "navigateTo" und "back" gesteuert, welche im Konstruktor gesetzt werden. Kann man das nicht besser machen?  Hier sollte mehr mit dem push, pop und peek vom Controller gearbeitet werden. Und die Navigation an allen Stellen überprüft werden. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/PartnerTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerPartnerTab.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/ChildTable.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/util/EventType.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/factorys/BuergerViewFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="64" opendate="2015-08-21 06:39:54" fixdate="2015-08-24 09:18:30">
+		<buginformation>
+			<summary>Vaadin aus Service entfernen</summary>
+			<description>Es macht den Anschein, ob beim Start des Services auch Vaadin gestartet wird.  &lt;pre&gt; ... 2015-08-21 08:02:29 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 2015-08-21 08:02:29 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 2015-08-21 08:02:29 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 2015-08-21 08:02:29.465  INFO 10520 --- [           main] c.v.s.b.i.VaadinServletConfiguration     : Checking the application context for Vaadin UI mappings 2015-08-21 08:02:29.477  INFO 10520 --- [           main] c.v.s.b.i.VaadinServletConfiguration     : Forwarding @SpringUI URLs from {} 2015-08-21 08:02:29 [main] WARN  o.s.w.s.h.SimpleUrlHandlerMapping - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping 2015-08-21 08:02:29.484  INFO 10520 --- [           main] c.v.s.b.i.VaadinServletConfiguration     : Registering Vaadin servlet of type [com.vaadin.spring.server.SpringVaadinServlet] 2015-08-21 08:02:29.494  INFO 10520 --- [           main] c.v.spring.navigator.SpringViewProvider  : Looking up SpringViews 2015-08-21 08:02:29.510  WARN 10520 --- [           main] c.v.spring.navigator.SpringViewProvider  : No SpringViews found ... &lt;/pre&gt;  Erstens ist dies unnötig und zweitens werden die Tests daurch langsamer. Das sollte ausgeschaltet werden. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/services/SecurityServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="59" opendate="2015-08-20 13:25:48" fixdate="2015-09-07 06:40:42">
+		<buginformation>
+			<summary>Permissions dürfen keinem Mandanten zugeordnet sein</summary>
+			<description>Aktuell leitet sich die Klasse &lt;code&gt;de.muenchen.demo.service.domain.Permission&lt;/code&gt; aus &lt;code&gt;de.muenchen.demo.service.domain.BaseEntity&lt;/code&gt; ab. Damit sind die Permissions einem Mandanten zugeordnet. Das ist falsch, da diese systemweit über alle Mandanten gültig sind. Das muss auch entsprechend in den SQL Skripten für Flyway angepasst werden.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/BuergerServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/AccountServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/SachbearbeiterServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/AuthorityServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/AuthorityServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/AuthorityTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/PermissionRepository.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/InitTest.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/AuthorityPermissionServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/SecurityEntity.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/AccountRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/PermissionServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/CompanyBaseInfoRepository.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/UserAuthorityServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/AuthorityRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/CompanyBaseInfoServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="56" opendate="2015-08-20 11:13:25" fixdate="2015-08-20 13:32:20">
+		<buginformation>
+			<summary>Mandantenfähigkeit ist nicht durchgängig umgesetzt</summary>
+			<description>Die Mandantenfähigkeit ist nicht bei den Referenzen umgesetzt. Beispiel aus dem Bürger Repository:  &lt;pre&gt;     List&lt;Buerger&gt; findByOid(String oid);      List&lt;Buerger&gt; findByKinderOid(String oid);      List&lt;Buerger&gt; findByWohnungenOid(String oid);      List&lt;Buerger&gt; findByPassOid(String oid);      List&lt;Buerger&gt; findByStaatsangehoerigkeitReferencesReferencedOid(String oid); &lt;/pre&gt;   Hier kann man unter Angabe einer beliebigen OID, die Daten eines anderen Mandanten auslesen. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/SachbearbeiterServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/SachbearbeiterRepository.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/BuergerRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/AdresseInterneRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/AdresseReferenceRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/AdresseServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/PassRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/PermissionRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/StaatsangehoerigkeitReferenceRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/WohnungServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/AccountRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/CompanyBaseInfoRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/AdresseExterneRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/PassServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/WohnungRepository.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="53" opendate="2015-08-20 05:06:10" fixdate="2015-08-24 09:16:41">
+		<buginformation>
+			<summary>BürgerView kann (unendlich oft) erstellt werden.</summary>
+			<description>Beim klicken auf den Button `BürgerPfege` im Nav-Bereich wird jedesmal eine Bürgerview unten angehängt.  ![screenshot_verkleinert](https://cloud.githubusercontent.com/assets/9094815/9376180/e027b506-4709-11e5-9479-74be128cacf1.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/MainUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="52" opendate="2015-08-20 04:36:19" fixdate="2015-08-24 09:10:55">
+		<buginformation>
+			<summary>Zirkelbezüge in beans</summary>
+			<description>Aktuell gibt der build sehr viele Fehlermeldungen aus (was dann irgendwann auf Travis zum Abbruch führt, weil das LOG zu lang wird). Diese Fehlermeldungen sind auf Zirkelbezüge zurück zu führen.   siehe: https://s3.amazonaws.com/archive.travis-ci.org/jobs/76294659/log.txt </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerCreateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerTableEditButton.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerTable.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/UserServiceImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerTableDeleteButton.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerTableDetailButton.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/util/events/UserEvent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/events/BuergerComponentEvent.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/util/events/ServiceEvent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/events/BuergerAppEvent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerUpdateForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/EntityButton.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerSearchForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerReadForm.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/events/AppEvent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerTableCopyButton.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/util/events/BuergerEvent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/ControllerContext.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/util/events/SachbearbeiterEvent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/events/ComponentEvent.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/ChildTable.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/BuergerChildTab.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/SachbearbeiterServiceImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/MainUI.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/GenericCancelButton.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/components/buttons/Action.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/util/Eventbus.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="43" opendate="2015-08-17 11:10:11" fixdate="2015-08-18 09:20:12">
+		<buginformation>
+			<summary>Fehlermeldung nach der Anmeldung bei vorheriger Fehlanmeldung</summary>
+			<description>Wenn man sich zunächst falsch anzumelden versucht (Bestätigung der Anmeldung durch Enter) und es dann richtig macht, erscheint, wenn man die Maus für ein paar Sekunden nicht bewegt die Fehlermeldung, die bei dem Fehlversuch der Anmeldung geworfen werden sollte. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/LoginView.java</file>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/rest/SecurityRestClientImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="41" opendate="2015-08-13 09:55:32" fixdate="2015-08-13 11:12:02">
+		<buginformation>
+			<summary>Child tab wird beim betrachten eines Kindes nicht aktualisiert.</summary>
+			<description>Wenn man sich einen Bürger ansieht, der Kinder hat, und ein Kind zum betrachten auswählt, dann wechselt er zu der buerger_read_view vom Kind, aber der komplette Child tab ist der gleiche wie von den Eltern. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/controller/BuergerViewController.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/BuergerDetailView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/MainUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="35" opendate="2015-08-13 07:48:09" fixdate="2015-08-19 12:54:24">
+		<buginformation>
+			<summary>Whitelabel Error Page beseitigen</summary>
+			<description>Nach einem Neustart der GUI wird dem User die Meldung "Session Expired" angezeigt. Nach einem Refresh kommt eine Whitelabel Error Page.  Hier sollte der Nutzer auf die LOGIN Seite geführt werden, um sich neu anmelden zu können. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-api/src/main/java/de/muenchen/vaadin/demo/api/services/SecurityServiceImpl.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/views/DefaultBuergerView.java</file>
+			<file>vadin-demo-gui/src/main/java/de/muenchen/vaadin/ui/app/MainUI.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="34" opendate="2015-08-12 06:03:07" fixdate="2015-08-13 07:55:43">
+		<buginformation>
+			<summary>Fehler beim Löschen von Kindern</summary>
+			<description>Beim Löschen eines Bürgers tritt ein Fehler auf. - Bürger über GUI anlegen. - Kind über GUI hinzu fügen.  - Auf den Button löschen drücken.  Auf Service Seite erscheint folgende Fehlermeldung:  &lt;pre&gt; 2015-08-12 07:58:08.869 ERROR 30428 --- [io-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["FK_BUERGER_KINDER_TO_KINDER: PUBLIC.BUERGER_KINDER FOREIGN KEY(KINDER) REFERENCES PUBLIC.BUERGER(ID) (4)"; SQL statement: delete from buerger where id=? [23503-187]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause  org.h2.jdbc.JdbcSQLException: Referentielle Integrität verletzt: "FK_BUERGER_KINDER_TO_KINDER: PUBLIC.BUERGER_KINDER FOREIGN KEY(KINDER) REFERENCES PUBLIC.BUERGER(ID) (4)" Referential integrity constraint violation: "FK_BUERGER_KINDER_TO_KINDER: PUBLIC.BUERGER_KINDER FOREIGN KEY(KINDER) REFERENCES PUBLIC.BUERGER(ID) (4)"; SQL statement: delete from buerger where id=? [23503-187] &lt;/pre&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/BuergerServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/BuergerTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/WohnungTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerService.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/StaatsangehoerigkeitServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/StaatsangehoerigkeitServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/WohnungService.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/AdresseServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/BuergerRepository.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/PassTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/PassRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/WohnungServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/BuergerController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/PassServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/WohnungRepository.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/PassService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="27" opendate="2015-07-29 18:45:26" fixdate="2015-09-07 09:44:03">
+		<buginformation>
+			<summary>Referenzen in Entities und DTOs "Lazy" machen</summary>
+			<description>Aktuell werden alle Referenzen geladen, wenn ein Objekt (z.B. Bürger) geladen wird. Das muss geändert werden, da dies bei größeren Datenmengen zu Problemen führen wird.  In den Entities sollte der FetchType generell auf LAZY gestellt werden (nicht bei one to one).   Die Resource Objekte sollen keine referenzierten Objekte enthalten. Dafür werden über HATEOAS die Links zum Nachladen zur Verfügung gestellt. D.h. die referenzierten Objekte werden nur bei Bedarf nachgeladen.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/BuergerServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/AuthPermId.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/UserAuthId.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/BuergerTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/User.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Buerger.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/BuergerResourceAssembler.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/WohnungResourceAssembler.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/UserAuthorityPermissionTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/WohnungResource.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Mandant.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/BuergerResource.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/WohnungTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="24" opendate="2015-07-27 14:28:36" fixdate="2015-07-27 15:06:06">
+		<buginformation>
+			<summary>Update Operation für Bürger funktioniert nicht</summary>
+			<description>Die Update Operation im Bürger Controller führt zu einer NPE:  &lt;pre&gt; java.lang.NullPointerException: null    at de.muenchen.demo.service.rest.BuergerController.updateBuerger(BuergerController.java:172)    ... &lt;/pre&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/BuergerController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="23" opendate="2015-07-27 14:13:59" fixdate="2015-08-12 08:23:08">
+		<buginformation>
+			<summary>Copy Operation funktioniert nicht bei Referenzen</summary>
+			<description>Hat man ein objekt mit Referenzen, dann funktioniert die copy operation nicht richtig. Es wird folgende Fehlermeldung ausgegeben:  &lt;code&gt;org.hibernate.HibernateException: Found shared references to a collection:&lt;/code&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/UserServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Wohnung.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Pass.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Mandant.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/AuthorityTest.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/BuergerServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/BuergerTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BuergerServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Buerger.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/AdresseTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/BaseService.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/WohnungTest.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/StaatsangehoerigkeitTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/MandantServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Authority.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/UserAuthorityPermissionTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/Adresse.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/PassTest.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/UserTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/AdresseServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/PermissionTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/domain/User.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="22" opendate="2015-07-27 11:07:56" fixdate="2015-08-11 11:08:35">
+		<buginformation>
+			<summary>HATEOAS in Controller Tests ergänzen</summary>
+			<description>Aktuell wird in den Controller Tests vor allem die Servicefunktionalität getestet. Es muss hier aber die gesamte Schnittstelle getestet werden. Darunter fällt auch der Tests der Links. Kommen Links zurück, kommen die richtigen links zurück, kann ich diese Links aufrufen.  siehe hierzu auch #21  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/PassServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/AdresseController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/PermissionService.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/StaatsangehoerigkeitServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/StaatsangehoerigkeitServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/WohnungResourceAssembler.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/AuthorityService.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/UserServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/MandantServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/StaatsangehoerigkeitService.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/AuthorityTest.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/AdresseServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/PassController.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/integration/BuergerTest.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/BuergerServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/AuthorityPermissionServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/BuergerResourceAssembler.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/PermissionServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/UserController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/UserService.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/AuthorityServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/WohnungController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/BuergerController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/util/HateoasRelations.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/PermissionController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/AuthorityController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/AuthorityResourceAssembler.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/UserServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/services/AdresseServiceImpl.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/WohnungServiceTest.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/api/UserResourceAssembler.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/util/HateoasUtil.java</file>
+			<file>vaadin-demo-micro-service/src/test/java/de/muenchen/demo/test/service/UserAuthorityServiceTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="19" opendate="2015-07-27 07:42:21" fixdate="2015-07-27 09:02:43">
+		<buginformation>
+			<summary>Copy Paste Fehler in SecurityRestClientController</summary>
+			<description>Im SecurityRestClientController ist der SachbearbeiterController referenziert. Das führt bei mir zu Fehlern.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/rest/SecurityRestClientController.java</file>
+			<file>vaadin-demo-micro-service/src/main/java/de/muenchen/demo/service/config/InitApplication.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

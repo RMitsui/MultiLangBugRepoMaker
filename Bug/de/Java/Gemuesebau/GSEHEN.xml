@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>157</id>
+		<title>Plot View: Änderungen der editierbaren Felder wird nicht gespeichert</title>
+		<body>**Gemuesebau commented on 17 Sep** (2019) _Jegliche Änderungen im Plotview von Dauer in Tagen (Umstelltermin), Durchwurzelbare Zone werden nicht gespeichert._  https://jira.cgs-online.de/browse/GSEH-34</body>
+		<created>2019-09-17 13:54:55</created>
+		<closed>2019-10-30 13:24:46</closed>
+	</bug>
+	<bug>
+		<id>156</id>
+		<title>Plot View: Tabelle der Kulturparameter: Durchwurzelbare Zone wird falsch dargestellt</title>
+		<body>**Gemuesebau commented on 15 Aug** (2019) _Die Durchwurzelbare Zone wird als Double in der Tabelle angeziegt erlaubt aber nue eine Integer zuweisung_  https://jira.cgs-online.de/browse/GSEH-33</body>
+		<created>2019-08-15 11:53:54</created>
+		<closed>2019-10-30 11:59:30</closed>
+	</bug>
+	<bug>
+		<id>131</id>
+		<title>Wetterdatenquellen werden erneut dupliziert</title>
+		<body>Ein alter Bug tritt erneut auf. --&gt; checken, ob "Übernehmen" richtig arbeitet!</body>
+		<created>2018-09-18 14:49:41</created>
+		<closed>2018-09-19 09:23:07</closed>
+	</bug>
+	<bug>
+		<id>126</id>
+		<title>JS in HTML einbetten</title>
+		<body>Beim Starten der Anwendung aus einem JAR heraus scheint das Laden von Dateien, die im HTML referenziert werden, nicht zu funkionieren. Dies ist nicht unbedingt verwunderlich, da die WebView letztlich auf Webkit zurückgreift, welches von JAR Ressourcen nichts weiß.  Es kann vermutlich schnell und einfach der bereits implementierte ("custom") Mechanismus zum Einbetten von Dateien verwendet werden (`de.hgu.gsehen.gui.view.WebController.INCLUDE_DIRECTIVE`), um zu verhindern, dass Webkit überhaupt selbst Dateien nachladen muss.</body>
+		<created>2018-09-14 07:11:33</created>
+		<closed>2018-09-17 07:11:19</closed>
+	</bug>
+	<bug>
+		<id>124</id>
+		<title>Rendering von Message(Format)s: Interpretieren von Objects als char verhindern</title>
+		<body>Die merkwürdigen "kryptischen" Zeichen an Platzhalterstellen in RecommendedAction-Meldungen lassen vermuten, dass u.U. eine Interpretation als `char` erfolgt, welche auf jeden Fall verhindert werden muss.  Bei Zahlen (`instanceof Number`??) gilt für uns: `.doubleValue()`, wenn Zahl ein Double ist  SONST `.integerValue()` (`float` sollten wir nirgendwo haben)</body>
+		<created>2018-09-14 07:03:07</created>
+		<closed>2018-09-18 13:43:13</closed>
+	</bug>
+	<bug>
+		<id>122</id>
+		<title>Nach Neustart sind SoilProfiles doppelt vorhanden. Das führt dazu, dass ein Profil ohne "Zusatzinformationen" nicht bearbeitet werden kann.</title>
+		<body></body>
+		<created>2018-09-13 14:31:25</created>
+		<closed>2018-09-14 08:37:34</closed>
+	</bug>
+	<bug>
+		<id>121</id>
+		<title>Nach dem Speichern und einem anschließenden Neustart, sind Farm, Feld und Plot doppelt vorhanden</title>
+		<body></body>
+		<created>2018-09-13 09:02:56</created>
+		<closed>2018-10-04 07:13:41</closed>
+	</bug>
+	<bug>
+		<id>118</id>
+		<title>Bug in GUI: Zahlen können nicht ganz gelöscht werden es muss immer eine Führende Ziffer stehen bleiben</title>
+		<body></body>
+		<created>2018-09-12 15:02:40</created>
+		<closed>2018-09-18 08:43:22</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>Start der Pflanzung, Start der Wasserbilanz, Maximal durchwurzelbare Zone und Startwert der Wasserbilanz werden nicht gespeichert</title>
+		<body></body>
+		<created>2018-09-06 10:40:36</created>
+		<closed>2018-09-06 12:41:12</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>Das Bodenprofil und die ausgewählte Kultur wird nicht persistiert / ist nicht mehr im Feld nach Speichern + Neustarten</title>
+		<body></body>
+		<created>2018-09-06 09:01:27</created>
+		<closed>2018-09-06 12:33:04</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>Kopier und Lösch Bug im Treeview</title>
+		<body> atm kopiert ein ziehen des feldes in farm das feld nur und man hat danach mehrere kopien des feldes - ein löschen bewirkt nur ein löschne aus dem treeview und die felder werden auf der karte noch dargestellt </body>
+		<created>2018-09-06 07:25:50</created>
+		<closed>2018-09-06 08:38:42</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>"Bug": Infofenster aktualisiert sich nicht direkt nach einer neuen Bewässerungsempfehlung, sondern erst nach erneutem Click auf den Plot in der TreeTableView</title>
+		<body>Mittlerweile wurde die zeit von der letzten Aktualisierung eingebaut. Diese sollte nach der Implementierung der automatischen Aktualisierung wieder entfernt werden.  **Hinweis:** der Workaround besteht darin, einen anderen(!) Node im Baum anzuklicken, und danach dann wieder den betreffenden Plot.</body>
+		<created>2018-09-05 15:17:46</created>
+		<closed>2018-09-10 14:09:28</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>Eingabe/Ausgabe: erlaubte Zeichen, Locale, Validierung</title>
+		<body>Die Eingabefelder in der GUI sollen nur sinnvolle Zeichen und Werte ermöglichen. Insbesondere müssen Eingabefelder für Dezimalzahlen ein Format unterstützen, das der aktuell gewählten `locale` entspricht. Diese `locale` erhält man von `Gsehen.getSelectedLocale()`.  ~Auch das Parsen kann nicht mit `Double.valueOf` erfolgen, sondern unbedingt mittels eines `(DecimalFormat)NumberFormat.getNumberInstance(locale)`~ → _DONE_.  **Update** aus #72 hier "reingemergt": GUI, Zahlenformatierung: 1 Nachkommastelle bei Zahlen anzeigen (via DecimalFormat), jedoch bei der Anzeige einer Bewässerungsempfehlung (in mm) ZWEI Nachkommastellen!</body>
+		<created>2018-09-05 11:53:02</created>
+		<closed>2018-09-07 13:55:28</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>FarmView: Neuimplementierung "von Hand" mit JavaFX 2D Canvas</title>
+		<body>.. um allerhand Probleme mit der D3.js basierten Umsetzung zu lösen.  s.a. #33 (closed), #23, #36 .</body>
+		<created>2018-07-06 15:33:59</created>
+		<closed>2018-07-30 06:57:39</closed>
+	</bug>
+</bugs>

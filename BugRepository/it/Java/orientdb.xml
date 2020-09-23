@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="orientdb">
+	<bug id="6467" opendate="2016-07-26 09:58:01" fixdate="2017-01-30 21:54:56">
+		<buginformation>
+			<summary>Impossible to add a null identifiable in a ridbag</summary>
+			<description>## OrientDB Version, operating system, or hardware.  v2.2.5  ## Operating System - [ X] Linux ## Expected behaviour and actual behaviour  object should be created but fails with the following:  2016-07-26 05:51:23,995 WARNING [com.orientechnologies.orient.server.distributed.ODistributedResponseManager](default task-36) [nodea] Detected 1 node(s) in timeout or in conflict and quorum (2) has not been reached, rolling back changes for request (id=1.31 task=tx user=#5:0) 2016-07-26 05:51:23,997 SEVERE [com.orientechnologies.orient.server.distributed.impl.ODistributedTxContextImpl](default task-36) [nodea] Error on fixing transaction 1.31 db=RuleEngineDB task=record_update(#156:0 v.4726 realV.-2147478922): java.lang.NullPointerException: Impossible to add a null identifiable in a ridbag at com.orientechnologies.orient.core.db.record.ridbag.embedded.OEmbeddedRidBag.addEntry(OEmbeddedRidBag.java:492) at com.orientechnologies.orient.core.db.record.ridbag.embedded.OEmbeddedRidBag.doDeserialization(OEmbeddedRidBag.java:541) this happens after I restart one of the node (embedded) of my distibuted environment.  ## Steps to reproduce the problem  restart embedded node.  creating an object that is referring to another object. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/src/main/java/com/orientechnologies/orient/core/db/record/ridbag/embedded/OEmbeddedRidBag.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5911" opendate="2016-03-31 10:25:50" fixdate="2016-04-04 13:38:14">
+		<buginformation>
+			<summary>JSON escaping not supported</summary>
+			<description>I try to execute query: insert into Bookmark content {"isRead":"N","id":"06e3801f-7a75-4224-b3c1-5aab2357f654","isPrivate":"F","isShared":0,"url":"http:\/\/www.hibernate.org\/"}  The parameter "url" is escaped by standartd JSON way. (http://i.stack.imgur.com/CQk5q.gif).  but OrientDB throw exception:     &lt;error message="Lexical error at line 1, column 130.  Encountered: &amp;quot;/&amp;quot; (47), after : &amp;quot;\&amp;quot;http:\\&amp;quot;" type="com.orientechnologies.orient.core.sql.parser TokenMgrError"&gt;com.orientechnologies.orient.core.sql.parser.TokenMgrError: Lexical error at line 1, column 130.  Encountered: "/" (47), after : "\"http:\"        at com.orientechnologies.orient.core.sql.parser.OrientSqlTokenManager.getNextToken(OrientSqlTokenManager.java:5640)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_scan_token(OrientSql.java:24806)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_3R_296(OrientSql.java:22868)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_3R_106(OrientSql.java:22885)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_3R_707(OrientSql.java:24082)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_3R_611(OrientSql.java:24170)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_3R_152(OrientSql.java:24184)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_3R_291(OrientSql.java:24251)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_3R_100(OrientSql.java:24438)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_3_49(OrientSql.java:24468)        at com.orientechnologies.orient.core.sql.parser.OrientSql.jj_2_49(OrientSql.java:16835)        at com.orientechnologies.orient.core.sql.parser.OrientSql.InsertStatement(OrientSql.java:3751)        at com.orientechnologies.orient.core.sql.parser.OrientSql.StatementInternal(OrientSql.java:685)        at com.orientechnologies.orient.core.sql.parser.OrientSql.Statement(OrientSql.java:570)        at com.orientechnologies.orient.core.sql.parser.OrientSql.parse(OrientSql.java:79)  Version of orientdb is 2.2.0-beta </description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/src/test/java/com/orientechnologies/orient/core/sql/parser/OSelectStatementTest.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/sql/parser/OrientSqlTokenManager.java</file>
+			<file>core/src/test/java/com/orientechnologies/orient/core/sql/parser/OInsertStatementTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5876" opendate="2016-03-23 17:12:28" fixdate="2016-03-24 16:20:17">
+		<buginformation>
+			<summary>Unable to set timezone "Europe/Rome"</summary>
+			<description>I'm using OrientDB community edition 2.1.11 on a Ubuntu 14.04 server  From Studio I tried ALTER DATABASE TIMEZONE "Europe/Rome" and ALTER DATABASE TIMEZONE Europe/Rome but both these commands set the timezone to GMT.  I tried also ALTER DATABASE TIMEZONE GMT+1 and this works giving me GMT+1 (CET), but is not the same as "Europe/Rome" (CET/CEST). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/src/test/java/com/orientechnologies/orient/core/db/document/ODatabaseDocumentTxTest.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/db/document/ODatabaseDocumentTx.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5659" opendate="2016-01-31 06:47:59" fixdate="2016-02-28 07:37:41">
+		<buginformation>
+			<summary>Issue importing database into 2.1.9</summary>
+			<description>Getting the following exception while trying to export from 2.1.2 and importing into 2.1.9.  Importing database schema...Error on importing schema com.orientechnologies.orient.core.exception.OSchemaException:  Class:'ORole' has  already class:'OIdentity' as superclass         at com.orientechnologies.orient.core.metadata.schema.OClassImpl.addSuper ClassInternal(OClassImpl.java:506)         at com.orientechnologies.orient.core.metadata.schema.OClassImpl.addSuper Class(OClassImpl.java:480)         at com.orientechnologies.orient.core.metadata.schema.OClassImpl.set(OCla ssImpl.java:1549) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/src/main/java/com/orientechnologies/orient/core/sql/ORuntimeResult.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/sql/functions/ODefaultSQLFunctionFactory.java</file>
+			<file>tests/src/test/java/com/orientechnologies/orient/test/database/auto/SQLFunctionsTest.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/sql/method/ODefaultSQLMethodFactory.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/sql/filter/OSQLFilterItemField.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/sql/method/misc/OSQLMethodSplit.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/sql/filter/OSQLFilterItemAbstract.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="4614" opendate="2015-07-21 09:20:16" fixdate="2015-07-22 07:59:52">
+		<buginformation>
+			<summary>EXPORT DATABASE doesn't support multi-inheritance</summary>
+			<description>I've recently tried to use the EXPORT DATABASE command to set up a fixture schema to quickly set up and tear down a testing database. In my database, I make use of multi-inheritance, however it seems that the JSON format used only has a single field for the SuperClass, not an array field. This means only the first superclass is saved, and subsequently imported. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>distributed/src/test/java/com/orientechnologies/orient/server/distributed/asynch/BareBoneBase2ServerTest.java</file>
+			<file>distributed/src/test/java/com/orientechnologies/orient/server/distributed/asynch/TestAsyncReplMode2Servers.java</file>
+			<file>core/src/test/java/com/orientechnologies/orient/core/db/tool/TestSchemaImportExport.java</file>
+			<file>graphdb/src/main/java/com/orientechnologies/orient/graph/console/OGremlinConsole.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/db/tool/ODatabaseExport.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/db/tool/ODatabaseImport.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2312" opendate="2014-05-04 18:50:53" fixdate="2015-05-21 18:08:55">
+		<buginformation>
+			<summary>single GROUP BY ignores null values</summary>
+			<description>I have a class that looks like this  | CODE | PRIORITY | | --- | --- | | 0001 | HIGH | | 0001 | LOW | | 0001 | LOW | | 0002 | HIGH | | null | HIGH |  Executing the following query  ``` sql select CODE, count(*) as count group by (CODE) ```  I get  | CODE | count | | --- | --- | | 0001 | 3 | | 0002 | 1 |  Executing a multi group by select  ``` sql select CODE, PRIORITY, count(*) as count group by (CODE, PRIORITY) ```  I get  | CODE | PRIORITY | count | | --- | --- | --- | | 0001 | HIGH | 1 | | 0001 | LOW | 2 | | 0002 | HIGH | 1 | | null | HIGH | 1 |  In my opinion, the first query should return a result for the null group  | CODE | count | | --- | --- | | 0001 | 3 | | 0002 | 1 | | null | 1 | </description>
+		</buginformation>
+		<fixedfiles>
+			<file>tests/src/test/java/com/orientechnologies/orient/test/database/auto/SQLSelectGroupByTest.java</file>
+			<file>core/src/main/java/com/orientechnologies/orient/core/sql/OCommandExecutorSQLSelect.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

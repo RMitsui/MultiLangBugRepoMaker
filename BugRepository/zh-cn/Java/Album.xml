@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Album">
+	<bug id="178" opendate="2018-05-07 05:54:33" fixdate="2018-06-11 02:48:35">
+		<buginformation>
+			<summary>拍照后，图片列表显示异常</summary>
+			<description>操作： 1、打开选图片的页面，带拍照入口，多选； 2、点击拍照，拍照后返回选择图片页面；  结果： 首次拍照返回，默认选中拍的那张，没有问题，后面重复操作1，2后，在选择图片的页面显示的永远是刚拍的那张，滑动图片列表后在回到顶部，显示正常 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/Contract.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="163" opendate="2018-04-13 09:51:03" fixdate="2018-04-25 05:46:28">
+		<buginformation>
+			<summary>收集到一个崩溃信息</summary>
+			<description>java.lang.RuntimeException: Unable to start activity ComponentInfo{此处省略/com.yanzhenjie.album.ui.AlbumActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'int com.yanzhenjie.album.api.widget.Widget.getNavigationBarColor()' on a null object reference at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2479) at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2539) at android.app.ActivityThread.access$900(ActivityThread.java:168) at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1378) at android.os.Handler.dispatchMessage(Handler.java:102) at android.os.Looper.loop(Looper.java:150) at android.app.ActivityThread.main(ActivityThread.java:5665) at java.lang.reflect.Method.invoke(Native Method) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:822) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:712) Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'int com.yanzhenjie.album.api.widget.Widget.getNavigationBarColor()' on a null object reference at com.yanzhenjie.album.ui.AlbumActivity.initializeWidget(AlbumActivity.java:108) at com.yanzhenjie.album.ui.AlbumActivity.onCreate(AlbumActivity.java:84) at android.app.Activity.performCreate(Activity.java:6372) at `android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1110)` at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2432) ... 9 more  ` Album.image(context)                     .multipleChoice()                     .requestCode(REQUEST_SELECT_IMAGE)                     .columnCount(4)                     .selectCount(mFieldList.get(mPosition).getCount() - imageData.previewImages.size())                     .camera(true)                     .widget(                             Widget.newDarkBuilder(context)                                     .title(mFieldList.get(mPosition).getName())                                     .build()                     )`</description>
+		</buginformation>
+		<fixedfiles>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/FolderDialog.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/data/ThumbnailBuilder.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumFile.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumConfig.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Filter.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/GalleryActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/NullView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/data/MediaReadTask.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/camera/CameraActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/Contract.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryAlbumActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/NullActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Action.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumFolder.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Album.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/impl/OnItemClickListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="153" opendate="2018-02-24 06:07:55" fixdate="2018-04-25 05:46:28">
+		<buginformation>
+			<summary>一个崩溃信息</summary>
+			<description>![image](https://user-images.githubusercontent.com/9779970/36626345-199cfc9c-196c-11e8-886e-7f93e47fc156.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/FolderDialog.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/data/ThumbnailBuilder.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumFile.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumConfig.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Filter.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/GalleryActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/NullView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/data/MediaReadTask.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/camera/CameraActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/Contract.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryAlbumActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/NullActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Action.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumFolder.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Album.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/impl/OnItemClickListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="144" opendate="2018-01-18 03:30:33" fixdate="2018-04-25 05:46:28">
+		<buginformation>
+			<summary>发生奔溃错误</summary>
+			<description>monkey测试的时候跑出的问题  机型:三星 SM-N900V 前后台状态：前台 网络APN：Wi-Fi 是否ROOT：是 可用内存大小：724.03 MB ( 25.55% ) 可用存储空间：15.82 GB ( 62.63% ) ROM详情：Verizon/hltevzw/hltevzw:5.0/LRX21V/N900VVRUEOF1:user/release-keys/fail Invalid index 2, size is 1 com.yanzhenjie.album.ui.AlbumPreviewFragment$2.onPageSelected(AlbumPreviewFragment.java)  java.util.ArrayList.throwIndexOutOfBoundsException(ArrayList.java:255) -- 2 java.util.ArrayList.get(ArrayList.java:308) 3 com.yanzhenjie.album.ui.AlbumPreviewFragment$2.onPageSelected(AlbumPreviewFragment.java) 4 com.yanzhenjie.album.ui.AlbumPreviewFragment.initializeViewPager(AlbumPreviewFragment.java) 5 com.yanzhenjie.album.ui.AlbumPreviewFragment.onActivityCreated(AlbumPreviewFragment.java) 6 android.support.v4.app.Fragment.performActivityCreated(Fragment.java) 7 android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java) 8 android.support.v4.app.FragmentManagerImpl.moveFragmentToExpectedState(FragmentManager.java) 9 android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java) 10 android.support.v4.app.BackStackRecord.executeOps(BackStackRecord.java)     </description>
+		</buginformation>
+		<fixedfiles>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/FolderDialog.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/data/ThumbnailBuilder.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumFile.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumConfig.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Filter.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/GalleryActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/NullView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/data/MediaReadTask.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/camera/CameraActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/Contract.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryAlbumActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/NullActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Action.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumFolder.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Album.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/impl/OnItemClickListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="136" opendate="2017-12-14 06:34:55" fixdate="2018-04-25 05:46:28">
+		<buginformation>
+			<summary>视频显示问题</summary>
+			<description>在不使用相机按钮的情况下，扫描视频和照片，视频显示在第一位的情况下，左下角 视频图标和视频时长不显示，只显示缩略图。  第一张即为视频在第一位  ![1](https://user-images.githubusercontent.com/17853034/33978679-e53e827c-e0db-11e7-9b2f-15e29f310023.png)   点击进去是没有问题的 可以显示 视频图标和视频时长 ![2](https://user-images.githubusercontent.com/17853034/33978614-92b70c72-e0db-11e7-8765-ccb14955cf25.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/FolderDialog.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/data/ThumbnailBuilder.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumFile.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumConfig.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/AlbumActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Filter.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/GalleryActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/NullView.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/data/MediaReadTask.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/camera/CameraActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/Contract.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/gallery/GalleryAlbumActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/app/album/NullActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Action.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumFolder.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/Album.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/impl/OnItemClickListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="48" opendate="2017-06-06 06:16:49" fixdate="2017-08-17 03:00:02">
+		<buginformation>
+			<summary>荣耀NEM-TL00H选择拍完照的照片时崩溃,非必现</summary>
+			<description>系统Android6.0 未root 起初用的album1.0 发现问题后改用1.0.6问题依旧 使用1.0的方式调用相册 ``` Album.startAlbum(mContext, mRequestCode                             , num                                                         // 指定选择数量。                             , ContextCompat.getColor(mContext, R.color.colorPrimary)        // 指定Toolbar的颜色。                             , ContextCompat.getColor(mContext, R.color.colorPrimaryDark));  // 指定状态栏的颜色。 ``` 日志 ``` java.lang.RuntimeException: Unable to resume activity {hf.lskj.com.hplk/com.yanzhenjie.album.AlbumActivity}: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=131372, result=-1, data=null} to activity {hf.lskj.com.hplk/com.yanzhenjie.album.AlbumActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'char[] java.lang.String.toCharArray()' on a null object reference at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3176) at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3207) at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2544) at android.app.ActivityThread.access$900(ActivityThread.java:168) at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1378) at android.os.Handler.dispatchMessage(Handler.java:102) at android.os.Looper.loop(Looper.java:150) at android.app.ActivityThread.main(ActivityThread.java:5665) at java.lang.reflect.Method.invoke(Native Method) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:822) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:712) Caused by: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=131372, result=-1, data=null} to activity {hf.lskj.com.hplk/com.yanzhenjie.album.AlbumActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'char[] java.lang.String.toCharArray()' on a null object reference at android.app.ActivityThread.deliverResults(ActivityThread.java:3778) at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3163) ... 10 more Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'char[] java.lang.String.toCharArray()' on a null object reference at java.io.File.fixSlashes(File.java:183) at java.io.File.&lt;init&gt;(File.java:130) at com.yanzhenjie.album.fragment.AlbumFragment.onCameraBack(AlbumFragment.java:275) at com.yanzhenjie.album.fragment.BasicCameraFragment.onActivityResult(BasicCameraFragment.java:137) at com.yanzhenjie.album.fragment.AlbumFragment.onActivityResult(AlbumFragment.java:63) at android.support.v4.app.FragmentActivity.onActivityResult(FragmentActivity.java:164) at android.app.Activity.dispatchActivityResult(Activity.java:6602) at android.app.ActivityThread.deliverResults(ActivityThread.java:3774) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>album/src/main/java/com/yanzhenjie/album/fragment/BasicCameraFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="16" opendate="2017-03-30 07:10:16" fixdate="2017-03-31 12:14:50">
+		<buginformation>
+			<summary>选择图片下标越界异常</summary>
+			<description>选择一张图片后返回，点击眼睛图标查看，个人感觉对勾出来的有点慢了，点击选择，demo崩溃，下标越界异常；</description>
+		</buginformation>
+		<fixedfiles>
+			<file>album/src/main/java/com/yanzhenjie/album/AlbumActivity.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/fragment/AlbumPreviewFragment.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/fragment/GalleryFragment.java</file>
+			<file>album/src/main/java/com/yanzhenjie/album/impl/AlbumImageLoader.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

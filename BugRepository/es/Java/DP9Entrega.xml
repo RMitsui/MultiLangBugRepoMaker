@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="DP9Entrega">
+	<bug id="132" opendate="2016-04-04 10:15:46" fixdate="2016-04-04 13:40:48">
+		<buginformation>
+			<summary>Fallo al crear una actividad</summary>
+			<description>Si intentas crear una actividad que tendría overlapping con otra, pero esta otra está borrada, no te deja crearla cuando sí te debería dejar. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/services/ActivityService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="131" opendate="2016-04-04 08:29:27" fixdate="2016-04-04 10:16:37">
+		<buginformation>
+			<summary>En crear activity si no eliges servicio error</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/administrator/ActivityAdministratorController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="128" opendate="2016-04-04 00:51:13" fixdate="2016-04-04 08:58:21">
+		<buginformation>
+			<summary>[Corregir] Un Trainer puedes especializarse infinitas veces en un mismo Service</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/services/TrainerService.java</file>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/administrator/ActivityAdministratorController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="119" opendate="2016-04-03 17:40:21" fixdate="2016-04-04 14:34:48">
+		<buginformation>
+			<summary>Duda con delete speciality de Trainer.</summary>
+			<description>Si le quitamos una speciality a un trainer, por ejemplo, natación, pero tiene actividades de natación, ¿te debería dejar? Creo que no, pero la app te deja. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/trainer/ServiceTrainerController.java</file>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/services/TrainerService.java</file>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/administrator/ActivityAdministratorController.java</file>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/TrainerController.java</file>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/WelcomeController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="117" opendate="2016-04-03 17:25:34" fixdate="2016-04-04 20:28:25">
+		<buginformation>
+			<summary>Ocultar cancel si startingMoment es pasado</summary>
+			<description>Si una actividad es pasada no debe salir el botón de borrado. De todas formas, no te deja borrarla </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/customer/ActivityCustomerController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="102" opendate="2016-04-02 20:59:57" fixdate="2016-04-04 15:54:41">
+		<buginformation>
+			<summary>[Corregir] Como cualquier user e incluso deslogueado puedo crear una carpeta del sistema</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/actor/FolderActorController.java</file>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/services/FolderService.java</file>
+			<file>WorkSpace/Acme-Six-Pack/src/test/java/services/FolderServiceTest.java</file>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/actor/MessageActorController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="37" opendate="2016-03-10 10:52:12" fixdate="2016-03-13 13:11:23">
+		<buginformation>
+			<summary>[Seguridad] Trainer puede borrar especialidades de otros</summary>
+			<description>Si te logueas como trainer y accedes a Trainers&gt;specialities de otro que no sea el actual puede eliminarle la especialidad </description>
+		</buginformation>
+		<fixedfiles>
+			<file>WorkSpace/Acme-Six-Pack/src/main/java/controllers/TrainerController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

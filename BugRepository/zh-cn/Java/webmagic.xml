@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="webmagic">
+	<bug id="610" opendate="2017-06-20 03:49:21" fixdate="2017-07-22 09:28:01">
+		<buginformation>
+			<summary>UrlUtils中的getCharset方法，正则表达式大小写敏感，获取网页编码失败</summary>
+			<description>实测中发现有网页编码属性charset存在大小写混乱的状况，导致获取不到网页编码。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>webmagic-core/src/main/java/us/codecraft/webmagic/utils/UrlUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="559" opendate="2017-05-05 03:04:22" fixdate="2017-06-03 03:44:37">
+		<buginformation>
+			<summary>[BUG] 默认取捕获组1引出的问题</summary>
+			<description>几天前改项目Bug，发现RegexSelector的某处默认选择了捕获组1，随之发现判断捕获组数量的方案有问题，从开始的只处理非捕获组的情况，渐渐改善成可以处理零宽度断言，到最后可以处理模式修饰符、注释等，本来尝试了通过反射去做的，最后选择了使用groupCount方法去取得捕获组数量。 这种方案虽然解决了捕获组数量的正确计算问题，但是此处还是存在bug，由于添加捕获组的方式是在正则表达式两端添加小括弧，这样使得在某种情况下（例如：注释模式下，后边的小括号可能被吃掉）有bug，其他情况还没有考虑。 最后提出一个问题，当没有捕获组1的时候，将默认捕获组改为0，这样可否？有没有违背最开始的设计？ @code4craft  Pull request 参见 #556</description>
+		</buginformation>
+		<fixedfiles>
+			<file>webmagic-core/src/main/java/us/codecraft/webmagic/selector/RegexSelector.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="419" opendate="2016-12-13 06:45:45" fixdate="2016-12-18 03:01:38">
+		<buginformation>
+			<summary>抓取https链接线程无法结束导致进程一直运行</summary>
+			<description>发现在使用代理ip爬取https链接时，出现爬取线程无法结束一直处于runnable状态，导致最后整个程序无法结束的情况。通过jConsole查看runnable 线程的调用栈信息，类似这篇文章[http://zhoujinhuang.iteye.com/blog/2109067](http://zhoujinhuang.iteye.com/blog/2109067) 描述的，阻塞在SocketInputStream.socketRead0方法中。最后下载源码，临时在HttpClientGenerator.generateClient(...)中做了如下修改，不在出现问题。麻烦作者关注一下这个问题，谢谢 ![_ 4fg w 91bnww 5i4 kj](https://cloud.githubusercontent.com/assets/6845769/21130350/c09d3922-c142-11e6-9db3-3a88c0817d90.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>webmagic-core/src/main/java/us/codecraft/webmagic/downloader/HttpClientGenerator.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

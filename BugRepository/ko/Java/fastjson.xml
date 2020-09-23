@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="fastjson">
+	<bug id="1763" opendate="2018-03-13 11:46:11" fixdate="2018-03-15 11:14:14">
+		<buginformation>
+			<summary>多级泛型的里层无法正常解析</summary>
+			<description>class：BaseResult ``` public class BaseResult&lt;T&gt;  ``` class：InteractiveOrderMaterielQueryResult ```java public class InteractiveOrderMaterielQueryResult&lt;T extends InteractiveOrderMaterielModel&gt; extends BasePageQueryResult&lt;T&gt; ``` method： queryProcurementOrderList ```java BaseResult&lt;InteractiveProcurementOrderList&gt; queryProcurementOrderList(InteractiveOrderBatchQueryCloudParam param); ```  调用queryProcurementOrderList的返回结果调用JSON.parseObject() ，里层的InteractiveOrderMaterielModel无法正常解析，测试代码如下：  ```java String s = "{\"result\":{\"modelList\":[{\"sourceId\":\"81900002\",\"categoryNames\":[\"一级类目A\",\"二级类目A1\",\"三级类目a2\"],\"materielCode\":\"wanhuacaigou095\",\"categoryIds\":[10001158,10001159,10001161],\"systemName\":\"framework\",\"unitName\":\"个\",\"materielName\":\"wanhuacaigou095\",\"class\":\"com.alibaba.procurement.api.interactive.model.InteractiveOrderMaterielModel\",\"materielItemId\":\"10172\"},{\"sourceId\":\"81900002\",\"categoryNames\":[\"一级类目A\",\"二级类目A1\",\"三级类目a2\"],\"materielCode\":\"wanhuacaigou096\",\"categoryIds\":[10001158,10001159,10001161],\"systemName\":\"framework\",\"unitName\":\"个\",\"materielName\":\"wanhuacaigou096\",\"class\":\"com.alibaba.procurement.api.interactive.model.InteractiveOrderMaterielModel\",\"materielItemId\":\"10173\"},{\"sourceId\":\"81892012\",\"categoryNames\":[],\"materielCode\":\"80005351\",\"categoryIds\":[],\"systemName\":\"framework\",\"unitName\":\"PC\",\"materielName\":\"法兰 CL150 DN25 SO-RF HG20615(Ib) 20#\",\"class\":\"com.alibaba.procurement.api.interactive.model.InteractiveOrderMaterielModel\",\"materielItemId\":\"10167\"},{\"sourceId\":\"2062014\",\"categoryNames\":[],\"materielCode\":\"80005350\",\"categoryIds\":[],\"systemName\":\"framework\",\"unitName\":\"PC\",\"materielName\":\"法兰CL150DN200SO-RFHG2061520\",\"class\":\"com.alibaba.procurement.api.interactive.model.InteractiveOrderMaterielModel\",\"materielItemId\":\"10022\"},{\"sourceId\":\"2082007\",\"categoryNames\":[],\"materielCode\":\"xpommm114\",\"categoryIds\":[],\"systemName\":\"framework\",\"unitName\":\"1\",\"materielName\":\"xpommm114\",\"class\":\"com.alibaba.procurement.api.interactive.model.InteractiveOrderMaterielModel\",\"materielItemId\":\"10145\"},{\"sourceId\":\"2082007\",\"categoryNames\":[],\"materielCode\":\"xpommm115\",\"categoryIds\":[],\"systemName\":\"framework\",\"unitName\":\"个\",\"materielName\":\"xpommm115\",\"class\":\"com.alibaba.procurement.api.interactive.model.InteractiveOrderMaterielModel\",\"materielItemId\":\"10146\"},{\"sourceId\":\"2082007\",\"categoryNames\":[],\"materielCode\":\"xpommm109\",\"categoryIds\":[],\"systemName\":\"framework\",\"unitName\":\"个\",\"materielName\":\"xpommm109\",\"class\":\"com.alibaba.procurement.api.interactive.model.InteractiveOrderMaterielModel\",\"materielItemId\":\"10147\"}],\"totalCount\":52,\"class\":\"com.alibaba.procurement.api.interactive.result.InteractiveOrderMaterielQueryResult\"},\"class\":\"com.alibaba.procurement.api.base.result.BaseResult\",\"isSuccess\":true}";          Method method = null;         Method[] ms = ProcurementOrderInteractiveServiceForCloud.class.getMethods();         for(Method m : ms){             if(m.getName().equals("queryOrderMateriel")){                 method = m;             }         }         Type type = method.getGenericReturnType();         BaseResult&lt;InteractiveOrderMaterielQueryResult&gt; o = JSON.parseObject(s,  type); ``` ![123](https://user-images.githubusercontent.com/5425784/37339891-21b93d12-26f7-11e8-8c50-d6512c3297c9.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/json/bvt/issue_1700/Issue1763.java</file>
+			<file>src/main/java/com/alibaba/fastjson/parser/ListTypeFieldDeserializer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1420" opendate="2017-08-18 09:37:56" fixdate="2017-08-21 02:53:28">
+		<buginformation>
+			<summary>更新到1.2.37版本后，原本正常的kotlin类无法被正确解析</summary>
+			<description>```kotlin import com.alibaba.fastjson.JSON import org.junit.Assert import org.junit.Test  class A {     var id: Long = 0     var name: String = "" }  class Test {     @Test     fun test() {         val s = "{\"id\":1,\"name\":\"a\"}"         val o = JSON.parseObject(s, A::class.java)          Assert.assertEquals(1, o.id) // 失败         Assert.assertEquals("a", o.name) // 失败     } } ```  1.2.36版本正常，kotlin 1.1.4</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/json/bvt/kotlin/Issue1420.java</file>
+			<file>src/main/java/com/alibaba/fastjson/parser/JavaBeanInfo.java</file>
+			<file>src/main/java/com/alibaba/fastjson/util/JavaBeanInfo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1120" opendate="2017-04-01 08:49:10" fixdate="2017-04-03 08:05:01">
+		<buginformation>
+			<summary>如果字段字母大写 @JSONField不起作用 </summary>
+			<description>@JSONField(name="REQ_NO") private String ReqNo;  字段字母大写 输出结果为"reqNo"</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/alibaba/json/bvt/issue_1100/Issue1120.java</file>
+			<file>src/main/java/com/alibaba/fastjson/parser/ParserConfig.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

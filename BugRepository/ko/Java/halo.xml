@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="halo">
+	<bug id="1068" opendate="2020-09-13 07:01:08" fixdate="2020-09-14 16:13:02">
+		<buginformation>
+			<summary>保存主题自定义设置失败</summary>
+			<description>&lt;!--   你好！感谢你正在考虑为 Halo 提交一个 bug。请花一点点时间尽量详细地回答以下基础问题。    谢谢！ --&gt;  &lt;!--    请确认你已经做了下面这些事情，若 bug 还是未解决，那么请尽可详细地描述你的问题。    - 我已经安装了最新版的 Halo   - 我已经搜索了已有的 Issues 列表中有关的信息   - 我已经搜索了论坛中有关的信息：https://bbs.halo.run   - 我已经阅读了 Halo 的 FAQ：https://halo.run/archives/other-faq --&gt;  ## 我的环境  &lt;!--    请登录到博客后台，进入菜单 `系统-&gt;关于` 点击 `环境信息` 旁边的按钮即可复制环境信息。 --&gt; 版本：1.3.2 数据库：MySQL 8.0.20 运行模式：production User Agent：Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36 ---  ## 错误日志  &lt;!--    请登录到博客后台，点击菜单栏中的 `Halo Dashboard` 10 次即可开启 `开发者选项`。进入开发者选项中的 `实时日志`。   你可以选择查找具体的错误日志，或者直接下载日志文件复制到下面即可。（注意：日志堆栈信息请用 Markdown 的代码块语法，以方便查看。） --&gt; ``` Caused by: javax.persistence.NonUniqueResultException: query did not return a unique result: 6 at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:128) ~[hibernate-core-5.4.12.Final.jar!/:5.4.12.Final] at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1585) ~[hibernate-core-5.4.12.Final.jar!/:5.4.12.Final] at org.hibernate.query.criteria.internal.compile.CriteriaQueryTypeQueryAdapter.getSingleResult(CriteriaQueryTypeQueryAdapter.java:111) ~[hibernate-core-5.4.12.Final.jar!/:5.4.12.Final] at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:196) ~[spring-data-jpa-2.2.5.RELEASE.jar!/:2.2.5.RELEASE] at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88) ~[spring-data-jpa-2.2.5.RELEASE.jar!/:2.2.5.RELEASE] at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:154) ~[spring-data-jpa-2.2.5.RELEASE.jar!/:2.2.5.RELEASE] at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:142) ~[spring-data-jpa-2.2.5.RELEASE.jar!/:2.2.5.RELEASE] at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:618) ~[spring-data-commons-2.2.5.RELEASE.jar!/:2.2.5.RELEASE] at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605) ~[spring-data-commons-2.2.5.RELEASE.jar!/:2.2.5.RELEASE] at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar!/:5.2.4.RELEASE] at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80) ~[spring-data-commons-2.2.5.RELEASE.jar!/:2.2.5.RELEASE] at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar!/:5.2.4.RELEASE] at org.springframework.transaction.interceptor.TransactionInterceptor$$Lambda$846/000000006DAE8470.proceedWithInvocation(Unknown Source) ~[na:na] at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366) ~[spring-tx-5.2.4.RELEASE.jar!/:5.2.4.RELEASE] at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99) ~[spring-tx-5.2.4.RELEASE.jar!/:5.2.4.RELEASE] at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar!/:5.2.4.RELEASE] at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.4.RELEASE.jar!/:5.2.4.RELEASE] ... 119 common frames omitted ``` ---  ## 期望行为  &lt;!--   你期望会发生什么？ --&gt;  ## 当前行为 保存主题自定义设置--的时候,如果网速比较慢,多次点击保存按钮,会出现将新增主题设置重复保存的情 setting_key 和 theme_id在数据库中重复,导致后续保存都会失败,只能手动到数据库删除,是否应该添加setting_key 和 theme_id的唯一索引 &lt;!--   描述 bug 细节，确认出现此问题的复现步骤，例如点击了哪里，发生了什么情况？    你可以粘贴截图或附件。 --&gt;</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/run/halo/app/service/impl/ThemeSettingServiceImpl.java</file>
+			<file>src/main/java/run/halo/app/controller/admin/api/ThemeController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="553" opendate="2020-02-10 08:02:08" fixdate="2020-02-10 10:24:37">
+		<buginformation>
+			<summary>更新主题操作不会刷新主题相关的缓存</summary>
+			<description>&lt;!--   你好！感谢你正在考虑为 Halo 提交一个 bug。请花一点点时间尽量详细地回答以下基础问题。    谢谢！ --&gt;  &lt;!--    请确认你已经做了下面这些事情，若 bug 还是未解决，那么请尽可详细地描述你的问题。    - 我已经安装了最新版的 Halo   - 我已经搜索了已有的 Issues 列表中有关的信息   - 我已经搜索了论坛中有关的信息：https://bbs.halo.run   - 我已经阅读了 Halo 的 FAQ：https://halo.run/archives/other-faq --&gt;  ## 我的环境  &lt;!--    请登录到博客后台，进入菜单 `系统-&gt;关于` 点击 `环境信息` 旁边的按钮即可复制环境信息。 --&gt;  Server 版本：1.2.0 Admin 版本：1.2.0 数据库：H2 运行模式：production UA 信息：Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36  ---  ## 错误日志  &lt;!--    请登录到博客后台，点击菜单栏中的 `Halo Dashboard` 10 次即可开启 `开发者选项`。进入开发者选项中的 `实时日志`。   你可以选择查找具体的错误日志，或者直接下载日志文件复制到下面即可。（注意：日志堆栈信息请用 Markdown 的代码块语法，以方便查看。） --&gt;  ---  ## 期望行为  &lt;!--   你期望会发生什么？ --&gt;  更新主题之后触发刷新主题信息的事件  ## 当前行为  &lt;!--   描述 bug 细节，确认出现此问题的复现步骤，例如点击了哪里，发生了什么情况？    你可以粘贴截图或附件。 --&gt;  不会触发。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/run/halo/app/listener/freemarker/FreemarkerConfigAwareListener.java</file>
+			<file>src/main/java/run/halo/app/service/impl/ThemeServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="529" opendate="2020-01-31 03:10:18" fixdate="2020-03-14 03:14:16">
+		<buginformation>
+			<summary>文件上传至本地功能可能存在内存泄漏</summary>
+			<description># 复现  将附件位置设置为本地，然后多次上传大图片，观察内存占用。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/run/halo/app/exception/RepeatTypeException.java</file>
+			<file>src/main/java/run/halo/app/handler/file/AliOssFileHandler.java</file>
+			<file>src/main/java/run/halo/app/handler/file/BaiduBosFileHandler.java</file>
+			<file>src/main/java/run/halo/app/service/impl/ThemeServiceImpl.java</file>
+			<file>src/main/java/run/halo/app/handler/file/LocalFileHandler.java</file>
+			<file>src/main/java/run/halo/app/handler/file/TencentCosFileHandler.java</file>
+			<file>src/main/java/run/halo/app/handler/file/QiniuOssFileHandler.java</file>
+			<file>src/main/java/run/halo/app/handler/file/FileHandler.java</file>
+			<file>src/main/java/run/halo/app/handler/file/UpOssFileHandler.java</file>
+			<file>src/main/java/run/halo/app/utils/ImageUtils.java</file>
+			<file>src/main/java/run/halo/app/handler/file/SmmsFileHandler.java</file>
+			<file>src/main/java/run/halo/app/handler/file/FileHandlers.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="387" opendate="2019-11-19 09:45:49" fixdate="2019-11-19 13:52:18">
+		<buginformation>
+			<summary>最新测试版 v1.1.3-beta.1 存在文件流未关闭问题</summary>
+			<description>&lt;!-- 如果你不认真勾选下面的内容，我可能会直接关闭你的 Issue。 提问之前，建议先阅读 https://github.com/ruby-china/How-To-Ask-Questions-The-Smart-Way --&gt;  **我确定我已经查看了** (标注`[ ]`为`[x]`)  - [x] [Halo 使用文档](https://halo.run/docs) - [x] [Halo 论坛](https://bbs.halo.run) - [x] [Github Wiki 常见问题](https://github.com/halo-dev/halo/wiki/4.-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98) - [x] [其他 Issues](https://github.com/halo-dev/halo/issues)  ----  **我要申请**  (标注`[ ]`为`[x]`)  - [x] BUG 反馈 - [ ] 添加新的特性或者功能 - [ ] 请求技术支持  ---  由于备份博客的时候需要压缩目录，打开太多的文件而未关闭，从而导致以下错误：  ```java 2019-11-19 09:05:01.329 ERROR 24651 --- [XNIO-1 Accept] org.xnio.nio.tcp.server                  : Exception accepting request, closing server channel TCP server (NIO) &lt;2fa63774&gt;  java.io.IOException: Too many open files         at java.base/sun.nio.ch.ServerSocketChannelImpl.accept0(Native Method) ~[na:na]         at java.base/sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:525) ~[na:na]         at java.base/sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:277) ~[na:na]         at org.xnio.nio.QueuedNioTcpServer.handleReady(QueuedNioTcpServer.java:467) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]         at org.xnio.nio.QueuedNioTcpServerHandle.handleReady(QueuedNioTcpServerHandle.java:38) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]         at org.xnio.nio.WorkerThread.run(WorkerThread.java:561) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final] ```  进一步造成博客的 Socket 连接关闭，博客无法访问。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/run/halo/app/utils/FileUtils.java</file>
+			<file>src/main/java/run/halo/app/service/impl/BackupServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="294" opendate="2019-09-09 15:53:15" fixdate="2019-09-14 03:12:15">
+		<buginformation>
+			<summary>生成缩略图OOM</summary>
+			<description>&lt;!-- 如果你不认真勾选下面的内容，我可能会直接关闭你的 Issue。 提问之前，建议先阅读 https://github.com/ruby-china/How-To-Ask-Questions-The-Smart-Way --&gt;  **我确定我已经查看了** (标注`[ ]`为`[x]`)  - [x] [Halo 使用文档](https://halo.run/docs) - [x] [Halo 论坛](https://bbs.halo.run) - [x] [Github Wiki 常见问题](https://github.com/halo-dev/halo/wiki/4.-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98) - [x] [其他 Issues](https://github.com/halo-dev/halo/issues)  ----  **我要申请**  (标注`[ ]`为`[x]`)  - [x] BUG 反馈 - [ ] 添加新的特性或者功能 - [ ] 请求技术支持  ---  错误栈终于找到了，之前使用 `thumbnailator` 的时候由于没有打印出错误栈，仅仅是显示了 `Caused by: java.lang.OutOfMemoryError: Java heap space` 错误，导致无法精准定位问题。  完整错误栈如下：  ```java Caused by: java.lang.OutOfMemoryError: Java heap space         at java.desktop/java.awt.image.DataBufferByte.&lt;init&gt;(DataBufferByte.java:92) ~[na:na]         at java.desktop/java.awt.image.ComponentSampleModel.createDataBuffer(ComponentSampleModel.java:439) ~[na:na]         at java.desktop/java.awt.image.Raster.createWritableRaster(Raster.java:1005) ~[na:na]         at java.desktop/javax.imageio.ImageTypeSpecifier.createBufferedImage(ImageTypeSpecifier.java:1074) ~[na:na]         at java.desktop/javax.imageio.ImageReader.getDestination(ImageReader.java:2877) ~[na:na]         at java.desktop/com.sun.imageio.plugins.jpeg.JPEGImageReader.readInternal(JPEGImageReader.java:1142) ~[na:na]         at java.desktop/com.sun.imageio.plugins.jpeg.JPEGImageReader.read(JPEGImageReader.java:1110) ~[na:na]         at java.desktop/javax.imageio.ImageIO.read(ImageIO.java:1468) ~[na:na]         at java.desktop/javax.imageio.ImageIO.read(ImageIO.java:1315) ~[na:na]         at cn.hutool.core.img.ImgUtil.read(ImgUtil.java:1559) ~[hutool-core-4.6.3.jar!/:na]         at cn.hutool.core.img.ImgUtil.scale(ImgUtil.java:74) ~[hutool-core-4.6.3.jar!/:na]         at run.halo.app.handler.file.LocalFileHandler.generateThumbnail(LocalFileHandler.java:230) ~[classes!/:1.1.0-beta.3]         at run.halo.app.handler.file.LocalFileHandler.upload(LocalFileHandler.java:155) ~[classes!/:1.1.0-beta.3]         at run.halo.app.handler.file.FileHandlers.upload(FileHandlers.java:54) ~[classes!/:1.1.0-beta.3]         at run.halo.app.service.impl.AttachmentServiceImpl.upload(AttachmentServiceImpl.java:105) ~[classes!/:1.1.0-beta.3]         at run.halo.app.service.impl.AttachmentServiceImpl$$FastClassBySpringCGLIB$$2d9c80b9.invoke(&lt;generated&gt;) ~[classes!/:1.1.0-beta.3]         at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]         at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:684) ~[spring-aop-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]         at run.halo.app.service.impl.AttachmentServiceImpl$$EnhancerBySpringCGLIB$$f033e75e.upload(&lt;generated&gt;) ~[classes!/:1.1.0-beta.3]         at run.halo.app.controller.admin.api.AttachmentController.uploadAttachment(AttachmentController.java:86) ~[classes!/:1.1.0-beta.3]         at run.halo.app.controller.admin.api.AttachmentController$$FastClassBySpringCGLIB$$8f3ff968.invoke(&lt;generated&gt;) ~[classes!/:1.1.0-beta.3]         at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]         at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]         at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]         at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88) ~[spring-aop-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]         at run.halo.app.core.ControllerLogAop.controller(ControllerLogAop.java:41) ~[classes!/:1.1.0-beta.3]         at jdk.internal.reflect.GeneratedMethodAccessor240.invoke(Unknown Source) ~[na:na]         at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]         at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]         at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644) ~[spring-aop-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]         at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633) ~[spring-aop-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]         at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70) ~[spring-aop-5.1.9.RELEASE.jar!/:5.1.9.RELEASE] ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/run/halo/app/utils/ImageUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="280" opendate="2019-08-19 09:38:39" fixdate="2019-09-03 02:12:13">
+		<buginformation>
+			<summary>文章标题不能带有英文句号.</summary>
+			<description>文章标题不能带有英文句号.,如果有一个或者多个,会报错404,估计原因是数据库用了.作为层级分割,来自http://www.lt8.top      的博客</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/run/halo/app/model/params/SheetParam.java</file>
+			<file>src/main/java/run/halo/app/service/impl/AdminServiceImpl.java</file>
+			<file>src/main/java/run/halo/app/model/params/PostParam.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="198" opendate="2019-06-11 16:19:20" fixdate="2019-06-12 13:01:15">
+		<buginformation>
+			<summary>删除主题后不能重新导入主题</summary>
+			<description> **我确定我已经查看了**  - [x] [Halo 使用文档](https://halo.run/docs) - [x] [Halo 论坛](https://bbs.halo.run) - [x] [Github Wiki 常见问题](https://github.com/halo-dev/halo/wiki/4.-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98) - [x] [其他 Issues](https://github.com/halo-dev/halo/issues)  ----  **我要申请**  - [x] BUG 反馈 - [ ] 添加新的特性或者功能 - [ ] 请求技术支持  删除主题后用户目录下对应的主题文件夹没有删除，导致不能再次导入主题。 手动删除也不行，停掉服务后文件夹自动消失。 在调试主题的时候需要不停地启/停服务，有点难受。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/run/halo/app/utils/FileUtilsTest.java</file>
+			<file>src/test/java/run/halo/app/utils/PathTest.java</file>
+			<file>src/main/java/run/halo/app/service/base/BasePostService.java</file>
+			<file>src/main/java/run/halo/app/service/impl/ThemeServiceImpl.java</file>
+			<file>src/test/java/run/halo/app/utils/PathsTest.java</file>
+			<file>src/main/java/run/halo/app/utils/GitUtils.java</file>
+			<file>src/main/java/run/halo/app/utils/FileUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="186" opendate="2019-06-07 01:10:20" fixdate="2019-06-07 01:31:58">
+		<buginformation>
+			<summary>404 请求被重定向至 /404</summary>
+			<description>&lt;!-- 如果你不认真勾选下面的内容，我可能会直接关闭你的 Issue。 提问之前，建议先阅读 https://github.com/ruby-china/How-To-Ask-Questions-The-Smart-Way --&gt;  **我确定我已经查看了** (标注`[ ]`为`[x]`)  - [x] [Halo 使用文档](https://halo.run/docs) - [x] [Halo 论坛](https://bbs.halo.run) - [x] [Github Wiki 常见问题](https://github.com/halo-dev/halo/wiki/4.-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98) - [x] [其他 Issues](https://github.com/halo-dev/halo/issues)  ----  **我要申请**  (标注`[ ]`为`[x]`)  - [x] BUG 反馈 - [ ] 添加新的特性或者功能 - [ ] 请求技术支持  ----  Expected：根据 HTTP 规范，404 请求应直接返回 `404` 状态码，同时返回 HTML Body。 现情况：所有 404 请求将会被返回 `302` 状态码并被重定向至 `/404` 解决方案：所有 404 请求应直接返回 `404` 状态码，直接渲染并返回主题目录下的 `/404.ftl`  PS: 500 请求的情况也是一样</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/run/halo/app/controller/core/CommonController.java</file>
+			<file>src/main/java/run/halo/app/controller/base/ControllerExceptionHandler.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

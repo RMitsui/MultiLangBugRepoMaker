@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>25</id>
+		<title>travis-ci 연동 에러 해결</title>
+		<body>* travis-ci build시 에러 나는 현상 해결</body>
+		<created>2017-04-10 12:07:22</created>
+		<closed>2017-04-11 16:09:30</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>상품 리스트화면의 하단 스크롤시 메인 카테고리 TabLayout이 늘어나는 버그 </title>
+		<body>## 상품 리스트화면의 하단 스크롤시 메인 카테고리 TabLayout이 늘어나는 버그  상품 리스트화면에서 CollapseToolbarLayout을 상하단 스크롤시 메인 카테고리 TabLayout이 위로 늘어나는 버그 발견</body>
+		<created>2017-01-18 12:08:09</created>
+		<closed>2017-01-21 10:30:39</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>갤러리 정렬이 찍힌 시간 내림차순으로 안돼는 문제</title>
+		<body>## 갤러리 정렬이 사진이 찍힌 시간 내림차순으로 안돼는 문제 `PickerController.java`의 ContentProvider를 이용해 media query할 때 정렬 기준이 잘못 설정되있다.  1. 정렬기준을 수정 2. 불필요한 로그도 지우기  ```java // 현재 String sort = MediaStore.Images.Media._ID + " DESC"; //Todo: 수정 String sort = MediaStore.Images.Media.DATE_TAKEN + " DESC"; ```</body>
+		<created>2017-01-18 12:06:01</created>
+		<closed>2017-02-21 16:22:22</closed>
+	</bug>
+	<bug>
+		<id>16</id>
+		<title>LoginActivity 다음 Activity가 2번 생성되는 버그</title>
+		<body>## LoginActivity 다음으로 호출되는 SellerProductListActivity가 2번 생성되는 이슈  Kakao Callback 때문에 2번 호출된다.  다음의 코드 추가하여 해결할 것 ```java // LoginActivity.java   protected void onCreate(Bundle savedInstanceState) {    ....  if (userLevel != null &amp;&amp; !"".equals(userLevel)) {             redirectProductListActivity(userLevel);         } else {             mSessionCallback = new SessionCallback();             Session.getCurrentSession().addCallback(mSessionCallback);             if (!Session.getCurrentSession().checkAndImplicitOpen()) {                 setContentView(R.layout.activity_login);             }         } } ```</body>
+		<created>2016-12-31 09:25:09</created>
+		<closed>2016-12-31 09:32:30</closed>
+	</bug>
+</bugs>

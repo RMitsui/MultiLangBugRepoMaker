@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="weixin-java-tools">
+	<bug id="1539" opendate="2020-04-30 07:37:07" fixdate="2020-05-03 13:38:30">
+		<buginformation>
+			<summary>您好 微信公众号模块的一个错误响应信息错了</summary>
+			<description>https://github.com/Wechat-Group/WxJava/blob/23c1b0b0df621cf29ed57a92ae5fa287ff749f0f/weixin-java-common/src/main/java/me/chanjar/weixin/common/error/WxMpErrorMsgEnum.java#L91   40017 应为 不合法的按钮类型</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/error/WxMpErrorMsgEnum.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1413" opendate="2020-02-26 02:27:40" fixdate="2020-02-29 10:52:24">
+		<buginformation>
+			<summary>行业设置，腾讯官方文档与实际不符，枚举无法干预</summary>
+			<description>### 简要描述 获取微信公众号所属行业，采用了枚举的方式，写死部分无法识别也无法修改，另外腾讯更新或者写法不一致后难以第一时间适应 如 String json="{\"primary_industry\":{\"first_class\":\"IT科技\",\"second_class\":\"IT软件与服务\"},\"secondary_industry\":{\"first_class\":\"房地产\",\"second_class\":\"房地产|建筑\"}}"; 枚举无法正确识别 导致 WxMpIndustryGsonAdapter 中报空指针  ### 模块版本情况 * WxJava 模块名: weixin-java-mp * WxJava 版本号: 3.6.0  ### 详细描述  设置所属行业返回内容与腾讯官方文档说的不是一回事，容易出现无法识别情况，建议修改为可外部干预的，避免遇到问题无法修改  本例中 官方文档为  房地产--建筑   实际返回值为   房地产--房地产|建筑 40中每种都试太麻烦 建议在 findBySecondary 方法的末尾 添加 外部识别方法 由使用者自行 处理不能识别的情况  顺带说一句 pom.xml中的地址与当前不符</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-mp/src/test/java/me/chanjar/weixin/mp/bean/template/WxMpTemplateIndustryTest.java</file>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/util/json/WxMpIndustryGsonAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1338" opendate="2019-12-26 03:37:07" fixdate="2019-12-28 08:51:53">
+		<buginformation>
+			<summary>微信支付发送小程序红包接口有问题</summary>
+			<description>参数有问题，需要修复</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/service/impl/BaseWxPayServiceImpl.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/service/WxPayService.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/service/RedpackService.java</file>
+			<file>weixin-java-pay/src/test/java/com/github/binarywang/wxpay/service/impl/BaseWxPayServiceImplTest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/service/impl/RedpackServiceImpl.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPaySendMiniProgramRedpackRequest.java</file>
+			<file>weixin-java-pay/src/test/java/com/github/binarywang/wxpay/service/impl/RedpackServiceImplTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1275" opendate="2019-11-11 11:06:10" fixdate="2019-12-28 08:52:38">
+		<buginformation>
+			<summary>微信支付的对账下载有bug</summary>
+			<description> ### 简要描述 微信支付对账下载，报数组下标越界异常  ### 模块版本情况 * 模块名: weixin-java-pay * 版本号: 3.5.0  ### 详细描述 如果微信对账下载接口  返回的结算类型是"普通结算对账单"的格式，但是代码里按“开通免充值券后的结算对账单”的类型去解析字符串，多了“订单金额”，“申请退款金额”，“费率备注”，导致异常  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/result/WxPayBillResult.java</file>
+			<file>weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/result/WxPayBillResultTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1171" opendate="2019-08-22 07:57:07" fixdate="2019-08-23 09:34:52">
+		<buginformation>
+			<summary>创建会员卡参数错误</summary>
+			<description>### 简要描述 Jar 3.5.0对于创建会员中bonus_rule.least_moneyto_use_bonus参数错误， 官方给到的参数：least_money_to_use_bonus  ### 模块版本情况 * WxJava 模块名: weixin-java-mp * WxJava 版本号:3.5.0  ### 详细描述 &lt;img width="383" alt="image" src="https://user-images.githubusercontent.com/3807419/63496942-66aa9e00-c4f5-11e9-95b9-003197c21b93.png"&gt; 官方： ![image](https://user-images.githubusercontent.com/3807419/63496972-732ef680-c4f5-11e9-952e-4847968c3f14.png)   ### 日志 __将日志放在 [pastebin](https://paste.ubuntu.com/) 或者其他地方，并将其url地址贴在这里__ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/bean/card/BonusRule.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1169" opendate="2019-08-21 08:16:47" fixdate="2019-08-23 09:35:42">
+		<buginformation>
+			<summary>企业微信更新成员事件消息解析有问题</summary>
+			<description>企业微信更新成员事件xml解析不了  ### 模块版本情况 * WxJava 模块名: cp * WxJava 版本号: 3.5.0  ### 详细描述 原始报文： ``` &lt;xml&gt; &lt;ToUserName&gt; &lt;![CDATA[myvwk5b2g7zw8lbxkj]]&gt; &lt;/ToUserName&gt; &lt;FromUserName&gt; &lt;![CDATA[sys]]&gt; &lt;/FromUserName&gt; &lt;CreateTime&gt;1565325995&lt;/CreateTime&gt; &lt;MsgType&gt; &lt;![CDATA[event]]&gt; &lt;/MsgType&gt; &lt;Event&gt; &lt;![CDATA[change_contact]]&gt; &lt;/Event&gt; &lt;ChangeType&gt; &lt;![CDATA[update_user]]&gt; &lt;/ChangeType&gt; &lt;UserID&gt; &lt;![CDATA[Test]]&gt; &lt;/UserID&gt; &lt;Department&gt; &lt;![CDATA[4]]&gt; &lt;/Department&gt; &lt;IsLeader&gt;1&lt;/IsLeader&gt; &lt;IsLeaderInDept&gt; &lt;![CDATA[1]]&gt; &lt;/IsLeaderInDept&gt; &lt;/xml&gt; ``` 测试代码： ``` String xml = "&lt;xml&gt;\n" + "\t&lt;ToUserName&gt;\n" + "\t\t&lt;![CDATA[myvwk5b2g7zw8lbxkj]]&gt;\n" + "\t&lt;/ToUserName&gt;\n" + "\t&lt;FromUserName&gt;\n" + "\t\t&lt;![CDATA[sys]]&gt;\n" + "\t&lt;/FromUserName&gt;\n" + "\t&lt;CreateTime&gt;1565325995&lt;/CreateTime&gt;\n" + "\t&lt;MsgType&gt;\n" + "\t\t&lt;![CDATA[event]]&gt;\n" + "\t&lt;/MsgType&gt;\n" + "\t&lt;Event&gt;\n" + "\t\t&lt;![CDATA[change_contact]]&gt;\n" + "\t&lt;/Event&gt;\n" + "\t&lt;ChangeType&gt;\n" + "\t\t&lt;![CDATA[update_user]]&gt;\n" + "\t&lt;/ChangeType&gt;\n" + "\t&lt;UserID&gt;\n" + "\t\t&lt;![CDATA[Test]]&gt;\n" + "\t&lt;/UserID&gt;\n" + "\t&lt;Department&gt;\n" + "\t\t&lt;![CDATA[4]]&gt;\n" + "\t&lt;/Department&gt;\n" + "\t&lt;IsLeader&gt;1&lt;/IsLeader&gt;\n" + "\t&lt;IsLeaderInDept&gt;\n" + "\t\t&lt;![CDATA[1]]&gt;\n" + "\t&lt;/IsLeaderInDept&gt;\n" + "&lt;/xml&gt;";  WxCpXmlMessage wxCpXmlMessage = XStreamTransformer.fromXml(WxCpXmlMessage.class, xml); System.out.println("消息解密后内容为："); System.out.println(wxCpXmlMessage.toString()); ```  错误信息： ``` Exception in thread "main" com.thoughtworks.xstream.converters.ConversionException: Explicit selected converter cannot handle type ---- Debugging information ---- message             : Explicit selected converter cannot handle type item-type           : [Ljava.lang.Long; converter-type      : com.thoughtworks.xstream.converters.SingleValueConverterWrapper class               : me.chanjar.weixin.cp.bean.WxCpXmlMessage required-type       : me.chanjar.weixin.cp.bean.WxCpXmlMessage converter-type[1]   : com.thoughtworks.xstream.converters.reflection.ReflectionConverter line number         : 21 version             : 1.4.11 ------------------------------- ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/util/xml/LongArrayConverter.java</file>
+			<file>weixin-java-cp/src/test/java/me/chanjar/weixin/cp/bean/WxCpXmlMessageTest.java</file>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/util/xml/XStreamCDataConverter.java</file>
+			<file>weixin-java-cp/src/main/java/me/chanjar/weixin/cp/bean/WxCpXmlMessage.java</file>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/util/xml/IntegerArrayConverter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1087" opendate="2019-06-25 12:55:48" fixdate="2019-08-23 09:37:10">
+		<buginformation>
+			<summary>长链接转短链接接口的小BUG</summary>
+			<description>准确来说应该是微信接口的BUG，但可能会在一定条件下瞬间刷爆access_token。  ### 简要描述 长链接转短链接接口中的 `long_url` 如果带有名为 `access_token` 的参数，会直接导致接口返回 `40001`，如果项目的 `autoRefreshToken` 也正好是 `true` ，会直接导致 `java.lang.StackOverflowError` 并刷爆服务号的 `access_token`  ### 模块版本情况  * WxJava 模块名: weixin-java-mp * WxJava 版本号:3.3.0  ### 期待结果 和 实际情况  #### 先说说微信的BUG  使用官方例子调用长链接转短链接（ `long_url` 添加 `access_token` 参数）： ```bash  curl -d "{\"action\":\"long2short\",\"long_url\":\"http://wap.koudaitong.com/v2/showcase/goods?alias=128wi9shh&amp;spm=h56083&amp;redirect_count=1&amp;access_token={random_str}\"}" "https://api.weixin.qq.com/cgi-bin/shorturl?access_token={access_token}" ``` * {random_str} : 随机字符串，网址中的参数名正好被命名成了access_token * {access_token} : 正常可用的微信access_token  返回值 ```json {"errcode":40001,"errmsg":"invalid credential, access_token is invalid or not latest hint: [1l1fVa08158619!]"} ```  修改上面long_url中 `access_token` 的参数名，或者去掉 `access_token` 这个参数（这里改成了 `bccess_token`） ```bash  curl -d "{\"action\":\"long2short\",\"long_url\":\"http://wap.koudaitong.com/v2/showcase/goods?alias=128wi9shh&amp;spm=h56083&amp;redirect_count=1&amp;bccess_token={random_str}\"}" "https://api.weixin.qq.com/cgi-bin/shorturl?access_token={access_token}" ``` * {random_str} : 同上 * {access_token} : 同上  返回值 ```json {"errcode":0,"errmsg":"ok","short_url":"https:\/\/w.url.cn\/s\/AdCvL5R"} ```  #### 再看看项目中的代码  **me.chanjar.weixin.mp.api.impl.BaseWxMpServiceImpl** ```java   ...   public &lt;T, E&gt; T executeInternal(RequestExecutor&lt;T, E&gt; executor, String uri, E data) throws WxErrorException {       ...       if (error.getErrorCode() == 42001 || error.getErrorCode() == 40001 || error.getErrorCode() == 40014) {         this.getWxMpConfigStorage().expireAccessToken();         if (this.getWxMpConfigStorage().autoRefreshToken()) {           return this.execute(executor, uri, data);         }       }   ... ``` 代码中判断到 `40001` 会让当前 `access_token` 失效，并且判断到 `autoRefreshToken` 会继续调用 `this.execute()`方法 ```java   public &lt;T, E&gt; T execute(RequestExecutor&lt;T, E&gt; executor, String uri, E data) throws WxErrorException {   ...       try {         return this.executeInternal(executor, uri, data);       } catch (WxErrorException e) {   ... ``` 也就是回到上一个方法，但同样会返回 `40001`，开始死循环。  ### 日志 ```log Handler dispatch failed; nested exception is java.lang.StackOverflowError org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.StackOverflowError at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:982) at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) at javax.servlet.http.HttpServlet.service(HttpServlet.java:622) at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) Caused by: java.lang.StackOverflowError: null at java.net.SocketInputStream.socketRead0(Native Method) at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) at java.net.SocketInputStream.read(SocketInputStream.java:171) at java.net.SocketInputStream.read(SocketInputStream.java:141) at sun.security.ssl.InputRecord.readFully(InputRecord.java:465) at sun.security.ssl.InputRecord.read(InputRecord.java:503) at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:973) at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:930) at sun.security.ssl.AppInputStream.read(AppInputStream.java:105) at okio.Okio$2.read(Okio.java:139) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/api/impl/BaseWxMpServiceImpl.java</file>
+			<file>weixin-java-mp/src/test/java/me/chanjar/weixin/mp/api/WxMpShortUrlAPITest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="973" opendate="2019-03-13 03:42:58" fixdate="2019-03-23 12:20:14">
+		<buginformation>
+			<summary>服务商版微信红包3.3.0bug</summary>
+			<description>WxPaySendRedpackRequest 发送红包的Bean 中需要额外排除 sub_appid 该字段  ```java      protected String[] getIgnoredParamsForSign() {          return new String[]{"sign_type", "sub_appid"};     } ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPaySendRedpackRequest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="966" opendate="2019-03-11 08:44:39" fixdate="2019-03-31 09:53:54">
+		<buginformation>
+			<summary>移动端链接快速授权生成预授权链接错误</summary>
+			<description>https://mp.weixin.qq.com/safe/bindcomponent?action=bindcomponent&amp;no_scan=1&amp;auth_type=3&amp;component_appid=%s&amp;pre_auth_code=%s&amp;redirect_uri=%s&amp;auth_type=xxx&amp;biz_appid=xxx$#wechat_redirect  项目中配置的移动端快速授权地址模板错误，最后#wechat_redirect前是不是多了个'$'啊，导致回调回来后出现错误。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-open/src/main/java/me/chanjar/weixin/open/api/WxOpenComponentService.java</file>
+			<file>weixin-java-open/src/main/java/me/chanjar/weixin/open/api/impl/WxOpenComponentServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="942" opendate="2019-02-19 10:57:31" fixdate="2019-03-03 03:23:26">
+		<buginformation>
+			<summary>下载iphone的声音文件时，微信返回来的文件名为空</summary>
+			<description>下载iphone的声音文件时，微信返回来的文件名为空。在当前的代码下，文件名为空时返回null。其实这个时候返回的文件内容是正确的，只是文件名为空而已。 参考#941</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/util/http/apache/ApacheMediaDownloadRequestExecutor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="897" opendate="2018-12-26 08:32:56" fixdate="2019-08-30 10:09:59">
+		<buginformation>
+			<summary>企业微信批量删除用户时的消息排重问题</summary>
+			<description>在做通讯录管理时,假如批量删除两个用户,在route里面排重的时候, 在控制台打印的两条消息的create_time是一样的,所以经常会把其中一条消息判断为重复消息.最后我在route之前提前设置create_time临时解决了.新手上路,还望大佬指导下!</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-cp/src/main/java/me/chanjar/weixin/cp/message/WxCpMessageRouter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="858" opendate="2018-11-26 07:08:52" fixdate="2019-08-30 10:10:54">
+		<buginformation>
+			<summary>批量添加卡券接口后推送的事件被消息排重误判为重复消息</summary>
+			<description>发现使用批量添加卡券接口后推送的事件被消息排重误判为重复消息 查看源码使用的排重方法为官网推荐的消息排重规则（FromUserName + CreateTime），但在使用批量添加卡券接口添加多张卡券后，官方推送的消息FromUserName + CreateTime相同，不符合重复消息，微信官方推荐的方法存在问题 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/api/WxMpMessageRouter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="752" opendate="2018-09-05 13:30:56" fixdate="2018-09-09 04:56:58">
+		<buginformation>
+			<summary>拉取支付评价的接口报错：商户签名错误</summary>
+			<description>调用微信支付里拉取用户评论数据的接口： this.wxService.queryComment(DateUtils.addDays(new Date(), -30), new Date(), 0, 200);  报错： WxPayException(customErrorMsg=null, returnCode=FAIL, returnMsg=商户签名错误, resultCode=null, errCode=null, errCodeDes=null, xmlString=&lt;xml&gt; &lt;return_code&gt;&lt;![CDATA[FAIL]]&gt;&lt;/return_code&gt; &lt;return_msg&gt;&lt;![CDATA[商户签名错误]]&gt;&lt;/return_msg&gt; &lt;/xml&gt;)  将打印出来的请求数据放到微信支付接口签名校验工具里校验，结果如下： 1.接口请求的原始数据去校验，校验失败。 ![image](https://user-images.githubusercontent.com/20501730/45096181-8913a200-b152-11e8-85f7-2f7cda622e16.png)  2.接口请求的原始数据去掉  &lt;sign_type&gt;HMAC-SHA256&lt;/sign_type&gt;，校验成功。 ![image](https://user-images.githubusercontent.com/20501730/45096284-c37d3f00-b152-11e8-8f4b-7c591d417894.png)   结论：从实验结果上，请求数据设置了signType就会签名出错，不清楚是微信本身问题，还是weixin-java-pay的接口问题，  &lt;sign_type&gt;HMAC-SHA256&lt;/sign_type&gt; 本身有默认值，建议去掉这个设置，以便解决这个问题。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/util/SignUtils.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/service/WxPayService.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/entpay/EntPayRequest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/service/impl/BaseWxPayServiceImpl.java</file>
+			<file>weixin-java-pay/src/test/java/com/github/binarywang/wxpay/service/impl/BaseWxPayServiceImplTest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPayDefaultRequest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/BaseWxPayRequest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/entpay/EntPayBankRequest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPaySendRedpackRequest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/service/impl/EntPayServiceImpl.java</file>
+			<file>weixin-java-pay/src/test/java/com/github/binarywang/wxpay/util/SignUtilsTest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/entpay/EntPayQueryRequest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPayQueryCommentRequest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="726" opendate="2018-08-23 06:23:50" fixdate="2018-08-23 15:01:38">
+		<buginformation>
+			<summary>现金红包接口签名错误</summary>
+			<description>V3.1.0 调用发送现金红包接口提示签名错误，经排查发现是signType不用参与签名。 接口 WxPayService WxPaySendRedpackResult sendRedpack(WxPaySendRedpackRequest request) throws WxPayException;  解决办法 WxPaySendRedpackRequest覆写ignoreSignType方法 protected boolean ignoreSignType() {     return true;   }</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPaySendRedpackRequest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="479" opendate="2018-03-05 05:48:32" fixdate="2018-03-11 12:39:55">
+		<buginformation>
+			<summary>修复公众号模板消息发送时pagepath问题</summary>
+			<description>https://mp.weixin.qq.com/wiki?action=doc&amp;id=mp1433751277&amp;t=0.8724972468714212#5 官方接口文档中的参数名称错误（文档中为 pagepath，实际应为 path）</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/bean/template/WxMpTemplateMessage.java</file>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/util/json/WxMpTemplateMessageGsonAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="362" opendate="2017-11-02 12:10:56" fixdate="2017-11-07 07:35:27">
+		<buginformation>
+			<summary>okhttp实现的二维码下载代码有问题</summary>
+			<description>参考链接样例：https://github.com/Wechat-Group/weixin-java-tools/wiki/MP_%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%AE%A1%E7%90%86 和WxMpQrCodeServiceImplTest测试类进行试运行，不能正常生成二维码图片，而且图片格式和wiki说明也不一致。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/util/http/okhttp/OkhttpQrCodeRequestExecutor.java</file>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/util/fs/FileUtils.java</file>
+			<file>weixin-java-mp/src/test/java/me/chanjar/weixin/mp/api/test/ApiTestModule.java</file>
+			<file>weixin-java-mp/src/test/java/me/chanjar/weixin/mp/api/impl/WxMpQrcodeServiceImplTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="355" opendate="2017-10-17 05:32:23" fixdate="2017-10-23 02:56:00">
+		<buginformation>
+			<summary>2.8.0 微信支付签名bug</summary>
+			<description>微信支付签名的工具类错误的将sign_type字段排除在签名字段之外,导致微信支付签名失败</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPayRefundRequest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/service/impl/WxPayServiceAbstractImpl.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/result/WxPayBaseResult.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/config/WxPayConfig.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/util/SignUtils.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/constant/WxPayConstants.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPayBaseRequest.java</file>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/bean/menu/WxMpSelfMenuInfo.java</file>
+			<file>weixin-java-pay/src/test/java/com/github/binarywang/wxpay/util/SignUtilsTest.java</file>
+			<file>weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/request/WxPayUnifiedOrderRequest.java</file>
+			<file>weixin-java-pay/src/test/java/com/github/binarywang/wxpay/service/impl/WxPayServiceAbstractImplTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="333" opendate="2017-09-12 03:20:35" fixdate="2017-11-10 10:54:41">
+		<buginformation>
+			<summary>消息验重问题</summary>
+			<description>WxMpMessageRouter的isMsgDuplicated方法。使用msgId来验重是不正确的。这个msgId可能重复，会造成部分人员收不到回信（我们在测试的时候15个人一块语音，这个ID重复了，15个人一块喊语音，有5-6人收不到）。暂时的解决方案是加了FromUser和CreateTime。请官方关注一下。另外WxCpMessageRouter可能会有同样的问题。最后，感谢开源。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/api/WxMpMessageRouter.java</file>
+			<file>weixin-java-cp/src/main/java/me/chanjar/weixin/cp/message/WxCpMessageRouter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="305" opendate="2017-08-06 09:58:37" fixdate="2017-08-14 08:33:27">
+		<buginformation>
+			<summary>接收不到拍照或发图的事件推送</summary>
+			<description>用户拍照或者发图后，后台可以收到image类的用户消息，可是收不到事件推送。 经过排查，发现微信已经推送了事件，我的服务器也接到了加密的事件推送消息，消息解密也完成了， 但是在构建WxCpXmlMessage时遇到了问题：  ``` com.thoughtworks.xstream.converters.reflection.AbstractReflectionConverter$DuplicateFieldException: Duplicate field picList ---- Debugging information ---- field               : picList class               : me.chanjar.weixin.cp.bean.WxCpXmlMessage$SendPicsInfo required-type       : me.chanjar.weixin.cp.bean.WxCpXmlMessage$SendPicsInfo converter-type      : com.thoughtworks.xstream.converters.reflection.ReflectionConverter line number         : 1 class[1]            : me.chanjar.weixin.cp.bean.WxCpXmlMessage version             : 1.4.7 ```  发现解密过的xml里面的确有多个picList：  ```&lt;xml&gt;&lt;ToUserName&gt;&lt;![CDATA[wx45a0972125658be9]]&gt;&lt;/ToUserName&gt;&lt;FromUserName&gt;&lt;![CDATA[xiaohe]]&gt;&lt;/FromUserName&gt;&lt;CreateTime&gt;1502012364&lt;/CreateTime&gt;&lt;MsgType&gt;&lt;![CDATA[event]]&gt;&lt;/MsgType&gt;&lt;AgentID&gt;1000004&lt;/AgentID&gt;&lt;Event&gt;&lt;![CDATA[pic_weixin]]&gt;&lt;/Event&gt;&lt;EventKey&gt;&lt;![CDATA[faceSimilarity]]&gt;&lt;/EventKey&gt;&lt;SendPicsInfo&gt;&lt;PicList&gt;&lt;item&gt;&lt;PicMd5Sum&gt;&lt;![CDATA[aef52ae501537e552725c5d7f99c1741]]&gt;&lt;/PicMd5Sum&gt;&lt;/item&gt;&lt;/PicList&gt;&lt;PicList&gt;&lt;item&gt;&lt;PicMd5Sum&gt;&lt;![CDATA[c4564632a4fab91378c39bea6aad6f9e]]&gt;&lt;/PicMd5Sum&gt;&lt;/item&gt;&lt;/PicList&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;/SendPicsInfo&gt;&lt;/xml&gt;```  这个算是微信那边推送了错误的格式么？我觉得多个照片就该是PicList里面的多个item啊。 @binarywang </description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-cp/src/test/java/me/chanjar/weixin/cp/bean/WxCpXmlMessageTest.java</file>
+			<file>weixin-java-mp/src/test/java/me/chanjar/weixin/mp/bean/message/WxMpXmlMessageTest.java</file>
+			<file>weixin-java-mp/src/main/java/me/chanjar/weixin/mp/bean/message/WxMpXmlMessage.java</file>
+			<file>weixin-java-cp/src/main/java/me/chanjar/weixin/cp/bean/WxCpXmlMessage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="300" opendate="2017-08-02 06:32:19" fixdate="2017-08-14 08:33:48">
+		<buginformation>
+			<summary>微信多媒体文件没有后缀名时下载失败</summary>
+			<description>对于用户发给企业微信的语音消息，在下载时得到的是一个没有后缀名的文件，文件名默认是“voice”。 这导致了wxCpService.mediaDownload(media_id) 这个默认的下载多媒体文件的接口抛出异常。  在[ApacheMediaDownloadRequestExecutor.java](https://github.com/Wechat-Group/weixin-java-tools/blob/master/weixin-java-common/src/main/java/me/chanjar/weixin/common/util/http/apache/ApacheMediaDownloadRequestExecutor.java) 文件中         String fileName = getFileName(response);       if (StringUtils.isBlank(fileName)) {         return null;       }        String[] nameAndExt = fileName.split("\\.");       return FileUtils.createTmpFile(inputStream, nameAndExt[0], nameAndExt[1], super.tmpDirFile);  会抛出ArrayIndexOfBoundsException</description>
+		</buginformation>
+		<fixedfiles>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/util/http/HttpResponseProxy.java</file>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/util/http/apache/ApacheMediaDownloadRequestExecutor.java</file>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/util/http/jodd/JoddHttpMediaDownloadRequestExecutor.java</file>
+			<file>weixin-java-common/src/main/java/me/chanjar/weixin/common/util/http/okhttp/OkHttpMediaDownloadRequestExecutor.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

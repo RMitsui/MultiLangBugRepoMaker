@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="canal">
+	<bug id="330" opendate="2017-06-22 03:57:23" fixdate="2017-08-03 13:15:38">
+		<buginformation>
+			<summary>MySQL5.7 JSON解析问题</summary>
+			<description>canal 版本1.0.24 写入MySQL的JSON数据，Canal解析失败  2017-06-22 11:39:25.104 [destination = example , address = /127.0.0.1:3306 , EventParser] ERROR com.alibaba.otter.canal.common.alarm.LogAlarmHandler - destination:example[com.alibaba.otter.canal.parse.exception.CanalParseException: com.alibaba.otter.canal.parse.exception.CanalParseException: parse row data failed. Caused by: com.alibaba.otter.canal.parse.exception.CanalParseException: parse row data failed. Caused by: java.lang.IllegalArgumentException: illegal json data         at com.taobao.tddl.dbsync.binlog.JsonConversion.parse_array_or_object(JsonConversion.java:81)         at com.taobao.tddl.dbsync.binlog.JsonConversion.parse_value(JsonConversion.java:61)         at com.taobao.tddl.dbsync.binlog.event.RowsLogBuffer.fetchValue(RowsLogBuffer.java:955)         at com.taobao.tddl.dbsync.binlog.event.RowsLogBuffer.nextValue(RowsLogBuffer.java:99)         at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parseOneRow(LogEventConvert.java:495)         at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parseRowsEvent(LogEventConvert.java:376)         at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parse(LogEventConvert.java:108)         at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parse(LogEventConvert.java:62)         at com.alibaba.otter.canal.parse.inbound.AbstractEventParser.parseAndProfilingIfNecessary(AbstractEventParser.java:326)         at com.alibaba.otter.canal.parse.inbound.AbstractEventParser$3$1.sink(AbstractEventParser.java:176)         at com.alibaba.otter.canal.parse.inbound.mysql.MysqlConnection.dump(MysqlConnection.java:130)         at com.alibaba.otter.canal.parse.inbound.AbstractEventParser$3.run(AbstractEventParser.java:209)         at java.lang.Thread.run(Thread.java:745)   另外如果json中包含双引号，canal解析之后丢失了转义符号。 ![image](https://user-images.githubusercontent.com/5357638/27416733-e8f73ba8-5741-11e7-96c0-2a0de5ddc8af.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>dbsync/src/main/java/com/taobao/tddl/dbsync/binlog/JsonConversion.java</file>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/AbstractEventParser.java</file>
+			<file>dbsync/src/main/java/com/taobao/tddl/dbsync/binlog/event/RowsLogBuffer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="227" opendate="2016-11-25 09:17:38" fixdate="2016-11-28 06:11:32">
+		<buginformation>
+			<summary>canal仓库代码编译之后,不支持mysql5.1的问题</summary>
+			<description>hi canal开发团队,我使用canal仓库中master分支的代码编译. Mysql Server version: 5.1.73 错误信息: &gt; ERROR: [destination = example , address = test/192.168.10.16:3306 , EventParser] WARN  c.a.otter.canal.parse.inbound.mysql.MysqlConnection - java.io.IOException: ErrorPacket [errorNumber=1193, fieldCount=-1, message=Unknown system variable 'binlog_checksum', sqlState=HY000, sqlStateMarker=#]  with command: set @master_binlog_checksum= @@global.binlog_checksum   changed file:https://github.com/alibaba/canal/commit/0c9eecd758a8cba0f218a121f83d3e8f01c4dee8  ![image](https://cloud.githubusercontent.com/assets/9983697/20620006/5bffa586-b332-11e6-80b6-3dd104c87c00.png)   这篇答案说`binlog_checksum`变量是从mysql5.6才开始支持.[参考](http://dba.stackexchange.com/questions/66226/mysql-slave-database-wont-start)  如果是这样的话,时候意味着canal以后不会支持mysql5.6以下版本?   thx   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/mysql/MysqlConnection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="130" opendate="2015-10-20 04:08:40" fixdate="2015-11-13 06:17:38">
+		<buginformation>
+			<summary>mysql 5.6版本 datetime值为null时 sqltype解析异常</summary>
+			<description>问题描述： mysql 版本为5.6.12， 在插入数据时，DATETIME类型的字段（如update_time字段）设置为NULL时，在从canal客户端获取到的数据中，对应字段的sqlType为1111（OTHER）  而在mysql 5.5.*版本中做同样的测试，DATETIME为null时，canal客户端获取到的对应sqlType为93（TIMESTAMP）  这个是BUG么？ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>dbsync/src/main/java/com/taobao/tddl/dbsync/binlog/event/RowsLogBuffer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="112" opendate="2015-03-30 09:59:58" fixdate="2015-04-10 04:39:58">
+		<buginformation>
+			<summary>mysql5.6时间毫秒精度支持</summary>
+			<description>支持下mysql5.6毫秒精度的解析.  ## 测试case：  CREATE TABLE `t1` (   `id` int(11) NOT NULL AUTO_INCREMENT,   `time0` time DEFAULT NULL,   `time1` time(1) DEFAULT NULL,   `time2` time(2) DEFAULT NULL,   `time3` time(3) DEFAULT NULL,   `time4` time(4) DEFAULT NULL,   `time5` time(5) DEFAULT NULL,   `time6` time(6) DEFAULT NULL,   `timestamp0` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',   `timestamp1` timestamp(1) NOT NULL DEFAULT '0000-00-00 00:00:00.0',   `timestamp2` timestamp(2) NOT NULL DEFAULT '0000-00-00 00:00:00.00',   `timestamp3` timestamp(3) NOT NULL DEFAULT '0000-00-00 00:00:00.000',   `timestamp4` timestamp(4) NOT NULL DEFAULT '0000-00-00 00:00:00.0000',   `timestamp5` timestamp(5) NOT NULL DEFAULT '0000-00-00 00:00:00.00000',   `timestamp6` timestamp(6) NOT NULL DEFAULT '0000-00-00 00:00:00.000000',   `datetime0` datetime DEFAULT NULL,   `datetime1` datetime(1) DEFAULT NULL,   `datetime2` datetime(2) DEFAULT NULL,   `datetime3` datetime(3) DEFAULT NULL,   `datetime4` datetime(4) DEFAULT NULL,   `datetime5` datetime(5) DEFAULT NULL,   `datetime6` datetime(6) DEFAULT NULL,   PRIMARY KEY (`id`) ## ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8  测试数据: 1. insert into t1 values(null,'00:00:00.0','00:00:00.1','00:00:00.02','00:00:00.003','00:00:00.1004','00:00:00.1005','00:00:00.101016','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232'); 2. insert into t1 values(null,'16:42:39.0','16:42:39.1','16:42:39.02','16:42:39.003','16:42:39.1004','16:42:39.1005','16:42:39.101016','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232') 3. insert into t1 values(null,'-16:42:39.0','-16:42:39.1','-16:42:39.02','-16:42:39.003','16:42:39.1004','-16:42:39.1005','-16:42:39.101016','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232'); </description>
+		</buginformation>
+		<fixedfiles>
+			<file>dbsync/src/test/java/com/taobao/tddl/dbsync/binlog/DirectLogFetcherTest.java</file>
+			<file>dbsync/src/main/java/com/taobao/tddl/dbsync/binlog/event/RowsLogBuffer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="105" opendate="2014-12-17 14:06:00" fixdate="2014-12-17 14:12:46">
+		<buginformation>
+			<summary>mysql5.6开启checksum后,基于时间查找位点会找到错误的位置</summary>
+			<description>问题描述：在mysql5.6之后版本中，因为引入了checksum机制，会在正常event的末尾加上4字节的checksum，而在做基于时间查找的seek方法中，decoder解析未识别FORMAT格式的event事件，导致没有判断出开启了checksum，所以导致正常的事务头的BEGIN，多了个4个字节，而判断是否为事务头采用了严格的字符串匹配，就因为多了4个字节，导致event类型出错。  影响范围：基于mysql5.6 + 开启了checksum + 涉及时间查找(比如主备切换和基于时间戳启动)  修改: 1.  增加format类型解析  ```  LogDecoder decoder = new LogDecoder();         decoder.handle(LogEvent.ROTATE_EVENT);         decoder.handle(LogEvent.FORMAT_DESCRIPTION_EVENT);         decoder.handle(LogEvent.QUERY_EVENT);         decoder.handle(LogEvent.XID_EVENT);         LogContext context = new LogContext();         while (fetcher.fetch()) {             LogEvent event = null;             event = decoder.decode(fetcher, context);              if (event == null) {                 throw new CanalParseException("parse failed");             }              if (!func.sink(event)) {                 break;             }         } ``` 1. 基于时间查找，增加事务begin/end的多重判断. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/mysql/MysqlConnection.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

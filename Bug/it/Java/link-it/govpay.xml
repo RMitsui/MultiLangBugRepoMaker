@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>236</id>
+		<title>Timeout in download dei tracciati pendenze</title>
+		<body>**Descrizione del Bug** Il download del tracciato pendenze va in timeout  **Come riprodurlo:** Inserire un tracciato con 2k+ pendenze </body>
+		<created>2020-07-28 10:39:31</created>
+		<closed>2020-08-27 16:45:35</closed>
+	</bug>
+	<bug>
+		<id>234</id>
+		<title>Avviso analogico e intestatario del conto</title>
+		<body>**Descrizione del Bug** La specifica di Poste Italiane richiede che nel campo Intestatario del bollettino postale sia indicato l'intestatario del conto corrente postale. Attualmente e' indicata la ragione sociale dell'ente creditore ed i due valori possono essere diversi.  **Risultato atteso:** L'anagrafica di un conto di accredito deve essere estesa con un campo opzionale `Intestatario` in modo da poter indicare l'esatto intestatario del conto corrente postale. Se valorizzato, il valore dell'intestatario sara' utilizzato per compilare il bollettino postale nella sezione corrispondente.  @pintorig :  - [x] Aggiungere all'anagrafica dei conti di accredito il campo opzionale "Intestatario".  - [x] Se impostato il campo opzionale Intestatario del conto di accredito, utilizzarlo per valorizzare il bean di stampa `AvvisoPagamamentoInput.IntestatarioContoCorrentePostale`  @simo-git  - [x] Aggiungere all'anagrafica del conto corrente,  un campo di testo opzionale con label `Intestatario del conto` se il conto viene indicato come postale</body>
+		<created>2020-07-27 15:13:19</created>
+		<closed>2020-09-03 08:04:31</closed>
+	</bug>
+	<bug>
+		<id>233</id>
+		<title>Export CSV con molti risultati</title>
+		<body>**Descrizione del Bug** Quando si esportano dati in CSV, la console invia tutte le richieste necessarie per acquisire le informazioni, ma se il numero di richieste e' grande, non tutte vengono evase in tempo utile.  La console dovrebbe essere modificata come segue:  1. Aumentare il numero di record per richiesta a 500 in modo da ridurre il numero di richieste necessarie 2. Limitarsi a 5 thread che eseguono le richieste </body>
+		<created>2020-07-27 11:18:09</created>
+		<closed>2020-08-07 08:04:38</closed>
+	</bug>
+	<bug>
+		<id>232</id>
+		<title>Istruzioni di pagamento errate nell'Avviso di Pagamento rateale</title>
+		<body>**Descrizione del Bug** Nelle instruzioni di pagamento viene indicato “Qui accanto trovi il codice QR e il codice interbancario CBILL per pagare“ che e' corretto nel formato per un'unico pagamento, ma errato nel formato con piu' bollettini.  La dicitura corretta nel formato a 2 o 3 bollettini, come indicato nel template ufficiale, e' "Qui sopra trovi...."  https://github.com/pagopa/pagopa-avvisoanalogico-docs/blob/master/_docs/Allegato_1_Modello_di_avviso_di_pagamento_v2.1.pdf </body>
+		<created>2020-07-21 08:45:12</created>
+		<closed>2020-07-28 08:04:14</closed>
+	</bug>
+	<bug>
+		<id>229</id>
+		<title>Dettaglio dominio</title>
+		<body>**Descrizione del Bug** Rinominare `Entrate` in `Tipi Entrata` e `Pendenze` in `Tipi Pendenza` Spostare  `Tipi Pendenza` sotto `Tipi Pendenza` Ordinare per descrizione le entry di entrambe le liste aggiungendo il query param `ordinamento=descrizione` nella richiesta</body>
+		<created>2020-07-15 10:51:13</created>
+		<closed>2020-07-16 08:11:34</closed>
+	</bug>
+	<bug>
+		<id>227</id>
+		<title>Label configurazione notifiche errata</title>
+		<body>**Descrizione del Bug** Nella form di configurazione dei Tipi Pendenza, nella sezione di configurazione delle notifiche via mail delle ricevute, sostituire la label `Allega pdf avviso` con `Allega pdf ricevuta`.  Sostituire anche la label `Notifica solo pagamenti eseguiti` che non entra nello spazio a disposizione con `Notifica solo eseguiti` o, se anche questo non rientra nello spazio, `Solo eseguiti`  ![Schermata da 2020-07-15 11-55-11](https://user-images.githubusercontent.com/12340738/87531521-1babf300-c692-11ea-81fa-49e3f7435f99.png) </body>
+		<created>2020-07-15 09:55:56</created>
+		<closed>2020-07-16 08:12:52</closed>
+	</bug>
+	<bug>
+		<id>225</id>
+		<title>errore in fase di deploy</title>
+		<body>In fase di installazione su windows JBOSS dà come errore : (F:govpay/estrattoConto) non esiste o non e' un folder. Ovviamente il folder esiste ma temo sia un problema dovuto al fatto che non mette il \ dopo i :  **Ambiente:**  - Windows 10  - GovPay: 2.3.3.0  - AS: jboss 7.1.1  - Java: 1.7.0.80  - DBMS: mysql   </body>
+		<created>2020-07-09 10:54:51</created>
+		<closed>2020-07-21 09:50:00</closed>
+	</bug>
+	<bug>
+		<id>224</id>
+		<title>Data di pagamento nella ricevuta senza orario</title>
+		<body>**Descrizione del Bug** Nella stampa della ricevuta di pagamento viene visualizzata la data di esecuzione, ma senza l'orario. Nelle specifiche pagoPA questo dato e' richiesto ed e' necessario includerlo.</body>
+		<created>2020-07-07 16:12:55</created>
+		<closed>2020-07-13 10:38:33</closed>
+	</bug>
+	<bug>
+		<id>222</id>
+		<title>Errore nella stampa avviso con soglia</title>
+		<body>**Descrizione del Bug** Quando si stampa l'avviso di pagamento di una posizione con soglia, nella sezione "Quando e dove pagare" si presenta la dicitura "entro il ...." invece della dicitura "entro/oltre xx giorni"  **Screenshots:** ![Schermata da 2020-07-07 09-51-45](https://user-images.githubusercontent.com/12340738/86741500-b7f14c80-c037-11ea-8b5a-a1a28b1bdb1a.png)   </body>
+		<created>2020-07-07 07:55:09</created>
+		<closed>2020-07-13 10:38:49</closed>
+	</bug>
+	<bug>
+		<id>221</id>
+		<title>Gestione della produzione dell'archivio ZIP con le stampe dei tracciati inefficiente</title>
+		<body>**Descrizione del Bug** La produzione dello zip con le stampe degli avvisi di tracciati con molti record non e' gestita correttamente:  1. l'accesso a DB per l'acquisizione della stampa viene fatto per ciascun documento 2. la produzione dello zip viene fatta in ram 3. chiedendo lo stesso archivio piu' volte, ad esempio richiedento il download dopo un timeout del browser, si congestiona il sistema  **Come riprodurlo:** Caricare un tracciato con stampe voluminoso (5k+ entry) e acquisirne lo zip di risultati  **Risultato atteso:** 1. Nella tabella `operazioni` aggiungere il riferimento alla stampa, cosi da poter acquisire tutte le stampe gia' presenti in con una sola chiamata e stampare le sole rimanenti 2. Aggiungere alle properties di configurazione del sistema la possibilita' di indicare una cartella per gli ZIP di stampa dove costruire e storicizzare gli ZIP delle stampe. Predisporre un batch che elimina gli archivi dopo un numero configurabile di giorni. 3. Aggungere al processo di elaborazione del tracciato, la creazione dell'archivio delle stampe  4. Nel caso in sede di creazione del file questo esista gia' nella cartella, se completo si ritorna, ma se incompleto si restituisce un errore 422 dando come motivazione che l'archivio e' in costruzione e di riprovare in un secondo momento. Se mancante, l'archivio viene creato </body>
+		<created>2020-07-04 05:39:29</created>
+		<closed>2020-07-28 08:05:43</closed>
+	</bug>
+	<bug>
+		<id>219</id>
+		<title>Visualizzazione freemarker errata</title>
+		<body>**Descrizione del Bug** Il codice freemarker che viene mostrato nel backoffice non corrisponde a quanto effettivamente presente.  **Come riprodurlo:**  Ad esempio, questo freemarker:  ``` Gentile ${versamento.getAnagraficaDebitore().getRagioneSociale()},  le notifichiamo che è stata emessa una richiesta di pagamento a suo carico: ${versamento.getCausaleVersamento().getSimple()}  &lt;#if versamento.getNumeroAvviso()?has_content&gt; Può effettuare il pagamento tramite l'app mobile IO oppure presso uno dei prestatori di servizi di pagamento aderenti al circuito pagoPA utilizzando l'avviso di pagamento allegato. &lt;#else&gt; Puo' effettuare il pagamento on-line presso il portale dell'ente creditore: ${dominio.getRagioneSociale()}  &lt;/#if&gt;  Distinti saluti. ```  Viene visualizzato male, con parti mancanti (in questo caso manca la chiusura dell'`if`): ![Schermata da 2020-07-01 09-28-41](https://user-images.githubusercontent.com/12340738/86215935-8a129080-bb7d-11ea-977d-54ecdd06c7aa.png)  corrispondente a questo codice:  ```xml &lt;html&gt;   &lt;head&gt;....&lt;/head&gt;   &lt;body&gt;             &lt;pre&gt;            &lt;code&gt;               Gentile ${versamento.getAnagraficaDebitore().getRagioneSociale()},  le notifichiamo che è stata emessa una richiesta di pagamento a suo carico: ${versamento.getCausaleVersamento().getSimple()}  &amp;lt;#if versamento.getNumeroAvviso()?has_content&amp;gt; Può effettuare il pagamento tramite l'app mobile IO oppure presso uno dei prestatori di servizi di pagamento aderenti al circuito pagoPA utilizzando l'avviso di pagamento allegato. &amp;lt;#else&amp;gt; Puo' effettuare il pagamento on-line presso il portale dell'ente creditore: ${dominio.getRagioneSociale()}  &lt;!--#if--&gt;  Distinti saluti.             &lt;/code&gt;             &lt;/pre&gt;                    &lt;/body&gt;&lt;/html&gt; ``` </body>
+		<created>2020-07-01 07:34:40</created>
+		<closed>2020-07-03 07:50:37</closed>
+	</bug>
+	<bug>
+		<id>215</id>
+		<title>CSV del giornale di cassa negli export pendenze non corretto</title>
+		<body>**Descrizione del Bug** Quando si esporta una pendenza dal dettaglio ci sono degli errori nella compilazione del CSV del giornale di cassa:  @simo-git  - L'export comprende solo i primi 25 eventi. Inoltre imposta il parametro `limit` che non ha effetto al posto del corretto `risultatiPerPagina` - Nella produzione del CSV, se un valore contiene il carattere `"` deve essere scappato con un ulteriore carattere `"` - Nella pagina degli eventi di una pendenza, raggiungendo il fondo della pagina non vengono caricati ulteriori eventi.  @pintorig  - L'export per tentativo di pagamento imposta un filtro per CCP che non e' implementato ed andrebbe aggiunto `eventi?idDominio=01234567890&amp;iuv=01001000000016488&amp;ccp=719c3070b45611ea928249c443aa3cf6`  </body>
+		<created>2020-06-24 13:41:30</created>
+		<closed>2020-08-07 08:08:08</closed>
+	</bug>
+	<bug>
+		<id>213</id>
+		<title>Errore in ricerca pendenze o pagamenti per CF/PIVA</title>
+		<body>**Descrizione del Bug** Ricercando nelle pendenze per codice fiscale si ottiene un errore interno. Inserendo invece una p.iva nella ricerca per pagamenti o pendenze il pulsante di ricerca non si abilita.  **Come riprodurlo:** Se si ricerca una pendenza per codice fiscale, si ottiene un NPE:  ``` 2020-06-24 10:36:20.486 | ERROR | it.govpay.backoffice.v1.controllers.BaseController:165 | 6bd12ddb-1305-4388-aa4c-2272b7c5d2d5 | Errore interno durante findPendenze: null java.lang.NullPointerException         at it.govpay.bd.pagamento.filters.VersamentoFilter.getParameters(VersamentoFilter.java:763) ~[orm-3.3.0-SNAPSHOT.jar:?]         at it.govpay.bd.pagamento.VersamentiBD.count(VersamentiBD.java:353) ~[orm-3.3.0-SNAPSHOT.jar:?]         at it.govpay.core.dao.pagamenti.PendenzeDAO.listaPendenze(PendenzeDAO.java:309) ~[core-3.3.0-SNAPSHOT.jar:?]         at it.govpay.core.dao.pagamenti.PendenzeDAO.listaPendenze(PendenzeDAO.java:221) ~[core-3.3.0-SNAPSHOT.jar:?]         at it.govpay.backoffice.v1.controllers.PendenzeController.findPendenze(PendenzeController.java:296) ~[classes:?]         at it.govpay.backoffice.v1.Pendenze.findPendenze(Pendenze.java:53) ~[classes:?] ```  Se si inserisce nella ricerca una partita iva nei box di ricerca di pagamenti o pedenze, la ricerca non viene abilitata.  Se si riduce la finestra, il box di ricerca laterale sparisce e compare una ricerca testuale non prevista. Il box dovrebbe essere renderizzato in testa alla pagina, eventualmente nascosto con possibilita' di mostrarlo/nasconderlo con il pulsante della lente.  **Screenshots:** ![Schermata da 2020-06-24 10-43-17](https://user-images.githubusercontent.com/12340738/85523723-a0fa3580-b607-11ea-87b4-df2da26f7ba8.png) ![Schermata da 2020-06-24 10-42-52](https://user-images.githubusercontent.com/12340738/85523754-a788ad00-b607-11ea-917c-f8eabf0af5da.png) </body>
+		<created>2020-06-24 09:02:51</created>
+		<closed>2020-07-31 10:33:04</closed>
+	</bug>
+	<bug>
+		<id>210</id>
+		<title>Non riesco ad effettuare una riconciliazione dal backoffice</title>
+		<body>**Descrizione del Bug** Quando aggiungo una riconciliazione e scelgo l'EC il software va in errore 500 e il pulsante salva non si abilita mai.  **Ambiente:**  - OS: Debian 9  - Browser: Chrome  - GovPay: 3.2.1  - AS: WildFly 11  - DBMS: Mysql  **Note aggiuntive:** Allego log con gli errori [govpay.log](https://github.com/link-it/govpay/files/4774540/govpay.log)  </body>
+		<created>2020-06-13 12:02:21</created>
+		<closed>2020-06-18 12:10:23</closed>
+	</bug>
+	<bug>
+		<id>209</id>
+		<title>Attivazione RPT con importo errato</title>
+		<body>**Necessità:** La specifica SANP prevede che l'attivazione di una RPT che riporta nella richiesta un importo non corretto venga gestita con l'apposito errore PAA_ATTIVA_RPT_IMPORTO_NON_VALIDO.   Come discusso nella [issue #28 sul progetto sanp](https://github.com/italia/pagopa-specifichepagamenti-docs/issues/28), questa pratica non consente la corretta gestione del workflow di pagamento.  Da ulteriori verifiche con il supporto pagoPA e' emenrso che la corretta gestione di questo caso di errore e' quella di ritornare l'esito `OK` con l'importo corretto.  **Soluzione:** Verificare che l'attivazione di una RPT da pagare indicante un importo errato venga gestita come `OK` con l'importo aggiornato  </body>
+		<created>2020-06-11 15:44:58</created>
+		<closed>2020-06-12 07:37:24</closed>
+	</bug>
+	<bug>
+		<id>199</id>
+		<title>Mancata valorizzazione del placeholder @GOVPAY_SPRING_SEC_FOLDER@</title>
+		<body>Premetto che le precedenti versioni hanno funzionato. Oggi provo a installare l'ultima release ma mi da errore il file govpay.ear non passa in deployed su wildfly, ma va in failed. Qui il log:  [log.txt](https://github.com/link-it/govpay/files/4522660/log.txt) </body>
+		<created>2020-04-23 13:04:29</created>
+		<closed>2020-04-23 18:56:44</closed>
+	</bug>
+	<bug>
+		<id>196</id>
+		<title>NPE in carimento tracciati standard</title>
+		<body>**Descrizione del Bug** Quando si carica un tracciato senza indicare un tipoPendenza, si riscontra un errore nella creazione del tracciato di Esito, dovuta alla mancanza appunto del tipoPendenza </body>
+		<created>2020-04-10 08:33:34</created>
+		<closed>2020-04-10 08:35:37</closed>
+	</bug>
+	<bug>
+		<id>192</id>
+		<title>Anomalia nella presentazione dei dati di quadratura riscossioni</title>
+		<body>**Descrizione del Bug** Di seguito i dati presentati in una interrogazione del servizio `quadrature/riscossioni`: ```json {    "numRisultati":2,    "numPagine":1,    "risultatiPerPagina":25,    "pagina":1,    "risultati":[       {          "numeroPagamenti":2,          "importo":154,          "tipoPendenza":{             "idTipoPendenza":"5",             "descrizione":"5",             "tipo":"dovuto",             "visualizzazione":null          }       },       {          "numeroPagamenti":11,          "importo":1430,          "tipoPendenza":{             "idTipoPendenza":"7",             "descrizione":"7",             "tipo":"dovuto",             "visualizzazione":null          }       }    ] } ```  questo il risultato della query effettuata da DB:  ``` +-----------------+---------------+---------------------+ | numeroPagamenti | importoTotale | cod_tipo_versamento | +-----------------+---------------+---------------------+ |               2 |           154 | 15                  | |              11 |          1430 | 7                   | +-----------------+---------------+---------------------+ ```  L'`idTipoPendenza` del primo gruppo viene troncato delle decine </body>
+		<created>2020-04-02 16:18:04</created>
+		<closed>2020-04-03 10:48:38</closed>
+	</bug>
+	<bug>
+		<id>190</id>
+		<title>Conflitto di chiavi di accesso alla cache delle anagrafiche</title>
+		<body>**Descrizione del Bug** Le anagrafiche sono cachate utilizzando come chiave di ricerca degli oggetti memorizzati la chiave logica o fisica per consentirne il recupero indipendentemente da tipo di riferimento che si dispone.  Nel caso in cui la chiave logica scelta coincida con una chiave fisica, si creano conflitti e gli oggetti recuperati dalla cache non sono quelli effettivamente ricercati.  **Risoluzione:** Aggiungere una costante alla chiave della cache diversa per tipologia di riferimento.  </body>
+		<created>2020-04-01 15:24:31</created>
+		<closed>2020-04-02 16:09:42</closed>
+	</bug>
+	<bug>
+		<id>188</id>
+		<title>Revisione indici per la ricerca da portale</title>
+		<body>**Descrizione del Bug** Alcune ricerche vengono effettuate in like o case insensitive, ma in questo caso non vengono sfruttati gli indici su database rendendole inefficienti.  **Soluzione:**  - [x] Aggiungere il campo `versamenti.src_iuv` da valorizzare con `iuv_pagamento` o `iuv_versamento`. Indicizzare il campo che sara' cosi usato per tutte le ricerce su IUV o numero avviso. Rimuovere l'indice su numero_avviso che diventa inutilizzato - [x] Aggiungere il campo `versamenti.src_debitore_identificativo` valorizzato con l'upper_case del campo `versamenti.debitore_identificativo` su cui fare la ricerca esatta del codice fiscale dato in input nelle ricerche. Rimuovere la precedente ricerca in like case insensitive sul campo `codice_fiscale`. - [x] Sostituire la ricerca in like e case insensitive su `cod_versamento_ente` con una ricerca esatta. - [x] Aggiungere il campo `pagamenti_portale.src_versante_identificativo` valorizzato con l'upper_case del campo `pagamenti_portale.versante_identificativo` su cui fare la ricerca esatta del codice fiscale dato in input nelle ricerche. Rimuovere la precedente ricerca in like case insensitive sul campo `versante_identificativo`. - [x] Aggiungere l'indice sul campo `pagamenti_portale.id_sessione_psp` - [x] Verificare che la ricerca per `id sessione` dal cruscotto di backoffice si applichi all'identificativo del carrello di pagamento </body>
+		<created>2020-03-27 11:54:36</created>
+		<closed>2020-03-31 14:14:34</closed>
+	</bug>
+	<bug>
+		<id>187</id>
+		<title>CCP troncata nella stampa della ricevuta</title>
+		<body>**Descrizione del Bug** Come da segnalazione #186, nella stampa della ricevuta di pagamento il valore del'CCP viene troncato al 17esimo carattere, ma puo' essere piu' lungo. Inoltre pagoPA indica la mancanza della causaleVersamento.  **Risultato atteso:** Spostare l'importo come parametro delle informazioni di pagamento, in modo che i valori abbiano l'intera pagina a disposizione e si evitino troncamenti.  Rivedere i dati del dettaglio importi aggiungendo la causale del versamento estesa  **Screenshots:** ![Schermata da 2020-03-23 17-38-15](https://user-images.githubusercontent.com/12340738/77340117-20d4e300-6d2d-11ea-95e8-3576a9e28f73.png)  </body>
+		<created>2020-03-23 16:42:40</created>
+		<closed>2020-03-31 09:39:20</closed>
+	</bug>
+	<bug>
+		<id>185</id>
+		<title>Performance count() nei servizi di ricerca</title>
+		<body>**Descrizione del Bug** I servizi di ricerca impiegano molto tempo per fare la count dei risultati quando questi sono in grande numero (oltre il milione) risultando in un timeout del servizio.  Come gia' realizzato per il servizio pagamenti, e' necessario limitare la count() come gia' configurato in al fine di velocizzare l'operazione.</body>
+		<created>2020-03-18 14:17:14</created>
+		<closed>2020-03-31 14:14:49</closed>
+	</bug>
+	<bug>
+		<id>184</id>
+		<title>Validazione causaleVersamento nella RT troppo stringente</title>
+		<body>**Descrizione del Bug** E' emerso che alcuni PSP apportano delle modifiche nella parte descrittiva del campo `causaleVersamento` della RT rispetto a quella indicata nella RPT. Questo, per quanto fuori specifica, non deve risultare bloccante ai fini del pagamento.  In fase di validazione della RT e' necessario quindi limitare la verifica dell'equivalenza della causale solo alla parte precedente la descrizione, ovvero al campo `\TXT\`, se presente  **Risultato atteso:** In caso di causale diversa solo nella parte descrittiva, viene emesso un warning al posto dell'attuale errore </body>
+		<created>2020-03-16 17:37:36</created>
+		<closed>2020-03-17 11:27:28</closed>
+	</bug>
+	<bug>
+		<id>183</id>
+		<title>Errore accesso risorse con CCP=n/a</title>
+		<body>**Descrizione del Bug** Quando si scarica il resoconto di un pagamento spontaneo, ovvero con `ccp` valorizzato a `n/a` il cruscotto da errore.  Questo accade perche' non viene gestito correttamente il valore del parametro `ccp` dal servizio. Infatti il cruscotto richiama la risorsa `/rpp/01234567890/RF90000000000000000000004/n%2Fa/rpt` che restituisce un 404, mentre funziona richiamando la risorsa come `/rpp/01234567890/RF90000000000000000000004/n/a/rpt`.   Risulta quindi che se lo slash viene passato codificato (come e' corretto che sia) questo non viene gestito correttamente.</body>
+		<created>2020-03-16 17:33:16</created>
+		<closed>2020-03-23 17:07:11</closed>
+	</bug>
+	<bug>
+		<id>182</id>
+		<title>Errore in fase di installazione: configurazione path configurazione spring</title>
+		<body>Buongiorno, ho difficoltà a terminare l'installazione della piattaforma, quando avvio wildfly dopo aver copiato i file nella cartella deployments, va in eccezione. Allego il log:  ``` "{     \"WFLYCTL0080: Failed services\" =&gt; {\"jboss.undertow.deployment.default-server.default-host./govpay/frontend/api/user\" =&gt; \"java.lang.RuntimeException: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from ServletContext resource [/@GOVPAY_SPRING_SEC_FOLDER@/api-user-applicationContext-security.xml]; nested exception is java.io.FileNotFoundException: Could not open ServletContext resource [/@GOVPAY_SPRING_SEC_FOLDER@/api-user-applicationContext-security.xml]     Caused by: java.lang.RuntimeException: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from ServletContext resource [/@GOVPAY_SPRING_SEC_FOLDER@/api-user-applicationContext-security.xml]; nested exception is java.io.FileNotFoundException: Could not open ServletContext resource [/@GOVPAY_SPRING_SEC_FOLDER@/api-user-applicationContext-security.xml]     Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from ServletContext resource [/@GOVPAY_SPRING_SEC_FOLDER@/api-user-applicationContext-security.xml]; nested exception is java.io.FileNotFoundException: Could not open ServletContext resource [/@GOVPAY_SPRING_SEC_FOLDER@/api-user-applicationContext-security.xml]     Caused by: java.io.FileNotFoundException: Could not open ServletContext resource [/@GOVPAY_SPRING_SEC_FOLDER@/api-user-applicationContext-security.xml]\"},     \"WFLYCTL0412: Required services that are not installed:\" =&gt; [         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-console-3.2.0.war\\\".beanmanager\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pendenze-3.2.0.war\\\".beanmanager\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-console-3.2.0.war\\\".deploymentCompleteService\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagamento-3.2.0.war\\\".beanmanager\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-connector-3.2.0.war\\\".beanmanager\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-backoffice-3.2.0.war\\\".deploymentCompleteService\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-backoffice-3.2.0.war\\\".beanmanager\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-ragioneria-3.2.0.war\\\".deploymentCompleteService\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagopa-3.2.0.war\\\".deploymentCompleteService\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pendenze-3.2.0.war\\\".deploymentCompleteService\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-connector-3.2.0.war\\\".deploymentCompleteService\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagopa-3.2.0.war\\\".beanmanager\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagamento-3.2.0.war\\\".deploymentCompleteService\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-ragioneria-3.2.0.war\\\".beanmanager\"     ],     \"WFLYCTL0180: Services with missing/unavailable dependencies\" =&gt; [         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-backoffice-3.2.0.war\\\".INSTALL is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-ragioneria-3.2.0.war\\\".deploymentCompleteService]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagamento-3.2.0.war\\\".INSTALL is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagopa-3.2.0.war\\\".deploymentCompleteService]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-ragioneria-3.2.0.war\\\".INSTALL is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pendenze-3.2.0.war\\\".deploymentCompleteService]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-ragioneria-3.2.0.war\\\".batch.artifact.factory is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-ragioneria-3.2.0.war\\\".beanmanager]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagopa-3.2.0.war\\\".batch.artifact.factory is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagopa-3.2.0.war\\\".beanmanager]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pendenze-3.2.0.war\\\".batch.artifact.factory is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pendenze-3.2.0.war\\\".beanmanager]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pendenze-3.2.0.war\\\".INSTALL is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-connector-3.2.0.war\\\".deploymentCompleteService]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-connector-3.2.0.war\\\".batch.artifact.factory is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-connector-3.2.0.war\\\".beanmanager]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-console-3.2.0.war\\\".batch.artifact.factory is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-console-3.2.0.war\\\".beanmanager]\",         \"jboss.deployment.unit.\\\"govpay.ear\\\".deploymentCompleteService is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-backoffice-3.2.0.war\\\".deploymentCompleteService, jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-ragioneria-3.2.0.war\\\".deploymentCompleteService, jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-connector-3.2.0.war\\\".deploymentCompleteService, jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-console-3.2.0.war\\\".deploymentCompleteService, jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagopa-3.2.0.war\\\".deploymentCompleteService, jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pendenze-3.2.0.war\\\".deploymentCompleteService, jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagamento-3.2.0.war\\\".deploymentCompleteService]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-backoffice-3.2.0.war\\\".batch.artifact.factory is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-backoffice-3.2.0.war\\\".beanmanager]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-connector-3.2.0.war\\\".INSTALL is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagamento-3.2.0.war\\\".deploymentCompleteService]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"web-console-3.2.0.war\\\".INSTALL is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-backoffice-3.2.0.war\\\".deploymentCompleteService]\",         \"jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagamento-3.2.0.war\\\".batch.artifact.factory is missing [jboss.deployment.subunit.\\\"govpay.ear\\\".\\\"api-pagamento-3.2.0.war\\\".beanmanager]\"     ] }" ``` Mi sto perdendo qualche parmetro? Grazie Marco</body>
+		<created>2020-03-16 13:51:14</created>
+		<closed>2020-03-23 17:33:44</closed>
+	</bug>
+	<bug>
+		<id>181</id>
+		<title>Filtro dataRptA non funzionante</title>
+		<body>**Descrizione del Bug** Filtro `dataRptA` per la risorsa `/rpp` non correttamente funzionante  **Come riprodurlo:** `/govpay/backend/api/backoffice/rs/basic/v1/rpp?pagina=1&amp;risultatiPerPagina=25&amp;dataRptDa=2020-03-04&amp;dataRptA=2020-03-05`  I risultati non presentano gli elementi del 2020-03-05.  **Risultato atteso:** I risultati devono comprendere quelli nella data `dataRptDa`  **Ambiente:**  - GovPay:  3.2.0]  **Note aggiuntive:** Verificare il comportamento anche per gli altri filtri sulle date </body>
+		<created>2020-03-16 09:40:59</created>
+		<closed>2020-03-18 14:53:14</closed>
+	</bug>
+	<bug>
+		<id>179</id>
+		<title>Filtri dataOraFlusso e dataRendicontazione di Rendicontazioni non funzionanti</title>
+		<body>**Descrizione del Bug** Si riscontrano errori nei filtri per `dataOraFlusso` e `dataRendicontazione` sulla risorsa `Rendicontazioni`. Inoltre non e' chiaro dai nomi dei filtri su quali attributi della risposta si sta filtrando.  **Soluzione** Rinominare i filtri: `dataOraFlusso`: se filtra su `$.risultati.[x].flussoRendicontazione.dataFlusso` va rinominato `flussoRendicontazione.dataFlusso` `dataRendicontazione`: se filtra su `$.risultati.[x].data` va rinominato in `data` Verificare la corretta applicazione **Ambiente:**  - GovPay: e.g. 3.2.x  </body>
+		<created>2020-03-12 09:14:27</created>
+		<closed>2020-03-12 16:14:25</closed>
+	</bug>
+	<bug>
+		<id>178</id>
+		<title>Filtro divisione non funzionante</title>
+		<body>**Descrizione del Bug** Il filtro per `divisione` nella risorsa `/rpp` delle api Backoffice non torna risultati.</body>
+		<created>2020-03-06 17:03:05</created>
+		<closed>2020-03-12 08:48:43</closed>
+	</bug>
+	<bug>
+		<id>177</id>
+		<title>Errori nella stampa dell'Avviso</title>
+		<body>**Descrizione del Bug** In caso non siano valorizzati alcuni dati opzionali la stampa dell'avviso non risulta corretta    **Risultato atteso:** La composizione della stringa di indirizzo deve tener conto della mancanza dei parametri opzionali Se manca da data di scadenza, deve essere omessa la dicitura `entro il` nelle due porzioni di bollettino  **Screenshots:** ![Schermata da 2020-03-06 12-15-10](https://user-images.githubusercontent.com/12340738/76079289-a114ed80-5fa4-11ea-9873-ad57ee895388.png)   </body>
+		<created>2020-03-06 11:20:46</created>
+		<closed>2020-03-11 17:18:18</closed>
+	</bug>
+	<bug>
+		<id>175</id>
+		<title>Messaggio di errore fuoriviante in caso di ibanAppoggio non censito</title>
+		<body>**Descrizione del Bug** Inserendo una pendenza con iban di appoggio non censito, viene correttamente segnalato l'errore per iban non censito, ma nel dettaglio viene mensionato l'iban di accredito invece dell'iban di appoggio.  **Come riprodurlo:** Caricare un tracciato pendenze con iban accredito censito e iban di appoggio non censito.  **Risultato atteso:** Nell'errore deve essere indicato come non censito l'iban di appoggio</body>
+		<created>2020-02-28 15:31:46</created>
+		<closed>2020-03-02 15:43:14</closed>
+	</bug>
+	<bug>
+		<id>171</id>
+		<title>Con campo password non visualizzato, errori in edit Applicazioni e Operatori</title>
+		<body>**Descrizione del Bug** Quando il portale e' configurato per non visualizzare il campo password, andando in edit di un operatore o una applicazione, i campi non risultano precompilati con i valori attuali  **Come riprodurlo:** Configurare il cruscotto per non visualizzare il campo password e accedere in modifica di Applicazioni o Operatori  **Screenshots:** ![Schermata da 2020-02-19 09-49-14](https://user-images.githubusercontent.com/12340738/74817407-250c7b80-52fd-11ea-87ed-0e1b76978ac5.png)  **Ambiente:**  - GovPay: [e.g. 3.2.0]</body>
+		<created>2020-02-19 08:50:19</created>
+		<closed>2020-02-27 08:48:48</closed>
+	</bug>
+	<bug>
+		<id>169</id>
+		<title>Evento nodoInviaRPT non registrato</title>
+		<body>**Descrizione del Bug** Nella gestione del pagamento ad iniziativa ente l'evento di nodoInviaCarrelloRPT viene registrato correttamente, ma in caso di pagamento ad iniziativa PSP non viene registrato l'evento nodoInviaRPT.  **Risultato atteso:** Deve presentarsi l'evento "Inviata RPT attivata a pagoPA" tra l'evento di attivazione e quello di acquisizione dell'RT.   **Screenshots:**  ![Schermata da 2020-02-17 12-10-41](https://user-images.githubusercontent.com/12340738/74648758-940f9600-517e-11ea-833d-f53a7fd5f171.png)  **Ambiente:**  - GovPay: 3.2.0  - Piattaforma cloud amzn  **Note aggiuntive:** Nella versione 3.1.x il problema non si presentava.</body>
+		<created>2020-02-17 11:11:59</created>
+		<closed>2020-03-23 17:34:23</closed>
+	</bug>
+	<bug>
+		<id>166</id>
+		<title>Configurazione codContabilità delle Entrate non conforme alle specifiche pagoPA</title>
+		<body>**Descrizione del Bug** La specifica pagoPA richiede che il codice contabilita' rispetti la regex \S{3,138}, ma la il servizio di configurazione delle Entrate consente di configurare un codice che non rispetta questo vincolo  **Come riprodurlo:** Censire una Entrata con codice contabilita "X"  **Risultato atteso:** Il cruscotto di backoffice deve segnalare errore in caso di immissione di un valore non conforme e le API devono rispondere con errore di sintassi  **Soluzione** - [ ] Aggiornare le restrizioni sul parametro codiceContabilita' delle pendenze e delle entrate alla regex `\S{3,138}` (v1 e v2) - [ ] In aggiunta o modifica di una Entrata verificare che il valore inserito nel campo Codice contabilita' rispetti la regex `\S{3,138}` </body>
+		<created>2020-01-31 09:20:14</created>
+		<closed>2020-02-13 09:00:55</closed>
+	</bug>
+	<bug>
+		<id>163</id>
+		<title>Errato controllo durante la registrazione del tipoPendenza</title>
+		<body>**Descrizione del Bug** Il censimento di alcuni tipiPendenza viene rifiutato perchè è errato il controllo di univocità del codice che su database viene effettuato in `like` (come per le ricerche da cruscotto) invece che come ricerca esatta. **Come riprodurlo:** Censire il tipoPendenza `PROVA` e successivamente il tipoTributo `OVA`  **Risultato atteso:** Entrambi i tipiPendenza devono poter essere censiti  </body>
+		<created>2020-01-28 11:37:55</created>
+		<closed>2020-02-07 09:47:37</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>Export tracciati con entry duplicate da errore</title>
+		<body>**Descrizione del Bug**  Caricando un tracciato di pendenze che presentano entry afferenti alla stessa posizione, si riceve un errore quando se ne esegue il download a valle dell'elaborazione.  Questo accade perché GovPay prova a creare lo zip degli avvisi di pagamento generati, tentando di inserire più volte lo stesso avviso per le entry della medesima pendenza, riscontrando un errore di `java.util.zip.ZipException: duplicate entry`.  **Risultato atteso:** L'avviso deve essere incluso una sola volta. </body>
+		<created>2020-01-23 17:16:49</created>
+		<closed>2020-01-31 10:04:40</closed>
+	</bug>
+	<bug>
+		<id>160</id>
+		<title>Parametri `cartellaPagamento` e `annoRiferimento` della pendenza non esposti correttamente</title>
+		<body>**Descrizione del Bug** Il parametro `cartellaPagamento` (implementato come `versamento.codLotto`) della pendenza non viene memorizzato in base dati e non viene poi ritornato in lettura  Il parametro `annoRiferimento` (implementato come `versamento.annoTributario`) della pendenza viene memorizzato in base dati, ma non viene poi ritornato in lettura.</body>
+		<created>2020-01-23 08:39:06</created>
+		<closed>2020-02-07 09:49:55</closed>
+	</bug>
+	<bug>
+		<id>159</id>
+		<title>Errore di sintassi in modifica del Tipo Pendenza del Dominio</title>
+		<body>**Descrizione del Bug** Modificando il Tipo Pendenza di un Ente Creditore senza valorizzare il campo opzionale `Codifica IUV` risulta in un errore di sintassi  **Come riprodurlo:** Editare il Tipo Pendenza di un Ente Creditore lasciano il campo `Codifica IUV` vuoto  **Risultato atteso:** La modifica e' legittima, ma il cruscotto valorizza il campo come stringa vuota, violando lo schema OpenAPI. La richiesta dovrebbe quindi presentare il campo valorizzato a `null`. </body>
+		<created>2020-01-22 15:20:35</created>
+		<closed>2020-02-13 09:01:39</closed>
+	</bug>
+	<bug>
+		<id>157</id>
+		<title>Gestione linee vuote in csv di caricamento pendenze</title>
+		<body>**Descrizione del Bug** L'engine di caricamento tracciati CSV elabora anche le linee vuote che risultano con errore poco comprensibile `TRASFORMAZIONE: La trasformazione della pendenza si e' conclusa con un errore: Java method "it.govpay.core.utils.CSVUtils.getCSVRecord(String)" threw an exception when invoked on it.govpay.core.utils.CSVUtils object "it.govpay.core.utils.CSVUtils@6b93e635`  Inoltre le api di consultazione delle operazioni del tracciato in questo caso rispondono con un errore di `InputStream is empty` e la descrizione stato del tracciato risulta in un `Errore durante l'elaborazione del tracciato: InputStream is empty`  **Come riprodurlo:** Caricare un tracciato con linee vuote.  **Risultato atteso:** Le linee vuote del tracciato devono essere individuate e non elaborate dall'engine di caricamento, ma saltate con errore di `Linea tracciato vuota`  Lo stato del tracciato, se scartato perche' non elaborata con successo nessuna entry, scartato con descrizione `tutte le linee elaborate con errore`</body>
+		<created>2020-01-22 12:29:16</created>
+		<closed>2020-02-07 09:48:27</closed>
+	</bug>
+	<bug>
+		<id>156</id>
+		<title>Enumerazione `esito` /rpp implementata nelle API Backoffice diversa da quella descritta nell'OpenAPI</title>
+		<body>**Descrizione del Bug** Nel descrittore OpenAPI del servizio Backoffice, il filtro `esito` della risorsa `rpp` viene descritto come segue ```yaml     esitoRpt:       example: ESEGUITO       type: string       enum:         - IN_CORSO         - RIFIUTATO         - ESEGUITO         - NON_ESEGUITO         - ESEGUITO_PARZIALE         - DECORRENZA         - DECORENNZA_PARZIALE ``` mentre i valori accettati sono `PAGAMENTO_ESEGUITO`, ed altri  **Come riprodurlo:** Effettuare una ricerca filtrando per esito  **Risultato atteso:** Il filtro deve funzionare con i valori indicati nel descrittore OpenAPI, mentre se viene indicato un valore non previsto, deve essere ritornato un errore che indica i valori possibili:  ```json {   "categoria": "RICHIESTA",   "codice": "SINTASSI",   "descrizione": "Richiesta non valida",   "dettaglio": "Codifica inesistente per esito. Valore fornito [PAGAMENTO_ESEGUITO] valori possibili {ESEGUITO, ...}" } ``` </body>
+		<created>2020-01-22 10:13:44</created>
+		<closed>2020-02-07 09:49:00</closed>
+	</bug>
+	<bug>
+		<id>155</id>
+		<title>Lunghezza alias incompatibile con ORACLE &lt;12.1 </title>
+		<body>**Descrizione del Bug** Alcune query utilizzano degli alias per le colonne selezionate che superano il numero massimo di caratteri (30) di Oracle (v.12.1 e precedenti)  **Risoluzione:** Rivedere la logica di costruzione degli alias al fine di ridurne la lunghezza a massimo 30 caratteri  **Note aggiuntive:** Problema riscontrato nella query di ricerca dei tipi pendenza: ```sql SELECT tipi_vers_domini.id AS id,        tipi_vers_domini.abilitato,        tipi_vers_domini.codifica_iuv,        tipi_vers_domini.tipo,        tipi_vers_domini.paga_terzi,        tipi_vers_domini.form_definizione,        tipi_vers_domini.form_tipo,        tipi_vers_domini.validazione_definizione,        tipi_vers_domini.trasformazione_definizione,        tipi_vers_domini.trasformazione_tipo,        tipi_vers_domini.promemoria_avviso_tipo,        tipi_vers_domini.promemoria_avviso_pdf,        tipi_vers_domini.promemoria_avviso_messaggio,        tipi_vers_domini.promemoria_avviso_oggetto,        tipi_vers_domini.promemoria_ricevuta_tipo,        tipi_vers_domini.promemoria_ricevuta_pdf,        tipi_vers_domini.promemoria_ricevuta_messaggio,        tipi_vers_domini.promemoria_ricevuta_oggetto,        tipi_vers_domini.cod_applicazione,        tipi_vers_domini.visualizzazione_definizione,        tipi_vers_domini.trac_csv_header_risposta,        tipi_vers_domini.trac_csv_template_richiesta,        tipi_vers_domini.trac_csv_template_risposta,        tipi_versamento.id                            AS tipi_versamen to_id,        tipi_versamento.codifica_iuv                  AS tipi_versamento_codifica_iuv,        tipi_versamento.tipo                          AS tipi_versamento_tipo,        tipi_versamento.paga_terzi                    AS tipi_versamento_paga_terzi,        tipi_versamento.abilitato                     AS tipi_versamento_abilitato,        tipi_versamento.form_definizione              AS tipi_versamento_form_definizione,        tipi_versamento.form_tipo                     AS tipi_versamento_form_tipo,        tipi_versamento.validazione_definizione       AS tipi_versamento_validazione_def inizione,        tipi_versamento.trasformazione_definizione    AS tipi_versamento_trasformazione_definizione,        tipi_versamento.trasformazione_tipo           AS tipi_versamento_trasformazione_tipo,        tipi_versamento.promemoria_avviso_tipo        AS tipi_versamento_promemoria_avviso_tipo,        tipi_versamento.promemoria_avviso_pdf         AS tipi_versamento_promemoria_avviso_pdf,        tipi_versamento.promemoria_avviso_messaggio   AS tipi_versamento_promemoria_avviso_messaggio,        tipi_versamento.promemoria_avviso_oggetto     AS tipi_versamento_promemoria_avviso_oggetto,        tipi_versamento.promemoria_ricevuta_tipo      AS tipi_versamento_promemoria_ricevuta_tipo,        tipi_versamento.promemoria_ricevuta_pdf       AS tipi_versamento_promemoria_ricevuta_pdf,        tipi_versamento.promemoria_ricevuta_messaggio AS tipi_versamento_promemoria_ricevuta_messaggio,        tipi_versamento.promemoria_ricevuta_oggetto   AS tipi_versamento_promemo ria_ricevuta_oggetto,        tipi_versamento.cod_applicazione              AS tipi_versamento_cod_applicazione,        tipi_versamento.visualizzazione_definizione   AS tipi_versamento_visualizzazione_definizione,        tipi_versamento.trac_csv_header_risposta      AS tipi_versamento_trac_csv_header_risposta,        tipi_versamento.trac_csv_template_richiesta   AS tipi_versamento_trac_csv_template_richiesta,        tipi_versamento.trac_csv_template_risposta    AS tipi_versamento_tra c_csv_template_risposta,        tipi_versamento.cod_tipo_versamento,        tipi_versamento.descrizione,        tipi_vers_domini.id_dominio FROM   tipi_vers_domini,        tipi_versamento WHERE  (               tipi_vers_domini.id = ? ) AND    (               tipi_vers_domini.id_tipo_versamento=tipi_versamento.id ); ``` </body>
+		<created>2020-01-21 16:16:48</created>
+		<closed>2020-01-23 10:27:27</closed>
+	</bug>
+	<bug>
+		<id>152</id>
+		<title>Errore durante il Pagamento di una Pendenza caricata fornendo numero avviso</title>
+		<body>**Descrizione del Bug** L'esecuzione del pagamento di una pendenza per riferimento, caricata su govpay fornendo il numero avviso termina con errore: 'VER_011'.  **Come riprodurlo:** Caricare una pendenza fornendo il numero avviso. Effettuare il tentativo di pagamento tramite Riferimento Avviso.  **Risultato atteso:** Risposta dal servizio di pagamento con Status '422' e codice errore 'VER_011'.  **Ambiente:**  - GovPay: 3.1.2 o superiori  - DBMS: tutti  **Analisi:** Una pendenza si trova censita nella tabella di supporto IUV quando viene caricata senza fornire il Numero Avviso o lo IUV, quando invece viene fornito il Numero Avviso tale censimento non viene fatto. Attualmente quando si effettua un pagamento tramite riferimento avviso viene effettuato un controllo di esistenza tramite una ricerca nella tabella IUV, se non si trova un riscontro all'interno di essa si effettua una richiesta all'applicazione di competenza per acquisire la pendenza e nel caso in cui non sia presente nel sistema dell'applicazione chiamata viene restituito un errore di tipo 'VER_011'.  **Soluzione:** Spostare il controllo di esistenza del riferimento avviso dalla tabella IUV alla tabella Versamenti.</body>
+		<created>2020-01-17 11:21:29</created>
+		<closed>2020-01-23 10:28:35</closed>
+	</bug>
+	<bug>
+		<id>147</id>
+		<title>Salvataggio del tipo pendenza in dominio errato</title>
+		<body>**Descrizione del Bug** Il salvataggio di una pendenza associata ad un dominio senza impostare alcun valore custom non funziona correttamente.  La richiesta viene prodotta malformata dal cruscotto poichè il campo `codificaIUV` viene valorizzato come stringa vuota invece che come `null`.  La richiesta viene memorizzata in modo errato, poichè in tabella, in alcuni campi (vedi immagine) viene salvata la stringa `null` piuttosto del nullvalue.  ![Schermata da 2019-12-04 22-47-48](https://user-images.githubusercontent.com/12340738/70184635-83579400-16e8-11ea-97a9-848cb967e612.png)   **Ambiente:**  - GovPay: 3.2.x  </body>
+		<created>2019-12-04 21:50:12</created>
+		<closed>2019-12-13 16:31:01</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>Filtri su quadrature influenzano le modalita' di raggruppamento</title>
+		<body>**Descrizione del Bug** Il servizio di quadratura mostra le riscossioni correttamente raggruppate per i gruppi indicati. Quando ai gruppi si aggiungono filtri, questi vengono interpretati anche come raggruppamenti.  **Risultato atteso:** L'aggiunta di filtri non deve modificare le modalità di raggruppamento, ma solo risurre l'insieme di elemento oggetto del raggruppamento  **Ambiente:**  - GovPay: 3.2.x </body>
+		<created>2019-12-04 16:50:43</created>
+		<closed>2019-12-13 16:31:00</closed>
+	</bug>
+	<bug>
+		<id>142</id>
+		<title>Tassonomia della pendenza</title>
+		<body>**Descrizione del Bug** Risulta mancante il campo tassonomia nella pendenza come definita nelle API Pagamento, Pendenze e Ragioneria v2, mentre è presente nelle API Backoffice  **Risultato atteso:** Aggiungere alle api v2 il field tassonomia dove mancante.  **Ambiente:**  - GovPay:  3.2.0  </body>
+		<created>2019-11-28 17:14:05</created>
+		<closed>2019-12-13 16:30:35</closed>
+	</bug>
+	<bug>
+		<id>140</id>
+		<title>Errore in inserimento tracciato da backoffice</title>
+		<body>**Descrizione del Bug** Quando si inserisce un tracciato l'interfaccia va in errore dopo la selezione dell'Ente Creditore  **Risultato atteso:** Alla selezione dell'Ente Creditore l'interfaccia interroga le API di backoffice per individuare i tipiPendenza da proporre, ma la URL e' malformata. </body>
+		<created>2019-11-27 09:07:47</created>
+		<closed>2019-11-27 16:17:00</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>Errati valori proposti dal servizio di quadrature</title>
+		<body>**Descrizione del Bug** Il servizio di quadrature dei pagamenti non fornisce i corretti valori  **Come riprodurlo:** Raggruppare per uno dei campi possibili  **Ambiente:**  - GovPay: 3.1.0  **Note aggiuntive:** La query utilizzata non e' corretta: ```sql SELECT count(pagamenti.id) as numeroPagamenti,        sum(pagamenti.importo_pagato) as importoTotale,        versamenti.divisione,        versamenti.direzione  FROM versamenti,pagamenti,singoli_versamenti  WHERE ( pagamenti.id_singolo_versamento=singoli_versamenti.id )  GROUP BY versamenti.divisione,versamenti.direzione ``` manca infatti la join tra versamenti e singoli versamenti ```sql SELECT count(pagamenti.id) as numeroPagamenti,        sum(pagamenti.importo_pagato) as importoTotale,        versamenti.divisione,        versamenti.direzione  FROM versamenti,pagamenti,singoli_versamenti  WHERE ( pagamenti.id_singolo_versamento=singoli_versamenti.id )  AND ( singoli_versamenti.id_pagamento=versamenti.id ) GROUP BY versamenti.divisione,versamenti.direzione ```</body>
+		<created>2019-11-15 12:13:58</created>
+		<closed>2019-11-26 16:33:56</closed>
+	</bug>
+	<bug>
+		<id>131</id>
+		<title>Internal se abilitato il censimento automatico dei Tipi Pendenza</title>
+		<body>**Descrizione del Bug** Abilitando la funzione di censimento automatico della pendenza si ottiene il seguente errore interno ``` {   "categoria": "INTERNO",   "codice": "INTERNAL",   "descrizione": "Errore interno",   "dettaglio": "Create not completed: insertAndReturnGeneratedKey failed: Duplicate entry 'mioTipoPendenza' for key 'unique_tipi_versamento_1'" } ``` **Come riprodurlo:** Impostare la property `it.govpay.versamenti.censimentoAutomaticoTipiPendenza.enabled=true` e inviare due volte una richiesta di pagamento.  **Risultato atteso:** Il tipo pendenza, essendo gia' presente, non deve essere creato nuovamente.  **Ambiente:**  - GovPay: 3.1.1  </body>
+		<created>2019-11-11 11:08:14</created>
+		<closed>2019-11-12 16:08:59</closed>
+	</bug>
+	<bug>
+		<id>125</id>
+		<title>Operazione annullamento pendenza visibile anche se non autorizzata</title>
+		<body>**Descrizione del Bug** L'operazione di annullamento pendenza risulta visibile dal dettaglio della pendenza anche se l'operatore non e' autorizzato in scrittura sulle pendenze. L'esecuzione dell'annullamento poi viene correttamente rifiutata per mancanza di autorizzazioni.  **Come riprodurlo:** Accedere con utenza che non ha diritto di scrittura sulle pendenze procedere all'annullamento di una pendenza ancora da pagare.  **Risultato atteso:** Il bottone "Annulla pendenza" non deve essere visualizzato  **Screenshots:** ![Schermata da 2019-10-29 16-07-10](https://user-images.githubusercontent.com/12340738/67781104-4b18c200-fa67-11e9-9deb-6db25c1517eb.png) </body>
+		<created>2019-10-29 15:13:02</created>
+		<closed>2019-12-13 17:44:52</closed>
+	</bug>
+	<bug>
+		<id>123</id>
+		<title>Filtro pendenze in stato non eseguito mostra gli scaduti</title>
+		<body>**Descrizione del Bug** Filtrando le pendenze per stato `Da pagare` sono elencate anche le pendenze scadute  **Come riprodurlo:** Da cruscotto di BO, applicare il filtro per stato `Da pagare` e la lista conseguente mostrerà anche le pendenze scadute  **Risultato atteso:** La lista non deve presentare le pendenze scadute  **Screenshots:** ![Schermata da 2019-10-25 13-28-04](https://user-images.githubusercontent.com/12340738/67568142-a5461a00-f72b-11e9-9ffe-7a4f90c3dc60.png)  **Ambiente:** n/a  **Note aggiuntive:** n/a  </body>
+		<created>2019-10-25 11:30:57</created>
+		<closed>2019-11-25 17:08:20</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>Autorizzazione per dominio/tipoPendenza sui Pagamenti</title>
+		<body>**Descrizione del Bug** Attualmente la lista dei pagamenti non filtra sulle autorizzazioni impostate per domini e tipi pendenza.   A tale scopo si dovrebbe utilizzare la vista seguente: ``` CREATE VIEW v_pagamenti_portale_ext AS SELECT pagamenti_portale.*, versamenti.id_dominio, versamenti.id_uo, versamenti.id_tipo_versamento  FROM pagamenti_portale  JOIN pag_port_versamenti ON pagamenti_portale.id = pag_port_versamenti.id_pagamento_portale  JOIN versamenti ON versamenti.id=pag_port_versamenti.id_versamento; ``` che presenta gli stessi campi della tabella `pagamenti_portale` con l'aggiunta degli identificativi dominio, uo e tipoPendenza.   Sulla vista vanno applicati gli attuali filtri con l'aggiunta di quelli di autorizzazione, applicando una `SELECT DISTINCT` dei soli campi `pagamenti_portale` per rimuovere i risultati duplicati prodotti dalle `join`.  **Come riprodurlo:** Richiedere la lista dei pagamenti e verificare di vedere i soli pagamenti afferenti ai domini e tipi pendenza autorizzati  **Risultato atteso:** Non devono essere autorizzate le consultazioni dei pagamenti di domini o tipi pendenza non autorizzati  </body>
+		<created>2019-10-23 08:53:54</created>
+		<closed>2019-10-24 07:48:06</closed>
+	</bug>
+	<bug>
+		<id>117</id>
+		<title>Errore di autorizzazione in lettura evento</title>
+		<body>**Descrizione del Bug** Un operatore autorizzato nella consultazione delle pendenze riesce a ricercare gli eventi relativi alle pendenze per cui e' autorizzato, ma non ad accedere al loro dettaglio  **Come riprodurlo:** Accedere alla console con un'utenza di tipo operatore, accedere ad una pendenza, accedere agli eventi della pendenza e aprire la vista completa per ricevere l'errore di autorizzazione  **Risultato atteso:** L'accesso alla risorsa dovrebbe essere consentito.  **Screenshots:** ![Schermata da 2019-10-18 12-09-25](https://user-images.githubusercontent.com/12340738/67086173-7dd9d500-f1a0-11e9-9de8-85cfd83fe172.png) ![Schermata da 2019-10-18 12-09-37](https://user-images.githubusercontent.com/12340738/67086190-83371f80-f1a0-11e9-9ead-9241b791dc67.png)  **Ambiente:**  - GovPay: 3.1.0  **Note aggiuntive:** n/a </body>
+		<created>2019-10-18 10:13:53</created>
+		<closed>2019-11-12 16:08:17</closed>
+	</bug>
+	<bug>
+		<id>116</id>
+		<title>Filtro di ricerca delle pendenze per data non funzionante</title>
+		<body>**Descrizione del Bug** Il filtro di ricerca per data del servizio pendenze delle api di backoffice funziona se impostato un intervallo, ma non se impostata la sola data di inizio o di fine  **Come riprodurlo:** Effettuare una ricerca impostando uno solo dei filtri temporali  **Risultato atteso:** Devono essere ritornati le sole pendenze inserite nella data individuata dalla ricerca  **Screenshots:** n/a  **Ambiente:**  - OS: -  - Browser: -  - GovPay: 3.1.0  - AS: -  - Java: -  - DBMS: Postgres 10.7  **Note aggiuntive:** n/a </body>
+		<created>2019-10-18 08:59:56</created>
+		<closed>2019-11-25 17:11:27</closed>
+	</bug>
+	<bug>
+		<id>115</id>
+		<title>Errore export esito tracciato quando richiesta vuota</title>
+		<body>Quando si esegue il caricamento di un tracciato vuoto, questo viene correttamente scartato, ma tentando di scaricarne il tracciato di esito si riceve un errore interno causato da un NPE</body>
+		<created>2019-10-17 09:25:24</created>
+		<closed>2019-10-17 12:12:08</closed>
+	</bug>
+	<bug>
+		<id>114</id>
+		<title>Prospetto riscossioni con dati mancanti</title>
+		<body>Nel prospetto riscossioni sono mancanti i riversamenti cumulativi. In particolare ne viene stampato sempre uno solo, l'ultimo in ordine temporale, mentre gli altri risultano assenti</body>
+		<created>2019-10-17 08:39:49</created>
+		<closed>2019-10-17 12:12:08</closed>
+	</bug>
+	<bug>
+		<id>113</id>
+		<title>Errore startup GovPay su Windows per path errato mappingTipiEvento.properties</title>
+		<body>Ambiente Windows 10, provato sia con MySQL che Postgres, versione govpay 3.1 RC2, cartelle definite in fase di installazione C:\govpay e C:\govpay\log   Dopo aver eseguito tutte le istruzioni per l'installazione di govpay/wildfly11 all'atto del primo avvio dell'application server, il sistema va in errore, non carica tutti i servizi e di fatto non aggiunge alcun file nella cartella C:\govpay Nella cartella dei log, invece, sono presenti tutti i file a 0 byte tranne il log di boot del quale trascrivo il contenuto (dalla prima riga deduco che ci sono problemi nella definizione delle cartelle di installazione?):  2019-10-10 09:49:09.543 | WARN  | Errore di inizializzazione: Il path indicato nella property "it.govpay.resource.path" (C:govpay) non esiste o non e' un folder.. Property ignorata. 2019-10-10 09:49:09.543 | INFO  | Letta proprieta di configurazione da file interno it.govpay.resource.path: C:govpay 2019-10-10 09:49:09.543 | WARN  | Errore di inizializzazione: Il path indicato nella property "it.govpay.resource.path" (C:govpay) non esiste o non e' un folder.. Property ignorata. 2019-10-10 09:49:09.543 | INFO  | Letta proprieta di configurazione da file interno it.govpay.orm.databaseType: postgresql 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.orm.showSql: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.orm.dataSourceJNDIName: govpay 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.orm.dataSourceAppName: GovPay 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione it.govpay.resource.path: C:govpay 2019-10-10 09:49:09.558 | WARN  | Errore di inizializzazione: Il path indicato nella property "it.govpay.resource.path" (C:govpay) non esiste o non e' un folder.. Property ignorata. 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.defaultCustomIuvGenerator.class non trovata 2019-10-10 09:49:09.558 | INFO  | Inizializzazione GovPay 3.1.0-RC2 (build 4d02e81) in corso 2019-10-10 09:49:09.558 | INFO  | Configurazione logger da classpath. 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.avviso.versione: v002 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.thread.pool.notifica: 15 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.thread.pool.avvisaturaDigitale: 15 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.thread.pool.rpt: 15 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.mlog.class non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.mlog.log4j non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.mlog.level non trovata 2019-10-10 09:49:09.558 | WARN  | Valore [null] non consentito per la property "it.govpay.mlog.level". Assunto valore di default "INFO". 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.mlog.db non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.pdd.auth non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.integration.client.out non trovata 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.batchOn: true 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.clusterId non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.timeoutBatch non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta "it.govpay.timeoutBatch" impostata com valore di default (5 minuti) 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.plugin.conservazione non trovata 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.batch.caricamentoTracciati.enabled: true 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.modello3.timeoutPagamento: 0 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.modello1.timeoutPagamento: 0 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.backoffice.gui.appName: GovPay 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.backoffice.gui.ambienteDeploy non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.autenticazioneSPID.nomeHeaderPrincipal non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.autenticazioneHeader.nomeHeaderPrincipal non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.autenticazioneHeader.nomiHeadersInfo non trovata 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.autenticazione.utenzaAnonima.checkCfDebitore.enabled: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.reportistica.prospettoRiscossione.numeroMassimoEntries: 5000 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.avvisaturaDigitale.enabled: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.avvisaturaDigitale.modalita.asincrona.enabled: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.avvisaturaDigitale.modalita.sincrona.enabled: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.avvisaturaDigitale.batch.sizePaginaNumeroVersamenti: 100 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.avvisaturaDigitale.batch.limiteNumeroVersamenti non trovata 2019-10-10 09:49:09.558 | INFO  | Proprieta "it.govpay.avvisaturaDigitale.limiteNumeroVersamenti" impostata com valore di default (100000) 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.avvisaturaDigitale.annullamentoAvviso.modalita: asincrona 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.recuperoRptPendenti.intervalloControlloCreazioneRpt: 30 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.autenticazione.utenzaAnonima.intervalloDisponibilitaPagamento: 60 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.versamenti.codTipoVersamentoPerPagamentiLiberi: LIBERO 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.versamenti.codTipoVersamentoPerTipiPendenzeNonCensiti: LIBERO 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.versamenti.censimentoAutomaticoTipiPendenza.enabled: false  2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.allowRequestOrigin: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.allowCredentials: true 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.allowAllOrigin: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.errorAsDebug: true 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.allowMethods: OPTIONS,GET,PUT,POST,PATCH,DELETE 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.allowHeaders: Origin,Content-Type,Accept,Authorization 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.exposeHeaders: Content-Type,Content-Disposition 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.maxAge.cacheDisable: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.allowRequestMethod: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.configurazioneFiltroCors.cors.allowRequestHeaders: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.context.savataggioDiagnosticiSuFile.enabled: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.context.savataggioDumpSuFile.enabled: false 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.context.giornaleEventi.enabled: true 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno it.govpay.invioPromemoria.enabled: false 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.defaultCustomIuvGenerator.class non trovata 2019-10-10 09:49:09.558 | INFO  | Letta proprieta di configurazione da file interno psp.postali: BPPIITRRXXX 2019-10-10 09:49:09.558 | INFO  | Proprieta it.govpay.reportistica.prospettoRiscossione.templateJasper non trovata  Non so come risolvere </body>
+		<created>2019-10-10 09:53:08</created>
+		<closed>2019-10-10 11:53:28</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>Testo tagliato nell'avviso di pagamento</title>
+		<body>Nella stampa dell'avviso di pagamento risulta troncato il test della sezione "Dove pagare", il capoverso "Paga sul sito o con le app":  ![00321080384_300000000000003033](https://user-images.githubusercontent.com/12340738/65165432-09940080-da3f-11e9-9a53-d50bb49cb895.png) </body>
+		<created>2019-09-18 16:07:27</created>
+		<closed>2019-09-23 08:01:31</closed>
+	</bug>
+	<bug>
+		<id>104</id>
+		<title>Dettaglio degli eventi nel giornale</title>
+		<body>Consultando il giornale degli eventi ed entrando nel dettaglio di uno di essi non viene data la possibilita' di vedere l'evento completamente come fatto nella consultazione di pendenze o pagamenti.</body>
+		<created>2019-09-18 12:47:19</created>
+		<closed>2019-09-23 08:01:31</closed>
+	</bug>
+	<bug>
+		<id>98</id>
+		<title>Date degli eventi senza millisecondi</title>
+		<body>Il servizio di eventi del backoffice invia la data dell'evento fino ai secondi, ma sono utili anche i millisecondi.</body>
+		<created>2019-08-26 08:39:49</created>
+		<closed>2019-08-26 16:57:25</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>Backlog errori cruscotto di backoffice</title>
+		<body>Utilizzando IE 11 si presentano i seguenti errori:  - [x] [IE11] Nella form di aggiunta di una pendenza, una volta scelto l'ente creditore ed il tipo pendenza, non compare la form per l'inserimento dei campi addizionali. - [x] [IE11] Nelle pagine di lista, ad esempio nella pagina `Pendenze`, i filtri con una sola opzione di scelta non risultano precompilati. - [x] Form di creazione di una nuova applicazione: i campi versione e tipo autenticazione devono essere disabilitati fino a quando non viene compilata la URL.  - [x] Form di creazione di una nuova applicazione: risulta un errore in salvataggio per mancanza di acl - [x] Applicazioni: rinominare `Autorizzazioni API` in `Autorizzazioni`, rinominare `Pendenze` in `Tipi pendenza`, spostare `Tipi pendenza`, `Domini` e `Ruoli` nella sezione `Autorizzazioni` sopra i checkbox di abilitazione delle API. Da fare sia nelle maschere di edit che di consultazione. - [x] Operatori: aggiungere sezione in `Autorizzazioni`, rinominare `Pendenze` in `Tipi pendenza`, spostare `Tipi pendenza`, `Domini` e `Ruoli` nella sezione `Autorizzazioni`. </body>
+		<created>2019-07-16 11:01:53</created>
+		<closed>2019-07-29 13:10:29</closed>
+	</bug>
+	<bug>
+		<id>73</id>
+		<title>Nuovo avviso di pagamento v2.1: adeguamento campo destinatario Bollettino Postale</title>
+		<body>Salve,  il template Jasper Report per la generazione del nuovo avviso di pagamento presenta un refuso: in pratica anziché stampare, nella sezione Bollettino Postale, il nome e cognome del destinatario del pagamento (placeholder $F{nome_cognome_destinatario}), stampa il placeholder $F{ente_creditore}  Jacopo</body>
+		<created>2018-11-16 12:15:51</created>
+		<closed>2018-11-26 08:47:42</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>Ripristino nodoInviaRPT per modello 3</title>
+		<body>Da un chiarimento su [Forum Italia](https://forum.italia.it/t/carrello-e-psp-abilitati/3283/10) e' emerso che l'operazione nodoInviaRPT e' stata deprecata solo per i pagamenti attivati ad iniziativa Ente, mentre rimane da utilizzare per i pagamenti ad iniziativa PSP.  E' pertanto necessario ripristinare l'uso di questa operazione in questo scenario.</body>
+		<created>2018-10-16 08:39:57</created>
+		<closed>2018-10-16 13:01:24</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>Errore in ripristino RPT pendente modello 3</title>
+		<body>L'attuale gestione di una RPT pendente prevede di impostarla come RPT_ERRORE_INVIO_NODO qualora non risulti presente su pagoPA.   Questo stato e' finale e non e' corretto nel caso del pagamento modello 3, dove la spedizione deve essere reiterata.  La logica deve essere rivista affinche' nel caso di modello 3, piuttosto che aggiornare lo stato, deve provvedere alla rispedizione.</body>
+		<created>2018-09-19 11:27:11</created>
+		<closed>2018-10-16 08:34:27</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>Gestione eseguiti senza RPT in flusso di rendicontazione</title>
+		<body>Se si riceve un flusso di rendicontazione contenente un versamento con stato ESEGUITO_SENZA_RPT il software cerca il versamento e se non lo trova solleva un'eccezione interrompendo il caricamento del flusso.  Credo che sia più corretto che in questo caso ci fosse la stessa gestione che c'è per i versamenti non presenti in govpay, per cui il software scrive un log e prosegue con il versamento successivo, altrimenti si rischia di perdere la rendicontazione dei versamenti successivi.  Per riferimento la gestione è nel file govpay/core/business/Rendicontazioni.java alla riga 338 </body>
+		<created>2018-09-11 16:38:55</created>
+		<closed>2018-09-14 15:13:14</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>Errore NullPointer in gestione log risposta con faultBean</title>
+		<body>In alcuni casi di risposta con errore dal nodo dei pagamenti in GovPay 2.5.4 otteniamo un errore di nullPointerException.  Per capire se fosse un problema nostro abbiamo analizzato il codice e sembrerebbe che l'errore sia nel file it/govpay/core/business/model/Risposta.java nel metodo toString. In tutto il metodo si fa riferimento a this.faultBean ma a volte il metodo viene richiamato dal metodo log passandogli un faultBean recuperato dalla faultMap e this.faultBean è nullo. Il controllo sul null viene fatto sul parametro che poi però non viene utilizzato per recuperare le info.   Se la nostra analisi è sbagliata possiamo fornirvi una risposta di esempio che restituire questo errore. </body>
+		<created>2018-09-05 13:18:21</created>
+		<closed>2018-09-14 15:13:14</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>Versamenti in stato Anomalo anche in assenza di anomalie</title>
+		<body>Da un'analisi dei dati in GovPay sono risultati in stato anomalo anche dei versamenti che non hanno presentato anomalie nei pagamenti.  A seguito dei log e' risultato dipendere dalla concorrenza del batch di recupero pendenti con la ricezione della RT di un pagamento in corso.  E' necessario irrobustire la logica del batch di recupero pendenti affinche' tenga conto della possibilita' di variazioni del versamento durante il recupero dello stato del pagamento pendente dal Nodo dei Pagamenti.</body>
+		<created>2018-09-05 09:35:45</created>
+		<closed>2018-09-05 11:43:17</closed>
+	</bug>
+	<bug>
+		<id>57</id>
+		<title>Pacchetto di installazione non compatibile con WildFly 8</title>
+		<body>Come comunicato da Gibson nella mailing list di GovPay:  &gt; Facendo l'aggiornamento da govpay 2.3.3 a govpay 2.5.4 su Wildfly 8, mentre la console viene caricata correttamente il file govpay.ear non viene caricato a causa di questo errore:  &gt;JBAS015599: Apache CXF library (cxf-xjc-runtime-2.7.0.jar) detected in ws endpoint deployment; either provide a proper deployment replacing embedded libraries with container module dependencies or disable the webservices subsystem for the current deployment adding a proper jboss-deployment-structure.xml descriptor to it. The former approach is recommended, as the latter approach causes most of the webservices Java EE and any JBossWS specific functionality to be disabled.</body>
+		<created>2018-09-05 09:29:47</created>
+		<closed>2018-09-05 12:55:20</closed>
+	</bug>
+	<bug>
+		<id>55</id>
+		<title>Errore in acquisizione RT per IdentificativoStazioneRichiedente errato</title>
+		<body>In ambiente di collaudo si evidenziano errori in acquisizione delle RT di questo tipo: ``` &lt;84cc6c3d-e174-4dc7-961b-75db2c57c1dd&gt; 002804 pagamento &lt;2018-05-03_12:00:05.871&gt; (ERROR) S:Batch O:RecuperoRptPendenti Validazione RT [Dominio:XXXX Iuv:YYYY Ccp:ZZZZ] fallita con i seguenti errori: [Fatal] IdentificativoStazioneRichiedente non corrisponde [Atteso:"AAAA" Ricevuto:"BBBB"] [Warning] IdentificativoUnivocoRiscossione deve essere n/a per pagamenti non eseguiti. [Warning] IdentificativoUnivocoRiscossione deve essere n/a per pagamenti non eseguiti. ``` Da un confronto con AgID risulta che il campo IdentificativoStazioneRichiedente deve essere valorizzato con il l'identificativo Stazione dell'intermediario, contrariamente a quanto fatto adesso.  </body>
+		<created>2018-05-03 09:56:18</created>
+		<closed>2018-05-03 14:16:13</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>Formato importi fuori standard</title>
+		<body>A fronte di errori durante i test di pagamento di Bolli Telematici si riscontra il seguente errore a fronte della nodoInviaRPT: ``` &lt;fault&gt;   &lt;faultCode&gt;PPT_CANALE_ERRORE&lt;/faultCode&gt;   &lt;faultString&gt;Errore restituito dal Canale.&lt;/faultString&gt;   &lt;id&gt;IFSPIT21&lt;/id&gt;   &lt;description&gt;FaultCode PSP: CANALE_SINTASSI_EXTRAXSD FaultString PSP: Risposta dal Canale: Errore di sintassi extra XSD.  Description PSP: L&amp;amp;apos;importo del bollo non e&amp;amp;apos; coerente con il tipo nella RPT&lt;/description&gt; &lt;/fault&gt; ``` Su richiesta di chiarimento, AgID ha riscontrato una discrepanza rispetto alle specifiche nel formato degli importi che devono presentare le cifre decimali, anche se 0.</body>
+		<created>2018-04-24 08:11:11</created>
+		<closed>2018-04-24 12:35:17</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>Formato data RPT non conforme alle specifiche AgID</title>
+		<body>Segnalazione da mailing list utenti-govpay@gov4j.it:  &gt; AGID segnala che la data inserita nelle RPT non è conforme alle specifiche. &gt; GovPay infatti inserisce YYYY-MM-DD e aggiunge il time zone. Es. 2017-10-08+02:00. &gt; Agid chiede che si rispetti YYYY-MM-DD senza time zone.</body>
+		<created>2017-10-19 07:03:29</created>
+		<closed>2017-10-23 10:56:27</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>Errore nella verifica autorizzazioni al servizio Incassi</title>
+		<body>Ciao,  stiamo testando il servizio REST degli incassi. Abbiamo riscontrato un problema in fase di recupero del dettaglio di un incasso richiamando l'URL /govpay/rs/v1/incassi/{trn}   L'applicazione chiamante è configurata per operare su tutti i domini censiti sul sistema e ho visto che sulla tabella ACL il campo id_dominio è NULL.   Il servizio va in errore e abbiamo notato che in questo punto -&gt; https://github.com/link-it/GovPay/blob/3221cffaea9b1574d363f01bf961f24daccb8487/govpay-core/src/main/java/it/govpay/core/business/Incassi.java#L329  (riporto parte del metodo per comodità) public LeggiIncassoDTOResponse leggiIncasso(LeggiIncassoDTO leggiIncassoDTO) ... { IncassiBD incassiBD = new IncassiBD(this); try { [.......] **Set&lt;String&gt; domini = AclEngine.getDominiAutorizzati(applicazione, Servizio.INCASSI);** // In questo punto si rompe perchè domini è uguale a NULL , io ho sostituito temporaneamente con  // if(domini != null &amp;&amp; !domini.contains(incasso.getCodDominio())) { // sperando che sia corretto  // in questo modo se domini è NULL vuol dire che l'applicazione ha accesso a tutti i domini, o sbaglio?  if(!domini.contains(incasso.getCodDominio())) { throw new NotAuthorizedException(); } LeggiIncassoDTOResponse response = new LeggiIncassoDTOResponse(); response.setIncasso(incasso); return response; } catch (NotFoundException e) { return null; } }   Grazie! </body>
+		<created>2017-10-13 09:42:19</created>
+		<closed>2017-10-13 13:18:12</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>Generazione Codice A Barre</title>
+		<body>Ciao, nella documentazione di PagoPA  (http://www.agid.gov.it/sites/default/files/regole_tecniche/condivisioneiuv-monografia-v_1_1.pdf) per gli enti pluri-intermediati con punti di generazione IUV &gt; 1 (vedi tab. 2 pag. 9) il numero di avviso viene generato secondo il seguente schema:  aux-digit = Fisso 3 application code = Non presente IUV.. [.. ] Nel servizio "caricaVersamento" il numero di avviso viene generato correttamente, mentre invece il codice a barre mantiene lo standard aux-digit fisso a 0 e application code ( nel mio caso valorizzato a 01).  Mi sono perso qualcosa sulla documentazione di Agid oppure il numero avviso e il bar code sono disallineati?   Ciao!</body>
+		<created>2017-08-07 09:19:02</created>
+		<closed>2017-08-07 10:57:40</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>Filtro stato gpChiediListaVersamenti</title>
+		<body>Invocando la primitiva GpChiediListaVersamenti e specificando uno stato, nella risposta i risultati non sono filtrati per lo stato richiesto </body>
+		<created>2016-08-02 11:21:14</created>
+		<closed>2016-09-05 08:00:43</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>Test modello 1 - bug pagamento con carrello </title>
+		<body>Invocando il metodo gpAvviaTransazionePagamento con un codice WISP generato dal portale WISP predisposta per l'ambiente con emulatori (come primitiva ho inserito nodoInviaCarrelloRPT ) ottengo la seguente risposta:  &lt;?xml version='1.0' encoding='UTF-8'?&gt;&lt;SOAP_ENV:Envelope xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;&lt;SOAP_ENV:Body&gt;&lt;ns4:nodoInviaCarrelloRPTRisposta xmlns:ns4="http://ws.pagamenti.telematici.gov/" xmlns:ns3="http://ws.pagamenti.telematici.gov/ppthead" xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;&lt;esitoComplessivoOperazione&gt;KO&lt;/esitoComplessivoOperazione&gt;&lt;listaErroriRPT&gt;&lt;fault&gt;&lt;faultCode&gt;PPT_TIPOFIRMA_SCONOSCIUTO&lt;/faultCode&gt;&lt;faultString&gt;Il campo tipoFirma non corrisponde ad alcun valore previsto.&lt;/faultString&gt;&lt;id&gt;NodoDeiPagamentiSPC&lt;/id&gt;&lt;description&gt;Errore in Carrello [9d5ec7ada7b6466d86e1593bc32fef79] -  RPT [idDominio=80002950766/IUV=RF40000000000000031/CCP=n/a]: Firma non valida:0&lt;/description&gt;&lt;serial&gt;1&lt;/serial&gt;&lt;/fault&gt;&lt;fault&gt;&lt;faultCode&gt;PPT_TIPOFIRMA_SCONOSCIUTO&lt;/faultCode&gt;&lt;faultString&gt;Il campo tipoFirma non corrisponde ad alcun valore previsto.&lt;/faultString&gt;&lt;id&gt;NodoDeiPagamentiSPC&lt;/id&gt;&lt;description&gt;Errore in Carrello [9d5ec7ada7b6466d86e1593bc32fef79] -  RPT [idDominio=80002950766/IUV=RF13000000000000032/CCP=n/a]: Firma non valida:0&lt;/description&gt;&lt;serial&gt;2&lt;/serial&gt;&lt;/fault&gt;&lt;/listaErroriRPT&gt;/ns4:nodoInviaCarrelloRPTRisposta&lt;/SOAP_ENV:Body&gt;&lt;/SOAP_ENV:Envelope&gt;  Sulla Console ho provato anche ad associare una diversa tipologia di firma richiesta , tipo 1 cades, ma restituisce sempre un fault bean con codice PPT_TIPOFIRMA_SCONOSCIUTO </body>
+		<created>2016-06-06 15:25:20</created>
+		<closed>2016-06-07 15:11:17</closed>
+	</bug>
+	<bug>
+		<id>13</id>
+		<title>Test modello 3 - bug importi con .00</title>
+		<body>1) caricamento pagamento in attesa con invocazione primitiva:gpCaricaVersamento -  IUV generato:000000000000141 - importo 300.0 HTTP Headers:      Accept: _/_     Authorization: Basic cHViYXBwMTpwYXNzd29yZA==     cache-control: no-cache     connection: Keep-Alive     Content-Length: 1182     content-type: text/xml; charset=UTF-8     host: 127.0.0.1:6080     pragma: no-cache     SOAPAction: "gpCaricaVersamento"     user-agent: Apache CXF 2.7.18     x-forwarded-for: 172.16.171.198     x-forwarded-host: govpay-test.regione.basilicata.it     x-forwarded-server: govpay-test.regione.basilicata.it &lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;soap:Header/soap:Body&lt;ns2:gpCaricaVersamento xmlns:ns2="http://www.govpay.it/servizi/gpApp/" xmlns:ns3="http://www.govpay.it/servizi/pa/"&gt;&lt;generaIuv&gt;true&lt;/generaIuv&gt;&lt;aggiornaSeEsiste&gt;true&lt;/aggiornaSeEsiste&gt;&lt;versamento&gt;&lt;codApplicazione&gt;PubApp1&lt;/codApplicazione&gt;&lt;codVersamentoEnte&gt;1464183452332&lt;/codVersamentoEnte&gt;&lt;codDominio&gt;80002950766&lt;/codDominio&gt;&lt;debitore&gt;&lt;codUnivoco&gt;RSSMRA85T10A562S&lt;/codUnivoco&gt;&lt;ragioneSociale&gt;Rossi Mario&lt;/ragioneSociale&gt;&lt;indirizzo&gt;Viale dei Giardini&lt;/indirizzo&gt;&lt;civico&gt;99 Interno 1A&lt;/civico&gt;&lt;cap&gt;56017&lt;/cap&gt;&lt;localita&gt;San Giuliano Terme&lt;/localita&gt;&lt;provincia&gt;PZ&lt;/provincia&gt;&lt;nazione&gt;IT&lt;/nazione&gt;&lt;email&gt;MarioRossi@email.it&lt;/email&gt;&lt;telefono&gt;900900900&lt;/telefono&gt;&lt;cellulare&gt;333333333333&lt;/cellulare&gt;&lt;fax&gt;800800800&lt;/fax&gt;&lt;/debitore&gt;&lt;importoTotale&gt;300.0&lt;/importoTotale&gt;&lt;dataScadenza&gt;2016-10-31T00:00:00+01:00&lt;/dataScadenza&gt;&lt;aggiornabile&gt;false&lt;/aggiornabile&gt;&lt;causale&gt;Causale&lt;/causale&gt;&lt;singoloVersamento&gt;&lt;codSingoloVersamentoEnte&gt;1464183452332_1&lt;/codSingoloVersamentoEnte&gt;&lt;importo&gt;300.0&lt;/importo&gt;&lt;codTributo&gt;BOLLO&lt;/codTributo&gt;&lt;/singoloVersamento&gt;&lt;/versamento&gt;/ns2:gpCaricaVersamento/soap:Body/soap:Envelope 2016-05-25 15:39:06.596 | INFO  | it.govpay.web.ws.PagamentiTelematiciGPAppImpl:139 | 293ed84b7faf4ba0b29240fe47240421 | Richiesta operazione gpCaricaVersamento per il versamento (1464183452332) dell'applicazione (PubApp1) con generazione IUV (true) 2016-05-25 15:39:06.618 | INFO  | it.govpay.core.business.Versamento:86 | 293ed84b7faf4ba0b29240fe47240421 | Generato IUV [CodDominio: 80002950766][CodIuv: 000000000000141] 2016-05-25 15:39:06.620 | INFO  | it.govpay.core.business.Versamento:100 | 293ed84b7faf4ba0b29240fe47240421 | Versamento (1464183452332) dell'applicazione (PubApp1) inserito 2016-05-25 15:39:06.625 | TRACE | it.govpay.web.handler.MessageLoggingHandlerUtils:49 | 293ed84b7faf4ba0b29240fe47240421 |  &lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;soap:Body&lt;ns2:gpCaricaVersamentoResponse xmlns:ns2="http://www.govpay.it/servizi/gpApp/" xmlns:ns3="http://www.govpay.it/servizi/pa/"&gt;&lt;codOperazione&gt;293ed84b7faf4ba0b29240fe47240421&lt;/codOperazione&gt;&lt;codEsitoOperazione&gt;OK&lt;/codEsitoOperazione&gt;&lt;iuvGenerato&gt;&lt;codApplicazione&gt;PubApp1&lt;/codApplicazione&gt;&lt;codVersamentoEnte&gt;1464183452332&lt;/codVersamentoEnte&gt;&lt;codDominio&gt;80002950766&lt;/codDominio&gt;&lt;iuv&gt;000000000000141&lt;/iuv&gt;&lt;qrCode&gt;UEFHT1BBfDAwMnwwMTAwMDAwMDAwMDAwMDE0MXw4MDAwMjk1MDc2NnwzMDAwMA==&lt;/qrCode&gt;&lt;barCode&gt;NDE1ODAwMDI5NTA3NjY4MDIwMDEwMDAwMDAwMDAwMDAxNDEzOTAyMzAwMDA=&lt;/barCode&gt;&lt;/iuvGenerato&gt;/ns2:gpCaricaVersamentoResponse/soap:Body/soap:Envelope  1) Primo tentativo da parte di SIA per la verifica del pagamento (problema relativo alle stringhe vuote nella tabella iban_accredito)  ``` HTTP Headers:  connection: Keep-Alive Content-Length: 1208 content-type: text/xml; host: 127.0.0.1:6080 SOAPAction: paaVerificaRPT spcoopdestinatario: RegioneBasilicata spcoopid: NodoDeiPagamentiDellaPATest_NodoDeiPagamentiDellaPATestSPCoopIT_1224147_2016-05-27_12:26 spcoopmittente: NodoDeiPagamentiDellaPATest spcoopservizio: PagamentiTelematiciCCP6T spcooptipodestinatario: SPC spcooptipomittente: SPC spcooptiposervizio: SPC user-agent: Jakarta Commons-HttpClient/3.1-rc1 x-forwarded-for: 172.18.17.227 x-forwarded-host: govpay-test.regione.basilicata.it x-forwarded-server: govpay-test.regione.basilicata.it ```  &lt;SOAP_ENV:Envelope xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;&lt;SOAP_ENV:Header&gt;&lt;ppt:intestazionePPT xmlns:ppt="http://ws.pagamenti.telematici.gov/ppthead" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pagamenti.telematici.gov/" xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;          &lt;identificativoIntermediarioPA&gt;80002950766&lt;/identificativoIntermediarioPA&gt;          &lt;identificativoStazioneIntermediarioPA&gt;80002950766_01&lt;/identificativoStazioneIntermediarioPA&gt;          &lt;identificativoDominio&gt;80002950766&lt;/identificativoDominio&gt;          &lt;identificativoUnivocoVersamento&gt;000000000000141&lt;/identificativoUnivocoVersamento&gt;          &lt;codiceContestoPagamento&gt;CCPSIA001&lt;/codiceContestoPagamento&gt;       /ppt:intestazionePPT&lt;/SOAP_ENV:Header&gt;&lt;SOAP_ENV:Body&gt;&lt;ws:paaVerificaRPT xmlns:ws="http://ws.pagamenti.telematici.gov/" xmlns:ppt="http://ws.pagamenti.telematici.gov/ppthead" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;          &lt;identificativoPSP&gt;idPsp1&lt;/identificativoPSP&gt;       /ws:paaVerificaRPT&lt;/SOAP_ENV:Body&gt;&lt;/SOAP_ENV:Envelope&gt; 2016-05-27 12:28:50.924 | INFO  | it.govpay.web.ws.PagamentiTelematiciCCPImpl:313 | b5dffe92f7794039b53d58ad8623dd8c | Ricevuta richiesta di verifica RPT [80002950766][80002950766_01][80002950766][000000000000141][CCPSIA001] 2016-05-27 12:28:50.975 | TRACE | it.govpay.web.handler.MessageLoggingHandlerUtils:49 | b5dffe92f7794039b53d58ad8623dd8c |  &lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;soap:Bodysoap:Fault&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Marshalling Error: cvc-pattern-valid: Value '' is not facet-valid with respect to pattern '[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}' for type 'stBICIdentifier'.&lt;/faultstring&gt;/soap:Fault/soap:Body/soap:Envelope  3) Impostando i valori della tabella iban_accredito a null il primo step di verifica è andato a buon fine:  HTTP Headers:      accept-encoding: gzip,deflate     connection: Keep-Alive     Content-Length: 1208     content-type: text/plain; charset=UTF-8     host: 127.0.0.1:6080     user-agent: Apache-HttpClient/4.3.5 (java 1.5)     x-forwarded-for: 172.16.170.222     x-forwarded-host: govpay-test.regione.basilicata.it     x-forwarded-server: govpay-test.regione.basilicata.it &lt;SOAP_ENV:Envelope xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;&lt;SOAP_ENV:Header&gt;&lt;ppt:intestazionePPT xmlns:ppt="http://ws.pagamenti.telematici.gov/ppthead" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pagamenti.telematici.gov/" xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;          &lt;identificativoIntermediarioPA&gt;80002950766&lt;/identificativoIntermediarioPA&gt;          &lt;identificativoStazioneIntermediarioPA&gt;80002950766_01&lt;/identificativoStazioneIntermediarioPA&gt;          &lt;identificativoDominio&gt;80002950766&lt;/identificativoDominio&gt;          &lt;identificativoUnivocoVersamento&gt;000000000000141&lt;/identificativoUnivocoVersamento&gt;          &lt;codiceContestoPagamento&gt;CCPSIA001&lt;/codiceContestoPagamento&gt;       /ppt:intestazionePPT&lt;/SOAP_ENV:Header&gt;&lt;SOAP_ENV:Body&gt;&lt;ws:paaVerificaRPT xmlns:ws="http://ws.pagamenti.telematici.gov/" xmlns:ppt="http://ws.pagamenti.telematici.gov/ppthead" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;          &lt;identificativoPSP&gt;idPsp1&lt;/identificativoPSP&gt;       /ws:paaVerificaRPT&lt;/SOAP_ENV:Body&gt;&lt;/SOAP_ENV:Envelope&gt; 2016-05-27 16:41:27.697 | INFO  | it.govpay.web.ws.PagamentiTelematiciCCPImpl:313 | 2874f4af9d57444a80ff44db98159da8 | Ricevuta richiesta di verifica RPT [80002950766][80002950766_01][80002950766][000000000000141][CCPSIA001] 2016-05-27 16:41:27.726 | TRACE | it.govpay.web.handler.MessageLoggingHandlerUtils:49 | 2874f4af9d57444a80ff44db98159da8 |  &lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;soap:Body&lt;ns5:paaVerificaRPTRisposta xmlns:ns5="http://ws.pagamenti.telematici.gov/" xmlns:ns2="http://www.digitpa.gov.it/schemas/2011/Pagamenti/" xmlns:ns3="http://ws.pagamenti.telematici.gov/ppthead" xmlns:ns4="http://www.digitpa.gov.it/schemas/2011/Pagamenti/Revoche/"&gt;&lt;paaVerificaRPTRisposta&gt;&lt;esito&gt;OK&lt;/esito&gt;&lt;datiPagamentoPA&gt;&lt;importoSingoloVersamento&gt;300.0&lt;/importoSingoloVersamento&gt;&lt;ibanAccredito&gt;IT79Q0542404297000011700994&lt;/ibanAccredito&gt;&lt;enteBeneficiario&gt;ns2:identificativoUnivocoBeneficiarions2:tipoIdentificativoUnivocoG/ns2:tipoIdentificativoUnivocons2:codiceIdentificativoUnivoco80002950766/ns2:codiceIdentificativoUnivoco/ns2:identificativoUnivocoBeneficiarions2:denominazioneBeneficiarioRegione Basilicata/ns2:denominazioneBeneficiarions2:codiceUnitOperBeneficiarioEC/ns2:codiceUnitOperBeneficiarions2:indirizzoBeneficiarioVia V. Verrastro/ns2:indirizzoBeneficiarions2:capBeneficiario85100/ns2:capBeneficiarions2:localitaBeneficiarioPotenza/ns2:localitaBeneficiarions2:provinciaBeneficiarioPotenza/ns2:provinciaBeneficiarions2:nazioneBeneficiarioIT/ns2:nazioneBeneficiario&lt;/enteBeneficiario&gt;&lt;causaleVersamento&gt;Causale&lt;/causaleVersamento&gt;&lt;/datiPagamentoPA&gt;&lt;/paaVerificaRPTRisposta&gt;/ns5:paaVerificaRPTRisposta/soap:Body/soap:Envelope  4) Secondo step di attivazione da parte del sia con esito KO (l'importo risulta troncato a 300 euro): HTTP Headers:      connection: Keep-Alive     Content-Length: 1616     content-type: text/xml;     host: 127.0.0.1:6080     SOAPAction: paaAttivaRPT     spcoopdestinatario: RegioneBasilicata     spcoopid: NodoDeiPagamentiDellaPATest_NodoDeiPagamentiDellaPATestSPCoopIT_1229091_2016-05-27_16:42     spcoopmittente: NodoDeiPagamentiDellaPATest     spcoopservizio: PagamentiTelematiciCCP6T     spcooptipodestinatario: SPC     spcooptipomittente: SPC     spcooptiposervizio: SPC     user-agent: Jakarta Commons-HttpClient/3.1-rc1     x-forwarded-for: 172.18.17.227     x-forwarded-host: govpay-test.regione.basilicata.it     x-forwarded-server: govpay-test.regione.basilicata.it &lt;SOAP_ENV:Envelope xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;&lt;SOAP_ENV:Header&gt;&lt;ppt:intestazionePPT xmlns:ppt="http://ws.pagamenti.telematici.gov/ppthead" xmlns:pag="http://www.digitpa.gov.it/schemas/2011/Pagamenti/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pagamenti.telematici.gov/" xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;          &lt;identificativoIntermediarioPA&gt;80002950766&lt;/identificativoIntermediarioPA&gt;          &lt;identificativoStazioneIntermediarioPA&gt;80002950766_01&lt;/identificativoStazioneIntermediarioPA&gt;          &lt;identificativoDominio&gt;80002950766&lt;/identificativoDominio&gt;          &lt;identificativoUnivocoVersamento&gt;000000000000141&lt;/identificativoUnivocoVersamento&gt;          &lt;codiceContestoPagamento&gt;CCPSIA003&lt;/codiceContestoPagamento&gt;       /ppt:intestazionePPT&lt;/SOAP_ENV:Header&gt;&lt;SOAP_ENV:Body&gt;&lt;ws:paaAttivaRPT xmlns:ws="http://ws.pagamenti.telematici.gov/" xmlns:pag="http://www.digitpa.gov.it/schemas/2011/Pagamenti/" xmlns:ppt="http://ws.pagamenti.telematici.gov/ppthead" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP_ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;          &lt;identificativoPSP&gt;idPsp1&lt;/identificativoPSP&gt;          &lt;datiPagamentoPSP&gt;             &lt;importoSingoloVersamento&gt;300&lt;/importoSingoloVersamento&gt;          &lt;/datiPagamentoPSP&gt;          &lt;identificativoIntermediarioPSP&gt;idIntermediario1&lt;/identificativoIntermediarioPSP&gt;          &lt;identificativoCanalePSP&gt;idCanale13&lt;/identificativoCanalePSP&gt;       /ws:paaAttivaRPT&lt;/SOAP_ENV:Body&gt;&lt;/SOAP_ENV:Envelope&gt; 2016-05-27 16:45:20.240 | INFO  | it.govpay.web.ws.PagamentiTelematiciCCPImpl:112 | 661e61f272f048ff9654e6eee7ce50e9 | Ricevuta richiesta di attiva RPT [80002950766][80002950766_01][80002950766][000000000000141][CCPSIA003] 2016-05-27 16:45:20.251 | ERROR | it.govpay.web.ws.PagamentiTelematiciCCPImpl:485 | 661e61f272f048ff9654e6eee7ce50e9 | Rifiutata Attiva RPT con Fault PAA_ATTIVA_RPT_IMPORTO_NON_VALIDO 2016-05-27 16:45:20.255 | TRACE | it.govpay.web.handler.MessageLoggingHandlerUtils:49 | 661e61f272f048ff9654e6eee7ce50e9 |  &lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;soap:Body&lt;ns5:paaAttivaRPTRisposta xmlns:ns5="http://ws.pagamenti.telematici.gov/" xmlns:ns2="http://www.digitpa.gov.it/schemas/2011/Pagamenti/" xmlns:ns3="http://ws.pagamenti.telematici.gov/ppthead" xmlns:ns4="http://www.digitpa.gov.it/schemas/2011/Pagamenti/Revoche/"&gt;&lt;paaAttivaRPTRisposta&gt;&lt;fault&gt;&lt;faultCode&gt;PAA_ATTIVA_RPT_IMPORTO_NON_VALIDO&lt;/faultCode&gt;&lt;faultString&gt;L'importo del pagamento in attesa non è congruente con il dato indicato dal PSP&lt;/faultString&gt;&lt;id&gt;80002950766&lt;/id&gt;&lt;/fault&gt;&lt;esito&gt;KO&lt;/esito&gt;&lt;/paaAttivaRPTRisposta&gt;/ns5:paaAttivaRPTRisposta/soap:Body/soap:Envelope  N.B: I test con importi 12.91, 13.91, 500 sono andati tutti a buon fine, quindi sembrerebbe un problema solo di importi con .00 </body>
+		<created>2016-05-30 08:27:11</created>
+		<closed>2016-05-30 08:58:33</closed>
+	</bug>
+</bugs>

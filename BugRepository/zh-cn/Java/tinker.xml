@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="tinker">
+	<bug id="762" opendate="2018-01-30 09:33:06" fixdate="2018-02-22 03:14:45">
+		<buginformation>
+			<summary>添加自定义字体资源文件，打补丁包失败</summary>
+			<description>Error:Execution failed for task ':app:tinkerProcessReleaseResourceId'. &gt; com.tencent.tinker.build.aapt.AaptUtil$AaptUtilException: /Users/apple/AndroidStudioProjects/Jian/app/build/intermediates/res/merged/release/font is not a valid resource sub-directory.  打补丁包的时候提示这个信息，工程里包含了自定义字体的资源文件夹 ![image](https://user-images.githubusercontent.com/13451082/35558659-9e1541f6-05e3-11e8-8840-6fbd9422776b.png)    Tinker版本 1.9.1  gradle版本 3.0.1  系统 Mac</description>
+		</buginformation>
+		<fixedfiles>
+			<file>tinker-build/tinker-patch-lib/src/main/java/com/tencent/tinker/build/aapt/RDotTxtEntry.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>152</id>
+		<title>コンティニュー時に不正文字でエラー</title>
+		<body>入力の-1チェックしていないのでするようにして下さい</body>
+		<created>2016-12-16 06:23:21</created>
+		<closed>2016-12-16 07:50:43</closed>
+	</bug>
+	<bug>
+		<id>144</id>
+		<title>コンソールで文字化け</title>
+		<body>Windowsのコンソールで実行すると文字化けする  ## 原因 Formmterでformatしてるところだけ文字化けしている</body>
+		<created>2016-12-16 04:28:58</created>
+		<closed>2016-12-16 07:51:13</closed>
+	</bug>
+	<bug>
+		<id>140</id>
+		<title>移動コマンド修正</title>
+		<body>#133 対応</body>
+		<created>2016-12-09 08:16:53</created>
+		<closed>2016-12-16 05:41:44</closed>
+	</bug>
+	<bug>
+		<id>139</id>
+		<title>表記方法統一</title>
+		<body>#133 対応  現在、ルールでは侍だけど職業選択欄ではSAMURAIと表記が揺れています。 なのでSAMURAI等ローマ字で統一して下さい  ## なぜローマ字表記か? このゲームは結構文字カウントとかして表示位置を調整してるけど日本語は2バイト分使って1文字という残念仕様になっています。なのでローマ字で統一したほうが何かと都合が良いのです。</body>
+		<created>2016-12-09 08:15:45</created>
+		<closed>2016-12-11 22:38:27</closed>
+	</bug>
+	<bug>
+		<id>135</id>
+		<title>職業で誤りがあった場合に最初まで戻る</title>
+		<body>#133 対応  職業を選ぶとき、間違った入力をすると最初のストーリーを読むまで戻ってしまいます。  なので職業選択のところをメソッドで切り分けてそこで再帰処理させて下さい</body>
+		<created>2016-12-09 08:06:09</created>
+		<closed>2016-12-11 22:09:10</closed>
+	</bug>
+	<bug>
+		<id>128</id>
+		<title>体力が0になってもゲームオーバーにならない</title>
+		<body>&lt;img width="258" alt="screen shot 2016-12-05 at 22 30 30" src="https://cloud.githubusercontent.com/assets/11902894/20886663/863e0d5a-bb3a-11e6-9893-103b4b037e43.png"&gt;   まあ乱数ありだからなかなか再現しないだろうけど一応</body>
+		<created>2016-12-05 13:31:56</created>
+		<closed>2016-12-05 14:06:12</closed>
+	</bug>
+	<bug>
+		<id>124</id>
+		<title>ボスのが特殊攻撃を連続使用してくる</title>
+		<body>``` 敵体力 : [=========           ] コマンドを選択して下さい 1 : 通常攻撃 2 : 変わり身の術 &gt; 2  変わり身の術を使った!! 織田信長に17のダメージを与えた 織田信長は全ての力を解き放った!! NINJAは56のダメージ! しかし、身代わりだった!! ------STATUS------ | NAME  NINJA    | | LEVEL 4        | | EXP   8        | | HP    44 / 100 | | EP    1 / 2    | | ATK   66       | | DEF   36       | ------------------ 敵体力 : [======              ] コマンドを選択して下さい 1 : 通常攻撃 2 : 変わり身の術 &gt; 1  NINJAの攻撃! 32のダメージ! 織田信長は全ての力を解き放った!! NINJAは56のダメージ! しかし、身代わりだった!! ```</body>
+		<created>2016-12-05 06:56:17</created>
+		<closed>2016-12-06 00:50:22</closed>
+	</bug>
+	<bug>
+		<id>115</id>
+		<title>ボスの溜めダメージ</title>
+		<body>ボスの溜めダメージが強すぎてサムライレベル6体力ほぼMAXでも即死したので1.5倍にしました。。。</body>
+		<created>2016-12-04 07:41:58</created>
+		<closed>2016-12-04 12:42:34</closed>
+	</bug>
+	<bug>
+		<id>112</id>
+		<title>ボスが溜めない</title>
+		<body>ボスが強攻撃をしない</body>
+		<created>2016-12-04 07:15:23</created>
+		<closed>2016-12-04 07:43:20</closed>
+	</bug>
+	<bug>
+		<id>109</id>
+		<title>のこりターンが1のとき移動後に死ぬ</title>
+		<body>このままだと残り1でボスに挑めなくなるので回避したい</body>
+		<created>2016-12-04 06:36:12</created>
+		<closed>2016-12-04 07:20:44</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>足軽特技バグ</title>
+		<body>``` 徳川家康 Level2が現れた!! ------STATUS------- | NAME  ASHIGARU  | | LEVEL 1         | | EXP   0         | | HP    110 / 110 | | EP    4 / 4     | | ATK   40        | | DEF   35        | ------------------- 敵体力 : [====================] コマンドを選択して下さい 1 : 通常攻撃 2 : 特殊攻撃 3 : 逃走 &gt; 2  一揆を使った!! 徳川家康に19のダメージを与えた!! 徳川家康の攻撃! 21のダメージ! ------STATUS------ | NAME  ASHIGARU | | LEVEL 1        | | EXP   0        | | HP    89 / 110 | | EP    3 / 4    | | ATK   40       | | DEF   35       | ------------------ 敵体力 : [================    ] コマンドを選択して下さい 1 : 通常攻撃 2 : 特殊攻撃 3 : 逃走 &gt; 2  一揆を使った!! 徳川家康に19のダメージを与えた!! 徳川家康の攻撃! 19のダメージ! ```   一揆で反撃をしない。カモン天草四朗</body>
+		<created>2016-12-02 08:33:51</created>
+		<closed>2016-12-02 08:46:40</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>ターン回復</title>
+		<body>ターン回復忘れてた</body>
+		<created>2016-12-02 07:42:51</created>
+		<closed>2016-12-03 20:06:41</closed>
+	</bug>
+	<bug>
+		<id>81</id>
+		<title>初期ターン</title>
+		<body>初期ターン→20</body>
+		<created>2016-12-02 07:41:00</created>
+		<closed>2016-12-03 20:08:10</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>ボスに挑める条件</title>
+		<body>ボスに挑める条件→レベル4</body>
+		<created>2016-12-02 07:40:15</created>
+		<closed>2016-12-03 20:06:01</closed>
+	</bug>
+</bugs>

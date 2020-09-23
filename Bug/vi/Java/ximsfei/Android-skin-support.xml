@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>151</id>
+		<title>’ java.lang.ref.Reference.get()' on a null object reference</title>
+		<body>  从Android Studio运行到手机上，报错 java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.ref.Reference.get()' on a null object reference                                                        at skin.support.app.SkinActivityLifecycle$LazySkinObserver.updateSkin(SkinActivityLifecycle.java:184)  这里的代码是这样的：         public void updateSkin(SkinObservable observable, Object o) {             // 当前Activity，或者非Activity，立即刷新，否则延迟到下次onResume方法中刷新。             if (mContext == mCurActivityRef.get()                     || !(mContext instanceof Activity)) { 只有从Android Studio运行到手机，打开Welcome页面的时候闪退，再次打开app不再报错。怎么解决，麻烦给点建议。</body>
+		<created>2018-05-17 11:31:35</created>
+		<closed>2018-05-21 06:03:34</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>内存消耗严重</title>
+		<body>1.植入换肤模块后，刷新图片列表(RecyclerView)，GC基本失效，内存基本只升不降，去掉后恢复正常， 2.控制台一直打log，影响项目调试，希望关掉多余日志。</body>
+		<created>2017-03-04 15:53:38</created>
+		<closed>2017-05-22 02:15:17</closed>
+	</bug>
+</bugs>

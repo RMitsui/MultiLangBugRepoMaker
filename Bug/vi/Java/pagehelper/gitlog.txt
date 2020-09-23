@@ -1,0 +1,3536 @@
+ed5549c2adf23c34972f42e0109d06200d9440a9, 5.2.0 更新日志, Sun Jul 26 22:00:26 2020 +0800
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+7cd35487c915593e0bb86fd96212f1ea8aaff012, Page to PageInfo 时可以指定转换函数来转换 List 值的类型。, Sat Jul 25 23:33:16 2020 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+95ac85781e9e10f80fb12e62879291a52137a874, 增加针对 BoundSqlInterceptor 的单元测试, Sat Jul 25 23:06:09 2020 +0800
+A	src/test/java/com/github/pagehelper/test/basic/provider/TestBoundSqlInterceptor.java
+M	src/test/java/com/github/pagehelper/test/basic/provider/TestProviderInteceptor.java
+M	src/test/resources/hsqldb/mybatis-config-interceptor.xml
+M	src/test/resources/mysql/mybatis-config-interceptor.xml
+
+e4d060c49fb8863c5b5d93bcef7bcf6cb115bf7b, 增加分页插件的 BoundSqlInterceptor 拦截器，可以在3个阶段对 SQL 进行处理或者简单读取，增加参数 boundSqlInterceptors，可以配置多个实现 BoundSqlInterceptor 接口的实现类名，使用英文逗号隔开。PageHelper调用时，也可以通过类似 PageHelper.startPage(x,x).boundSqlInterceptor(BoundSqlInterceptor boundSqlInterceptor)针对本次分页进行设置。, Sat Jul 25 22:48:13 2020 +0800
+A	src/main/java/com/github/pagehelper/BoundSqlInterceptor.java
+A	src/main/java/com/github/pagehelper/BoundSqlInterceptorChain.java
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+A	src/main/java/com/github/pagehelper/page/PageBoundSqlInterceptors.java
+M	src/main/java/com/github/pagehelper/util/ExecutorUtil.java
+
+194b605892534ef07c7d92ec151b52db4f96e46b, 考虑兼容性，支持3.1.0+，但是只有 3.4.0+这段代码才有效, Sat Jul 25 22:26:01 2020 +0800
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/main/java/com/github/pagehelper/util/ExecutorUtil.java
+A	src/test/resources/hsqldb/mybatis-config-interceptor.xml
+
+b680e3e2c5a6939234b910dd0a452536b07d4d39, 增加SqlProviderInterceptor的测试用例, Thu Jul 23 04:22:29 2020 +0800
+A	src/test/java/com/github/pagehelper/test/basic/provider/SqlCache.java
+A	src/test/java/com/github/pagehelper/test/basic/provider/SqlCacheInterceptor.java
+A	src/test/java/com/github/pagehelper/test/basic/provider/TestProviderInteceptor.java
+A	src/test/java/com/github/pagehelper/util/MybatisInterceptorHelper.java
+A	src/test/resources/mysql/mybatis-config-interceptor.xml
+
+c7d6be6db28d34429944218354c16ce0de0a8359, 处理单个参数ProviderSql的情况, Thu Jul 23 03:41:01 2020 +0800
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/main/java/com/github/pagehelper/util/ExecutorUtil.java
+
+aa689dbbdfe59c68f50ef40f26e9e023cc868ae2, 修改 sql 脚本, Wed Jul 22 22:32:45 2020 +0800
+M	src/test/resources/mysql/mysql.sql
+
+b5776d0b9eadf59d70814aad9e2bef17da01f6a3, 两个类型错误, Wed Jul 22 22:14:38 2020 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/HerdDBDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialect.java
+
+0e160180061d87d8077b9d855222c6b580325e96, ROW_ID 改为 PAGEHELPER_ROW_ID，避免和常用名冲突，fixed #442, Tue Jul 21 23:43:04 2020 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/Oracle9iDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/Db2RowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/OracleRowBoundsDialect.java
+
+cd51b08ff957625cf52fe87c1f58464466a9d4cb, SQL拼接中增加换行，避免SQL中的注释导致后面追加部分被注释引起错误，fixed #459, Tue Jul 21 23:39:58 2020 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/HerdDBDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/InformixDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/Oracle9iDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/Db2RowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/HerdDBRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/HsqldbRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/InformixRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/MySqlRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/OracleRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServer2012RowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/test/resources/com/github/pagehelper/mapper/UserMapper.xml
+
+3e12775c14722093d6f9b8a69e9c6c0fa9dcd0be, 升级mybatis版本为3.5.5，升级分页插件版本为 5.2.0, Tue Jul 21 23:18:08 2020 +0800
+M	pom.xml
+
+4cce0a97a03ec2b885dc762bbc0164a23b610308, 解决 offset 方式的BUG，fixed #534, #423, Tue Jul 21 23:10:09 2020 +0800
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/test/java/com/github/pagehelper/test/basic/OffsetTest.java
+
+3e5bdcc68bbd6d8b6285054d1352f06c062b54ba, 解决 pageSizeZero 功能不完整的BUG，fixed #506, Tue Jul 21 22:43:43 2020 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeLessThenOrEqualZeroTest.java
+M	src/test/java/com/github/pagehelper/test/reasonable/PageTest.java
+
+a93195e1c0833d5014aa59d0584dbf15c40eabae, 解决 reasonable 时，pageNum < 0 时无效的 BUG, fixed #498, Tue Jul 21 22:21:36 2020 +0800
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/test/java/com/github/pagehelper/test/reasonable/PageTest.java
+
+23286824152c686b80a0dd8c364d632e58eb55bc, fixed #499 #14, Tue Jul 21 21:45:38 2020 +0800
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+
+4ae1a811841fee8db5753a638642fb2669d55779, 修改正则，closed #512, Tue Jul 21 21:25:25 2020 +0800
+M	src/main/java/com/github/pagehelper/dialect/replace/RegexWithNolockReplaceSql.java
+
+480a0d37114429cfad5d075097ac59acb28b2e28, #519 测试, Tue Jul 21 21:04:04 2020 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+
+be1b31fc7ec3d74000e65c0b67c85fc444d221af, jsqlparser升级到3.2版本，对sqlserver支持更好, Tue Jul 21 20:55:10 2020 +0800
+M	pom.xml
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+d323b6087da9db97ca24191e80e76eb483b854d4, 针对性测试，没有发现问题。closed #529, Mon Jul 20 23:47:20 2020 +0800
+M	src/test/java/com/github/pagehelper/mapper/ProviderMethod.java
+M	src/test/java/com/github/pagehelper/mapper/UserMapper.java
+M	src/test/java/com/github/pagehelper/test/basic/provider/TestProvider.java
+
+6c64fc7bf137eee14974f35d2027ab8c2db8fb96, 理解错误，还原代码 closed #534, Mon Jul 20 23:38:15 2020 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+
+c1d2134088fc63ee7c4e2d6a2069190a6555abfc, 将 startRow, endRow, total 类型从 int 改为 long，修改对应参数类型。fixed #530, Mon Jul 20 23:37:37 2020 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/HerdDBDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/InformixDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/Oracle9iDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012Dialect.java
+
+2850f65e7005cf81ddb156b75862d18a28d257fd, fixed #534, Mon Jul 20 22:37:24 2020 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+
+442ab5b1722aaf570f1d150429a43ad4b601f62b, 支持自动识别 clickhouse, closed #536, Mon Jul 20 22:16:18 2020 +0800
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+7e43ef4563469c66139e63df5f28010b694e1d18, 参考 pr#476 提供 Oracle9iDialect，这也是曾经用过的一种分页方式，可以自己测试选择合适的分页方式。, Mon Jul 20 22:06:49 2020 +0800
+A	src/main/java/com/github/pagehelper/dialect/helper/Oracle9iDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+5fcbb90b61f5cf6eb63013103a73977bea19fe9b,  fix autoDialect fromJdbcUrl 大小写时不能匹配, Mon Feb 24 15:14:18 2020 +0800
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+dd426c0b8043d67b81523826fbd111668d463a4d, 更新 https://mybatis.io, Sat Nov 30 16:42:09 2019 +0800
+M	README.md
+M	README_zh.md
+
+e4d248f10b93f5027dad282ce45000c1ac68987e, Thanks for free JetBrains Open Source license, Sat Nov 30 16:38:29 2019 +0800
+M	README.md
+M	README_zh.md
+
+c9294393f990052a290c9bdbd1ccac3654d57818, 完善全部测试数据, Sat Nov 30 16:28:47 2019 +0800
+D	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/ProviderMethod.java
+A	src/test/java/com/github/pagehelper/mapper/UserMapper.java
+M	src/test/java/com/github/pagehelper/model/Code.java
+R064	src/test/java/com/github/pagehelper/model/Country.java	src/test/java/com/github/pagehelper/model/User.java
+R069	src/test/java/com/github/pagehelper/model/CountryCode.java	src/test/java/com/github/pagehelper/model/UserCode.java
+R071	src/test/java/com/github/pagehelper/model/CountryExample.java	src/test/java/com/github/pagehelper/model/UserExample.java
+R098	src/test/java/com/github/pagehelper/model/CountryQueryModel.java	src/test/java/com/github/pagehelper/model/UserQueryModel.java
+M	src/test/java/com/github/pagehelper/rowbounds/test/PageRowBoundsTest.java
+M	src/test/java/com/github/pagehelper/rowbounds/test/RowBoundsTest.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+M	src/test/java/com/github/pagehelper/test/basic/ArgumentsMapTest.java
+M	src/test/java/com/github/pagehelper/test/basic/ArgumentsObjTest.java
+M	src/test/java/com/github/pagehelper/test/basic/CloseableTest.java
+M	src/test/java/com/github/pagehelper/test/basic/CollectionMapTest.java
+M	src/test/java/com/github/pagehelper/test/basic/CountColumnTest.java
+M	src/test/java/com/github/pagehelper/test/basic/EnumTest.java
+M	src/test/java/com/github/pagehelper/test/basic/IPageTest.java
+M	src/test/java/com/github/pagehelper/test/basic/OffsetTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageInfoTest.java
+M	src/test/java/com/github/pagehelper/test/basic/RemoveOrderTest.java
+M	src/test/java/com/github/pagehelper/test/basic/TestDistinct.java
+M	src/test/java/com/github/pagehelper/test/basic/TestExecute.java
+M	src/test/java/com/github/pagehelper/test/basic/TestISelect.java
+M	src/test/java/com/github/pagehelper/test/basic/TestIntMax.java
+M	src/test/java/com/github/pagehelper/test/basic/TestLike.java
+M	src/test/java/com/github/pagehelper/test/basic/TestNamespaceMap.java
+M	src/test/java/com/github/pagehelper/test/basic/annotations/TestAnnotations.java
+M	src/test/java/com/github/pagehelper/test/basic/cache/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/basic/cache/SecondCacheTest.java
+M	src/test/java/com/github/pagehelper/test/basic/count/TestGroupBy.java
+M	src/test/java/com/github/pagehelper/test/basic/count/TestSelectItems.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicChoose.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicForeach.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf2.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIfOrder.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIfTwoList.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicWhere.java
+M	src/test/java/com/github/pagehelper/test/basic/example/TestExample.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterArray.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterList.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterMap.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterNone.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterOne.java
+M	src/test/java/com/github/pagehelper/test/basic/provider/TestProvider.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestExists.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestLeftjoin.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestUnion.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestWith.java
+M	src/test/java/com/github/pagehelper/test/namespace/BasicTest.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeLessThenOrEqualZeroTest.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeZeroTest.java
+M	src/test/java/com/github/pagehelper/test/reasonable/PageTest.java
+M	src/test/java/com/github/pagehelper/test/rowbounds/RowBoundsTest.java
+R067	src/test/resources/com/github/pagehelper/mapper/CountryMapper.xml	src/test/resources/com/github/pagehelper/mapper/UserMapper.xml
+M	src/test/resources/db2/mybatis-config-pagesizezero.xml
+M	src/test/resources/db2/mybatis-config-reasonable.xml
+M	src/test/resources/db2/mybatis-config-rowbounds.xml
+M	src/test/resources/db2/mybatis-config.xml
+M	src/test/resources/derby/derby.sql
+M	src/test/resources/derby/mybatis-config-pagesizezero.xml
+M	src/test/resources/derby/mybatis-config-reasonable.xml
+M	src/test/resources/derby/mybatis-config-rowbounds.xml
+M	src/test/resources/derby/mybatis-config.xml
+M	src/test/resources/h2/h2.sql
+M	src/test/resources/h2/mybatis-config-pagesizezero.xml
+M	src/test/resources/h2/mybatis-config-reasonable.xml
+M	src/test/resources/h2/mybatis-config-rowbounds.xml
+M	src/test/resources/h2/mybatis-config.xml
+M	src/test/resources/hsqldb/hsqldb.sql
+M	src/test/resources/hsqldb/mybatis-config-pagesizezero.xml
+M	src/test/resources/hsqldb/mybatis-config-reasonable.xml
+M	src/test/resources/hsqldb/mybatis-config-rowbounds.xml
+M	src/test/resources/hsqldb/mybatis-config.xml
+M	src/test/resources/mariadb/mariadb.sql
+M	src/test/resources/mariadb/mybatis-config-pagesizezero.xml
+M	src/test/resources/mariadb/mybatis-config-reasonable.xml
+M	src/test/resources/mariadb/mybatis-config-rowbounds.xml
+M	src/test/resources/mariadb/mybatis-config.xml
+M	src/test/resources/mysql/mybatis-config-pagesizezero.xml
+M	src/test/resources/mysql/mybatis-config-reasonable.xml
+M	src/test/resources/mysql/mybatis-config-rowbounds.xml
+M	src/test/resources/mysql/mybatis-config.xml
+M	src/test/resources/mysql/mysql.sql
+M	src/test/resources/oracle/mybatis-config-pagesizezero.xml
+M	src/test/resources/oracle/mybatis-config-reasonable.xml
+M	src/test/resources/oracle/mybatis-config-rowbounds.xml
+M	src/test/resources/oracle/mybatis-config.xml
+M	src/test/resources/oracle/oracle.sql
+M	src/test/resources/postgresql/mybatis-config-pagesizezero.xml
+M	src/test/resources/postgresql/mybatis-config-reasonable.xml
+M	src/test/resources/postgresql/mybatis-config-rowbounds.xml
+M	src/test/resources/postgresql/mybatis-config.xml
+M	src/test/resources/postgresql/postgresql.sql
+M	src/test/resources/rowbounds/hsqldb.sql
+M	src/test/resources/rowbounds/mybatis-config.xml
+M	src/test/resources/sqlserver/mybatis-config-pagesizezero.xml
+M	src/test/resources/sqlserver/mybatis-config-reasonable.xml
+M	src/test/resources/sqlserver/mybatis-config-rowbounds.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+M	wikis/en/Changelog.md
+M	wikis/en/HowToUse.md
+M	wikis/zh/Changelog.md
+M	wikis/zh/HowToUse.md
+
+33cb6aff24abc3e33bc5d2ef443af88a99044f44, #fix fix ci error,remove JDK 1.6 and 1.7 environment, Fri Nov 29 17:55:42 2019 +0800
+M	.travis.yml
+
+3aab44ff9e00abf6f5db154ccd882428d0dd8511, 完善数据库列表, Wed Nov 27 09:58:03 2019 +0800
+M	README.md
+M	README_zh.md
+
+2472a222cfeebdf7df7def0ceda45ece103558b7, release 5.1.11, Tue Nov 26 23:22:49 2019 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+bd705f2245cc54c4c139921ea2105705bad1a687, update doc, Tue Nov 26 23:16:39 2019 +0800
+M	README.md
+M	README_zh.md
+
+4eaf69619f4298a7c0afc6b1e0dac36515459055, fix some typos and grammar issues, Tue Nov 26 14:50:38 2019 +0800
+M	README.md
+
+fc901810a650970943df64e3bb2312ab21cacf0a, Add support for HerdDB - support HerdDB, mostly like MySQL - auto detect HerdDB, Wed Oct 2 14:40:51 2019 +0200
+A	src/main/java/com/github/pagehelper/dialect/helper/HerdDBDialect.java
+A	src/main/java/com/github/pagehelper/dialect/rowbounds/HerdDBRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+5d401c46a12c02de1f6d4c29d3319447ef61cff4, 神通数据库分页支持, Fri Sep 20 11:02:32 2019 +0800
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+d6d985899bdf9e93c8c84f166ec32c6a4953b22c, 增加神通数据库的支持, Fri Sep 20 10:29:25 2019 +0800
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+9dade15d30f7a62bc6a8ce62fc288a5c6158ee79, 发布 5.1.10, Wed Jun 5 21:29:34 2019 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+1801260c9de8350448ca7a07f267d8c635a8c140, 验证 #389，结果发现由于默认的 ReplaceSql 导致 sqlserver 分页失败，因此修改 replaceSql 默认值为 regex 实现，可以几乎 100% 支持 sqlserver 分页。, Wed Jun 5 21:11:32 2019 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialect.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+780357a8734bb53d396f08a81292a0ab602076cd, 验证 #https://github.com/pagehelper/pagehelper-spring-boot/issues/76, Wed Jun 5 21:04:39 2019 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+677bac07609390a8c0ba0f5452eaee8c2de3cdeb, Create issue_template.md, Wed Jun 5 10:01:39 2019 +0800
+A	.github/issue_template.md
+
+70135993643cefc008556005047bb536f1ac1248, 发布 5.1.9 版本, Wed May 29 21:42:11 2019 +0800
+M	pom.xml
+
+782babfb41569399fbab091259dee0a6986f28c0, 发布 5.1.9 版本, Wed May 29 21:31:25 2019 +0800
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+a550b21a4aad950fdc117de351ab670854e6ac79, 解决三处可能会导致countColumn失效的问题 fixed #325, Wed May 29 20:59:46 2019 +0800
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+
+1cb914f6de6095f69199bcb6a7f0983b7125186b, 验证 issues 306 的 SQL，2.0 的 jsqlparser 已支持，fixed #306, Wed May 29 20:57:16 2019 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+4e3e17eadc0c45fc9a3f26d06c88486712f33528, 解决 BIT_ 少的逗号 fixed #341, Wed May 29 20:40:08 2019 +0800
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+
+bfe3e2c06d0da9f90eae4fe0eb32755dd57a67ea, 处理文档中的失效链接, Tue May 28 22:42:04 2019 +0800
+M	README.md
+M	README_zh.md
+
+5873261b80f715a3928ae4c7f0591fa342529de0, 先改版本为 5.1.9-SNAPSHOT，用于处理近半年的各种 issues, Tue May 28 22:25:32 2019 +0800
+M	pom.xml
+
+c6d36f1c840bc9146194524153313fb2acc98154, 解决 MetaObject 版本兼容性问题 fixed #349, Tue May 28 22:18:55 2019 +0800
+M	src/main/java/com/github/pagehelper/util/MetaObjectUtil.java
+
+1253eacc3f0394368f6fa85c34912d3f9fa8dfa3, 验证 issues 350 的 SQL，2.0 的 jsqlparser 已支持，fixed #350, Tue May 28 22:01:56 2019 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+
+dc4373587393736fb48f99b133ccb8b405028e22, 验证 issues 345 的 SQL，2.0 的 jsqlparser 已支持，fixed #345, Tue May 28 21:51:35 2019 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+d99dd1c1a359d576e7d9da60291ee2125879179e, 文档示例错误，fixed #366, Tue May 28 21:43:13 2019 +0800
+M	wikis/en/HowToUse.md
+
+d1ed065e0316a98f41f0e71958c55e237b89f055, fixed #373 NPE 问题, Tue May 28 21:33:17 2019 +0800
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+
+22c349c7ea6df7f2044a004ab002c076f3c19b64, 处理 order by 解析失败时输出警告日志，不在抛出异常, Tue May 28 21:31:13 2019 +0800
+M	src/main/java/com/github/pagehelper/parser/OrderByParser.java
+
+bf8f67c08d03e9cf326af17b0ecc29818274c206, 验证 issues 386 的 SQL，2.0 的 jsqlparser 已支持，fixed #386, Tue May 28 21:14:08 2019 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+5808e2a50effc51e06bcaa248185982774a37f4f, 验证 issues 377 的 SQL，2.0 的 jsqlparser 已支持，fixed #377, Tue May 28 21:10:42 2019 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+3200d46e2fd863b47d79015cbd312faf66a461b9, 完善分页逻辑判断，fixed #389, Tue May 28 21:05:04 2019 +0800
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+
+d235902a67f553fbae633c749294d1bf166cb6d6, 升级 jsqlparser 为 2.0，升级 mybatis 为 3.5.1，解决兼容性问题。, Tue May 28 21:03:59 2019 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServerParser.java
+R097	src/test/java/Ognl.java	src/test/java/com/github/pagehelper/util/Ognl.java
+M	src/test/resources/com/github/pagehelper/mapper/CountryMapper.xml
+
+319750fd47cf75328ff321f38125fa15e954e60f, 发布 5.1.8 和更新日志, Sun Nov 11 20:11:49 2018 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+838fd46c2ef19d8701d28149dfb153191bed290d, !10 解决sqlserver中with(nolock)报错的问题 Merge pull request !10 from 吕树临疯/master, Thu Nov 8 17:54:24 2018 +0800
+27089e577eba58dcac64cc2e305b89df35b63599, 解决sqlserver中with(nolock)的问题, Thu Nov 1 18:11:40 2018 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialect.java
+
+525394c61d91be4961db749719a9e898183e3c1d, 发布 5.1.7 和更新日志, Wed Oct 10 21:03:28 2018 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+b83cae51b5f3d31d52d0de0060e5ecd336a15895, 增加对阿里云PPAS数据库的支持，自动识别edb，fixed #281, Sun Sep 16 10:20:07 2018 +0800
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+7ea4eb0f0fcc24978a6000479051d175b29f6a40, 发布 5.1.6 和更新日志, Tue Sep 4 21:52:48 2018 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+593646eda0dd47573067eaefdd9f65278d973ccd, 增加 IPage 接口，目前支持 mybatis 查询方法只有一个参数，并且参数实现 IPage 接口时，如果存在分页参数，就会自动进行分页查询。感谢 [moonfruit](https://github.com/moonfruit) 两年前的 issue。, Tue Sep 4 21:39:48 2018 +0800
+A	src/main/java/com/github/pagehelper/IPage.java
+M	src/main/java/com/github/pagehelper/page/PageParams.java
+M	src/main/java/com/github/pagehelper/util/PageObjectUtil.java
+A	src/test/java/com/github/pagehelper/test/basic/IPageTest.java
+
+f7eab7587188953d6232ffb082620f9f1c2e63f2, 增加参数 useSqlserver2012，设置为 true 后，使用 sqlserver2012 作为默认分页方式，这种情况在动态数据源时方便使用。默认使用的低版本分页方式。, Tue Sep 4 20:43:30 2018 +0800
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+4e5557a770bc0750a78b01b2a1a78aa145b9fbf5, 优化代码结构, Tue Sep 4 07:10:36 2018 +0800
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+A	src/main/java/com/github/pagehelper/util/ExecutorUtil.java
+
+a274ff744b9e5581483ccd054030640f5fe5c672, 解决 HashSet 的并发问题 fixed #276, Mon Sep 3 21:27:00 2018 +0800
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+
+f4df55cc6bded85a3585a3056a965aae74acdcd1, 5.1.5 更新日志，完善文档。, Sun Sep 2 19:46:25 2018 +0800
+M	wikis/en/Changelog.md
+M	wikis/en/HowToUse.md
+M	wikis/zh/Changelog.md
+M	wikis/zh/HowToUse.md
+
+69c1a4e843d0d8261814b5cca84d3bd1dccc3f9c, 新增 aggregateFunctions 参数, 允许手动添加聚合函数（影响行数），所以以聚合函数开头的函数，在进行 count 转换时，会套一层。其他函数和列会被替换为 count(0),其中count列可以自己配置。, Sun Sep 2 18:13:49 2018 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+
+321844ebdaf44101b7bb8ed8e0474871467b6f08, 发生异常时，传递异常 fixed #200, Sun Sep 2 16:58:45 2018 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServerRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/parser/SqlServerParser.java
+M	src/main/java/com/github/pagehelper/util/PageObjectUtil.java
+
+af0f21b0c5178ab42a8da7bf7d86929633a45061, Update SqlUtil.java, Thu Mar 29 14:37:31 2018 +0800
+M	src/main/java/com/github/pagehelper/util/SqlUtil.java
+
+3b8b6d829a1b2747565cd30603f985c7f590f04a, Merge branch 'master' into master, Sun Sep 2 16:38:31 2018 +0800
+972350f6468d29fab17fe7f1502571685020515e, fix pageNum=0, Fri Jul 6 00:15:01 2018 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+
+c6df09e1f4cf137c25ca0d302824549e5035b1bd, 移除多余的空格, Fri Aug 3 13:00:54 2018 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+
+0e794f7fff772272236f5295c9d202724f3c4191, 修复Oracle分页会漏查数据的问题, Fri Aug 3 12:59:47 2018 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+
+0cae02a5cce16e883c2b2ec848ac4fa236dda262, Spring bean 方式配置时，如果没有配置属性就不会执行下面的 setProperties 方法，就不会初始化，因此这里会出现 null 的情况 fixed #26, Sun Sep 2 16:18:54 2018 +0800
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+
+ba2a4165f5552768ce888f2e6b69018ce831f934, 抛出排序时解析失败的异常 fixed #257, Sun Sep 2 15:53:52 2018 +0800
+M	src/main/java/com/github/pagehelper/parser/OrderByParser.java
+
+621c993772d10462233f4eb4d42c64cdb64610d8, 去掉 PageInfo 中存在歧义的 g(s)etFirstPage 和 g(s)etLastPage 两个方法。, Sun Sep 2 15:30:26 2018 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/test/java/com/github/pagehelper/test/basic/PageInfoTest.java
+
+28cc92d9b7bd32a1331536629025fb5509bfc59a, jsqlparser 升级为 1.2 版本，和 1.0 有不兼容的情况，已经解决。 fixed 273., Sun Sep 2 15:27:30 2018 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServerParser.java
+
+d07b76aa55988635c50890b16ac6282789f4c971, 优化mysql ifnull函数导致分页性能问题, Sat Sep 1 12:29:46 2018 +0800
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+
+c05ab142b847735741c0eba136504bfb474412a8, 解决默认反射不带缓存的问题 fixed #275, Sun Sep 2 15:18:21 2018 +0800
+M	src/main/java/com/github/pagehelper/util/MetaObjectUtil.java
+A	src/main/java/com/github/pagehelper/util/MetaObjectWithReflectCache.java
+
+5b083dd0db525574b5b55edc59a46a9afba75247, 新增 gitee 提供的 javadoc 文档, Sun Aug 26 17:57:33 2018 +0800
+M	README.md
+M	README_zh.md
+
+cd6c04d9fd254c41b8d50fb80c7780acf1057539, 修改 javadoc 插件, Sun Aug 26 17:53:22 2018 +0800
+M	pom.xml
+
+4394d7ef9493459981606b26b3ae6036e5b2d831, 更新文档中过期的内容 fixed #266, Sun Aug 26 16:02:06 2018 +0800
+M	wikis/en/HowToUse.md
+M	wikis/zh/HowToUse.md
+
+9080a488df863bcf8a74eeca65bc2c6a80eb324b, 解决 pageKey 多处理一次的小问题 #268, Sun Aug 26 15:30:21 2018 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialect.java
+
+015875a60d5c03afb3262c6ac88b0087267710f8, 修改 offset 注释错误。, Sun Jun 24 22:04:48 2018 +0800
+M	src/main/java/com/github/pagehelper/page/PageMethod.java
+
+ecb86ab42ade2b5b83d39c0ecc12b03d3d9a915d, 优化代码，去掉没必要的校验, Wed Jun 20 17:04:44 2018 +0800
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/InformixDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012Dialect.java
+
+78b4701359ef807192549d74f82a79e9f47bd4b3, 5.1.4 发布, Sun Apr 22 09:46:28 2018 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+f87a0d0d2a1345e324e1f12923b2af569729e43f, 默认增加达梦数据库(dm)，使用Oracle方式进行分页。, Tue Apr 10 20:55:39 2018 +0800
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+a6a608c12cd8572379b9ddd4ea7c1924b76db3c9, 更新日志, Sat Apr 7 21:57:07 2018 +0800
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+35502926d74b49d2984ce2035ab1072354bdf715, 5.1.3 版本发布, Sat Apr 7 20:09:18 2018 +0800
+M	pom.xml
+
+b06f28cfb51e165b2d92c6330324f68886f8e1ca, 添加几个测试用的sql, Sat Apr 7 19:25:55 2018 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+
+93e1f3982fa0b2ad2e1d2ffc3ffc224353dd9f6b, 增加 PageSerializable，简化版的 PageInfo 类。, Sat Apr 7 19:24:34 2018 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+A	src/main/java/com/github/pagehelper/PageSerializable.java
+M	src/test/java/com/github/pagehelper/model/Country.java
+M	src/test/java/com/github/pagehelper/test/basic/PageInfoTest.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+e9aa3e4b7b35907f7c2ccbbe6f8cd532763f8a70, 5.1.3-SNAPSHOT 版本，增加部分功能, Thu Apr 5 22:10:57 2018 +0800
+M	pom.xml
+
+39bc082adf2afcdb889e6b39fcbcf98147f09a94, 增加 dialectAlias 参数，允许配置自定义实现的 别名，可以用于根据JDBCURL自动获取对应实现，允许通过此种方式覆盖已有的实现，配置示例如： <property name="dialectAlias" value="oracle=com.github.pagehelper.dialect.helper.OracleDialect"/>, Thu Apr 5 22:05:39 2018 +0800
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+8f472cde1674e64a2fffffbdea7d79e469b9078a, 增加 defaultCount 参数，用于控制默认不带 count 查询的方法中，是否执行 count 查询，默认 true 会执行 count 查询，这是一个全局生效的参数，多数据源时也是统一的行为。, Thu Apr 5 21:51:18 2018 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/page/PageMethod.java
+
+0719bf4596ea5edf02e3837557a1b048da7b79b1, Page 的 toString 方法增加 super.toString()。最终输出的效果如 Page{属性}[集合]。, Thu Apr 5 21:19:20 2018 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+
+82526235dcc6acfb06298c0977373f83c33a5200, new HashMap<String, String>(6, 1);, Mon Jan 1 15:34:49 2018 +0800
+M	src/main/java/com/github/pagehelper/util/PageObjectUtil.java
+
+11036504184b5c54db970f61b420b618ba9de569, !8 方法内部变量不存在线程同步问题改成StringBuilder Merge pull request !8 from xianlaioy/master, Mon Jan 1 15:33:30 2018 +0800
+498d980dc50048eac371209f9c8a89488dfb90ff, 测试使用 hsqldb 数据库, Sat Dec 30 11:06:09 2017 +0800
+M	src/test/resources/test.properties
+
+0e584d556ba41eb746161d66cc7942321ae4ea69, 增加 spring boot 示例链接, Sat Dec 30 11:01:18 2017 +0800
+M	wikis/zh/HowToUse.md
+
+568072f51487f263103a841d42c5e7734b51951e, 增加一个测试, Sat Dec 30 10:59:50 2017 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterMap.java
+M	src/test/java/com/github/pagehelper/test/basic/provider/TestProvider.java
+M	src/test/resources/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/resources/mysql/mybatis-config-pagesizezero.xml
+M	src/test/resources/mysql/mybatis-config-reasonable.xml
+M	src/test/resources/mysql/mybatis-config-rowbounds.xml
+M	src/test/resources/mysql/mybatis-config.xml
+M	src/test/resources/test.properties
+
+c90a0c81db1876baef197d2eb92c1d21645ab4e0, oracle查询第一页时的两层嵌套排序存在问题，任何情况下都使用三层嵌套, Sat Dec 30 10:58:32 2017 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+
+c5cae9cbbc7bb1a47ad098d1ea05000e76c34cd1, HashMap加载因子改成1，或者5/0.75。默认0.75就会扩容, Mon Nov 27 13:29:10 2017 +0800
+M	src/main/java/com/github/pagehelper/util/PageObjectUtil.java
+
+c96f5ffb64295f67ad42297db76444e7ed58272f, 方法内部变量不存在线程同步问题改成StringBuilder, Mon Nov 27 11:49:16 2017 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+399522f0649e8a14e959cd7b22d09b82fc71d00e, 如需加群，请通过 http://mybatis.tk 首页按钮加群。, Sun Nov 12 13:21:37 2017 +0800
+M	README.md
+M	README_zh.md
+
+12019cb8eedcc9bc182341e46cf96108351ac21c, 解决 informix-sqli #129, Sat Oct 21 13:48:50 2017 +0800
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+d5947437cc6272cb3f1b186cadee74f1f8072cbb, dist: precise, Sun Sep 17 10:44:41 2017 +0800
+M	.travis.yml
+
+1c3556a817925ef978f35cd797de6890c84711a1, 5.1.2, Sun Sep 17 10:38:12 2017 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+d0ea01c12346e355575a505c4cb242746ec56a41, 5.1.2-beta 版本, Fri Sep 1 08:50:49 2017 +0800
+M	pom.xml
+M	wikis/zh/Changelog.md
+
+2b50dac36f595d61dd9a52457de6a7c2270996e8, 解决单独 orderBy 时的bug fixed #110。, Thu Aug 31 21:11:34 2017 +0800
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/test/java/com/github/pagehelper/test/basic/TestLike.java
+
+3d0091331d77f458b613555ff112d5398c8854ff, 5.1.1 版本和更新日志, Wed Aug 30 21:38:25 2017 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/dialect/replace/RegexWithNolockReplaceSql.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServerRowBoundsDialect.java
+M	wikis/zh/Changelog.md
+
+d20fa11f126e1ebb3e9a9b787884b59755458509, 5.1.0 版本和更新日志, Mon Aug 28 21:13:00 2017 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+9cec5fb8b0cb977dde2674c7052e156075c04ab8, PageRowBounds 增加 count 属性，可以控制是否进行 count 查询。, Mon Aug 28 21:05:40 2017 +0800
+M	src/main/java/com/github/pagehelper/PageRowBounds.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/page/PageParams.java
+
+0b1fffbaac5bef55718628f6f12a5141fe101cb4, 5.1.0-beta2, Wed Aug 23 21:45:26 2017 +0800
+M	pom.xml
+M	wikis/zh/Changelog.md
+
+2a42b1d4f1298a8eb197330a493996af81883b69, 增加 ReplaceSql 接口用于处理 sqlServer 的 with(nolock) 问题，增加了replaceSql 参数，可选值为 simple 和 regex，或者是实现了ReplaceSql接口的全限定类名。, Wed Aug 23 21:42:38 2017 +0800
+A	src/main/java/com/github/pagehelper/dialect/ReplaceSql.java
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialect.java
+A	src/main/java/com/github/pagehelper/dialect/replace/RegexWithNolockReplaceSql.java
+A	src/main/java/com/github/pagehelper/dialect/replace/SimpleWithNolockReplaceSql.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+
+30293e26f1ed08ccf910d011469e74ce152921af, 去掉一个TOP100_PERCENT.setPercentage(true);, Wed Aug 23 20:16:59 2017 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlServerParser.java
+
+e8552a24e56fcd7281bb6ecf8e6dbd06a1223c55, 5.1.0-beta 版本和更新日志, Tue Aug 22 21:55:54 2017 +0800
+M	pom.xml
+M	wikis/zh/Changelog.md
+
+766b11594e328f20767e86a80b63b5d54d3bdd26, 参数方式支持 orderBy, Tue Aug 22 21:55:35 2017 +0800
+M	src/main/java/com/github/pagehelper/util/PageObjectUtil.java
+
+5f6224ed21894619a5502826970ab826fa4d684c, 增加排序功能，SQL改为预编译方式, Tue Aug 22 21:21:31 2017 +0800
+A	src/main/java/com/github/pagehelper/Constant.java
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/InformixDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/page/PageMethod.java
+A	src/main/java/com/github/pagehelper/parser/OrderByParser.java
+M	src/test/java/com/github/pagehelper/test/basic/TestLike.java
+M	src/test/java/com/github/pagehelper/test/basic/annotations/TestAnnotations.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicChoose.java
+
+ca43d8ef519d61c7ecf7d64402267d61051cc5a2, 5.1.0-SNAPSHOT, Tue Aug 22 19:55:56 2017 +0800
+M	pom.xml
+
+6a8f4ff156a994f2e7a0854645d9e21257bf5715, https://github.com/pagehelper/Mybatis-PageHelper/issues/98, Thu Aug 17 21:56:43 2017 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+2a90efd15aa3a4324d5dbce894fc7ad26fae4a2e, update 5.0.4, Mon Jul 31 21:05:30 2017 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+1fd06ecba510b2bbe8660cfe2eea6b06ba31e87f, 增加 Phoenix 数据库的简单配置, Mon Jul 31 20:38:42 2017 +0800
+M	README.md
+M	README_zh.md
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+27f403e1e900189b7a0064a34414ad37e0056bdf, 5.0.4-beta 更新日志, Sat Jul 1 20:53:22 2017 +0800
+M	wikis/zh/Changelog.md
+
+dc1e57dead2bc43688f300d74bbeff3ca508e148, 所有查询增加一个_TESTCOUNT后缀的count查询，当设置countSuffix为_TESTCOUNT时，会使用手写的count进行查询。, Sat Jul 1 20:53:00 2017 +0800
+M	src/test/resources/com/github/pagehelper/mapper/CountryMapper.xml
+
+02a45ad7a6f9bad09b21ff15f76bf8c61e8fd40b, countSuffix, Sat Jul 1 20:50:36 2017 +0800
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+
+133998be7f9d6a47c68dfae9a69bbba3bdccf0e2, newCountMappedStatement, Sat Jul 1 20:03:56 2017 +0800
+M	src/main/java/com/github/pagehelper/util/MSUtils.java
+
+96934ea37716884eb466f3d1bad8d9fa8e0093c4, 5.0.4-SNAPSHOT, Sat Jul 1 20:02:32 2017 +0800
+M	pom.xml
+
+9ed685c8c275c637931444f0375c3dcc7fe34430, update qq, Wed Jun 28 06:48:10 2017 +0800
+M	README.md
+M	README_zh.md
+
+a7df371051be42147ec51faef5448960c58605d6, update book, Sun Jun 25 21:53:09 2017 +0800
+M	README.md
+M	README_zh.md
+
+a3841310de2372cadcc788e6c46fd5650cf954cb, update book, Sun Jun 25 21:44:52 2017 +0800
+M	README.md
+M	README_zh.md
+
+419737fba91e1c50d997b15bc2ddfee6407402e1, 5.0.3版本, Tue Jun 20 22:38:28 2017 +0800
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+ae656997d933a72ef8b8e4f0fb08e61f2caf81e3, 解决`supportMethodsArguments`参数不起作用的问题，由于之前默认为`false`，不起作用后效果为`true`，建议升级到最新版本。, Wed Jun 14 20:29:23 2017 +0800
+M	README.md
+M	README_zh.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/page/PageParams.java
+M	wikis/zh/Changelog.md
+
+7adafd2a9c7189970b8595ed105aafc2ce02eb14, 降低  版本支持jdk1.6, Sat Jun 10 19:13:22 2017 +0800
+M	pom.xml
+
+8110e15500c1e3a9ebd281d59dc9132dce33b8d0, 增加.m2缓存，避免重复下载依赖, Sat Jun 10 19:08:18 2017 +0800
+M	.travis.yml
+
+6af0c54d4ae5858ac094c8014b5a75bbf4724c06, 降低 guava 版本支持jdk1.6, Sat Jun 10 19:02:11 2017 +0800
+M	pom.xml
+
+4a40331190da6e76f47c74efa33fb579654c53a4, 增加 .travis.yml 配置, Sat Jun 10 18:54:44 2017 +0800
+A	.travis.yml
+M	README.md
+M	README_zh.md
+
+53b7467b614fb54f6d4be9baeba1949d2b8261b6, 更新依赖版本，jsqlparser升级到1.0，去掉for update限制。, Sat Jun 10 18:15:40 2017 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServerParser.java
+
+f2b66ff3a97ffbef1534cea197931dfdbd728bb2, 发布5.0.2, Sat Jun 3 09:51:11 2017 +0800
+M	README.md
+M	README_zh.md
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+c9ec01a9a284f799b92583d9d0c1dcdfd881dd16, 增加枚举类型的例子 #22, Tue May 30 21:02:36 2017 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+A	src/test/java/com/github/pagehelper/model/Code.java
+A	src/test/java/com/github/pagehelper/model/CountryCode.java
+A	src/test/java/com/github/pagehelper/test/basic/EnumTest.java
+M	src/test/resources/com/github/pagehelper/mapper/CountryMapper.xml
+
+d9b2d0d945e346924c0917f4324a09fe18ca6032, 修改测试，更合理 #46, Tue May 30 20:37:16 2017 +0800
+M	src/test/java/com/github/pagehelper/test/basic/CollectionMapTest.java
+M	src/test/resources/com/github/pagehelper/mapper/CountryMapper.xml
+
+88c3f64677f00e961ab34a1baa80913ca05cf639, `Page<E>` 继承 `Closeable` 接口 #58, Tue May 30 19:05:58 2017 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+A	src/test/java/com/github/pagehelper/test/basic/CloseableTest.java
+M	wikis/zh/Changelog.md
+
+245e5f2f4701bcdbb33d5bff1b824577a99f6868, 5.0.2-beta，解决两个bug, Wed May 10 21:54:52 2017 +0800
+M	pom.xml
+M	wikis/zh/Changelog.md
+
+f8270913f71d95a3cc5d3cd9109b7831f7b157d5, 添加一个嵌套查询的例子。, Wed May 10 21:45:11 2017 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/model/Country.java
+A	src/test/java/com/github/pagehelper/test/basic/CollectionMapTest.java
+M	src/test/resources/com/github/pagehelper/mapper/CountryMapper.xml
+
+7a4c6ebca86ac557972b6d6c3e9649f9d9741c06, 分页取数据时，如果数据一条都没有返回, pageInfo.isIsLastPage(); 返回false #50, Wed May 10 21:31:16 2017 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+084e7258c5c8c9ed9bdcc074358db22bd2a9c882, DB2分页时必须要指定子查询的别名,不然会发生异常 #52, Wed May 10 21:26:01 2017 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/Db2RowBoundsDialect.java
+
+3c52c7fcc996545f629be7558b1e9c272a1f03dd, 更新版本 5.0.1, Sun Apr 23 21:38:56 2017 +0800
+M	README.md
+M	README_zh.md
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+7aba23db4a8b2dd7426d30a796053ef0963d6781, 解决 sqlserver2012 分页错误的问题 [42](https://github.com/pagehelper/Mybatis-PageHelper/issues/42), Sat Apr 22 06:53:48 2017 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServer2012RowBoundsDialect.java
+
+8562d4b40174d4ce2af7faa78977cac3b0d6f2b9, 更新 5.0.1-beta 版本和说明, Sat Apr 8 14:59:08 2017 +0800
+M	pom.xml
+M	wikis/zh/Changelog.md
+
+6e226a611b8f657c329f08b16deac6b10d5e3368, 增加测试, Sat Apr 8 14:39:21 2017 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+A	src/test/java/com/github/pagehelper/test/basic/CountColumnTest.java
+A	src/test/java/com/github/pagehelper/test/basic/TestExecute.java
+M	src/test/resources/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+6b781b515c7223c9aba68a532f36aa2592c15bbe, 增加 countColumn 参数，可以指定 count 列。, Sat Apr 8 14:38:31 2017 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/main/java/com/github/pagehelper/page/PageParams.java
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+
+be876d37c221e19212f2698dbc9d7ed0e33f85f5, fix，标题不能正确显示：  #标题 —> # 标题 修复英文文档中标题不能正确显示的问题, Thu Mar 30 14:54:55 2017 +0800
+M	wikis/en/HowToUse.md
+M	wikis/en/Important.md
+M	wikis/en/Test.md
+M	wikis/zh/HowToUse.md
+M	wikis/zh/Important.md
+M	wikis/zh/Test.md
+
+b1d7cf058a21567efd7cbdb9fcf8222401f02780, 更新群链接, Tue Feb 7 22:05:41 2017 +0800
+M	README.md
+M	README_zh.md
+
+664c375f232c7eb83a12dd01eb01fab8d84145c6, 更新群链接, Tue Feb 7 22:01:54 2017 +0800
+M	README_zh.md
+
+f47692c774a19fec4969094d45e8a84de7e7ad6c, 增加校验:在系统中发现了多个分页插件，请检查系统配置!, Thu Jan 12 20:37:43 2017 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+M	src/main/java/com/github/pagehelper/util/MSUtils.java
+
+30405b7199907d85cac2bfd3dca53ed8dac09288, PageRowBounds 是否进行 count 查询由 rowBoundsWithCount 控制。, Wed Jan 11 23:12:18 2017 +0800
+M	wikis/en/HowToUse.md
+M	wikis/zh/HowToUse.md
+
+e7d5af098dc9abc84712ed62390fa655dbd1f528, update 5.0.0, Mon Jan 2 14:44:28 2017 +0800
+M	README.md
+M	README_zh.md
+M	pom.xml
+M	wikis/en/Changelog.md
+M	wikis/zh/Changelog.md
+
+4cbb7fad8eac0325d718102ec0e17501ea4de234, update README, Mon Jan 2 14:35:13 2017 +0800
+M	README.md
+M	README_zh.md
+M	wikis/en/HowToUse.md
+M	wikis/zh/HowToUse.md
+
+0da3b52234deff231f7bcb9227cc697ae048c9bd, 更新 QueryInterceptor 规范和文档, Sat Dec 31 20:02:37 2016 +0800
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+M	src/main/java/com/github/pagehelper/QueryInterceptor.java
+M	wikis/zh/Interceptor.md
+
+41a6707d14d3dbaecc45d857e7cd2fe10975edd9, QueryInterceptor 规范和文档, Sat Dec 31 17:52:29 2016 +0800
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+A	src/main/java/com/github/pagehelper/QueryInterceptor.java
+A	wikis/zh/Interceptor.md
+
+ede37a3ab9ca7f07dd9a1320467b1b029bfe7564, update 5.0.0-rc, Thu Dec 22 21:30:07 2016 +0800
+M	README.md
+M	README_zh.md
+
+21c47090ed6b67928718d24ea00c926288f6ce17, update 5.0.0-rc, Thu Dec 22 21:21:26 2016 +0800
+M	README.md
+M	README_zh.md
+M	pom.xml
+M	wikis/en/HowToUse.md
+M	wikis/zh/HowToUse.md
+
+669b25a77dc65315790d012140df32c289e6c229, 更新使用文档, Mon Dec 19 22:51:06 2016 +0800
+M	wikis/en/HowToUse.md
+M	wikis/zh/HowToUse.md
+
+b4e1a9d459c5fd063532821d6c8a5e1e87a596d4, 更新使用文档, Mon Dec 19 22:45:00 2016 +0800
+M	wikis/en/HowToUse.md
+M	wikis/zh/HowToUse.md
+
+f8795b00013bca22bbcb7e2e4a25f0e9e44b5bd1, 将不太重要的 Cache 相关代码去掉没用的注释，将异常改为英文, Mon Dec 19 20:50:30 2016 +0800
+M	src/main/java/com/github/pagehelper/cache/CacheFactory.java
+M	src/main/java/com/github/pagehelper/cache/GuavaCache.java
+M	src/main/java/com/github/pagehelper/cache/SimpleCache.java
+
+97cb83c138eeffc832fe594a179248443b3ad636, 解决 #149, Mon Dec 19 20:30:53 2016 +0800
+M	README_zh.md
+M	src/main/java/com/github/pagehelper/page/PageParams.java
+
+0617f6f8288f990458f9ebad7bf336103b353c55, renamed Db2RowDialect to Db2RowBoundsDialect, Sun Dec 18 23:22:30 2016 +0800
+R096	src/main/java/com/github/pagehelper/dialect/rowbounds/Db2RowDialect.java	src/main/java/com/github/pagehelper/dialect/rowbounds/Db2RowBoundsDialect.java
+
+aaeee89ad8442a8412f36c8a4dc364f105c8cc87, update docs, Sun Dec 18 22:36:41 2016 +0800
+M	README_zh.md
+
+83d0b2584c72ac6eb3c69f4b1c2073cdc7975f3d, update docs, Sun Dec 18 22:30:14 2016 +0800
+M	README.md
+
+be70222915876bec8adad35cf102bc4f357778a1, update docs, Sun Dec 18 21:55:47 2016 +0800
+M	README.md
+M	README_zh.md
+M	wikis/en/HowToUse.md
+
+b442b62be4f2ddc76214205c21a0defb3428f004, 移动测试中的 xml, Sun Dec 18 21:49:24 2016 +0800
+M	pom.xml
+R100	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml	src/test/resources/com/github/pagehelper/mapper/CountryMapper.xml
+
+875b74bb878bcce59dfe462ef4d8a7b9cdfece7c, 所有分页插件抛出的异常改为 PageException, Sun Dec 18 21:46:10 2016 +0800
+M	src/main/java/com/github/pagehelper/cache/CacheFactory.java
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServerParser.java
+M	src/main/java/com/github/pagehelper/util/MetaObjectUtil.java
+M	src/main/java/com/github/pagehelper/util/PageObjectUtil.java
+
+a13aa77daa7b211a378c04a05a41d4e4a25ac798, 5.0.0-beta, Sun Dec 18 21:42:52 2016 +0800
+M	README.md
+M	README_zh.md
+M	pom.xml
+A	wikis/en/HowToUse.md
+
+9b9265738b0af989fe00e0bb702538d62e55a857, 新版文档, Sun Dec 18 19:36:58 2016 +0800
+M	wikis/zh/HowToUse.md
+
+ede34e1421e9ecc698f7b42fe9f4d8b0362e1f83, update docs, Sun Dec 18 17:53:59 2016 +0800
+M	README.md
+A	wikis/en/Changelog.md
+A	wikis/en/Important.md
+A	wikis/en/Test.md
+M	wikis/zh/Important.md
+M	wikis/zh/Test.md
+
+66394013e5a1371e72b5042dc054cc5849d7285d, update README, Sun Dec 18 14:34:55 2016 +0800
+M	README.md
+D	README_en.md
+A	README_zh.md
+
+491e489e15d0e2ae3db937d3e59e75c6bd5ab06c, 重命名，去掉重构产生的 Abstract 后缀。, Sun Dec 18 14:34:40 2016 +0800
+R096	src/main/java/com/github/pagehelper/dialect/helper/Db2DialectAbstract.java	src/main/java/com/github/pagehelper/dialect/helper/Db2Dialect.java
+R096	src/main/java/com/github/pagehelper/dialect/helper/HsqldbDialectAbstract.java	src/main/java/com/github/pagehelper/dialect/helper/HsqldbDialect.java
+R096	src/main/java/com/github/pagehelper/dialect/helper/InformixDialectAbstract.java	src/main/java/com/github/pagehelper/dialect/helper/InformixDialect.java
+R096	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialectAbstract.java	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialect.java
+R097	src/main/java/com/github/pagehelper/dialect/helper/OracleDialectAbstract.java	src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java
+R096	src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012DialectAbstract.java	src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012Dialect.java
+R098	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialectAbstract.java	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+
+283491a058af2e1dddd30df5a1f2b9dc0a2ff36d, 更新授权信息, Sun Dec 18 12:53:16 2016 +0800
+M	LICENSE
+M	pom.xml
+M	src/main/java/com/github/pagehelper/Dialect.java
+M	src/main/java/com/github/pagehelper/ISelect.java
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageException.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+M	src/main/java/com/github/pagehelper/PageRowBounds.java
+M	src/main/java/com/github/pagehelper/cache/Cache.java
+M	src/main/java/com/github/pagehelper/cache/CacheFactory.java
+M	src/main/java/com/github/pagehelper/cache/GuavaCache.java
+M	src/main/java/com/github/pagehelper/cache/SimpleCache.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractDialect.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/Db2DialectAbstract.java
+M	src/main/java/com/github/pagehelper/dialect/helper/HsqldbDialectAbstract.java
+M	src/main/java/com/github/pagehelper/dialect/helper/InformixDialectAbstract.java
+M	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialectAbstract.java
+M	src/main/java/com/github/pagehelper/dialect/helper/OracleDialectAbstract.java
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012DialectAbstract.java
+M	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialectAbstract.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/Db2RowDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/HsqldbRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/InformixRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/MySqlRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/OracleRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServer2012RowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServerRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+M	src/main/java/com/github/pagehelper/page/PageMethod.java
+M	src/main/java/com/github/pagehelper/page/PageParams.java
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServerParser.java
+M	src/main/java/com/github/pagehelper/util/MSUtils.java
+M	src/main/java/com/github/pagehelper/util/MetaObjectUtil.java
+M	src/main/java/com/github/pagehelper/util/PageObjectUtil.java
+M	src/main/java/com/github/pagehelper/util/StringUtil.java
+M	src/test/java/Ognl.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/mapper/ProviderMethod.java
+M	src/test/java/com/github/pagehelper/model/Country.java
+M	src/test/java/com/github/pagehelper/model/CountryExample.java
+M	src/test/java/com/github/pagehelper/model/CountryQueryModel.java
+M	src/test/java/com/github/pagehelper/rowbounds/RowBoundsHelper.java
+M	src/test/java/com/github/pagehelper/rowbounds/test/PageRowBoundsTest.java
+M	src/test/java/com/github/pagehelper/rowbounds/test/RowBoundsTest.java
+M	src/test/java/com/github/pagehelper/sql/FunctionCountTest.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+M	src/test/java/com/github/pagehelper/test/basic/ArgumentsMapTest.java
+M	src/test/java/com/github/pagehelper/test/basic/ArgumentsObjTest.java
+M	src/test/java/com/github/pagehelper/test/basic/OffsetTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageInfoTest.java
+M	src/test/java/com/github/pagehelper/test/basic/RemoveOrderTest.java
+M	src/test/java/com/github/pagehelper/test/basic/TestDistinct.java
+M	src/test/java/com/github/pagehelper/test/basic/TestISelect.java
+M	src/test/java/com/github/pagehelper/test/basic/TestIntMax.java
+M	src/test/java/com/github/pagehelper/test/basic/TestLike.java
+M	src/test/java/com/github/pagehelper/test/basic/TestNamespaceMap.java
+M	src/test/java/com/github/pagehelper/test/basic/annotations/TestAnnotations.java
+M	src/test/java/com/github/pagehelper/test/basic/cache/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/basic/cache/SecondCacheTest.java
+M	src/test/java/com/github/pagehelper/test/basic/count/TestGroupBy.java
+M	src/test/java/com/github/pagehelper/test/basic/count/TestSelectItems.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicChoose.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicForeach.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf2.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIfOrder.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIfTwoList.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicWhere.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/Where.java
+M	src/test/java/com/github/pagehelper/test/basic/example/TestExample.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterArray.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterList.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterMap.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterNone.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterOne.java
+M	src/test/java/com/github/pagehelper/test/basic/provider/TestProvider.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestExists.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestLeftjoin.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestUnion.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestWith.java
+M	src/test/java/com/github/pagehelper/test/namespace/BasicTest.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeLessThenOrEqualZeroTest.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeZeroTest.java
+M	src/test/java/com/github/pagehelper/test/reasonable/PageTest.java
+M	src/test/java/com/github/pagehelper/test/rowbounds/RowBoundsTest.java
+M	src/test/java/com/github/pagehelper/util/MybatisHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisReasonableHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java
+M	src/test/java/com/github/pagehelper/util/TestUtil.java
+M	src/test/resources/db2/mybatis-config-pagesizezero.xml
+M	src/test/resources/db2/mybatis-config-reasonable.xml
+M	src/test/resources/db2/mybatis-config-rowbounds.xml
+M	src/test/resources/db2/mybatis-config.xml
+M	src/test/resources/derby/mybatis-config-pagesizezero.xml
+M	src/test/resources/derby/mybatis-config-reasonable.xml
+M	src/test/resources/derby/mybatis-config-rowbounds.xml
+M	src/test/resources/derby/mybatis-config.xml
+M	src/test/resources/h2/mybatis-config-pagesizezero.xml
+M	src/test/resources/h2/mybatis-config-reasonable.xml
+M	src/test/resources/h2/mybatis-config-rowbounds.xml
+M	src/test/resources/h2/mybatis-config.xml
+M	src/test/resources/hsqldb/mybatis-config-pagesizezero.xml
+M	src/test/resources/hsqldb/mybatis-config-reasonable.xml
+M	src/test/resources/hsqldb/mybatis-config-rowbounds.xml
+M	src/test/resources/hsqldb/mybatis-config.xml
+M	src/test/resources/log4j.properties
+M	src/test/resources/mariadb/mybatis-config-pagesizezero.xml
+M	src/test/resources/mariadb/mybatis-config-reasonable.xml
+M	src/test/resources/mariadb/mybatis-config-rowbounds.xml
+M	src/test/resources/mariadb/mybatis-config.xml
+M	src/test/resources/mysql/mybatis-config-pagesizezero.xml
+M	src/test/resources/mysql/mybatis-config-reasonable.xml
+M	src/test/resources/mysql/mybatis-config-rowbounds.xml
+M	src/test/resources/mysql/mybatis-config.xml
+M	src/test/resources/oracle/mybatis-config-pagesizezero.xml
+M	src/test/resources/oracle/mybatis-config-reasonable.xml
+M	src/test/resources/oracle/mybatis-config-rowbounds.xml
+M	src/test/resources/oracle/mybatis-config.xml
+M	src/test/resources/postgresql/mybatis-config-pagesizezero.xml
+M	src/test/resources/postgresql/mybatis-config-reasonable.xml
+M	src/test/resources/postgresql/mybatis-config-rowbounds.xml
+M	src/test/resources/postgresql/mybatis-config.xml
+M	src/test/resources/rowbounds/mybatis-config.xml
+M	src/test/resources/sqlserver/mybatis-config-pagesizezero.xml
+M	src/test/resources/sqlserver/mybatis-config-reasonable.xml
+M	src/test/resources/sqlserver/mybatis-config-rowbounds.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+M	src/test/resources/test.properties
+
+ec2074ca7fb2f1b979b18eaebc88223dcf5432e5, 调整PageHelper继承层次，改为组合方式, Sun Dec 18 12:47:55 2016 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+R085	src/main/java/com/github/pagehelper/dialect/helper/HelperDialect.java	src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java
+R097	src/main/java/com/github/pagehelper/dialect/rowbounds/AbstractRowBoundsDialect.java	src/main/java/com/github/pagehelper/dialect/AbstractRowBoundsDialect.java
+R081	src/main/java/com/github/pagehelper/dialect/helper/impl/Db2Dialect.java	src/main/java/com/github/pagehelper/dialect/helper/Db2DialectAbstract.java
+R077	src/main/java/com/github/pagehelper/dialect/helper/impl/HsqldbDialect.java	src/main/java/com/github/pagehelper/dialect/helper/HsqldbDialectAbstract.java
+R080	src/main/java/com/github/pagehelper/dialect/helper/impl/InformixDialect.java	src/main/java/com/github/pagehelper/dialect/helper/InformixDialectAbstract.java
+R079	src/main/java/com/github/pagehelper/dialect/helper/impl/MySqlDialect.java	src/main/java/com/github/pagehelper/dialect/helper/MySqlDialectAbstract.java
+R082	src/main/java/com/github/pagehelper/dialect/helper/impl/OracleDialect.java	src/main/java/com/github/pagehelper/dialect/helper/OracleDialectAbstract.java
+R083	src/main/java/com/github/pagehelper/dialect/helper/impl/SqlServer2012Dialect.java	src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012DialectAbstract.java
+R094	src/main/java/com/github/pagehelper/dialect/helper/impl/SqlServerDialect.java	src/main/java/com/github/pagehelper/dialect/helper/SqlServerDialectAbstract.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/Db2RowDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/HsqldbRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/InformixRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/MySqlRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/OracleRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServerRowBoundsDialect.java
+R074	src/main/java/com/github/pagehelper/dialect/helper/BaseAutoDialect.java	src/main/java/com/github/pagehelper/page/PageAutoDialect.java
+R071	src/main/java/com/github/pagehelper/dialect/helper/BasePageMethod.java	src/main/java/com/github/pagehelper/page/PageMethod.java
+R081	src/main/java/com/github/pagehelper/dialect/helper/BaseParams.java	src/main/java/com/github/pagehelper/page/PageParams.java
+R084	src/main/java/com/github/pagehelper/dialect/helper/BasePage.java	src/main/java/com/github/pagehelper/util/PageObjectUtil.java
+
+4c96a97fdcfa469f37083bfb4a507441095a3148, 增加针对纯 RowBounds 的测试。, Sun Dec 18 12:16:17 2016 +0800
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+A	src/test/java/com/github/pagehelper/rowbounds/RowBoundsHelper.java
+A	src/test/java/com/github/pagehelper/rowbounds/test/PageRowBoundsTest.java
+A	src/test/java/com/github/pagehelper/rowbounds/test/RowBoundsTest.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+A	src/test/resources/rowbounds/hsqldb.sql
+A	src/test/resources/rowbounds/mybatis-config.xml
+
+d8bfa821648932de108595bab038a8a88c003883, 简化 HelperDialect 接口, Sun Dec 18 11:34:08 2016 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+M	src/main/java/com/github/pagehelper/cache/Cache.java
+M	src/main/java/com/github/pagehelper/cache/CacheFactory.java
+M	src/main/java/com/github/pagehelper/dialect/helper/BaseAutoDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/HelperDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/impl/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/impl/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/impl/InformixDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/impl/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/impl/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/impl/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/helper/impl/SqlServerDialect.java
+
+3ccd46e91efcac4d4d29a70058a49ebe6239c8e1, 更新 5.0.0-SNAPSHOT, Sun Dec 18 11:14:55 2016 +0800
+M	pom.xml
+
+99dff3e86309698bc5b6c0b489bf1c43b3a2ea25, 解决pagehelper方言缩写错误, Sun Dec 18 11:13:56 2016 +0800
+M	src/test/resources/db2/mybatis-config-pagesizezero.xml
+M	src/test/resources/db2/mybatis-config-reasonable.xml
+M	src/test/resources/db2/mybatis-config-rowbounds.xml
+M	src/test/resources/db2/mybatis-config.xml
+M	src/test/resources/derby/mybatis-config-pagesizezero.xml
+M	src/test/resources/derby/mybatis-config-reasonable.xml
+M	src/test/resources/derby/mybatis-config-rowbounds.xml
+M	src/test/resources/derby/mybatis-config.xml
+M	src/test/resources/h2/mybatis-config-pagesizezero.xml
+M	src/test/resources/h2/mybatis-config-reasonable.xml
+M	src/test/resources/h2/mybatis-config-rowbounds.xml
+M	src/test/resources/h2/mybatis-config.xml
+M	src/test/resources/mariadb/mybatis-config-pagesizezero.xml
+M	src/test/resources/mariadb/mybatis-config-reasonable.xml
+M	src/test/resources/mariadb/mybatis-config-rowbounds.xml
+M	src/test/resources/mariadb/mybatis-config.xml
+M	src/test/resources/mysql/mybatis-config-pagesizezero.xml
+M	src/test/resources/mysql/mybatis-config-reasonable.xml
+M	src/test/resources/mysql/mybatis-config-rowbounds.xml
+M	src/test/resources/mysql/mybatis-config.xml
+M	src/test/resources/oracle/mybatis-config-pagesizezero.xml
+M	src/test/resources/oracle/mybatis-config-reasonable.xml
+M	src/test/resources/oracle/mybatis-config-rowbounds.xml
+M	src/test/resources/oracle/mybatis-config.xml
+D	src/test/resources/orderby/hsqldb.sql
+D	src/test/resources/orderby/mybatis-config.xml
+M	src/test/resources/postgresql/mybatis-config-pagesizezero.xml
+M	src/test/resources/postgresql/mybatis-config-reasonable.xml
+M	src/test/resources/postgresql/mybatis-config-rowbounds.xml
+M	src/test/resources/postgresql/mybatis-config.xml
+M	src/test/resources/sqlserver/mybatis-config-pagesizezero.xml
+M	src/test/resources/sqlserver/mybatis-config-reasonable.xml
+M	src/test/resources/sqlserver/mybatis-config-rowbounds.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+M	src/test/resources/test.properties
+
+142e36ce88746e3122e2c488f28dd5fbcf8b16f2, 解决pagehelper方言缩写错误, Sun Dec 18 11:12:44 2016 +0800
+M	src/main/java/com/github/pagehelper/dialect/helper/BaseAutoDialect.java
+
+964a5ebebae2922f93d80ac9403670905686c88c, Merge branch '5.0-simple', Sun Dec 18 10:25:17 2016 +0800
+901c85e5074545f743adb240eac57ca539dc1065, Update wikis, Sun Dec 18 10:24:11 2016 +0800
+M	README.md
+A	README_en.md
+D	wikis/Home.markdown
+D	wikis/Test.markdown
+R099	wikis/Changelog.markdown	wikis/zh/Changelog.md
+R099	wikis/HowToUse.markdown	wikis/zh/HowToUse.md
+R100	wikis/Important.markdown	wikis/zh/Important.md
+A	wikis/zh/Test.md
+
+a5ba2063d4f9c907be7b0e06e61c5920c398ee82, 更新基本文档, Sun Dec 18 10:08:50 2016 +0800
+M	README.md
+M	wikis/Changelog.markdown
+D	wikis/UseOrderBy.md
+
+1d8fde441ec4f136fd80012b2dbcf6d922f0c736, 调整包结构, Sun Dec 18 09:58:47 2016 +0800
+M	src/main/java/com/github/pagehelper/Dialect.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+R097	src/main/java/com/github/pagehelper/helper/BaseAutoDialect.java	src/main/java/com/github/pagehelper/dialect/helper/BaseAutoDialect.java
+R099	src/main/java/com/github/pagehelper/helper/BasePage.java	src/main/java/com/github/pagehelper/dialect/helper/BasePage.java
+R097	src/main/java/com/github/pagehelper/helper/BasePageMethod.java	src/main/java/com/github/pagehelper/dialect/helper/BasePageMethod.java
+R098	src/main/java/com/github/pagehelper/helper/BaseParams.java	src/main/java/com/github/pagehelper/dialect/helper/BaseParams.java
+R087	src/main/java/com/github/pagehelper/helper/HelperDialect.java	src/main/java/com/github/pagehelper/dialect/helper/HelperDialect.java
+R088	src/main/java/com/github/pagehelper/helper/dialect/Db2Dialect.java	src/main/java/com/github/pagehelper/dialect/helper/impl/Db2Dialect.java
+R088	src/main/java/com/github/pagehelper/helper/dialect/HsqldbDialect.java	src/main/java/com/github/pagehelper/dialect/helper/impl/HsqldbDialect.java
+R089	src/main/java/com/github/pagehelper/helper/dialect/InformixDialect.java	src/main/java/com/github/pagehelper/dialect/helper/impl/InformixDialect.java
+R088	src/main/java/com/github/pagehelper/helper/dialect/MySqlDialect.java	src/main/java/com/github/pagehelper/dialect/helper/impl/MySqlDialect.java
+R090	src/main/java/com/github/pagehelper/helper/dialect/OracleDialect.java	src/main/java/com/github/pagehelper/dialect/helper/impl/OracleDialect.java
+R094	src/main/java/com/github/pagehelper/helper/dialect/SqlServer2012Dialect.java	src/main/java/com/github/pagehelper/dialect/helper/impl/SqlServer2012Dialect.java
+R096	src/main/java/com/github/pagehelper/helper/dialect/SqlServerDialect.java	src/main/java/com/github/pagehelper/dialect/helper/impl/SqlServerDialect.java
+
+719f07f5af8833a5b5b574368cfeef72f34a1ccf, 完成所有基于 RowBounds 的简单分页, Sun Dec 18 09:47:33 2016 +0800
+D	src/main/java/com/github/pagehelper/Constant.java
+M	src/main/java/com/github/pagehelper/Dialect.java
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/main/java/com/github/pagehelper/PageInterceptor.java
+M	src/main/java/com/github/pagehelper/PageRowBounds.java
+M	src/main/java/com/github/pagehelper/cache/CacheFactory.java
+M	src/main/java/com/github/pagehelper/cache/GuavaCache.java
+M	src/main/java/com/github/pagehelper/cache/SimpleCache.java
+A	src/main/java/com/github/pagehelper/dialect/AbstractDialect.java
+A	src/main/java/com/github/pagehelper/dialect/rowbounds/AbstractRowBoundsDialect.java
+A	src/main/java/com/github/pagehelper/dialect/rowbounds/Db2RowDialect.java
+A	src/main/java/com/github/pagehelper/dialect/rowbounds/HsqldbRowBoundsDialect.java
+A	src/main/java/com/github/pagehelper/dialect/rowbounds/InformixRowBoundsDialect.java
+A	src/main/java/com/github/pagehelper/dialect/rowbounds/MySqlRowBoundsDialect.java
+A	src/main/java/com/github/pagehelper/dialect/rowbounds/OracleRowBoundsDialect.java
+A	src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServer2012RowBoundsDialect.java
+A	src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServerRowBoundsDialect.java
+M	src/main/java/com/github/pagehelper/helper/BaseAutoDialect.java
+M	src/main/java/com/github/pagehelper/helper/BasePage.java
+M	src/main/java/com/github/pagehelper/helper/BasePageMethod.java
+M	src/main/java/com/github/pagehelper/helper/BaseParams.java
+M	src/main/java/com/github/pagehelper/helper/HelperDialect.java
+M	src/main/java/com/github/pagehelper/helper/dialect/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/helper/dialect/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/helper/dialect/InformixDialect.java
+M	src/main/java/com/github/pagehelper/helper/dialect/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/helper/dialect/OracleDialect.java
+M	src/main/java/com/github/pagehelper/helper/dialect/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/helper/dialect/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+D	src/main/java/com/github/pagehelper/parser/OrderByParser.java
+R099	src/main/java/com/github/pagehelper/parser/SqlServer.java	src/main/java/com/github/pagehelper/parser/SqlServerParser.java
+M	src/main/java/com/github/pagehelper/util/MSUtils.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+M	src/test/java/com/github/pagehelper/test/basic/ArgumentsMapTest.java
+M	src/test/java/com/github/pagehelper/test/basic/ArgumentsObjTest.java
+M	src/test/java/com/github/pagehelper/test/basic/OffsetTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/java/com/github/pagehelper/test/basic/TestISelect.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeLessThenOrEqualZeroTest.java
+M	src/test/java/com/github/pagehelper/test/rowbounds/RowBoundsTest.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+148fb7975811ddafc1fc2808b28450e3b720740d, 将 PageHelper 改为一个特殊的方言实现。, Sat Dec 17 20:44:48 2016 +0800
+M	src/main/java/com/github/pagehelper/Dialect.java
+A	src/main/java/com/github/pagehelper/PageException.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+A	src/main/java/com/github/pagehelper/PageInterceptor.java
+M	src/main/java/com/github/pagehelper/PageRowBounds.java
+D	src/main/java/com/github/pagehelper/PaginationInterceptor.java
+A	src/main/java/com/github/pagehelper/helper/BaseAutoDialect.java
+A	src/main/java/com/github/pagehelper/helper/BasePage.java
+R069	src/main/java/com/github/pagehelper/BasePageHelper.java	src/main/java/com/github/pagehelper/helper/BasePageMethod.java
+A	src/main/java/com/github/pagehelper/helper/BaseParams.java
+R076	src/main/java/com/github/pagehelper/dialect/AbstractDialect.java	src/main/java/com/github/pagehelper/helper/HelperDialect.java
+R079	src/main/java/com/github/pagehelper/dialect/Db2Dialect.java	src/main/java/com/github/pagehelper/helper/dialect/Db2Dialect.java
+R078	src/main/java/com/github/pagehelper/dialect/HsqldbDialect.java	src/main/java/com/github/pagehelper/helper/dialect/HsqldbDialect.java
+R080	src/main/java/com/github/pagehelper/dialect/InformixDialect.java	src/main/java/com/github/pagehelper/helper/dialect/InformixDialect.java
+R080	src/main/java/com/github/pagehelper/dialect/MySqlDialect.java	src/main/java/com/github/pagehelper/helper/dialect/MySqlDialect.java
+R083	src/main/java/com/github/pagehelper/dialect/OracleDialect.java	src/main/java/com/github/pagehelper/helper/dialect/OracleDialect.java
+R085	src/main/java/com/github/pagehelper/dialect/SqlServer2012Dialect.java	src/main/java/com/github/pagehelper/helper/dialect/SqlServer2012Dialect.java
+R092	src/main/java/com/github/pagehelper/dialect/SqlServerDialect.java	src/main/java/com/github/pagehelper/helper/dialect/SqlServerDialect.java
+D	src/main/java/com/github/pagehelper/util/BaseSqlUtil.java
+D	src/main/java/com/github/pagehelper/util/SqlUtil.java
+D	src/main/java/com/github/pagehelper/util/SqlUtilConfig.java
+D	src/test/java/com/github/pagehelper/parser/SqlServerTest.java
+M	src/test/resources/hsqldb/mybatis-config-pagesizezero.xml
+M	src/test/resources/hsqldb/mybatis-config-reasonable.xml
+M	src/test/resources/hsqldb/mybatis-config-rowbounds.xml
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+9f87c98a44cc96dab333411517ff22344bb6515c, 修正含有 `*` 的查询时外部查询列表错误的问题, Mon Dec 12 17:38:13 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+bdba0c462ca4aa41cebc400b579044112d92c4e6, 在 SQL SERVER 下，支持对复杂的 SQL 进行分页查询, Mon Dec 12 17:19:50 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+31fec6b6c8d9b71a5fc3f62e4c34c66f6ce3a2ea, Merge pull request !7 from MoonFruit/master, Mon Dec 12 22:28:47 2016 +0800
+fc5a75803e21ef6bfdf4c89bdbc7c7c1957ac596, 修正含有 `*` 的查询时外部查询列表错误的问题, Mon Dec 12 17:38:13 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+1554e98e01bf1bdb9dda040054b425490594e0bf, 在 SQL SERVER 下，支持对复杂的 SQL 进行分页查询, Mon Dec 12 17:19:50 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+ef79673ec7b7e63f27fd20446967ec47af4b27bc, 更新文档中的版本号, Sun Dec 11 19:45:07 2016 +0800
+M	README.md
+
+e0c97f61f735ac3c6acb26e8e9b66a5d86eced44, 更新版本和文档, Sun Dec 11 19:33:06 2016 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+
+9f534e85c9670aaf5a5a5733c8bc2f471b8eb05f, Update SimpleCache.java, Sat Dec 10 02:55:51 2016 +0800
+M	src/main/java/com/github/pagehelper/cache/SimpleCache.java
+
+e4ac39cdc99a95f381bbb26d349ec0d7e5fc9c02, Merge pull request #6 from dhhua/master, Sun Dec 11 19:21:49 2016 +0800
+a7851cfb21863f78f05038acc72d405931fd7007, Update SimpleCache.java, Sat Dec 10 02:55:51 2016 +0800
+M	src/main/java/com/github/pagehelper/cache/SimpleCache.java
+
+5eb4455c554439daaa1aaea994df1be6af024028, 将4.2中的改动合并进来, Fri Dec 9 00:18:13 2016 +0800
+M	README.md
+M	src/main/java/com/github/pagehelper/BasePageHelper.java
+M	src/main/java/com/github/pagehelper/dialect/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	wikis/Changelog.markdown
+
+404aaddc63f26d9c9cd3b5ba7b3a27fc2b0b5056, 更新4.2.0版本, Fri Dec 9 00:08:57 2016 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+
+09b1b44224ea580ff543d51247a87279ddebea05, PageHelper增加手动清除方法clearPage(), Thu Dec 8 23:53:15 2016 +0800
+M	src/main/java/com/github/pagehelper/BasePageHelper.java
+
+dec5cd88fd2b445747b9399e57c03790f00a2755, sqlserver #82 by MoonFruit,#118 by JumpByte, Thu Dec 8 23:39:17 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+
+c996e025344a3e1934136b8880af4af7491f258b, sqlserver没有orderby时，使用order by rand() #118, Thu Dec 8 23:36:52 2016 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/test/resources/sqlserver/mybatis-config-pagesizezero.xml
+M	src/test/resources/sqlserver/mybatis-config-reasonable.xml
+M	src/test/resources/sqlserver/mybatis-config-rowbounds.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+
+0ea0e3017e24250c68e4f60dd6f2945af579b893, 解决#135，增加/*keep orderby*/注解, Thu Dec 8 23:09:58 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/test/basic/count/TestGroupBy.java
+
+eb63ac38e1bcdf201343e96c6c7b46830d30c96b, 对除了informix之外的所有数据库进行测试,增加derby,同sqlserver2012, Thu Dec 8 22:54:12 2016 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/util/BaseSqlUtil.java
+M	src/test/java/com/github/pagehelper/util/MybatisHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisReasonableHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java
+A	src/test/resources/db2/db2jcc4.jar
+M	src/test/resources/db2/mybatis-config-pagesizezero.xml
+M	src/test/resources/db2/mybatis-config-reasonable.xml
+M	src/test/resources/db2/mybatis-config-rowbounds.xml
+M	src/test/resources/db2/mybatis-config.xml
+A	src/test/resources/derby/derby.sql
+A	src/test/resources/derby/mybatis-config-pagesizezero.xml
+A	src/test/resources/derby/mybatis-config-reasonable.xml
+A	src/test/resources/derby/mybatis-config-rowbounds.xml
+A	src/test/resources/derby/mybatis-config.xml
+M	src/test/resources/h2/mybatis-config-reasonable.xml
+M	src/test/resources/postgresql/mybatis-config-pagesizezero.xml
+M	src/test/resources/postgresql/mybatis-config-reasonable.xml
+M	src/test/resources/postgresql/mybatis-config-rowbounds.xml
+M	src/test/resources/postgresql/mybatis-config.xml
+M	src/test/resources/test.properties
+
+7ebfca8d707b267e5776c5a8eaeeb2a50634692d, oracle和sqlserver测试通过, Wed Dec 7 23:29:26 2016 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/dialect/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/parser/SqlServerTest.java
+M	src/test/java/com/github/pagehelper/test/basic/ArgumentsMapTest.java
+M	src/test/resources/oracle/mybatis-config-pagesizezero.xml
+M	src/test/resources/oracle/mybatis-config-reasonable.xml
+M	src/test/resources/oracle/mybatis-config-rowbounds.xml
+M	src/test/resources/oracle/mybatis-config.xml
+M	src/test/resources/sqlserver/mybatis-config-pagesizezero.xml
+M	src/test/resources/sqlserver/mybatis-config-reasonable.xml
+M	src/test/resources/sqlserver/mybatis-config-rowbounds.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+
+95d515a75924c22e9914b350be8f91635c33c6cf, 4.2版本仍然使用复杂的实现方式, Wed Dec 7 22:29:53 2016 +0800
+D	src/main/java/com/github/pagehelper/PageRowBounds.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractDialect.java
+M	src/main/java/com/github/pagehelper/dialect/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/dialect/InformixDialect.java
+M	src/main/java/com/github/pagehelper/dialect/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/dialect/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/util/BaseSqlUtil.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+
+dc402bfeb7b81f586104642efdb1f8cdb1f79dd1, 增加动态获取dialect功能。, Wed Dec 7 22:18:52 2016 +0800
+A	src/main/java/com/github/pagehelper/BasePageHelper.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+A	src/main/java/com/github/pagehelper/PaginationInterceptor.java
+M	src/main/java/com/github/pagehelper/util/BaseSqlUtil.java
+M	src/main/java/com/github/pagehelper/util/SqlUtil.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+fb40eff4e86e3bf8bb059889e3c71298764deb1f, 方言改成简单方式实现, Tue Dec 6 23:21:25 2016 +0800
+A	src/main/java/com/github/pagehelper/PageRowBounds.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractDialect.java
+M	src/main/java/com/github/pagehelper/dialect/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/dialect/InformixDialect.java
+M	src/main/java/com/github/pagehelper/dialect/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/dialect/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+M	src/main/java/com/github/pagehelper/util/BaseSqlUtil.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+
+313dbe35b5323cb94a1314a5ae757e5438ca29cb, 为了支持mybatis3.1.0+，实现了 MetaObjectUtil, Tue Dec 6 22:36:28 2016 +0800
+M	src/main/java/com/github/pagehelper/dialect/AbstractDialect.java
+M	src/main/java/com/github/pagehelper/dialect/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/dialect/InformixDialect.java
+M	src/main/java/com/github/pagehelper/dialect/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/dialect/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/util/BaseSqlUtil.java
+M	src/test/resources/db2/mybatis-config-pagesizezero.xml
+M	src/test/resources/db2/mybatis-config-reasonable.xml
+M	src/test/resources/db2/mybatis-config-rowbounds.xml
+M	src/test/resources/db2/mybatis-config.xml
+M	src/test/resources/h2/mybatis-config-pagesizezero.xml
+M	src/test/resources/h2/mybatis-config-reasonable.xml
+M	src/test/resources/h2/mybatis-config-rowbounds.xml
+M	src/test/resources/h2/mybatis-config.xml
+M	src/test/resources/hsqldb/mybatis-config-pagesizezero.xml
+M	src/test/resources/hsqldb/mybatis-config-reasonable.xml
+M	src/test/resources/hsqldb/mybatis-config-rowbounds.xml
+M	src/test/resources/hsqldb/mybatis-config.xml
+M	src/test/resources/mariadb/mybatis-config-pagesizezero.xml
+M	src/test/resources/mariadb/mybatis-config-reasonable.xml
+M	src/test/resources/mariadb/mybatis-config-rowbounds.xml
+M	src/test/resources/mariadb/mybatis-config.xml
+M	src/test/resources/mysql/mybatis-config-pagesizezero.xml
+M	src/test/resources/mysql/mybatis-config-reasonable.xml
+M	src/test/resources/mysql/mybatis-config-rowbounds.xml
+M	src/test/resources/mysql/mybatis-config.xml
+M	src/test/resources/oracle/mybatis-config-pagesizezero.xml
+M	src/test/resources/oracle/mybatis-config-reasonable.xml
+M	src/test/resources/oracle/mybatis-config-rowbounds.xml
+M	src/test/resources/oracle/mybatis-config.xml
+M	src/test/resources/orderby/mybatis-config.xml
+M	src/test/resources/postgresql/mybatis-config-pagesizezero.xml
+M	src/test/resources/postgresql/mybatis-config-reasonable.xml
+M	src/test/resources/postgresql/mybatis-config-rowbounds.xml
+M	src/test/resources/postgresql/mybatis-config.xml
+M	src/test/resources/sqlserver/mybatis-config-pagesizezero.xml
+M	src/test/resources/sqlserver/mybatis-config-reasonable.xml
+M	src/test/resources/sqlserver/mybatis-config-rowbounds.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+
+59363cb71866e70be12c1b2fea3c93efcebcc8e1, 为了支持mybatis3.1.0+，实现了 MetaObjectUtil, Tue Dec 6 22:33:30 2016 +0800
+A	src/main/java/com/github/pagehelper/util/MetaObjectUtil.java
+
+c6ab7fb2a1592d8a138face4bdd34b5c324f558b, 5.0版本，新架构实现的分页插件, Sun Dec 4 23:45:55 2016 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/cache/CacheFactory.java
+M	src/main/java/com/github/pagehelper/cache/GuavaCache.java
+M	src/main/java/com/github/pagehelper/cache/SimpleCache.java
+M	src/main/java/com/github/pagehelper/dialect/AbstractDialect.java
+M	src/main/java/com/github/pagehelper/dialect/Db2Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/HsqldbDialect.java
+M	src/main/java/com/github/pagehelper/dialect/InformixDialect.java
+M	src/main/java/com/github/pagehelper/dialect/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/dialect/OracleDialect.java
+M	src/main/java/com/github/pagehelper/dialect/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/dialect/SqlServerDialect.java
+M	src/main/java/com/github/pagehelper/util/BaseSqlUtil.java
+M	src/main/java/com/github/pagehelper/util/SqlUtil.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+76bae44c2c5f7d1e785c9e4169a7e643c6105b78, 5.0版本，新架构实现的分页插件, Sun Dec 4 23:45:35 2016 +0800
+M	src/main/java/com/github/pagehelper/Dialect.java
+D	src/main/java/com/github/pagehelper/SqlDialect.java
+A	src/main/java/com/github/pagehelper/dialect/Db2Dialect.java
+A	src/main/java/com/github/pagehelper/dialect/InformixDialect.java
+A	src/main/java/com/github/pagehelper/dialect/OracleDialect.java
+A	src/main/java/com/github/pagehelper/dialect/SqlServer2012Dialect.java
+A	src/main/java/com/github/pagehelper/dialect/SqlServerDialect.java
+R099	src/main/java/com/github/pagehelper/parser/SqlParser.java	src/main/java/com/github/pagehelper/parser/CountSqlParser.java
+D	src/main/java/com/github/pagehelper/parser/Parser.java
+D	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+D	src/main/java/com/github/pagehelper/parser/impl/CacheParser.java
+D	src/main/java/com/github/pagehelper/parser/impl/Db2Parser.java
+D	src/main/java/com/github/pagehelper/parser/impl/H2Parser.java
+D	src/main/java/com/github/pagehelper/parser/impl/HsqldbParser.java
+D	src/main/java/com/github/pagehelper/parser/impl/InformixParser.java
+D	src/main/java/com/github/pagehelper/parser/impl/MysqlParser.java
+D	src/main/java/com/github/pagehelper/parser/impl/OracleParser.java
+D	src/main/java/com/github/pagehelper/parser/impl/PostgreSQLParser.java
+D	src/main/java/com/github/pagehelper/parser/impl/SqlServer2012Dialect.java
+D	src/main/java/com/github/pagehelper/parser/impl/SqlServerParser.java
+D	src/main/java/com/github/pagehelper/sqlsource/OrderByStaticSqlSource.java
+D	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+D	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+D	src/main/java/com/github/pagehelper/sqlsource/PageRawSqlSource.java
+D	src/main/java/com/github/pagehelper/sqlsource/PageSqlSource.java
+D	src/main/java/com/github/pagehelper/sqlsource/PageStaticSqlSource.java
+R092	src/main/java/com/github/pagehelper/BaseSqlUtil.java	src/main/java/com/github/pagehelper/util/BaseSqlUtil.java
+R097	src/main/java/com/github/pagehelper/MSUtils.java	src/main/java/com/github/pagehelper/util/MSUtils.java
+R090	src/main/java/com/github/pagehelper/SqlUtil.java	src/main/java/com/github/pagehelper/util/SqlUtil.java
+R099	src/main/java/com/github/pagehelper/SqlUtilConfig.java	src/main/java/com/github/pagehelper/util/SqlUtilConfig.java
+R097	src/main/java/com/github/pagehelper/StringUtil.java	src/main/java/com/github/pagehelper/util/StringUtil.java
+
+2463d1c32e6d506c0a454441f725a3e3f5234460, 实现mysql分页, Sun Dec 4 17:26:56 2016 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/BaseSqlUtil.java
+M	src/main/java/com/github/pagehelper/dialect/MySqlDialect.java
+M	src/test/resources/mysql/mybatis-config-pagesizezero.xml
+M	src/test/resources/mysql/mybatis-config-reasonable.xml
+M	src/test/resources/mysql/mybatis-config-rowbounds.xml
+M	src/test/resources/mysql/mybatis-config.xml
+
+8a8c8ed9f6a03376debd67282b93470a6bc7aacd, 使用新的方式实现分页，完成hsqldb的实现，所有测试成功。去掉了testSql废弃的方法。, Sun Dec 4 17:19:01 2016 +0800
+M	pom.xml
+A	src/main/java/com/github/pagehelper/BaseSqlUtil.java
+M	src/main/java/com/github/pagehelper/MSUtils.java
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+A	src/main/java/com/github/pagehelper/SqlDialect.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+A	src/main/java/com/github/pagehelper/dialect/AbstractDialect.java
+A	src/main/java/com/github/pagehelper/dialect/HsqldbDialect.java
+A	src/main/java/com/github/pagehelper/dialect/MySqlDialect.java
+M	src/main/java/com/github/pagehelper/sqlsource/OrderByStaticSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageStaticSqlSource.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+809a52e389d172d43e07511f34243b8500793eb8, Merge pull request !5 from 疯狂的小潘/master, Thu Dec 1 20:50:36 2016 +0800
+addecbd249bd94f7fac8011eb3cdc89b81d31afd, Revert "暂时先不启用分页前的count(0)统计", Thu Dec 1 09:27:55 2016 +0800
+D	src/main/java/META-INF/MANIFEST.MF
+
+0e267bd2bfc1521e95e55f5db49150db08e3b045, 暂时先不启用分页前的count(0)统计, Thu Dec 1 01:14:15 2016 +0800
+A	src/main/java/META-INF/MANIFEST.MF
+
+4fa11495cbacc1bec7f066f21ba0114941d48abc, 添加sqlserver别名排序的测试, Tue Nov 29 21:20:05 2016 +0800
+A	src/test/java/com/github/pagehelper/parser/SqlServerTest.java
+
+e25e4e5d03890e89ec2c366f5a37fc282ca32eb8, 添加 sqlserver 别名进行排序功能，在解析sql时，会自动将使用的别名转换成列名, Tue Nov 29 21:17:14 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+
+b1cd1989cb3e73d9315a0545bf6755246d8dc2ce, 增加两个特殊的foreach查询分页测试。, Wed Nov 16 22:09:10 2016 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicForeach.java
+
+e24edfb47b432ff7a61dec0808e1dcb2145285b5, 针对MoonFruit#131 提供的建议，修改缓存实现方式。, Thu Sep 22 22:16:42 2016 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/cache/CacheFactory.java
+M	src/main/java/com/github/pagehelper/parser/SqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+A	src/main/java/com/github/pagehelper/parser/impl/CacheParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServerParser.java
+
+f6a48b702b427e18f9bd2c2b0464f3e269062da0, Merge pull request !4 from tsw/modify, Thu Sep 22 20:21:46 2016 +0800
+5dbab7405c9bb3b0a59e3c52828bc741e692e6b1, 更新日志, Wed Sep 21 23:08:29 2016 +0800
+M	README.md
+
+089dfd3aa971fe54fedccb5cf76a020052721a98, 修改SqlParser中的缓存实现，可以自己定制，也可以使用guava的缓存。, Wed Sep 21 23:06:36 2016 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/SqlUtilConfig.java
+A	src/main/java/com/github/pagehelper/cache/Cache.java
+A	src/main/java/com/github/pagehelper/cache/CacheFactory.java
+A	src/main/java/com/github/pagehelper/cache/GuavaCache.java
+A	src/main/java/com/github/pagehelper/cache/SimpleCache.java
+M	src/main/java/com/github/pagehelper/parser/SqlParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+a9f14b8c5bd41f9ca7db4b4aeab4d893a36c543c, 解决多个`with(nolock)`时出错的问题。, Tue Jun 21 18:25:31 2016 +0800
+M	README.md
+M	pom.xml
+
+ee4268339532d39e5a1420922339c7292c224fa3, 解决多个`with(nolock)`时出错的问题。, Tue Jun 21 18:24:50 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServerParser.java
+
+5395573d3b4a5352ef48a1c39243c0e8d70245e6, 更改了PageInfo里容易产生歧义的字段, 不影响之前使用, Mon Jun 20 18:00:46 2016 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+05b91a95e2a223c44ce45cea4d1fdcf5f8c55cc9, 4.1.6版本 通过间接处理字符串解决SqlServer中不支持`with(nolock)`的问题#86，详情可以看`SqlServerParser`和`SqlServer2012Dialect`, Sun Jun 5 12:19:24 2016 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServerParser.java
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+0b363a566fb030573b4e8dc16dd1527e067ab710, 4.1.5版本, Sun May 29 13:39:15 2016 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+ee8e7cc92f86f2a1811709673156f4d08933ec34, Merge branch 'master' of https://github.com/pagehelper/Mybatis-PageHelper, Sun May 29 13:32:13 2016 +0800
+aee270921b46c06aa4a9a09fa5ba6835ad7292fd, 4.1.5-SNAPSHOT版本, Sun May 29 13:29:08 2016 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+
+9bf2e91ef104f7e2ac7625944850171132e3c7bc, 4.1.4版本, Thu May 12 22:08:52 2016 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageSqlSource.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+37f8b8cc6eacfdb60fc573a4a5688b91f5ebeaad, Merge pull request #3 from lihongzheshuai/master, Wed Apr 13 16:45:01 2016 +0800
+072c96f758a9a405205c0b470954071ba364ac66, ReentrantLock使用问题修改, Tue Apr 12 22:15:08 2016 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+fdf51d2fdb9227ec8e78e8851aa09b7b01030cf0, 4.1.3, Thu Mar 31 22:12:15 2016 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+
+938da7a709d0dccda483a12fc1af3777b2d09a13, 把SqlServer类所有private都改成了protected，方便继承修改#93, Thu Mar 31 21:43:27 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+
+36ad37f033053ef6d5822162edd0c82a5daa92f3, 解决反射类没有完全捕获异常的问题#94, Thu Mar 31 21:41:06 2016 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+75c5785418550bf2503e80eeb4c00db5ae7fca65, 4.1.2部分更新。, Sun Mar 6 15:56:06 2016 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+9c520c506a5bb6fcb812decffa7a558dcc4c619f, Merge branch 'develop', Sun Mar 6 15:30:55 2016 +0800
+011da18929947179675c882a0fffdc287f8b11f7, 4.1.2部分更新。, Sun Mar 6 15:26:53 2016 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/SqlUtilConfig.java
+M	wikis/Changelog.markdown
+
+f94575046f6dc2f9f047c24dcaa65e113b203a57, 改为count(0)，能适应大多数情况。, Sun Mar 6 15:16:51 2016 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlParser.java
+
+06789f332fc790b6bef1c3f9fedcf5197519d3bc, Merge branch 'develop', Tue Jan 5 21:52:40 2016 +0800
+ae4de97a418c2d907defc52b38b53c1e0b1503e7, 更新到4.1.1版本, Tue Jan 5 21:47:13 2016 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+
+4d7efe8e1b6714afadaba767d6e79435a4d4d54c, 简化getUrl方式，不考虑复杂情况。, Tue Jan 5 21:41:21 2016 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+b20e3ca6fa7294f0fb1baa50fe5ea1a124157bf7, 修改版本4.1.1-SNAPSHOT, Tue Jan 5 20:19:34 2016 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+ae7b04090d7f884c8315a9a0040587faf36988f8, 解决sqlsource和parser绑定导致不能切换方言的问题。, Wed Dec 30 22:25:29 2015 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/sqlsource/OrderByStaticSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageRawSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageStaticSqlSource.java
+
+dc79cb6ad5260f03bc860a79e10a1910339189ee, 去掉OrderBySqlSource相关的类, Wed Dec 30 21:49:31 2015 +0800
+D	src/main/java/com/github/orderbyhelper/sqlsource/OrderByDynamicSqlSource.java
+D	src/main/java/com/github/orderbyhelper/sqlsource/OrderByProviderSqlSource.java
+D	src/main/java/com/github/orderbyhelper/sqlsource/OrderByRawSqlSource.java
+D	src/main/java/com/github/orderbyhelper/sqlsource/OrderBySqlSource.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+R098	src/main/java/com/github/orderbyhelper/OrderByParser.java	src/main/java/com/github/pagehelper/parser/OrderByParser.java
+R089	src/main/java/com/github/orderbyhelper/sqlsource/OrderByStaticSqlSource.java	src/main/java/com/github/pagehelper/sqlsource/OrderByStaticSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageRawSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageStaticSqlSource.java
+
+5d170d2d520dde9cc4ae40674d5e1558c7f8a223, update README.md, Tue Dec 29 20:42:41 2015 +0800
+M	README.md
+
+b615454457d3d7eb750bb2958f20a5d38a8a0179, update README.md, Tue Dec 29 20:39:32 2015 +0800
+M	README.md
+
+f5d21c466a7d68ab8833a83a18317b2083bbc8ef, 修改版本为4.1.0, Tue Dec 29 20:33:37 2015 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+M	wikis/Changelog.markdown
+
+3854d61eaeec918a644cab0bdc54d7db745a0552, 更新处理自动选择方言缓存方式。, Mon Dec 28 20:14:17 2015 +0800
+M	README.md
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+002f6a6565765ae13a098f02b1f7db1ff2382ed9, update readme.md, Sun Dec 27 17:36:46 2015 +0800
+M	README.md
+
+afd7d5bc22bed4e9a2b541541b03903fdb27ab13, 去掉returnPageInfo参数。, Sat Dec 26 12:43:03 2015 +0800
+M	README.md
+D	src/main/java/com/github/pagehelper/ReturnPageInfo.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/SqlUtilConfig.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+D	src/test/java/com/github/pagehelper/test/basic/ReturnPageInfoTest.java
+M	src/test/resources/db2/mybatis-config.xml
+M	src/test/resources/h2/mybatis-config.xml
+M	src/test/resources/hsqldb/mybatis-config.xml
+M	src/test/resources/mariadb/mybatis-config.xml
+M	src/test/resources/mysql/mybatis-config.xml
+M	src/test/resources/oracle/mybatis-config.xml
+M	src/test/resources/postgresql/mybatis-config.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+M	wikis/Changelog.markdown
+
+8c350d84c58485ecdfa4ac4842d596e83797db52, 更新文档，防止开发人员直接复制配置引起错误。, Sat Dec 26 12:32:36 2015 +0800
+M	wikis/HowToUse.markdown
+
+92968d9be7bb8f30c3946a41c83c919b91e79ab9, 更新文档, Sat Dec 26 10:22:55 2015 +0800
+M	README.md
+
+e1a21439678621e6e0abe307578364fbe987d4ec, 增加`autoRuntimeDialect`参数，允许在运行时根据多数据源自动识别对应方言的分页，<b>该参数会先在快照版中进行测试，如果没有收到任何反馈，正式版会取消该参数<b>, Sat Dec 26 10:13:36 2015 +0800
+M	README.md
+M	src/main/java/com/github/pagehelper/ISelect.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtilConfig.java
+M	src/main/java/com/github/pagehelper/parser/SqlParser.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+0182695e742b551ac5a5502884d33491dfd88b89, 增加ISelect，方法lambda调用。完善其他功能。, Sat Dec 26 09:22:49 2015 +0800
+M	README.md
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/Dialect.java
+A	src/main/java/com/github/pagehelper/ISelect.java
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+A	src/main/java/com/github/pagehelper/SqlUtilConfig.java
+A	src/main/java/com/github/pagehelper/StringUtil.java
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageSqlSource.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/mapper/ProviderMethod.java
+M	src/test/java/com/github/pagehelper/sql/FunctionCountTest.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+A	src/test/java/com/github/pagehelper/test/basic/TestISelect.java
+M	src/test/java/com/github/pagehelper/test/basic/TestIntMax.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf2.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIfTwoList.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/Where.java
+M	src/test/java/com/github/pagehelper/test/basic/example/TestExample.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterArray.java
+M	src/test/java/com/github/pagehelper/test/basic/provider/TestProvider.java
+M	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisReasonableHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java
+
+80031f3310defbd3484503b13abdc85df049463c, 解决测试中的警告信息, Fri Dec 18 18:49:44 2015 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/ProviderMethod.java
+M	src/test/java/com/github/pagehelper/test/basic/ArgumentsMapTest.java
+M	src/test/java/com/github/pagehelper/test/basic/ArgumentsObjTest.java
+M	src/test/java/com/github/pagehelper/test/basic/OffsetTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageInfoTest.java
+M	src/test/java/com/github/pagehelper/test/basic/RemoveOrderTest.java
+M	src/test/java/com/github/pagehelper/test/basic/TestDistinct.java
+M	src/test/java/com/github/pagehelper/test/basic/TestIntMax.java
+M	src/test/java/com/github/pagehelper/test/basic/TestLike.java
+M	src/test/java/com/github/pagehelper/test/basic/TestNamespaceMap.java
+M	src/test/java/com/github/pagehelper/test/basic/annotations/TestAnnotations.java
+M	src/test/java/com/github/pagehelper/test/basic/count/TestGroupBy.java
+M	src/test/java/com/github/pagehelper/test/basic/count/TestSelectItems.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicChoose.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf2.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIfOrder.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIfTwoList.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicWhere.java
+M	src/test/java/com/github/pagehelper/test/basic/example/TestExample.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterArray.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterList.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterMap.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterNone.java
+M	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterOne.java
+M	src/test/java/com/github/pagehelper/test/basic/provider/TestProvider.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestExists.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestLeftjoin.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestUnion.java
+M	src/test/java/com/github/pagehelper/test/basic/sql/TestWith.java
+M	src/test/java/com/github/pagehelper/test/namespace/BasicTest.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeLessThenOrEqualZeroTest.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeZeroTest.java
+M	src/test/java/com/github/pagehelper/test/reasonable/PageTest.java
+M	src/test/java/com/github/pagehelper/test/rowbounds/RowBoundsTest.java
+
+f59e29a35c85af7be65f7293372712016fe13880, 通过Eclipse解决代码中的警告信息, Fri Dec 18 18:49:21 2015 +0800
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByStaticSqlSource.java
+M	src/main/java/com/github/pagehelper/MSUtils.java
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/parser/Parser.java
+M	src/main/java/com/github/pagehelper/parser/SqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/Db2Parser.java
+M	src/main/java/com/github/pagehelper/parser/impl/H2Parser.java
+M	src/main/java/com/github/pagehelper/parser/impl/HsqldbParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/InformixParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/MysqlParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/OracleParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/PostgreSQLParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServer2012Dialect.java
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServerParser.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageRawSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageStaticSqlSource.java
+
+99e74ff01164ec4a552973010eab78ee1e295421, 修改版本4.1.0-SNAPSHOT, Thu Dec 17 22:03:47 2015 +0800
+M	pom.xml
+
+6fb76ca355b0923569c0cf919a99d98874097921, - 增加对`SqlServer2012`的支持 - jsqlparser升级到0.9.4版本，使用jar包时必须用最新的0.9.4版本，使用Maven会自动依赖0.9.4, Thu Dec 17 22:02:08 2015 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/orderbyhelper/OrderByParser.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/parser/SqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	wikis/Changelog.markdown
+
+12e1a07a752de60fcb175cd9afce7b6ec23d19fd, Merge pull request #2 from mallim/master, Sat Dec 12 11:25:00 2015 +0800
+62eeb8d5a0ab0aa0e822145ace294312e6203176, Support OFFSET ... ROWS in Sql Server 2012, Sat Dec 12 11:03:47 2015 +0800
+A	src/main/java/com/github/pagehelper/parser/impl/SqlServer2012Dialect.java
+
+4c8a8d7bd8db3f72e806b775d85a5df03a752bb1, 4.0.3, Mon Nov 9 21:19:24 2015 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/Page.java
+A	src/test/java/com/github/pagehelper/test/basic/OffsetTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/resources/db2/mybatis-config.xml
+M	src/test/resources/h2/mybatis-config.xml
+M	src/test/resources/mariadb/mybatis-config.xml
+M	src/test/resources/mysql/mybatis-config.xml
+M	src/test/resources/oracle/mybatis-config.xml
+M	src/test/resources/postgresql/mybatis-config.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+fd32e0bbdaaeb3a8d44c916ae9ba94e32d950d83, 增加对接口返回类型PageInfo的支持，支持接口参数传递分页参数。, Sat Nov 7 15:21:22 2015 +0800
+A	src/main/java/com/github/pagehelper/ReturnPageInfo.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/model/CountryQueryModel.java
+A	src/test/java/com/github/pagehelper/test/basic/ArgumentsMapTest.java
+A	src/test/java/com/github/pagehelper/test/basic/ArgumentsObjTest.java
+A	src/test/java/com/github/pagehelper/test/basic/ReturnPageInfoTest.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+3fa14e71b517139b696096e7dfe69a377652dfb0, PageHelper增加了3个offsetPage方法，使用offset,limit作为参数, Fri Nov 6 22:36:24 2015 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+
+cef6e572ab44e90c53628ef9b6abaa5d77e15c04, H2, Tue Nov 3 22:29:13 2015 +0800
+M	README.md
+
+04368bee07ae859eb735d1511340d94e0f1cb3ba, 更新版本4.0.2, Mon Nov 2 23:08:01 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+
+275bc12e7b8cd63c8127f4cd5547eec9b5b09c30, 增加对Parser接口实现类的支持。, Mon Nov 2 22:50:55 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+18cfb4e0d149a7f4e6beb52b6cae911fae2d9c81, 非正常情况下的分页，支持通过Mapper接口传递参数。 总是先获取Page，在根据page==null判断如何继续。, Sun Nov 1 02:03:59 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+e882c9407056828f75a8e0e87f78226472f84c12, 正常情况下的分页，不支持通过Mapper接口传递参数。, Sun Nov 1 02:02:56 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+e02920d20b63b208e9e6c831f9459f103132e4f5, 修改Page以及ThreadLocal相关。, Sun Nov 1 01:57:39 2015 +0800
+D	src/main/java/com/github/orderbyhelper/OrderByHelper.java
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByStaticSqlSource.java
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageStaticSqlSource.java
+D	src/test/java/com/github/orderbyhelper/MybatisOrderHelper.java
+D	src/test/java/com/github/orderbyhelper/mapper/OrderCountry.java
+D	src/test/java/com/github/orderbyhelper/mapper/OrderMapper.java
+D	src/test/java/com/github/orderbyhelper/mapper/OrderMapper.xml
+D	src/test/java/com/github/orderbyhelper/mapper/OrderProvider.java
+D	src/test/java/com/github/orderbyhelper/test/TestBasic.java
+D	src/test/java/com/github/orderbyhelper/test/TestDynamic.java
+D	src/test/java/com/github/orderbyhelper/test/TestLeft.java
+D	src/test/java/com/github/orderbyhelper/test/TestProvider.java
+D	src/test/java/com/github/orderbyhelper/test/TestRaw.java
+D	src/test/java/com/github/orderbyhelper/test/TestUnion.java
+D	src/test/java/com/github/orderbyhelper/test/TestWith.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/resources/h2/mybatis-config.xml
+M	src/test/resources/hsqldb/mybatis-config.xml
+
+de55371105dd184cbfd7ed57138fe863ab897eac, 增加对h2数据库的支持, Sat Oct 31 22:48:24 2015 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/Dialect.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+A	src/main/java/com/github/pagehelper/parser/impl/H2Parser.java
+M	src/test/java/com/github/pagehelper/util/MybatisHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisReasonableHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java
+A	src/test/resources/h2/h2.sql
+A	src/test/resources/h2/mybatis-config-pagesizezero.xml
+A	src/test/resources/h2/mybatis-config-reasonable.xml
+A	src/test/resources/h2/mybatis-config-rowbounds.xml
+A	src/test/resources/h2/mybatis-config.xml
+M	src/test/resources/test.properties
+
+3b9a23d1742d8faae6addace6fb243fa63c40edc, dialect参数不区分大小写, Sat Oct 31 13:28:26 2015 +0800
+M	src/main/java/com/github/pagehelper/Dialect.java
+
+bafe9d3e54b031f3afbcc1c2e37f71627daee3e5, 完善文档, Thu Sep 10 22:12:33 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+
+7132af93a44cd4c67b9605f7bdf5241c625125d9, 4.0.1-解决#60 -使用RPC时，因Page类引用了RowBounds，导致反序列化失败, Thu Sep 10 22:09:41 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+4ccb4ef3d52cfd9f3c689fa3f22610a9bc406e68, Merge pull request !9804 from 马金凯/master, Thu Sep 10 21:57:13 2015 +0800
+5999c1316d4025156fc19a20ea4771716d7fd7c0, Page与mybatis解耦，以解决RPC反序列化失败的问题, Thu Sep 10 08:29:44 2015 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+58305614e46fa22cbdad2d5d72f1bd52285bdeac, 3.7.6,PageInfo, Thu Jul 23 22:10:49 2015 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+f2b8548629974504fc7d5b60f4c598ba340c021a, update, Thu Jul 16 17:06:41 2015 +0800
+M	README.md
+
+f5ed6614f9465ebd0591ae2f840247a02c2f3daf, 更新文档, Tue Jul 14 11:07:07 2015 +0800
+M	README.md
+
+e24e51c8aecf7f3a1eb93e8cb18db355a2e1a47b, 更新-如何使用排序插件, Tue Jul 14 11:05:48 2015 +0800
+M	README.md
+A	wikis/UseOrderBy.md
+
+4b5ea9586bc46d364473ff1d34b33d6e6ddc1097, 更新链接错误, Tue Jul 14 09:44:03 2015 +0800
+M	wikis/HowToUse.markdown
+
+90c42a08b0f9596b3685d5cc44a70e95384b5c69, 更新文档和版本号4.0.0, Mon Jul 13 09:57:11 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+fcc5d264adb591d0fa6cd5b8a487581830da7a88, 解决从request中获取分页参数时的错误,感谢探路者☆!, Mon Jul 13 09:41:25 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+a898c902b8534be3d70a755d0f8ff35cb0c6fdf4, PageInfo增加空构造方法，所有属性增加setter方法, Thu Jul 9 17:05:07 2015 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+6fb71474ed4b442f2b27434017866d013649b62a, 更新文档, Mon Jun 29 15:56:50 2015 +0800
+M	README.md
+
+5f0cfebfc7ff95afaeecb2195106808ca518cd61, 增加4.0更新内容, Mon Jun 29 15:49:40 2015 +0800
+M	README.md
+
+769c950b30262bf422eb67c0f7d6567253f75cf2, 完善, Mon Jun 29 15:33:48 2015 +0800
+M	pom.xml
+M	src/main/java/com/github/orderbyhelper/OrderByHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+cac5583c99debb90d7252f0cdb8f829fd3073b75, 重构，极大的简化了MS的处理。, Mon Jun 29 14:47:50 2015 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/MSUtils.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageRawSqlSource.java
+A	src/main/java/com/github/pagehelper/sqlsource/PageSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageStaticSqlSource.java
+
+2bb838afd6387d6dac67a66a991db39f61ebe127, 完善单独orderby的情况, Sun Jun 28 22:57:20 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+ebb63fc16a558fa143dacf3ece9da9fd37276cba, 完善分页查询的orderby, Sun Jun 28 01:00:25 2015 +0800
+M	pom.xml
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/Dialect.java
+M	src/main/java/com/github/pagehelper/MSUtils.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/parser/SqlParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+A	src/main/java/com/github/pagehelper/sqlsource/PageRawSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageStaticSqlSource.java
+M	src/test/java/com/github/orderbyhelper/mapper/OrderMapper.java
+M	src/test/java/com/github/orderbyhelper/mapper/OrderMapper.xml
+A	src/test/java/com/github/orderbyhelper/test/TestDynamic.java
+M	src/test/resources/orderby/mybatis-config.xml
+
+f7174c3bd995f7a78603b2b305eff858206f171e, 完善OrderbySqlSource, Sat Jun 27 22:57:26 2015 +0800
+M	src/main/java/com/github/orderbyhelper/OrderByHelper.java
+R097	src/main/java/com/github/pagehelper/parser/OrderByParser.java	src/main/java/com/github/orderbyhelper/OrderByParser.java
+D	src/main/java/com/github/orderbyhelper/sqlsource/OrderBy.java
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByDynamicSqlSource.java
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByProviderSqlSource.java
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByRawSqlSource.java
+A	src/main/java/com/github/orderbyhelper/sqlsource/OrderBySqlSource.java
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByStaticSqlSource.java
+
+329fadcdd0c33a80ae92f4cca419bcec3bf0d8be, 完善分页和orderby的结合, Sat Jun 27 14:19:44 2015 +0800
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByStaticSqlSource.java
+M	src/main/java/com/github/pagehelper/MSUtils.java
+A	src/main/java/com/github/pagehelper/parser/OrderByParser.java
+A	src/main/java/com/github/pagehelper/sqlsource/PageStaticSqlSource.java
+M	src/test/java/com/github/orderbyhelper/test/TestBasic.java
+M	src/test/resources/log4j.properties
+M	src/test/resources/orderby/mybatis-config.xml
+
+5411485adaa0840a24862fa1471f8ecf0c874aa9, 完成order by功能, Sat Jun 27 12:59:06 2015 +0800
+M	src/main/java/com/github/orderbyhelper/OrderByHelper.java
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByDynamicSqlSource.java
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByProviderSqlSource.java
+M	src/main/java/com/github/orderbyhelper/sqlsource/OrderByStaticSqlSource.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+A	src/test/java/com/github/orderbyhelper/MybatisOrderHelper.java
+A	src/test/java/com/github/orderbyhelper/mapper/OrderCountry.java
+A	src/test/java/com/github/orderbyhelper/mapper/OrderMapper.java
+A	src/test/java/com/github/orderbyhelper/mapper/OrderMapper.xml
+A	src/test/java/com/github/orderbyhelper/mapper/OrderProvider.java
+A	src/test/java/com/github/orderbyhelper/test/TestBasic.java
+A	src/test/java/com/github/orderbyhelper/test/TestLeft.java
+A	src/test/java/com/github/orderbyhelper/test/TestProvider.java
+A	src/test/java/com/github/orderbyhelper/test/TestRaw.java
+A	src/test/java/com/github/orderbyhelper/test/TestUnion.java
+A	src/test/java/com/github/orderbyhelper/test/TestWith.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf2.java
+M	src/test/resources/log4j.properties
+A	src/test/resources/orderby/hsqldb.sql
+A	src/test/resources/orderby/mybatis-config.xml
+
+a5ba7f40bc969ddd5ffe0537ac50158e53056f7c, 增加orderby, Fri Jun 26 17:37:25 2015 +0800
+M	pom.xml
+A	src/main/java/com/github/orderbyhelper/OrderByHelper.java
+A	src/main/java/com/github/orderbyhelper/sqlsource/OrderBy.java
+A	src/main/java/com/github/orderbyhelper/sqlsource/OrderByDynamicSqlSource.java
+A	src/main/java/com/github/orderbyhelper/sqlsource/OrderByProviderSqlSource.java
+A	src/main/java/com/github/orderbyhelper/sqlsource/OrderByRawSqlSource.java
+A	src/main/java/com/github/orderbyhelper/sqlsource/OrderByStaticSqlSource.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf2.java
+M	src/test/resources/db2/mybatis-config-pagesizezero.xml
+M	src/test/resources/db2/mybatis-config-reasonable.xml
+M	src/test/resources/db2/mybatis-config-rowbounds.xml
+M	src/test/resources/db2/mybatis-config.xml
+M	src/test/resources/hsqldb/mybatis-config-pagesizezero.xml
+M	src/test/resources/hsqldb/mybatis-config-reasonable.xml
+M	src/test/resources/hsqldb/mybatis-config-rowbounds.xml
+M	src/test/resources/hsqldb/mybatis-config.xml
+M	src/test/resources/mariadb/mybatis-config-pagesizezero.xml
+M	src/test/resources/mariadb/mybatis-config-reasonable.xml
+M	src/test/resources/mariadb/mybatis-config-rowbounds.xml
+M	src/test/resources/mariadb/mybatis-config.xml
+M	src/test/resources/mysql/mybatis-config-pagesizezero.xml
+M	src/test/resources/mysql/mybatis-config-reasonable.xml
+M	src/test/resources/mysql/mybatis-config-rowbounds.xml
+M	src/test/resources/mysql/mybatis-config.xml
+M	src/test/resources/oracle/mybatis-config-pagesizezero.xml
+M	src/test/resources/oracle/mybatis-config-reasonable.xml
+M	src/test/resources/oracle/mybatis-config-rowbounds.xml
+M	src/test/resources/oracle/mybatis-config.xml
+M	src/test/resources/postgresql/mybatis-config-pagesizezero.xml
+M	src/test/resources/postgresql/mybatis-config-reasonable.xml
+M	src/test/resources/postgresql/mybatis-config-rowbounds.xml
+M	src/test/resources/postgresql/mybatis-config.xml
+M	src/test/resources/sqlserver/mybatis-config-pagesizezero.xml
+M	src/test/resources/sqlserver/mybatis-config-reasonable.xml
+M	src/test/resources/sqlserver/mybatis-config-rowbounds.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+
+25e019186e025aab8b56cd568aea98f583b15fc8, 更新版本3.7.5, Fri Jun 12 14:27:07 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+4066fc2b49431863ab01c90501a670e962a1b236, 修改版本校验规则，改为使用3.2.0才有的SqlNode判断。, Tue Jun 2 09:41:36 2015 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+9f21cbe3c49fb82c78dd2017d79c7d2482dbd3fc, 更新版本3.7.5-SNAPSHOT, Fri May 29 17:02:20 2015 +0800
+M	README.md
+M	pom.xml
+
+1df8adb16422932775cf1625deb59f7cde714df8, 完善测试。, Fri May 29 16:55:30 2015 +0800
+M	src/test/java/com/github/pagehelper/test/namespace/BasicTest.java
+
+ead24c8a91915af98ff3d090b73181c3a3d8ccb6, 增加异常提示：项目中存在MyBatis 3.0以前版本的jar包，请使用MyBatis3.2.0以后版本, Fri May 29 16:55:20 2015 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+472cd4e28046e87b9cd11db9c41b2fd7d072c93a, 增加不可变Map和namespace方式的测试, Fri May 29 15:32:51 2015 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/namespace/BasicTest.java
+
+382c5803737a4592b98df6b6fed2c77de8d6e2b4, 解决不可变Map的情况, Fri May 29 15:32:25 2015 +0800
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+
+55666501db270c8fbcb3091c80d8234171537c5b, 去掉cglib依赖(MyBatis3.2.0早期版本需要手动添加依赖)。, Tue May 26 09:34:29 2015 +0800
+M	pom.xml
+
+6c197d6879505b6eb70b42f1fd7ec2e8c36f76bc, 更新版本为3.7.4, Tue May 26 09:33:22 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+f8a28671bb4474d04880f47b7f328ef373cf61e2, 删除过时的SystemMetaObject类，使用MyBatis自带的该类(3.2.0开始）, Tue May 26 09:26:54 2015 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/MSUtils.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+D	src/main/java/com/github/pagehelper/SystemMetaObject.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+
+94815fa93d2c265482bb96da2789bd89f50f4a62, 删除reasonable=true, Fri May 22 12:05:41 2015 +0800
+M	wikis/HowToUse.markdown
+
+6647d06f9b1945014e321d52dae68da551ee6523, 更新文档。, Fri May 22 11:33:11 2015 +0800
+M	README.md
+M	wikis/Home.markdown
+M	wikis/HowToUse.markdown
+
+23fd2efb7283cd21c4dba7f483c2af2bcc2af264, 更新，重点提醒【物理分页】, Fri May 22 11:19:04 2015 +0800
+M	README.md
+
+1fa449d353fa04694eb32256e5d076dcbc2a529c, 更新，重点提醒【物理分页】, Fri May 22 11:09:43 2015 +0800
+M	README.md
+
+4c6654900ce68750f228b84bd955303984329b42, 更新文档。, Fri May 22 09:41:52 2015 +0800
+M	README.md
+
+a33c95b5432eacf3d3206de8dfc7bae9da0b9ea5, 更新文档中的版本号, Fri May 22 09:17:51 2015 +0800
+M	README.md
+M	wikis/HowToUse.markdown
+
+15d28a352f34b3e8a8be3a6d1babfdb5cfdc9e27, 更新完善文档，版本变更为3.7.3, Fri May 22 09:14:38 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+b014c38631b0fc218fc304a2a03e0ae7ee52ed21, 针对全查询优化。, Fri May 22 09:14:16 2015 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+
+6aaf853a2b04a5652cc26f699b27cf6e10d678cb, 初始化Page(List)大小为0，解决#46, Thu May 21 16:47:17 2015 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+A	src/test/java/com/github/pagehelper/test/basic/TestIntMax.java
+
+abb3749aa78a0bf83585421f1bc68b74f2f33fbc, 更新文档。, Fri May 15 09:17:12 2015 +0800
+M	README.md
+
+f7b2f77c69af94bac3b431b3eb9f63e20caf2299, 更新。, Fri May 15 08:40:50 2015 +0800
+M	wikis/HowToUse.markdown
+M	wikis/Important.markdown
+
+9755622bdd3da32e1f2f2ba1a1e8eb2bdfbbd8c8, 文档文字错误。, Wed May 13 15:51:36 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+
+00584d7bc64880b99eb6f20b665ade5eec8000d9, 更新文档，更新版本3.7.2, Wed May 13 15:36:41 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+
+72d46ddf012b74af927c785c978aae472eed6bf2, jsqlparser解析会抛出Error异常，必须处理该异常。, Wed May 13 15:32:43 2015 +0800
+M	src/main/java/com/github/pagehelper/parser/SqlParser.java
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+
+e58b8750b60beba0a233597baef96247b08fe0fe, update mvn 3.7.1, Tue May 5 15:26:04 2015 +0800
+M	README.md
+
+a3e038abcd2e20c562ccb1e79bce02cc3386e017, update informix, Tue May 5 15:25:09 2015 +0800
+M	README.md
+M	wikis/Home.markdown
+
+10a1d7fee9ad24f2bf8acaa9e362349b89e353c6, update, Tue May 5 15:22:40 2015 +0800
+M	README.md
+M	wikis/Home.markdown
+
+c665ea10c13e1dc2e0be18ee50baeda5c0ead223, update, Tue May 5 15:21:42 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+
+1819dc8b1a8f41ed9b1914dd2aa7aa986623f0f9, 更新版本到3.7.1, Tue May 5 15:13:14 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+
+8fd31366a75db17ca17a63547dadae697dfeb55f, 3.7.1-SNAPSHOT增加Infomix支持。, Thu Apr 23 13:43:54 2015 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/Dialect.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+A	src/main/java/com/github/pagehelper/parser/impl/InformixParser.java
+
+67449c4cb149b89fd3f6e7830d72fef4381799a1, 更新版本, Tue Apr 21 22:52:41 2015 +0800
+M	README.md
+
+b2a90319d4f53fe7ed0bfb4ffcd7b9eedff988c5, 去掉orderby，更新版本3.7.0, Tue Apr 21 22:24:01 2015 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServerParser.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+A	src/test/java/com/github/pagehelper/test/basic/TestNamespaceMap.java
+M	wikis/Changelog.markdown
+
+8592df847b0db8f52e59af4e9cca73ac1710b2c6, 当`offsetAsPageNum=false`的时候，由于PageNum问题，`RowBounds`查询的时候reasonable会强制为false。使用`PageHelper.startPage`方法不受影响。, Sat Apr 11 23:21:08 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	wikis/HowToUse.markdown
+
+1b69d3414d62e6d2b0e784d9286f0bfeee1362f3, 增加一个exists的例子。, Wed Apr 8 11:40:07 2015 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+A	src/test/java/com/github/pagehelper/test/basic/sql/TestExists.java
+
+2f2bd9e685e0645c36a7ac9122f7721ca38e1718, 当select中包含单个的函数时，也使用嵌套式的count查询。, Wed Apr 8 11:02:36 2015 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/parser/SqlParser.java
+A	src/test/java/com/github/pagehelper/sql/FunctionCountTest.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+
+76731ffcb538c0706594d430ffb1ca3e72d80dc1, update, Sun Apr 5 18:19:29 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+52e906608ba19b463a969c7ae157fd30e16d676e, 更新版本3.6.4, Sun Apr 5 18:10:13 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+D	wikis/Source.markdown
+
+db8c5fafe19e504c878162022f877de305bcf001, 更新, Sun Apr 5 17:13:23 2015 +0800
+M	src/main/java/com/github/pagehelper/Constant.java
+M	src/main/java/com/github/pagehelper/Dialect.java
+M	src/main/java/com/github/pagehelper/MSUtils.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/main/java/com/github/pagehelper/SystemMetaObject.java
+R099	src/main/java/com/github/pagehelper/SqlParser.java	src/main/java/com/github/pagehelper/parser/SqlParser.java
+R099	src/main/java/com/github/pagehelper/SqlServer.java	src/main/java/com/github/pagehelper/parser/SqlServer.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/Db2Parser.java
+M	src/main/java/com/github/pagehelper/parser/impl/HsqldbParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/MysqlParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/OracleParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/PostgreSQLParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServerParser.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+
+b41d5afbea5bcf56a585e9580fe6eb3eb688c072, 更新协议, Sun Apr 5 15:04:42 2015 +0800
+M	src/main/java/com/github/pagehelper/Constant.java
+M	src/main/java/com/github/pagehelper/Dialect.java
+M	src/main/java/com/github/pagehelper/MSUtils.java
+M	src/main/java/com/github/pagehelper/SystemMetaObject.java
+M	src/main/java/com/github/pagehelper/parser/Parser.java
+M	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/Db2Parser.java
+M	src/main/java/com/github/pagehelper/parser/impl/HsqldbParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/MysqlParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/OracleParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/PostgreSQLParser.java
+M	src/main/java/com/github/pagehelper/parser/impl/SqlServerParser.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+M	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+
+f6ae1f259bfcee1ed32d311fcf239a8a73badc44, 重构, Sun Apr 5 14:55:42 2015 +0800
+A	src/main/java/com/github/pagehelper/Constant.java
+A	src/main/java/com/github/pagehelper/Dialect.java
+A	src/main/java/com/github/pagehelper/MSUtils.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+A	src/main/java/com/github/pagehelper/SystemMetaObject.java
+A	src/main/java/com/github/pagehelper/parser/Parser.java
+A	src/main/java/com/github/pagehelper/parser/impl/AbstractParser.java
+A	src/main/java/com/github/pagehelper/parser/impl/Db2Parser.java
+A	src/main/java/com/github/pagehelper/parser/impl/HsqldbParser.java
+A	src/main/java/com/github/pagehelper/parser/impl/MysqlParser.java
+A	src/main/java/com/github/pagehelper/parser/impl/OracleParser.java
+A	src/main/java/com/github/pagehelper/parser/impl/PostgreSQLParser.java
+A	src/main/java/com/github/pagehelper/parser/impl/SqlServerParser.java
+A	src/main/java/com/github/pagehelper/sqlsource/PageDynamicSqlSource.java
+A	src/main/java/com/github/pagehelper/sqlsource/PageProviderSqlSource.java
+
+03afde3ac1ecae3666a0eb4652b91e9d9af8e475, 更新文档，更新版本为3.6.3, Wed Mar 11 10:26:13 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+
+3d47a59d5c2ebc76c2a47ff10f5e8f82c89cb17e, 解决一个潜在的bug。, Wed Mar 11 00:13:02 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+7f58092cc73394b5ccfb8b56e71fd035e6c1132d, 更新文档。, Mon Mar 9 15:29:04 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+M	wikis/Important.markdown
+
+426885cda5eaa0e24da5885cfb6fa5cba0a39d67, 对配置多个分页插件的情况，抛出更合适的异常信息。, Mon Mar 9 15:11:25 2015 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	wikis/HowToUse.markdown
+
+17006a54a64b0c0c9b6c90fbd6a60bc82bbaf952, 修改关联为更准确的名字。, Fri Mar 6 15:20:44 2015 +0800
+M	wikis/Important.markdown
+
+55cd086e9128604e3778735b1d960f97dd6e0e18, 3.6.1, Sat Feb 28 09:40:16 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/HowToUse.markdown
+
+5d7574a83e3b10b447ecfb2cd2673f4bf37fd221, Example测试增加inList的情况。, Fri Feb 13 13:15:00 2015 +0800
+M	src/test/java/com/github/pagehelper/test/basic/example/TestExample.java
+
+99a26ec7e52fc17a0228d4a2d3d5ca5cc6d7fdea, 解决select distinct导致count查询结果不正确的bug#35, Fri Feb 13 08:55:24 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/basic/TestDistinct.java
+
+5ef6acad34abfd4a2a95e0f54cfa78ee59727725, 完善二级缓存的测试。, Thu Feb 5 09:05:29 2015 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/model/Country.java
+A	src/test/java/com/github/pagehelper/test/basic/cache/SecondCacheTest.java
+
+e297bcddacf4e725c5bcaa6fdeb5264de0587dfc, 解决一个潜在的bug，当sql执行出错的时候会保留threadlocal, Thu Feb 5 09:04:15 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+48f155e480a622d77e19e33dec2adb04db18064b, 修改注释。, Tue Feb 3 16:35:01 2015 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+8df0859b303d36f2a2aca07b9a85c7fddb3e7f09, 更新文档, Tue Feb 3 15:50:05 2015 +0800
+M	README.md
+M	wikis/Home.markdown
+M	wikis/HowToUse.markdown
+A	wikis/Source.markdown
+
+4360ea61a01fafdcfff3aa1ee327b6722e6506ed, 更新jar包地址, Tue Feb 3 15:36:43 2015 +0800
+M	README.md
+
+86652f05f3663119808bd27f9e41a52ed88a5299, 更新日志, Tue Feb 3 15:32:49 2015 +0800
+M	README.md
+
+4f305c02389f58b4098d76c46a8ef32fc782bc00, 更新文档。, Tue Feb 3 15:27:05 2015 +0800
+M	README.md
+M	wikis/Home.markdown
+
+aaff2eb4e668baf3d3b209d8f1224f906489012c, 更新文档。, Tue Feb 3 15:26:12 2015 +0800
+M	README.md
+M	wikis/Home.markdown
+
+c4ad9bc71bdd50cdc8a71eb5e43baa047951dce5, 更新文档。, Tue Feb 3 15:25:06 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+M	wikis/Home.markdown
+
+7391a0c2848e0cbfe865191394a6d4a13cb89c34, 增加db2支持，更新文档。, Tue Feb 3 15:19:10 2015 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+A	src/test/resources/db2/mybatis-config-pagesizezero.xml
+A	src/test/resources/db2/mybatis-config-reasonable.xml
+A	src/test/resources/db2/mybatis-config-rowbounds.xml
+A	src/test/resources/db2/mybatis-config.xml
+M	src/test/resources/test.properties
+M	wikis/Changelog.markdown
+M	wikis/Home.markdown
+M	wikis/HowToUse.markdown
+M	wikis/Test.markdown
+
+649136d90d9cb03f12fc51f249877f305f2469cb, 去掉表前缀，代码格式化。, Tue Jan 27 15:00:51 2015 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/main/java/com/github/pagehelper/SqlServer.java
+
+5401f9befe99e9a5d4b29f8b586e9a8115234dcb, 更新。, Tue Jan 27 14:03:35 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlServer.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+a425b0883bdde4ff17ba5df94c3f5637a9a5ffc6, 去掉了默认的ORDER BY, Tue Jan 27 11:44:43 2015 +0800
+M	README.md
+M	src/main/java/com/github/pagehelper/SqlServer.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+M	wikis/Changelog.markdown
+
+ea8664c63f76cd684c5af3e5f5c43eaa462953eb, 更新文档, Tue Jan 27 10:18:02 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+M	wikis/Home.markdown
+M	wikis/HowToUse.markdown
+D	wikis/Single.markdown
+M	wikis/Test.markdown
+
+32d4db375bfe5b15fda5ab6d0ece9e2b28611b96, 增加默认的ORDER BY, Tue Jan 27 10:12:31 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlServer.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+
+3b61d898bb5762d36914855ddf77371956b6981e, 完善文档, Mon Jan 26 17:30:42 2015 +0800
+M	README.md
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+fecb1fb5baddf1fc58a6fca2a94423c037e01adb, 更新文档的文字错误。, Mon Jan 26 17:27:54 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+M	wikis/Single.markdown
+
+0044dadc9618edd440346556996e6b3bdba3e5cb, 更新文档。, Mon Jan 26 17:16:20 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+M	wikis/Single.markdown
+
+d074759cf46e1a30dea2b0430c397e243551ba33, 更新MIT协议, Mon Jan 26 17:04:13 2015 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/test/java/Ognl.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/mapper/ProviderMethod.java
+M	src/test/java/com/github/pagehelper/model/Country.java
+M	src/test/java/com/github/pagehelper/model/CountryExample.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageInfoTest.java
+M	src/test/java/com/github/pagehelper/test/basic/RemoveOrderTest.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/Where.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeLessThenOrEqualZeroTest.java
+M	src/test/java/com/github/pagehelper/test/pagesize/PageSizeZeroTest.java
+M	src/test/java/com/github/pagehelper/test/rowbounds/RowBoundsTest.java
+M	src/test/java/com/github/pagehelper/util/MybatisHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java
+M	src/test/resources/hsqldb/mybatis-config-pagesizezero.xml
+M	src/test/resources/hsqldb/mybatis-config-rowbounds.xml
+M	src/test/resources/hsqldb/mybatis-config.xml
+M	src/test/resources/log4j.properties
+M	src/test/resources/oracle/mybatis-config.xml
+M	src/test/resources/test.properties
+
+26893aa83469c9621fb32eeb158cb160b111631d, 分页插件改为3.6.0-SNAPSHOT，增加sqlserver支持, Mon Jan 26 16:55:32 2015 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlParser.java
+A	src/main/java/com/github/pagehelper/SqlServer.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/mapper/ProviderMethod.java
+D	src/test/java/com/github/pagehelper/sql/SqlServer.java
+A	src/test/java/com/github/pagehelper/sql/SqlServerTest.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+M	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+M	src/test/resources/sqlserver/mybatis-config-pagesizezero.xml
+M	src/test/resources/sqlserver/mybatis-config-reasonable.xml
+M	src/test/resources/sqlserver/mybatis-config-rowbounds.xml
+M	src/test/resources/sqlserver/mybatis-config.xml
+M	src/test/resources/test.properties
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+819c334eac245222382872b56f7d61444274bd8f, 测试, Sat Jan 24 13:58:44 2015 +0800
+A	src/test/java/com/github/pagehelper/sql/SqlServer.java
+A	src/test/resources/sqlserver/mybatis-config-pagesizezero.xml
+A	src/test/resources/sqlserver/mybatis-config-reasonable.xml
+A	src/test/resources/sqlserver/mybatis-config-rowbounds.xml
+A	src/test/resources/sqlserver/mybatis-config.xml
+
+3db09d164484a23b2f2c12e6877764582753fac0, params支持RowBounds/Map/Request/POJO, Sat Jan 24 13:22:20 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+c9bdd80163f692afd3861cbdb6584665f0b73cd9, 重构。, Sat Jan 24 09:01:00 2015 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+662803684ae2ce42779e6d3ee8825691a0992adf, 调整Parser接口, Fri Jan 23 23:54:43 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+279ccc4883ea8c96de93e33018f9d35f3051f81d, 修改版本为3.6.0-SNAPSHOT, Fri Jan 23 17:28:22 2015 +0800
+M	README.md
+M	pom.xml
+
+a89d2e024b096d385b6dffe9e53623470dae3741, 修改sqlparser对应的测试方法。, Fri Jan 23 17:27:23 2015 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+
+fee1625d2c5dbb2e2e8bea052f8e63b3dadf904c, 修改sqlparser和parser接口。sqlparser改为纯粹的工具类。, Fri Jan 23 17:27:06 2015 +0800
+M	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+e8b771f2dbddcb000f7e819a5b6f4e40de3a4387, 修改page参数的生命周期，在整个分页查询的过程中都可以获取到page参数。, Fri Jan 23 17:25:31 2015 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+3b45304ac14a01c2f31885f3153e03c4a56d3e5d, 解决issue#25，更新版本为3.5.1, Tue Jan 20 15:30:59 2015 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/model/CountryExample.java
+A	src/test/java/com/github/pagehelper/test/basic/example/TestExample.java
+M	wikis/Changelog.markdown
+M	wikis/Single.markdown
+
+0d0fbc9938cd8c426f9bad98f8fc4b34caee4a0e, 解决一个异常提示信息错误。, Thu Jan 15 14:26:37 2015 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+4708f3b0c1ea6672322aba6048cf8f9ed118676f, 文档中的params例子写错了, Wed Jan 14 17:24:51 2015 +0800
+M	README.md
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+ab30b18b86b5016dddb61d4282021a1a052a0685, update, Mon Jan 12 11:18:08 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+M	wikis/Single.markdown
+
+cce6c9e21fac52e51516f3fab2657b4166ca1b0d, 取消版本3.4.3，直接改为3.5.0, Mon Jan 12 10:24:07 2015 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+930eb6d3c11558fc1c8d6b98c3be952918736e15, 更新文档，修改count默认别名为countSql, Sun Jan 11 13:35:59 2015 +0800
+M	README.md
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	wikis/Changelog.markdown
+M	wikis/Single.markdown
+
+cdc837e4dc7a86332b6ed1335fa67f64dc94e285, 更新文档, Sun Jan 11 12:33:00 2015 +0800
+M	README.md
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+e190c0bb47a433152a94382603e9b1ae90d8f2c2, 去掉Pom中没用的依赖, Sun Jan 11 12:22:20 2015 +0800
+M	pom.xml
+
+8c832f4e6cdb342e33687d52911d1b287d5f55ed, 更新版本号, Sun Jan 11 12:19:00 2015 +0800
+M	README.md
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+cc0eb883037434a5a25d4e27b6dad7d308d6c6d6, 增加新的调用方法，解决一个bug#24, Sun Jan 11 12:11:55 2015 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicWhere.java
+A	src/test/java/com/github/pagehelper/test/basic/dynamic/Where.java
+
+3296903181790bb636b34bd3dc2b8098cebd4bca, PageInfo去掉pages!=1, Wed Dec 31 08:35:54 2014 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+471ad94523d605e6e6507bab31a8699985ec3299, 版本更新到3.4.2, Sat Dec 27 18:41:18 2014 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+1ac035b058a3a9c395a3fd5e575e6e3838bb86dc, Merge branch 'master' of https://git.oschina.net/free/Mybatis_PageHelper, Wed Dec 24 14:16:11 2014 +0800
+79403f6ee6186a9a9db23b24288139924a2dc056, 修复严重bug，更新版本3.4.1, Wed Dec 24 14:12:34 2014 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+M	wikis/Changelog.markdown
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+486e779f9a4b0e09f57204f136e4cf9f1b709b22, 对Provider方法时的入参特殊处理,保留原参数,getBoundSql的时候使用原参数., Thu Dec 18 23:10:43 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/ProviderMethod.java
+M	src/test/java/com/github/pagehelper/test/basic/provider/TestProvider.java
+
+6eadfeff438a5da6fe4a98e1ef074ce00c2d6aff, 更新maven的版本。, Thu Dec 18 12:08:59 2014 +0800
+M	README.md
+M	wikis/Single.markdown
+
+f2bfecdac998023fc4ae8808fbe822d80d7a9d76, 增加对Provider注解查询的支持。版本更新到3.4.0, Thu Dec 18 12:05:57 2014 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+A	src/test/java/com/github/pagehelper/mapper/ProviderMethod.java
+A	src/test/java/com/github/pagehelper/test/basic/provider/TestProvider.java
+M	wikis/Changelog.markdown
+M	wikis/Single.markdown
+
+ceca5ad439d1f844e41cdc60509b95e2cc4f0871, 更新jar包下载地址。, Wed Dec 10 12:55:33 2014 +0800
+M	README.md
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+0af969090c8a4396cdfd8625b4bd868ac0e10c0d, 更新文档，更新版本到3.3.2, Wed Dec 10 11:59:36 2014 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/Single.markdown
+
+ddcd13b4f2b902b865b08875be361b72f12ea630, 增加序列化。, Wed Dec 10 11:52:48 2014 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+73008cac6a1a0af7e18da12eae82e3dfd9ee37e9, 完善动态sql的校验方式，增加ms入参。, Mon Dec 8 09:30:50 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/test/basic/TestLike.java
+
+e0fa743617b4c5e20ef8aebd491f3f32fe54ad22, 更新文档。, Mon Dec 8 00:23:30 2014 +0800
+M	README.md
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+d8cfd15061a3f61cca0646b5f6584cf0f9ff756b, 更新文档。, Mon Dec 8 00:16:24 2014 +0800
+M	wikis/Changelog.markdown
+M	wikis/Single.markdown
+
+9e4ec3eb295a19c701289972dd0b72aa2b47f8e0, 版本更新为3.3.1, Mon Dec 8 00:07:57 2014 +0800
+M	README.md
+M	pom.xml
+M	wikis/Changelog.markdown
+M	wikis/Single.markdown
+
+9c952e1cf179f2651898a3526ec4e68210b0b0bd, 解决动态sql时的bug, Sun Dec 7 23:58:29 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+610f42469dae6f5c032d687ceb828650ff5e47ae, 发现一个${}的问题。, Sun Dec 7 20:55:21 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/test/basic/TestLike.java
+
+14d654bb143ee047937bc2aff8f62dd8586cb3d2, 增加一个like查询测试。, Sun Dec 7 20:36:35 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/basic/TestLike.java
+
+5a6f564614b2bfb4f66e968d4adfc8f8b8e54e1a, 将分页合理化参数改为普通字段，当配置多个分页插件时不会冲突。, Fri Dec 5 09:53:16 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+cb5d4d07e02acb91f63137fd15295bed72a3aca7, 更新单文件文档。, Wed Dec 3 14:28:05 2014 +0800
+M	wikis/Single.markdown
+
+546f083047dc90a80d5a9f56acf00780a9cca0bd, 更新maven版本信息。, Wed Dec 3 14:24:10 2014 +0800
+M	README.md
+
+9cae1b9bc11783f2b5609136334da5b5f0596541, 更新版本为3.3.0, Wed Dec 3 14:21:17 2014 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/resources/test.properties
+M	wikis/Changelog.markdown
+M	wikis/Home.markdown
+M	wikis/Single.markdown
+
+f7762fde664c8275527f113e1bf4c5edafb1fd5b, postgresql测试数据库。, Wed Dec 3 13:52:53 2014 +0800
+A	src/test/resources/postgresql/postgresql.sql
+
+6338cc04f60c570c477e744da7e07e795fd28de5, 增加对MariaDB的支持，实际上和Mysql是一模一样，只是增加了一个枚举类型。另外分页sql直接往sql后面添加limit ?,?, Wed Dec 3 13:29:01 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+A	src/test/resources/mariadb/mariadb.sql
+A	src/test/resources/mariadb/mybatis-config-pagesizezero.xml
+A	src/test/resources/mariadb/mybatis-config-reasonable.xml
+A	src/test/resources/mariadb/mybatis-config-rowbounds.xml
+A	src/test/resources/mariadb/mybatis-config.xml
+M	src/test/resources/test.properties
+
+50f7f71a1d834f1e202690414dd4be871cea7684, Merge branch 'master' of https://git.oschina.net/free/Mybatis_PageHelper, Mon Nov 24 16:08:51 2014 +0800
+99a4ffe53265193691e3e2baa1c9ed55b003f0fc, 更新QQ群, Mon Nov 24 16:08:08 2014 +0800
+M	wikis/Home.markdown
+M	wikis/Single.markdown
+
+8d9477625eb8b7288bbd4f9287f27c549d9432b7, 更新QQ群, Mon Nov 24 16:02:32 2014 +0800
+M	README.md
+
+1380602a31eb3a8f7791841695a18561593b6c73, 修复#15 - PageInfo中的两个getter方法错误。, Mon Nov 17 21:44:00 2014 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/test/java/com/github/pagehelper/test/basic/PageInfoTest.java
+
+dcb90d1dd10660bdfa0b1e70dd17b30bbfb5f5ee, select语句包含group by的时候使用包围式的count查询，解决#14bug, Thu Nov 13 22:00:59 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+A	src/test/java/com/github/pagehelper/test/basic/count/TestGroupBy.java
+R098	src/test/java/com/github/pagehelper/test/basic/selectitems/TestSelectItems.java	src/test/java/com/github/pagehelper/test/basic/count/TestSelectItems.java
+
+26398c17eaf391f2a09d70f2175cab494caff15e, 修复#15 - PageInfo中的两个getter方法错误。, Mon Nov 17 21:44:00 2014 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/test/java/com/github/pagehelper/test/basic/PageInfoTest.java
+
+e8d1d88bc5191e3a45c083acf0593a16d8263532, select语句包含group by的时候使用包围式的count查询，解决#14bug, Thu Nov 13 22:00:59 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+A	src/test/java/com/github/pagehelper/test/basic/count/TestGroupBy.java
+R098	src/test/java/com/github/pagehelper/test/basic/selectitems/TestSelectItems.java	src/test/java/com/github/pagehelper/test/basic/count/TestSelectItems.java
+
+6fa047196faa4476ee4c471bbaa1f7087668d4d6, Merge pull request #1 from leaves615/master, Thu Nov 13 13:49:32 2014 +0800
+a00a25544c08b24f00ba762ba9ff62276d0ce63f, 限制jdk编译版本为1.6, Wed Nov 12 11:54:52 2014 +0800
+M	pom.xml
+
+959af31ae269a2cac84bbaff9766b61b0578fe03, 当select列中包含参数?时的单元测试。, Tue Nov 11 11:15:01 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/sql/SqlTest.java
+A	src/test/java/com/github/pagehelper/test/basic/selectitems/TestSelectItems.java
+
+0e90ec8f613be0c6decd13e4ee21013912ea4f9f, 解决select列中包含参数时的bug, Tue Nov 11 10:51:03 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlParser.java
+
+13e714a122d7e06f97b6c256c5f8eeeb6c674470, 更新文档。, Mon Nov 10 12:49:24 2014 +0800
+M	README.md
+
+b4e696fd4d64b12eba9b4fcc5a16ca6365777aaa, 更新文档中的错误地址。, Mon Nov 10 11:50:11 2014 +0800
+M	README.md
+M	wikis/HowToUse.markdown
+
+8a20ad15143983e63ca836b35c1bf751d17e0317, PageInfo增加getSize方法，补充一个测试。, Sun Nov 9 19:14:42 2014 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf.java
+
+ca0bd6d5995d12b7b495cf268eccf533e994ff88, Update Page.java, Sat Nov 8 16:35:12 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+
+dac93d30182cba95ef6b0a5f3f4f82bc6c0f40ca, 消除泛型警告, Thu Nov 6 14:27:46 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlParser.java
+
+ed7cc4d78e080c413d2620ca4f541530a5ccfd61, 更新文档。, Thu Nov 6 13:55:33 2014 +0800
+M	README.md
+M	wikis/HowToUse.markdown
+M	wikis/Single.markdown
+
+d677bfa58d9d2370d16c91cff6f3a6f120f3662b, 更新文档。, Thu Nov 6 13:52:10 2014 +0800
+M	README.md
+D	docs/README.md
+R100	docs/Changelog.md	wikis/Changelog.markdown
+A	wikis/Home.markdown
+R100	docs/HowToUse.md	wikis/HowToUse.markdown
+R100	docs/Important.md	wikis/Important.markdown
+R100	docs/Single.md	wikis/Single.markdown
+R100	docs/Test.md	wikis/Test.markdown
+
+60d8726928f0aa3344a64e4080daf1b627dcd69e, 相对地址不可用，临时修改回来。, Thu Nov 6 13:36:41 2014 +0800
+M	README.md
+A	docs/README.md
+
+f8a5908ece5f11bc41dff1b0fb19084411a0e56c, 由于文档过长，将文档进行拆分。, Thu Nov 6 13:26:56 2014 +0800
+M	README.md
+A	docs/Changelog.md
+A	docs/HowToUse.md
+A	docs/Important.md
+A	docs/Single.md
+A	docs/Test.md
+
+045bdfb0f7efc7c24ecf0b693630c5ba2ac38dee, 修改链接方式。, Thu Nov 6 12:36:38 2014 +0800
+M	README.md
+
+e815f58556148b583a2485139d6b74b096a685fb, 文档细节错误。, Wed Nov 5 15:36:36 2014 +0800
+M	README.md
+
+12b6adcbdce5dca336a1fca4abaafda3f30b1f4d, 去掉qq群，增加一个推荐群。, Tue Nov 4 10:35:58 2014 +0800
+M	README.md
+
+ffe09b18b26cf39939a6947b8875f72ba4b0f001, 增加一个判断是否为动态sql的方法，可以减少一次getBoundSql操作。, Mon Nov 3 14:23:03 2014 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+d87b6979de4644167668764b2ac2da51f819f8ea, 更新文档。, Mon Nov 3 11:49:37 2014 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+0a0122e70150703386da9d8dc72e52301567752a, 更新文档。, Mon Nov 3 11:41:00 2014 +0800
+M	README.md
+
+7be1b1e3ba38f8c73ab202b92b7edef10082081d, 增加QQ群211286137, Mon Nov 3 09:31:29 2014 +0800
+M	README.md
+
+088cc1399b486bf055ff3a6d4e329e61d3909a75, 修改一个序号错误。, Sat Nov 1 19:55:00 2014 +0800
+M	README.md
+
+614e87be5b38ac16997bca4d02cd65c436909849, 完善文档。, Sat Nov 1 17:53:25 2014 +0800
+M	README.md
+
+0e20cbf7621ace07e805aa85acb52648736bc05d, 简单优化，更新文档。, Sat Nov 1 17:15:15 2014 +0800
+M	README.md
+M	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+A	src/test/java/com/github/pagehelper/sql/SqlTest.java
+
+e58daf2c681bf4553b98aa15aefd848e96a88547, 更新文档。, Fri Oct 31 22:07:29 2014 +0800
+M	README.md
+M	pom.xml
+
+3728a0191c741db0bd8eed24d1950d50fc30a94f, 更新文档。, Fri Oct 31 21:47:32 2014 +0800
+M	README.md
+
+7540f8bbb66e708d62a836146034577a4a0b4d4f, 更新文档。, Fri Oct 31 21:43:15 2014 +0800
+M	README.md
+
+34677ab05c7bd4bb3f203211f5b3ebefd09435b0, 更新文档。, Fri Oct 31 21:41:32 2014 +0800
+M	README.md
+M	src/main/java/com/github/pagehelper/SqlParser.java
+
+26238285878fe860250f5dc066d9e3d5a70b102a, 对Oracle的union特殊处理，因为不支持union中的order by, Fri Oct 31 15:54:49 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/resources/oracle/mybatis-config.xml
+
+a257d8c12dfefbecd8be40bb9873fff6dfab6da0, 增加了3个特殊复合sql的测试。, Fri Oct 31 15:43:02 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/basic/sql/TestLeftjoin.java
+A	src/test/java/com/github/pagehelper/test/basic/sql/TestUnion.java
+A	src/test/java/com/github/pagehelper/test/basic/sql/TestWith.java
+
+c6ea1cf56a450fea5acc15c69ffc347d8dbb2fb4, 解决select count as table_count的问题。, Fri Oct 31 15:42:39 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlParser.java
+
+95a900d74be421f348349796b7afd51a8166a354, 完成对count查询的优化，独立一个SqlParser类。, Fri Oct 31 15:05:59 2014 +0800
+A	src/main/java/com/github/pagehelper/SqlParser.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+58859f02652b9db7a53a25d7392ba986777895e8, 增加Spring配置方法。, Wed Oct 22 16:56:40 2014 +0800
+M	README.md
+
+6867ebe1fcbf84728f77a0b1ecb6c1fd0786c778, 去掉没用的静态方法，将静态字段改为正常字段。, Wed Oct 22 16:47:07 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+c6b26a9cdaf82829cd8cb0f60674c46fea3b962e, 更新说明文档。, Wed Oct 22 14:12:12 2014 +0800
+M	README.md
+
+2ded620d5c1c619f9e5d5d922cbe2a0ed0d57e36, 更新说明文档。, Wed Oct 22 13:43:33 2014 +0800
+M	README.md
+
+35442a3674c24a345d27bf00ec9e8d559561e274, 更新说明文档。, Wed Oct 22 13:40:25 2014 +0800
+M	README.md
+
+8db144645db8c2195fadff5ad4bde8b071b4dff1, 加重xml配置提示。, Wed Oct 22 13:22:43 2014 +0800
+M	README.md
+
+dc39dc387cc8ab9cb642f5e52e4b0c768c458625, 更新说明文档。, Wed Oct 22 13:19:47 2014 +0800
+M	README.md
+
+1930728e84bde5e24fe91f39c7f80d90bb00fd19, 更新说明文档以及相关代码。, Wed Oct 22 13:10:34 2014 +0800
+M	README.md
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+87c51d7b74d6ab31ff2b3760cddbfa3fca591d5d, 增加了一个静态测试sql的方法，通过这个方法可以看到一个正常select语句经过处理后的count和分页sql, Wed Oct 22 12:46:23 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+ea0682f9210783fb60e558484de6a4eccbbb5be3, 去掉了fdb-sql-parser, Wed Oct 22 12:03:24 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+4a82defdbd0ae2794bdfd4c154f9419a5bbc2d08, 移出不在需要的Mapper内容。, Wed Oct 22 12:02:56 2014 +0800
+D	src/test/java/com/github/pagehelper/mapper/OracleMapper.java
+D	src/test/java/com/github/pagehelper/mapper/OracleMapper.xml
+D	src/test/java/com/github/pagehelper/model/Oracle.java
+
+d092248d053729d525e979687219f914ed225f59, 完善Oracle测试的配置。, Wed Oct 22 12:02:04 2014 +0800
+M	src/test/resources/oracle/mybatis-config-pagesizezero.xml
+M	src/test/resources/oracle/mybatis-config-reasonable.xml
+M	src/test/resources/oracle/mybatis-config-rowbounds.xml
+M	src/test/resources/oracle/mybatis-config.xml
+A	src/test/resources/oracle/oracle.sql
+
+90104284302d80e3b92d470d618cb48a48a3a858, 【两个sql解析库】这次提交包含两种解析库，下次提交会去掉老的方式。, Wed Oct 22 11:26:51 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+251d24e526c25a12c93699b89ea4dae15209771a, 去除部分@Override注解解决Eclipse中的不支持继承接口注解的bug, Thu Oct 16 14:23:31 2014 +0800
+M	src/test/java/com/github/pagehelper/test/basic/cache/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/basic/dynamic/CacheTest.java
+
+6638df942a77b15a5ea00a87ccc53cf299626d0f, 增加@SuppressWarnings({ "rawtypes", "unchecked" })注解消除Eclipse中的警告，去除部分@Override注解解决Eclipse中的不支持继承接口注解的bug, Thu Oct 16 14:23:13 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+5e2069c4a2bb7aefb6413cae7f9181d8098fea63, 更新说明。, Wed Oct 15 09:37:03 2014 +0800
+M	README.md
+
+7714118081bc61474a2419f8ab21d04e56b1db9d, 更新说明。, Wed Oct 15 09:35:56 2014 +0800
+M	README.md
+
+b1009c105bc00a306b1b69bdea3cd2bf4867f488, 更新说明。, Wed Oct 15 09:25:54 2014 +0800
+M	README.md
+
+ff07b34a57b3a09a056c23a95f30534a57ff9006, Update README.md, Wed Oct 15 08:55:19 2014 +0800
+M	README.md
+
+5e1731deca48e70e6317542273d7d0937bc43e64, 增加一个注解形式的例子。, Tue Oct 14 23:10:44 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/basic/annotations/TestAnnotations.java
+
+9693d0808f2123d243e609d2765f3f36a04f14b5, 完善mixedsqlnode的处理。, Tue Oct 14 23:08:25 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+de93d6df2540ab1d1e1187b01776e8505962f247, [测试]增加不同数据库的支持, Tue Oct 14 22:27:26 2014 +0800
+M	pom.xml
+M	src/test/java/com/github/pagehelper/util/MybatisHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisReasonableHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java
+R099	src/test/resources/CreateDB.sql	src/test/resources/hsqldb/hsqldb.sql
+A	src/test/resources/mysql/mybatis-config-pagesizezero.xml
+A	src/test/resources/mysql/mybatis-config-reasonable.xml
+A	src/test/resources/mysql/mybatis-config-rowbounds.xml
+A	src/test/resources/mysql/mybatis-config.xml
+A	src/test/resources/mysql/mysql.sql
+A	src/test/resources/oracle/mybatis-config-pagesizezero.xml
+A	src/test/resources/oracle/mybatis-config-reasonable.xml
+A	src/test/resources/oracle/mybatis-config-rowbounds.xml
+M	src/test/resources/oracle/mybatis-config.xml
+A	src/test/resources/postgresql/mybatis-config-pagesizezero.xml
+A	src/test/resources/postgresql/mybatis-config-reasonable.xml
+A	src/test/resources/postgresql/mybatis-config-rowbounds.xml
+A	src/test/resources/postgresql/mybatis-config.xml
+M	src/test/resources/test.properties
+
+a2e2bb5c13703d3ca350c1dde7440882b81d3bc6, 修改测试。, Tue Oct 14 21:46:12 2014 +0800
+R098	src/test/java/com/github/pagehelper/test/hsqldb/PageHelperTest.java	src/test/java/com/github/pagehelper/test/basic/PageHelperTest.java
+R098	src/test/java/com/github/pagehelper/test/hsqldb/PageInfoTest.java	src/test/java/com/github/pagehelper/test/basic/PageInfoTest.java
+R093	src/test/java/com/github/pagehelper/test/hsqldb/RemoveOrderTest.java	src/test/java/com/github/pagehelper/test/basic/RemoveOrderTest.java
+R096	src/test/java/com/github/pagehelper/test/hsqldb/cache/CacheTest.java	src/test/java/com/github/pagehelper/test/basic/cache/CacheTest.java
+R095	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/CacheTest.java	src/test/java/com/github/pagehelper/test/basic/dynamic/CacheTest.java
+R093	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicChoose.java	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicChoose.java
+R093	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIf.java	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf.java
+R093	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIf2.java	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIf2.java
+R094	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIfOrder.java	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIfOrder.java
+R094	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIfTwoList.java	src/test/java/com/github/pagehelper/test/basic/dynamic/TestDynamicIfTwoList.java
+R092	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterArray.java	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterArray.java
+R092	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterList.java	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterList.java
+R092	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterMap.java	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterMap.java
+R092	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterNone.java	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterNone.java
+R092	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterOne.java	src/test/java/com/github/pagehelper/test/basic/parameter/TestParameterOne.java
+D	src/test/java/com/github/pagehelper/test/hsqldb/page/MybatisPageHelper.java
+D	src/test/java/com/github/pagehelper/test/hsqldb/util/MybatisHelper.java
+D	src/test/java/com/github/pagehelper/test/hsqldb/util/ParameterHelper.java
+D	src/test/java/com/github/pagehelper/test/oracle/OracleMybatisHelper.java
+D	src/test/java/com/github/pagehelper/test/oracle/OraclePageHelperTest.java
+R066	src/test/java/com/github/pagehelper/test/hsqldb/PageSizeLessThenOrEqualZeroTest.java	src/test/java/com/github/pagehelper/test/pagesize/PageSizeLessThenOrEqualZeroTest.java
+R095	src/test/java/com/github/pagehelper/test/hsqldb/PageSizeZeroTest.java	src/test/java/com/github/pagehelper/test/pagesize/PageSizeZeroTest.java
+R082	src/test/java/com/github/pagehelper/test/hsqldb/page/PageTest.java	src/test/java/com/github/pagehelper/test/reasonable/PageTest.java
+R085	src/test/java/com/github/pagehelper/test/hsqldb/RowBoundsTest.java	src/test/java/com/github/pagehelper/test/rowbounds/RowBoundsTest.java
+A	src/test/java/com/github/pagehelper/util/MybatisHelper.java
+R052	src/test/java/com/github/pagehelper/test/hsqldb/util/MybatisPageSizeZeroHelper.java	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java
+R069	src/test/java/com/github/pagehelper/test/hsqldb/util/DynamicHelper.java	src/test/java/com/github/pagehelper/util/MybatisReasonableHelper.java
+R052	src/test/java/com/github/pagehelper/test/hsqldb/util/MybatisRowBoundsHelper.java	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java
+A	src/test/java/com/github/pagehelper/util/TestUtil.java
+R095	src/test/resources/hsqldb/dynamic-config.xml	src/test/resources/hsqldb/mybatis-config-reasonable.xml
+D	src/test/resources/hsqldb/page/CreateDB_page.sql
+D	src/test/resources/hsqldb/page/mybatis-config-page.xml
+D	src/test/resources/hsqldb/parameter-config.xml
+A	src/test/resources/test.properties
+
+c8db15463149589a0d3d92153860594d24ca93d4, 大量改动，解决一个POJO参数时的严重BUG。, Tue Oct 14 17:23:39 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIf.java
+
+3da903934d7ccd84ef5e892b896316cf7bf04672, 更新说明。, Tue Oct 14 10:27:08 2014 +0800
+M	README.md
+
+5f5a87b176d3706e500a6a62393489ead1df2586, 更新说明。, Tue Oct 14 10:24:25 2014 +0800
+M	README.md
+
+aa013e0e2b1e59a8d654050723ccda1d30baee30, 更新说明为针对3.3.0版本的。, Tue Oct 14 10:20:46 2014 +0800
+M	README.md
+
+563c7bc4a9892d783ff112f846e12ac1ee23ed24, 增加对postgresql支持。, Tue Oct 14 10:07:04 2014 +0800
+M	README.md
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/RowBoundsTest.java
+M	src/test/java/com/github/pagehelper/test/oracle/OraclePageHelperTest.java
+
+4ed2ac1687b97926529596ead4863af75256e7b3, 删除无关的类。, Mon Oct 13 16:51:13 2014 +0800
+D	src/test/java/com/github/pagehelper/sql/SqlHelper.java
+D	src/test/java/com/github/pagehelper/sql/SqlHelperTest.java
+
+097c5d5f43133b21e70fdae5d6404b1aef4839d7, 更新，替换参数。, Mon Oct 13 15:54:32 2014 +0800
+M	src/test/java/com/github/pagehelper/sql/SqlHelper.java
+M	src/test/java/com/github/pagehelper/sql/SqlHelperTest.java
+
+d1d3154b8acbc07e611ea531855273de1a8bf74a, 增加了一个获取Mybatis执行sql的方法，只在test中，没有加入正式代码。, Mon Oct 13 14:11:21 2014 +0800
+A	src/test/java/com/github/pagehelper/sql/SqlHelper.java
+A	src/test/java/com/github/pagehelper/sql/SqlHelperTest.java
+
+870c36e4419135428d847203c5a09abec2448870, 增加了几个特殊的测试(OGNL), Sat Oct 11 14:36:15 2014 +0800
+A	src/test/java/Ognl.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/test/hsqldb/RowBoundsTest.java
+
+88c4d591f96e18705e3f4c0a4482041fc88d9d01, [测试]增加了一个带if的orderby方法。, Thu Oct 9 13:09:37 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/OracleMapper.java
+M	src/test/java/com/github/pagehelper/mapper/OracleMapper.xml
+M	src/test/java/com/github/pagehelper/test/oracle/OraclePageHelperTest.java
+
+09d12d030fd139dbbde6930cbb6c93ce0119eb5a, 更新，解决另一处oracle表as的情况。, Thu Oct 9 12:03:06 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+M	src/test/java/com/github/pagehelper/mapper/OracleMapper.xml
+
+922b14cc79fc6aafa9c553c9881c4cdc3f6bdc21, 增加dialect注入方法。新增oracle测试，测试数据库稍后会完善。, Thu Oct 9 10:08:39 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+A	src/test/java/com/github/pagehelper/mapper/OracleMapper.java
+A	src/test/java/com/github/pagehelper/mapper/OracleMapper.xml
+A	src/test/java/com/github/pagehelper/model/Oracle.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/PageHelperTest.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/PageInfoTest.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/PageSizeLessThenOrEqualZeroTest.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/PageSizeZeroTest.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/RemoveOrderTest.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/RowBoundsTest.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/cache/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicChoose.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIf.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIf2.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIfOrder.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIfTwoList.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterArray.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterList.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterMap.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterNone.java
+M	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterOne.java
+R098	src/test/java/com/github/pagehelper/util/DynamicHelper.java	src/test/java/com/github/pagehelper/test/hsqldb/util/DynamicHelper.java
+R097	src/test/java/com/github/pagehelper/util/MybatisHelper.java	src/test/java/com/github/pagehelper/test/hsqldb/util/MybatisHelper.java
+R097	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java	src/test/java/com/github/pagehelper/test/hsqldb/util/MybatisPageSizeZeroHelper.java
+R097	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java	src/test/java/com/github/pagehelper/test/hsqldb/util/MybatisRowBoundsHelper.java
+R098	src/test/java/com/github/pagehelper/util/ParameterHelper.java	src/test/java/com/github/pagehelper/test/hsqldb/util/ParameterHelper.java
+A	src/test/java/com/github/pagehelper/test/oracle/OracleMybatisHelper.java
+A	src/test/java/com/github/pagehelper/test/oracle/OraclePageHelperTest.java
+A	src/test/resources/oracle/mybatis-config.xml
+
+464e01021baef3fb61e871d270c6df15db99ad80, [严重错误]switch缺少break导致分页参数错误。, Thu Oct 9 09:40:43 2014 +0800
+M	src/main/java/com/github/pagehelper/SqlUtil.java
+
+057515216cdeb8c6848ef5902e21e11bb9ede75f, 更新。, Wed Oct 8 21:48:43 2014 +0800
+M	README.md
+
+aec4a91a062f68548eca2f2fb48176c573a3de7b, 更新。, Wed Oct 8 21:41:23 2014 +0800
+M	README.md
+
+82a2dd98eb7dc898843361db21cb62900e3db24d, sqlparser改为可选依赖，简单重构PageHelper类，将大部分独立方法提取到SqlUtil类中。, Wed Oct 8 21:27:06 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+A	src/main/java/com/github/pagehelper/SqlUtil.java
+
+39bf84dcfb7ff2d92df62fd32def94331b94e5cd, 解决动态sql下的去除orderby, Wed Oct 8 19:48:17 2014 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+159fa83e960351dc9fba0655ca977a2c7169706e, 更新。, Tue Sep 30 14:12:15 2014 +0800
+M	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIfOrder.java
+
+ce9d1541f68c333b9719a88237d22e68dcbca0c5, 增加一个TODO。, Sun Sep 28 16:33:26 2014 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+e056f0d109cef1dbd8cccf6902b1a2dd56b1e560, 增加orderby动态的例子。, Sun Sep 28 16:33:14 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIfOrder.java
+
+75111e02a2a776db53c633cbf5ef88151eec856b, 增加分页参数的注入方法，方便在Spring中注入。, Sun Sep 28 11:11:18 2014 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+3c9ac45b5bb6f62dafb005f2a9e6f5e30c84033a, 去掉一个不必要的Map类型。, Sun Sep 28 10:40:23 2014 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+bfc068c358640cd718a396c775aae1c49cd27741, 修改一个错误reasonable, Tue Sep 23 13:35:34 2014 +0800
+M	README.md
+
+de92226e09a8e77c8e4f6da4d6ff473cb38cdbc3, 更新说明。, Tue Sep 23 11:39:43 2014 +0800
+M	README.md
+
+bdf39d3861e8acdf2b47318f8d1604bbe875e8d4, 更新说明文档。, Tue Sep 23 11:30:45 2014 +0800
+M	README.md
+
+8f7ef22e3d32799d2cbc3ec14fefd15ea92e84c4, 更新说明文档。, Tue Sep 23 11:29:24 2014 +0800
+M	README.md
+
+04679291a0624ee99b588fa8a347299d979054a5, 更新测试代码。, Tue Sep 23 11:29:13 2014 +0800
+M	src/test/java/com/github/pagehelper/test/hsqldb/PageInfoTest.java
+M	src/test/resources/hsqldb/page/mybatis-config-page.xml
+
+160a2e1c0dcd1823904a0771a09cadf44be5c4e9, 增加分页参数合理化参数，可以通过参数配置，默认启用，设置false可以禁用。, Tue Sep 23 11:20:31 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+b42dcb994c0e009e209d0b1d68075437ee1cd92a, 增加动态choose例子。, Tue Sep 23 01:39:52 2014 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicChoose.java
+
+13d3fff0a309d5a5c65b29aa8e1a036b02e2be59, 增加动态sql测试。, Tue Sep 23 00:42:05 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/CacheTest.java
+A	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIf.java
+A	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIf2.java
+A	src/test/java/com/github/pagehelper/test/hsqldb/dynamic/TestDynamicIfTwoList.java
+A	src/test/java/com/github/pagehelper/util/DynamicHelper.java
+A	src/test/resources/hsqldb/dynamic-config.xml
+
+103cbb9657e30d2d5b9ee70f70defe02fd4b7c52, 完善，解决动态sql的问题。, Tue Sep 23 00:39:36 2014 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+2fd6aa416534110bc7b3a936c5019094ad85fbf9, 增加对5种参数类型的测试。, Mon Sep 22 22:17:47 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterArray.java
+A	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterList.java
+A	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterMap.java
+A	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterNone.java
+A	src/test/java/com/github/pagehelper/test/hsqldb/parameter/TestParameterOne.java
+A	src/test/java/com/github/pagehelper/util/ParameterHelper.java
+A	src/test/resources/hsqldb/parameter-config.xml
+
+a36bc7495bd610436f50cafa4d366595f97ee3ba, 解决参数Map的问题。, Mon Sep 22 22:17:17 2014 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+ef7f90c05b0ec73ad43392b1d0b515ecbebceb3d, 对测试类进行大调整，准备分别增加hsqldb,mysql,oracle的测试。, Mon Sep 22 21:47:46 2014 +0800
+R099	src/test/java/com/github/pagehelper/test/PageHelperTest.java	src/test/java/com/github/pagehelper/test/hsqldb/PageHelperTest.java
+R099	src/test/java/com/github/pagehelper/test/PageInfoTest.java	src/test/java/com/github/pagehelper/test/hsqldb/PageInfoTest.java
+R098	src/test/java/com/github/pagehelper/test/PageSizeLessThenOrEqualZeroTest.java	src/test/java/com/github/pagehelper/test/hsqldb/PageSizeLessThenOrEqualZeroTest.java
+R098	src/test/java/com/github/pagehelper/test/PageSizeZeroTest.java	src/test/java/com/github/pagehelper/test/hsqldb/PageSizeZeroTest.java
+R097	src/test/java/com/github/pagehelper/test/RemoveOrderTest.java	src/test/java/com/github/pagehelper/test/hsqldb/RemoveOrderTest.java
+R098	src/test/java/com/github/pagehelper/test/RowBoundsTest.java	src/test/java/com/github/pagehelper/test/hsqldb/RowBoundsTest.java
+R099	src/test/java/com/github/pagehelper/test/cache/CacheTest.java	src/test/java/com/github/pagehelper/test/hsqldb/cache/CacheTest.java
+R091	src/test/java/com/github/pagehelper/test/page/MybatisPageHelper.java	src/test/java/com/github/pagehelper/test/hsqldb/page/MybatisPageHelper.java
+R098	src/test/java/com/github/pagehelper/test/page/PageTest.java	src/test/java/com/github/pagehelper/test/hsqldb/page/PageTest.java
+M	src/test/java/com/github/pagehelper/util/MybatisHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java
+M	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java
+R100	src/test/resources/mybatis-config-pagesizezero.xml	src/test/resources/hsqldb/mybatis-config-pagesizezero.xml
+R100	src/test/resources/mybatis-config-rowbounds.xml	src/test/resources/hsqldb/mybatis-config-rowbounds.xml
+R100	src/test/resources/mybatis-config.xml	src/test/resources/hsqldb/mybatis-config.xml
+R100	src/test/resources/page/CreateDB_page.sql	src/test/resources/hsqldb/page/CreateDB_page.sql
+R100	src/test/resources/page/mybatis-config-page.xml	src/test/resources/hsqldb/page/mybatis-config-page.xml
+
+727cb7c942df632b8c4ad6470b5018a48c7c468c, 修改。, Thu Sep 18 23:01:10 2014 +0800
+M	src/test/java/com/github/pagehelper/test/PageInfoTest.java
+
+1ae81637fce4bc7d3dc54a16120cb421d5e28f00, 解决oracle中table别名AS的问题。, Fri Sep 12 15:06:04 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+
+6fca01e843e14731392d772cf7512b24a4adb6e9, 解决当pageSize<0时分页信息错误。待测试。, Wed Sep 3 17:30:52 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+cca333168c93cf7b09434a4364847d9de949754d, 完善pageNum<=0, Tue Sep 2 23:59:30 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/test/java/com/github/pagehelper/test/page/PageTest.java
+
+23e3718b5dbdceb1f4aa9bd001a7c55428eb0671, 增加测试内容。, Tue Sep 2 23:50:07 2014 +0800
+M	src/test/java/com/github/pagehelper/test/PageInfoTest.java
+
+7c68e838ff4d36c44a4cac10bff1df89ca6c473e, 完善，可以控制显示页码的数量。, Tue Sep 2 23:49:56 2014 +0800
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+05d4599c3baf99a763982e8de7576fcb7d644605, 更新文档。, Tue Sep 2 23:38:46 2014 +0800
+M	README.md
+
+bbde4bbd1ea1d41f7da306bbc3f529fdedc5ef72, 取消idea对代码格式化的影响。, Tue Sep 2 23:26:41 2014 +0800
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+10ec1df25ec80c4eaad87e658e6ed61e817eb76e, 由于直接对ms进行缓存，不需要guava了。, Tue Sep 2 23:11:46 2014 +0800
+M	pom.xml
+
+7eac71abefa06568444848d346f0fb3057d4bba0, 更新测试例子。, Tue Sep 2 23:11:16 2014 +0800
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+M	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+M	src/test/java/com/github/pagehelper/test/PageHelperTest.java
+M	src/test/java/com/github/pagehelper/test/PageInfoTest.java
+M	src/test/java/com/github/pagehelper/test/PageSizeLessThenOrEqualZeroTest.java
+M	src/test/java/com/github/pagehelper/test/PageSizeZeroTest.java
+M	src/test/java/com/github/pagehelper/test/RowBoundsTest.java
+A	src/test/java/com/github/pagehelper/test/cache/CacheTest.java
+M	src/test/java/com/github/pagehelper/test/page/PageTest.java
+
+dfd6e308e39223edb73ecb60d305bd04c4447591, 重大更新，将ms全部缓存。, Tue Sep 2 23:10:59 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+
+e7ee71e711afe5a842997e8cfdafaf61ef4d71b9, 对PageInfo进行增强，现在几乎包含了所有可以用到的分页属性。, Tue Sep 2 14:20:01 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+M	src/main/java/com/github/pagehelper/PageInfo.java
+M	src/test/java/com/github/pagehelper/test/PageHelperTest.java
+A	src/test/java/com/github/pagehelper/test/PageInfoTest.java
+
+e1ba1d76b7e2274a60075e55b2c8f979abb5bf95, 增加分页合理化的测试。, Mon Sep 1 21:55:21 2014 +0800
+A	src/test/java/com/github/pagehelper/test/page/MybatisPageHelper.java
+A	src/test/java/com/github/pagehelper/test/page/PageTest.java
+A	src/test/resources/page/CreateDB_page.sql
+A	src/test/resources/page/mybatis-config-page.xml
+
+294785d40326a35d4c3c54ce18d0191258b09c8d, 分页合理化，pageNum<0时会查询第一页，pageNum>pages(总页数)的时候会查询最后一页。, Mon Sep 1 21:53:59 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+
+1d2794e5cbefc862ca5660b4d3f333e50a928d10, 更新为3.2.3, Fri Aug 29 11:08:46 2014 +0800
+M	pom.xml
+
+6c75e6a534526f82881a99e83f4b6c0a93104e70, 更新文档, Fri Aug 29 11:01:31 2014 +0800
+M	README.md
+
+c177507c5e2284b25f068ecf3fd1449179dc260b, 更新文档, Fri Aug 29 10:57:36 2014 +0800
+M	README.md
+
+efaa5abbb6de531d91430d7d42a9da398f4c9197, 修改hsqldb为不同的数据库。, Fri Aug 29 10:47:07 2014 +0800
+M	src/test/resources/mybatis-config-pagesizezero.xml
+M	src/test/resources/mybatis-config-rowbounds.xml
+
+541e3f9afb714893f5a3d90e88c67c3781d3f949, 更新说明。, Fri Aug 29 10:43:41 2014 +0800
+M	README.md
+
+7fb63ecb9392824d77080b7b33f20d0a40b849a5, 完善处理total。, Fri Aug 29 09:59:44 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+f60b3bfa81cd4a2ca5d9b0ae73ed724f75a760a2, 针对新的改动添加测试方法。, Fri Aug 29 09:52:42 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+A	src/test/java/com/github/pagehelper/test/PageSizeLessThenOrEqualZeroTest.java
+A	src/test/java/com/github/pagehelper/test/PageSizeZeroTest.java
+A	src/test/java/com/github/pagehelper/util/MybatisPageSizeZeroHelper.java
+A	src/test/resources/mybatis-config-pagesizezero.xml
+
+ed6f38987af3989ac0f4f348907dfdd6553285cd, 新版去order by的版本改为3.3.0-SNAPSHOT，由于新增内容的不确定性，使得这个版本发布日期难以确定。, Fri Aug 29 09:24:02 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+5ef585485de16decf8cf933525a342a28395e3a0, Merge branch 'v3.2.3', Fri Aug 29 09:19:13 2014 +0800
+670d0c7b83d48dcd049ce20221016edf8749fc2a, 解决mysql包含for update时的分页错误。pageSize>0的时候才执行分页查询，否则只是一个count结果。 增加一个配置项，可以设置当pageSize=0的时候不进行分页查询。, Fri Aug 29 09:17:04 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+9bf731ef228034a181d437d74e6338b80709d368, 修改测试数据为纯英文数据，修改相应的测试条件。, Sun Aug 24 22:59:13 2014 +0800
+M	src/test/java/com/github/pagehelper/test/PageHelperTest.java
+M	src/test/java/com/github/pagehelper/test/RemoveOrderTest.java
+M	src/test/java/com/github/pagehelper/test/RowBoundsTest.java
+M	src/test/resources/CreateDB.sql
+M	src/test/resources/mybatis-config-rowbounds.xml
+
+225c945f043609559dff4fea73d78595315e4e35, 增加测试代码，针对order by增加判断，如果包含?参数，就不去掉。, Sun Aug 24 22:01:18 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+A	src/test/java/com/github/pagehelper/mapper/CountryMapper.java
+A	src/test/java/com/github/pagehelper/mapper/CountryMapper.xml
+A	src/test/java/com/github/pagehelper/model/Country.java
+A	src/test/java/com/github/pagehelper/test/PageHelperTest.java
+A	src/test/java/com/github/pagehelper/test/RemoveOrderTest.java
+A	src/test/java/com/github/pagehelper/test/RowBoundsTest.java
+A	src/test/java/com/github/pagehelper/util/MybatisHelper.java
+A	src/test/java/com/github/pagehelper/util/MybatisRowBoundsHelper.java
+A	src/test/resources/CreateDB.sql
+A	src/test/resources/log4j.properties
+A	src/test/resources/mybatis-config-rowbounds.xml
+A	src/test/resources/mybatis-config.xml
+
+915355feb07efc005110b71641e13b0947d4d669, 更新说明。, Sun Aug 3 17:55:29 2014 +0800
+M	README.md
+
+2d6ee7e86ec4f4826d4860f9996b9d9e18b7f586, 增加注释, Sun Aug 3 17:37:26 2014 +0800
+M	pom.xml
+
+d4f54cce1c0d0bdbbec3029532c8284f2b76c0d8, 增强性能，优化count查询, Sun Aug 3 17:06:22 2014 +0800
+M	pom.xml
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+fd9e88df0395a4d19574c936ef0fd3f5e4c014c3, 更新说明, Sun Aug 3 16:47:03 2014 +0800
+M	README.md
+
+cab707bad3db70038b327f0a66bb40d914f9a11f, Update README.md, Sat Jul 19 00:46:11 2014 +0800
+M	README.md
+
+e29971d2dba916daf9ed288ea963b9a3f7b5db65, Update README.md, Sat Jul 19 00:42:45 2014 +0800
+M	README.md
+
+3b8349bb01fb2d2a94e8b14ea3444c1a7baa3ce7, 更新为3.2.2版本, Fri Jul 18 22:36:34 2014 +0800
+M	pom.xml
+
+19038cff5baf1396164f72494ab40813f89a5a0d, 增加PageInfo类，可以使用该类对分页结果进行封装，便于在EL表达中直接访问, Fri Jul 18 22:16:48 2014 +0800
+A	src/main/java/com/github/pagehelper/PageInfo.java
+
+1880177132e3689bf3b6e2dfbaab9cfb26629d4b, 简单重构方法，增加内置的fromObject方法兼容更低版本的Mybatis, Fri Jul 18 22:15:36 2014 +0800
+M	src/main/java/com/github/pagehelper/Page.java
+M	src/main/java/com/github/pagehelper/PageHelper.java
+
+8abdc68980f55ace852ae6eb34a107e71f3f87aa, 更新说明, Tue Jun 10 13:41:47 2014 +0800
+M	README.md
+
+934442b257887a64b48a27a0b5d72ce13172e3a6, '更新', Tue Jun 10 11:11:42 2014 +0800
+M	pom.xml
+
+f464f6de9cc579cf4333167f5e23d30d3bf63bc7, 初始导入, Tue Jun 10 08:56:29 2014 +0800
+A	.gitignore
+A	LICENSE
+A	README.md
+A	pom.xml
+A	src/main/java/com/github/pagehelper/Page.java
+A	src/main/java/com/github/pagehelper/PageHelper.java
+
+6cfd1f355669c14f0ea33578cf15cfd31b791dbf, 修改说明, Mon Jun 9 14:14:20 2014 +0800
+M	README.md
+
+9061eabb24246b16c84db3f798a0dd55a96ffe80, 更新说明, Mon Jun 9 10:57:51 2014 +0800
+M	README.md
+
+762a8b3ab03ebf6b65c822d882b7eaad5494b5cc, 更新说明, Mon Jun 9 10:53:10 2014 +0800
+M	README.md
+
+471476a138b39c4d14dc57f57c9424730306d9ef, 更新说明, Mon Jun 9 10:26:49 2014 +0800
+M	README.md
+
+1f74c3f0d81dfd8a0552b20316130989023f8aff, 更新说明, Mon Jun 9 10:16:00 2014 +0800
+M	README.md
+
+1795d13cd62b8ae214aee1b458c273de08d23ebd, 更新日志, Mon Jun 9 10:12:48 2014 +0800
+M	README.md
+
+fda8cf6f77ada5d95bef194b85f6474f7201aa5a, 更新说明, Mon Jun 9 09:50:19 2014 +0800
+M	README.md
+
+b645020384c9712e38334985986f1bb37148a777, 更新说明, Mon Jun 9 09:41:13 2014 +0800
+M	README.md
+
+f16b9ee21cacae0d87858acdf3cca81ae2412c75, 增加MIT协议, Mon Jun 9 09:33:15 2014 +0800
+M	Page.java
+M	PageHelper.java
+M	README.md
+
+829f45d111b98b88e9e9527bfd7a42800e78e0f7, 增加MIT协议, Mon Jun 9 09:13:07 2014 +0800
+A	LICENSE
+M	README.md
+
+bbae940e8064e7e2413d85219d7adb2b3e607fe6, 更新说明, Fri Jun 6 20:49:12 2014 +0800
+M	README.md
+
+36308e6c63b862b2145dbd106044e216a49350a1, 更新说明, Fri Jun 6 16:01:44 2014 +0800
+M	README.md
+
+c03febe6aad0d595e000e6ed6eb0e93a4a9129ad, 更新版本为v3.2.0, Fri Jun 6 15:25:56 2014 +0800
+M	PageHelper.java
+
+df3b2cb561d988df6424fac496369e1abdfb2850, 更新说明, Fri Jun 6 15:25:21 2014 +0800
+M	README.md
+
+b6a1abb616ce2d8f74f747a01166197dbe73afd7, 增加对hsqldb支持, Fri Jun 6 15:13:20 2014 +0800
+M	PageHelper.java
+M	README.md
+
+299d6e41ccfb7caaa214587f78587f083bc58124, 修改说明, Fri Jun 6 13:00:02 2014 +0800
+M	README.md
+
+feba238b08c01c5bd8e74e2a07b65cf75c24679c, 修改说明, Fri Jun 6 12:58:17 2014 +0800
+M	README.md
+
+941f183fcf8a51d91947f5fbb7494af37d1c4d9d, 修改说明, Fri Jun 6 12:39:30 2014 +0800
+M	README.md
+
+9a3ff452c6d799cf104bd850647d4d0a0b0784a5, 解决oracle count bug, Fri Jun 6 12:38:06 2014 +0800
+M	PageHelper.java
+M	README.md
+
+f6c4b5e19734fd154fcd00a068ae7fcbeced4727, 更新说明, Wed Jun 4 12:34:44 2014 +0800
+M	README.md
+
+8ded742629d61a3bc3dc3f3ac13934b4c9fae2c1, 更新说明, Wed Jun 4 12:33:53 2014 +0800
+M	README.md
+
+64b825c2bbd0b84ad135eb1977d0496ef01effe4, 更新说明, Wed Jun 4 12:30:56 2014 +0800
+M	README.md
+
+e356b01bbf8dbaaca785905a48aab47c1b617262, 统一返回值为Page<E>, Wed Jun 4 12:12:19 2014 +0800
+M	PageHelper.java
+M	README.md
+
+e33698b259156fb4d510265a2079b30d9e61c2de, 更新Mybatis项目链接, Fri May 23 12:42:33 2014 +0800
+M	README.md
+
+c21bbbf7b0b756cf7512050abd56fb07fdc21bf8, 修改版本号为3.1.0, Fri May 23 10:59:47 2014 +0800
+M	PageHelper.java
+M	README.md
+
+ddb87581427083472582d23d5094b2cd020ce479, 修改说明, Fri May 23 10:16:37 2014 +0800
+M	README.md
+
+0ed31e885e387ce268b4c5dd96363218ba11d303, 修改说明, Fri May 23 09:24:58 2014 +0800
+M	README.md
+
+5a062a28d730b6c119eeee2ebdae7990bc77a61f, 修改说明链接, Fri May 23 09:09:36 2014 +0800
+M	README.md
+
+507adf22d63fc0a05357f917ab810098463b960a, 合并来自鲁家宁的提交，增加对mysql的支持, Fri May 23 09:02:37 2014 +0800
+M	PageHelper.java
+M	README.md
+
+c52c120edb9ffcd46ea2dac750b9a0f9b67dcddb, 修改mysql分页sql, Fri May 23 00:40:09 2014 +0800
+M	PageHelper.java
+
+54ee5807756974a747f8aa8600f85033388c40ce, 添加mysql支持, Thu May 22 23:57:59 2014 +0800
+M	PageHelper.java
+M	README.md
+
+a8f6b901d3bb801fb42d31427bdbea033890d9e1, 修改注释。, Thu May 22 21:56:26 2014 +0800
+M	PageHelper.java
+
+eae94693a81d2897f12806331a46b7566ed82d5c, 修复RowBounds分页Bug, Thu May 22 21:54:04 2014 +0800
+M	PageHelper.java
+M	README.md
+
+b9ea94acab4fa515f3f35fb3ccb8c083b41b78ef, 增加支付宝扫码, Thu May 22 13:34:50 2014 +0800
+M	README.md
+
+5103be8f67725c4fe57103e36b6c21f025aefd14, 更新文档, Thu May 22 11:27:15 2014 +0800
+M	README.md
+
+066d4131f6250e674e6d6245d86a786624c83a7c, 更新文档, Thu May 22 11:25:12 2014 +0800
+M	README.md
+
+6a43b1f32fb9cb0174c17c91f2bfd02ba64d8179, 更新说明文档,更改为v3.0版本, Thu May 22 11:23:02 2014 +0800
+M	README.md
+
+07be89e99a09cd39cb5ce93a9a9a9b382e0cc2d4, 更新说明, Thu May 22 11:14:55 2014 +0800
+M	README.md
+
+b686155132062717aeec9e4eacbe237174cf754d, 更新说明, Thu May 22 09:46:01 2014 +0800
+M	README.md
+
+23f42f3698fc381184054f397587ebc3f22735f9, 更新说明,增加一个命名空间调用的例子, Thu May 22 09:43:56 2014 +0800
+M	README.md
+
+3f7f6809540cb5f75fd47fde54fb431aa6f3dcc4, 更新说明, Thu May 22 00:52:18 2014 +0800
+M	README.md
+
+e1c15a9dc5fd7888116aa73782323afb0916c046, 更新说明, Thu May 22 00:42:27 2014 +0800
+M	README.md
+
+a1103413ab46ea64874546f13b8bfa56adbe2ddf, 更新说明, Thu May 22 00:13:02 2014 +0800
+M	README.md
+
+cb40b5ef6a90e1663f996f08d493362fdf98f5ec, 增加RowBounds支持,版本更新为v3.0_beta, Thu May 22 00:09:20 2014 +0800
+M	Page.java
+M	PageHelper.java
+M	README.md
+
+6c7f0b7c78cfa2b133c0cf1246a54cbda0151437, getCoundSql -> getCountSql, Wed May 21 14:31:23 2014 +0800
+M	PageHelper.java
+
+629e934d5222fc5dafdb3b0b8b6cc64d6ddcc1e6, 修改注释, Wed May 21 08:31:45 2014 +0800
+M	PageHelper.java
+
+e9ae549961663fbb41c2de8ec0c859a630da4177, 解决并发异常,更新版本号v2.1, Tue May 20 23:55:38 2014 +0800
+M	PageHelper.java
+M	README.md
+
+5918e8a22954fa4f6e63e155feec050efe47e038, 更新分页插件，去掉无效判断, Tue May 20 10:19:32 2014 +0800
+M	PageHelper.java
+
+da976316da081d9e8d9edd450c6af3126300bf8c, 更新分页插件,简单调整逻辑, Tue May 20 09:30:51 2014 +0800
+M	PageHelper.java
+
+a53ba52aaf87ab737977902384a5aa260be9ca4c, 更新说明, Tue May 20 08:50:52 2014 +0800
+M	README.md
+
+06b3ed435f21efab5065f4556e1e0582fc6935a4, 更新说明, Tue May 20 08:47:02 2014 +0800
+M	README.md
+
+59c92c5528cb1b68d2bc94ec4745dee334559680, 更新分页插件，支持Mybatis缓存, Tue May 20 08:32:20 2014 +0800
+A	Page.java
+M	PageHelper.java
+
+f3eb65f8ab7952ce674a3ddf1a02af010466ca1d, 更新说明, Sun May 11 13:59:51 2014 +0800
+M	README.md
+
+4f3b8880d212159d61c0facfdadd470121c5108c, 去掉包名, Sun May 11 13:56:35 2014 +0800
+M	PageHelper.java
+
+df3ac38678fb8d0e3acf11d754906514cceb6ed0, 更新说明, Sun May 11 13:55:31 2014 +0800
+M	README.md
+
+a2cc6bd35751afafe696985232552f05ba395648, 更新，支持foreach中的分页, Sun May 11 13:54:06 2014 +0800
+M	PageHelper.java
+
+c1396ac36761304b2fd2c6fdeace5625750b11ee, 初始导入, Sun May 11 13:53:04 2014 +0800
+A	PageHelper.java
+A	README.md

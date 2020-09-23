@@ -1,0 +1,724 @@
+cdc12ec911afea08372c4a6bdef8dc97725d5139, add JSP Sample., Wed Feb 3 21:39:21 2016 +0900
+M	src/main/java/com/jurin_n/MyApplication.java
+A	src/main/java/com/jurin_n/servlet/MyServlet.java
+A	src/main/webapp/WEB-INF/jsp/myServlet.jsp
+
+57f82e14aaa820142734d6eee15407ce5ba2e81d, アクセス修飾子設定の見直し。アクセス可能範囲をなるべく限定するように対応。, Mon Jan 11 15:39:50 2016 +0900
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+
+fb6ba3df411a3f88e7dd0c5597672367079c4069, 微調整。, Sun Jan 10 23:02:33 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/AuthenticationServiceTest.java
+
+d5644f52f7ea3b3acb260a60c833faf65c2325c2, テストメソッド微調整。, Sun Jan 10 22:32:34 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/AuthenticationServiceTest.java
+
+652d87a7ef0286bb48cc1caf18a0eca0d04012e1, 認証用ロジックをファクトリから取得するように対応。, Sun Jan 10 21:42:35 2016 +0900
+A	src/main/java/com/jurin_n/domain/model/identity/Authentication.java
+A	src/main/java/com/jurin_n/domain/model/identity/AuthenticationFactory.java
+M	src/main/java/com/jurin_n/domain/model/identity/AuthenticationService.java
+A	src/main/java/com/jurin_n/domain/model/identity/Authentications.java
+A	src/main/java/com/jurin_n/domain/model/identity/Sha1Authentication.java
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+M	src/test/java/com/jurin_n/domain/model/identity/AuthenticationServiceTest.java
+
+e0e4a0a8896c8397ed43e3c02360626a7faa7aa2, SRP分析結果を反映。, Sun Jan 10 11:59:33 2016 +0900
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+
+e49d2d2130f5439e629bc4ef3797e2007d06ab8e, BaseResource.javaの異なるシグネチャのprocessメソッドを一つにまとめる。, Sun Jan 10 01:03:05 2016 +0900
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+D	src/main/java/com/jurin_n/jax_rs/resources/common/BaseProcess.java
+
+87adcc1caf9b4e03177afeb7ebfd54e21340ab9c, BaseResource.javaのシグネチャのことなるprocessメソッドの実装方法を再考。, Sat Jan 9 17:47:41 2016 +0900
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+A	src/main/java/com/jurin_n/jax_rs/resources/common/BaseProcess.java
+
+f6b43d168406825299a1abeda8ddc537baaa8335, BaseResource.javaのprocessメソッドの実装案を追加。（テスト未実施）, Sat Jan 9 13:02:51 2016 +0900
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+
+8fd7aec8745f9b818c001d8229cf7185a244aca9, BaseResource.javaのシグネチャのことなるprocessメソッドについて実装方法を検討。（テスト未実施）, Sat Jan 9 12:49:25 2016 +0900
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+
+a57036ebe4f04d46d3196a8a6a533e7a114d1381, processメソッドのありえそうなシグネチャを洗い出してみた。 （ロジックは未実装）, Sat Jan 9 02:04:46 2016 +0900
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+
+b582295d9262421b3d58e63e7d5a817f7fde6082, 認証ロジックをBaseResource.javaに移動。認証フィルター削除。, Sat Jan 9 01:52:38 2016 +0900
+D	src/main/java/com/jurin_n/jax_rs/exception/AuthenticationException.java
+D	src/main/java/com/jurin_n/jax_rs/exception/AuthorizationException.java
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+D	src/main/java/com/jurin_n/servlet/AuthenticationFilter.java
+
+18481913d13c9951a2659c18beac9263fc6eac4c, JAX-RSでの処理をテンプレート化。これにより権限チェック呼び出しを定型化。, Sat Jan 9 00:20:18 2016 +0900
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+A	src/main/java/com/jurin_n/jax_rs/resources/Permmisions.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+
+6f49202f9629dc4e72f952c7a6e657003443fbd3, ServletFilter使い、認証フィルター作成。, Wed Jan 6 23:34:00 2016 +0900
+D	src/main/java/com/jurin_n/jax_rs/providers/AuthenticationExceptionMapper.java
+D	src/main/java/com/jurin_n/jax_rs/providers/AuthorizationExceptionMapper.java
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+A	src/main/java/com/jurin_n/servlet/AuthenticationFilter.java
+
+906d92c180598a0b575531a669be38ddd504832b, rename a method for authentication., Wed Jan 6 00:49:24 2016 +0900
+M	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+
+bea6054a47dfea8dc0313fb82b0423f1953ac3a9, JAX-RSリソースのベースリソースを作成。認証,認可関連ロジックをベースリソースに移動。, Tue Jan 5 00:02:04 2016 +0900
+A	src/main/java/com/jurin_n/jax_rs/resources/BaseResource.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+
+cd95f310ae7f56103603ccced261a5f00ba45b63, 認証・認可処理をJAX-RSリソースに組み込んでみる。, Mon Jan 4 23:09:33 2016 +0900
+A	src/main/java/com/jurin_n/jax_rs/exception/AuthenticationException.java
+A	src/main/java/com/jurin_n/jax_rs/exception/AuthorizationException.java
+A	src/main/java/com/jurin_n/jax_rs/providers/AuthenticationExceptionMapper.java
+A	src/main/java/com/jurin_n/jax_rs/providers/AuthorizationExceptionMapper.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+
+34a78cd55fefcab8476010e1e6337308e1d97ffb, 認証と認可のロジックをJAX-RSリソース(PracticePlanResource.java)に組み込んでみる。, Sun Jan 3 20:30:25 2016 +0900
+M	src/main/java/com/jurin_n/domain/model/identity/AuthenticationService.java
+M	src/main/java/com/jurin_n/domain/model/identity/user/User.java
+M	src/main/java/com/jurin_n/domain/model/identity/user/UserDescriptor.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+
+44b379c2bbb32be170cc4d9a6c11faeb2465e92b, 不要なsetterとgetterメソッド削除。, Sun Jan 3 15:09:54 2016 +0900
+M	src/main/java/com/jurin_n/domain/model/identity/user/User.java
+
+a50484b620afb507649ae08f8c97059c9c5b7d08, 不要なコメント削除。一部変数の宣言で実クラスつかってたのでインターフェイスに変更。, Sun Jan 3 14:59:28 2016 +0900
+M	src/main/java/com/jurin_n/domain/model/identity/user/User.java
+M	src/test/java/com/jurin_n/domain/model/identity/AuthenticationServiceTest.java
+
+66f3a37610f53936db184004c8d37ad2e74b78e0, AuthenticationService.javaのためのユニットテスト追加。, Sun Jan 3 14:47:06 2016 +0900
+M	pom.xml
+M	src/main/java/com/jurin_n/domain/model/identity/AuthenticationService.java
+M	src/main/java/com/jurin_n/domain/model/identity/user/User.java
+A	src/main/java/com/jurin_n/domain/model/identity/user/UserRepository.java
+A	src/main/java/com/jurin_n/infrastructure/persistence/JPAUserRepository.java
+M	src/test/java/com/jurin_n/domain/model/identity/AuthenticationServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+A	src/test/java/com/jurin_n/infrastructure/persistence/JPAUserRepositoryTest.java
+M	src/test/resources/META-INF/persistence.xml
+
+38f835ffb016b64be199927214ca572d3fdc6bf1, テストメソッド名を変更。, Sun Jan 3 10:48:56 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/AuthenticationServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+9c16e365a30866239665895d4bff98d1a6909411, テストメソッド名の頭につけてた test_ というキーワードをやめる。, Sun Jan 3 10:05:56 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+a29148653f005d04c8ac03ebfd27e422e56e698e, テストケース２つ追加。, Sun Jan 3 00:10:28 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+0a89e55776eec9ddefa94ea866e93752be0607a3, RoleとPermissionのセットアップを@Beforeを付与したメソッドに移動。, Sun Jan 3 00:05:03 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+10e560b96c88760d3141da066891c80eced6e357, 不要なClassRule削除。JPA使ったセットアップ処理削除。, Sat Jan 2 23:52:07 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+12d4b24ccfa46e70fc6b08335ebeede35debe161, 目的がはっきりしないテストメソッドを削除（追加対応）。, Sat Jan 2 23:50:08 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+55a806eac4f6367f288497235fc51db3c9e05969, 目的がはっきりしないテストメソッドを削除。, Sat Jan 2 23:49:16 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+695abf0a2fc64fce9ece3c978eec8a03bbac9ff9, executeNativeSQLメソッドをJPAResourceクラスに移動(追加対応)。, Sat Jan 2 23:47:05 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+287e6ff4673d403d60178a790e1a209abf1d2ad5, executeNativeSQLメソッドをJPAResourceクラスに移動。, Sat Jan 2 23:46:18 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+M	src/test/java/com/jurin_n/junit/rules/JPAResource.java
+
+fe5923b6de8555d2a4b20e60cf035d56571bbf60, テストデータセットアップのため、事前にDBに永続化する必要ないと思うのでやめてみる。, Sat Jan 2 23:41:57 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+c8810e1d094f1ca9833450cc82634be8b5a6f41d, 単なるテストデータを定数に設定。テストデータである以外何者でもないことを強調。, Sat Jan 2 23:31:40 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+02bdd5803cacfb4aa3174f91d5bc5834fe313ab4, trueであることを判定するassertをassertThatからasertTrueへ変更。, Sat Jan 2 23:22:27 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+1f7f3a968f3c2179491e921f46bf0329538dc0f4, 冗長なアサーションを削除。, Sat Jan 2 23:17:50 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+6d599ab215680ab2b3519a303cf4eb6be4710ece, テストコード内部に記載したコメントを削除。, Sat Jan 2 23:11:20 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+3412be1c6a33fbcc9cc3aed8ba021f54cc3be117, リファクタリング。, Sat Jan 2 23:05:05 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+88fa6229ff6cbbba450a69d740fed775496e9ead, テストメソッド名のリファクタリング。, Sat Jan 2 22:51:23 2016 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+8b570c98a479684f628e8556aef37cacab320f37, add test case for AuthenticationServiceTest.java., Sat Dec 26 02:13:17 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/identity/AuthenticationService.java
+M	src/main/java/com/jurin_n/domain/model/identity/user/UserDescriptor.java
+M	src/test/java/com/jurin_n/domain/model/identity/AuthenticationServiceTest.java
+
+525f3b809a87fd7d0ec5afc073bd1c54cb866975, add AuthenticationService.java., Sat Dec 26 00:31:39 2015 +0900
+A	src/main/java/com/jurin_n/domain/model/identity/AuthenticationService.java
+A	src/main/java/com/jurin_n/domain/model/identity/user/UserDescriptor.java
+A	src/test/java/com/jurin_n/domain/model/identity/AuthenticationServiceTest.java
+
+2489a84c65d6841c8c85c7ba8820b26de923923a, add zip file download resource., Thu Dec 24 23:14:11 2015 +0900
+A	src/main/java/com/jurin_n/jax_rs/resources/download.java
+
+39582f32f20e424f6163443a5647e5ea24c8828b, 微調整, Wed Dec 23 19:07:57 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/identity/user/User.java
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+2496a2cb5b3b6a926c271e837e6d59880c35fccd, Userエンティティにメソッド追加。, Wed Dec 23 19:06:31 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/identity/role/Role.java
+M	src/main/java/com/jurin_n/domain/model/identity/user/User.java
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+19cd65b8abbb3dd9183ac7ceb807c93b85ab4aa1, fixed #58., Wed Dec 23 17:39:39 2015 +0900
+M	pom.xml
+M	src/main/java/com/jurin_n/domain/model/identity/role/Role.java
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+M	src/test/resources/META-INF/persistence.xml
+A	src/test/resources/create.sql
+A	src/test/resources/drop.sql
+A	src/test/resources/setupScript.sql
+A	src/test/resources/tearDownScript.sql
+
+263b0d861d6ada4d4c56e0cfce9e3e79539192db, add Test method for UnitTest.java., Mon Dec 21 20:24:20 2015 +0900
+M	pom.xml
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+M	src/test/resources/META-INF/persistence.xml
+
+1d573e650d00c46d4445712a3e952edf89ab4a86, edit configrations., Sun Dec 20 21:20:40 2015 +0900
+M	src/test/resources/META-INF/persistence.xml
+
+bda70e37aad6c9ffbf3d8feb660f2df8e927c4ba, edit Test for User.java., Sun Dec 20 21:19:49 2015 +0900
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+
+a93056ebbc8a822d32e5f192e8173b2f62ddf448, edit Role and Permissions., Sun Dec 20 20:34:30 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/identity/permission/Permission.java
+M	src/main/java/com/jurin_n/domain/model/identity/role/Role.java
+M	src/main/java/com/jurin_n/domain/model/identity/user/UserId.java
+M	src/main/resources/META-INF/persistence.xml
+M	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+M	src/test/resources/META-INF/persistence.xml
+
+1ffacba03df7bd24f292b90822cf12887ba40b2d, add test for User.java., Sun Dec 20 14:20:22 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/identity/permission/Permission.java
+M	src/main/java/com/jurin_n/domain/model/identity/role/Role.java
+M	src/main/java/com/jurin_n/domain/model/identity/user/User.java
+A	src/test/java/com/jurin_n/domain/model/identity/user/UserTest.java
+M	src/test/resources/META-INF/persistence.xml
+
+83fff175229dc0e994754312299633f452f8fc9a, add User,Role,Permision., Sun Dec 20 12:18:19 2015 +0900
+A	src/main/java/com/jurin_n/domain/model/identity/Status.java
+A	src/main/java/com/jurin_n/domain/model/identity/permission/Permission.java
+A	src/main/java/com/jurin_n/domain/model/identity/permission/PermissionValue.java
+A	src/main/java/com/jurin_n/domain/model/identity/role/Role.java
+A	src/main/java/com/jurin_n/domain/model/identity/role/RoleValue.java
+A	src/main/java/com/jurin_n/domain/model/identity/user/User.java
+A	src/main/java/com/jurin_n/domain/model/identity/user/UserId.java
+M	src/main/resources/META-INF/persistence.xml
+
+44df2f60e6f2599a8de735a91a70bedbe7ced645, 整形, Sat Dec 19 21:41:12 2015 +0900
+M	src/test/java/com/jurin_n/junit/rules/JPAResource.java
+
+04f5ebb394700bd81f8a08531227f2c82650038b, add JUnit Rule for JPA., Sat Dec 19 21:36:35 2015 +0900
+M	src/test/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepositoryTest.java
+A	src/test/java/com/jurin_n/junit/rules/JPAResource.java
+
+7d6ba383115a8f7bc208d6b768c52ce464aa60bf, fixed #53., Fri Dec 18 23:44:19 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlan.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticePlanRepository.java
+M	src/test/java/com/jurin_n/application/PracticeApplicationServiceTest.java
+
+7c676622e8a724e9e4170e469f2a65192ddcaaf4, 微調整, Thu Dec 17 22:18:34 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/BaseIdEntity.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java
+
+cf7f4fe65d09a2d18cdbc3ba318f4fdab8868d0b, JPAのエンティティクラスでいくつか警告がでてたので消す対応。, Thu Dec 17 22:13:49 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/practice/member/PracticeMemberId.java
+M	src/main/java/com/jurin_n/domain/model/practice/menu/PracticeMenuId.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java
+M	src/main/java/com/jurin_n/domain/model/practice/record/PracticeRecordId.java
+M	src/main/resources/META-INF/persistence.xml
+
+a5366ad82d44bdff831ee3d9719dd61aea9a7685, delete nextIdenty from add method., Thu Dec 17 21:51:44 2015 +0900
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMenuRepository.java
+M	src/test/java/com/jurin_n/application/PracticeApplicationServiceTest.java
+M	src/test/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepositoryTest.java
+
+707b573155c94a771fc36f026f1bda71a0a226e4, edit Test., Thu Dec 17 00:01:19 2015 +0900
+M	src/test/java/com/jurin_n/application/PracticeApplicationServiceTest.java
+
+30b40e577a6a503a926cf82439853b2c3b02bc7a, add Test for PracticeApplicationService class, Wed Dec 16 23:02:50 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlan.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticePlanRepository.java
+A	src/test/java/com/jurin_n/application/PracticeApplicationServiceTest.java
+
+82f15fb23904f6b7d5c853cacdc4c843e991aff4, add dummy test., Wed Dec 16 21:48:31 2015 +0900
+M	src/test/java/com/jurin_n/jax_rs/providers/JsonMarshallerTest.java
+
+239b4a0b7a03b6f725038545ba7d3a7243bebfcf, add Test for JsonMarshaller.writeTo method., Wed Dec 16 21:39:29 2015 +0900
+M	src/test/java/com/jurin_n/jax_rs/providers/JsonMarshallerTest.java
+
+b66da6c93b7f5a3906ac839d9fd4fc39bf6b7da1, add Test for JsonMarshallerTest.java., Wed Dec 16 00:03:58 2015 +0900
+M	src/test/java/com/jurin_n/jax_rs/providers/JsonMarshallerTest.java
+
+86f7d9915ce320233acd5a32e2e45b5b3bf3bd7b, add Test for JsonMarshaller class., Tue Dec 15 22:59:09 2015 +0900
+M	src/test/java/com/jurin_n/jax_rs/providers/JsonMarshallerTest.java
+
+9e31d7139cc03789135ec09a443701e80af11b77, add Test for JsonMarshaller.java., Mon Dec 14 22:58:20 2015 +0900
+A	src/test/java/com/jurin_n/jax_rs/providers/JsonMarshallerTest.java
+
+107910f47fffe9b1bf14f0c72668b7f38796eb33, delete method in PracticePlanService.java., Mon Dec 14 22:20:44 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanService.java
+
+85a32eb6463caca48a25dfe58fb0966a24641510, add @Override Annotation., Mon Dec 14 22:03:46 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java
+
+099d5d01c1aae706e651f56ec51fde41048bb9d8, fixed #46., Mon Dec 14 22:01:13 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java
+
+08a193f374f9a431969b1aef2b83c3610537ca16, 試しにIdクラス用のスーパークラス実装。PracticePlanIdで利用してみる。, Sun Dec 13 20:15:34 2015 +0900
+A	src/main/java/com/jurin_n/domain/model/BaseIdEntity.java
+M	src/main/java/com/jurin_n/domain/model/practice/member/PracticeMemberId.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java
+
+453050b60bfa47f32a7fe6c3585da9c9e3c4c942, refactoring. delete setter method., Sun Dec 13 18:47:07 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/practice/member/PracticeMemberId.java
+M	src/main/java/com/jurin_n/domain/model/practice/menu/PracticeMenuId.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java
+M	src/main/java/com/jurin_n/domain/model/practice/record/PracticeRecordId.java
+
+ebf4266bee961151a8b782ce2462c244d6f1ea9d, idクラスで共通フィールドをスーパークラスに移動できないかったのでコメント記入。, Sun Dec 13 12:54:02 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/BaseEntity.java
+M	src/main/java/com/jurin_n/domain/model/practice/member/PracticeMemberId.java
+M	src/main/java/com/jurin_n/domain/model/practice/menu/PracticeMenuId.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java
+M	src/main/java/com/jurin_n/domain/model/practice/record/PracticeRecordId.java
+
+498530b0b39c1922abc4e8415bed42a829213d3e, add PracticeRecordIdTest., Sun Dec 13 01:47:11 2015 +0900
+A	src/test/java/com/jurin_n/domain/model/practice/record/PracticeRecordIdTest.java
+
+55b478edc3efd0942fb625619a6bd35ecf60d89b, Merge branch 'develop/#41', Sun Dec 13 00:31:37 2015 +0900
+9ab4d417ed00bac2e41305be0756c6ae3f4fa44c, fixed #41. add PracticeRecord Resource., Sun Dec 13 00:30:54 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlan.java
+M	src/main/java/com/jurin_n/domain/model/practice/record/PracticeRecord.java
+M	src/main/java/com/jurin_n/domain/model/practice/record/PracticeRecordId.java
+A	src/main/java/com/jurin_n/domain/model/practice/record/PracticeRecordRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMenuRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticePlanRepository.java
+A	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeRecordRepository.java
+A	src/main/java/com/jurin_n/jax_rs/representation/PracticeRecordRepresentation.java
+A	src/main/java/com/jurin_n/jax_rs/resources/PracticeRecordResource.java
+M	src/test/resources/META-INF/persistence.xml
+
+7a510908d7638145faa59b60bec36761b2819322, Merge branch 'develop/#39', Sat Dec 12 22:42:45 2015 +0900
+0c1fe0059da5fc7321f681916e680ac6b251b0f7, fixed #40. refactoring PracticePlanRepresentation., Sat Dec 12 22:22:32 2015 +0900
+M	src/main/java/com/jurin_n/jax_rs/representation/PracticePlanRepresentation.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+
+a2419f091124daa407e6ca17dc97073e0a715304, add PralcicePlanResource., Sat Dec 12 17:56:29 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/member/PracticeMemberId.java
+M	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlan.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticePlanRepository.java
+M	src/main/java/com/jurin_n/jax_rs/representation/PracticeMemberRepresentation.java
+M	src/main/java/com/jurin_n/jax_rs/representation/PracticeMenuRepresentation.java
+A	src/main/java/com/jurin_n/jax_rs/representation/PracticePlanRepresentation.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+
+fde77fe6d3a1edae0e2fd9b6e024c0f2a5cff250, Merge branch 'develop/#38', Sat Dec 12 14:33:03 2015 +0900
+d1efc8d9f05b7ec763f61aa7c1e32d892b187637, fixed #38., Sat Dec 12 14:32:09 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/menu/PracticeMenu.java
+M	src/main/java/com/jurin_n/domain/model/practice/menu/PracticeMenuRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMenuRepository.java
+A	src/main/java/com/jurin_n/jax_rs/representation/PracticeMenuRepresentation.java
+A	src/main/java/com/jurin_n/jax_rs/resources/PracticeMenuResource.java
+
+0f72f46f3d4d33a3fee0c25a4fddb8b2255748af, fixed #37., Sat Dec 12 11:37:33 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+D	src/main/java/com/jurin_n/domain/model/practice/PracticeRecord.java
+D	src/main/java/com/jurin_n/domain/model/practice/PracticeRecordId.java
+R096	src/main/java/com/jurin_n/domain/model/practice/PracticeMember.java	src/main/java/com/jurin_n/domain/model/practice/member/PracticeMember.java
+R095	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberId.java	src/main/java/com/jurin_n/domain/model/practice/member/PracticeMemberId.java
+R087	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberRepository.java	src/main/java/com/jurin_n/domain/model/practice/member/PracticeMemberRepository.java
+R090	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberService.java	src/main/java/com/jurin_n/domain/model/practice/member/PracticeMemberService.java
+R094	src/main/java/com/jurin_n/domain/model/practice/PracticeMenu.java	src/main/java/com/jurin_n/domain/model/practice/menu/PracticeMenu.java
+R095	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuId.java	src/main/java/com/jurin_n/domain/model/practice/menu/PracticeMenuId.java
+R083	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuRepository.java	src/main/java/com/jurin_n/domain/model/practice/menu/PracticeMenuRepository.java
+R087	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuService.java	src/main/java/com/jurin_n/domain/model/practice/menu/PracticeMenuService.java
+R088	src/main/java/com/jurin_n/domain/model/practice/PracticePlan.java	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlan.java
+R095	src/main/java/com/jurin_n/domain/model/practice/PracticePlanId.java	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanId.java
+R088	src/main/java/com/jurin_n/domain/model/practice/PracticePlanRepository.java	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanRepository.java
+R077	src/main/java/com/jurin_n/domain/model/practice/PracticePlanService.java	src/main/java/com/jurin_n/domain/model/practice/plan/PracticePlanService.java
+A	src/main/java/com/jurin_n/domain/model/practice/record/PracticeRecord.java
+A	src/main/java/com/jurin_n/domain/model/practice/record/PracticeRecordId.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMenuRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticePlanRepository.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticeMemberResource.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+R091	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberIdTest.java	src/test/java/com/jurin_n/domain/model/practice/member/PracticeMemberIdTest.java
+R084	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberServiceTest.java	src/test/java/com/jurin_n/domain/model/practice/member/PracticeMemberServiceTest.java
+R091	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuIdTest.java	src/test/java/com/jurin_n/domain/model/practice/menu/PracticeMenuIdTest.java
+R078	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuServiceTest.java	src/test/java/com/jurin_n/domain/model/practice/menu/PracticeMenuServiceTest.java
+R095	src/test/java/com/jurin_n/domain/model/practice/PracticePlanIdTest.java	src/test/java/com/jurin_n/domain/model/practice/plan/PracticePlanIdTest.java
+R090	src/test/java/com/jurin_n/domain/model/practice/PracticePlanServiceTest.java	src/test/java/com/jurin_n/domain/model/practice/plan/PracticePlanServiceTest.java
+M	src/test/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepositoryTest.java
+M	src/test/resources/META-INF/persistence.xml
+
+dedcaa7b87df1236f5c5d40cad1e8c1a14a1e77f, Merge branch 'develop/#13', Thu Dec 10 21:52:15 2015 +0900
+a61627e591279cb997bc8cd91282857d3a0db0bd, add Get Function, Delete Function for PracticeMemberResource., Thu Dec 10 21:50:26 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMenuRepository.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticeMemberResource.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberServiceTest.java
+
+a8591ec676c6a73cda6abdd502bcc6f44d1ddd04, add Cobertura., Wed Dec 9 22:19:53 2015 +0900
+M	pom.xml
+
+c2c4f87718f0e08b2782c42ad72a02eb714aa176, add Test for PracticeMemberService.java., Wed Dec 9 22:01:06 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberService.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMenuRepository.java
+A	src/test/java/com/jurin_n/domain/model/practice/CommonServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuServiceTest.java
+
+7fcbe9e6f3e089038ccc1691f6f0843cadf0ed1d, edit .gitignore for derby file ignore., Sat Dec 5 17:06:40 2015 +0900
+M	.gitignore
+
+d01df51226750eb25145615030a4a0c54ea96002, add JPAPracticeMemberRepositoryTest., Sat Dec 5 17:02:23 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepository.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberServiceTest.java
+A	src/test/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepositoryTest.java
+
+7aebfd100ed5753c14ed40e4435f346924370699, add PUT resource for PracticeMember., Thu Dec 3 22:36:44 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMember.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepository.java
+M	src/main/java/com/jurin_n/jax_rs/providers/JsonUnmarshaller.java
+M	src/main/java/com/jurin_n/jax_rs/representation/PracticeMemberRepresentation.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticeMemberResource.java
+
+04f152d3284c360d6c2200aa877ed24df4e06b02, edit JsonMarshaller.java for PracticeMember., Wed Dec 2 23:13:28 2015 +0900
+M	src/main/java/com/jurin_n/jax_rs/providers/JsonMarshaller.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticeMemberResource.java
+
+984fb5f31b1020cebfc4f52b9b2c73770caa02c9, add DTO for PracticeMember.java., Wed Dec 2 22:05:25 2015 +0900
+A	src/main/java/com/jurin_n/jax_rs/providers/BaseJsonMarshaller.java
+A	src/main/java/com/jurin_n/jax_rs/representation/PracticeMemberRepresentation.java
+
+87ef99322aadcdd61b36042f5b48849947c5bd9d, add interface JsonListMarshaller, add DTO for PracticeMember.java., Wed Dec 2 22:04:23 2015 +0900
+M	pom.xml
+M	src/main/java/com/jurin_n/jax_rs/providers/JsonListMarshaller.java
+M	src/main/java/com/jurin_n/jax_rs/providers/JsonMarshaller.java
+M	src/main/java/com/jurin_n/jax_rs/resources/PracticeMemberResource.java
+
+c2f8a65bed00f4c0a98c9c7e7b1933c5c6fae735, move package., Wed Dec 2 19:46:42 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+R097	src/main/java/com/jurin_n/providers/JsonListMarshaller.java	src/main/java/com/jurin_n/jax_rs/providers/JsonListMarshaller.java
+R096	src/main/java/com/jurin_n/providers/JsonListUnmarshaller.java	src/main/java/com/jurin_n/jax_rs/providers/JsonListUnmarshaller.java
+R097	src/main/java/com/jurin_n/providers/JsonMarshaller.java	src/main/java/com/jurin_n/jax_rs/providers/JsonMarshaller.java
+R096	src/main/java/com/jurin_n/providers/JsonUnmarshaller.java	src/main/java/com/jurin_n/jax_rs/providers/JsonUnmarshaller.java
+R096	src/main/java/com/jurin_n/resources/PracticeMemberResource.java	src/main/java/com/jurin_n/jax_rs/resources/PracticeMemberResource.java
+R097	src/main/java/com/jurin_n/resources/PracticePlanResource.java	src/main/java/com/jurin_n/jax_rs/resources/PracticePlanResource.java
+R096	src/main/java/com/jurin_n/resources/SoccerTeamResource.java	src/main/java/com/jurin_n/jax_rs/resources/SoccerTeamResource.java
+R096	src/main/java/com/jurin_n/resources/TeamResource.java	src/main/java/com/jurin_n/jax_rs/resources/TeamResource.java
+
+01db69a3ba0b5cf8d5b0b3a6da789962e038a6be, Enclosed.class使って構造化したテストクラスにしてみた。, Sun Nov 29 16:29:25 2015 +0900
+M	src/test/java/com/jurin_n/domain/model/practice/PracticePlanIdTest.java
+
+ec4445ff0e8efa3de6c90747a445e06132647615, パラメータ化テストにしてみた。, Sun Nov 29 16:19:56 2015 +0900
+M	src/test/java/com/jurin_n/domain/model/practice/PracticePlanIdTest.java
+
+551fe49339decb6d63a75909cd59b396ab69aa2e, override hashCode(),toString(),equals() for Id class., Sun Nov 29 12:34:08 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberId.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuId.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanId.java
+A	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberIdTest.java
+A	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuIdTest.java
+A	src/test/java/com/jurin_n/domain/model/practice/PracticePlanIdTest.java
+
+4e85728b44eeeab4b8084f4c3877ef05a4f36a66, Update README.md, Tue Nov 24 20:35:59 2015 +0900
+M	README.md
+
+3b0e00ea812fe2b42d9d0420ce3f381dbf421e24, pom.xmlにexec-maven-plugin追加。, Tue Nov 24 20:34:16 2015 +0900
+M	pom.xml
+M	src/main/java/EmbeddedGlassFish.java
+
+82543d656c219f9e875f1d43373f09cab35a84cb, Merge branch 'master' into develop/#13, Tue Nov 24 19:51:46 2015 +0900
+9469385c4f738bc64bf8373f8efb457db8c5d6e4, Merge branch 'hotfix/#18', Tue Nov 24 19:48:45 2015 +0900
+56f862beaba7158ff60cfba572a00206b863c33f, fixed #18., Tue Nov 24 19:46:25 2015 +0900
+M	pom.xml
+
+626d19baaed2d93d965dec6b22ed9dae2941579b, fixed #19., Tue Nov 24 19:41:17 2015 +0900
+M	pom.xml
+
+f37492b65ad215134f3c5c89e52b0108d1a41df4, @EmbeddedIdに指定のIDクラス一つたいしてにequals()メソッドを実装してみた。, Mon Nov 23 20:38:51 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanId.java
+
+4d27697ba41910c921295749f612e16d0d62bb2c, データベースとしてderby使えるようにしてみる。postgresqlのロジックは残したまま。, Mon Nov 23 13:19:31 2015 +0900
+M	pom.xml
+M	src/main/java/EmbeddedGlassFish.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticePlanServiceTest.java
+M	src/test/resources/META-INF/persistence.xml
+
+1a583da2d695eb5cd554959033c812f5bfadba38, edit code., Sun Nov 22 17:14:42 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberId.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlan.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanId.java
+M	src/main/java/com/jurin_n/resources/PracticeMemberResource.java
+M	src/main/java/com/jurin_n/resources/PracticePlanResource.java
+
+1e3e822ba1f24acef535238d4f648f85b8e7126a, edit logic., Sun Nov 22 13:11:07 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+
+b6273f80ec5e44cb69ecc12ebc0863d41c425e18, add PracticePlan Resource for getting Resource,adding Resource Function., Sun Nov 22 12:53:56 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlan.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticePlanRepository.java
+A	src/main/java/com/jurin_n/resources/PracticePlanResource.java
+
+6ad7c557b8b27512d3b145de69588a070d989363, いくつか修正。, Sun Nov 22 12:51:42 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMember.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMenu.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMenuRepository.java
+D	src/main/java/com/jurin_n/resources/PracticeResource.java
+
+325749234e7f1f0ac3271787b66f971ec33ec7f5, edit Json Marshaller., Sun Nov 22 12:46:59 2015 +0900
+M	src/main/java/com/jurin_n/providers/JsonListMarshaller.java
+M	src/main/java/com/jurin_n/providers/JsonMarshaller.java
+
+177cb7a15bfe2fea631ff24824962553af7389c3, edit Test Class., Sun Nov 22 00:21:46 2015 +0900
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticePlanServiceTest.java
+
+4fecc68af33de501599e55ec8711b41192e75f49, add PracticeMember Resource., Sun Nov 22 00:21:09 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMember.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepository.java
+A	src/main/java/com/jurin_n/resources/PracticeMemberResource.java
+
+958ff25d960d5801b16a0a340e0a5060f673287f, add Json Marshaller for List., Sun Nov 22 00:19:35 2015 +0900
+R071	src/main/java/com/jurin_n/providers/model/practice/JsonMessageBodyWriter.java	src/main/java/com/jurin_n/providers/JsonListMarshaller.java
+R067	src/main/java/com/jurin_n/providers/model/practice/JsonMessageBodyReader.java	src/main/java/com/jurin_n/providers/JsonListUnmarshaller.java
+
+7abfcf9c4988b83cb8db07d981f1b270a420644b, fixed #15., Sat Nov 21 23:19:39 2015 +0900
+M	pom.xml
+A	src/main/java/com/jurin_n/domain/model/BaseEntity.java
+M	src/main/java/com/jurin_n/domain/model/team/Member.java
+M	src/main/java/com/jurin_n/domain/model/team/Team.java
+R071	src/main/java/com/jurin_n/providers/JsonMessageBodyWriter.java	src/main/java/com/jurin_n/providers/JsonMarshaller.java
+R055	src/main/java/com/jurin_n/providers/JsonMessageBodyReader.java	src/main/java/com/jurin_n/providers/JsonUnmarshaller.java
+
+74b214e88061053c4ef4e9ddf0bc0daf2975728d, edit logic structures., Sat Nov 21 19:05:15 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberRepository.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuRepository.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanRepository.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanService.java
+R079	src/main/java/com/jurin_n/infrastructure/persistence/JPAMemberRepository.java	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMemberRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMenuRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticePlanRepository.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuServiceTest.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticePlanServiceTest.java
+
+2a59772a2f5c07956b28ec66597b8d7df70b7367, add MockTeamRepository., Sat Nov 21 18:27:32 2015 +0900
+A	src/main/java/com/jurin_n/infrastructure/persistence/MockTeamRepository.java
+M	src/main/webapp/WEB-INF/beans.xml
+
+a45c3834dcc14e7c689ad8e783cae0719c95bbe4, delete TeamService.java., Sat Nov 21 18:04:36 2015 +0900
+M	src/main/java/com/jurin_n/application/TeamApplicationService.java
+D	src/main/java/com/jurin_n/domain/model/team/TeamService.java
+
+b0b6bff9a20719cf545a65d0c0e1dd3da01b05a9, edit team module., Sat Nov 21 17:53:40 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/team/TeamRepository.java
+M	src/main/java/com/jurin_n/domain/model/team/TeamService.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPATeamRepository.java
+
+6e89b1fe22d53558c1e9e3fdd54dfe7bf7f528bc, delete cod for debug., Tue Nov 17 00:08:10 2015 +0900
+M	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/providers/model/practice/JsonMessageBodyReader.java
+
+f4b77f18cd4cfc38cb02cdbab1c1cca05fbde8a3, add rest resource, PracticeResource.java., Tue Nov 17 00:06:26 2015 +0900
+A	src/main/java/com/jurin_n/application/PracticeApplicationService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlan.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanRepository.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanService.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticePlanRepository.java
+A	src/main/java/com/jurin_n/providers/model/practice/JsonMessageBodyReader.java
+A	src/main/java/com/jurin_n/providers/model/practice/JsonMessageBodyWriter.java
+A	src/main/java/com/jurin_n/resources/PracticeResource.java
+M	src/main/resources/META-INF/persistence.xml
+
+b89ff3af70a4beb08d5ec5a409dcb539b6adbe86, fixed #14., Sun Nov 15 16:23:38 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberId.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuId.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlan.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanId.java
+M	src/test/java/com/jurin_n/domain/model/practice/PracticePlanServiceTest.java
+M	src/test/resources/META-INF/persistence.xml
+
+6fd03a43e47d11cd64924d6be57ba15f1a1b17c1, add PracticeMember,PracticePlan。, Sun Nov 15 12:25:26 2015 +0900
+D	src/main/java/com/jurin_n/domain/model/practice/MemberId.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeMember.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberId.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberRepository.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeMemberService.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlan.java
+M	src/main/java/com/jurin_n/domain/model/practice/PracticePlanId.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticePlanRepository.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticePlanService.java
+R052	src/main/java/com/jurin_n/domain/model/practice/Member.java	src/main/java/com/jurin_n/domain/model/practice/PracticeStatus.java
+A	src/main/java/com/jurin_n/infrastructure/persistence/JPAMemberRepository.java
+A	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticePlanRepository.java
+A	src/test/java/com/jurin_n/domain/model/practice/PracticeMemberServiceTest.java
+R095	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuTest.java	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuServiceTest.java
+A	src/test/java/com/jurin_n/domain/model/practice/PracticePlanServiceTest.java
+M	src/test/resources/META-INF/persistence.xml
+
+9812b8f3cd10da4c2ace17c42cf155e731ea5948, edit., Sun Nov 15 01:39:20 2015 +0900
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuTest.java
+
+7141b146f80198a98871d209ba6bfbf14ddbbbb3, edit for using enviroment DATABASE_URL., Sun Nov 15 01:38:20 2015 +0900
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuTest.java
+
+9c83e39115bd7ebee2b2ee0845855e3a93a051ee, edit., Sun Nov 15 00:57:31 2015 +0900
+M	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuTest.java
+M	src/test/resources/META-INF/persistence.xml
+
+f59ae5974782b67cb5bf8e89ed06fac0d1844cd6, add Practice model., Sun Nov 15 00:31:58 2015 +0900
+A	src/main/java/com/jurin_n/domain/model/practice/Member.java
+A	src/main/java/com/jurin_n/domain/model/practice/MemberId.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeMenu.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuId.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuRepository.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeMenuService.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticePlan.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticePlanId.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeRecord.java
+A	src/main/java/com/jurin_n/domain/model/practice/PracticeRecordId.java
+A	src/main/java/com/jurin_n/infrastructure/persistence/JPAPracticeMenuRepository.java
+A	src/test/java/com/jurin_n/domain/model/practice/PracticeMenuTest.java
+
+dfb10c0051c2a32b14ebb8c18ae12aeaa150b89d, add persistence.xml for UnitTest., Sun Nov 15 00:31:16 2015 +0900
+A	src/test/resources/META-INF/persistence.xml
+
+36cfbfce76893bdf7d5d6391e3501e119dd36717, edit., Sun Nov 15 00:30:34 2015 +0900
+M	src/test/java/com/jurin_n/domain/model/team/MemberServiceTest.java
+
+382fd0b9fee56c396d95b3757fb7aac8ce5a12ab, delete list of Musisian and Album from MusicLibrary., Thu Nov 12 23:44:47 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/MusicLibrary/MusicLibrary.java
+
+7fddf3af6f85e578a908b8d76d48ac725bd23d48, add Value Objects for MusicLibrary., Thu Nov 12 22:44:46 2015 +0900
+A	src/main/java/com/jurin_n/domain/model/MusicLibrary/Album.java
+A	src/main/java/com/jurin_n/domain/model/MusicLibrary/Instrument.java
+A	src/main/java/com/jurin_n/domain/model/MusicLibrary/Music.java
+A	src/main/java/com/jurin_n/domain/model/MusicLibrary/MusicLibrary.java
+A	src/main/java/com/jurin_n/domain/model/MusicLibrary/Musician.java
+A	src/main/java/com/jurin_n/domain/model/MusicLibrary/Owner.java
+
+2af4f7219004dd9f5cd2b8c9d0f8950893a50f82, Merge branch 'develop/#3', Wed Nov 11 21:59:33 2015 +0900
+774414925246060f54ae093c9ab797f2cd278922, fixed #3. change packages., Wed Nov 11 21:58:38 2015 +0900
+R072	src/main/java/com/jurin_n/services/TeamApplicationService.java	src/main/java/com/jurin_n/application/TeamApplicationService.java
+R089	src/main/java/com/jurin_n/entity/ErrorResponse.java	src/main/java/com/jurin_n/domain/model/error/ErrorResponse.java
+R094	src/main/java/com/jurin_n/entity/Member.java	src/main/java/com/jurin_n/domain/model/team/Member.java
+R095	src/main/java/com/jurin_n/services/MemberService.java	src/main/java/com/jurin_n/domain/model/team/MemberService.java
+R079	src/main/java/com/jurin_n/entity/Role.java	src/main/java/com/jurin_n/domain/model/team/Role.java
+R094	src/main/java/com/jurin_n/entity/Team.java	src/main/java/com/jurin_n/domain/model/team/Team.java
+M	src/main/java/com/jurin_n/domain/model/team/TeamRepository.java
+R093	src/main/java/com/jurin_n/services/TeamService.java	src/main/java/com/jurin_n/domain/model/team/TeamService.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPATeamRepository.java
+M	src/main/java/com/jurin_n/providers/JsonMessageBodyReader.java
+M	src/main/java/com/jurin_n/providers/JsonMessageBodyWriter.java
+R088	src/main/java/com/jurin_n/rest/SoccerTeamResource.java	src/main/java/com/jurin_n/resources/SoccerTeamResource.java
+R087	src/main/java/com/jurin_n/rest/TeamResource.java	src/main/java/com/jurin_n/resources/TeamResource.java
+R097	src/test/java/com/jurin_n/services/MemberServiceTest.java	src/test/java/com/jurin_n/domain/model/team/MemberServiceTest.java
+
+fdb3a5d00e645796de0812761fd30d8edf810046, Merge branch 'master' of https://github.com/jurin-n/jax-rs-1_0-prototype2, Tue Nov 10 22:05:59 2015 +0900
+5539d2eedb82636e9755c49177d887afebdcaebd, Merge branch 'hotfix/#9', Tue Nov 10 22:04:59 2015 +0900
+1e6e9aca9e8dc1ac3b40935f46f02f896e9686e0, fixed #9, Tue Nov 10 22:04:16 2015 +0900
+M	src/main/java/com/jurin_n/domain/model/team/TeamRepository.java
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPATeamRepository.java
+M	src/main/java/com/jurin_n/services/TeamService.java
+
+ff623c37ca50804e6f76435fceacb80e1dc2c932, Update README.md, Tue Nov 10 21:53:13 2015 +0900
+M	README.md
+
+4cbabe4f16f635a57ed23194d532bdf852a81d28, Merge branch 'hotfix/#7', Mon Nov 9 22:59:18 2015 +0900
+e5a17b26369ec62397f11cf15ecc36286c0446d1, fixed #7, Mon Nov 9 22:57:01 2015 +0900
+M	src/main/java/com/jurin_n/services/TeamApplicationService.java
+
+2de45aa27a5ee21aff658df683ed858d0f9eba63, Merge branch 'master' into develop/#5, Sun Nov 8 17:46:05 2015 +0900
+dc81d9d6c1839f945eff8bcec2259367de6e5e5b, Update README.md, Sun Nov 8 17:44:14 2015 +0900
+M	README.md
+
+c4f15ab1a9e9dea3b8f324aefe383c9161792837, Update README.md, Sat Nov 7 22:14:43 2015 +0900
+M	README.md
+
+81205f97253ffe53586fdd5c548bac05f7d1a042, fixed #1 add SoccerTeamResource., Sat Nov 7 22:11:35 2015 +0900
+M	pom.xml
+M	src/main/java/com/jurin_n/entity/Member.java
+A	src/main/java/com/jurin_n/rest/SoccerTeamResource.java
+A	src/main/java/com/jurin_n/services/MemberService.java
+M	src/main/java/com/jurin_n/services/TeamApplicationService.java
+A	src/test/data/soccerResource.json
+A	src/test/java/com/jurin_n/services/MemberServiceTest.java
+
+2b7286432e914ac6d5720783c3a49c34e553d711, Create README.md, Sat Nov 7 18:42:18 2015 +0900
+A	README.md
+
+c008a527f7bf9705af5d68f52a58f1eafbfc2b94, add setEntityManager method, for using Unit Test., Sat Nov 7 18:17:09 2015 +0900
+M	src/main/java/com/jurin_n/services/TeamApplicationService.java
+M	src/main/java/com/jurin_n/services/TeamService.java
+
+6d0b977a03589c70dcd3b65f3cb03b63c8dff6d2, EntityManager取得方法を改善。, Sat Nov 7 17:17:42 2015 +0900
+M	src/main/java/com/jurin_n/infrastructure/persistence/JPATeamRepository.java
+M	src/main/java/com/jurin_n/rest/TeamResource.java
+M	src/main/java/com/jurin_n/services/TeamApplicationService.java
+M	src/main/java/com/jurin_n/services/TeamService.java
+
+4281a0b7e4839c74a5c775f74da9fab61688a342, Application ServiceとRepotsitoryを作成。, Sat Nov 7 13:45:01 2015 +0900
+A	src/main/java/com/jurin_n/domain/model/team/TeamRepository.java
+A	src/main/java/com/jurin_n/infrastructure/persistence/JPATeamRepository.java
+M	src/main/java/com/jurin_n/rest/TeamResource.java
+A	src/main/java/com/jurin_n/services/TeamApplicationService.java
+M	src/main/java/com/jurin_n/services/TeamService.java
+
+f9878c063e50d443bc6a053997893a9392a3e1d8, first commit., Sat Nov 7 01:15:37 2015 +0900
+A	.gitignore
+A	pom.xml
+A	src/main/java/EmbeddedGlassFish.java
+A	src/main/java/com/jurin_n/MyApplication.java
+A	src/main/java/com/jurin_n/entity/ErrorResponse.java
+A	src/main/java/com/jurin_n/entity/Member.java
+A	src/main/java/com/jurin_n/entity/Role.java
+A	src/main/java/com/jurin_n/entity/Team.java
+A	src/main/java/com/jurin_n/providers/JsonMessageBodyReader.java
+A	src/main/java/com/jurin_n/providers/JsonMessageBodyWriter.java
+A	src/main/java/com/jurin_n/rest/TeamResource.java
+A	src/main/java/com/jurin_n/services/TeamService.java
+A	src/main/resources/META-INF/persistence.xml
+A	src/main/webapp/WEB-INF/beans.xml
+A	src/main/webapp/index.jsp

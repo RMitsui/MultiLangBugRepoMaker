@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="UndineMailer">
+	<bug id="99" opendate="2018-07-16 04:24:37" fixdate="2018-07-16 04:55:17">
+		<buginformation>
+			<summary>着払いを返送するときに、アイテムをスタックしないようにしてほしい</summary>
+			<description>着払いを返送するときに、アイテムをスタックしないようにしてほしい</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/command/UndineAttachCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="96" opendate="2017-04-03 15:03:14" fixdate="2017-04-03 16:43:59">
+		<buginformation>
+			<summary>メールへの添付禁止アイテム prohibitItemsToAttach を設定しても、シャルカーボックスの中に入れて送信することができてしまう</summary>
+			<description>メールへの添付禁止アイテム prohibitItemsToAttach を設定しても、シャルカーボックスの中に入れて送信することができてしまう</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/UndineListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="95" opendate="2017-04-03 15:01:14" fixdate="2017-04-03 15:48:21">
+		<buginformation>
+			<summary>Bukkit 1.11 で追加されたアイテムが、着払いの要求アイテムに指定できない</summary>
+			<description>![2017-04-04_00 00 38](https://cloud.githubusercontent.com/assets/2563444/24615637/cccc9c72-18c9-11e7-9c89-4ec7b872674d.png)  具体的には、下記の25種類のアイテムが該当する。     MAGMA(213),     NETHER_WART_BLOCK(214),     RED_NETHER_BRICK(215),     BONE_BLOCK(216),     STRUCTURE_VOID(217),     OBSERVER(218),     WHITE_SHULKER_BOX(219),     ORANGE_SHULKER_BOX(220),     MAGENTA_SHULKER_BOX(221),     LIGHT_BLUE_SHULKER_BOX(222),     YELLOW_SHULKER_BOX(223),     LIME_SHULKER_BOX(224),     PINK_SHULKER_BOX(225),     GRAY_SHULKER_BOX(226),     SILVER_SHULKER_BOX(227),     CYAN_SHULKER_BOX(228),     PURPLE_SHULKER_BOX(229),     BLUE_SHULKER_BOX(230),     BROWN_SHULKER_BOX(231),     GREEN_SHULKER_BOX(232),     RED_SHULKER_BOX(233),     BLACK_SHULKER_BOX(234),     TOTEM(449),     SHULKER_SHELL(450),     IRON_NUGGET(452), </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/TradableMaterial.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="94" opendate="2017-04-03 14:43:53" fixdate="2017-04-03 15:42:21">
+		<buginformation>
+			<summary>メールに添付したシャルカーボックスの中身が消える</summary>
+			<description>【問題の再現手順】 1. シャルカーボックスを設置して、中にアイテムを挿入し、壊してアイテム化する。 2. /mail write でメールを作成し、1. で作成した中身入りのシャルカーボックスをメールに添付して、適当な宛先に送信する。 3. /stop でサーバーを停止し、そのあと再度サーバーを起動する。 4. 手順2.で送信されたメールを開き、添付からシャルカーボックスを取得する。中身が無くなっていることを確認する。  ※手順3.で、サーバーを再起動しなかった場合、メール添付ボックスはオンラインインベントリを共有して使用されるため、シャルカーボックスの中身は消えずにそのまま受け渡しできる。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/ItemConfigParser.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/ItemConfigParserV111.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/Utility.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="79" opendate="2016-04-09 01:26:33" fixdate="2016-04-09 01:31:19">
+		<buginformation>
+			<summary>UndineMailer の後に起動した経済プラグインと連携することができない</summary>
+			<description>フォーラムにて報告された不具合。  ---  EssentialsからEssentialsXに乗り換えたのですが、プレイヤーから着払い設定がアイテムしかできなくなった(お金で設定できない)と報告を受けました。 乗り換え前は問題なく設定できたようなので修正、確認をお願いいたします。  CraftBukkit version git-Spigot-db6de12-18fbb24 (MC: 1.8.8) (Implementing API version1.8.8-R0.1-SNAPSHOT)  Plugins (53): NekoEvent, KeepItems, ScheduledAnnouncer2, DKLib, SuperTrails, BossBarAPI, NoteBlockAPI, Simple-AutoSave, TSP_A_StealPlayerHead, dynmap, WorldEdit, OpenInv, ClearLag, TheEndAgain, Chairs, NoteBlockPlayer, SetSpawn, Modifyworld, WorldBorder, BuycraftX, Votifier, IronElevators, Multiverse-Core, ProtocolLib, NCore, PermissionsEx, Multiverse-Portals, NekoCore, Vault, BottledExp, GakubuchiLockReloaded, BarAPI, LogBlock, HolographicDisplays, LWC, WorldGuard, SignColors,MythicMobs, LunaChat, RemoteController, CookieMonster, SimpleVoteListener, UndineMailer, MyPet, Essentials, MCBans, BlockHat, Jobs, TNTRun, VanishNoPacket, HeavySpleef, ChestShop, BlockParty  EssentialsX: https://www.spigotmc.org/resources/essentialsx.9089/  追記： [着払い料金を設定する]は表示されないが/umail costmoney を実行することは可能。 実行した場合、受け取り時に下記の例外が発生。  &lt;pre&gt; &gt;2016-04-05 18:46:16,580 ERROR An exception occurred processing Appender RemoteController java.lang.NullPointerException   org.bukkit.command.CommandException: Unhandled exception executing command 'umail' in plugin UndineMailer v1.5.0 at org.bukkit.command.PluginCommand.execute(PluginCommand.java:46) ~[spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at org.bukkit.command.SimpleCommandMap.dispatch(SimpleCommandMap.java:141) ~[spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at org.bukkit.craftbukkit.v1_8_R3.CraftServer.dispatchCommand(CraftServer.java:641) ~[spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at net.minecraft.server.v1_8_R3.PlayerConnection.handleCommand(PlayerConnection.java:1162) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:997) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at net.minecraft.server.v1_8_R3.PacketPlayInChat.a(PacketPlayInChat.java:45) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at net.minecraft.server.v1_8_R3.PacketPlayInChat.a(PacketPlayInChat.java:1) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [?:1.8.0_45] at java.util.concurrent.FutureTask.run(Unknown Source) [?:1.8.0_45] at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] at java.lang.Thread.run(Unknown Source) [?:1.8.0_45] Caused by: java.lang.NullPointerException at org.bitbucket.ucchy.undine.command.UndineAttachCommand.checkForCostMoney(UndineAttachCommand.java:380) ~[?:?] at org.bitbucket.ucchy.undine.command.UndineAttachCommand.runCommandForSentMail(UndineAttachCommand.java:352) ~[?:?] at org.bitbucket.ucchy.undine.command.UndineAttachCommand.runCommand(UndineAttachCommand.java:199) ~[?:?] at org.bitbucket.ucchy.undine.command.UndineCommand.onCommand(UndineCommand.java:90) ~[?:?] at org.bitbucket.ucchy.undine.UndineMailer.onCommand(UndineMailer.java:126) ~[?:?] at org.bukkit.command.PluginCommand.execute(PluginCommand.java:44) ~[spigot-1.8.8.jar:git-Spigot-db6de12-18fbb24] ... 15 more &lt;/pre&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/bridge/VaultEcoBridge.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="78" opendate="2016-03-19 07:36:55" fixdate="2016-03-19 07:59:50">
+		<buginformation>
+			<summary>エンチャント本をメールに添付して送信すると、エンチャントの内容が消滅する</summary>
+			<description>1. 適当なエンチャント本をメール添付して送信する。 2. サーバーをリロード、もしくは、停止してから再開する。 3. 添付付きメールを受信した人が添付を開くと、エンチャント本のエンチャントが消えている。  UndineMailer の初期バージョンから起こっていた不具合。 問題が起こるのは、エンチャント本のみ。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/ItemConfigParserV19.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/ItemConfigParser.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="77" opendate="2016-03-12 09:19:12" fixdate="2016-03-13 08:41:58">
+		<buginformation>
+			<summary>CraftBukkit 1.9 のサーバーでポーションやTippedArrowをメールに添付して送ると、ポーション効果が無くなって送られてしまう</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/ItemConfigParserV19.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/ItemConfigParser.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/ItemConfigParserV18.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/ItemConfigParserLegacyPotion.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="75" opendate="2016-03-08 17:02:39" fixdate="2016-03-08 17:05:37">
+		<buginformation>
+			<summary>Windows環境の CraftBukkit 1.9 または spigot 1.9 で起動させると、エラーが起こって動作しない</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/Utility.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="73" opendate="2016-02-06 08:31:18" fixdate="2016-02-06 08:33:50">
+		<buginformation>
+			<summary>環境によっては、メール編集画面が崩れることがある。</summary>
+			<description>v1.5.3 リリース後から発生するようになったとのこと。 非同期スレッドをメインスレッドに結合しながら処理するように変更した影響と考えられる。 ![robomwm](https://cloud.githubusercontent.com/assets/2563444/12865714/62c9c3dc-ccf7-11e5-8df5-c93f69153eed.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/UndineListener.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/command/ListCommand.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/tellraw/MessageComponent.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="72" opendate="2016-01-13 17:49:22" fixdate="2016-01-13 17:58:05">
+		<buginformation>
+			<summary>PaperSpigotでUndineMailerを動作させると、特定の操作をしたときにサーバーコンソールにエラーが記録される。</summary>
+			<description>この障害は、プルリクエスト #71 にて報告された。  特定の操作とは、具体的には次の通り。 - 未読のメールがある状態のプレイヤーがログインしたときに、未読メールの通知が行われた時。 - 新規参加プレイヤーが参加したときに、ウェルカムメールが送信された時。 - プレイヤー名簿が有効な状態で、プレイヤー名簿を表示した時。  これらに共通することは、いずれも非同期処理スレッド内の処理から、tellrawコマンドで画面を表示しているということ。  エラーメッセージは下記のとおり。  &lt;pre&gt; [19:35:05] [Server thread/INFO]: ucchy[/127.0.0.1:58349] logged in with entity id 283 at ([world]154.5, 80.0, 260.5) [19:35:28] [Craft Scheduler Thread - 1/ERROR]: Command Dispatched Async: tellraw Player244 {"text":"","extra":[{"text":"§7| "},{"text":"[1]","color":"aqua","clickEvent":{"action":"run_command","value":"/umail read 1"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"このメールを開く"}]}}},{"text":"*"},{"text":"§6CONSOLE (01/13 19:35) ←番号をクリックで開きます。"}]} [19:35:28] [Craft Scheduler Thread - 1/ERROR]: Please notify author of plugin causing this execution to fix this bug! see: http://bit.ly/1oSiM6C java.lang.Throwable     at org.bukkit.craftbukkit.v1_8_R3.CraftServer.dispatchCommand(CraftServer.java:647) [paperspigot-1.8.8.jar:git-PaperSpigot-56c14f8-07c3001]     at org.bukkit.Bukkit.dispatchCommand(Bukkit.java:575) [paperspigot-1.8.8.jar:git-PaperSpigot-56c14f8-07c3001]     at org.bitbucket.ucchy.undine.tellraw.MessageComponent.sendCommand(MessageComponent.java:129) [UndineMailer.jar:?]     at org.bitbucket.ucchy.undine.tellraw.MessageComponent.send(MessageComponent.java:72) [UndineMailer.jar:?]     at org.bitbucket.ucchy.undine.MailManager.sendMailLine(MailManager.java:1472) [UndineMailer.jar:?]     at org.bitbucket.ucchy.undine.MailManager.sendNewMail(MailManager.java:285) [UndineMailer.jar:?]     at org.bitbucket.ucchy.undine.UndineListener$2.run(UndineListener.java:98) [UndineMailer.jar:?]     at org.bukkit.craftbukkit.v1_8_R3.scheduler.CraftTask.run(CraftTask.java:59) [paperspigot-1.8.8.jar:git-PaperSpigot-56c14f8-07c3001]     at org.bukkit.craftbukkit.v1_8_R3.scheduler.CraftAsyncTask.run(CraftAsyncTask.java:53) [paperspigot-1.8.8.jar:git-PaperSpigot-56c14f8-07c3001]     at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:1.8.0_05]     at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:1.8.0_05]     at java.lang.Thread.run(Unknown Source) [?:1.8.0_05] [19:35:35] [Craft Scheduler Thread - 1/ERROR]: Command Dispatched Async: tellraw ucchy {"text":"","extra":[{"text":"§7| "},{"text":"[2]","color":"aqua","clickEvent":{"action":"run_command","value":"/umail read 2"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"このメールを開く"}]}}},{"text":"*"},{"text":"§6CONSOLE (01/13 19:35) ←番号をクリックで開きます。"}]} [19:35:35] [Craft Scheduler Thread - 1/ERROR]: Please notify author of plugin causing this execution to fix this bug! see: http://bit.ly/1oSiM6C java.lang.Throwable     at org.bukkit.craftbukkit.v1_8_R3.CraftServer.dispatchCommand(CraftServer.java:647) [paperspigot-1.8.8.jar:git-PaperSpigot-56c14f8-07c3001]     at org.bukkit.Bukkit.dispatchCommand(Bukkit.java:575) [paperspigot-1.8.8.jar:git-PaperSpigot-56c14f8-07c3001]     at org.bitbucket.ucchy.undine.tellraw.MessageComponent.sendCommand(MessageComponent.java:129) [UndineMailer.jar:?]     at org.bitbucket.ucchy.undine.tellraw.MessageComponent.send(MessageComponent.java:72) [UndineMailer.jar:?]     at org.bitbucket.ucchy.undine.MailManager.sendMailLine(MailManager.java:1472) [UndineMailer.jar:?]     at org.bitbucket.ucchy.undine.MailManager.sendNewMail(MailManager.java:285) [UndineMailer.jar:?]     at org.bitbucket.ucchy.undine.UndineListener$2.run(UndineListener.java:98) [UndineMailer.jar:?]     at org.bukkit.craftbukkit.v1_8_R3.scheduler.CraftTask.run(CraftTask.java:59) [paperspigot-1.8.8.jar:git-PaperSpigot-56c14f8-07c3001]     at org.bukkit.craftbukkit.v1_8_R3.scheduler.CraftAsyncTask.run(CraftAsyncTask.java:53) [paperspigot-1.8.8.jar:git-PaperSpigot-56c14f8-07c3001]     at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:1.8.0_05]     at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:1.8.0_05]     at java.lang.Thread.run(Unknown Source) [?:1.8.0_05] &lt;/pre&gt;   なお、PaperSpigot以外のサーバー（CraftBukkitやSpigot）では、これらの操作によるコンソールエラー現象は確認できなかった。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/tellraw/MessageComponent.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="69" opendate="2015-12-26 02:14:35" fixdate="2015-12-26 02:19:29">
+		<buginformation>
+			<summary>Everyone can open the attachment item box of other's mail.</summary>
+			<description>他人のメールの添付ボックスを開くことができてしまう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/command/UndineAttachCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2015-08-09 09:50:10" fixdate="2015-08-09 09:55:32">
+		<buginformation>
+			<summary>ゴミ箱メールのリストからメールを表示して、戻るボタンを押すと、なぜか送信済みメールリストが表示される。</summary>
+			<description>ゴミ箱メールのリストからメールを表示して、戻るボタンを押すと、なぜか送信メールリストが表示される。 - 1. /mail trash コマンドを実行して、ゴミ箱メールリストを表示する。 - 2. 表示されたリストからメールを選択して、メール詳細を開く。 - 3. [戻る] を押す。   　本来であれば、ゴミ箱メールリストが表示されるはずが、なぜか送信済みメールリストが表示される。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/MailManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="56" opendate="2015-08-01 13:52:41" fixdate="2015-08-01 14:01:19">
+		<buginformation>
+			<summary>コンソールで本文なしのメールを送信しようとするとエラーが起こる</summary>
+			<description>Exception の内容は次の通り  ---  &lt;pre&gt; [22:28:57] [Server thread/WARN]: Unexpected exception while parsing console command "mail send" org.bukkit.command.CommandException: Unhandled exception executing command 'mail' in plugin UndineMailer v1.4.11     at org.bukkit.command.PluginCommand.execute(PluginCommand.java:46) ~[spigot-1.8.8-R0.1-SNAPSHOT.jar:git-Spigot-d97e08b-5e85956]     at org.bukkit.command.SimpleCommandMap.dispatch(SimpleCommandMap.java:141) ~[spigot-1.8.8-R0.1-SNAPSHOT.jar:git-Spigot-d97e08b-5e85956]     at org.bukkit.craftbukkit.v1_8_R3.CraftServer.dispatchCommand(CraftServer.java:619) ~[spigot-1.8.8-R0.1-SNAPSHOT.jar:git-Spigot-d97e08b-5e85956]     at org.bukkit.craftbukkit.v1_8_R3.CraftServer.dispatchServerCommand(CraftServer.java:605) [spigot-1.8.8-R0.1-SNAPSHOT.jar:git-Spigot-d97e08b-5e85956]     at net.minecraft.server.v1_8_R3.DedicatedServer.aO(DedicatedServer.java:371) [spigot-1.8.8-R0.1-SNAPSHOT.jar:git-Spigot-d97e08b-5e85956]     at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:336) [spigot-1.8.8-R0.1-SNAPSHOT.jar:git-Spigot-d97e08b-5e85956]     at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:628) [spigot-1.8.8-R0.1-SNAPSHOT.jar:git-Spigot-d97e08b-5e85956]     at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:536) [spigot-1.8.8-R0.1-SNAPSHOT.jar:git-Spigot-d97e08b-5e85956]     at java.lang.Thread.run(Unknown Source) [?:1.8.0_05] Caused by: java.lang.IndexOutOfBoundsException: Index: 0, Size: 0     at java.util.ArrayList.rangeCheck(Unknown Source) ~[?:1.8.0_05]     at java.util.ArrayList.get(Unknown Source) ~[?:1.8.0_05]     at org.bitbucket.ucchy.undine.MailData.getInboxSummary(MailData.java:849) ~[?:?]     at org.bitbucket.ucchy.undine.MailManager.sendNewMail(MailManager.java:276) ~[?:?]     at org.bitbucket.ucchy.undine.command.UndineSendCommand.runCommand(UndineSendCommand.java:279) ~[?:?]     at org.bitbucket.ucchy.undine.command.UndineCommand.onCommand(UndineCommand.java:89) ~[?:?]     at org.bitbucket.ucchy.undine.UndineMailer.onCommand(UndineMailer.java:125) ~[?:?]     at org.bukkit.command.PluginCommand.execute(PluginCommand.java:44) ~[spigot-1.8.8-R0.1-SNAPSHOT.jar:git-Spigot-d97e08b-5e85956]     ... 8 more &lt;/pre&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/MailManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="55" opendate="2015-07-09 15:40:03" fixdate="2015-07-09 15:41:50">
+		<buginformation>
+			<summary>Permission node "undine.group.infinite-create" and "undine.group.infinite-add-member" are not working correctly. </summary>
+			<description>日本フォーラムにて報告された不具合。  ---  管理グループをつくろうとしたところ、1プレイヤーが作成可能なグループの最大数と1グループに追加できる最大プレイヤー数がOPやundine.group.infinite-create,undine.group.infinite-add-memberを持っていても最大数以上追加できなかったです。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/group/GroupManager.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/command/GroupCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="49" opendate="2015-05-09 07:16:52" fixdate="2015-05-09 07:21:15">
+		<buginformation>
+			<summary>メッセージにダブルクオートが含まれていると、そのメッセージ行は表示されなくなる</summary>
+			<description>BukkitDevで報告された不具合。  ---  Apparently when using double quotes while writing a message removes it from the message, or at least from the message preview. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/tellraw/MessageParts.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="43" opendate="2015-04-26 19:35:37" fixdate="2015-04-26 20:36:25">
+		<buginformation>
+			<summary>OSのロケールがenまたはja以外だと、サーバー起動時にNullPointerExceptionが起こる。</summary>
+			<description>BukkitDevにて報告を受けた不具合。 OSのロケールがenまたはja以外だと、サーバー起動時にNullPointerExceptionが起こる。 http://dev.bukkit.org/paste/12159/ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/Messages.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2015-04-18 05:54:24" fixdate="2015-04-18 06:19:30">
+		<buginformation>
+			<summary>添付ボックスの中のアイテムと入れ替えすることで、添付ボックスの中にアイテムを入れることができてしまう。</summary>
+			<description>添付ボックスの中のアイテムと入れ替えすることで、添付ボックスの中にアイテムを入れることができてしまう。  添付ボックスは読み取り専用にすべき。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/UndineListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="27" opendate="2015-02-13 07:57:23" fixdate="2015-02-17 05:51:15">
+		<buginformation>
+			<summary>UUID updater bug fix.</summary>
+			<description>UUID updater が、正しく動作していないようなので、バグフィックスが必要。 - [x] MailManager に、update() メソッドを追加。イニシャライズの非同期処理内で呼び出して実行する。 - [x] CB175以前なら何もしない。CB178以降なら、全メールデータを確認し、CONSOLEと @ を除く全てのプレイヤー名の頭に $ が付いているかどうか確認する。 - [x] 上記で、$ が付いていないプレイヤー名が見つかった場合は、UUIDを取得してメールを保存する。この時、プレイヤー名とUUIDのセットはキャッシュしながら作業をすること。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/MailManager.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/MailData.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/group/GroupData.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/group/GroupManager.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/sender/MailSenderPlayer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="24" opendate="2015-02-12 05:18:49" fixdate="2015-02-12 16:53:06">
+		<buginformation>
+			<summary>パターンを1つ以上塗ったバナーをメールに添付して送信した後、サーバー再起動するとエラーが起こる。</summary>
+			<description>パターンを1つ以上塗ったバナーをメールに添付して送信した後、サーバー再起動するとエラーが起こる。  スタックトレースは下記の通り。  &lt;pre&gt; [14:15:59] [pool-3-thread-12/WARN]: org.apache.commons.lang.UnhandledException: Plugin UndineMailer v1.3.1 generated an exception while executing task 34     at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftAsyncTask.run(CraftAsyncTask.java:56)     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)     at java.lang.Thread.run(Thread.java:745) Caused by: java.lang.IndexOutOfBoundsException: Index: 0, Size: 0     at java.util.ArrayList.rangeCheck(ArrayList.java:638)     at java.util.ArrayList.set(ArrayList.java:429)     at org.bukkit.craftbukkit.v1_8_R1.inventory.CraftMetaBanner.setPattern(CraftMetaBanner.java:139)     at org.bitbucket.ucchy.undine.item.ItemConfigParserV18.addBannerInfoToItem(ItemConfigParserV18.java:52)     at org.bitbucket.ucchy.undine.item.ItemConfigParser.getItemFromSection(ItemConfigParser.java:295)     at org.bitbucket.ucchy.undine.MailData.loadFromConfigSection(MailData.java:265)     at org.bitbucket.ucchy.undine.MailData.load(MailData.java:224)     at org.bitbucket.ucchy.undine.MailManager$1.run(MailManager.java:87)     at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftTask.run(CraftTask.java:53)     at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftAsyncTask.run(CraftAsyncTask.java:53)     ... 3 more  &lt;/pre&gt;   どうやら、BannerMetaへのパターン設定が、正しく動作していないようだ。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/item/ItemConfigParserV18.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/command/UndineAttachCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="23" opendate="2015-02-11 16:16:56" fixdate="2015-02-11 17:21:13">
+		<buginformation>
+			<summary>自分宛てに添付付きメールを送信すると、「添付アイテムをキャンセルする」ボタンが表示される。</summary>
+			<description>自分宛てに添付付きメールを送信すると、「添付アイテムをキャンセルする」ボタンが表示される。  バグっぽい。 メールを開いた人が toに含まれるかどうかを検証するよりも先に、メールを開いた人が fromと一致するかどうかを検証して制御しているため、fromとtoが一致する場合にこのようなことが起こる。 fromとの一致を検証する前に、toに含まれるかどうかを検証したらどうか。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/MailManager.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/MailData.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/command/UndineAttachCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="17" opendate="2015-02-09 05:05:41" fixdate="2015-02-10 05:15:46">
+		<buginformation>
+			<summary>Issue: Server console mail send is kinda of hard, I can't click [OK] to send mail. After /mail send if I have more than one destinations.</summary>
+			<description>"mail send attachconfirm"   Maybe show this instead of [OK].  コンソールから、複数宛先で、添付アイテム付きのメールを送信する際に、 「複数の宛先に添付付きメールを送信しようとしています。 　このメールは、3通に複製されて送信されます。よろしいですか？  　【OK】【キャンセル】」 の画面が表示されるが、コンソールなので【OK】ボタンが押せない。 【OK】【キャンセル】を表示する代わりに、 「送信する場合は、“/umail send attachconfirm”を実行してください。」 と表示できるようにしてほしい。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/command/UndineSendCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="12" opendate="2015-01-31 03:41:21" fixdate="2015-01-31 03:50:53">
+		<buginformation>
+			<summary>グループの詳細を確認するとき、変更権限がなくて送信権限が有るプレイヤーだと、IndexOutOfBoundsExceptionが発生する</summary>
+			<description>単純な実装ミスっぽい。 スタックトレースは下記の通り。  &lt;pre&gt; [12:38:12] [Server thread/INFO]: Player330 issued server command: /ugroup detail Test [12:38:12] [Server thread/ERROR]: null org.bukkit.command.CommandException: Unhandled exception executing command 'ugroup' in plugin UndineMailer v1.2.0     at org.bukkit.command.PluginCommand.execute(PluginCommand.java:46) ~[spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at org.bukkit.command.SimpleCommandMap.dispatch(SimpleCommandMap.java:141) ~[spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at org.bukkit.craftbukkit.v1_8_R1.CraftServer.dispatchCommand(CraftServer.java:624) ~[spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at net.minecraft.server.v1_8_R1.PlayerConnection.handleCommand(PlayerConnection.java:1058) [spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at net.minecraft.server.v1_8_R1.PlayerConnection.a(PlayerConnection.java:919) [spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at net.minecraft.server.v1_8_R1.PacketPlayInChat.a(PacketPlayInChat.java:26) [spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at net.minecraft.server.v1_8_R1.PacketPlayInChat.a(PacketPlayInChat.java:34) [spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at net.minecraft.server.v1_8_R1.PacketHandleTask.run(SourceFile:13) [spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_05]     at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_05]     at net.minecraft.server.v1_8_R1.MinecraftServer.z(MinecraftServer.java:643) [spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at net.minecraft.server.v1_8_R1.DedicatedServer.z(DedicatedServer.java:284) [spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at net.minecraft.server.v1_8_R1.MinecraftServer.y(MinecraftServer.java:598) [spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at net.minecraft.server.v1_8_R1.MinecraftServer.run(MinecraftServer.java:506) [spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     at java.lang.Thread.run(Thread.java:745) [?:1.8.0_05] Caused by: java.lang.IndexOutOfBoundsException: Index: 2, Size: 2     at java.util.ArrayList.rangeCheck(ArrayList.java:638) ~[?:1.8.0_05]     at java.util.ArrayList.get(ArrayList.java:414) ~[?:1.8.0_05]     at org.bitbucket.ucchy.undine.group.GroupManager.displayGroupDetailReadOnly(GroupManager.java:395) ~[?:?]     at org.bitbucket.ucchy.undine.group.GroupCommand.doDetailCommand(GroupCommand.java:301) ~[?:?]     at org.bitbucket.ucchy.undine.group.GroupCommand.onCommand(GroupCommand.java:64) ~[?:?]     at org.bitbucket.ucchy.undine.UndineMailer.onCommand(UndineMailer.java:101) ~[?:?]     at org.bukkit.command.PluginCommand.execute(PluginCommand.java:44) ~[spigot-1.8-R0.1-SNAPSHOT.jar:git-Spigot-7297fbd-8047b0a]     ... 14 more &lt;/pre&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/group/GroupManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6" opendate="2015-01-28 18:28:06" fixdate="2015-01-28 18:47:02">
+		<buginformation>
+			<summary>送信権限の無いグループを、宛先に設定することができる。</summary>
+			<description>送信権限の無いグループを、宛先に設定することができる。  【再現方法】 1. 適当なグループを作成する。 2. グループの設定画面で、「このグループへのメール送信権限」を「オーナーのみ」に変更する。 3. 別プレイヤーで /mail write を実行し、メール編集画面を表示し、1. で作成したグループを宛先に追加する。 問題なく追加することができることを確認する。（送信権限が無いので、追加されてしまっては困る） 4. 本文を書いて送信すると、問題なく送信できてしまう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/UndineCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="4" opendate="2015-01-28 17:33:25" fixdate="2015-02-01 05:04:00">
+		<buginformation>
+			<summary>enableSendFeeを有効にしていると、添付ボックスに入れたアイテムがクリアされず、アイテムが分裂する</summary>
+			<description>ツイッターで報告をいただいた不具合の件。 アイテムが増えてしまう問題も発見しまして。 /mail writeで添付アイテムを設定して相手にメールを送信し，再度/mail writeで添付ボックスを開くと，「添付アイテム数:0」となってはいますが送信したはずのアイテムが残っています。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/UndineCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="3" opendate="2015-01-28 17:32:37" fixdate="2015-01-29 06:43:44">
+		<buginformation>
+			<summary>自分の所持金と着払い金額の合計が、所持金上限以上になる場合、相手が支払ったのに受け取ることができず、お金が消滅する</summary>
+			<description>ツイッターで報告をいただいた不具合の件。 着払い料金を自らの所持金上限以上に設定してしまうと，相手が支払ったとしても自分は1円も受け取れず，支払った金額が虚空に消えてしまうのはVaultの問題でしょうか。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/UndineCommand.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/VaultEcoBridge.java</file>
+			<file>src/main/java/org/bitbucket/ucchy/undine/UndineConfig.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2" opendate="2015-01-28 17:25:17" fixdate="2015-01-28 17:29:57">
+		<buginformation>
+			<summary>「宛先をプレーヤー名簿から追加する」は非常に重いので、デフォルトをオフにすべき</summary>
+			<description>ツイッターにて報告を頂いた件。 過去にプレイヤー参加履歴数が多数あるようなサーバーでは、「宛先をプレーヤー名簿から追加する」を押すとサーバーが非常に重くなってしまい、タイムアウトしてしまうことが多々ある。 ユーザーにこのボタンを頻繁に押されるとこまるので、この機能はデフォルトで非表示にした方がいいのではないか。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/UndineConfig.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1" opendate="2015-01-28 17:21:31" fixdate="2015-01-28 18:29:05">
+		<buginformation>
+			<summary>グループ宛のメールが読めない</summary>
+			<description>【再現方法】 一般プレイヤーで適当なグループを作成する。 別のプレイヤーから、作成したグループ宛にメールを送ってもらう。 メールが届いた旨のメッセージが表示されるが、 「指定されたメールはあなた宛ではないので表示できません。」 と表示されてメールを開くことができない。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/bitbucket/ucchy/undine/MailData.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="greys-anatomy">
+	<bug id="78" opendate="2015-10-05 12:41:23" fixdate="2015-10-05 14:32:25">
+		<buginformation>
+			<summary>trace命令在跟踪&lt;init&gt;方法时出现顺序错误</summary>
+			<description>在Greys的模型中，我们期待的顺序是  `before()` -&gt; `invokeBeforeTracing()` -&gt; `invokeAfterTracing()` -&gt; `afterThrowing()`/`afterReturning()` -&gt; `afterFinishing()`  但在处理`&lt;init&gt;`方法时，`invokeBeforeTracing()`要优先于`before()`方法而执行 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/src/main/java/com/github/ompc/greys/core/advisor/ReflectAdviceTracingListenerAdapter.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

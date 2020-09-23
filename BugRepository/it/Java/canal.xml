@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="canal">
+	<bug id="2735" opendate="2020-05-12 15:07:04" fixdate="2020-08-21 03:33:14">
+		<buginformation>
+			<summary>CanalRabbitMQConsumer  disconnect() 方法报错</summary>
+			<description>- [ ] I have searched the [issues](https://github.com/alibaba/canal/issues) of this repository and believe that this is not a duplicate. - [ ] I have checked the [FAQ](https://github.com/alibaba/canal/wiki/FAQ) of this repository and believe that this is not a duplicate.  ### environment  * canal version 1.1.5-alpha-1 * mysql version 5,7  ### Issue Description  CanalRabbitMQConsumer  disconnect() 方法内 channel.close(); 和 connect.close(); 执行先后顺序要互换。不然会导致 启动 或者 关闭服务的时候报错。  ### 修复如下： ```     public void disconnect() {          if (channel != null) {     // 要先关闭 channel             try {                 channel.close();             } catch (IOException | TimeoutException e) {                 throw new CanalClientException("stop channel error", e);             }         }          if (connect != null) {             try {                 connect.close();             } catch (IOException e) {                 throw new CanalClientException("stop connect error", e);             }         }     } ```  ### Steps to reproduce  ### Expected behaviour  ### Actual behaviour   If there is an exception, please attach the exception trace:  ``` 2020-05-12 21:29:58.779 [Thread-2] ERROR c.z.a.datastash.launcher.client.loader.AdapterProcessor - process error! com.rabbitmq.client.AlreadyClosedException: connection is already closed due to clean connection shutdown; protocol method: #method&lt;connection.close&gt;(reply-code=200, reply-text=OK, class-id=0, method-id=0) at com.rabbitmq.client.impl.AMQChannel.processShutdownSignal(AMQChannel.java:401) ~[amqp-client-5.9.0.jar:5.9.0] at com.rabbitmq.client.impl.ChannelN.startProcessShutdownSignal(ChannelN.java:287) ~[amqp-client-5.9.0.jar:5.9.0] at com.rabbitmq.client.impl.ChannelN.close(ChannelN.java:608) ~[amqp-client-5.9.0.jar:5.9.0] at com.rabbitmq.client.impl.ChannelN.close(ChannelN.java:542) ~[amqp-client-5.9.0.jar:5.9.0] at com.rabbitmq.client.impl.ChannelN.close(ChannelN.java:535) ~[amqp-client-5.9.0.jar:5.9.0] at com.rabbitmq.client.impl.recovery.AutorecoveringChannel.close(AutorecoveringChannel.java:73) ~[amqp-client-5.9.0.jar:5.9.0] at com.zmops.argus.datastash.connector.consumer.CanalRabbitMQConsumer.disconnect(CanalRabbitMQConsumer.java:194) ~[argus-datastash-0.0.1-SNAPSHOT.jar:na] at com.zmops.argus.datastash.launcher.client.loader.AdapterProcessor.process(AdapterProcessor.java:221) ~[argus-datastash-0.0.1-SNAPSHOT.jar:na] at java.lang.Thread.run(Thread.java:748) ~[na:1.8.0_242] ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>connector/rocketmq-connector/src/main/java/com/alibaba/otter/canal/connector/rocketmq/consumer/CanalRocketMQConsumer.java</file>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/mysql/AbstractMysqlEventParser.java</file>
+			<file>server/src/main/java/com/alibaba/otter/canal/admin/CanalAdmin.java</file>
+			<file>admin/admin-web/src/main/java/com/alibaba/otter/canal/admin/connector/AdminConnector.java</file>
+			<file>client-adapter/common/src/main/java/com/alibaba/otter/canal/client/adapter/config/bind/PropertiesConfigurationFactory.java</file>
+			<file>connector/core/src/main/java/com/alibaba/otter/canal/connector/core/util/JdbcTypeUtil.java</file>
+			<file>client-adapter/common/src/main/java/com/alibaba/otter/canal/client/adapter/support/JdbcTypeUtil.java</file>
+			<file>connector/core/src/main/java/com/alibaba/otter/canal/connector/core/util/MessageUtil.java</file>
+			<file>connector/kafka-connector/src/main/java/com/alibaba/otter/canal/connector/kafka/config/KafkaConstants.java</file>
+			<file>parse/src/test/java/com/alibaba/otter/canal/parse/inbound/mysql/MysqlDumpTest.java</file>
+			<file>client-adapter/common/src/main/java/com/alibaba/otter/canal/client/adapter/support/MessageUtil.java</file>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/mysql/dbsync/LogEventConvert.java</file>
+			<file>client-adapter/hbase/src/main/java/com/alibaba/otter/canal/client/adapter/hbase/service/HbaseSyncService.java</file>
+			<file>admin/admin-web/src/main/java/com/alibaba/otter/canal/admin/service/CanalInstanceService.java</file>
+			<file>connector/core/src/main/java/com/alibaba/otter/canal/connector/core/producer/MQMessageUtils.java</file>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/mysql/tsdb/DatabaseTableMeta.java</file>
+			<file>instance/manager/src/main/java/com/alibaba/otter/canal/instance/manager/CanalInstanceWithManager.java</file>
+			<file>meta/src/main/java/com/alibaba/otter/canal/meta/FileMixedMetaManager.java</file>
+			<file>prometheus/src/main/java/com/alibaba/otter/canal/prometheus/impl/PrometheusCanalEventDownStreamHandler.java</file>
+			<file>parse/src/test/java/com/alibaba/otter/canal/parse/DirectLogFetcherTest.java</file>
+			<file>connector/rabbitmq-connector/src/main/java/com/alibaba/otter/canal/connector/rabbitmq/consumer/CanalRabbitMQConsumer.java</file>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/mysql/tsdb/MemoryTableMeta.java</file>
+			<file>parse/src/test/java/com/alibaba/otter/canal/parse/inbound/mysql/RdsLocalBinlogDumpTest.java</file>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/mysql/rds/RdsBinlogEventParserProxy.java</file>
+			<file>client-adapter/rdb/src/main/java/com/alibaba/otter/canal/client/adapter/rdb/support/SyncUtil.java</file>
+			<file>deployer/src/main/java/com/alibaba/otter/canal/deployer/CanalController.java</file>
+			<file>server/src/main/java/com/alibaba/otter/canal/server/CanalMQStarter.java</file>
+			<file>connector/core/src/main/java/com/alibaba/otter/canal/connector/core/config/MQProperties.java</file>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/mysql/rds/request/DescribeBackupPolicyRequest.java</file>
+			<file>dbsync/src/main/java/com/taobao/tddl/dbsync/binlog/event/TableMapLogEvent.java</file>
+			<file>sink/src/main/java/com/alibaba/otter/canal/sink/entry/EntryEventSink.java</file>
+			<file>parse/src/test/java/com/alibaba/otter/canal/parse/inbound/mysql/LocalBinlogDumpTest.java</file>
+			<file>connector/core/src/main/java/com/alibaba/otter/canal/connector/core/config/CanalConstants.java</file>
+			<file>connector/rabbitmq-connector/src/main/java/com/alibaba/otter/canal/connector/rabbitmq/producer/CanalRabbitMQProducer.java</file>
+			<file>connector/core/src/main/java/com/alibaba/otter/canal/connector/core/producer/AbstractMQProducer.java</file>
+			<file>example/src/main/java/com/alibaba/otter/canal/example/kafka/CanalKafkaClientFlatMessageExample.java</file>
+			<file>admin/admin-web/src/main/java/com/alibaba/otter/canal/admin/controller/CanalInstanceController.java</file>
+			<file>client-adapter/kudu/src/main/java/com/alibaba/otter/canal/client/adapter/kudu/service/KuduSyncService.java</file>
+			<file>client-adapter/launcher/src/main/java/com/alibaba/otter/canal/adapter/launcher/config/CuratorClient.java</file>
+			<file>admin/admin-web/src/main/java/com/alibaba/otter/canal/admin/connector/SimpleAdminConnector.java</file>
+			<file>client-adapter/launcher/src/main/java/com/alibaba/otter/canal/adapter/launcher/rest/CommonRest.java</file>
+			<file>client-adapter/rdb/src/main/java/com/alibaba/otter/canal/client/adapter/rdb/service/RdbSyncService.java</file>
+			<file>connector/rocketmq-connector/src/main/java/com/alibaba/otter/canal/connector/rocketmq/producer/CanalRocketMQProducer.java</file>
+			<file>client-adapter/escore/src/main/java/com/alibaba/otter/canal/client/adapter/es/core/service/ESSyncService.java</file>
+			<file>example/src/main/java/com/alibaba/otter/canal/example/AbstractCanalClientTest.java</file>
+			<file>deployer/src/main/java/com/alibaba/otter/canal/deployer/admin/CanalAdminController.java</file>
+			<file>parse/src/test/java/com/alibaba/otter/canal/parse/MysqlBinlogDumpPerformanceTest.java</file>
+			<file>connector/kafka-connector/src/main/java/com/alibaba/otter/canal/connector/kafka/producer/CanalKafkaProducer.java</file>
+			<file>parse/src/main/java/com/alibaba/otter/canal/parse/inbound/mysql/MysqlConnection.java</file>
+			<file>admin/admin-web/src/main/java/com/alibaba/otter/canal/admin/service/impl/CanalInstanceServiceImpl.java</file>
+			<file>server/src/main/java/com/alibaba/otter/canal/admin/handler/SessionHandler.java</file>
+			<file>client-adapter/hbase/src/main/java/com/alibaba/otter/canal/client/adapter/hbase/config/MappingConfig.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="112" opendate="2015-03-30 09:59:58" fixdate="2015-04-10 04:39:58">
+		<buginformation>
+			<summary>mysql5.6时间毫秒精度支持</summary>
+			<description>支持下mysql5.6毫秒精度的解析.  ## 测试case：  CREATE TABLE `t1` (   `id` int(11) NOT NULL AUTO_INCREMENT,   `time0` time DEFAULT NULL,   `time1` time(1) DEFAULT NULL,   `time2` time(2) DEFAULT NULL,   `time3` time(3) DEFAULT NULL,   `time4` time(4) DEFAULT NULL,   `time5` time(5) DEFAULT NULL,   `time6` time(6) DEFAULT NULL,   `timestamp0` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',   `timestamp1` timestamp(1) NOT NULL DEFAULT '0000-00-00 00:00:00.0',   `timestamp2` timestamp(2) NOT NULL DEFAULT '0000-00-00 00:00:00.00',   `timestamp3` timestamp(3) NOT NULL DEFAULT '0000-00-00 00:00:00.000',   `timestamp4` timestamp(4) NOT NULL DEFAULT '0000-00-00 00:00:00.0000',   `timestamp5` timestamp(5) NOT NULL DEFAULT '0000-00-00 00:00:00.00000',   `timestamp6` timestamp(6) NOT NULL DEFAULT '0000-00-00 00:00:00.000000',   `datetime0` datetime DEFAULT NULL,   `datetime1` datetime(1) DEFAULT NULL,   `datetime2` datetime(2) DEFAULT NULL,   `datetime3` datetime(3) DEFAULT NULL,   `datetime4` datetime(4) DEFAULT NULL,   `datetime5` datetime(5) DEFAULT NULL,   `datetime6` datetime(6) DEFAULT NULL,   PRIMARY KEY (`id`) ## ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8  测试数据: 1. insert into t1 values(null,'00:00:00.0','00:00:00.1','00:00:00.02','00:00:00.003','00:00:00.1004','00:00:00.1005','00:00:00.101016','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232'); 2. insert into t1 values(null,'16:42:39.0','16:42:39.1','16:42:39.02','16:42:39.003','16:42:39.1004','16:42:39.1005','16:42:39.101016','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232') 3. insert into t1 values(null,'-16:42:39.0','-16:42:39.1','-16:42:39.02','-16:42:39.003','16:42:39.1004','-16:42:39.1005','-16:42:39.101016','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232','2015-03-30 16:42:39.0','2015-03-30 16:42:39.0','2015-03-30 16:42:39.01','2015-03-30 16:42:39.032','2015-03-30 16:42:39.1023','2015-03-30 16:42:39.10132','2015-03-30 16:42:39.121232'); </description>
+		</buginformation>
+		<fixedfiles>
+			<file>dbsync/src/main/java/com/taobao/tddl/dbsync/binlog/event/RowsLogBuffer.java</file>
+			<file>dbsync/src/test/java/com/taobao/tddl/dbsync/binlog/DirectLogFetcherTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

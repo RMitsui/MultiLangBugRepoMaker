@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="AsteOnLine">
+	<bug id="79" opendate="2019-12-14 12:03:14" fixdate="2019-12-23 19:57:51">
+		<buginformation>
+			<summary>Nel ripubblicare un inserzione scaduta si ottiene una data errata</summary>
+			<description>Quando un utente venditore prova a ripubblicare un inserzione scaduta, quindi inserendo una nuova data, questa risulta errata: presenta un mese in più rispetto a quello scelto.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/it/unisannio/sweng/rosariogoglia/controller/ServletRipubblicaInserzione.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/controller/ServletRegistrazione.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2018-07-15 18:51:48" fixdate="2018-07-16 15:00:34">
+		<buginformation>
+			<summary>Test di unità dell'inserimento di un'offerta non superato</summary>
+			<description>Quando si esegue il test di inserimento e cancellazione di un'offerta, questo non risulta superato ed inoltre impiega molto tempo (circa 7 minuti) nell'esecuzione. Potrebbe essere un problema di caricamento dell'inserzione che ha ricevuto l'offerta.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/InserzioneDaoMysqlJdbc.java</file>
+			<file>test/it/unisannio/sweng/rosariogoglia/daoImpl/OffertaDaoMysqlJdbcTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2018-06-04 12:09:16" fixdate="2020-02-11 15:51:27">
+		<buginformation>
+			<summary>L'amministratore non può effettuare il login con sito OFF-LINE</summary>
+			<description>Se un amministratore mette il sito in manutenzione ed esegue il logout, non può più fare il login. Quindi ciò impedisce di ripristinare il normale uso del sito.  @marcobelf bisogna trovare una soluzione con l'attivazione del filtro Manutenzione.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>test/it/unisannio/sweng/rosariogoglia/integration/RegistrazioneUtente.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/filters/FilterLog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2018-03-12 09:35:19" fixdate="2018-03-12 10:06:32">
+		<buginformation>
+			<summary>Bug in fase di login al sito.</summary>
+			<description>In seguito alla richiesa di login è visualizzato il seguente messaggio di errore: "HTTP Status 405 - HTTP method POST is not supported by this URL" e viene fatto il redirect alla home page del sito.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/it/unisannio/sweng/rosariogoglia/controller/ServletLogin.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/controller/ServletIndex.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="9" opendate="2018-01-23 11:42:26" fixdate="2018-01-29 14:14:23">
+		<buginformation>
+			<summary>Gestione della scadenze delle aste su ogni singola inserzione</summary>
+			<description>E' necessario che lo stato di ogni inserzione venga aggiornato al momento della data di scadenza. Se l'inserzione non ha rivecuto offerte, lo stato risulta "scaduto", se vi è almeno un'offerta, lo stato deve essere "aggiudicata". Come è possibile realizzare qualcosa che si preoccupi di fare ciò alla scadenza dell'asta? </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/it/unisannio/sweng/rosariogoglia/controller/ServletLogin.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/utility/ControlloScadenzaAste.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/controller/ServletInizializzazione.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5" opendate="2018-01-19 17:50:34" fixdate="2018-02-03 15:31:44">
+		<buginformation>
+			<summary>Impossibile trovare il file log4jConfig.xml</summary>
+			<description>Eseguendo Test Case con JUnit, emerge il seguente errore: java.io.FileNotFoundException: WebContent\WEB-INF\log4jConfig.xml (Impossibile trovare il percorso specificato). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/ProdottoDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/ComuneDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/BannedCookiesDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/listener/ContextInitializer.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/ImmagineDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/ProduttoreDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/utility/ControlloScadenzaAste.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/UtenteRegistratoDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/ProvinciaDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/KeywordDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/OffertaDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/CategoriaDaoMysqlJdbc.java</file>
+			<file>src/it/unisannio/sweng/rosariogoglia/daoImpl/InserzioneDaoMysqlJdbc.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

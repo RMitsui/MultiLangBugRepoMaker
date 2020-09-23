@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="GSEHEN">
+	<bug id="157" opendate="2019-09-17 13:54:55" fixdate="2019-10-30 13:24:46">
+		<buginformation>
+			<summary>Plot View: Änderungen der editierbaren Felder wird nicht gespeichert</summary>
+			<description>**Gemuesebau commented on 17 Sep** (2019) _Jegliche Änderungen im Plotview von Dauer in Tagen (Umstelltermin), Durchwurzelbare Zone werden nicht gespeichert._  https://jira.cgs-online.de/browse/GSEH-34</description>
+		</buginformation>
+		<fixedfiles>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/view/PlotDataController.java</file>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/GsehenTreeTable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="156" opendate="2019-08-15 11:53:54" fixdate="2019-10-30 11:59:30">
+		<buginformation>
+			<summary>Plot View: Tabelle der Kulturparameter: Durchwurzelbare Zone wird falsch dargestellt</summary>
+			<description>**Gemuesebau commented on 15 Aug** (2019) _Die Durchwurzelbare Zone wird als Double in der Tabelle angeziegt erlaubt aber nue eine Integer zuweisung_  https://jira.cgs-online.de/browse/GSEH-33</description>
+		</buginformation>
+		<fixedfiles>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/CropPhase.java</file>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/view/PlotDataController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="131" opendate="2018-09-18 14:49:41" fixdate="2018-09-19 09:23:07">
+		<buginformation>
+			<summary>Wetterdatenquellen werden erneut dupliziert</summary>
+			<description>Ein alter Bug tritt erneut auf. --&gt; checken, ob "Übernehmen" richtig arbeitet!</description>
+		</buginformation>
+		<fixedfiles>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/view/FieldDataController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="122" opendate="2018-09-13 14:31:25" fixdate="2018-09-14 08:37:34">
+		<buginformation>
+			<summary>Nach Neustart sind SoilProfiles doppelt vorhanden. Das führt dazu, dass ein Profil ohne "Zusatzinformationen" nicht bearbeitet werden kann.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/model/SoilProfile.java</file>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/model/SoilManualData.java</file>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/view/FieldDataController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="121" opendate="2018-09-13 09:02:56" fixdate="2018-10-04 07:13:41">
+		<buginformation>
+			<summary>Nach dem Speichern und einem anschließenden Neustart, sind Farm, Feld und Plot doppelt vorhanden</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/Gsehen.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="118" opendate="2018-09-12 15:02:40" fixdate="2018-09-18 08:43:22">
+		<buginformation>
+			<summary>Bug in GUI: Zahlen können nicht ganz gelöscht werden es muss immer eine Führende Ziffer stehen bleiben</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/view/FieldDataController.java</file>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/view/PlotDataController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="93" opendate="2018-09-06 09:01:27" fixdate="2018-09-06 12:33:04">
+		<buginformation>
+			<summary>Das Bodenprofil und die ausgewählte Kultur wird nicht persistiert / ist nicht mehr im Feld nach Speichern + Neustarten</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/Gsehen.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="91" opendate="2018-09-06 07:25:50" fixdate="2018-09-06 08:38:42">
+		<buginformation>
+			<summary>Kopier und Lösch Bug im Treeview</summary>
+			<description> atm kopiert ein ziehen des feldes in farm das feld nur und man hat danach mehrere kopien des feldes - ein löschen bewirkt nur ein löschne aus dem treeview und die felder werden auf der karte noch dargestellt </description>
+		</buginformation>
+		<fixedfiles>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/GsehenTreeTable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="90" opendate="2018-09-05 15:17:46" fixdate="2018-09-10 14:09:28">
+		<buginformation>
+			<summary>"Bug": Infofenster aktualisiert sich nicht direkt nach einer neuen Bewässerungsempfehlung, sondern erst nach erneutem Click auf den Plot in der TreeTableView</summary>
+			<description>Mittlerweile wurde die zeit von der letzten Aktualisierung eingebaut. Diese sollte nach der Implementierung der automatischen Aktualisierung wieder entfernt werden.  **Hinweis:** der Workaround besteht darin, einen anderen(!) Node im Baum anzuklicken, und danach dann wieder den betreffenden Plot.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/Gsehen.java</file>
+			<file>eclipse-workspace/GSEHEN/src/main/java/de/hgu/gsehen/gui/GsehenTreeTable.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

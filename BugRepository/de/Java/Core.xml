@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Core">
+	<bug id="152" opendate="2017-12-23 19:03:15" fixdate="2018-10-12 11:10:15">
+		<buginformation>
+			<summary>Rubiken-Namen werden auch an Sender, die nicht in der TXGruppe sind, gesendet</summary>
+			<description>Beispiel: Rubric ``odl-bw`` hat TX-Gruppe: ``dl-bw`` In ``dl-bw`` ist ``db0wa`` als Sender aber nicht enthalten. Trotzdem bei manueller Sende-Auslösung der Gruppen-Namen: ````Dec 23 19:59:47 dapnet java[23114]: 19:59:47.656 [Incoming-2,DAPNET1.1.3.10,db0sda] INFO  org.dapnet.core.transmission.TransmissionManager - Rubric odl-bw sent to transmitter db0wa```` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/transmission/TransmitterManager.java</file>
+			<file>src/main/java/org/dapnet/core/transmission/TransmissionManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="108" opendate="2017-05-30 12:18:01" fixdate="2017-06-30 08:36:50">
+		<buginformation>
+			<summary>Cross-Ref: PUT von Node übernimmt nicht SUSPENDED State Wunsch</summary>
+			<description>Das ist schon nötig, um ggf. die Mehrheit wiederzugewinnen, wenn viele unknown sind.  https://github.com/DecentralizedAmateurPagingNetwork/Web/issues/86</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/cluster/ClusterManager.java</file>
+			<file>src/main/java/org/dapnet/core/rest/resources/NodeResource.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="101" opendate="2017-05-22 10:10:22" fixdate="2017-07-31 12:20:03">
+		<buginformation>
+			<summary>Abhängigkeit des Nodes zur Senderanbindung aufgeben</summary>
+			<description>Mal so ne Idee: Eigentlich könnten sich die Sender auch bei einem beliebigen Node anmelden, oder? Macht natürlich Konsistenz-Probleme, wenn sich einer 2. Mal anmeldet usw. Nur mal so als Idee. Der Unipager könnte dann eine RoundRobin-Liste von Nodes haben und wenn einer ausfällt, wird der nächste probiert. Prio: C bis D</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/transmission/TransmitterManagerListener.java</file>
+			<file>src/main/java/org/dapnet/core/rest/resources/StatisticsResource.java</file>
+			<file>src/main/java/org/dapnet/core/cluster/ClusterManager.java</file>
+			<file>src/main/java/org/dapnet/core/transmission/TransmitterManager.java</file>
+			<file>src/main/java/org/dapnet/core/model/Transmitter.java</file>
+			<file>src/main/java/org/dapnet/core/model/CoreStatistics.java</file>
+			<file>src/main/java/org/dapnet/core/transmission/ServerHandler.java</file>
+			<file>src/main/java/org/dapnet/core/cluster/RpcListener.java</file>
+			<file>src/main/java/org/dapnet/core/scheduler/StateCleaningJob.java</file>
+			<file>src/main/java/org/dapnet/core/model/State.java</file>
+			<file>src/main/java/org/dapnet/core/transmission/TransmitterClient.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="99" opendate="2017-05-20 09:44:40" fixdate="2017-08-15 12:51:20">
+		<buginformation>
+			<summary>Umlaute &amp; Sonderzeichen</summary>
+			<description>Hallo zusammen, ist es moeglich, die Behandlung von Umlauten und ggf auch einfachen sonderzeichen wie bspw dem Grad-Zeichen noch zu implementieren? Aktuell scheint nur die Umschreibung mit ae, oe, ue bzw. ss zu gehen, ansonsten wird die Nachricht verstuemmelt. ich hatte schonmal eine Maskierung wie \u00F6 fuer oe versucht, geht aber auch nicht. Generell sollte der skyper ja Umlaute koennen da beim loeschen einer Nachricht dort auch ein korrekter Umlaut (also im Wort Loeschen an sich) angezeigt wird.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/transmission/ServerInitializer.java</file>
+			<file>src/main/java/org/dapnet/core/transmission/SkyperProtocol.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="85" opendate="2017-04-20 14:25:59" fixdate="2017-04-21 05:14:09">
+		<buginformation>
+			<summary>Setzen von News geht schief </summary>
+			<description>Mit neuer Release 1.1.3.0 und neuem Webinterface News in Eintrag 1: Geht Erneuter Eintrag in 1: Geht, wird überschrieben. Neuer Eintrag in 2: (News an Stelle 2 ist zu diesem Zeitpunk leer) ```` 16:23:57.356 [Incoming-1,DAPNET1.1.3.0,db0sda_test] ERROR org.dapnet.core.cluster.RpcListener - Exception : java.lang.IndexOutOfBoundsException: Index: 1, Size: 1         at java.util.LinkedList.checkElementIndex(LinkedList.java:555) ~[?:1.8.0_91]         at java.util.LinkedList.set(LinkedList.java:490) ~[?:1.8.0_91]         at org.dapnet.core.model.NewsList.add(NewsList.java:73) ~[dapnet-core-1.1.3.0.jar:1.1.3.0]         at org.dapnet.core.cluster.RpcListener.postNews(RpcListener.java:231) [dapnet-core-1.1.3.0.jar:1.1.3.0]         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]         at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]         at org.jgroups.blocks.MethodCall.invoke(MethodCall.java:286) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.blocks.RpcDispatcher.handle(RpcDispatcher.java:321) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.blocks.RequestCorrelator.handleRequest(RequestCorrelator.java:467) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.blocks.RequestCorrelator.dispatch(RequestCorrelator.java:406) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.blocks.RequestCorrelator.receiveMessage(RequestCorrelator.java:357) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.blocks.RequestCorrelator.receive(RequestCorrelator.java:245) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.blocks.MessageDispatcher$ProtocolAdapter.up(MessageDispatcher.java:664) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.JChannel.up(JChannel.java:760) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.stack.ProtocolStack.up(ProtocolStack.java:1034) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.stack.Protocol.up(Protocol.java:426) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.pbcast.FLUSH.up(FLUSH.java:511) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.stack.Protocol.up(Protocol.java:426) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.FRAG2.up(FRAG2.java:182) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.FlowControl.up(FlowControl.java:438) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.pbcast.STABLE.up(STABLE.java:294) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.UNICAST3.up(UNICAST3.java:487) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.pbcast.NAKACK2.deliverBatch(NAKACK2.java:989) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.pbcast.NAKACK2.removeAndPassUp(NAKACK2.java:919) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.pbcast.NAKACK2.handleMessage(NAKACK2.java:851) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.pbcast.NAKACK2.up(NAKACK2.java:611) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.VERIFY_SUSPECT.up(VERIFY_SUSPECT.java:155) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.FD.up(FD.java:260) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.FD_SOCK.up(FD_SOCK.java:325) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.MERGE3.up(MERGE3.java:292) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.AUTH.up(AUTH.java:150) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.Discovery.up(Discovery.java:296) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.stack.Protocol.up(Protocol.java:380) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.TP.passMessageUp(TP.java:1657) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at org.jgroups.protocols.TP$3.run(TP.java:1591) [jgroups-3.6.11.Final.jar:3.6.11.Final]         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_91]         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_91]         at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91] 16:23:57.361 [Incoming-1,DAPNET1.1.3.0,db0sda_test] ERROR org.dapnet.core.cluster.RpcListener - PostNews News{rubricName='asda', number=2}: INTERNAL_ERROR 16:23:57.364 [grizzly-http-server-1] ERROR org.dapnet.core.cluster.ClusterManager - Response: [sender=db0sda_testvalue=INTERNAL_ERROR, received=true, suspected=false]  16:23:57.364 [grizzly-http-server-1] FATAL org.dapnet.core.cluster.ClusterManager - Insecure Cluster State 16:23:57.366 [grizzly-http-server-1] ERROR org.dapnet.core.rest.exceptionHandling.ExceptionHandler - POST news/ - Internal Server Error (5000) javax.ws.rs.InternalServerErrorException: HTTP 500 Internal Server Error         at org.dapnet.core.rest.resources.AbstractResource.handleObject(AbstractResource.java:158) ~[dapnet-core-1.1.3.0.jar:1.1.3.0]         at org.dapnet.core.rest.resources.NewsResource.postNews(NewsResource.java:69) ~[dapnet-core-1.1.3.0.jar:1.1.3.0]         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]         at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]         at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81) ~[jersey-server-2.25.jar:?]         at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:144) ~[jersey-server-2.25.jar:?]         at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:161) ~[jersey-server-2.25.jar:?]         at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:160) ~[jersey-server-2.25.jar:?]         at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:99) ~[jersey-server-2.25.jar:?]         at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:389) ~[jersey-server-2.25.jar:?]         at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:347) ~[jersey-server-2.25.jar:?]         at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:102) ~[jersey-server-2.25.jar:?]         at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:326) [jersey-server-2.25.jar:?]         at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.25.jar:?]         at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.25.jar:?]         at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.25.jar:?]         at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.25.jar:?]         at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.25.jar:?]         at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317) [jersey-common-2.25.jar:?]         at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:305) [jersey-server-2.25.jar:?]         at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1154) [jersey-server-2.25.jar:?]         at org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpContainer.service(GrizzlyHttpContainer.java:384) [jersey-container-grizzly2-http-2.25.jar:?]         at org.glassfish.grizzly.http.server.HttpHandler$1.run(HttpHandler.java:224) [grizzly-http-server-2.3.28.jar:2.3.28]         at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:593) [grizzly-framework-2.3.28.jar:2.3.28]         at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:573) [grizzly-framework-2.3.28.jar:2.3.28]         at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91] ```` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/model/NewsList.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="84" opendate="2017-04-11 08:38:11" fixdate="2017-05-05 12:22:26">
+		<buginformation>
+			<summary>Node Auth Keys werden ungültig</summary>
+			<description>Es ist nicht ganz klar, wann und warum, aber manchmal kann sich ein Core nicht mit dem Cluster verbinden: ```` 10:32:45.742 [INT-2,DAPNET1.1.3.0-SNAPSHOT,db0sda] WARN  org.dapnet.core.cluster.ClusterAuthentication - Authentication of Node dl4ste failed: Wrong key 10:32:45.742 [INT-2,DAPNET1.1.3.0-SNAPSHOT,db0sda] WARN  org.jgroups.protocols.AUTH - db0sda: failed to validate AuthHeader (token: ClusterAuthentication) from dl4ste; dropping message 10:32:45.878 [INT-1,DAPNET1.1.3.0-SNAPSHOT,db0sda] WARN  org.dapnet.core.cluster.ClusterAuthentication - Authentication of Node dm0max failed: Unknown node ```` Wenn man dann in einem schon existierenden Core den AuthKey einfach neu setzt, dann geht es wieder.  Vielleicht können wir diese Hashing-Geschichte des Node-AuthKeys einfach rauswerfen? Wirklich nötig ist das nicht. Oder alternativ nach dem Fehler suchen.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/cluster/ClusterManager.java</file>
+			<file>src/main/java/org/dapnet/core/model/Node.java</file>
+			<file>src/main/java/org/dapnet/core/rest/resources/NodeResource.java</file>
+			<file>src/main/java/org/dapnet/core/cluster/ChannelListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="71" opendate="2017-03-10 14:15:19" fixdate="2017-03-13 07:34:25">
+		<buginformation>
+			<summary>API akzeptiert Transmitter Group auch, wenn Case nicht stimmt, aber keine Reaktion</summary>
+			<description>Wenn man in der API eine Transmittergroup namens "All" angibt, die Gruppe aber "all" heißt, wird der Ruf zwar angenommen, aber nicht ausgesendet. ![grafik](https://cloud.githubusercontent.com/assets/16710361/23798311/5d7b92b6-05a4-11e7-953a-df6bd55e4fb7.png)  Vielleicht besser entweder case sensitiv oder nach der API Prozessierung alles in Kleinbuchstaben umwandeln. Hier scheint noch eine Inkonsistenz zu sein.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/model/TransmitterGroup.java</file>
+			<file>src/main/java/org/dapnet/core/rest/RestSecurity.java</file>
+			<file>src/main/java/org/dapnet/core/rest/resources/AbstractResource.java</file>
+			<file>src/main/java/org/dapnet/core/rest/RestAuthorizable.java</file>
+			<file>src/main/java/org/dapnet/core/rest/exceptionHandling/ExceptionHandler.java</file>
+			<file>src/main/java/org/dapnet/core/model/Transmitter.java</file>
+			<file>src/main/java/org/dapnet/core/model/User.java</file>
+			<file>src/main/java/org/dapnet/core/model/State.java</file>
+			<file>src/main/java/org/dapnet/core/model/News.java</file>
+			<file>src/main/java/org/dapnet/core/model/CallSign.java</file>
+			<file>src/main/java/org/dapnet/core/model/Node.java</file>
+			<file>src/main/java/org/dapnet/core/model/Call.java</file>
+			<file>src/main/java/org/dapnet/core/model/Rubric.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="62" opendate="2017-02-28 18:24:16" fixdate="2017-03-01 09:20:34">
+		<buginformation>
+			<summary>Nicht-Admins bekommen Fehlermeldung von Sender-Tabelle</summary>
+			<description>Es mag im Core oder im Web liegen, aber wenn ein Nicht-Admin sich einlogt, bekommt er:  ````DataTables warning: table id=tableTransmitters - Requested unknown parameter 'deviceType' for row 7, colum4. [....] ````  das liegt wohl an den neuen Sendereigenschaften. Im besten Fall sind die für Besitzer RW und für alle anderen RO. Oder es liegt daran, dass die nicht richtig bei allen noch nie im neuen Modus verbundenen Sendern in der Datenbank stehen.    </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/rest/resources/AbstractResource.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="58" opendate="2017-02-28 08:44:46" fixdate="2017-03-01 09:20:34">
+		<buginformation>
+			<summary>Core und Rustpager kommen mit Wechsel von dynamischen IP-Adresse nicht klar</summary>
+			<description>Mein Transmitter (dc2zp) auf der Basis von Rustpager geht nach einem Wechsel der IP (dynamische IP von DB0FHN/VPN) in den State Error bei der Transmitter-Übersicht. Das Problem lässt sich durch einen Neustart von Rustpager beheben.  Wie kann rausfinden ob das ein Rustpager oder ein Dapnet Problem ist?  Siehe auch: https://github.com/rwth-afu/RustPager/issues/36</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/transmission/ServerHandler.java</file>
+			<file>src/main/java/org/dapnet/core/transmission/TransmitterClient.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="57" opendate="2017-02-26 17:42:00" fixdate="2017-02-28 11:10:49">
+		<buginformation>
+			<summary>IP, Port und Gerätetyp werden nicht im Cluster verteilt</summary>
+			<description>Bei nicht-lokalen Sendern werden die neuen Eigenschaften IP, Port und Gerätetyp werden nicht im Cluster verteilt. Es gibt da Methoden zum senden von Inhalten in den Cluster-Klassen; wahrscheinlich muss das noch hinzugefügt werden. ![grafik](https://cloud.githubusercontent.com/assets/16710361/23342051/3dfe5a4a-fc53-11e6-9b10-c7bb9b18e84f.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/transmission/TransmitterManager.java</file>
+			<file>src/main/java/org/dapnet/core/cluster/ClusterManager.java</file>
+			<file>src/main/java/org/dapnet/core/transmission/TransmitterManagerListener.java</file>
+			<file>src/main/java/org/dapnet/core/cluster/RpcListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="56" opendate="2017-02-26 13:03:30" fixdate="2017-05-05 12:31:40">
+		<buginformation>
+			<summary>Initiale Cluster-Verbindung geht nicht</summary>
+			<description>Ein Test mit der aktuellen Version liefert known node Fehlermeldung bei der Authentifizierung. Vielleicht ist mit der neuen Datenstruktur was kaputt gegangen?</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/dapnet/core/cluster/ClusterManager.java</file>
+			<file>src/main/java/org/dapnet/core/model/Node.java</file>
+			<file>src/main/java/org/dapnet/core/rest/resources/NodeResource.java</file>
+			<file>src/main/java/org/dapnet/core/cluster/ChannelListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="35" opendate="2016-11-14 08:55:57" fixdate="2017-03-01 09:17:44">
+		<buginformation>
+			<summary>Einmal minority group gewesen und dann war's das mit der API</summary>
+			<description>Hallo Folgendes Log: Bug oder Feature?  2016-11-14 07:38:22,784 WARN org.dapnet.core.transmission.Raspager [Thread-69] db0rtv could not create connection: Connection refused 2016-11-14 07:38:27,836 WARN org.dapnet.core.transmission.Raspager [Thread-73] dl2ic could not create connection: No route to host 2016-11-14 07:38:28,697 WARN org.dapnet.core.transmission.Raspager [Thread-74] DB0KLI could not create connection: connect timed out 2016-11-14 07:38:28,783 WARN org.dapnet.core.transmission.Raspager [Thread-65] db0rhb could not create connection: connect timed out 2016-11-14 07:38:29,916 INFO org.dapnet.core.transmission.Raspager [Thread-71] Successfully sent message "073800   141116" to 2504 with db0sda_gm1200 2016-11-14 07:38:29,921 INFO org.dapnet.core.transmission.Raspager [Thread-68] Successfully sent message "073800   141116" to 2504 with dk2er 2016-11-14 07:38:34,842 WARN org.dapnet.core.transmission.Raspager [Thread-75] db9mat could not create connection: No route to host 2016-11-14 07:38:34,936 INFO org.dapnet.core.transmission.Raspager [Thread-67] Successfully sent message "073800   141116" to 2504 with db0dy 2016-11-14 07:38:42,784 WARN org.dapnet.core.transmission.Raspager [Thread-69] db0rtv could not create connection: Connection refused 2016-11-14 07:38:45,237 INFO org.dapnet.core.cluster.ClusterManager [Incoming-2,DAPNET0.9.3.1,db0sda] Cluster has Quorum 2016-11-14 07:38:45,237 INFO org.dapnet.core.cluster.RpcListener [Incoming-2,DAPNET0.9.3.1,db0sda] UpdateNodeStatus db0kwe to SUSPENDED: OK **2016-11-14 07:38:45,238 INFO org.dapnet.core.cluster.MembershipListener [Thread-116] New View: MergeView::[db0kwe|413] (4) [db0kwe, db0rta, db0sda, db0wa], 1 subgroups: [db0rta|0] (1) [db0rta] 2016-11-14 07:38:45,238 INFO org.dapnet.core.cluster.MembershipListener [Thread-116] Starting merge process 2016-11-14 07:38:45,256 INFO org.dapnet.core.cluster.ClusterManager [Thread-116] Cluster has Quorum 2016-11-14 07:38:45,256 FATAL org.dapnet.core.cluster.MembershipListener [Thread-116] Node has quorum although it is the minoritySubgroup (Seems to merge independent clusters). Stopping minority group. 2016-11-14 07:38:45,256 INFO org.dapnet.core.DAPNETCore [Thread-116] Stopping DAPNET_CORE...** 2016-11-14 07:38:45,266 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from db0rhb 2016-11-14 07:38:45,266 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from db0rtv 2016-11-14 07:38:45,266 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from dl2ic 2016-11-14 07:38:45,266 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from DB0KLI 2016-11-14 07:38:45,266 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from db9mat 2016-11-14 07:38:45,267 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from c9000Rasp 2016-11-14 07:38:45,267 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from db0kwe 2016-11-14 07:38:45,267 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from dk2er 2016-11-14 07:38:45,267 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from db0sda_gm1200 2016-11-14 07:38:45,267 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from db0vvs 2016-11-14 07:38:45,267 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-116] Start disconnecting from db0dy 2016-11-14 07:38:45,301 INFO org.dapnet.core.transmission.Raspager [Thread-73] Successfully stopped dl2ic 2016-11-14 07:38:45,301 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-73] Disconnected from dl2ic before Connection established 2016-11-14 07:38:45,309 INFO org.dapnet.core.transmission.Raspager [Thread-67] Successfully stopped db0dy 2016-11-14 07:38:45,309 INFO org.dapnet.core.transmission.Raspager [Thread-71] Successfully stopped db0sda_gm1200 2016-11-14 07:38:45,309 INFO org.dapnet.core.transmission.Raspager [Thread-106] Successfully stopped db0vvs 2016-11-14 07:38:45,309 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-71] Disconnected successfully from db0sda_gm1200 2016-11-14 07:38:45,309 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-106] Disconnected successfully from db0vvs 2016-11-14 07:38:45,309 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-67] Disconnected successfully from db0dy 2016-11-14 07:38:45,309 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-106] Setting status of db0vvs to OFFLINE 2016-11-14 07:38:45,309 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-71] Setting status of db0sda_gm1200 to OFFLINE 2016-11-14 07:38:45,309 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-67] Setting status of db0dy to OFFLINE 2016-11-14 07:38:45,310 INFO org.dapnet.core.cluster.RpcListener [Incoming-2,DAPNET0.9.3.1,db0sda] UpdateTransmitterStatus db0dy to OFFLINE: OK 2016-11-14 07:38:45,320 INFO org.dapnet.core.cluster.RpcListener [Incoming-2,DAPNET0.9.3.1,db0sda] UpdateTransmitterStatus db0vvs to OFFLINE: OK 2016-11-14 07:38:45,320 INFO org.dapnet.core.cluster.RpcListener [Incoming-2,DAPNET0.9.3.1,db0sda] UpdateTransmitterStatus db0sda_gm1200 to OFFLINE: OK 2016-11-14 07:38:45,349 INFO org.dapnet.core.transmission.Raspager [Thread-69] Successfully stopped db0rtv 2016-11-14 07:38:45,350 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-69] Disconnected from db0rtv before Connection established 2016-11-14 07:38:45,353 INFO org.dapnet.core.transmission.Raspager [Thread-75] Successfully stopped db9mat 2016-11-14 07:38:45,353 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-75] Disconnected from db9mat before Connection established 2016-11-14 07:38:45,353 INFO org.dapnet.core.transmission.Raspager [Thread-74] Successfully stopped DB0KLI 2016-11-14 07:38:45,353 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-74] Disconnected from DB0KLI before Connection established 2016-11-14 07:38:45,436 INFO org.dapnet.core.rest.RestManager [Thread-116] RestApi successfully stopped 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.Raspager [Thread-72] Successfully stopped c9000Rasp 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.Raspager [Thread-65] Successfully stopped db0rhb 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.Raspager [Thread-70] Successfully stopped db0kwe 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-70] Disconnected successfully from db0kwe 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-70] Setting status of db0kwe to OFFLINE 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-72] Disconnected successfully from c9000Rasp 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-72] Setting status of c9000Rasp to OFFLINE 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.Raspager [Thread-68] Successfully stopped dk2er 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-65] Disconnected from db0rhb before Connection established 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-68] Disconnected successfully from dk2er 2016-11-14 07:38:45,436 INFO org.dapnet.core.transmission.TransmitterDeviceManager [Thread-68] Setting status of dk2er to OFFLINE 2016-11-14 07:38:45,436 INFO org.dapnet.core.cluster.RpcListener [Incoming-2,DAPNET0.9.3.1,db0sda] UpdateTransmitterStatus db0kwe to OFFLINE: OK 2016-11-14 07:38:45,436 INFO org.dapnet.core.cluster.RpcListener [Incoming-2,DAPNET0.9.3.1,db0sda] UpdateTransmitterStatus c9000Rasp to OFFLINE: OK 2016-11-14 07:38:45,489 INFO org.dapnet.core.cluster.RpcListener [Incoming-2,DAPNET0.9.3.1,db0sda] UpdateTransmitterStatus dk2er to OFFLINE: OK 2016-11-14 07:38:45,622 INFO org.dapnet.core.scheduler.SchedulerManager [Thread-116] SchedulerManager successfully stopped 2016-11-14 07:38:45,622 INFO org.dapnet.core.cluster.MembershipListener [Thread-116] Finished merge process 2016-11-14 07:38:45,903 INFO org.dapnet.core.cluster.MembershipListener [Thread-116] Changed status of db0rta from SUSPENDED to ONLINE 2016-11-14 07:38:45,903 WARN org.dapnet.core.cluster.MembershipListener [Thread-116] Changed status of raspberry.db0rta from ONLINE to UNKNOWN 2016-11-14 07:38:45,903 INFO org.dapnet.core.cluster.MembershipListener [Thread-116] Changed status of db0kwe from SUSPENDED to ONLINE 2016-11-14 07:38:45,903 INFO org.dapnet.core.cluster.ClusterManager [Thread-116] Cluster has Quorum 2016-11-14 07:38:45,931 INFO org.dapnet.core.model.State [Thread-116] Successfully wrote state to file 2016-11-14 07:38:46,969 INFO org.dapnet.core.cluster.MembershipListener [Thread-117] New View: [db0rta|414] (3) [db0rta, db0sda, db0wa] 2016-11-14 07:38:46,970 WARN org.dapnet.core.cluster.MembershipListener [Thread-117] Changed status of db0kwe from ONLINE to UNKNOWN 2016-11-14 07:38:46,970 INFO org.dapnet.core.cluster.ClusterManager [Thread-117] Cluster has Quorum 2016-11-14 07:38:46,971 INFO org.dapnet.core.model.State [Thread-117] Successfully wrote state to file 2016-11-14 07:38:47,260 ERROR org.dapnet.core.cluster.ClusterManager [Thread-67] Response: [sender=db0rta, retval=BAD_REQUEST, received=true, suspected=false] [sender=db0sda, retval=OK, received=true, suspected=false] [sender=db0kwe, retval=OK, received=true, suspected=true] [sender=db0wa, retval=OK, received=true, suspected=false]  2016-11-14 07:38:47,260 ERROR org.dapnet.core.cluster.ClusterManager [Thread-68] Response: [sender=db0rta, retval=BAD_REQUEST, received=true, suspected=false] [sender=db0sda, retval=OK, received=true, suspected=false] [sender=db0kwe, retval=OK, received=true, suspected=true] [sender=db0wa, retval=OK, received=true, suspected=false]  2016-11-14 07:38:47,260 ERROR org.dapnet.core.cluster.ClusterManager [Thread-72] Response: [sender=db0rta, retval=BAD_REQUEST, received=true, suspected=false] [sender=db0sda, retval=OK, received=true, suspected=false] [sender=db0kwe, retval=OK, received=true, suspected=true] [sender=db0wa, retval=OK, received=true, suspected=false]  2016-11-14 07:38:47,260 ERROR org.dapnet.core.cluster.ClusterManager [Thread-106] Response: [sender=db0rta, retval=BAD_REQUEST, received=true, suspected=false] [sender=db0sda, retval=OK, received=true, suspected=false] [sender=db0kwe, retval=OK, received=true, suspected=true] [sender=db0wa, retval=OK, received=true, suspected=false]  2016-11-14 07:38:47,260 FATAL org.dapnet.core.cluster.ClusterManager [Thread-67] Insecure Cluster State 2016-11-14 07:38:47,260 ERROR org.dapnet.core.cluster.ClusterManager [Thread-70] Response: [sender=db0rta, retval=BAD_REQUEST, received=true, suspected=false] [sender=db0sda, retval=OK, received=true, suspected=false] [sender=db0kwe, retval=OK, received=true, suspected=true] </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/org/dapnet/core/cluster/MembershipListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="32" opendate="2016-11-07 14:44:28" fixdate="2016-12-08 12:21:09">
+		<buginformation>
+			<summary>XOS Sender werden nicht akzeptiert, wenn sie langsam antworten</summary>
+			<description>Beispiel DB0RTV Der Sender meldet: root@db0sda:/opt/DAPNET_CORE# telnet localhost 19996 Trying ::1... Trying 127.0.0.1... Connected to localhost. Escape character is '^]'. RPC/XOS 2.2.0pre32 ****** Funkrufsender - DB0RTV - Rheine - JO32RG ****** ************ Funkrufe bitte ▒ber  DB0DY-11 *********** ************ oder  www.db0rtv.de  absenden ***********  =&gt;^] telnet&gt; quit Connection closed.  Der DAPNET-Core sagt:  2016-11-07 15:42:01,597 WARN org.dapnet.core.transmission.TransmitterDevice [Thread-16] db0rtv is offline now and throws Exception: Connection error: WRONG SID:  Expected SID to start with */XOS  Die Erkennung von */XOS scheint nicht zu gehen</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/org/dapnet/core/transmission/RaspagerProtocol.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="28" opendate="2016-10-31 08:50:25" fixdate="2016-10-31 15:35:13">
+		<buginformation>
+			<summary>Pull Req. #22: DV4mini vergessen?</summary>
+			<description>src/org/dapnet/core/transmission/TransmitterDeviceManager.java  +        if (transmitter.getDeviceType() == Transmitter.DeviceType.XOS +                || transmitter.getDeviceType() == Transmitter.DeviceType.RASPPAGER1 +                || transmitter.getDeviceType() == Transmitter.DeviceType.PR430 +                || transmitter.getDeviceType() == Transmitter.DeviceType.SDRPAGER) {              connectToRaspagerDerivative(transmitter);          }  Fehlt hier nicht der DV4mini?</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/org/dapnet/core/transmission/TransmitterDeviceManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="20" opendate="2016-10-23 18:53:18" fixdate="2016-10-27 14:18:45">
+		<buginformation>
+			<summary>Weitere Firmware von Sendern unterstützen</summary>
+			<description>Es gibt noch eine 4. verbreitete Software bei den Sendern. Diese meldet sich mit "RPC/XOS 2.2.0pre32"  Bitte die Kategorie C9000 in XOS umbenennen und statt "[uPSDrpc/XOS" einfach nur überprüfen, ob "[*/XOS" in der Begrüßung vorkommt. Also am Anfang "[" und dann danach irgendwo "/XOS"  Vielen Dank. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/org/dapnet/core/transmission/TransmitterDeviceManager.java</file>
+			<file>src/org/dapnet/core/transmission/DV4mini.java</file>
+			<file>src/org/dapnet/core/model/Transmitter.java</file>
+			<file>src/org/dapnet/core/transmission/RaspagerProtocol.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

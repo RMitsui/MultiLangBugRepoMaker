@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>396</id>
+		<title>環境変数、開放ポート番号が未指定時の表示がおかしい</title>
+		<body>**発生した現象** 学習履歴画面等、未指定であることがわかるような表示とする(現在は空白で表示されている)。  **再現手順** 環境変数、開放ポート番号未指定でジョブを実行する  **期待する動作** 未指定時は`-(ハイフン)`等で表現する  **環境** 不具合を確認した環境を書いてください   - KAMONOHASHIのバージョン：2.1.0 </body>
+		<created>2020-08-03 05:42:08</created>
+		<closed>2020-08-03 05:42:18</closed>
+	</bug>
+	<bug>
+		<id>395</id>
+		<title>前処理の起動直後の吹き出しが誤解しやすい</title>
+		<body>**発生した現象** 前処理の起動直後に吹き出しで「Success ID:xxxの処理に成功しました」と出るのは誤解しやすい  **期待する動作** 実行ボタンを押下しているので登録よりも、前処理を`実行`、もしくは`開始`のほうがいい気がする。   - KAMONOHASHIのバージョン：2.1.0</body>
+		<created>2020-08-03 05:38:41</created>
+		<closed>2020-08-03 05:38:58</closed>
+	</bug>
+	<bug>
+		<id>384</id>
+		<title>接続しているテナント名が長すぎると右上のユーザ名とログアウトが表示されない</title>
+		<body>接続テナント名が長すぎると右上のユーザ名とログアウトが表示されない。 テナント切り替えのドロップダウンは操作可能、ログアウトは操作不可。</body>
+		<created>2020-07-07 09:36:54</created>
+		<closed>2020-07-22 09:30:00</closed>
+	</bug>
+	<bug>
+		<id>382</id>
+		<title>開放ポート未指定時に学習履歴を見ると、Serviceの取得失敗のエラーログが出る</title>
+		<body>開放ポート未指定の学習履歴を閲覧すると、ログにServiceの取得失敗エラーが記録される。  KAMONOHASHI ver2.1.0で発見</body>
+		<created>2020-07-03 05:27:28</created>
+		<closed>2020-07-29 01:32:47</closed>
+	</bug>
+	<bug>
+		<id>380</id>
+		<title>前処理実行画面を×ボタンで閉じた後、前処理実行画面を開こうとするとエラーページに遷移する</title>
+		<body>前処理管理の前処理実行画面を開き、×ボタンで閉じた後、再び前処理実行ボタンを押下するとエラーページに遷移する。  KAMONOHASHI ver2.1.0で発生</body>
+		<created>2020-07-01 07:10:00</created>
+		<closed>2020-07-31 02:56:19</closed>
+	</bug>
+	<bug>
+		<id>360</id>
+		<title>デフォルトGitとして選択されたGitサーバのリポジトリ取得が自動で行われない</title>
+		<body>**発生した現象** デフォルトGitとして選択されたGitサーバのリポジトリ取得が自動で行われません。  **環境**  - KAMONOHASHIのバージョン：v1.1.6、v1.1.7  **その他の情報** 回避策としては、Gitサーバの再選択することでリポジトリ一覧の取得を行うことができます。</body>
+		<created>2020-06-01 07:16:41</created>
+		<closed>2020-06-01 07:19:35</closed>
+	</bug>
+	<bug>
+		<id>357</id>
+		<title>ユーザへの割り当てテナント数が多いとテナント切り替え表示が見切れる</title>
+		<body>**発生した現象** 割り当てテナント数が多いと、画面右上の切り替え表示が見切れる。 画面の縦幅の大きさによって、表示可能件数が変化する。  **再現手順** テナントを20個程度作成し、1ユーザに設定する。そのユーザでテナント切り替え操作を試行する。  **期待する動作** 見切れているものは選択できないので、スクロールバーをつけるなどしてテナント数が多くても切り替え可能にする必要がある。  **環境**   - KAMONOHASHIのバージョン：2.0.0  **スクリーンショット、ログ** ![image](https://user-images.githubusercontent.com/12245259/82987166-13402000-a032-11ea-8b8c-d0f9502f4136.png) </body>
+		<created>2020-05-27 06:53:00</created>
+		<closed>2020-06-10 01:28:39</closed>
+	</bug>
+	<bug>
+		<id>355</id>
+		<title>「コピー実行」すると別ブランチで実行していたものがmasterブランチに戻ってしまうことがある</title>
+		<body>「コピー実行」すると別ブランチで実行していたものがmasterブランチに戻ってしまう。</body>
+		<created>2020-05-27 05:20:32</created>
+		<closed>2020-06-10 04:54:39</closed>
+	</bug>
+	<bug>
+		<id>348</id>
+		<title>コピー元のコミットIDがコミット一覧に含まれないときコミットIDがHEADになってしまう</title>
+		<body>**発生した現象** コピー元のコミットIDがコミット一覧に含まれないとき、HEADが使用されてしまう。 再現性の担保の面からコピー元のコミットIDを使用されることが望ましい。  **環境**  - KAMONOHASHIのバージョン: v2.0.0 </body>
+		<created>2020-05-11 05:48:20</created>
+		<closed>2020-06-10 01:29:22</closed>
+	</bug>
+	<bug>
+		<id>342</id>
+		<title>ジョブ作成時のメモリの単位が画面とサーバ側で異なる</title>
+		<body>**発生した現象** ジョブを実行する際設定するメモリの単位が画面と内部では異なっている。   - 画面：GB - サーバ側：GiB  このため、単位を統一する必要がある。  </body>
+		<created>2020-04-27 02:02:12</created>
+		<closed>2020-06-04 09:20:30</closed>
+	</bug>
+	<bug>
+		<id>335</id>
+		<title>Gitサーバのリポジトリが選択できない</title>
+		<body>**発生した現象** Gitのサーバ指定時、そのサーバに登録されているリポジトリが自動取得されない  **再現手順** テナントのデフォルトGitにGitLab等を指定する。 その後、学習等を実行すると、GitLabに登録されているリポジトリが自動取得されない。 一度×を押下後、サーバを再選択すると、取得される。  **期待する動作** デフォルトGitに指定したサーバのリポジトリが自動取得される。  **環境** 不具合を確認した環境を書いてください   - KAMONOHASHIのバージョン：1.1.7  **その他の情報**  - 以前は自動取得されていた。</body>
+		<created>2020-04-15 05:23:48</created>
+		<closed>2020-04-15 05:24:41</closed>
+	</bug>
+	<bug>
+		<id>323</id>
+		<title>GITの削除不可判断が履歴に紐づいていない</title>
+		<body>Gitの削除不可判断が学習以外の履歴と紐づいていないため削除ができてしまう。 </body>
+		<created>2020-04-06 05:06:22</created>
+		<closed>2020-05-11 06:26:52</closed>
+	</bug>
+	<bug>
+		<id>312</id>
+		<title>ロール編集時存在する名前で登録できてしまう</title>
+		<body>ロール作成時は、存在する名前を使用するとエラーになるが、 編集時は、存在する名前を使用するとエラーにならずそのまま変更が確定してしまう。</body>
+		<created>2020-03-24 09:56:25</created>
+		<closed>2020-05-11 06:24:59</closed>
+	</bug>
+	<bug>
+		<id>300</id>
+		<title>コンテナ未指定の前処理をコンテナ指定して保存した際にエラー発生</title>
+		<body>**発生した現象** コンテナ未指定の前処理をコンテナ指定して保存したらエラーが発生する。 エラー発生した後、再度保存ボタンを押下すると、正常に保存される。  **再現手順** 1. コンテナ未指定の前処理を作成する。 2. 作成した前処理を開く。 3. コンテナを指定して保存ボタンを押下すると、「Object reference not set to an instance of an object.」のエラーが発生する。 4. エラーが出た状態で、再度保存ボタンを押下すると、保存される。  **期待する動作** 一回目の保存ボタン押下時に正常に保存されること。  **環境**  - KAMONOHASHIのバージョン：1.1.6 </body>
+		<created>2020-03-12 23:47:47</created>
+		<closed>2020-03-13 10:12:19</closed>
+	</bug>
+	<bug>
+		<id>298</id>
+		<title>ノートブック管理へのアクセス権のみを所持するユーザがノートブック作成しようとすると403エラー発生</title>
+		<body>**発生した現象** ノートブック管理へのアクセス権のみを所持するユーザで、 ノートブック管理から新規作成ボタンを押下し、Step3の任意項目を表示時に403エラーが発生する。 コピー実行しようとしても403エラーが発生する。  **環境**  - KAMONOHASHIのバージョン　1.1.6 </body>
+		<created>2020-03-12 07:17:27</created>
+		<closed>2020-03-13 09:53:11</closed>
+	</bug>
+	<bug>
+		<id>265</id>
+		<title>デフォルトレジストリに接続不能だと他のレジストリを選択してもエラーが発生する</title>
+		<body>**発生した現象** 学習実行時、デフォルトレジストリにアクセスできない（選ぶとエラーになる）状態であると、 コピー実行して他のレジストリが初期選択されるケースであってもエラーが発生する。  **再現手順** 1. テナント管理で、対象のテナントのデフォルトレジストリに接続不能なレジストリを設定する 2. 接続可能なレジストリを選択した学習を実行する 3. その学習をコピー実行する 4. 初期値は接続可能なレジストリのはずだが、デフォルトレジストリへのアクセスが走り、エラーが発生する。  **期待する動作** デフォルトレジストリが選択されていない状態では、デフォルトレジストリにアクセスしない  **環境**  - KAMONOHASHIのバージョン: 1.1.4  - OSとそのバージョン: server=ubuntu 16.04, client=windows10 </body>
+		<created>2019-12-20 10:16:00</created>
+		<closed>2020-01-15 03:58:33</closed>
+	</bug>
+	<bug>
+		<id>255</id>
+		<title>新規テナントを作成した際に既存のテナントのアクセストークンが消去される</title>
+		<body>**発生した現象** 新規テナントを作成・ユーザーにアクセス権を付与した際に、   既存のテナントのユーザーのアクセストークンが消去される。    **再現手順** 1. テナントAを作成してユーザーXにアクセス権を付与する。 2. テナントAにgitトークンやresistryトークンを追加する。 3. テナントBを作成してユーザーXにアクセス権を付与する。 4. テナントAのgitトークンが空欄となり、ジョブ実行などでgitを参照する際にエラーとなる。  **期待する動作** テナントAのgitトークンやregistryトークンはそのまま変更なく、   テナントBのgitトークンやregistryトークンは空であることが期待される動作である。  **環境** KAMONOHASHI v1.1.3 Windows10 1809 Google Chrome 78.0.3904.97 </body>
+		<created>2019-11-21 05:17:16</created>
+		<closed>2019-12-23 01:57:54</closed>
+	</bug>
+	<bug>
+		<id>241</id>
+		<title>ノートブックへのアクセス先を共通のエンドポイントにする</title>
+		<body>**発生した現象** 内部IPと外部IPが異なるインスタンス上でノートブックコンテナが起動した場合、外部からアクセスする際のURLに内部IPが利用され、外部からノートブックにアクセスできない。  **再現手順** クラウドなどに構築したKAMONOHASHIに対して外部からアクセスし、ノートブックを利用する  **期待する動作** Tensorboardのように共通のエンドポイントのURLが作成され、ノートブックにアクセスできる。  **環境**  - KAMONOHASHIのバージョン：1.1.3  **その他の情報** EndPointOutputModelをTensorBoardOutputModelと同じように実装すれば良いはず</body>
+		<created>2019-10-15 05:09:08</created>
+		<closed>2019-10-29 04:08:18</closed>
+	</bug>
+	<bug>
+		<id>234</id>
+		<title>dockerhubのトークンを登録するとユーザ編集が不可能となる</title>
+		<body>**発生した現象** official-docker-hubへトークンを登録後、ユーザ管理画面で該当ユーザの情報を更新しようとすると、以下の文言が表示されて更新できない。  ``` Couldn't map the tenant and the registry in a cluster management service. Please contact a user administrator. ```  **再現手順** 1. official-docker-hubが紐づいたテナントのユーザについて、ユーザ情報設定からRegistry Token画面に遷移する 2. official-docker-hubのトークン(パスワード)を入力し、更新を選択 3. 管理者アカウントでユーザ管理画面を開き、トークンを入力したユーザを選択 4. 何らかの情報を変更(未変更でも再現)し、保存ボタンを選択 5. エラーが表示される  **期待する動作** エラーが表示されずに更新される。  **環境**   - KAMONOHASHIのバージョン：1.1.2  **スクリーンショット、ログ** ![キャプチャ](https://user-images.githubusercontent.com/12245259/66465849-9bca7a00-eabc-11e9-87b1-57d416879b24.PNG)  </body>
+		<created>2019-10-09 08:46:08</created>
+		<closed>2019-11-19 09:24:33</closed>
+	</bug>
+	<bug>
+		<id>216</id>
+		<title>ノートブックが自動終了しない場合がある</title>
+		<body>**発生した現象** 生存期間を指定したノートブックが、期間が終了しても落ちない。  **再現手順** 検証中。正常に落ちる場合と落ちない場合がある。  **期待する動作** 生存期間が終了すると自動で落ちる。  **環境**  - KAMONOHASHIのバージョン：1.1.1 </body>
+		<created>2019-09-30 02:52:46</created>
+		<closed>2019-10-04 05:36:19</closed>
+	</bug>
+	<bug>
+		<id>214</id>
+		<title>デプロイツールのhosts対応でIPを取得できないバグ</title>
+		<body>**発生した現象** IPにKAMONOHASHIノードのIPに12が含まれると取得できない  **再現手順** DNSではなく/etc/hostsを使う KAMONOHASHIノードのIPに12を含める  **原因** 正規表現の記述ミス  </body>
+		<created>2019-09-27 02:50:29</created>
+		<closed>2019-10-04 05:36:39</closed>
+	</bug>
+	<bug>
+		<id>210</id>
+		<title>学習結果のデータを消したい</title>
+		<body>現在は学習履歴は消せるが、サーバ内を見るとデータが残っている</body>
+		<created>2019-09-26 04:27:58</created>
+		<closed>2019-11-25 07:33:30</closed>
+	</bug>
+	<bug>
+		<id>208</id>
+		<title>URIのチェックがおかしいようにみえる</title>
+		<body>**KAMONOHASHIへのリクエスト** TrainingController.csに存在するURIチェックがおかしいように見える。 Regexの正規表現マッチングに0が含まれていない。 ```cs if (!Regex.IsMatch(path, "[-_1-9a-zA-Z/]+")) {     return JsonBadRequest("Invalid path. allowed characters are -_1-9a-zA-Z/"); } ``` kamonohashi/web-api/platypus/platypus/Controllers/spa/TrainingController.cs (490行目付近)      また各ファイルは常にスラッシュ(/)から始まるパスになっていると想定される。   そのため、**エラーとなるディレクトリ構成は存在しない**可能性がある。</body>
+		<created>2019-09-25 02:42:02</created>
+		<closed>2019-10-04 01:30:20</closed>
+	</bug>
+	<bug>
+		<id>206</id>
+		<title>Windows+CLI環境でデータダウンロードに失敗する</title>
+		<body>**発生した現象** CLIで2階層以上ネストしたディレクトリからファイルをダウンロードできない。  **再現手順** 1. 学習の出力などで2階層以上のディレクトリをもつジョブを作成する。   下記の場合はng_file.txtがダウンロードできず途中で終了する。   ``` /kqi/output/ok_file.txt /kqi/output/sample1/ok_file.txt /kqi/output/sample2/sample3/ng_file.txt ```  2. Windows環境下でKAMONOHASHI CLIを用いてファイルをダウンロードする。 ``` kqi training download-container-files xxxx -d xxxx_output ``` 3. ネストされたフォルダのファイルをダウンロードしようとした際にエラーとなる。  **期待する動作** ディレクトリのネスト構造があったとしても正しくダウンロードできることを期待する。  **環境** KAMONOHASHI 1.1.1 kamonohashi-cli 1.1.1 Windows 10 Pro 1809  **情報** WindowsとKAMONOHASHIでフォルダを構成するパス文字列が異なることに起因している様子。</body>
+		<created>2019-09-24 10:54:09</created>
+		<closed>2019-10-04 01:30:19</closed>
+	</bug>
+	<bug>
+		<id>202</id>
+		<title>学習新規作成で上書き不可の環境変数を設定して実行すると上書きされる</title>
+		<body>**発生した現象** KAMONOHASHI内で使用されている環境変数のうち `DATASET_ID` などは上書き不可と[User Guide](https://kamonohashi.ai/docs/how-to/user#%E5%AD%A6%E7%BF%92%E7%AE%A1%E7%90%86)に記載されているが、 学習新規作成画面にて設定して実行すると環境変数が上書きされる。  **再現手順** 学習新規作成画面にて、環境変数にKeyに `DATASET_ID` 、Valueに `abcdef` （任意の文字列）を設定して実行する。この場合、データのダウンロード時に失敗となる。  **期待する動作** User Guideの通り、ユーザが設定しても上書きがされないようにしてほしい。  **環境**  - KAMONOHASHIのバージョン v1.1.1  **スクリーンショット、ログ** 学習実行時のスクリーンショット ![image](https://user-images.githubusercontent.com/49144182/65211612-50830400-dada-11e9-82fa-ff305e07b3c1.png) 学習のログのスクリーンショット ![image](https://user-images.githubusercontent.com/49144182/65211489-e4080500-dad9-11e9-9381-d9013e681e36.png)  **その他の情報** KAMONOHASHI - User Guide-  https://kamonohashi.ai/docs/how-to/user#%E5%AD%A6%E7%BF%92%E7%AE%A1%E7%90%86 </body>
+		<created>2019-09-19 03:38:59</created>
+		<closed>2019-11-25 08:02:09</closed>
+	</bug>
+	<bug>
+		<id>198</id>
+		<title>クォータ管理で大きすぎる値を入力するとエラーが発生する</title>
+		<body>**発生した現象** クォータ管理画面で、数字を入力する場所に大きすぎる値を入力すると、値が指数表記になり、登録に失敗する。  **再現手順** クォータ管理画面で、CPUの値に「999999999999999999999」を入力する  **期待する動作** 大きすぎる値は入力できないようにしてはどうでしょう。  **環境** 不具合を確認した環境を書いてください   - KAMONOHASHIのバージョン: 1.1.0  - OSとそのバージョン(ubuntu 16.04 など): Windows 10  - ブラウザとそのバージョン(Firefox 65.0.2 など) : chrome 76.0.3809.132  **スクリーンショット、ログ** ![image](https://user-images.githubusercontent.com/22820631/64838520-859cdb80-d62e-11e9-9b1c-cf1d30a1773d.png)  </body>
+		<created>2019-09-13 04:58:27</created>
+		<closed>2019-10-09 04:53:12</closed>
+	</bug>
+	<bug>
+		<id>174</id>
+		<title>ノード登録時のアクセスレベルが必須になっていない</title>
+		<body>**発生した現象** ノード登録時、アクセスレベルが必須であるが、未入力状態でも登録ボタンが押下可能となっている。押下すると"The AccessLevel field is required."と表示される。  **再現手順** ノード管理画面より、ノード登録画面を開き、名前のみを入力して登録ボタンを押す。  **期待する動作** デフォルトでアクセスレベルが設定されている、あるいはアクセスレベルに必須マークが付いている  **環境**   - KAMONOHASHIのバージョン：1.0,3  ![キャプチャ](https://user-images.githubusercontent.com/12245259/63833396-ed57f300-c9ad-11e9-9e33-7891d8d1e6b3.PNG)  </body>
+		<created>2019-08-28 07:07:34</created>
+		<closed>2019-09-02 06:11:24</closed>
+	</bug>
+	<bug>
+		<id>172</id>
+		<title>テナントからRegistryの登録を外すと、過去のTensorBoardが参照できなくなる</title>
+		<body>**発生した現象** テナントからRegistryの登録を外すと、そのRegistryを使っていた学習でTensorBoard起動を実行したとき、以下のエラーが発生する。  ``` System.NullReferenceException: Object reference not set to an instance of an object.    at Nssol.Platypus.Logic.ClusterManagementLogic.RunTensorBoardContainerAsync(TrainingHistory trainingHistory) in /src/Logic/ClusterManagementLogic.cs:line 725    at Nssol.Platypus.Controllers.spa.TrainingController.RunTensorBoard(Int64 id, IOptions`1 options) in /src/Controllers/spa/TrainingController.cs:line 647    at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)    at System.Threading.Tasks.ValueTask`1.get_Result()    at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()    at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()    at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)    at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)    at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()    at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync() ```  **再現手順** 1.学習管理から学習を実行する。 2.テナント管理にて、その学習で使用したレジストリを外す 3.学習管理から先ほどの学習を開き、TensorBoard起動ボタンを押す  **期待する動作** レジストリが外れているため、再学習でエラーになるのは問題ないと思うが、TensorBoardは正常に起動したい。  **環境**   - KAMONOHASHIのバージョン: 1.0.3  - OSとそのバージョン(ubuntu 16.04 など): Windows 10  - ブラウザとそのバージョン(Firefox 65.0.2 など): Google Chrome 76.0.3809.100</body>
+		<created>2019-08-26 08:02:07</created>
+		<closed>2019-09-02 06:08:48</closed>
+	</bug>
+	<bug>
+		<id>169</id>
+		<title>デプロイツールのHELP_URLのリンク切れを直す</title>
+		<body>* ドキュメントの変更でURLが変わっている * バージョンごとのURLがあるので対応</body>
+		<created>2019-08-16 04:39:56</created>
+		<closed>2019-10-04 05:36:54</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>学習履歴の添付ファイル欄にて、zip化している最中のファイル名がおかしい</title>
+		<body>**発生した現象** 学習履歴の添付ファイル欄にて、zip化している最中のファイル名がおかしい  **再現手順**  KAMONOHASHI Finishコンテナ( zip /kqi/output)　の状態のときに学習履歴の添付ファイル欄のファイル名を見る     **期待する動作** zip化が終わった段階でファイル名を表示する。  **環境**    - KAMONOHASHIのバージョン 1.0.2  - OSとそのバージョン(ubuntu 16.04 など) Windows10  - ブラウザとそのバージョン(Firefox 65.0.2 など)  Chrome  - CLIとそのバージョン、Pythonのバージョンと仮想環境(CLI 1.0.0 python3.5.6 conda 4.6.4 など)   **スクリーンショット、ログ** ![image](https://user-images.githubusercontent.com/34910119/62190440-50089f80-b3ac-11e9-8c01-29f15c22bf15.png)  **その他の情報**  - ファイル一覧からkqi/output/配下のファイルは見られるので、一括DLボタンがあればzip化の添付ファイルはいらないかもしれません。 </body>
+		<created>2019-07-31 07:02:30</created>
+		<closed>2019-10-04 01:30:19</closed>
+	</bug>
+	<bug>
+		<id>153</id>
+		<title>先頭に半角スペースを入れてログインすると別のアカウントが作られる</title>
+		<body>**発生した現象** 先頭に半角スペースを入れた状態で、ログイン画面からLDAPユーザアカウントでログインすると、初期状態のログイン状態になる。 ユーザ管理を見ると、同一名のユーザが二つ表示されている。KAMONOHASHIには新規ユーザ、LDAPでは既存ユーザとして処理され、新規にLDAPアカウントが生成されてしまう様子。  **再現手順** 既にログイン済みのLDAPアカウントを使い、ユーザ名の先頭に半角スペースを入れた状態でログインする  **期待する動作** 既存ユーザとしてログインできる、あるいは認証エラーが発生する  **環境** 不具合を確認した環境を書いてください   - KAMONOHASHIのバージョン: 1.0.2  - OSとそのバージョン(ubuntu 16.04 など): ubuntu 16.04  - ブラウザとそのバージョン(Firefox 65.0.2 など) : chrome </body>
+		<created>2019-07-22 05:19:09</created>
+		<closed>2019-08-08 03:15:56</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>大量の画像ダウンロードが必要な学習を実行するとRead Time Outが発生する</title>
+		<body>**発生した現象** 60000枚の入力画像を個別にダウンロードする必要がある学習を実行すると、Read Time Outエラーが発生し、正常に学習を実行できない  **再現手順** 1. Cifar10の画像ファイルを、画像1枚ずつのファイルに解凍する 1. 各画像ファイルを、訓練用に各クラス5000枚を1データに、テスト用に各クラス1000枚を1データにまとめ、計20データ（5000 * 10 + 1000 * 10）を作成する。 1. この20データを1データセットにまとめる 1. このデータセットを学習に使用すると、データのダウンロード時にread time outになる  **スクリーンショット、ログ** 学習のログに以下が表示される。 ``` [ERROR] HTTPConnectionPool(host='platypus-web-api.kqi-system.svc.cluster.local', port=8090): Read timed out. (read timeout=30) ```  **その他の情報** 54,000枚のデータセット（5000 * 9 + 1000 * 9）では成功する </body>
+		<created>2019-07-18 08:36:58</created>
+		<closed>2019-08-08 08:09:31</closed>
+	</bug>
+	<bug>
+		<id>145</id>
+		<title>学習実行のデータセット選択でドロップダウンリストが見切れる</title>
+		<body>**発生した現象** 長いメモのデータセットが存在する場合、学習実行画面でデータセットを選択するプルダウンが見切れてしまう。  **再現手順** 長いメモのデータセットを作成し、学習実行画面でデータセット選択する  **期待する動作** メモが省略される。あるいはスクロールできる  **環境**  - KAMONOHASHIのバージョン: 1.0.2  - OSとそのバージョン: Windows 10  - ブラウザとそのバージョン: Chrome 75.0.3770.100  **スクリーンショット、ログ** ![image](https://user-images.githubusercontent.com/22820631/61441810-5563f400-a981-11e9-80ab-cc3d573dba6a.png)  </body>
+		<created>2019-07-18 08:27:54</created>
+		<closed>2019-08-08 02:27:04</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>エラー時に右上に出てくるメッセージの表示が見切れることがある</title>
+		<body></body>
+		<created>2019-07-17 06:36:44</created>
+		<closed>2019-12-11 05:42:09</closed>
+	</bug>
+	<bug>
+		<id>132</id>
+		<title>データセット編集画面でのデータのソート順</title>
+		<body>all dataとtrainingでソート順が異なる</body>
+		<created>2019-07-17 06:36:43</created>
+		<closed>2019-07-18 07:50:16</closed>
+	</bug>
+	<bug>
+		<id>131</id>
+		<title>データセット編集で、データのタグ名が長い場合に後ろのほうが表示されない</title>
+		<body>データセット画面 </body>
+		<created>2019-07-17 06:36:42</created>
+		<closed>2019-08-08 02:39:59</closed>
+	</bug>
+	<bug>
+		<id>130</id>
+		<title>実行コマンドが長くなると、ジョブ管理画面が見づらくなる</title>
+		<body>現状、ジョブ管理画面に実行コマンドは全て表示されるため、実行コマンドが長くなると、見づらくなる。</body>
+		<created>2019-07-17 06:36:42</created>
+		<closed>2019-09-02 07:04:54</closed>
+	</bug>
+	<bug>
+		<id>116</id>
+		<title>Zip化処理でエラーとなってもステータスはCompletedになる</title>
+		<body>**発生した現象** 推論時に多いかつ大容量のファイルをZip化しようとして、 I/Oエラーを起こしたが実行ステータスとしてはCompletedとなる.    **再現手順** 1. 多くのファイル＆大容量のファイルを推論する 2. 処理を正常終了させる. 3. Zip化時点でI/O Errorが発生する.  **期待する動作** 本件自体はKilled(Error)扱いが適切に思える.   もしファイル数が多いまたは容量が多くなることが見積れる場合は   zip化をしないでCompletedになるでもよいと思える.  **環境**  - KAMONOHASHIのバージョン 1.0.2   - OSとそのバージョン Windows 10 Enterprise   - ブラウザとそのバージョン Google Chrome 75  **スクリーンショット、ログ** ![error](https://user-images.githubusercontent.com/47168989/61341484-76452000-a881-11e9-8c85-9e4a6ca0e797.png) ![error2](https://user-images.githubusercontent.com/47168989/61341487-780ee380-a881-11e9-8c65-02b1b5395c2b.png) </body>
+		<created>2019-07-17 01:58:03</created>
+		<closed>2019-10-04 01:30:19</closed>
+	</bug>
+	<bug>
+		<id>111</id>
+		<title>CLIで学習履歴の編集ができない</title>
+		<body>**発生した現象** CLIで学習履歴のメモやスターを変更したいが、学習名が必須となっているためエラーとなる。  **再現手順** CLIで以下のコマンドを実行する。 kqi training update ( ID ) [OPTION]  **期待する動作** 学習名の必須チェックを外し、UIから送られてきた値で更新する。 また、UIから空が送られてきた場合、前の値を設定する。   **環境**  - KAMONOHASHIのバージョン  ver 1.0.2  - OSとそのバージョン(ubuntu 16.04 など)  ubuntu16.04  - CLIとそのバージョン、Pythonのバージョンと仮想環境(CLI 1.0.0 python3.5.6 conda 4.6.4 など)  CLI 1.0.0 python3.5.6 conda 4.6.14   **スクリーンショット、ログ** ``` [ERROR] 400 Bad Request {   "type": "Nssol.Platypus.Controllers.spa.TrainingController",   "title": "Invalid inputs.",   "detail": null,   "instance": "/api/v1/training/( ID )",   "errors": [     "The Name field is required."   ] } ```</body>
+		<created>2019-07-12 01:21:25</created>
+		<closed>2019-07-25 04:56:06</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>正常終了したはずの学習・推論のステータスがFailedになる</title>
+		<body>**発生した現象** 学習・推論を実行した際、処理が正常に完了し、結果ファイル作成と、LOG上での”Completed”表示が行わたにもかかわらず、画面上のステータスがFailedとなる。 同時に別のクライアントから当該レコードの参照を行うと、発生する。  **再現手順** 学習あるいは推論を行い、完了する直前に当該レコードをWeb上で参照して、ページリロードを繰り返す。  **期待する動作** ステータスがCompletedになる。  **環境**   - KAMONOHASHIのバージョン: 1.0.1  - OSとそのバージョン(ubuntu 16.04 など): ubuntu 16.04  - ブラウザとそのバージョン(Firefox 65.0.2 など) : chrome </body>
+		<created>2019-07-05 06:35:20</created>
+		<closed>2019-08-08 02:29:05</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>ユーザからテナントを外した際、Git Tokenは残るが、Registry Tokenは消える</title>
+		<body>**発生した現象** ユーザからテナントを外した際の動作についてです。  （現在の動作） ・Git Tokenは維持されている。（削除せずに残り続ける） ・Registry Tokenは削除される。   **期待する動作** （動作1） ・Git Token、Registry Tokenともに削除される。  （動作2） ・Git Token、Registry Tokenともに維持される。 </body>
+		<created>2019-07-03 04:13:56</created>
+		<closed>2019-10-08 09:36:00</closed>
+	</bug>
+	<bug>
+		<id>84</id>
+		<title>学習または推論にて環境変数に数字を設定した際のエラーメッセージが不適切</title>
+		<body>**発生した現象** 学習、推論実行画面にて、環境変数のKeyに数字を設定して、 実行ボタンを押下すると、エラーになるがメッセージが不適切。   **スクリーンショット、ログ** ``` Failed to run training. The message bellow may be help to resolve: 422 : Job.batch "training-168" is invalid: [spec.template.spec.containers[0].env[20].name: Invalid value: "0123": a valid environment variable name must consist of alphabetic characters, digits, '_', '-', or '.', and must not start with a digit (e.g. 'my.env-name', or 'MY_ENV.NAME', or 'MyEnvName1', regex used for validation is '[-._a-zA-Z][-._a-zA-Z0-9]*'), spec.template.spec.containers[1].env[20].name: Invalid value: "0123": a valid environment variable name must consist of alphabetic characters, digits, '_', '-', or '.', and must not start with a digit (e.g. 'my.env-name', or 'MY_ENV.NAME', or 'MyEnvName1', regex used for validation is '[-._a-zA-Z][-._a-zA-Z0-9]*'), spec.template.spec.initContainers[0].env[20].name: Invalid value: "0123": a valid environment variable name must consist of alphabetic characters, digits, '_', '-', or '.', and must not start with a digit (e.g. 'my.env-name', or 'MY_ENV.NAME', or 'MyEnvName1', regex used for validation is '[-._a-zA-Z][-._a-zA-Z0-9]*')] ``` </body>
+		<created>2019-07-03 02:03:09</created>
+		<closed>2019-09-03 01:14:33</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>コンテナ内でデータセットのダウンロードに失敗しても処理が続いてしまう</title>
+		<body>**発生した現象** 学習コンテナ内でデーダウンロード中、ネットワークエラーでデータファイルのダウンロードに失敗しました。 その際、学習がそこで止まることなく、後続の処理が実行されます。  **再現手順** コンテナがデプロイされた後、コンテナからKAMONOHASHIアプリケーションサーバへの通信を遮断  **期待する動作** データ不備の状態で学習が行われてしまうので、ダウンロード失敗時は学習自体も失敗として停止してほしいです。  **環境**   - KAMONOHASHIのバージョン: 1.0.1  - OSとそのバージョン(ubuntu 16.04 など): ubuntu 16.04  - ブラウザとそのバージョン(Firefox 65.0.2 など): 未使用  - CLIとそのバージョン、Pythonのバージョンと仮想環境(CLI 1.0.0 python3.5.6 conda 4.6.4 など) : Python 3.6 </body>
+		<created>2019-07-02 08:30:32</created>
+		<closed>2019-10-09 04:48:29</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>1.0.1のデプロイツールがnvidia-dockerのインストールで失敗する</title>
+		<body>**発生した現象** 1.0.1のデプロイツールがnvidia-dockerのインストールで失敗する  **再現手順** 1.0.1のデプロイツールを実行  **期待する動作** 1.0.1のデプロイツールがnvidia-dockerのインストールが成功  **環境**    - KAMONOHASHIのバージョン：1.0.1  - OSとそのバージョン(ubuntu 16.04 など): ubuntu16   **スクリーンショット、ログ** ``` failed: [gpu01] (item=['nvidia-container-runtime=2.0.0+docker18.09.6-3', 'nvidia-docker2=2.0.3+docker18.09.6-3']) =&gt; {"cache_update_time": 1561685018, "cache_updated": true, "changed": false, "item": ["nvidia-container-runtime=2.0.0+docker18.09.6-3", "nvidia-docker2=2.0.3+docker18.09.6-3"], "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"     install 'nvidia-container-runtime=2.0.0+docker18.09.6-3' 'nvidia-docker2=2.0.3+docker18.09.6-3'' failed: E: Unable to correct problems, you have held broken packages.\n", "rc": 100, "stderr": "E: Unable to correct problems, you have held broken packages.\n", "stderr_lines": ["E: Unable to correct problems, you have held broken packages."], "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nSome packages could not be installed. This may mean that you have\nrequested an impossible situation or if you are using the unstable\ndistribution that some required packages have not yet been created\nor been moved out of Incoming.\nThe following information may help to resolve the situation:\n\nThe following packages have unmet dependencies:\n nvidia-docker2 : Depends: docker-ce (= 5:18.09.6~3-0~ubuntu-xenial) but 5:18.09.7~3-0~ubuntu-xenial is to be installed or\n                           docker-ee (= 5:18.09.6~3-0~ubuntu-xenial) but it is not installable\n", "stdout_lines": ["Reading package lists...", "Building dependency tree...", "Reading state information...", "Some packages could not be installed. This may mean that you have", "requested an impossible situation or if you are using the unstable", "distribution that some required packages have not yet been created", "or been moved out of Incoming.", "The following information may help to resolve the situation:", "", "The following packages have unmet dependencies:", " nvidia-docker2 : Depends: docker-ce (= 5:18.09.6~3-0~ubuntu-xenial) but 5:18.09.7~3-0~ubuntu-xenial is to be installed or", "                           docker-ee (= 5:18.09.6~3-0~ubuntu-xenial) but it is not installable"]} ```  **その他の情報** - 先週までは構築できていた - kubesprayのデフォルトのdocker-ceのバージョンは18.09.5となっている。これはずっと変わっていないはず - 検証環境のgpu serverのdocker versionは次になっており、18.09.5でも構築できたと思われる   - clientはkubesprayではバージョン制御されておらず、常に実行時点で最新が入る ``` Client:  Version:           18.09.6  API version:       1.39  Go version:        go1.10.8  Git commit:        481bc77  Built:             Sat May  4 02:35:27 2019  OS/Arch:           linux/amd64  Experimental:      false  Server: Docker Engine - Community  Engine:   Version:          18.09.5   API version:      1.39 (minimum version 1.12)   Go version:       go1.10.8   Git commit:       e8ff056   Built:            Thu Apr 11 04:10:53 2019   OS/Arch:          linux/amd64   Experimental:     false ``` </body>
+		<created>2019-06-28 06:15:49</created>
+		<closed>2019-07-05 06:01:48</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>自己署名証明書で構築したGitLabでgit cloneできない</title>
+		<body>**発生した現象** 自己署名証明書で構築したGitLabで`git clone`できない  **再現手順** GitLabに自己署名証明書を使用してhttpsでアクセスするようにKAMONOHASHIに登録する  **期待する動作** 自己署名証明書でもソースコードがgit cloneできる  **環境** 不具合を確認した環境を書いてください   - KAMONOHASHIのバージョン: 1.0.0, 1.0.1  - OSとそのバージョン: ubuntu 16.04  **スクリーンショット、ログ** fatal: unable to access 'https://*****': server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none  **その他の情報** CLIコンテナのgit設定でsslのチェックをしないようにする必要があります </body>
+		<created>2019-06-27 06:49:34</created>
+		<closed>2019-07-05 07:30:25</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>表示されるコミットIDが異なる</title>
+		<body>**発生した現象** ブラウザにおいて、推論実行画面に表示されるモデルのコミットIDと実行されるコミットIDが異なる。  **再現手順** 1. 推論実行をコピー実行する。   1. マウントする学習を別のものに切替える。 1. 推論実行画面のコミットIDは変化がない。   ただし、コミット詳細を見ると別のものに差し変わっている。   1. 実行すると差し替わったコミットIDのコードが使用される。  **期待する動作** 推論実行画面のコミットIDとコミット詳細のコミットIDが一致していること。   具体的には下記のいずれかを期待する。 ・推論実行画面のコミットIDがコミット詳細のものに変わる。   ・コミット詳細のコミットIDが推論実行画面と同じく変化しない。  **環境** - KAMONOHASHI 1.0.1 - Windows 10 Pro 18.09 - Google Chrome 75  **スクリーンショット** ![kqi-bug](https://user-images.githubusercontent.com/47168989/60228269-1d5f1900-98cd-11e9-9e0f-c1648a0f8828.png) ※個人情報などはマスクさせていただいております。 </body>
+		<created>2019-06-27 02:19:42</created>
+		<closed>2019-07-03 02:29:10</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>テナントリソース管理画面のユーザ名表示が不適切</title>
+		<body>テナントリソース管理画面のユーザ名の項目において、本来のユーザ名が表示されていない。  現象は、#29 と同様。</body>
+		<created>2019-06-17 05:39:40</created>
+		<closed>2019-06-27 09:28:59</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>リソース利用状況画面におけるユーザ名の表示が不適切</title>
+		<body>**発生した現象** リソース利用状況画面のユーザ名に、本来のユーザ名が表示されていない。  **再現手順** 学習などを実行し、リソース利用状況画面を表示する。  **期待する動作** ユーザ名が表示される。  **環境** 不具合を確認した環境を書いてください   - KAMONOHASHIのバージョン：1.0.1  - OSとそのバージョン: Windows 10  - ブラウザとそのバージョン Chrome   - CLIとそのバージョン、Pythonのバージョンと仮想環境: 未使用  **スクリーンショット、ログ** ![キャプチャ](https://user-images.githubusercontent.com/12245259/59253349-f36cec00-8c68-11e9-8916-61317e88e46e.PNG) </body>
+		<created>2019-06-11 07:50:17</created>
+		<closed>2019-06-13 06:55:35</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>推論管理にて「含まない」検索が動作不良</title>
+		<body>推論管理画面の[マウントした学習]の項目で「含まない」検索を実施したが、 動作が正しくない。</body>
+		<created>2019-06-06 05:19:19</created>
+		<closed>2019-06-13 06:25:01</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>データ管理画面から前処理実行ボタンを押下するとエラー（テナントロールの設定により発生）</title>
+		<body>データ管理画面から前処理実行ボタンを押下すると、前処理画面が表示されるはずだが、 テナントロールの設定を以下のようにした場合、エラー画面が表示される。  ・データ管理 ・・・ 〇 ・前処理管理 ・・・ ×   画面遷移させない動作が正常だと思われる。</body>
+		<created>2019-06-04 08:11:37</created>
+		<closed>2019-10-09 00:22:55</closed>
+	</bug>
+	<bug>
+		<id>14</id>
+		<title>リソース管理から異なるテナントの前処理を削除しようとするとエラー</title>
+		<body>**発生した現象** リソース管理画面から異なるテナントの前処理を削除しようとしたが、認証エラーが発生し削除できない。  **再現手順** 1. adminロールを所持するユーザでリソース管理画面を表示。 2. 表示しているテナントとは別のテナントの前処理を選択し削除ボタンを押下する。 3. 認証エラーのメッセージとともに、ログイン画面が表示される。  **期待する動作** リソース管理から異なるテナントであっても前処理を削除できる。  **環境**  - KAMONOHASHIのバージョン：1.0.0  - OSとそのバージョン(ubuntu 16.04 など)：Client=Windows10, Server=Ubuntu 16.04  - ブラウザとそのバージョン(Firefox 65.0.2 など)：Chrome </body>
+		<created>2019-06-03 07:43:24</created>
+		<closed>2019-06-11 09:14:07</closed>
+	</bug>
+	<bug>
+		<id>6</id>
+		<title>ユーザ名にドット(.)が入ったアカウントで学習が実行できない</title>
+		<body>**発生した現象** ユーザ名にドット(.)が入ったアカウントで学習を実行すると、「Failed to run training. The message bellow may be help to resolve: Can not access to created container. Status: Empty」と言うエラーが発生する。  **再現手順** ユーザ名にドット(.)が入ったアカウントで学習を実行する。 k8sのログには「Error creating: Pod "training-1-bvv7m" is invalid: [spec.volumes[9].name: Invalid value: "(アカウント名)-token-wvz7s": a DNS-1123 label must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character (e.g. 'my-name', or '123-abc', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?'), spec.containers[0].volumeMounts[9].name: Not found: "(アカウント名)-token-wvz7s", spec.containers[1].volumeMounts[9].name: Not found: "(アカウント名)-token-wvz7s", spec.initContainers[0].volumeMounts[9].name: Not found: "(アカウント名)-token-wvz7s"]」が表示される。  ![Error](https://user-images.githubusercontent.com/22820631/58604884-f236d900-82d0-11e9-8684-0636d0a5689a.PNG)  **期待する動作** 学習が正常に実行開始する。  **環境**  - KAMONOHASHIのバージョン: 1.0.0  - OSとそのバージョン(ubuntu 16.04 など): Client=Windows10, Server=Ubuntu 16.04  - ブラウザとそのバージョン(Firefox 65.0.2 など) : Chrome  - CLIとそのバージョン、Pythonのバージョンと仮想環境(CLI 1.0.0 python3.5.6 conda 4.6.4 など) : 未使用 </body>
+		<created>2019-05-30 02:03:15</created>
+		<closed>2019-06-03 09:15:08</closed>
+	</bug>
+	<bug>
+		<id>5</id>
+		<title>GitLab 11.8以降でコンテナレジストリ機能連携ができない</title>
+		<body>**発生した現象** GitLab 11.8以降のGitlabをレジストリ登録した場合、 学習・推論・前処理の新規作成がエラーで実行できません  (エラー詳細は後日記載)  **再現手順** GitLab 11.10を構築します。 KAMOBOHASHIのレジストリ登録を行います 学習の新規作成を実行し、コンテナ選択のステップまで進めます  **期待する動作** GitLab 11.8以降のサポート  **環境**  - KAMONOHASHIのバージョン: 1.0.0  - ubuntu 16.04  **スクリーンショット、ログ**   **その他の情報** #1  https://docs.gitlab.com/ee/api/container_registry.html</body>
+		<created>2019-05-30 01:37:12</created>
+		<closed>2019-06-05 09:39:11</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>530</id>
+		<title>mgr_purge_profile_keep_days 옵션 문의</title>
+		<body>mgr_purge_profile_keep_days=30 와 같이 설정하여 사용중인데 서버로그를 확인하니 10일만 보관되고 있습니다. (디폴트값 10)  mgr_purge_profile_keep_days=9로 해도 10일치 보관 되는데  제 설정 중 특이사항 있는지 문의드립니다. (다른 purge 옵션은 잘 동작했습니다.)  수집서버 scouter.conf mgr_purge_enabled=true mgr_purge_disk_usage_pct=90 **mgr_purge_profile_keep_days=30** mgr_purge_xlog_keep_days=30 mgr_purge_counter_keep_days=30  서버 로그 20181126 00:00:43 [S206] * Auto deletion... 20181116 mode : PROFILE 20181126 00:00:43 [S206-4] [purge profile by][day limit]20181116 **20181126 00:00:43 [S206-4] * option : conf.mgr_purge_profile_keep_days : 10** 20181126 00:00:43 [S206] * Auto deletion... 20181027 mode : XLOG 20181126 00:00:43 [S206-5] [purge xlog by][day limit]20181027 20181126 00:00:43 [S206-5] * option : conf.mgr_purge_xlog_keep_days : 30 20181126 00:00:43 [S206] * Auto deletion... 20181027 mode : ALL 20181126 00:00:43 [S206-6] [purge counters by][day limit]20181027 20181126 00:00:43 [S206-6] * option : conf.mgr_purge_counter_keep_days : 30  </body>
+		<created>2018-11-27 13:09:53</created>
+		<closed>2019-01-02 12:18:20</closed>
+	</bug>
+	<bug>
+		<id>443</id>
+		<title>client 1.8.3 윈도우 64bit 버전에서 perspective import export 이슈</title>
+		<body>사용자별로 perspective를 꾸며서 제공해주려고 했는데 정작 perspective export해서   해당 zip 파일을 다른 PC에서 import해보니 load가 안되더라구요.  물론 import success 라고는 나오고 재기동도 했지만 perspective 목록에도 보이지 않았습니다.   원인을 찾다가 export된 zip파일의 구조를 보니 사용자별로 아래와 같이 백업되어 있던게 보이던데 결과적으로 다른 PC윈도우에서 계정이 다르면 import 해도 해당 경로문제때문에 적용이 안되는게 아닌가 생각되네요.  C:\Users\Administrator\scouter\export-working ![image](https://user-images.githubusercontent.com/36728616/37511660-0220ef60-2943-11e8-9892-5f0b61950e45.png) 혹시 이 문제가 아니라면 Fix 된 버전좀 알려주세요.</body>
+		<created>2018-03-16 08:59:31</created>
+		<closed>2018-05-02 23:39:24</closed>
+	</bug>
+	<bug>
+		<id>423</id>
+		<title>xlog 여러개를 하나의 화면에 구성하면 "점"이 나타나지 않음"</title>
+		<body>하나의 화면에  여러 수집서버의 xlog 화면을 띄워 놓으면, 점이 나타나지 않습니다.   하지만  어떤 다른 탭을 눌렀다가 돌아오면  모든 xlog 가 나타납니다.   ![image](https://user-images.githubusercontent.com/175918/34700698-b863eba6-f527-11e7-96df-f832233f3e43.png) 이 이미지가 클라이언트 띄운지 3분 후의 화면입니다.   Gunhee 님께는 메신저로 말씀 드렸어요 ~ </body>
+		<created>2018-01-09 01:28:13</created>
+		<closed>2018-01-16 09:25:10</closed>
+	</bug>
+	<bug>
+		<id>390</id>
+		<title>alert plugin의 config 변경사항 반영</title>
+		<body>alert plugin의 plugin 폴더에 있는 *.conf 파일을 변경하여도 에이전트가 여러 개인 경우 모든 에이전트에 반영되지 않고 일부만 변경사항이 반영됩니다. (10초를 2초로 변경하면 일부 에이전트는 2초 변경되서 수집되고 나머지는 그대로 10초) 그래서 전체 에이전트에 반영되도록 하기 위해서는 서버를 다시 내렸다올려야 합니다. 이것은 버그인지 원래 그러한 것인지요.. 다른 방법이 있나요?</body>
+		<created>2017-10-16 05:00:42</created>
+		<closed>2017-11-04 03:11:02</closed>
+	</bug>
+	<bug>
+		<id>312</id>
+		<title>Scouter에서 발생한 Exception으로 인해 본 서비스 Exception이 발생</title>
+		<body>안녕하세요,   Scouter Agent의 EscapeLiteralSQL에서 발생한 ArrayIndexOutOfBoundsException 에러가 본 서비스에서 Exception을 발생시켜 문의드립니다.  서비스는 아래와 같은 환경으로 구성되어 있습니다.  - 프레임워크 : Spring Framework 3.1 + Ibatis 2.3 - WAS : Weblogic - Java 버전 : 1.7  에러 로그 확인 결과는 아래와 같습니다.  클래스 : EscapeLiteralSQL.java 메소드 : _slash() =&gt; getNext(pos) =&gt; chars[x+1] 에서 ArrayIndexOutOfBoundsException  사용한 쿼리에 이중 주석( /*  /* */  */)이 포함되어 문제가 된 것으로 보입니다.  문의드리고 싶은 점은 Agent에서 발생한 에러가 본 서비스에 Exception을  끼치고 있어서 해당 내용 문의드립니다. </body>
+		<created>2017-04-12 04:27:05</created>
+		<closed>2017-05-15 08:20:25</closed>
+	</bug>
+	<bug>
+		<id>310</id>
+		<title>Tomcat 8.5에서 ConnMax값이 수집 안됩니다.</title>
+		<body>Tomcat8.5에서는 maxActive값이 maxTotal로 변경되어서   TomcatJMXPerf.java 쪽에서 정상 수집이 안되네요.  또 이상한 점이   ``` add(objName, mbean, objType, ValueEnum.DECIMAL, "numActive", CounterConstants.DATASOURCE_CONN_ACTIVE); add(objName, mbean, objType, ValueEnum.DECIMAL, "numIdle", CounterConstants.DATASOURCE_CONN_IDLE); add(objName, mbean, objType, ValueEnum.DECIMAL, "maxActive", CounterConstants.DATASOURCE_CONN_MAX); **add(objName, mbean, objType, ValueEnum.DECIMAL, "maxTotal", CounterConstants.DATASOURCE_CONN_MAX);** ```  와 같이 찍었을 때 처음엔 잘 나오다가 collectCnt가 40번 전에 ``` 20170410 17:52:48 [A108] jdbc stmt found: oracle/jdbc/driver/OracleStatement 20170410 17:52:48 [A106] jdbc pstmt found: oracle/jdbc/driver/OraclePreparedStatement 20170410 17:52:49 [A107] jdbc rs found: oracle/jdbc/driver/InsensitiveScrollableResultSet 20170410 17:52:49 [A107] jdbc rs found: oracle/jdbc/driver/SensitiveScrollableResultSet ```  DB연결을 시도하게 되면  아래와 같이  ```java } else if ("DataSource".equals(type)) { // datasource String name = mbean.getKeyProperty("name"); ``` **WriteAttributes(server, (ObjectName)mbean);** ```java private void WriteAttributes(final MBeanServer mBeanServer, final ObjectName http) {     MBeanInfo info; try { info = mBeanServer.getMBeanInfo(http); MBeanAttributeInfo[] attrInfo = info.getAttributes();     System.out.println("Attributes for object: " + http +":\n");     for (MBeanAttributeInfo attr:attrInfo)     {         System.out.println("  " + attr.getName() + "\n");     } } catch (Exception e) { // TODO Auto-generated catch block e.printStackTrace(); } } ``` 모든 Attribute를 표시하는 코드를 삽입했을 때 데이터 형상이 아래와 같이 변하네요.  Attributes for object:  ``` Catalina:type=DataSource,host=localhost,context=/,class=javax.sql.DataSource,name="jdbc/default":   connectionProperties   testOnCreate   defaultCatalog   defaultQueryTimeout   logAbandoned   password   maxIdle   testWhileIdle   enableAutoCommitOnReturn   removeAbandonedOnMaintenance   maxConnLifetimeMillis   maxWaitMillis   minIdle   defaultReadOnly   removeAbandonedOnBorrow   connectionInitSqlsAsArray   lifo   driverClassName   evictionPolicyClassName   cacheState   validationQueryTimeout   numActive   modelerType   validationQuery   rollbackOnReturn   logExpiredConnections   poolPreparedStatements   numIdle   maxOpenPreparedStatements   jmxName   removeAbandonedTimeout   defaultAutoCommit   abandonedUsageTracking   loginTimeout   softMinEvictableIdleTimeMillis   disconnectionSqlCodesAsArray   initialSize   defaultTransactionIsolation   url   numTestsPerEvictionRun   testOnBorrow   accessToUnderlyingConnectionAllowed   timeBetweenEvictionRunsMillis   minEvictableIdleTimeMillis   maxTotal   testOnReturn   closed   fastFailValidation   username ```  Attributes for object:  ``` Catalina:type=DataSource,host=localhost,context=/,class=javax.sql.DataSource,name="jdbc/default",connectionpool=connections,connection=1:   ReadOnly   Schema   Closed   CacheState   AutoCommit   Catalog   Holdability   TransactionIsolation   ToString ```  Attributes for object:  ``` Catalina:type=DataSource,host=localhost,context=/,class=javax.sql.DataSource,name="jdbc/default",connectionpool=connections:   Closed   BlockWhenExhausted   AbandonedConfig   DestroyedCount   DestroyedByEvictorCount   MeanActiveTimeMillis   MeanIdleTimeMillis   MeanBorrowWaitTimeMillis   MaxBorrowWaitTimeMillis   CreationStackTrace   Lifo   MaxTotal   MaxIdle   MinIdle   MaxWaitMillis   TestOnCreate   TestOnBorrow   TestOnReturn   TestWhileIdle   NumActive   NumIdle   LogAbandoned   DestroyedByBorrowValidationCount   CreatedCount   TimeBetweenEvictionRunsMillis   NumTestsPerEvictionRun   MinEvictableIdleTimeMillis   RemoveAbandonedOnBorrow   RemoveAbandonedOnMaintenance   RemoveAbandonedTimeout   BorrowedCount   Fairness   NumWaiters   FactoryType   ReturnedCount ```</body>
+		<created>2017-04-10 06:32:03</created>
+		<closed>2017-05-15 08:56:21</closed>
+	</bug>
+	<bug>
+		<id>308</id>
+		<title>Host Agent 실행시 sigarException 에러 문의</title>
+		<body>안녕하세요  Scouter Host Agent 실행시 아래와같이  SigarException이 발생하고 있어 해결방법 문의드립니다. 현재 Host Agent가 설치되는 장비는 Windows이며 C드라이브와 D드라이브에 HDD를 사용중이며 E드라이브는 ODD입니다. 감사합니다.  20170410 01:30:40 [DISK] disk perf error org.hyperic.sigar.SigarException: The device is not ready. : E:\ org.hyperic.sigar.SigarProxyCache.invoke(SigarProxyCache.java:220) com.sun.proxy.$Proxy2.getFileSystemUsage(Unknown Source) scouter.agent.counter.task.HostPerf.disk(HostPerf.java:281) sun.reflect.GeneratedMethodAccessor13.invoke(Unknown Source) sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) java.lang.reflect.Method.invoke(Unknown Source) scouter.agent.counter.CounterExecutingManager$Invocation.process(CounterExecutingManager.java:93) scouter.agent.counter.CounterExecutingManager.run(CounterExecutingManager.java:58)</body>
+		<created>2017-04-10 03:59:19</created>
+		<closed>2017-05-15 08:56:34</closed>
+	</bug>
+	<bug>
+		<id>261</id>
+		<title>원도우에서 클라이언트 자동 로그인 사용시 바로 종료</title>
+		<body>윈도우에서 자동 로그인 기능을 사용하여 클라이언트를 실행하면 본 화면이 나타나지 않고 바로 종료되는 오류가 있습니다.</body>
+		<created>2016-11-13 02:30:25</created>
+		<closed>2017-02-05 13:09:25</closed>
+	</bug>
+	<bug>
+		<id>246</id>
+		<title>latest client version for mac os sierra doesn't work.</title>
+		<body>I downloaded 0.4.20 and 0.4.19 version client.  It still doesn't work properly on Mac OS Sierra.  After launch App, I can't input anything for authentication such as server address, password and etc as below. ![image](https://cloud.githubusercontent.com/assets/15916804/19500598/ae4d0174-95d9-11e6-9401-bc41c49316de.png) </body>
+		<created>2016-10-18 23:55:08</created>
+		<closed>2016-11-14 06:52:56</closed>
+	</bug>
+	<bug>
+		<id>207</id>
+		<title>agent v0.4.14의 버그 같습니다.</title>
+		<body>V0.4.11에서는 이상없는데 V0.4.14에서는 profile의 time이 이상하게 나오네요 ![2016-07-14 2 30 23](https://cloud.githubusercontent.com/assets/5696581/16828958/b5da5244-49cf-11e6-99c4-f9e4a69d1221.png) </body>
+		<created>2016-07-14 05:31:59</created>
+		<closed>2016-07-19 03:41:45</closed>
+	</bug>
+	<bug>
+		<id>114</id>
+		<title>Wrong link on QuickStart page</title>
+		<body>There is wrong link on installation and run(통합 데모 환경 및 클라이언트 프로그램 다운로드) of quick start page. - 링크가 서로 바뀌었어요.  scouter.client.product-win32.win32.x86_64.zip and scouter.client.product-win32.win32.x86.zip links are reversed. (ex. If someone downloads x86_64.zip file, running scouter client would fail due to "Failed to load the JNI shared library")  </body>
+		<created>2016-02-29 05:27:52</created>
+		<closed>2016-03-10 23:16:52</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>1471</id>
+		<title>The shards which assigned to non-leader instances may not be executed in specific scenario</title>
+		<body>## Bug Report  ## This problem can be reproduced in specific scenario.  ### Which version of ElasticJob did you use? 3.0.0-beta-SNAPSHOT ### Which project did you use? ElasticJob-Lite or ElasticJob-Cloud? ElasticJob-Lite ### Expected behavior  ### Actual behavior 1. Leader instance has already finished sharding and started executing shards assigned to it. 2. Non-leader instance's listener set resharding necessary flag before it start executing `LiteJob#execute()`. 3. So the Non-leader instances keep waiting for sharding completed. ### Reason analyze (If you can) ![image](https://user-images.githubusercontent.com/20503072/93671044-643cbe00-fad2-11ea-969c-c319cee58c5f.png)   ### Example codes for reproduce this issue (such as a github link). https://github.com/TeslaCN/shardingsphere-elasticjob-lite/tree/reproduce-blocking/examples/elasticjob-example-lite-java/src/main/java/org/apache/shardingsphere/elasticjob/lite/example/bug  ### Steps to reproduce the behavior. Check out my branch and configure zookeeper. Main class is [org.apache.shardingsphere.elasticjob.lite.example.bug.ReproduceMain](https://github.com/TeslaCN/shardingsphere-elasticjob-lite/blob/reproduce-blocking/examples/elasticjob-example-lite-java/src/main/java/org/apache/shardingsphere/elasticjob/lite/example/bug/ReproduceMain.java) 1. Start a process "A" and wait it schedule job. 2. After process "A" completed schedule, start a new process "B".</body>
+		<created>2020-09-19 15:57:51</created>
+		<closed>2020-09-21 02:21:41</closed>
+	</bug>
+	<bug>
+		<id>1456</id>
+		<title>OneOffJobBootstrap is only executed on invoker node</title>
+		<body>## Bug Report  ### Which version of ElasticJob did you use? master ### Which project did you use? ElasticJob-Lite or ElasticJob-Cloud? ElasticJob-Lite ### Expected behavior Execution of OneOffJobBootstrap is distributed. ### Actual behavior Only the shards which belong to invoker node will be executed. Other shards will not be executed. ### Reason analyze (If you can) Only the invoker node has the trigger. ### Steps to reproduce the behavior. Execute a OneOffJob only multi-node cluster. ### Example codes for reproduce this issue (such as a github link). </body>
+		<created>2020-09-14 16:47:02</created>
+		<closed>2020-09-15 04:40:28</closed>
+	</bug>
+	<bug>
+		<id>1437</id>
+		<title>DDL will be executed every time when using PostgreSQL as tracing storage</title>
+		<body>## Bug Report  **For English only**, other languages will not accept.  Before report a bug, make sure you have:  - Searched open and closed [GitHub issues](https://github.com/apache/shardingsphere-elastic-job-lite/issues). - Read documentation: [ElasticJob Doc](http://shardingsphere.apache.org/elasticjob/docs/elastic-job-lite/00-overview/).  Please pay attention on issues you submitted, because we maybe need more details.  If no response anymore and we cannot reproduce it on current information, we will **close it**.  Please answer these questions before submitting your issue. Thanks!  ### Which version of ElasticJob did you use? master ### Which project did you use? ElasticJob-Lite or ElasticJob-Cloud? ElasticJob-Lite ### Environment ``` DBMS: PostgreSQL (ver. 12.3 (Debian 12.3-1.pgdg100+1)) Case sensitivity: plain=lower, delimited=exact Driver: PostgreSQL JDBC Driver (ver. 42.2.5, JDBC4.2) ``` ```java     private static final String EVENT_RDB_STORAGE_DRIVER = "org.postgresql.Driver";     private static final String EVENT_RDB_STORAGE_URL = "jdbc:postgresql://pg.local.wwj.icu:5432/elasticjob";     private static final String EVENT_RDB_STORAGE_USERNAME = "postgres";     private static final String EVENT_RDB_STORAGE_PASSWORD = "postgres"; ``` ### Expected behavior No errors. ### Actual behavior ``` [ERROR] 2020-09-04 23:35:54,217 --main-- [org.apache.shardingsphere.elasticjob.tracing.JobEventBus] Elastic job: create tracing listener failure, error is:   org.apache.shardingsphere.elasticjob.tracing.exception.TracingConfigurationException: org.postgresql.util.PSQLException: ERROR: relation "job_execution_log" already exists at org.apache.shardingsphere.elasticjob.tracing.rdb.listener.RDBTracingListenerConfiguration.createTracingListener(RDBTracingListenerConfiguration.java:37) ~[classes/:na] at org.apache.shardingsphere.elasticjob.tracing.rdb.listener.RDBTracingListenerConfiguration.createTracingListener(RDBTracingListenerConfiguration.java:30) ~[classes/:na] at org.apache.shardingsphere.elasticjob.tracing.listener.TracingListenerFactory.getListener(TracingListenerFactory.java:56) ~[classes/:na] at org.apache.shardingsphere.elasticjob.tracing.JobEventBus.register(JobEventBus.java:67) [classes/:na] at org.apache.shardingsphere.elasticjob.tracing.JobEventBus.&lt;init&gt;(JobEventBus.java:55) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobFacade.&lt;init&gt;(LiteJobFacade.java:71) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduler.&lt;init&gt;(JobScheduler.java:85) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.ScheduleJobBootstrap.&lt;init&gt;(ScheduleJobBootstrap.java:43) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.example.MyJavaMain.setUpSimpleJob(MyJavaMain.java:105) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.example.MyJavaMain.main(MyJavaMain.java:70) [classes/:na] Caused by: org.postgresql.util.PSQLException: ERROR: relation "job_execution_log" already exists at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2440) ~[postgresql-42.2.5.jar:42.2.5] at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2183) ~[postgresql-42.2.5.jar:42.2.5] at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:308) ~[postgresql-42.2.5.jar:42.2.5] at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:441) ~[postgresql-42.2.5.jar:42.2.5] at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:365) ~[postgresql-42.2.5.jar:42.2.5] at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:143) ~[postgresql-42.2.5.jar:42.2.5] at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:132) ~[postgresql-42.2.5.jar:42.2.5] at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172) ~[commons-dbcp-1.4.jar:1.4] at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172) ~[commons-dbcp-1.4.jar:1.4] at org.apache.shardingsphere.elasticjob.tracing.rdb.storage.RDBJobEventStorage.createJobExecutionTable(RDBJobEventStorage.java:133) ~[classes/:na] at org.apache.shardingsphere.elasticjob.tracing.rdb.storage.RDBJobEventStorage.createJobExecutionTableAndIndexIfNeeded(RDBJobEventStorage.java:101) ~[classes/:na] at org.apache.shardingsphere.elasticjob.tracing.rdb.storage.RDBJobEventStorage.initTablesAndIndexes(RDBJobEventStorage.java:92) ~[classes/:na] at org.apache.shardingsphere.elasticjob.tracing.rdb.storage.RDBJobEventStorage.&lt;init&gt;(RDBJobEventStorage.java:75) ~[classes/:na] at org.apache.shardingsphere.elasticjob.tracing.rdb.listener.RDBTracingListener.&lt;init&gt;(RDBTracingListener.java:36) ~[classes/:na] at org.apache.shardingsphere.elasticjob.tracing.rdb.listener.RDBTracingListenerConfiguration.createTracingListener(RDBTracingListenerConfiguration.java:35) ~[classes/:na] ... 9 common frames omitted  ``` ### Reason analyze (If you can) PostgreSQL will convert uppercases string without quotes to lowercase. Constants of table name are uppercase, so it cannot find tables which has already existed in DatabaseMetaData and execute DDL again.  ### Steps to reproduce the behavior. Every application startup after initialization. ### Example codes for reproduce this issue (such as a github link). </body>
+		<created>2020-09-04 15:53:52</created>
+		<closed>2020-09-04 17:33:50</closed>
+	</bug>
+	<bug>
+		<id>1419</id>
+		<title>Remove checking cron in JobConfigurationAPIImpl#updateJobConfiguration</title>
+		<body>As OneOffJob does not need cron , so we need to remove this check. </body>
+		<created>2020-08-26 09:38:36</created>
+		<closed>2020-08-26 15:49:24</closed>
+	</bug>
+	<bug>
+		<id>1410</id>
+		<title>OneOffJob reschedule error</title>
+		<body>As OneOffJob do not need cron, If we update the job config, reschedule OneOffJob will throw below exception. ![image](https://user-images.githubusercontent.com/6297296/91144267-5cae1300-e6e6-11ea-9611-440fac776bce.png)</body>
+		<created>2020-08-25 07:19:33</created>
+		<closed>2020-08-26 03:39:14</closed>
+	</bug>
+	<bug>
+		<id>1369</id>
+		<title>The pattern "yyyy-mm-dd HH:MM:SS" is correct?</title>
+		<body>Class org.apache.shardingsphere.elasticjob.tracing.rdb.storage.RDBJobEventStorage  &lt;img width="901" alt="pattern" src="https://user-images.githubusercontent.com/51478567/89979538-96245e80-dca2-11ea-996c-2d2fd339f4a5.png"&gt;   </body>
+		<created>2020-08-12 05:54:47</created>
+		<closed>2020-08-13 06:37:35</closed>
+	</bug>
+	<bug>
+		<id>1297</id>
+		<title>LiteJob will create a shutdownhook thread every time as execute job</title>
+		<body>This is the same issue with DaemonTaskScheduler.  Quartz will schedule to execute job and create a new Job instance every time, that means it will create LiteJob every time. As LiteJob executes job with guava executor that create shutdownhook thread internal.  So LiteJob#createExecutor will create extra thread as job executes. </body>
+		<created>2020-07-30 10:31:00</created>
+		<closed>2020-07-30 16:06:03</closed>
+	</bug>
+	<bug>
+		<id>1085</id>
+		<title>Shard is not working when instance node removes</title>
+		<body>In master branch, after we upgrade curator and zookeeper version. we face a new bug. Scenario: Config a job with 2 shard items and param '0=A,1=B',  start two process. Process A gets item 0, and process B gets item 1. Then shutdown process B, process A should take over the item 1, but not working.  Guess to lose curator event or other bug</body>
+		<created>2020-07-16 08:24:41</created>
+		<closed>2020-07-16 10:33:16</closed>
+	</bug>
+	<bug>
+		<id>1052</id>
+		<title>The fields in JobConfigurationPOJO missing default values</title>
+		<body>## Bug Report  **For English only**, other languages will not accept.  Before report a bug, make sure you have:  - Searched open and closed [GitHub issues](https://github.com/apache/shardingsphere-elastic-job-lite/issues). - Read documentation: [ElasticJob Doc](http://shardingsphere.apache.org/elasticjob/docs/elastic-job-lite/00-overview/).  Please pay attention on issues you submitted, because we maybe need more details.  If no response anymore and we cannot reproduce it on current information, we will **close it**.  Please answer these questions before submitting your issue. Thanks!  ### Which version of ElasticJob did you use? Branch - master  ### Which project did you use? ElasticJob-Lite or ElasticJob-Cloud? ElasticJob-Lite  ### Expected behavior  ### Actual behavior ``` [ERROR] 2020-07-14 08:31:00,033 --simpleJob_Worker-1-- [org.apache.shardingsphere.elasticjob.infra.handler.error.impl.LogJobErrorHandler] Job 'simpleJob' exception occur in job processing  org.apache.shardingsphere.elasticjob.infra.exception.JobExecutionEnvironmentException: Time different between job server and register center exceed '0' seconds, max time different is '0' seconds. at org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationService.checkMaxTimeDiffSecondsTolerable(ConfigurationService.java:103) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobFacade.checkJobExecutionEnvironment(LiteJobFacade.java:81) ~[classes/:na] at org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor.execute(ElasticJobExecutor.java:85) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob.execute(LiteJob.java:52) [classes/:na] at org.quartz.core.JobRunShell.run(JobRunShell.java:202) [quartz-2.3.2.jar:na] at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) [quartz-2.3.2.jar:na] [ERROR] 2020-07-14 08:31:00,043 --scriptJob_Worker-1-- [org.apache.shardingsphere.elasticjob.infra.handler.error.impl.LogJobErrorHandler] Job 'scriptJob' exception occur in job processing  org.apache.shardingsphere.elasticjob.infra.exception.JobExecutionEnvironmentException: Time different between job server and register center exceed '0' seconds, max time different is '0' seconds. at org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationService.checkMaxTimeDiffSecondsTolerable(ConfigurationService.java:103) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobFacade.checkJobExecutionEnvironment(LiteJobFacade.java:81) ~[classes/:na] at org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor.execute(ElasticJobExecutor.java:85) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob.execute(LiteJob.java:52) [classes/:na] at org.quartz.core.JobRunShell.run(JobRunShell.java:202) [quartz-2.3.2.jar:na] at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) [quartz-2.3.2.jar:na]  ```  ### Reason analyze (If you can) The default value of `maxTimeDiffSeconds` is `-1` in `JobConfiguration.Builder`. If `JobConfigurationPojo` missing default value, it would be set to `0` and ERROR occurred.  ### Steps to reproduce the behavior. Using `JobConfigurationPOJO.toJobConfiguration()` to create a instance of `JobConfiguration`. Then create a instance of `ScheduleJobBootstrap` and start scheduling.  ### Example codes for reproduce this issue (such as a github link). </body>
+		<created>2020-07-14 00:35:59</created>
+		<closed>2020-07-14 02:19:26</closed>
+	</bug>
+	<bug>
+		<id>1035</id>
+		<title>Maven install throw exception</title>
+		<body>When run `mvn install` it throw exception,  but install result is success:  ``` Tests run: 5, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.063 sec - in org.apache.shardingsphere.elasticjob.cloud.executor.TaskExecutorThreadTest [ERROR] 2020-07-13 00:29:32,953 --test_job@-@0@-@READY@-@fake_slave_id@-@0_Worker-1-- [org.quartz.core.JobRunShell] Job DEFAULT.test_job threw an unhandled Exception:   java.lang.IllegalStateException: Shutdown in progress at java.lang.ApplicationShutdownHooks.add(ApplicationShutdownHooks.java:66) at java.lang.Runtime.addShutdownHook(Runtime.java:211) at com.google.common.util.concurrent.MoreExecutors$Application.addShutdownHook(MoreExecutors.java:223) at com.google.common.util.concurrent.MoreExecutors$Application.addDelayedShutdownHook(MoreExecutors.java:195) at com.google.common.util.concurrent.MoreExecutors$Application.getExitingExecutorService(MoreExecutors.java:179) at com.google.common.util.concurrent.MoreExecutors$Application.getExitingExecutorService(MoreExecutors.java:214) at com.google.common.util.concurrent.MoreExecutors.getExitingExecutorService(MoreExecutors.java:148) at org.apache.shardingsphere.elasticjob.infra.concurrent.ElasticJobExecutorService.createExecutorService(ElasticJobExecutorService.java:52) at org.apache.shardingsphere.elasticjob.infra.handler.threadpool.impl.AbstractJobExecutorServiceHandler.createExecutorService(AbstractJobExecutorServiceHandler.java:32) at org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor.&lt;init&gt;(ElasticJobExecutor.java:75) at org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor.&lt;init&gt;(ElasticJobExecutor.java:63) at org.apache.shardingsphere.elasticjob.cloud.executor.DaemonTaskScheduler$DaemonJob.execute(DaemonTaskScheduler.java:182) at org.quartz.core.JobRunShell.run(JobRunShell.java:202) at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) [ERROR] 2020-07-13 00:29:32,955 --test_job@-@0@-@READY@-@fake_slave_id@-@0_Worker-1-- [org.quartz.core.ErrorLogger] Job (DEFAULT.test_job threw an exception.  org.quartz.SchedulerException: Job threw an unhandled exception. at org.quartz.core.JobRunShell.run(JobRunShell.java:213) at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) Caused by: java.lang.IllegalStateException: Shutdown in progress at java.lang.ApplicationShutdownHooks.add(ApplicationShutdownHooks.java:66) at java.lang.Runtime.addShutdownHook(Runtime.java:211) at com.google.common.util.concurrent.MoreExecutors$Application.addShutdownHook(MoreExecutors.java:223) at com.google.common.util.concurrent.MoreExecutors$Application.addDelayedShutdownHook(MoreExecutors.java:195) at com.google.common.util.concurrent.MoreExecutors$Application.getExitingExecutorService(MoreExecutors.java:179) at com.google.common.util.concurrent.MoreExecutors$Application.getExitingExecutorService(MoreExecutors.java:214) at com.google.common.util.concurrent.MoreExecutors.getExitingExecutorService(MoreExecutors.java:148) at org.apache.shardingsphere.elasticjob.infra.concurrent.ElasticJobExecutorService.createExecutorService(ElasticJobExecutorService.java:52) at org.apache.shardingsphere.elasticjob.infra.handler.threadpool.impl.AbstractJobExecutorServiceHandler.createExecutorService(AbstractJobExecutorServiceHandler.java:32) at org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor.&lt;init&gt;(ElasticJobExecutor.java:75) at org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor.&lt;init&gt;(ElasticJobExecutor.java:63) at org.apache.shardingsphere.elasticjob.cloud.executor.DaemonTaskScheduler$DaemonJob.execute(DaemonTaskScheduler.java:182) at org.quartz.core.JobRunShell.run(JobRunShell.java:202) ... 1 common frames omitted ```</body>
+		<created>2020-07-12 16:42:03</created>
+		<closed>2020-07-13 14:58:10</closed>
+	</bug>
+	<bug>
+		<id>996</id>
+		<title>Fix JobOperateAPIImpl#enable bug</title>
+		<body>JobOperateAPIImpl#enable method will persist server instance value to "". It should be "ENABLED". This will lead to the job would not enable through controller in console.</body>
+		<created>2020-07-08 15:21:42</created>
+		<closed>2020-07-08 15:32:05</closed>
+	</bug>
+	<bug>
+		<id>954</id>
+		<title>Run java example throw event trace data source exception</title>
+		<body>When running java example, it will throw event trace data source exception.  The main class is `org.apache.shardingsphere.elasticjob.lite.example.JavaMain`  Exception is:  ``` [ERROR] 2020-07-05 19:15:40,200 --javaDataflowElasticJob_Worker-1-- [org.apache.shardingsphere.elasticjob.lite.tracing.JobEventBus] Elastic job: create tracing listener failure, error is:   org.apache.shardingsphere.elasticjob.lite.tracing.exception.TracingConfigurationException: org.h2.jdbc.JdbcSQLException: Table "JOB_EXECUTION_LOG" already exists; SQL statement: CREATE TABLE JOB_EXECUTION_LOG (id CHARACTER(40) NOT NULL, job_name CHARACTER(100) NOT NULL, task_id CHARACTER(255) NOT NULL, hostname CHARACTER(255) NOT NULL, ip CHARACTER(50) NOT NULL, sharding_item INTEGER NOT NULL, execution_source CHARACTER(20) NOT NULL, failure_cause CHARACTER VARYING(4000) NULL, is_success INTEGER NOT NULL, start_time TIMESTAMP NULL, complete_time TIMESTAMP NULL, PRIMARY KEY (id)) [42101-184] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.listener.RDBTracingListenerConfiguration.createTracingListener(RDBTracingListenerConfiguration.java:37) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.listener.RDBTracingListenerConfiguration.createTracingListener(RDBTracingListenerConfiguration.java:30) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.listener.TracingListenerFactory.getListener(TracingListenerFactory.java:56) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.JobEventBus.register(JobEventBus.java:68) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.JobEventBus.&lt;init&gt;(JobEventBus.java:56) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobFacade.&lt;init&gt;(LiteJobFacade.java:71) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.executor.ElasticJobExecutor.&lt;init&gt;(ElasticJobExecutor.java:82) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.executor.ElasticJobExecutor.&lt;init&gt;(ElasticJobExecutor.java:69) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob.createExecutor(LiteJob.java:56) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob.execute(LiteJob.java:52) [classes/:na] at org.quartz.core.JobRunShell.run(JobRunShell.java:202) [quartz-2.3.2.jar:na] at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) [quartz-2.3.2.jar:na] Caused by: org.h2.jdbc.JdbcSQLException: Table "JOB_EXECUTION_LOG" already exists; SQL statement: CREATE TABLE JOB_EXECUTION_LOG (id CHARACTER(40) NOT NULL, job_name CHARACTER(100) NOT NULL, task_id CHARACTER(255) NOT NULL, hostname CHARACTER(255) NOT NULL, ip CHARACTER(50) NOT NULL, sharding_item INTEGER NOT NULL, execution_source CHARACTER(20) NOT NULL, failure_cause CHARACTER VARYING(4000) NULL, is_success INTEGER NOT NULL, start_time TIMESTAMP NULL, complete_time TIMESTAMP NULL, PRIMARY KEY (id)) [42101-184] at org.h2.message.DbException.getJdbcSQLException(DbException.java:345) ~[h2-1.4.184.jar:1.4.184] at org.h2.message.DbException.get(DbException.java:179) ~[h2-1.4.184.jar:1.4.184] at org.h2.message.DbException.get(DbException.java:155) ~[h2-1.4.184.jar:1.4.184] at org.h2.command.ddl.CreateTable.update(CreateTable.java:111) ~[h2-1.4.184.jar:1.4.184] at org.h2.command.CommandContainer.update(CommandContainer.java:78) ~[h2-1.4.184.jar:1.4.184] at org.h2.command.Command.executeUpdate(Command.java:254) ~[h2-1.4.184.jar:1.4.184] at org.h2.jdbc.JdbcPreparedStatement.execute(JdbcPreparedStatement.java:198) ~[h2-1.4.184.jar:1.4.184] at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172) ~[commons-dbcp-1.4.jar:1.4] at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172) ~[commons-dbcp-1.4.jar:1.4] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.storage.RDBJobEventStorage.createJobExecutionTable(RDBJobEventStorage.java:132) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.storage.RDBJobEventStorage.createJobExecutionTableAndIndexIfNeeded(RDBJobEventStorage.java:100) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.storage.RDBJobEventStorage.initTablesAndIndexes(RDBJobEventStorage.java:91) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.storage.RDBJobEventStorage.&lt;init&gt;(RDBJobEventStorage.java:74) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.listener.RDBTracingListener.&lt;init&gt;(RDBTracingListener.java:36) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.listener.RDBTracingListenerConfiguration.createTracingListener(RDBTracingListenerConfiguration.java:35) ~[classes/:na] ... 11 common frames omitted [ERROR] 2020-07-05 19:15:40,200 --javaSimpleJob_Worker-1-- [org.apache.shardingsphere.elasticjob.lite.tracing.JobEventBus] Elastic job: create tracing listener failure, error is:   org.apache.shardingsphere.elasticjob.lite.tracing.exception.TracingConfigurationException: org.h2.jdbc.JdbcSQLException: Table "JOB_EXECUTION_LOG" already exists; SQL statement: CREATE TABLE JOB_EXECUTION_LOG (id CHARACTER(40) NOT NULL, job_name CHARACTER(100) NOT NULL, task_id CHARACTER(255) NOT NULL, hostname CHARACTER(255) NOT NULL, ip CHARACTER(50) NOT NULL, sharding_item INTEGER NOT NULL, execution_source CHARACTER(20) NOT NULL, failure_cause CHARACTER VARYING(4000) NULL, is_success INTEGER NOT NULL, start_time TIMESTAMP NULL, complete_time TIMESTAMP NULL, PRIMARY KEY (id)) [42101-184] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.listener.RDBTracingListenerConfiguration.createTracingListener(RDBTracingListenerConfiguration.java:37) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.listener.RDBTracingListenerConfiguration.createTracingListener(RDBTracingListenerConfiguration.java:30) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.listener.TracingListenerFactory.getListener(TracingListenerFactory.java:56) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.JobEventBus.register(JobEventBus.java:68) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.JobEventBus.&lt;init&gt;(JobEventBus.java:56) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobFacade.&lt;init&gt;(LiteJobFacade.java:71) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.executor.ElasticJobExecutor.&lt;init&gt;(ElasticJobExecutor.java:82) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.executor.ElasticJobExecutor.&lt;init&gt;(ElasticJobExecutor.java:69) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob.createExecutor(LiteJob.java:56) [classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob.execute(LiteJob.java:52) [classes/:na] at org.quartz.core.JobRunShell.run(JobRunShell.java:202) [quartz-2.3.2.jar:na] at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) [quartz-2.3.2.jar:na] Caused by: org.h2.jdbc.JdbcSQLException: Table "JOB_EXECUTION_LOG" already exists; SQL statement: CREATE TABLE JOB_EXECUTION_LOG (id CHARACTER(40) NOT NULL, job_name CHARACTER(100) NOT NULL, task_id CHARACTER(255) NOT NULL, hostname CHARACTER(255) NOT NULL, ip CHARACTER(50) NOT NULL, sharding_item INTEGER NOT NULL, execution_source CHARACTER(20) NOT NULL, failure_cause CHARACTER VARYING(4000) NULL, is_success INTEGER NOT NULL, start_time TIMESTAMP NULL, complete_time TIMESTAMP NULL, PRIMARY KEY (id)) [42101-184] at org.h2.message.DbException.getJdbcSQLException(DbException.java:345) ~[h2-1.4.184.jar:1.4.184] at org.h2.message.DbException.get(DbException.java:179) ~[h2-1.4.184.jar:1.4.184] at org.h2.message.DbException.get(DbException.java:155) ~[h2-1.4.184.jar:1.4.184] at org.h2.command.ddl.CreateTable.update(CreateTable.java:111) ~[h2-1.4.184.jar:1.4.184] at org.h2.command.CommandContainer.update(CommandContainer.java:78) ~[h2-1.4.184.jar:1.4.184] at org.h2.command.Command.executeUpdate(Command.java:254) ~[h2-1.4.184.jar:1.4.184] at org.h2.jdbc.JdbcPreparedStatement.execute(JdbcPreparedStatement.java:198) ~[h2-1.4.184.jar:1.4.184] at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172) ~[commons-dbcp-1.4.jar:1.4] at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172) ~[commons-dbcp-1.4.jar:1.4] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.storage.RDBJobEventStorage.createJobExecutionTable(RDBJobEventStorage.java:132) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.storage.RDBJobEventStorage.createJobExecutionTableAndIndexIfNeeded(RDBJobEventStorage.java:100) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.storage.RDBJobEventStorage.initTablesAndIndexes(RDBJobEventStorage.java:91) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.storage.RDBJobEventStorage.&lt;init&gt;(RDBJobEventStorage.java:74) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.listener.RDBTracingListener.&lt;init&gt;(RDBTracingListener.java:36) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.tracing.rdb.listener.RDBTracingListenerConfiguration.createTracingListener(RDBTracingListenerConfiguration.java:35) ~[classes/:na] ... 11 common frames omitted ```</body>
+		<created>2020-07-05 11:18:22</created>
+		<closed>2020-07-06 04:15:33</closed>
+	</bug>
+	<bug>
+		<id>946</id>
+		<title>Disable job in startup is not in effect sometimes</title>
+		<body>The reason is curator save disable status async, and sometimes not persist to ZooKeeper in time before return.  It will cause Elastic Job judge the server as enabled server.  We should load server status after make sure the server status persist in to ZooKeeper.  - [x] Add ENABLE status - [x] Judge if the server status is empty sleep and reload again</body>
+		<created>2020-07-05 03:51:04</created>
+		<closed>2020-07-05 05:25:56</closed>
+	</bug>
+	<bug>
+		<id>928</id>
+		<title>Test case `org.apache.shardingsphere.elasticjob.lite.integrate.assertion.enable.oneoff.dataflow.StreamingDataflowElasticJobTest` may  block or throw exception sometimes</title>
+		<body>Sometimes the test is block because the `StreamingDataflowElasticJob.isCompleted()` is never return true which maybe by thread safe reason.  The exception will throw sometimes, exception is:  ``` [ERROR] 2020-07-03 19:20:51,443 --Curator-TreeCache-0-- [org.apache.curator.framework.imps.CuratorFrameworkImpl] Ensure path threw exception  java.lang.InterruptedException: null at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedNanos(AbstractQueuedSynchronizer.java:1039) at java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1328) at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:277) at org.apache.curator.CuratorZookeeperClient.internalBlockUntilConnectedOrTimedOut(CuratorZookeeperClient.java:325) at org.apache.curator.RetryLoop.callWithRetry(RetryLoop.java:106) at org.apache.curator.framework.imps.NamespaceImpl.fixForNamespace(NamespaceImpl.java:83) at org.apache.curator.framework.imps.CuratorFrameworkImpl.fixForNamespace(CuratorFrameworkImpl.java:594) at org.apache.curator.framework.imps.ExistsBuilderImpl.forPath(ExistsBuilderImpl.java:151) at org.apache.curator.framework.imps.ExistsBuilderImpl.forPath(ExistsBuilderImpl.java:39) at org.apache.shardingsphere.elasticjob.lite.reg.zookeeper.ZookeeperRegistryCenter.isExisted(ZookeeperRegistryCenter.java:197) at org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage.isJobNodeExisted(JobNodeStorage.java:56) at org.apache.shardingsphere.elasticjob.lite.internal.election.LeaderService.hasLeader(LeaderService.java:91) at org.apache.shardingsphere.elasticjob.lite.internal.election.ElectionListenerManager$LeaderElectionJobListener.isActiveElection(ElectionListenerManager.java:69) at org.apache.shardingsphere.elasticjob.lite.internal.election.ElectionListenerManager$LeaderElectionJobListener.dataChanged(ElectionListenerManager.java:63) at org.apache.shardingsphere.elasticjob.lite.internal.listener.AbstractJobListener.childEvent(AbstractJobListener.java:42) at org.apache.curator.framework.recipes.cache.TreeCache$2.apply(TreeCache.java:732) at org.apache.curator.framework.recipes.cache.TreeCache$2.apply(TreeCache.java:726) at org.apache.curator.framework.listen.ListenerContainer$1.run(ListenerContainer.java:93) at com.google.common.util.concurrent.MoreExecutors$DirectExecutorService.execute(MoreExecutors.java:299) at org.apache.curator.framework.listen.ListenerContainer.forEach(ListenerContainer.java:85) at org.apache.curator.framework.recipes.cache.TreeCache.callListeners(TreeCache.java:725) at org.apache.curator.framework.recipes.cache.TreeCache.access$1400(TreeCache.java:71) at org.apache.curator.framework.recipes.cache.TreeCache$4.run(TreeCache.java:843) at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) at java.util.concurrent.FutureTask.run(FutureTask.java:266) at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) at java.util.concurrent.FutureTask.run(FutureTask.java:266) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at java.lang.Thread.run(Thread.java:748) [ERROR] 2020-07-03 19:20:51,448 --Curator-TreeCache-0-- [org.apache.curator.framework.recipes.cache.TreeCache]   java.lang.NullPointerException: null at org.apache.shardingsphere.elasticjob.lite.internal.server.ServerNode.isLocalServerPath(ServerNode.java:61) at org.apache.shardingsphere.elasticjob.lite.internal.election.ElectionListenerManager$LeaderElectionJobListener.isLocalServerEnabled(ElectionListenerManager.java:81) at org.apache.shardingsphere.elasticjob.lite.internal.election.ElectionListenerManager$LeaderElectionJobListener.isActiveElection(ElectionListenerManager.java:69) at org.apache.shardingsphere.elasticjob.lite.internal.election.ElectionListenerManager$LeaderElectionJobListener.dataChanged(ElectionListenerManager.java:63) at org.apache.shardingsphere.elasticjob.lite.internal.listener.AbstractJobListener.childEvent(AbstractJobListener.java:42) at org.apache.curator.framework.recipes.cache.TreeCache$2.apply(TreeCache.java:732) at org.apache.curator.framework.recipes.cache.TreeCache$2.apply(TreeCache.java:726) at org.apache.curator.framework.listen.ListenerContainer$1.run(ListenerContainer.java:93) at com.google.common.util.concurrent.MoreExecutors$DirectExecutorService.execute(MoreExecutors.java:299) at org.apache.curator.framework.listen.ListenerContainer.forEach(ListenerContainer.java:85) at org.apache.curator.framework.recipes.cache.TreeCache.callListeners(TreeCache.java:725) at org.apache.curator.framework.recipes.cache.TreeCache.access$1400(TreeCache.java:71) at org.apache.curator.framework.recipes.cache.TreeCache$4.run(TreeCache.java:843) at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) at java.util.concurrent.FutureTask.run(FutureTask.java:266) at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) at java.util.concurrent.FutureTask.run(FutureTask.java:266) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at java.lang.Thread.run(Thread.java:748) ```</body>
+		<created>2020-07-03 11:23:16</created>
+		<closed>2020-07-10 04:36:12</closed>
+	</bug>
+	<bug>
+		<id>860</id>
+		<title>Run JobSpringNamespaceWithEventTraceRdbTest throw NPE</title>
+		<body>When run `JobSpringNamespaceWithEventTraceRdbTest` will throw NPE, but not effect test result.  The exception is:  ``` [ERROR] 2020-06-29 01:05:36,357 --Curator-TreeCache-1-- [org.apache.curator.framework.recipes.cache.TreeCache]   java.lang.NullPointerException: null at java.io.StringReader.&lt;init&gt;(StringReader.java:50) ~[na:1.8.0_151] at org.yaml.snakeyaml.reader.StreamReader.&lt;init&gt;(StreamReader.java:63) ~[snakeyaml-1.26.jar:na] at org.yaml.snakeyaml.Yaml.loadAs(Yaml.java:452) ~[snakeyaml-1.26.jar:na] at org.apache.shardingsphere.elasticjob.lite.util.yaml.YamlEngine.unmarshal(YamlEngine.java:49) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationService.load(ConfigurationService.java:60) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.failover.FailoverListenerManager.isFailoverEnabled(FailoverListenerManager.java:69) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.failover.FailoverListenerManager.access$000(FailoverListenerManager.java:38) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.failover.FailoverListenerManager$JobCrashedJobListener.dataChanged(FailoverListenerManager.java:77) ~[classes/:na] at org.apache.shardingsphere.elasticjob.lite.internal.listener.AbstractJobListener.childEvent(AbstractJobListener.java:42) ~[classes/:na] at org.apache.curator.framework.recipes.cache.TreeCache$2.apply(TreeCache.java:732) [curator-recipes-2.10.0.jar:na] at org.apache.curator.framework.recipes.cache.TreeCache$2.apply(TreeCache.java:726) [curator-recipes-2.10.0.jar:na] at org.apache.curator.framework.listen.ListenerContainer$1.run(ListenerContainer.java:93) [curator-framework-2.10.0.jar:na] at com.google.common.util.concurrent.MoreExecutors$DirectExecutorService.execute(MoreExecutors.java:299) [guava-18.0.jar:na] at org.apache.curator.framework.listen.ListenerContainer.forEach(ListenerContainer.java:85) [curator-framework-2.10.0.jar:na] at org.apache.curator.framework.recipes.cache.TreeCache.callListeners(TreeCache.java:725) [curator-recipes-2.10.0.jar:na] at org.apache.curator.framework.recipes.cache.TreeCache.access$1400(TreeCache.java:71) [curator-recipes-2.10.0.jar:na] at org.apache.curator.framework.recipes.cache.TreeCache$4.run(TreeCache.java:843) [curator-recipes-2.10.0.jar:na] at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_151] at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_151] at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_151] at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_151] at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_151] at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_151] at java.lang.Thread.run(Thread.java:748) [na:1.8.0_151] ```  It seems like the failover listener is called before job configuration persist to reg center. It is better to investigate the exception reason.</body>
+		<created>2020-06-28 17:08:19</created>
+		<closed>2020-07-01 13:40:20</closed>
+	</bug>
+	<bug>
+		<id>797</id>
+		<title>Refactor JobScheduleController's shutdown API and JobShutdownHookPlugin</title>
+		<body>The more graceful function to implements shutdown hook is refactor JobShutdownHookPlugin and use the same api like JobRegsitry#shutdown's use when add an shutdown hook.  And to use Quartz's `isCleanShutdown` properties in JobScheduleController#shutdown , it needs to refactor JobScheduleController's shutdown API (add an overload method).</body>
+		<created>2020-06-20 10:08:35</created>
+		<closed>2020-06-29 04:26:11</closed>
+	</bug>
+	<bug>
+		<id>785</id>
+		<title>Enable method bug</title>
+		<body>JobOperationRESTfulAPI#enableJob ``` @DELETE @Path("/{jobName}/disable") ``` Should be ``` @POST @Path("/{jobName}/enable") ``` and the same with ServerOperationRESTfulAPI#enableJob</body>
+		<created>2020-06-17 06:31:47</created>
+		<closed>2020-06-17 08:33:15</closed>
+	</bug>
+	<bug>
+		<id>783</id>
+		<title>Namespace URL error</title>
+		<body>In spring module, spring.handlers and spring.schemas config incorrect url. ``` http\://elaticjob.shardingsphere.apache.org/schema/reg http\://elaticjob.shardingsphere.apache.org/schema/job ``` ``` http\://elaticjob.shardingsphere.apache.org/schema/reg/reg.xsd=META-INF/namespace/reg.xsd http\://elaticjob.shardingsphere.apache.org/schema/job/job.xsd=META-INF/namespace/job.xsd ``` Should be  ``` http\://elasticjob.XXX.XXX ```</body>
+		<created>2020-06-17 04:36:22</created>
+		<closed>2020-06-17 08:36:39</closed>
+	</bug>
+	<bug>
+		<id>689</id>
+		<title>config “reconcile-interval-minutes” with placeholder in Spring will  report errors</title>
+		<body>File Path： elastic-job-lite/elastic-job-lite-spring/src/main/resources/META-INF/namespace/job.xsd   “reconcile-interval-minutes” is declared as an integer  ``` &lt;xsd:attribute name="reconcile-interval-minutes" type="xsd:int" default="10"/&gt; ```  when config “reconcile-interval-minutes” with placeholder in Spring as follows: ```     &lt;job:simple id="xxx" class="xxxxxx"                 registry-center-ref="regCenter"                 sharding-total-count="2" cron="0/10 * * * * ?"                 reconcile-interval-minutes="${job.reconcile.interval.minutes}"             /&gt; ``` it will report error: org.xml.sax.SAXParseException; lineNumber: 30; columnNumber: 35; cvc-datatype-valid.1.2.1: '${job.reconcile.interval.minutes}' 不是 'integer' 的有效值。  Because when spring reads XML, it already validates XSD, which happens before  resolving placeholders. So it's going to report a mistake. </body>
+		<created>2019-10-22 02:35:16</created>
+		<closed>2019-10-30 14:05:25</closed>
+	</bug>
+	<bug>
+		<id>686</id>
+		<title>在任务shutdown后很多资源没有清理</title>
+		<body>资源一： ReconcileService 线程，这个已经有人 提过单了 https://github.com/elasticjob/elastic-job-lite/issues/605  资源二： RegistryCenterConnectionStateListener 每个job会给zk的client加一个RegistryCenterConnectionStateListener，但是任务关闭的时候没清除。  资源三： ExecutorServiceHandlerRegistry里的ExecutorService 每个job一个线程池记录在此，在shutdown任务的时候 没释放。 已经提单 https://github.com/elasticjob/elastic-job-lite/issues/683  资源四： 这个是最难发现的一个资源未释放的 Quartz资源无法释放 JobShutdownHookPlugin把Quartz的关闭 注册给了JVM的 shutdownhook。 这导致即便quatz调度关闭，对象也无法GC回收。 正确的做法应该是在JobShutdownHookPlugin的shutdown方法里，把hook线程 从JVM里remove掉。（当然如果是jvm关闭执行的时候 remove会抛IllegalStateException，异常可忽略）  如果你考虑动态添加删除任务，至少要修改以上四点。    </body>
+		<created>2019-10-19 03:26:40</created>
+		<closed>2020-07-02 04:47:34</closed>
+	</bug>
+	<bug>
+		<id>669</id>
+		<title>失效转移失败</title>
+		<body>问题：失效转移在两台机器实验下不生效，请问是否是我的实验方式有问题？ 场景： 两台机器：192.168.206.202；192.168.206.191， 任务配置如下： @ElasticJobConf(name = "MySimpleJob_1", cron = "* 0/5 * * * ?", failover = true, shardingItemParameters = "0=0,1=1,2=2,3=3", shardingTotalCount=4,description = "简单ce任务")   操作步骤： 1、两台机器先后上线 2、等第一次任务执行完成 3、删除zk节点（jobName/instances下的某个实例节点） 4、触发fialoverlistenermanager中的JobCrashedJobListener 5、但是在获取失效分片的时候shardingService.getShardingItems(jobInstanceId)，有如下代码，直接返回空的失效分片集合了：  if (!serverService.isAvailableServer(jobInstance.getIp())) {             return Collections.emptyList();         }     </body>
+		<created>2019-08-14 12:59:29</created>
+		<closed>2020-06-03 05:40:03</closed>
+	</bug>
+	<bug>
+		<id>631</id>
+		<title>AbstractDistributeOnceElasticJobListener 分布式监听器不起作用</title>
+		<body>Please answer these questions before submitting your issue. Thanks! 开源不易，我们希望将精力放在完成新功能和解决有价值的问题上，为了让大家的配合更具有效率，请填写以下列出的全部问题  ### Which version of Elastic-Job do you using?（您使用的Elastic-Job版本为？） 2.1.5 ### Expected behavior （您预期的结果是） ## Actual behavior （实际运行的结果是） 如介绍的那样，分布式监听器只执行一次 ### Steps to reproduce the behavior （可重现问题的操作步骤） 继承AbstractDistributeOnceElasticJobListener，编写分布式监听器。启动两个应用，查看日志，开始时， 开始方法只执行一次，结束方法两个应用都执行。一段时间后，两个应用都会执行开始和结束方法。 ### Please provide the reproduce example codes (such as github link)，otherwise we will label the issue as Invalid and close it.（为了节省复现问题的时间，请务必提供可重现的代码，否则我们会将issue直接标记为invalid并关闭）  Code should based on https://github.com/elasticjob/elastic-job-example （代码请基于 https://github.com/elasticjob/elastic-job-example） </body>
+		<created>2019-02-28 03:43:18</created>
+		<closed>2020-06-03 05:33:04</closed>
+	</bug>
+	<bug>
+		<id>622</id>
+		<title>ZookeeperRegistryCenter的cache线程不安全，存在并发故障的风险</title>
+		<body>Please answer these questions before submitting your issue. Thanks! 开源不易，我们希望将精力放在完成新功能和解决有价值的问题上，为了让大家的配合更具有效率，请填写以下列出的全部问题  ### Which version of Elastic-Job do you using?（您使用的Elastic-Job版本为？） 2.1.5  ### Steps to reproduce the behavior （可重现问题的操作步骤） 频繁创建作业，并且作业执行完后手动对作业shutdown和remove（删除zookeeper的数据），ZookeeperRegistryCenter.cache就容易出现异常ConcurrentModificationException。  ### 请问这个问题如何解决最安全？如果需要自己修改代码，git上的代码(2.1.6)是否有稳定版本的代码？  谢谢！ </body>
+		<created>2019-01-26 11:39:14</created>
+		<closed>2019-10-31 07:19:13</closed>
+	</bug>
+	<bug>
+		<id>605</id>
+		<title>ReconcileService无法释放回收</title>
+		<body>Please answer these questions before submitting your issue. Thanks! 开源不易，我们希望将精力放在完成新功能和解决有价值的问题上，为了让大家的配合更具有效率，请填写以下列出的全部问题  ### Which version of Elastic-Job do you using?（您使用的Elastic-Job版本为？） 2.1.5 ### Expected behavior （您预期的结果是） 动态创建任务，执行完成删除任务。 删除zookepper job节点，以及删除任务后，任务相关实例 如ReconcileService能够回收，避免内存泄漏 ### Actual behavior （实际运行的结果是） 删除节点后ReconcileService无法回收，一直在执行runOneIteration ![image](https://user-images.githubusercontent.com/31762409/49202698-71aa2500-f3e0-11e8-9b74-76a885eceb1f.png) ![image](https://user-images.githubusercontent.com/31762409/49202724-838bc800-f3e0-11e8-8344-95e7139ad3d3.png)  ### Steps to reproduce the behavior （可重现问题的操作步骤） 1.手工创建任务       new SpringJobScheduler(elasticJob, regCenter, liteJobConfiguration, jobEventRdbConfiguration, elasticJobListeners).init(); 2.手工删除任务   JobRegistry.getInstance().shutdown(jobName);  //清除对象和zookepper缓存    regCenter.remove("/" + jobName);   //清除目录 ### Please provide the reproduce example codes (such as github link)，otherwise we will label the issue as Invalid and close it.（为了节省复现问题的时间，请务必提供可重现的代码，否则我们会将issue直接标记为invalid并关闭）  Code should based on https://github.com/elasticjob/elastic-job-example （代码请基于 https://github.com/elasticjob/elastic-job-example） </body>
+		<created>2018-11-29 06:12:00</created>
+		<closed>2020-07-02 05:07:00</closed>
+	</bug>
+	<bug>
+		<id>571</id>
+		<title>失效转移不会触发</title>
+		<body>Please answer these questions before submitting your issue. Thanks! 开源不易，我们希望将精力放在完成新功能和解决有价值的问题上，为了让大家的配合更具有效率，请填写以下列出的全部问题  ### Which version of Elastic-Job do you using?（您使用的Elastic-Job版本为？） 2.1.5 ### Expected behavior （您预期的结果是） 在kill掉服务后当前执行任务会转移到可用服务器 ### Actual behavior （实际运行的结果是） 并没有实现失效转移 ### Steps to reproduce the behavior （可重现问题的操作步骤） 在两台机器上部署并等待任务执行，任务开始执行后，kill掉一台服务的job进程。 ### Please provide the reproduce example codes (such as github link)，otherwise we will label the issue as Invalid and close it.（为了节省复现问题的时间，请务必提供可重现的代码，否则我们会将issue直接标记为invalid并关闭） beanconfig: `public class SimpleJobConfig {      @Resource     private ZookeeperRegistryCenter regCenter;      @Resource     private JobEventConfiguration jobEventConfiguration;      @Bean     public SimpleJob simpleJob() {         return new MyTestSimpleJob();     }      @Bean(initMethod = "init")     public JobScheduler simpleJobScheduler(final SimpleJob simpleJob, @Value("${simpleJob.cron}") final String cron, @Value("${simpleJob.shardingTotalCount}") final int shardingTotalCount,                                            @Value("${simpleJob.shardingItemParameters}") final String shardingItemParameters) {         return new SpringJobScheduler(simpleJob, regCenter, getLiteJobConfiguration(simpleJob.getClass(), cron, shardingTotalCount, shardingItemParameters), jobEventConfiguration);     }      private LiteJobConfiguration getLiteJobConfiguration(final Class&lt;? extends SimpleJob&gt; jobClass, final String cron, final int shardingTotalCount, final String shardingItemParameters) {         return LiteJobConfiguration.newBuilder(new SimpleJobConfiguration(JobCoreConfiguration.newBuilder(                 jobClass.getName(), cron, shardingTotalCount).shardingItemParameters(shardingItemParameters).failover(true).build(), jobClass.getCanonicalName())).overwrite(true).build();     } }`  ym;配置 simpleJob:   cron: 0 08 17 * * ?   shardingTotalCount: 2   shardingItemParameters : 0=aaa,1=bbb,2=ccc regCenter:         serverList: 10.2.2.117:2182         namespace: myJobTest         baseSleepTimeMilliseconds: 1000  #等待重试的间隔时间的初始值 单位：毫秒         maxSleepTimeMilliseconds: 3000  #等待重试的间隔时间的最大值 job: public class MyTestSimpleJob implements SimpleJob {      @Autowired     TestMapper testMapper;      private int jobCount=0;      @Override     public void execute(ShardingContext shardingContext) {          System.out.println(String.format("------Thread ID: %s, 任务总片数: %s, 当前分片项: %s , 当前执行:%s，次数：%d",                  Thread.currentThread().getId(),shardingContext.getShardingTotalCount(), shardingContext.getShardingItem(),                 shardingContext.getShardingParameter(),jobCount++));         int item = (500000/shardingContext.getShardingTotalCount());         int start = shardingContext.getShardingItem() * item;         int end = (shardingContext.getShardingItem()+1) * item;         List&lt;TestEntity&gt; testEntities = testMapper.jobProcess(start,end);         for (TestEntity testEntity : testEntities) {                 if(testEntity.getId() == 40000){                     end = end/0;                 }                 testMapper.process(testEntity.getId());         }     }  } Code should based on https://github.com/elasticjob/elastic-job-example （代码请基于 https://github.com/elasticjob/elastic-job-example） </body>
+		<created>2018-08-22 09:30:37</created>
+		<closed>2020-06-03 05:39:56</closed>
+	</bug>
+	<bug>
+		<id>526</id>
+		<title>失效转移的问题讨论</title>
+		<body>在使用Elastic-Job的失效转移功能时，遇到问题，kill掉服务进程或者断网处理后，没有达到失效转移的目的，配置中我已经设置了failover=true。 研究源码发现，源码中进入失效转移监听器的条件是instance下有节点被removed，我kill掉服务进程，instance下有节点被删除，可以正常进入监听器，但是在监听器内部要去查询该应用服务器分配的任务项并分配给其他空闲的应用服务器，在查询被removed的instance已分配任务项时，有一个限制条件instance必须存在，这跟进入监听器的条件instance被removed相矛盾。请有了解失效转移机制的同学一块交流一下  ### Which version of Elastic-Job do you using?（您使用的Elastic-Job版本为？） 2.1.5  ### Expected behavior （您预期的结果是） kill掉进程或者断网，该instance上的任务项，应该由其他空闲服务器执行  ### Actual behavior （实际运行的结果是） kill掉进程或者断网后，该instance上的任务项，并没有转移到其他服务器执行，而是等到下次任务启动时，进行了任务的重新分片，相当于被kill掉的instance上任务少执行了一次  ### Steps to reproduce the behavior （可重现问题的操作步骤） 配置failover=true，任务分10片，启动三台服务器，任务开始执行后，kill掉其中一个服务器，观察被kill的服务器上的任务没有转移到其他服务器  ### Please provide the reproduce example codes (such as github link)，otherwise we will label the issue as Invalid and close it.（为了节省复现问题的时间，请务必提供可重现的代码，否则我们会将issue直接标记为invalid并关闭）  Code should based on https://github.com/elasticjob/elastic-job-example （代码请基于 https://github.com/elasticjob/elastic-job-example） </body>
+		<created>2018-05-14 03:13:41</created>
+		<closed>2020-06-03 05:39:48</closed>
+	</bug>
+	<bug>
+		<id>523</id>
+		<title>有服务器节点挂掉，没有实现失效转移，从源码看应该是bug</title>
+		<body>试了各种办法模拟失效转移都不成功，仔细研究了源码，发现源码中有个小bug。 `class JobCrashedJobListener extends AbstractJobListener {                  @Override         protected void dataChanged(final String path, final Type eventType, final String data) {             if (isFailoverEnabled() &amp;&amp; Type.NODE_REMOVED == eventType &amp;&amp; instanceNode.isInstancePath(path)) {                 String jobInstanceId = path.substring(instanceNode.getInstanceFullPath().length() + 1);                 if (jobInstanceId.equals(JobRegistry.getInstance().getJobInstance(jobName).getJobInstanceId())) {                     return;                 }                 List&lt;Integer&gt; failoverItems = failoverService.getFailoverItems(jobInstanceId);                 if (!failoverItems.isEmpty()) {                     for (int each : failoverItems) {                         failoverService.setCrashedFailoverFlag(each);                         failoverService.failoverIfNecessary();                     }                 } else {                     for (int each : shardingService.getShardingItems(jobInstanceId)) {                         failoverService.setCrashedFailoverFlag(each);                         failoverService.failoverIfNecessary();                     }                 }             }         }     }`  失效转移是从这个监听器开始的，当zookeeper上有服务器节点被Removed时，触发监听，查询该服务器被分配的任务项 `public List&lt;Integer&gt; getShardingItems(final String jobInstanceId) {         JobInstance jobInstance = new JobInstance(jobInstanceId);         if (!serverService.isAvailableServer(jobInstance.getIp())) {             return Collections.emptyList();         }         List&lt;Integer&gt; result = new LinkedList&lt;&gt;();         int shardingTotalCount = configService.load(true).getTypeConfig().getCoreConfig().getShardingTotalCount();         for (int i = 0; i &lt; shardingTotalCount; i++) {             if (jobInstance.getJobInstanceId().equals(jobNodeStorage.getJobNodeData(ShardingNode.getInstanceNode(i)))) {                 result.add(i);             }         }         return result;     }` 在查询宕机服务器分配的任务项时，先判断该服务器是否可用，如果可用，才继续查询 `public boolean isAvailableServer(final String ip) {         return isEnableServer(ip) &amp;&amp; hasOnlineInstances(ip);     }          private boolean hasOnlineInstances(final String ip) {         for (String each : jobNodeStorage.getJobNodeChildrenKeys(InstanceNode.ROOT)) {             if (each.startsWith(ip)) {                 return true;             }         }         return false;     }` 判断服务器节点是否可用的方法如上，如果服务器节点存在，认为可用，这与上面失效转移监听被触发的条件（服务器节点被removed）相矛盾  </body>
+		<created>2018-05-11 10:04:44</created>
+		<closed>2020-06-03 05:39:37</closed>
+	</bug>
+	<bug>
+		<id>514</id>
+		<title>job启动完成后,控制台一直显示分片待调整</title>
+		<body>Please answer these questions before submitting your issue. Thanks! 开源不易，我们希望将精力放在完成新功能和解决有价值的问题上，为了让大家的配合更具有效率，请填写以下列出的全部问题  ### Which version of Elastic-Job do you using?（您使用的Elastic-Job版本为？） 2.1.4  zk服务版本是3.4.6，和demo中zk版本一致 ### Expected behavior （您预期的结果是） 对于每天执行一次的任务,比如每天0点执行，在服务启动完成后,可以手动通过job控制台按钮触发一次 ### Actual behavior （实际运行的结果是） job控制台一直显示分片待调整,没有触发job的按钮 ### Steps to reproduce the behavior （可重现问题的操作步骤） 设置一个job比如每天0点执行，启动job，打开job控制台 ### Please provide the reproduce example codes (such as github link)，otherwise we will label the issue as Invalid and close it.（为了节省复现问题的时间，请务必提供可重现的代码，否则我们会将issue直接标记为invalid并关闭）  Code should based on https://github.com/elasticjob/elastic-job-example （代码请基于 https://github.com/elasticjob/elastic-job-example） </body>
+		<created>2018-04-27 03:10:15</created>
+		<closed>2020-07-02 05:23:33</closed>
+	</bug>
+	<bug>
+		<id>487</id>
+		<title>AbstractDistributeOnceElasticJobListener的doBeforeJobExecutedAtLastStarted执行了多次</title>
+		<body>Please answer these questions before submitting your issue. Thanks! 开源不易，我们希望将精力放在完成新功能和解决有价值的问题上，为了让大家的配合更具有效率，请填写以下列出的全部问题  ### Which version of Elastic-Job do you using?（您使用的Elastic-Job版本为？） 2.1.5 ### Expected behavior （您预期的结果是） 加入了AbstractDistributeOnceElasticJobListener的job在集群环境下应该只有一个分片去判断并执行doBeforeJobExecutedAtLastStarted。从类注释“在分布式作业中只执行一次的监听器.”来看应该也是这个意思。 ### Actual behavior （实际运行的结果是） 如果在集群下部署多个job实例，通过log打印来看，doBeforeJobExecutedAtLastStarted被执行了多次，即如下的代码中if (guaranteeService.isAllCompleted())被多个实例节点判断都为true     @Override     public final void beforeJobExecuted(final ShardingContexts shardingContexts) {         guaranteeService.registerStart(shardingContexts.getShardingItemParameters().keySet());         if (guaranteeService.isAllStarted()) {             doBeforeJobExecutedAtLastStarted(shardingContexts);             guaranteeService.clearAllStartedInfo();             return;         }         long before = timeService.getCurrentMillis();         try {             synchronized (startedWait) {                 startedWait.wait(startedTimeoutMilliseconds);             }         } catch (final InterruptedException ex) {             Thread.interrupted();         }         if (timeService.getCurrentMillis() - before &gt;= startedTimeoutMilliseconds) {             guaranteeService.clearAllStartedInfo();             handleTimeout(startedTimeoutMilliseconds);         }     } ### Steps to reproduce the behavior （可重现问题的操作步骤） 该问题在线下重现几率较低，生产环境出现概率很高，job的执行周期为每3分钟执行一次。第一次执行时，不会出现多个实例节点都执行doBeforeJobExecutedAtLastStarted的情况，但是从第二次之后，每次都会出现。 ### Please provide the reproduce example codes (such as github link)，otherwise we will label the issue as Invalid and close it.（为了节省复现问题的时间，请务必提供可重现的代码，否则我们会将issue直接标记为invalid并关闭）  Code should based on https://github.com/elasticjob/elastic-job-example （代码请基于 https://github.com/elasticjob/elastic-job-example） </body>
+		<created>2018-03-05 06:11:09</created>
+		<closed>2020-06-03 05:33:13</closed>
+	</bug>
+	<bug>
+		<id>472</id>
+		<title>Job 不支持事务注解 @Transactional</title>
+		<body>在一个继承了 SimpleJob 的任务内，在某个函数前加上 `@Transactional`注解后，启动时会报如下异常： ``` Caused by: com.dangdang.ddframe.job.exception.JobConfigurationException: Job conflict with register center. The job 'bill_day' in register center's class is 'xxx.task.BillJob', your job class is 'xxx.task.BillJob$$EnhancerBySpringCGLIB$$c6d64d7f' ``` 报错在 ConfigurationService.class 的 79 行。看起来是检查 Zookeeper 配置的 config 中配置的 class  名时抛出的异常。ZK 上 config 配置的的 class 为之前配置的 BillJob 类的全限定名。后来加上了 `@Transactional`之后，检验的类名成了 Spring 代理类的名称，于是就错了。  又试了把 Zookeeper 上该任务的 config 删掉，第一次启动成功了，第二次启动又报错： ``` Caused by: com.dangdang.ddframe.job.exception.JobConfigurationException: Job conflict with register center. The job 'bill_day' in register center's class is 'xxx.task.BillJob$$EnhancerBySpringCGLIB$$d030d726', your job class is 'xxx.task.BillJob$$EnhancerBySpringCGLIB$$ec4064c6' ``` 意料之中。  这种问题该如何解决呢？难道 Job 类的代码里不能用事务么。又或者当我的 job 文件不能改名或不能路径不能变动么（会出现同样的类名校验问题）？   </body>
+		<created>2018-01-22 08:48:05</created>
+		<closed>2020-07-13 05:45:41</closed>
+	</bug>
+	<bug>
+		<id>469</id>
+		<title>overwrite覆盖注册中心配置Bug</title>
+		<body>当刚开始shardingTotalCount配置为0的时候，启动会报下面的异常： Caused by: java.lang.IllegalArgumentException: shardingTotalCount should larger than zero.  然后把shardingTotalCount改成1，加上overwrite=“true” 这个时候是不会去覆盖默认的配置，这个问题应该是如果注册中心的配置是错误的情况下，就不能用overwrite去覆盖了，只能通过手动的去删除zk中的配置信息了，这个算不算bug?</body>
+		<created>2018-01-14 04:12:54</created>
+		<closed>2020-07-07 02:33:30</closed>
+	</bug>
+	<bug>
+		<id>461</id>
+		<title>从控制台中enable一个job之后，job不运行</title>
+		<body>使用lite2.1.5版本启动一个SimpleJob，设置如下： simple.id=springSimpleJob simple.class=com.dangdang.ddframe.job.example.jobs.SpringSimpleJob simple.cron=0 0/1 * * * ? simple.shardingTotalCount=3 simple.shardingItemParameters=0=Beijing,1=Shanghai,2=Guangzhou simple.failover=true simple.description=test simple.disabled=true simple.overwrite=true  控制台点击该job的enable按钮之后，任务不执行。如果disable设置为false，程序启动自动运行的话，任务是可以跑的</body>
+		<created>2017-12-27 07:46:36</created>
+		<closed>2020-07-13 14:01:42</closed>
+	</bug>
+	<bug>
+		<id>451</id>
+		<title>got ConcurrentModificationException when startup jobs</title>
+		<body>Please answer these questions before submitting your issue. Thanks!  ### Which version of Elastic-Job do you using? 2.1.0 lite  ### Expected behavior start jobs without exception  ### Actual behavior got exception ### Steps to reproduce the behavior normal start, but cannot reproduce it every time  ### Please provide the reproduce example codes (such as github link) if possible.  ``` [ERROR] [dschedule] 2017-12-13 13:12:24: 6994 [Curator-TreeCache-1] ( TreeCache.java,751 ) -  java.util.ConcurrentModificationException     at java.util.HashMap$HashIterator.nextEntry(HashMap.java:922)     at java.util.HashMap$EntryIterator.next(HashMap.java:962)     at java.util.HashMap$EntryIterator.next(HashMap.java:960)     at com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter.findTreeCache(ZookeeperRegistryCenter.java:147)     at com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter.get(ZookeeperRegistryCenter.java:135)     at com.dangdang.ddframe.job.lite.internal.storage.JobNodeStorage.getJobNodeData(JobNodeStorage.java:72)     at com.dangdang.ddframe.job.lite.internal.config.ConfigurationService.load(ConfigurationService.java:54)     at com.dangdang.ddframe.job.lite.internal.failover.FailoverListenerManager.isJobCrashAndNeedFailover(FailoverListenerManager.java:82)     at com.dangdang.ddframe.job.lite.internal.failover.FailoverListenerManager.failover(FailoverListenerManager.java:72)     at com.dangdang.ddframe.job.lite.internal.failover.FailoverListenerManager.access$100(FailoverListenerManager.java:37)     at com.dangdang.ddframe.job.lite.internal.failover.FailoverListenerManager$FailoverJobCrashedJobListener.dataChanged(FailoverListenerManager.java:99)     at com.dangdang.ddframe.job.lite.internal.listener.AbstractJobListener.childEvent(AbstractJobListener.java:44) ```</body>
+		<created>2017-12-13 06:07:47</created>
+		<closed>2019-10-31 09:13:12</closed>
+	</bug>
+	<bug>
+		<id>384</id>
+		<title>ContextClassLoader is null</title>
+		<body>### Which version of Elastic-Job do you using?  2.1.5  ### Expected behavior  Cloud Job invoke `Thread.currentThread().getContextClassLoader()` return app class loader  ### Actual behavior  Cloud Job invoke `Thread.currentThread().getContextClassLoader()` return null  ### Steps to reproduce the behavior  Implementing a simple job will get previous result  ### Reason  Cloud Executor uses native codes(mesoslib) to create thread which lacking context class loader. Some frameworks(eg. [dubbo](https://github.com/alibaba/dubbo)) relying on this feature will malfunction.    </body>
+		<created>2017-07-12 06:27:45</created>
+		<closed>2017-07-12 06:53:15</closed>
+	</bug>
+	<bug>
+		<id>383</id>
+		<title>界面验证错误，不应校验监听端口下限</title>
+		<body></body>
+		<created>2017-07-10 09:37:14</created>
+		<closed>2017-07-10 09:37:18</closed>
+	</bug>
+	<bug>
+		<id>382</id>
+		<title>界面验证错误，不应校验分片总数上限</title>
+		<body></body>
+		<created>2017-07-10 09:36:08</created>
+		<closed>2017-07-10 09:36:19</closed>
+	</bug>
+	<bug>
+		<id>367</id>
+		<title>Resuming Transient Job is abnormal</title>
+		<body>### Which version of Elastic-Job do you using? 2.1.4  ### Expected behavior Disable the job and then resume the job, then triggered by cron expression.   ### Actual behavior Disable the job and then resume the job, immediately triggered several times.  ### Steps to reproduce the behavior Disable the transient job(cron 0/30 * * * * ?) with "misfire" parameter, wait several minutes, then resume it. </body>
+		<created>2017-06-29 02:35:03</created>
+		<closed>2017-07-03 07:37:25</closed>
+	</bug>
+	<bug>
+		<id>351</id>
+		<title>console管理后台添加注册中心，登录凭证栏无法输入‘:‘</title>
+		<body>Please answer these questions before submitting your issue. Thanks!  ### Which version of Elastic-Job do you using? 2.1.1 ### Expected behavior  ### Actual behavior  ### Steps to reproduce the behavior  ### Please provide the reproduce example codes (such as github link) if possible. </body>
+		<created>2017-06-05 06:55:38</created>
+		<closed>2017-06-06 03:49:01</closed>
+	</bug>
+	<bug>
+		<id>345</id>
+		<title>2.1.3 elastic-job-lite-console任务全部禁用时状态显示不正确</title>
+		<body>当只有一个实例来跑3个分片的任务时，overwrite=true disabled=true 重启后console显示该任务的状态是_永远分片调整中_，期望是**禁用**。  重现步骤： 修改elastic-job-example-lite-spring项目job.properties配置中的simple.disabled=true然后再次运行该例子，然后去console查看springSimpleJob状态。</body>
+		<created>2017-06-01 11:55:55</created>
+		<closed>2017-06-06 06:48:47</closed>
+	</bug>
+	<bug>
+		<id>343</id>
+		<title>elastic-job-cloud中Script类型作业执行脚本不正确</title>
+		<body></body>
+		<created>2017-05-31 09:29:40</created>
+		<closed>2017-06-06 03:49:33</closed>
+	</bug>
+	<bug>
+		<id>341</id>
+		<title>elastic-job-cloud界面script作业配置缺少执行脚本</title>
+		<body> </body>
+		<created>2017-05-31 03:13:53</created>
+		<closed>2017-05-31 03:18:17</closed>
+	</bug>
+	<bug>
+		<id>335</id>
+		<title>elastic-job-lite界面guest账户在conf\auth.properties文件中配置不起作用</title>
+		<body></body>
+		<created>2017-05-26 05:49:01</created>
+		<closed>2017-05-26 10:10:13</closed>
+	</bug>
+	<bug>
+		<id>334</id>
+		<title>elastic-job-lite界面在windows平台上找不到conf\auth.properties文件</title>
+		<body></body>
+		<created>2017-05-26 04:56:25</created>
+		<closed>2017-05-26 05:49:26</closed>
+	</bug>
+	<bug>
+		<id>333</id>
+		<title>elastic-job-lite界面中注册中心配置中登录凭证隐式显示</title>
+		<body></body>
+		<created>2017-05-24 07:28:03</created>
+		<closed>2017-05-24 07:29:09</closed>
+	</bug>
+	<bug>
+		<id>322</id>
+		<title>Elastic job schedules jobs using jobConfig.cpu/mem while mesos master validates using jobConfig.cpu + appConfig.cpu causing job constantly failing; The same is true for memory and disk.</title>
+		<body>Please answer these questions before submitting your issue. Thanks!  ### Which version of Elastic-Job do you using? Latest release, aka, 2.1.2  ### Expected behavior Task should be distributed to mesos agent with sufficient resources.  ### Actual behavior Tasks is constantly assigned to the same mesos broker with insufficient resource(CPU, memory)  ### Steps to reproduce the behavior 1. Start a cluster with two or more agents 2. Launch a task taking up part of resource of the first mesos agent; 3. Launch a second task whose job cpu requirement is less than the first mesos agent remaining while app.cpuCount + job.cpuCount exceeds the first mesos agent's resources available. 4. The second launched job keeps failing.  ### Please provide the reproduce example codes (such as github link) if possible. Example jobs suffice. </body>
+		<created>2017-05-17 10:43:02</created>
+		<closed>2017-06-06 13:23:43</closed>
+	</bug>
+	<bug>
+		<id>321</id>
+		<title>新版2.1.2的console版本在添加注册中心时命名空间不支持/</title>
+		<body>版本：2.1.2  新版2.1.2的console版本在添加注册中心时命名空间不支持/ zk在使用时会根据不同的业务组分配不同的根命名空间，使用到zk的地方都会在此命名空间进行新增节点，避免出现节点使用混乱或冲突的情况，但发现2.1.2的console添加注册中心时不在支持使用 / 。</body>
+		<created>2017-05-17 03:52:06</created>
+		<closed>2017-05-22 03:10:17</closed>
+	</bug>
+	<bug>
+		<id>310</id>
+		<title>配置检查本机与注册中心的时间误差秒后，创建过多sequence节点</title>
+		<body></body>
+		<created>2017-05-09 03:55:07</created>
+		<closed>2017-05-09 06:25:24</closed>
+	</bug>
+	<bug>
+		<id>306</id>
+		<title>切换是否监控作业执行状态且作业间隔时间短时可能发生作业无法继续运行</title>
+		<body></body>
+		<created>2017-05-05 00:54:08</created>
+		<closed>2017-05-05 00:55:45</closed>
+	</bug>
+	<bug>
+		<id>290</id>
+		<title>Elastic-Job-Cloud删除被禁用的APP或JOB时，对应的disabled节点数据无法删除</title>
+		<body></body>
+		<created>2017-04-18 09:03:01</created>
+		<closed>2017-04-19 02:04:54</closed>
+	</bug>
+	<bug>
+		<id>283</id>
+		<title>作业不设置overwrite且本地配置与注册中心不一致时，作业启动的cron应以注册中心为准 v2.1.0</title>
+		<body></body>
+		<created>2017-04-13 13:12:50</created>
+		<closed>2017-04-13 13:15:07</closed>
+	</bug>
+	<bug>
+		<id>280</id>
+		<title>Console作业历史页面的历史状态显示不正确</title>
+		<body>发现Console中的一个BUG，版本是2.1.0，操作步骤：1、点击作业历史下面的历史状态；2、接着点击作业历史下面的历史轨迹。结果：所有配置信息失效，重新刷新页面又恢复。</body>
+		<created>2017-04-13 09:48:11</created>
+		<closed>2017-04-13 13:19:27</closed>
+	</bug>
+	<bug>
+		<id>279</id>
+		<title>添加事件追踪数据源,数据库连接地址不能带参数</title>
+		<body>数据库连接地址不能带参数 </body>
+		<created>2017-04-13 09:05:04</created>
+		<closed>2017-04-14 12:01:20</closed>
+	</bug>
+	<bug>
+		<id>276</id>
+		<title>开启失效转移且分片任务执行后，任务会重复执行 by v2.1.0</title>
+		<body>总共4个分片，但是每次0这个分片总是在4个分片执行完后，多了个线程把0这个分片又重新执行了一次 ，也就是每次一个轮训就要有一个分片被多执行一次，每次重复执行的那次的线程名称明显可以看出可其他的不太一致（当failover设置为true时存在此问题，failover为false是没有此问题） 下面是任务输出的信息：   [ob-myTestJob7-3] com.boot.job.MyJob    : ==========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=2, shardingParameter=C)  [ob-myTestJob7-2] com.boot.job.MyJob    : ========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=1, shardingParameter=B)  [ob-myTestJob7-4] com.boot.job.MyJob    : ========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=3, shardingParameter=D)  [ob-myTestJob7-1] com.boot.job.MyJob    : =========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=0, shardingParameter=A)  [stJob7_Worker-1] com.boot.job.MyJob    : =========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=0, shardingParameter=A)  [ob-myTestJob7-5] com.boot.job.MyJob    : ==========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=0, shardingParameter=A)  [ob-myTestJob7-7] com.boot.job.MyJob    : =========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=2, shardingParameter=C) [ob-myTestJob7-6] com.boot.job.MyJob     : ==========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=1, shardingParameter=B)  [ob-myTestJob7-8] com.boot.job.MyJob    : ========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0,1,2,3@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=3, shardingParameter=D)  [stJob7_Worker-1] com.boot.job.MyJob   : =========开始执行定时任务ShardingContext(jobName=myTestJob7, taskId=myTestJob7@-@0@-@READY@-@10.10.8.221@-@8eff493d-92e4-4415-a437-b4b38ceca74b, shardingTotalCount=4, jobParameter=ss, shardingItem=0, shardingParameter=A)</body>
+		<created>2017-04-13 07:21:27</created>
+		<closed>2017-04-14 07:56:02</closed>
+	</bug>
+	<bug>
+		<id>275</id>
+		<title>2.1.0停掉zk以后，再重新启动，任务不会继续执行</title>
+		<body>2.1.0停掉zk以后，再重新启动，任务不会继续执行</body>
+		<created>2017-04-13 06:56:42</created>
+		<closed>2017-04-13 12:49:22</closed>
+	</bug>
+	<bug>
+		<id>272</id>
+		<title>Elastic-Job-Lite界面作业维度，只有全部服务器被禁用时，才应显示为被禁用</title>
+		<body></body>
+		<created>2017-04-11 11:18:57</created>
+		<closed>2017-04-11 11:39:39</closed>
+	</bug>
+	<bug>
+		<id>270</id>
+		<title>2.1.0 版本控制台，点击按钮后发起两次请求</title>
+		<body>![image](https://cloud.githubusercontent.com/assets/8586794/24861565/c7599ca6-1e2b-11e7-80fe-a4579aca3316.png) </body>
+		<created>2017-04-10 12:25:09</created>
+		<closed>2017-04-14 12:01:30</closed>
+	</bug>
+	<bug>
+		<id>269</id>
+		<title>EventTrace失败记录不受采样率影响并且记录失败时间</title>
+		<body></body>
+		<created>2017-04-10 09:41:35</created>
+		<closed>2017-04-10 09:52:56</closed>
+	</bug>
+	<bug>
+		<id>266</id>
+		<title>Elastic-Job-Lite启动脚本指定端口无效</title>
+		<body></body>
+		<created>2017-04-10 06:45:15</created>
+		<closed>2017-04-10 07:04:37</closed>
+	</bug>
+	<bug>
+		<id>255</id>
+		<title>com.jd.taurus.lite.config.LiteJobConfiguration.Builder#jobShardingStrategy注释参数解释有误</title>
+		<body>![image](https://cloud.githubusercontent.com/assets/2841490/24283041/3c648510-109e-11e7-8566-c2b1d46f1d13.png) </body>
+		<created>2017-03-24 06:30:24</created>
+		<closed>2017-04-01 12:30:33</closed>
+	</bug>
+	<bug>
+		<id>250</id>
+		<title>Misfire任务多触发一次</title>
+		<body></body>
+		<created>2017-03-22 02:41:18</created>
+		<closed>2017-03-22 03:04:55</closed>
+	</bug>
+	<bug>
+		<id>246</id>
+		<title>job在通过 JobOperateAPI.remove()后再 JobScheduler init 创建相同job后会导致 “立即执行一次” trigger 多次执行</title>
+		<body>问题描述见标题，我大概找到了问题原因： 主要是因为 JobScheduleController 在 shutdown 的时候没有同时释放 regCenter treeCache 缓存中的listenner，每次init() job 都会重复 addListener。（ 这个问题应该不只是trigger有, 比如JobPausedStatusJobListenner 都可能会被重复add ），我现在的解决办法是在调用 JobScheduler init的之前先执行下面这段代码，这样可以避免这个问题：  val cachePath = "/" + job.getJobName(); val cache = (TreeCache) regCenter.getRawCache(cachePath); if (cache != null) {     log.info("任务【" + job.getJobName() + "】clear regCenter cache " + cachePath);     cache.close();     regCenter.remove(cachePath); }  我不是特别肯定这是程序bug，或者有其它的考虑，请亮哥判断下。 根本的问题是  Quartz 的 原生 schedule  里面的 trigger 对象被添加了好多次，如果重启服务器则不会有这个问题。 问题分析中源码的关键位置：  JobNodeStorage.java /**      * 注册数据监听器.      *       * @param listener 数据监听器      */     public void addDataListener(final TreeCacheListener listener) {         TreeCache cache = (TreeCache) regCenter.getRawCache("/" + jobName);         cache.getListenable().addListener(listener);     }   JobOperationListenerManager.java     @Override     public void start() {         addConnectionStateListener(new ConnectionLostListener());         addDataListener(new JobTriggerStatusJobListener());         addDataListener(new JobPausedStatusJobListener());         addDataListener(new JobShutdownStatusJobListener());     }   </body>
+		<created>2017-03-18 01:51:05</created>
+		<closed>2017-03-21 06:42:48</closed>
+	</bug>
+	<bug>
+		<id>238</id>
+		<title>ip正则表达式错误</title>
+		<body>SensitiveInfoUtils类中ip正则表达式错误，正确的ipv4正则如下：  public static final String IPV4_REGEX = "((\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])(\\.(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])){3})"; 这个是ipv4的 建议考虑下后期ipv6</body>
+		<created>2017-03-01 01:26:49</created>
+		<closed>2017-03-21 06:53:40</closed>
+	</bug>
+	<bug>
+		<id>237</id>
+		<title>无法更新zk上sharding-total-count为0的定时任务config节点</title>
+		<body>使用版本：             &lt;dependency&gt;                 &lt;groupId&gt;com.dangdang&lt;/groupId&gt;                 &lt;artifactId&gt;elastic-job-lite-core&lt;/artifactId&gt;                 &lt;version&gt;2.0.3&lt;/version&gt;             &lt;/dependency&gt; 问题描述：        将一个定时任务的sharding-total-count属性配置为0，启动项目正常报错。之后将sharding-total-count修改为正确的大于0的数值（overwrite属性为true），项目仍然报同样的异常，即“sharding-total-count 应该大于0”。        同时，查看ZK上的config节点数据，发现sharding-total-count仍然为0，没有被覆盖。</body>
+		<created>2017-02-27 01:46:24</created>
+		<closed>2017-03-21 07:21:28</closed>
+	</bug>
+	<bug>
+		<id>231</id>
+		<title>批量删除cloud作业时，mesos会提前同步TASK_LOST消息给framework，导致作业被重新放入ready队列并执行</title>
+		<body></body>
+		<created>2017-02-10 01:24:48</created>
+		<closed>2017-02-10 01:26:32</closed>
+	</bug>
+	<bug>
+		<id>225</id>
+		<title>JOB_EXECUTION_LOG表start_time时间记录不正确</title>
+		<body>JOB_EXECUTION_LOG表的start_time列类型为TIMESTAMP NOT NULL， 在mysql数据库下当UPDATE时，会自动将值更新为CURRENT_TIMESTAMP</body>
+		<created>2017-02-07 06:26:54</created>
+		<closed>2017-02-08 03:54:46</closed>
+	</bug>
+	<bug>
+		<id>204</id>
+		<title>异步事件执行消息顺序不一致导致数据库数据不准确</title>
+		<body></body>
+		<created>2016-12-30 11:11:27</created>
+		<closed>2016-12-30 11:19:05</closed>
+	</bug>
+	<bug>
+		<id>189</id>
+		<title>管理后台执行失效操作，但任务还在执行</title>
+		<body>elastic-job-lite-console 版本：2.0.3 操作前状态：运行状态 现象：在管理后台点击“失效”按钮，前台返回操作成功，但是后台任务还在执行，已确认和任务逻辑无关，Job里面什么逻辑都不写也是一样。</body>
+		<created>2016-12-03 15:00:36</created>
+		<closed>2016-12-07 04:09:47</closed>
+	</bug>
+	<bug>
+		<id>185</id>
+		<title>Executor多占用分片资源导致资源浪费问题</title>
+		<body>将Executor默认占用资源设置为Cpu0.1，Memory32MB</body>
+		<created>2016-11-29 08:40:35</created>
+		<closed>2016-11-29 08:42:07</closed>
+	</bug>
+	<bug>
+		<id>177</id>
+		<title>2.0.2版本Spring命名空间的job:script空指针</title>
+		<body></body>
+		<created>2016-11-22 13:07:41</created>
+		<closed>2016-11-22 13:11:39</closed>
+	</bug>
+	<bug>
+		<id>165</id>
+		<title>所有服务节点都disable时会导致分片线程死锁</title>
+		<body>修改为服务节点都disable时不进行分片，直接返回</body>
+		<created>2016-11-11 15:20:37</created>
+		<closed>2016-11-11 15:22:51</closed>
+	</bug>
+	<bug>
+		<id>163</id>
+		<title>任务设置disable＝true后，启动项目还是会自动执行任务</title>
+		<body>已检查zookeeper config中的配置， 也是disable＝true，但是启动项目还是会自动执行任务</body>
+		<created>2016-11-10 09:20:12</created>
+		<closed>2016-11-11 12:03:31</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>Cloud版本的失效转移仅在TASK_LOST和TASK_ERROR时生效</title>
+		<body>TASK_FAILED和TASK_ERROR的区别在于，TASK_FAILED是executor执行时异常导致executor关闭，TASK_ERROR是scheduler分配任务失败。 因此，失效转移只需要在TASK_ERROR和TASK_LOST做，TASK_FAILED都是业务异常引起，失效转移只会产生雪崩效应。</body>
+		<created>2016-11-10 07:52:19</created>
+		<closed>2016-11-10 14:59:46</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>Lite版本部署至某些版本的Tomcat无法启动</title>
+		<body>Elastic Job使用jetty的内嵌server启动restful api，与某些tomcat的servlet api冲突，导致tomcat中的作业不能启动。  将jetty调整至core之外的模块，仅在elastic-job-cloud-scheduler和elastic-job-lite-lifecycle模块引用。对elastic-job-lite-core和elastic-job-cloud-executor再无影响</body>
+		<created>2016-11-10 06:51:38</created>
+		<closed>2016-11-10 06:55:21</closed>
+	</bug>
+	<bug>
+		<id>158</id>
+		<title>作业在暂停时错过分片时机将不会再分片</title>
+		<body>情况如下图： ![1](https://cloud.githubusercontent.com/assets/5645103/20129588/ccb31974-a68b-11e6-8e25-33736772b5e8.jpg) </body>
+		<created>2016-11-09 06:50:35</created>
+		<closed>2016-11-11 15:57:27</closed>
+	</bug>
+	<bug>
+		<id>152</id>
+		<title>job自定义异常处理器无效，总是被DefaultJobExceptionHandler处理</title>
+		<body>spring集成配置方式，在xml job中通过job-exception-handler指定异常处理类无效，添加之后异常还是被DefaultJobExceptionHandler处理了。 ![image](https://cloud.githubusercontent.com/assets/9585034/20055321/75d5113c-a51b-11e6-8392-80e9ad4cb6e2.png) </body>
+		<created>2016-11-07 10:53:38</created>
+		<closed>2016-11-07 11:54:24</closed>
+	</bug>
+	<bug>
+		<id>150</id>
+		<title>Cloud的misfire功能在作业堆积时将会一直执行</title>
+		<body>已经改变了misfire的实现方式，由独立的znode记录改为在ready队列中计数的方式。</body>
+		<created>2016-11-01 08:38:50</created>
+		<closed>2016-11-01 08:42:03</closed>
+	</bug>
+	<bug>
+		<id>149</id>
+		<title>运维平台删除作业，偶尔会遇到删除不全的情况</title>
+		<body>![image](https://cloud.githubusercontent.com/assets/9999969/19846422/16d56142-9f7a-11e6-91c8-31b97eec02a0.png)  ![image](https://cloud.githubusercontent.com/assets/9999969/19846529/1353024e-9f7b-11e6-9e12-100084a63ed5.png) 在运维平台 作业服务器一栏上，点击删除，偶尔会出现没有删除完全的情况，如图索引匹配服务的config只剩下leader节点，从而导致了bug#147的产生，只能手动删除这个节点,或者重新运行这个作业来解决</body>
+		<created>2016-10-31 07:01:20</created>
+		<closed>2016-11-03 14:51:55</closed>
+	</bug>
+	<bug>
+		<id>147</id>
+		<title>console作业维度加载不出来 后台有报空指针错误。</title>
+		<body>跟踪代码在这里获取liteJobConfig的时候为null导致后面的空指针错误。 LiteJobConfiguration liteJobConfig = LiteJobConfigurationGsonFactory.fromJson(regCenter.get(jobNodePath.getConfigNodePath()));  jobBriefInfo.setJobType(liteJobConfig.getTypeConfig().getJobType().name()); </body>
+		<created>2016-10-28 08:11:16</created>
+		<closed>2016-11-03 12:17:37</closed>
+	</bug>
+	<bug>
+		<id>146</id>
+		<title>作业的线程池复用问题</title>
+		<body>修改之前的作业执行时，每次执行实例使用一个新的线程池，造成了没有必要的浪费。 修正为每个作业使用同一个线程池。 </body>
+		<created>2016-10-28 08:00:55</created>
+		<closed>2016-10-28 08:07:56</closed>
+	</bug>
+	<bug>
+		<id>145</id>
+		<title>修改作业日志的数据库连接后日志还是会写入老的数据库</title>
+		<body>elastic-job-console控制端修改作业日志的数据库连接后日志还是会写入原来的数据库；虽然zk中的配置已经更新了，但是没有清除listeners的缓存；  `  ```     private final ConcurrentHashMap&lt;String, JobEventListener&gt; listeners = new ConcurrentHashMap&lt;&gt;();      void register(final Collection&lt;JobEventConfiguration&gt; jobEventConfigs) {         for (JobEventConfiguration each : jobEventConfigs) {             register(each.createJobEventListener());         }     }      private void register(final JobEventListener listener) {         if (null != listener &amp;&amp; null == listeners.putIfAbsent(listener.getIdentity(), listener)) {             eventBus.register(listener);         }     } ```  ` </body>
+		<created>2016-10-26 11:22:43</created>
+		<closed>2016-10-28 14:04:19</closed>
+	</bug>
+	<bug>
+		<id>143</id>
+		<title>elastic-job-cloud-scheduler内存泄漏问题</title>
+		<body>经压测发现running作业与host的map的添加了不同的TaskContext对象，导致无法正确清理，而产生内存泄漏 </body>
+		<created>2016-10-25 04:20:28</created>
+		<closed>2016-10-25 13:08:57</closed>
+	</bug>
+	<bug>
+		<id>135</id>
+		<title>job_trace_log表是记录什么的？执行job之后，在控制台操作job的暂停启动，这张表一直是空的</title>
+		<body>![image](https://cloud.githubusercontent.com/assets/9999969/18626391/5bc51fea-7e87-11e6-9813-d947386763d2.png) </body>
+		<created>2016-09-19 08:41:07</created>
+		<closed>2016-10-19 12:28:32</closed>
+	</bug>
+	<bug>
+		<id>127</id>
+		<title>Spring方式配置作业id无法使用占位符</title>
+		<body></body>
+		<created>2016-09-02 09:32:57</created>
+		<closed>2016-09-02 09:47:37</closed>
+	</bug>
+	<bug>
+		<id>123</id>
+		<title>单机跑定时任务，zk断开后重连，没有触发leader选举</title>
+		<body>单机跑定时任务，在任务里打断点，过一两分钟等待zk session超时断开后，会触发重连zk，但此时会一直出现  com.dangdang.ddframe.job.internal.election.LeaderElectionService - Elastic job: leader node is electing, waiting for 100 ms at server 'xxx.xxx.xxx'，没有触发leader选举，导致程序一直卡在等待选举leader的死循环里，不会再继续往下执行。 </body>
+		<created>2016-08-02 10:27:22</created>
+		<closed>2016-08-12 11:18:37</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>spring容器关闭时，quartz未正常关闭</title>
+		<body>spring容器关闭时，没有处理quartz的正常关闭，导致项目无法正常关闭，日志如下：  [DEFAULT.simpleJob_Scheduler_QuartzSchedulerThread] but has failed to stop it. This is very likely to create a memory leak. </body>
+		<created>2016-07-07 07:11:44</created>
+		<closed>2016-09-07 12:14:37</closed>
+	</bug>
+	<bug>
+		<id>115</id>
+		<title>console,新增注册中心， 没有连接成功，后台一直报错，然后删除。 但是后台还是一直报错。</title>
+		<body>删除后，应该结束此注册中心的 试探拦截。 失败了就结束了。 别再后台老重试了。我都删除了，后台就没必要连接了。   ] 2016-06-22 18:35:48,282 --http-bio-8080-exec-9-SendThread(192.168.10.163:2128)-- [org.apache.zookeeper.ClientCnxn] Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect  java.net.ConnectException: Connection refused: no further information     at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method) ~[na:1.8.0_45]     at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717) ~[na:1.8.0_45]     at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361) ~[zookeeper-3.4.6.jar:3.4.6-1569965]     at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081) ~[zookeeper-3.4.6.jar:3.4.6-1569965] [WARN ] 2016-06-22 18:35:48,446 --http-bio-8080-exec-3-SendThread(192.168.10.163:2128)-- [org.apache.zookeeper.ClientCnxn] Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect  java.net.ConnectException: Connection refused: no further information     at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method) ~[na:1.8.0_45]     at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717) ~[na:1.8.0_45]     at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361) ~[zookeeper-3.4.6.jar:3.4.6-1569965]     at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081) ~[zookeeper-3.4.6.jar:3.4.6-1569965] [INFO ] 2016-06-22 18:35:49,383 --http-bio-8080-exec-9-SendThread(192.168.10.163:2128)-- [org.apache.zookeeper.ClientCnxn] Opening socket connection to server 192.168.10.163/192.168.10.163:2128. Will not attempt to authenticate using SASL (unknown error)  [INFO ] 2016-06-22 18:35:49,550 --http-bio-8080-exec-3-SendThread(192.168.10.163:2128)-- [org.apache.zookeeper.ClientCnxn] Opening socket connection to server 192.168.10.163/192.168.10.163:2128. Will not attempt to authenticate using SASL (unknown error)  [WARN ] 20 </body>
+		<created>2016-06-22 10:38:01</created>
+		<closed>2016-11-11 09:38:07</closed>
+	</bug>
+	<bug>
+		<id>113</id>
+		<title>springMVC 实现的web工程,在tomcat关闭时遇到定时任务线程关闭失败的问题</title>
+		<body>tomcat关闭的时候遇到定时任务线程关闭失败的问题，导致tomcat线程无法退出。  日志如下（和定时任务数量相同，以下是其中的一条）： 21-Jun-2016 17:03:32.764 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [nggirl] appears to have started a thread named [DEFAULT.MemDataLoadTask_Scheduler_QuartzSchedulerThread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:  java.lang.Object.wait(Native Method)  org.quartz.core.QuartzSchedulerThread.run(QuartzSchedulerThread.java:410)  像是和quartz相关，[stackoverflow上的一个回复](http://stackoverflow.com/questions/7586255/quartz-memory-leak)  不确定，这是不是常规的解决方法。  是否有必要给JobRegistry添加开放的获取所有JobScheduleController的方法，同时给JobScheduleController开放isShutdown的方法？ </body>
+		<created>2016-06-21 10:43:23</created>
+		<closed>2016-09-07 12:14:46</closed>
+	</bug>
+	<bug>
+		<id>99</id>
+		<title>1.0.8【bug】  通过程序代码删除Job，报NumberFormatException异常，导致Job部分节点没有完全清除</title>
+		<body># **1. 调用方法关键点如下：**   // 先关闭Job  jobAPIService.getJobOperatorAPI().shutdown(Optional.of(jobServer.getJobName()), Optional.&lt;String&gt;absent());   // 在删除Job(会清空zk中节点)  jobAPIService.getJobOperatorAPI().remove(Optional.of(jobServer.getJobName()), Optional.&lt;String&gt;absent());  **# 2. 异常如下：** [JOB] 2016-05-27-19:23:10.251 [DEFAULT.ED8A44CDC0A8C7792D59468EE687552C_Scheduler_Worker-1] ERROR c.d.d.j.p.j.t.s.AbstractSimpleElasticJob - Elastic job: exception occur in job processing... java.lang.NumberFormatException: null     at java.lang.Integer.parseInt(Integer.java:542) ~[na:1.8.0_45]     at java.lang.Integer.parseInt(Integer.java:615) ~[na:1.8.0_45]     at com.dangdang.ddframe.job.internal.config.ConfigurationService.getShardingTotalCount(ConfigurationService.java:88) ~[elastic-job-core-1.0.8.jar:na]     at com.dangdang.ddframe.job.internal.guarantee.GuaranteeService.isAllCompleted(GuaranteeService.java:87) ~[elastic-job-core-1.0.8.jar:na]     at com.dangdang.ddframe.job.api.listener.AbstractDistributeOnceElasticJobListener.afterJobExecuted(AbstractDistributeOnceElasticJobListener.java:84) ~[elastic-job-core-1.0.8.jar:na]     at com.dangdang.ddframe.job.internal.schedule.JobFacade.afterJobExecuted(JobFacade.java:246) ~[elastic-job-core-1.0.8.jar:na]     at com.dangdang.ddframe.job.internal.job.AbstractElasticJob.execute(AbstractElasticJob.java:68) ~[elastic-job-core-1.0.8.jar:na]     at org.quartz.core.JobRunShell.run(JobRunShell.java:202) [quartz-2.2.2.jar:na]     at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) [quartz-2.2.2.jar:na] </body>
+		<created>2016-05-27 12:23:39</created>
+		<closed>2016-06-18 07:18:16</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>web项目 reg:zookeeper 属性配置引用配置项启动失败</title>
+		<body>&lt;reg:zookeeper id="regCenter" serverLists="10.1.15.80:2181" namespace="my-task" baseSleepTimeMilliseconds="${baseSleepTimeMilliseconds}" maxSleepTimeMilliseconds="3000"  maxRetries="3" nestedPort="2181" nestedDataDir="target/test_zk_data/" /&gt; 引用"${baseSleepTimeMilliseconds}" 不成功，非web工程可以，请问下这个和&lt;reg:zookeeper 模板有关么 </body>
+		<created>2016-05-25 10:32:25</created>
+		<closed>2016-11-01 02:41:52</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>1.0.6版本，修改分片参数后，导致仅单一节点执行的监听报异常</title>
+		<body>资源:  1台服务器(job和zk在一起), 不能发图我就发代码了。 代码如下： 1.   main方法    public static void main(final String[] args) {        ZookeeperConfiguration zkConfig = new ZookeeperConfiguration("localhost:2181", "cy-job", 1000, 3000, 3);      CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(zkConfig);        regCenter.init();                                                                                         ```  JobConfiguration jc1 = new JobConfiguration("999", SimpleJobDemo.class, 3, "0/10 * * * * ?");             jc1.setShardingItemParameters("0=a,1=b,2=c");                                                             new JobScheduler(regCenter, jc1, new OnceJobListener(1000, 10000)).init();                               ```   }                                                                                                                                    1. 监听使用的是仅单一节点执行的监听    public class OnceJobListener extends AbstractDistributeOnceElasticJobListener {        public OnceJobListener(long startedTimeoutMilliseconds, long completedTimeoutMilliseconds) {        super(startedTimeoutMilliseconds, completedTimeoutMilliseconds);    }        @Override    public void doBeforeJobExecutedAtLastStarted(JobExecutionMultipleShardingContext shardingContext) {        System.out.println("任务执行前监听");    }        @Override    public void doAfterJobExecutedAtLastCompleted(JobExecutionMultipleShardingContext shardingContext) {        System.out.println("任务执行后监听");    }    } 2. 启动job    监听日志正常输出 3. 修改分片参数    我是在监控平台帮分片修改为1，分片序号修改为0=a，保存。 4. 控制台监听报异常  [JOB] 2016-05-18-22:26:23.486 [DEFAULT.999_Scheduler_Worker-1] ERROR c.d.d.j.p.j.t.s.AbstractSimpleElasticJob - Elastic job: exception occur in job processing... com.dangdang.ddframe.job.exception.JobTimeoutException: Job timeout. timeout mills is 10000.     at com.dangdang.ddframe.job.api.listener.AbstractDistributeOnceElasticJobListener.afterJobExecuted(AbstractDistributeOnceElasticJobListener.java:99) ~[elastic-job-core-1.0.6.jar:na]     at com.dangdang.ddframe.job.internal.schedule.JobFacade.afterJobExecuted(JobFacade.java:225) ~[elastic-job-core-1.0.6.jar:na]     at com.dangdang.ddframe.job.internal.job.AbstractElasticJob.execute(AbstractElasticJob.java:68) ~[elastic-job-core-1.0.6.jar:na]     at org.quartz.core.JobRunShell.run(JobRunShell.java:202) [quartz-2.2.2.jar:na]     at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) [quartz-2.2.2.jar:na] [JOB] 2016-05-18-22:26:23.492 [DEFAULT.999_Scheduler_Worker-1] DEBUG c.d.d.r.e.RegExceptionHandler - Elastic job: ignored exception for: KeeperErrorCode = NoNode for /cy-job/999/offset/0 </body>
+		<created>2016-05-18 14:51:55</created>
+		<closed>2016-05-19 08:43:47</closed>
+	</bug>
+	<bug>
+		<id>81</id>
+		<title>使用集中清理作业上次结束状态代替各自清理，各自清理可能导致作业机下线而产生未清理的结束状态</title>
+		<body>原来是作业主节点集中清理上次结束状态，后来为了提速改为作业节点各自清理自己的上次运行状态。 参见#62。 如果各自清理上次运行状态，则一旦作业还未来得及启动时即崩溃，那么改作业将不会清理上次运行状态，导致本该执行的失效转移不执行。 本次修复是回到 #62 优化之前的状态。 </body>
+		<created>2016-04-07 08:16:14</created>
+		<closed>2016-04-07 08:20:06</closed>
+	</bug>
+	<bug>
+		<id>78</id>
+		<title>Spring方式配置作业监听启用AOP导致不能正常使用问题</title>
+		<body></body>
+		<created>2016-03-28 14:04:52</created>
+		<closed>2016-03-28 14:10:48</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>dataflow类型作业，fetchData如果有数据，则应与processData成对执行</title>
+		<body>目前fetchData在执行完毕并且有数据时，由于isEligibleForJobRunning的判断可能会导致processData未执行 </body>
+		<created>2016-03-28 13:57:17</created>
+		<closed>2016-03-28 14:21:43</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>流式处理且失效转移时，失效转移的分片项不能执行一次即停止</title>
+		<body>机器一处理5-9分片的数据，机器二处理0-4分片的数据，前提条件：所有分片数据均能一直取到数据， 当机器二down机，进入失效转移阶段，理论上机器一由于一直能取到数据，不会处理失效转移的分片数据，但是机器一会由于重新需要分片，跳出流式处理循环，在下一次execute中，会遇到jobFacade.failoverIfNecessary(); 这样导致会接受分片4的失效转移数据，从而进入4分片的流式处理阶段，导致正常的5-9分片数据得不到处理 ![image](https://cloud.githubusercontent.com/assets/17996475/13940460/6458748e-f018-11e5-8b49-f3ded6810463.png) </body>
+		<created>2016-03-22 02:22:58</created>
+		<closed>2016-03-28 13:50:43</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>分片时如在Zk中有的作业服务器sharding节点不存在将导致无法重新分片</title>
+		<body>之前使用事务删除所有的sharding节点，但如果有的server节点下sharding不存在，则事务将不会提交，导致删除所有的sharding节点失败，而导致无法重新分片。 </body>
+		<created>2016-03-17 10:41:15</created>
+		<closed>2016-03-17 10:42:23</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>Spring命名空间，若注册多个同Class的作业Bean，会导致作业Bean查找不准确</title>
+		<body>目前作业的spring命名空间是使用作业类型查找bean，如果注册两个或以上的相同类型的bean，会导致查找不准确，多个bean会全部对应至第一个bean。 </body>
+		<created>2016-03-10 03:21:53</created>
+		<closed>2016-11-10 15:28:59</closed>
+	</bug>
+	<bug>
+		<id>63</id>
+		<title>获取作业TreeCache时可能会获取到前缀相同的其他作业的TreeCache</title>
+		<body>当job注册名字有部分相同（startWith相同），如job和job1，ZookeeperRegistryCenter的TreeCache获取job1时可能会获取到job的TreeCache。 </body>
+		<created>2016-03-09 07:18:58</created>
+		<closed>2016-03-09 07:19:33</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>分片和主节点选举同时发生时，死锁问题解决</title>
+		<body>分片和主节点选举同时发生时，可能发生死锁。 1. 通过修正分片中条件判断改善多线程环境下分片锁死的可能性。 2. 将分配分片步骤和清理分片标记步骤放入同一事务，保持数据完整性，并防止分片成功后分片标记未清理导致的死锁可能性。 3. 将清理分片步骤放入同一事务，保持数据完整性。 </body>
+		<created>2016-03-09 06:49:15</created>
+		<closed>2016-03-09 06:51:42</closed>
+	</bug>
+	<bug>
+		<id>53</id>
+		<title>不能在ZookeeperRegistryCenter中设置connectionTimeoutMilliseconds</title>
+		<body></body>
+		<created>2016-03-08 11:37:38</created>
+		<closed>2016-03-08 11:37:55</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>TreeCache使用粒度过粗导致内存溢出</title>
+		<body>TreeCache缓存namespace所有的数据。如果namespace下内容过多可能造成内存溢出。 </body>
+		<created>2016-01-27 13:06:36</created>
+		<closed>2016-01-27 13:12:12</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>任务在控制台暂停之后，无法恢复运行</title>
+		<body>问题： 1、控制台暂停任务之后，点击恢复，本次任务无法继续运行 2、控制台暂停任务之后，重设任务执行时间，也无法再次运行 原因： AbstractElasticJob中的stop属性一旦被修改为true之后，没有在任务状态发生变化时，同步变化 </body>
+		<created>2016-01-08 09:56:06</created>
+		<closed>2016-01-29 06:06:44</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>ArrayIndexOutOfBoundsException thrown from RotateServerByNameJobShardingStrategy</title>
+		<body>线上环境使用时，发现某些采用RotateServerByNameJobShardingStrategy分片策略的job会抛出ArrayIndexOutOfBoundsException异常。原因是因为RotateServerByNameJobShardingStrategy Line-26调用jobName.hashcode()时可能返回负值，导致数组越界。  org.quartz.SchedulerException: Job threw an unhandled exception.     at org.quartz.core.JobRunShell.run(JobRunShell.java:213) ~[org.quartz-scheduler.quartz-2.2.1.jar:na]     at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573) [org.quartz-scheduler.quartz-2.2.1.jar:na] Caused by: java.lang.ArrayIndexOutOfBoundsException: -1     at java.util.ArrayList.elementData(ArrayList.java:418) ~[na:1.8.0_60]     at java.util.ArrayList.get(ArrayList.java:431) ~[na:1.8.0_60]     at com.dangdang.ddframe.job.plugin.sharding.strategy.RotateServerByNameJobShardingStrategy.rotateServerList(RotateServerByNameJobShardingStrategy.java:33) ~[com.dangdang.elastic-job-core-1.0.2.jar:na]     at com.dangdang.ddframe.job.plugin.sharding.strategy.RotateServerByNameJobShardingStrategy.sharding(RotateServerByNameJobShardingStrategy.java:21) ~[com.dangdang.elastic-job-core-1.0.2.jar:na]     at com.dangdang.ddframe.job.internal.sharding.ShardingService.shardingIfNecessary(ShardingService.java:107) ~[com.dangdang.elastic-job-core-1.0.2.jar:na]     at com.dangdang.ddframe.job.internal.job.AbstractElasticJob.execute(AbstractElasticJob.java:73) ~[com.dangdang.elastic-job-core-1.0.2.jar:na]     at org.quartz.core.JobRunShell.run(JobRunShell.java:202) ~[org.quartz-scheduler.quartz-2.2.1.jar:na] </body>
+		<created>2015-12-15 14:08:08</created>
+		<closed>2015-12-15 14:56:16</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>注册中心宕机较长时间后重新恢复，作业无法继续执行</title>
+		<body></body>
+		<created>2015-11-27 10:03:19</created>
+		<closed>2015-11-27 10:17:04</closed>
+	</bug>
+	<bug>
+		<id>13</id>
+		<title>作业抛出运行时异常后，后续不会继续触发</title>
+		<body>job抛出运行时异常后，后续不会继续触发。相当于任务停止。  在job中添加try catch 可以解决此问题。 </body>
+		<created>2015-10-17 17:34:13</created>
+		<closed>2015-10-21 14:49:46</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>任务抛出运行时异常后，不会继续执行</title>
+		<body>你好，我在试用中发现了几个问题：  1、如果任务抛出运行时异常后，任务就不会再继续运行了。控制台也监控不了，状态一直是RUNNING。  2、job描述好像不支持中文  3、点击作业更新按钮没反应（chrome 最新版本）  4、控制台如果能看到作业的cron表达式就更好了 </body>
+		<created>2015-10-16 19:26:57</created>
+		<closed>2015-10-17 17:26:08</closed>
+	</bug>
+	<bug>
+		<id>1</id>
+		<title>复杂网络环境下IP地址获取不准确的问题</title>
+		<body>问题发生位置 工程：elastic-job-core，类：com.dangdang.ddframe.job.internal.env.RealLocalHostService，方法：getLocalHost(). ![Uploading 1.jpg…]()  说明：对于一般性网络环境，代码段：InetAddress.getLocalHost();，可以正确的获取到本机的ip。 对于复杂的企业环境，企业网络管理员可能会进行部门子网、小组子网的划分，并最终链入企业主路由； 这样一台员工主机可能会有多个内网ip，代码段：InetAddress.getLocalHost();默认会返回当前主机链接到最近网络拓扑路径的路由所分配的子网ip。  综上，代码段：InetAddress.getLocalHost();得到的ip可能与实际链接到zookeeper的ip出现不一致。 可以想象的到，错误的将子网路由ip作为链接到zookeeper的ip，会导致同子网下，不同机器链接zookkeeper出现判断错误。  建议修改代码：https://github.com/amao12580/RSSReader/blob/master/core.base/src/main/java/per/rss/core/base/util/IPUtils.java </body>
+		<created>2015-09-25 05:10:21</created>
+		<closed>2015-09-25 11:48:05</closed>
+	</bug>
+</bugs>

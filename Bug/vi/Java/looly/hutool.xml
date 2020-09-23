@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>1093</id>
+		<title>VersionComparator类重载的equals方法会导致递归调用，从而栈溢出</title>
+		<body>### 版本情况  JDK版本：    jdk_8_261 hutool版本： 最新v5-master分支，SHA-1: 1b8e921ab2c515b8b47d0660f45a3107435e1b55  ### 问题描述（包括截图） VersionComparator类重载的equals方法会导致递归调用，从而栈溢出  cn.hutool.core.comparator.VersionComparator#equals ![image](https://user-images.githubusercontent.com/13652530/93436109-ea071080-f8fc-11ea-957e-2a6a9b8f4ef9.png)  1. 复现代码  ```java public static void main(String[] args) { VersionComparator first = new VersionComparator(); VersionComparator other = new VersionComparator(); System.out.println(first.equals(other)); } ```  2. 堆栈信息 Exception in thread "main" java.lang.StackOverflowError at cn.hutool.core.comparator.VersionComparator.equals(VersionComparator.java:97) at cn.hutool.core.comparator.VersionComparator.equals(VersionComparator.java:99) at cn.hutool.core.comparator.VersionComparator.equals(VersionComparator.java:99) at cn.hutool.core.comparator.VersionComparator.equals(VersionComparator.java:99)</body>
+		<created>2020-09-17 07:47:47</created>
+		<closed>2020-09-17 08:14:15</closed>
+	</bug>
+	<bug>
+		<id>1088</id>
+		<title>二维码工具类使用异常</title>
+		<body>### 版本情况  JDK版本：   jkd1.8 hutool版本： 5.4.2（请确保最新尝试是否还有问题）  ### 问题描述（包括截图） 完全使用官网提供的教程： 引入hutool和zxing  &lt;dependency&gt; &lt;groupId&gt;cn.hutool&lt;/groupId&gt; &lt;artifactId&gt;hutool-all&lt;/artifactId&gt; &lt;version&gt;5.4.2&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt;     &lt;groupId&gt;com.google.zxing&lt;/groupId&gt;     &lt;artifactId&gt;core&lt;/artifactId&gt;     &lt;version&gt;3.3.3&lt;/version&gt; &lt;/dependency&gt;  测试main方法 public static void main(String[] args) { // 生成指定url对应的二维码到文件，宽和高都是300像素 QrCodeUtil.generate("https://hutool.cn/", 300, 300, FileUtil.file("d:/qrcode.jpg")); }  堆栈信息： Exception in thread "main" java.lang.IllegalArgumentException at com.google.zxing.qrcode.decoder.Version.getVersionForNumber(Version.java:105) at com.google.zxing.qrcode.encoder.Encoder.encode(Encoder.java:112) at com.google.zxing.qrcode.QRCodeWriter.encode(QRCodeWriter.java:78) at com.google.zxing.MultiFormatWriter.encode(MultiFormatWriter.java:102) at cn.hutool.extra.qrcode.QrCodeUtil.encode(QrCodeUtil.java:312) at cn.hutool.extra.qrcode.QrCodeUtil.generate(QrCodeUtil.java:229) at cn.hutool.extra.qrcode.QrCodeUtil.generate(QrCodeUtil.java:215) at cn.hutool.extra.qrcode.QrCodeUtil.generate(QrCodeUtil.java:190) at cn.hutool.extra.qrcode.QrCodeUtil.generate(QrCodeUtil.java:133) at com.solan.test.hutool.TestQr.main(TestQr.java:12)   大概看了一下源码 zxing的Version.java类里有getVersionForNumber方法：     public static Version getVersionForNumber(int versionNumber) {         if (versionNumber &gt; 0 &amp;&amp; versionNumber &lt;= 40) {             return VERSIONS[versionNumber - 1];         } else {             throw new IllegalArgumentException();         }     } 使用工具类传入的versionNumber值是0，所以抛出异常。 看到请回复一下</body>
+		<created>2020-09-16 07:31:02</created>
+		<closed>2020-09-16 07:58:41</closed>
+	</bug>
+	<bug>
+		<id>1084</id>
+		<title>hutool log 打印null对象显示 {msg}异常问题</title>
+		<body>- 版本 &gt;jdk： 1.8  hutool： 5.4.2  - 基本描述 &gt;log打印 null 对象，显示为 `{msg}`  ![image](https://user-images.githubusercontent.com/26524164/93287182-71745700-f80b-11ea-8b23-1d7b1caa0f19.png)  </body>
+		<created>2020-09-16 02:55:53</created>
+		<closed>2020-09-16 05:24:03</closed>
+	</bug>
+	<bug>
+		<id>1082</id>
+		<title>时间文本 转 LocalDateTime对象 在 格式为 DatePattern.PURE_DATETIME_MS_PATTERN(yyyyMMddHHmmssSSS) 时 失败</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_172 hutool版本： 5.4.2  ### 问题描述 0. 简述 调用LocalDateTimeUtil.parse(CharSequence text, String format)方法 且format参数为DatePattern.PURE_DATETIME_MS_PATTERN(yyyyMMddHHmmssSSS) 时 转换失败  1. 复现代码 ``` @Test public void testEnum() { String timeStr = "19940121183604682"; DateUtil.parseLocalDateTime(timeStr, DatePattern.PURE_DATETIME_MS_PATTERN); } ```  2. 堆栈信息 java.time.format.DateTimeParseException: Text '19940121183604682' could not be parsed at index 0 at java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:1949) at java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1777) at cn.hutool.core.date.LocalDateTimeUtil.parse(LocalDateTimeUtil.java:234) at cn.hutool.core.date.LocalDateTimeUtil.parse(LocalDateTimeUtil.java:248) at cn.hutool.core.date.DateUtil.parseLocalDateTime(DateUtil.java:664) at com.fmsh.demo.test.tool.HuToolTest.testEnum(HuToolTest.java:112) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) at org.junit.runners.ParentRunner.run(ParentRunner.java:363) at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678) at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)  3. 问题成因分析 java8中直接使用DateTimeFormatter无法将**yyyyMMddHHmmssSSS**格式的数据转换为LocalDateTime 此为JDK的BUG，详见：[https://bugs.openjdk.java.net/browse/JDK-8031085](url)  4. 解决方案 为 LocalDateTimeUtil.parse(CharSequence text, String format) 方法添加逻辑分支，方法改为如下所示  ``` public static LocalDateTime parse(CharSequence text, String format) { if (null == text) { return null; } if (DatePattern.PURE_DATETIME_MS_PATTERN.equals(format)) { return parse(text, new DateTimeFormatterBuilder().appendPattern(DatePattern.PURE_DATETIME_PATTERN).appendValue(ChronoField.MILLI_OF_SECOND, 3).toFormatter()); } return parse(text, DateTimeFormatter.ofPattern(format)); } ```</body>
+		<created>2020-09-15 09:31:46</created>
+		<closed>2020-09-16 09:39:39</closed>
+	</bug>
+	<bug>
+		<id>1075</id>
+		<title>反序列化时处理下划线的逻辑导致另一个问题</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.3.7（请确保最新尝试是否还有问题）  ### 问题描述（包括截图） Hutool在反序列化时，反射获取到的字段名，从jsonobject中查同名的数据，如果找不到： ![image](https://user-images.githubusercontent.com/38411172/92876680-f989e380-f43c-11ea-902d-852a1a36ebcd.png) 最终调用StrUtil的toSymbolCase，这个方法的处理，对于大写+数字的这种处理不友好。  正常的情况下，对于OrderNo这样的字段JSONUtil是不反序列化的，但是对于F2这种的字段又是反序列的。  PS：fastjson是都支持  1. 复现代码   @org.junit.Test     public void test() throws Exception {        /* ObjA o = new ObjA();         o.setF1("f1");         o.setOrderNo("f2");         String s = JSON.toJSONString(o);         System.out.println(s);         System.out.println(JSONUtil.toJsonStr(o));*/ //{"f1":"f1","orderNo":"f2"}         String s = "{\"f1\":\"f1\",\"F2\":\"f2\",\"fac\":\"fac\"}";          ObjA oa = JSON.parseObject(s, ObjA.class);         System.out.println(oa);          ObjA o2 = JSONUtil.toBean(s, ObjA.class);         System.out.println(o2);           System.out.println(StrUtil.toSymbolCase("F123", '_'));         System.out.println(StrUtil.toSymbolCase("FAC", '_'));         System.out.println(StrUtil.toSymbolCase("fac", '_'));         System.out.println(StrUtil.toSymbolCase("facAbc", '_'));       }      @Data     public static class ObjA {         private String f1;         private String F2;         private String FAC;     }  //输出 Test.ObjA(f1=f1, F2=f2, FAC=fac) Test.ObjA(f1=f1, F2=f2, FAC=null) f123 FAC fac fac_abc  2. 堆栈信息  3. 测试涉及到的文件（注意脱密）  比如报错的Excel文件，有问题的图片等。</body>
+		<created>2020-09-11 06:44:01</created>
+		<closed>2020-09-14 16:58:05</closed>
+	</bug>
+	<bug>
+		<id>1069</id>
+		<title>cn.hutool.core.io.unit.DataSizeUtil.format(java.lang.Long.MAX_VALUE) raises "java.lang.ArrayIndexOutOfBoundsException"</title>
+		<body>### 版本情况  JDK版本：    jdk1.8.0_261 (64 bit build) ``` &lt;dependency&gt;     &lt;groupId&gt;cn.hutool&lt;/groupId&gt;     &lt;artifactId&gt;hutool-core&lt;/artifactId&gt;     &lt;version&gt;5.4.1&lt;/version&gt; &lt;/dependency&gt; ```   ### 问题描述（包括截图）  1. 复现代码  ```java System.out.println(DataSizeUtil.format(Long.MAX_VALUE)); ```  2. 堆栈信息 ``` Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 6 at cn.hutool.core.io.unit.DataSizeUtil.format(DataSizeUtil.java:36) ```  Source  https://github.com/looly/hutool/blob/5.4.1/hutool-core/src/main/java/cn/hutool/core/io/unit/DataSizeUtil.java</body>
+		<created>2020-09-08 05:19:13</created>
+		<closed>2020-09-08 07:41:13</closed>
+	</bug>
+	<bug>
+		<id>1038</id>
+		<title>字符串工具类的indexOf疑问</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.4.0（请确保最新尝试是否还有问题）  ### 问题描述（包括截图）  ![image](https://user-images.githubusercontent.com/14087655/91121733-10090e80-e6cb-11ea-8f1b-8c5f3a8f37d5.png) indexOf的方法，如果是字符串，直接调用indexOf，这样如果字符串是空的话会报错，我看其它的都有判断是否为空，这是有其它的考虑所以不能判断是否为空吗？   1. 复现代码  2. 堆栈信息  3. 测试涉及到的文件（注意脱密）  比如报错的Excel文件，有问题的图片等。</body>
+		<created>2020-08-25 04:05:14</created>
+		<closed>2020-08-27 09:29:24</closed>
+	</bug>
+	<bug>
+		<id>1006</id>
+		<title>HttpServerResponse 设置ContentType不生效</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_232 hutool版本： 5.3.10  ### 问题描述（包括截图）  1. 复现代码  ```java HttpUtil.createServer(12345).addAction("/",(req,res)-&gt; res.write("你瞅啥", ContentType.JSON.getValue())); ```  浏览器显示类容如下： ![image](https://user-images.githubusercontent.com/15642865/89484876-0ed27900-d7d2-11ea-95ad-e4801b6d6ed9.png)  Response Headers如下： ![image](https://user-images.githubusercontent.com/15642865/89484892-1c87fe80-d7d2-11ea-9eca-2cab21ac3bcc.png)  Response 内容如下： ![image](https://user-images.githubusercontent.com/15642865/89484919-2873c080-d7d2-11ea-9c90-1f1d0d895774.png) </body>
+		<created>2020-08-06 02:49:11</created>
+		<closed>2020-08-07 03:25:48</closed>
+	</bug>
+	<bug>
+		<id>977</id>
+		<title>StrUtil.removeAny有bug</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.3.9（请确保最新尝试是否还有问题）  ### 问题描述（包括截图）  StrUtil.removeAny("aa-bb-cc-dd", "a", "b") 实际输出是aa--cc-dd 不是--cc-dd   ![image](https://user-images.githubusercontent.com/15828159/88151373-3273bc00-cc35-11ea-979a-42787addabcb.png) 这里有bug  </body>
+		<created>2020-07-22 08:05:58</created>
+		<closed>2020-07-23 04:11:13</closed>
+	</bug>
+	<bug>
+		<id>961</id>
+		<title>ZipUtil工具类 ZipOutputStream 不应该在循环中调用 finish</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.3.9  ### 问题描述 ZipUtil 类的方法 zip (ZipOutputStream zipOutputStream, boolean withSrcDir, FileFilter filter, File... srcFiles),  代码第 231 行在 for 循环中调用了 finish 方法, 当 srcFiles 为数组时只有第一个文件被写入到zip流.  应当在所有文件写入完成后才调用 finish, 也就是在 for 循环外调用.           ```          try{              for (File srcFile : srcFiles) {                   ```                  zipOutputStream.flush();                  zipOutputStream.finish();  // Line 231: 此行代码应放在 for 循环外               }          } catch (IOException e) {              throw new IORuntimeException(e);          } </body>
+		<created>2020-07-13 20:29:13</created>
+		<closed>2020-07-14 02:10:12</closed>
+	</bug>
+	<bug>
+		<id>944</id>
+		<title>ZipUtil工具类 zip(OutputStream out, Charset charset, boolean withSrcDir, FileFilter filter, File... srcFiles) 方法里面 ZipOutputStream 没有 finish</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.3.7  ### 问题描述     ZipUtil工具类 的 zip(OutputStream out, Charset charset, boolean withSrcDir, FileFilter filter, File... srcFiles),  生成的zip文件无法打开, 提示"不可预料的压缩文件末端".  原因是该方法内生成的ZipOutputStream 没有调用 finish 方法.  1. 复现代码              ```             public static void main(String[] args) {                 String dir = "E:/workspaces/java/test";                 String zip = "E:/workspaces/java/test.zip";                 try (OutputStream out = new FileOutputStream(zip)){                     //实际应用中, out 为 HttpServletResponse.getOutputStream                     ZipUtil.zip(out, Charset.defaultCharset(), false, null, new File(dir));                 } catch (Exception e) {                     e.printStackTrace();                 }             }             ``` 2. 解决            修改 zip(OutputStream out, Charset charset, boolean withSrcDir, FileFilter filter, File... srcFiles) 方法内                 zip(getZipOutputStream(out, charset), withSrcDir, filter, srcFiles);                 =&gt;                 ZipOutputStream zout = getZipOutputStream(out, charset);                zip(zout, withSrcDir, filter, srcFiles);                zout.finish();  // 此处 zout 不能 close, 只能 finish   </body>
+		<created>2020-06-30 19:03:44</created>
+		<closed>2020-07-03 01:27:40</closed>
+	</bug>
+	<bug>
+		<id>940</id>
+		<title>AioSession 构造未设置SocketConfig 的 readTimeout 和 writeTimeout</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.X.X（请确保最新尝试是否 ![QQ图片20200626175511](https://user-images.githubusercontent.com/12386947/85845040-33503400-b7d6-11ea-977a-7c9447aa4176.jpg) 还有问题）  ### 问题描述（包括截图）  1. 复现代码  SocketConfig socketConfig = new SocketConfig();         socketConfig.setReadTimeout(500);         socketConfig.setWriteTimeout(500); new AioClient(inetSocketAddress, simpleIoAction, socketConfig) 设置的超时时间未起作用 2. 堆栈信息  3. 测试涉及到的文件（注意脱密）  比如报错的Excel文件，有问题的图片等。</body>
+		<created>2020-06-26 09:56:46</created>
+		<closed>2020-06-28 03:20:07</closed>
+	</bug>
+	<bug>
+		<id>931</id>
+		<title>Excel07SaxReader 读取包含公式的Excel异常</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_241 hutool版本： 5.3.6  ### 问题描述（包括截图）  1. 复现代码  2. 堆栈信息 Exception in thread "Thread-15" java.lang.NumberFormatException: For input string: "SUBTOTAL(5,K6:K199975)2" at sun.misc.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2043) at sun.misc.FloatingDecimal.parseDouble(FloatingDecimal.java:110) at java.lang.Double.parseDouble(Double.java:538) at cn.hutool.poi.excel.sax.ExcelSaxUtil.getNumberValue(ExcelSaxUtil.java:202) at cn.hutool.poi.excel.sax.ExcelSaxUtil.getDataValue(ExcelSaxUtil.java:76) at cn.hutool.poi.excel.sax.Excel07SaxReader.endCell(Excel07SaxReader.java:282) at cn.hutool.poi.excel.sax.Excel07SaxReader.endElement(Excel07SaxReader.java:182) at org.apache.xerces.parsers.AbstractSAXParser.endElement(Unknown Source) at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanEndElement(Unknown Source) at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source) at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source) at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source) at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source) at org.apache.xerces.parsers.XMLParser.parse(Unknown Source) at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source) at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source) at cn.hutool.poi.excel.sax.ExcelSaxUtil.readFrom(ExcelSaxUtil.java:160) at cn.hutool.poi.excel.sax.Excel07SaxReader.read(Excel07SaxReader.java:149) at cn.hutool.poi.excel.sax.Excel07SaxReader.read(Excel07SaxReader.java:105) at cn.hutool.poi.excel.sax.Excel07SaxReader.read(Excel07SaxReader.java:31) at cn.hutool.poi.excel.sax.AbstractExcelSaxReader.read(AbstractExcelSaxReader.java:31) at com.hpa.dmt.vibranium.bpo.springbatch.reader.common.excel.HutoolExcelStreamer$1.run(HutoolExcelStreamer.java:52) 3. 测试涉及到的文件 [fomula_test.xlsx](https://github.com/looly/hutool/files/4801993/fomula_test.xlsx) </body>
+		<created>2020-06-19 01:38:48</created>
+		<closed>2020-07-07 08:29:36</closed>
+	</bug>
+	<bug>
+		<id>921</id>
+		<title>使用中文转拼音PinyinUtil.getFirstLetter("林海","") 首字母仅仅出来“l“</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.3.7（请确保最新尝试是否还有问题）  ### 问题描述（包括截图）  1. 复现代码  使用中文转拼音PinyinUtil.getFirstLetter("林海","") 首字母仅仅出来“l“ </body>
+		<created>2020-06-15 07:03:47</created>
+		<closed>2020-06-16 02:58:09</closed>
+	</bug>
+	<bug>
+		<id>920</id>
+		<title>BigExcelWrite与try-with-resource兼容性不够好</title>
+		<body>### 版本情况  JDK版本：  java version "11.0.2" 2019-01-15 LTS Java(TM) SE Runtime Environment 18.9 (build 11.0.2+9-LTS) Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.2+9-LTS, mixed mode) hutool版本： 5.3.7  ### 问题描述（包括截图）  1. 复现代码  ```java final Map&lt;String, ?&gt; map1 = Map.of("id", "123456"); final Map&lt;String, ?&gt; map2 = Map.of("id", "123457"); final List&lt;?&gt; data = Arrays.asList(map1, map2); final var destFilePath = "";//略 try (final var writer = ExcelUtil.getBigWriter(destFilePath).write(data).flush()) { } ```  2. 堆栈信息 ``` Exception in thread "main" cn.hutool.core.io.IORuntimeException: IOException: Stream closed at cn.hutool.poi.excel.ExcelWriter.flush(ExcelWriter.java:1057) at cn.hutool.poi.excel.ExcelWriter.flush(ExcelWriter.java:1028) at cn.hutool.poi.excel.ExcelWriter.flush(ExcelWriter.java:1014) at cn.hutool.poi.excel.BigExcelWriter.close(BigExcelWriter.java:122) at trial.poi.HutoolPoiTrial.main(HutoolPoiTrial.java:18) Caused by: java.io.IOException: Stream closed at java.base/java.io.BufferedWriter.ensureOpen(BufferedWriter.java:107) at java.base/java.io.BufferedWriter.flushBuffer(BufferedWriter.java:117) at java.base/java.io.BufferedWriter.flush(BufferedWriter.java:256) at org.apache.poi.xssf.streaming.SheetDataWriter.close(SheetDataWriter.java:128) at org.apache.poi.xssf.streaming.SXSSFSheet.getWorksheetXMLInputStream(SXSSFSheet.java:98) at org.apache.poi.xssf.streaming.SXSSFWorkbook.injectData(SXSSFWorkbook.java:408) at org.apache.poi.xssf.streaming.SXSSFWorkbook.write(SXSSFWorkbook.java:959) at cn.hutool.poi.excel.ExcelWriter.flush(ExcelWriter.java:1054) ... 4 more ```  在close()方法中也会调用flush()。所以若先主动调用flush()，然后java的“try-with-resource”自动关闭流时调用close()，close()调用flush()时就会发生此错误。 建议：close()-flush()时判断状态，若已flush，则直接返回。  </body>
+		<created>2020-06-15 01:23:01</created>
+		<closed>2020-06-15 03:29:11</closed>
+	</bug>
+	<bug>
+		<id>913</id>
+		<title>发现个bug</title>
+		<body>### 版本情况  JDK版本：    jdk 11.0.4 hutool版本： 5.3.7（请确保最新尝试是否还有问题）  ### 问题描述（包括截图）  1、方法写错了。 cn/hutool/core/collection/CollUtil.java     if (isEmpty(coll2))  { return ListUtil.list(true, coll2); //issue 这里应该是coll1 }    /**  * 计算集合的单差集，即只返回【集合1】中有，但是【集合2】中没有的元素，例如：  *  * &lt;pre&gt;  *     subtract([1,2,3,4],[2,3,4,5]) -》 [1]  * &lt;/pre&gt;  *  * @param coll1 集合1  * @param coll2 集合2  * @param &lt;T&gt;   元素类型  * @return 单差集  */ public static &lt;T&gt; List&lt;T&gt; subtractToList(Collection&lt;T&gt; coll1, Collection&lt;T&gt; coll2) {  if (isEmpty(coll1)) { return ListUtil.empty(); } if (isEmpty(coll2)) { return ListUtil.list(true, coll2); }  //将被交数用链表储存，防止因为频繁扩容影响性能 final List&lt;T&gt; result = new LinkedList&lt;&gt;(); Set&lt;T&gt; set = new HashSet&lt;&gt;(coll2); for (T t : coll1) { if (false == set.contains(t)) { result.add(t); } } return result; }  比如报错的Excel文件，有问题的图片等。</body>
+		<created>2020-06-10 02:46:07</created>
+		<closed>2020-06-10 07:44:10</closed>
+	</bug>
+	<bug>
+		<id>906</id>
+		<title>jsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");不起作用</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.3.7（请确保最新尝试是否还有问题）  ### 问题描述（包括截图） jsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");不起作用  1. 复现代码  ```java JSONConfig jsonConfig = JSONConfig.create(); jsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss"); jsonConfig.setOrder(true); JSONObject json = new JSONObject(jsonConfig); json.append("date", new Date()); json.append("bbb", "222"); json.append("aaa", "123"); System.out.println(json); ```  </body>
+		<created>2020-06-05 03:14:44</created>
+		<closed>2020-06-05 03:23:16</closed>
+	</bug>
+	<bug>
+		<id>882</id>
+		<title>Excel07SaxReader 读取到的rowIndex不正确</title>
+		<body>### 版本情况  JDK版本：    1.8.0_241 hutool版本： 5.3.5  ### 问题描述（包括截图）  excel里面包含空行时，读取的数据会忽略空行，但rowIndex没有累加，导致rowIndex和excel文件实际的行号对不上</body>
+		<created>2020-05-21 03:11:41</created>
+		<closed>2020-05-27 15:27:17</closed>
+	</bug>
+	<bug>
+		<id>865</id>
+		<title>xml 转换有问题</title>
+		<body>### 版本情况  JDK版本：    jdk 1.8.0_144 hutool版本： 5.3.3 ### 问题描述（包括截图）  1. 复现代码  AccountConfirmInfo info=new AccountConfirmInfo(); info.setReqCode("1111"); info.setAccountName("账户名称"); info.setAccountNumber("1234"); info.setBankCode("00001"); info.setCreateTime("20200503102222"); info.setOperator("cz"); info.setProjectCode("123"); info.setResult(0); info.setType(0); String xml= XmlUtil.format(XmlUtil.beanToXml(info,"")); System.out.println(xml); //转bean 失败 null XmlUtil.xmlToBean(XmlUtil.parseXml(xml),AccountConfirmInfo.class); 图片是bean ![微信截图_20200509155310](https://user-images.githubusercontent.com/10653456/81467727-3898f580-920d-11ea-967f-73a3352deb16.png)   2. 堆栈信息  3. 测试涉及到的文件（注意脱密）  比如报错的Excel文件，有问题的图片等。</body>
+		<created>2020-05-09 07:54:00</created>
+		<closed>2020-05-09 16:06:27</closed>
+	</bug>
+	<bug>
+		<id>861</id>
+		<title>StrUtil.subBetweenAll()获取到错误结果？PR#812</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.3.0  ### 问题描述  1. 复现代码  ```java String src1 = "/* \n* hutool  */  asdas  /* \n* hutool  */"; String src2 = "/ * hutool  */  asdas  / * hutool  */";  Console.log(StrUtil.subBetween(src1,"/**","*/"));//null  没问题 Console.log(StrUtil.subBetween(src2,"/*","*/"));//null   没问题  String[] results1 = StrUtil.subBetweenAll(src1,"/**","*/");//出现鬼畜   prefix中有空格也匹配成功了 String[] results2 = StrUtil.subBetweenAll(src2,"/*","*/"); //出现鬼畜   prefix中有空格也匹配成功了 Console.log(Arrays.toString(results1));//但是匹配到的结果不对 Console.log(Arrays.toString(results2));//但是匹配到的结果不对 ```  控制台信息 ```shell null null [/*  * hutool  ] [/ * hutool  ] ``` PR问题 https://github.com/looly/hutool/pull/812  </body>
+		<created>2020-05-05 11:04:26</created>
+		<closed>2020-05-05 15:49:56</closed>
+	</bug>
+	<bug>
+		<id>856</id>
+		<title>SqlBuilder中的OrderBy方法输出结果有误</title>
+		<body>### 版本情况  JDK版本：    jdk1.8 hutool版本： 4.5.7  ### 问题描述 我尝试使用SqlBuilder生成sql，但在使用orderBy方法时，发现返回的sql有问题。   1. 复现代码  ```java SqlBuilder builder = SqlBuilder.create().select("id", "username").from("user")                 .join("role", SqlBuilder.Join.INNER)                 .on("user.id = role.user_id")                 .where(new Condition("age", "&gt;=", 18),                     new Condition("username", "abc", Condition.LikeType.Contains)                 ).orderBy(new Order("id"))                  ;         System.out.println(builder.build()); ```  产生的sql输出为： ```sql SELECT id,username FROM user INNER JOIN role ON user.id = role.user_id WHERE age &gt;= ? AND username LIKE ? ORDER BY ```  可以看到sql输出中不包含order by实际的字段。  ![image](https://user-images.githubusercontent.com/1995958/80675555-52d52400-8ae7-11ea-803b-9aa8d58c6b33.png)  我查看了源码，发现是红色的地方做了判断，如果未设置wrapper，则该字段永远为空。 请帮忙修复。</body>
+		<created>2020-04-30 05:37:07</created>
+		<closed>2020-05-01 06:47:03</closed>
+	</bug>
+	<bug>
+		<id>850</id>
+		<title>HttpUtil工具，Url带参的问题</title>
+		<body>### 版本情况 5.3.1 JDK版本：    openjdk_8_201 hutool版本： 5.X.X（请确保最新尝试是否还有问题） 是的 ### 问题描述（包括截图） https://mp.weixin.qq.com/s?__biz=MzI5NjkyNTIxMg==&amp;amp;mid=100000465&amp;amp;idx=1&amp;amp;sn=1044c0d19723f74f04f4c1da34eefa35&amp;amp;chksm=6cbda3a25bca2ab4516410db6ce6e125badaac2f8c5548ea6e18eab6dc3c5422cb8cbe1095f7 类似上述请求参数，不能有效的正确得到解析，导致请求回来预期的结果不一致 (能正常请求)，暂未发现那地方问题，和jsoup请求的比对得出的结论  1. 复现代码  ```java HttpUtil.get(url) ```  2. 堆栈信息 无 </body>
+		<created>2020-04-23 13:50:56</created>
+		<closed>2020-04-25 10:49:30</closed>
+	</bug>
+	<bug>
+		<id>847</id>
+		<title>h2数据库大小写问题</title>
+		<body>### 版本情况  JDK版本：    java version 1.8.0_191 hutool版本： 5.3.1（请确保最新尝试是否还有问题）  ### 问题描述（包括截图）  **h2数据库查询时报错** **在添加 IGNORECASE=TRUE 属性后 Db.use().find(Entity) 报错，Db.use().query("sql") 正常** **h2的版本号为 h2-1.4.200** **h2中的表名，字段名为大写**  ----  **1. 复现代码**  **java代码** ```java       Entity entity = new Entity("tb_user");         try {             // 使用Db.use().find(Entity) 报错             // List&lt;Entity&gt; entities = Db.use().find(entity);             // 使用Db.use().query("sql") 正常             List&lt;Entity&gt; query = Db.use().query("select * from tb_user");             System.out.println(query);             // System.out.println(entities);         } catch (SQLException throwables) {             throwables.printStackTrace();         } ``` **setting配置** ```shell ## 基本配置信息 # url添加IGNORECASE=TRUE属性不区分大小写 url = jdbc:h2:~/demo;IGNORECASE=TRUE username = sa password = sa driver = org.h2.Driver  ## 连接池配置项 # 自动提交 autoCommit = true # 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 缺省:30秒 connectionTimeout = 30000 # 一个连接idle状态的最大时长（毫秒），超时则被释放（retired），缺省:10分钟 idleTimeout = 600000 # 一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒，参考MySQL wait_timeout参数（show variables like '%timeout%';） maxLifetime = 1800000 # 获取连接前的测试SQL connectionTestQuery = SELECT 1 # 最小闲置连接数 minimumIdle = 10 # 连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count) maximumPoolSize = 10 # 连接只读数据库时配置为true， 保证安全 readOnly =false ```  **2. 堆栈信息** ```shell Caused by: java.lang.NullPointerException at cn.hutool.db.DbUtil.close(DbUtil.java:158) at cn.hutool.db.SqlConnRunner.find(SqlConnRunner.java:317) at cn.hutool.db.SqlConnRunner.find(SqlConnRunner.java:336) at cn.hutool.db.AbstractDb.find(AbstractDb.java:455) at cn.hutool.db.AbstractDb.find(AbstractDb.java:521) ```</body>
+		<created>2020-04-22 10:34:01</created>
+		<closed>2020-04-23 04:08:01</closed>
+	</bug>
+	<bug>
+		<id>843</id>
+		<title>README.md内容中有疑似错别字</title>
+		<body>### 问题描述（包括截图）  1. 见截图 ![疑似错别字](https://user-images.githubusercontent.com/39040122/79934028-23d60700-8484-11ea-8fe6-e3d687c93337.png) </body>
+		<created>2020-04-22 02:29:34</created>
+		<closed>2020-04-22 02:54:07</closed>
+	</bug>
+	<bug>
+		<id>839</id>
+		<title>FileUtil.rename给文件重命名后通过file.getName()获取的文件名字符串尾多了一个点"."</title>
+		<body>### 版本情况  JDK版本：    1.8.0_102 hutool版本： 5.3.1  ### 问题描述（包括截图）  1. 复现代码 ``` File file = FileUtil.rename(uploadFile, System.currentTimeMillis() + fileName.toString(), true, true); ``` ![image](https://user-images.githubusercontent.com/10138559/79744258-9d60de80-8338-11ea-9f3c-19460261aa4d.png) 原文件名：E:\pics\1587380213334 重命名后通过file.getName()获取的文件名：E:\pics\1587380217907微信图片airplane.jpg. 最后多了一个点"." 去到文件夹看这个文件名称正常，没有这个点。</body>
+		<created>2020-04-20 10:59:05</created>
+		<closed>2020-04-23 04:01:33</closed>
+	</bug>
+	<bug>
+		<id>838</id>
+		<title>更改系统时间后 定时任务不跑了</title>
+		<body>### 版本情况 JDK版本：    jdk8 hutool版本： 4.1.1  ### 问题描述 是这样的,我在用CronUtil时,测试东西的时候,改了系统的时间,然后定时任务就不能正常跑了, 我得开发系统是Windows 10 企业版 1909</body>
+		<created>2020-04-18 05:31:47</created>
+		<closed>2020-04-19 03:37:20</closed>
+	</bug>
+	<bug>
+		<id>827</id>
+		<title>空指针了哟~</title>
+		<body>### 版本情况  JDK版本：    openjdk_11 hutool版本： 5.3.0  ### 问题描述（包括截图）  1. 复现代码 cookie没拿到东西  空指针了哟 ```java java.lang.NullPointerException: null at java.base/java.lang.reflect.Array.getLength(Native Method) ~[na:na] at cn.hutool.core.collection.ArrayIter.&lt;init&gt;(ArrayIter.java:57) ~[hutool-all-5.3.0.jar:na] at cn.hutool.core.collection.ArrayIter.&lt;init&gt;(ArrayIter.java:45) ~[hutool-all-5.3.0.jar:na] at cn.hutool.core.collection.ArrayIter.&lt;init&gt;(ArrayIter.java:34) ~[hutool-all-5.3.0.jar:na] at cn.hutool.extra.servlet.ServletUtil.readCookieMap(ServletUtil.java:422) ~[hutool-all-5.3.0.jar:na] ``` </body>
+		<created>2020-04-12 08:17:37</created>
+		<closed>2020-04-13 02:25:22</closed>
+	</bug>
+	<bug>
+		<id>818</id>
+		<title>通过读取JSON文本串解析JSONObject对象，JSON顶层有序，其他层无序</title>
+		<body>### 版本情况  JDK版本：    java version "1.8.0_51" hutool版本： 5.2.5【包括4.4.0】  ### 问题描述（包括截图）  1. 复现代码  ```java JSONObject jsonObject = new JSONObject("{'b':'1','a':{'b':'3','a':'4'}}",true); ```  2. 堆栈信息 无 3. 测试涉及到的文件（注意脱密） ![hutool_bug_顶层有序，其他无序](https://user-images.githubusercontent.com/16408279/78500477-357f9500-7789-11ea-82bb-fe4d9d710adf.png) </body>
+		<created>2020-04-05 14:06:04</created>
+		<closed>2020-04-07 03:19:57</closed>
+	</bug>
+	<bug>
+		<id>817</id>
+		<title>http get 不带参数请求报错（需设置参数编码）</title>
+		<body>### 版本情况  JDK版本：    java version "1.8.0_192" hutool版本： 5.0.3（最新问题仍在）  ### 问题描述（包括截图） http get方法不带参数请求报错，需设置参数编码（encodeUrlParams=true）  图片无法上传 cn.hutool.http.HttpUtil.java文件encodeParams（）方法 460行 注释写的是无URL，错了。应该是无Params即无参数 所以应该是：urlPart = paramsStr;</body>
+		<created>2020-04-03 08:19:37</created>
+		<closed>2020-04-03 08:51:37</closed>
+	</bug>
+	<bug>
+		<id>806</id>
+		<title>使用Cglib proxy 对目标实例生成代理，通过代理无法调用目标实例方法</title>
+		<body>### 版本情况  JDK版本：    1.8.0_231 hutool版本： 5.2.3（请确保最新尝试是否还有问题）  ### 问题描述（包括截图）  使用Cglib proxy 对目标实例生成代理，通过代理无法调用目标实例方法。  1. 复现代码  ```java private static void testCGLIBProxy() throws ClassNotFoundException {          Class.forName("cn.hutool.aop.proxy.CglibProxyFactory");          T target = new T();         //目标类设置标记         target.setTag("tag");         T proxy = cn.hutool.aop.ProxyUtil.proxy(target, new cn.hutool.aop.aspects.Aspect() {             @Override             public boolean before(Object target, Method method, Object[] args) {                 System.out.println(method.getName() + ".before");                 return true;             }              @Override             public boolean after(Object target, Method method, Object[] args, Object returnVal) {                 System.out.println(method.getName() + ".after");                 return true;             }              @Override             public boolean afterException(Object target, Method method, Object[] args, Throwable e) {                 System.out.println(method.getName() + ".exception");                 return true;             }         });         //代理类获取标记tag (断言错误)          cn.hutool.core.lang.Assert.notNull(proxy.getTag());     }    @Data     public static class T{         private String tag;     } ```  2. 原因 cn.hutool.aop.interceptor.CglibInterceptor [line 44](https://github.com/looly/hutool/blob/7df2a620e033291ab5628c8a5778fe0a5d1c91ba/hutool-aop/src/main/java/cn/hutool/aop/interceptor/CglibInterceptor.java#L44) ```java public class CglibInterceptor implements MethodInterceptor, Serializable { private static final long serialVersionUID = 1L;  private final Object target; private final Aspect aspect;  /**  * 构造  *  * @param target 被代理对象  * @param aspect 切面实现  */ public CglibInterceptor(Object target, Aspect aspect) { this.target = target; this.aspect = aspect; }  public Object getTarget() { return this.target; }  @Override public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable { Object result = null;  // 开始前回调 if (aspect.before(target, method, args)) { try { // result = proxy.invokeSuper(obj, args); //类增强的情况下使用                                   result = proxy.invoke(target, args);         //代理情况使用 } catch (InvocationTargetException e) { if (aspect.afterException(target, method, args, e.getTargetException())) { throw e; } } }  // 结束执行回调 if (aspect.after(target, method, args, result)) { return result; } return null; } }  ``` </body>
+		<created>2020-03-25 14:23:45</created>
+		<closed>2020-03-26 01:52:16</closed>
+	</bug>
+	<bug>
+		<id>795</id>
+		<title>json转为xml时，中文乱码了</title>
+		<body>### 版本情况  JDK版本：    Oracle JDK 1.8.0 hutool版本： hutool-all-5.2.1  ### 问题描述（包括截图）  1.   使用XML.toXml(json) 转换json,  json字符串中的中文被转为乱码了  </body>
+		<created>2020-03-20 05:58:55</created>
+		<closed>2020-03-22 08:16:39</closed>
+	</bug>
+	<bug>
+		<id>793</id>
+		<title>关于导出畸形List&lt;Map&gt;</title>
+		<body>### 版本情况  JDK版本：    jdk8 hutool版本： 5.0.7  ### 问题描述（包括截图）  1. 复现代码  ```java List&lt;Map&lt;String,Object&gt;&gt; rows = new ArrayList&lt;&gt;();          Map&lt;String, Object&gt; map1 = new HashMap&lt;&gt;();         map1.put("a",1);         map1.put("b",2);         map1.put("c",3);         map1.put("d",4);         map1.put("e",5);         Map&lt;String, Object&gt; map2 = new HashMap&lt;&gt;();         map2.put("c",3);         map2.put("d",4);         map2.put("e",5);         Map&lt;String, Object&gt; map3 = new HashMap&lt;&gt;();         map3.put("d",4);         map3.put("e",5);          rows.add(map1);         rows.add(map1);         rows.add(map2);         rows.add(map3);          // 通过工具类创建writer         ExcelWriter writer = new ExcelWriter("E:\\kweServer\\reverseExcelFile\\"+ "1111" + ".xls","数据列表");  //通过构造方法创建writer //ExcelWriter writer = new ExcelWriter("d:/writeTest.xls");  //跳过当前行，既第一行，非必须，在此演示用         writer.passCurrentRow();  //一次性写出内容，强制输出标题         writer.write(rows, true); //关闭writer，释放内存         writer.close(); ```  ![image](https://user-images.githubusercontent.com/45959966/77133218-41870980-6a9d-11ea-875b-a338a047b197.png) </body>
+		<created>2020-03-20 03:23:51</created>
+		<closed>2020-03-22 09:16:24</closed>
+	</bug>
+	<bug>
+		<id>790</id>
+		<title>BeanPath expression map取值问题</title>
+		<body>### 版本情况  JDK版本：    jdk8 hutool版本： 5.2.3（请确保最新尝试是否还有问题）  ### 问题描述（包括截图）  1. 复现代码  ```java BeanPathTest.java  @Test public void getMapTest () { BeanPath pattern = BeanPath.create("userInfo[id, photoPath]"); Map&lt;String, Object&gt; result = (Map&lt;String, Object&gt;)pattern.get(tempMap); Assert.assertEquals(1, result.get("id")); Assert.assertEquals("yx.mm.com", result.get("photoPath")); } ```  2. 堆栈信息 java.lang.NullPointerException  3、问题原因： ![image](https://user-images.githubusercontent.com/35865779/77030216-e7247500-69d8-11ea-9bf4-cd608f77dfe6.png)  </body>
+		<created>2020-03-19 03:58:57</created>
+		<closed>2020-03-19 04:16:15</closed>
+	</bug>
+	<bug>
+		<id>782</id>
+		<title>注释错误，还是代码错误？</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 5.2.2 ![Snipaste_2020-03-13_15-14-49](https://user-images.githubusercontent.com/41384519/76598623-39c7e200-653e-11ea-9ae7-73fe569baeb8.jpg) </body>
+		<created>2020-03-13 07:20:59</created>
+		<closed>2020-03-13 07:54:46</closed>
+	</bug>
+	<bug>
+		<id>776</id>
+		<title>执行以下代码报错</title>
+		<body>Map&lt;String, Object&gt; paramMap = MapUtil.builder("name1", (Object)"张三").put("id", 12).put("subName", "小豆豆").build(); Db.use().query("select * from table where id=@id and name = @name1 and nickName = @subName", paramMap);  </body>
+		<created>2020-03-12 04:04:09</created>
+		<closed>2020-03-12 09:24:24</closed>
+	</bug>
+	<bug>
+		<id>769</id>
+		<title>HttpRequest直接用IP地址访问一个网站，添加body参数去请求有BUG</title>
+		<body>### 版本情况  JDK版本：    openjdk_8_201 hutool版本： 4.6.14（请确保最新尝试是否还有问题）  HttpRequest直接用IP地址访问一个网站，添加body参数去请求有BUG，第一次正常返回结果，第二次请求什么也拿不到（必须要使用IP地址访问，还有添加Body参数，4.4.4版本无此问题）  1. 复现代码 见图片 </body>
+		<created>2020-03-10 06:10:07</created>
+		<closed>2020-03-10 08:39:03</closed>
+	</bug>
+	<bug>
+		<id>767</id>
+		<title>升级到5.2.0后，模版引擎失效了。</title>
+		<body>### 版本情况 hutool版本： 5.2.0  ### 问题描述 加载出来的是文件名称，回退版本就没问题。  ![image](https://user-images.githubusercontent.com/32906036/76197116-80f46100-6226-11ea-9af2-2a55376b8201.png)   </body>
+		<created>2020-03-09 08:54:42</created>
+		<closed>2020-03-09 16:51:34</closed>
+	</bug>
+	<bug>
+		<id>766</id>
+		<title>hutool[5.2.0]版本-ExcelWrite多sheet，除了第一个sheet有数据，其他sheet数据为空</title>
+		<body>### 版本情况  JDK版本：    jdk-11.0.6 hutool版本： 5.2.0  ### 问题描述（包括截图）  1. 复现代码  ```java import cn.hutool.core.date.DateUtil; import cn.hutool.core.util.IdUtil; import cn.hutool.crypto.digest.DigestUtil; import cn.hutool.poi.excel.ExcelUtil;  import java.util.Date; import java.util.LinkedList; import java.util.TreeMap;  /**  * @Date 2020-03-08 19:32:53  * @Version 1.0  */ public class IssueDemo {      public static void main(String[] args) {         var rows = new LinkedList&lt;&gt;();         for (int i = 0; i &lt; 10; i++) {             var tempList = new TreeMap&lt;&gt;();             for (int j = 0; j &lt; 10; j++) {                 tempList.put(j + "", DigestUtil.md5Hex(IdUtil.randomUUID()));             }             rows.add(tempList);         }         var writer = ExcelUtil.getWriter("/Users/yangkang/Desktop/使用hutool多sheetExcel导出-" + DateUtil.format(new Date(), "HHmmss") + ".xlsx", "正常数据");         writer.write(rows, true);         writer.autoSizeColumnAll();         writer.setSheet("当前重复数据");         writer.write(rows, true);         writer.autoSizeColumnAll();         writer.setSheet("历史重复数据");         writer.write(rows, true);         writer.autoSizeColumnAll();         writer.close();     } }  ```  2. 控制台信息 ![image](https://user-images.githubusercontent.com/13379708/76166024-59ee4e80-6196-11ea-8f37-36d1535e7933.png)  3.导出文件结果 ![image](https://user-images.githubusercontent.com/13379708/76166047-81451b80-6196-11ea-84a2-1cc4a6efe9a8.png) ![image](https://user-images.githubusercontent.com/13379708/76166055-8b671a00-6196-11ea-9c4d-6c5af06eccda.png) ![image](https://user-images.githubusercontent.com/13379708/76166060-9621af00-6196-11ea-9810-b1a0668b996c.png) </body>
+		<created>2020-03-08 15:45:43</created>
+		<closed>2020-03-09 01:57:15</closed>
+	</bug>
+	<bug>
+		<id>765</id>
+		<title>NetUtil.isUsableLocalPort()方法在一些情况下有问题</title>
+		<body>### 版本情况  JDK版本：    oracle jdk 1.8.0_221 hutool版本： 5.2.0  ### 问题描述（包括截图）  `NetUtil.isUsableLocalPort(6800)`这个方法在一些情况下有问题，比如说使用`Aria2c-RPC`的时候，默认启动的是6800端口：  ![image](https://user-images.githubusercontent.com/40259896/76159697-07913b80-615e-11ea-9d09-6edcd3a1b330.png)  但是用以下代码却返回6800端口可用：  ```java boolean usableLocalPort = NetUtil.isUsableLocalPort(6800); System.out.println(usableLocalPort); // 返回true ``` 用了一下网上通用的一个方法进行了一下检测，这才返回端口不可用：  ```java /**  * 检查port是否可用  *  * @param port 端口  * @return boolean  */ private static boolean portAvailable(int port) {     if (port &lt; MIN_PORT_NUMBER || port &gt; MAX_PORT_NUMBER) {         throw new IllegalArgumentException("端口范围有误: " + port);     }     try (ServerSocket ss = new ServerSocket(port);          DatagramSocket ds = new DatagramSocket(port)) {         ss.setReuseAddress(true);         ds.setReuseAddress(true);         return true;     } catch (IOException ignored) {     }     return false; } ``` 此时使用这个方法：  ```java boolean b = portAvailable(6800); System.out.println(b); // 返回false ```</body>
+		<created>2020-03-08 09:04:36</created>
+		<closed>2020-03-08 09:41:03</closed>
+	</bug>
+	<bug>
+		<id>758</id>
+		<title>EscapeUtil类的escape转义方法出来的结果与文档描述不一样</title>
+		<body>### 版本情况  JDK版本：    JDK8 hutool版本： 5.1.4（请确保最新尝试是否还有问题）  ### 问题描述（包括截图）  String escapeHtml4 = EscapeUtil.escape("*@-_+./(123你好)");  返回结果：%2a%40%2d%5f%2b%2e%2f%28123%u4f60%u597d%29  异常：没有保留这些字符 * @ - _ + . / </body>
+		<created>2020-02-28 04:01:07</created>
+		<closed>2020-02-28 05:45:23</closed>
+	</bug>
+	<bug>
+		<id>752</id>
+		<title>CombinationAnnotationElement类中中init方法有个判断有误</title>
+		<body> private void init(AnnotatedElement element) {         final Annotation[] declaredAnnotations = element.getDeclaredAnnotations();         this.declaredAnnotationMap = new HashMap&lt;&gt;();         parseDeclared(declaredAnnotations);          final Annotation[] annotations = element.getAnnotations();         if(ObjectUtil.equal(declaredAnnotations, annotations)) {             this.annotationMap = this.declaredAnnotationMap;         }else {             this.annotationMap = new HashMap&lt;&gt;();             parse(annotations);         }     }  ObjectUtil.equal(declaredAnnotations, annotations)) 这个地方的判断应该是有误的， 需要调整成Arrays.equals()方法</body>
+		<created>2020-02-19 08:51:08</created>
+		<closed>2020-02-19 11:14:37</closed>
+	</bug>
+	<bug>
+		<id>750</id>
+		<title>sax 模式读取excel2003时报数组越界</title>
+		<body>[读取的文件.zip](https://github.com/looly/hutool/files/4209609/default.zip)  执行代码：ExcelUtil.read03BySax();  报错信息： Exception in thread "main" java.lang.IndexOutOfBoundsException: Index: 14, Size: 12 at java.util.ArrayList.rangeCheckForAdd(ArrayList.java:661) at java.util.ArrayList.add(ArrayList.java:473) at cn.hutool.poi.excel.sax.Excel03SaxReader.processRecord(Excel03SaxReader.java:197)  hutool版本：4.6.8  </body>
+		<created>2020-02-16 09:57:32</created>
+		<closed>2020-02-21 10:49:39</closed>
+	</bug>
+	<bug>
+		<id>733</id>
+		<title>DateUtil的isExpired方法意义不明确,以及错误</title>
+		<body>两个isExpired方法 ``` public static boolean isExpired(Date startDate, DateField dateField, int timeLength, Date endDate) { final Date offsetDate = offset(startDate, dateField, timeLength); return offsetDate.after(endDate); } public static boolean isExpired(Date startDate, Date endDate, Date checkDate) { return betweenMs(startDate, checkDate) &gt; betweenMs(startDate, checkDate); } ``` 第一个方法 我认为startDate为生产日期, offset是保质期,计算出来的offsetDate是过期时间, 所以不是应该返回endDate.after(offsetDate), 当前时间晚于过期时间,这才是过期是意思了吧?  第二个方法 应该是写错了,两个都是betweenMs(startDate, checkDate) </body>
+		<created>2020-01-18 10:45:44</created>
+		<closed>2020-01-21 23:21:54</closed>
+	</bug>
+	<bug>
+		<id>731</id>
+		<title>CharsetUtil 在类加载时访问了GBK字符编码，在不支持GBK的系统中运行报错 指定字符集无法避免类加载错误</title>
+		<body>Jan 17, 2020 6:55:18 AM io.vertx.ext.web.impl.RoutingContextImplBase SEVERE: Unexpected exception in route java.lang.ExceptionInInitializerError         at cn.hutool.core.util.ZipUtil.&lt;clinit&gt;(ZipUtil.java:45)         at com.advantech.deviceon.commbridge.util.CommonUtil.makeZip(CommonUtil.java:201)         at com.advantech.deviceon.commbridge.component.SystemContext.backupCommbridgeInfo(SystemContext.java:585)         at com.advantech.deviceon.commbridge.Application.backupConfigs(Application.java:372)         at io.vertx.ext.web.impl.RouteImpl.handleContext(RouteImpl.java:219)         at io.vertx.ext.web.impl.RoutingContextImplBase.iterateNext(RoutingContextImplBase.java:120)         at io.vertx.ext.web.impl.RoutingContextImpl.next(RoutingContextImpl.java:133)         at io.vertx.ext.web.handler.impl.BodyHandlerImpl$BHandler.doEnd(BodyHandlerImpl.java:231)         at io.vertx.ext.web.handler.impl.BodyHandlerImpl$BHandler.end(BodyHandlerImpl.java:211)         at io.vertx.ext.web.handler.impl.BodyHandlerImpl.lambda$handle$0(BodyHandlerImpl.java:74)         at io.vertx.core.http.impl.HttpServerRequestImpl.handleEnd(HttpServerRequestImpl.java:417)         at io.vertx.core.http.impl.Http1xServerConnection.handleEnd(Http1xServerConnection.java:483)         at io.vertx.core.http.impl.Http1xServerConnection.processMessage(Http1xServerConnection.java:457)         at io.vertx.core.http.impl.Http1xServerConnection.handleMessage(Http1xServerConnection.java:144)         at io.vertx.core.http.impl.HttpServerImpl$ServerHandlerWithWebSockets.handleMessage(HttpServerImpl.java:714)         at io.vertx.core.http.impl.HttpServerImpl$ServerHandlerWithWebSockets.handleMessage(HttpServerImpl.java:622)         at io.vertx.core.net.impl.VertxHandler.lambda$channelRead$1(VertxHandler.java:146)         at io.vertx.core.impl.ContextImpl.lambda$wrapTask$2(ContextImpl.java:337)         at io.vertx.core.impl.ContextImpl.executeFromIO(ContextImpl.java:195)         at io.vertx.core.net.impl.VertxHandler.channelRead(VertxHandler.java:144)         at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)         at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)         at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)         at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310)         at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284)         at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)         at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)         at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)         at io.vertx.core.http.impl.Http1xOrH2CHandler.end(Http1xOrH2CHandler.java:61)         at io.vertx.core.http.impl.Http1xOrH2CHandler.channelRead(Http1xOrH2CHandler.java:38)         at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)         at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)         at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)         at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1359)         at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)         at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)         at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:935)         at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:141)         at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)         at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)         at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)         at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)         at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)         at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)         at java.lang.Thread.run(Unknown Source) Caused by: java.nio.charset.UnsupportedCharsetException: GBK         at java.nio.charset.Charset.forName(Unknown Source)         at cn.hutool.core.util.CharsetUtil.&lt;clinit&gt;(CharsetUtil.java:29)         ... 45 more   ![image](https://user-images.githubusercontent.com/35624201/72591204-8629e380-393a-11ea-89bf-de6df11d21be.png) </body>
+		<created>2020-01-17 07:04:05</created>
+		<closed>2020-02-11 08:44:38</closed>
+	</bug>
+	<bug>
+		<id>714</id>
+		<title>一个转换BUG</title>
+		<body>Convert.digitToChinese(100000000); 当金额大于一亿时，会多一个万字。</body>
+		<created>2020-01-09 01:52:54</created>
+		<closed>2020-01-09 02:31:57</closed>
+	</bug>
+	<bug>
+		<id>677</id>
+		<title>JavaBean转换成JSONObject时对Date类型的属性转换出现负数，然后通过toBean方法无法再从String转换成JavaBean</title>
+		<body>伪代码： //auditResultDto对象中有Date类型的字段，Date的值为：1969-12-15 JSONObject jsonObject = JSONUtil.parseObj(auditResultDto); String objString = jsonObject.toString(); AuditResultDto auditResultDto = JSONUtil.toBean(objString , AuditResultDto.class);//执行这行代码报错 Caused by: cn.hutool.core.convert.ConvertException: Can not convert [-1497600000] to type [java.sql.Date] at cn.hutool.json.InternalJSONUtil.jsonConvert(InternalJSONUtil.java:327) at cn.hutool.json.InternalJSONUtil$1.value(InternalJSONUtil.java:235) at cn.hutool.json.InternalJSONUtil$1.value(InternalJSONUtil.java:226) at cn.hutool.core.bean.copier.BeanCopier.valueProviderToBean(BeanCopier.java:140) at cn.hutool.core.bean.copier.BeanCopier.copy(BeanCopier.java:64) at cn.hutool.core.bean.BeanUtil.fillBean(BeanUtil.java:419) at cn.hutool.json.InternalJSONUtil.toBean(InternalJSONUtil.java:226) at cn.hutool.json.JSONObject.toBean(JSONObject.java:325) at cn.hutool.json.JSONObject.toBean(JSONObject.java:302) at cn.hutool.json.InternalJSONUtil.jsonConvert(InternalJSONUtil.java:299) at cn.hutool.json.InternalJSONUtil$1.value(InternalJSONUtil.java:235) at cn.hutool.json.InternalJSONUtil$1.value(InternalJSONUtil.java:226) at cn.hutool.core.bean.copier.BeanCopier.valueProviderToBean(BeanCopier.java:140) at cn.hutool.core.bean.copier.BeanCopier.copy(BeanCopier.java:64) at cn.hutool.core.bean.BeanUtil.fillBean(BeanUtil.java:419) at cn.hutool.json.InternalJSONUtil.toBean(InternalJSONUtil.java:226) at cn.hutool.json.JSONObject.toBean(JSONObject.java:325) at cn.hutool.json.JSONObject.toBean(JSONObject.java:269) at cn.hutool.json.JSONUtil.toBean(JSONUtil.java:330) at cn.hutool.json.JSONUtil.toBean(JSONUtil.java:305) at com.jalone.misc.application.controller.MainController.listenMessage(MainController.java:129) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:181) at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:114) at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:114) ... 10 common frames omitted </body>
+		<created>2019-12-18 08:52:28</created>
+		<closed>2019-12-18 09:33:16</closed>
+	</bug>
+	<bug>
+		<id>673</id>
+		<title>疑似文档NetUtil页面丢失</title>
+		<body>https://www.hutool.club/docs/#/core/工具类/网络工具-NetUtil   突然发现404了？</body>
+		<created>2019-12-17 01:18:21</created>
+		<closed>2019-12-17 01:31:40</closed>
+	</bug>
+	<bug>
+		<id>651</id>
+		<title>IPV6地址使用HttpUtil.post方法报错</title>
+		<body>    带端口的IPV6的URL地址（例：http://[2008::232]:1234）使用HttpUtil.post方法将URL中"[]"转义导致jdk中URLStreamHandler.java:185无法判断host是否为ipv6地址。     报错信息如下：      Exception in thread "main" cn.hutool.core.exceptions.UtilException: MalformedURLException: For input string: ":207%5D:3030"  at cn.hutool.core.util.URLUtil.toUrlForHttp(URLUtil.java:126) at cn.hutool.http.HttpRequest.initConnecton(HttpRequest.java:976) at cn.hutool.http.HttpRequest.execute(HttpRequest.java:934) at cn.hutool.http.HttpRequest.execute(HttpRequest.java:903) at cn.hutool.http.HttpUtil.post(HttpUtil.java:161) at cn.hutool.http.HttpUtil.post(HttpUtil.java:148) at com.example.demo.Demo.main(Demo.java:77)  另：get方法也存在相同问题。</body>
+		<created>2019-12-03 09:40:29</created>
+		<closed>2019-12-05 02:01:48</closed>
+	</bug>
+	<bug>
+		<id>644</id>
+		<title>JSONObject转换bug</title>
+		<body>实例对象中属性为LocalDateTime,或jdk1.8时间类型属性,  转JSON字符串后, 再转成该对象报错 ? 时间格式不正确.</body>
+		<created>2019-11-27 12:18:00</created>
+		<closed>2019-12-02 09:54:38</closed>
+	</bug>
+	<bug>
+		<id>633</id>
+		<title>在参考文档里面点击API文档跳转 nginx报错 </title>
+		<body>![image](https://user-images.githubusercontent.com/40201226/69322604-27205900-0c80-11ea-8eb0-984f0015d2fe.png) ![image](https://user-images.githubusercontent.com/40201226/69322640-356e7500-0c80-11ea-9c2b-eefbb6b41e2e.png) </body>
+		<created>2019-11-21 08:59:05</created>
+		<closed>2019-11-21 22:48:19</closed>
+	</bug>
+	<bug>
+		<id>600</id>
+		<title>cn.hutool.core.collection.ConcurrentHashSet 序列化异常</title>
+		<body>ConcurrentHashSet实现了Serializable接口，但是其默认value却是一个非序列化的Object，导致序列化时会抛出异常。应该将PRESENT的类型改为Boolean或其他基础类型的包装类。  ```java public class ConcurrentHashSet&lt;E&gt; extends AbstractSet&lt;E&gt; implements java.io.Serializable { private static final long serialVersionUID = 7997886765361607470L;  /** 持有对象。如果值为此对象表示有数据，否则无数据 */ private static final Object PRESENT = new Object(); // Object未实现Serializable private final ConcurrentHashMap&lt;E, Object&gt; map; ```  ```java public class ConcurrentHashSet&lt;E&gt; extends AbstractSet&lt;E&gt; implements java.io.Serializable { private static final long serialVersionUID = 7997886765361607470L;  /** 持有对象。如果值为此对象表示有数据，否则无数据 */ private static final Boolean PRESENT = true; //  private final ConcurrentHashMap&lt;E, Boolean&gt; map; ```   </body>
+		<created>2019-10-25 06:01:22</created>
+		<closed>2019-10-25 08:56:50</closed>
+	</bug>
+	<bug>
+		<id>594</id>
+		<title>is sshPort &lt; 0?</title>
+		<body>``` public static Session createSession(String sshHost, int sshPort, String sshUser, String sshPass) { Assert.notEmpty(sshHost, "SSH Host must be not empty!"); Assert.isTrue(sshPort &lt; 0, "SSH Host must be not empty!");  // 默认root用户 if (StrUtil.isEmpty(sshUser)) { sshUser = "root"; }  final JSch jsch = new JSch(); Session session; try { session = jsch.getSession(sshUser, sshHost, sshPort); } catch (JSchException e) { throw new JschRuntimeException(e); }  if (StrUtil.isNotEmpty(sshPass)) { session.setPassword(sshPass); }  // 设置第一次登陆的时候提示，可选值：(ask | yes | no) session.setConfig("StrictHostKeyChecking", "no"); return session; } ```</body>
+		<created>2019-10-21 03:12:34</created>
+		<closed>2019-10-21 07:20:09</closed>
+	</bug>
+	<bug>
+		<id>583</id>
+		<title>httpCookie</title>
+		<body>新版本 默认Cookie行为失效。 所有的请求都不会带上服务器返回的Cookie怎么设置都无效  /**  * 打开默认的Cookie行为（自动回填服务器传回的Cookie）  *  * @return this  */ public HttpRequest enableDefaultCookie() { return cookie((String) null); }</body>
+		<created>2019-10-10 04:06:35</created>
+		<closed>2019-10-10 08:15:04</closed>
+	</bug>
+	<bug>
+		<id>572</id>
+		<title>设置了禁用默认cookie，但是请求抓包还是会自动携带</title>
+		<body>![Snipaste_2019-10-05_17-10-08](https://user-images.githubusercontent.com/41384519/66252894-5e4faf00-e793-11e9-9dfc-22ecbb5c033a.png) </body>
+		<created>2019-10-05 09:13:18</created>
+		<closed>2019-10-05 09:21:59</closed>
+	</bug>
+	<bug>
+		<id>547</id>
+		<title>CombinationAnnotationElement 源码问题</title>
+		<body>源码:  类：cn.hutool.core.annotation.CombinationAnnotationElement  87行： Annotation[] declaredAnnotations = element.getDeclaredAnnotations(); Annotation[] annotations = element.getAnnotations(); if(declaredAnnotations == annotations) {  //&lt;---※   //1 }else {  //2 }  对这个※位置的判断有些疑惑，因为 JDK(1.7/1.8) 中 getAnnotations 的实现方式为： public Annotation[] getAnnotations() {       return AnnotationParser.toArray(annotationData().annotations); } 也就是除非 declaredAnnotations 和 annotations 均为NULL，否则 ※ 位置永远为 flase。</body>
+		<created>2019-09-18 06:05:52</created>
+		<closed>2019-09-19 08:10:59</closed>
+	</bug>
+	<bug>
+		<id>546</id>
+		<title>some coding problems</title>
+		<body>1. `cn.hutool.db.ds.GlobalDSFactory` 的 `set` 方法和 `get` 方法的锁不是同一个对象，`set` 是 `GlobalDSFactory` 对象，而 `get` 方法是 `GlobalDSFactory` 对象的 `lock` 成员属性，是否需要修改成一致？ 2. 如果一个类只覆盖 `equals` 和 `hashCode` 中的一个，则可能意味着 `equals` 和 `hashCode `不一致 * `cn.hutool.core.builder.HashCodeBuilder` * `cn.hutool.core.comparator.VersionComparator` 3. `cn.hutool.core.convert.ConverterRegistry` 120行 Double-checked locking 不是线程安全的，建议添加 `volatile` 关键字修饰</body>
+		<created>2019-09-18 02:51:44</created>
+		<closed>2019-09-19 02:22:01</closed>
+	</bug>
+	<bug>
+		<id>544</id>
+		<title>RuntimeUtil方法重载问题，貌似调用自身？</title>
+		<body>![RuntimeUtil](https://user-images.githubusercontent.com/7486658/65098352-a5028280-d9f9-11e9-862b-babb4221ea52.png) </body>
+		<created>2019-09-18 01:53:29</created>
+		<closed>2019-09-18 09:42:38</closed>
+	</bug>
+	<bug>
+		<id>541</id>
+		<title>FileUtil.listFileNames无法扫码jar</title>
+		<body>![image](https://user-images.githubusercontent.com/43628956/64917992-3a1f3480-d7ca-11e9-9c55-2bebb525501c.png) 这里是不是JAR_FILE_EXT，无法扫到jar里的内容 </body>
+		<created>2019-09-15 07:06:38</created>
+		<closed>2019-09-15 13:00:48</closed>
+	</bug>
+	<bug>
+		<id>540</id>
+		<title>DateUtil.endOfYear计算错误</title>
+		<body>结果：2019-12-30 23:59:59</body>
+		<created>2019-09-15 00:21:02</created>
+		<closed>2019-09-15 06:30:09</closed>
+	</bug>
+	<bug>
+		<id>535</id>
+		<title>RandomUtil.randomEleSet(collection,count)会出现数组越界</title>
+		<body># 代码 ``` /**  * 随机获得列表中的一定量的不重复元素，返回Set  *   * @param &lt;T&gt; 元素类型  * @param collection 列表  * @param count 随机取出的个数  * @return 随机元素  * @throws IllegalArgumentException 需要的长度大于给定集合非重复总数  */ public static &lt;T&gt; Set&lt;T&gt; randomEleSet(Collection&lt;T&gt; collection, int count) { ArrayList&lt;T&gt; source = new ArrayList&lt;&gt;(new HashSet&lt;&gt;(collection)); if (count &gt; source.size()) { throw new IllegalArgumentException("Count is larger than collection distinct size !"); }  final HashSet&lt;T&gt; result = new HashSet&lt;T&gt;(count); int limit = collection.size(); while (result.size() &lt; count) { result.add(randomEle(source, limit)); }  return result; } ```  ## bug 随机的数据是去重后的数据，但是限制索引数却是未去重后的limit `int limit = collection.size();` 应该换成`int limit = source .size();`? </body>
+		<created>2019-09-11 06:15:34</created>
+		<closed>2019-09-11 07:24:14</closed>
+	</bug>
+	<bug>
+		<id>529</id>
+		<title>MathUtil.arrangementSelect  排列选择异常</title>
+		<body>排列组合的时候 '1234' 可以正常24种不同的组合， 当有重复数字时比如‘1123’没有任何结果。 </body>
+		<created>2019-09-09 08:27:46</created>
+		<closed>2019-09-09 13:32:08</closed>
+	</bug>
+	<bug>
+		<id>513</id>
+		<title>json注释不符</title>
+		<body>JSONUtil中isJsonArray等 注释信息与代码内容不符</body>
+		<created>2019-08-27 12:03:29</created>
+		<closed>2019-08-28 02:06:55</closed>
+	</bug>
+	<bug>
+		<id>509</id>
+		<title>cn.hutool.core.util.ArrayUtil#emptyCount方法返回空对象数量有误</title>
+		<body>ArrayUtil.emptyCount方法循环中第一次遇到空对象就返回，应到最后再返回 ``` /**  * 是否存在一个以上{@code null}或空对象，通过{@link ObjectUtil#isEmpty(Object)} 判断元素  *  * @param args 被检查的对象,一个或者多个  * @return 存在{@code null}的数量  * @since 4.5.18  */ public static int emptyCount(Object... args) { int count = 0; if (isNotEmpty(args)) { for (Object element : args) { if (ObjectUtil.isEmpty(element)) { return count++; } } } return count; } ``` </body>
+		<created>2019-08-23 02:56:48</created>
+		<closed>2019-08-23 11:03:01</closed>
+	</bug>
+	<bug>
+		<id>481</id>
+		<title>RSA加密算法未得到预期的值</title>
+		<body>           String PUBLICKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgtQn2JZ34ZC28NWYpAUd98iZ37BUrX/aKzmFbt7clFSs6sXqHauqKWqdtLkF2KexO40H1YTX8z2lSgBBOAxLsvaklV8k4cBFK9snQXE9/DDaFt6Rr7iVZMldczhC0JNgTz+SHXT6CBHuX3e9SdB1Ua44oncaTWz7OBGLbCiK45wIDAQAB";              byte[] keyBytes = Base64Utils.decode(PUBLICKEY.getBytes(StandardCharsets.UTF_8));             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);             KeyFactory keyFactory = KeyFactory.getInstance("RSA");             PublicKey publicKey = keyFactory.generatePublic(keySpec);              //长度不满足128补0             byte[] newdata = new byte[128 - data.length];             byte[] finaldata = ArrayUtils.addAll(newdata, data);              cipher = Cipher.getInstance("RSA/ECB/NoPadding");             cipher.init(Cipher.ENCRYPT_MODE, publicKey);             log.info(HexUtil.encode(cipher.doFinal(finaldata)).toLowerCase());              RSA rsa = new RSA("RSA/ECB/NoPadding",null,PUBLICKEY);             log.info(rsa.encryptHex(finaldata, KeyType.PublicKey)); 使用原始的方法与RSA类的加密得到的结果不一致 ![image](https://user-images.githubusercontent.com/10581712/62825244-3b61ae00-bbdb-11e9-8955-94c1f07a2a6d.png)  经过debug后得到是cn.hutool.crypto.asymmetric.AsymmetricCrypto#encrypt方法中 cache = cipher.doFinal(data, offSet, Math.min(remainLength, maxBlockSize)); 并不能按照方法字面获取偏移量，而是一直获取的是全部数据，下图是相关截图 ![image](https://user-images.githubusercontent.com/10581712/62826205-1294e500-bbea-11e9-8db1-5854faacb885.png)  </body>
+		<created>2019-08-10 17:56:49</created>
+		<closed>2019-08-13 03:15:34</closed>
+	</bug>
+	<bug>
+		<id>466</id>
+		<title>HttpUtil在进行inflate处理未能解析出正确的数据</title>
+		<body> 用postman可以请求道正确数据,但是HttpUtil.get却不行 接口https://comment.bilibili.com/67573272.xml  ![3245945B05F2C1C16C33F033009C67A8](https://user-images.githubusercontent.com/33059555/62332641-f65ebd00-b4f2-11e9-9709-d334f9c11823.jpg) </body>
+		<created>2019-08-01 22:59:02</created>
+		<closed>2019-10-20 14:24:40</closed>
+	</bug>
+	<bug>
+		<id>465</id>
+		<title>CacheUtil构建缓存时,获取缓存未命中时，关于missCount的计数问题</title>
+		<body>如果AbstractCache中get缓存过期，remove方法移除当前cacheMap中的缓存对象，记录missCount ![image](https://user-images.githubusercontent.com/40878619/62282923-09d23f80-b483-11e9-9d3a-bd25a5ee47a9.png) 执行removeWithoutLock(K key, boolean withMissCount),如果缓存过期了，missCount--后值为-1 是否应该是记录每次命中丢失的次数？ ![image](https://user-images.githubusercontent.com/40878619/62283055-4a31bd80-b483-11e9-8dc3-bf19fb1b6213.png)  </body>
+		<created>2019-08-01 09:41:14</created>
+		<closed>2019-08-09 08:10:54</closed>
+	</bug>
+	<bug>
+		<id>449</id>
+		<title>源代码有问题</title>
+		<body>ImgUtil 中 hexToColor 中  调用 StrUtil.removePrefix 参数传反了，详情见图 ![TIM图片20190725201233](https://user-images.githubusercontent.com/6092627/61873470-a5f6c680-af18-11e9-9099-719f45f871b4.png) ![TIM图片20190725201240](https://user-images.githubusercontent.com/6092627/61873474-a68f5d00-af18-11e9-992d-280fa782f14b.png) </body>
+		<created>2019-07-25 12:15:00</created>
+		<closed>2019-07-26 06:38:07</closed>
+	</bug>
+	<bug>
+		<id>444</id>
+		<title>HttpUtil发起http请求时报错Unexpected end of file from server</title>
+		<body> http://img01.fs.yiban.cn/mobile/2D0Y71 这个链接，使用浏览器、postman、okhttp框架都是可以正常请求到的。  ` String url = "http://img01.fs.yiban.cn/mobile/2D0Y71";          HttpRequest request = new HttpRequest(url);          request.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,image/jpeg,*/*;q=0.8");          request.header("Accept-Encoding", "gzip, deflate");          request.header("Accept-Language", "zh-CN,zh;q=0.9");          request.header("Host", "img01.fs.yiban.cn");          request.header("Upgrade-Insecure-Requests", "1");          request.header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64)  AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3704.400 QQBrowser/10.4.3587.400");          request.execute();`  错误信息如下：  `Exception in thread "main" cn.hutool.http.HttpException: Unexpected end of file from server at cn.hutool.http.HttpResponse.init(HttpResponse.java:338) at cn.hutool.http.HttpResponse.&lt;init&gt;(HttpResponse.java:64) at cn.hutool.http.HttpRequest.execute(HttpRequest.java:882) at cn.hutool.http.HttpRequest.execute(HttpRequest.java:845) at Entry.main(Entry.java:19) Caused by: java.net.SocketException: Unexpected end of file from server at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:851) at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:678) at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:848) at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:678) at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1587) at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492) at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480) at cn.hutool.http.HttpConnection.responseCode(HttpConnection.java:448) at cn.hutool.http.HttpResponse.init(HttpResponse.java:325) ... 4 more` </body>
+		<created>2019-07-24 09:37:17</created>
+		<closed>2019-07-24 10:20:25</closed>
+	</bug>
+	<bug>
+		<id>438</id>
+		<title>图片工具类裁剪方法获取宽高取反了</title>
+		<body>ImgUtil.java(388)方法获取原图宽高写反了 ``` int srcWidth = srcImage.getHeight(null); // 源图宽度 int srcHeight = srcImage.getWidth(null); // 源图高度 ```</body>
+		<created>2019-07-23 06:05:02</created>
+		<closed>2019-07-23 08:04:25</closed>
+	</bug>
+	<bug>
+		<id>436</id>
+		<title>get the last empty collection causes [java.lang.IndexOutOfBoundsException]</title>
+		<body>4.5.17   测试代码 ```  List&lt;String&gt; test = CollUtil.newArrayList(); System.out.println(CollUtil.getLast(test)); ```  应该是返回null,而不是抛出IndexOutOfBoundsException ``` Exception in thread "main" java.lang.IndexOutOfBoundsException: Index -1 out-of-bounds for length 0 at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64) at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70) at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248) at java.base/java.util.Objects.checkIndex(Objects.java:372) at java.base/java.util.ArrayList.get(ArrayList.java:440) at cn.hutool.core.collection.CollUtil.get(CollUtil.java:1872) at cn.hutool.core.collection.CollUtil.getLast(CollUtil.java:1955) ```   </body>
+		<created>2019-07-21 06:03:05</created>
+		<closed>2019-07-22 08:18:24</closed>
+	</bug>
+	<bug>
+		<id>435</id>
+		<title>TextSimilarity 对文本进行相似度匹配有bug。</title>
+		<body>`String newStrA, newStrB;`在removeSign后这2个变量就全是 falsetruefalsetrue（由false/true组成的字符串）了。导致后面匹配的相似度根本不是文本相似度。    `// --------------------------------------------------------------------------------------------------- Private method start /**  * 将字符串的所有数据依次写成一行，去除无意义字符串  *   * @param str 字符串  * @return 处理后的字符串  */ private static String removeSign(String str) { StringBuilder sb = StrUtil.builder(str.length()); // 遍历字符串str,如果是汉字数字或字母，则追加到ab上面 int length = str.length(); for (int i = 0; i &lt; length; i++) { sb.append(charReg(str.charAt(i))); } return sb.toString(); }  /**  * 判断字符是否为汉字，数字和字母， 因为对符号进行相似度比较没有实际意义，故符号不加入考虑范围。  *   * @param charValue 字符  * @return 是否为汉字，数字和字母  */ private static boolean charReg(char charValue) { return (charValue &gt;= 0x4E00 &amp;&amp; charValue &lt;= 0XFFF) || // (charValue &gt;= 'a' &amp;&amp; charValue &lt;= 'z') || // (charValue &gt;= 'A' &amp;&amp; charValue &lt;= 'Z') || // (charValue &gt;= '0' &amp;&amp; charValue &lt;= '9'); }`</body>
+		<created>2019-07-21 04:29:39</created>
+		<closed>2019-07-22 03:19:32</closed>
+	</bug>
+	<bug>
+		<id>431</id>
+		<title>图片缩放bug</title>
+		<body>在使用缩放图像的时候有一个bug,缩放之前进行了一次等比缩放,然后在画布重新绘制的时候依旧使用的是原始图片的宽高,导致缩放后的图片是裁剪图片.  ### 类 ``` cn.hutool.core.img.Img ```  ### 错误代码 ```     public Img scale(int width, int height, Color fixedColor) {         Image srcImage = this.getValidSrcImg();         int srcHeight = srcImage.getHeight((ImageObserver)null);         int srcWidth = srcImage.getWidth((ImageObserver)null);         double heightRatio = NumberUtil.div((float)height, (float)srcHeight);         double widthRatio = NumberUtil.div((float)width, (float)srcWidth);         if (heightRatio == widthRatio) {             return this.scale(width, height);         } else {             if (widthRatio &lt; heightRatio) {                 this.scale(width, (int)((double)srcHeight * widthRatio));             } else {                 this.scale((int)((double)srcWidth * heightRatio), height);             }              if (null == fixedColor) {                 fixedColor = Color.WHITE;             }              BufferedImage image = new BufferedImage(width, height, this.getTypeInt());             Graphics2D g = image.createGraphics();             g.setBackground(fixedColor);             g.clearRect(0, 0, width, height);             // 此处应该是上面缩放后的宽高             g.drawImage(srcImage, (width - srcWidth) / 2, (height - srcHeight) / 2, srcWidth, srcHeight, fixedColor, (ImageObserver)null);             g.dispose();             this.targetImage = image;             return this;         }     } ```</body>
+		<created>2019-07-16 12:14:48</created>
+		<closed>2019-07-17 09:36:18</closed>
+	</bug>
+	<bug>
+		<id>391</id>
+		<title>金额格式化转化成为了4位数不是3位，格式应该为,##0.00</title>
+		<body>![image](https://user-images.githubusercontent.com/17349061/59338217-90488b80-8d34-11e9-808f-bed6c61511dd.png) </body>
+		<created>2019-06-12 09:08:25</created>
+		<closed>2019-06-13 03:32:18</closed>
+	</bug>
+	<bug>
+		<id>383</id>
+		<title>sax读取excel03版本整数有误</title>
+		<body>Excel03SaxReader文件263行代码： ``` // 对于无小数部分的数字类型，转为Long，否则保留原数字 value = (longPart == numValue) ? longPart : numValue; ``` 不管longPart == numValue是否是true，三目运算符都不起作用，value的类型永远是Double，这样就导致excel中的数据是3，存储的时候变成了3.0</body>
+		<created>2019-06-03 10:18:39</created>
+		<closed>2019-06-10 08:46:03</closed>
+	</bug>
+	<bug>
+		<id>356</id>
+		<title>HttpUtil.toParams bug</title>
+		<body>![image](https://user-images.githubusercontent.com/464213/57515735-e6956980-7345-11e9-83f8-5dd736f1288b.png) 如果valueStr是个url并且带参数 URLUtil.encodeQuery会识别为域名参数来处理 valueStr=http://xxx.baidu.com?1=1&amp;2=2  结果 http%3A%2F%2Fwww.baidu.com%3F1=1&amp;2=2  &amp;符号没有转义</body>
+		<created>2019-05-10 09:08:50</created>
+		<closed>2019-05-10 09:18:37</closed>
+	</bug>
+	<bug>
+		<id>347</id>
+		<title>缓存没用 ，我把代码给你看看</title>
+		<body>```java import cn.hutool.cache.CacheUtil; import cn.hutool.cache.impl.TimedCache;  public class CacheLocalUtil {      private static final TimedCache&lt;String, String&gt; timedCache = CacheUtil.newTimedCache(7200*1000);      private  CacheLocalUtil(){         timedCache.schedulePrune(7200*1000);     }      private static class  CacheLocalUtilInstance{          private static final CacheLocalUtil instance=new CacheLocalUtil();     }      public static CacheLocalUtil getInstance(){         return CacheLocalUtilInstance.instance;     }      public void  put(String k ,String v,long time){         timedCache.put(k,v,time);     };       public String get(String k){         String s = timedCache.get(k, false);         return s;     }  } ```</body>
+		<created>2019-05-05 10:53:05</created>
+		<closed>2019-05-06 02:53:22</closed>
+	</bug>
+	<bug>
+		<id>344</id>
+		<title>TemplateUtil不能创建多个TemplateEngine</title>
+		<body></body>
+		<created>2019-04-28 07:44:09</created>
+		<closed>2019-04-30 03:08:02</closed>
+	</bug>
+	<bug>
+		<id>341</id>
+		<title>透明图片,ImgUtil缩放图片尺寸后,底部变成黑色</title>
+		<body></body>
+		<created>2019-04-24 07:27:22</created>
+		<closed>2019-04-30 14:58:55</closed>
+	</bug>
+	<bug>
+		<id>339</id>
+		<title>cn.hutool.extra.ssh.JschUtil</title>
+		<body>![image](https://user-images.githubusercontent.com/12879147/56487219-10a8f800-650d-11e9-99b1-176758de2a97.png)  ![image](https://user-images.githubusercontent.com/12879147/56487273-3b934c00-650d-11e9-914f-3c1a4778e1c3.png)  提前connect有问题 再次connect的时候 就无数据返回？</body>
+		<created>2019-04-22 06:45:47</created>
+		<closed>2019-04-22 07:01:41</closed>
+	</bug>
+	<bug>
+		<id>329</id>
+		<title>字段验证器 Validator.validateEmpty 方法注释和 validateNotEmpty 一致</title>
+		<body>![image](https://user-images.githubusercontent.com/17196745/56257599-57f34b00-60ff-11e9-9ea4-dbba1d586fb0.png) </body>
+		<created>2019-04-17 02:55:51</created>
+		<closed>2019-04-17 03:31:56</closed>
+	</bug>
+	<bug>
+		<id>323</id>
+		<title>changelog版本号写重复了</title>
+		<body>changelog版本号写重复了！</body>
+		<created>2019-04-12 07:35:34</created>
+		<closed>2019-04-12 14:48:30</closed>
+	</bug>
+	<bug>
+		<id>318</id>
+		<title>创建2个sheet时，第二个sheet header会使用第一个sheet header的排序规则</title>
+		<body>    调用clearHeaderAlias()未清空 第一个sheet的比较器， 所以(null == aliasComparator) 不成立 ，getInitedAliasComparator()返回的 还是第一个sheet的比较器   ![8C)LHEDQ X6FQ@UI`6738NQ](https://user-images.githubusercontent.com/25815555/55708862-90b56500-5a19-11e9-9701-bb10c53b33ec.png) </body>
+		<created>2019-04-08 08:16:07</created>
+		<closed>2019-04-10 02:08:28</closed>
+	</bug>
+	<bug>
+		<id>303</id>
+		<title>LRU Cache 大小会超过Capacity</title>
+		<body>使用Scala调用的hutool，但是效果和Java是一样的：  创建LRU Cache：（容量就是10000，代码中读取了配置） ```scala val poiCache: Cache[ObjectId, Document] = CacheUtil.newLRUCache({         PropertiesUtil.autoReadProperties("gis.properties").getProperty("gis.poi.cache_size", "1000").toInt     }) ```  接口返回Cache的信息： ```scala  @ResponseBody     def statMonitor(): String = Doc(         "poi_cache" -&gt; Doc(             "current_size" -&gt; GisQuery.poiCache.size(),             "capacity" -&gt; GisQuery.poiCache.capacity()         ) ).toJson() ```  理论返回: ```js {   "poi_cache": {     "current_size": 10000,     "capacity": 10000   } } ```  实际上可能出现：  ```js {   "poi_cache": {     "current_size": 71369,     "capacity": 10000   } } ```</body>
+		<created>2019-03-21 03:40:09</created>
+		<closed>2019-03-21 08:51:41</closed>
+	</bug>
+	<bug>
+		<id>292</id>
+		<title>ThreadLocalConnection中的ThreadLocal对象没有清理</title>
+		<body>在高并发情况下会导致内存泄漏或者线程污染。 建议在关闭数据库连接时清理ThreadLocal，如ThreadLocal.set(null) 或者 ThreadLocal.remove()</body>
+		<created>2019-03-12 05:27:29</created>
+		<closed>2019-03-12 16:40:27</closed>
+	</bug>
+	<bug>
+		<id>291</id>
+		<title>文档中解析csv 有点笔误</title>
+		<body>CsvReader reader = CsvUtil.getReader(); //从文件中读取CSV数据 CsvData data = reader.read(FileUtil.file("test.csv")); List&lt;CsvRow&gt; rows = data.getRows(); //遍历行 for (CsvRow csvRow : **data 这里应该是 rows**) {     //getRawList返回一个List列表，列表的每一项为CSV中的一个单元格（既逗号分隔部分）     Console.log(csvRow.getRawList()); }</body>
+		<created>2019-03-12 01:01:54</created>
+		<closed>2019-03-12 16:44:03</closed>
+	</bug>
+	<bug>
+		<id>275</id>
+		<title>FileTypeUtil.getType 不能获取文件类型 文件是jpg类型</title>
+		<body>FileTypeUtil.getType(InputStream) 判断文件类型准确性问题，文件是jpg类型，文件头如下： FFD8FFDB0043000D090A0B0A110D0B150B1D0E0D0F13201513121213 ![2332573_2 null](https://user-images.githubusercontent.com/5858032/53064805-13cf3a00-3504-11e9-9b74-dddca04454c6.jpg)  </body>
+		<created>2019-02-20 03:38:55</created>
+		<closed>2019-02-20 14:32:12</closed>
+	</bug>
+	<bug>
+		<id>271</id>
+		<title>注解工具AnnotationUtil方法getAnnotationValue调用取值为null</title>
+		<body>同 #228  问题，尝试getAnnotation和getAnnotationValueMap方法可以获取，查看源代码发现写法不一样， 问题代码出现在以下，method为null，ReflectUtil.invoke第一个参数应该是上文获取到的annotation `final Method method = ReflectUtil.getMethodOfObj(annotationEle, propertyName);` `if (null == method) {` `return null;` `}` `return ReflectUtil.invoke(annotationEle, method)`  希望路神的单元测试可以覆盖的所有工具方法，方便测试，也方便菜鸟上手。</body>
+		<created>2019-02-09 11:49:22</created>
+		<closed>2019-02-09 12:34:33</closed>
+	</bug>
+	<bug>
+		<id>268</id>
+		<title>从4.2.1更新到4.4.3后Thymeleaf遍历对象列表异常</title>
+		<body>测试代码： ``` @Test public void thymeleafEngineTest() {     Map&lt;String, Object&gt; map1 = new HashMap&lt;&gt;();     map1.put("name", "a");      Map&lt;String, Object&gt; map2 = new HashMap&lt;&gt;();     map2.put("name", "b");      Map&lt;String, Object&gt; map3 = new HashMap&lt;&gt;();     map3.put("name", "c");      List&lt;Map&lt;String, Object&gt;&gt; list = new ArrayList&lt;&gt;();     list.add(map1);     list.add(map2);     list.add(map3);     // 字符串模板     TemplateEngine engine = new ThymeleafEngine(new TemplateConfig("templates"));     Template template = engine.getTemplate("&lt;h3 th:each=\"item : ${list}\" th:text=\"${item.name}\"&gt;&lt;/h3&gt;");     template.render(Dict.create().set("list", list)); } ``` 异常堆栈信息： ``` org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "&lt;h3 th:each="item : ${list}" th:text="${item.name}"&gt;&lt;/h3&gt;")  at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241) at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098) at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1067) at cn.hutool.extra.template.engine.thymeleaf.ThymeleafTemplate.render(ThymeleafTemplate.java:62) at cn.hutool.extra.template.AbstractTemplate.render(AbstractTemplate.java:33) at cn.hutool.extra.template.TemplateUtilTest.thymeleafEngineTest(TemplateUtilTest.java:121) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) at org.junit.runners.ParentRunner.run(ParentRunner.java:363) at org.junit.runner.JUnitCore.run(JUnitCore.java:137) at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) Caused by: org.attoparser.ParseException: Exception evaluating OGNL expression: "item.name" (template: "&lt;h3 th:each="item : ${list}" th:text="${item.name}"&gt;&lt;/h3&gt;" - line 1, col 30) at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393) at org.attoparser.MarkupParser.parse(MarkupParser.java:257) at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ... 29 more Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating OGNL expression: "item.name" (template: "&lt;h3 th:each="item : ${list}" th:text="${item.name}"&gt;&lt;/h3&gt;" - line 1, col 30) at org.thymeleaf.standard.expression.OGNLVariableExpressionEvaluator.evaluate(OGNLVariableExpressionEvaluator.java:191) at org.thymeleaf.standard.expression.OGNLVariableExpressionEvaluator.evaluate(OGNLVariableExpressionEvaluator.java:95) at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205) at org.thymeleaf.engine.Model.process(Model.java:282) at org.thymeleaf.engine.Model.process(Model.java:290) at org.thymeleaf.engine.IteratedGatheringModelProcessable.processIterationModel(IteratedGatheringModelProcessable.java:367) at org.thymeleaf.engine.IteratedGatheringModelProcessable.process(IteratedGatheringModelProcessable.java:221) at org.thymeleaf.engine.ProcessorTemplateHandler.handleCloseElement(ProcessorTemplateHandler.java:1640) at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleCloseElementEnd(TemplateHandlerAdapterMarkupHandler.java:388) at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleCloseElementEnd(InlinedOutputExpressionMarkupHandler.java:322) at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleCloseElementEnd(OutputExpressionInlinePreProcessorHandler.java:220) at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleCloseElementEnd(InlinedOutputExpressionMarkupHandler.java:164) at org.attoparser.HtmlElement.handleCloseElementEnd(HtmlElement.java:169) at org.attoparser.HtmlMarkupHandler.handleCloseElementEnd(HtmlMarkupHandler.java:412) at org.attoparser.MarkupEventProcessorHandler.handleCloseElementEnd(MarkupEventProcessorHandler.java:473) at org.attoparser.ParsingElementMarkupUtil.parseCloseElement(ParsingElementMarkupUtil.java:201) at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:725) at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ... 31 more Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating OGNL expression: "item.name" at org.thymeleaf.standard.expression.OGNLVariableExpressionEvaluator.evaluate(OGNLVariableExpressionEvaluator.java:191) at org.thymeleaf.standard.expression.OGNLVariableExpressionEvaluator.evaluate(OGNLVariableExpressionEvaluator.java:177) ... 57 more Caused by: ognl.NoSuchPropertyException: java.lang.String.name at ognl.ObjectPropertyAccessor.getProperty(ObjectPropertyAccessor.java:151) at ognl.OgnlRuntime.getProperty(OgnlRuntime.java:2666) at ognl.ASTProperty.getValueBody(ASTProperty.java:114) at ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) at ognl.SimpleNode.getValue(SimpleNode.java:258) at ognl.ASTChain.getValueBody(ASTChain.java:141) at ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) at ognl.SimpleNode.getValue(SimpleNode.java:258) at ognl.Ognl.getValue(Ognl.java:467) at ognl.Ognl.getValue(Ognl.java:431) at org.thymeleaf.standard.expression.OGNLVariableExpressionEvaluator.executeExpression(OGNLVariableExpressionEvaluator.java:316) at org.thymeleaf.standard.expression.OGNLVariableExpressionEvaluator.evaluate(OGNLVariableExpressionEvaluator.java:170) ... 58 more  ```</body>
+		<created>2019-01-31 02:45:11</created>
+		<closed>2019-01-31 17:11:07</closed>
+	</bug>
+	<bug>
+		<id>265</id>
+		<title>根据环境获取setting配置文件</title>
+		<body>通过Setting setting = new Profile().setProfile("dev").getSetting("config.setting"); 获取配置文件失败，查看代码发现cn.hutool.setting.profile.Profile#fixNameForProfile return StrUtil.format("{}/{}", actralProfile);，漏掉一个参数name</body>
+		<created>2019-01-29 03:04:45</created>
+		<closed>2019-01-29 13:16:43</closed>
+	</bug>
+	<bug>
+		<id>252</id>
+		<title>RandomUtil.weightRandom() 使用无法获得预期结果</title>
+		<body>**RandomUtil.weightRandom()  对多个权重为0的数组，会出现问题**  `package com.demo.cardjilv;  import cn.hutool.core.lang.WeightRandom; import cn.hutool.core.util.RandomUtil;   public class RandomTest {      public static void main(String[] args) { //        int[] nums={1,1,1,1}; //        getCardNum(nums);         int[] nums1={0,1,0,1};         getCardNum(nums1);     }     private static void getCardNum(int[] num){          WeightRandom.WeightObj[] ll= new WeightRandom.WeightObj[num.length];         for (int i = 0; i &lt; num.length; i++) {             WeightRandom.WeightObj&lt;String&gt; a1=new WeightRandom.WeightObj&lt;&gt;(i+"卡",num[i]);             ll[i]=a1;         }         WeightRandom stringWeightRandom = RandomUtil.weightRandom(ll);         int i=0;         int a11=0;         int a22=0;         int a33=0;         int a44=0;         while(i&lt;100000){             String next = (String)stringWeightRandom.next();             if(next.equals("0卡")){                 a11++;             }             if(next.equals("1卡")){                 a22++;             }             if(next.equals("2卡")){                 a33++;             }             if(next.equals("3卡")){                 a44++;             }             i++;         }          System.out.println(a11);         System.out.println(a22);         System.out.println(a33);         System.out.println(a44);         System.out.println("-------");     } } ` 运行期望结果 0 50000 0 50000 -----  实际结果 0 0 50000+- 50000+- </body>
+		<created>2019-01-17 01:15:30</created>
+		<closed>2019-01-18 13:12:36</closed>
+	</bug>
+	<bug>
+		<id>240</id>
+		<title>SecureUtil-&gt;readCertificate的封装中password并没有使用到</title>
+		<body>具体代码如下: ``` /**  * 读取Certification文件&lt;br&gt;  * Certification为证书文件&lt;br&gt;  * see: http://snowolf.iteye.com/blog/391931  *   * @param type 类型  * @param in {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(java.io.File)} 读取  * @param password 密码  * @return {@link KeyStore}  */ public static Certificate readCertificate(String type, InputStream in, char[] password) { Certificate certificate; try { certificate = CertificateFactory.getInstance(type).generateCertificate(in); } catch (Exception e) { throw new CryptoException(e); } return certificate; } ```</body>
+		<created>2019-01-11 02:27:34</created>
+		<closed>2019-01-11 03:51:46</closed>
+	</bug>
+	<bug>
+		<id>239</id>
+		<title>[BUG FIX] JSONUtil.toList方法</title>
+		<body>toList转化失败，代码 ```java public class Test11 {     public static void main(String[] args) {         String jsonArr = "[{\"id\":111,\"name\":\"test1\"},{\"id\":112,\"name\":\"test2\"}]";         List&lt;User&gt; userList = JSONUtil.toList(JSONUtil.parseArray(jsonArr), User.class);          System.out.println(userList);     }      @Data     @NoArgsConstructor     @AllArgsConstructor     class User {         private Integer id;         private String name;     } } ```</body>
+		<created>2019-01-10 09:58:27</created>
+		<closed>2019-01-11 13:22:55</closed>
+	</bug>
+	<bug>
+		<id>235</id>
+		<title>BigExcelWriter创建新的sheet的时候, 会报参数异常，下标越界</title>
+		<body>poi版本3.17 hutool版本4.4.0 代码如下 AtomicLong totalHouseNum = new AtomicLong(0L);         // 通过工具类创建writer         BigExcelWriter writer = ExcelUtil.getBigWriter(filePath);         //自定义标题别名         writer.addHeaderAlias("cityName", "城市名称");         writer.addHeaderAlias("blockId", "小区id");         writer.addHeaderAlias("orgName", "小区名称");         writer.addHeaderAlias("buildingId", "楼栋id");         writer.addHeaderAlias("buildingName", "楼栋名称");         writer.addHeaderAlias("appbuilding", "楼栋编码");         writer.addHeaderAlias("appunit", "单元编码");         writer.addHeaderAlias("apphouse", "房间号");         // 合并单元格后的标题行，使用默认标题样式         writer.merge(7, "思源房间信息");         blocks.stream().map(block -&gt; {             List&lt;HouseDTO&gt; rows = JDBCUtils.queryForList(SQL_queryHouseByBlockId, HouseDTO.class, block.getBlockId());             System.out.println(String.format("小区:%s查询到的房间数量:%s", block.getBlockId(), rows.size()));             return rows;         }).forEach(rows -&gt; {             if (rows.isEmpty()) {                 return;             }             List&lt;HouseExcelDTO&gt; resultList = new ArrayList&lt;&gt;();             for (HouseDTO house : rows) {                 resultList.add(copy(house));                 resultList.add(copy(house));                 resultList.add(copy(house));                 resultList.add(copy(house));                 resultList.add(copy(house));                 resultList.add(copy(house));                 resultList.add(copy(house));             }             totalHouseNum.addAndGet(resultList.size());             int rowNum = writer.getSheet().getLastRowNum();             if (rowNum + resultList.size() &gt; 1048576) {                 // 新建sheet                 writer.setSheet(writer.getSheetCount());             }             // 一次性写出内容，使用默认样式             writer.write(resultList);         });         System.out.println(String.format("总房间数量:%s", totalHouseNum.get()));         // 关闭writer，释放内存         writer.close();   writer.setSheet(writer.getSheetCount());这里报错了 ![default](https://user-images.githubusercontent.com/21209857/50670847-0a981580-1009-11e9-9a3c-6e2f2d5ac43c.png) ![default](https://user-images.githubusercontent.com/21209857/50670862-26032080-1009-11e9-9312-af8f95a17ad3.png) 这一行直接报错了，没有走后面的创建逻辑</body>
+		<created>2019-01-04 02:12:08</created>
+		<closed>2019-01-04 02:54:53</closed>
+	</bug>
+	<bug>
+		<id>232</id>
+		<title>StrUtil.strip 的问题</title>
+		<body>StrUtil.strip("a","a"), 两个参数一样的时候，会抛出 java.lang.StringIndexOutOfBoundsException </body>
+		<created>2018-12-29 07:30:17</created>
+		<closed>2018-12-29 09:36:11</closed>
+	</bug>
+	<bug>
+		<id>231</id>
+		<title>Freemarker ResourceMode=STRING TemplateNotFoundException</title>
+		<body>版本：**4.3.2**, freemarker: **2.3.28**。 由于项目中已经在用freemarker了，不想再引入其他模板引擎。 因为要动态传入模板，所以使用默认Configuration:   ```java     Engine engine = TemplateUtil.createEngine();     Template template = engine.getTemplate("你好,${uname}");     String render = template.render(Dict.create().set("uname", "中国"));     System.out.println(render); ```  结果是报异常模板找不到： ``` Exception in thread "main" cn.hutool.core.io.IORuntimeException: TemplateNotFoundException: Template not found for name "你好,${uname}". The name was interpreted by this TemplateLoader: StringTemplateLoader(Map { }). at cn.hutool.extra.template.engine.freemarker.FreemarkerEngine.getTemplate(FreemarkerEngine.java:58) at xyz.quxiao.play.lab.tmp.Tmp.main(Tmp.java:19) Caused by: freemarker.template.TemplateNotFoundException: Template not found for name "你好,${uname}". The name was interpreted by this TemplateLoader: StringTemplateLoader(Map { }). at freemarker.template.Configuration.getTemplate(Configuration.java:2797) at freemarker.template.Configuration.getTemplate(Configuration.java:2599) at cn.hutool.extra.template.engine.freemarker.FreemarkerEngine.getTemplate(FreemarkerEngine.java:56) ... 1 more ```  ====== PS: 如果引入了Beetle则不会报错 </body>
+		<created>2018-12-28 08:31:43</created>
+		<closed>2018-12-28 17:10:01</closed>
+	</bug>
+	<bug>
+		<id>229</id>
+		<title>数字工具bug</title>
+		<body>NumberUtil.isInteger() 这个方法，传入浮点数，返回true public static boolean isInteger(String s) {         try {             parseInt(s);             return true;         } catch (NumberFormatException var2) {             return false;         }     } public static int parseInt(String number) throws NumberFormatException {         if (StrUtil.isBlank(number)) {             return 0;         } else {             number = StrUtil.subBefore(number, '.', false);             if (StrUtil.isEmpty(number)) {                 return 0;             } else if (StrUtil.startWithIgnoreCase(number, "0x")) {                 return Integer.parseInt(number.substring(2), 16);             } else {                 return number.startsWith("0") &amp;&amp; number.length() &gt; 1 ? Integer.parseInt(number.substring(1), 8) : Integer.parseInt(number);             }         }     }</body>
+		<created>2018-12-26 08:34:59</created>
+		<closed>2018-12-26 17:30:04</closed>
+	</bug>
+	<bug>
+		<id>228</id>
+		<title>AnnotationUtil.getAnnotationValue为何getMethodOfObj是用的annotationEle而不是annotationType</title>
+		<body>不是特别理解这个地方的做法，到底是想获取什么？  比如我一个注解@A(x="",y="")，我想获取的是y。 如果是想获取注解中的属性的值，应该用annotationType而不是annotationEle吧？</body>
+		<created>2018-12-26 02:33:18</created>
+		<closed>2018-12-26 17:33:03</closed>
+	</bug>
+	<bug>
+		<id>221</id>
+		<title>【BUG】JSONUtil.toJsonStr 忽略空值 BUG</title>
+		<body>![image](https://user-images.githubusercontent.com/10429917/49788766-2ccda900-fd65-11e8-89be-afe8db38ebfc.png)  data这一属性值为null  使用`JSONObject(Object source, boolean ignoreNullValue)` 这个构造方法，JSONObject 构造出来的是这样的： ![image](https://user-images.githubusercontent.com/10429917/49789000-cd23cd80-fd65-11e8-851c-f22ec8f3b35a.png)  但是使用 JSONUtil.toJsonStr 转成 String 的时候，是有问题的。 ![image](https://user-images.githubusercontent.com/10429917/49789057-f8a6b800-fd65-11e8-9821-2edca5cbcd2f.png) </body>
+		<created>2018-12-11 08:58:50</created>
+		<closed>2018-12-12 13:48:15</closed>
+	</bug>
+	<bug>
+		<id>215</id>
+		<title>VelocityEngine模板生成新文件乱码，版本4.2.1</title>
+		<body>cn.hutool.extra.template.engine.velocity.VelocityEngine的类中 ```  @Override public Template getTemplate(String resource) {  return VelocityTemplate.wrap(engine.getTemplate(resource)); } ```  由于 engine.getTemplate(resource) 没有指定编码，默认是ISO-8859-1，假如文件是UTF-8格式的，并且有汉字的，那么获取的文件中汉字是乱码，建议进行优化</body>
+		<created>2018-12-06 07:40:36</created>
+		<closed>2018-12-07 13:37:32</closed>
+	</bug>
+	<bug>
+		<id>212</id>
+		<title>【BUG】使用ExcelUtil分页多次写入同一个sheet时，标题行重复写入</title>
+		<body></body>
+		<created>2018-12-05 06:54:53</created>
+		<closed>2018-12-05 08:17:03</closed>
+	</bug>
+	<bug>
+		<id>208</id>
+		<title>通过模板文件不能将内容写入到新的文件中，版本4.2.1</title>
+		<body>``` public static void main(String[] args) throws IOException {          final Map&lt;String, Object&gt; bindingMap = new HashMap&lt;&gt;();         bindingMap.put("name", "aa");         Engine engine = TemplateUtil.createEngine(new TemplateConfig("", TemplateConfig.ResourceMode.CLASSPATH));         Template template = engine.getTemplate("template/aa.vm");         File outputFile = new File("~/test.txt");         template.render(bindingMap, outputFile);     } ``` aa.vm的内容template/aa.vm:  ``` 测试 adsffsdsddf${name} ```  有2个问题：  1  从aa.vm读取的文件内容的编码是ISO-8859-1格式的，无法配置读取文件的编码格式  2 不能把文件内容写入到test.txt文件中 </body>
+		<created>2018-12-04 04:52:52</created>
+		<closed>2018-12-05 09:01:47</closed>
+	</bug>
+	<bug>
+		<id>193</id>
+		<title>4.1.19版本的 QrConfig 在Java 8运行下报java.lang.ClassNotFoundException: org.apache.velocity.texen.util.FileUtil</title>
+		<body>``` java.lang.NoClassDefFoundError: org/apache/velocity/texen/util/FileUtil  at cn.hutool.extra.qrcode.QrConfig.setImg(QrConfig.java:229) ``` ---  应该是引用了错误的 FileUtil</body>
+		<created>2018-11-06 03:58:39</created>
+		<closed>2018-11-07 16:39:55</closed>
+	</bug>
+	<bug>
+		<id>180</id>
+		<title>java.lang.StackOverflowError</title>
+		<body>CompareUtil类内存溢出异常：       使用Excel工具类导出的时候。进行bean排序发生。麻烦看看。  public static &lt;T&gt; int compare(T o1, T o2, boolean isNullGreater) { if (o1 == o2) { return 0; } else if (null == o1) {// null 排在后面 return isNullGreater ? 1 : -1; } else if (null == o2) { return isNullGreater ? -1 : 1; }  if(o1 instanceof Comparable &amp;&amp; o2 instanceof Comparable) { //如果bean可比较，直接比较bean（这里会进入无限循环比较） return compare((Comparable&lt;?&gt;)o1, (Comparable&lt;?&gt;)o2, isNullGreater); }  if(o1.equals(o2)) { return 0; }  int result = Integer.compare(o1.hashCode(), o2.hashCode()); if(0 == result) { result = compare(o1.toString(), o2.toString()); }  return result; }</body>
+		<created>2018-10-17 02:40:30</created>
+		<closed>2018-10-17 14:07:25</closed>
+	</bug>
+	<bug>
+		<id>175</id>
+		<title>4.1.16版本在Java 11运行下仍然报java.lang.NoClassDefFoundError: sun/reflect/Reflection</title>
+		<body>java.lang.NoClassDefFoundError: sun/reflect/Reflection at cn.hutool.core.lang.caller.ReflectionCaller.getCallerCaller(ReflectionCaller.java:22) ~[hutool-all-4.1.16.jar!/:na] at cn.hutool.core.lang.caller.CallerUtil.getCallerCaller(CallerUtil.java:30) ~[hutool-all-4.1.16.jar!/:na] at cn.hutool.log.LogFactory.get(LogFactory.java:164) ~[hutool-all-4.1.16.jar!/:na] at cn.hutool.http.HttpConnection.&amp;lt;clinit&amp;gt;(HttpConnection.java:40) ~[hutool-all-4.1.16.jar!/:na] at cn.hutool.http.HttpRequest.initConnecton(HttpRequest.java:837) ~[hutool-all-4.1.16.jar!/:na] at cn.hutool.http.HttpRequest.execute(HttpRequest.java:800) ~[hutool-all-4.1.16.jar!/:na] at cn.hutool.http.HttpRequest.execute(HttpRequest.java:777) ~[hutool-all-4.1.16.jar!/:na] at </body>
+		<created>2018-10-10 01:18:00</created>
+		<closed>2018-10-10 14:53:45</closed>
+	</bug>
+	<bug>
+		<id>174</id>
+		<title>4.1.15版本在Java 11运行下仍然报java.lang.NoClassDefFoundError: Could not initialize class cn.hutool.http.HttpConnection question</title>
+		<body>java.lang.NoClassDefFoundError: sun/reflect/Reflection at cn.hutool.core.lang.caller.ReflectionCaller.getCallerCaller(ReflectionCaller.java:22) ~[hutool-all-4.1.15.jar!/:na] at cn.hutool.core.lang.caller.CallerUtil.getCallerCaller(CallerUtil.java:30) ~[hutool-all-4.1.15.jar!/:na] at cn.hutool.log.LogFactory.get(LogFactory.java:164) ~[hutool-all-4.1.15.jar!/:na] at cn.hutool.http.HttpConnection.(HttpConnection.java:40) ~[hutool-all-4.1.15.jar!/:na] at cn.hutool.http.HttpRequest.initConnecton(HttpRequest.java:837) ~[hutool-all-4.1.15.jar!/:na] at cn.hutool.http.HttpRequest.execute(HttpRequest.java:800) ~[hutool-all-4.1.15.jar!/:na] at cn.hutool.http.HttpRequest.execute(HttpRequest.java:777) ~[hutool-all-4.1.15.jar!/:na]</body>
+		<created>2018-10-09 10:13:21</created>
+		<closed>2018-10-09 11:18:05</closed>
+	</bug>
+	<bug>
+		<id>171</id>
+		<title>JschUtil工具关闭session时没有从JschSessionPool移除Session对象，导致断连接重新连时报错</title>
+		<body>JschUtil工具关闭session时没有从JschSessionPool移除Session对象，导致断连接重新连时报错  提议JschUtil加上session配置方法</body>
+		<created>2018-09-28 16:21:48</created>
+		<closed>2018-10-04 02:14:27</closed>
+	</bug>
+	<bug>
+		<id>165</id>
+		<title>core.io.FileUtil newerThan(File file,File reference)</title>
+		<body>原始实现为： public static boolean newerThan(File file, File reference) { if (null == file || false == reference.exists()) { return true;// 文件一定比一个不存在的文件新 } return newerThan(file, reference.lastModified()); } 我觉得应为： public static boolean newerThan(File file, File reference) { if (**_null == reference_** || false == reference.exists()) { return true;// 文件一定比一个不存在的文件新 } return newerThan(file, reference.lastModified()); }</body>
+		<created>2018-09-17 03:06:09</created>
+		<closed>2018-09-17 03:17:26</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>zip_slip漏洞</title>
+		<body>大家好, 奇虎360代码卫士团队在Hutool中发现了一个Zip_slip漏洞 . 详细信息如下： ![bsbcr75to x49xho fhah b](https://user-images.githubusercontent.com/39950310/45464038-50bb2780-b741-11e8-83e9-123e59e08081.png) ![image](https://user-images.githubusercontent.com/39950310/45464227-346bba80-b742-11e8-887c-e115396c6827.png) 可以看到并没有对zipEntry.getName()做任何校验就用于创建新的文件，如果恶意攻击者通过上传恶意zip文件（目录中带有../），可以覆盖项目中其他敏感文件或直接上传一句话木马。                                                                                                                                  奇虎360代码卫士团队</body>
+		<created>2018-09-13 02:51:52</created>
+		<closed>2018-09-13 04:23:45</closed>
+	</bug>
+	<bug>
+		<id>154</id>
+		<title>boolmfilter javaDefaultHash 得到的hash值大于int范围出现负数，然后还把负数作为数组角标</title>
+		<body> public static int javaDefaultHash(String str) {         int h = 0;         int off = 0;         int len = str.length();         for (int i = 0; i &lt; len; i++) {             h = 31 * h + str.charAt(off++);         }         return h;     }   public boolean contains(long i) { int r = (int) (i / BitMap.MACHINE64); long c = i % BitMap.MACHINE64; if (((longs[r] &gt;&gt;&gt; c) &amp; 1) == 1) { return true; } return false; }  Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: -196386 at cn.hutool.bloomfilter.bitMap.IntMap.contains(IntMap.java:31) at cn.hutool.bloomfilter.filter.AbstractFilter.contains(AbstractFilter.java:44) at cn.hutool.bloomfilter.BitMapBloomFilter.contains(BitMapBloomFilter.java:70) at BloomFilterTest.main(BloomFilterTest.java:26) </body>
+		<created>2018-08-24 09:34:41</created>
+		<closed>2018-08-26 04:43:31</closed>
+	</bug>
+	<bug>
+		<id>143</id>
+		<title>无法直接从JSONObject构造另一个JSONObject</title>
+		<body>JSONObject a = ...   1. 需求 : 从一个JSONObject直接构造另一个JSONObject JSONObject b = JSOMObject(a) // 传入构造器 (JSONObject,String...) 结果 : b = {} 原因 无直接构造的构造器 2. 需求 从提供的构造器 (JSONObject,String...)构造另一个JSONObject JSONObject b = JSONObject(a,a.keySet().toArray(new String[a.size()]) // 传入构造器 (Object,String[]) 结果 : b = {} 原因:构造器(JSONObject,String...)不可达 </body>
+		<created>2018-08-05 08:23:21</created>
+		<closed>2018-08-05 08:30:33</closed>
+	</bug>
+	<bug>
+		<id>141</id>
+		<title>ImageUtil.pressText图片有黑边的问题</title>
+		<body>原图如下图所示 ![ec4 vcp 3rfe44jjlm 7b](https://user-images.githubusercontent.com/33059555/43582462-1ae32b9e-968f-11e8-8d41-ba221d2bc3d2.png)  当我调用 ImageIO.write(image, "png", response.getOutputStream()); 方法将图片响应懂啊浏览时图片没有黑边  但是当我调用 ImageUtil.pressText(inputStream,response.getOutputStream(),code, Color.RED,new Font("黑体",Font.BOLD,40),-45,180,1.0f); 方法将图片响应出去的时候,图片自带黑边,这时候的图片格式是jpg  我起初觉得是响应时所使用的图片格式有问题,于是找了下其他几种重载的方法,发现没有响应PNG的方式  于是我改用了如下方法 BufferedImage image = ImageUtil.pressText(ImageUtil.read(inputStream), code, Color.RED, new Font("黑体", Font.BOLD, 40), -45, 180, 1.0f); ImageIO.write(image, "png", response.getOutputStream());  测试后发现响应的图片还是带有黑边的,难受</body>
+		<created>2018-08-02 12:13:22</created>
+		<closed>2018-08-06 09:42:52</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>CollUtil</title>
+		<body> CollUtil.findOne 源码当中没有加对集合为空的判断，导致对集合行foreach遍历的时候会报空指针异常 ![snipaste_2018-07-10_16-07-08](https://user-images.githubusercontent.com/21358074/42497428-ea95704a-845b-11e8-9c9f-866ff4d23569.png) </body>
+		<created>2018-07-10 08:11:42</created>
+		<closed>2018-07-10 13:02:46</closed>
+	</bug>
+	<bug>
+		<id>124</id>
+		<title>Excel：流方式读取excel小数bug</title>
+		<body>流方式读取excel，小数取到是整数，小数位取不到； 而且流方式读取2007格式的excel文件最后会报空指针 非流的方式均没问题。</body>
+		<created>2018-06-19 02:17:58</created>
+		<closed>2018-06-19 14:38:17</closed>
+	</bug>
+	<bug>
+		<id>123</id>
+		<title>请问有提供下划线转驼峰的方法吗</title>
+		<body>类似google的guava，提供了一个类来进行转换: `CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, "THIS_IS_AN_EXAMPLE_STRING");`</body>
+		<created>2018-06-18 16:28:48</created>
+		<closed>2018-06-19 07:12:52</closed>
+	</bug>
+	<bug>
+		<id>121</id>
+		<title>UnicodeUtil.toString(String unicode) 转换错误</title>
+		<body>        String str = "aaaa\\u0026bbbb\\u0026cccc";         System.out.println(UnicodeUtil.toString(str));  得到结果: aaaa&amp;bbbb&amp; 期望结果: aaaa&amp;bbbb&amp;cccc</body>
+		<created>2018-06-14 07:02:06</created>
+		<closed>2018-06-14 12:28:53</closed>
+	</bug>
+	<bug>
+		<id>110</id>
+		<title>JSONUtils.toBean时报ClassCastException</title>
+		<body>Map&lt;String, String&gt; 反序列化的结果，用 map.get(key) 得到的对象有可能是 JSONNull， 以至于直接使用 String val = map.get(key); 的时候直接报类型转换错误  测试代码： User.java ``` package net.luculent.bigdata;  import java.util.Map;  public class User {     private Map&lt;String, String&gt; data;      public Map&lt;String, String&gt; getData() {         return data;     }      public void setData(Map&lt;String, String&gt; data) {         this.data = data;     } } ``` Main.java ``` public static void main(String[] args){         String jsonStr = "{'data':{'userName':'ak','password': null}}";         User user = JSONUtil.toBean(JSONUtil.parseObj(jsonStr), User.class, true);         String password = user.getData().get("password");         System.out.println(password); } ```  异常信息 ``` Exception in thread "main" java.lang.ClassCastException: cn.hutool.json.JSONNull cannot be cast to java.lang.String at net.luculent.bigdata.HutoolTest.main(HutoolTest.java:16) ```</body>
+		<created>2018-05-18 04:37:25</created>
+		<closed>2018-05-18 13:23:30</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>您好，cron添加如果带年带话会报错</title>
+		<body>在cn.hutool.cron.pattern.CronPattern 中287行代码 ``` if (parts.length == 7) {// 支持年的表达式 try { this.yearMatchers.add(ValueMatcherBuilder.build(parts[0], YEAR_VALUE_PARSER)); } catch (Exception e) { throw new CronException(e, "Invalid pattern [{}], parsing 'year' field error!", pattern); } } else {// 不支持年的表达式，全部匹配 this.secondMatchers.add(new AlwaysTrueValueMatcher()); }  ```  使本应匹配年位，匹配到秒了。</body>
+		<created>2018-05-09 12:55:35</created>
+		<closed>2018-05-09 14:32:43</closed>
+	</bug>
+	<bug>
+		<id>103</id>
+		<title>ReferenceUtil类软引用SoftReference错误写成弱引用WeakReference</title>
+		<body>ReferenceUtil  47行 public static &lt;T&gt; Reference&lt;T&gt; create(ReferenceType type, T referent, ReferenceQueue&lt;T&gt; queue) { switch (type) { case SOFT: return new WeakReference&lt;&gt;(referent);  // SoftReference case WEAK: return new WeakReference&lt;&gt;(referent); case PHANTOM: return new PhantomReference&lt;T&gt;(referent, queue); default: return null; } }</body>
+		<created>2018-05-04 01:35:15</created>
+		<closed>2018-05-05 08:23:29</closed>
+	</bug>
+	<bug>
+		<id>99</id>
+		<title>用了4.0.7以上版本后HttpUtil.post方法出现问题</title>
+		<body>使用4.0.7以上版本后，接口方返回错误提示"A JSONObject text must begin with '{' at character 0 of  json请求体 {"head":{"sysname":"xx","flow":"32015efc-9394-49b5-ad06-d9e17a66cbd1"},"body":{"codeNumbers":[{"codeNumber":"xxxxxxx"}]}} HttpUtil.post(api, json请求体);   使用HttpUtil.createPost(apiFdNumber).body(requestBody, "application/json").execute().body();则正常  经测试过，4.0.7版本则不会有上面的问题。</body>
+		<created>2018-04-22 08:00:55</created>
+		<closed>2018-04-24 09:17:12</closed>
+	</bug>
+	<bug>
+		<id>98</id>
+		<title>Incorrect count in RandomUtil.randomEles()</title>
+		<body>version: 4.0.9  Please look at the screenshot below  ![image](https://user-images.githubusercontent.com/9565184/38712040-db8c16e4-3efb-11e8-85a5-04ecf9ddc1e6.png) </body>
+		<created>2018-04-13 01:23:33</created>
+		<closed>2018-04-13 06:19:12</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>DESede 加密算法不对</title>
+		<body>[DESede.java](https://github.com/looly/hutool/blob/v4-master/hutool-crypto/src/main/java/cn/hutool/crypto/symmetric/DESede.java#L116-L151) ```java desede = new SymmetricCrypto("DESede/CBC/PKCS5Padding", key, new IvParameterSpec(iv.getBytes())); // 以下方法使用的并非DESede //desede = new DESede(Mode.CBC, Padding.PKCS5Padding, key, iv.getBytes()); ```</body>
+		<created>2018-03-19 09:38:25</created>
+		<closed>2018-03-19 23:39:04</closed>
+	</bug>
+	<bug>
+		<id>89</id>
+		<title>使用Base64.encodeUrlSafe编码再使用Base64.decodeStr解码会乱码</title>
+		<body>使用Base64.encodeUrlSafe编码再使用Base64.decodeStr解码会乱码</body>
+		<created>2018-03-06 08:48:11</created>
+		<closed>2018-03-16 09:34:22</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>HttpUtil.urlWithForm有bug</title>
+		<body>```java      public static String urlWithForm(String url, String queryString) { if (StrUtil.isNotBlank(queryString)) { if (url.contains("?")) { url += "&amp;" + queryString;                                 // 此次应该增加以下方法，否则 queryString重复添加                                 return url; } url += url.endsWith("?") ? queryString : "?" + queryString; } return url; } ``` 参考上述代码注释部分</body>
+		<created>2018-01-19 04:00:51</created>
+		<closed>2018-01-21 12:10:36</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>FileTypeUtil未关闭流导致文件占用无法删除</title>
+		<body>今天使用了FileTypeUtil类判断文件类型后，执行删除文件操作，执行失败，原因是文件被占用，发现占用的是java.exe。本来怀疑是自己代码有问题，后来尝试将FileTypeUtil的使用去掉，文件正常删除。 初步判定是FileTypeUtil读取文件后未关闭。  FileTypeUtil文件中，此代码 public static String getType(File file) throws IORuntimeException { return getType(IoUtil.toStream(file)); }  没有对输入流关闭导致  尝试将代码改成   public static String getType(File file) throws IORuntimeException {         FileInputStream inputStream = IoUtil.toStream(file);         String type = getType(inputStream);         IoUtil.close(inputStream);         return type;  } 后执行，判断后文件不再提示被占用，能够正常删除。   再次感谢分享这么方便的工具。 </body>
+		<created>2018-01-06 16:39:59</created>
+		<closed>2018-01-07 02:27:11</closed>
+	</bug>
+	<bug>
+		<id>78</id>
+		<title>当excel表格内容之间存在空行的时候会抛出空指针的错误</title>
+		<body>com.xiaoleilu.hutool.poi.excel.ExcelReader的229行左右，sheet.getRow()会返回null会导致错误，希望可以看看是不是我使用的问题</body>
+		<created>2018-01-04 07:12:04</created>
+		<closed>2018-01-04 17:19:57</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>hutool使用sax读取excel部分日期显示错误</title>
+		<body>在使用hutool 3.2.3版本ExcelUtil.read07BySax读取excel时候发现读取日期返回的字符串有问题，格式变成了yyyy-MM-ddHH:mm:ss，而不是yyy-MM-dd HH:mm:ss格式， 部分空单元格未显示为，如图。 ![2017-12-24_114303](https://user-images.githubusercontent.com/16053751/34324115-39555cb6-e8a0-11e7-8dcc-734ed076e91f.jpg)  excel内容如下： ![2017-12-24_114220](https://user-images.githubusercontent.com/16053751/34324112-1b1257b8-e8a0-11e7-9494-4cced96fc8d7.jpg)  excel见附件。 [testExcel.xlsx](https://github.com/looly/hutool/files/1584598/testExcel.xlsx) 谢谢。 </body>
+		<created>2017-12-24 03:50:46</created>
+		<closed>2017-12-24 09:01:09</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>CronUtil.remove方法不是静态的，想用这个方法都用不了额</title>
+		<body>CronUtil.remove方法不是静态的，想用这个方法都用不了额</body>
+		<created>2017-12-15 09:12:54</created>
+		<closed>2017-12-15 11:37:39</closed>
+	</bug>
+	<bug>
+		<id>73</id>
+		<title>Season 里面有别字</title>
+		<body>https://github.com/looly/hutool/blob/0b3895f23aff268eaddb83f0d48e4d3d0daf4ce4/hutool-core/src/main/java/com/xiaoleilu/hutool/date/Season.java#L20-L21  这里有 typo 吧 秋天是 autumn 而不是 ANTUMN 是 u 不是 n</body>
+		<created>2017-12-11 12:18:28</created>
+		<closed>2017-12-12 14:47:47</closed>
+	</bug>
+	<bug>
+		<id>71</id>
+		<title>ZIPUtil  解压缩失败</title>
+		<body>在使用ZIPUtil的时候用了unzip 默认解压方法，系统运行报错 MALFORMED  后来觉得是压缩包里面有中文文件名，然后改成指定编码 `ZipUtil.unzip(filePath, Charset.forName("gbk"))` ，还是不能正常解压缩，系统运行报错MALFORMED 。  版本号V3.2.2 错误代码如下： `java.lang.IllegalArgumentException: MALFORMED at java.util.zip.ZipCoder.toString(ZipCoder.java:58) at java.util.zip.ZipFile.getZipEntry(ZipFile.java:531)`</body>
+		<created>2017-12-05 09:31:03</created>
+		<closed>2017-12-06 14:36:10</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>反序列化问题</title>
+		<body>json数据如下: {     "statusCode": 200,     "message": "OK",     "skip": 0,     "limit": 20,     "total": 30,     "data": [         {             "Price": {                 "ADT": [                     [                         {                             "BookingCode": [                                 "N",                                 "N"                             ]                         }                     ]                 ]             }         }     ] }  建立相应的bean    public class ADT {      private List&lt;String&gt; BookingCode;     public void setBookingCode(List&lt;String&gt; BookingCode) {          this.BookingCode = BookingCode;      }      public List&lt;String&gt; getBookingCode() {          return BookingCode;      }  }  public class Data {      private Price Price;     public void setPrice(Price Price) {          this.Price = Price;      }      public Price getPrice() {          return Price;      }  }     public class JsonRootBean {  private int statusCode; private String message; private int skip; private int limit; private int total; private List&lt;Data&gt; data;  public void setStatusCode(int statusCode) { this.statusCode = statusCode; }  public int getStatusCode() { return statusCode; }  public void setMessage(String message) { this.message = message; }  public String getMessage() { return message; }  public void setSkip(int skip) { this.skip = skip; }  public int getSkip() { return skip; }  public void setLimit(int limit) { this.limit = limit; }  public int getLimit() { return limit; }  public void setTotal(int total) { this.total = total; }  public int getTotal() { return total; }  public void setData(List&lt;Data&gt; data) { this.data = data; }  public List&lt;Data&gt; getData() { return data; }  }   public class Price {      private List&lt;List&lt;ADT&gt;&gt; ADT;     public void setADT(List&lt;List&lt;ADT&gt;&gt; ADT) {          this.ADT = ADT;      }      public List&lt;List&lt;ADT&gt;&gt; getADT() {          return ADT;      }  }   test:   public static void main(String[] args) { String json = "{\"statusCode\":200,\"message\":\"OK\",\"skip\":0,\"limit\":20,\"total\":30,\"data\":[{\"Price\":{\"ADT\":[[{\"BookingCode\":[\"N\",\"N\"]}]]}}]}"; JsonRootBean objJsonRootBean = JSONUtil.toBean(json, JsonRootBean.class); ADT sObject = objJsonRootBean.getData().get(0).getPrice().getADT().get(0).get(0); System.out.println(sObject.getBookingCode()); }   error:  Exception in thread "main" java.lang.ClassCastException: com.xiaoleilu.hutool.json.JSONObject cannot be cast to sss.ADT at sss.test.main(test.java:12) </body>
+		<created>2017-11-25 11:57:20</created>
+		<closed>2017-11-26 13:25:45</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>HttpUtil发送json请求自动判定contentType的问题</title>
+		<body>```         public static String getContentTypeByRequestBody(String body) { String contentType = null; if(StrUtil.isNotBlank(body)) { char firstChar = body.charAt(0); switch (firstChar) { case '{': //JSON请求体 contentType = "application/json"; break; case '&lt;': //XML请求体 contentType = "application/xml"; break;  default: break; } } return contentType; } ``` 上述代码中，是通过`case '{':`是通过判断body是否以‘{’开头来判定是否是json参数请求，忽略了json数组的情况，如：`[{},{},{},{}]`， Java-Controller代码：     ```     @RequestMapping(value = "testSaveBatch.do", method = RequestMethod.POST)     @ResponseBody     public ServerResponse&lt;String&gt; testSaveBatch(@RequestBody List&lt;SaleDetailVo&gt; vos, String userAccount) throws Exception {      } ``` 。故而，此种情况也应该判定为json参数请求。您这边看下，我描述是否有问题，如果描述正确的话，还请修正下。谢谢。 </body>
+		<created>2017-11-16 03:23:54</created>
+		<closed>2017-11-18 06:21:50</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title> FileTypeUtil.getType 读取空文件报数组下标越界</title>
+		<body>``` File f = new File("G:\\1231\\6666\\tttt\\出错.txt"); try {      System.out.println("file size= " + f.length());      System.out.println(FileTypeUtil.getType(f)); } catch (IOException e) {      e.printStackTrace(); }  //===&gt; #file size= 0  #java.lang.ArrayIndexOutOfBoundsException ```     </body>
+		<created>2017-10-20 02:09:32</created>
+		<closed>2017-10-20 02:44:04</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>ImageUtil.pressImage()添加图片水印方法，没有释放资源</title>
+		<body>![image](https://user-images.githubusercontent.com/15259698/30265820-f76e9484-970f-11e7-981b-2585c42b14cb.png)  调用 ImageUtil.pressImage() 方法后，执行delete无法删除，报如下错误 2017-09-11 16:40:16 [ERROR]-[Thread: qtp632249781-29]-[com.jfinal.core.ActionHandler.handle()]: /edu/teacher/getLearningCardImage com.jfinal.render.RenderException: com.xiaoleilu.hutool.io.IORuntimeException: FileSystemException: E:\IdeaCode\AgentAPI\src\main\webapp\temp\fb1facb023054ef99c8a58c0c9733763.png: 另一个程序正在使用此文件，进程无法访问。   在这里qrcodeFile和destFile都是作为临时文件用的，用过之后要删除，但是发现删除不掉  </body>
+		<created>2017-09-11 08:42:23</created>
+		<closed>2017-09-12 01:10:25</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>BUG 3.0.6版本 FileUtil.copy 方法错误 </title>
+		<body>FileUtil [788行](https://github.com/looly/hutool/blob/master/hutool-core/src/main/java/com/xiaoleilu/hutool/io/FileUtil.java#L788) 会错误的把文件也判断成文件夹 FileUtil.internalCopyDir 方法中对于原文件是否为文件夹的的判断有问题 ```java if(src.isDirectory()) ``` `src`应该改为`srcFile` ```java if(srcFile.isDirectory()) ```</body>
+		<created>2017-06-09 10:19:58</created>
+		<closed>2017-06-10 08:28:05</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>ConverterRegistry默认日期转换器导入两次java.sql.date没有java.util.date</title>
+		<body>![image](https://cloud.githubusercontent.com/assets/23111804/26751493/57da0994-486d-11e7-8204-1fcc9770d70d.png)  Date.class导入的是java.sql.Date 而不是java.util.Date</body>
+		<created>2017-06-03 07:02:38</created>
+		<closed>2017-06-04 07:45:50</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>afterException in Apsect.invoke</title>
+		<body>code sinppets in "Aspcet. invoke"  try { result = ClassUtil.invoke(target, method, args); }catch (InvocationTargetException e) { afterException(args, method, args, e.getTargetException()); }catch (Exception e) { throw e;//其它异常属于代理的异常，直接抛出 }  afterException 的第一个参数, 根据上下文, 应该是target嘛, 这里写错了 关于这个afterExecption的使用, 为什么要这样约定呀 </body>
+		<created>2017-04-12 11:44:29</created>
+		<closed>2017-04-13 14:31:27</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>文档地方有笔误</title>
+		<body>https://doc.oschina.net/hutool?v=28699&amp;t=163718   ![image](https://cloud.githubusercontent.com/assets/3479472/23491397/060e4256-ff39-11e6-8d94-17169279d968.png) </body>
+		<created>2017-03-02 03:12:24</created>
+		<closed>2017-03-03 03:33:53</closed>
+	</bug>
+	<bug>
+		<id>7</id>
+		<title>在Validator工具中，如果我的url两端带空格，则调用isUrl方法会返回false</title>
+		<body>如下：t rue http://openapi.baidu.com/public/2.0/bmt/translate?client_id=xGzW7GhPIK3vLjnTeXZ1LOfG&amp;q=today&amp;from=auto&amp;to=auto  http://openapi.baidu.com/public/2.0/bmt/translate?client_id=xGzW7GhPIK3vLjnTeXZ1LOfG&amp;q=today&amp;from=auto&amp;to=auto false 如果是不小心复制的时候两侧多了个空格的话，作者最好加上trim验证。 </body>
+		<created>2015-09-17 16:39:54</created>
+		<closed>2017-03-03 03:34:59</closed>
+	</bug>
+</bugs>

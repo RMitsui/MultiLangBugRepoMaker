@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="chat">
+	<bug id="101" opendate="2015-09-26 22:56:55" fixdate="2015-09-27 10:08:37">
+		<buginformation>
+			<summary>Не работает проверка занятости имени</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/Main.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="95" opendate="2015-09-20 13:58:43" fixdate="2015-09-20 15:51:56">
+		<buginformation>
+			<summary>Неправильная кодировка в email нотификациях</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/services/EmailService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="77" opendate="2015-08-04 16:58:51" fixdate="2015-08-04 20:41:42">
+		<buginformation>
+			<summary>При отправке сообщения от unauthenticated пользователя не показывается форма логина вместо ошибки</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/chat/processing/HandlerInvoker.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2015-08-04 10:12:18" fixdate="2015-08-04 20:36:33">
+		<buginformation>
+			<summary>MessageDeserializer кидает исключение при неверных типах сообщений</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/frontend/ws/MessageDeserializer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="75" opendate="2015-08-03 20:40:04" fixdate="2015-08-03 21:24:25">
+		<buginformation>
+			<summary>IRC не работает</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/frontend/irc/IrcCodec.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="62" opendate="2015-07-24 13:28:16" fixdate="2015-07-25 09:12:46">
+		<buginformation>
+			<summary>Поиск пользователей некорректно работает</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/db/dao/UserDao.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="54" opendate="2015-07-22 23:12:05" fixdate="2015-07-23 05:48:25">
+		<buginformation>
+			<summary>В confirmEmail() не удаляется токен подтверждения мыла</summary>
+			<description>https://github.com/lexek/chat/blob/105dd540205004f64b633faa15f1d17c890a0f2a/src/main/java/lexek/wschat/security/AuthenticationManager.java#L310 В методе confirmEmail() после апдейта роли юзера должен удаляться токен из таблицы PENDING_CONFIRMATION, но забыт .execute() и токен можно абузить, бесконечно апдейтя себя в юзера (не смог придумать применения, т.к. бан всё равно происходит не через роли). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/security/AuthenticationManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="17" opendate="2015-07-10 11:30:02" fixdate="2015-07-18 22:11:45">
+		<buginformation>
+			<summary>Прокси твича часто отваливается</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/proxy/twitch/TwitchMessageHandler.java</file>
+			<file>src/main/java/lexek/wschat/proxy/twitch/TwitchTvChatProxy.java</file>
+			<file>src/main/java/lexek/wschat/proxy/goodgame/GoodGameChatProxy.java</file>
+			<file>src/main/java/lexek/wschat/proxy/cybergame/CybergameTvChatProxy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7" opendate="2015-06-12 11:12:51" fixdate="2015-06-12 13:55:24">
+		<buginformation>
+			<summary>Сообщения модерации добавляются в историю с неправильным временем</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/services/HistoryService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6" opendate="2015-05-28 21:03:53" fixdate="2015-09-27 10:08:17">
+		<buginformation>
+			<summary>Получать количество зрителей только c goodgame из GoodGameChannelInformationProvider</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/lexek/wschat/proxy/ChatProxyFactory.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>557</id>
+		<title>Restore public key in CardVault</title>
+		<body>No se están guardando en las variables "mPublicKey" y "mPrivateKey" que se usan para instanciar CardVaultProviderImpl al recrearse la Activity.</body>
+		<created>2017-06-06 20:21:29</created>
+		<closed>2017-06-08 20:25:06</closed>
+	</bug>
+	<bug>
+		<id>545</id>
+		<title>[v3] Lista de issuers vacía</title>
+		<body>Llevar el fix del issue realizado en #540 a v3.</body>
+		<created>2017-05-15 13:19:19</created>
+		<closed>2017-06-19 19:46:24</closed>
+	</bug>
+	<bug>
+		<id>542</id>
+		<title>[Bug] No existe public key en CardVaultActivity luego de volver de pantalla de error</title>
+		<body>- Cuando se ingresa una tarjeta que no se puede tokenizar, se abre la pantalla de error, al apretar salir, vuelve a CardVaultActivity y no encuentra la public key - En la branch de v3 - Surgió después del refactor de CardVaultActivity al nuevo MVP - Probado con Venezuela con la tarjeta master y public key de sandbox</body>
+		<created>2017-05-05 14:57:36</created>
+		<closed>2017-05-05 16:28:21</closed>
+	</bug>
+	<bug>
+		<id>541</id>
+		<title>[Bug] Mostrar pantalla de error cuando Setting es null en Security Code Activity</title>
+		<body>- Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean java.lang.String.equals(java.lang.Object)' on a null object reference com.mercadopago.SecurityCodeActivity.loadNormalViews(SecurityCodeActivity.java:152) - Versión 2.5.0 - Revisar otras versiones</body>
+		<created>2017-05-05 14:53:22</created>
+		<closed>2017-06-27 19:20:49</closed>
+	</bug>
+	<bug>
+		<id>534</id>
+		<title>Site null en track de salida de CardVault</title>
+		<body>Inicio de CardVault con "installmentsEnabled" en false. Crash al presionar "back" en, por ejemplo, pantalla de bancos.</body>
+		<created>2017-04-26 19:58:29</created>
+		<closed>2017-05-04 16:28:58</closed>
+	</bug>
+	<bug>
+		<id>533</id>
+		<title>TaxiBA - Lista de issuers vacía</title>
+		<body>Versión de la SDK: 2.4.2</body>
+		<created>2017-04-26 19:56:57</created>
+		<closed>2017-05-15 13:17:14</closed>
+	</bug>
+	<bug>
+		<id>525</id>
+		<title>PaymentVaultPresenter null bug</title>
+		<body>**Stacktrace 1:**  java.lang.NullPointerException: Attempt to invoke virtual method 'com.mercadopago.model.Site com.mercadopago.n.h.i()' on a null object reference         at com.mercadopago.PaymentVaultActivity.startSavedCardFlow(SourceFile:347)  **Stacktrace 2:** Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'com.mercadopago.model.Site com.mercadopago.n.h.i()' on a null object reference         at com.mercadopago.PaymentVaultActivity.resolveCardRequest(SourceFile:445)  Stacktrace java.lang.RuntimeException: Unable to resume activity {com.mercadopago.wallet/com.mercadopago.PaymentVaultActivity}: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=15, result=-1, data=Intent { (has extras) }} to activity {com.mercadopago.wallet/com.mercadopago.PaymentVaultActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'com.mercadopago.model.Discount com.mercadopago.n.h.m()' on a null object reference</body>
+		<created>2017-04-18 18:52:28</created>
+		<closed>2017-05-03 20:57:00</closed>
+	</bug>
+	<bug>
+		<id>437</id>
+		<title>SavedCardToken generado sin PayerAccessToken</title>
+		<body>Agregar en la línea 231 de CardVaultActivity (método startSecurityCodeActivity) lo siguiente:  .setPayerAccessToken(mPresenter.getPrivateKey())  Sino las tarjetas guardadas de los usuarios de otros países que no sean el de la PK, no podrán ser utilizadas.</body>
+		<created>2017-03-03 00:42:34</created>
+		<closed>2017-03-06 17:12:06</closed>
+	</bug>
+	<bug>
+		<id>373</id>
+		<title>Cuando hay un error en RyC se borran los datos</title>
+		<body>Secuencia para reproducirlo: Por ejemplo con tarjeta guardada, se llega a RyC y al apretar confirmar aparece la pantalla de error. Si se toca Salir, se sigue estando en RyC pero con la pantalla vacía</body>
+		<created>2017-01-31 17:25:38</created>
+		<closed>2017-06-27 19:27:35</closed>
+	</bug>
+	<bug>
+		<id>306</id>
+		<title>Mercadopago.CL, StringIndexOutOfBoundsException al dar click a "webpay" o "servipag"</title>
+		<body>Estimados, estoy obteniendo una excepción cuando se le hace click al botón de Webpay o Servipag. Con el botón de CreditCard no da problema.  Cómo reproducir, en una app nueva, poner un botón de pago, darle click y cuando aparezca la actividad darle click a webpay o servipag. ``` public void onClickPagar(View view){             new MercadoPago.StartActivityBuilder()                 .setActivity(this)                 .setPublicKey("TEST-0b549f99-3e52-49c0-9cbb-552dc8d2673c")                 .setCheckoutPreferenceId("227920209-1cb3d866-93f6-461c-9ff6-d840ee52f85c")                 .startCheckoutActivity(); ... } ```   `01-15 17:49:04.249 19289-19289/cl.chileshift.android.mercadopagoconandroid E/AndroidRuntime: FATAL EXCEPTION: main Process: cl.chileshift.android.mercadopagoconandroid, PID: 19289 java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=10, result=-1, data=Intent { (has extras) }} to activity {cl.chileshift.android.mercadopagoconandroid/com.mercadopago.CheckoutActivity}: java.lang.StringIndexOutOfBoundsException: length=6; regionStart=0; regionLength=-1  at android.app.ActivityThread.deliverResults(ActivityThread.java:4927)  at android.app.ActivityThread.handleSendResult(ActivityThread.java:4970)  at android.app.ActivityThread.access$1600(ActivityThread.java:223)  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1851)  at android.os.Handler.dispatchMessage(Handler.java:102)  at android.os.Looper.loop(Looper.java:158)  at android.app.ActivityThread.main(ActivityThread.java:7231)  at java.lang.reflect.Method.invoke(Native Method)  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120) **********Caused by: java.lang.StringIndexOutOfBoundsException: length=6; regionStart=0; regionLength=-1**************  at java.lang.String.startEndAndLength(String.java:298)  at java.lang.String.substring(String.java:1087)  at com.mercadopago.util.CurrenciesUtil.getSpannedString(CurrenciesUtil.java:98)  at com.mercadopago.util.CurrenciesUtil.formatCurrencyInText(CurrenciesUtil.java:129)  at com.mercadopago.util.CurrenciesUtil.formatCurrencyInText(CurrenciesUtil.java:120)  at com.mercadopago.uicontrollers.reviewandconfirm.ReviewSummaryView.getFormattedAmount(ReviewSummaryView.java:168)  at com.mercadopago.uicontrollers.reviewandconfirm.ReviewSummaryView.drawSummary(ReviewSummaryView.java:111)  at com.mercadopago.CheckoutActivity.drawSummary(CheckoutActivity.java:647)  at com.mercadopago.CheckoutActivity.showReviewAndConfirm(CheckoutActivity.java:630)  at com.mercadopago.CheckoutActivity.resolvePaymentVaultRequest(CheckoutActivity.java:473)  at com.mercadopago.CheckoutActivity.onActivityResult(CheckoutActivity.java:427)  at android.app.Activity.dispatchActivityResult(Activity.java:7138)  at android.app.ActivityThread.deliverResults(ActivityThread.java:4923)  at android.app.ActivityThread.handleSendResult(ActivityThread.java:4970)   at android.app.ActivityThread.access$1600(ActivityThread.java:223)   at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1851)   at android.os.Handler.dispatchMessage(Handler.java:102)   at android.os.Looper.loop(Looper.java:158)   at android.app.ActivityThread.main(ActivityThread.java:7231)   at java.lang.reflect.Method.invoke(Native Method)   at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120) `</body>
+		<created>2017-01-15 20:54:48</created>
+		<closed>2018-09-28 00:45:50</closed>
+	</bug>
+	<bug>
+		<id>296</id>
+		<title>PaymentVault con "Don't keep activities" y sólo tarjetas reinicia el formulario al tocar back.</title>
+		<body></body>
+		<created>2017-01-06 16:28:08</created>
+		<closed>2017-04-18 19:54:54</closed>
+	</bug>
+	<bug>
+		<id>288</id>
+		<title>Rotación de la tarjeta en un celular que en landscape pasa a low res</title>
+		<body></body>
+		<created>2016-12-28 19:54:59</created>
+		<closed>2017-06-27 19:32:18</closed>
+	</bug>
+	<bug>
+		<id>283</id>
+		<title>Animación de tarjeta de credito, al rotar y volver se desaparece</title>
+		<body></body>
+		<created>2016-12-27 21:21:28</created>
+		<closed>2016-12-28 19:58:37</closed>
+	</bug>
+	<bug>
+		<id>275</id>
+		<title>Assets distintos para HDPI</title>
+		<body>Las siguientes imagenes tienen un asset totalmente distinto para la resolucion HDPI  mpsdk_img_tc_debmaster mpsdk_img_tc_debvisa mpsdk_img_tc_default mpsdk_img_tc_elo mpsdk_img_tc_hipercard mpsdk_img_tc_melicard mpsdk_img_tc_sivale mpsdk_img_tc_tarshop  ejemplo:   https://github.com/mercadopago/px-android/blob/master/sdk/src/main/res/drawable-hdpi/mpsdk_img_tc_tarshop.png  https://github.com/mercadopago/px-android/blob/master/sdk/src/main/res/drawable-mdpi/mpsdk_img_tc_tarshop.png</body>
+		<created>2016-12-23 13:38:32</created>
+		<closed>2016-12-28 19:59:55</closed>
+	</bug>
+	<bug>
+		<id>260</id>
+		<title>Se pinta el borde de la tarjeta de otro color</title>
+		<body>En el formulario de tarjeta, cuando lo abris con un color y despues lo volves a abrir sin color pasa esto:  ![screenshot_1481745828](https://cloud.githubusercontent.com/assets/9399970/21198767/5b7353a0-c21f-11e6-953f-badfe84a01e2.png) </body>
+		<created>2016-12-14 20:05:40</created>
+		<closed>2017-05-11 18:06:14</closed>
+	</bug>
+	<bug>
+		<id>250</id>
+		<title>Configurando "Don't keep Activities", usando CheckoutActivity se reinicia el flujo al finalizar la selección.</title>
+		<body>Hay que revisar el manejo de instance state.</body>
+		<created>2016-12-13 18:09:13</created>
+		<closed>2017-04-18 19:54:50</closed>
+	</bug>
+	<bug>
+		<id>248</id>
+		<title>Bug en preferencias con muchos items en Revisa y confirma</title>
+		<body>- Al usar una preferencia que contiene muchos items, en revisa y confirma se muestra 1 solo item varias veces</body>
+		<created>2016-12-13 15:13:21</created>
+		<closed>2016-12-14 15:23:20</closed>
+	</bug>
+	<bug>
+		<id>243</id>
+		<title>Error al eliminarse CardVaultActivity forzadamente.</title>
+		<body>No se está guardando el estado.</body>
+		<created>2016-12-12 16:41:54</created>
+		<closed>2016-12-12 18:11:33</closed>
+	</bug>
+	<bug>
+		<id>238</id>
+		<title>Selección automática de tarjeta erróneamente.</title>
+		<body></body>
+		<created>2016-12-06 20:22:06</created>
+		<closed>2016-12-06 20:23:14</closed>
+	</bug>
+	<bug>
+		<id>237</id>
+		<title>No se ocultan las promociones.</title>
+		<body></body>
+		<created>2016-12-06 20:22:00</created>
+		<closed>2016-12-06 20:23:16</closed>
+	</bug>
+	<bug>
+		<id>231</id>
+		<title>Pantalla blanca cuando no alcanza el dinero en cuenta.</title>
+		<body>Si se habilita DC pero no tiene saldo, se muestra la pantalla en blanco.</body>
+		<created>2016-12-05 16:59:07</created>
+		<closed>2016-12-06 20:23:29</closed>
+	</bug>
+	<bug>
+		<id>222</id>
+		<title>Fix "installmentsEnabled" en selección de medios de pago, con tarjetas guardadas.</title>
+		<body>Al agregar "setInstallmentsEnabled(false)" en el builder para iniciar PaymentVaultActivity, y seleccionar una tarjeta guardada, se muestran las cuotas de todas formas.</body>
+		<created>2016-11-30 14:39:24</created>
+		<closed>2016-12-01 15:27:41</closed>
+	</bug>
+	<bug>
+		<id>190</id>
+		<title>Error with an android basic checkout</title>
+		<body>## Hi. I'm trying to use a basic checkout android. Im following this [docs](http://mercadopago.github.io/px-android/index.html)   **Using the sample code, everything works fine:**    ``` public void submit(View view) {    // Iniciar el checkout de MercadoPago   new MercadoPago.StartActivityBuilder()     .setActivity(this)     .setPublicKey("TEST-ad365c37-8012-4014-84f5-6c895b3f8e0a")     .setCheckoutPreferenceId("150216849-ceed1ee4-8ab9-4449-869f-f4a8565d386f")     .startCheckoutActivity();  } ```   **But if i use my own data for test with a sandbox account, i have an error:** [See video](https://www.youtube.com/watch?v=aVs-EpX0g8s)   ``` new MercadoPago.StartActivityBuilder()                 .setActivity(this)                 .setPublicKey("TEST-fa1b4b03-c885-4c9c-922d-4c2bf7cc2743")                 .setCheckoutPreferenceId(checkoutPreference.getId())                 .startCheckoutActivity(); ```   i'm sure that preference is creating correctly cause if i follow my sandbox_init_point  `"sandbox_init_point": "https://sandbox.mercadopago.com/mlv/checkout/pay?pref_id=149007010-e2c7b039-f0c0-4b35-a1bd-eaaa07f9e53d"`   i have an page for pay.  # I REALLY NEEDS HELP NOW PLEASE :'( :+1: </body>
+		<created>2016-11-21 13:19:49</created>
+		<closed>2016-11-22 18:33:38</closed>
+	</bug>
+	<bug>
+		<id>151</id>
+		<title>Identification input focus after security code</title>
+		<body>When the user uses android keyboard when security code input has focus, the next input does not gain focus. </body>
+		<created>2016-08-11 20:09:07</created>
+		<closed>2016-08-12 14:03:07</closed>
+	</bug>
+</bugs>

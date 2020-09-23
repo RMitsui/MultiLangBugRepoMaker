@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>71</id>
+		<title>Cadena original "mal generada"</title>
+		<body>Buenos tardes estimado,  Sucede lo siguiente, tengo un XML que en el total viene: 0000000106.98, por lo cual el sello se realizó con los ceros a la izquierda.    Al tratar de validar ese XML me marcaba sello inválido, así que imprimí la cadena original que genera la librería y me di cuenta de que el total lo esta obteniendo así: 106.98.   Por lo anterior  el sello es "inválido", entiendo que es porque el tipo de dato es BigDecimal y este le elimina los ceros a la izquierda, pero no encuentro la solución, ¿podrías orientarme?.  Espero tu amable respuesta.  Saludos!!! </body>
+		<created>2012-11-01 18:42:19</created>
+		<closed>2014-02-06 22:10:19</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>Error al compilar el proyecto</title>
+		<body>_Original author: SanRuiz...@gmail.com (September 24, 2012 19:46:38)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1. Descargue del SVN la ultima version hace ya un par de meses y por un tiempo la estuve utilizando y compilando sin ningún problema 2. Tiempo después abri el proyecto nuevamente pues queria probar nuevas cosas 3. Trate de compilar y me sale error  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; Resultado esperado: Lireria compilada Resultado optenido:   Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.10:test (default-test) on project cfdi-base: There are test failures.  Please refer to C:...\factura-electronica\trunk\cfdi-base\target\surefire-reports for the individual test results. -&amp;gt; [Help 1]  To see the full stack trace of the errors, re-run Maven with the -e switch. Re-run Maven using the -X switch to enable full debug logging.  For more information about the errors and possible solutions, please read the following articles: [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.2.2-SNAPSHOT  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt;  Como información adicional: Vi que lo que está fallando son los archivos tests (a los cueales jamás les movi nada) al corre el test del netbeans 7.2.1 dice que solo 8 tests pasaron bien y 22 fallaron, para los que fallaron tiene la siguiente información  (nombreDelTest) caused an ERROR NotAfter: Sun Jul 29 11:58:40 CDT 2012  Por lo que yo supongo que los test no funcionan para despúes de esa fecha... alguien ha tenido este error?? Pueden ayudarme a corregirlo??   _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=68_ </body>
+		<created>2012-10-21 16:40:32</created>
+		<closed>2012-10-21 16:40:33</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>Exception javax.crypto.BadPaddingException. En la desencriptación de la llave</title>
+		<body>_Original author: garciacr...@gmail.com (September 13, 2012 16:15:16)_  Genero el objeto CFDv32 e intento sellarlo y me marca un error cuando intenta realizar la desencriptación PKCS8Key... esta es la excepción que me manda:  javax.crypto.BadPaddingException: Given final block not properly padded     at com.sun.crypto.provider.SunJCE_f.b(DashoA13_..)     at com.sun.crypto.provider.SunJCE_f.b(DashoA13_..)     at com.sun.crypto.provider.DESedeCipher.engineDoFinal(DashoA13_..)     at javax.crypto.Cipher.doFinal(DashoA13_..)  Ya cree el comprobante correctamente y ya he revisado que este mandando el archivo key y cer (junto con el password) correcto pero aún asi me sale el error, anteriormente tenia un sistema que estaba generando CFDI sin problema pero no se a que se deba que no me corre bien ahora la librería... no se si se deba al j2ee... no tengo idea. Si me ayudan estare enternamente agradecida.   Un saludo y gracias de antemano.  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=67_ </body>
+		<created>2012-10-21 16:40:30</created>
+		<closed>2012-10-21 16:40:32</closed>
+	</bug>
+	<bug>
+		<id>55</id>
+		<title>MojoExecutionException</title>
+		<body>_Original author: garciacr...@gmail.com (March 24, 2012 00:09:34)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1.bajar pom.xml de la libreria 2.crear un proyecto maven en netbeans 3.poner &amp;quot;build&amp;quot; contruir al proyecto  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; visualizar los archivos con extension .java en su lugar no aparece nada o solo los .class con el siguiente error: Failed to execute goal org.codehaus.mojo:jaxb2-maven-plugin:1.3.1:xjc (schema1-xjc) on project cfdi-base: no schemas has been found -&amp;gt; [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.2.2  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt; al entrar al link que me proprciona el link dice que puede deberse a un plugin, a que falte la configuración proxy. ojala me pudieran proporcionas el settings.xml del Maven.  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=55_ </body>
+		<created>2012-10-21 16:40:11</created>
+		<closed>2012-10-21 16:40:15</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>CFD valido ante SAT y con la libreria no es valido</title>
+		<body>_Original author: e.semp...@gmail.com (February 26, 2012 01:44:50)_  Hola tengo el siguiente problema no se si me pudieras ayudar   A la hr de de validar el siguiente cfd me marca el siguiente qu el CFD no es valido y me dice que es por la etiqueta  implocal:ImpuestosLocales y despliga lo siguiente :  Caused by: org.xml.sax.SAXParseException; lineNumber: 0; columnNumber: 0; cvc-complex-type.2.4.c: El comodín coincidente es estricto, pero no se ha encontrado ninguna declaración para el elemento 'implocal:ImpuestosLocales'.     at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:198)     at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.error(ErrorHandlerWrapper.java:134)     at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:437)     at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368)     at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:325)     at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(XMLSchemaValidator.java:449)     at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.reportSchemaError(XMLSchemaValidator.java:3228)     at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1908)     at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:737)     at com.sun.org.apache.xerces.internal.jaxp.validation.ValidatorHandlerImpl.startElement(ValidatorHandlerImpl.java:564)     at org.xml.sax.helpers.XMLFilterImpl.startElement(XMLFilterImpl.java:551)  .............  el problema es que este mismo documento lo reviso en el SAT y me dice que es valido, adjunto el documento a ver si me pudieras ayudar te lo agradeceria muchisimo.   _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=50_ </body>
+		<created>2012-10-21 16:40:02</created>
+		<closed>2012-10-21 16:40:03</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>Duda</title>
+		<body>_Original author: Joelhde...@gmail.com (February 09, 2012 08:01:52)_  Esta informacion es para los PAC o tambien se puede aplicar para cualquier aplicacion que quiera timbrar documentos?  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=48_ </body>
+		<created>2012-10-21 16:39:58</created>
+		<closed>2012-10-21 16:40:00</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>PROBLEMA AL SELLAR CFDI v3.0</title>
+		<body>_Original author: fallen...@hotmail.com (January 14, 2012 18:36:48)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1.Al ejecutar el programa para realizar el sello al cfdi v3.0  solamente si tiene el apartado Timbre Fiscal si no si es valido &lt;b&gt;2.&lt;/b&gt; &lt;b&gt;3.&lt;/b&gt;  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; el sellado de la factura me muestra un error, especificamente en la parte de sellado, en esta instruccion Comprobante sellado = cfd.sellarComprobante(key, cert); SystemId desconocido; Línea núm.-1; Columna núm.-1; null javax.xml.bind.MarshalException - with linked exception:   [com.sun.xml.bind.api.AccessorException: java.lang.NullPointerException]  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; cfdi-base-0.1.6-SNAPSHOT-bin  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt; Hola que tal estoy tratando de pasar de CFD 2.0 (sin ningun problema) a CFDI 3.0, y ya despues realizar los ajustes para pasar a 3.2, el problema es que me muestra ese error cuando pongo la parte de timbrado fiscal pero si lo quito si me sella la factura, que hare mal??  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=46_ </body>
+		<created>2012-10-21 16:39:55</created>
+		<closed>2012-10-21 16:39:56</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>Error en weblogic 12c</title>
+		<body>_Original author: e.semp...@gmail.com (January 12, 2012 06:20:23)_  Hola   Agregue la libreria a un proyecto web y me funciona bien cuando hago el deploy en glassfish 3.1 pero cuando hago el deploy en Weblogic 12c me marca el sigiente error cuando intento crear un comprobante:  javax.xml.bind.UnmarshalException - with linked exception:   [javax.xml.stream.XMLStreamException: Error at line:0 col:0 Line:2 A '&amp;quot;' was expected,  this attribute was not terminated by a matching double quote]  Esto lo probe con la version 2.0 en estos momentos estoy probando con la version 2.1   tambien aprovecho para comentarte que he estado intentando bajar la libreria del svn y no esta completa.  gracias  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt;  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt;  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt;  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=45_ </body>
+		<created>2012-10-21 16:39:53</created>
+		<closed>2012-10-21 16:39:54</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>Version cfd 2.2 y  cfdi 3.2 (Reformas fiscales 2012)</title>
+		<body>_Original author: carlos.g...@gmail.com (December 17, 2011 17:22:04)_  Hola buen dia, Antes que nada felicitarte porque tu proyecto es de gran utilidad. Y deseo saber si tienes planeado subir  una nueva version para las reformas de 2012?  Saludos  Carlos  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=44_ </body>
+		<created>2012-10-21 16:39:51</created>
+		<closed>2012-10-21 16:39:52</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>Error al sellar comprobante CFD</title>
+		<body>_Original author: rene...@gmail.com (October 26, 2011 17:17:24)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1.Crear comprobante v2 2.Sellar comprobante &lt;b&gt;3.&lt;/b&gt;  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; Comprobante sellado, Se genera excepción java.lang.reflect.InvocationTargetException  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.1.5  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt;  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=42_ </body>
+		<created>2012-10-21 16:39:34</created>
+		<closed>2012-10-21 16:39:36</closed>
+	</bug>
+	<bug>
+		<id>41</id>
+		<title>Validar addendas</title>
+		<body>_Original author: e.semp...@gmail.com (October 25, 2011 09:59:33)_  Hola oye cuales seria los pasos para poder incluir la validacion de nuevas addendas???   Gracias  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=41_ </body>
+		<created>2012-10-21 16:39:33</created>
+		<closed>2012-10-21 16:39:34</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>Problema en timbrado con PAC</title>
+		<body>_Original author: desantia...@gmail.com (October 21, 2011 19:05:39)_  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; Tengo un problema al mandar timbrar el cfd, primero creo el CFDv3 así como viene en los ejemplos y luego se lo paso al webservice que va a efectuar el timbrado, cuando lo hago desde linux no tengo ningún problema el webservice me regresa el cfdi ya timbrado, pero cuando lo ejecuto en windows me pone que el sello es invalido o esta mal formado. Ya estuve buscando pero no encuentro nada espero puedan darme alguna pista para solucionar el problema.  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt;  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt;  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=40_ </body>
+		<created>2012-10-21 16:39:31</created>
+		<closed>2012-10-21 16:39:32</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>¿La paquetería cfdi-base-0.1.6-SNAPSHOT corre en Eclipse?</title>
+		<body>_Original author: lefa...@gmail.com (June 29, 2011 23:12:30)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; &lt;b&gt;1.&lt;/b&gt; &lt;b&gt;2.&lt;/b&gt; &lt;b&gt;3.&lt;/b&gt;  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt;  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt;  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt;  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=36_ </body>
+		<created>2012-10-21 16:39:24</created>
+		<closed>2012-10-21 16:39:25</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>Problema de descarga de codigo fuente</title>
+		<body>_Original author: e.semp...@gmail.com (April 26, 2011 04:26:19)_  Segui estas instrucciones que aparecen el las preguntas frecuentes y me marca el siguiente error  INSTRUCCIONES QUE SE SIGUIERON NetBeans  Para agregar el código a NetBeans es muy importante tener instalada al menos la versión 3.0.1 de Maven. Para configurar la versión de Maven en NetBeans:  ``` &amp;quot;Tools &amp;gt; Options &amp;gt; Miscellaneous &amp;gt; Maven&amp;quot; En External Maven Home, agrega el PATH a la versión 3.0.1 de Maven  ```  A continuación importa el proyecto de la siguiente manera: “File &amp;gt; New Project &amp;gt; Maven &amp;gt; Maven Project with Existing POM” y en el siguiente diálogo selecciona el directorio con el código descargado del svn.  Finalmente construye el proyecto con el comando Build. Esto compila el código generado y corrige los errores de compilación que aparecen al importar el proyecto.  #   ERROR NetBeans: Executing 'C:\apache-maven-3.0.3-bin\apache-maven-3.0.3\bin\mvn.bat -Dnetbeans.execution=true --errors -e install' NetBeans:      JAVA_HOME=C:\Program Files\Java\jdk1.6.0_24 Error stacktraces are turned on. Scanning for projects... [ERROR]The build could not read 1 project -&amp;gt; [Help 1] org.apache.maven.project.ProjectBuildingException: Some problems were encountered while processing the POMs: [WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 78, column 15 [ERROR]Child module C:\Users\eduardo\cfdi\trunk\cfdi-dsl of C:\Users\eduardo\cfdi\trunk\pom.xml does not exist @   ```     at org.apache.maven.project.DefaultProjectBuilder.build(DefaultProjectBuilder.java:339)     at org.apache.maven.DefaultMaven.collectProjects(DefaultMaven.java:632)     at org.apache.maven.DefaultMaven.getProjectsForMavenReactor(DefaultMaven.java:581)     at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:233)     at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:156)     at org.apache.maven.cli.MavenCli.execute(MavenCli.java:537)     at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:196)     at org.apache.maven.cli.MavenCli.main(MavenCli.java:141)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)     at java.lang.reflect.Method.invoke(Method.java:597)     at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:290)     at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:230)     at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:409)     at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:352) ```  [ERROR]   [ERROR]  The project mx.bigdata.cfdi:cfdi:0.1.6-SNAPSHOT (C:\Users\eduardo\cfdi\trunk\pom.xml) has 1 error [ERROR]    Child module C:\Users\eduardo\cfdi\trunk\cfdi-dsl of C:\Users\eduardo\cfdi\trunk\pom.xml does not exist [ERROR] [ERROR]Re-run Maven using the -X switch to enable full debug logging. [ERROR] [ERROR]For more information about the errors and possible solutions, please read the following articles: [ERROR][Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException  Alguien me puede ayudar ??? gracias  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=35_ </body>
+		<created>2012-10-21 16:39:21</created>
+		<closed>2012-10-21 16:39:23</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>Problema al generar factura electrónica.</title>
+		<body>_Original author: joed...@gmail.com (March 31, 2011 16:55:11)_  Al generar el xml de una factura electrónica, pone los datos al reves. Por ejemplo, en los datos del emisor, debe ser rfc y nombre y aparece nombre y rfc. Lo mismo pasa con los domicilios y los demas datos.  No se si esto sea la causa de que el verificador del sat no me los reconosca.  Gracias.  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=34_ </body>
+		<created>2012-10-21 16:39:19</created>
+		<closed>2012-10-21 16:39:20</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>schemaLocation tiene espacio en lugar de diagonal</title>
+		<body>_Original author: antonio....@gmail.com (February 24, 2011 18:47:46)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1.generar comprobante con ObjectFactory y verion &amp;quot;3.0&amp;quot; 2.sellarComprobante, validar y verificar 3.guardar comprobante a un archivo  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; la propiedad xsi:schemaLocation deberia tener &amp;quot;http://www.sat.gob.mx/cfd/3/cfdv3.xsd&amp;quot; pero en el archivo guardado aparece  &amp;quot;http://www.sat.gob.mx/cfd/3 cfdv3.xsd&amp;quot;  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; cfdi-base-0.1.5  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt; Revise el codigo fuente de la clase mx.bigdata.sat.cfdi.CFDv3  y en el metodo guardar aparece  m.setProperty(&amp;quot;jaxb.schemaLocation&amp;quot;, &amp;quot;http://www.sat.gob.mx/cfd/3 cfdv3.xsd&amp;quot;);  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=33_ </body>
+		<created>2012-10-21 16:39:17</created>
+		<closed>2012-10-21 16:39:18</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>Pagina SAT muestra MD5</title>
+		<body>_Original author: cristima...@gmail.com (January 25, 2011 21:17:49)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1. Crear el xml y sellarlo  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; Que selle con SHA  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.1.5  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt; Estoy sellando sin problemas pero al validar con la pagina del SAT me dice que esta con MD5 y no con SHA  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=31_ </body>
+		<created>2012-10-21 16:39:02</created>
+		<closed>2012-10-21 16:39:04</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>Propiedad standalone=yes en documentos XML generados</title>
+		<body>_Original author: victor.t...@gmail.com (January 09, 2011 07:12:57)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; &lt;b&gt;1.&lt;/b&gt; &lt;b&gt;2.&lt;/b&gt; &lt;b&gt;3.&lt;/b&gt;  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; ESPERADO &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;  RESULTA &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;yes&amp;quot;?&amp;gt;  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; cfdi-base-0.1.5.jar  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt;  Asi lo resolvi para CFDv2, no he usado CFDv3, pero si es de utilidad, anexo el fragmento.  package mx.bigdata.sat.cfd; CFDv2.java  //Declaro el encabezado esperado private static String XML_HEADER = &amp;quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;quot;;    public void guardar(OutputStream out) throws Exception {     Marshaller m = CONTEXT.createMarshaller();     //Remuevo el encabezado     m.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);     ...     //Genero el encabezado esperado y lo agrego al OutputStream      byte[] xmlHeaderBytes = getXMLHeaderByteArray(XML_HEADER);     out.write(xmlHeaderBytes, 0, xmlHeaderBytes.length);      m.marshal(document, out);   }   //Se genera el byteArray a partir del encabezado esperado   private byte[] getXMLHeaderByteArray(String xmlHeader) {       char[] chars = xmlHeader.toCharArray();       byte[] bytes = new byte[chars.length];       for (int i = 0; i &amp;lt; chars.length; i++) {   bytes[i] = (byte)chars[i];       }       return bytes;  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=30_ </body>
+		<created>2012-10-21 16:38:59</created>
+		<closed>2012-10-21 16:39:02</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>Cadena original</title>
+		<body>_Original author: hip...@hotmail.com (January 07, 2011 01:15:06)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1. generar a nivel linea de comando el ejemplo de cfd sellado &lt;b&gt;2.&lt;/b&gt; &lt;b&gt;3.&lt;/b&gt;  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; En realidad no creo que sea un problema sino mas bien una duda, mi pregunta es: porque en el xml sellado no viene la &amp;quot;cadena original&amp;quot; ? Podria venir para poder tomarla directamente para la generacion de un pdf ?  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 1.5  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt;  Gracias.  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=29_ </body>
+		<created>2012-10-21 16:38:58</created>
+		<closed>2012-10-21 16:38:59</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>ERROR AL GENERAR EL XML</title>
+		<body>_Original author: 19fidela...@gmail.com (January 05, 2011 22:15:35)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; &lt;b&gt;1.&lt;/b&gt; &lt;b&gt;2.&lt;/b&gt; &lt;b&gt;3.&lt;/b&gt;  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; xsi:schemaLocation=&amp;quot;http://www.sat.gob.mx/cfd http://www.sat.gob.mx/sitio_internet/cfd/2/cfdv2.xsd&amp;quot;&amp;gt;  DEBE SALIR xsi:schemaLocation=&amp;quot;http://www.sat.gob.mx/cfd/2 http://www.sat.gob.mx/sitio_internet/cfd/2/cfdv2.xsd&amp;quot;&amp;gt;  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.1.5  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt; AL GENERAR EL XML NO ESTA REFERENCIADO A   _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=28_ </body>
+		<created>2012-10-21 16:38:55</created>
+		<closed>2012-10-21 16:38:57</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title> El sello del Comprobante Fiscal Digital no es válido</title>
+		<body>_Original author: kornto...@gmail.com (December 23, 2010 23:35:32)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1. Sellado en v3  2. Obtengo el sello bien! 3. Validar el CFDI en el la pagina del SAT  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; Al validar el CFDI en la pagina del SATme dice &amp;quot;El sello del Comprobante Fiscal Digital no es válido&amp;quot; :( alguna sugerencia  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.1.5  Mi codigo de sellado  Comprobante sellado = cfd.sellarComprobante(KeyLoader.loadPKCS8PrivateKey(new FileInputStream(keyfile),  password), KeyLoader.loadX509Certificate(new FileInputStream(fileCer)));  cfd.verificar(); //Verificar OK!!!! cfd.validar(); //Validar OK!!!!  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=27_ </body>
+		<created>2012-10-21 16:38:51</created>
+		<closed>2012-10-21 16:38:54</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>Nueva reforma de algoritmo de cifrado para 2011 a SHA1</title>
+		<body>_Original author: 19fidela...@gmail.com (December 22, 2010 18:49:10)_  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.1.5  Ya utilizo la factura y funciona correctamente pero que pasa con esta regla para 2011.  EL algoritmo de cifrado y hash fue cambiado a SHA1 (anterior MD5), la librería sera actualizada para cumplir con este estandar........  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=26_ </body>
+		<created>2012-10-21 16:38:49</created>
+		<closed>2012-10-21 16:38:50</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>Ejemplos</title>
+		<body>_Original author: jhony...@gmail.com (December 20, 2010 23:29:47)_  Las ligas de los enlaces de Ejemplos estan rotas...  http://code.google.com/p/factura-electronica/source/browse/trunk/src/main/java/mx/bigdata/sat/cfd/examples/ExampleCFDFactory.java  Podrian subir nuevas,  Gracias.  Saludos!  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=25_ </body>
+		<created>2012-10-21 16:38:46</created>
+		<closed>2012-10-21 16:38:48</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>Obtencion de null con getSello();</title>
+		<body>_Original author: jlpinomoreno@gmail.com (December 20, 2010 19:55:21)_  Oye lamento insistir tanto, pero ya hice lo que se sugiere en el issue 19 baje la version 1.5 y aun sigo teniendo el mismo problema, cuando quiero obtener el sello este me regresa null :s, alguna idea?  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=24_ </body>
+		<created>2012-10-21 16:38:44</created>
+		<closed>2012-10-21 16:38:46</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>Obtencion de null con getSello();</title>
+		<body>_Original author: jlpinomoreno@gmail.com (December 19, 2010 01:39:02)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; comp.setImpuestos(imps);     comp.setFecha(new Date ());     try {         cfd = new CFDv2(comp);         FileInputStream fis = new FileInputStream(&amp;quot;C:\certificado.key&amp;quot;);         byte[] clavePrivada = getBytes(fis);         try {            PKCS8Key pkcs8 = new PKCS8Key(clavePrivada,&amp;quot;cla&amp;quot;.toCharArray());             PrivateKey pk = pkcs8.getPrivateKey();                 try{                     InputStream inStream = new FileInputStream(&amp;quot;C:\certificado.cer&amp;quot;);                     CertificateFactory cf = CertificateFactory.getInstance(&amp;quot;X.509&amp;quot;);                     X509Certificate cert = (X509Certificate)cf.generateCertificate(inStream);                     cfd.sellar(pk, cert);                     System.out.println(comp.getSello());--&amp;gt;imprime null                       ou1 = new FileOutputStream(&amp;quot;C:\Facturaelec2.xml&amp;quot;);                 }catch(Exception ex){                     System.out.println(ex);                 }         }catch(Exception ex2){             System.out.println(ex2);         }         cfd.guardar(ou1);     } catch (Exception ex) {         System.out.println(ex);     }  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; El sello digital  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 1.4  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt; System.out.println(comp.getSello());--&amp;gt;imprime null     _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=22_ </body>
+		<created>2012-10-21 16:38:37</created>
+		<closed>2012-10-21 16:38:39</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>no obtengo nada con comprobante.getSello();</title>
+		<body>_Original author: jlpinomoreno@gmail.com (December 18, 2010 19:45:19)_  Buenas tardes, no se si sea precisamente un problema, pero cuando intento hacer comprobante.getSello(); para mandarlo a imprimir en mi comprobante este me regresa un null, esto obviamente una vez que ya genere el comprobante, lo selle y lo guarde, alguna idea?  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=21_ </body>
+		<created>2012-10-21 16:38:36</created>
+		<closed>2012-10-21 16:38:37</closed>
+	</bug>
+	<bug>
+		<id>14</id>
+		<title>No se verifica el comprobante en la v2</title>
+		<body>_Original author: bigdata.mx (November 22, 2010 05:24:57)_  &lt;b&gt;What steps will reproduce the problem?&lt;/b&gt; 1. Cargar un CFDv2 erroneo 2. Tratar de verificarlo  &lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt; Se esperaba una mensaje de error y  no ocurre nada.  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=14_ </body>
+		<created>2012-10-21 16:38:08</created>
+		<closed>2012-10-21 16:38:09</closed>
+	</bug>
+	<bug>
+		<id>13</id>
+		<title>Error al sellar xml</title>
+		<body>_Original author: jlpinomoreno@gmail.com (November 21, 2010 00:11:54)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1. Sellar un documento xml &lt;b&gt;2.&lt;/b&gt; &lt;b&gt;3.&lt;/b&gt;  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; El resultado esperado es generar el sello digita, el siguiente error Exception in thread &amp;quot;AWT-EventQueue-0&amp;quot; java.lang.NoClassDefFoundError: org/apache/commons/codec/binary/Base64 at mx.bigdata.sat.cfd.CFDv2.getSignature(CFDv2.java:184) at mx.bigdata.sat.cfd.CFDv2.sellar(CFDv2.java:101)  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.1.3  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=13_ </body>
+		<created>2012-10-21 16:38:05</created>
+		<closed>2012-10-21 16:38:07</closed>
+	</bug>
+	<bug>
+		<id>11</id>
+		<title>jaxb-xjc artifact id duplicado</title>
+		<body>_Original author: edw.h...@gmail.com (November 19, 2010 03:00:42)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1. Importar el proyecto con Eclipse usando el plugin m2eclipse  18/11/10 08:49:05 PM CST: Build errors for cfdi; org.apache.maven.project.ProjectBuildingException: Some problems were encountered while processing the POMs: [ERROR] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: com.sun.xml.bind:jaxb-xjc:jar -&amp;gt; duplicate declaration of version 2.2 @ mx.bigdata.cfdi:cfdi:0.1.4-SNAPSHOT, C:\factura-electronica\pom.xml [WARNING] 'build.plugins.plugin.version' is missing for org.codehaus.mojo:jaxb2-maven-plugin @ mx.bigdata.cfdi:cfdi:0.1.4-SNAPSHOT, C:\factura-electronica\pom.xml [WARNING] 'build.plugins.plugin.version' is missing for org.codehaus.mojo:exec-maven-plugin @ mx.bigdata.cfdi:cfdi:0.1.4-SNAPSHOT, C:\factura-electronica\pom.xml  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=11_ </body>
+		<created>2012-10-21 16:38:00</created>
+		<closed>2012-10-21 16:38:02</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>Error al sellar comprobante</title>
+		<body>_Original author: rene...@gmail.com (November 16, 2010 00:33:07)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1.Descargar libreria  cfdi-0.1.3.jar  2. Crear comprobante 3. Sellar   &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; Comprobante sellado, resulta error  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.1.3  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt; Mensaje de error Caused by: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.&amp;lt;init&amp;gt;(I)V         at mx.bigdata.sat.cfd.CFDv2.getSignature(CFDv2.java:184)         at mx.bigdata.sat.cfd.CFDv2.sellar(CFDv2.java:101)  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=10_ </body>
+		<created>2012-10-21 16:37:57</created>
+		<closed>2012-10-21 16:37:59</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>No se encuentra el código fuente completo. </title>
+		<body>_Original author: cbs...@gmail.com (November 11, 2010 17:12:57)_  Al tratar de compilar la aplicación me marca que falta la parte de los esquemas.  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=9_ </body>
+		<created>2012-10-21 16:37:52</created>
+		<closed>2012-10-21 16:37:56</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>La Clase CFDv3 no tiene el metodo getObtenerCadenaOriginal()</title>
+		<body>_Original author: rene...@gmail.com (November 11, 2010 02:12:19)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1.Descargar la librería  2.Instanciar la clase CFDv3, esto lo hace de la clase mx.bigdata.cfdi.CFDv3; 3.No se encuentra el metodo getObtenerCadenaOriginal()  ¿Cuál es el resultado esperado? ¿Qué resulta en su lugar Obtener la cadena original. &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; cfdi-0.1.2.jar   &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt; Tampoco es posible instanciar Objetos CFDv2 ya que no ecuentra la clase mx.bigdata.sat.cfd.CFDv2  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=8_ </body>
+		<created>2012-10-21 16:37:48</created>
+		<closed>2012-10-21 16:37:51</closed>
+	</bug>
+	<bug>
+		<id>3</id>
+		<title>javax.crypto.BadPaddingException: Given final block not properly padded</title>
+		<body>_Original author: hip...@hotmail.com (November 08, 2010 22:12:48)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1.Ejecucion del programa de ejemplo para una fac. electronica &lt;b&gt;2.&lt;/b&gt; &lt;b&gt;3.&lt;/b&gt;  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; Espero el resultado de generar la factura, pero me regresa un error que dice: Exception in thread &amp;quot;main&amp;quot; javax.crypto.BadPaddingException: Given final block not properly padded  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.1.2  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt;  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=3_ </body>
+		<created>2012-10-21 16:37:37</created>
+		<closed>2012-10-21 16:37:40</closed>
+	</bug>
+	<bug>
+		<id>2</id>
+		<title>error al intentar firmar un 'comprobante'</title>
+		<body>_Original author: andres130182@gmail.com (November 05, 2010 00:58:07)_  &lt;b&gt;¿Cuáles pasos hay que seguir para reproducir el problema?&lt;/b&gt; 1.generar comprobante con object factory 2.asginarle atributos a el comprobante, version, fecha, sello, etc... 3.cargar key y certificado 4.firmar  &lt;b&gt;¿Cuál es el resultado esperado? ¿Qué resulta en su lugar?&lt;/b&gt; que se firme el archivo de tipo comprobante, se espera que con un fileoutputstream se guarde el xml ya firmado.  &lt;b&gt;¿Cuál versión del producto está utilizando?&lt;/b&gt; 0.1.2  &lt;b&gt;Agregue cualquier información adicional que resulte de utilidad.&lt;/b&gt;  ya añadi las dependencias de la libreria pero aun asi me manda un error.  El error al intentar ejecutar es:  ERROR:  'Connection reset' ERROR MUY GRAVE:  'No se ha podido compilar la hoja de estilos' Exception in thread &amp;quot;main&amp;quot; javax.xml.transform.TransformerConfigurationException: No se ha podido compilar la hoja de estilos         at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl.newTemplates(TransformerFactoryImpl.java:828)         at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl.newTransformer(TransformerFactoryImpl.java:617)         at mx.bigdata.cfdi.CFDv3.getOriginalBytes(CFDv3.java:159)         at mx.bigdata.cfdi.CFDv3.getSignature(CFDv3.java:176)         at mx.bigdata.cfdi.CFDv3.sign(CFDv3.java:99)         at iotroputoejemplo.Main.main(Main.java:52) Java Result: 1  _Original issue: http://code.google.com/p/factura-electronica/issues/detail?id=2_ </body>
+		<created>2012-10-21 16:37:34</created>
+		<closed>2012-10-21 16:37:37</closed>
+	</bug>
+</bugs>

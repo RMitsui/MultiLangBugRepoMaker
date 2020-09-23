@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Offene-Pflege.de">
+	<bug id="111" opendate="2019-05-23 08:50:09" fixdate="2019-05-23 08:51:13">
+		<buginformation>
+			<summary>Absturz beim Ausdrucken des Überleitbogens</summary>
+			<description>Bei einem Druckversuch kam folgender Fehler: ![Bildschirmfoto 2019-05-23 um 10 49 43](https://user-images.githubusercontent.com/961252/58238986-84c2ff80-7d48-11e9-805a-cd797a76bb4a.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/tools/SYSConst.java</file>
+			<file>src/op/care/bhp/PnlBHP.java</file>
+			<file>src/op/care/info/PnlEditResInfo.java</file>
+			<file>src/entity/info/TXEssenDoc.java</file>
+			<file>src/entity/info/ResInfoTools.java</file>
+			<file>src/op/tools/SYSTools.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="99" opendate="2019-01-10 14:47:08" fixdate="2019-01-10 15:16:07">
+		<buginformation>
+			<summary>Schweizer PZN wird abgelehnt.</summary>
+			<description>Heute bekam ich die Nachricht, dass das Präparat Gutron 2,5 mit der Schweizer Code **7680449760210** abgelehnt wird.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/dev/PnlDev.java</file>
+			<file>src/entity/prescription/MedPackageTools.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="95" opendate="2018-03-16 13:22:26" fixdate="2018-03-16 13:23:23">
+		<buginformation>
+			<summary>Absturz bei der DB Neuinstallation</summary>
+			<description>Hier hatte ich nach der letzten Version vergessen die Datenbankänderung korrekt in den DBScripts einzutragen.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/residents/DlgEditResidentBaseData.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="94" opendate="2018-03-16 13:20:53" fixdate="2018-03-16 13:23:29">
+		<buginformation>
+			<summary>"opde.admin.bw.wizard.page7.summaryline1" bei neuem Bewohner</summary>
+			<description>Hier fehlte noch ein Eintrag in der Sprachdatei.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/residents/DlgEditResidentBaseData.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="91" opendate="2017-12-28 14:19:05" fixdate="2018-01-05 15:00:36">
+		<buginformation>
+			<summary>Druck auf den "About" Knopf führt zu Absturz</summary>
+			<description>na, eine tolle Werbung ist da. ;-)   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/welcome/PnlWelcome.java</file>
+			<file>src/op/system/AppInfo.java</file>
+			<file>src/op/tools/SYSTools.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="90" opendate="2017-12-22 10:14:49" fixdate="2017-12-22 10:22:46">
+		<buginformation>
+			<summary>Falsche Datumsanzeige</summary>
+			<description>Auf einmal zeigt mein OPDE auf meinem Rechner alle Daten-Formate auf amerikanisch an.  Also: **Dec 22, 2017** statt **22.12.2017**</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/reports/NReportTools.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="88" opendate="2017-12-18 15:09:29" fixdate="2018-01-05 15:03:26">
+		<buginformation>
+			<summary>Absturz bei der Dienstübergabe</summary>
+			<description>Bei der Dienstübergabe tritt eine Exception auf. Sieht so aus, als läge das bei einer neuen Installation an der (noch) leeren Datenbank. Ist aber nicht klar. [opde.log.pdf](https://github.com/tloehr/Offene-Pflege.de/files/1568394/opde.log.pdf) [bug-opde.pdf](https://github.com/tloehr/Offene-Pflege.de/files/1568395/bug-opde.pdf)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/reports/NReportTools.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="86" opendate="2017-12-06 14:55:18" fixdate="2017-12-22 10:33:19">
+		<buginformation>
+			<summary>Dialog zur Eingabe neuer User öffnet sich nicht</summary>
+			<description>Da ist mir ein kleiner Fehler unterlaufen. Ist in der nächsten Version behoben.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/FrmMain.java</file>
+			<file>src/op/OPDE.java</file>
+			<file>src/op/users/DlgUser.java</file>
+			<file>src/op/care/supervisor/PnlHandover.java</file>
+			<file>src/op/users/PnlUser.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="83" opendate="2017-11-13 13:20:04" fixdate="2017-12-22 10:27:56">
+		<buginformation>
+			<summary>Exception bei neuer Datenbank und Dienstübergabe</summary>
+			<description>Bei einer frischen, noch leeren Datenbank führt der Versuch in die Dienstübergaben zu gucken zu einer Exception.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/reports/NReportTools.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="79" opendate="2017-07-26 13:43:10" fixdate="2017-07-28 14:07:36">
+		<buginformation>
+			<summary>Auswertung Verlauf/BMI druckt auch ehemalige BWs</summary>
+			<description>Das macht keinen Sinn. Daher muss das abschaltbar sein.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/controlling/PnlControlling.java</file>
+			<file>src/entity/values/ResValueTools.java</file>
+			<file>src/entity/info/ResInfoTools.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="78" opendate="2017-07-11 12:07:34" fixdate="2017-07-11 13:22:50">
+		<buginformation>
+			<summary>Archivierte BWs lassen sich ändern</summary>
+			<description>Bei BWs, die archiviert wurden kann man immer noch die Informationen bearbeiten. Das soll nicht sein.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/staff/Training.java</file>
+			<file>src/entity/nursingprocess/NursingProcess.java</file>
+			<file>src/entity/values/ResValue.java</file>
+			<file>src/op/care/reports/PnlReport.java</file>
+			<file>src/op/care/values/PnlValues.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+			<file>src/entity/reports/NReportTools.java</file>
+			<file>src/entity/info/TXEssenDoc.java</file>
+			<file>src/op/tools/DocumentSizeFilter.java</file>
+			<file>src/entity/nursingprocess/InterventionTools.java</file>
+			<file>src/entity/info/MREPrevalenceSheets.java</file>
+			<file>src/op/care/med/inventory/DlgTX.java</file>
+			<file>src/entity/system/Users.java</file>
+			<file>src/op/care/sysfiles/PnlFiles.java</file>
+			<file>src/entity/qms/Qmsplan.java</file>
+			<file>src/op/care/prescription/PnlPrescription.java</file>
+			<file>src/entity/qms/Qms.java</file>
+			<file>src/entity/prescription/Prescription.java</file>
+			<file>src/interfaces/Attachable.java</file>
+			<file>src/op/OPDE.java</file>
+			<file>src/op/care/sysfiles/DlgFiles.java</file>
+			<file>src/op/dev/PnlDev.java</file>
+			<file>src/entity/reports/NReport.java</file>
+			<file>src/entity/info/ResInfo.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+			<file>src/op/care/med/inventory/PnlInventory.java</file>
+			<file>src/entity/staff/Training2Users.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="73" opendate="2017-03-10 14:49:59" fixdate="2017-03-10 15:46:53">
+		<buginformation>
+			<summary>Wund-Schema zeigt Körperstellen die nicht ausgewählt wurden</summary>
+			<description>Das passiert, wenn man eine Körperstelle anklickt und dann wieder abschaltet. Im Überleitbogen ist das korrekt, aber wenn man die HTML Textdarstellung abruft, steht der abgewählte Teil immer noch da.  ![schnappschuss 2017-03-10 15 47 25](https://cloud.githubusercontent.com/assets/961252/23799458/ed0911fc-05a8-11e7-802e-2cc7e419dbb1.png)  führt zu dieser falschen Darstellung  ![schnappschuss 2017-03-10 15 48 17](https://cloud.githubusercontent.com/assets/961252/23799541/33b4a620-05a9-11e7-803d-106417f47785.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/care/info/PnlBodyScheme.java</file>
+			<file>src/op/care/info/PnlEditResInfo.java</file>
+			<file>src/entity/info/TXEAF.java</file>
+			<file>src/entity/info/TXEssenDoc.java</file>
+			<file>src/entity/info/ResInfoTools.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="69" opendate="2016-11-07 09:15:00" fixdate="2016-11-07 09:35:50">
+		<buginformation>
+			<summary>Pflegeberichte bei einem bestimmten BW werden nicht angezeigt.</summary>
+			<description>und das obwohl sie in der Datenbank stehen.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/info/TXEAF.java</file>
+			<file>src/entity/info/TXEssenDoc.java</file>
+			<file>src/op/care/reports/PnlReport.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="63" opendate="2016-09-23 07:36:21" fixdate="2016-09-27 13:06:41">
+		<buginformation>
+			<summary>Bei den outcome BHPs steht die falsche Zeit</summary>
+			<description>Sollte die IST Zeit stehen. Steht aber die Soll Zeit. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/tools/SYSConst.java</file>
+			<file>src/op/care/values/DlgValue.java</file>
+			<file>src/op/care/med/prodassistant/PnlProduct.java</file>
+			<file>src/op/care/prescription/DlgOnDemand.java</file>
+			<file>src/op/care/values/PnlValues.java</file>
+			<file>src/entity/prescription/TradeFormTools.java</file>
+			<file>src/op/FrmMain.java</file>
+			<file>src/op/threads/DisplayManager.java</file>
+			<file>src/op/users/DlgGroup.java</file>
+			<file>src/entity/prescription/GPTools.java</file>
+			<file>src/entity/reports/NReportTools.java</file>
+			<file>src/op/residents/bwassistant/PnlLC.java</file>
+			<file>src/op/users/PnlEditMembers.java</file>
+			<file>src/op/care/med/structure/DlgProduct.java</file>
+			<file>src/entity/AllowanceTools.java</file>
+			<file>src/entity/info/MREPrevalenceSheets.java</file>
+			<file>src/entity/nursingprocess/InterventionTools.java</file>
+			<file>src/op/mx/PnlMX.java</file>
+			<file>src/op/care/sysfiles/PnlFiles.java</file>
+			<file>src/entity/prescription/MedInventoryTools.java</file>
+			<file>src/op/care/prescription/PnlPrescription.java</file>
+			<file>src/entity/prescription/DosageFormTools.java</file>
+			<file>src/op/care/values/PnlLiquidBalance.java</file>
+			<file>src/op/process/DlgProcess.java</file>
+			<file>src/op/care/med/structure/DlgUPREditor.java</file>
+			<file>src/op/training/PnlTrainingEditor.java</file>
+			<file>src/op/tools/PnlPIT.java</file>
+			<file>src/op/care/values/DlgValueControl.java</file>
+			<file>src/entity/prescription/BHP.java</file>
+			<file>src/op/care/info/PnlGP.java</file>
+			<file>src/op/tools/DlgYesNo.java</file>
+			<file>src/op/training/PnlUserlistEditor.java</file>
+			<file>src/op/tools/DlgProgress.java</file>
+			<file>src/op/users/PnlEditACL.java</file>
+			<file>src/op/allowance/PnlTX.java</file>
+			<file>src/op/residents/bwassistant/PnlBV.java</file>
+			<file>src/op/users/PnlUser.java</file>
+			<file>src/gui/GUITools.java</file>
+			<file>src/op/care/prescription/DlgDiscontinue.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+			<file>src/op/tools/MyJDialog.java</file>
+			<file>src/op/care/prescription/PnlScheduleDose.java</file>
+			<file>src/op/care/info/PnlAway.java</file>
+			<file>src/op/controlling/PnlQMSPlan.java</file>
+			<file>src/op/care/med/inventory/DlgNewStocks.java</file>
+			<file>src/entity/prescription/BHPTools.java</file>
+			<file>src/op/care/reports/DlgReport.java</file>
+			<file>src/op/settings/subpanels/PnlICD.java</file>
+			<file>src/entity/prescription/PrescriptionTools.java</file>
+			<file>src/op/care/bhp/PnlBHP.java</file>
+			<file>src/entity/qms/ControllingTools.java</file>
+			<file>src/entity/prescription/Prescription.java</file>
+			<file>src/entity/info/LCustodianTools.java</file>
+			<file>src/entity/info/ResidentTools.java</file>
+			<file>src/op/care/med/prodassistant/MedProductWizard.java</file>
+			<file>src/op/residents/bwassistant/PnlGP.java</file>
+			<file>src/op/settings/subpanels/PnlCommonTags.java</file>
+			<file>src/op/care/info/PnlEditResInfo.java</file>
+			<file>src/op/care/med/structure/PnlMed.java</file>
+			<file>src/entity/info/ResInfoTools.java</file>
+			<file>src/op/residents/DlgEditResidentBaseData.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+			<file>src/op/care/med/inventory/PnlInventory.java</file>
+			<file>src/entity/files/SYSFilesTools.java</file>
+			<file>src/op/training/PnlTraining.java</file>
+			<file>src/op/system/FileDrop.java</file>
+			<file>src/op/care/info/PnlHospital.java</file>
+			<file>src/op/pnldebug.java</file>
+			<file>src/op/users/PnlEditMemberships.java</file>
+			<file>src/entity/prescription/HospitalTools.java</file>
+			<file>src/entity/prescription/MedStockTools.java</file>
+			<file>src/op/controlling/PnlQMSSchedule.java</file>
+			<file>src/op/care/info/DlgDiag.java</file>
+			<file>src/op/settings/subpanels/PnlLabelPrinterSetup.java</file>
+			<file>src/gui/parser/OldPasswordParser.java</file>
+			<file>src/op/care/med/inventory/DlgOpenStock.java</file>
+			<file>src/op/care/nursingprocess/PnlEval.java</file>
+			<file>src/op/controlling/PnlControlling.java</file>
+			<file>src/op/care/med/inventory/DlgCloseStock.java</file>
+			<file>src/op/process/DlgProcessAssign.java</file>
+			<file>src/op/mx/PnlRecipients.java</file>
+			<file>src/op/residents/bwassistant/PnlBWBasisInfo.java</file>
+			<file>src/op/allowance/PnlAllowance.java</file>
+			<file>src/op/care/info/PnlPeriod.java</file>
+			<file>src/op/tools/SYSCalendar.java</file>
+			<file>src/op/care/dfn/PnlDFN.java</file>
+			<file>src/entity/reports/HandoversTools.java</file>
+			<file>src/op/care/prescription/DlgAnnotations.java</file>
+			<file>src/op/care/med/inventory/PnlExpiry.java</file>
+			<file>src/entity/process/PCatTools.java</file>
+			<file>src/op/OPDE.java</file>
+			<file>src/op/care/PnlResOverview.java</file>
+			<file>src/entity/prescription/MedProductsTools.java</file>
+			<file>src/op/welcome/PnlWelcome.java</file>
+			<file>src/op/care/sysfiles/DlgFiles.java</file>
+			<file>src/op/settings/subpanels/PnlModelEditor.java</file>
+			<file>src/op/dev/PnlDev.java</file>
+			<file>src/op/tools/SYSTools.java</file>
+			<file>src/op/settings/databeans/CareSettingsBean.java</file>
+			<file>src/op/care/med/prodassistant/PnlACME.java</file>
+			<file>src/op/care/nursingprocess/PnlTemplate.java</file>
+			<file>src/op/tools/DlgPIT.java</file>
+			<file>src/op/care/reports/PnlReport.java</file>
+			<file>src/entity/prescription/MedPackageTools.java</file>
+			<file>src/op/care/supervisor/DlgHOReport.java</file>
+			<file>src/op/process/PnlProcess.java</file>
+			<file>src/op/residents/PnlEditGP.java</file>
+			<file>src/op/care/med/structure/DlgTradeForm.java</file>
+			<file>src/op/care/nursingprocess/DlgNursingProcess.java</file>
+			<file>src/gui/interfaces/CleanablePanel.java</file>
+			<file>src/op/care/med/prodassistant/DlgACME.java</file>
+			<file>src/entity/prescription/ACMETools.java</file>
+			<file>src/op/care/supervisor/PnlHandover.java</file>
+			<file>src/op/settings/PnlSettings.java</file>
+			<file>src/entity/Ownable.java</file>
+			<file>src/op/care/PnlCare.java</file>
+			<file>src/entity/process/SYSNR2PROCESS.java</file>
+			<file>src/op/tools/PnlCommonTags.java</file>
+			<file>src/op/care/med/prodassistant/PnlTradeForm.java</file>
+			<file>src/op/users/DlgUser.java</file>
+			<file>src/op/care/med/structure/PnlDosageForm.java</file>
+			<file>src/op/residents/PnlEditHospital.java</file>
+			<file>src/op/misc/DlgIntervention.java</file>
+			<file>src/op/care/nursingprocess/PnlSelectIntervention.java</file>
+			<file>src/op/care/prescription/DlgRegular.java</file>
+			<file>src/op/controlling/DlgQMSPlan.java</file>
+			<file>src/op/residents/bwassistant/AddBWWizard.java</file>
+			<file>src/op/care/med/structure/DlgPack.java</file>
+			<file>src/entity/process/QProcess.java</file>
+			<file>src/entity/system/UsersTools.java</file>
+			<file>src/op/settings/subpanels/PnlHomeStationRoomEditor.java</file>
+			<file>src/gui/interfaces/DefaultPanel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="62" opendate="2016-09-16 13:04:59" fixdate="2016-10-17 14:57:43">
+		<buginformation>
+			<summary>Automatische Abmeldung funktioniert oft nicht richtig</summary>
+			<description>Mail von Mathias:  &gt; Grund des Schreibens: Mir ist aufgefallen, dass "OPDE" sich nicht mehr schliessen lässt - ausser mit Hilfe des Windows-Taskmanagers (= Task beenden) -, wenn jemand vergessen hat sich auszuloggen und vom System automatisch abgemeldet wird. Der Bildschirm sieht dann aus wie auf dem im Anhang abgelegten Bild. &gt; Liegt das ggf. an einer Einstellung unserer Computer oder am Programm selbst? - Wir benutzen die aktuelle Version für 64-Bit-Windows-Systeme. &gt; Ein Test mit der 32-bit-Version (Tablet) ergab, dass hier nach dem automatischen Ausloggen das normale Anmeldefenster erscheint, welches sich problemlos schliessen lässt. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/nursingprocess/InterventionScheduleTools.java</file>
+			<file>src/op/care/values/DlgValue.java</file>
+			<file>src/op/care/med/prodassistant/PnlProduct.java</file>
+			<file>src/op/care/prescription/DlgOnDemand.java</file>
+			<file>src/op/care/values/PnlValues.java</file>
+			<file>src/entity/prescription/TradeFormTools.java</file>
+			<file>src/op/FrmMain.java</file>
+			<file>src/op/threads/DisplayManager.java</file>
+			<file>src/op/users/DlgGroup.java</file>
+			<file>src/entity/prescription/GPTools.java</file>
+			<file>src/entity/reports/NReportTools.java</file>
+			<file>src/op/residents/bwassistant/PnlLC.java</file>
+			<file>src/op/users/PnlEditMembers.java</file>
+			<file>src/op/care/med/structure/DlgProduct.java</file>
+			<file>src/entity/AllowanceTools.java</file>
+			<file>src/entity/info/MREPrevalenceSheets.java</file>
+			<file>src/entity/nursingprocess/InterventionTools.java</file>
+			<file>src/op/mx/PnlMX.java</file>
+			<file>src/op/care/sysfiles/PnlFiles.java</file>
+			<file>src/entity/prescription/MedInventoryTools.java</file>
+			<file>src/op/care/prescription/PnlPrescription.java</file>
+			<file>src/entity/prescription/DosageFormTools.java</file>
+			<file>src/op/care/values/PnlLiquidBalance.java</file>
+			<file>src/op/process/DlgProcess.java</file>
+			<file>src/op/care/med/structure/DlgUPREditor.java</file>
+			<file>src/op/training/PnlTrainingEditor.java</file>
+			<file>src/op/tools/PnlPIT.java</file>
+			<file>src/op/care/values/DlgValueControl.java</file>
+			<file>src/op/care/info/PnlGP.java</file>
+			<file>src/op/tools/DlgYesNo.java</file>
+			<file>src/op/training/PnlUserlistEditor.java</file>
+			<file>src/entity/nursingprocess/NursingProcess.java</file>
+			<file>src/op/tools/DlgProgress.java</file>
+			<file>src/op/users/PnlEditACL.java</file>
+			<file>src/op/allowance/PnlTX.java</file>
+			<file>src/op/residents/bwassistant/PnlBV.java</file>
+			<file>src/op/users/PnlUser.java</file>
+			<file>src/gui/GUITools.java</file>
+			<file>src/op/care/prescription/DlgDiscontinue.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+			<file>src/op/tools/MyJDialog.java</file>
+			<file>src/op/care/prescription/PnlScheduleDose.java</file>
+			<file>src/op/care/info/PnlAway.java</file>
+			<file>src/op/controlling/PnlQMSPlan.java</file>
+			<file>src/op/care/med/inventory/DlgNewStocks.java</file>
+			<file>src/entity/prescription/BHPTools.java</file>
+			<file>src/op/care/reports/DlgReport.java</file>
+			<file>src/op/settings/subpanels/PnlICD.java</file>
+			<file>src/op/care/bhp/PnlBHP.java</file>
+			<file>src/entity/prescription/Prescription.java</file>
+			<file>src/entity/info/LCustodianTools.java</file>
+			<file>src/entity/info/ResidentTools.java</file>
+			<file>src/op/care/med/prodassistant/MedProductWizard.java</file>
+			<file>src/op/residents/bwassistant/PnlGP.java</file>
+			<file>src/op/settings/subpanels/PnlCommonTags.java</file>
+			<file>src/op/care/info/PnlEditResInfo.java</file>
+			<file>src/op/care/med/structure/PnlMed.java</file>
+			<file>src/entity/info/ResInfoTools.java</file>
+			<file>src/op/residents/DlgEditResidentBaseData.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+			<file>src/op/care/med/inventory/PnlInventory.java</file>
+			<file>src/entity/files/SYSFilesTools.java</file>
+			<file>src/op/training/PnlTraining.java</file>
+			<file>src/op/system/FileDrop.java</file>
+			<file>src/op/care/info/PnlHospital.java</file>
+			<file>src/op/pnldebug.java</file>
+			<file>src/op/users/PnlEditMemberships.java</file>
+			<file>src/op/care/nursingprocess/PnlSchedule.java</file>
+			<file>src/entity/prescription/HospitalTools.java</file>
+			<file>src/entity/prescription/MedStockTools.java</file>
+			<file>src/op/controlling/PnlQMSSchedule.java</file>
+			<file>src/op/care/info/DlgDiag.java</file>
+			<file>src/op/settings/subpanels/PnlLabelPrinterSetup.java</file>
+			<file>src/op/care/med/inventory/DlgOpenStock.java</file>
+			<file>src/op/care/nursingprocess/PnlEval.java</file>
+			<file>src/op/controlling/PnlControlling.java</file>
+			<file>src/op/care/med/inventory/DlgCloseStock.java</file>
+			<file>src/op/process/DlgProcessAssign.java</file>
+			<file>src/op/mx/PnlRecipients.java</file>
+			<file>src/op/residents/bwassistant/PnlBWBasisInfo.java</file>
+			<file>src/op/allowance/PnlAllowance.java</file>
+			<file>src/op/care/info/PnlPeriod.java</file>
+			<file>src/op/tools/SYSCalendar.java</file>
+			<file>src/op/care/dfn/PnlDFN.java</file>
+			<file>src/entity/reports/HandoversTools.java</file>
+			<file>src/op/care/prescription/DlgAnnotations.java</file>
+			<file>src/op/care/med/inventory/PnlExpiry.java</file>
+			<file>src/entity/process/PCatTools.java</file>
+			<file>src/op/OPDE.java</file>
+			<file>src/tablerenderer/RNDHTML.java</file>
+			<file>src/op/care/PnlResOverview.java</file>
+			<file>src/entity/prescription/MedProductsTools.java</file>
+			<file>src/op/welcome/PnlWelcome.java</file>
+			<file>src/op/care/sysfiles/DlgFiles.java</file>
+			<file>src/op/settings/subpanels/PnlModelEditor.java</file>
+			<file>src/op/dev/PnlDev.java</file>
+			<file>src/op/tools/SYSTools.java</file>
+			<file>src/op/care/med/prodassistant/PnlACME.java</file>
+			<file>src/op/care/nursingprocess/PnlTemplate.java</file>
+			<file>src/op/tools/DlgPIT.java</file>
+			<file>src/op/care/reports/PnlReport.java</file>
+			<file>src/entity/prescription/MedPackageTools.java</file>
+			<file>src/op/care/supervisor/DlgHOReport.java</file>
+			<file>src/op/process/PnlProcess.java</file>
+			<file>src/op/residents/PnlEditGP.java</file>
+			<file>src/op/care/med/structure/DlgTradeForm.java</file>
+			<file>src/op/care/nursingprocess/DlgNursingProcess.java</file>
+			<file>src/gui/interfaces/CleanablePanel.java</file>
+			<file>src/op/care/med/prodassistant/DlgACME.java</file>
+			<file>src/entity/prescription/ACMETools.java</file>
+			<file>src/op/care/supervisor/PnlHandover.java</file>
+			<file>src/op/settings/PnlSettings.java</file>
+			<file>src/op/care/PnlCare.java</file>
+			<file>src/entity/process/SYSNR2PROCESS.java</file>
+			<file>src/op/tools/PnlCommonTags.java</file>
+			<file>src/op/care/med/prodassistant/PnlTradeForm.java</file>
+			<file>src/op/users/DlgUser.java</file>
+			<file>src/op/care/med/structure/PnlDosageForm.java</file>
+			<file>src/op/residents/PnlEditHospital.java</file>
+			<file>src/op/misc/DlgIntervention.java</file>
+			<file>src/op/care/nursingprocess/PnlSelectIntervention.java</file>
+			<file>src/op/care/prescription/DlgRegular.java</file>
+			<file>src/op/controlling/DlgQMSPlan.java</file>
+			<file>src/op/residents/bwassistant/AddBWWizard.java</file>
+			<file>src/op/care/med/structure/DlgPack.java</file>
+			<file>src/entity/process/QProcess.java</file>
+			<file>src/entity/system/UsersTools.java</file>
+			<file>src/op/settings/subpanels/PnlHomeStationRoomEditor.java</file>
+			<file>src/gui/interfaces/DefaultPanel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2016-09-06 08:41:25" fixdate="2016-09-06 13:36:21">
+		<buginformation>
+			<summary>Bei den Bewohner-Informationen steht nicht der Bewohner-Name in der Hauptzeile</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/settings/subpanels/PnlICD.java</file>
+			<file>src/entity/prescription/PrescriptionTools.java</file>
+			<file>src/op/care/prescription/PnlPrescription.java</file>
+			<file>src/entity/prescription/MedStockTools.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="55" opendate="2016-06-07 12:05:53" fixdate="2016-09-06 13:36:21">
+		<buginformation>
+			<summary>Verfallsdatumsanzeige bei Verordnungen zu unauffällig</summary>
+			<description>Selbst bei ablaufenden Medikamten, zeigt die Verordnung nicht viel als Warnung an. ![schnappschuss 2016-06-07 14 04 38](https://cloud.githubusercontent.com/assets/961252/15856937/e8eed6e8-2cb8-11e6-99c9-7370b0d40cf5.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/settings/subpanels/PnlICD.java</file>
+			<file>src/entity/prescription/PrescriptionTools.java</file>
+			<file>src/op/care/prescription/PnlPrescription.java</file>
+			<file>src/entity/prescription/MedStockTools.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="52" opendate="2016-05-30 09:16:24" fixdate="2017-12-22 10:23:31">
+		<buginformation>
+			<summary>bei der neu-installation war der dbuser nicht korrekt eingetragen.</summary>
+			<description>das musste ich hinterher von Hand machen. Das ist so nicht richtig. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/staff/Training.java</file>
+			<file>src/entity/nursingprocess/NursingProcess.java</file>
+			<file>src/entity/system/SYSPropsTools.java</file>
+			<file>src/entity/values/ResValue.java</file>
+			<file>src/entity/info/ResInfoType.java</file>
+			<file>src/op/care/reports/PnlReport.java</file>
+			<file>src/op/care/values/PnlValues.java</file>
+			<file>src/op/care/info/DlgDiag.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+			<file>src/op/settings/subpanels/PnlLabelPrinterSetup.java</file>
+			<file>src/entity/reports/NReportTools.java</file>
+			<file>src/entity/info/TXEssenDoc.java</file>
+			<file>src/op/controlling/PnlControlling.java</file>
+			<file>src/op/settings/InitWizard.java</file>
+			<file>src/op/tools/DocumentSizeFilter.java</file>
+			<file>src/entity/nursingprocess/InterventionTools.java</file>
+			<file>src/entity/info/MREPrevalenceSheets.java</file>
+			<file>src/op/care/med/inventory/DlgTX.java</file>
+			<file>src/entity/system/Users.java</file>
+			<file>src/op/care/sysfiles/PnlFiles.java</file>
+			<file>src/entity/qms/Qmsplan.java</file>
+			<file>src/op/care/prescription/PnlPrescription.java</file>
+			<file>src/entity/qms/Qms.java</file>
+			<file>src/entity/prescription/Prescription.java</file>
+			<file>src/interfaces/Attachable.java</file>
+			<file>src/op/OPDE.java</file>
+			<file>src/op/care/sysfiles/DlgFiles.java</file>
+			<file>src/op/dev/PnlDev.java</file>
+			<file>src/op/care/info/PnlEditResInfo.java</file>
+			<file>src/entity/reports/NReport.java</file>
+			<file>src/entity/info/ResInfo.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+			<file>src/op/care/med/inventory/PnlInventory.java</file>
+			<file>src/entity/staff/Training2Users.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="51" opendate="2016-04-27 08:56:31" fixdate="2016-09-07 14:39:01">
+		<buginformation>
+			<summary>Druck der Pflegeplanung druckt auch die abgesetzten aus</summary>
+			<description>Das ist nicht gut durchdacht. Da sollte es drei Knöpfe geben.  "Aktuelle drucken" "Alte drucken" "Alle Drucken" </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/nursingprocess/NursingProcess.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="48" opendate="2016-04-04 08:34:28" fixdate="2016-09-07 14:39:01">
+		<buginformation>
+			<summary>Stichworte bei den Pflegeplanungen werden nicht angezeigt.</summary>
+			<description>Diese können zwar eingegeben werden, aber in der Übersicht fehlen die Stichworte dann. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/nursingprocess/NursingProcess.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2016-02-08 13:18:27" fixdate="2017-03-28 13:55:35">
+		<buginformation>
+			<summary>Beim Überleitbogen steht an der Seite "pdf.pagefooter"</summary>
+			<description>Da sollte aber stehen "Seite x von y". </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/info/ResInfoTypeTools.java</file>
+			<file>src/entity/info/TXEssenDoc.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="37" opendate="2015-11-06 09:58:11" fixdate="2015-12-03 11:08:03">
+		<buginformation>
+			<summary>NPE bei schnellem Wechsel zwischen Bewohnern</summary>
+			<description>![schnappschuss 2015-11-06 10 57 24](https://cloud.githubusercontent.com/assets/961252/10994214/397e5828-8475-11e5-9261-ac9378a0a1b1.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/tools/DesEncrypter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2015-11-05 10:18:34" fixdate="2015-12-03 11:08:03">
+		<buginformation>
+			<summary>Bei manchen Starts will OPDE die Installation wiederholen</summary>
+			<description>also hier scheint OPDE das Passwort zu "vergessen". </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/tools/LocalMachine.java</file>
+			<file>src/op/tools/DesEncrypter.java</file>
+			<file>src/op/OPDE.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="35" opendate="2015-11-04 09:20:44" fixdate="2015-11-10 14:13:39">
+		<buginformation>
+			<summary>BWInfos erscheinen doppelt bei der Neueingabe</summary>
+			<description>![schnappschuss 2015-11-04 09 59 43](https://cloud.githubusercontent.com/assets/961252/10934074/9d46d81a-82dd-11e5-95ff-663f8bab3ca2.png)  Dieser Fehler tritt auf, wenn man eine neue Information eingeben möchte, aber auf Abbrechen drückt und es noch mal probiert. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/info/ResidentTools.java</file>
+			<file>src/op/tools/LocalMachine.java</file>
+			<file>src/op/OPDE.java</file>
+			<file>src/op/care/med/prodassistant/PnlTradeForm.java</file>
+			<file>src/op/system/AppInfo.java</file>
+			<file>src/op/tools/Encryption.java</file>
+			<file>src/op/tools/SYSTools.java</file>
+			<file>src/op/care/med/prodassistant/PnlProduct.java</file>
+			<file>src/gui/GUITools.java</file>
+			<file>src/op/settings/databeans/DatabaseConnectionBean.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+			<file>src/op/settings/InitWizard.java</file>
+			<file>src/op/care/med/prodassistant/PnlPackage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="34" opendate="2015-10-26 10:42:57" fixdate="2015-11-10 14:13:39">
+		<buginformation>
+			<summary>Medikamenten-Assistent</summary>
+			<description>Wenn man ein bestehende TradeForm auswählt, kann man trotzdem noch eine DosageForm erstellen, den Anbruch und das Kontrollgewicht ändern. Das darf nicht sein.  Außerdem ist die Reihenfolge in dem Formular durcheinander. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/info/ResidentTools.java</file>
+			<file>src/op/tools/LocalMachine.java</file>
+			<file>src/op/OPDE.java</file>
+			<file>src/op/care/med/prodassistant/PnlTradeForm.java</file>
+			<file>src/op/system/AppInfo.java</file>
+			<file>src/op/tools/Encryption.java</file>
+			<file>src/op/tools/SYSTools.java</file>
+			<file>src/op/care/med/prodassistant/PnlProduct.java</file>
+			<file>src/gui/GUITools.java</file>
+			<file>src/op/settings/databeans/DatabaseConnectionBean.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+			<file>src/op/settings/InitWizard.java</file>
+			<file>src/op/care/med/prodassistant/PnlPackage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2015-10-23 09:57:36" fixdate="2015-12-11 09:45:28">
+		<buginformation>
+			<summary>Neuninstallation mit leerer Med-Datenbank akzeptiert keine Medis</summary>
+			<description>Das hat Mathias in [diesem Post](http://www.offene-pflege.de/de/component/kunena/allgemeine-diskussion/20-testphase-und-erste-rueckmeldungen-betaversion-v1-13-1#50) gut beschrieben. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/prescription/MedPackageTools.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="32" opendate="2015-10-21 13:05:27" fixdate="2015-10-21 14:29:22">
+		<buginformation>
+			<summary>Barbetrag druckt € doppelt. In Safari wird zudem falsches Encoding verwendet.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/AllowanceTools.java</file>
+			<file>src/entity/files/SYSFilesTools.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2015-10-19 09:24:19" fixdate="2015-10-19 14:23:04">
+		<buginformation>
+			<summary>Massnahmenzeiten bei Pflegeplanungen</summary>
+			<description>Bei neuen Massnahmen werden bei alle Zeiten der Dezimalpunkt ignoriert. Somit wird 10.00 Minuten 1000 Minuten. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/care/nursingprocess/PnlSchedule.java</file>
+			<file>src/op/allowance/PnlTX.java</file>
+			<file>src/op/care/values/DlgValue.java</file>
+			<file>src/entity/prescription/MedStockTools.java</file>
+			<file>src/entity/prescription/MedPackageTools.java</file>
+			<file>src/op/care/prescription/DlgOnDemand.java</file>
+			<file>src/op/system/PDF.java</file>
+			<file>src/entity/nursingprocess/DFNTools.java</file>
+			<file>src/op/FrmMain.java</file>
+			<file>src/entity/prescription/PrescriptionScheduleTools.java</file>
+			<file>src/gui/interfaces/DecimalParser.java</file>
+			<file>src/op/care/nursingprocess/TMPlan.java</file>
+			<file>src/entity/reports/NReportTools.java</file>
+			<file>src/op/care/prescription/PnlScheduleDose.java</file>
+			<file>src/entity/info/TXEssenDoc.java</file>
+			<file>src/op/care/med/inventory/DlgCloseStock.java</file>
+			<file>src/op/care/med/inventory/DlgNewStocks.java</file>
+			<file>src/entity/prescription/BHPTools.java</file>
+			<file>src/op/care/med/prodassistant/PnlTradeForm.java</file>
+			<file>src/entity/AllowanceTools.java</file>
+			<file>src/op/care/med/inventory/DlgTX.java</file>
+			<file>src/op/allowance/PnlAllowance.java</file>
+			<file>src/op/care/bhp/PnlBHP.java</file>
+			<file>src/entity/values/ResValueTools.java</file>
+			<file>src/op/care/med/structure/DlgUPREditor.java</file>
+			<file>src/op/care/med/prodassistant/PnlPackage.java</file>
+			<file>src/gui/parser/CurrencyParser.java</file>
+			<file>src/op/care/med/structure/DlgPack.java</file>
+			<file>src/op/care/values/DlgValueControl.java</file>
+			<file>src/op/welcome/PnlWelcome.java</file>
+			<file>src/op/care/info/PnlEditResInfo.java</file>
+			<file>src/entity/info/ResInfoTools.java</file>
+			<file>src/entity/nursingprocess/NursingProcessTools.java</file>
+			<file>src/op/care/med/inventory/PnlInventory.java</file>
+			<file>src/op/tools/SYSTools.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2015-10-17 12:39:10" fixdate="2018-07-11 09:19:04">
+		<buginformation>
+			<summary>Bestandsbuchungen führen zum Absturz</summary>
+			<description>[opde2014616150180605121.html.pdf](https://github.com/tloehr/Offene-Pflege.de/files/15479/opde2014616150180605121.html.pdf) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/building/HomesTools.java</file>
+			<file>src/op/care/med/inventory/DlgTX.java</file>
+			<file>src/gui/PnlBeanEditor.java</file>
+			<file>src/gui/interfaces/EditorComponent.java</file>
+			<file>src/entity/prescription/MedInventoryTools.java</file>
+			<file>src/entity/prescription/MedStockTools.java</file>
+			<file>src/op/settings/subpanels/PnlHomeStationRoomEditor.java</file>
+			<file>src/op/care/med/inventory/DlgCloseStock.java</file>
+			<file>src/op/tools/SYSTools.java</file>
+			<file>src/op/care/med/inventory/DlgNewStocks.java</file>
+			<file>src/entity/building/Homes.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="29" opendate="2015-10-16 13:37:36" fixdate="2015-10-23 09:24:32">
+		<buginformation>
+			<summary>Bearbeiten der Etagen funktioniert nicht zufriedenstellend</summary>
+			<description>Die Etagenbezeichnung lässt sich zwar anpassen, aber die Etage – egal, ob diese dann angepasst wird, ändert sich nicht dauerhaft. Bsp. Standardmässig ist das Erdgeschoss vorhanden (Bezeichnung „Erdgeschoss“), die Etage wird jedoch als „2. Untergeschoss“ angegeben. Wird dies auf „Erdgeschoss“ eingestellt, ändert sich dies nach dem aktualisieren wieder auf „2. Untergeschoss“. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/gui/PnlBeanEditor.java</file>
+			<file>src/entity/info/ResInfoCategory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="27" opendate="2015-10-15 14:32:14" fixdate="2015-10-16 14:32:01">
+		<buginformation>
+			<summary>Löschen von Stationen, Zimmern führt zum Programmabbruch</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/OPDE.java</file>
+			<file>src/op/system/AppInfo.java</file>
+			<file>src/gui/PnlBeanEditor.java</file>
+			<file>src/op/settings/databeans/MailSettingsBean.java</file>
+			<file>src/op/settings/subpanels/PnlHomeStationRoomEditor.java</file>
+			<file>src/op/care/prescription/DlgRegular.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2015-10-15 13:42:06" fixdate="2016-01-09 10:19:40">
+		<buginformation>
+			<summary>Wechseln des Portes auf 21 führt zum Programmabbruch</summary>
+			<description>bei der Synology Diskstation ist Port 20 jedoch für das System reserviert und kann nicht verwendet werden. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/OPDE.java</file>
+			<file>src/gui/events/DataChangeEvent.java</file>
+			<file>src/op/system/AppInfo.java</file>
+			<file>src/gui/PnlBeanEditor.java</file>
+			<file>src/op/settings/databeans/MailSettingsBean.java</file>
+			<file>src/op/settings/subpanels/PnlFTP.java</file>
+			<file>src/op/settings/subpanels/PnlHomeStationRoomEditor.java</file>
+			<file>src/op/care/prescription/DlgRegular.java</file>
+			<file>src/entity/files/SYSFilesTools.java</file>
+			<file>src/op/settings/subpanels/PnlGlobalMailSettings.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="23" opendate="2015-10-15 04:00:07" fixdate="2015-10-15 13:20:30">
+		<buginformation>
+			<summary>Ein- und Ausfuhr über 999ml führt zu falschem parsing</summary>
+			<description>will man 1200 eingeben macht OPDE 1,2 draus. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/info/ResidentTools.java</file>
+			<file>src/op/OPDE.java</file>
+			<file>src/op/system/AppInfo.java</file>
+			<file>src/op/care/values/DlgValueControl.java</file>
+			<file>src/entity/values/ResValueTools.java</file>
+			<file>src/op/tools/SYSTools.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="22" opendate="2015-10-14 09:45:48" fixdate="2015-10-14 10:31:35">
+		<buginformation>
+			<summary>Keine neuen Verordnungen mehr möglich seit der 1.13.1.319</summary>
+			<description>Neue Verordnungen (egal ob Regel oder On Demand) werden nicht mehr gespeichert. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/care/prescription/DlgOnDemand.java</file>
+			<file>src/op/care/prescription/DlgRegular.java</file>
+			<file>src/op/settings/PnlSettings.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="16" opendate="2015-05-21 14:28:33" fixdate="2015-10-23 09:24:32">
+		<buginformation>
+			<summary>Es ist möglich Medikamente mit einem APV von 0 einzutragen.</summary>
+			<description>Das ist sehr schlecht, weil es dann bei Medikamenten deren Vergabe berechnet werden muss (z.B. Verhältnis von Tropfen zu ml) zu Exceptions komm (Division durch 0). Hab die Ursache noch nicht weiter ermitteln können. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/gui/PnlBeanEditor.java</file>
+			<file>src/entity/info/ResInfoCategory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="10" opendate="2015-03-26 14:19:42" fixdate="2015-04-25 12:58:21">
+		<buginformation>
+			<summary>Es ist nicht möglich einen Bewohner wieder einziehen zu lassen</summary>
+			<description>Falls ein Bewohner auszieht, kann man ihn nachher nicht wieder einziehen lassen. Es gibt keinen entsprechenden Menüpunkt. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/op/settings/PnlSystemSettings.java</file>
+			<file>src/op/residents/bwassistant/AddBWWizard.java</file>
+			<file>src/op/care/info/DlgResidentReturns.java</file>
+			<file>src/entity/building/RoomsTools.java</file>
+			<file>src/op/residents/bwassistant/PnlHAUF.java</file>
+			<file>src/op/care/info/PnlEditResInfo.java</file>
+			<file>src/op/settings/PnlHomes.java</file>
+			<file>src/op/care/info/PnlInformation.java</file>
+			<file>src/entity/building/Homes.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7" opendate="2015-03-20 10:27:03" fixdate="2015-03-20 14:24:45">
+		<buginformation>
+			<summary>Das Fenster für die Vorlagen aus Pflegeplanungen ist unbenutzbar.</summary>
+			<description>Bei kleinen Bildschirmen kann es sein, dass die Anzeige völlig durcheinander kommt und man nichts mehr auswählen kann. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/entity/nursingprocess/NursingProcessTools.java</file>
+			<file>src/op/care/nursingprocess/DlgNursingProcess.java</file>
+			<file>src/op/care/nursingprocess/PnlTemplate.java</file>
+			<file>src/op/tools/SYSConst.java</file>
+			<file>src/op/tools/DlgYesNo.java</file>
+			<file>src/op/care/nursingprocess/PnlNursingProcess.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

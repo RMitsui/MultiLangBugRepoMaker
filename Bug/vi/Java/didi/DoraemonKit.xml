@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>174</id>
+		<title>在已经集成plugin: 'android-aspectjx'的情况下编译报错</title>
+		<body>在已经集成plugin: 'android-aspectjx'的情况下，依赖'com.didichuxing.doraemonkit:doraemonkit:1.1.6'会发生编译报错 ------------------------------------------------------------------ gradle版本： https\://services.gradle.org/distributions/gradle-4.6-all.zip  根目录build.gradle :     dependencies {         ...         classpath 'com.android.tools.build:gradle:3.0.1'         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.4'         ...     }  主工程 build.gradle : apply plugin: 'android-aspectjx' ------------------------------------------------------------------ gradle报错： AGPBI: {"kind":"error","text":"Uncaught translation error: com.android.dx.cf.code.SimException: local variable type mismatch: attempt to set or access a value of type java.lang.Class using a local variable of type java.lang.String[]. This is symptomatic of .class transformation tools that ignore local variable information.","sources":[{}]} AGPBI: {"kind":"error","text":"1 error; aborting","sources":[{}]} :app:transformClassesWithDexForDebug FAILED :app:transformClassesWithDexForDebug spend 20612ms  FAILURE: Build failed with an exception.  * What went wrong: Execution failed for task ':app:transformClassesWithDexForDebug'. &gt; com.android.build.api.transform.TransformException: com.android.ide.common.process.ProcessException: java.util.concurrent.ExecutionException: com.android.ide.common.process.ProcessException: Return code 1 for dex process  * Try: Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.  * Get more help at https://help.gradle.org  Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0. See https://docs.gradle.org/4.6/userguide/command_line_interface.html#sec:command_line_warnings  BUILD FAILED in 24s</body>
+		<created>2019-05-06 08:42:00</created>
+		<closed>2019-06-14 11:00:22</closed>
+	</bug>
+	<bug>
+		<id>139</id>
+		<title>有风险的sql注入</title>
+		<body>在Android\doraemonkit\src\main\java\com\didichuxing\doraemonkit\util\DBUtil.java文件中的queryTableColumnName方法中对sql语句进行了拼凑，当tableName参数可控时，可能会造成sql注入漏洞 ![图片](https://user-images.githubusercontent.com/39950310/55770141-d7f13380-5ab5-11e9-9257-2a737e956a2a.png) </body>
+		<created>2019-04-09 02:55:35</created>
+		<closed>2019-05-08 07:55:46</closed>
+	</bug>
+	<bug>
+		<id>136</id>
+		<title>Android 8.0.0手机取色透明activity不能设置方向问题没有处理吗?</title>
+		<body>大家点击取色的时候都没有遇到过这个BUG吗? Caused by: java.lang.IllegalStateException: Only fullscreen opaque activities can request orientation. Android8.0.0版本google认定非fullscreen(透明activity也被判定)不能设置activity方向,8.1才修复,取色时应该是用的透明activity且设置了方向才导致这个问题吧. 我的baseactivity设置横竖屏的代码都去掉了还是不行.</body>
+		<created>2019-04-02 06:18:45</created>
+		<closed>2019-04-24 11:21:19</closed>
+	</bug>
+	<bug>
+		<id>41</id>
+		<title>android 帧率 cpu 内存 无法查看 miui10 android8.1 未root</title>
+		<body>Please complete the following informations. &gt; Expected behavior and actual behavior. &gt; Steps to reproduce the problem. &gt; Android or iOS? OS version? Brand?  &gt; More informations such as error messages and stack traces are welcomed.  请补充如下信息。 &gt; 期望的表现和实际的表现。（如有） android 帧率 cpu 内存无法查看 &gt; 问题重现的步骤。（如有） 按文档进行下列步骤接入sdk ``` dependencies {      debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:1.0.5'     releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:1.0.5'    }      DoraemonKit.install(application)  ```  进入具体某个页面点击悬浮窗开启 cpu ram 帧率 这三个 按返回键 ,   内存cpu frame始终是0    &gt; Android 还是 iOS？系统版本是多少？手机品牌是什么？（如有）   android 红米5plus miui10 android8.1    &gt; 其他的错误信息和堆栈信息如果有也可以一并提供出来。（如有） </body>
+		<created>2019-02-12 05:19:37</created>
+		<closed>2019-02-21 06:43:12</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>Android编译失败，Attribute "titleColor" already defined with incompatible format</title>
+		<body>``` Attribute "text" already defined with incompatible format. Message{kind=ERROR, text=Attribute "text" already defined with incompatible format., sources=[project/build/intermediates/res/merged/deft/debug/values/values.xml:3043],  original message=, tool name=Optional.of(AAPT)}  Attribute "titleColor" already defined with incompatible format. Message{kind=ERROR, text=Attribute "titleColor" already defined with incompatible format.,  sources=[/build/intermediates/res/merged/deft/debug/values/values.xml:3148], original message=, tool name=Optional.of(AAPT)} ``` 资源属性冲突，建议对属性也加上前缀。</body>
+		<created>2018-12-27 09:52:45</created>
+		<closed>2018-12-29 03:05:07</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>报错No Activity found to handle Intent</title>
+		<body> 手机：oppo r9m 系统：5.1 报错信息： Caused by: android.content.ActivityNotFoundException: No Activity found to handle Intent { act=android.settings.action.MANAGE_OVERLAY_PERMISSION dat=package:com.xbkj.caruser }         at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1792)         at android.app.Instrumentation.execStartActivity(Instrumentation.java:1512)         at android.app.Activity.startActivityForResult(Activity.java:3896)         at androidx.fragment.app.FragmentActivity.startActivityForResult(FragmentActivity.java:767)         at android.app.Activity.startActivityForResult(Activity.java:3845)         at androidx.fragment.app.FragmentActivity.startActivityForResult(FragmentActivity.java:754)         at android.app.Activity.startActivity(Activity.java:4232)         at android.app.Activity.startActivity(Activity.java:4147)         at com.didichuxing.doraemonkit.util.PermissionUtil.requestDrawOverlays(PermissionUtil.java:89)         at com.didichuxing.doraemonkit.DoraemonKit.requestPermission(DoraemonKit.java:175)         at com.didichuxing.doraemonkit.DoraemonKit.access$100(DoraemonKit.java:46)         at com.didichuxing.doraemonkit.DoraemonKit$1.onActivityResumed(DoraemonKit.java:85)         at android.app.Application.dispatchActivityResumed(Application.java:216)         at android.app.Activity.onResume(Activity.java:1248)         at androidx.fragment.app.FragmentActivity.onResume(FragmentActivity.java:514)         at com.trello.rxlifecycle2.components.support.RxAppCompatActivity.onResume(RxAppCompatActivity.java:73)         at com.xbkj.caruser.framwork.BaseActivity.onResume(BaseActivity.java:250)         at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1267)         at android.app.Activity.performResume(Activity.java:6337)         at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3422) </body>
+		<created>2018-12-27 03:55:50</created>
+		<closed>2018-12-29 03:05:34</closed>
+	</bug>
+</bugs>

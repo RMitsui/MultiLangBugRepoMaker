@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Yukari">
+	<bug id="249" opendate="2019-07-08 12:58:35" fixdate="2019-07-08 14:17:27">
+		<buginformation>
+			<summary>フォント設定を開くと常にBundle Fontが選択される</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/FontSelectorActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="232" opendate="2019-06-20 14:10:25" fixdate="2019-06-20 15:28:40">
+		<buginformation>
+			<summary>スクリーンショット共有で画像を投稿しようとすると、パーミッションチェックをすりぬけて落ちる</summary>
+			<description>## 再現手順 1. y4aNのストレージ権限を剥奪する 2. スクリーンショットを撮る 3. スクショ通知の「共有」からy4aNを起動 4. そのままトゥート 5. 権限例外で落ちる  ## 環境 | | | | ---- | ---- | | Yukari | 2.1.0.1853-dev (linkage 190512 fb1acd6) | | OS | Android 9.0 | | Device | Google Pixel 3a |  ## Logcat ``` java.lang.SecurityException: External path: /storage/emulated/0/Pictures/Screenshots/Screenshot_***.png: Neither user *** nor current process has android.permission.READ_EXTERNAL_STORAGE. at android.os.Parcel.createException(Parcel.java:1950) at android.os.Parcel.readException(Parcel.java:1918) at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:183) at android.database.DatabaseUtils.readExceptionWithFileNotFoundExceptionFromParcel(DatabaseUtils.java:146) at android.content.ContentProviderProxy.openTypedAssetFile(ContentProviderNative.java:698) at android.content.ContentResolver.openTypedAssetFileDescriptor(ContentResolver.java:1458) at android.content.ContentResolver.openAssetFileDescriptor(ContentResolver.java:1295) at android.content.ContentResolver.openInputStream(ContentResolver.java:1015) at shibafu.yukari.util.BitmapUtil.resizeBitmap(BitmapUtil.java:33) at shibafu.yukari.service.PostService.prepareUploadMedia(PostService.java:221) at shibafu.yukari.service.PostService.onHandleIntent(PostService.java:133) at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:76) at android.os.Handler.dispatchMessage(Handler.java:106) at android.os.Looper.loop(Looper.java:193) at android.os.HandlerThread.run(HandlerThread.java:65) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/service/PostService.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/TweetActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="214" opendate="2019-03-13 23:56:19" fixdate="2019-03-15 16:33:48">
+		<buginformation>
+			<summary>文章に草を生やす機能が 1 char 以上で構成される文字を壊す</summary>
+			<description>https://mstdn.maud.io/@kb10uy/101746027854760988  char 単位で挿入しているせいっぽそうな雰囲気。 例によって Grapheme Cluster 単位の処理を導入する必要がありそうだが、そもそもこれ使ってる人いるのか…？</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/TweetActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="212" opendate="2019-01-01 14:43:17" fixdate="2019-01-01 14:45:40">
+		<buginformation>
+			<summary>投稿失敗後の再投稿画面で公開範囲がリセットされる</summary>
+			<description>## 概要 投稿失敗通知から再び投稿画面を開くと、Mastodonの公開範囲がリセットされてしまう。  #### 記載者追記 公開範囲を未収載以下にして下書き保存して、それを開いても同じ。  ## 環境 | | | | ---- | ---- | | Yukari | 2.1.0.1765-dev (linkage 181228 e5fa222) |  ## 報告 &gt; Izumi Tsutsui @tsutsuii@social.mikutter.hachune.net &gt; #yukari4a NEXTで投稿失敗後の再投稿画面で公開範囲がリセットされる問題 &gt; 2018年12月29日 18:12  &gt; https://social.mikutter.hachune.net/@tsutsuii/101323555823297251</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/TweetActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="206" opendate="2018-12-25 15:42:35" fixdate="2019-01-05 08:15:50">
+		<buginformation>
+			<summary>ニコ動の最近の動画のサムネイルが取得できない</summary>
+			<description>## 概要 ニコ動のサムネイル取得で、古い動画(sm9とか)は問題なく表示できるのだが、新しめの動画で取得できないことがある。  [これ](https://qiita.com/novenove/items/4a1efdf890825dd1935b) を参考に最近のコミットで `tn.smilevideo.jp` を参照するように変更したが、どうもIDだけでは引けないパターンが結構あるみたい。   getthumbinfo APIを頼るしかないか……？   あるいは、watch ページをスクレイピングしてOGPから表示するか……。  ## 環境 | | | | ---- | ---- | | Yukari | 2.0.11.415 (planche 181225) | | Yukari Next | 2.1.0.1762-dev (linkage 181224 f4d945f*) | | OS | Android 8.1.0 | | Device | HUAWEI P20 Pro |</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/media2/impl/NicoVideo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="201" opendate="2018-11-28 15:03:41" fixdate="2019-07-06 15:34:36">
+		<buginformation>
+			<summary>フォロー管理ダイアログを出した状態でタスクを切り替えると復帰時に落ちる</summary>
+			<description>## 概要 「アクティビティを保持しない」を有効にした環境で、フォロー管理ダイアログを出した状態でホームに戻り、タスク履歴から再表示するとクラッシュ。  ## 環境 | | | | ---- | ---- | | Yukari | 2.1.0.1726-dev (linkage 181128 39fcbe9) | | OS | Android 8.0.0 | | Device | ASUS Zenfone 3 Z017DA |  ## Logcat  ``` 11-28 23:57:34.992 23562-23562/? E/AndroidRuntime: FATAL EXCEPTION: main     Process: shibafu.yukari.alpha, PID: 23562     java.lang.RuntimeException: Unable to start activity ComponentInfo{shibafu.yukari.alpha/shibafu.yukari.activity.ProfileActivity}: java.lang.ClassCastException: java.util.HashMap cannot be cast to java.util.LinkedHashMap         at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2827)         at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2902)         at android.app.ActivityThread.-wrap11(Unknown Source:0)         at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1603)         at android.os.Handler.dispatchMessage(Handler.java:105)         at android.os.Looper.loop(Looper.java:169)         at android.app.ActivityThread.main(ActivityThread.java:6578)         at java.lang.reflect.Method.invoke(Native Method)         at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)      Caused by: java.lang.ClassCastException: java.util.HashMap cannot be cast to java.util.LinkedHashMap         at shibafu.yukari.fragment.FollowDialogFragment.onCreateDialog(FollowDialogFragment.java:91)         at android.support.v4.app.DialogFragment.onGetLayoutInflater(DialogFragment.java:310)         at android.support.v4.app.Fragment.performGetLayoutInflater(Fragment.java:1231)         at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1419)         at android.support.v4.app.FragmentManagerImpl.moveFragmentToExpectedState(FragmentManager.java:1740)         at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1809)         at android.support.v4.app.FragmentManagerImpl.dispatchStateChange(FragmentManager.java:3217)         at android.support.v4.app.FragmentManagerImpl.dispatchActivityCreated(FragmentManager.java:3171)         at android.support.v4.app.FragmentController.dispatchActivityCreated(FragmentController.java:192)         at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:560)         at android.support.v7.app.AppCompatActivity.onStart(AppCompatActivity.java:177)         at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1334)         at android.app.Activity.performStart(Activity.java:7033)         at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2790)         at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2902)          at android.app.ActivityThread.-wrap11(Unknown Source:0)          at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1603)          at android.os.Handler.dispatchMessage(Handler.java:105)          at android.os.Looper.loop(Looper.java:169)          at android.app.ActivityThread.main(ActivityThread.java:6578)          at java.lang.reflect.Method.invoke(Native Method)          at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)          at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)  ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/fragment/ProfileFragment.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/fragment/FollowDialogFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="182" opendate="2018-10-21 12:33:16" fixdate="2019-06-23 12:52:29">
+		<buginformation>
+			<summary>Streamでdeleteイベントを受けた際、正しい対象を削除できない可能性がある</summary>
+			<description>下記部分で TODO コメントとして触れているが、この実装では正しい対象 Status を判断しきれないので削除を正しく実行することができない。   URL をその場で生成して使うようにする……のは無理がありそうなので、Provider ID もイベント引数に加えることで、TL 実装側で判断させる形が無難だろうか。  https://github.com/shibafu528/Yukari/blob/63f70ed9cff5c2d5120fc0cff67495bc9703c4b2/Yukari/src/main/java/shibafu/yukari/mastodon/MastodonStream.kt#L189-L193</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/linkage/TimelineHub.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/fragment/tabcontent/TweetListFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="179" opendate="2018-09-02 10:46:46" fixdate="2018-11-18 14:57:36">
+		<buginformation>
+			<summary>投稿キャンセルの確認ダイアログが表示されない</summary>
+			<description>操作確認設定 &gt; 投稿画面を閉じる前に確認 を有効にしているにも関わらず、投稿画面で何か入力した状態でBACKキーを押すと確認無しで閉じてしまう。  v2.1.0.1640-dev</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/TweetActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="171" opendate="2018-08-24 14:07:02" fixdate="2018-08-26 04:11:45">
+		<buginformation>
+			<summary>URL末尾にパラメータの付いた画像を開こうとするとクラッシュする</summary>
+			<description>## Reports &gt; Izumi Tsutsui @tsutsuii@social.mikutter.hachune.net   &gt; Yukari4a Next で今朝のあっきぃさんのこのトゥートの画像を表示しようとするとほぼ 100% 落ちてたんですがクラレポ届いてますかね #yukari4a   &gt; https://social.mikutter.hachune.net/@tsutsuii/100605553542671967  &gt; :fumiko: あっきぃ%技術書典5け75 @akkiesoft@social.mikutter.hachune.net   &gt; 現況   &gt; https://social.mikutter.hachune.net/system/media_attachments/files/000/269/569/original/d8be82c41e215573.png?1535067197   &gt; https://social.mikutter.hachune.net/@akkiesoft/100602163877711680  ## Logcat ``` java.lang.RuntimeException: An error occurred while executing doInBackground() at android.os.AsyncTask$3.done(AsyncTask.java:353) at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:383) at java.util.concurrent.FutureTask.setException(FutureTask.java:252) at java.util.concurrent.FutureTask.run(FutureTask.java:271) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636) at java.lang.Thread.run(Thread.java:764) Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'shibafu.yukari.media2.Media$ResolveInfo shibafu.yukari.media2.Media.resolveMedia()' on a null object reference at shibafu.yukari.activity.PreviewActivity$2.doInBackground(PreviewActivity.java:324) at shibafu.yukari.activity.PreviewActivity$2.doInBackground(PreviewActivity.java:254) at android.os.AsyncTask$2.call(AsyncTask.java:333) at java.util.concurrent.FutureTask.run(FutureTask.java:266) ... 3 more  ```  ## 修正にあたって 1. 拡張子判定するのに、URLからパラメータを除去してないのはだめだよね。 2. なんで解決失敗したのに画像読み込み失敗扱いにしてないの？</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/media2/MediaFactory.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/PreviewActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="167" opendate="2018-08-18 13:32:56" fixdate="2019-06-02 10:28:29">
+		<buginformation>
+			<summary>「フォロワー限定」のトゥートに返信できない</summary>
+			<description>1. 「フォロワー限定」のトゥートに対して、返信しようとすると通知領域に投稿エラー「Status not found」が通知に表示される。 2. その下書きをロードすると返信先情報の取得に失敗する。また、そのまま送信するとin-reply-toが付与されない。  ※ 2. についてはレポート時点ではクラッシュだったが、 b6e7e0a によってクラッシュはしなくなった。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/TweetActivity.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/service/PostService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="166" opendate="2018-08-18 12:45:01" fixdate="2018-08-18 15:58:06">
+		<buginformation>
+			<summary>Active Accountのアイコンロード中に画面遷移するとクラッシュする</summary>
+			<description>画面遷移を契機にActivityが破棄されて、null参照になっていると推測。   メニューからの画面遷移を実行した後は、もうメニューに用はないので処理中断が正しいのでは？  ## Logcat ``` 08-18 21:41:49.331 2675-2701/shibafu.yukari.alpha E/AndroidRuntime: FATAL EXCEPTION: AsyncTask #3     Process: shibafu.yukari.alpha, PID: 2675     java.lang.RuntimeException: An error occurred while executing doInBackground()         at android.os.AsyncTask$3.done(AsyncTask.java:309)         at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:354)         at java.util.concurrent.FutureTask.setException(FutureTask.java:223)         at java.util.concurrent.FutureTask.run(FutureTask.java:242)         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)         at java.lang.Thread.run(Thread.java:818)      Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean shibafu.yukari.activity.MainActivity.isTwitterServiceBound()' on a null object reference         at shibafu.yukari.fragment.MenuDialogFragment$1AccountsLoader.doInBackground(MenuDialogFragment.java:144)         at shibafu.yukari.fragment.MenuDialogFragment$1AccountsLoader.doInBackground(MenuDialogFragment.java:139)         at android.os.AsyncTask$2.call(AsyncTask.java:295)         at java.util.concurrent.FutureTask.run(FutureTask.java:237)         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)          at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)          at java.lang.Thread.run(Thread.java:818)  ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/fragment/MenuDialogFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="160" opendate="2018-08-15 15:59:32" fixdate="2018-08-17 07:38:10">
+		<buginformation>
+			<summary>ツイートへの返信でin-reply-toが付与されていない</summary>
+			<description>https://twitter.com/shibafu528/status/1029759093089525760   https://twitter.com/shibafu528/status/1029759224283189248   https://twitter.com/shibafu528/status/1029759295204675584</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/twitter/TwitterUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="155" opendate="2018-08-15 00:26:46" fixdate="2018-08-17 14:27:37">
+		<buginformation>
+			<summary>「先頭へぽっぴんジャンプ♪」を使用しても最上部にジャンプしない</summary>
+			<description>https://mstdn.maud.io/@kb10uy/100551346800254204</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="154" opendate="2018-08-13 17:33:55" fixdate="2018-08-15 03:24:42">
+		<buginformation>
+			<summary>DMタブを開こうとするとクラッシュ</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/fragment/tabcontent/TweetListFragmentFactory.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/service/TwitterService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="152" opendate="2018-08-13 15:36:58" fixdate="2019-05-02 02:55:16">
+		<buginformation>
+			<summary>メイン画面の「クエリを実行」を使うとクラッシュする</summary>
+			<description>原因は MainActivity のこの辺だとは思う。TwitterResponse を前提としているせい。   ただ、現状の実装だと TwitterResponse なのか shibafu.yukari.entity.Status なのかバラバラという……。  https://github.com/shibafu528/Yukari/blob/f226ec0b619eeb4d46d893c1277e7c2416fd46fc/Yukari/src/main/java/shibafu/yukari/activity/MainActivity.java#L651-L658</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/fragment/tabcontent/QueryableTab.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/fragment/tabcontent/BookmarkListFragment.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="151" opendate="2018-08-12 06:02:51" fixdate="2018-08-12 09:17:34">
+		<buginformation>
+			<summary>サウンドテーマにAkari, Kiriを指定していると、RT通知音が再生されない</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/linkage/StatusNotifier.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/twitter/statusmanager/StatusNotifier.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="147" opendate="2018-08-07 13:09:46" fixdate="2018-08-09 15:13:54">
+		<buginformation>
+			<summary>TwitterStatusの会話ビューを開こうとするとクラッシュする</summary>
+			<description>単に会話回りを作りなおしていないだけ。  TraceActivityが会話TLを適切に生成できるようにすればいいのだが、Activity→Fragment間のExtraでFilterQueryをシリアライズして渡せたら良いだろうか？</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/fragment/tabcontent/TweetListFragmentFactory.java</file>
+			<file>Yukari/src/main/java/shibafu/yukari/activity/TraceActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="144" opendate="2018-07-28 15:35:26" fixdate="2018-08-17 14:22:55">
+		<buginformation>
+			<summary>UserStreamで引用ツイート付きのツイートを受信すると、正常に展開されない</summary>
+			<description>Twitterの仕様変更の影響で、引用ツイートのfull_textおよびentityには引用対象のツイートの情報が含まれなくなった。   そのため、Yukariでは当該ツイートを受信した際に以下の事象が発生する可能性がある。  * 従来と違い、引用対象のURLが本文に含まれない * 引用対象のツイートがインライン展開されない   * `quoted_status` は前からあるのでいけるはずだが……これは別件？ * 引用対象のツイートを開けない (URL一覧に入っていない)  下に行くほど深刻で、これに関してはAPIレスポンスに新規追加された `quoted_status_permalink` を参照するか、`quoted_status` のIDから無理やり疑似URLを生成するしかないと思われる。  `quoted_status_permalink` の参照は現在使用中のバージョンのTwitter4Jでは不可能 (getterがない) で、これには https://github.com/yusuke/twitter4j/pull/280 の対応か https://github.com/takke/twitter4a への乗り換えが必要。  ## 参考  &gt; たけうちひろあき @takke@mstdn.jp &gt; @shibafu528 Twitter4Jでいえばこの対応が必要ですね→ https://github.com/yusuke/twitter4j/pull/280 &gt;  &gt; https://mstdn.jp/@takke/100417142063920891  &gt; Izumi Tsutsui @tsutsuii@social.mikutter.hachune.net &gt; ツイート引用URL付きのツイートが userstream で流れてくる場合、full_text には引用ツイートURLが含まれなくなっていますね…… &gt; https://twitter.com/tsutsuii/status/1023222228911976448 &gt; https://gist.github.com/tsutsui/c8e5b7d6e259e91a3743e04856aadce9 &gt; ![image](https://social.mikutter.hachune.net/system/media_attachments/files/000/216/787/original/62976ac7159eb56e.png) &gt; ![image](https://social.mikutter.hachune.net/system/media_attachments/files/000/216/788/original/d3b1b58dbcca3e97.png) &gt;  &gt; https://social.mikutter.hachune.net/@tsutsuii/100452981401628790   &gt; Izumi Tsutsui @tsutsuii@social.mikutter.hachune.net &gt; Yukariさんでも stream受信だと引用URLは表示されない &gt;  &gt; https://social.mikutter.hachune.net/@tsutsuii/100452990758217040  &gt; Izumi Tsutsui @tsutsuii@social.mikutter.hachune.net &gt; @shibafu528 列挙はされていないっぽいですね https://gist.github.com/tsutsui/29a729af7b08342b683e14141b01373f &gt; ![image](https://social.mikutter.hachune.net/system/media_attachments/files/000/216/807/original/c189cc52f29030ab.png) &gt;  &gt; https://social.mikutter.hachune.net/@tsutsuii/100453057810538609</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/twitter/statusimpl/PreformedStatus.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="139" opendate="2018-05-28 15:32:21" fixdate="2018-05-28 15:32:22">
+		<buginformation>
+			<summary>ツイートに、Gyazoドメイン配下にある画像ページ以外のURLが含まれているとクラッシュする</summary>
+			<description>メールでのレポートにより発覚  https://gyazo.com/ja のようなURLが含まれたツイートを表示するとクラッシュする。  おそらく、原因は画像だと決めつけてAPIを叩こうとしているため。  ---------------------------------------- - Bitbucket: https://bitbucket.org/shibafu528/yukari-for-android/issue/139 - Originally reported by: Shibafu Midorino - Originally created at: 2018-01-27T07:30:18.816 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Yukari/src/main/java/shibafu/yukari/media2/MediaFactory.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

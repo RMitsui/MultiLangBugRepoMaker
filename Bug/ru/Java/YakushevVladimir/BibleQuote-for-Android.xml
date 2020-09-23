@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>136</id>
+		<title>Некорректное обновление БД при установке 1.2.85</title>
+		<body>Некорректно написана миграция БД, что привело к отсутствию полей, тригеров и виртуальных таблиц в БД при установке с нуля.</body>
+		<created>2018-05-05 06:10:29</created>
+		<closed>2018-05-08 00:22:13</closed>
+	</bug>
+	<bug>
+		<id>135</id>
+		<title>Перенести встроенные модули в папку приложения</title>
+		<body>Периодически возникают проблемы с копированием встроенных модулей на устройство в папку /sdcard/BibleQuote. Из-за этого люди получают пустой экран в списке модулей. Перенести встроенные модули в папку, выделенную приложению системой.</body>
+		<created>2018-04-22 13:09:36</created>
+		<closed>2018-04-22 13:14:09</closed>
+	</bug>
+	<bug>
+		<id>125</id>
+		<title>Ошибка при переходе на следующую главу свайпом</title>
+		<body>Если перейти в конец главы и свайпом перейти на следующую, то следующая откроется тоже в конце  </body>
+		<created>2016-09-25 05:41:58</created>
+		<closed>2016-09-28 06:21:37</closed>
+	</bug>
+	<bug>
+		<id>121</id>
+		<title>NullPointerException при установке текущего номера стиха</title>
+		<body>java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Integer com.BibleQuote.domain.entity.Chapter.getNumber()' on a null object reference     at com.BibleQuote.managers.Librarian.setCurrentVerseNumber(Librarian.java:216)     at com.BibleQuote.ui.presenters.ReaderViewPresenter.setCurrentVerse(ReaderViewPresenter.java:87)     at com.BibleQuote.ui.ReaderActivity.onReaderViewChange(ReaderActivity.java:237)     at com.BibleQuote.ui.widget.ReaderWebView$ViewHandler.handleMessage(ReaderWebView.java:426)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:234)     at android.app.ActivityThread.main(ActivityThread.java:5526)     at java.lang.reflect.Method.invoke(Native Method)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616) </body>
+		<created>2016-09-22 16:49:15</created>
+		<closed>2016-09-22 16:55:36</closed>
+	</bug>
+	<bug>
+		<id>101</id>
+		<title>Ошибка при удалении закладки</title>
+		<body>java.lang.ClassCastException: com.BibleQuote.ui.BookmarksActivity cannot be cast to android.support.v7.app.ActionBarActivity     at com.BibleQuote.ui.fragments.BookmarksFragment.onItemLongClick(BookmarksFragment.java:171)     at android.widget.AbsListView.performLongPress(AbsListView.java:3562)     at android.widget.AbsListView$CheckForLongPress.run(AbsListView.java:3508)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5602)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) </body>
+		<created>2016-01-27 13:19:52</created>
+		<closed>2016-01-27 15:39:01</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>В книгах принудительно стоит растягивание текста по ширине</title>
+		<body></body>
+		<created>2016-01-26 06:46:43</created>
+		<closed>2016-01-27 21:47:37</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>Ссылки не открываются</title>
+		<body>Открывается не текст по ссылке, а окно выбора места Писания </body>
+		<created>2016-01-17 13:36:14</created>
+		<closed>2016-01-23 10:18:15</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>Удалять все теги при шаринге</title>
+		<body>Остаются теги, которые внесены в фильтр модуля. Надо удалять все. Также остаются лишние пробелы. </body>
+		<created>2015-12-05 17:06:37</created>
+		<closed>2016-01-23 10:18:15</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>Не отображаются цифры в тексте</title>
+		<body>Цитаты скрывает цифры, даже если модуль не содержит номера Стронга </body>
+		<created>2015-09-16 08:13:15</created>
+		<closed>2015-11-28 17:58:18</closed>
+	</bug>
+	<bug>
+		<id>89</id>
+		<title>Номера Стронга в результатах поиска </title>
+		<body>Номера Стронга в формате Gxxxx не скрываются в результатах поиска  </body>
+		<created>2015-06-25 18:38:59</created>
+		<closed>2015-11-28 18:47:39</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>SQLiteException при получении ссылки на БД</title>
+		<body>``` android.database.sqlite.SQLiteException: not an error (code 0): Could not open the database in read/write mode.     at android.database.sqlite.SQLiteConnection.nativeOpen(Native Method)     at android.database.sqlite.SQLiteConnection.open(SQLiteConnection.java:209)     at android.database.sqlite.SQLiteConnection.open(SQLiteConnection.java:193)     at android.database.sqlite.SQLiteConnectionPool.openConnectionLocked(SQLiteConnectionPool.java:463)     at android.database.sqlite.SQLiteConnectionPool.open(SQLiteConnectionPool.java:185)     at android.database.sqlite.SQLiteConnectionPool.open(SQLiteConnectionPool.java:177)     at android.database.sqlite.SQLiteDatabase.openInner(SQLiteDatabase.java:804)     at android.database.sqlite.SQLiteDatabase.open(SQLiteDatabase.java:789)     at android.database.sqlite.SQLiteDatabase.openDatabase(SQLiteDatabase.java:694)     at android.database.sqlite.SQLiteDatabase.openOrCreateDatabase(SQLiteDatabase.java:709)     at android.database.sqlite.SQLiteDatabase.openOrCreateDatabase(SQLiteDatabase.java:702)     at com.BibleQuote.dal.dbLibraryHelper.getDB(dbLibraryHelper.java:69)     at com.BibleQuote.dal.dbLibraryHelper.getLibraryDB(dbLibraryHelper.java:91)     at com.BibleQuote.managers.bookmarks.repository.dbBookmarksTagsRepository.getTags(dbBookmarksTagsRepository.java:78)     at com.BibleQuote.managers.bookmarks.Bookmark.&lt;init&gt;(Bookmark.java:51)     at com.BibleQuote.managers.bookmarks.Bookmark.&lt;init&gt;(Bookmark.java:55)     at com.BibleQuote.managers.bookmarks.Bookmark.&lt;init&gt;(Bookmark.java:63)     at com.BibleQuote.ui.ReaderActivity$ActionSelectText.onActionItemClicked(ReaderActivity.java:538)     at com.actionbarsherlock.internal.ActionBarSherlockNative$ActionModeCallbackWrapper.onActionItemClicked(ActionBarSherlockNative.java:257)     at com.android.internal.policy.impl.PhoneWindow$DecorView$ActionModeCallbackWrapper.onActionItemClicked(PhoneWindow.java:2577)     at com.android.internal.app.ActionBarImpl$ActionModeImpl.onMenuItemSelected(ActionBarImpl.java:941)     at com.android.internal.view.menu.MenuBuilder.dispatchMenuItemSelected(MenuBuilder.java:735)     at com.android.internal.view.menu.MenuItemImpl.invoke(MenuItemImpl.java:149)     at com.android.internal.view.menu.MenuBuilder.performItemAction(MenuBuilder.java:874)     at com.android.internal.view.menu.ActionMenuView.invokeItem(ActionMenuView.java:577)     at com.android.internal.view.menu.ActionMenuItemView.onClick(ActionMenuItemView.java:115)     at android.view.View.performClick(View.java:4222)     at android.view.View$PerformClick.run(View.java:17620)     at android.os.Handler.handleCallback(Handler.java:800)     at android.os.Handler.dispatchMessage(Handler.java:100)     at android.os.Looper.loop(Looper.java:194)     at android.app.ActivityThread.main(ActivityThread.java:5391)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:525)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:833)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:600)     at dalvik.system.NativeStart.main(Native Method) ``` </body>
+		<created>2015-01-12 07:43:46</created>
+		<closed>2016-09-06 17:37:23</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>NullPointerException при выборе языка модуля</title>
+		<body>``` java.lang.NullPointerException     at com.BibleQuote.managers.Librarian.getTextLocale(Librarian.java:479)     at com.BibleQuote.ui.fragments.TTSPlayerFragment.onCreateView(TTSPlayerFragment.java:72)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:870)     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1080)     at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:622)     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1416)     at android.support.v4.app.FragmentManagerImpl$1.run(FragmentManager.java:420)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:136)     at android.app.ActivityThread.main(ActivityThread.java:5103)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:790)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:606)     at dalvik.system.NativeStart.main(Native Method) ``` </body>
+		<created>2015-01-12 07:41:42</created>
+		<closed>2016-01-23 11:39:33</closed>
+	</bug>
+	<bug>
+		<id>86</id>
+		<title>Опечатка в справке</title>
+		<body>"Но так как Android не закрывает приложения долгое время, то сворачивая и запуская приложение, вы на самомо деле открываете ранее запущенную программу..." </body>
+		<created>2015-01-12 07:34:06</created>
+		<closed>2015-11-28 18:52:35</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>Revelation 22 is missing</title>
+		<body>I really like your app....but there is a serious problem..... Revelation 22 is missing..... Please fix this and add basic English translation... Other than that, your on the right track...God Bless you guys </body>
+		<created>2015-01-12 07:32:12</created>
+		<closed>2015-11-28 19:23:54</closed>
+	</bug>
+	<bug>
+		<id>84</id>
+		<title>Копирование текста</title>
+		<body>При копировании текста в буфер на "цитате" и при вставке в статус в fb, цыфры не копируются,их просто нет! Номер стиха есть, а (250) нет, просто пробел, скобки я вставил для опр. места Например:  ``` 35 И вышел огонь от Господа и уничтожил (..) человек, принёсших в дар благовонное курение.  36 Тогда Господь сказал Моисею:  37 -38 "Скажи Елиазару, сыну Аарона, священнику, чтобы он достал из огня все кадильни...  ```  И тд. </body>
+		<created>2015-01-12 07:29:49</created>
+		<closed>2015-11-28 19:24:19</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>Пропадает список найденного при сворачивании окна</title>
+		<body>Пропадают найденные Поиском места Писания после сворачивания программы кнопкой Home screen ИЗ ЭКРАНА РЕЗУЛЬТАТОВ ПОИСКА и повторного разворачивания. </body>
+		<created>2014-07-20 07:14:35</created>
+		<closed>2015-11-28 19:25:31</closed>
+	</bug>
+	<bug>
+		<id>81</id>
+		<title>The Text-to-Speech (TTS) of the KJV does not sound like English</title>
+		<body>The English sounds very (too much) Russian, actually. May I suggest for the KJV, that instead of using the Russian (Female) voice of Google TTS, could you make it use the English (United Kingdom) or English (United States) voice ? </body>
+		<created>2014-07-16 09:39:36</created>
+		<closed>2017-10-14 19:35:24</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>NullPointerException at TTSPlayerController.setLanguage()</title>
+		<body>java.lang.NullPointerException at com.BibleQuote.tts.controllers.TTSPlayerController.setLanguage(TTSPlayerController.java:112) at com.BibleQuote.tts.controllers.TTSPlayerController.onInit(TTSPlayerController.java:92) at android.speech.tts.TextToSpeech.dispatchOnInit(TextToSpeech.java:640) at android.speech.tts.TextToSpeech.access$1000(TextToSpeech.java:52) at android.speech.tts.TextToSpeech$Connection.onServiceConnected(TextToSpeech.java:1298) at android.app.LoadedApk$ServiceDispatcher.doConnected(LoadedApk.java:1098) at android.app.LoadedApk$ServiceDispatcher$RunConnection.run(LoadedApk.java:1115) at android.os.Handler.handleCallback(Handler.java:615) at android.os.Handler.dispatchMessage(Handler.java:92) at android.os.Looper.loop(Looper.java:137) at android.app.ActivityThread.main(ActivityThread.java:4921) at java.lang.reflect.Method.invokeNative(Native Method) at java.lang.reflect.Method.invoke(Method.java:511) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1038) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:805) at dalvik.system.NativeStart.main(Native Method) </body>
+		<created>2014-06-18 12:22:41</created>
+		<closed>2014-06-18 12:23:33</closed>
+	</bug>
+	<bug>
+		<id>79</id>
+		<title>Перестал выделятся текст для копирования</title>
+		<body></body>
+		<created>2014-06-18 04:29:15</created>
+		<closed>2014-06-18 05:08:13</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>Ошибка в тексте Луки 12:33</title>
+		<body>&gt; Здравствуйте эта тема затронула очень многих людей кто читает это по вашей Библии, вернее по переводу синодальному выложи нам по вашему предложению просим исправьте пожалуйста стих который помянут в  послании от луки 12 глава стих 33, именно слова "влагалище" вместо "вместилище" - это более подходящее слово которое даже в греческом переводе имеет этот же перевод. Будем очень благодарны. С Богом.  Исправить текст перевода и доработать модуль обновления текста. </body>
+		<created>2014-01-24 17:39:54</created>
+		<closed>2014-06-18 07:57:11</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>Не работает блокировка отключения экрана</title>
+		<body>Всегда тухнет экран, галочка не меняет ничего, точно так же и переворот экрана, эти функции не работают. Думал проблема в прошивке была у меня 4.2.2 откатился назад на 4.1.2 таже самая ситуация. Не могу читать и работать с программой, ради этого нет желания ставить отключение дисплея через 2 минуты. Пожалуйста проверьте и исправьте  Отправлено с устройства Samsung </body>
+		<created>2014-01-13 06:46:11</created>
+		<closed>2014-06-17 19:52:37</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>Исправить вызов запроса по добавлению тегов</title>
+		<body>android.database.sqlite.SQLiteException: near "не": syntax error: , while compiling: SELECT \* FROM tags WHERE name = "25 В надмении своем нечестивый пренебрегает Господа: "не взыщет"; во всех помыслах его: "нет Бога!" (Пс.9:25)" at android.database.sqlite.SQLiteCompiledSql.native_compile(Native Method) at android.database.sqlite.SQLiteCompiledSql.compile(SQLiteCompiledSql.java:92) at android.database.sqlite.SQLiteCompiledSql.&lt;init&gt;(SQLiteCompiledSql.java:65) at android.database.sqlite.SQLiteProgram.&lt;init&gt;(SQLiteProgram.java:83) at android.database.sqlite.SQLiteQuery.&lt;init&gt;(SQLiteQuery.java:49) at android.database.sqlite.SQLiteDirectCursorDriver.query(SQLiteDirectCursorDriver.java:42) at android.database.sqlite.SQLiteDatabase.rawQueryWithFactory(SQLiteDatabase.java:1356) at android.database.sqlite.SQLiteDatabase.queryWithFactory(SQLiteDatabase.java:1235) at android.database.sqlite.SQLiteDatabase.query(SQLiteDatabase.java:1189) at android.database.sqlite.SQLiteDatabase.query(SQLiteDatabase.java:1271) at com.BibleQuote.managers.tags.repository.dbTagRepository.addRow(dbTagRepository.java:162) at com.BibleQuote.managers.tags.repository.dbTagRepository.add(dbTagRepository.java:23) at com.BibleQuote.managers.bookmarks.BookmarksManager.getTagsIDs(BookmarksManager.java:76) at com.BibleQuote.managers.bookmarks.BookmarksManager.add(BookmarksManager.java:36) at com.BibleQuote.ui.dialogs.BookmarksDialog.addBookmarks(BookmarksDialog.java:78) at com.BibleQuote.ui.dialogs.BookmarksDialog.access$000(BookmarksDialog.java:37) at com.BibleQuote.ui.dialogs.BookmarksDialog$2.onClick(BookmarksDialog.java:54) at com.android.internal.app.AlertController$ButtonHandler.handleMessage(AlertController.java:159) at android.os.Handler.dispatchMessage(Handler.java:99) at android.os.Looper.loop(Looper.java:123) at android.app.ActivityThread.main(ActivityThread.java:3687) at java.lang.reflect.Method.invokeNative(Native Method) at java.lang.reflect.Method.invoke(Method.java:507) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:867) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:625) at dalvik.system.NativeStart.main(Native Method) </body>
+		<created>2013-12-06 11:08:11</created>
+		<closed>2014-06-18 05:08:13</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>Не работает TTS</title>
+		<body>Установлен русский SVOX, но при запуске чтения сообщает что русский язык не поддерживается </body>
+		<created>2013-02-12 09:02:53</created>
+		<closed>2013-02-12 16:36:51</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>Проверить работу тега FONT SIZE</title>
+		<body>Некорректно обрабатывает размер </body>
+		<created>2013-01-20 17:44:27</created>
+		<closed>2013-08-30 09:05:31</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>Ошибка при копировании стиха в буфер обмена</title>
+		<body>java.lang.NullPointerException at android.content.ClipboardManager.setPrimaryClip(ClipboardManager.java:137) at android.content.ClipboardManager.setText(ClipboardManager.java:251) at com.BibleQuote.utils.Share.ClipboardShare.share(ClipboardShare.java:32) at com.BibleQuote.utils.Share.ShareBuilder.share(ShareBuilder.java:37) at com.BibleQuote.managers.Librarian.shareText(Librarian.java:496) at com.BibleQuote.activity.ReaderActivity$ActionSelectText.onActionItemClicked(ReaderActivity.java:105) at com.actionbarsherlock.internal.ActionBarSherlockNative$ActionModeCallbackWrapper.onActionItemClicked(ActionBarSherlockNative.java:238) at com.android.internal.policy.impl.PhoneWindow$DecorView$ActionModeCallbackWrapper.onActionItemClicked(PhoneWindow.java:2651) at com.android.internal.app.ActionBarImpl$ActionModeImpl.onMenuItemSelected(ActionBarImpl.java:757) at com.android.internal.view.menu.MenuBuilder.dispatchMenuItemSelected(MenuBuilder.java:735) at com.android.internal.view.menu.MenuItemImpl.invoke(MenuItemImpl.java:149) at com.android.internal.view.menu.MenuBuilder.performItemAction(MenuBuilder.java:874) at com.android.internal.view.menu.MenuPopupHelper.onItemClick(MenuPopupHelper.java:156) at android.widget.AdapterView.performItemClick(AdapterView.java:292) at android.widget.AbsListView.performItemClick(AbsListView.java:1185) at android.widget.AbsListView$PerformClick.run(AbsListView.java:2713) at android.widget.AbsListView$1.run(AbsListView.java:3468) at android.os.Handler.handleCallback(Handler.java:605) at android.os.Handler.dispatchMessage(Handler.java:92) at android.os.Looper.loop(Looper.java:137) at android.app.ActivityThread.main(ActivityThread.java:4507) at java.lang.reflect.Method.invokeNative(Native Method) at java.lang.reflect.Method.invoke(Method.java:511) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:980) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:747) at dalvik.system.NativeStart.main(Native Method) </body>
+		<created>2013-01-09 04:57:30</created>
+		<closed>2013-04-08 18:13:13</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>При повороте экрана происходит переход на начало текста</title>
+		<body>Поворот экрана При повороте экрана происходит переход на начало текста. Жутко неудобно! Можно ли поскорее исправить это? Или, как временное решение, в опциях сделать возможность отключить автоматический поворот экрана. </body>
+		<created>2012-12-13 19:21:11</created>
+		<closed>2016-09-22 16:51:15</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>NullPointerException :: Librarian.getCurrentLink(Librarian.java:491)</title>
+		<body>java.lang.NullPointerException     at com.BibleQuote.managers.Librarian.getCurrentLink(Librarian.java:491)     at com.BibleQuote.managers.Librarian.getShareText(Librarian.java:640)     at com.BibleQuote.activity.Reader$2.onQuickActionClicked(Reader.java:198)     at greendroid.widget.QuickActionBar$1.onClick(QuickActionBar.java:135)     at android.view.View.performClick(View.java:2538)     at android.view.View$PerformClick.run(View.java:9152)     at android.os.Handler.handleCallback(Handler.java:587)     at android.os.Handler.dispatchMessage(Handler.java:92)     at android.os.Looper.loop(Looper.java:123)     at android.app.ActivityThread.main(ActivityThread.java:3687)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:507)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:867)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:625)     at dalvik.system.NativeStart.main(Native Method) </body>
+		<created>2012-02-11 19:07:20</created>
+		<closed>2012-02-15 19:07:45</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>toUpperCase()</title>
+		<body>Найти все места, где присваивается ModuleID и проверить, чтобы он назначался в верхнем регистре. Убрать moduleID.toUpperCase() в FsModuleRepository.getModuleByID(стр.121) </body>
+		<created>2012-02-11 19:02:20</created>
+		<closed>2012-02-15 14:16:44</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>Некорректно формируется ссылка для шаринга</title>
+		<body>После последнего обновления, началась такая петрушка: если выделяю несколько стихов в закладки, то раньше он писал так - Ин 2:3-5; то есть все правильно, выделенные стихи с 3 по 5й. А теперь просто пишет или 3 или 5 или вообще 6!!!! То есть ерунда произошла! </body>
+		<created>2012-02-11 18:56:53</created>
+		<closed>2012-03-04 20:00:10</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>Обновление списка модулей</title>
+		<body>Если был один неисправный модуль, то при попытке обновить список модулей выводится окно с сообщение что все модули не исправны. Закрываешь приложение, открываешь заново - список обновился </body>
+		<created>2012-02-01 23:01:11</created>
+		<closed>2012-02-02 15:37:22</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>FsModuleRepository.getModuleByID() :: NullPointerException</title>
+		<body>v0.04.05 28.01.2012 22:59:22 Отчетов в неделю: 6 Отчеты: 6 java.lang.RuntimeException: An error occured while executing doInBackground() at android.os.AsyncTask$3.done(AsyncTask.java:200) at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:274) at java.util.concurrent.FutureTask.setException(FutureTask.java:125) at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:308) at java.util.concurrent.FutureTask.run(FutureTask.java:138) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1088) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:581) at java.lang.Thread.run(Thread.java:1019) Caused by: java.lang.NullPointerException at java.util.TreeMap.find(TreeMap.java:254) at java.util.TreeMap.findByObject(TreeMap.java:351) at java.util.TreeMap.get(TreeMap.java:177) at com.BibleQuote.dal.repository.FsModuleRepository.getModuleByID(FsModuleRepository.java:119) at com.BibleQuote.dal.repository.FsModuleRepository.getModuleByID(FsModuleRepository.java:1) at com.BibleQuote.controllers.FsModuleController.getModuleByID(FsModuleController.java:48) at com.BibleQuote.managers.Librarian.getModuleByID(Librarian.java:174) at com.BibleQuote.managers.Librarian.openModule(Librarian.java:203) at com.BibleQuote.managers.AsyncOpenChapter.doInBackground(AsyncOpenChapter.java:36) at com.BibleQuote.utils.Task.doInBackground(Task.java:1) at android.os.AsyncTask$2.call(AsyncTask.java:185) at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:306) ... 4 more </body>
+		<created>2012-01-29 05:18:00</created>
+		<closed>2012-02-02 15:37:44</closed>
+	</bug>
+	<bug>
+		<id>19</id>
+		<title>Error: BibleBooksID.getID() :: ConcurrentModificationException</title>
+		<body>Caused by: java.util.ConcurrentModificationException at java.util.HashMap$HashIterator.nextEntry(HashMap.java:796) at java.util.HashMap$KeyIterator.next(HashMap.java:823) at com.BibleQuote.entity.BibleBooksID.getID(BibleBooksID.java:199) at com.BibleQuote.models.Book.&lt;init&gt;(Book.java:87) at com.BibleQuote.models.FsBook.&lt;init&gt;(FsBook.java:17) at com.BibleQuote.dal.FsLibraryContext.fillBooks(FsLibraryContext.java:262) at com.BibleQuote.dal.repository.FsBookRepository.loadBooks(FsBookRepository.java:34) at com.BibleQuote.dal.repository.FsBookRepository.loadBooks(FsBookRepository.java:1) at com.BibleQuote.controllers.FsBookController.getBookByID(FsBookController.java:62) at com.BibleQuote.managers.Librarian.openBook(Librarian.java:148) at com.BibleQuote.managers.AsyncOpenChapter.doInBackground(AsyncOpenChapter.java:37) at com.BibleQuote.utils.Task.doInBackground(Task.java:1) at android.os.AsyncTask$2.call(AsyncTask.java:185) at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:306) ... 4 more </body>
+		<created>2012-01-27 05:39:09</created>
+		<closed>2012-02-02 16:56:07</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>Error: Librarian.getCurrentLink() :: NullPointerException</title>
+		<body>java.lang.NullPointerException at com.BibleQuote.managers.Librarian.getCurrentLink(Librarian.java:507) at com.BibleQuote.managers.Librarian.getShareText(Librarian.java:641) at com.BibleQuote.activity.Reader$2.onQuickActionClicked(Reader.java:210) at greendroid.widget.QuickActionBar$1.onClick(QuickActionBar.java:135) at android.view.View.performClick(View.java:2458) at android.view.View$PerformClick.run(View.java:8866) at android.os.Handler.handleCallback(Handler.java:618) at android.os.Handler.dispatchMessage(Handler.java:123) at android.os.Looper.loop(Looper.java:154) at android.app.ActivityThread.main(ActivityThread.java:4668) at java.lang.reflect.Method.invokeNative(Native Method) at java.lang.reflect.Method.invoke(Method.java:552) at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:917) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:674) at dalvik.system.NativeStart.main(Native Method) </body>
+		<created>2012-01-27 05:29:44</created>
+		<closed>2012-02-03 12:26:45</closed>
+	</bug>
+</bugs>

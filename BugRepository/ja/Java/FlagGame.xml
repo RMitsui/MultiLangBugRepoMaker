@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="FlagGame">
+	<bug id="61" opendate="2017-03-30 11:25:19" fixdate="2017-03-31 02:46:16">
+		<buginformation>
+			<summary>コマンド・キューの重複可能性</summary>
+			<description>`Queueable#executeQueue`は引数に`CommandSender`オブジェクトを渡さず、その間に再度別のプレイヤーがコマンドを実行すると`CommandSender`がすり替わる可能性がある。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/syam/flaggame/command/StageCommand.java</file>
+			<file>src/main/java/syam/flaggame/command/queue/QueuedCommand.java</file>
+			<file>src/main/java/syam/flaggame/command/queue/Queueable.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

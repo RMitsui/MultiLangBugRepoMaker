@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="databuter">
+	<bug id="107" opendate="2019-07-27 07:17:00" fixdate="2019-07-27 07:36:38">
+		<buginformation>
+			<summary>ZooKeeper에 저장하는 클러스터 노드 정보에 클라이언트용 정보 추가 필요</summary>
+			<description>ZooKeeper에 저장하는 클러스터 노드 정보에 클라이언트용 정보가 추가되어있지 않아 클라이언트가 다른 클러스터 노드에 접속 할 수없음.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/databute/databuter/client/register/RegisterMessageHandler.java</file>
+			<file>src/main/java/databute/databuter/cluster/AbstractClusterNode.java</file>
+			<file>src/main/java/databute/databuter/cluster/ClusterConfiguration.java</file>
+			<file>src/main/java/databute/databuter/cluster/ClusterNodeConfiguration.java</file>
+			<file>src/main/java/databute/databuter/cluster/remote/RemoteClusterNode.java</file>
+			<file>src/main/java/databute/databuter/cluster/ClusterNode.java</file>
+			<file>src/main/java/databute/databuter/cluster/notification/ClusterNodeNotificationMessageSerializer.java</file>
+			<file>src/main/java/databute/databuter/cluster/remote/RemoteClusterNodeGroup.java</file>
+			<file>src/main/java/databute/databuter/Databuter.java</file>
+			<file>src/main/java/databute/databuter/network/Endpoint.java</file>
+			<file>src/main/java/databute/databuter/client/ClientConfiguration.java</file>
+			<file>src/main/java/databute/databuter/cluster/notification/ClusterNodeNotificationMessage.java</file>
+			<file>src/main/java/databute/databuter/cluster/ClusterCoordinator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="84" opendate="2019-07-26 16:39:43" fixdate="2019-07-27 05:18:21">
+		<buginformation>
+			<summary>클라이언트 세션과 연결이 끊어지면 클라이언트 세션 그룹에서 해당 세션 제거</summary>
+			<description>클라이언트 세션과 연결이 끊어지면 해당 세션을 완전히 제거해야 이미 닫힌 채널에 패킷을 보내는 일이 발생하지 않는다.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/databute/databuter/client/network/ClientChannelHandler.java</file>
+			<file>src/main/java/databute/databuter/client/network/ClientSessionGroup.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

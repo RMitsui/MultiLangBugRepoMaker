@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="poi-tl">
+	<bug id="370" opendate="2020-04-19 18:24:05" fixdate="2020-06-16 06:39:27">
+		<buginformation>
+			<summary>文档合并时xml命名空间不全时抛出异常</summary>
+			<description>比如，主文档的xml命名空间中没有图片，合并文档的包含图片，或者超链接等，当进行合并时因为xml命名空间不全，导致解析xml失败，抛出异常</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue370.java</file>
+			<file>src/main/java/com/deepoove/poi/xwpf/NiceXWPFDocument.java</file>
+			<file>src/main/java/com/deepoove/poi/xwpf/DefaultXmlOptions.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="313" opendate="2019-10-18 09:12:47" fixdate="2019-11-12 15:08:14">
+		<buginformation>
+			<summary>通过模板生成模板存在【bug】</summary>
+			<description>再对通过模板生成的模板进行使用时，无法同时插入两个表格，并且插入一个表格时还会将生成模板的文档的其它的内容删除，只剩一个表格，这个如何解决？</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue313.java</file>
+			<file>src/main/java/com/deepoove/poi/policy/AbstractRenderPolicy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="247" opendate="2019-06-04 07:40:27" fixdate="2019-11-13 14:34:09">
+		<buginformation>
+			<summary>超链接文档合并出现无法识别的内容</summary>
+			<description>当使用片段表达式时(即{{+xxxx}})，在片段模板中若存在超链接文本，则合并到主模板后，程序未报任何异常，但生成的最终word文档报以下错误： ![image](https://user-images.githubusercontent.com/22047888/58860204-2ef23e00-86de-11e9-8669-102dfe965e2d.png)。  另： 希望能够在同一word模板中支持循环操作，而不是循环的内容需要放入另一模板中，若循环部分较多则需要创建多个片段模板，文件数量会大幅增加 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue247.java</file>
+			<file>src/main/java/com/deepoove/poi/NiceXWPFDocument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="225" opendate="2019-05-04 16:35:11" fixdate="2020-03-20 06:27:59">
+		<buginformation>
+			<summary>当循环模版包含形状元素时，Office 365打开生成的合并文档报错</summary>
+			<description>当循环模版包含形状元素时，打开生成的合并文档是成功的，但是有报错信息。 我用的版本是1.4.2。 循环模版代码： datas.put("segment", new DocxRenderData(..., ...));  打开后显示的错误信息： ![image](https://user-images.githubusercontent.com/3163516/57181946-66e24780-6ecc-11e9-94cb-92c24fdb7a34.png) ![image](https://user-images.githubusercontent.com/3163516/57181968-b0329700-6ecc-11e9-965d-f01c0e404acd.png)  Segment 文件: [segment.docx](https://github.com/Sayi/poi-tl/files/3144576/segment.docx)  请问是否有什么解决方法，或者后续清理可以避免出现这个问题？ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/deepoove/poi/render/processor/IterableProcessor.java</file>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue225.java</file>
+			<file>src/main/java/com/deepoove/poi/xwpf/NiceXWPFDocument.java</file>
+			<file>src/main/java/com/deepoove/poi/xwpf/IdenifierManagerWrapper.java</file>
+			<file>src/main/java/com/deepoove/poi/render/processor/InlineIterableProcessor.java</file>
+			<file>src/main/java/com/deepoove/poi/policy/PictureRenderPolicy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="157" opendate="2018-11-26 08:44:35" fixdate="2018-11-27 06:38:42">
+		<buginformation>
+			<summary>多个文档模板的问题</summary>
+			<description>一个文档中需要有多个文档模板时，比如有 {{+students}} 和 {{+teachers}}， 如果 students 为 null 时，生成的文件中  {{+students}} 的部分为空，无论 HashMap 里是否 put 了 teachers,  {{+teachers}} 部分总是不会被渲染。 怎么解决？</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue157.java</file>
+			<file>src/main/java/com/deepoove/poi/render/RenderAPI.java</file>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Teacher.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="143" opendate="2018-11-07 09:24:51" fixdate="2018-11-14 14:47:40">
+		<buginformation>
+			<summary>向页眉添加图片，图片显示失败</summary>
+			<description>使用默认标签“@”向页眉添加图片时，生成的word文件中页眉图片无法显示，提示“当前无法显示此图”</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/deepoove/poi/policy/PictureRenderPolicy.java</file>
+			<file>src/main/java/com/deepoove/poi/NiceXWPFDocument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="129" opendate="2018-10-23 03:15:46" fixdate="2018-10-24 08:16:39">
+		<buginformation>
+			<summary>图片重复问题</summary>
+			<description>一个word模板有多张图片，多个模板合并后图片错乱、重复，只有我有遇到这个问题吗？困扰了好多天了，求大神指点 ![tim 20181023111434](https://user-images.githubusercontent.com/27758845/47333298-f6ed3c00-d6b4-11e8-87d0-13e8e378cdf9.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/deepoove/poi/NiceXWPFDocument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="126" opendate="2018-10-11 11:16:38" fixdate="2018-10-23 02:44:22">
+		<buginformation>
+			<summary>建议对表格数据判空一下</summary>
+			<description>当表中的数据为空时，查询的结果为null，此时会出现空指针异常  #![image](https://user-images.githubusercontent.com/12372048/46800369-018d0480-cd8a-11e8-8d3d-a6e5d2dcdcdd.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/deepoove/poi/policy/MiniTableRenderPolicy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="124" opendate="2018-10-09 08:48:14" fixdate="2018-10-23 03:15:55">
+		<buginformation>
+			<summary>合并任意一行最后几个格子会出现数组越界错误</summary>
+			<description>只要包括最后一个格子就会出现此错误。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/deepoove/poi/NiceXWPFDocument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="111" opendate="2018-08-28 13:30:14" fixdate="2019-05-29 17:47:26">
+		<buginformation>
+			<summary>poi-tl生成模板文档后再生成文档</summary>
+			<description>比如{测试一}申请{测试二}测试三，那替换的标签会变成{测试一}申请{测试二}</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue161.java</file>
+			<file>src/test/java/com/deepoove/poi/tl/issue/Issue111.java</file>
+			<file>src/main/java/com/deepoove/poi/resolver/RunningRunParagraph.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="85" opendate="2018-07-19 02:10:48" fixdate="2018-08-02 07:10:11">
+		<buginformation>
+			<summary>文档模版循环合并时报错</summary>
+			<description>2018-07-19 10:06:40.907 ERROR 4176 --- [io-11111-exec-9] com.deepoove.poi.policy.RenderPolicy     : merge docx error  org.apache.xmlbeans.XmlException: Unable to parse xml bean at org.apache.poi.POIXMLTypeLoader.parse(POIXMLTypeLoader.java:179) at org.apache.poi.POIXMLTypeLoader.parse(POIXMLTypeLoader.java:137) at org.openxmlformats.schemas.wordprocessingml.x2006.main.CTBody$Factory.parse(Unknown Source) at com.deepoove.poi.NiceXWPFDocument.merge(NiceXWPFDocument.java:442) at com.deepoove.poi.policy.DocxRenderPolicy.render(DocxRenderPolicy.java:52) at com.deepoove.poi.render.RenderAPI.render(RenderAPI.java:139) at com.deepoove.poi.XWPFTemplate.render(XWPFTemplate.java:154) at cn.com.open.face2face.web.ClazzController.exportStudentStudyResult(ClazzController.java:815) at cn.com.open.face2face.web.ClazzController$$FastClassBySpringCGLIB$$3708a.invoke(&lt;generated&gt;) at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:667) at cn.com.open.face2face.web.ClazzController$$EnhancerBySpringCGLIB$$52d593d2.exportStudentStudyResult(&lt;generated&gt;) at sun.reflect.GeneratedMethodAccessor617.invoke(Unknown Source) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:45005) at java.lang.reflect.Method.invoke(Method.java:498) at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133) at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97) at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967) at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872) at javax.servlet.http.HttpServlet.service(HttpServlet.java:661) at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:111) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:317) at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:114) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at cn.com.open.face2face.web.filter.JWTAuthenticationFilter.doFilter(JWTAuthenticationFilter.java:53) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214) at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177) at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:347) at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:263) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106) at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) at org.apache.catalina.core.StandardContextValve.__invoke(StandardContextValve.java:96) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:40002) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:677) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1468) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748) Caused by: org.xml.sax.SAXParseException: 元素类型 "xml-fragment" 必须由匹配的结束标记 "&lt;/xml-fragment&gt;" 终止。 at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203) at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177) at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400) at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327) at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472) at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(XMLDocumentFragmentScannerImpl.java:1749) at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2967) at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602) at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112) at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505) at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842) at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771) at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141) at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:243) at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339) at org.apache.poi.util.DocumentHelper.readDocument(DocumentHelper.java:150) at org.apache.poi.POIXMLTypeLoader.parse(POIXMLTypeLoader.java:176) ... 110 common frames omitted </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/deepoove/poi/NiceXWPFDocument.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="75" opendate="2018-06-29 03:09:35" fixdate="2018-07-10 08:22:09">
+		<buginformation>
+			<summary>关于自定义语法前后缀</summary>
+			<description>_目前需求是嵌入不定数量的图片，通过{{+template}}语法实现_  因为项目之前使用freemarker做的，模板大部分做好了，所以自己配置了一下语法前后缀： ```java  Configure.newBuilder().buildGramer("${", "}").build(); ``` 以适配freemarker模板。  结果循环数据渲染待嵌入的模板时，发现解析待嵌入的模板时使用的是默认配置： https://github.com/Sayi/poi-tl/blob/e0b483d9cd4b8e3cf1609b7d41376abeeecdf7db/src/main/java/com/deepoove/poi/policy/DocxRenderPolicy.java#L73 ```java  for (int i = 0; i &lt; dataList.size(); i++) {                 XWPFTemplate temp = XWPFTemplate.compile(docx);                 temp.render(dataList.get(i));                 docs.add(temp.getXWPFDocument());  } ``` 这个地方会解析不到子模板的自定义语法占位符,算是个小bug吧。  可以考虑在此处 https://github.com/Sayi/poi-tl/blob/e0b483d9cd4b8e3cf1609b7d41376abeeecdf7db/src/main/java/com/deepoove/poi/policy/DocxRenderPolicy.java#L50 方法调用时传入主模板配置： ```java List&lt;NiceXWPFDocument&gt; docMerges = getMergedDocxs((DocxRenderData) data,template.getConfig()); ```  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/deepoove/poi/policy/DocxRenderPolicy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="64" opendate="2018-05-30 07:37:52" fixdate="2018-06-26 17:56:20">
+		<buginformation>
+			<summary>图片文件无法删除</summary>
+			<description>模板文件加载外部图片后，图片资源似乎没有被释放，无法删除。代码类似：  XWPFTemplate template = XWPFTemplate.compile(....); try (FileOutputStream out = new FileOutputStream(file)) {             .....             template.render(datas);             template.write(out);         } finally {             if (template != null) {                 template.close();             }         }  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/deepoove/poi/util/BytePictureUtils.java</file>
+			<file>src/main/java/com/deepoove/poi/policy/PictureRenderPolicy.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

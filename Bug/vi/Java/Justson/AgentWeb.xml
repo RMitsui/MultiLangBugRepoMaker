@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>643</id>
+		<title>4.1.2的downloader组件依赖问题</title>
+		<body>1. agentweb从4.0.2升级到4.1.2之后，依赖的download组件从com.just.agentweb:download:4.0.2变成了com.download.library:Downloader:4.1.2，这一点没有在README中说明，导致使用4.1.2的agentWeb之后，用户点击网页中的下载按钮会崩溃。  2. readme中说download组件是可选项，但实际上现在的情况是agentweb对它有强依赖，没有导入就会崩溃  3. 崩溃信息 ``` Caused by:  java.lang.ClassNotFoundException:Didn't find class "com.download.library.DownloadImpl" on path: DexPathList[[zip file "/data/app/com.game.motionelf-P6FhEKvPKutQpNPkeyGEXQ==/base.apk"],nativeLibraryDirectories=[/data/app/com.game.motionelf-P6FhEKvPKutQpNPkeyGEXQ==/lib/arm64, /data/app/com.game.motionelf-P6FhEKvPKutQpNPkeyGEXQ==/base.apk!/lib/arm64-v8a, /system/lib64, /vendor/lib64]] dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:171) java.lang.ClassLoader.loadClass(ClassLoader.java:379) java.lang.ClassLoader.loadClass(ClassLoader.java:312) com.just.agentweb.DefaultDownloadImpl.createResourceRequest(SourceFile:1) com.just.agentweb.DefaultDownloadImpl.onDownloadStartInternal(SourceFile:4) com.just.agentweb.DefaultDownloadImpl$1.run(SourceFile:1) ```</body>
+		<created>2019-09-27 02:53:22</created>
+		<closed>2020-02-28 14:09:26</closed>
+	</bug>
+</bugs>

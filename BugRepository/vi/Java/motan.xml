@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="motan">
+	<bug id="6" opendate="2016-04-25 06:59:10" fixdate="2016-04-25 08:33:30">
+		<buginformation>
+			<summary>多线程bug</summary>
+			<description>_ReflectUtil.class_  ``` private static final Map&lt;String, Class&lt;?&gt;&gt; name2ClassCache = new HashMap&lt;String, Class&lt;?&gt;&gt;(); ... Class&lt;?&gt; clz = name2ClassCache.get(className); if (clz != null) {     return clz; } clz = forNameWithoutCache(className); if (clz != null) {     // 应该没有内存消耗过多的可能，除非有些代码很恶心，创建特别多的类     name2ClassCache.put(className, clz); } ```  hashmap在多线程并发put/get时应该有问题 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>motan-core/src/main/java/com/weibo/api/motan/util/ReflectUtil.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

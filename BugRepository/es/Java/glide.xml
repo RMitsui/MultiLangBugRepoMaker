@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="glide">
+	<bug id="2413" opendate="2017-09-20 03:41:03" fixdate="2017-09-22 04:09:59">
+		<buginformation>
+			<summary>Glide NPE </summary>
+			<description>version ```     compile ('com.github.bumptech.glide:glide:4.2.0-SNAPSHOT'){         exclude module: 'support-annotations'     } ``` crash：  ``` java.lang.NullPointerException: Attempt to invoke virtual method 'android.graphics.drawable.Drawable com.bumptech.glide.request.RequestOptions.getFallbackDrawable()' on a null object reference  at com.bumptech.glide.request.SingleRequest.getFallbackDrawable(:361)  at com.bumptech.glide.request.SingleRequest.setErrorPlaceholder(:402)  at com.bumptech.glide.request.SingleRequest.onLoadFailed(:571)  at com.bumptech.glide.request.SingleRequest.onLoadFailed(:553)  at com.bumptech.glide.load.engine.EngineJob.handleExceptionOnMainThread(:259)  at com.bumptech.glide.load.engine.EngineJob$iF.handleMessage(:291)  at android.os.Handler.dispatchMessage(Handler.java:98)  at android.os.Looper.loop(Looper.java:135)  at android.app.ActivityThread.main(ActivityThread.java:5309)  at java.lang.reflect.Method.invoke(Native Method)  at java.lang.reflect.Method.invoke(Method.java:372)  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:908)  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:703)  ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/bumptech/glide/request/target/PreloadTarget.java</file>
+			<file>library/src/main/java/com/bumptech/glide/request/SingleRequest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

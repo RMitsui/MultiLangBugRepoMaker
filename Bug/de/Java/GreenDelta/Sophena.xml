@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>93</id>
+		<title>Wärmebelegungsdichte ohne Pufferspeicherverluste berechnen</title>
+		<body>Die Wärmebelegungsdichte berechnet sich aus dem Wert der „Genutzten Wärme“ dividiert durch die Trassenlänge. Derzeit werden die Pufferspeicherverluste als "Genutzte Wärme" angesehen, so dass die Wärmebelegungsdichte bei steigenden Pufferspeicherverlusten größer wird. Die Wärmebelegungsdichte muss aber unabhängig von den Pufferspeicherverlusten sein!</body>
+		<created>2019-06-27 11:44:02</created>
+		<closed>2020-06-24 14:33:05</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>Beim Duplizieren eines Wärmeerzeugers wird der gleiche Rang vergeben</title>
+		<body>Beim Duplizieren eines Wärmeerzeugers wird der gleiche Rang vergeben, eigentlich müsste aber der Rang hochgezählt werden (höchster derzeit vergebener Rang + 1)</body>
+		<created>2018-10-24 12:26:12</created>
+		<closed>2018-10-26 07:44:38</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>Zeilentausch u.ä.</title>
+		<body>- [x] bei Weitere Ergebnisse - Effizienz sollen die Zeilen "Erzeugte Wärme" und "Erzeugter Strom" getauscht werden, da das intuitiver ist - [x] bei den Energieträgern ist ein Tippfehler: "Planzenöl" - [ ] bei den Investitionen fehlen noch die Tabellen für die neuen Produktbereiche Wärmepumpe,  Solarthermische Anlage, Elektrischer Wärmeerzeuger, Sonstige Wärmequelle, Sonstiges Zubehör - [x] bei den Investionen sollen leere Tabellen per Voreinstellung minimiert werden    </body>
+		<created>2018-09-19 12:13:06</created>
+		<closed>2018-10-05 08:36:24</closed>
+	</bug>
+	<bug>
+		<id>75</id>
+		<title>Ergebnis-Wirtschaftlichkeit: Leichte Korrekturen</title>
+		<body>- [x] Die Zeile "Kosten -Erlöse" muss jetzt, da wir Wärmeerlöse haben, umgekehrt berechnet werden (also Erlöse-Kosten) und soll "Jahresüberschuss" heißen - [x] Bei der Berechnung der Zeile "Wärmegestehungskosten" dürfen weiterhin die Wärmeerlöse nicht berücksichtigt werden, d.h. Berechnung nach der Formel (Kosten-Stromerlöse)/Genutzte Wärme </body>
+		<created>2018-08-07 10:30:16</created>
+		<closed>2018-10-05 08:28:08</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>Ergebnis-Wärme: Prozentangabe nicht korrekt</title>
+		<body>Bei hohen Pufferspeicherverlusten (z.B. Eingabe 20%) ergeben die Prozentwerte der Erzeuger aufsummiert über 100%. Vermutlich fällt dieser Fehler bei geringen Pufferspeicherverlusten nicht auf.  Außerdem soll - nachdem jetzt die Zeile mit dem Pufferspeicher abgesetzt ist - die Überschrift wieder "Nennleistung" und nicht "Nennleistung/Volumen" heißen. </body>
+		<created>2018-08-07 10:22:45</created>
+		<closed>2018-09-05 14:28:21</closed>
+	</bug>
+	<bug>
+		<id>70</id>
+		<title>Volllaststunden eines Abnehmers werden bei einer Änderung des Gebäudetyps nicht geändert</title>
+		<body>Wenn bei einem bestehenden Abnehmer der Gebäudetyp geändert wird, werden zwar die Volllaststunden des neuen Gebäudetyps eingeblendet, wenn man aber den Abnehmer speichert und neu öffnet, sind wieder die Volllaststunden des ursprünglichen Gebäudetyps da.</body>
+		<created>2018-08-03 13:28:00</created>
+		<closed>2018-08-13 15:27:17</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>Pufferspeicherangaben im Ergebnis und andere (kleinere) Punkte</title>
+		<body>* [x] Zur Heizwertberechnung: Der Heizwert bei 0% Wassergehalt stimmt jetzt, allerdings sind jetzt die Werte bei vorhandenem Wassergehalt zu hoch. Da scheint irgendwo ein Faktor an der falschen Stelle zu stehen… Zum Testen können folgende Wert verwendet werden: Fichte mit Wassergehalt 20% hat als Heizwert etwa 4.020 kWh/t. Bei der Eingabe von Srm stimmt es weiterhin. * [x] Die Voreinstellung von 1 % beim Aschegehalt bei importierten Holzbrennstoffen ist ok, bei den Energieträger-Daten ist allerdings ein kleiner Fehler drin: bei Pappel muss der Aschegehalt 2 % sein. * [x] Bei den Ergebnissen ist aufgefallen, dass beim Pufferspeicher immer das Volumen des ausgewählten Produkts erscheint und nicht das im Projekt eingegebene. Außerdem werden dort Wärmemenge und Anteil nicht mehr angezeigt. * [x] In gewissen Konstellationen werden in der Graphik "Verwendung Brennstoffenergie" (weitere Ergebnisse) die Verteilungsverluste nicht angezeigt.</body>
+		<created>2018-07-12 08:33:43</created>
+		<closed>2018-09-07 08:43:25</closed>
+	</bug>
+	<bug>
+		<id>65</id>
+		<title>Eingabe des Nutzungsgrads bei BHKW ausblenden</title>
+		<body>Bei BHKW kann man wie bei Kesseln manuell den Nutzungsgrad eingeben, dieser wird dann jedoch nicht in den Berechnungen verwendet. Daher soll entweder die Nutzungsgradeingabe gesperrt oder ganz ausgeblendet werden.</body>
+		<created>2018-07-04 12:26:17</created>
+		<closed>2018-09-07 15:36:42</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>Anzeige des max. Abscheidegrads bei Rauchgasreinigungen</title>
+		<body>In der Detailansicht von Rauchgasreinigungen in der Produktdatenbank wird der max. Abscheidegrad als Absolutwert angezeigt, dahinter steht aber %. Richtig wäre eine Anzeige als Prozentwert.</body>
+		<created>2018-07-03 08:06:09</created>
+		<closed>2018-07-14 11:35:19</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>Heizlast bei einem Lastgang</title>
+		<body>Wenn bei einem Abnehmer ein Lastgang importiert wird, berechnet Sophena die daraus resultierende Heizlast anhand der Volllaststunden des angegebenen Gebäudetyps. Das ist nicht richtig. Stattdessen sollte hier als Heizlast die maximale Heizlast aus dem Lastgang verwendet werden.  Deswegen sollen bei Abnehmern ein Lastgang immer separat erfasst werden, d.h. initial gibt es 3 Möglichkeiten:  -     verbrauchsgebundene Ermittlung -     bedarfgebundene Ermittlung -     Import eines Lastgangs  Wenn ein Abnehmer über einen Lastgang beschrieben wird, werden nur die dann relevanten Felder angezeigt und Gebäudetyp, Vollaststunden etc kann wegfallen. </body>
+		<created>2018-07-02 12:45:16</created>
+		<closed>2018-10-05 08:26:34</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>Beim Anlegen eines neuen Holzbrennstoffs ist die Voreinstellung für den Heizwert 5 kWh/t, müsste auf 5000 angepasst werden</title>
+		<body></body>
+		<created>2018-06-18 07:40:00</created>
+		<closed>2018-07-12 07:53:49</closed>
+	</bug>
+	<bug>
+		<id>57</id>
+		<title>Pufferspeicher: Voreinstellung der unteren Ladetemperatur ist derzeit auf Rücklauftemperatur, müsste Vorlauftemperatur sein.</title>
+		<body></body>
+		<created>2018-06-18 07:39:18</created>
+		<closed>2018-07-12 07:59:10</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>producer/consumer interruptions are out of sync when editing</title>
+		<body>A common JPA issue :(|</body>
+		<created>2018-02-28 13:02:06</created>
+		<closed>2018-02-28 13:33:34</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>92: Eine bei einem Abnehmer erfasste Hausübergabestation erscheint in den Investitionen und in der Wirtschaftlichkeit, auch wenn der Abnehmer deaktiviert wird.</title>
+		<body></body>
+		<created>2018-02-16 13:09:00</created>
+		<closed>2018-02-16 13:17:45</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>93: Beim Löschen einer Hausübergabestation bleibt die Investitionssumme bestehen.</title>
+		<body></body>
+		<created>2018-02-16 13:01:00</created>
+		<closed>2018-02-16 13:04:53</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>94: Beim Löschen eines Pufferspeichers bleibt die Investitionssumme und das Puffervolumen bestehen.</title>
+		<body>Der Pufferspeicher kann aber auch ohne Produkt konfiguriert werden: der Nutzer könnte zuerst eine Investitionssumme angegeben, dann ein Produkt ohne/mit Preisangabe auswählen und dieses löschen -&gt; was soll dann passieren? Auch das Volumen kann vor der Produktauswahl festgelegt werden...  -&gt; Beim Löschen sollen die Werte immer explizit zurückgesetzt werden</body>
+		<created>2018-01-29 16:34:01</created>
+		<closed>2018-02-16 12:57:57</closed>
+	</bug>
+	<bug>
+		<id>43</id>
+		<title>83: Wenn ein Pufferspeicher gelöscht wird, erscheint er trotzdem noch in der Liste der Investitionen</title>
+		<body>Liegt das an Punkt 94 ( #47 ) -&gt; Die Investitionssumme und das Pufferspeichervolumen werden beim Löschen nicht auf 0 gesetzt? </body>
+		<created>2018-01-22 11:52:47</created>
+		<closed>2018-04-30 12:38:51</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>82: Abnehmer: Beim Import eines Lastgangs mit Werten im 5-stelligen Bereich werden bei der Achsenbeschriftung der y-Achse Werte wie 2,56E4 angezeigt.</title>
+		<body></body>
+		<created>2018-01-22 11:51:55</created>
+		<closed>2018-11-15 09:27:44</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>51: Wirtschaftlichkeit: Anschlusskosten in den Projekt-Kosteneinstellungen werden nicht berücksichtigt</title>
+		<body>Sie müssten jedoch bei der Berechnung der Wirtschaftlichkeit bei den kapitalgebundenen Kosten (Zeile 2, mit und ohne Förderung) vor deren Berechnung von den zugrundegelegten Investitionskosten abgezogen werden. Die angezeigten Investitionskosten bleiben unverändert.  diese werden als Summe für alle Abnehmer angeben</body>
+		<created>2018-01-22 11:02:04</created>
+		<closed>2018-10-05 08:28:50</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>17: Investitionen: Beim Deaktivieren eines Kessels taucht er trotzdem unter Investitionen auf (aber nicht im Ergebnis)</title>
+		<body>Kein Rechenfehler, aber nicht logisch  Dies ist (jetzt) dann der Fall, wenn der Tab `Investitionen` bereits offen ist und dann ein Kessel aktiviert/deaktiviert wird. Mann könnte einen `Refresh`-Button hinzufügen, alles andere (Event-Bus etc.) wird recht kompliziert.  **-&gt; Umsetzung ähnlich wie bei den Ergebnissen: bei Doppelklick den Tab schließen und wieder Öffnen -&gt; dies wäre eine gute Lösung**</body>
+		<created>2018-01-22 10:33:31</created>
+		<closed>2018-04-30 12:36:18</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>Überarbeitung der Infotexte</title>
+		<body>Dieser Text?  &gt; Kosten für Übergeordnete Mess-und Regeltechnik liegen nicht in der gleichen Größenordnung wie Hydraulik + Elektroinstallation! Übergeordnete Mess- und Regeltechnik lassen sich überschlägig mit 15-20 % der Kosten für die Technik ohne Biomassekessel berechnen (das sind ggf. Spitzenlastkessel, Hydraulik- und Elektroinstallation, Wärmenetz-Technik, Pufferspeicher, evtl. BHKW).</body>
+		<created>2018-01-22 10:31:08</created>
+		<closed>2019-04-01 09:44:09</closed>
+	</bug>
+</bugs>

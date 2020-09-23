@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="GTL">
+	<bug id="104" opendate="2017-03-18 13:30:59" fixdate="2017-03-18 17:31:06">
+		<buginformation>
+			<summary>Módulo Administrar Usuarios - Edición de password [0.5h]</summary>
+			<description>Al querer editar un usuario que tiene el password seteado se está haciendo el MD5 del MD5 del password, perdiéndose el password original. Se pide agregar un checkbox indicando si se quiere cambiar el password o no y grabarlo de acuerdo al estado de ese chechbox.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/abm/portal/GuiABMUsuarioSistema.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/facade/impl/UsuarioSistemaFacade.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/facade/api/remote/UsuarioSistemaFacadeRemote.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="98" opendate="2017-02-17 19:02:28" fixdate="2017-02-17 19:57:54">
+		<buginformation>
+			<summary>ABM de Terminal - arreglar funcionamiento [30m]</summary>
+			<description>El ABM de Terminal no está funcionado del todo bien, arreglarlo.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/terminal/entidades/Terminal.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/terminal/facade/api/remote/TerminalFacadeRemote.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/abm/GuiABMTerminal.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/terminal/facade/impl/TerminalFacade.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="82" opendate="2016-09-15 21:20:27" fixdate="2016-09-15 21:21:11">
+		<buginformation>
+			<summary>Facturación - No toma precio correcto cuando se hace override de una gama (teñido) [1h]</summary>
+			<description>Se tiene una configuración de lista de precios de teñido con una gama sobreescrita, luego el precio que trae es el de la gama default y no el de la sobreescrita. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/entidades/ventas/cotizacion/GrupoTipoArticuloGama.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="80" opendate="2016-08-26 17:08:01" fixdate="2016-08-31 20:28:09">
+		<buginformation>
+			<summary>Ingreso de remitos múltiples [0.5h]</summary>
+			<description>En B, se intentó darle salida a un remito de entrada de 49 piezas y al parecer el sistema no particionó en 2 remitos de salida por más que hizo la advertencia. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/remitosalida/JDialogAgregarRemitoSalida.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2016-07-28 01:12:39" fixdate="2016-07-28 01:15:04">
+		<buginformation>
+			<summary>Lista de Precios - No permite configurar CALANDRADO/SANDFORIZADO [1h]</summary>
+			<description>En la lista de precios no está permitiendo configurar los tipos de productos CALANDRADO/SANDFORIZADO, si bien los permite elegir, al momento de grabarlo los deja como REPROCESO_SIN_CARGO. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/entidades/enums/ETipoProducto.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="72" opendate="2016-07-11 22:23:31" fixdate="2016-07-11 22:25:48">
+		<buginformation>
+			<summary>No suma impuestos sobre gastos al generar una ND proveedor por rechazo de cheque [2h]</summary>
+			<description>No suma impuestos sobre gastos al generar una ND proveedor por rechazo de cheque </description>
+		</buginformation>
+		<fixedfiles>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/facade/impl/ChequeFacade.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="71" opendate="2016-07-11 16:42:06" fixdate="2016-07-11 16:43:26">
+		<buginformation>
+			<summary>No calcula el precio correcto cuando se sobrescribe la gama [1h]</summary>
+			<description>No está tomando el precio para una gama sobrescrita en una configuración de lista de precios de teñido. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/entidades/ventas/cotizacion/GrupoTipoArticuloGama.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="68" opendate="2016-06-23 22:54:33" fixdate="2016-06-23 23:46:02">
+		<buginformation>
+			<summary>Error de Lazy al intentar facturar un remito de salida tomando diferentes ODTs [1h]</summary>
+			<description>Al intentar facturar un RS tomando diferentes ODTs (de distintos RE) tira un lazy intialization error al querer traer un dato de la ODT. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/dao/impl/RemitoSalidaDAO.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2016-06-06 21:44:40" fixdate="2017-05-11 22:28:01">
+		<buginformation>
+			<summary>Modificación de Remito - No actualiza las ODTs [0.5h]</summary>
+			<description>Cuando se produce una modificación de un Rem de Entrada, las ODTs no se actualizan. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/facade/impl/RemitoEntradaFacade.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/JDialogAgregarRemitoEntrada.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/facade/api/remote/RemitoEntradaFacadeRemote.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/facade/api/local/RemitoEntradaFacadeLocal.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="11" opendate="2015-07-22 20:06:36" fixdate="2015-07-22 20:09:14">
+		<buginformation>
+			<summary>BackGTL - Impresión de Recibo - Muestra leyenda "(por Textil Level S.A)" en el sistema de Test</summary>
+			<description>En la impresión de Recibo cuando se imprime desde el sistema de Test no debería mostrar la leyenda  (por Textil Level S.A). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>BackGestionTextilLevel/src/main/GTLLoginManager.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/entidades/portal/Modulo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="3" opendate="2015-06-02 19:48:02" fixdate="2015-06-02 20:05:40">
+		<buginformation>
+			<summary>Back GTL - IVA Ventas - Problema con Fechas + Tipo de Factura en Correcciones</summary>
+			<description>En el IVA Ventas, no se muestran los documentos correspondientes al último día consultado. Además, no se está mostrando el tipo de factura (A, B) en las correcciones. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/webservices/odt/api/remote/ODTServiceRemote.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/dao/api/local/OrdenDeTrabajoDAOLocal.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/odt/builder/BuilderAccionesODT.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/ODTTOConverter.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/odtwsclient/ODTService.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/stock/acciones/AccionDarSalida01PiezasEnMemoria.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/RemitoEntradaBusinessDelegate.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/odtwsclient/ODTServiceProxy.java</file>
+			<file>BackGestionTextilLevel/src/main/acciones/facturacion/AgregarRemitoSalidaAction.java</file>
+			<file>BackGestionTextilLevel/src/main/GuiBackTextilLevel.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/entidades/OrdenDeTrabajo.java</file>
+			<file>BackGestionTextilLevel/src/main/acciones/facturacion/AgregarRemitoSalidaStockAction.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/odt/ModuloODTModel.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/remitosalida/JDialogAgregarRemitoSalida.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/stock/gui/JDialogDetallePiezasFisicas.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/webservices/odt/impl/ODTService.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/dao/impl/OrdenDeTrabajoDAO.java</file>
+			<file>BackGestionTextilLevel/src/main/acciones/facturacion/AgregarRemitoSalidaVentaTelaAction.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/entidades/PiezaODT.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/JFrameVerMovimientosProveedor.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/cuentaarticulo/JFrameVerMovimientosCuentaArticulo.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/odt/acciones/AccionDarSalidaPiezasODT.java</file>
+			<file>BackGestionTextilLevel/src/main/acciones/facturacion/IngresoRemitoSalidaNormalHandler.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/odtwsclient/ODTServiceBindingStub.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/facade/api/local/OrdenDeTrabajoFacadeLocal.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/stock/acciones/AccionVentaDeTelaPiezasEnMemoria.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/facade/impl/OrdenDeTrabajoFacade.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/odt/builder/ColorManagerItemODT.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2" opendate="2015-06-02 19:45:52" fixdate="2015-06-02 20:05:25">
+		<buginformation>
+			<summary>Back GTL - IVA Compras - Problema con Fechas</summary>
+			<description>En el reporte de IVA Compras no se muestran todas las facturas y correcciones del último día consultado. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/dao/api/local/OrdenDeTrabajoDAOLocal.java</file>
+			<file>FWCommon/src/ar/com/fwcommon/util/BeanFactoryAbstract.java</file>
+			<file>FWCommon/src/ar/com/fwcommon/util/BeanFactoryRemoteAbstract.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/to/intercambio/PiezaODTTO.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/ODTTOConverter.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/dao/impl/OrdenDeTrabajoDAO.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/dao/impl/PiezaRemitoDAO.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/entidades/PiezaODT.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/facade/impl/OrdenDeTrabajoFacade.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/modulos/odt/acciones/AccionDarSalidaPiezasODT.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/RemitoEntradaBusinessDelegate.java</file>
+			<file>CoreGestionTextilLevel/src/ar/com/textillevel/modulos/odt/facade/api/remote/OrdenDeTrabajoFacadeRemote.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/odtwsclient/PiezaODTTO.java</file>
+			<file>BackGestionTextilLevel/src/ar/com/textillevel/gui/acciones/remitosalida/JDialogAgregarRemitoSalida.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="VaadinTest01">
+	<bug id="60" opendate="2015-02-06 19:04:45" fixdate="2015-02-07 02:51:39">
+		<buginformation>
+			<summary>Materias no guardadas quedan seleccionadas</summary>
+			<description>En la vista de suscripciones, si se marcan/desmarcan materias y se cambia de vista sin guardar los cambios, al volver a la vista de suscripciones, los elementos modificados se siguen mostrando así. Sin embargo la nueva selección no queda guardado en la base, por lo que es un tema de interfaz. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/presenters/SubscriptionsPresenter.java</file>
+			<file>src/com/yotelopaso/presenters/Google2ButtonListener.java</file>
+			<file>src/com/yotelopaso/components/RegWindow.java</file>
+			<file>src/com/yotelopaso/views/implementations/templates/AbstractHomeViewImpl.java</file>
+			<file>src/com/yotelopaso/views/implementations/SubscriptionsViewImpl.java</file>
+			<file>src/com/yotelopaso/domain/Subject.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="55" opendate="2015-02-06 18:41:10" fixdate="2015-02-06 22:49:00">
+		<buginformation>
+			<summary>Error al ingresar a una materia con contenido creado</summary>
+			<description>Cuando se pretender entrar a una materia a la que otro usuario ya le creo algun tipo de contenido (al menos se probó con Noticias), la pantalla queda en blanco porque no se agrega ningún componente. Esto sucede porque se pretende definir el alineamiento de un componente que todavía no se agregó al layout. Es decir, primero de debe agregar el componente al componente padre, y despues desde el componente padre setear el alineamiento del componente hijo. El problema se encuentra en SubjectNewsImpl:130 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/components/implementations/SubjectNewsImpl.java</file>
+			<file>src/com/yotelopaso/views/implementations/SubjectsViewImpl.java</file>
+			<file>src/com/yotelopaso/views/implementations/HomeViewImpl.java</file>
+			<file>src/com/yotelopaso/presenters/Google2ButtonListener.java</file>
+			<file>src/com/yotelopaso/components/RegWindow.java</file>
+			<file>src/com/yotelopaso/views/AbstractHomeView.java</file>
+			<file>src/com/yotelopaso/views/implementations/templates/AbstractHomeViewImpl.java</file>
+			<file>src/com/yotelopaso/views/implementations/CalendarViewImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="43" opendate="2015-02-05 02:45:22" fixdate="2015-02-09 18:55:59">
+		<buginformation>
+			<summary>Ordenar las tablas de eventos y archivos recientes en Home</summary>
+			<description>La tabla de archivos recientes esta ordenada de menor a mayor por fecha de publicación tendría que estar al revés. La tabla de eventos recientes hay que ordenarla por fecha de inicio de menor a mayor. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/persistence/DataManager.java</file>
+			<file>src/com/yotelopaso/persistence/FileManager.java</file>
+			<file>src/com/yotelopaso/persistence/SubjectManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2015-02-05 02:44:25" fixdate="2015-02-09 05:28:10">
+		<buginformation>
+			<summary>Controlar las fechas en el calendario</summary>
+			<description>Antes de poder crear un evento en el calendario se debe controlar que la fecha de inicio no sea mayor a la fecha final y que la fecha final no sea menor a la fecha de inicio. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/persistence/CalendarManager.java</file>
+			<file>src/com/yotelopaso/domain/UserCalendarEvent.java</file>
+			<file>src/com/yotelopaso/components/implementations/EventWindowImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2015-02-05 02:28:04" fixdate="2015-02-06 18:57:08">
+		<buginformation>
+			<summary>No reloadea las tablas de Home cuando editas algun evento o noticia</summary>
+			<description>Cuando se edita alguna notica o evento y se va a la HomeView los mismos aparecen como si no se los hubiera editado, no está reloadeando la tabla. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/persistence/CalendarManager.java</file>
+			<file>src/com/yotelopaso/persistence/NewsManager.java</file>
+			<file>src/com/yotelopaso/persistence/FileManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2015-02-04 02:46:19" fixdate="2015-02-04 03:00:29">
+		<buginformation>
+			<summary>Validación y elemento vacio en ventana de crear evento</summary>
+			<description>El formulario de crear evento debe tener seleccionado por default una materia vacia y un tipo de evento vacío. Debe realizarse la validación para que estos datos no puedan persistirse, y avisarle al usuario que debe completar correctamente los datos. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/persistence/CalendarManager.java</file>
+			<file>src/com/yotelopaso/Vaadintest01UI.java</file>
+			<file>src/com/yotelopaso/persistence/constraints/EventTypeValidator.java</file>
+			<file>src/com/yotelopaso/persistence/constraints/NotEmpty.java</file>
+			<file>src/com/yotelopaso/persistence/DataManager.java</file>
+			<file>src/com/yotelopaso/views/implementations/EventWindowImpl.java</file>
+			<file>src/com/yotelopaso/domain/UserCalendarEvent.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="35" opendate="2015-02-04 02:40:03" fixdate="2015-02-04 03:00:29">
+		<buginformation>
+			<summary>Error al abrir un archivo desde HomeView</summary>
+			<description>Cuando se clickea en algun item de la tabla de Archivos más recientes, se abre el archivo en una nueva pestaña pero se produce un error referido a EventWindowRO. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/presenters/HomePresenter.java</file>
+			<file>src/com/yotelopaso/views/components/EventWindowRO.java</file>
+			<file>src/com/yotelopaso/views/implementations/HomeViewImpl.java</file>
+			<file>src/com/yotelopaso/views/HomeView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2015-02-03 04:53:27" fixdate="2015-02-04 03:00:29">
+		<buginformation>
+			<summary>Modificar orden de las noticias en Novedades</summary>
+			<description>Las noticias mas viejas aparecen arriba cuando deberían aparecer las mas nuevas. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/persistence/NewsManager.java</file>
+			<file>src/com/yotelopaso/persistence/SubjectManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="28" opendate="2015-01-26 23:41:44" fixdate="2015-02-05 03:58:06">
+		<buginformation>
+			<summary>Corregir manejo de ventana en la subida de archivos desde Drive</summary>
+			<description>Cuando se va a subir un archivo desde Google Drive, en el momento de invocación del Picker, debe cerrarse la ventana para completar los datos del archivo, y guardar los datos cargados en una variable temporal. Luego, en caso que se seleccione un archivo desde el Picker, debe abrirse de nuevo la ventana pero con los campos cargados tomando los datos de la variable temporal. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/components/implementations/SubjectNewsImpl.java</file>
+			<file>src/com/yotelopaso/views/HomeView.java</file>
+			<file>src/com/yotelopaso/views/implementations/SubjectsViewImpl.java</file>
+			<file>src/com/yotelopaso/views/SubjectsView.java</file>
+			<file>src/com/yotelopaso/views/implementations/HomeViewImpl.java</file>
+			<file>src/com/yotelopaso/components/implementations/EventWindowImpl.java</file>
+			<file>src/com/yotelopaso/components/NewsVisualizer.java</file>
+			<file>src/com/yotelopaso/domain/User.java</file>
+			<file>src/com/yotelopaso/presenters/CalendarPresenter.java</file>
+			<file>src/com/yotelopaso/presenters/HomePresenter.java</file>
+			<file>src/com/yotelopaso/components/EventWindowRO.java</file>
+			<file>src/com/yotelopaso/components/UploadFiles.java</file>
+			<file>src/com/yotelopaso/presenters/SubjectNewsPresenter.java</file>
+			<file>src/com/yotelopaso/views/implementations/CalendarViewImpl.java</file>
+			<file>src/com/yotelopaso/components/Editor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="18" opendate="2015-01-09 20:21:18" fixdate="2015-02-05 19:43:59">
+		<buginformation>
+			<summary>Refresco automático de tabla de archivos</summary>
+			<description>Luego de cargarse exitósamente un archivo el método que sea, se debe permanecer en la misma vista y refrescar automáticamente la tabla para mostrar el nuevo archivo cargado. Actualmente esto no funciona, y la redirección se hace a otra vista. El refresco se hace cuando se navega nuevamente a la materia solamente. Si no se consigue mediante un Listener el comportamiento deseado, probablemente haya que reprogramar la tabla. Actualmente se usa un custom component con una tabla, en vez de la tabla Table asociada a un JPAContainer provista por el framework, que tiene funcionalidades más completas. La razón de esto era para incluir un elemento Link en la tabla, cosa que no sea había conseguido usando JPAContainer. Se propone utilizar una tabla con un JPAContainer asociado. Y de no encontrarse una mejor formar de introducir el elemento Link en la tabla, quizas la única opción sea modificar la entidad para que el atributo link pase de ser un String a un Link. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/com/yotelopaso/views/implementations/SubjectsViewImpl.java</file>
+			<file>src/com/yotelopaso/presenters/FilesTablePresenter.java</file>
+			<file>src/com/yotelopaso/views/SubjectsView.java</file>
+			<file>src/com/yotelopaso/components/UploadFiles.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

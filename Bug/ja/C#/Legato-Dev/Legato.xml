@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>56</id>
+		<title>AIMPが閉じられると多数の例外が発生する</title>
+		<body></body>
+		<created>2018-05-27 13:10:40</created>
+		<closed>2018-05-27 13:13:31</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>Remote API のメモリ読出し(FetchAlbumArtAsync)でHelper.RequestAlbumArtが失敗した後、メモリ呼び出し経由のアルバムアート取得が一切利用できなくなる不具合</title>
+		<body>恐らく、AIMP上でもアルバムアートが設定されていない場合にHelper.RequestAlbumArtが失敗するようです(？) Receiverを再生成＋通知登録(Helper.RegisterNotify)をし直しても状況は変わらず。</body>
+		<created>2017-12-10 09:50:31</created>
+		<closed>2017-12-10 13:04:20</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>複数回CurrentTrackChangedが起こる</title>
+		<body>前からそうだっけ</body>
+		<created>2017-12-10 06:18:31</created>
+		<closed>2017-12-10 07:31:43</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>稀にアルバムアートが前の曲から更新されない</title>
+		<body>~~現在はこの問題を、CurrentTrackChangedイベントの発生を遅延させてアルバムアートの更新を待って回避しようとしています。~~ ~~この実装は、根本的な解決ではありません。~~  ~~出来れば他の実装を検討していきたい~~  ## 対応策 タグ情報からアルバムアートを取得するように https://github.com/Legato-Dev/Legato/projects/1  ## 関連 - #31 FLAC - #32 ID3 - #36 ALAC - #34 自動検索(インターネット/ディレクトリ) </body>
+		<created>2017-09-24 09:56:37</created>
+		<closed>2017-12-28 00:28:17</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>AIMPを開いた状態でないと、TrackInfo CurrentTrack で例外が発生し落ちる</title>
+		<body>public static TrackInfo CurrentTrack 　   - MemoryMappedFile.OpenExisting で例外発生。 　・'System.IO.FileNotFoundException (System.Core.dll )  Legato.TwitterSample を起動した時に、非同期で AIMP を立ち上げるか、 CurrentTrack を null を返すか 適当な例外を返す仕様にするべき。 </body>
+		<created>2017-09-23 15:11:09</created>
+		<closed>2017-09-23 15:31:17</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>CurrentTrackChangedが発生したタイミングでアルバムアートが更新されていない場合がある</title>
+		<body>AIMP側が通知を発行するタイミングの問題かなあ つらそう</body>
+		<created>2017-09-23 06:04:23</created>
+		<closed>2017-09-23 11:24:19</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>AIMP で SoundCloud 上の曲を再生すると、InvalidOperationException が発生する</title>
+		<body>9/22 21:00 時点の Legato.Sample で発生してる</body>
+		<created>2017-09-23 01:16:01</created>
+		<closed>2017-09-23 01:19:09</closed>
+	</bug>
+	<bug>
+		<id>15</id>
+		<title>曲が変更されたときに再生状態(State)が同じなのにもかかわらず、プロパティ変更通知が発生する</title>
+		<body>仕様かも。だけど、つらいので発生しないようにしたい 設定項目として挙動(発生する/発生しない)を変更できたらcoolかも  ※実現には #14 の実装が必須</body>
+		<created>2017-09-21 15:26:39</created>
+		<closed>2017-12-04 13:46:33</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>RemoteHelper コミット忘れ</title>
+		<body>* ReadToUint32 / 64 メソッド * ReadToString メソッド</body>
+		<created>2017-09-19 22:45:01</created>
+		<closed>2017-09-20 17:09:13</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>Legato.csの修正</title>
+		<body>未完成の部分を間違えてコミットした分だっけ？ </body>
+		<created>2017-09-19 15:35:14</created>
+		<closed>2017-09-20 17:09:29</closed>
+	</bug>
+</bugs>

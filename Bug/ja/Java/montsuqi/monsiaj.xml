@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>204</id>
+		<title>WebSocket接続にプロキシ設定ができない</title>
+		<body></body>
+		<created>2019-12-13 02:46:32</created>
+		<closed>2020-01-08 05:26:50</closed>
+	</bug>
+	<bug>
+		<id>132</id>
+		<title>ログイン画面でSystemLookAndFeelにならない</title>
+		<body>Windows10, monsiaj 2.0.16、AdoptOpenJDK 11.4ですが、ログイン画面のLAFがWindows LAFになりません。  Launcher.java ```     public void launch(String[] args) {         if (checkCommandLineOption(args)) {             return;         }                  try {             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {             java.util.logging.Logger.getLogger(Launcher.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);         } ```  の如く、swing componentを使う前にLAF設定を行うほうが良いと思われます。 あるいは、SwingUtilities.updateComponentTreeUI(f)してもよいでしょう。</body>
+		<created>2019-07-19 03:03:51</created>
+		<closed>2019-07-30 05:25:18</closed>
+	</bug>
+</bugs>

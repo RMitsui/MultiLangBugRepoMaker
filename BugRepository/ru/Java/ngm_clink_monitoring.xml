@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="ngm_clink_monitoring">
+	<bug id="209" opendate="2016-03-26 11:54:32" fixdate="2016-03-26 13:38:23">
+		<buginformation>
+			<summary>В диалоге свойств объекта при малом экране и большом списке свойств скрывается кнопка ОК.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/dialogs/DistanceExceededDialog.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/dialogs/YesNoDialog.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/CreateObjectFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/dialogs/SetLineStatusDialog.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/dialogs/AttributesDialog.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/dialogs/SyncDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="201" opendate="2015-10-27 12:26:21" fixdate="2015-10-27 15:34:14">
+		<buginformation>
+			<summary>Падение при отсутствии sd-карты</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/GISApplication.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/activities/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/util/FoclConstants.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="193" opendate="2015-08-18 11:14:43" fixdate="2015-08-18 11:15:29">
+		<buginformation>
+			<summary>Иногда падение при открытии главного меню</summary>
+			<description>Из веб-логгера https://gis.compulink.ru/mobile_debug/message/810 "line": "Exception: java.lang.NullPointerException" "line": "    com.nextgis.ngm_clink_monitoring.activities.MainActivity.getMainFragmentTag(MainActivity.java:340)" "line": "    com.nextgis.ngm_clink_monitoring.activities.MainActivity.onCreateOptionsMenu(MainActivity.java:625)" </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/activities/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="184" opendate="2015-07-29 14:06:25" fixdate="2015-07-31 16:39:15">
+		<buginformation>
+			<summary>Если при синхронизации произошла какая ошибка, показывать это пользователю и отправлять отчет с ошибкой на сервер</summary>
+			<description>Сейчас пользователь видит нормально завершившуюся синхронизацию, а отчет на сервере никак не выделяется среди обычных. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/GISApplication.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/adapters/FoclSyncAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/services/FoclReportService.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/util/LogcatWriter.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/util/FoclConstants.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/map/FoclVectorLayer.java</file>
+			<file>app/src/main/java/ru/elifantiev/android/roboerrorreporter/ExceptionHandler.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="180" opendate="2015-07-23 12:17:11" fixdate="2015-07-23 16:08:27">
+		<buginformation>
+			<summary>Проблема с расстоянием до ближайшей точки </summary>
+			<description>Когда воспроизводится: - Закрыть приложение, убить из памяти (лучше перезагрзуить девайс) - Открыть приложение, выбрать линию, поставить вторую точку - Попробовать добавить вторую точку.   В этот момент расстояние должно отображаться. Но оно не отображается (две черты). Если переключиться на карту и вернуться - все ок. Если не переключаться, и сразу жать готово - все проходит нормально, без запроса о пересъемки (значит расстояние определилось корректно) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/CreateObjectFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="174" opendate="2015-07-15 18:44:58" fixdate="2015-08-17 15:39:09">
+		<buginformation>
+			<summary>Закрытие формы ввода очень длительное</summary>
+			<description>Очень долго закрывается форма ввода данных после нажатия кнопки Готово. Форма закрывается 5-10 сек. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/map/FoclStyleRule.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/dialogs/YesNoDialog.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/CreateObjectFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="163" opendate="2015-07-08 23:09:35" fixdate="2015-07-10 23:01:20">
+		<buginformation>
+			<summary>При установке статуса Построено и последующей синхронизации соответствующий слой не удаляется из списка</summary>
+			<description>Проблема во внутренних индексах слоев. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/map/FoclStruct.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/map/FoclProject.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="155" opendate="2015-07-06 13:23:11" fixdate="2015-07-14 19:29:04">
+		<buginformation>
+			<summary>Убрать лишний запрос</summary>
+			<description>При фиксации координат первой точки появляется сообщение «Вы действительно хотите изменить статус линии?». Данное сообщение выводить не нужно. ![image](https://cloud.githubusercontent.com/assets/1277422/8522963/49dc3ef4-23fb-11e5-9181-7de4a5e81fe4.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectTypesFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="136" opendate="2015-07-03 12:47:16" fixdate="2015-08-20 09:33:30">
+		<buginformation>
+			<summary>У фотографии отображается только рамка</summary>
+			<description>Скриншот: ![screenshot_2015-07-03-11-22-51](https://cloud.githubusercontent.com/assets/1277422/8499377/c41c21c4-219a-11e5-9c8e-2bfdd08181c0.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/adapters/ObjectPhotoFileAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/adapters/ObjectPhotoAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/CreateObjectFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="131" opendate="2015-07-03 12:27:43" fixdate="2015-07-15 18:49:22">
+		<buginformation>
+			<summary>Ошибка при открытии карты</summary>
+			<description>У Сергея на девайся воспроизводится стабильно Попросил установить тестовую сборку. Ждем репортов. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="129" opendate="2015-07-02 15:08:01" fixdate="2015-07-04 19:53:33">
+		<buginformation>
+			<summary>Если при открытой клавиатуре появляется диалог "Расстояние превышено", то кнопка Назад не доступна</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/util/ViewUtil.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/CreateObjectFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="128" opendate="2015-07-02 15:06:15" fixdate="2015-07-04 19:38:32">
+		<buginformation>
+			<summary>Если была открытка экранная клавиатура и закрыта, то при нажатии кнопки Назад нет предупреждения</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/activities/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectTypesFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/dialogs/YesNoDialog.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/CreateObjectFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="127" opendate="2015-07-01 16:09:39" fixdate="2015-08-14 11:19:30">
+		<buginformation>
+			<summary>Кривая форма</summary>
+			<description>Иногда, при неизвестных обстоятельствах выводятся кривые формы: ![screenshot_2015-07-01-13-50-26](https://cloud.githubusercontent.com/assets/1277422/8459253/a669ed36-2024-11e5-9c82-8eab59413b90.png) ![screenshot_2015-07-01-12-16-04](https://cloud.githubusercontent.com/assets/1277422/8459257/afd91bda-2024-11e5-9ed7-e3ce69e0a4cc.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectTypesFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/adapters/LineNameAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/LineListFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/CreateObjectFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="109" opendate="2015-07-01 14:59:32" fixdate="2015-07-04 12:56:00">
+		<buginformation>
+			<summary>Пропадает кнопка Карта </summary>
+			<description>С последней формы, после перехода на карту и возвращения с неё, кнопка карта пропадает из заголовка </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/activities/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="89" opendate="2015-05-25 09:27:36" fixdate="2015-08-11 14:56:49">
+		<buginformation>
+			<summary>На последней релизной сборке падение приложения</summary>
+			<description>При попытке открыть карту появляется сообщение «Приложение Компьюлинк Мониторинг остановлено». </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/MapFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="86" opendate="2015-05-18 14:56:01" fixdate="2015-05-19 15:46:32">
+		<buginformation>
+			<summary>Обработка пробелов в логине и URL</summary>
+			<description>Если при вводе логина пользователь случайно добавил пробел в конце, то установить подключение не удается. Программа должна автоматически удалять начальные и конечные пробелы. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/SyncLoginFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="82" opendate="2015-05-13 15:18:26" fixdate="2015-05-15 18:09:27">
+		<buginformation>
+			<summary>Не создается директория для фото по умолчанию</summary>
+			<description>Наблюдается следующая проблема в мобильном приложении. Я удалил и снова установил мобильное приложение на смартфоне. Никаких настроек не менял. При попытке сделать фото появляется сообщение об ошибке (см. скриншот ниже). Похоже данная проблема связана с отсутствием папки ngm_clink_monitoring на внутреннем накопителе. Если эту папку создать вручную, то ошибка больше не появляется. ![image](https://cloud.githubusercontent.com/assets/1277422/7613945/61b79ca0-f99c-11e4-8fee-4ffbead9f113.png)  Настройки сохранения фотографий: ![image](https://cloud.githubusercontent.com/assets/1277422/7613950/67aae2ac-f99c-11e4-909a-20aa759a2a4f.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/GISApplication.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectStatusFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/util/FileUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="63" opendate="2015-04-03 18:59:42" fixdate="2015-05-20 18:39:30">
+		<buginformation>
+			<summary>При отключенной автосинхронизации приложение в каких-то случаях всё равно ее выполняет</summary>
+			<description>Уже проверил всё, что можно. Пока не понял, в чем причина. Если в этой ситуации выгрузить приложение из памяти, то после загрузки и ручной синхронизации эфект не повторяется. Но и как его поймать, пока не понял. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/GISApplication.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/activities/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/util/UIUpdater.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="58" opendate="2015-03-25 22:48:12" fixdate="2015-03-26 07:02:41">
+		<buginformation>
+			<summary>Фотографии в галерее прокручиваются рывками</summary>
+			<description>Нужно перенести формирование превьюшек фотографий в другой поток из потока UI. Подробнее [по ссылке](http://developer.android.com/training/improving-layouts/smooth-scrolling.html). </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectStatusFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectListFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/adapters/ObjectPhotoAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="57" opendate="2015-03-25 16:43:34" fixdate="2015-03-25 18:06:36">
+		<buginformation>
+			<summary>Формировать файл во временной папке или в памяти для записи EXIF-данных перед добавлением в базу слоев</summary>
+			<description> Иначе может уйти на сервер без EXIF-данных, если в этот момент будет синхронизация. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectStatusFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/util/FileUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="52" opendate="2015-03-24 10:56:29" fixdate="2015-03-25 17:30:09">
+		<buginformation>
+			<summary>При попытке добавить подключение через настройки приложение падает</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/FoclLoginFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="39" opendate="2015-03-10 15:27:32" fixdate="2015-03-11 18:18:37">
+		<buginformation>
+			<summary>Сразу после старта при повороте экрана исчезают элементы на первой форме</summary>
+			<description>Добавил для памятки. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/FoclLoginFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/LineListFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectListFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectStatusFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/ObjectTypesFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/activities/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/activities/MapActivity.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/SettingsFragment.java</file>
+			<file>app/src/main/java/com/nextgis/ngm_clink_monitoring/fragments/PerformSyncFragment.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

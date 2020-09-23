@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="UdonRoad">
+	<bug id="135" opendate="2016-10-06 01:16:50" fixdate="2016-10-06 07:58:39">
+		<buginformation>
+			<summary>inReplyToがただのメンションになっている</summary>
+			<description>リプライするツイートのIDが正しくセットされていない様子 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/freshdigitable/udonroad/TweetInputFragment.java</file>
+			<file>app/src/androidTest/java/com/freshdigitable/udonroad/MainActivityInstTestBase.java</file>
+			<file>app/src/androidTest/java/com/freshdigitable/udonroad/TweetInputFragmentInstTest.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="81" opendate="2016-07-26 11:32:22" fixdate="2016-07-31 05:53:19">
+		<buginformation>
+			<summary>サムネイルのクリックリスナが抜ける</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/freshdigitable/udonroad/MediaImageView.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/TimelineAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="77" opendate="2016-07-26 10:49:56" fixdate="2016-08-02 10:01:51">
+		<buginformation>
+			<summary>UserInfoで画像を開くとMainに戻った後にアプリが落ちる</summary>
+			<description>cacheを閉じすぎている？activity遷移のテストを書いておく必要がある。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/androidTest/java/com/freshdigitable/udonroad/MainToUserInfoActivityInstTest.java</file>
+			<file>app/src/androidTest/java/com/freshdigitable/udonroad/MainActivityInstTestBase.java</file>
+			<file>app/src/androidTest/java/com/freshdigitable/udonroad/MockMainApplication.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/StatusDetailFragment.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/realmdata/StatusCacheRealm.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/realmdata/TimelineStoreRealm.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/DataStoreModule.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/MainApplication.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/datastore/StatusCache.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/UserInfoAppbarFragment.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/TweetAppbarFragment.java</file>
+			<file>app/src/androidTest/java/com/freshdigitable/udonroad/util/StatusViewMatcher.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/MediaViewActivity.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/ReplyActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="72" opendate="2016-07-19 11:19:11" fixdate="2017-04-16 16:47:55">
+		<buginformation>
+			<summary>VideoViewの代替</summary>
+			<description># why  VideoViewは内部のAudioManagerがcontextを解放しないためメモリリークが発生する。applicationContextを渡して作れば良い（それでもエンコードエラーの際にダイアログを表示しようとして落ちるらしい）らしいが、xmlからinflateしたものについては確実にリークする様子。  refs: https://code.google.com/p/android/issues/detail?id=152173 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/freshdigitable/udonroad/MediaViewActivity.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/VideoMediaFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="43" opendate="2016-06-19 17:18:09" fixdate="2016-06-29 05:15:11">
+		<buginformation>
+			<summary>RTされたツイートが削除されると落ちる</summary>
+			<description>``` 06-20 02:11:14.095 30877-30967/com.freshdigitable.udonroad D/UserStreamUtil: StatusDeletionNoticeImpl{statusId=744578107277905920, userId=42432969} 06-20 02:11:14.097 30877-30967/com.freshdigitable.udonroad D/UserStreamUtil: StatusDeletionNoticeImpl{statusId=744578159392088064, userId=42432969} 06-20 02:11:14.124 30877-30877/com.freshdigitable.udonroad D/RealmTimelineAdapter: call: deletedStatus 06-20 02:11:14.125 30877-30877/com.freshdigitable.udonroad D/RealmTimelineAdapter: call: deletedStatus 06-20 02:11:14.144 30877-30877/com.freshdigitable.udonroad D/REALM: Row 0x9f4217a0 is no longer attached! 06-20 02:11:14.144 30877-30877/com.freshdigitable.udonroad D/REALM: jni: ThrowingException 13, Object is no longer valid to operate on. Was it deleted by another thread?, . 06-20 02:11:14.145 30877-30877/com.freshdigitable.udonroad D/REALM: Exception has been throw: Illegal State: Object is no longer valid to operate on. Was it deleted by another thread? 06-20 02:11:14.145 30877-30877/com.freshdigitable.udonroad D/AndroidRuntime: Shutting down VM 06-20 02:11:14.148 30877-30877/com.freshdigitable.udonroad E/AndroidRuntime: FATAL EXCEPTION: main                                                                              Process: com.freshdigitable.udonroad, PID: 30877                                                                              java.lang.IllegalStateException: Illegal State: Object is no longer valid to operate on. Was it deleted by another thread?                                                                                  at io.realm.internal.UncheckedRow.nativeGetLong(Native Method)                                                                                  at io.realm.internal.UncheckedRow.getLong(UncheckedRow.java:128)                                                                                  at io.realm.StatusRealmRealmProxy.realmGet$id(StatusRealmRealmProxy.java:109)                                                                                  at com.freshdigitable.udonroad.realmdata.StatusRealm.getId(StatusRealm.java:61)                                                                                  at com.freshdigitable.udonroad.TimelineAdapter.getSelectedTweetId(TimelineAdapter.java:42)                                                                                  at com.freshdigitable.udonroad.TimelineAdapter.onBindViewHolder(TimelineAdapter.java:84)                                                                                  at com.freshdigitable.udonroad.TimelineAdapter.onBindViewHolder(TimelineAdapter.java:22)                                                                                  at android.support.v7.widget.RecyclerView$Adapter.onBindViewHolder(RecyclerView.java:5768)                                                                                  at android.support.v7.widget.RecyclerView$Adapter.bindViewHolder(RecyclerView.java:5801)                                                                                  at android.support.v7.widget.RecyclerView$Recycler.getViewForPosition(RecyclerView.java:5037)                                                                                  at android.support.v7.widget.RecyclerView$Recycler.getViewForPosition(RecyclerView.java:4913)                                                                                  at android.support.v7.widget.LinearLayoutManager$LayoutState.next(LinearLayoutManager.java:2029)                                                                                  at android.support.v7.widget.LinearLayoutManager.layoutChunk(LinearLayoutManager.java:1414)                                                                                  at android.support.v7.widget.LinearLayoutManager.fill(LinearLayoutManager.java:1377)                                                                                  at android.support.v7.widget.LinearLayoutManager.onLayoutChildren(LinearLayoutManager.java:588)                                                                                  at android.support.v7.widget.RecyclerView.dispatchLayoutStep1(RecyclerView.java:3211)                                                                                  at android.support.v7.widget.RecyclerView.dispatchLayout(RecyclerView.java:3067)                                                                                  at android.support.v7.widget.RecyclerView.consumePendingUpdateOperations(RecyclerView.java:1505)                                                                                  at android.support.v7.widget.RecyclerView.access$400(RecyclerView.java:151)                                                                                  at android.support.v7.widget.RecyclerView$1.run(RecyclerView.java:305)                                                                                  at android.view.Choreographer$CallbackRecord.run(Choreographer.java:767)                                                                                  at android.view.Choreographer.doCallbacks(Choreographer.java:580)                                                                                  at android.view.Choreographer.doFrame(Choreographer.java:549)                                                                                  at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:753)                                                                                  at android.os.Handler.handleCallback(Handler.java:739)                                                                                  at android.os.Handler.dispatchMessage(Handler.java:95)                                                                                  at android.os.Looper.loop(Looper.java:211)                                                                                  at android.app.ActivityThread.main(ActivityThread.java:5335)                                                                                  at java.lang.reflect.Method.invoke(Native Method)                                                                                  at java.lang.reflect.Method.invoke(Method.java:372)                                                                                  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1016)                                                                                  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:811) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/freshdigitable/udonroad/realmdata/RealmTimelineAdapter.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/TimelineAdapter.java</file>
+			<file>app/src/androidTest/java/com/freshdigitable/udonroad/MainActivityInstTest.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/TimelineAnimator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2016-06-12 09:33:58" fixdate="2016-10-25 05:50:02">
+		<buginformation>
+			<summary>ユーザアイコンが時々別人になる</summary>
+			<description>StatusViewがリサイクルされる時にPicassoのフェッチをキャンセルしなければならないのではないか </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/freshdigitable/udonroad/StatusViewImageHelper.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/TimelineAdapter.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/TimelineAnimator.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2016-06-11 16:07:41" fixdate="2016-06-12 09:30:19">
+		<buginformation>
+			<summary>FABのフリックイベントが正しく処理されていない</summary>
+			<description>TimelineFragmentをつけたり外したりするときイベントリスナが正しくセットされていない恐れがあるので調査する。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/freshdigitable/udonroad/UserInfoPagerFragment.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/TimelineFragment.java</file>
+			<file>app/src/main/java/com/freshdigitable/udonroad/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

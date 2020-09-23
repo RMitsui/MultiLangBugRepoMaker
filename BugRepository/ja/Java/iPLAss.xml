@@ -1,0 +1,1234 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="iPLAss">
+	<bug id="550" opendate="2020-08-05 10:16:13" fixdate="2020-08-06 08:01:38">
+		<buginformation>
+			<summary>WebAPI、AJP経由、且つmultipart/form-dataの場合、ボディコンテンツが正しく読み込めない（3.0）</summary>
+			<description>Backport of #549</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/rest/MtpContainerRequestFilter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="549" opendate="2020-08-05 10:15:13" fixdate="2020-08-06 05:35:25">
+		<buginformation>
+			<summary>WebAPI、AJP経由、且つmultipart/form-dataの場合、ボディコンテンツが正しく読み込めない</summary>
+			<description>WebAPI、AJP経由、且つmultipart/form-dataの場合、ボディコンテンツが正しく読み込めない。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/rest/MtpContainerRequestFilter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="545" opendate="2020-07-16 09:20:23" fixdate="2020-07-16 10:04:12">
+		<buginformation>
+			<summary>AdminConsole、Template定義のReport、Binaryタイプを選択時の画像取得が404エラーになる（3.0）</summary>
+			<description>Backport of https://github.com/ISID/iPLAss/issues/535</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/base/ui/widget/MetaDataSelectItem.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="544" opendate="2020-07-15 06:05:12" fixdate="2020-07-15 07:08:33">
+		<buginformation>
+			<summary>EntityViewの管理設定でdefaultが２つ表示されてしまう（3.0.24 Only）（3.0）</summary>
+			<description>Backport of https://github.com/ISID/iPLAss/issues/543 .  Only occurs in 3.0.24</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/viewcontrol/ViewControlSettingListGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/viewcontrol/ViewControlSettingPane.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="543" opendate="2020-07-15 05:17:38" fixdate="2020-07-15 08:14:28">
+		<buginformation>
+			<summary>EntityViewの管理設定でdefaultが２つ表示されてしまう</summary>
+			<description>EntityView定義(SearchLayout、DetailLayout、BulkLayout)のどれかでdefault Viewが定義されている場合に、 EntityView管理画面で１度保存すると、次に管理画面を表示する際にdefaultが２つ表示されてしまう。 この状態でView管理設定を保存するとdefaultが２つ保存される。  https://github.com/ISID/iPLAss/issues/520 の対応漏れ。 Viewの管理定義保存時に、管理定義のViewNameをdefaultの場合はnullで保存するように対応したが、 管理画面表示時にView定義(View定義としてはdefaultを""で返す)とのマージで一致せず２つ表示されている。  NOTE: 現状で回避したい場合は、Definedが１つも設定されていない default 設定は削除可能なので手動で削除してください。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/viewcontrol/ViewControlSettingListGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/viewcontrol/ViewControlSettingPane.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="535" opendate="2020-07-06 09:26:41" fixdate="2020-07-16 09:19:19">
+		<buginformation>
+			<summary>AdminConsole、Template定義のReport、Binaryタイプを選択時の画像取得が404エラーになる</summary>
+			<description>Template定義で"Report"、"Binary"を選択時、 Layout Actionの横のリフレッシュボタン、リンクボタンの画像取得が404エラーになっている。 (無効な画像ボタンである為、機能的な影響はなし)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/base/ui/widget/MetaDataSelectItem.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="529" opendate="2020-07-02 02:52:00" fixdate="2020-07-13 10:45:22">
+		<buginformation>
+			<summary>ParameterMappingでパスをマッピングした場合、URLデコードする</summary>
+			<description>ParameterMappingでパスをマッピングした場合、URLデコードする。 現状、パスに日本語などが入っているとパラメータとして取得した場合、エンコードされたままの値になっている。   ### Compatibility notes 3.0.xにて、既にアプリ側のカスタムロジックでマッピングされたパスを自らデコードしている場合、2重にデコードされる可能性があります。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/web/actionmapping/VariableParameterValueMap.java</file>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/WebApiVariableParameterValueMap.java</file>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/web/RequestPath.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="524" opendate="2020-06-22 09:52:18" fixdate="2020-06-24 12:35:40">
+		<buginformation>
+			<summary>EntityCRUD WebAPI、jsonとcsvでfilter指定の場合の取得プロパティが異なる（3.0）</summary>
+			<description>Backport of #523  ※ 3.0においては、デフォルト値は、現行のまま json -&gt; mapped byを取得する csv -&gt; mapped byを取得しない にする。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/command/entity/GetEntityCommand.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntitySearchCsvWriter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityCsvWriter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityWriteOption.java</file>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/EntityWebApiService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="523" opendate="2020-06-22 09:50:11" fixdate="2020-07-02 06:57:07">
+		<buginformation>
+			<summary>EntityCRUD WebAPI、jsonとcsvでfilter指定の場合の取得プロパティが異なる</summary>
+			<description>EntityCRUD WebAPI、jsonとcsvでfilter指定の場合の取得プロパティが異なる。 jsonの場合、mappedByのReferenceも含め取得しているが、csvの場合はmappedByのReferenceは取得していない。 デフォルトとしては、jsonでmappedByのReferenceを取得しないように修正する。 互換性を考慮し、デフォルト値は設定ファイルで変更可能にする。 また、WebAPIのパラメータでmappedByのReferenceを取得するか否かを指定可能にする。  ### Compatibility notes 3.0では、json形式でレスポンスされていた場合、デフォルトでmappedByのReferenceが取得できたが、3.1からはデフォルトでは取得できない。取得するためには、設定ファイルもしくは、WebAPIコール時のパラメータで明示的に取得するように指定する必要がある。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/command/entity/GetEntityCommand.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntitySearchCsvWriter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityCsvWriter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityWriteOption.java</file>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/EntityWebApiService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="520" opendate="2020-06-19 09:06:30" fixdate="2020-06-25 09:26:19">
+		<buginformation>
+			<summary>EntityViewの管理設定にてdefault view定義でautoGenerateをtrueにしても自動生成されない</summary>
+			<description>EntityViewの管理設定にてdefault view定義でautoGenerateをtrueにしても自動生成されない。 また、 EntityMenuItemのview名プルダウンにおいて、Viewの管理設定で定義されているview名を考慮していないため、選択できない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/viewcontrol/ViewControlSettingListGridRecord.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/FormViewUtil.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/viewcontrol/ViewControlSettingListGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/menu/item/MenuItemDialog.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/EntityView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="512" opendate="2020-06-11 05:13:02" fixdate="2020-06-11 11:20:46">
+		<buginformation>
+			<summary>AdminConsole、CSVDownloadの条件にマルチバイト文字を含む場合に結果が不正になる（3.0）</summary>
+			<description>https://github.com/ISID/iPLAss/issues/511 のBackport対応  _(English)_ Backport of https://github.com/ISID/iPLAss/issues/511</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/entityexplorer/EntityCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/template/BinaryTemplateDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/langexplorer/LangCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/metaexplorer/MetaDataNameListDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/eql/EqlCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/logexplorer/LogFileDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/base/io/download/AdminDownloadService.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/metaexplorer/MetaDataConfigDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/pack/PackageDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/MetaDataHistoryConfigDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/staticresource/StaticResourceDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/entity/EntityJavaMappingClassDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/message/MessageItemCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/template/ReportTemplateDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/auth/builtin/BuiltinAuthUserCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/entityexplorer/EntityConfigDownloadServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="511" opendate="2020-06-11 05:06:35" fixdate="2020-06-11 11:16:55">
+		<buginformation>
+			<summary>AdminConsole、CSVDownloadの条件にマルチバイト文字を含む場合に結果が不正になる</summary>
+			<description>AdminConsole、CSVDownloadの条件にマルチバイト文字を含む場合に結果が不正になる。  例えば、EQLWorksheetやEntityExplorerのWhere条件にマルチバイトの条件を指定していると、CSVの結果が０件になってしまう。  対象は以下の機能。 - EQLWorksheet - EntityExplorer - BuiltinAuthUserExplorer </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/entityexplorer/EntityCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/template/BinaryTemplateDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/langexplorer/LangCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/metaexplorer/MetaDataNameListDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/eql/EqlCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/logexplorer/LogFileDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/base/io/download/AdminDownloadService.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/metaexplorer/MetaDataConfigDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/pack/PackageDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/MetaDataHistoryConfigDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/staticresource/StaticResourceDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/entity/EntityJavaMappingClassDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/message/MessageItemCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/template/ReportTemplateDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/auth/builtin/BuiltinAuthUserCsvDownloadServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/entityexplorer/EntityConfigDownloadServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="479" opendate="2020-04-21 05:47:01" fixdate="2020-04-21 07:38:34">
+		<buginformation>
+			<summary>大量データ参照セクション、子の参照先のプロパティをNestPropertyとして指定しても検索されない (3.0.13~)</summary>
+			<description>大量データ参照セクションで指定された被参照プロパティに定義されている参照先のプロパティをNestPropertyとして指定しても、一覧にデータが表示されない。  ``` MassReferenceSection （ref1 ・・・被参照プロパティ）   ref2 (参照 多重度1)     string1 ```  この場合、以下の定義をすることで、`ref1.ref2.string1` の結果が一覧に表示されるはずが、表示できていない。  1. ref1に対するMassReferenceSectionを追加 2. MassReferenceSectionのNestPropertyにref2を指定（ReferencePropertyEditor） 3. 2で指定したReferencePropertyEditorのNestPropertyにstring1を指定  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/GetMassReferencesCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="478" opendate="2020-04-17 08:44:06" fixdate="2020-04-17 09:30:54">
+		<buginformation>
+			<summary>SQLServer、DATE_ADD関数が不正</summary>
+			<description>DATE_ADD関数でunitに'DAY'、'HOUR'、'MINUTE'を指定するとエラーとなる。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/rdb/sqlserver/function/SqlServerDateAddFunctionAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="475" opendate="2020-04-09 09:16:02" fixdate="2020-04-09 09:25:57">
+		<buginformation>
+			<summary>SQLServer、検索時にソートしない設定でページングを有効にすると検索でエラーが発生する</summary>
+			<description>SQLServerのOFFSET FETCHではOrderBy句の指定が必要であるため。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/rdb/adapter/RdbAdapter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/datastore/grdb/sql/queryconvert/SqlQueryContext.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/rdb/sqlserver/SqlServerRdbAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="474" opendate="2020-04-08 08:52:04" fixdate="2020-04-08 10:06:08">
+		<buginformation>
+			<summary>gem、Entity検索画面、ソート条件未指定時にoidがデフォルトで付与されない(3.0.20～3.0.21)</summary>
+			<description>gem、Entity検索画面、ソート条件未指定時にoidがデフォルトで付与されなくなってしまった。  https://github.com/ISID/iPLAss/issues/434 でのデグレ。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchContextBase.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="473" opendate="2020-04-06 04:56:11" fixdate="2020-04-06 05:15:48">
+		<buginformation>
+			<summary>SQLServer、EntityManagerのcountメソッドにOrderByが設定されたQueryを指定するとエラーが発生</summary>
+			<description>EntityManagerのcountメソッドでは指定されたQueryをサブクエリとして扱うが、SQLServerではサブクエリにOrderByを指定することは出来ない。 (正確には TOP、OFFSET、または FOR XML が指定が必要) countメソッドではOrderByの指定は不要のためサブクエリ化するSQLからOrderBy句を削除する。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/datastore/grdb/sql/ObjStoreSearchSql.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="472" opendate="2020-03-31 07:07:18" fixdate="2020-03-31 08:52:35">
+		<buginformation>
+			<summary>EntityExplorer、DateとTimeがクライアントのTimezoneによってずれてしまう</summary>
+			<description>EntityExplorerの検索結果表示で、Date型とTime型の値がクライアントのTimezoneによってずれてしまう。  APサーバのタイムゾーンとクライアント(OS)のタイムゾーンが異なる場合に発生する可能性がある。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/base/tenant/TenantInfoHolder.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/base/rpc/tenant/TenantServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/base/util/SmartGWTUtil.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/shared/base/dto/tenant/TenantEnv.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="466" opendate="2020-03-18 05:17:58" fixdate="2020-03-18 06:10:45">
+		<buginformation>
+			<summary>MySQL、TRUNCATE関数が不正</summary>
+			<description>TRUNCATE関数で'decimalPlace'を省略するとエラーとなる。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/rdb/mysql/function/MysqlTruncateFunctionAdapter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/rdb/mysql/MysqlRdbAdaptor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="465" opendate="2020-03-17 11:05:12" fixdate="2020-03-18 05:05:32">
+		<buginformation>
+			<summary>SQLServer、TRUNCATE関数とROUND関数が不正</summary>
+			<description>TRUNCATE関数で切り捨て結果が不正な値となる。 ROUND関数で'decimalPlace'を省略するとエラーとなる。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/rdb/sqlserver/function/SqlServerRoundFunctionAdapter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/rdb/sqlserver/function/SqlServerTruncateFunctionAdapter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/rdb/sqlserver/SqlServerRdbAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="464" opendate="2020-03-17 09:33:09" fixdate="2020-03-17 09:38:32">
+		<buginformation>
+			<summary>バルク更新、Statementのクローズ漏れ</summary>
+			<description>バルク更新、Statementのクローズ漏れ。 現状でもConnection#close時にcloseされはするが、使い終わったらちゃんとクローズするようにする。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/datastore/grdb/strategy/bulkupdate/BulkUpdateState.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="460" opendate="2020-03-12 07:35:55" fixdate="2020-03-13 11:15:36">
+		<buginformation>
+			<summary>TopView検索結果一覧Parts、全文検索Parts、詳細画面経由で編集画面に遷移した際に詳細画面に戻らない</summary>
+			<description>TopViewの検索結果一覧Parts、全文検索Partsにて、 検索結果から詳細画面経由で編集画面に遷移した際に編集画面でキャンセルをすると、 検索結果画面（Top画面）に戻ってしまい、詳細画面に戻らない。 （編集画面で保存した場合は、詳細画面に戻る）  汎用画面と同様にキャンセル時も詳細画面に戻るようにする。  既存の動作を保証するため、GemConfigServiceの設定で、Topに戻るフラグを用意する。 デフォルト値はfalse(詳細に戻る)として、Topに戻りたい場合はtrueに変更してもらう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/GemConfigService.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/ViewUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="455" opendate="2020-03-06 02:18:10" fixdate="2020-03-06 08:22:34">
+		<buginformation>
+			<summary>全文検索、複数エンティティを全文検索する場合にソート順が不正になる</summary>
+			<description>作成されたインデックスファイルの中身によって、複数エンティティを全文検索する場合、検索結果がエンティティの順番に返されない可能性がありますので、ソート順不正ケースがあります。  https://github.com/ISID/iPLAss/issues/434 のバグ</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/fulltextsearch/FulltextSearchLuceneService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="454" opendate="2020-03-06 01:50:11" fixdate="2020-03-06 06:50:54">
+		<buginformation>
+			<summary>Package、Entityデータインポート時に前後の空白が除去される</summary>
+			<description>Packageにおいて、Entityデータインポート時に前後の空白が除去される。  出力されたCSVはダブルクォーテーションで囲んでいない（※1）が、 取り込み時に前後の空白をTrimしているため除去されてしまう。  対応としては、 出力時に前後にスペースが含まれる場合は、ダブルクォーテーションで囲むようにする。  ※現状でもデータに特殊文字が含まれている場合はダブルクォーテーションで囲む。 対象文字は以下を参照。 https://commons.apache.org/proper/commons-text/apidocs/org/apache/commons/text/StringEscapeUtils.html#escapeCsv-java.lang.String- </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityCsvWriter.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/CSVDownloadSearchViewWriter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/QueryCsvWriter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="448" opendate="2020-02-25 09:25:50" fixdate="2020-02-25 09:45:31">
+		<buginformation>
+			<summary>バージョン管理しているEntityをクエリーする際、2階層以上深い参照では「最新を取得」が効かない</summary>
+			<description>バージョン管理しているEntityをクエリーする際、2階層以上深い参照では「最新を取得」が効かない。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/datastore/grdb/sql/queryconvert/JoinPath.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="447" opendate="2020-02-25 09:00:50" fixdate="2020-02-25 09:04:23">
+		<buginformation>
+			<summary>Entity CRUD APIを利用したCSVアップロードでEntityバリデーションエラーの場合エラーレスポンスを返さない</summary>
+			<description>Entity CRUD API でCSVをアップロードする時Entityバリデーションエラーの場合にエラーレスポンスを返しません。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/command/entity/CreateEntityCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="444" opendate="2020-02-20 11:07:21" fixdate="2020-02-21 08:50:32">
+		<buginformation>
+			<summary>manageLobSizeOnRdbをONで、FileLobStore利用した際にバイナリファイルのコピー処理が著しく遅い</summary>
+			<description>manageLobSizeOnRdbをONで、FileLobStore利用した際にバイナリファイルのコピー処理が著しく遅い</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/lob/SizeUpdateOutputStream.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="436" opendate="2020-01-27 09:50:51" fixdate="2020-01-28 10:30:13">
+		<buginformation>
+			<summary>MySQLパーティションに関するオプションを削除</summary>
+			<description>MySQLにおけるテナントマネージャ及びパーティションマネージャでのパーティションに関するオプションを削除する。 ・テナント作成及びパーティション作成でのサブパーティション利用有無オプション ・テナント削除でのパーティション削除オプション</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/batch/partition/MySQLPartitionBatch.java</file>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/gui/tenant/TenantDeleteDialog.java</file>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/gui/partition/PartitionCreateDialog.java</file>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/gui/partition/MySQLPartitionManagerApp.java</file>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/batch/tenant/TenantBatch.java</file>
+			<file>iplass-tools/src/main/java/org/iplass/mtp/impl/tools/tenant/TenantCreateParameter.java</file>
+			<file>iplass-tools/src/main/java/org/iplass/mtp/impl/tools/tenant/PartitionCreateParameter.java</file>
+			<file>iplass-tools/src/main/java/org/iplass/mtp/impl/tools/tenant/TenantToolService.java</file>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/gui/tenant/TenantCreateDialog.java</file>
+			<file>iplass-tools/src/main/java/org/iplass/mtp/impl/tools/tenant/TenantDeleteParameter.java</file>
+			<file>iplass-tools/src/main/java/org/iplass/mtp/impl/tools/tenant/rdb/MySQLTenantRdbManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="431" opendate="2020-01-21 10:46:40" fixdate="2020-01-21 11:13:36">
+		<buginformation>
+			<summary>AdminConsole、EQL実行時の日本語ログメッセージが未定義</summary>
+			<description>AdminConsole、EQL実行時の日本語ログメッセージが未定義。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/base/rpc/entity/EqlServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="428" opendate="2020-01-17 09:25:01" fixdate="2020-01-17 09:42:53">
+		<buginformation>
+			<summary>EntityCRUD WebAPI、複数件を一括で検索する場合のレスポンス内容が不正</summary>
+			<description>EntityCRUD WebAPI、複数件を一括で検索する場合、tabular=falseの場合の参照項目のレスポンス内容が不正</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/auth/authenticate/DefaultUserEntityResolver.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/EntityHandler.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/builder/EntityBuilder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="425" opendate="2020-01-14 07:24:48" fixdate="2020-01-14 07:44:37">
+		<buginformation>
+			<summary>LangExplorer、EntityView定義を開くとエラーが発生する</summary>
+			<description>LangExplorer、EntityView定義を開くとエラーが発生する。  ``` ERROR 60 171486   o.i.a.s.base.rpc.i18n.LangDataLogic - org.iplass.mtp.view.generic.element.section.SearchResultSection.getLocalizedBulkUpdateDisplayLabelList() java.lang.NoSuchMethodException: org.iplass.mtp.view.generic.element.section.SearchResultSection.getLocalizedBulkUpdateDisplayLabelList() at java.lang.Class.getMethod(Class.java:1786) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:105) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:76) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:167) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:76) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangInfo(LangDataLogic.java:66) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:165) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangItemInfo(LangDataLogic.java:76) at org.iplass.adminconsole.server.base.rpc.i18n.LangDataLogic.createMultiLangInfo(LangDataLogic.java:66) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/element/section/SearchResultSection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="422" opendate="2020-01-09 02:18:21" fixdate="2020-01-17 10:03:35">
+		<buginformation>
+			<summary>EntityCRUD WebAPI、Entityのプロパティ値をnull値で更新できない</summary>
+			<description>EntityCRUD WebAPI、Entityのプロパティ値をnull値で更新できない</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/jackson/EntityDeserializer.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/entity/GenericEntity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="421" opendate="2020-01-09 02:17:33" fixdate="2020-01-09 06:10:50">
+		<buginformation>
+			<summary>EntityDeserializer、jsonパース処理でBigDecimalのマッピングが正しくない</summary>
+			<description>EntityDeserializer、jsonパース処理でBigDecimalのマッピングが正しくない</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/jackson/EntityDeserializer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="417" opendate="2020-01-06 08:13:28" fixdate="2020-01-15 11:04:44">
+		<buginformation>
+			<summary>DBに接続できない環境において、ResourceBundle経由でメッセージが正しく取得できない</summary>
+			<description>DBに接続できない環境において、ResourceBundle経由でメッセージが正しく取得できない。 次を修正。  - iPLAss自体が利用するメッセージはプロパティファイルから正しく、直接取得するように修正 - メッセージがResoruceBundleから取得できなかった場合エラーログ出力する  この修正により、 https://github.com/ISID/iPLAss/issues/226 にあるような形でメタデータのメッセージ定義を利用してiPLAss内の文言を変更する場合の手順に、もう1ステップの追加が必要となる。  #### mtp-gem-messages.propertiesの一部文言をメッセージ定義で上書きしたい場合  ・service-configのMessageServiceにてresourceBundle設定の上書き ***&lt;-追加*** ・Message定義に「mtp-gem-messages」メタデータを作成 ・変更したいメッセージのkeyをIDに設定 ・メッセージを設定（多言語もOK）  MessageServiceの定義例：（iPLAss内のラベルもメッセージ定義優先とする場合）         &lt;service&gt;                 &lt;interface&gt;org.iplass.mtp.impl.message.MessageService&lt;/interface&gt;                 &lt;property name="resourceBundle"&gt;                         &lt;property name="formats" value="mtp.message" /&gt;                         &lt;property name="formats" value="java.class" /&gt;                         &lt;property name="formats" value="java.properties" /&gt;                         &lt;property name="fallbackToSystemLocale" value="false" /&gt;                 &lt;/property&gt;         &lt;/service&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/util/ResourceBundleWrapper.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/util/ResourceBundleUtil.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/message/ResourceBundleConfig.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="410" opendate="2019-12-19 09:52:38" fixdate="2019-12-20 07:50:10">
+		<buginformation>
+			<summary>MySQLの場合に、特定条件下でEntityをアンロックした場合エラー</summary>
+			<description>MySQLの場合に、特定条件下※でEntityをアンロックした場合エラーが発生してアンロックできない。  ※Entityに多数のプロパティ定義がされている、もしくは何度もプロパティ定義の追加削除を実施し、Entity1レコードが複数のpageNoにまたがって保存されるようになった状況下において。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/datastore/grdb/sql/ObjStoreUpdateSql.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="395" opendate="2019-12-03 06:20:06" fixdate="2019-12-05 04:28:58">
+		<buginformation>
+			<summary>全文検索、多重度複数の値もIndexするようにする</summary>
+			<description>全文検索、多重度複数の値もIndexするようにする</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/fulltextsearch/FulltextSearchLuceneService.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/fulltextsearch/AbstractFulltextSeachService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="394" opendate="2019-11-28 01:02:06" fixdate="2019-11-28 01:33:05">
+		<buginformation>
+			<summary>CSV出力時、多重度が複数のプロパティの値がnullの場合に列がずれる</summary>
+			<description>CSV出力時、多重度が複数のプロパティの値がnullの場合に列がずれる。  ヘッダは多重度分列が出力されるが、値は１つしか出力されていないため。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/CSVDownloadSearchViewWriter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="387" opendate="2019-11-19 10:32:24" fixdate="2019-11-19 10:34:52">
+		<buginformation>
+			<summary>システムエラーログ出力が必要以上に抑制されてしまう</summary>
+			<description>システムエラーログ出力が必要以上に抑制されてしまう。 ExceptionInterceptorの実装バグのため。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/web/interceptors/ExceptionInterceptor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="385" opendate="2019-11-15 01:55:03" fixdate="2019-11-15 05:34:16">
+		<buginformation>
+			<summary>AdminConsole、画面のzoom設定によってツリーのアイコンが表示されないことがある</summary>
+			<description>AdminConsoleのTree形式の表示部分のアイコンが、画面のzoom設定によって表示されないことがある。 例えばメニュー編集画面など。 Chromeで発生。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/langexplorer/LangTreeGridPane.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/base/ui/widget/MtpTreeGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/prefs/PrefsEditPane.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/entityexplorer/datalist/EntityTreeGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/metaexplorer/MetaDataImportDialog.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/common/DefaultMetaDataTreeGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/metaexplorer/MetaDataTreeGridPane.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/permissionexplorer/PermissionTreeGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/menu/MenuTreeGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/menu/item/MenuItemTreeGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/top/TopViewDragPane.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/common/EntityPropertyTreeGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/base/ui/layout/AdminMenuTreeGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/treeview/TreeViewGrid.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/calendar/CalendarGrid.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="371" opendate="2019-10-30 05:06:24" fixdate="2019-10-30 05:25:11">
+		<buginformation>
+			<summary>Package、MetaDataExportバッチ、Localメタデータ出力時にShared Overwriteが含まれない</summary>
+			<description>Package、MetaDataExportバッチ、 `Local` メタデータのみを出力する場合に、 `Shared Overwrite` が含まれない。  例えば「TenantメタデータをExportに含めますか？」で `yes` を選択した場合にもTenantが含まれない。 （ver 3.0.13 からTenantは `Local` ではなく、 `Shared Overwrite` に変更） </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/batch/metadata/MetaDataExport.java</file>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/batch/pack/PackageExport.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="368" opendate="2019-10-29 05:32:59" fixdate="2019-10-30 07:15:27">
+		<buginformation>
+			<summary>AdminConsole、MenuItemのコピー時にコピー元表示名が未設定の場合はセットしない</summary>
+			<description>AdminConsole、MenuItemのコピー時にコピー元表示名が未設定の場合はセットしない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/menu/item/MenuItemDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="366" opendate="2019-10-28 12:10:45" fixdate="2019-10-29 08:37:38">
+		<buginformation>
+			<summary>TopView、検索結果一覧パーツ、検索画面に遷移時に定型検索が非表示の場合は通常検索を表示する</summary>
+			<description>TopView、検索結果一覧パーツでFilterを指定した状態で検索一覧画面に遷移する際に、 表示する検索画面のView定義で定型検索が非表示の場合は通常検索を表示するように。  FilterをTopViewの絞り込み条件として利用したい場合のみに対応。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchViewCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="364" opendate="2019-10-28 12:07:34" fixdate="2019-10-30 06:24:26">
+		<buginformation>
+			<summary>TopView、検索結果一覧パーツ、Viewのデフォルトフィルタ条件が効かない</summary>
+			<description>TopView、検索結果一覧パーツ、Viewのデフォルトフィルタ条件が効かない。  Filter未指定時にも、「デフォルト検索条件をフィルタ定義と一緒に利用するか」がONでないと設定されない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchNameListContext.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchListContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="363" opendate="2019-10-28 11:49:00" fixdate="2019-10-29 07:10:20">
+		<buginformation>
+			<summary>TopView、検索結果一覧パーツ、タイトルの多言語化が効かない</summary>
+			<description>TopView、検索結果一覧パーツ、タイトルの多言語化が効かない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/top/parts/MetaEntityListParts.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="355" opendate="2019-10-24 11:29:34" fixdate="2019-10-25 11:19:02">
+		<buginformation>
+			<summary>共有メタデータ（Annotation、XML定義）をMetaDataExplorer、PackagingToolからimportにて上書き更新しようとするとエラー</summary>
+			<description>共有メタデータ（Annotation、XML定義）をMetaDataExplorer、PackagingToolからimportにて上書き更新しようとするとエラー。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/MetaDataContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="349" opendate="2019-10-15 03:31:17" fixdate="2019-10-16 05:58:19">
+		<buginformation>
+			<summary>AdminConsole、画面のzoom設定によってメニューのアイコンが表示されないことがある</summary>
+			<description>AdminConsoleのメニューのアイコンが、画面のzoom設定によって表示されないことがある。 Chromeで発生。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/base/ui/layout/AdminMenuTreeNode.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/base/ui/layout/AdminMenuTreeGrid.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="333" opendate="2019-09-10 02:18:38" fixdate="2019-09-10 02:37:18">
+		<buginformation>
+			<summary>カスタム一括更新処理クラスでバリデーションエラーを設定した場合、NullPointerExceptionが発生</summary>
+			<description>カスタム一括更新処理クラス( `BulkOperationInterrupter` )でバリデーションエラーを設定した場合、「検索条件を元に一括更新」すると、 `NullPointerException` が発生します。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/bulk/BulkUpdateAllCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/bulk/MultiBulkUpdateAllCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="332" opendate="2019-09-09 07:21:24" fixdate="2019-09-09 07:38:09">
+		<buginformation>
+			<summary>EQL、TRUNCATEで小数点以下の桁数指定しても小数点以下が切り捨てられてしまう</summary>
+			<description>EQL、TRUNCATEで小数点以下の桁数指定しても小数点以下が切り捨てられてしまう</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/properties/basic/DecimalType.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/rdb/adapter/BaseRdbTypeAdapter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/property/PropertyService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="330" opendate="2019-09-06 00:44:14" fixdate="2019-09-26 01:53:09">
+		<buginformation>
+			<summary>Package、バージョン管理しているEntityデータのインポートでエラーになる</summary>
+			<description>Package、バージョン管理しているEntityデータのインポートでエラーになる。 EntityExplorerでのCSVインポートでも同様にエラーになる。  &gt; Caused by: org.iplass.mtp.entity.EntityConcurrentUpdateException: 対象のデータは、既に削除されました。  PackageやEntityExplorerでのインポート時は指定されたOID、Versionでインポートする必要があるが、現状できていないため、対応を行う。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-tools/src/main/java/org/iplass/mtp/impl/tools/entityport/EntityPortingService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="319" opendate="2019-08-23 08:03:49" fixdate="2019-09-19 05:13:07">
+		<buginformation>
+			<summary>ユーザー情報変更、変更可能な項目に参照プロパティが含まれるとエラー</summary>
+			<description>ツールバーから実行可能な「ユーザー情報変更」機能で、変更可能な項目に参照プロパティが含まれるとNullPointerExceptionが発生する。  TopViewの「User Maintenance」パーツを利用して、UserエンティティのViewを指定することで、ユーザ自身によるプロパティの変更が可能になるが、指定したUserエンティティのView定義に参照プロパティが含まれていると、画面表示時にエラーが発生。  編集対象ユーザのデータに値が設定済みの場合に、LoadEntityInterrupter#beforeLoadReferenceを実行しようとするが、LoadEntityInterrupterが取得できていない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/DetailCommandContext.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/RegistrationCommandContext.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/GenericCommandContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="316" opendate="2019-08-22 08:14:06" fixdate="2019-08-28 11:08:54">
+		<buginformation>
+			<summary>大量データ参照セクションで参照項目の名前が取得できない</summary>
+			<description>大量データ参照セクションに配置した参照項目(※)で、 選択画面からデータを選択して保存した場合に、ラベルに指定した名前が取得できず 名前が表示されてしまう。  ※NestPropertyのReferencePropertyEditorで「参照リンクで編集を許可」をONにしている場合</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/CreateSearchResultUtil.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/GetMassReferencesCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/EntityViewManagerImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="314" opendate="2019-08-21 09:55:20" fixdate="2019-08-22 04:18:58">
+		<buginformation>
+			<summary>AdminConsole、Firefoxでのファイルアップロードに失敗する</summary>
+			<description>AdminConsole、Firefoxでのファイルアップロードに失敗する。  PackageやMetaDataExplorerなどのインポート時のファイルアップロードで失敗する。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/entityexplorer/datalist/EntityCsvUploadDialog.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/message/MessageItemCsvUploadDialog.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/base/io/upload/AdminSingleUploader.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/langexplorer/LangCsvUploadDialog.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/metaexplorer/MetaDataXMLUploadDialog.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/pack/PackageUploadDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="311" opendate="2019-08-21 06:01:17" fixdate="2019-10-11 08:56:02">
+		<buginformation>
+			<summary>共有テナント有効化時、且つtenantLocalStoreにRdbMetaDataStore以外を利用した場合、Entityメタデータの変更に伴うデータ更新が正しく行われない</summary>
+			<description>共有テナント有効化時、且つtenantLocalStoreにRdbMetaDataStore以外を利用した場合、Entityメタデータの変更に伴うデータ更新が正しく行われない。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/MetaDataContext.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/rdb/RdbMetaDataStore.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/rdb/SelectSQL.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/composite/CompositeMetaDataStore.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/xmlfile/VersioningXmlFileMetaDataStore.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/EntityService.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/annotation/AnnotationMetaDataStore.java</file>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/batch/cleaner/InvalidMetaDataCleaner.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/AbstractXmlMetaDataStore.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/typeconversion/TypeConversionMetaDataStore.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/MetaDataRepository.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/MetaDataStore.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/xmlfile/XmlFileMetaDataStore.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/xmlresource/XmlResourceMetaDataStore.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="306" opendate="2019-08-19 09:38:30" fixdate="2019-08-21 09:49:20">
+		<buginformation>
+			<summary>共有テナント側RdbMetaDataStoreに保存されたメタデータをローカルテナント側で上書きしようとするとエラー</summary>
+			<description>共有テナント側RdbMetaDataStoreに保存されたメタデータをローカルテナント側で上書きしようとするとエラー。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/metadata/MetaDataContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="302" opendate="2019-08-13 04:10:04" fixdate="2019-08-28 10:58:22">
+		<buginformation>
+			<summary>参照セクションで参照項目の名前が取得できない</summary>
+			<description>参照セクションに配置した参照項目で、選択画面からデータを選択した際に名前が取得できない。 ネストテーブルや通常の参照は問題なし。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/common/GetEntityNameListCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/EntityViewManagerImpl.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/common/GetEntityNameListParameter.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/Constants.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/EntityViewManager.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="299" opendate="2019-08-08 02:02:54" fixdate="2019-08-08 02:17:08">
+		<buginformation>
+			<summary>参照元画面の参照リンクの表示ラベル更新処理不具合修正（#250）に伴うEnterprise版機能のデグレーションへの対応</summary>
+			<description>Enterprise版機能、また既存のカスタマイズなどを考慮して、showReferenceに「parentPropName」などが渡されていなくても名前を返すようにする。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/ViewUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="291" opendate="2019-08-05 05:52:17" fixdate="2019-08-08 09:14:23">
+		<buginformation>
+			<summary>全一括更新と全削除にEQLカスタム処理クラス名に指定したインターラプターが適用されない</summary>
+			<description>全一括更新と全削除にEQLカスタム処理クラス名に指定したインターラプターが適用されないので、 更新/削除対象が画面検索の結果と一致になっていません。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchCommandBase.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/delete/DeleteAllCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchContext.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/bulk/BulkUpdateAllCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchContextBase.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/bulk/MultiBulkUpdateAllCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="290" opendate="2019-08-05 04:04:14" fixdate="2019-08-09 05:55:55">
+		<buginformation>
+			<summary>NestTableにダイアログの内容を反映させる際にJSエラー</summary>
+			<description>参照項目があるNestTableで、編集リンクからダイアログを立ち上げ、編集・保存をすると、Javascriptエラーが発生。 反映先の参照の選択ボタンから属性値を取る際のキーが「propName」等になっているが、設定されている属性値は「data-propName」となっており、値がうまく取れていない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/GetNestTableDataCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="287" opendate="2019-07-24 08:03:06" fixdate="2019-07-24 08:06:55">
+		<buginformation>
+			<summary>検索結果のNestTableにJoinPropertyを利用するロジックに渡すパラメータが不正</summary>
+			<description>パラメータの渡しのミスです。  https://github.com/ISID/iPLAss/issues/213 のバグ</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchContextBase.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="285" opendate="2019-07-24 02:45:50" fixdate="2019-09-09 05:15:58">
+		<buginformation>
+			<summary>参照プロパティエディターの自動補完機能の利用で編集画面で重複のデータを追加できてしまう</summary>
+			<description>参照プロパティエディターの自動補完機能を利用する場合、編集画面で重複のデータを追加できてしまいます。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/EntityViewManagerImpl.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/common/MetaAutocompletionSetting.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/common/GetAutocompletionValueCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/EntityViewManager.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/common/AutocompletionParam.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/common/MetaWebApiAutocompletionSetting.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="282" opendate="2019-07-23 05:18:30" fixdate="2019-07-23 07:45:16">
+		<buginformation>
+			<summary>ラベルプロパティが設定された場合、全文検索結果一覧に正しく表示できない</summary>
+			<description>ラベルプロパティが設定された場合、全文検索結果一覧に正しく表示できません。  関連issue https://github.com/ISID/iPLAss/issues/121 https://github.com/ISID/iPLAss/issues/194 https://github.com/ISID/iPLAss/issues/213 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/fulltext/FullTextSearchCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="280" opendate="2019-07-22 07:40:18" fixdate="2019-07-22 09:07:35">
+		<buginformation>
+			<summary>AdminConsole、EntityのCSVデータのインポート時に「存在しないプロパティの無視」が動作しない</summary>
+			<description>AdminConsole、EntityのCSVデータのインポート時に「存在しないプロパティの無視」が動作しない。 存在しないプロパティが含まれているとエラーになってしまう。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityCsvReader.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/entity/bulkupdate/CSVFormattedEntityStream.java</file>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/csv/EntityCsvReaderForCheck.java</file>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/csv/CsvUploadService.java</file>
+			<file>iplass-tools/src/main/java/org/iplass/mtp/impl/tools/entityport/EntityPortingService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="275" opendate="2019-07-19 06:03:06" fixdate="2019-07-23 04:58:39">
+		<buginformation>
+			<summary>JoinPropertyはNestTableに設定された場合、全文検索結果一覧に表示できない</summary>
+			<description>JoinPropertyはNestTableに設定された場合、全文検索結果一覧に表示できない</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/fulltext/FullTextSearchCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="272" opendate="2019-07-18 00:58:24" fixdate="2019-07-18 04:24:43">
+		<buginformation>
+			<summary>複数項目を一括更新する処理にネストテーブルが利用された場合、再帰的な呼び出し処理でエラーが発生してしまう</summary>
+			<description>複数項目を一括更新する処理（Bulk View利用）にネストテーブルが利用された場合、再帰的な呼び出しの処理になってしまうので、エラーが発生してしまいます。  https://github.com/ISID/iPLAss/issues/209 のバグ。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/bulk/MultiBulkCommandContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="261" opendate="2019-07-10 00:35:16" fixdate="2019-07-10 01:02:25">
+		<buginformation>
+			<summary>表示ラベルとして扱うプロパティにnameを指定すると、ラベル（リンク）が表示されなくなってしまう</summary>
+			<description>リファレンスプロパティエディタで【表示ラベルとして扱うプロパティ】にnameプロパティを指定すると、ラベル（リンク）が表示されるなくなってしまいます。 （何も指定しなければnameプロパティの値が表示される）。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/common/GetEntityNameListCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="250" opendate="2019-07-02 02:47:39" fixdate="2019-07-23 02:48:17">
+		<buginformation>
+			<summary>参照先エンティティを更新した後参照元画面の参照リンクの表示ラベルが正しく更新されない</summary>
+			<description>参照先エンティティをダイアログで更新した後に、参照元画面の参照リンクの表示ラベルが正しく更新されません。  issue https://github.com/ISID/iPLAss/issues/121 https://github.com/ISID/iPLAss/issues/194 https://github.com/ISID/iPLAss/issues/213 での対応漏れでした。  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchListCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/common/GetEntityNameListCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/EntityViewManagerImpl.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/CreateSearchResultUtil.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/fulltext/FullTextSearchCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/Constants.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/SearchCommand.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/ViewUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="243" opendate="2019-06-13 06:45:27" fixdate="2019-06-13 07:51:35">
+		<buginformation>
+			<summary>検索条件での孫Entityのプロパティが表示されない</summary>
+			<description>検索画面の検索条件に2階層下（孫）のリファレンスプロパティを選択すると、 adminコンソールで表示ラベルとして扱うプロパティに孫Entityのプロパティを設定しても 検索ダイアログで選択したデータの表示名（リンク）が表示されない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/EntityViewManagerImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="238" opendate="2019-06-11 01:02:51" fixdate="2019-06-11 01:37:20">
+		<buginformation>
+			<summary>EntityViewが未設定の場合、参照プロパティの名前が表示されない</summary>
+			<description>EntityViewが未設定の場合、参照プロパティの名前にブランクが表示されてしまいます。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/common/GetEntityNameListCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="234" opendate="2019-06-06 06:26:55" fixdate="2019-06-10 07:21:33">
+		<buginformation>
+			<summary>EntityJavaMappingClassCreator、ベースパッケージ名を指定するとクラス名が出力されない</summary>
+			<description>ベースパッケージ名を指定するとJavaクラスファイル内のクラス名が出力されない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-tools/src/main/java/org/iplass/mtp/impl/tools/entity/EntityToolService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="229" opendate="2019-05-30 06:12:32" fixdate="2019-05-30 06:15:18">
+		<buginformation>
+			<summary>MetaDataExplorer、インポート時のダイアログがチラつくことがある</summary>
+			<description>MetaDataExplorer、インポート時のダイアログがチラつくことがある。  ノートPCなど、画面の表示領域が小さいPCで発生。 （解像度が高くても、表示スケールをあげている場合など）  縦のスクロール表示による横のスクロール表示のON・OFFなどが関係して発生してしまっている。縦スクロールを無条件で表示することで回避。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/tools/ui/metaexplorer/MetaDataImportDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="227" opendate="2019-05-30 02:58:26" fixdate="2019-05-30 03:06:07">
+		<buginformation>
+			<summary>PackageExportバッチ、Entityを個別指定しても対象が見つからない</summary>
+			<description>PackageExportバッチ、Entityを個別指定しても対象が見つからない。  Export対象として個別にEntity名を指定すると該当がないと返ってきてしまう。  例： ×mtp.auth.User ○mtp.auth.User*  原因は「.」の「/」への変換漏れ。パスが一致しない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/batch/pack/PackageExport.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="225" opendate="2019-05-29 05:47:34" fixdate="2019-05-29 06:07:22">
+		<buginformation>
+			<summary>AdminConsole、階層化しないメタデータ名にハイフンが利用できない</summary>
+			<description>AdminConsole、階層化しないメタデータ名にハイフンが利用できない。 （Entity定義については、もともとハイフンは利用不可）  例えばMessage定義名に、「some-abc」のようなメタデータを作成できない。  ×「some-abc」                          ルートには指定できない ×「folder-abc/someaaa」          第１階層は指定できない ○「folder/some-abc」               ２階層目以降は指定可能 ○「folder/some-abc/aaa-abc」 ２階層目以降は指定可能 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/shared/metadata/dto/MetaDataConstants.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="223" opendate="2019-05-28 06:52:47" fixdate="2019-05-29 08:30:53">
+		<buginformation>
+			<summary>RedisCacheStoreのCAS系メソッド（putIfAbsent、Replaceなど）がスレッドセーフ実装になってない</summary>
+			<description>RedisCacheStoreのCAS系メソッド（putIfAbsent、Replaceなど）がスレッドセーフ実装になってない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-redis/src/main/java/org/iplass/mtp/impl/redis/cache/store/RedisIndexedCacheStore.java</file>
+			<file>iplass-redis/src/main/java/org/iplass/mtp/impl/redis/cache/store/RedisCacheStore.java</file>
+			<file>iplass-redis/src/main/java/org/iplass/mtp/impl/redis/RedisService.java</file>
+			<file>iplass-redis/src/main/java/org/iplass/mtp/impl/redis/cache/store/RedisCacheStoreBase.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="217" opendate="2019-05-23 02:07:22" fixdate="2019-05-23 07:50:40">
+		<buginformation>
+			<summary>SimpleCacheStoreFactoryのCacheStoreのCAS系メソッド（putIfAbsent、Replaceなど）がスレッドセーフ実装になってない</summary>
+			<description>iPLAss2.1から3.0へのバージョンアップの際に、SimpleCacheStoreFactoryのCacheStoreで使用するマップのライブラリをConcurrentLinkedHashMapからCaffeineへ変更したが、CAS系メソッド（putIfAbsent、Replaceなど）に対するスレッドセーフ実装の対応が漏れていたため。  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/cache/store/builtin/SimpleCacheStoreFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="215" opendate="2019-05-22 01:33:51" fixdate="2019-07-05 04:14:10">
+		<buginformation>
+			<summary>参照プロパティでJoinPropertyEditorを利用する場合、編集ダイアログのプロパティリストに参照元のものが表示されてしまう</summary>
+			<description>参照プロパティでJoinPropertyEditorを利用する場合、編集ダイアログのプロパティリストに参照元のものが表示されてしまう。  1. 参照プロパティでJoinPropertyEditorを設定する 1. JoinPropertyEditorの編集画面で、プロパティエディターをReferenceEditorに設定する 1.  ReferenceEditorの編集ボタンを押下し、編集ダイアログを開く 1. プロパティリストに参照元のものが表示されてしまう  新規でプロパティを追加する場合は正常に参照先のプロパティが表示されているが、保存されているView定義を開いた場合に参照元のプロパティが表示される状態になってしまう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/JoinPropertyEditor.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/HasNestProperty.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/ReferencePropertyEditor.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/section/MetaMassReferenceSection.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/MetaDataServiceImpl.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/element/section/ReferenceSection.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/editor/MetaReferencePropertyEditor.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/item/element/property/PropertyControl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/item/element/section/SectionControllerImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/metafield/MetaFieldSettingDialog.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/item/EntityViewFieldSettingPane.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/editor/MetaJoinPropertyEditor.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/section/MetaDefaultSection.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/element/section/MassReferenceSection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="212" opendate="2019-05-21 05:28:50" fixdate="2019-05-21 07:31:48">
+		<buginformation>
+			<summary>JoinPropertyEditor、プロパティエディタをReferencePropertyEditorにして保存するとエラーが発生してしまう</summary>
+			<description>JoinPropertyEditor、プロパティエディタをReferencePropertyEditorにして保存するとエラーが発生してしまう。  原因はJoinPropertyEditorのプロパティエディタで設定したReferencePropertyEditorに対してObjectNameの設定が漏れているため。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/JoinPropertyEditor.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/editor/MetaJoinPropertyEditor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="211" opendate="2019-05-21 05:28:29" fixdate="2019-05-21 05:57:35">
+		<buginformation>
+			<summary>TopView、SearchResultListパーツの高さを指定しても有効にならない</summary>
+			<description>TopView、SearchResultListパーツの高さを指定しても有効にならない。  固定の160になってしまう。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/top/parts/MetaEntityListParts.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/top/parts/EntityListParts.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="208" opendate="2019-05-17 01:55:00" fixdate="2019-05-20 04:57:13">
+		<buginformation>
+			<summary>詳細画面でJoinPropertyEditorに囲まれたReferenceプロパティのが表示されない</summary>
+			<description>詳細画面でJoinPropertyEditorに囲まれたReferenceプロパティが表示されない。  - Referenceプロパティを1個定義しておく - それをJoinPropertyのネストプロパティのみで利用すると、Referenceプロパティが表示されない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/DetailCommandContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="205" opendate="2019-05-15 08:01:28" fixdate="2019-05-15 09:36:33">
+		<buginformation>
+			<summary>ReferencePropertyEditor、保存後に選択可能なプロパティが参照元のものになってしまう</summary>
+			<description>ReferencePropertyEditor、新規でプロパティを設定する場合は、参照先のEntityのプロパティが表示されるが、保存後に再度設定しようとすると選択可能なプロパティが参照元のものになってしまう（ComboBox形式のため、値は消えないがリストから選択できない）。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/refrect/RefrectionServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/shared/metadata/dto/refrect/FieldInfo.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/ReferenceComboSetting.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/metafield/MetaFieldSettingPane.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/NestProperty.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/item/EntityViewFieldSettingPane.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/data/entity/PropertyDS.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/LinkProperty.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/adminconsole/view/annotation/MetaFieldInfo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="199" opendate="2019-05-09 05:27:26" fixdate="2019-05-15 09:36:22">
+		<buginformation>
+			<summary>連動プロパティの編集画面、連動元プロパティ名に参照先のプロパティが表示されてしまう</summary>
+			<description>Referenceエディターの連動プロパティの設定で、連動元プロパティ名に参照先のプロパティが表示されてしまいます。 参照元のものを表示すべきです。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/refrect/RefrectionServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/shared/metadata/dto/refrect/FieldInfo.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/ReferenceComboSetting.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/metafield/MetaFieldSettingPane.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/NestProperty.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/item/EntityViewFieldSettingPane.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/data/entity/PropertyDS.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/LinkProperty.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/adminconsole/view/annotation/MetaFieldInfo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="196" opendate="2019-05-08 07:12:27" fixdate="2019-05-08 09:06:15">
+		<buginformation>
+			<summary>Jackson（WebApiでJSON）でjava.sql.Dateを出力する際、TimeZoneがUTC以外の場合、日付がずれる</summary>
+			<description>#159 でJacksonを2.9系にverupしたが、その際、互換性維持のためsql.Date出力フォーマットを指定したが、TimeZoneの指定も必要であった。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityCsvReader.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/common/JsonStreamingOutput.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/tools/rpc/entityexplorer/EntityCsvUploadServiceImpl.java</file>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/webapi/jackson/WebApiObjectMapperService.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityCsvWriter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/QueryCsvWriter.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/base/io/upload/UploadUtil.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/auth/authenticate/token/RdbAuthTokenStore.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="195" opendate="2019-05-08 00:45:11" fixdate="2019-05-15 09:36:13">
+		<buginformation>
+			<summary>ReferenceComboSettingのソートアイテムに参照元のプロパティが表示されてしまう</summary>
+			<description>参照プロパティエディターのReferenceComboSettingでソートアイテムに参照元のエンティティのプロパティを表示していますが、参照先のものを表示すべきです。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/server/metadata/rpc/refrect/RefrectionServiceImpl.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/shared/metadata/dto/refrect/FieldInfo.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/ReferenceComboSetting.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/metafield/MetaFieldSettingPane.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/NestProperty.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/item/EntityViewFieldSettingPane.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/data/entity/PropertyDS.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/editor/LinkProperty.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/adminconsole/view/annotation/MetaFieldInfo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="193" opendate="2019-05-07 03:30:01" fixdate="2019-05-07 04:53:14">
+		<buginformation>
+			<summary>全文検索、SearchOptionでisCountTotalがtrueでも該当データがない場合に-1が返る</summary>
+			<description>#187 で追加されたIFを利用した場合に、 SearchOptionで `CountTotal` に `true` を設定していても、全文検索の結果として該当データがない場合に `-1` が返ってきてしまう。  0 が返るように。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/EntityManagerImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="190" opendate="2019-04-23 11:37:13" fixdate="2019-05-07 08:24:54">
+		<buginformation>
+			<summary>EQLで参照先のExpressionPropertyの取得がうまくいかない</summary>
+			<description>EQLで参照先のExpressionPropertyに相関サブクエリが指定されている場合、その取得がうまくいかない 。 相関サブクエリのON句の結合条件の書き換えロジックが不正。  以下詳細。  EntityA  refAtoB: EntityBへの参照  EntityB  exp: (select count() from EntityC on .this = refCtoB) と定義されるExpresisonプロパティ  EntityC  refCtoB: EntityBへの参照  が定義される場合、  EQLで select refAtoB.exp from EntityA が発行された場合、 select (select count() from EntityC on .refAtoB = refCtoB) from EntityA と書き換えされるべきところ、 select (select count() from EntityC on .this = refCtoB) from EntityA のままとなってしまっていた。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/properties/extend/ExpressionType.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="162" opendate="2019-03-27 09:57:12" fixdate="2019-03-27 10:03:43">
+		<buginformation>
+			<summary>SearchQueryInterrupter、CSVダウンロード時に特権実行が有効にならない</summary>
+			<description>SearchQueryInterrupter、CSVダウンロード時に特権実行が有効にならない。  beforeSearchで返すSearchQueryContextに特権実行を設定しても、CSVダウンロード時は効いていない。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityWriteOption.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntitySearchCsvWriter.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/CsvDownloadUploadableWriter.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/search/CSVDownloadSearchViewWriter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="157" opendate="2019-03-14 08:54:43" fixdate="2019-03-15 06:00:40">
+		<buginformation>
+			<summary>クラスタ環境において、AutoNumberが20番単位で採番されてしまう</summary>
+			<description>クラスタ環境において、AutoNumberが20番単位で採番されてしまう。 https://github.com/ISID/iPLAss/issues/61 https://github.com/ISID/iPLAss/issues/126 で修正した内容の影響。  新規にキャッシュにputした際にも、クラスタメンバに対して変更通知が発行され、それで採番キャッシュがクリアされてしまう。  リセット操作のときのみに変更通知されるように改修する。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/cache/store/builtin/SyncServerCacheStoreFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="153" opendate="2019-03-11 09:17:03" fixdate="2019-03-11 10:22:40">
+		<buginformation>
+			<summary>複数ページにまたがるEntityにて、Refer句に結合条件指定されている場合SQLがエラーになることがある</summary>
+			<description>複数ページにまたがるEntityにて、Refer句に結合条件指定されている場合SQLがエラーになることがある。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/common/GetEntityNameListCommand.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/datastore/grdb/sql/queryconvert/MultiPageChecker.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/datastore/grdb/sql/queryconvert/SqlConverter.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/RegistrationCommandBase.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/common/GetEntityNameListParameter.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/datastore/grdb/sql/queryconvert/RefTrimmer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="152" opendate="2019-03-11 02:06:24" fixdate="2019-03-11 09:50:17">
+		<buginformation>
+			<summary>JoinPropertyEditorの定義にSelectPropertyを含める場合、一括更新処理後エラーが発生</summary>
+			<description>JoinPropertyEditorの定義にSelectPropertyを含める場合、間違っている場所からSelect Value定義を取得する処理を実装しているので、一括更新処理を実行した後に、エラーが発生してしまいます。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/bulk/BulkUpdateListCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="149" opendate="2019-03-06 07:55:23" fixdate="2019-03-06 08:02:28">
+		<buginformation>
+			<summary>EntityのLoadキャッシュ、EntityPermission.Action、特権実行有無を考慮する</summary>
+			<description>EntityのLoadキャッシュ、EntityPermission.Action、特権実行有無を考慮する。 同一トランザクション内でEntityPermission.Actionを変えてloadした場合、権限によってロードできるか否かが変わる場合がありうる。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/cache/TransactionLocalLoadCacheInterceptor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="141" opendate="2019-02-27 10:36:28" fixdate="2019-02-28 01:57:33">
+		<buginformation>
+			<summary>PermissionExplorer、Role条件を登録しようとするとエラーになる</summary>
+			<description>PermissionExplorer、Role条件を登録しようとするとエラーになる。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/com/google/gwt/user/server/rpc/core/org/iplass/mtp/entity/GenericEntity_ServerCustomFieldSerializer.java</file>
+			<file>iplass-admin/src/main/java/com/google/gwt/user/client/rpc/core/org/iplass/mtp/entity/GenericEntity_CustomFieldSerializer.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/trans/org/iplass/mtp/entity/GenericEntity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="140" opendate="2019-02-27 06:11:54" fixdate="2019-02-27 09:44:32">
+		<buginformation>
+			<summary>Entity権限、単一ユーザに複数のロールが紐付き、且つそれぞれで許可と不許可が設定されている場合、参照可能範囲条件が付与されない</summary>
+			<description>Entity権限、単一ユーザに複数のロールが（同一優先度で）紐付き、且つそれぞれで許可と不許可が設定されている場合、参照可能範囲条件が付与されない。  複数ロールが単一ユーザに紐づく場合、同一優先度のロールの各権限はマージ（OR）されるが、許可と不許可のEntity権限をマージする際のデータ参照可能範囲条件のマージの仕方が不正。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/auth/authorize/builtin/entity/BuiltinEntityAuthContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="136" opendate="2019-02-25 00:53:51" fixdate="2019-02-25 02:15:56">
+		<buginformation>
+			<summary>一括更新で排他制御によりロールバックされた際に表示メッセージが不正</summary>
+			<description>複数件のデータに対して更新処理を実行する際に、もしupdateDateのチェックにより、トランザクションがロールバックされた場合、最後にすべての更新処理がロールバックされたが、画面での表示は最後の１件の状態で、例えば、メッセージ「”一括更新に成功しました”」が出力されてしまう。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/bulk/BulkUpdateListCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="135" opendate="2019-02-22 06:00:47" fixdate="2019-02-25 02:26:07">
+		<buginformation>
+			<summary>BooleanPropertyEditor、未選択時の保存値が正しくない</summary>
+			<description>Boolean型のPropertyの登録で、値を設定していない場合の保存データが不正になる。  - SELECT型、LABEL型の場合、未選択であればnullで登録 - CHECKBOX型の場合、未選択であればfalseで登録 - RADIO型の場合、未選択であればnullで登録  とする仕様だが、  - SELECT型、LABEL型の場合、false - CHECKBOX型の場合、null  で登録されてしまう。（RADIO型は正常） </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/RegistrationCommandContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="133" opendate="2019-02-22 03:49:23" fixdate="2019-02-22 07:55:05">
+		<buginformation>
+			<summary>連動プロパティ、ネストされたセクション上で設定すると、連動された値が取得されない</summary>
+			<description>連動プロパティ、ネストされたセクション上で設定すると、連動された値が取得されない。  例えば、「標準セクション」の中に「標準セクション」をネストさせた状態で、そのセクション上で参照プロパティに対して連動プロパティを設定しても、連動されたデータが取得されず、空の状態になってしまう。  セクションがネストされてない状態であれば正常に動く。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/EntityViewManagerImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="126" opendate="2019-02-15 04:38:22" fixdate="2019-02-15 06:52:50">
+		<buginformation>
+			<summary>CounterService、キャッシュクリア時にCluster通信エラー</summary>
+			<description>CounterService、キャッシュクリア時（AutoNumberPropertyの設定変更、カウンタのリセット操作時など）にCluster通信エラーが発生。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/counter/CachableRdbTableCounterService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="124" opendate="2019-02-14 10:23:23" fixdate="2019-02-15 03:16:16">
+		<buginformation>
+			<summary>Package、インポート時のOIDPrefixが効かない</summary>
+			<description>Package、インポート時にOIDPrefixを指定しても、Prefixが付かない状態で登録されてしまう。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-tools/src/main/java/org/iplass/mtp/impl/tools/entityport/EntityPortingService.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/csv/EntityCsvReader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="111" opendate="2019-02-05 05:33:26" fixdate="2019-02-19 03:36:15">
+		<buginformation>
+			<summary>参照セクションでネストプロパティのプロパティ名が選択できない</summary>
+			<description>参照セクションでネストプロパティ指定時、プロパティ名のプルダウンを展開してもうまく読み込めず、選択が出来ない。 プロパティ名をコピペで貼り付ければ設定は出来るが、フォーカスアウト時にワーニングのメッセージが表示される。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/element/section/ReferenceSection.java</file>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/item/element/section/SectionWindowControllerImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="110" opendate="2019-02-05 01:38:48" fixdate="2019-03-05 10:17:47">
+		<buginformation>
+			<summary>プロパティを削除した後に画面定義を保存できなくなる</summary>
+			<description>SearchLayoutで複数のViewを定義している状態で、Viewに指定してるプロパティを削除すると、削除後に画面定義の保存でエラーになる。  Viewがひとつの場合はSearchLayoutを構成するときに消したプロパティが無視されるため、そのまま保存できるが、 Viewが複数の場合は見えていないViewに消したプロパティが残っており、それを保存しようとしてエラーになる。  検索条件、検索結果、ソート条件に指定したプロパティが対象。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/common/MetaAutocompletionProperty.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/property/MetaPropertyItem.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/property/MetaPropertyLayout.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/section/MetaMassReferenceSection.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/property/MetaPropertyColumn.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/property/validation/MetaPropertyValidationCondition.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/MetaElement.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/section/MetaSearchConditionSection.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/section/MetaReferenceSection.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/section/MetaSearchResultSection.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/section/MetaDefaultSection.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/HasEntityProperty.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/impl/view/generic/element/section/MetaSortSetting.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="104" opendate="2019-01-11 10:40:36" fixdate="2019-01-13 05:02:39">
+		<buginformation>
+			<summary>NestTable、保存時にValiationエラーで再表示されると削除した行が表示されてしまう</summary>
+			<description>NestTable、参照元Entityの保存時にValiationエラーで編集画面が再表示されると、削除した行が値未設定の状態で表示されてしまう。  調査した結果、NestTableで対象としている参照先Entityに多重度複数のプロパティが存在する場合に発生。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/DetailCommandContext.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/RegistrationCommandContext.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/bulk/BulkCommandContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="103" opendate="2019-01-11 06:36:01" fixdate="2019-01-13 05:02:21">
+		<buginformation>
+			<summary>NestTable、編集リンクでダイアログ表示すると多重度複数のプロパティ値が表示されない</summary>
+			<description>NestTable、参照リンクで編集ダイアログを表示すると、その参照Entityに定義されている多重度複数のプロパティの値が表示されない。  プロパティ型によって表示されるものと表示されないものがある。  ■表示されないもの ・Boolean ・Binary ・String ・SelectValue ・Reference  ■正しく表示されるもの（日付系、数値系） ・Date ・DateTime ・Time ・Long ・Float ・Decimal</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/DetailCommandContext.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/RegistrationCommandContext.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/bulk/BulkCommandContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="86" opendate="2018-12-21 02:03:42" fixdate="2018-12-21 06:47:36">
+		<buginformation>
+			<summary>画面定義で設定可能な項目が表示されない</summary>
+			<description>3.0.3から画面定義で幾つかの項目が表示されず、設定が出来なくなってる。  以下は確認できた部分。 ・DetailFormのボタンの「新規登録/編集時の編集可否」や「表示タイプ」 ・NestPropertyの項目（ReferencePropertyEditorから設定した時と、MassReferenceSectionから設定した時で表示される項目が違う）</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-admin/src/main/java/org/iplass/adminconsole/client/metadata/ui/entity/layout/item/EntityViewFieldSettingPane.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="83" opendate="2018-12-13 06:16:28" fixdate="2018-12-20 09:29:46">
+		<buginformation>
+			<summary>NestTableの編集リンクでデータを登録した場合に二重で登録されてしまう</summary>
+			<description>参照のプロパティをNestTableで表示し、編集リンクでの編集を許可している場合で、  ①NestTable上で新規行追加→②編集リンクでダイアログからデータ登録→③親側を保存  という一連の流れを実行すると、 ②でダイアログで保存（新規登録）したEntityとは別に、③で②と同じ値のEntityが登録（新規登録）されてしまう。 参照している側からは③で登録したEntityを参照していて、②で登録されたEntityは参照されずに残ってしまう。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/NestTableReferenceRegistHandler.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2018-11-01 02:08:07" fixdate="2018-11-01 02:25:55">
+		<buginformation>
+			<summary>AutoNumberProperty、クラスタ構成時、カウンタリセット時に正しく通知されない</summary>
+			<description>AutoNumberProperty、クラスタ構成時、カウンタリセットを行った場合にクラスタ内の別サーバにに正しく通知されない</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/counter/CachableRdbTableCounterService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2018-11-01 00:54:47" fixdate="2018-11-01 00:55:18">
+		<buginformation>
+			<summary>画面定義の自動生成、viewNameがうまく引き継がれない</summary>
+			<description>画面定義の自動生成機能で作った検索、詳細画面で画面遷移を行うと、viewNameが引き継がれずにdefaultが表示されてしまう。 自動生成後にnameを設定してないため、次の画面遷移時にdefaultになってしまう。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/FormViewUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="56" opendate="2018-10-29 08:52:17" fixdate="2018-11-01 02:31:22">
+		<buginformation>
+			<summary>Encoder、FileInputStreamが正しくクローズされない可能性</summary>
+			<description>org.iplass.mtp.tools.batch.crypt.Encoder   ``` try (InputStreamReader is = new InputStreamReader(new FileInputStream(path.toFile()), "utf-8")) { prop.load(is); } ```  を  ``` try (FileInputStream fis = new FileInputStream(path.toFile()); InputStreamReader is = new InputStreamReader(fis, "utf-8")) { prop.load(is); } ``` に。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/batch/crypt/Encoder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="51" opendate="2018-10-23 06:27:06" fixdate="2018-10-23 06:36:26">
+		<buginformation>
+			<summary>ValidationErrorにセットされたプロパティ表示名に多言語対応されていない</summary>
+			<description>下記のタスク対応でValidationErrorにセットされたプロパティ表示名に多言語対応が漏れました。 [issue #31](https://github.com/ISID/iPLAss/issues/31)  - 表示名を取得する関数をgetDisplayNameからgetLocalizedDisplayNameに変更</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/property/PropertyHandler.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="47" opendate="2018-10-18 09:38:21" fixdate="2018-10-18 09:42:30">
+		<buginformation>
+			<summary>WebAPI、レスポンスがXMLの場合のnamespaceが不正</summary>
+			<description>WebAPIのレスポンスのタイプがXMLの場合、  ```  &lt;beanmapper:webApiResponse&gt;    &lt;status&gt;OK&lt;/status&gt;     ...  &lt;/beanmapper:webApiResponse&gt; ``` となっていたものを、  ```  &lt;webapi:webApiResponse&gt;    &lt;status&gt;OK&lt;/status&gt;    ...  &lt;/webapi:webApiResponse&gt; ```  に修正。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-core/src/main/java/org/iplass/mtp/command/beanmapper/package-info.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="43" opendate="2018-10-10 11:45:09" fixdate="2018-10-10 11:46:02">
+		<buginformation>
+			<summary>RememberMeでログイン時、token不正の場合にエラーメッセージが正しく表示されない</summary>
+			<description>RememberMeでログイン時、token不正の場合にエラーメッセージが正しく表示されず、ブランク画面が表示されてしまう。 これを正しくログイン画面を表示し、エラーメッセージを表示するように修正。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-web/src/main/java/org/iplass/mtp/impl/web/interceptors/AuthInterceptor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2018-09-26 10:17:40" fixdate="2018-09-27 02:28:12">
+		<buginformation>
+			<summary>Deepコピー処理でValidationエラーが発生すると画面にエラーメッセージが表示されない</summary>
+			<description>現状、汎用詳細画面、Deepコピー処理でValidationエラーが発生すると共通エラー画面に遷移されます。 汎用詳細画面でValidationエラーメッセージが表示できるようにする。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/DetailViewCommand.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/property/PropertyHandler.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/impl/entity/EntityManagerImpl.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/util/StringUtil.java</file>
+			<file>iplass-core/src/main/java/org/iplass/mtp/entity/ValidateError.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="23" opendate="2018-09-19 01:56:27" fixdate="2018-09-28 07:13:26">
+		<buginformation>
+			<summary>コピー時にShallowかDeepを選択用のJavaScriptが正しく動かない</summary>
+			<description>現状、コピー対象の枚挙クラスorg.iplass.mtp.view.generic.DetailFormView.CopyTargetの変数が英語の全大文字で定義されていてinput hiddenに出力されいますが、Javascript側の判断処理で利用する文字列と一致していません。  例  - サーバ側：DEEP - JavaScript側：Deep</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/generic/detail/DetailCommandContext.java</file>
+			<file>iplass-gem/src/main/java/org/iplass/mtp/view/generic/DetailFormView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="15" opendate="2018-09-12 05:38:28" fixdate="2018-09-12 06:35:23">
+		<buginformation>
+			<summary>暗号化バッチ、FILE_MODEで実行すると無限ループする</summary>
+			<description>現状、tools.crypt.Encoderバッチに引数指定で（-file)起動すると、無限ループになってしまう。 バッチ処理を見直す。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-tools-batch/src/main/java/org/iplass/mtp/tools/batch/crypt/Encoder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1" opendate="2018-08-28 08:06:31" fixdate="2018-08-28 08:09:58">
+		<buginformation>
+			<summary>タイ語表示の際に検索結果の編集リンクが見切れる</summary>
+			<description>タイ語で検索結果一覧や全文検索を表示すると、「詳細|編集」のリンクの文字が長くなり、右側が見切れてしまう。 resouceBundleにて言語毎の幅を管理する。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>iplass-gem/src/main/java/org/iplass/gem/command/fulltext/FullTextSearchCommand.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

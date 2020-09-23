@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>836</id>
+		<title>Lors d'un PUT /properties, on ne détecte pas comme invalide lorsqu'une propriété est mentionné une 2e fois avec un espace à la fin</title>
+		<body></body>
+		<created>2020-02-12 11:06:50</created>
+		<closed>2020-02-12 13:15:31</closed>
+	</bug>
+	<bug>
+		<id>834</id>
+		<title>Un appel LDAP est systématiquement effectué, même quand les données sont en cache</title>
+		<body>Comportement observé grâce à la métrique `totalCallsCounter`, dont le comportement est exactement identique au nombre d'appels à l'API, alors qu'on s'attend à ce que le cache évite certains appels au serveur LDAP</body>
+		<created>2020-02-11 16:01:30</created>
+		<closed>2020-02-11 16:23:00</closed>
+	</bug>
+	<bug>
+		<id>832</id>
+		<title>Impossible de purger les propriétés inutilisées d'un module dont le `propertiesVersionId` est à `null`</title>
+		<body></body>
+		<created>2020-02-11 09:57:35</created>
+		<closed>2020-02-11 16:16:06</closed>
+	</bug>
+	<bug>
+		<id>828</id>
+		<title>Specifying an empty from_name or from_version to POST /technos trigger a 500 error (NullPointerException)</title>
+		<body></body>
+		<created>2020-01-28 11:09:30</created>
+		<closed>2020-01-28 15:36:03</closed>
+	</bug>
+	<bug>
+		<id>818</id>
+		<title>Bug with /diff when when an iterable property only exists on the left side</title>
+		<body>The following scenario currently triggers an HTTP error 500:  ```gherkin   Scenario: comparison including an iterable property that only exists on the left side     Given an existing module with this template content       """       {{#iterable_property}}         {{ simple_property }}       {{/iterable_property}}       """     And another existing module     And an existing platform with those modules     When I get the properties diff on final values between the currently deployed modules     Then the resulting diff matches       | onlyLeft | onlyRight | common | differing |       |          |           |        |           | ```</body>
+		<created>2019-12-27 11:07:29</created>
+		<closed>2020-01-09 16:12:31</closed>
+	</bug>
+	<bug>
+		<id>813</id>
+		<title>Les commentaires ne sont plus enregistrés lors de la mise à jour de propriétés</title>
+		<body></body>
+		<created>2019-12-02 11:00:00</created>
+		<closed>2019-12-18 10:39:14</closed>
+	</bug>
+	<bug>
+		<id>792</id>
+		<title>Le diff ne tient pas compte des propriétés globales dans les valeurs finales</title>
+		<body></body>
+		<created>2019-10-22 13:41:44</created>
+		<closed>2019-10-23 15:58:40</closed>
+	</bug>
+	<bug>
+		<id>784</id>
+		<title>Sauvegarder une propriété @required non valorisée ayant le même non qu'une propriété globale valorisée</title>
+		<body></body>
+		<created>2019-10-10 15:46:46</created>
+		<closed>2019-10-11 09:57:21</closed>
+	</bug>
+	<bug>
+		<id>779</id>
+		<title>Eviter la création de doublons à la réception d'une requête dupliquée</title>
+		<body>Un module a été créé en double par un appel effectué 2 fois "au même moment", ce qui rend la lecture de ce module impossible et crée une corruption de données.  Une solution serait de ne plus utiliser d'UUID comme identifiant d'agrégat mais un hash de la clé fonctionnelle pour qu'Axon rejette automatiquement la réception de 2ème commande.</body>
+		<created>2019-10-07 15:53:51</created>
+		<closed>2019-10-15 12:36:17</closed>
+	</bug>
+	<bug>
+		<id>767</id>
+		<title>Empêcher l'accès aux fichiers d'instances présentes uniquement dans un module archivé</title>
+		<body>Actuellement, il est possible de récupérer le fichier d'une instance qui n'existe pas mais qui a existé dans un module qui a été archivé.  Pour reproduire le cas : * Associer un module à une plateforme * Créer une instance A * Mettre à jour le module * Créer une instance B * Supprimer l'instance A * Accéder au fichier de l'instance A  Devrait être rejeté, ce n'est pas le cas</body>
+		<created>2019-09-30 09:41:52</created>
+		<closed>2019-09-30 16:14:01</closed>
+	</bug>
+	<bug>
+		<id>765</id>
+		<title>/applications/using_module/{module_name}/{module_version}/{version_type} returns platforms that used to contain the target module</title>
+		<body>C'est parce qu'on ignore pas les _deployed modules_ avec un ID nul dans `MongoPlatformRepository.findPlatformsUsingModule`...</body>
+		<created>2019-09-26 17:46:25</created>
+		<closed>2019-09-27 07:45:20</closed>
+	</bug>
+	<bug>
+		<id>752</id>
+		<title>La page de diff peut inclure des propriétés globales non référencées par le module ciblé</title>
+		<body>Signalé le 11 septembre par Olivier B.</body>
+		<created>2019-09-16 08:57:58</created>
+		<closed>2019-09-18 07:04:41</closed>
+	</bug>
+	<bug>
+		<id>721</id>
+		<title>Les ACLs par application ne lèvent pas les restrictions sur les actions permises et l'accès aux mdp</title>
+		<body></body>
+		<created>2019-07-31 08:26:09</created>
+		<closed>2019-07-31 14:49:05</closed>
+	</bug>
+	<bug>
+		<id>710</id>
+		<title>Bug du GET /properties globales avec timestamp - les propriétés historiques sont écrasées dans `getValuedProperties`</title>
+		<body>Cette méthode contient un bug : https://github.com/voyages-sncf-technologies/hesperides/blob/master/core/application/src/main/java/org/hesperides/core/application/platforms/PlatformUseCases.java#L161  En effet l'objet `PlatformView platform` contient bien les bonnes propriétés historiques, mais elles sont ignorées et les propriétés retournées sont au final issues des appels à `queries.getGlobalProperties` / `queries.getDeployedModuleProperties` qui ignorent le _timestamp_</body>
+		<created>2019-07-23 14:37:44</created>
+		<closed>2019-08-07 10:29:49</closed>
+	</bug>
+	<bug>
+		<id>701</id>
+		<title>Lors de la sauvegarde de template, on ne valide pas qu'une propriété simple ne doit pas avoir le même nom qu'une propriété itérable</title>
+		<body>Exemple de template: ``` {{#appenders.file-rolling-vsctlayout}}     &lt;appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="{{appendername}}"&gt;         &lt;File&gt;${log.instance.dir}/espaceclient/{{filename}}.log&lt;/File&gt;         &lt;Append&gt;true&lt;/Append&gt;         &lt;triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy"&gt;             &lt;maxFileSize&gt;{{roll.threshold|@comment "taille du fichier déclenchant une rotation (kilo-octet)" @default 5000}}KB&lt;/maxFileSize&gt;         &lt;/triggeringPolicy&gt;         &lt;rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy"&gt;             &lt;fileNamePattern&gt;${log.instance.dir}/espaceclient/{{filename}}.log-%i&lt;/fileNamePattern&gt;             &lt;maxIndex&gt;{{roll.max-index|@comment "nombre maximal de fichiers '.log-%i'" @default 5}}&lt;/maxIndex&gt;         &lt;/rollingPolicy&gt;         &lt;Encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder"&gt;             &lt;layout class="com.vsct.component.log.layout.logback.VsctLayout"/&gt;         &lt;/Encoder&gt;     &lt;/appender&gt; {{/appenders.file-rolling-vsctlayout}}      Mon iterable : {{appenders.file-rolling-vsctlayout}} ``` Stacktrace: ``` 2019-07-18 15:29:53.376 ERROR 11312 --- [nio-8080-exec-5] o.h.c.p.e.GlobalExceptionHandler         : Unexpected error (path=uri=/rest/applications/KTN/platforms/KTN1/properties): 2019-07-18 15:29:53.378 ERROR 11312 --- [nio-8080-exec-5] o.h.c.p.e.GlobalExceptionHandler         : java.lang.ClassCastException: org.hesperides.core.domain.templatecontainers.queries.PropertyView cannot be cast to org.hesperides.core.domain.templatecontainers.queries.IterablePropertyView  java.lang.ClassCastException: org.hesperides.core.domain.templatecontainers.queries.PropertyView cannot be cast to org.hesperides.core.domain.templatecontainers.queries.IterablePropertyView at org.hesperides.core.domain.platforms.queries.views.properties.IterableValuedPropertyView.excludePropertyWithOnlyDefaultValue(IterableValuedPropertyView.java:59) at org.hesperides.core.domain.platforms.queries.views.properties.AbstractValuedPropertyView.lambda$excludePropertiesWithOnlyDefaultValue$2(AbstractValuedPropertyView.java:88) ```</body>
+		<created>2019-07-18 13:35:16</created>
+		<closed>2019-08-16 15:21:41</closed>
+	</bug>
+	<bug>
+		<id>693</id>
+		<title>Des utilisateurs sans droits de production peuvent modifier des propriétés de platformes de production</title>
+		<body>Signalé ce matin.  Conséquence directe : des mots de passe ont été remplacé par la chaîne de caractères `********`.  Je vais essayer d'identifier s'il s'agit d'un bug systématique, et pourquoi notre test ne vérifie pas ça : https://github.com/voyages-sncf-technologies/hesperides/blob/master/tests/bdd/src/test/resources/permissions/prod-perms.feature#L15</body>
+		<created>2019-07-11 08:40:44</created>
+		<closed>2019-07-11 09:16:39</closed>
+	</bug>
+	<bug>
+		<id>685</id>
+		<title>/applications/using_module renvoie des plateformes qui n'utilisent plus le module en question</title>
+		<body>Il semble que la requête renvoie les plateformes ayant utilisé le module fourni en paramètre, donc archivé, et _sans tenir compte de la version ou du type de version_. </body>
+		<created>2019-07-01 12:12:22</created>
+		<closed>2019-07-09 16:19:03</closed>
+	</bug>
+	<bug>
+		<id>665</id>
+		<title>Impossible de récupérer l'historique des évènements d'un module dont le nom contient un underscore</title>
+		<body>Erreur : Invalid stream name, expected format: module-$name-$version-$versionType or platform-$app-$platform  BIV &gt; PRD1 &gt; SQV</body>
+		<created>2019-06-11 15:58:09</created>
+		<closed>2019-06-12 07:01:51</closed>
+	</bug>
+	<bug>
+		<id>662</id>
+		<title>Les caractères HTML échappés dans le JSON de la sortie de GET /files posent problème</title>
+		<body>**Ressource**: `GET /rest/files/applications/$APP/platforms/$PLATFORM/$PATH/$MODULE/$VERSION/instances/$INSTANCE?isWorkingCopy=false&amp;simulate=false`  **Sortie**: `[{"location":"...file_path...","url":"/rest/files/applications/...?isWorkingCopy\u003dfalse\u0026template_namespace\u003dmodules%23module%23version%23RELEASE\u0026simulate\u003dfalse"`  **Problème**: Ces URLs ne sont pas directement employables par `curl` par exemple  **Solution**: https://stackoverflow.com/a/4147245/636849</body>
+		<created>2019-06-05 14:16:24</created>
+		<closed>2019-06-05 15:02:20</closed>
+	</bug>
+	<bug>
+		<id>660</id>
+		<title>Une propriété itérable non valorisée ayant le même nom qu'une propriété simple valorisée ne prend pas sa valeur</title>
+		<body>D'après Jordan, c'était le cas avant la refonte.</body>
+		<created>2019-06-04 09:44:39</created>
+		<closed>2019-10-16 09:36:34</closed>
+	</bug>
+	<bug>
+		<id>639</id>
+		<title>Get module template non fonctionnel dans Swagger</title>
+		<body>Pour être rétrocompatible avec le legacy, on a autorisé l'argument `template_name` à être tout et n'importe quoi, ce qui donne ça : ![image](https://user-images.githubusercontent.com/4296630/57627685-beea0f80-7598-11e9-933e-2c442a315776.png) </body>
+		<created>2019-05-13 14:04:53</created>
+		<closed>2019-06-13 13:09:29</closed>
+	</bug>
+	<bug>
+		<id>638</id>
+		<title>La restauration de plateforme ne fonctionne pas</title>
+		<body>* Erreur 404 systématique * Il faut empêcher la restauration de plateforme existante * Le bouton du front ne déclenche pas l'appel =&gt; https://github.com/voyages-sncf-technologies/hesperides-gui/issues/194 * sensitivité à la casse</body>
+		<created>2019-05-10 13:54:53</created>
+		<closed>2019-05-13 17:26:53</closed>
+	</bug>
+	<bug>
+		<id>623</id>
+		<title>Bug majeur : lors d'une copie de plateforme les deployed modules inactifs de l'historique sont inclus</title>
+		<body></body>
+		<created>2019-04-26 14:37:02</created>
+		<closed>2019-04-30 09:08:29</closed>
+	</bug>
+	<bug>
+		<id>597</id>
+		<title>Valeur par défaut et valorisation vide</title>
+		<body>On doit tenir compte de la valeur par défaut d'une propriété lorsque cette propriété n'est pas valorisée ET si elle est valorisée avec du vide.</body>
+		<created>2019-04-15 16:08:26</created>
+		<closed>2019-04-15 16:16:46</closed>
+	</bug>
+	<bug>
+		<id>594</id>
+		<title>Impossible de supprimer un module via swagger</title>
+		<body>TypeError: NetworkError when attempting to fetch resource. </body>
+		<created>2019-04-15 14:47:26</created>
+		<closed>2019-04-16 09:39:18</closed>
+	</bug>
+	<bug>
+		<id>591</id>
+		<title>Une propriété déclarée @required dans un template ne doit pas nécessiter de valorisation au niveau du module si elle est valorisée au niveau de la plateforme</title>
+		<body></body>
+		<created>2019-04-15 13:21:55</created>
+		<closed>2019-04-15 16:05:23</closed>
+	</bug>
+	<bug>
+		<id>590</id>
+		<title>Impossible d'utiliser un espace dans la version de plateforme</title>
+		<body>Erreur détectée à la base avec un / dans la version</body>
+		<created>2019-04-15 12:57:55</created>
+		<closed>2019-04-18 12:08:17</closed>
+	</bug>
+	<bug>
+		<id>564</id>
+		<title>Conservation d'un historique de valorisations de propriétés de modules déployées sur une plateforme</title>
+		<body>La fonctionnalité a été implémentée dans `PlatformDocument.updateModules` mais : - il manque les tests BDDs - ce n'est pas une logique de fenêtre glissante -&gt; bug</body>
+		<created>2019-03-28 14:05:16</created>
+		<closed>2019-03-29 09:25:21</closed>
+	</bug>
+	<bug>
+		<id>547</id>
+		<title>Un propriété itérable n'est pas écrasée par une propriété globale ayant le même nom même si elle n'est pas valorisée</title>
+		<body></body>
+		<created>2019-03-18 09:38:22</created>
+		<closed>2019-03-18 13:45:01</closed>
+	</bug>
+	<bug>
+		<id>540</id>
+		<title>Propriété faisant référence à une propriété ayant une annotation</title>
+		<body></body>
+		<created>2019-03-14 13:09:11</created>
+		<closed>2019-03-14 14:00:40</closed>
+	</bug>
+	<bug>
+		<id>528</id>
+		<title>Lors de valorisation d'un fichier, les valeurs sont échappées</title>
+		<body></body>
+		<created>2019-03-12 15:25:33</created>
+		<closed>2019-03-12 16:59:16</closed>
+	</bug>
+	<bug>
+		<id>518</id>
+		<title>Réparer la javadoc pour permettre l'upload de nos releases sur OSSRH</title>
+		<body>Elle est désactivée actuellement : https://github.com/voyages-sncf-technologies/hesperides/blob/develop/.travis.yml#L31</body>
+		<created>2019-02-22 14:03:25</created>
+		<closed>2019-02-25 19:00:43</closed>
+	</bug>
+	<bug>
+		<id>504</id>
+		<title>Vérifier les valorisations de propriétés contenant @pattern</title>
+		<body></body>
+		<created>2019-02-13 14:30:02</created>
+		<closed>2019-03-28 11:06:47</closed>
+	</bug>
+	<bug>
+		<id>500</id>
+		<title>Le nom des propriétés valorisées est "trimé"</title>
+		<body></body>
+		<created>2019-02-10 15:50:28</created>
+		<closed>2019-02-10 15:58:19</closed>
+	</bug>
+	<bug>
+		<id>496</id>
+		<title>Valorisation de propriété avec une autre propriété</title>
+		<body>Il est déjà possible de valoriser une propriété au niveau du module avec une propriété globale mais pas avec une autre propriété valorisée au niveau du module.</body>
+		<created>2019-02-08 14:53:09</created>
+		<closed>2019-02-08 16:05:50</closed>
+	</bug>
+	<bug>
+		<id>493</id>
+		<title>Propriété globale utilisée dans la valorisation d'une propriété de module</title>
+		<body>Lorsqu'on valorise une propriété de module avec plusieurs propriétés dont une propriété globale, cette propriété globale est considérée comme utilisée par le module.</body>
+		<created>2019-02-07 16:42:04</created>
+		<closed>2019-02-07 17:15:05</closed>
+	</bug>
+	<bug>
+		<id>490</id>
+		<title>Une seule propriété d'instance détectée lorsqu'il y en a plusieurs dans une valeur de propriété valorisée</title>
+		<body></body>
+		<created>2019-02-06 17:54:31</created>
+		<closed>2019-02-07 15:40:45</closed>
+	</bug>
+	<bug>
+		<id>489</id>
+		<title>Règle d'extraction des propriétés d'instance</title>
+		<body></body>
+		<created>2019-02-06 14:10:12</created>
+		<closed>2019-02-07 15:40:46</closed>
+	</bug>
+	<bug>
+		<id>486</id>
+		<title>GetProperties ne doit retourner que les propriétés valorisées</title>
+		<body>Mais pas les propriétés non valorisées ayant une valeur par défaut</body>
+		<created>2019-02-05 14:19:14</created>
+		<closed>2019-02-06 13:22:29</closed>
+	</bug>
+	<bug>
+		<id>485</id>
+		<title>Propriétés obfusquées sur les plateformes de production même quand ce ne sont pas des mots de passe</title>
+		<body></body>
+		<created>2019-02-05 11:40:52</created>
+		<closed>2019-02-06 12:58:22</closed>
+	</bug>
+	<bug>
+		<id>482</id>
+		<title>Model d'instance et de propriétés valorisées non iso</title>
+		<body></body>
+		<created>2019-02-04 17:15:04</created>
+		<closed>2019-02-05 09:48:28</closed>
+	</bug>
+	<bug>
+		<id>481</id>
+		<title>Mise à jour du groupe logique avec copie de propriétés</title>
+		<body></body>
+		<created>2019-02-04 17:13:07</created>
+		<closed>2019-02-05 13:19:41</closed>
+	</bug>
+	<bug>
+		<id>478</id>
+		<title>Les plateformes contenant un point dans leur nom ne sont pas récupérables</title>
+		<body></body>
+		<created>2019-02-04 10:47:53</created>
+		<closed>2019-02-04 11:17:12</closed>
+	</bug>
+	<bug>
+		<id>476</id>
+		<title>Le nom des propriétés est sensible à la casse</title>
+		<body></body>
+		<created>2019-02-01 15:30:59</created>
+		<closed>2019-02-04 14:48:05</closed>
+	</bug>
+	<bug>
+		<id>474</id>
+		<title>GetFiles : même module dans plusieurs groupes logiques</title>
+		<body>Bug lors de la récupération des fichiers dans le cas où un même module est déployé plusieurs fois sur une même plateforme (dans des groupes logiques distincts).</body>
+		<created>2019-01-31 15:43:16</created>
+		<closed>2019-02-01 08:22:08</closed>
+	</bug>
+	<bug>
+		<id>472</id>
+		<title>Conserver les propriétés valorisées lors d'un changement de nom de module </title>
+		<body>Permettre de conserver la valorisation des propriétés lorsqu'on met à jour le nom d'un module d'une plateforme : upgrade module = nom et/ou version et/ou type de version différent.</body>
+		<created>2019-01-31 11:02:13</created>
+		<closed>2019-01-31 15:24:17</closed>
+	</bug>
+	<bug>
+		<id>469</id>
+		<title>Conserver les propriétés valorisées lors d'un changement de type de version de module</title>
+		<body>Permettre de conserver la valorisation des propriétés lorsqu'on met à jour le type de version d'un module d'une plateforme : upgrade module = même nom + version et/ou type de version différent.</body>
+		<created>2019-01-30 14:33:18</created>
+		<closed>2019-01-31 10:29:05</closed>
+	</bug>
+	<bug>
+		<id>467</id>
+		<title>Valorisation d'une propriété définie plusieurs fois avec le même nom mais un commentaire différent</title>
+		<body>Comment reproduire le bug : * Déclarer 2 propriétés ayant le même nom mais un commentaire distinct * Valoriser cette propriété (il n'y a qu'une valorisation possible parce que la valorisation se fait par rapport au nom de la propriété) * Lors de la récupération du fichier (ou des fichiers =&gt; location), une seule des 2 propriétés est valorisée</body>
+		<created>2019-01-29 16:23:35</created>
+		<closed>2019-01-30 14:39:46</closed>
+	</bug>
+	<bug>
+		<id>458</id>
+		<title>global_property_usage : valorisation niveau module</title>
+		<body>global_property_usage ne tient pas compte de l'utilisation des propriétés globales lors de la valorisation des propriétés au niveau du module. En revanche il ne doit pas tenir compte des valorisation au niveau de l'instance.</body>
+		<created>2019-01-10 15:09:25</created>
+		<closed>2019-01-10 15:36:44</closed>
+	</bug>
+	<bug>
+		<id>457</id>
+		<title>Propriétés prédéfinies</title>
+		<body>À tester et implémenter :  {{hesperides.application.name}} {{hesperides.application.version}} {{hesperides.platform.name}}  {{hesperides.module.name}} {{hesperides.module.version}} {{hesperides.module.path}} {{hesperides.module.path.full}} {{hesperides.module.path.0}} {{hesperides.module.path.1}} etc ...  {{hesperides.instance.name}}</body>
+		<created>2019-01-08 16:57:38</created>
+		<closed>2019-01-10 15:37:16</closed>
+	</bug>
+	<bug>
+		<id>455</id>
+		<title>Concaténation de location et filename avec /</title>
+		<body>location + filename = location/filename location +/filename = location/filename location/ + filename = location/filename location/ + /filename = location/filename</body>
+		<created>2019-01-08 14:30:22</created>
+		<closed>2019-01-10 15:37:15</closed>
+	</bug>
+	<bug>
+		<id>454</id>
+		<title>Valorisation d'une propriété itérable dans une propriété itérable (iterable-ception)</title>
+		<body>Non testé</body>
+		<created>2019-01-08 13:57:35</created>
+		<closed>2019-01-10 15:37:15</closed>
+	</bug>
+	<bug>
+		<id>453</id>
+		<title>Valorisation de propriété d'instance avec propriété globale</title>
+		<body></body>
+		<created>2019-01-07 17:39:09</created>
+		<closed>2019-01-10 15:37:14</closed>
+	</bug>
+	<bug>
+		<id>452</id>
+		<title>Valorisation de propriétés filename et location avec des propriétés globales ou d'instance</title>
+		<body>Encore mieux : propriété globale utilisée en tant que valeur de propriété d'instance</body>
+		<created>2019-01-07 17:04:59</created>
+		<closed>2019-01-10 15:37:14</closed>
+	</bug>
+	<bug>
+		<id>451</id>
+		<title>Mise à jour de plateforme : version et isProd ne sont pas pris en compte</title>
+		<body>La modification de version de l'application et du flag isProd n'est pas prise en compte lors de la mise à jour de plateforme.</body>
+		<created>2019-01-07 14:46:25</created>
+		<closed>2019-01-10 15:37:14</closed>
+	</bug>
+	<bug>
+		<id>437</id>
+		<title>Ecrasement des propriétés lors de la mise à jour de plateforme</title>
+		<body>La mise à jour de plateforme vide les propriétés valorisées des modules déployés et la liste des noms de propriétés d'instances.</body>
+		<created>2018-12-04 13:12:40</created>
+		<closed>2018-12-06 08:56:13</closed>
+	</bug>
+	<bug>
+		<id>414</id>
+		<title>Le endpoint actuator /mappings ne fonctionne pas pour cause de boucle infinie</title>
+		<body>Ce bug apparaît dès que l'on consulte http://localhost:8080/rest/manage/mappings  Pour plus de contexte sur ce bug: https://github.com/spring-projects/spring-boot/issues/15183  La raison pour laquelle nous utilisons Gson est documentée ici: https://github.com/voyages-sncf-technologies/hesperides/blob/master/documentation/lightweight-architecture-decision-records/use_gson.md</body>
+		<created>2018-11-15 15:48:12</created>
+		<closed>2019-06-13 17:56:06</closed>
+	</bug>
+	<bug>
+		<id>406</id>
+		<title>Allowing to request /rest/health without auth</title>
+		<body>In https://github.com/voyages-sncf-technologies/hesperides/commit/1a37d51991f9989a698728f728b8f1d7d9c08b45 I added a `HEALTHCHECK` in the `Dockerfile`, but we need to make this resource accessible without auth</body>
+		<created>2018-11-08 08:11:12</created>
+		<closed>2018-11-08 11:25:04</closed>
+	</bug>
+	<bug>
+		<id>379</id>
+		<title>Commentary annotation doesn't seem to work correctly</title>
+		<body>From: https://github.com/voyages-sncf-technologies/hesperides-gui/issues/125  &gt; When I use the @comment annotation it doesn't display it into my module.  &gt; Actually, in my template, those syntax doen't work :  &gt; - "my_prop={{my_prop|@comment "description"}}  &gt; - "my_prop={{my_prop|"description"}} &gt; - "my_prop={{my_prop|description}} &gt; - "my_prop={{ my_prop|description }} &gt; - "my_prop={{my_prop | description}} &gt; - "my_prop={{ my_prop | description }} &gt; - "my_prop={{my_prop|@comment "description" @default 60000}} works well but I have got only mu default value (like "my_prop={{my_prop|@comment "description" @default "60000"}})...   Nous devrions vérifier si ce bug apparaît toujours après la refonte</body>
+		<created>2018-10-30 13:50:40</created>
+		<closed>2019-02-13 14:49:34</closed>
+	</bug>
+	<bug>
+		<id>378</id>
+		<title> Released modules should not be allowed to include working-copy technos</title>
+		<body>From: https://github.com/voyages-sncf-technologies/hesperides-gui/issues/122  &gt; When a module is released, it doesnt check whether a techno is in a released or in a working-copy state. &gt; If a released module has a unreleased techno, the template linked to this techno can be modified, and these modifications will be passed on the released module.</body>
+		<created>2018-10-30 13:24:48</created>
+		<closed>2019-10-04 15:38:58</closed>
+	</bug>
+	<bug>
+		<id>349</id>
+		<title>Gestion des créations après suppressions</title>
+		<body>Si on crée une entité après l'avoir supprimée, Axon rejète cette création parce la clé a déjà été utilisée.</body>
+		<created>2018-09-12 12:58:42</created>
+		<closed>2018-10-26 13:42:10</closed>
+	</bug>
+	<bug>
+		<id>341</id>
+		<title>Diff de version id et contenu</title>
+		<body>*********************** Diff ***********************  http://deadbabyboy:50080/rest/modules/vad-mail/1.4-SNAPSHOT/workingcopy/templates/logback-files.properties http://localhost:8080/rest/modules/vad-mail/1.4-SNAPSHOT/workingcopy/templates/logback-files.properties https://hesperides-dev:56789/#/module/vad-mail/1.4-SNAPSHOT?type=workingcopy content Expected: auditoutlinefile.maxIndex=5 auditoutlinefile.maxFileSize=5MB stackfile.maxIndex=5 stackfile.maxFileSize=5MB xllogfile.maxIndex=5 xllogfile.maxFileSize=5MB iologfile.maxIndex=5 iologfile.maxFileSize=5MB      got: auditoutlinefile.maxIndex=5 auditoutlinefile.maxFileSize=5MB stackfile.maxIndex=5 stackfile.maxFileSize=5MB xllogfile.maxIndex=5 xllogfile.maxFileSize=5MB iologfile.maxIndex=5 iologfile.maxFileSize=5MB  boobs  ; version_id Expected: 7      got: 8</body>
+		<created>2018-09-06 15:06:55</created>
+		<closed>2018-10-23 09:17:21</closed>
+	</bug>
+	<bug>
+		<id>340</id>
+		<title>Propriété itérable manquante</title>
+		<body>*********************** Diff ***********************  http://deadbabyboy:50080/rest/modules/SncfFusionPlacesRef-nodejs/1.42.0/workingcopy/model http://localhost:8080/rest/modules/SncfFusionPlacesRef-nodejs/1.42.0/workingcopy/model https://hesperides-dev:56789/#/module/SncfFusionPlacesRef-nodejs/1.42.0?type=workingcopy iterable_properties[]: Expected 2 values but got 1</body>
+		<created>2018-09-06 15:05:17</created>
+		<closed>2018-10-23 09:17:24</closed>
+	</bug>
+	<bug>
+		<id>339</id>
+		<title>Propriété en trop</title>
+		<body>*********************** Diff ***********************  http://deadbabyboy:50080/rest/modules/vsc-proposals-server-europe-war/129-SNAPSHOT/workingcopy/templates http://localhost:8080/rest/modules/vsc-proposals-server-europe-war/129-SNAPSHOT/workingcopy/templates https://hesperides-dev:56789/#/module/vsc-proposals-server-europe-war/129-SNAPSHOT?type=workingcopy []: Expected 10 values but got 11</body>
+		<created>2018-09-06 15:01:56</created>
+		<closed>2018-10-23 09:17:16</closed>
+	</bug>
+	<bug>
+		<id>338</id>
+		<title>Diff dans la gestion de la valeur par défaut d'une propriété</title>
+		<body>*********************** Diff ***********************  http://deadbabyboy:50080/rest/modules/lyriaweb-drupal/3.0.0/workingcopy/model http://localhost:8080/rest/modules/lyriaweb-drupal/3.0.0/workingcopy/model https://hesperides-dev:56789/#/module/lyriaweb-drupal/3.0.0?type=workingcopy key_value_properties[name=drupal.wingit_baseurl].comment Expected: null      got: Wingit base url  ; key_value_properties[name=drupal.wingit_baseurl].defaultValue Expected: https://sandbox.thewingitapp.com/api| @comment       got: null</body>
+		<created>2018-09-06 14:57:54</created>
+		<closed>2018-10-23 09:16:15</closed>
+	</bug>
+	<bug>
+		<id>337</id>
+		<title>Diff : propriété manquante</title>
+		<body>*********************** Diff ***********************  http://deadbabyboy:50080/rest/modules/pao-bridge-jms/1.0.2-SNAPSHOT/workingcopy/model http://localhost:8080/rest/modules/pao-bridge-jms/1.0.2-SNAPSHOT/workingcopy/model https://hesperides-dev:56789/#/module/pao-bridge-jms/1.0.2-SNAPSHOT?type=workingcopy key_value_properties[]: Expected 5 values but got 4</body>
+		<created>2018-09-06 14:22:11</created>
+		<closed>2018-10-23 09:15:39</closed>
+	</bug>
+	<bug>
+		<id>336</id>
+		<title>Erreur lors de l'appel pour afficher un template dont le nom contient un slash</title>
+		<body>http://deadbabyboy:50080/rest/modules/wdi-monitor/SNAPSHOT/workingcopy/templates/conf/agencies/domains.json http://localhost:8080/rest/modules/wdi-monitor/SNAPSHOT/workingcopy/templates/conf/agencies/domains.json</body>
+		<created>2018-09-06 14:19:19</created>
+		<closed>2018-10-26 13:41:44</closed>
+	</bug>
+	<bug>
+		<id>332</id>
+		<title>Les rôles des utilisateurs sont stockés dans les évènements</title>
+		<body>Le batch de migration des données doit inventer ces rôles pour balancer les évènements sur le bus, alors qu'on n'a pas besoin de stocker cette information.</body>
+		<created>2018-09-05 12:50:57</created>
+		<closed>2018-11-26 12:39:20</closed>
+	</bug>
+	<bug>
+		<id>329</id>
+		<title>Gestion des % dans le nom des templates</title>
+		<body>Le % dans l'url, encodé en %25, est rejeté par défaut par Spring par sécurité, alors qu'il est accepté dans le legacy.</body>
+		<created>2018-09-05 12:31:20</created>
+		<closed>2018-09-06 13:49:20</closed>
+	</bug>
+	<bug>
+		<id>327</id>
+		<title>Split non sensible à la casse</title>
+		<body></body>
+		<created>2018-09-03 11:51:41</created>
+		<closed>2018-09-05 08:13:03</closed>
+	</bug>
+	<bug>
+		<id>326</id>
+		<title>Tabulation après valeur sans guillemet</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{propriété | @comment foo[tab]bar}}  Donne, dans le model, la propriété suivante :      comment: foo  Alors qu'on renvoie dans la nouvelle appli :      comment: foo[tab]bar</body>
+		<created>2018-09-03 09:45:11</created>
+		<closed>2018-09-05 08:13:02</closed>
+	</bug>
+	<bug>
+		<id>324</id>
+		<title>Guillemets ouverts dans une annotation et fermés dans une autre</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{propriété | @comment "comment | @default 12"}}  Donne, dans le model, la propriété suivante :      comment: comment | @default 12     default: [vide]  Alors qu'on renvoie dans la nouvelle appli :      comment: null     default: [vide]</body>
+		<created>2018-09-03 09:06:44</created>
+		<closed>2018-09-03 10:04:15</closed>
+	</bug>
+	<bug>
+		<id>323</id>
+		<title>Les annotations doivent être précédées d'un espace pour être détecté sauf dans le cas de la première annotation.</title>
+		<body></body>
+		<created>2018-08-29 12:52:02</created>
+		<closed>2018-09-03 10:04:15</closed>
+	</bug>
+	<bug>
+		<id>322</id>
+		<title>Supprimer les références vers les technos lors de leur suppression</title>
+		<body></body>
+		<created>2018-08-28 15:33:23</created>
+		<closed>2018-09-03 10:04:15</closed>
+	</bug>
+	<bug>
+		<id>321</id>
+		<title>Commentaire contenant une simple quotes entre deux simples quotes</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{prop| | @comment 'Aujourd'hui' }}  Donne, dans le model, la propriété suivante :      comment: Aujourd  Alors qu'on renvoie dans la nouvelle appli :      comment: Aujourd'hui</body>
+		<created>2018-08-28 12:45:17</created>
+		<closed>2018-09-03 10:04:15</closed>
+	</bug>
+	<bug>
+		<id>320</id>
+		<title>Commentaire entouré de simples quotes mais qui contient des double quotes</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{prop|@comment 'exemple: "ZZZ'}}  Donne, dans le model, la propriété suivante :      comment: exemple: "ZZZ  Alors qu'on renvoie dans la nouvelle appli :      comment: exemple:</body>
+		<created>2018-08-28 10:05:49</created>
+		<closed>2018-09-03 10:04:15</closed>
+	</bug>
+	<bug>
+		<id>319</id>
+		<title>Diff dans le model d'un module lorsqu'une techno rattachée a été modifiée</title>
+		<body></body>
+		<created>2018-08-28 09:04:21</created>
+		<closed>2018-09-03 10:04:15</closed>
+	</bug>
+	<bug>
+		<id>318</id>
+		<title>Annotation @required suivie de "|"</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{mur.url|@required|url du service mur}}  Donne, dans le model, la propriété suivante :      comment: null     required: false  Alors qu'on renvoie une erreur dans la nouvelle appli.</body>
+		<created>2018-08-28 08:32:17</created>
+		<closed>2018-09-03 10:04:15</closed>
+	</bug>
+	<bug>
+		<id>317</id>
+		<title>Propriété : prise en compte des espaces de début et de fin dans les valeurs entre guillemets</title>
+		<body>Sauf pour les commentaires apparemment...</body>
+		<created>2018-08-27 15:40:42</created>
+		<closed>2018-09-03 10:04:15</closed>
+	</bug>
+	<bug>
+		<id>315</id>
+		<title>Annotation collée au commentaire</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{sumo.rules.generation|true ou false@required}}  Donne, dans le model, la propriété suivante :      comment: true ou false|     required: false  Alors qu'on renvoie dans la nouvelle appli :      comment: true ou false     required: true</body>
+		<created>2018-08-24 14:08:26</created>
+		<closed>2018-08-27 14:54:00</closed>
+	</bug>
+	<bug>
+		<id>314</id>
+		<title>Mélange de l'ancien format de commentaire avec les nouvelles annotations</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{propriété|un commentaire|@default ERROR}}  Donne, dans le model, la propriété suivante :      comment: un commentaire|     default: [vide]  Alors qu'on renvoie dans la nouvelle appli :      comment: un commentaire|     default: ERROR</body>
+		<created>2018-08-24 14:04:34</created>
+		<closed>2018-08-27 14:54:00</closed>
+	</bug>
+	<bug>
+		<id>313</id>
+		<title>Commentaire entouré de simple quotes contenant une simple quote échapée</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{tn.customer.file.api.login| @comment 'Login pour l\'authentification à l\'api'}}  Donne, dans le model, la propriété suivante :      comment: Login pour l'authentification à l'api  Alors qu'on renvoie dans la nouvelle appli :      comment: null</body>
+		<created>2018-08-24 13:57:28</created>
+		<closed>2018-08-27 14:53:59</closed>
+	</bug>
+	<bug>
+		<id>312</id>
+		<title>Commentaire sans annotation contenant un arobase</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{http.proxy | Format : [protocol://][user:password@]proxyhost[:port]}}  Donne, dans le model, la propriété suivante :      comment: Format : [protocol://][user:password  Alors qu'on renvoie dans la nouvelle appli :      comment: Format : [protocol://][user:password@]proxyhost[:port]</body>
+		<created>2018-08-24 13:53:04</created>
+		<closed>2018-08-27 14:53:59</closed>
+	</bug>
+	<bug>
+		<id>311</id>
+		<title>Annotation qui commence mais ne se termine pas avec des guillemets</title>
+		<body>Dans le legacy, une propriété déclarée comme ceci :      {{propriété | @comment \"comment | @default 12}}  Donne, dans le model, la propriété suivante :      comment: null     default: [vide]  Alors qu'on renvoie dans la nouvelle appli :      comment: null     default: 12</body>
+		<created>2018-08-24 13:48:52</created>
+		<closed>2018-08-27 14:53:59</closed>
+	</bug>
+	<bug>
+		<id>307</id>
+		<title>Diff avec annotation collée au texte</title>
+		<body>Si une propriété est définie comme ceci :      {{comment typo|@commentForgot space @required @password}}  Dans le legacy, le commentaire est à null. Dans la nouvelle appli, il contient "space".</body>
+		<created>2018-08-22 12:49:50</created>
+		<closed>2018-08-24 12:46:30</closed>
+	</bug>
+	<bug>
+		<id>306</id>
+		<title>Diff de propriétés itérables</title>
+		<body>http://deadbabyboy:50080/rest/modules/app-event/5.2.6/workingcopy/model http://localhost:8080/rest/modules/app-event/5.2.6/workingcopy/model  iterable_properties[name=healthChecks].fields[]: Expected 6 values but got 5  https://hesperides-dev:56789/#/techno/mesosapp/1.1?type=workingcopy</body>
+		<created>2018-08-22 12:33:03</created>
+		<closed>2018-10-23 09:11:31</closed>
+	</bug>
+	<bug>
+		<id>305</id>
+		<title>teeproxy: Diff de droits sur les modules + propriétés itérables</title>
+		<body>Objectif de l'issue : ignorer ces cas dans le diff des tests de NR comparés  ---  Lorsqu'un module du legacy ne contient pas de droits (rights absent), l'appel au model du legacy renvoie rights: null alors que la nouvelle appli renvoie rights: {user: {read: null, write: null, execute: null}, ...  ---  http://deadbabyboy:50080/rest/modules/app-event/5.2.6/workingcopy/model http://localhost:8080/rest/modules/app-event/5.2.6/workingcopy/model  iterable_properties[name=healthChecks].fields[]: Expected 6 values but got 5  https://hesperides-dev:56789/#/techno/mesosapp/1.1?type=workingcopy  ---  \+ _cf._ https://github.com/voyages-sncf-technologies/hesperides/issues/337  \+ _cf._ https://github.com/voyages-sncf-technologies/hesperides/issues/338  \+ _cf._ https://github.com/voyages-sncf-technologies/hesperides/issues/339  \+ _cf._ https://github.com/voyages-sncf-technologies/hesperides/issues/340  \+ _cf._ https://github.com/voyages-sncf-technologies/hesperides/issues/341</body>
+		<created>2018-08-22 09:42:35</created>
+		<closed>2019-04-19 08:55:30</closed>
+	</bug>
+	<bug>
+		<id>304</id>
+		<title>Incohérence des Arobase dans les annotations</title>
+		<body>5 types d'annotations sont possibles pour une propriété (@Required, @Comment, @Default, @Pattern, @Password), et toutes sont déclarées par une arobase. Si une arobase est présente sans être accolée de ces 5 mots clefs, elle doit être traitée comme un caractère normal (adresse e-mail en commentaire ou valeur par défaut, par exemple).  Sauf que, le Legacy n'est pas toujours d'accord..  Annotation | Legacy | Refonte -- | -- | -- name | "http.proxy" | "http.proxy" required | false | false comment | "Format : [protocol://][user:password@]proxyhost[:port]"  | "Format : [protocol://][user:password" defaultValue | "" | "" pattern | "" | "" password | false  | false </body>
+		<created>2018-08-21 08:56:17</created>
+		<closed>2018-08-28 09:23:00</closed>
+	</bug>
+	<bug>
+		<id>294</id>
+		<title>Recette pour release v0.1.4</title>
+		<body>#### A valider avec integrateur - [ ] reproduction config syslog-ng + logrotate ? - [ ] généraliser label Docker `git_commit` ?  #### Validations manuelles - [ ] reproduire le pb des timeouts lors de l'accès au ldap</body>
+		<created>2018-07-24 09:56:47</created>
+		<closed>2018-11-07 09:23:44</closed>
+	</bug>
+	<bug>
+		<id>292</id>
+		<title>Le build Docker sur Artifactory nécessite la suppression du dossier develop pour effectivement mettre à jour la version snapshot</title>
+		<body>cf. projet pipeline + `Jenkinsfile_build_docker_image#L33`</body>
+		<created>2018-07-24 07:10:17</created>
+		<closed>2018-11-23 16:40:29</closed>
+	</bug>
+	<bug>
+		<id>289</id>
+		<title>[Refonte] Le MongClient d'AxonMongoEventStoreConfiguration ne se valorise pas correctement</title>
+		<body>Si l'on ne valorise pas les variables d'environnement EVENT_STORE_MONGO_URI et PROJECTION_REPOSITORY_MONGO_URI, leurs valeurs par défaut les place dans des tables différentes. Cependant, les collections de l'Event Store (domainevents &amp; snapshotevents) se retrouvent stockées dans la base d'état final.</body>
+		<created>2018-07-19 08:13:01</created>
+		<closed>2018-07-19 11:35:05</closed>
+	</bug>
+	<bug>
+		<id>287</id>
+		<title>[Refonte][Techno] Endpoints model et templates ne doivent pas retourner de 404/500</title>
+		<body>Ces deux endpoints doivent être accessible, même si la techno n'existe pas.  get /templates/packages/{package_name}/{package_version}/release/model  - {"key_value_properties":[ ],"iterable_properties":[ ]}  get /templates/packages/{package_name}/{package_version}/release/templates - [ ] </body>
+		<created>2018-07-18 09:53:12</created>
+		<closed>2018-10-23 10:36:20</closed>
+	</bug>
+	<bug>
+		<id>286</id>
+		<title>[Refonte] Get template non loggué</title>
+		<body>La console n'affiche pas de retour lors d'un appel sur cet endpoint get /templates/packages/{package_name}/{package_version}/workingcopy/templates/{template_name} </body>
+		<created>2018-07-18 09:34:29</created>
+		<closed>2018-10-23 10:35:58</closed>
+	</bug>
+	<bug>
+		<id>285</id>
+		<title>[Refonte] Erreur 500 sur récupération détails template</title>
+		<body>Erreur 500 (NullPointer) lors de l'appel get /templates/packages/{package_name}/{package_version}/workingcopy/templates/{template_name}</body>
+		<created>2018-07-18 09:30:25</created>
+		<closed>2018-10-23 10:35:44</closed>
+	</bug>
+	<bug>
+		<id>283</id>
+		<title>Une annotation avec plusieurs Pipes</title>
+		<body>Ce comportement vient du Legacy, et est à reproduire. Une annotation doit pouvoir être composée de plusieurs pipe : [source](https://hesperides/#/techno/logdorak-js/1.0.0?type=workingcopy)  "level": "{{logdorak.instance.file.level|@default info @pattern debug|info|warn|error|off}}" **Legacy** :  pattern=debug|info|warn|error|off **Refonte** :  pattern=debug </body>
+		<created>2018-07-16 09:17:17</created>
+		<closed>2018-07-17 13:14:57</closed>
+	</bug>
+	<bug>
+		<id>259</id>
+		<title>[Refonte] Les valeurs des annotations peuvent comprendre des @</title>
+		<body>Bug crée par l'implémentation de la fonctionnalité d'annotation sur les propriétés. La solution choisie de "spliter" par "@" n'est pas la bonne, ou du moins pas suffisamment développée. Classe responsable :  \domain\src\main\java\org\hesperides\domain\templatecontainers\entities\Property.java   name | varMailWithoutQuote | varMail -- | -- | --  comment | null | numm required | false | false defaultValue | bob@bob.com | bob@bob.com pattern |  "" | "" password | false | false   [plus de détails ici](https://hesperides/#/techno/demo/1.0?type=workingcopy)</body>
+		<created>2018-06-26 13:00:35</created>
+		<closed>2018-10-23 10:35:21</closed>
+	</bug>
+	<bug>
+		<id>258</id>
+		<title>[Refonte] Un seul exemplaire d'annotation par proriété</title>
+		<body>Une exception ModelAnnotationException doit être levée si une propriété possède une annotation en plus d'un exemplaire.  (cela comprends l'annotation "comment", qui peut être définit avec "@comment" ou si elle est définie juste après le pipe sans cette annotation)</body>
+		<created>2018-06-26 10:29:25</created>
+		<closed>2018-10-23 10:35:09</closed>
+	</bug>
+	<bug>
+		<id>257</id>
+		<title>[Refonte] Impossible de recréer une entité supprimée</title>
+		<body>Ce comportement vient du Legacy. Il doit être possible de pouvoir recréer une entitée au préalablement supprimée (module/techno/plateforme)</body>
+		<created>2018-06-26 09:35:57</created>
+		<closed>2018-10-23 09:03:11</closed>
+	</bug>
+	<bug>
+		<id>256</id>
+		<title>[Refonte][Propriété] Annotation sans @ est un "comment"</title>
+		<body>C'est un comportement du Legacy à reproduire. Il doit être possible d'annoter une propriété avec un commentaire ("comment"), et ce sans préciser l'annotation @comment après le pipe ( | ). De cette façon, un commentaire peut être composé d'espace. Il est cependant nécessaire que cette annotation sans @ soit la première, sinon elle n'est pas reconnue. exemple : {{solr.instance|instance du solr}   Key | Value Legacy | Value Refonte -- | -- | -- name | solr.host | solr.host comment | hote du solr | "" required | false | false defaultValue | ""  | "" pattern | ""  | "" password | false | false  [template demo](https://hesperides/rest/templates/packages/demo/1.0/workingcopy/model)</body>
+		<created>2018-06-25 16:41:50</created>
+		<closed>2018-10-23 10:31:27</closed>
+	</bug>
+	<bug>
+		<id>250</id>
+		<title>[Legacy] Inconsistance sur le champ "comment" d'un Modèle</title>
+		<body>Lors de la récupération du modèle d'un Module ou d'une techno, le champ comment, lorsqu'il n'est pas renseigné, peut avoir la valeur "" ou null [Exemple ](https://hesperides/rest/templates/packages/miConfiguration.json/1.1.0/workingcopy/model)  name | "application_name"  | "mi.europe.call.frequency.ms" -- | -- | -- comment | "" | null required | false | false defaultValue | "" | "300" pattern | "" | "" password | false | false </body>
+		<created>2018-06-21 13:17:01</created>
+		<closed>2019-02-11 16:42:53</closed>
+	</bug>
+	<bug>
+		<id>246</id>
+		<title>Définition des propriétés d'un agrégat lors d'une copie</title>
+		<body>Faut-il redéfinir les propriétés ou créer un nouvel agrégat ?</body>
+		<created>2018-06-20 12:22:46</created>
+		<closed>2018-10-23 10:31:07</closed>
+	</bug>
+	<bug>
+		<id>244</id>
+		<title>Lorsqu'une techno est mise à jour ou supprimée, le model des modules qui l'utilisent n'est pas mis à jour</title>
+		<body></body>
+		<created>2018-06-19 17:38:19</created>
+		<closed>2018-10-24 11:23:34</closed>
+	</bug>
+	<bug>
+		<id>219</id>
+		<title>[Legacy] Reconstruction à partir de Snapshots</title>
+		<body>Le snapshot d'une entité est censé être une photographie de cette entité à un instant T (tous les 100 évents?), permettant d'éviter au backend de se servir du dernier Snapshot en date pour reconstituer l'état final et non de repartir de 0.  Le bug rencontré porte sur le contenu de ces Snapshots, qui ne correspond pas à ce qu'il devrait être. Exemple : template_package-service-mix-1.2-wc . Cette techno est composée de 100 events, dont 13 TemplateCreatedEvent, et 1 TemplateDeletedEvent, soit 12 Templates en tout. Le snapshot : snapshotevents-template_package-service-mix-1.2-wc est lui composé de 10 Templates. Deux templates sont donc portés disparus : uploadLogs.sh et biv.servicemix.trace.producer.activemq.cfg  template_package-delivery-notes-1.0.0-wc est également impacté, non pas sur le nombre de templates (le snapshot et l'entité n'en ont qu'un), mais sur leurs contenus. /rest/templates/packages/delivery-notes/1.0.0/workingcopy/templates/ renvoie une location : /tmp, là ou si on devrait récupérer "{{user.home}}/tmp" (de plus, un snapshot existe alors que l'entité n'est composé que de 20 events..)</body>
+		<created>2018-06-11 16:29:15</created>
+		<closed>2018-10-23 08:53:07</closed>
+	</bug>
+	<bug>
+		<id>211</id>
+		<title>Axon ne différencie pas les technos des modules</title>
+		<body>La clé utilisée par Axon ne permet pas de distinguer une techno d'un module donc on ne peut pas créer une techno qui a le même nom et la même version qu'un module.</body>
+		<created>2018-06-01 08:22:34</created>
+		<closed>2018-06-21 08:41:01</closed>
+	</bug>
+	<bug>
+		<id>210</id>
+		<title>templateName contenant .sh retourne une erreur 406</title>
+		<body>Lors d'un GET pour récupérer les détails d'un template (module ou techno), si le nom du template se termine par un .sh, l'exception suivante se lève : org.springframework.web.HttpMediaTypeNotAcceptableException.  Le TemplateIO se construit normalement, c'est lors de l'envoi de la donnée que l'erreur se lève.  Pour le moment, cette erreur ne se retrouve que sur les templateName se terminant par .sh (les cas suivants de créent pas d'erreur, par exemple : ".s" ".sha" ".co", etc) </body>
+		<created>2018-05-31 10:32:18</created>
+		<closed>2018-06-12 13:23:12</closed>
+	</bug>
+	<bug>
+		<id>198</id>
+		<title>Récupération Template avec nom composé d'un point</title>
+		<body>Lorsque un Template a dans son champ "name" un point, exemple : "redis.cfg", seul la partie précédant le point est prise en compte. Cela affecte l'endpoint GET {{name}}/{{version}}/{{moduleType}}/templates/{{templateName}} qui ne retrouve pas le template (dans le cas cité précédemment, il n'existe pas de template "redis", mais uniquement "redis.cfg")  Le legacy n'est pas affecté par ce comportement  </body>
+		<created>2018-05-22 09:41:04</created>
+		<closed>2018-06-21 08:40:15</closed>
+	</bug>
+	<bug>
+		<id>122</id>
+		<title>Ajouter le concept de "user" dans les events.</title>
+		<body>Dans le legacy, chaque event est associé à un user.  On n'a pas ce concept dans le reboot de l'application. Il faut l'ajouter.</body>
+		<created>2018-03-05 13:27:18</created>
+		<closed>2018-03-06 12:10:31</closed>
+	</bug>
+	<bug>
+		<id>100</id>
+		<title>NullPointerException dans IntegrationTest.java</title>
+		<body>Quand je lance les tests d'intégration j'ai une `RULE.getEnvironment()` renvoie `null`ce qui provoque une  `NullPointerException` :   ``` java.lang.NullPointerException at io.dropwizard.client.HttpClientBuilder.&lt;init&gt;(HttpClientBuilder.java:87) at io.dropwizard.client.JerseyClientBuilder.&lt;init&gt;(JerseyClientBuilder.java:73) at integration.HesperidesClient.&lt;init&gt;(HesperidesClient.java:79) at integration.HesperidesClient.&lt;init&gt;(HesperidesClient.java:88) at integration.AbstractIntegrationTest.setup(AbstractIntegrationTest.java:113) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24) at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) at org.junit.runners.ParentRunner.run(ParentRunner.java:309) at org.junit.runner.JUnitCore.run(JUnitCore.java:160) at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) ```</body>
+		<created>2018-01-11 11:43:27</created>
+		<closed>2019-02-28 15:22:28</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>Bug with iterable properties</title>
+		<body>Bug reproduction steps:  - having a field TOTO in a template made for iterable properties - having an iterable property instance matching this template, with a "TOTO" field only provided for entries (leaving the other blanks)  =&gt; then the file generated from this template and this iterable property instance is (always/sometimes?) **blank for all entries**</body>
+		<created>2017-11-09 10:45:22</created>
+		<closed>2019-02-13 14:47:53</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>Iterable properties miscount</title>
+		<body>- I had 2 iterable properties defined in my mustache template  - I changed the name of one of them (#NAME became #NEW_NAME in the template) - The platform page now displays " Iterable properties (3) " whereas I only have two iterable properties  </body>
+		<created>2017-10-03 08:03:45</created>
+		<closed>2018-10-30 09:40:51</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>NPE on timeline request on snapshot events</title>
+		<body>FR : Quand je demande l'état d'une plateforme à un instant T dans une liste d'événements avec snapshot, j'obtiens un NullPointerException.  EN: I get a NullPointerException when I try to get a plateform state at a given moment (timeline) on snapshot events.</body>
+		<created>2017-09-06 15:08:06</created>
+		<closed>2017-09-06 15:46:22</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>Same property is displayed twice</title>
+		<body>On the screen displaying all properties for one module and one plaftorm, one of our property is displayed twice, and only one is valued. This occurs on a VSCT project : GEL, for the module gel-back working copy.   ![image](https://user-images.githubusercontent.com/31069238/29364353-6c7de20c-8293-11e7-9101-3bc776453cf9.png) </body>
+		<created>2017-08-16 13:00:57</created>
+		<closed>2019-02-11 16:43:22</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>Global property usage in iterable properties</title>
+		<body>The feature that allow to find usage of global properties doesn't work if the global property is referenced in an iterable section.</body>
+		<created>2017-06-29 14:27:23</created>
+		<closed>2019-10-01 08:15:12</closed>
+	</bug>
+	<bug>
+		<id>65</id>
+		<title>[Iterables property] when value is set and @comment is avaible, generate property is not set</title>
+		<body>Hi,   I have added the @comment attribute on some of iterables properties. When only this attribute is used the value set is not inserted in the template when generating the files.  It works well when @required or @default is defined before @comment. </body>
+		<created>2017-06-20 13:12:50</created>
+		<closed>2019-02-13 14:46:38</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>Wrong error message</title>
+		<body>When trying to edit a production platform without having production acces right. The displayed message is not the one expected. Instead you get :  "Saving is not possible. At least one property does not respect @required and/or @pattern annotations"  The correct message would be :  "Updating a production platform is reserved to production role"</body>
+		<created>2017-04-20 13:44:15</created>
+		<closed>2018-10-30 10:13:47</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>Iterable properties not working fine</title>
+		<body>When an iterable property is not valued in the first bloc, the same property is not valued in the other blocs in the generated properties file.</body>
+		<created>2017-02-07 09:09:01</created>
+		<closed>2017-02-28 13:12:10</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>Reindex on startup not working</title>
+		<body>Hi,  reindex on startup not working cause, Aggregate start after reindexation.  In this case reindexation get empty list of modules, applications...   Reset index in ELS not working.  Check if this behavior is fixed in new cache implementation #8.</body>
+		<created>2017-01-31 14:06:15</created>
+		<closed>2018-10-30 11:10:00</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>When @pattern value is not escaped well, we get error</title>
+		<body>When hepserides @pattern value is not escaped well, we get error on file generation.  Ex :  14:36:59---&gt; Downloading file logback-loggers-console.xml 14:36:59Dangling meta character '*' near index 12 14:36:59^"([a-z]{2}|*)-([A-Z]{2}|*)"(,"([a-z]{2}|*)-([A-Z]{2}|*)")*$  The idea is to make hesperides more Tolerant on that or validate patterns. </body>
+		<created>2017-01-30 14:21:41</created>
+		<closed>2019-09-09 09:58:07</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>United Nation Popup - useless saves</title>
+		<body>In the united nation popup, nothing prevent you to save properties that are already saved. </body>
+		<created>2016-12-29 09:25:43</created>
+		<closed>2017-01-31 09:33:44</closed>
+	</bug>
+	<bug>
+		<id>5</id>
+		<title>Empty instance valuation</title>
+		<body>When an instance property valuation is set or left blank, when generating the file or preview, the mustash with the key will be displayed instead of blank value. </body>
+		<created>2016-10-18 14:49:50</created>
+		<closed>2016-10-27 12:00:22</closed>
+	</bug>
+	<bug>
+		<id>4</id>
+		<title>Valuation with an empty global property</title>
+		<body>hesperides delete global property if value is empty  LINK TO [hesperdies-gui#5](https://github.com/voyages-sncf-technologies/hesperides-gui/issues/5) </body>
+		<created>2016-10-18 14:46:52</created>
+		<closed>2016-10-27 12:17:55</closed>
+	</bug>
+	<bug>
+		<id>2</id>
+		<title>create platform from another + switch duplicate instance --&gt; platform not indexed</title>
+		<body>1/ create a platform "FOO2" from "FOO1" 2/ try to create a platform "FOO3" : "FOO2" does not appear in autocomplete "name of the original platform" </body>
+		<created>2016-10-18 14:44:03</created>
+		<closed>2016-10-27 12:35:46</closed>
+	</bug>
+</bugs>

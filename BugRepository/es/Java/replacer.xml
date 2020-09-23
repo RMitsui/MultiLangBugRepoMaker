@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="replacer">
+	<bug id="100" opendate="2019-09-25 12:30:55" fixdate="2019-09-25 14:10:26">
+		<buginformation>
+			<summary>Añadir excepcion para la imagenes </summary>
+			<description>Buenas, debido a una reversion que un usuario hizo a una correcion que hice a unos dias me he dado cuenta que la herramienta da opcion a corregir palabras en nombres de imagen, aqui el ejemplo practico: https://es.wikipedia.org/w/index.php?title=Gij%C3%B3n&amp;oldid=prev&amp;diff=119651094&amp;diffmode=source Le di el agradecimiento porque me ha ayudado a darme cuenta que es necesario añadir una excepcion para los .jpg y .png</description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/finder/FileNameFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/FileNameFinderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="97" opendate="2019-09-24 13:21:36" fixdate="2019-09-25 12:05:33">
+		<buginformation>
+			<summary>Borrar contadores vacíos</summary>
+			<description>En algunos casos aparecen reemplazos en la lista con el contador a `0`.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/article/ArticleStatsService.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/article/ArticleStatsServiceTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="90" opendate="2019-09-19 18:22:07" fixdate="2019-09-20 07:15:16">
+		<buginformation>
+			<summary>30 De Marzo De 1995</summary>
+			<description>El segundo «De» no baja a minúsculas </description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/date/DateFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/date/UppercaseMonthFinderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="81" opendate="2019-09-09 12:56:10" fixdate="2019-09-10 06:50:17">
+		<buginformation>
+			<summary>Título de enlace capturado como nombre de archivo</summary>
+			<description>En el texto: ```*[http://www.extremadura.com/fotos/colecciones/romeria-de-botoa-en-badajoz Romeria de Bótoa, en Extremadura.com]``` el buscador de archivos encuentra el texto: ```//www.extremadura.com/fotos/colecciones/romeria-de-botoa-en-badajoz Romeria de Bótoa, en Extremadura.com```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/finder/FileNameFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/FileNameFinderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="67" opendate="2019-08-02 05:19:50" fixdate="2019-08-04 13:39:29">
+		<buginformation>
+			<summary>Revisar reemplazos duplicados</summary>
+			<description>Al reindexar parece que se generan reemplazos duplicados. Por ejemplo ayer corregí algunos artículos de «agnostica» y hoy tras reindexar vuelven a aparecer. ¿Son los mismos?</description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/article/ArticleServiceTest.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/article/ArticleService.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/article/ArticleIndexService.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/article/ReplacementRepository.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/dump/DumpArticleProcessor.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/article/ArticleIndexServiceTest.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/dump/DumpArticleProcessorTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="66" opendate="2019-08-02 00:23:07" fixdate="2019-08-05 12:11:21">
+		<buginformation>
+			<summary>Borrar final de la indexación anterior </summary>
+			<description>Al comenzar una nueva indexación hay que vaciar la fecha de fin de la anterior. Si no se muestran tiempos y números negativos durante la nueva. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/dump/DumpHandler.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="64" opendate="2019-07-31 14:31:21" fixdate="2019-08-07 07:22:49">
+		<buginformation>
+			<summary>Ignorar plantillas con espacios alrededor del nombre</summary>
+			<description>Hay plantillas que contienen espacios alrededor del nombre, e. g. `{{ cita | ... }}` y deberían ignorarse. Ahora mismo no se tienen en cuenta dichos espacios.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateRegexClassAllFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateRegexClassFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateFinderBenchmark.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/TemplateFinderTest.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateRegexFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateRegexAllFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateAutomatonClassFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateAutomatonAllFinder.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/finder/TemplateFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateFinderTest.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateAutomatonFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateAutomatonClassAllFinder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="53" opendate="2019-07-29 06:54:53" fixdate="2019-08-18 08:44:15">
+		<buginformation>
+			<summary>Ampliar número de resultados personalizados</summary>
+			<description>Al buscar reemplazos personalizados para «se anuncio», no se encuentran más para corregir. En cambio, haciendo una búsqueda rápida en la Wikipedia, aparecen más de 600.  Quizá se puede (v. https://www.mediawiki.org/wiki/API:Search): - Ampliar a 500 el número de resultados con `srlimit` - Comprobar si hay más resultados con `sroffset` - Tener en cuenta el número total de resultados en la respuesta con `totalhits`</description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/wikipedia/WikipediaServiceImpl.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/wikipedia/WikipediaServiceTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="46" opendate="2019-07-15 10:24:52" fixdate="2019-07-25 08:58:38">
+		<buginformation>
+			<summary>El subrayado no separa palabras</summary>
+			<description>El subrayado (o barra baja) no se está teniendo en cuenta como separador de palabras. Por ejemplo, en `{{Twitter|Clasica_Almeria}}` el término _Almeria_ es detectado.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/misspelling/MisspellingFinder.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/finder/ReplacementFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/misspelling/MisspellingFinderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="44" opendate="2019-07-07 20:13:08" fixdate="2019-07-08 10:08:22">
+		<buginformation>
+			<summary>Captura de fechas comenzando por 0</summary>
+			<description>Las fechas cuyos días comienzan por 0, por ejemplo, «07 de Julio de 2019» son capturadas por los reemplazos de tipo Fecha. Debe mejorarse la expresión regular. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/date/DateFinder.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/finder/ReplacementFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/date/DateFinderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="41" opendate="2019-07-06 12:43:36" fixdate="2019-07-07 15:43:16">
+		<buginformation>
+			<summary>Revisar caché de reemplazos tras revisar</summary>
+			<description>Al marcar un artículo como revisado se debe actualizar el caché de reemplazos mientras se recarga con los datos reales. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/article/ArticleService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="39" opendate="2019-07-06 08:56:40" fixdate="2019-07-10 15:37:42">
+		<buginformation>
+			<summary>Error al recargar un artículo ya revisado</summary>
+			<description>1. Buscar un artículo para su revisión 2. Copiar la URL, e. g. https://tools.wmflabs.org/replacer/article/1292945/Ortograf%C3%ADa/Andalucia 3. Guardamos con cambios 4. Pego en el navegador la URL copiada antes ==&gt; Se muestra `null`  En caso de que hayamos guardado sin cambios, se muestra directamente el JSON devuelto por el backend.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/authentication/AuthenticationController.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/dump/DumpController.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/article/ArticleController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="37" opendate="2019-07-06 08:38:12" fixdate="2019-07-07 15:14:32">
+		<buginformation>
+			<summary>Mayúsculas en reemplazo personalizado</summary>
+			<description>Para los reemplazos personalizados se busca con el API de la Wikipedia el texto entrecomillado. Pero éste no distingue mayúsculas. Esta distinción debería hacerse por parte de la herramienta.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/misspelling/MisspellingFinder.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/finder/ReplacementFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/benchmark/TemplateAbstractFinder.java</file>
+			<file>replacer-backend/src/test/java/es/bvalero/replacer/finder/CustomReplacementFinderTest.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/finder/CustomReplacementFinder.java</file>
+			<file>replacer-backend/src/main/java/es/bvalero/replacer/finder/TemplateFinder.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,2198 @@
+221271d88007d4e1fd656478e0420ab8d9f58e35, Merge pull request #347 from supermaverickws/master, Fri Jul 17 17:18:28 2020 +0800
+fe9efeccaafd30dbfb57b63ae6ad3bfc1d9e3f27, 增加cluster的 onMapStatusChangeFinish回调事件, Mon Jun 29 10:51:57 2020 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+
+5323b30e5e6922cc36e2224161407162dec40b0c, 代码规范, Mon Jun 29 10:33:53 2020 +0800
+M	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/view/DefaultClusterRenderer.java
+
+9af0462528835186ba54bb84c84e3e1d1aa9a0c5, 不在视野内marker不绘制,避免绘制大量marker卡顿, Mon Jun 29 10:30:07 2020 +0800
+M	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/ClusterManager.java
+M	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/view/DefaultClusterRenderer.java
+
+110f4686b10b10a236a50ba108b9e8000367a1d8, 不再视野内的marker不作绘制, Mon Jun 29 10:04:52 2020 +0800
+M	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/ClusterManager.java
+M	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/view/DefaultClusterRenderer.java
+
+12857eead720412d198856cabc5e5b43e974e070, merge from master, Mon Jun 15 01:13:45 2020 +0800
+a0c8030c7a534e0ec162a3f8ac74a548aa7f3e9a, icon image 复用; Marker.animateType; BaiduMapManager.hasLocationPermission, Mon Jun 15 01:08:11 2020 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/BaiduMapManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/support/AppUtils.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/support/ConvertUtils.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayMarkerManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+M	index.d.ts
+M	ios/RCTBaiduMap/BMKPointAnnotationPro.m
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	ios/RCTBaiduMap/Modules/BaiduMapManager.h
+M	ios/RCTBaiduMap/Modules/BaiduMapManager.m
+M	ios/RCTBaiduMap/ViewManagers/OverlayMarkerManager.m
+M	ios/RCTBaiduMap/Views/OverlayMarker.h
+M	ios/RCTBaiduMap/Views/OverlayMarker.m
+M	js/Overlay/Marker.js
+M	package.json
+M	react-native-baidu-map.podspec
+
+d0085355a52a4071c94408f9d6d7b407a75ed19e, 修复ios marker icon 无法响应 click 事件的bug, Sun Jun 14 00:47:40 2020 +0800
+M	ios/RCTBaiduMap/Views/OverlayMarker.m
+
+87ccdd169e99d1749e8a0317700f59f6d6110932, 热力图和MarkerIcon, Sun Jun 7 20:37:36 2020 +0800
+5c701ea366d051b26986f0823bbe872d99a9dcdd, 热力图和MarkerIcon, Sun Jun 7 20:33:56 2020 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayMarkerIconManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayMarkerManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/util/BitmapUtil.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayHeatMap.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayInfoWindow.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarkerIcon.java
+M	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+A	ios/RCTBaiduMap/ViewManagers/OverlayHeatMapManager.h
+A	ios/RCTBaiduMap/ViewManagers/OverlayHeatMapManager.m
+A	ios/RCTBaiduMap/ViewManagers/OverlayMarkerIconManager.h
+A	ios/RCTBaiduMap/ViewManagers/OverlayMarkerIconManager.m
+A	ios/RCTBaiduMap/Views/OverlayHeatMap.h
+A	ios/RCTBaiduMap/Views/OverlayHeatMap.m
+M	ios/RCTBaiduMap/Views/OverlayMarker.m
+A	ios/RCTBaiduMap/Views/OverlayMarkerIcon.h
+A	ios/RCTBaiduMap/Views/OverlayMarkerIcon.m
+M	js/Geolocation.js
+M	js/MapApp.js
+M	js/MapView.js
+M	js/Overlay/Arc.js
+M	js/Overlay/Circle.js
+M	js/Overlay/Cluster.js
+A	js/Overlay/HeatMap.js
+M	js/Overlay/InfoWindow.js
+M	js/Overlay/Marker.js
+A	js/Overlay/MarkerIcon.js
+M	js/Overlay/Polygon.js
+M	js/Overlay/Polyline.js
+M	js/Overlay/Text.js
+M	js/Overlay/index.js
+M	package.json
+M	react-native-baidu-map.podspec
+
+af4fa2c36eb150129d51a38104d9ebf7605f9028, android 自定义热力图, Sat May 23 00:12:58 2020 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+
+fe1c28c1f6b3f504e56b1e07bca2d2dc416b3dcd, copyright 更新；android 自定义热力图, Sat May 23 00:11:24 2020 +0800
+M	android/build.gradle
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/constant/LocationDataKey.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/constant/RequestCode.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/model/IconInfo.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/model/LocationData.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/BaiduMapManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/BaseModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/MapAppModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/support/ConvertUtils.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayArcManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayCircleManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayClusterManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayHeatMapManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayMarkerManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayOverlayInfoWindowManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayPolygonManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayPolylineManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayTextManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/util/ColorUtil.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/util/LatLngUtil.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/util/StrokeUtil.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayArc.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayCircle.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayCluster.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayHeatMap.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayInfoWindow.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolygon.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolyline.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayText.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayView.java
+
+c85a9bb54b1f0ea3397095402eeabfb11066c5e3, Merge pull request #325 from onlyling/master, Fri May 22 21:17:39 2020 +0800
+a3a0bf6f1d95361051e71415486a306d9c0f9f53, v1.0.35, Sun May 17 23:40:25 2020 +0800
+935adbae844c51558780e202e4f6bab177d3e39e, v1.0.35, Sun May 17 23:32:12 2020 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/support/ConvertUtils.java
+M	package.json
+M	react-native-baidu-map.podspec
+
+9d514d2113e082d1cfc7d3f8f8e301338918ae53, 统一处理 overlay 属性更新的问题, Sun May 17 22:29:00 2020 +0800
+M	ios/RCTBaiduMap/Views/OverlayMarker.m
+M	ios/RCTBaiduMap/Views/OverlayView.h
+M	ios/RCTBaiduMap/Views/OverlayView.m
+
+0df205d5f49335544a8bc74734f3be87b7102158, 当marker属性变化时更新annotation, Sun May 17 22:22:09 2020 +0800
+M	ios/RCTBaiduMap/BaiduMapView.m
+M	ios/RCTBaiduMap/Views/OverlayMarker.m
+
+e1dcc5d9bec5614d0c2a9c5a02b716fb80eebe9e, marker优化, Sun May 17 20:25:37 2020 +0800
+479d16131b729381edb53bece9be8332f0d33a37, marker优化, Sun May 17 20:21:59 2020 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayMarkerManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+M	ios/RCTBaiduMap/BMKPointAnnotationPro.m
+M	js/MapView.js
+M	js/Overlay/Marker.js
+M	package.json
+M	react-native-baidu-map.podspec
+
+daff6c2dc80203e791e4dcf442d3f013a32074bc, marker 增加 onClick 回调, Sun May 17 19:05:34 2020 +0800
+c3de7f492777df11db94de01419135d967b4cafa, marker增加onClick回调, Sun May 17 19:02:24 2020 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayMarkerManager.java
+M	ios/RCTBaiduMap/BaiduMapView.h
+M	ios/RCTBaiduMap/BaiduMapView.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	ios/RCTBaiduMap/ViewManagers/OverlayMarkerManager.m
+M	ios/RCTBaiduMap/Views/OverlayMarker.h
+M	js/Overlay/Marker.js
+M	package.json
+M	react-native-baidu-map.podspec
+
+2303e777e1612a59edbbe12fb63d99b3b34846ac, v1.0.32, Sun May 17 14:54:41 2020 +0800
+620d7c9a39e986545b42b59242d1fea41b5c0605, v1.0.32, Sun May 17 14:47:18 2020 +0800
+M	package.json
+M	react-native-baidu-map.podspec
+
+9dd4b41b3e74be25de30e17f976730e9eeffb720, 优化overlay, Sun May 17 14:46:06 2020 +0800
+f797542dc4e58db17503202d8d7e2b50dde1b639, readme, Sun May 17 14:10:12 2020 +0800
+M	README.md
+
+835caa577079783ddcc4199c7cf984c21e4130d2, 优化overlay, Sun May 17 13:52:01 2020 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/model/IconInfo.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayArcManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayMarkerManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayOverlayInfoWindowManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayPolylineManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/util/ColorUtil.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayArc.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayInfoWindow.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolyline.java
+M	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+M	ios/RCTBaiduMap/BMKPointAnnotationPro.h
+M	ios/RCTBaiduMap/BMKPointAnnotationPro.m
+M	ios/RCTBaiduMap/BaiduMapView.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.h
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+A	ios/RCTBaiduMap/ViewManagers/InfoWindowManager.h
+A	ios/RCTBaiduMap/ViewManagers/InfoWindowManager.m
+A	ios/RCTBaiduMap/ViewManagers/OverlayArcManager.h
+A	ios/RCTBaiduMap/ViewManagers/OverlayArcManager.m
+A	ios/RCTBaiduMap/ViewManagers/OverlayCircleManager.h
+A	ios/RCTBaiduMap/ViewManagers/OverlayCircleManager.m
+M	ios/RCTBaiduMap/ViewManagers/OverlayMarkerManager.m
+A	ios/RCTBaiduMap/ViewManagers/OverlayPolygonManager.h
+A	ios/RCTBaiduMap/ViewManagers/OverlayPolygonManager.m
+M	ios/RCTBaiduMap/ViewManagers/OverlayPolylineManager.m
+A	ios/RCTBaiduMap/Views/InfoWindow.h
+A	ios/RCTBaiduMap/Views/InfoWindow.m
+A	ios/RCTBaiduMap/Views/OverlayArc.h
+A	ios/RCTBaiduMap/Views/OverlayArc.m
+A	ios/RCTBaiduMap/Views/OverlayCircle.h
+A	ios/RCTBaiduMap/Views/OverlayCircle.m
+M	ios/RCTBaiduMap/Views/OverlayMarker.h
+M	ios/RCTBaiduMap/Views/OverlayMarker.m
+A	ios/RCTBaiduMap/Views/OverlayPolygon.h
+A	ios/RCTBaiduMap/Views/OverlayPolygon.m
+M	ios/RCTBaiduMap/Views/OverlayPolyline.m
+M	ios/RCTBaiduMap/Views/OverlayView.h
+M	ios/RCTBaiduMap/Views/OverlayView.m
+M	js/Overlay/Arc.js
+M	js/Overlay/Circle.js
+M	js/Overlay/InfoWindow.js
+M	js/Overlay/Marker.js
+M	js/Overlay/Polygon.js
+M	js/Overlay/Polyline.js
+M	package.json
+M	react-native-baidu-map.podspec
+
+63f2ebf7872b61d780f0570b664d4e2ff33317fe, iOS 支持 marker icon, Sat May 16 01:48:18 2020 +0800
+9f524e8e2c51fe508826fc7ab550e81644a081a3, iOS 支持 maker icon, Sat May 16 01:37:30 2020 +0800
+M	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+A	ios/RCTBaiduMap/BMKPointAnnotationPro.h
+A	ios/RCTBaiduMap/BMKPointAnnotationPro.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.h
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	ios/RCTBaiduMap/Views/OverlayMarker.h
+M	ios/RCTBaiduMap/Views/OverlayMarker.m
+
+14cce8c6ec59d66a42b14db34769b47e47f7aaea, 1.1.1, Thu May 14 01:36:48 2020 +0800
+M	README.md
+M	package.json
+
+51889cba3717f71a0da6580555837a600433dbca, react-native-baidu-map-old, Thu May 14 01:28:48 2020 +0800
+M	package.json
+
+c7edd6bb49771e1645d71f18ee83d7f5458bf717, 1.0.30, Thu May 14 00:47:52 2020 +0800
+M	package.json
+
+924bfe544f94005f7b37343fde28ebcf4908c9de, Merge branch 'master' into 1.0.x, Thu May 14 00:45:50 2020 +0800
+c75641d38126f8e7daa2fce581216a4a13718565, 删除example, Thu May 14 00:44:58 2020 +0800
+M	README.md
+D	example/.buckconfig
+D	example/.eslintrc.js
+D	example/.flowconfig
+D	example/.gitattributes
+D	example/.gitignore
+D	example/.prettierrc.js
+D	example/.watchmanconfig
+D	example/App.js
+D	example/__tests__/App-test.js
+D	example/android/app/BUCK
+D	example/android/app/build.gradle
+D	example/android/app/build_defs.bzl
+D	example/android/app/lovebing-dev-key.keystore
+D	example/android/app/proguard-rules.pro
+D	example/android/app/src/debug/AndroidManifest.xml
+D	example/android/app/src/main/AndroidManifest.xml
+D	example/android/app/src/main/java/com/rn/MainActivity.java
+D	example/android/app/src/main/java/com/rn/MainApplication.java
+D	example/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+D	example/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+D	example/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+D	example/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png
+D	example/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+D	example/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+D	example/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+D	example/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+D	example/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+D	example/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+D	example/android/app/src/main/res/values/strings.xml
+D	example/android/app/src/main/res/values/styles.xml
+D	example/android/build.gradle
+D	example/android/gradle.properties
+D	example/android/gradle/wrapper/gradle-wrapper.jar
+D	example/android/gradle/wrapper/gradle-wrapper.properties
+D	example/android/gradlew
+D	example/android/gradlew.bat
+D	example/android/settings.gradle
+D	example/app.json
+D	example/babel.config.js
+D	example/index.js
+D	example/ios/Podfile
+D	example/ios/Podfile.lock
+D	example/ios/example-tvOS/Info.plist
+D	example/ios/example-tvOSTests/Info.plist
+D	example/ios/example.xcodeproj/project.pbxproj
+D	example/ios/example.xcodeproj/xcshareddata/xcschemes/example-tvOS.xcscheme
+D	example/ios/example.xcodeproj/xcshareddata/xcschemes/example.xcscheme
+D	example/ios/example.xcworkspace/contents.xcworkspacedata
+D	example/ios/example.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+D	example/ios/example/AppDelegate.h
+D	example/ios/example/AppDelegate.m
+D	example/ios/example/Base.lproj/LaunchScreen.xib
+D	example/ios/example/Images.xcassets/AppIcon.appiconset/Contents.json
+D	example/ios/example/Images.xcassets/Contents.json
+D	example/ios/example/Info.plist
+D	example/ios/example/main.m
+D	example/ios/exampleTests/Info.plist
+D	example/ios/exampleTests/exampleTests.m
+D	example/metro.config.js
+D	example/package-lock.json
+D	example/package.json
+D	example/yarn.lock
+M	package.json
+M	react-native-baidu-map.podspec
+
+88349c1bb7cfe12b3528e29fd641251fbdf616e9, 非androidx支持, Thu May 14 00:24:29 2020 +0800
+M	android/build.gradle
+M	android/gradle.properties
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/BaiduMapManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/support/AppUtils.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayClusterManager.java
+
+a98e38bd528383ba5bc59919d51617bed4d67ade, 优化, Thu May 14 00:05:16 2020 +0800
+M	android/build.gradle
+M	android/gradle.properties
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+
+c71df3f91ba955a56a56deac517e6b8488da56d3, fix bugs, Tue May 12 00:33:26 2020 +0800
+M	README.md
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	ios/RCTBaiduMap/GetDistanceModule.h
+M	ios/RCTBaiduMap/GetDistanceModule.m
+M	ios/RCTBaiduMap/IndustryPurpose/BMKClusterQuadtree.h
+M	js/Geolocation.js
+
+dda5cc7eca2df6f2f53d3434b18d3c914ae3cee9, Merge pull request #313 from chenjim/chenjim, Tue May 5 16:39:14 2020 +0800
+a656c6efeddcb5231f4f4de4e37cd8ca90dffb95, Merge pull request #314 from chenjim/d28d15c062, Tue May 5 16:37:03 2020 +0800
+7f9a9c2c87fadb704d9ce0a7e50e8b58265bf41f, Merge pull request #324 from 42997455/master, Tue May 5 16:35:18 2020 +0800
+0efd4d9a0f77d12de6b14e4d3f954bcc32bdc960, Merge pull request #304 from lighthx/master, Tue May 5 16:29:35 2020 +0800
+8e971d42f74c7c315167234046275b2ef2068b25, refactor, Mon Apr 13 19:31:43 2020 +0800
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	ios/RCTBaiduMap/ViewManagers/OverlayMarkerManager.m
+M	ios/RCTBaiduMap/Views/OverlayMarker.h
+M	ios/RCTBaiduMap/Views/OverlayMarker.m
+M	js/Overlay/Marker.js
+
+e96d6659c18b6c8390d48b740bfcbfae11a3cca4, fix: MapViewProps, Mon Mar 2 21:47:46 2020 +0800
+M	index.d.ts
+
+f503824945f508c78c77d9201a9e11df043d1183, feat: .d.ts file, Sat Feb 22 19:42:27 2020 +0800
+A	index.d.ts
+
+5a73e1e8aba4805c98fffbba84fb6760a6c4055d, refactor, Mon Feb 10 10:44:28 2020 +0800
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+
+cbf1875a93b8b08bd57beb6fe15f0762bfc6492f, refactor, Sun Feb 9 23:25:31 2020 +0800
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+
+69b1e02651d23dae7895261869488c854fb7feab, refactor, Sun Jan 5 21:30:20 2020 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+
+3fb1b772e91cd22dfc51b42532677e0ea7066b21, fix activiy in backgroud and killed by system,then get position crash, Wed Dec 11 17:04:32 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+
+d28d15c0623aff5083040adc00b07c66944989e4, fix activiy in backgroud and killed by system,then get position crash, Wed Dec 11 17:04:32 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+
+ca894aabc24c7a68bdf0548437044501c2103aa5, fix ios coordType no effect, Wed Dec 11 16:49:58 2019 +0800
+M	ios/RCTBaiduMap/GeolocationModule.m
+
+1af023415d46df6b9d17b1c54e7ad7df7b8c7e5b, enhance baidu map, Mon Dec 9 23:11:33 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+
+e136e83083d9e58db7b98ead6e8105437bed615c, 修复安卓6.0及以下，连续或者同时存在2个及以上地图时，出现重叠的问题。, Mon Nov 11 10:07:59 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+
+6c31285a493481b010663ef6a9d1fdd0f4a18f75, 修复一些问题, Tue Nov 5 22:15:01 2019 +0800
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	package.json
+
+eb77a005a82d50fd4f361f2ff404890c8e73ba88, 修复一些问题, Tue Nov 5 22:08:18 2019 +0800
+M	README.md
+A	android/src/main/java/org/lovebing/reactnative/baidumap/constant/LocationDataKey.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/model/LocationData.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/support/ConvertUtils.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/util/LatLngUtil.java
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_map_v5_1_0.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_map_v5_1_0.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_map_v5_1_0.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_map_v5_1_0.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_map_v5_1_0.so
+M	example/App.js
+M	example/package-lock.json
+M	example/package.json
+A	js/CoorTypes.js
+M	js/Geolocation.js
+M	package.json
+
+b67e7385479e9ca14ea5f51d7f10441d057dcdf1, androidx说明, Sat Nov 2 18:24:20 2019 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/support/AppUtils.java
+M	package.json
+
+614bb9a4e543f27ed5e9bffae8d5e04d198f9cce, fix bug, Sat Nov 2 18:05:46 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/support/AppUtils.java
+M	package.json
+
+eaffead2a9e5c8c82b95acd23ba46af5fa44ae26, 0.61 以下兼容性说明, Fri Nov 1 00:25:12 2019 +0800
+M	README.md
+
+6a9d5761ba93b394dd1dbb7e38cc81111a2ac4c7, 1. 支持调起驾车规划。2.Android 增加定位权限申请, Thu Oct 31 22:31:42 2019 +0800
+M	README.md
+A	android/src/main/java/org/lovebing/reactnative/baidumap/constant/RequestCode.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/MapAppModule.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/support/AppUtils.java
+M	example/App.js
+A	ios/RCTBaiduMap/Modules/BaiduMapAppModule.h
+A	ios/RCTBaiduMap/Modules/BaiduMapAppModule.m
+M	package.json
+M	react-native-baidu-map.podspec
+
+7622d1419362b02a29c0be407e2da6543fe1f8d7, 调起百度地图客户端, Thu Oct 31 01:58:42 2019 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/module/BaiduMapManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/MapAppModule.java
+M	example/App.js
+M	example/ios/Podfile
+M	example/ios/Podfile.lock
+M	example/ios/example/AppDelegate.m
+M	example/ios/example/Info.plist
+M	index.js
+M	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+M	ios/RCTBaiduMap/GeolocationModule.m
+R090	ios/RCTBaiduMap/BaiduMapManager.h	ios/RCTBaiduMap/Modules/BaiduMapManager.h
+R092	ios/RCTBaiduMap/BaiduMapManager.m	ios/RCTBaiduMap/Modules/BaiduMapManager.m
+M	js/Geolocation.js
+M	package.json
+M	react-native-baidu-map.podspec
+
+af71faaf82002f745ae91e12bb47db66bbf9ec2a, 1.0.18, Mon Oct 28 01:41:28 2019 +0800
+M	README.md
+M	ios/RCTBaiduMap/BaiduMapView.h
+M	js/MapView.js
+M	package.json
+M	react-native-baidu-map.podspec
+
+9c5e9da12604bff6b602d9cd84caaea13c85cae6, 显示定位, Mon Oct 28 01:31:52 2019 +0800
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+
+60905d6a3cc7d5d80c8e91c6b3c38e5a7e679aca, 显示定位, Mon Oct 28 01:27:21 2019 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	images/jetbrains.png
+M	ios/RCTBaiduMap/BaiduMapView.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	ios/RCTBaiduMap/GeolocationModule.h
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	ios/RCTBaiduMap/Views/OverlayCluster.m
+M	ios/RCTBaiduMap/Views/OverlayView.m
+M	js/MapView.js
+
+7cff943c3e1730627a3b7befd3e6e5ea19e1c9dc, Merge pull request #294 from Riant/double-ios-LatLng, Mon Oct 28 01:08:39 2019 +0800
+eb0997674f6a1717543ee8b58f3b9f8e10771dd0, iOS 支持 OverlayPolyline, Mon Oct 28 00:05:46 2019 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayPolylineManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolyline.java
+A	images/jetbrains.png
+M	ios/RCTBaiduMap/BaiduMapView.h
+M	ios/RCTBaiduMap/BaiduMapView.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	ios/RCTBaiduMap/Utils/OverlayUtils.h
+M	ios/RCTBaiduMap/Utils/OverlayUtils.m
+M	ios/RCTBaiduMap/ViewManagers/OverlayPolylineManager.m
+M	ios/RCTBaiduMap/Views/OverlayPolyline.m
+M	ios/RCTBaiduMap/Views/OverlayView.h
+M	js/Overlay/Polyline.js
+
+9be41a96b8a085de86d285e06b056c370c1cb692, 修正 iOS 中 onGetGeoCodeResult 坐标系错误的赋值, Sun Oct 27 17:10:19 2019 +0800
+M	ios/RCTBaiduMap/GeolocationModule.m
+
+5c85e56019c80286102dfea9cf0938c631f020c8, 1.0.16, Sun Oct 27 01:53:43 2019 +0800
+M	package.json
+M	react-native-baidu-map.podspec
+
+97bd6a613e2c5eec9e3ef811ba94fc9c81127c54, 增加BaiduMapManager.initSDK 方法, Sun Oct 27 01:44:42 2019 +0800
+M	index.js
+
+0aec7dd8a119167db031be9b4e5a53512f46c0f6, 增加BaiduMapManager.initSDK 方法, Sun Oct 27 01:38:48 2019 +0800
+M	.npmignore
+M	README.md
+M	index.js
+M	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+A	ios/RCTBaiduMap/BaiduMapManager.h
+A	ios/RCTBaiduMap/BaiduMapManager.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	package.json
+
+cc97fbe3930394b45973244fc05d50272b62657e, 1.0.12, Sun Oct 27 00:29:37 2019 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+M	package.json
+
+b30853d493a22a4137eb4526ba97307879a8535d, Merge pull request #293 from yhaiquan/master, Thu Oct 24 15:37:59 2019 +0800
+582133c366f10d7d519080c8a1501a67e9835e09, 增加了 允许拖放与允许手势,规范的命名，增加了说明。, Thu Oct 24 15:27:24 2019 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	ios/RCTBaiduMap/BaiduMapView.h
+M	ios/RCTBaiduMap/BaiduMapView.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	js/MapView.js
+
+a3830e7f612803821482048283200635c77b2196, 增加了 允许拖放与允许手势。, Thu Oct 24 14:02:54 2019 +0800
+M	ios/RCTBaiduMap/BaiduMapView.h
+M	ios/RCTBaiduMap/BaiduMapView.m
+
+95fb339a49c7bbcfb8c4e76dbb7ef9baafd1b860, 增加了 允许拖放与允许手势。, Thu Oct 24 13:45:23 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	ios/RCTBaiduMap/BaiduMapView.h
+M	ios/RCTBaiduMap/BaiduMapView.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	js/MapView.js
+
+fe9c2bcc9ad10e85b8db6113193fb0119bb210aa, Merge pull request #291 from Riant/custom-coordinateType, Thu Oct 24 13:01:18 2019 +0800
+15eff335552cea24e591afb11a7d3c35f02abe8f, Merge pull request #286 from Riant/get-distance-module, Thu Oct 24 12:58:27 2019 +0800
+ec6f3c5c985b4f853bb9e3356bc5a5bbc026ec09, 修改说明文档中的 getCurrentPosition 方法说明, Wed Oct 23 09:52:22 2019 +0800
+M	README.md
+
+60fa5f952c57b7380e7d0aecb592c6db5e2e88e3, 修改 getLocationDistance 方法参数类型为对象，如 GetDistance.getLocationDistance({latitude: 0.0, longitude: 0.0}, {latitude: 0.0, longitude: 0.0}), Wed Oct 23 09:33:05 2019 +0800
+M	README.md
+M	js/GetDistance.js
+
+e191fc601e050d41c19cefaab8121b921676b3ec, Update README.md, Wed Oct 23 01:40:01 2019 +0800
+M	README.md
+
+ee1cd7b1fe6aa81e3f5d7e6a574369cb2913c294, fix bug #289, Tue Oct 22 17:36:30 2019 +0000
+M	js/MapView.js
+M	package.json
+
+b75225ecd1ae55cd68503c669476c53fafd18232, Create FUNDING.yml, Tue Oct 22 23:49:43 2019 +0800
+A	.github/FUNDING.yml
+
+3271980c25e8095845007954ba9cc62038f33e33, 调整 iOS 版 GeoLocation 模块相关接口的 latitude, longitude 属性输出为 double 类型, Tue Oct 22 18:18:20 2019 +0800
+M	ios/RCTBaiduMap/GeolocationModule.m
+
+68a755562f01c5103e599ef3b1e7c2603e27eea7, 为 Android 版 Geolocation.getCurrentPosition 方法新增 coorType 属性，并修改为默认以 gcj02 坐标系返回，以和 iOS 版的该方法统一, Tue Oct 22 18:08:57 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+M	js/Geolocation.js
+
+458bbd3cde157635ff7ea86a057946759a0403f4, README 说明文本格式调整, Tue Oct 22 09:03:14 2019 +0800
+M	README.md
+
+385550dc38309096c6882648479f7eccd81b0fbd, README 新增使用说明, Tue Oct 22 08:59:40 2019 +0800
+M	README.md
+
+5382a73f2d63ebf9ecfbac37bda71396955717f1, 新增 GetDistance 接口模块，Js 调用方法：GetDistance.getLocationDistance([latitude, longitude], [latitude2, longitude2]).then(data => console.log(data.distance, 'm')), Tue Oct 22 08:50:50 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/module/GetDistanceModule.java
+M	index.js
+A	ios/RCTBaiduMap/GetDistanceModule.h
+A	ios/RCTBaiduMap/GetDistanceModule.m
+A	js/GetDistance.js
+
+993169b7cb2318ece4f9dbecebb0844053fad8ef, podspec, Mon Oct 21 01:28:04 2019 +0000
+A	react-native-baidu-map.podspec
+
+189d8443e37ecb431be040c751bf3c93b0583012, iOS 支持 react-native link, Mon Oct 21 08:37:32 2019 +0800
+M	README.md
+D	ios/react-native-baidu-map.podspec
+M	package.json
+
+0f17927baf44fe98dd3ca9ba4620eafae1e2001d, iOS 定位, Sun Oct 20 22:48:36 2019 +0800
+M	README.md
+M	example/ios/Podfile.lock
+M	ios/RCTBaiduMap/BaiduMapViewManager.h
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	ios/RCTBaiduMap/GeolocationModule.h
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	ios/react-native-baidu-map.podspec
+M	js/Geolocation.js
+M	package.json
+
+82028eafb45c19b51a77686a1328413098d2cc86, Update README.md, Thu Oct 10 21:42:58 2019 +0800
+M	README.md
+
+43183513e1823fcc6c50ba103637ca87fcc486e5, 统一代码风格, Thu Oct 10 21:38:51 2019 +0800
+M	ios/RCTBaiduMap/BaiduMapView.h
+M	ios/RCTBaiduMap/BaiduMapView.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.h
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	ios/RCTBaiduMap/GeolocationModule.h
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	ios/RCTBaiduMap/Utils/OverlayUtils.h
+M	ios/RCTBaiduMap/Utils/OverlayUtils.m
+M	ios/RCTBaiduMap/Views/OverlayCluster.h
+M	ios/RCTBaiduMap/Views/OverlayCluster.m
+M	ios/RCTBaiduMap/Views/OverlayMarker.m
+M	ios/RCTBaiduMap/Views/OverlayPolyline.h
+M	ios/RCTBaiduMap/Views/OverlayPolyline.m
+M	ios/RCTBaiduMap/Views/OverlayView.h
+M	ios/RCTBaiduMap/Views/OverlayView.m
+
+af092f0a002b6307355e32db6e800e46fb5f8fbe, Update README.md, Thu Oct 10 13:30:00 2019 +0800
+M	README.md
+
+9468db33da52e9cba3cfa3f0c9c15164fdb98e32, 修复bundleReleaseAar的问题, Thu Oct 10 11:36:12 2019 +0800
+M	android/build.gradle
+
+7acf43c4503ed44c8c98f187b20ce46dd2bac38a, 更新example, Wed Oct 9 08:31:47 2019 +0800
+M	README.md
+M	android/build.gradle
+M	example/App.js
+
+16e5e56d81beea5f7f1275b5c1668045d8121dfb, fix bug, Tue Oct 8 00:20:54 2019 +0800
+M	.npmignore
+M	android/build.gradle
+M	example/ios/Podfile.lock
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	ios/RCTBaiduMap/IndustryPurpose/BMKClusterManager.h
+M	ios/RCTBaiduMap/IndustryPurpose/BMKClusterManager.m
+M	package.json
+
+07a726f9cc6aa67e107b124bcee5bac6b6748cf3, 点聚合, Mon Oct 7 21:56:13 2019 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayClusterManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayCluster.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+M	example/App.js
+M	example/ios/Podfile.lock
+M	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+M	ios/RCTBaiduMap/BaiduMapView.h
+M	ios/RCTBaiduMap/BaiduMapView.m
+M	ios/RCTBaiduMap/BaiduMapViewManager.h
+M	ios/RCTBaiduMap/BaiduMapViewManager.m
+A	ios/RCTBaiduMap/ClusterAnnotation.h
+A	ios/RCTBaiduMap/ClusterAnnotation.m
+A	ios/RCTBaiduMap/IndustryPurpose/BMKCluster.h
+A	ios/RCTBaiduMap/IndustryPurpose/BMKCluster.m
+A	ios/RCTBaiduMap/IndustryPurpose/BMKClusterManager.h
+A	ios/RCTBaiduMap/IndustryPurpose/BMKClusterManager.m
+A	ios/RCTBaiduMap/IndustryPurpose/BMKClusterQuadtree.h
+A	ios/RCTBaiduMap/IndustryPurpose/BMKClusterQuadtree.m
+A	ios/RCTBaiduMap/Utils/OverlayUtils.h
+A	ios/RCTBaiduMap/Utils/OverlayUtils.m
+A	ios/RCTBaiduMap/ViewManagers/OverlayMarkerManager.h
+A	ios/RCTBaiduMap/ViewManagers/OverlayMarkerManager.m
+A	ios/RCTBaiduMap/ViewManagers/OverlayPolylineManager.h
+A	ios/RCTBaiduMap/ViewManagers/OverlayPolylineManager.m
+A	ios/RCTBaiduMap/Views/OverlayCluster.h
+A	ios/RCTBaiduMap/Views/OverlayCluster.m
+A	ios/RCTBaiduMap/Views/OverlayClusterManager.h
+A	ios/RCTBaiduMap/Views/OverlayClusterManager.m
+A	ios/RCTBaiduMap/Views/OverlayMarker.h
+A	ios/RCTBaiduMap/Views/OverlayMarker.m
+A	ios/RCTBaiduMap/Views/OverlayPolyline.h
+A	ios/RCTBaiduMap/Views/OverlayPolyline.m
+A	ios/RCTBaiduMap/Views/OverlayView.h
+A	ios/RCTBaiduMap/Views/OverlayView.m
+M	ios/react-native-baidu-map.podspec
+M	js/MapView.js
+A	js/Overlay/Cluster.js
+M	js/Overlay/Marker.js
+M	js/Overlay/Polyline.js
+M	js/Overlay/index.js
+
+bdb34a806ad6320677434bb627fdff4330aeabe2, update js, Sun Oct 6 11:21:09 2019 +0800
+M	index.js
+M	js/MapView.js
+
+80b360990bb8003ec73550975b62d657d800b4fc, 0.61 example, Sun Oct 6 11:19:47 2019 +0800
+A	example/.eslintrc.js
+M	example/.flowconfig
+M	example/.gitignore
+A	example/.prettierrc.js
+M	example/App.js
+R086	example/__tests__/App.js	example/__tests__/App-test.js
+M	example/android/app/build.gradle
+M	example/android/app/proguard-rules.pro
+A	example/android/app/src/debug/AndroidManifest.xml
+M	example/android/app/src/main/AndroidManifest.xml
+M	example/android/app/src/main/java/com/rn/MainActivity.java
+M	example/android/app/src/main/java/com/rn/MainApplication.java
+M	example/android/app/src/main/res/values/styles.xml
+M	example/android/build.gradle
+M	example/android/gradle.properties
+M	example/android/gradle/wrapper/gradle-wrapper.jar
+M	example/android/gradle/wrapper/gradle-wrapper.properties
+M	example/android/gradlew
+M	example/android/gradlew.bat
+D	example/android/keystores/BUCK
+D	example/android/keystores/debug.keystore.properties
+M	example/android/settings.gradle
+M	example/babel.config.js
+M	example/index.js
+M	example/ios/Podfile
+M	example/ios/Podfile.lock
+M	example/ios/example-tvOS/Info.plist
+M	example/ios/example.xcodeproj/project.pbxproj
+M	example/ios/example.xcodeproj/xcshareddata/xcschemes/example-tvOS.xcscheme
+M	example/ios/example.xcodeproj/xcshareddata/xcschemes/example.xcscheme
+M	example/ios/example/AppDelegate.h
+M	example/ios/example/AppDelegate.m
+M	example/ios/example/Images.xcassets/AppIcon.appiconset/Contents.json
+M	example/ios/exampleTests/exampleTests.m
+A	example/metro.config.js
+A	example/package-lock.json
+M	example/package.json
+M	example/yarn.lock
+
+2510b2ea9004449d201bfa045bdb4edc0a8ad749, 更新 so, Sun Oct 6 02:04:36 2019 +0800
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_base_v6_0_0.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_map_v6_0_0.so
+A	android/src/main/jniLibs/arm64-v8a/liblocSDK8a.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_base_v6_0_0.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_map_v6_0_0.so
+A	android/src/main/jniLibs/armeabi-v7a/liblocSDK8a.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_base_v6_0_0.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_map_v6_0_0.so
+A	android/src/main/jniLibs/armeabi/liblocSDK8a.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_base_v6_0_0.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_map_v6_0_0.so
+A	android/src/main/jniLibs/x86/liblocSDK8a.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_base_v6_0_0.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_map_v6_0_0.so
+A	android/src/main/jniLibs/x86_64/liblocSDK8a.so
+
+d64451a1d57eb18064399bd4de1e2baa6ddb9d14, 1. 更新 sdk 2. android 点聚合, Sun Oct 6 02:03:45 2019 +0800
+M	android/libs/BaiduLBS_Android.jar
+A	android/src/main/java/com/baidu/mapapi/clusterutil/MarkerManager.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/Cluster.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/ClusterItem.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/ClusterManager.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/algo/Algorithm.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/algo/NonHierarchicalDistanceBasedAlgorithm.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/algo/PreCachingAlgorithmDecorator.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/algo/StaticCluster.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/view/ClusterRenderer.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/clustering/view/DefaultClusterRenderer.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/projection/Bounds.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/projection/Point.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/projection/SphericalMercatorProjection.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/quadtree/PointQuadTree.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/ui/IconGenerator.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/ui/RotationLayout.java
+A	android/src/main/java/com/baidu/mapapi/clusterutil/ui/SquareTextView.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/BikingRouteOverlay.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/BusLineOverlay.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/DrivingRouteOverlay.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/IndoorPoiOverlay.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/IndoorRouteOverlay.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/MassTransitRouteOverlay.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/OverlayManager.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/PoiOverlay.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/TransitRouteOverlay.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/WalkingRouteOverlay.java
+A	android/src/main/java/com/baidu/mapapi/overlayutil/package.html
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+A	android/src/main/res/anim/pop_hide.xml
+A	android/src/main/res/anim/pop_show.xml
+A	android/src/main/res/layout/text_bubble.xml
+A	android/src/main/res/values/styles.xml
+
+0b05ef0bfacb95c7984b1734644363621a7f7d1c, remove old child views, Sat Oct 5 14:00:39 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayArc.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayCircle.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayInfoWindow.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolygon.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolyline.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayText.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayView.java
+
+f1a461ec7999c32e85645694eb3bb2eca7fc25f5, 0.61.2, Sat Oct 5 10:20:38 2019 +0800
+M	android/build.gradle
+
+73c9d791156ad7558e766f2c02d9b1d141162bf1, update gradle version; add mvn2.codeboot.net maven, Fri Oct 4 01:35:25 2019 +0800
+M	android/build.gradle
+M	android/gradle/wrapper/gradle-wrapper.properties
+M	android/gradlew
+M	example/android/gradle/wrapper/gradle-wrapper.properties
+M	example/package.json
+
+cbbe4d1475590bbc481693c917cb6ff304a6bf98, Merge pull request #249 from zhuweideng/master, Wed Oct 2 12:47:45 2019 +0800
+1b518b865062bca612544f854f1cb92fbeb2170b, Merge pull request #255 from Xiapeixu/master, Wed Oct 2 12:41:04 2019 +0800
+481f484a9394f043b308048afb5621e96a4afcd4, Merge pull request #258 from KingAmo/patch-1, Wed Oct 2 12:40:05 2019 +0800
+1d2286d5c70b1ebf00b1b15a10331fa1eaa4ebb0, Merge pull request #263 from pj0579/master, Wed Oct 2 12:38:13 2019 +0800
+29f4dcf4fa1797d8811a9208ea8ce9acaeea9b6c, Merge pull request #265 from guohuihot/patch-1, Wed Oct 2 12:34:04 2019 +0800
+b21b34d302219dceb613294a74a518ca4e861c93, 说明, Mon Jul 8 10:01:07 2019 +0800
+M	README.md
+
+27e190217029570b9de7c2256866cd168dd73568, Update build.gradle, Thu Jul 4 19:32:21 2019 +0800
+M	android/build.gradle
+
+32dbeadd0e91b1069f5dd6c40a83e9e84e431f0b, 升级AndroidX, Thu Jul 4 18:21:22 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/module/BaseModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayArc.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayCircle.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolygon.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolyline.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayText.java
+
+0f84afd774a0fc1c94c4d1acbd249563f3bb22a5, 允许使用静态framework, Wed Jun 12 17:03:42 2019 +0800
+M	ios/react-native-baidu-map.podspec
+
+937c2a0059be0620aff6f6adfd6f39d4d22b4fcb, 版本和react-native统一, Mon Jun 10 15:29:59 2019 +0800
+M	android/build.gradle
+
+3741d7c9950f186f41437e20e7a824b902718db6, react-native 0.59 版本下报错：Only one Looper may be created per thread, Wed May 8 14:02:43 2019 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+
+3c2edf3174a822733b75d91841de37ea2bb25768, Merge pull request #225 from kerlw/master, Sun Mar 3 16:38:00 2019 +0800
+a1a672c5a59c9e522b0432f4a2d94c2b43d00fb4, Update MapView.js, Wed Feb 27 10:56:38 2019 +0800
+M	js/MapView.js
+
+d2f70f21a0397d442a56e8091ab4872133ccd7e9, Update README.md, Fri Feb 15 01:37:44 2019 +0800
+M	README.md
+
+94c9ab2bf1b4ec0b6a2569dbf6e2c0365fe6b64c, Update README.md, Fri Feb 15 01:36:51 2019 +0800
+M	README.md
+
+2dfcc887a7dc79efb8aaadaff96b65a23fdef274, Merge pull request #213 from mmabraham/master, Fri Feb 15 01:29:44 2019 +0800
+495351e0ab0f5e82c7e107436f2654370522a6d6, Merge branch 'master' into master, Fri Feb 15 01:29:30 2019 +0800
+eed37c3ba6d673415e1ab3efe71739e9e6755753, 修复example的bug, Fri Feb 15 01:25:34 2019 +0800
+M	example/App.js
+M	example/ios/Podfile
+M	example/ios/Podfile.lock
+
+cebe5f4b9d11077fddbf2e7bfd9e168e0a07e34b, 修复一些bug, Thu Feb 14 00:11:35 2019 +0800
+M	README.md
+M	android/build.gradle
+M	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayOverlayInfoWindowManager.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayInfoWindow.java
+M	example/App.js
+M	example/android/build.gradle
+M	example/package.json
+M	js/Overlay/InfoWindow.js
+M	js/Overlay/Marker.js
+M	js/Overlay/index.js
+M	package.json
+
+a60bebe82a7ab40a2ce92417ed7e2fb56a287136, 修复ios example的bug, Wed Feb 13 20:20:55 2019 +0800
+M	.npmignore
+M	README.md
+M	example/package.json
+R100	lib/ios/RCTBaiduMap.xcodeproj/project.pbxproj	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+R100	lib/ios/RCTBaiduMap/BaiduMapView.h	ios/RCTBaiduMap/BaiduMapView.h
+R100	lib/ios/RCTBaiduMap/BaiduMapView.m	ios/RCTBaiduMap/BaiduMapView.m
+R100	lib/ios/RCTBaiduMap/BaiduMapViewManager.h	ios/RCTBaiduMap/BaiduMapViewManager.h
+R100	lib/ios/RCTBaiduMap/BaiduMapViewManager.m	ios/RCTBaiduMap/BaiduMapViewManager.m
+R100	lib/ios/RCTBaiduMap/BaseModule.h	ios/RCTBaiduMap/BaseModule.h
+R100	lib/ios/RCTBaiduMap/BaseModule.m	ios/RCTBaiduMap/BaseModule.m
+R100	lib/ios/RCTBaiduMap/GeolocationModule.h	ios/RCTBaiduMap/GeolocationModule.h
+R100	lib/ios/RCTBaiduMap/GeolocationModule.m	ios/RCTBaiduMap/GeolocationModule.m
+R096	lib/ios/react-native-baidu-map.podspec	ios/react-native-baidu-map.podspec
+M	package.json
+
+fccb6d5ad16ef86b0ac478d4da0e6df038cb5836, update, Wed Feb 13 18:32:07 2019 +0800
+A	example/android/app/lovebing-dev-key.keystore
+M	example/package.json
+
+08b0095905ecf2f6e09d45c51cf77fcc5797a348, fix bug, Tue Feb 12 22:12:52 2019 +0800
+M	example/package.json
+M	lib/ios/RCTBaiduMap/BaiduMapViewManager.m
+M	lib/ios/react-native-baidu-map.podspec
+M	package.json
+
+00849d3e1cdc80d59edd8afac5ac6d3ca74c5011, Podfile.lock, Tue Feb 12 08:32:18 2019 +0800
+M	example/ios/Podfile.lock
+
+ed8b7eb722eac9fde2e4fe4e0db8cfbdd2375126, ios example, Tue Feb 12 08:22:46 2019 +0800
+M	.gitignore
+M	.npmignore
+M	README.md
+R067	ios/Podfile	example/ios/Podfile
+A	example/ios/Podfile.lock
+M	example/ios/example.xcodeproj/project.pbxproj
+M	example/ios/example.xcodeproj/xcshareddata/xcschemes/example-tvOS.xcscheme
+M	example/ios/example.xcodeproj/xcshareddata/xcschemes/example.xcscheme
+R079	ios/RCTBaiduMap.xcworkspace/contents.xcworkspacedata	example/ios/example.xcworkspace/contents.xcworkspacedata
+R100	ios/RCTBaiduMap.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist	example/ios/example.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+M	example/ios/example/AppDelegate.m
+M	example/ios/example/Info.plist
+D	ios/RCTBaiduMap.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+D	ios/RCTBaiduMap.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+D	ios/RCTBaiduMap.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+D	ios/RCTBaiduMap.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcschemes/RCTBaiduMap.xcscheme
+D	ios/RCTBaiduMap.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcschemes/xcschememanagement.plist
+D	ios/RCTBaiduMap.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+D	ios/RCTBaiduMap.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+M	js/MapView.js
+R088	ios/RCTBaiduMap.xcodeproj/project.pbxproj	lib/ios/RCTBaiduMap.xcodeproj/project.pbxproj
+R100	ios/RCTBaiduMap/BaiduMapView.h	lib/ios/RCTBaiduMap/BaiduMapView.h
+R100	ios/RCTBaiduMap/BaiduMapView.m	lib/ios/RCTBaiduMap/BaiduMapView.m
+R100	ios/RCTBaiduMap/BaiduMapViewManager.h	lib/ios/RCTBaiduMap/BaiduMapViewManager.h
+R100	ios/RCTBaiduMap/BaiduMapViewManager.m	lib/ios/RCTBaiduMap/BaiduMapViewManager.m
+R100	ios/RCTBaiduMap/BaseModule.h	lib/ios/RCTBaiduMap/BaseModule.h
+R100	ios/RCTBaiduMap/BaseModule.m	lib/ios/RCTBaiduMap/BaseModule.m
+R100	ios/RCTBaiduMap/GeolocationModule.h	lib/ios/RCTBaiduMap/GeolocationModule.h
+R100	ios/RCTBaiduMap/GeolocationModule.m	lib/ios/RCTBaiduMap/GeolocationModule.m
+A	lib/ios/react-native-baidu-map.podspec
+
+34e87a7cd06d5e1b0b5a20efd218eef0817591e1, update README.md, Sun Feb 10 01:47:07 2019 +0800
+M	README.md
+
+27417d31ed450727d048667a16630faab1e13c4c, android example, Sun Feb 10 01:41:26 2019 +0800
+M	.gitignore
+A	.yarn-metadata.json
+M	README.md
+D	android/AndroidManifest.xml
+M	android/build.gradle
+A	android/gradle/wrapper/gradle-wrapper.jar
+A	android/gradle/wrapper/gradle-wrapper.properties
+A	android/gradlew
+A	android/gradlew.bat
+A	example/.buckconfig
+A	example/.flowconfig
+A	example/.gitattributes
+A	example/.gitignore
+A	example/.watchmanconfig
+A	example/App.js
+A	example/__tests__/App.js
+A	example/android/app/BUCK
+A	example/android/app/build.gradle
+A	example/android/app/build_defs.bzl
+A	example/android/app/proguard-rules.pro
+A	example/android/app/src/main/AndroidManifest.xml
+A	example/android/app/src/main/java/com/rn/MainActivity.java
+A	example/android/app/src/main/java/com/rn/MainApplication.java
+A	example/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+A	example/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+A	example/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+A	example/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png
+A	example/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+A	example/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+A	example/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+A	example/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+A	example/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+A	example/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+A	example/android/app/src/main/res/values/strings.xml
+A	example/android/app/src/main/res/values/styles.xml
+A	example/android/build.gradle
+A	example/android/gradle.properties
+A	example/android/gradle/wrapper/gradle-wrapper.jar
+A	example/android/gradle/wrapper/gradle-wrapper.properties
+A	example/android/gradlew
+A	example/android/gradlew.bat
+A	example/android/keystores/BUCK
+A	example/android/keystores/debug.keystore.properties
+A	example/android/settings.gradle
+A	example/app.json
+A	example/babel.config.js
+A	example/index.js
+A	example/ios/example-tvOS/Info.plist
+A	example/ios/example-tvOSTests/Info.plist
+A	example/ios/example.xcodeproj/project.pbxproj
+A	example/ios/example.xcodeproj/xcshareddata/xcschemes/example-tvOS.xcscheme
+A	example/ios/example.xcodeproj/xcshareddata/xcschemes/example.xcscheme
+A	example/ios/example/AppDelegate.h
+A	example/ios/example/AppDelegate.m
+A	example/ios/example/Base.lproj/LaunchScreen.xib
+A	example/ios/example/Images.xcassets/AppIcon.appiconset/Contents.json
+A	example/ios/example/Images.xcassets/Contents.json
+A	example/ios/example/Info.plist
+A	example/ios/example/main.m
+A	example/ios/exampleTests/Info.plist
+A	example/ios/exampleTests/exampleTests.m
+A	example/package.json
+A	example/yarn.lock
+M	index.js
+M	js/MapView.js
+A	package-lock.json
+M	package.json
+
+b4360b1f772fdc7cabcfdf13a7bed98272649ec2, Correctly import modules into index.js, Thu Dec 27 22:41:30 2018 -0500
+M	index.js
+
+fb3a9d7cc4c21570dc31b7a53cae6bd99b4e5240, Update build.gradle, Thu Dec 13 00:05:29 2018 +0800
+M	android/build.gradle
+
+e69975df04c971f656ebc578ed06e588927009dd, Update build.gradle, Thu Dec 13 00:00:55 2018 +0800
+M	android/build.gradle
+
+03d15bf063493e2481e680c6f03e72b9aa2bfd27, Android部分重构, Tue Dec 11 00:54:01 2018 +0800
+M	.gitignore
+A	LICENSE
+M	README.md
+A	android/AndroidManifest.xml
+M	android/build.gradle
+A	android/gradle.properties
+M	android/libs/BaiduLBS_Android.jar
+A	android/src/main/assets/SDK_Default_Icon_Car.png
+A	android/src/main/assets/SDK_Default_Icon_End.png
+A	android/src/main/assets/SDK_Default_Icon_Passenger.png
+A	android/src/main/assets/SDK_Default_Icon_Start.png
+A	android/src/main/assets/SDK_Default_Route_Texture_Bule_Arrow.png
+A	android/src/main/assets/SDK_Default_Traffic_Texture_Congestion.png
+A	android/src/main/assets/SDK_Default_Traffic_Texture_SevereCongestion.png
+A	android/src/main/assets/SDK_Default_Traffic_Texture_Slow.png
+A	android/src/main/assets/SDK_Default_Traffic_Texture_Smooth.png
+A	android/src/main/assets/cfg/a/CustomIndex
+A	android/src/main/assets/cfg/a/DVDirectory.cfg
+R100	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotMap.cfg	android/src/main/assets/cfg/a/DVHotMap.cfg
+A	android/src/main/assets/cfg/a/DVHotcity.cfg
+A	android/src/main/assets/cfg/a/DVSDirectory.cfg
+A	android/src/main/assets/cfg/a/DVStreet.cfg
+A	android/src/main/assets/cfg/a/DVVersion.cfg
+A	android/src/main/assets/cfg/a/mode_1/map.sdkrs
+A	android/src/main/assets/cfg/a/mode_1/map.sty
+A	android/src/main/assets/cfg/a/mode_1/reduct.sdkrs
+A	android/src/main/assets/cfg/a/mode_1/reduct.sty
+A	android/src/main/assets/cfg/a/mode_1/traffic.sdkrs
+R052	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/mapstyle.sty	android/src/main/assets/cfg/a/mode_1/traffic.sty
+A	android/src/main/assets/cfg/idrres/DVIndoor.cfg
+A	android/src/main/assets/cfg/idrres/ResPackIndoorMap.sdkrs
+R070	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/indoor/baseindoormap.sty	android/src/main/assets/cfg/idrres/baseindoormap.sty
+A	android/src/main/assets/icon_scale.9.png
+R100	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/lineDashTexture.png	android/src/main/assets/lineDashTexture.png
+A	android/src/main/assets/logo_h.png
+A	android/src/main/assets/logo_l.png
+A	android/src/main/assets/main_bottombtn_down.9.png
+A	android/src/main/assets/main_bottombtn_up.9.png
+A	android/src/main/assets/main_icon_zoomin.png
+A	android/src/main/assets/main_icon_zoomin_dis.png
+A	android/src/main/assets/main_icon_zoomout.png
+A	android/src/main/assets/main_icon_zoomout_dis.png
+A	android/src/main/assets/main_topbtn_down.9.png
+A	android/src/main/assets/main_topbtn_up.9.png
+A	android/src/main/assets/wear_zoom_in.png
+A	android/src/main/assets/wear_zoom_in_pressed.png
+A	android/src/main/assets/wear_zoom_out_pressed.png
+A	android/src/main/assets/wear_zoon_out.png
+D	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+D	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+D	android/src/main/java/org/lovebing/reactnative/baidumap/MarkerUtil.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/listener/MapListener.java
+R078	android/src/main/java/org/lovebing/reactnative/baidumap/BaseModule.java	android/src/main/java/org/lovebing/reactnative/baidumap/module/BaseModule.java
+R096	android/src/main/java/org/lovebing/reactnative/baidumap/GeolocationModule.java	android/src/main/java/org/lovebing/reactnative/baidumap/module/GeolocationModule.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/module/MapAppModule.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/MapViewManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayArcManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayCircleManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayMarkerManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayOverlayInfoWindowManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayPolygonManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayPolylineManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/uimanager/OverlayTextManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/util/ColorUtil.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/util/LatLngUtil.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/util/StrokeUtil.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayArc.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayCircle.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayInfoWindow.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayMarker.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolygon.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayPolyline.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayText.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/view/OverlayView.java
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_base_v4_0_0.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_map_v4_0_0.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_map_v5_1_0.so
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_search_v4_0_0.so
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_util_v4_0_0.so
+A	android/src/main/jniLibs/arm64-v8a/libindoor.so
+D	android/src/main/jniLibs/arm64-v8a/liblocSDK7.so
+A	android/src/main/jniLibs/arm64-v8a/liblocSDK7b.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_base_v4_0_0.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_map_v4_0_0.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_map_v5_1_0.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_search_v4_0_0.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_util_v4_0_0.so
+A	android/src/main/jniLibs/armeabi-v7a/libindoor.so
+D	android/src/main/jniLibs/armeabi-v7a/liblocSDK7.so
+A	android/src/main/jniLibs/armeabi-v7a/liblocSDK7b.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_base_v4_0_0.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_map_v4_0_0.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_map_v5_1_0.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_search_v4_0_0.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_util_v4_0_0.so
+A	android/src/main/jniLibs/armeabi/libindoor.so
+D	android/src/main/jniLibs/armeabi/liblocSDK7.so
+A	android/src/main/jniLibs/armeabi/liblocSDK7b.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_base_v4_0_0.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_map_v4_0_0.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_map_v5_1_0.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_search_v4_0_0.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_util_v4_0_0.so
+A	android/src/main/jniLibs/x86/libindoor.so
+D	android/src/main/jniLibs/x86/liblocSDK7.so
+A	android/src/main/jniLibs/x86/liblocSDK7b.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_base_v4_0_0.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_base_v5_1_0.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_map_v4_0_0.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_map_v5_1_0.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_search_v4_0_0.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_util_v4_0_0.so
+A	android/src/main/jniLibs/x86_64/libindoor.so
+D	android/src/main/jniLibs/x86_64/liblocSDK7.so
+A	android/src/main/jniLibs/x86_64/liblocSDK7b.so
+A	android/src/main/res/layout/layout_marker.xml
+D	demo/BaiduMapDemo.js
+D	demo/android/app/BUCK
+D	demo/android/app/app.iml
+D	demo/android/app/build.gradle
+D	demo/android/app/lovebing-dev-key.keystore
+D	demo/android/app/proguard-rules.pro
+D	demo/android/app/src/main/AndroidManifest.xml
+D	demo/android/app/src/main/java/com/rn/MainActivity.java
+D	demo/android/app/src/main/java/com/rn/MainApplication.java
+D	demo/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+D	demo/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+D	demo/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+D	demo/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+D	demo/android/app/src/main/res/values/strings.xml
+D	demo/android/app/src/main/res/values/styles.xml
+D	demo/android/build.gradle
+D	demo/android/gradle.properties
+D	demo/android/gradle/wrapper/gradle-wrapper.jar
+D	demo/android/gradle/wrapper/gradle-wrapper.properties
+D	demo/android/keystores/BUCK
+D	demo/android/keystores/debug.keystore.properties
+D	demo/android/react-native-baidu-map/react-native-baidu-map.iml
+D	demo/android/rn.iml
+D	demo/android/settings.gradle
+D	demo/index.android.js
+D	demo/index.ios.js
+D	demo/ios/rn.xcodeproj/project.pbxproj
+D	demo/ios/rn.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+D	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+D	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/WorkspaceSettings.xcsettings
+D	demo/ios/rn.xcodeproj/xcshareddata/xcschemes/rn.xcscheme
+D	demo/ios/rn.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+D	demo/ios/rn.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcschemes/xcschememanagement.plist
+D	demo/ios/rn/AppDelegate.h
+D	demo/ios/rn/AppDelegate.m
+D	demo/ios/rn/Base.lproj/LaunchScreen.xib
+D	demo/ios/rn/Images.xcassets/AppIcon.appiconset/Contents.json
+D	demo/ios/rn/Info.plist
+D	demo/ios/rn/main.m
+D	demo/ios/rnTests/Info.plist
+D	demo/ios/rnTests/rnTests.m
+D	demo/package.json
+M	index.js
+A	ios/Podfile
+M	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+A	ios/RCTBaiduMap.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+M	ios/RCTBaiduMap.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+A	ios/RCTBaiduMap.xcworkspace/contents.xcworkspacedata
+A	ios/RCTBaiduMap.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+A	ios/RCTBaiduMap.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+D	ios/RCTBaiduMap/BaiduMapModule.h
+D	ios/RCTBaiduMap/BaiduMapModule.m
+R083	ios/RCTBaiduMap/RCTBaiduMapView.h	ios/RCTBaiduMap/BaiduMapView.h
+R098	ios/RCTBaiduMap/RCTBaiduMapView.m	ios/RCTBaiduMap/BaiduMapView.m
+R062	ios/RCTBaiduMap/RCTBaiduMapViewManager.h	ios/RCTBaiduMap/BaiduMapViewManager.h
+R093	ios/RCTBaiduMap/RCTBaiduMapViewManager.m	ios/RCTBaiduMap/BaiduMapViewManager.m
+M	ios/RCTBaiduMap/BaseModule.h
+M	ios/RCTBaiduMap/GeolocationModule.h
+M	ios/RCTBaiduMap/GeolocationModule.m
+D	ios/lib/BaiduMapAPI_Base.framework/BaiduMapAPI_Base
+D	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKBaseComponent.h
+D	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKGeneralDelegate.h
+D	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKMapManager.h
+D	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKTypes.h
+D	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKUserLocation.h
+D	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKVersion.h
+D	ios/lib/BaiduMapAPI_Base.framework/readme.txt
+D	ios/lib/BaiduMapAPI_Cloud.framework/BaiduMapAPI_Cloud
+D	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudPOIList.h
+D	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudSearch.h
+D	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudSearchComponent.h
+D	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudSearchInfo.h
+D	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudVersion.h
+D	ios/lib/BaiduMapAPI_Cloud.framework/readme.txt
+D	ios/lib/BaiduMapAPI_Location.framework/BaiduMapAPI_Location
+D	ios/lib/BaiduMapAPI_Location.framework/Headers/BMKLocationComponent.h
+D	ios/lib/BaiduMapAPI_Location.framework/Headers/BMKLocationService.h
+D	ios/lib/BaiduMapAPI_Location.framework/Headers/BMKLocationVersion.h
+D	ios/lib/BaiduMapAPI_Location.framework/readme.txt
+D	ios/lib/BaiduMapAPI_Map.framework/BaiduMapAPI_Map
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKActionPaopaoView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKAnnotation.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKAnnotationView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKArcline.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKArclineView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKBaseIndoorMapInfo.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKCircle.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKCircleView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKGradient.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKGroundOverlay.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKGroundOverlayView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKHeatMap.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKLocationViewDisplayParam.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapComponent.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapStatus.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapVersion.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMultiPoint.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOfflineMap.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOfflineMapType.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlay.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlayGLBasicView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlayPathView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlayView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPinAnnotationView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPointAnnotation.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolygon.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolygonView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolyline.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolylineView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKShape.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKTileLayer.h
+D	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKTileLayerView.h
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/Beijing, China.gpx
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/CustomIndex
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVDirectory.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVDirectory_Retina.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotMap_Retina.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotcity.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotcity_Retina.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVSDirectory.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVSDirectory_Retina.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVVersion.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVVersion_Retina.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/ResPack.rs
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/channel
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/indoor/DVIndoor.cfg
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/indoor/IndoorResPack.rs
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/satellitestyle.sty
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/trafficstyle.sty
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/baidumap_logo.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/baidumap_logo@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/bnavi_icon_location_fixed.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/bnavi_icon_location_fixed@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/direction_wheel.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/direction_wheel@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left_highlighted.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left_highlighted@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right_highlighted.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right_highlighted@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone2.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone2@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_center_point.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_center_point@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass_background.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass_background@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_direction.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_direction@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_line_nofocus.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_bus.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_bus@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_end.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_end@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_rail.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_rail@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_start.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_start@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_waypoint.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_waypoint@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left_highlighted.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left_highlighted@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right_highlighted.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right_highlighted@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/line_texture.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_green.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_green@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_purple.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_purple@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_red.png
+D	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_red@2x.png
+D	ios/lib/BaiduMapAPI_Map.framework/readme.txt
+D	ios/lib/BaiduMapAPI_Radar.framework/BaiduMapAPI_Radar
+D	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarComponent.h
+D	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarManager.h
+D	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarOption.h
+D	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarResult.h
+D	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarVersion.h
+D	ios/lib/BaiduMapAPI_Radar.framework/readme.txt
+D	ios/lib/BaiduMapAPI_Search.framework/BaiduMapAPI_Search
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKBusLineSearch.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKBusLineSearchOption.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKDistrictSearch.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKGeocodeSearch.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKGeocodeSearchOption.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKGeocodeType.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKPoiSearch.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKPoiSearchOption.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKPoiSearchType.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKRouteSearch.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKRouteSearchOption.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKRouteSearchType.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSearchBase.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSearchComponent.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSearchVersion.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKShareURLSearch.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKShareUrlSearchOption.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSuggestionSearch.h
+D	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSuggestionSearchOption.h
+D	ios/lib/BaiduMapAPI_Search.framework/readme.txt
+D	ios/lib/BaiduMapAPI_Utils.framework/BaiduMapAPI_Utils
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKFavPoiInfo.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKFavPoiManager.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKGeometry.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKNavigation.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenOption.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenPanorama.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenPoi.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenPoiOption.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenRoute.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenRouteOption.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKUtilsComponent.h
+D	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKUtilsVersion.h
+D	ios/lib/BaiduMapAPI_Utils.framework/readme.txt
+M	js/Geolocation.js
+A	js/MapApp.js
+D	js/MapModule.js
+M	js/MapTypes.js
+M	js/MapView.js
+A	js/Overlay/Arc.js
+A	js/Overlay/Circle.js
+A	js/Overlay/InfoWindow.js
+A	js/Overlay/Marker.js
+A	js/Overlay/Polygon.js
+A	js/Overlay/Polyline.js
+A	js/Overlay/Text.js
+A	js/Overlay/index.js
+M	package.json
+
+917229340b387a278a0675261679f15cfff3586d, Merge pull request #95 from stockcode/master, Sat Jul 21 15:10:04 2018 +0800
+4689d4000dc7014311bfdcb301cf848e43c4a2a2, Merge pull request #162 from spelcaster/allow-gps-conversion, Sat Jul 21 14:33:05 2018 +0800
+04b9edf3888eb66b43efe98a26819d44e58a5e25, Merge pull request #168 from WTFSSD/master, Sat Jul 21 14:25:25 2018 +0800
+a9fdff8bfb6b4e2537bb064b8fd12cc62f2a1939, bug fix, Thu Apr 19 12:28:49 2018 +0800
+M	ios/RCTBaiduMap/BaseModule.h
+
+5c92755e16b8da811ed340520de7a5e51cfe64a1, allow gps conversion to baidu coordinates, Tue Mar 27 18:23:33 2018 -0300
+M	android/src/main/java/org/lovebing/reactnative/baidumap/GeolocationModule.java
+M	js/Geolocation.js
+
+6d9562a4e5a8af7681cd243e0d747335583b311b, add high accuracy to LocationClientOption, Tue Mar 27 18:20:22 2018 -0300
+M	android/src/main/java/org/lovebing/reactnative/baidumap/GeolocationModule.java
+
+ce230d0f106a8bdce79a6a5ffeaa78ccb1c1f51d, Merge pull request #120 from bahaa96/patch-1, Wed Feb 21 01:15:04 2018 -0600
+eb7053b30fc37f2933ca7cdd4cdded8bc711fbd4, Merge pull request #154 from liuximing2016/patch-1, Wed Feb 21 01:12:21 2018 -0600
+628dad0ce9583639727d1a33ecc50d6b25488533, Fix PropTypes Bug In MapView.js, Wed Jan 31 15:19:05 2018 +0800
+M	js/MapView.js
+
+900a87b5eab01c7cd0c93f1db8e89233afd32ca4, Handling Android RN 0.47 breaking change, Mon Aug 7 19:03:02 2017 +0200
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+
+75991567d624b5e07af3ac369446a565b670be29, 添加Poi列表信息, Wed May 24 20:12:49 2017 +0800
+M	android/build.gradle
+M	android/src/main/java/org/lovebing/reactnative/baidumap/GeolocationModule.java
+
+9950d8c028ba91f13cc4f9d04b28da5ac217901d, Merge pull request #82 from zfn2010/master, Thu Apr 27 23:57:29 2017 +0800
+f4d6398ac9be77a133a3c8b6f15282e32d54dd10, Merge pull request #74 from polyrabbit/patch-1, Thu Apr 27 23:56:55 2017 +0800
+e19b7b8a73a7ab23444c20a78a842bb1a907c75f, Update RCTBaiduMapView.h, Wed Apr 26 22:20:36 2017 +0800
+M	ios/RCTBaiduMap/RCTBaiduMapView.h
+
+ef06c78530e08b8104e445894dfad9f0d7336dfb, Fix a bug caused by RN 0.42, Fri Mar 31 00:20:08 2017 +0800
+M	ios/RCTBaiduMap/RCTBaiduMapView.h
+
+47add506a5a8ec96fd21bc7efd4b0f24508664b5, Update package.json, Sat Mar 11 18:00:33 2017 +0800
+M	demo/package.json
+
+073cc5f2b375e084ef0391da5fd8e56014543c45, Update README.md, Fri Mar 10 01:22:44 2017 +0800
+M	README.md
+
+1da271d517ea72e2029db4ba2ddfceada077c04a, updated demo, Fri Mar 10 00:38:33 2017 +0800
+M	demo/BaiduMapDemo.js
+M	demo/package.json
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	js/Geolocation.js
+M	package.json
+
+24321c27857ed75acfff3cbb1903279616f8ac79, Merge pull request #57 from oumind/master, Thu Mar 9 22:56:26 2017 +0800
+dcdd4b30d762d4131958f458a4dc220f4ce8fffb, Update package.json, Thu Mar 9 21:41:10 2017 +0800
+M	package.json
+
+296db2f048d1ecbb51254e1ec21ac359b3b86b62, Merge pull request #44 from futurechallenger/patch-1, Thu Mar 9 21:25:09 2017 +0800
+28835df399f4136301736024442b9e843756ef30, fix on RN 0.4.0, Fri Mar 3 21:08:59 2017 +0800
+M	ios/RCTBaiduMap/BaseModule.h
+
+812d19f293dd4ab1c599126acd88312f99dd875b, ios fix method：reverseGeoCodeGPS，reverseGeoCode，getCurrentPosition。增加cityCode返回信息, Mon Feb 20 13:07:27 2017 +0800
+M	README.md
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	js/Geolocation.js
+
+c8920d1f3e4de2e295cee5dda16b43f520803487, Updated method `-(void)addMarker: option:`, Tue Dec 6 18:37:43 2016 +0800
+M	ios/RCTBaiduMap/RCTBaiduMapView.m
+
+6f72be6257843bc1eaa7298366045e49a0c71a38, 0.5.0, Wed Nov 23 00:10:16 2016 +0800
+M	README.md
+M	package.json
+
+5abb53f65cef6c0a2a7b396c1aa9e79c1134ea7b, Fixed ios's bugs, Wed Nov 23 00:08:06 2016 +0800
+M	ios/RCTBaiduMap/BaiduMapModule.m
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	ios/RCTBaiduMap/RCTBaiduMapViewManager.h
+M	ios/RCTBaiduMap/RCTBaiduMapViewManager.m
+
+a6cd259b514dc9e56c4b418c0071bb1dab6362e2, Fixed bugs and added onMapPoiClick, Tue Nov 22 23:55:14 2016 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+M	ios/RCTBaiduMap/RCTBaiduMapViewManager.m
+M	js/MapModule.js
+M	js/MapView.js
+
+dd82387e495f7dd82910d18e5c5fb4a0287a4fac, Fixed Android marker's bugs, Tue Nov 22 22:48:00 2016 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+
+01ef6eb06533652bf738c17cfc7ec1faaf454deb, Update android screen captrue, Mon Oct 31 21:38:48 2016 +0800
+M	images/android.jpg
+
+05ed3e7885fa469db15ffb17269b328366e61cd0, Update reverseGeoCode callback, Sat Oct 29 00:11:46 2016 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/GeolocationModule.java
+M	demo/package.json
+M	ios/RCTBaiduMap/GeolocationModule.m
+M	package.json
+
+227b95092da3faffc18511592fa2c94c93ba31fd, Fix Android bug: marker's infoWindow, Fri Oct 28 23:55:34 2016 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+M	demo/package.json
+M	package.json
+
+0acc29b3ae4ab5fd55e09c30c4da95463cda8ed0, Fix IOS bug: onMarkerClick, Fri Oct 28 23:41:31 2016 +0800
+M	demo/package.json
+M	ios/RCTBaiduMap/RCTBaiduMapViewManager.m
+M	package.json
+
+955ab13fb8cea86f18f2565c642040ac9885bf12, Update, Fri Oct 28 22:37:07 2016 +0800
+M	demo/package.json
+M	package.json
+
+b7584549512d3e27f14d39a19f9cc7308af2f153, Update, Fri Oct 28 22:35:35 2016 +0800
+A	ios/RCTBaiduMap/GeolocationModule.h
+A	ios/RCTBaiduMap/GeolocationModule.m
+
+6adb48b93ef27a993d15673e3fcd88c0bc3b7f79, Fix demo bug, Fri Oct 28 22:32:13 2016 +0800
+M	demo/ios/rn/AppDelegate.m
+M	demo/ios/rn/Info.plist
+
+c095ec00b8733dd3bad3a79d5c2533e6970653e2, update README.md, Fri Oct 28 21:29:09 2016 +0800
+M	README.md
+
+fad7b964d7cc5b68b49e69b737783e09701ec74c, update, Fri Oct 28 21:28:01 2016 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/BaseModule.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/GeolocationModule.java
+M	demo/package.json
+M	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+M	ios/RCTBaiduMap/BaiduMapModule.h
+M	ios/RCTBaiduMap/BaiduMapModule.m
+A	ios/RCTBaiduMap/BaseModule.h
+A	ios/RCTBaiduMap/BaseModule.m
+M	js/Geolocation.js
+M	package.json
+
+85628be5764adbaed2f6fbddd82ae1b8225f4fe0, Update package.json, Fri Oct 28 02:22:02 2016 +0800
+M	demo/package.json
+
+ee64d1945c2f89b3844b4ce01913ee748e2048ce, update, Fri Oct 14 01:04:14 2016 +0800
+M	README.md
+M	ios/RCTBaiduMap/RCTBaiduMapView.m
+M	package.json
+
+e3fb6e3cbc3e31e188a21be36f7f97b7880d6e40, fix bug, Fri Oct 7 21:10:05 2016 +0800
+M	ios/RCTBaiduMap/RCTBaiduMapView.m
+
+fab5d743bbf0360376d91a605d000dd8614a25d1, fix bug, Fri Oct 7 19:48:00 2016 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+
+6c3db0b2b106b6d645c752deef33e96e3820f8a5, Update package.json, Thu Sep 29 13:11:00 2016 +0800
+M	package.json
+
+2be13cca1d08444c13581518109d7e3df4397933, Merge pull request #14 from zhangjunhou/master, Thu Sep 29 08:49:15 2016 +0800
+938ec41e9bebe3ccb401187f3dbda110b6a58680, ios add geocode, Thu Sep 29 01:39:33 2016 +0800
+M	ios/RCTBaiduMap/BaiduMapModule.m
+
+d74c3d75a0ede8afb6a7bb9aa5ad273bcd0a2e5b, Fixed bug, Wed Sep 28 23:58:16 2016 +0800
+M	ios/RCTBaiduMap/RCTBaiduMapView.m
+M	package.json
+
+65886b30b926c28c75a54f554b6f2b3800a43e78, Update package.json, Wed Sep 28 23:28:36 2016 +0800
+M	package.json
+
+50b35e9629c15f89e13f00cacd85700a5722cbc8, Merge branch 'master' of https://github.com/lovebing/react-native-baidu-map, Wed Sep 28 23:26:20 2016 +0800
+25d87dbd78b021c277be44ae764429f8816a03d7, Added popup.png, Wed Sep 28 23:25:57 2016 +0800
+A	android/src/main/res/drawable/popup.png
+
+e3dcf8e17e7d8c3d3f7b59d80b0f34d37ea94158, Added markers, Wed Sep 28 23:23:17 2016 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/MarkerUtil.java
+M	demo/BaiduMapDemo.js
+M	ios/RCTBaiduMap/RCTBaiduMapView.m
+M	ios/RCTBaiduMap/RCTBaiduMapViewManager.m
+M	js/MapView.js
+
+b80c90fa9dfb3685db24baa679a61b5384fe00fc, Update package.json, Wed Sep 28 20:08:33 2016 +0800
+M	package.json
+
+0b77289ae3839497224840e30b9fa7df6c06d0e4, fix bug, Wed Sep 28 20:04:47 2016 +0800
+M	android/src/main/AndroidManifest.xml
+
+4c1ff40dc6f10c9902e1bf57bfc47fe46e9ff940, Add .npmignore, Thu Sep 15 21:07:47 2016 +0800
+A	.npmignore
+
+de2ee77d10f0fc40080b93e6f3b5bd4640ac44e2, Update README.md, Thu Sep 15 20:57:49 2016 +0800
+M	README.md
+
+cedb144158c401a63014fea69101233cf008d95e, Update, Thu Sep 15 20:48:43 2016 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+M	demo/BaiduMapDemo.js
+M	demo/android/app/build.gradle
+M	demo/android/app/src/main/java/com/rn/MainActivity.java
+M	demo/android/app/src/main/res/values/strings.xml
+M	demo/android/build.gradle
+M	demo/android/gradle/wrapper/gradle-wrapper.properties
+M	demo/android/settings.gradle
+M	demo/ios/rn.xcodeproj/project.pbxproj
+M	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+M	demo/ios/rn.xcodeproj/xcshareddata/xcschemes/rn.xcscheme
+M	demo/ios/rn/Info.plist
+M	demo/package.json
+D	demo/react-native-baidu-map.js
+A	images/android.jpg
+A	images/ios.jpg
+M	index.js
+M	ios/RCTBaiduMap.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+M	ios/RCTBaiduMap/RCTBaiduMapView.h
+M	ios/RCTBaiduMap/RCTBaiduMapView.m
+M	ios/RCTBaiduMap/RCTBaiduMapViewManager.m
+A	js/Geolocation.js
+A	js/MapModule.js
+A	js/MapTypes.js
+A	js/MapView.js
+M	package.json
+
+cbcb556c0c3d0e42b53d20c4dccc8b5b1f66af9e, update npm package version, Thu Sep 15 12:47:13 2016 +0800
+M	package.json
+
+4be8e1dcd571fac69f9efd5dcc0cd0ffc89f7393, npm version, Wed Aug 24 17:52:18 2016 +0800
+M	package.json
+
+1e6d8e065bcedc20b1496f57561753190efd72d0, Android: Use ViewGroupManager to Manage MapView, Wed Aug 17 01:44:50 2016 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+M	demo/BaiduMapDemo.js
+M	demo/android/app/app.iml
+M	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+M	index.js
+
+887a82e5daf7c77dbfbbe06a00dea648b660dcfc, Update method getCurrentPosition for IOS, Tue Aug 16 01:45:42 2016 +0800
+M	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+M	ios/RCTBaiduMap/BaiduMapModule.m
+
+20b57f79c387264f74f274a63eec43038d175f8c, Update method getCurrentPosition for IOS, Tue Aug 16 01:38:36 2016 +0800
+M	README.md
+M	demo/BaiduMapDemo.js
+M	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+M	demo/ios/rn/AppDelegate.m
+M	demo/ios/rn/Info.plist
+M	index.js
+M	ios/RCTBaiduMap/BaiduMapModule.h
+M	ios/RCTBaiduMap/BaiduMapModule.m
+M	ios/RCTBaiduMap/RCTBaiduMapView.h
+M	ios/RCTBaiduMap/RCTBaiduMapView.m
+M	ios/RCTBaiduMap/RCTBaiduMapViewManager.m
+M	package.json
+
+61942522f85fa1e80e474cb15c9fa80c11d0001e, Update Android SDK, Sun Aug 14 10:14:00 2016 +0800
+M	android/build.gradle
+A	android/libs/BaiduLBS_Android.jar
+D	android/libs/BaiduLBS_Location7.jar
+D	android/libs/baidumapapi_base_v3_7_3.jar
+D	android/libs/baidumapapi_cloud_v3_7_3.jar
+D	android/libs/baidumapapi_map_v3_7_3.jar
+D	android/libs/baidumapapi_radar_v3_7_3.jar
+D	android/libs/baidumapapi_search_v3_7_3.jar
+D	android/libs/baidumapapi_util_v3_7_3.jar
+M	android/src/main/AndroidManifest.xml
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+R055	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_base_v3_7_3.so	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_base_v4_0_0.so
+R099	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_cloud_v3_7_3.so	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_map_v4_0_0.so
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_radar_v3_7_3.so
+D	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_search_v4_0_0.so
+R099	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_util_v3_7_3.so	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_util_v4_0_0.so
+R056	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_base_v3_7_3.so	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_base_v4_0_0.so
+R099	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_cloud_v3_7_3.so	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_map_v4_0_0.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_radar_v3_7_3.so
+D	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_search_v4_0_0.so
+R099	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_util_v3_7_3.so	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_util_v4_0_0.so
+R053	android/src/main/jniLibs/armeabi/libBaiduMapSDK_base_v3_7_3.so	android/src/main/jniLibs/armeabi/libBaiduMapSDK_base_v4_0_0.so
+R099	android/src/main/jniLibs/armeabi/libBaiduMapSDK_cloud_v3_7_3.so	android/src/main/jniLibs/armeabi/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_map_v4_0_0.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_radar_v3_7_3.so
+D	android/src/main/jniLibs/armeabi/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_search_v4_0_0.so
+R099	android/src/main/jniLibs/armeabi/libBaiduMapSDK_util_v3_7_3.so	android/src/main/jniLibs/armeabi/libBaiduMapSDK_util_v4_0_0.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_base_v3_7_3.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_base_v4_0_0.so
+R099	android/src/main/jniLibs/x86/libBaiduMapSDK_cloud_v3_7_3.so	android/src/main/jniLibs/x86/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_map_v4_0_0.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_radar_v3_7_3.so
+D	android/src/main/jniLibs/x86/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_search_v4_0_0.so
+R099	android/src/main/jniLibs/x86/libBaiduMapSDK_util_v3_7_3.so	android/src/main/jniLibs/x86/libBaiduMapSDK_util_v4_0_0.so
+R052	android/src/main/jniLibs/x86_64/libBaiduMapSDK_base_v3_7_3.so	android/src/main/jniLibs/x86_64/libBaiduMapSDK_base_v4_0_0.so
+R099	android/src/main/jniLibs/x86_64/libBaiduMapSDK_cloud_v3_7_3.so	android/src/main/jniLibs/x86_64/libBaiduMapSDK_cloud_v4_0_0.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_map_v4_0_0.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_radar_v3_7_3.so
+D	android/src/main/jniLibs/x86_64/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_search_v4_0_0.so
+R099	android/src/main/jniLibs/x86_64/libBaiduMapSDK_util_v3_7_3.so	android/src/main/jniLibs/x86_64/libBaiduMapSDK_util_v4_0_0.so
+M	demo/android/app/app.iml
+M	demo/android/app/src/main/AndroidManifest.xml
+A	demo/android/gradle/wrapper/gradle-wrapper.jar
+A	demo/android/gradle/wrapper/gradle-wrapper.properties
+
+afc951f3170b9db01e1dd38d54821f429ce01c58, Merge branch 'master' of https://github.com/lovebing/react-native-baidu-map, Sun Aug 14 00:20:50 2016 +0800
+fcb0ee86970720a127920f337559a1edfb1c04cc, getCurrentPosition, Sun Aug 14 00:19:39 2016 +0800
+M	README.md
+M	android/build.gradle
+A	android/libs/BaiduLBS_Location7.jar
+M	android/src/main/AndroidManifest.xml
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+A	android/src/main/jniLibs/arm64-v8a/liblocSDK7.so
+A	android/src/main/jniLibs/armeabi-v7a/liblocSDK7.so
+A	android/src/main/jniLibs/armeabi/liblocSDK7.so
+A	android/src/main/jniLibs/x86/liblocSDK7.so
+A	android/src/main/jniLibs/x86_64/liblocSDK7.so
+M	demo/BaiduMapDemo.js
+M	demo/android/app/app.iml
+M	demo/android/app/src/main/AndroidManifest.xml
+M	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+M	demo/ios/rn/AppDelegate.m
+M	demo/ios/rn/Base.lproj/LaunchScreen.xib
+M	demo/ios/rn/Info.plist
+M	index.js
+M	ios/RCTBaiduMap/BaiduMapModule.h
+M	ios/RCTBaiduMap/BaiduMapModule.m
+
+a5345ed339423000c57cb48709d4955f37c99915, Merge pull request #1 from qazs/master, Sun Aug 7 19:03:53 2016 +0800
+9d94af7b032cbf91aa03280a63ecfc7d37837d51, Added setZoom, Sun Aug 7 18:59:10 2016 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+M	index.js
+
+a1a1b1719b735958e639396edcbeab1e2b861254, update, Sun Aug 7 17:40:33 2016 +0800
+M	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+M	ios/RCTBaiduMap/BaiduMapModule.h
+M	ios/RCTBaiduMap/BaiduMapModule.m
+M	ios/RCTBaiduMap/RCTBaiduMapView.h
+M	ios/RCTBaiduMap/RCTBaiduMapView.m
+M	ios/RCTBaiduMap/RCTBaiduMapViewManager.h
+M	ios/RCTBaiduMap/RCTBaiduMapViewManager.m
+M	package.json
+
+403071b181f714b1bf9072cc331b89545487339f, Merge pull request #1 from lovebing/master, Sun Aug 7 16:14:12 2016 +0800
+0645b7dd3768ab19440ae33a84b608e9f67d2c77, Add demo, Sun Aug 7 16:07:43 2016 +0800
+M	.gitignore
+M	README.md
+A	demo/BaiduMapDemo.js
+A	demo/android/app/BUCK
+A	demo/android/app/app.iml
+A	demo/android/app/build.gradle
+A	demo/android/app/lovebing-dev-key.keystore
+A	demo/android/app/proguard-rules.pro
+A	demo/android/app/src/main/AndroidManifest.xml
+A	demo/android/app/src/main/java/com/rn/MainActivity.java
+A	demo/android/app/src/main/java/com/rn/MainApplication.java
+A	demo/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+A	demo/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+A	demo/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+A	demo/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+A	demo/android/app/src/main/res/values/strings.xml
+A	demo/android/app/src/main/res/values/styles.xml
+A	demo/android/build.gradle
+A	demo/android/gradle.properties
+A	demo/android/keystores/BUCK
+A	demo/android/keystores/debug.keystore.properties
+A	demo/android/react-native-baidu-map/react-native-baidu-map.iml
+A	demo/android/rn.iml
+A	demo/android/settings.gradle
+A	demo/index.android.js
+A	demo/index.ios.js
+A	demo/ios/rn.xcodeproj/project.pbxproj
+A	demo/ios/rn.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+A	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+A	demo/ios/rn.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/WorkspaceSettings.xcsettings
+A	demo/ios/rn.xcodeproj/xcshareddata/xcschemes/rn.xcscheme
+A	demo/ios/rn.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+A	demo/ios/rn.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcschemes/xcschememanagement.plist
+A	demo/ios/rn/AppDelegate.h
+A	demo/ios/rn/AppDelegate.m
+A	demo/ios/rn/Base.lproj/LaunchScreen.xib
+A	demo/ios/rn/Images.xcassets/AppIcon.appiconset/Contents.json
+A	demo/ios/rn/Info.plist
+A	demo/ios/rn/main.m
+A	demo/ios/rnTests/Info.plist
+A	demo/ios/rnTests/rnTests.m
+A	demo/package.json
+A	demo/react-native-baidu-map.js
+
+0fe33db7cfa477cfa1fa1f1cd0c3f86b7a7bed96, update, Sun Aug 7 12:11:06 2016 +0800
+M	package.json
+
+ed44089fb3b9a097b5b0fbc744d87f8f01c8462e, update npm version, Sun Aug 7 12:09:04 2016 +0800
+M	package.json
+
+903d354d16cdd9553f2c660ebf7f5e83b31ae1af, Merge branch 'master' of https://github.com/lovebing/react-native-baidu-map, Sun Aug 7 12:07:13 2016 +0800
+0ef457300a2d264b57e4512bd61b55b3affefeec, update, Sun Aug 7 12:06:18 2016 +0800
+M	README.md
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+
+c81fa4c375fc96c8e17ffc81e907a992404f34fd, Update README.md, Sun Aug 7 02:03:00 2016 +0800
+M	README.md
+
+e0bbcc81c44b7512521d2baddfe8b01b91821fcc, update, Sun Aug 7 01:52:28 2016 +0800
+M	.gitignore
+M	index.js
+A	ios/RCTBaiduMap.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKBaseIndoorMapInfo.h
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/indoor/DVIndoor.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/indoor/IndoorResPack.rs
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/indoor/baseindoormap.sty
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenPanorama.h
+
+c7420896e4f2d0cdad4f923a6fc25e981c68e94d, Update some breaking changes, Sun Aug 7 00:57:14 2016 +0800
+M	README.md
+M	android/build.gradle
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+M	index.js
+M	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+M	ios/RCTBaiduMap.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+M	ios/RCTBaiduMap/BaiduMapModule.h
+M	ios/RCTBaiduMap/BaiduMapModule.m
+M	ios/RCTBaiduMap/RCTBaiduMapView.h
+M	ios/RCTBaiduMap/RCTBaiduMapView.m
+A	ios/RCTBaiduMap/RCTBaiduMapViewManager.h
+A	ios/RCTBaiduMap/RCTBaiduMapViewManager.m
+M	ios/lib/BaiduMapAPI_Base.framework/BaiduMapAPI_Base
+M	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKBaseComponent.h
+M	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKGeneralDelegate.h
+M	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKMapManager.h
+M	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKTypes.h
+M	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKUserLocation.h
+M	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKVersion.h
+M	ios/lib/BaiduMapAPI_Base.framework/readme.txt
+M	ios/lib/BaiduMapAPI_Cloud.framework/BaiduMapAPI_Cloud
+M	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudPOIList.h
+M	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudSearch.h
+M	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudSearchComponent.h
+M	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudSearchInfo.h
+M	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudVersion.h
+M	ios/lib/BaiduMapAPI_Cloud.framework/readme.txt
+M	ios/lib/BaiduMapAPI_Location.framework/BaiduMapAPI_Location
+M	ios/lib/BaiduMapAPI_Location.framework/Headers/BMKLocationComponent.h
+M	ios/lib/BaiduMapAPI_Location.framework/Headers/BMKLocationService.h
+M	ios/lib/BaiduMapAPI_Location.framework/Headers/BMKLocationVersion.h
+M	ios/lib/BaiduMapAPI_Location.framework/readme.txt
+M	ios/lib/BaiduMapAPI_Map.framework/BaiduMapAPI_Map
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKActionPaopaoView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKAnnotation.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKAnnotationView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKArcline.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKArclineView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKCircle.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKCircleView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKGradient.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKGroundOverlay.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKGroundOverlayView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKHeatMap.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKLocationViewDisplayParam.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapComponent.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapStatus.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapVersion.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMultiPoint.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOfflineMap.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOfflineMapType.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlay.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlayGLBasicView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlayPathView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlayView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPinAnnotationView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPointAnnotation.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolygon.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolygonView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolyline.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolylineView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKShape.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKTileLayer.h
+M	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKTileLayerView.h
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/Beijing, China.gpx
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/CustomIndex
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVDirectory.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVDirectory_Retina.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotMap.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotMap_Retina.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotcity.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotcity_Retina.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVSDirectory.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVSDirectory_Retina.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVVersion.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVVersion_Retina.cfg
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/ResPack.rs
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/channel
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/mapstyle.sty
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/satellitestyle.sty
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/trafficstyle.sty
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/baidumap_logo.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/baidumap_logo@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/bnavi_icon_location_fixed.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/bnavi_icon_location_fixed@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/direction_wheel.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/direction_wheel@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left_highlighted.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left_highlighted@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right_highlighted.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right_highlighted@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone2.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone2@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_center_point.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_center_point@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass_background.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass_background@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_direction.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_direction@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_line_nofocus.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_bus.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_bus@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_end.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_end@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_rail.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_rail@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_start.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_start@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_waypoint.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_waypoint@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left_highlighted.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left_highlighted@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right_highlighted.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right_highlighted@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/lineDashTexture.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_green.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_green@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_purple.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_purple@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_red.png
+M	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_red@2x.png
+M	ios/lib/BaiduMapAPI_Map.framework/readme.txt
+M	ios/lib/BaiduMapAPI_Radar.framework/BaiduMapAPI_Radar
+M	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarComponent.h
+M	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarManager.h
+M	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarOption.h
+M	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarResult.h
+M	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarVersion.h
+M	ios/lib/BaiduMapAPI_Radar.framework/readme.txt
+M	ios/lib/BaiduMapAPI_Search.framework/BaiduMapAPI_Search
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKBusLineSearch.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKBusLineSearchOption.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKDistrictSearch.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKGeocodeSearch.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKGeocodeSearchOption.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKGeocodeType.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKPoiSearch.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKPoiSearchOption.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKPoiSearchType.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKRouteSearch.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKRouteSearchOption.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKRouteSearchType.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSearchBase.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSearchComponent.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSearchVersion.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKShareURLSearch.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKShareUrlSearchOption.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSuggestionSearch.h
+M	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSuggestionSearchOption.h
+M	ios/lib/BaiduMapAPI_Search.framework/readme.txt
+M	ios/lib/BaiduMapAPI_Utils.framework/BaiduMapAPI_Utils
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKFavPoiInfo.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKFavPoiManager.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKGeometry.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKNavigation.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenOption.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenPoi.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenPoiOption.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenRoute.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenRouteOption.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKUtilsComponent.h
+M	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKUtilsVersion.h
+M	ios/lib/BaiduMapAPI_Utils.framework/readme.txt
+M	package.json
+
+6f55f8c2daeaacd0e2e1559e82a476da443ef558, Update, Sun Apr 17 09:38:11 2016 +0800
+M	index.js
+
+e1723c429cb07dcd6d3eccd7b1cf047907154d7d, Update, Sun Apr 17 03:33:46 2016 +0800
+M	package.json
+
+226c9f5f1f605c2b47e6cd235d824b4a247538fd, IOS Module, Sun Apr 17 03:21:48 2016 +0800
+A	ios/RCTBaiduMap.xcodeproj/project.pbxproj
+A	ios/RCTBaiduMap.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+A	ios/RCTBaiduMap.xcodeproj/project.xcworkspace/xcuserdata/lovebing.xcuserdatad/UserInterfaceState.xcuserstate
+A	ios/RCTBaiduMap.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcschemes/RCTBaiduMap.xcscheme
+A	ios/RCTBaiduMap.xcodeproj/xcuserdata/lovebing.xcuserdatad/xcschemes/xcschememanagement.plist
+A	ios/RCTBaiduMap/BaiduMapModule.h
+A	ios/RCTBaiduMap/BaiduMapModule.m
+A	ios/RCTBaiduMap/RCTBaiduMapView.h
+A	ios/RCTBaiduMap/RCTBaiduMapView.m
+A	ios/lib/BaiduMapAPI_Base.framework/BaiduMapAPI_Base
+A	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKBaseComponent.h
+A	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKGeneralDelegate.h
+A	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKMapManager.h
+A	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKTypes.h
+A	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKUserLocation.h
+A	ios/lib/BaiduMapAPI_Base.framework/Headers/BMKVersion.h
+A	ios/lib/BaiduMapAPI_Base.framework/readme.txt
+A	ios/lib/BaiduMapAPI_Cloud.framework/BaiduMapAPI_Cloud
+A	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudPOIList.h
+A	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudSearch.h
+A	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudSearchComponent.h
+A	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudSearchInfo.h
+A	ios/lib/BaiduMapAPI_Cloud.framework/Headers/BMKCloudVersion.h
+A	ios/lib/BaiduMapAPI_Cloud.framework/readme.txt
+A	ios/lib/BaiduMapAPI_Location.framework/BaiduMapAPI_Location
+A	ios/lib/BaiduMapAPI_Location.framework/Headers/BMKLocationComponent.h
+A	ios/lib/BaiduMapAPI_Location.framework/Headers/BMKLocationService.h
+A	ios/lib/BaiduMapAPI_Location.framework/Headers/BMKLocationVersion.h
+A	ios/lib/BaiduMapAPI_Location.framework/readme.txt
+A	ios/lib/BaiduMapAPI_Map.framework/BaiduMapAPI_Map
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKActionPaopaoView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKAnnotation.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKAnnotationView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKArcline.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKArclineView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKCircle.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKCircleView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKGradient.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKGroundOverlay.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKGroundOverlayView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKHeatMap.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKLocationViewDisplayParam.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapComponent.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapStatus.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapVersion.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMapView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKMultiPoint.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOfflineMap.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOfflineMapType.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlay.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlayGLBasicView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlayPathView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKOverlayView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPinAnnotationView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPointAnnotation.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolygon.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolygonView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolyline.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKPolylineView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKShape.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKTileLayer.h
+A	ios/lib/BaiduMapAPI_Map.framework/Headers/BMKTileLayerView.h
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/Beijing, China.gpx
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/CustomIndex
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVDirectory.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVDirectory_Retina.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotMap.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotMap_Retina.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotcity.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVHotcity_Retina.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVSDirectory.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVSDirectory_Retina.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVVersion.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/DVVersion_Retina.cfg
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/ResPack.rs
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/channel
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/mapstyle.sty
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/satellitestyle.sty
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/files/trafficstyle.sty
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/baidumap_logo.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/baidumap_logo@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/bnavi_icon_location_fixed.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/bnavi_icon_location_fixed@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/direction_wheel.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/direction_wheel@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left_highlighted.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_left_highlighted@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right_highlighted.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_action_paopao_middle_right_highlighted@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone2.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone2@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_cellphone@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_center_point.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_center_point@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass_background.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_compass_background@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_direction.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_direction@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_line_nofocus.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_bus.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_bus@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_end.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_end@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_rail.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_rail@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_start.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_start@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_waypoint.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_nav_waypoint@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left_highlighted.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_left_highlighted@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right_highlighted.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/icon_paopao_middle_right_highlighted@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/lineDashTexture.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/line_texture.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_green.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_green@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_purple.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_purple@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_red.png
+A	ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle/images/pin_red@2x.png
+A	ios/lib/BaiduMapAPI_Map.framework/readme.txt
+A	ios/lib/BaiduMapAPI_Radar.framework/BaiduMapAPI_Radar
+A	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarComponent.h
+A	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarManager.h
+A	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarOption.h
+A	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarResult.h
+A	ios/lib/BaiduMapAPI_Radar.framework/Headers/BMKRadarVersion.h
+A	ios/lib/BaiduMapAPI_Radar.framework/readme.txt
+A	ios/lib/BaiduMapAPI_Search.framework/BaiduMapAPI_Search
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKBusLineSearch.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKBusLineSearchOption.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKDistrictSearch.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKGeocodeSearch.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKGeocodeSearchOption.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKGeocodeType.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKPoiSearch.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKPoiSearchOption.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKPoiSearchType.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKRouteSearch.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKRouteSearchOption.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKRouteSearchType.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSearchBase.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSearchComponent.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSearchVersion.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKShareURLSearch.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKShareUrlSearchOption.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSuggestionSearch.h
+A	ios/lib/BaiduMapAPI_Search.framework/Headers/BMKSuggestionSearchOption.h
+A	ios/lib/BaiduMapAPI_Search.framework/readme.txt
+A	ios/lib/BaiduMapAPI_Utils.framework/BaiduMapAPI_Utils
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKFavPoiInfo.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKFavPoiManager.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKGeometry.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKNavigation.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenOption.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenPoi.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenPoiOption.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenRoute.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKOpenRouteOption.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKUtilsComponent.h
+A	ios/lib/BaiduMapAPI_Utils.framework/Headers/BMKUtilsVersion.h
+A	ios/lib/BaiduMapAPI_Utils.framework/readme.txt
+
+9d885473d36ee0f0175185773e6684af2d4396c1, Update, Sun Apr 17 02:54:14 2016 +0800
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+M	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+M	index.js
+
+91ea9bf72a66dca9cc4b5661badc413226e3707b, Android Module and View, Sun Apr 17 01:01:32 2016 +0800
+A	.gitignore
+A	android/.gitignore
+A	android/build.gradle
+A	android/libs/baidumapapi_base_v3_7_3.jar
+A	android/libs/baidumapapi_cloud_v3_7_3.jar
+A	android/libs/baidumapapi_map_v3_7_3.jar
+A	android/libs/baidumapapi_radar_v3_7_3.jar
+A	android/libs/baidumapapi_search_v3_7_3.jar
+A	android/libs/baidumapapi_util_v3_7_3.jar
+A	android/proguard-rules.pro
+A	android/src/main/AndroidManifest.xml
+A	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapModule.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapPackage.java
+A	android/src/main/java/org/lovebing/reactnative/baidumap/BaiduMapViewManager.java
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_base_v3_7_3.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_cloud_v3_7_3.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_radar_v3_7_3.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/arm64-v8a/libBaiduMapSDK_util_v3_7_3.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_base_v3_7_3.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_cloud_v3_7_3.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_radar_v3_7_3.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/armeabi-v7a/libBaiduMapSDK_util_v3_7_3.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_base_v3_7_3.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_cloud_v3_7_3.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_radar_v3_7_3.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/armeabi/libBaiduMapSDK_util_v3_7_3.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_base_v3_7_3.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_cloud_v3_7_3.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_radar_v3_7_3.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/x86/libBaiduMapSDK_util_v3_7_3.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_base_v3_7_3.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_cloud_v3_7_3.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_map_v3_7_3.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_radar_v3_7_3.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_search_v3_7_3.so
+A	android/src/main/jniLibs/x86_64/libBaiduMapSDK_util_v3_7_3.so
+A	android/src/main/res/mipmap-hdpi/icon_gcoding.png
+A	index.js
+A	package.json
+
+8db2221173992315cacdbee2ae098c314fcd7ba1, Initial commit, Sat Apr 16 18:49:37 2016 +0800
+A	README.md

@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>932</id>
+		<title>b+树相较于红黑树是否能减少查找次数</title>
+		<body>在mysql索引章节，作者分析了索引不使用红黑树原因，b+树出度更大可以减少查找次数，但是是否忽略了b+树每次在结点上也需要进行二分查找，换个角度看，两者都是二分查找，时间复杂度应该是一样的</body>
+		<created>2020-05-01 03:58:09</created>
+		<closed>2020-06-10 14:41:31</closed>
+	</bug>
+	<bug>
+		<id>870</id>
+		<title>grep那里-c是统计匹配到行的个数，不是匹配成功的个数</title>
+		<body></body>
+		<created>2020-02-19 08:52:00</created>
+		<closed>2020-02-23 08:37:31</closed>
+	</bug>
+	<bug>
+		<id>849</id>
+		<title>leetCode说明错误</title>
+		<body>在CS-Notes中的算法中LeetCode题解的位运算中，位运算与位运算技巧，n-n&amp;(~n+1) 应该是去除 n 的位级表示中最低的那一位1。</body>
+		<created>2020-01-23 08:34:18</created>
+		<closed>2020-02-23 13:56:18</closed>
+	</bug>
+	<bug>
+		<id>809</id>
+		<title>Two sum里第二题：两数平方和的runtime</title>
+		<body>algorithm 的从 0 跑到 sqrt(target), 所以这里的runtime应该是O(sqrt(target)), 不是O(log(N)). 这两个不一样。sqrt(N) &gt; log(N)</body>
+		<created>2019-11-04 22:41:22</created>
+		<closed>2019-11-30 13:57:25</closed>
+	</bug>
+	<bug>
+		<id>803</id>
+		<title>Leetcode 题解 - 动态规划 - 股票交易 - 需要冷却期的股票交易 配图有误</title>
+		<body>即 Leetcode 309. Best Time to Buy and Sell Stock with Cooldown(Medium)， 题解中写道 buy[i] = s2[i - 1] - prices[i];  BUY这个状态只能由 S2 这个状态转化过来 ， 因此 SELL 到 BUY 的线（表示转化）需要去掉。 ![QQ图片20191015121621](https://user-images.githubusercontent.com/47094935/66799922-a6b25e00-ef45-11e9-8a8b-45a2e6d0b800.png) </body>
+		<created>2019-10-15 04:17:56</created>
+		<closed>2019-10-16 17:25:09</closed>
+	</bug>
+	<bug>
+		<id>800</id>
+		<title>Java 基础.md   java和c++的对比  关于条件编译</title>
+		<body>java里也有条件编译的啊，if语句是可以条件编译的</body>
+		<created>2019-10-08 12:23:58</created>
+		<closed>2019-10-16 17:31:59</closed>
+	</bug>
+	<bug>
+		<id>799</id>
+		<title>leetcode题解中动态规划问题中的找硬币问题</title>
+		<body>找硬币的最少数目数的代码贴错了，和下面最多组合数的重复了</body>
+		<created>2019-10-06 11:05:00</created>
+		<closed>2019-10-16 17:34:23</closed>
+	</bug>
+	<bug>
+		<id>795</id>
+		<title>剑值offer跳台阶迭代解法时result的初始值</title>
+		<body>``` public int JumpFloor(int n) {     if (n &lt;= 2)         return n;     int pre2 = 1, pre1 = 2;     int result = 1;     for (int i = 2; i &lt; n; i++) {         result = pre2 + pre1;         pre2 = pre1;         pre1 = result;     }     return result; } ``` result 初始值是否应该为0</body>
+		<created>2019-09-25 03:54:49</created>
+		<closed>2019-10-16 18:00:03</closed>
+	</bug>
+	<bug>
+		<id>789</id>
+		<title>Leetcode题解的位运算基本原理部分</title>
+		<body>** mask 计算** 要得到 1 到 i 位为 1 的 mask，1&lt;&lt;(i+1)-1 即可，例如将 1&lt;&lt;(4+1)-1 = 00010000-1 = 00001111。  应该改成要得到 1 到 i 位为 1 的 mask，（1&lt;&lt;i）-1 即可，例如将 （1&lt;&lt;4）-1 = 00010000-1 = 00001111。</body>
+		<created>2019-09-17 01:41:03</created>
+		<closed>2019-10-16 18:04:56</closed>
+	</bug>
+	<bug>
+		<id>787</id>
+		<title>Leetcode题解的需要冷却期的股票交易的状态机描述图</title>
+		<body>这幅图片的sell状态不能直接到达buy状态吧？因为交易后要冷却一天</body>
+		<created>2019-09-13 04:12:07</created>
+		<closed>2019-10-16 18:16:41</closed>
+	</bug>
+	<bug>
+		<id>777</id>
+		<title>数据库系统原理-意向锁</title>
+		<body>&gt; 各种锁的兼容关系如下：  |- | X | IX | S | IS| |-- | -- | -- | -- | --| |X | × | × | × | ×| |IX | × | √ | × | √| |S | × | × | √ | √| |IS | × | √ | √ | √|   这里的读写锁是否区分了表级锁和行级锁？我看别的文章里说意向锁是不会和行级锁发生冲突的。</body>
+		<created>2019-08-26 13:44:34</created>
+		<closed>2019-10-17 17:34:10</closed>
+	</bug>
+	<bug>
+		<id>776</id>
+		<title>leetcode题解DFS中【5. 能到达的太平洋和大西洋的区域】方法的返回类型变了</title>
+		<body>原来是：public List&lt;int[]&gt; pacificAtlantic(int[][] matrix) { } 现在是：public List&lt;List&lt;Integer&gt;&gt; pacificAtlantic(int[][] matrix) { }</body>
+		<created>2019-08-21 08:47:13</created>
+		<closed>2019-10-16 18:23:10</closed>
+	</bug>
+	<bug>
+		<id>774</id>
+		<title>Java基础的包装类型中integer自动拆箱代码有歧义</title>
+		<body>md文件中代码如下：  ------------------------------------ Integer x = 2;     // 装箱  调用了 Integer.valueOf(2); int y = x;         // 拆箱  调用了 Integer.intValue(x); ------------------------------------ 但是其实intValue在Integer类中是个成员方法，不能直接被静态调用，而且该方法不需要参数。可以写成 ``` int y = x;         // 拆箱  调用了 x.intValue(); ```</body>
+		<created>2019-08-17 14:15:41</created>
+		<closed>2019-08-18 15:53:08</closed>
+	</bug>
+	<bug>
+		<id>767</id>
+		<title>Java 集合 Vector 描述</title>
+		<body>### Background:  https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%AE%B9%E5%99%A8.md#2-%E4%B8%8E-arraylist-%E7%9A%84%E6%AF%94%E8%BE%83 Vector 每次扩容请求其大小的 `2` 倍空间，而 ArrayList 是 1.5倍。 ### suggest: Vector 每次扩容请求默认其大小的 2 倍空间 (可通过构造函数 public Vector(int initialCapacity, int capacityIncrement) capacityIncrement 属性设置每次固定扩容大小) ，而 ArrayList 是 1.5倍。  ### Source Code JDK 1.8 constructor ```     public Vector(int initialCapacity, int capacityIncrement) {         super();         if (initialCapacity &lt; 0)             throw new IllegalArgumentException("Illegal Capacity: "+                                                initialCapacity);         this.elementData = new Object[initialCapacity];         this.capacityIncrement = capacityIncrement;     } ``` grow ```     private void grow(int minCapacity) {         // overflow-conscious code         int oldCapacity = elementData.length;         int newCapacity = oldCapacity + ((capacityIncrement &gt; 0) ?                                          capacityIncrement : oldCapacity);         if (newCapacity - minCapacity &lt; 0)             newCapacity = minCapacity;         if (newCapacity - MAX_ARRAY_SIZE &gt; 0)             newCapacity = hugeCapacity(minCapacity);         elementData = Arrays.copyOf(elementData, newCapacity);     }  ``` </body>
+		<created>2019-08-12 03:46:28</created>
+		<closed>2019-08-18 16:34:52</closed>
+	</bug>
+	<bug>
+		<id>761</id>
+		<title>Java 基础 super 描述有点歧义</title>
+		<body>访问父类的构造函数：可以使用 super() 函数访问父类的构造函数，从而委托父类完成一些初始化的工作。  这句话，应该是 super 指定子类使用父类指定的构造函数来完成初始化。子类一定要调用父类的初始化函数，一般是使用默认的初始化函数，如果有需要调用其他初始化函数就要使用super来调用。</body>
+		<created>2019-08-08 07:00:49</created>
+		<closed>2019-08-18 16:42:54</closed>
+	</bug>
+	<bug>
+		<id>760</id>
+		<title>关于 select 函数中 timeout 参数的精度问题</title>
+		<body>你在网络-&gt;Socket-&gt;I/O复用-&gt;应用场景中写道”select 的 timeout 参数精度为 1ns，而 poll 和 epoll 为 1ms”，但是 select 中的参数 struct timeval 的精度不应该只是到微秒吗？</body>
+		<created>2019-08-04 08:54:58</created>
+		<closed>2019-10-17 17:12:41</closed>
+	</bug>
+	<bug>
+		<id>744</id>
+		<title>JUC中对CountDownLatch的描述不准确</title>
+		<body>CountDownLatch用来控制一个或多个线程等待多个线程。</body>
+		<created>2019-07-11 13:57:13</created>
+		<closed>2019-07-13 15:50:13</closed>
+	</bug>
+	<bug>
+		<id>741</id>
+		<title>代码风格规范中的阿里巴巴Java开发手册链接失效</title>
+		<body>404 Page not found</body>
+		<created>2019-07-10 00:35:40</created>
+		<closed>2019-07-13 15:35:17</closed>
+	</bug>
+	<bug>
+		<id>737</id>
+		<title>POP3/IMAP</title>
+		<body>网络/计算机网络/应用层 其中关于POP3/IMAP邮件读取协议的总结有误。POP3有两种工作模式，并非一定要读取即删除；IMAP的特点并不仅仅是 ‘保持同步’  参见《computer networking: a top down approach》</body>
+		<created>2019-07-08 03:36:15</created>
+		<closed>2019-08-18 16:48:45</closed>
+	</bug>
+	<bug>
+		<id>731</id>
+		<title>I/O 复用中 poll 方法的文件描述符存放结构描述错误</title>
+		<body>I/O 复用中对 poll 的讲解有地方有误。 `int poll(struct pollfd *fds, unsigned int nfds, int timeout);`  该函数第一个参数是一个指向 pollfd 结构数组的指针，而非是链表。该函数对文件描述符数量没有限制的原因也不是因为是链表才没限制的。  &gt; The set of file descriptors to be monitored is specified in the fds argument, which is an array of structures of the following form: ...[http://man7.org/linux/man-pages/man2/poll.2.html](url)  另外，在比较 poll 和 select 的区别时，select 的返回结果只包含状态有变化的文件描述符，而 poll 不会改变文件描述符的数组大小，只改变里面的状态。因此 select 不需要轮询所有文件描述符而 poll 需要。  &gt;  On exit, each of the file descriptor sets is modified in place to indicate which file descriptors actually changed status. [http://man7.org/linux/man-pages/man2/select.2.html](url)</body>
+		<created>2019-06-25 01:29:03</created>
+		<closed>2019-07-13 15:36:44</closed>
+	</bug>
+	<bug>
+		<id>723</id>
+		<title>进程管理中管道的描述</title>
+		<body>https://github.com/CyC2018/CS-Notes/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86.md#1-%E7%AE%A1%E9%81%93  无名管道位于内存，只能用于父子进程或者兄弟进程之间</body>
+		<created>2019-06-15 14:33:58</created>
+		<closed>2019-06-17 16:11:51</closed>
+	</bug>
+	<bug>
+		<id>710</id>
+		<title>算法中ThreeSum的第一种解法有重复值答案不准确</title>
+		<body>老哥，算法部分中的 ThreeSum 问题的第一种解法（ThreeSumSlow）应该跟第二种（ThreeSumBinarySearch）解法一样，建议也要跟第二种解法一样加上前提：  &gt;- 应该注意的是，只有数组不含有相同元素才能使用这种解法，否则结果会出错。  否则答案是不对的，有重复值的时候第一、第二种解法的答案都是错的，只有第三种解法答案是正确的。</body>
+		<created>2019-05-19 16:16:46</created>
+		<closed>2019-06-09 11:49:03</closed>
+	</bug>
+	<bug>
+		<id>705</id>
+		<title>剑指Offer：51. 数组中的逆序对</title>
+		<body>- [链接](https://github.com/CyC2018/CS-Notes/blob/master/notes/%E5%89%91%E6%8C%87%20Offer%20%E9%A2%98%E8%A7%A3%20-%2050~59.md#51-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9)  我觉得应该将```else if (nums[i] &lt; nums[j])``` 修改为 ```else if (nums[i] &lt;= nums[j])```。    比如将 {3,3}作为输入，应该输出0。 如果不修改的话会默认[3,3]是一个逆序对，输出1。 - 代码里的注释 **“ nums[i] &gt;= nums[j]，说明 nums[i...mid] 都大于 nums[j] “** 应该是**nums[i] &gt; nums[j]，说明···**  吧？涉及到的代码： ```java private void merge(int[] nums, int l, int m, int h) {     int i = l, j = m + 1, k = l;     while (i &lt;= m || j &lt;= h) {         if (i &gt; m)             tmp[k] = nums[j++];         else if (j &gt; h)             tmp[k] = nums[i++];         else if (nums[i] &lt; nums[j]) // (疑问)             tmp[k] = nums[i++];         else {             tmp[k] = nums[j++];             this.cnt += m - i + 1;  // nums[i] &gt;= nums[j]，说明 nums[i...mid] 都大于 nums[j]   (疑问)         }         k++;     }     for (k = l; k &lt;= h; k++)         nums[k] = tmp[k]; } ``` </body>
+		<created>2019-05-15 10:23:53</created>
+		<closed>2019-06-04 15:09:00</closed>
+	</bug>
+	<bug>
+		<id>701</id>
+		<title>I/O中ServerSocket是没有ServerSocket(port, timeout)这个构造函数的</title>
+		<body></body>
+		<created>2019-05-11 13:04:51</created>
+		<closed>2019-05-14 08:57:39</closed>
+	</bug>
+	<bug>
+		<id>696</id>
+		<title>“HashMap 使用拉链法来解决冲突，同一个链表中存放哈希值相同的 Entry” 这个说法不准确</title>
+		<body>在“容器-HashMap-存储结构”中， “HashMap 使用拉链法来解决冲突，同一个链表中存放哈希值相同的 Entry” 这个说法不准确， 应该是 同一个链表中存放 哈希值和散列桶取模运算结果相同的Entry吧</body>
+		<created>2019-05-08 03:57:52</created>
+		<closed>2019-05-10 04:06:26</closed>
+	</bug>
+	<bug>
+		<id>694</id>
+		<title>Leetcode 题解 DP「数组中等差递增子区间的个数」描述不准确</title>
+		<body>原文「dp[i] 表示以 A[i] 为结尾的等差递增子区间的个数。」我觉的不太恰当。 如果按照所描述的最后应该是返回 dp[A.length - 1]。  最后结果是 dp 数组内所有数的和。 ``` 数组           等差数列的数目    与上一数组的等差数列数目比较 1 2 3                    1                       1 - 0 = 1 1 2 3 4                  3                       3 - 1 = 2 1 2 3 4 5                6                       6 - 3 = 3 ``` </body>
+		<created>2019-05-07 01:45:39</created>
+		<closed>2019-06-04 15:11:05</closed>
+	</bug>
+	<bug>
+		<id>679</id>
+		<title>Leetcode-Database题解 178答案错误</title>
+		<body>非函数列必须包含在分组列中  SELECT S1.score, COUNT( DISTINCT S2.score ) Rank FROM Scores S1 INNER JOIN Scores S2 ON S1.score &lt;= S2.score GROUP BY S1.id, S1.score ORDER BY S1.score DESC;</body>
+		<created>2019-04-20 06:16:53</created>
+		<closed>2019-06-04 15:11:41</closed>
+	</bug>
+	<bug>
+		<id>659</id>
+		<title>剑指offer中斐波那契数列的第三种解法fib[2]的值疑惑</title>
+		<body>第三种解法中fib[2] = 2; 此处是不是应该fib[2] = 1; fib[2] = fib[1]+fib[0]=1+0=1;</body>
+		<created>2019-04-08 09:34:11</created>
+		<closed>2019-04-11 14:54:21</closed>
+	</bug>
+	<bug>
+		<id>657</id>
+		<title>Java基础 继承栏中遗漏</title>
+		<body>在重写与重载章节中，对重写的限制条件遗漏。</body>
+		<created>2019-04-08 08:05:26</created>
+		<closed>2019-05-07 00:48:08</closed>
+	</bug>
+	<bug>
+		<id>627</id>
+		<title>java虚拟机部分虚引用错误?</title>
+		<body>问题部分: 使用 PhantomReference 来创建虚引用。 ```java Object obj = new Object(); PhantomReference&lt;Object&gt; pf = new PhantomReference&lt;Object&gt;(obj); obj = null; ``` 我发现虚引用创建只有一个构造函数: ```java /**      * Creates a new phantom reference that refers to the given object and      * is registered with the given queue.      *      * &lt;p&gt; It is possible to create a phantom reference with a &lt;tt&gt;null&lt;/tt&gt;      * queue, but such a reference is completely useless: Its &lt;tt&gt;get&lt;/tt&gt;      * method will always return null and, since it does not have a queue, it      * will never be enqueued.      *      * @param referent the object the new phantom reference will refer to      * @param q the queue with which the reference is to be registered,      *          or &lt;tt&gt;null&lt;/tt&gt; if registration is not required      */     public PhantomReference(T referent, ReferenceQueue&lt;? super T&gt; q) {         super(referent, q);     } ``` 这里应该是写错了</body>
+		<created>2019-03-21 06:45:27</created>
+		<closed>2019-03-22 07:59:53</closed>
+	</bug>
+	<bug>
+		<id>621</id>
+		<title>计算机网络概述里ISP结构图有问题</title>
+		<body>上面文本写的是 接入ISP，但是下面图片里 写成了 接入SIP!</body>
+		<created>2019-03-20 01:56:09</created>
+		<closed>2019-03-21 14:28:48</closed>
+	</bug>
+	<bug>
+		<id>616</id>
+		<title>状态方程写错了 </title>
+		<body>https://cyc2018.github.io/CS-Notes/#/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92?id=%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97 最长公共子序列的状态转移方程 正确的写法是   dp[i][j] = dp[i-1][j-1] + 1 原文图片中是     dp[i][j] = dp[i-1][j-1]   </body>
+		<created>2019-03-18 02:28:07</created>
+		<closed>2019-03-18 02:35:45</closed>
+	</bug>
+	<bug>
+		<id>611</id>
+		<title>剑指offer 51. 数组中的逆序对</title>
+		<body>提个小问题。 在merge函数里，群主注释 “nums[i] &gt;= nums[j]，说明 nums[i...mid] 都大于 nums[j]”， 实际应该是 “nums[i] &gt; nums[j]，说明 nums[i...mid] 都大于 nums[j]”， 在前面的判断里，当 nums[i] &lt;= nums[j] 时就应该 tmp[k] = nums[i++]。</body>
+		<created>2019-03-17 06:13:53</created>
+		<closed>2019-03-17 14:17:18</closed>
+	</bug>
+	<bug>
+		<id>610</id>
+		<title>MySQL章节的一个小问题</title>
+		<body>在MySQL章节的第六点复制部分的[主从复制](https://cyc2018.github.io/CS-Notes/#/notes/MySQL?id=%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6)内容中的这一段：  &gt; I/O 线程 ：负责从主服务器上读取二进制日志，并写入从服务器的重放日志（Replay log）中。  我查阅[MySQL官方文档](https://dev.mysql.com/doc/refman/5.7/en/slave-logs-relaylog.html)后发现，这一条中的“重放日志（Replay log）”应该为“中继日志（Relay log）”，望采纳！</body>
+		<created>2019-03-16 15:22:22</created>
+		<closed>2019-03-17 12:34:16</closed>
+	</bug>
+	<bug>
+		<id>598</id>
+		<title>算法-栈和队列内容与算法 - 并查集内容重复了</title>
+		<body>[并查集链接](https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/%E7%AE%97%E6%B3%95%20-%20%E5%B9%B6%E6%9F%A5%E9%9B%86.md) [栈和队列](https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/%E7%AE%97%E6%B3%95%20-%20%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97.md)  这两个markdown的内容重复了。。    </body>
+		<created>2019-03-09 15:34:32</created>
+		<closed>2019-03-09 15:47:01</closed>
+	</bug>
+	<bug>
+		<id>596</id>
+		<title>Java基础/基本类型最后一句话。</title>
+		<body>&gt; JVM 并不支持 boolean 数组，而是使用 byte 数组来表示 int 数组来表示。  这句话后半部分什么意思呀？ 下面贴的JVM手册里面的原话是： ``` The Java Virtual Machine does directly support boolean arrays. Its newarray instruction (§newarray) enables creation of boolean arrays. Arrays of type boolean are accessed and modified using the byte array instructions baload and bastore (§baload, §bastore). ``` 这说的是支持boolean数组吧，只是用操作byte数组的指令操作boolean数组？</body>
+		<created>2019-03-08 12:33:33</created>
+		<closed>2019-03-08 15:56:37</closed>
+	</bug>
+	<bug>
+		<id>593</id>
+		<title>剑指offer第68题</title>
+		<body>第一小题的树画错了吧，5 的左节点怎么会是 6</body>
+		<created>2019-03-06 06:15:01</created>
+		<closed>2019-03-07 14:48:02</closed>
+	</bug>
+	<bug>
+		<id>592</id>
+		<title>桶排序 出现频率最多的 k 个数 java.lang.NullPointerException</title>
+		<body>The solution does not check bucket[i] == null, so it will get java.lang.NullPointerException in LeetCode.  When looping through the buckets list, we should also check null condition.  if(buckets[i] == null) continue;</body>
+		<created>2019-03-05 07:27:07</created>
+		<closed>2019-03-06 12:41:25</closed>
+	</bug>
+	<bug>
+		<id>588</id>
+		<title>归并排序 笔误</title>
+		<body>https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/%E7%AE%97%E6%B3%95.md#1-%E5%BD%92%E5%B9%B6%E6%96%B9%E6%B3%95 归并方法 else if (aux[i].compareTo(nums[j]) &lt;= 0)  笔误 aux[i].compareTo(aux[j]) &lt;= 0</body>
+		<created>2019-03-02 02:13:36</created>
+		<closed>2019-03-02 02:19:28</closed>
+	</bug>
+	<bug>
+		<id>584</id>
+		<title>希尔排序图片有误</title>
+		<body>[https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/%E7%AE%97%E6%B3%95.md#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F](https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/%E7%AE%97%E6%B3%95.md#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F)  如下图，①处曲线连接部分的方格应为相同颜色。 ②处当h=4时，排序结果也是错误的，应为下方的黑色数字。  ![shell](https://user-images.githubusercontent.com/15308656/53393104-61511880-39d6-11e9-9f4a-c6fb98e077c2.png)     </body>
+		<created>2019-02-26 06:57:20</created>
+		<closed>2019-02-26 07:24:53</closed>
+	</bug>
+	<bug>
+		<id>578</id>
+		<title>java IO 图片有误</title>
+		<body>Java io 字节操作 装饰者模式 图片中误把BufferedInputStream写成了 BufferedStream</body>
+		<created>2019-02-23 10:36:58</created>
+		<closed>2019-02-24 05:29:49</closed>
+	</bug>
+	<bug>
+		<id>570</id>
+		<title>18.1 O(1)删除节点</title>
+		<body>我觉得大佬少考虑了链表只有一个节点的情况(既是头节点也是尾节点)，如果此时按尾节点删除会报空指针，所以得额外判断一下吧？[链接](https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/%E5%89%91%E6%8C%87%20offer%20%E9%A2%98%E8%A7%A3.md#181-%E5%9C%A8-o1-%E6%97%B6%E9%97%B4%E5%86%85%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9)  ```Java public ListNode deleteNode(ListNode head, ListNode tobeDelete) {     if (head == null || tobeDelete == null)         return null;     // 要删除的节点不是尾节点     if (tobeDelete.next != null) {             ListNode next = tobeDelete.next;         tobeDelete.val = next.val;         tobeDelete.next = next.next;     // 链表只有一个节点     } else if (head == tobeDelete) {         head = null;     } else {         ListNode cur = head;         while (cur.next != tobeDelete)             cur = cur.next;         cur.next = null;     }     return head; } ```</body>
+		<created>2019-02-19 15:43:36</created>
+		<closed>2019-02-21 09:48:11</closed>
+	</bug>
+	<bug>
+		<id>566</id>
+		<title>UML 关系图画错了</title>
+		<body>![image](https://user-images.githubusercontent.com/15030378/52912219-608af900-32e9-11e9-96d2-75ce0e504be6.png) 这个关系应该是继承，而不是实现</body>
+		<created>2019-02-17 11:22:57</created>
+		<closed>2019-02-17 11:55:18</closed>
+	</bug>
+	<bug>
+		<id>564</id>
+		<title>boolean数组中的元素大小和boolean变量大小区别</title>
+		<body>JVM规范(第2.3.4节)中oracle对于关于boolean数组的实现是每一个元素的大小是8bit，而boolean变量在编译期间用int代替也就是32bit。 对[大佬笔记这个地方](https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/Java%20%E5%9F%BA%E7%A1%80.md#%E4%B8%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)有点疑问。 - [The Java® Virtual Machine Specification Java SE 8 Edition](https://docs.oracle.com/javase/specs/jvms/se8/jvms8.pdf) </body>
+		<created>2019-02-17 06:20:59</created>
+		<closed>2019-02-17 08:27:46</closed>
+	</bug>
+	<bug>
+		<id>554</id>
+		<title>操作系统概述部分：虚拟和异步知识点不太严谨</title>
+		<body>虚拟：原文——“地址空间和物理内存使用页进行交换”，应该是“地址空间的页被映射到物理内存”（参考《现代操作系统（原书第三版）》）。 异步：原文——“异步指进程不是一次性执行完毕，而是走走停停，以不可知的速度向前推进。”异步应当是指，用户调用会立刻返回，而不需要像同步等待调用返回后才能执行后续的操作，至于是否一次性执行完毕，并不一定。</body>
+		<created>2019-02-03 04:30:35</created>
+		<closed>2019-02-03 06:37:09</closed>
+	</bug>
+	<bug>
+		<id>549</id>
+		<title>LeetCode划分数组为和相等的两部分</title>
+		<body>这个题目不用数组不用排序也可以得到答案啊！害的我想半天为什么要排序(⊙﹏⊙)b</body>
+		<created>2019-01-24 11:43:00</created>
+		<closed>2019-01-25 04:12:42</closed>
+	</bug>
+	<bug>
+		<id>537</id>
+		<title>java 虚拟机.md 类加载机制描述错误</title>
+		<body>原文：类是在运行期间第一次使用时动态加载的，而不是**编译时期**一次性加载。因为如果在编译时期一次性加载，那么会占用很多的内存。  应该是：类是在运行期间第一次使用时动态加载的，而不是**运行时期**一次性加载。因为如果在运行时期一次性加载，那么会占用很多的内存。</body>
+		<created>2019-01-10 06:46:51</created>
+		<closed>2019-01-10 08:32:51</closed>
+	</bug>
+	<bug>
+		<id>523</id>
+		<title>关于MySQL时间类型选择上的问题</title>
+		<body>我在阅读MySQL章节的时候，看到  &gt; 应该尽量使用 TIMESTAMP，因为它比 DATETIME 空间效率更高。  然而我在阅读《阿里巴巴开发手册》的时候，看到  &gt; 9. 【强制】表必备三字段：id, gmt_create, gmt_modified。 说明：其中 id 必为主键，类型为 unsigned bigint、单表时自增、步长为 1。gmt_create, gmt_modified 的类型均为 datetime 类型，前者现在时表示主动创建，后者过去分词表示被 动更新。  </body>
+		<created>2018-12-31 09:13:31</created>
+		<closed>2019-01-05 01:50:35</closed>
+	</bug>
+	<bug>
+		<id>517</id>
+		<title>BOOKLIST.md里的[Create a TinyURL System][具体问题]跳转有问题</title>
+		<body>没有跳转到标题所示的内容，而是链接到了CS-Notes的首页</body>
+		<created>2018-12-28 02:32:51</created>
+		<closed>2018-12-28 09:21:06</closed>
+	</bug>
+	<bug>
+		<id>514</id>
+		<title>leetcode 题解 37. Sudoku Solver (Hard)</title>
+		<body>leetcode题解中37. Sudoku Solver (Hard)，在solveSudoku()中的应该是不需要第2个两重循环</body>
+		<created>2018-12-27 02:52:14</created>
+		<closed>2018-12-28 09:26:13</closed>
+	</bug>
+	<bug>
+		<id>513</id>
+		<title>剑指offer中剪绳子贪心算法分析问题</title>
+		<body>&gt; 贪心 &gt; 尽可能多剪长度为 3 的绳子，并且不允许有长度为 1 的绳子出现。如果出现了，就从已经切好长度为 3 的绳子中拿出一段与长度为 1 的绳子重新组合，把它们切成两段长度为 2 的绳子。 &gt;  &gt; 证明：当 n &gt;= 5 时，3(n - 3) - 2(n - 2) = n - 5 &gt;= 0。因此把长度大于 5 的绳子切成两段，令其中一段长度为 3 可以使得两段的乘积最大。  这里的证明只能说明n&gt;=5时，分成长度为3和n-3比分成长度为2和n-2的两段乘积大，并不能说了“把长度大于 5 的绳子切成两段，令其中一段长度为 3 可以使得两段的乘积最大”。比如n=8时，分成3和5并不比4和4的乘积大  </body>
+		<created>2018-12-26 07:33:18</created>
+		<closed>2018-12-28 09:37:20</closed>
+	</bug>
+	<bug>
+		<id>490</id>
+		<title>关于分布式事物</title>
+		<body>本地消息表这种方式笔记中描述和图不相符</body>
+		<created>2018-12-08 23:20:46</created>
+		<closed>2018-12-16 12:47:01</closed>
+	</bug>
+	<bug>
+		<id>485</id>
+		<title>口语叙述不当</title>
+		<body>问题所在： Collection 实现了 Iterable 接口  应该是： Collection 继承了 Iterable 接口 </body>
+		<created>2018-12-07 02:35:06</created>
+		<closed>2018-12-08 07:42:10</closed>
+	</bug>
+	<bug>
+		<id>481</id>
+		<title>算法部分快速排序partition对有相同元素的数组是好像是错误的</title>
+		<body>举个例子：10，1，10，10，2</body>
+		<created>2018-12-05 02:37:35</created>
+		<closed>2018-12-05 02:57:02</closed>
+	</bug>
+	<bug>
+		<id>446</id>
+		<title>Java容器中hashmap size的描述</title>
+		<body>在扩容-基本原理中这样描述  size | table 的实际使用量。 -- | --  改成hashmap中’键值对的数量‘会不会好一些呢。  说成table的实际使用量的话，会有一些误解。   </body>
+		<created>2018-10-21 11:05:45</created>
+		<closed>2018-11-20 09:11:44</closed>
+	</bug>
+	<bug>
+		<id>440</id>
+		<title>算法板块中的选择排序代码优化</title>
+		<body>选择排序代码的外层循环应该可以为`N-1`</body>
+		<created>2018-10-13 13:32:30</created>
+		<closed>2018-10-13 13:34:39</closed>
+	</bug>
+	<bug>
+		<id>439</id>
+		<title>7层网络协议</title>
+		<body>运输层名称改为传输层是否更合理</body>
+		<created>2018-10-11 02:27:09</created>
+		<closed>2018-10-11 02:38:11</closed>
+	</bug>
+	<bug>
+		<id>420</id>
+		<title>剑指Offer题解 细节问题</title>
+		<body>问题链接：https://github.com/CyC2018/CS-Notes/blob/master/notes/剑指 offer 题解.md#链表中环的入口结点 问题描述：假设相遇点应该在z2才对吧</body>
+		<created>2018-09-14 13:26:20</created>
+		<closed>2018-09-14 14:23:45</closed>
+	</bug>
+	<bug>
+		<id>411</id>
+		<title>错误提交。</title>
+		<body>问题链接：https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20IO.md#实现文件复制 问题描述：缓冲区为20*1024字节，我们不能保证恰好读满缓冲区，所以需在在代码中定义一个计数器用于保存每次读取的个数 修改如下: `public static void copyFile(String src, String dist) throws IOException {          FileInputStream in = new FileInputStream(src);         FileOutputStream out = new FileOutputStream(dist);         byte[] buffer = new byte[20 * 1024];          // read() 最多读取 buffer.length 个字节         // 返回的是实际读取的个数         // 返回 -1 的时候表示读到 eof，即文件尾         int count;         while ((count = in.read(buffer, 0, buffer.length)) != -1) {             out.write(buffer, 0, count);         }          in.close( );         out.close( );     }` </body>
+		<created>2018-09-10 07:40:56</created>
+		<closed>2018-09-10 08:01:01</closed>
+	</bug>
+	<bug>
+		<id>402</id>
+		<title>剑指offer31：栈的压入，弹出序列，测试用例报出EmptyStackException异常</title>
+		<body>问题：pushSequence={1,2,3,4,5} ,popSequence={1,2,3,4,5} 运行报出Exception in thread "main" java.util.EmptyStackException。 解决：在while循环处加入判断!stack.isEmpty()  即 while((!stack.isEmpty()) &amp;&amp;stack.peek()== popOrder[popIndex] &amp;&amp; popIndex&lt;n){ ...... }</body>
+		<created>2018-09-05 09:16:19</created>
+		<closed>2018-09-06 09:23:54</closed>
+	</bug>
+	<bug>
+		<id>388</id>
+		<title>Java 集合</title>
+		<body>Java 集合中最后的参考资料，美团点评团队的“Java 8系列之重新认识HashMap”地址有变哈，新地址：https://tech.meituan.com/java_hashmap.html</body>
+		<created>2018-08-27 12:48:43</created>
+		<closed>2018-08-28 13:54:09</closed>
+	</bug>
+	<bug>
+		<id>381</id>
+		<title>Sentinel（哨兵）可以监听主服务器是不是有误导嫌疑</title>
+		<body>事实上多个sentinel选举出一个sentinel，这个sentinel监听所有节点（如果节点部署到多台服务器就是监听所有服务器）</body>
+		<created>2018-08-22 02:04:03</created>
+		<closed>2018-08-22 06:12:09</closed>
+	</bug>
+	<bug>
+		<id>378</id>
+		<title>“算法”中快速算法的切分部分图片是不是有错误？</title>
+		<body>根据[算法程序](https://github.com/CyC2018/CS-Notes/blob/master/notes/%E7%AE%97%E6%B3%95.md#2-%E5%88%87%E5%88%86)，这张图片的第三步 i 是不是应该指向元素 6？ </body>
+		<created>2018-08-20 13:05:13</created>
+		<closed>2018-08-22 02:44:18</closed>
+	</bug>
+	<bug>
+		<id>375</id>
+		<title>One little error statement in java collection. </title>
+		<body>6. 扩容-重新计算桶下标 在进行扩容时，需要把键值对重新放到对应的桶上。HashMap 使用了一个特殊的机制，可以降低重新计算桶下标的操作。  假设原数组长度 capacity 为 16，扩容之后 new capacity 为 32：  capacity     : 00010000 new capacity : 00100000 对于一个 Key，  它的哈希值如果在第 **6** 位上为 0，那么取模得到的结果和之前一样； 如果为 1，那么得到的结果为原来的结果 +16。  --- 这种个例子中应该是在从右往左数的第5位，因为对于 00100000 （newcapacity）中，我们假如利用 hashCode &amp; （newcapacity -1 ）的方式计算bucket的位置时，因为 （newcapacity -1 ）即00011111与（oldcapacity - 1）即 00001111相比在第五位从0变为1，则如果原来的hashCode 的第5位（从右往左数）是1的话，则新的bucket index将会增加16（2^5） . </body>
+		<created>2018-08-17 07:59:16</created>
+		<closed>2018-08-19 12:11:59</closed>
+	</bug>
+	<bug>
+		<id>372</id>
+		<title>关于jvm的设置</title>
+		<body>博主，非常感谢你的整理 我在java虚拟机那里面发现一个点，跟实际情况不一样， 在设置Xss，java线程栈的时候，Xss不需要与=号连用 用了一直报无效jvm参数 参考了http://www.eclipse.org/forums/index.php/t/57053/，最底部的那个回复</body>
+		<created>2018-08-15 14:10:19</created>
+		<closed>2018-08-16 04:54:45</closed>
+	</bug>
+	<bug>
+		<id>371</id>
+		<title>关于java基础/重载与重写/中关于重载返回类型感觉有歧义</title>
+		<body>感觉改成“重写方法返回类型应该等于或为其子类”</body>
+		<created>2018-08-15 07:15:00</created>
+		<closed>2018-08-16 04:54:53</closed>
+	</bug>
+	<bug>
+		<id>365</id>
+		<title>关于ArrayList的源码中的序列化部分</title>
+		<body>ArrayList为了只序列化底层数组中有元素填充的部分重写了readObject()和writeObject() 这里应该不是重写 因为Serializable接口是空的 而是说ArrayList在自己的类里补充了readObject()和writeObject()以便在序列化时通过反射调用</body>
+		<created>2018-08-10 02:15:07</created>
+		<closed>2018-08-14 13:07:48</closed>
+	</bug>
+	<bug>
+		<id>356</id>
+		<title>有个小问题</title>
+		<body>计算机网络部分有个问： ping使用的是IP层的ICMP协议，并没有使用UDP协议， 而traceout使用的是无法交付的UDP数据报，根据TTL为零时由路由向源主机发送ICMP。 P.S.感谢大神建的仓库</body>
+		<created>2018-08-05 08:31:18</created>
+		<closed>2018-08-07 09:55:42</closed>
+	</bug>
+	<bug>
+		<id>338</id>
+		<title>java.md</title>
+		<body>java和c++的区别中，c++11新标准已经加入了线程了不是？？？还是我记错了</body>
+		<created>2018-07-24 04:03:55</created>
+		<closed>2018-07-31 05:11:47</closed>
+	</bug>
+	<bug>
+		<id>337</id>
+		<title>剑指offer  #11 旋转数组中的最小数字 算法有点小问题 </title>
+		<body>用测试用例[1,1,1,0,1]测试源码的时候，结果输出为1. 原因：当下标l ,h m指向相同的数字的时候，无法判断向哪个方向移动下标来缩小查找范围， 解决办法：只能顺序查找 源码： ``` public  static int minNumberInRotateArray(int[] nums) {     if (nums.length == 0)         return 0;     int l = 0, h = nums.length - 1;     while (l &lt; h) {     //循环停止条件         int m = (l+h)/2;         if(nums[l]==nums[m]&amp;&amp; nums[l]==nums[m])//当下标l ,h m指向相同的数字的时候         return Test.order(nums, l, h);         if (nums[m] &lt;= nums[h])             h = m;         else             l = m;     }     return nums[l]; } public  static  int  order(int[] nums,int l,int h){  //顺序查找 int result=nums[l]; for(int i=l+1;i&lt;=h;i++){ if(nums[i]&lt;result) result=nums[i]; } return result; } ```</body>
+		<created>2018-07-23 13:50:44</created>
+		<closed>2018-07-31 05:12:29</closed>
+	</bug>
+	<bug>
+		<id>334</id>
+		<title>剑指offer 15. 二进制中 1 的个数 为什么时间复杂度是O(logM) 不该是O(M)吗</title>
+		<body>![image](https://user-images.githubusercontent.com/17062819/42929570-fadf77b2-8b6c-11e8-9e75-d2c1afc07aa6.png) </body>
+		<created>2018-07-19 08:01:50</created>
+		<closed>2018-07-19 14:01:59</closed>
+	</bug>
+	<bug>
+		<id>332</id>
+		<title>Hyperlink error</title>
+		<body>The link of  `Twitter Java Style Guide`  seems pointed to a wrong address. It should be `https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md`</body>
+		<created>2018-07-19 05:56:42</created>
+		<closed>2018-07-19 14:02:15</closed>
+	</bug>
+	<bug>
+		<id>306</id>
+		<title>重构 7.6 无图</title>
+		<body>重构 7.6 以后，有几处无图</body>
+		<created>2018-07-08 01:42:26</created>
+		<closed>2018-07-09 14:59:22</closed>
+	</bug>
+	<bug>
+		<id>286</id>
+		<title>表格排版错误</title>
+		<body>java垃圾收集器的比较那一块，表格没有显示</body>
+		<created>2018-06-20 02:21:41</created>
+		<closed>2018-06-21 05:47:23</closed>
+	</bug>
+	<bug>
+		<id>273</id>
+		<title>Leetcode-Database 题解，内容问题</title>
+		<body>627. Swap Salary的SQL Schema用的上一题的</body>
+		<created>2018-06-07 05:17:22</created>
+		<closed>2018-06-07 06:46:55</closed>
+	</bug>
+	<bug>
+		<id>263</id>
+		<title>在Java垃圾回收部分的描述中是将需要回收的对象进行标记？不是将GC Roots可达的对象标记为存活对象吗？</title>
+		<body></body>
+		<created>2018-05-28 03:10:39</created>
+		<closed>2018-05-31 13:14:09</closed>
+	</bug>
+	<bug>
+		<id>252</id>
+		<title>Java基础栏的Link 问题</title>
+		<body>URL: https://github.com/CyC2018/Interview-Notebook/blob/master/notes/Java%20%E5%9F%BA%E7%A1%80.md#%E4%B9%9D%E6%B3%9B%E5%9E%8B  泛型栏目中的 [Java 泛型详解](https://www.ziwenxie.site/2017/03/01/java-generic/) 链接down 掉了 : / </body>
+		<created>2018-05-17 09:05:07</created>
+		<closed>2018-05-24 09:34:24</closed>
+	</bug>
+	<bug>
+		<id>250</id>
+		<title>Leetcode题解判断是否为二分图的算法是不是有问题</title>
+		<body>代码：  public boolean isBipartite(int[][] graph) {     int[] colors = new int[graph.length];     Arrays.fill(colors, -1);      for (int i = 0; i &lt; graph.length; i++)         if (colors[i] != -1 &amp;&amp; !isBipartite(graph, i, 0, colors))             return false;      return true; } 这句： if (colors[i] != -1 &amp;&amp; !isBipartite(graph, i, 0, colors)) 由于之前colors被填充为-1，所以这条语句一直是false， 也就是说这个函数一直返回true。  是我的理解有问题吗？  </body>
+		<created>2018-05-15 10:15:56</created>
+		<closed>2018-05-31 13:14:50</closed>
+	</bug>
+	<bug>
+		<id>244</id>
+		<title>算法：归并排序：自顶到下的归并排序sort的重载函数有问题</title>
+		<body>大神，你好， private void sort(Comparable[] a, int lo, int hi)  函数里没有给私有变量分配内存（new） aux = new int[a.length]; 如果不加的话会： java.lang.NullPointerException</body>
+		<created>2018-05-08 08:34:23</created>
+		<closed>2018-05-10 05:17:01</closed>
+	</bug>
+	<bug>
+		<id>223</id>
+		<title>LeetCode题解</title>
+		<body>贪心思想的判断是否为子串错了，每次判断到该字符串位置之后，需要从下一位开始判断，不然会出错。 public boolean isSubsequence(String s, String t) { int index = 0;         for(char c: s.toCharArray()) {             index = t.indexOf(c, index);             if(index == -1) {return false;}             index ++;         }         return true;     }</body>
+		<created>2018-04-24 03:45:38</created>
+		<closed>2018-04-25 05:55:47</closed>
+	</bug>
+	<bug>
+		<id>208</id>
+		<title>算法4：归并排序</title>
+		<body>算法4： 归并排序：稳定性的判定条件应该是 &lt;=, 版主看看是不是有问题</body>
+		<created>2018-04-17 03:54:08</created>
+		<closed>2018-04-21 12:09:30</closed>
+	</bug>
+	<bug>
+		<id>207</id>
+		<title>java 基础 static变量</title>
+		<body>不需要类实例化就已经初始化 了吧 比如 Math.PI</body>
+		<created>2018-04-17 03:07:41</created>
+		<closed>2018-04-21 12:09:40</closed>
+	</bug>
+	<bug>
+		<id>205</id>
+		<title>k-th element 堆排序的复杂度问题</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3.md#%E5%A0%86%E6%8E%92%E5%BA%8F  时间复杂度应该不是：O(OlogK)，而是 `O(NlogK)`，拼写错误</body>
+		<created>2018-04-16 09:29:28</created>
+		<closed>2018-04-18 05:38:45</closed>
+	</bug>
+	<bug>
+		<id>200</id>
+		<title>Leetcode455</title>
+		<body>作者你好关于你的leetcode455这一题用贪心做没毛病但是你在表达题目意思的时候好像不正确应该是给的饼干大于等于孩子的接收值孩子就会满意而不是大于，anyway代码中写的是&gt;=  ：）</body>
+		<created>2018-04-15 03:18:42</created>
+		<closed>2018-04-15 04:15:31</closed>
+	</bug>
+	<bug>
+		<id>199</id>
+		<title>IP地址正则表达式位置问题</title>
+		<body>内容中写到匹配一个 0~255 数字的正则表达式：  `(((\d)|([1-9]\d)|(1\d{2})|(2[0-4]\d)|(25[0-5])))`  有一个问题是正则表达式采用先匹配 `\d` 方案，再匹配 `[1-9]\d` 方案，.....，最后匹配 `25[0-4]`。 如果匹配数字 255，上述表达式会匹配到数字 2，而且只匹配了 2。  ```python In [56]: re.search(r'(((\d)|([1-9]\d)|(1\d{2})|(2[0-4]\d)|(25[0-5])))', '255').group() Out[56]: '2' ```  应该改为 `(25[0-5]|(2[0-4]\d)|(1\d{2})|([1-9]\d)|(\d))`，把最难匹配到的放在前面：  ```python In [57]: re.search(r'(25[0-5]|(2[0-4]\d)|(1\d{2})|([1-9]\d)|(\d))', '255').group() Out[57]: '255' ```</body>
+		<created>2018-04-15 03:17:29</created>
+		<closed>2018-04-15 04:15:40</closed>
+	</bug>
+	<bug>
+		<id>194</id>
+		<title>select/poll应该是同步阻塞，epoll是同步非阻塞的</title>
+		<body></body>
+		<created>2018-04-13 07:44:54</created>
+		<closed>2018-06-21 03:09:35</closed>
+	</bug>
+	<bug>
+		<id>187</id>
+		<title>interview-notebook正则表达式小修正</title>
+		<body>今天偶然看到有这么一个github上有这么一个repository，忍不住点个赞～看的书真多，基础够扎实～刚巧看到正则表达式这一块，发现第七小节使用子表达式采用的例子中，匹配IP 的例子有些不够完整，会把类似于00.00.00.00这样的也匹配进来，所以需要进行一点小修改。我写了下面这样一个： (((\d)|([1-9]\d)|(1\d{2})|(2[0-4]\d)|(25[0-5]))\.) {3}((\d)|([1-9]\d)|(1\d{2})|(2[0-4]\d)|(25[0-5])) 我个人觉得这份材料很不错，对于国内的面试者来说会有很大帮助，很期待不断地完善。今天暂时只看了这么多，提点小建议，后面会继续关注～期待持续更新～</body>
+		<created>2018-04-11 16:42:30</created>
+		<closed>2018-04-14 11:35:21</closed>
+	</bug>
+	<bug>
+		<id>185</id>
+		<title>HashEntry 拼写错误</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/Java%20%E5%AE%B9%E5%99%A8.md#2-hashentery-%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7  ```java static final class HashEntry&lt;K,V&gt; {     final int hash;     final K key;     volatile V value;     volatile HashEntry&lt;K,V&gt; next; } ```  你怎么在下面描述说 next 是 final 的？</body>
+		<created>2018-04-11 05:58:08</created>
+		<closed>2018-04-11 13:43:58</closed>
+	</bug>
+	<bug>
+		<id>182</id>
+		<title>MySQL5.6.4添加了对InnoDB引擎的全文索引支持</title>
+		<body>“MySQL now supports FULLTEXT indexes for InnoDB tables.”   Reference:   [MySQL 5.6.4 Release Notes](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-4.html)</body>
+		<created>2018-04-10 16:38:01</created>
+		<closed>2018-04-12 01:28:23</closed>
+	</bug>
+	<bug>
+		<id>162</id>
+		<title>node == nil 会处空指针异常</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E7%AE%97%E6%B3%95.md#6-min  min 函数如果参数 node == nil 会触发空指针异常</body>
+		<created>2018-04-07 07:17:38</created>
+		<closed>2018-04-07 07:31:39</closed>
+	</bug>
+	<bug>
+		<id>161</id>
+		<title>二叉查找树 中描述错误</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E7%AE%97%E6%B3%95.md#%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91  原文：  二叉查找树 （BST）是一颗二叉树，并且每个节点的值都大于其左子树中的所有节点的值而小于右子树的所有节点的值。  应该为：  二叉查找树 （BST)是一颗二叉树，并且每个节点的值都**大于等于**其左子树中的所有节点的值而**小于等于**右子树的所有节点的值。</body>
+		<created>2018-04-07 06:23:09</created>
+		<closed>2018-04-07 06:41:03</closed>
+	</bug>
+	<bug>
+		<id>154</id>
+		<title>改进算法中，binarySearch 错误</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E7%AE%97%E6%B3%95.md#threesum  错误代码：  ```java else if (target &gt; nums[m]) h = m - 1; else l = m + 1; ```  应该是：  ```java else if (target &gt; nums[m]) l = m + 1; else h = m - 1; ```</body>
+		<created>2018-04-06 07:45:37</created>
+		<closed>2018-04-06 08:27:48</closed>
+	</bug>
+	<bug>
+		<id>153</id>
+		<title>我整理应用层协议的时候查到DNS还用tcp</title>
+		<body>baidu和google都可以查到，你看下要不要加到网络那篇的表格里</body>
+		<created>2018-04-05 14:41:40</created>
+		<closed>2018-04-06 07:49:11</closed>
+	</bug>
+	<bug>
+		<id>147</id>
+		<title>重构里面的图片没了？</title>
+		<body></body>
+		<created>2018-04-04 05:17:47</created>
+		<closed>2018-04-04 06:45:37</closed>
+	</bug>
+	<bug>
+		<id>142</id>
+		<title>HashMap的链表插入顺序</title>
+		<body>之前向您请教过这个问题：为什么put操作对于同一个hash值的链表来说是头插法。 然而您的解答我又成功的没有看懂。。。所以去看了您提供的`HashMap.java`中的源码。 在源码的621行 ``` p.next = newNode(hash, key, value, null); ```  这与您所说的头插法不符吧？所以Key值是final的原因应该是只是保证它是不变的常量吧。</body>
+		<created>2018-04-03 07:09:46</created>
+		<closed>2018-04-03 08:14:52</closed>
+	</bug>
+	<bug>
+		<id>138</id>
+		<title>正则表达式  五、重复匹配中email的正则表达式应该为[\w.]+@[\w]+\.[\w]+</title>
+		<body>[\w.]+@[\w]+.[\w]+应改为[\w.]+@[\w]+\.[\w]+</body>
+		<created>2018-04-03 01:22:22</created>
+		<closed>2018-04-03 03:05:48</closed>
+	</bug>
+	<bug>
+		<id>128</id>
+		<title>POST 和 GET 区别有点不严谨</title>
+		<body>“GET 和 POST 的另一个区别是，使用 GET 方法，浏览器会把 HTTP Header 和 Data 一并发送出去，服务器响应 200（OK）并返回数据。而使用 POST 方法，浏览器先发送 Header，服务器响应 100（Continue）之后，浏览器再发送 Data，最后服务器响应 200（OK）并返回数据。“  服务器响应 100（Continue）的前提：HTTP 是 1.1 版本。</body>
+		<created>2018-04-01 13:26:47</created>
+		<closed>2018-04-01 15:17:34</closed>
+	</bug>
+	<bug>
+		<id>123</id>
+		<title>老哥，你算法里ThreeSum优化版的二分查找写的有问题</title>
+		<body>两个查找方式写反了</body>
+		<created>2018-04-01 05:14:11</created>
+		<closed>2018-04-01 05:36:25</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>Java基础 - 反射部分的小错误</title>
+		<body>Java基础的第七部分反射中的`Class.forName("com.mysql.jdbc.Driver.class")`应为`Class.forName("com.mysql.jdbc.Driver")`，即不能添加`.class`后缀</body>
+		<created>2018-03-31 08:48:19</created>
+		<closed>2018-03-31 08:58:33</closed>
+	</bug>
+	<bug>
+		<id>113</id>
+		<title>Java I/O   NIO 面向流，I/O 面向块 是不是有问题</title>
+		<body> 应该是 NIO 面向Buffer，I/O 面向Stream</body>
+		<created>2018-03-29 01:35:29</created>
+		<closed>2018-03-29 01:36:50</closed>
+	</bug>
+	<bug>
+		<id>111</id>
+		<title>纠错：数据库系统原理-多版本并发控制-实现过程-SELECT</title>
+		<body>&gt; 除了上面的要求，T1 所要读取的数据行快照的删除版本号必须小于当前事务版本号，因为如果大于或者等于当前事务版本号，那么表示该数据行快照是已经被删除的，不应该去读取它。  应该是下面吧  &gt; 除了上面的要求，T1 所要读取的数据行快照的删除版本号必须大于当前事务版本号，因为如果小于或者等于当前事务版本号，那么表示该数据行快照是已经被删除的，不应该去读取它。  </body>
+		<created>2018-03-28 09:45:44</created>
+		<closed>2018-03-28 10:42:11</closed>
+	</bug>
+	<bug>
+		<id>110</id>
+		<title>纠错：数据库系统原理-两段锁协议</title>
+		<body>&gt; 加锁和解锁分为两个阶段进行，事务 T 对数据 A 进行读或者写操作之前，必须先获得对 A 的封锁，并且在释放一个封锁之前，T 不能再获得任何的其它锁。  这里应该是下面吧  &gt;  加锁和解锁分为两个阶段进行，事务 T 对数据 A 进行读或者写操作之前，必须先获得对 A 的封锁；并且在释放一个封锁之后，T 不能再获得任何的其它锁。  </body>
+		<created>2018-03-28 09:29:58</created>
+		<closed>2018-03-28 10:42:16</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>适配器模式错误</title>
+		<body> int[] arr = {1, 2, 3};  list = Arrays.asList(arr); arrays.aslist有缺陷，只能使用包装类做转换，上面的代码打印出来的size为1 详细介绍地址： http://wiki.jikexueyuan.com/project/java-enhancement/java-thirtysix.html</body>
+		<created>2018-03-26 03:19:54</created>
+		<closed>2018-03-26 03:40:31</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>Git 冲突原因</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/Git.md#%E5%86%B2%E7%AA%81  产生冲突不是因为修改了同一个文件，而是修改了同一个文件的同一行。  但是不鼓励在不修改同一行下修改同一个文件</body>
+		<created>2018-03-25 05:45:05</created>
+		<closed>2018-03-25 08:12:00</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>HTTP 重定向问题</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E5%88%86%E5%B8%83%E5%BC%8F%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90.md#4-http-%E9%87%8D%E5%AE%9A%E5%90%91  重定向怎么可能重定向到 10.xx.xx.xx 这样的保留地址呢？  负载均衡中很多地址用得都有问题，比如 DNS 负载均衡的，客户端怎么可能通过访问 10.xx.xx.xx 这样的保留地址访问到自己需要的服务呢？除非同在一个局域网。  HTTP 重定向做负载均衡，1、需要有一个公网 IP；2、需要暴露服务器到公网</body>
+		<created>2018-03-25 02:43:15</created>
+		<closed>2018-03-25 04:01:28</closed>
+	</bug>
+	<bug>
+		<id>77</id>
+		<title>分布式锁使用场景</title>
+		<body>原文: &gt; 例如一个应用有手机 APP 端和 Web 端，如果在两个客户端同时进行一项操作时，那么就会导致这项操作重复进行。  这样的场景并不一定要使用分布式锁哈。即使存在多个客户端，但如果后端服务仍然是单机也就是单进程的用 Java 内置锁依然可以哦。  你应该想描述的是当后端的应用分布式部署时，比如订单服务有两台 A 和 B。当 APP 的请求路由到了 A 服务，WEB 端被路由到了 B 服务，这时对共享资源进行使用时需要使用分布式锁。</body>
+		<created>2018-03-21 14:11:42</created>
+		<closed>2018-03-21 15:01:01</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>Code section needs to be fixed (1 minute fix)</title>
+		<body>on: notes/代码可读性.md under: 八，分裂的长期表达 (Eight, split the long expression)  Use Morgan Theorem to simplify some logical expressions:  if(!a &amp;&amp; !b) {     ... } if(a || b) {     ... }  should be:  if(!a &amp;&amp; !b) {     ... } if(!(a || b)) {     ... }  </body>
+		<created>2018-03-20 09:30:01</created>
+		<closed>2018-03-20 10:21:52</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>认证描述问题</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/HTTP.md#%E8%AE%A4%E8%AF%81  除了服务端需要认证客户端身份之外，客户端也要认证服务端的身份的。  所以客户端拿到服务端的证书之后需要到 CA 进行证书的验证，而不是直接就开始通信的。因为有可能存在本地 hosts 被修改（可以通过修改 hosts 翻墙）、基站等情况。</body>
+		<created>2018-03-14 06:48:16</created>
+		<closed>2018-03-14 07:28:28</closed>
+	</bug>
+	<bug>
+		<id>53</id>
+		<title>关于 Cache-Control 中的 no-cache 描述问题</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/HTTP.md#%E7%BC%93%E5%AD%98  `no-cache` 并不是字面意思*不要缓存*，而是不要直接使用缓存，**使用缓存之前先要跟服务端进行验证**，检查缓存是否过期。  真正不要缓存的是 `no-store`。  https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn#no-cacheno-store</body>
+		<created>2018-03-14 06:31:04</created>
+		<closed>2018-03-14 06:39:31</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>哲学家问题第二个算法依然有死锁问题</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.md#2-%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90%E9%97%AE%E9%A2%98  ```C semaphore mutex = 1;  void philosopher(int i) {     while(TURE){         think();         down(mutex);         down(chopstick[LEFT[i]]);         down(chopstick[RIGHT[i]]);         up(mutex);         eat();         down(mutex);         up(chopstick[RIGHT[i]]);         up(chopstick[LEFT[i]]);         up(mutex);     } } ```  试想一下 5 个哲学家，假设哲学家1首先执行 `down(mutex)` 成功，然后把左右筷子都拿着 `down(chopstick[0])` `down(chopstick[1])` 都拿到手，然后很自信地释放了 `up(mutex)`，开心地吃饭了。 在此期间，哲学家5成功执行了 `down(mutex)`，并且成功地拿到了左边的筷子 `down(chopstick[4])`，但发现右边筷子被哲学家1用着，无奈又陷入了漫长的思考中。哲学家1吃饱了，觉得应该开始思考人生了，想放下筷子，但是 `down(mutex)` 一直阻塞。  原因：哲学家5拿着 mutex 不肯放，一直要等到拿到右边的筷子 `chopstick[0]`，但是哲学家1想要让出 `chopstick[0]`，但是先要拿到 mutex。Oops，死锁。</body>
+		<created>2018-03-13 09:04:53</created>
+		<closed>2018-03-13 11:33:46</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>管道描述问题</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.md#1-%E7%AE%A1%E9%81%93  描述中，**管道把一个进程的标准输出和另一个进程的标准输入连接在一起**。  我认为这是有问题的，进程间通信使用管道，但是**把一个进程的标准输出和另一个进程的标准输入连接在一起**是针对 Unix 终端的用法吧。而不是所有管道都是如此吧，Unix 下一切皆文件，管道也应该是文件。  再说如果所有管道都是标准输入流和标准输出流的对接，那么用户从标准输入流再输入点什么不就乱套了？我任务这种描述有问题。</body>
+		<created>2018-03-13 08:40:33</created>
+		<closed>2018-03-13 09:11:31</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>Web 页面请求过程描述有点问题</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md#web-%E9%A1%B5%E9%9D%A2%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B  web 页面请求过程这是一个挺大的话题。 针对第3点，服务器应该不是随机与分配一个端口与客户端连接吧。 原因： 1. 端口最多就 2^16个，也就是一个服务器最多只能够同时服务 65536 个客户连接？ 2. 有 IO 复用的情况 3. 防火墙可能不允许随机端口进出通信  最后一点我也不清楚：如果服务器重新分配一个端口与客户端连接，这样不会引发 TCP 再次握手吗？  这个问题听说在挺多面试中出现过，希望作者能够进一步详细分析，谢谢你的分享。</body>
+		<created>2018-03-12 10:11:59</created>
+		<closed>2018-03-13 08:33:57</closed>
+	</bug>
+	<bug>
+		<id>43</id>
+		<title>交换机说法有点问题</title>
+		<body>https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%B8%8E%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB  阐述了交换机在数据链路层工作，那后面为什么说维护这 ip 到 mac 的映射表呢？这不是上文说路由器干的事情吗？ 我记得之前老师说过是交换机维护这 mac 地址和交换机**插孔**的映射吧。  但现代交换机确实具有部分路由器的功能</body>
+		<created>2018-03-12 08:53:07</created>
+		<closed>2018-03-12 11:10:49</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>Java 基础中对于抽象类的定义感觉有误：望指教</title>
+		<body>原文： 抽象类与接口 抽象类至少包含一个抽象方法 疑问： 抽象类中可以不包含抽象方法的。</body>
+		<created>2018-03-12 08:49:26</created>
+		<closed>2018-03-12 08:57:29</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>JVM 勘误</title>
+		<body>文章地址：https://github.com/CyC2018/Interview-Notebook/blob/master/notes/JVM.md  "让所有存活的对象都向一段移动，然后直接清理掉端边界以外的内存。" "向一段移动" ==&gt; "向一端移动"</body>
+		<created>2018-03-08 11:21:33</created>
+		<closed>2018-03-08 11:55:23</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="DangGi">
+	<bug id="50" opendate="2018-03-23 06:35:46" fixdate="2018-03-23 07:35:03">
+		<buginformation>
+			<summary>위젯 아이디 중복 이슈 해결 필요</summary>
+			<description>메모와 위젯은 일대 다 관계여야함. 위젯아이디를 여러개 저장할 수 있어야함.  현재 메모와 위젯이 일대일로 매핑되는 이슈가 있음.  1. 위젯 테이블을 만들고 메모 id와 위젯 id만을 저장하는 작업이 필요. 2. NormalWidget클래스의 onDeleted메소드내부를 Widget테이블 데이터 삭제하는 것으로 변경 필요 3. ConfigureActivity에 WidgetTable검사 후 insert / update 하도록 수정 필요 4. WriteActivity에서 Widget테이블 검사하는 부분으로 수정 필요</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/me/jy/danggi/activities/WriteActivity.java</file>
+			<file>app/src/main/java/me/jy/danggi/activities/ConfigureActivity.java</file>
+			<file>app/src/main/java/me/jy/danggi/database/DataHelper.java</file>
+			<file>app/src/main/java/me/jy/danggi/provider/NormalWidget.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="37" opendate="2018-03-02 01:29:51" fixdate="2018-03-02 02:38:15">
+		<buginformation>
+			<summary>삭제기능 보완 필요</summary>
+			<description>삭제할 때 내용으로 비교하기 때문에, 같은 내용을 가진 항목들은 전부 다 삭제해버리는 이슈가 있음. 이걸 해결해야함  1. Model(Memo클래스)에 primary key를 저장하는 변수를 만들어서 기본키로 비교하기.  당연히 처음부터 이렇게 했어야함.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/me/jy/danggi/activities/WriteActivity.java</file>
+			<file>app/src/main/java/me/jy/danggi/database/DataHelper.java</file>
+			<file>app/src/main/java/me/jy/danggi/activities/MainActivity.java</file>
+			<file>app/src/main/java/me/jy/danggi/model/Memo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2018-02-26 12:16:40" fixdate="2018-02-26 12:57:52">
+		<buginformation>
+			<summary>Date포맷 수정 필요</summary>
+			<description>처음 등록할 때 표시되는 시간과, 수정한 다음 표시되는 시간의 포맷이 일치하지 않는다.  처음 등록 시에는 12시간 기준으로 뜸. 이걸 24시간 기준으로 고쳐야함</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/me/jy/danggi/activities/MainActivity.java</file>
+			<file>app/src/main/java/me/jy/danggi/binding/BindingConverts.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="22" opendate="2018-02-26 02:16:06" fixdate="2018-02-26 02:30:17">
+		<buginformation>
+			<summary>삭제기능 보완 필요</summary>
+			<description>삭제 시 삭제된 상태가 즉각 반영되지않는 이슈가 있음. 이를 해결하기 위해 기능 수정이 필요함.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/me/jy/danggi/activities/adapter/MemoAdapter.java</file>
+			<file>app/src/main/java/me/jy/danggi/activities/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="14" opendate="2018-01-23 05:29:27" fixdate="2018-01-31 04:14:25">
+		<buginformation>
+			<summary>메모 저장 기능 수정 필요</summary>
+			<description>저장하기 버튼을 눌러야 DB헬퍼 객체를 생성하기 때문에 아무 내용도 입력하지 않고 백버튼을 누르면 fatal 에러 발생.  close할때 객체가 null인지 체크 필요</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/me/jy/danggi/activities/WriteActivity.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

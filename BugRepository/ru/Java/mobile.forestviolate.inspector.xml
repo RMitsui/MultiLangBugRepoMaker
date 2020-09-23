@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="mobile.forestviolate.inspector">
+	<bug id="104" opendate="2016-07-05 14:12:03" fixdate="2016-07-11 22:44:49">
+		<buginformation>
+			<summary>Окно ввода названия места лесонарушения сразу же закрывается</summary>
+			<description>Создать новый акт о лесонарушении --&gt; место совершения лесонарушения --&gt; нарисовать вручную --&gt; нажать галочку в верхней панели. На экране должно показаться окно ввода названия места лесонарушения, там где две радиокнопки, но оно сразу же закрывается. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SelectTerritoryActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/DocumentCreatorActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/InputParcelTextDialog.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapEditFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/overlay/EditTerritoryOverlay.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="103" opendate="2016-07-05 13:55:25" fixdate="2016-07-05 17:30:37">
+		<buginformation>
+			<summary>Падение при выборе кварталов</summary>
+			<description>``` java.lang.RuntimeException: Unable to resume activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.SelectTerritoryActivity}: java.lang.NullPointerException     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2975)     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3004)     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2397)     at android.app.ActivityThread.access$900(ActivityThread.java:169)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1280)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.NullPointerException     at com.nextgis.forestinspector.activity.SelectTerritoryActivity.getTerritoryText(SelectTerritoryActivity.java:334)     at com.nextgis.forestinspector.activity.SelectTerritoryActivity.onResume(SelectTerritoryActivity.java:299)     at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1198)     at android.app.Activity.performResume(Activity.java:5530)     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2965)     ... 12 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SelectTerritoryActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="102" opendate="2016-07-05 13:51:20" fixdate="2016-07-11 22:44:49">
+		<buginformation>
+			<summary>Падение при редактировании</summary>
+			<description>``` java.lang.NullPointerException     at com.nextgis.forestinspector.fragment.MapEditFragment.onLongPress(MapEditFragment.java:255)     at com.nextgis.maplibui.mapui.MapView.onLongPress(MapView.java:442)     at android.view.GestureDetector.dispatchLongPress(GestureDetector.java:1564)     at android.view.GestureDetector.access$200(GestureDetector.java:47)     at android.view.GestureDetector$GestureHandler.handleMessage(GestureDetector.java:334)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) ```  ``` java.lang.RuntimeException: Unable to pause activity {com.nextgis.forestinspector/com.nextgis.forestinspector.activity.IndictmentCreatorActivity}: java.lang.NullPointerException     at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3277)     at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3232)     at android.app.ActivityThread.handlePauseActivity(ActivityThread.java:3210)     at android.app.ActivityThread.access$1100(ActivityThread.java:169)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1291)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.NullPointerException     at com.nextgis.maplib.datasource.GeoEnvelope.getMinX(GeoEnvelope.java:288)     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.setRegionFieldValue(DocumentCreatorActivity.java:427)     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.saveControlsToFeature(DocumentCreatorActivity.java:283)     at com.nextgis.forestinspector.activity.IndictmentCreatorActivity.saveControlsToFeature(IndictmentCreatorActivity.java:212)     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.saveTempEditFeature(DocumentCreatorActivity.java:451)     at com.nextgis.forestinspector.activity.DocumentCreatorActivity.onPause(DocumentCreatorActivity.java:221)     at android.app.Activity.performPause(Activity.java:5555)     at android.app.Instrumentation.callActivityOnPause(Instrumentation.java:1239)     at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3263)     ... 12 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SelectTerritoryActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/DocumentCreatorActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/InputParcelTextDialog.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapEditFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/overlay/EditTerritoryOverlay.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="100" opendate="2016-07-04 14:47:58" fixdate="2016-07-05 10:01:45">
+		<buginformation>
+			<summary>Акт об обнаружении орудий заготовки не создаётся</summary>
+			<description>![fw_akt_obnaruzenia_orudiy_entering](https://cloud.githubusercontent.com/assets/4630662/16564286/53a3aed0-420f-11e6-8949-f4eebb5d4b3c.png) После нажатия кнопки Добавить выдаётся сообщение "Неверные параметры", запись в акт не добавляется. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/VehicleListFillerDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="99" opendate="2016-07-04 10:49:55" fixdate="2016-07-04 14:04:25">
+		<buginformation>
+			<summary>На экране создания геометрии вручную 2 нижние панели накладываются</summary>
+			<description>Создание акта - ввод геометрии вручную  ![screenshot_2016-07-04-14-55-38](https://cloud.githubusercontent.com/assets/4630662/16558384/07382a60-41ee-11e6-84f3-37af94fa3459.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SelectTerritoryActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapEditFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/overlay/EditTerritoryOverlay.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="98" opendate="2016-07-04 09:01:13" fixdate="2016-07-05 12:07:29">
+		<buginformation>
+			<summary>Падение при вводе геометрии обходом</summary>
+			<description>``` java.lang.RuntimeException: Unable to start service com.nextgis.maplibui.service.WalkEditService@423ab790 with Intent { act=com.nextgis.maplibui.WALKEDIT_START cmp=com.nextgis.forestinspector/com.nextgis.maplibui.service.WalkEditService (has extras) }: java.lang.ClassCastException: java.lang.Integer cannot be cast to com.nextgis.maplib.datasource.GeoGeometry     at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:2906)     at android.app.ActivityThread.access$2200(ActivityThread.java:169)     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1377)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.ClassCastException: java.lang.Integer cannot be cast to com.nextgis.maplib.datasource.GeoGeometry     at com.nextgis.maplibui.service.WalkEditService.onStartCommand(WalkEditService.java:114)     at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:2889)     ... 10 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SelectTerritoryActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapEditFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/overlay/EditTerritoryOverlay.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="96" opendate="2016-06-12 20:47:42" fixdate="2016-06-13 14:44:08">
+		<buginformation>
+			<summary>Порядок сортировки в списке</summary>
+			<description>Более новые документы должны быть выше по списку </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/DocumentsListItem.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/DocumentsListLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="95" opendate="2016-06-12 20:43:41" fixdate="2016-06-14 16:20:00">
+		<buginformation>
+			<summary>Падение при заполнении фототаблицы</summary>
+			<description>``` java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState     at android.support.v4.app.FragmentManagerImpl.checkStateLoss(FragmentManager.java:1500)     at android.support.v4.app.FragmentManagerImpl.enqueueAction(FragmentManager.java:1518)     at android.support.v4.app.BackStackRecord.commitInternal(BackStackRecord.java:634)     at android.support.v4.app.BackStackRecord.commit(BackStackRecord.java:613)     at android.support.v4.app.DialogFragment.show(DialogFragment.java:139)     at com.nextgis.forestinspector.adapter.PhotoTableAdapter$2.onClick(PhotoTableAdapter.java:264)     at android.view.View.performClick(View.java:4640)     at android.view.View$PerformClick.run(View.java:19421)     at android.os.Handler.handleCallback(Handler.java:733)     at android.os.Handler.dispatchMessage(Handler.java:95)     at android.os.Looper.loop(Looper.java:146)     at android.app.ActivityThread.main(ActivityThread.java:5487)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:515)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)     at dalvik.system.NativeStart.main(Native Method) ```  Падение происходит при вводе описания к фото </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/TabFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableCursorAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/PhotoTableFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableFileAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="85" opendate="2016-04-11 14:53:18" fixdate="2016-04-15 08:18:13">
+		<buginformation>
+			<summary>Падение при создании аккаунта</summary>
+			<description>Android 6  ``` java.lang.NullPointerException: Attempt to invoke virtual method 'int android.accounts.Account.hashCode()' on a null object reference     at android.os.Parcel.readException(Parcel.java:1615)     at android.os.Parcel.readException(Parcel.java:1558)     at android.content.IContentService$Stub$Proxy.setSyncAutomaticallyAsUser(IContentService.java:1010)     at android.content.ContentResolver.setSyncAutomaticallyAsUser(ContentResolver.java:2020)     at android.content.ContentResolver.setSyncAutomatically(ContentResolver.java:2010)     at com.nextgis.forestinspector.MainApplication.onAddAccount(MainApplication.java:428)     at com.nextgis.maplibui.fragment.NGWLoginFragment.onTokenReceived(NGWLoginFragment.java:255)     at com.nextgis.forestinspector.fragment.LoginFragment.onTokenReceived(LoginFragment.java:104)     at com.nextgis.maplibui.fragment.NGWLoginFragment.onLoadFinished(NGWLoginFragment.java:231)     at com.nextgis.maplibui.fragment.NGWLoginFragment.onLoadFinished(NGWLoginFragment.java:49)     at android.support.v4.app.LoaderManagerImpl$LoaderInfo.callOnLoadFinished(LoaderManager.java:476)     at android.support.v4.app.LoaderManagerImpl$LoaderInfo.onLoadComplete(LoaderManager.java:444)     at android.support.v4.content.Loader.deliverResult(Loader.java:126)     at com.nextgis.maplibui.service.HTTPLoader.deliverResult(HTTPLoader.java:89)     at com.nextgis.maplibui.service.HTTPLoader.deliverResult(HTTPLoader.java:37)     at android.support.v4.content.AsyncTaskLoader.dispatchOnLoadComplete(AsyncTaskLoader.java:249)     at android.support.v4.content.AsyncTaskLoader$LoadTask.onPostExecute(AsyncTaskLoader.java:77)     at android.support.v4.content.ModernAsyncTask.finish(ModernAsyncTask.java:466)     at android.support.v4.content.ModernAsyncTask.access$400(ModernAsyncTask.java:48)     at android.support.v4.content.ModernAsyncTask$InternalHandler.handleMessage(ModernAsyncTask.java:483)     at android.os.Handler.dispatchMessage(Handler.java:102)     at android.os.Looper.loop(Looper.java:224)     at android.app.ActivityThread.main(ActivityThread.java:5514)     at java.lang.reflect.Method.invoke(Native Method)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/MainApplication.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="84" opendate="2016-04-08 15:10:43" fixdate="2016-04-15 12:33:07">
+		<buginformation>
+			<summary>Документ не выбран</summary>
+			<description>1. Нажимаем на FAB и выбираем, например, `Акт о лесонарушении` 2. Ничего не заполняем и нажимаем `Назад` 3. Запись появляется в списке документов. Так и должно, мы же её не сохраняли? 4. Как продолжить её редактирование? Если на неё нажать то получаем `Документ не выбран`. 5. Может её как-то можно удалить? </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/DocumentsListLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="83" opendate="2016-04-08 07:57:26" fixdate="2016-04-18 08:10:58">
+		<buginformation>
+			<summary>Не сохраняется информация о территории</summary>
+			<description>1. Создаю Акт о лесонарушении 2. Выбираю место лесонарушения из списка 3. Жму кнопку `Сохранить` 4. Выбираю потом в списке документов этот акт - информация о территории отсутствует </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/DocumentCreatorActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="82" opendate="2016-03-31 17:03:45" fixdate="2016-04-15 07:53:12">
+		<buginformation>
+			<summary>Ошибка при первоначальной загрузке</summary>
+			<description>``` java.lang.RuntimeException: Error receiving broadcast Intent { act=forestviolate.inspector.sync_message flg=0x10 (has extras) } in com.nextgis.forestinspector.MainApplication$1@41607e30     at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:737)     at android.os.Handler.handleCallback(Handler.java:605)     at android.os.Handler.dispatchMessage(Handler.java:92)     at android.os.Looper.loop(Looper.java:137)     at android.app.ActivityThread.main(ActivityThread.java:4424)     at java.lang.reflect.Method.invokeNative(Native Method)     at java.lang.reflect.Method.invoke(Method.java:511)     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:787)     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:554)     at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.IllegalArgumentException: account must not be null     at android.content.ContentResolver.removePeriodicSync(ContentResolver.java:1285)     at com.nextgis.forestinspector.MainApplication$1.onReceive(MainApplication.java:121)     at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:728)     ... 9 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/MainApplication.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="77" opendate="2016-03-05 18:40:52" fixdate="2016-03-11 14:43:20">
+		<buginformation>
+			<summary>Подвисание таблицы перечета</summary>
+			<description>1. При создании таблицы перечета выдается надпись "Подождите ...". Однако выбрать выпадающие списки "Категория хлыстов", "Разряд высот" и Выдел(а) нельзя. Предлагаю выводить диалог сверху или сделать так что бы можно было выбирать. 2. При вводе текста Выдел(а) открывается диалог и все подвисает, т.к. таблица перестраивается или что-то подобное. Предлагаю сделать ввод через диалог. 3. При повороте экрана опять все подвисает но не так сильно - тут бы опять выводить про перестроение таблицы. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/util/Constants.java</file>
+			<file>app/src/main/java/com/justsimpleinfo/Table/Table.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/UnitEditorDialog.java</file>
+			<file>app/src/main/java/com/justsimpleinfo/Table/HeaderRow.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableAdapter.java</file>
+			<file>app/src/main/java/com/justsimpleinfo/Table/BodyTable.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/SheetTableFillerFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2016-02-04 10:27:16" fixdate="2016-02-05 11:52:13">
+		<buginformation>
+			<summary>Падение при вводе территории вручную</summary>
+			<description>``` 02-04 13:32:26.701 26402-26402/com.nextgis.forestinspector E/AndroidRuntime: FATAL EXCEPTION: main Process: com.nextgis.forestinspector, PID: 26402 java.lang.NullPointerException     at com.nextgis.forestinspector.overlay.SelectLocationOverlay.panMoveTo(SelectLocationOverlay.java:228)     at com.nextgis.maplibui.mapui.MapView.panMoveTo(MapView.java:261)     at com.nextgis.maplibui.mapui.MapView.onScroll(MapView.java:462)     at android.view.GestureDetector.onTouchEvent(GestureDetector.java:1441)     at com.nextgis.maplibui.mapui.MapView.onTouchEvent(MapView.java:329)     at android.view.View.dispatchTouchEvent(View.java:8135)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2422)     at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2155)     at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:2295)     at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1622)     at android.app.Activity.dispatchTouchEvent(Activity.java:2565)     at android.support.v7.internal.view.WindowCallbackWrapper.dispatchTouchEvent(WindowCallbackWrapper.java:60)     at android.support.v7.internal.view.WindowCallbackWrapper.dispatchTouchEvent(WindowCallbackWrapper.java:60)     at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:2243)     at android.view.View.dispatchPointerEvent(View.java:8343)     at android.view.ViewRootImpl$ViewPostImeInputStage.processPointerEvent(ViewRootImpl.java:4773)     at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:4639)     at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:4197)     at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:4251)     at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:4220)     at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:4331)     at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:4228)     at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:4388)     at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:4197)     at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:4251)     at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:4220)     at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:4228)     at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:4197)     at android.view.ViewRootImpl.deliverInputEvent(ViewRootImpl.java:6564)     at android.view.ViewRootImpl.doProcessInputEvents(ViewRootImpl.java:6481)     at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:6452)     at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:6417)     at android.view.ViewRootImpl$WindowInputEventReceiver.onInputEvent(ViewRootImpl.java:6644)     at android.view.InputEventReceiver.dispatchInputEvent(InputEventReceiver.java:185)     at android.view.InputEventReceiver.nativeConsumeBatchedInputEvents(Native Method)     at android.view ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/overlay/SelectLocationOverlay.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="73" opendate="2016-02-04 10:23:49" fixdate="2016-02-05 11:40:41">
+		<buginformation>
+			<summary>Не открывается диалог выбора целеуказания</summary>
+			<description>В логах   ``` 02-04 13:27:56.841 26402-2656/com.nextgis.forestinspector E/SQLiteLog: (1) near "лесоизменение": syntax error 02-04 13:27:56.841 26402-2656/com.nextgis.forestinspector D/nextgismobile: near "лесоизменение": syntax error (code 1): , while compiling: SELECT _id, objectID, date, forestery, precinct, region, territory FROM fv WHERE status = Новое лесоизменение ORDER BY date DESC ```  Видимно не заковычено значение WHERE </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/TargetingDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="65" opendate="2015-12-26 12:01:12" fixdate="2015-12-26 14:06:25">
+		<buginformation>
+			<summary>При повороте экрана рисуется карта на неактивной вкладке</summary>
+			<description>... чем вызывает зависание приложения у меня секунд на 10. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapViewFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="64" opendate="2015-12-24 16:43:53" fixdate="2015-12-25 11:57:09">
+		<buginformation>
+			<summary>Из главного списка документов можно удалить все документы</summary>
+			<description>Порядок воспроизведения: Если в списке нет заметок, создаем заметку. Щелчком по чекбоксу выделяем любую заметку. В панели ActionMode нажимаем кнопку "Выделить всё". Все элементы списка выделяются, в том числе и те, у которых чекбокс заблокирован. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/DocumentsListAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="62" opendate="2015-12-14 19:40:05" fixdate="2015-12-15 09:42:15">
+		<buginformation>
+			<summary>Падение при попытке указать территорию через список</summary>
+			<description>Переустановил приложение, создал подключение с тестовым логином. Все данные закачались нормально. При создании акта нажал на выбор территории нарушения, в окне выбора территории в FAB нажал Список. Получил падение:  12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime: Process: com.nextgis.forestinspector, PID: 25595 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime: java.lang.IllegalArgumentException: column 'NAME_LV' does not exist 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.database.AbstractCursor.getColumnIndexOrThrow(AbstractCursor.java:303) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.database.CursorWrapper.getColumnIndexOrThrow(CursorWrapper.java:78) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at com.nextgis.forestinspector.activity.SelectParcelsActivity$ParcelCursorAdapter.bindView(SelectParcelsActivity.java:216) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.support.v4.widget.CursorAdapter.getView(CursorAdapter.java:256) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.AbsListView.obtainView(AbsListView.java:2255) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.ListView.measureHeightOfChildren(ListView.java:1263) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.ListView.onMeasure(ListView.java:1175) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1404) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.measureVertical(LinearLayout.java:695) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.onMeasure(LinearLayout.java:588) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.support.v7.internal.widget.ContentFrameLayout.onMeasure(ContentFrameLayout.java:135) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1404) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.measureVertical(LinearLayout.java:695) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.LinearLayout.onMeasure(LinearLayout.java:588) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5137) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.widget.FrameLayout.onMeasure(FrameLayout.java:310) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at com.android.internal.policy.impl.PhoneWindow$DecorView.onMeasure(PhoneWindow.java:2291) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.View.measure(View.java:16540) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl.performMeasure(ViewRootImpl.java:1942) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl.measureHierarchy(ViewRootImpl.java:1132) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1321) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1019) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:5725) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.Choreographer$CallbackRecord.run(Choreographer.java:761) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.Choreographer.doCallbacks(Choreographer.java:574) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.Choreographer.doFrame(Choreographer.java:544) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:747) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.os.Handler.handleCallback(Handler.java:733) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.os.Handler.dispatchMessage(Handler.java:95) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.os.Looper.loop(Looper.java:136) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at android.app.ActivityThread.main(ActivityThread.java:5086) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at java.lang.reflect.Method.invokeNative(Native Method) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at java.lang.reflect.Method.invoke(Method.java:515) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:785) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:601) 12-14 22:35:49.507 25595-25595/com.nextgis.forestinspector E/AndroidRuntime:     at dalvik.system.NativeStart.main(Native Method) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/util/Constants.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/ParcelCursorAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SelectParcelsActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2015-12-14 18:58:22" fixdate="2015-12-26 19:07:26">
+		<buginformation>
+			<summary>При создании акта создается вкладка с пустой фототаблицей, тогда как фототаблица не создавалась</summary>
+			<description>Независимо от того, нажимали ли кнопку "Заполнить фототаблицу". </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/DocumentViewActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/IndictmentCreatorActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2015-12-14 18:55:27" fixdate="2015-12-24 16:49:46">
+		<buginformation>
+			<summary>Торможение интерфейса при возврате из просмотра созданного акта к главному списку документов</summary>
+			<description>Открываем любой акт из главного списка документов и тут же возвращаемся кнопкой Назад к главному списку -- на тестовом логине интерфейс зависает на 3-4 секунды, иной раз и больше. Часто в этот момент экран черный по всей площади программы. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/DocumentsListAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/DocumentsFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/DocumentsListItem.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/DocumentsListLoader.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="56" opendate="2015-12-05 10:13:20" fixdate="2016-01-18 12:45:48">
+		<buginformation>
+			<summary>Экран первой инициализации "зависает"</summary>
+			<description>При первой инициализации происходит длительная процедура загрузки данных. Процедура идет в сервисе передавая в активити события. Если приложение ушло в фон, то активити разрушается. При этом при выходе из фона процесс загрузки может быть завершен, а активити об этом не знает и показывает экран первоначальной настройки.  Перезагрузка приложения помогает. Необходимо что бы по завершению процесса записывался флаг, что все скачано. А при ресторе активити он проверялся и если установлен, показывался бы экран со списком/картой </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/service/InitService.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/MainApplication.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="52" opendate="2015-11-30 08:56:57" fixdate="2016-01-15 11:53:02">
+		<buginformation>
+			<summary>При заполнении фототаблицы теряются данные в документе</summary>
+			<description>Цитата из отчета по тестированию "при заполнении п.п.1-9 Акта о лесонарушении переходим к функции «заполнить фототаблицу». После добавления фотографий возвращаемся в меню акт о лесонарушении, в котором в пунктах с 1 по 9 все ранее записанные текстовые сведения отсутствуют. Приходится повторно заполнять все пункты акта о лесонарушении" </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/DocumentCreatorActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/map/DocumentsLayer.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/ListFillerDialog.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/DocumentViewActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/ListViewerFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/TargetingDialog.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapEditFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/FieldWorksCreatorActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/ParcelCursorAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/datasource/DocumentEditFeature.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/FieldWorksViewFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/PhotoTableFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/overlay/EditTerritoryOverlay.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableFileAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/DocumentsListLoader.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/DocumentsListAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/IndictmentViewFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableCursorAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapViewFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SelectParcelsActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/IndictmentCreatorActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SelectTerritoryActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/SheetViewFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/PhotoTableFillerActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/datasource/DocumentFeature.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/MainApplication.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/util/Constants.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/util/SettingsConstants.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SheetCreatorActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/ListFillerActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/SignDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="51" opendate="2015-11-29 19:26:08" fixdate="2015-12-07 21:04:17">
+		<buginformation>
+			<summary>Включать GPS только при активной вкладке карты</summary>
+			<description>При активной вкладке документов GPS не должен включаться, а то сильно садит батарею. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapViewFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="49" opendate="2015-11-29 19:15:09" fixdate="2015-12-07 17:07:15">
+		<buginformation>
+			<summary>Если вкладка карты не активна - карту не рисовать</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/MapViewFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="45" opendate="2015-11-26 10:59:05" fixdate="2016-01-24 00:27:10">
+		<buginformation>
+			<summary>При темной теме в настройках темные чекбоксы, должны быть белые.</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/util/Constants.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SyncSettingsActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/FIActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/NGWSettingsActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/SyncSettingsFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/NGPreferenceActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/FIPreferenceFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/MainApplication.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/FIPreferencesActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/NGWSettingsFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="39" opendate="2015-11-19 20:23:11" fixdate="2015-11-20 14:04:46">
+		<buginformation>
+			<summary>Ошибки темной темы</summary>
+			<description>1. В фототаблице чекбокс белый, рамка белая, текст введенный белый на белом. 2. В Actionmode иконки должны быть белыми.    ![screenshot_2015-11-19-22-59-55](https://cloud.githubusercontent.com/assets/1708122/11283177/7b47deba-8f14-11e5-9e3d-4acf55850bee.png)    ![screenshot_2015-11-19-23-00-09](https://cloud.githubusercontent.com/assets/1708122/11283178/7b4903a8-8f14-11e5-88fa-8d3fec1cd02b.png)    ![screenshot_2015-11-19-23-00-40](https://cloud.githubusercontent.com/assets/1708122/11283180/7b4aa74e-8f14-11e5-83a3-88e3cfe9fb71.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="37" opendate="2015-11-14 18:14:19" fixdate="2015-11-16 18:21:04">
+		<buginformation>
+			<summary>Падение приложения при просмотре списков таблиц на повороте экрана</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/ListFillerAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2015-11-11 09:54:51" fixdate="2015-11-14 15:18:34">
+		<buginformation>
+			<summary>Странное поведение ведомости перечета</summary>
+			<description>1. Выделяю отметкой строчку - открывается actiontoolbar 2. Возвращаюсь обратно - стартует редактирование  3. Отменяю диалог    Получается строка с отметкой и непонятно что с ней делать.  Ожидаемое поведение: 1. Правка записи выполняется по клику без запуска actionmode (можно добавить рядом с чеком иконку редактирования) 2. ActionMode предназначен для пакетных операций - удалить выделенные, выделить все, удалить все. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/VehicleFillerFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/SelectedItemsAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/ProductionFillerFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/ListViewerFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/ListFillerAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/SheetViewerAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/ProductionFillerActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/ProductionFillerDialog.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/PhotoTableFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/ListFillerFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableFileAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/SheetFillerDialog.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableCursorAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/SignDialog.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/IndictmentActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/PhotoTableAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/ProductionFillerAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/dialog/VehicleFillerDialog.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/ProductionViewerAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/ProductionViewFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/SheetViewFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/datasource/DocumentFeature.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/SimpleDividerItemDecoration.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/VehicleFillerActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/ListViewerAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/fragment/SheetFillerFragment.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/util/Constants.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/VehicleViewerAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/ListFillerActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/SheetFillerAdapter.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/SheetFillerActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/VehicleFillerAdapter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2015-11-11 09:44:42" fixdate="2015-11-12 18:05:59">
+		<buginformation>
+			<summary>При выделении записи в ведомости перечета action bar закрывает строки</summary>
+			<description>![screenshot_2015-11-11-12-51-06](https://cloud.githubusercontent.com/assets/1708122/11088323/7519c11e-8872-11e5-8800-746394dcfcf0.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/CheckListActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="29" opendate="2015-10-16 19:51:02" fixdate="2015-11-06 20:44:32">
+		<buginformation>
+			<summary>Первоначальную загрузку выполнять в сервисе</summary>
+			<description>При повороте экрана прилодение падате, так как активити пересоздается, а ссылка передается в функции загрузки геоданных. Необходимо выполнять работу в сервисе, а активити подключаться к нему для получения процента выполнения и текущей задачи </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/nextgis/forestinspector/util/Constants.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/service/InitService.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/activity/MainActivity.java</file>
+			<file>app/src/main/java/com/nextgis/forestinspector/adapter/InitStepListAdapter.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

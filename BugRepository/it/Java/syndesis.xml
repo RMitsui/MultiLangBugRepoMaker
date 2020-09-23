@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="syndesis">
+	<bug id="4889" opendate="2019-03-14 09:21:14" fixdate="2019-04-02 11:50:58">
+		<buginformation>
+			<summary>OData connector cant delete/update entity</summary>
+			<description>## This is a... &lt;!-- Check ONLY one of the following options with "x" --&gt; &lt;pre&gt;&lt;code&gt; [ ] Feature request [ ] Regression (a behavior that used to work and stopped working in a new release) [x] Bug report  &lt;!-- Please search GitHub for a similar issue or PR before submitting --&gt; [ ] Documentation issue or request &lt;/code&gt;&lt;/pre&gt; &lt;!-- If possible, please choose the appropriate labels for your issue. You find a description of all labels used at https://doc.syndesis.io/#dev-labels --&gt;  ## The problem &lt;!-- Briefly describe the issue you are experiencing (or the feature you want to see implemented on Syndesis). + For BUGS, tell us what you were trying to do and what happened instead. + For NEW FEATURES, describe the _User Persona_ demanding it and its use case. --&gt; When I do a read from OData service (as start step) and then delete, the delete suggests that I should put datamapper in between, but then there's no way to map it (read operation sends it's datashape, but there's nothing in the delete step).   ![delete_op](https://user-images.githubusercontent.com/46523434/54344931-40c5c700-4642-11e9-9911-10d2ad8cbaf2.png) when not using a datamapper, the path is created so that the whole body that read produces is taken by the delete operation as Key predicate, which results into wrong resourcePath.  For update, I can map it, but it takes the Key Predicate without single quatation marks (using Airports(KLAX) instead of Airports('KLAX')), which produces error as well. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/connector/odata/src/main/java/io/syndesis/connector/odata/component/ODataComponent.java</file>
+			<file>app/connector/odata/src/main/java/io/syndesis/connector/odata/customizer/AbstractODataCustomizer.java</file>
+			<file>app/connector/odata/src/main/java/io/syndesis/connector/odata/meta/ODataMetaDataRetrieval.java</file>
+			<file>app/connector/odata/src/test/java/io/syndesis/connector/odata/producer/ODataDeleteTests.java</file>
+			<file>app/connector/odata/src/main/java/io/syndesis/connector/odata/customizer/ODataDeleteCustomizer.java</file>
+			<file>app/connector/odata/src/main/java/io/syndesis/connector/odata/customizer/ODataReadCustomizer.java</file>
+			<file>app/connector/odata/src/test/java/io/syndesis/connector/odata/meta/ODataMetaDataRetrievalTest.java</file>
+			<file>app/connector/odata/src/test/java/io/syndesis/connector/odata/consumer/ODataReadRouteSplitResultsTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2247" opendate="2018-04-05 14:30:34" fixdate="2018-04-10 08:48:40">
+		<buginformation>
+			<summary>Integration data mapper issue</summary>
+			<description>## This is a... &lt;!-- Check ONLY one of the following options with "x" --&gt; &lt;pre&gt;&lt;code&gt; [ ] Feature request [x] Regression (a behavior that used to work and stopped working in a new release) [] Bug report  &lt;!-- Please search GitHub for a similar issue or PR before submitting --&gt; [ ] Documentation issue or request &lt;/code&gt;&lt;/pre&gt;   ## The problem &lt;!-- Briefly describe the issue you are experiencing (or the feature you want to see implemented on Syndesis). + For BUGS, tell us what you were trying to do and what happened instead. + For NEW FEATURES, describe the _User Persona_ demanding it and its use case. --&gt; Can't insert and edit data mapper step between twitter mention and salesforce create/update connections  ## Expected behavior &lt;!-- Describe what the desired behavior would be, enlistin gthe acceptance criteria. --&gt; I am able to add data mapper and edit it later.  ## Screenshot &lt;!-- For features/bugs tackling with UI functionality, drag and drop a screenshot depicting the desired presentation layer or supporting the UX narrative for the new functionality. --&gt;  ## Request and Response Data &lt;!-- Many issues involve both the UI and it's backend, if possible capture relevant request and response data JSON messages and include it here. Request and response data can be gathered from your browser's developer tools on the 'Network' tab.    + As you reproduce the issue, take note of any network requests that are made.    + Requests that result in an error will be highlighted red.    + Click on line in the network tab and then the 'Headers' tab to get the request data  + Click on the 'Preview' or 'Response' tabs to get the response data.    + Pretty print the json too -&gt; http://jsonprettyprint.com/  BE CAREFUL NOT TO INCLUDE ANY USER TOKENS!!!!   Things like connection objects can contain sensitive data in their configuration, make sure to rip these out --&gt;  ## API Endpoints and Schemas &lt;!-- For features or bugfixes entailing data exchanges between the UI and the REST API, enlist the different endpoints available and the payload/response schemas. --&gt;  ## Tasks involved / Steps to Reproduce &lt;!-- Enlist all the acceptance criteria for new features or the steps required to reproduce the bug/regression reported. --&gt; 1. Create integration from Twitter Mention to Salesforce 2. In salesforce select create or update record --&gt; Contact --&gt;TwitterScreenName 3. insert data mapper step with some random mapping, it does not matter what 4. save integration as draft 5. navigate to integrations list 6. select the integration and click on Edit integration 7. note that there is error present - no data mapping step even though there is data mapper 8. click on data mapper step - it shows error 9. delete that data mapper step and try to create new one - it is not possible </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/common/model/src/main/java/io/syndesis/common/model/action/ActionDescriptor.java</file>
+			<file>app/server/endpoint/src/main/java/io/syndesis/server/endpoint/v1/handler/integration/IntegrationHandler.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

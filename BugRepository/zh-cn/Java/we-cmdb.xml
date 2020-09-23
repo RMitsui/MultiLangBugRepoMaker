@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="we-cmdb">
+	<bug id="907" opendate="2020-04-30 01:55:13" fixdate="2020-06-16 04:00:11">
+		<buginformation>
+			<summary>自引用 bug</summary>
+			<description>网络连接的ip地址过滤规则： { IP地址 .(网段)网段 .全局唯一ID } in { 网络连接 .(网段2)网段 -(父网段)网段 .全局唯一ID }   ![image](https://user-images.githubusercontent.com/17095701/82419768-66095d00-9ab1-11ea-83d0-736d1cedb3af.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/impl/CiServiceImpl.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/dto/QueryRequest.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/impl/FilterRuleService.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/config/SpringWebConfig.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/controller/MaintainController.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/FilterRuleService.java</file>
+			<file>cmdb-core/src/test/java/com/webank/cmdb/service/RouteQueryExpressionServiceImplTest.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/repository/AdmCiTypeAttrRepository.java</file>
+			<file>cmdb-core/src/test/java/com/webank/cmdb/service/FilterRuleServiceImplTest.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/impl/FilterRuleServiceImpl.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/impl/RouteQueryExpressionServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="882" opendate="2020-04-27 02:14:47" fixdate="2020-05-18 08:37:16">
+		<buginformation>
+			<summary>删除CI数据报错信息不明确</summary>
+			<description>提供被关联的Key_name或ID</description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/impl/CiServiceImpl.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/interceptor/CiDataInterceptorService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="795" opendate="2020-04-01 14:32:15" fixdate="2020-04-08 13:48:59">
+		<buginformation>
+			<summary>删除CI数据返回成功，实际未删除</summary>
+			<description>**描述您遇到的bug**   删除CI数据返回成功，实际未删除。 ![image](https://user-images.githubusercontent.com/17095701/78149423-9301a200-7468-11ea-9f06-5d4f39a9298b.png)  **如何重现**    **预期行为**    **截图**     **附加** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/interceptor/CiDataInterceptorService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="772" opendate="2020-03-28 06:29:27" fixdate="2020-04-08 13:49:33">
+		<buginformation>
+			<summary>打开业务区域CI点击新增按钮报错</summary>
+			<description>**描述您遇到的bug**   打开业务区域CI点击新增按钮报sql error。 ![image](https://user-images.githubusercontent.com/17095701/77816749-40d71e80-7100-11ea-99aa-cd097f13e6a6.png) [cmdb01.txt](https://github.com/WeBankPartners/we-cmdb/files/4396723/cmdb01.txt)   **如何重现**    **预期行为**    **截图**     **附加** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/impl/FilterRuleService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="752" opendate="2020-03-23 06:50:19" fixdate="2020-03-30 02:32:29">
+		<buginformation>
+			<summary>cmdb插件-查询ci数据服务当查询条件为空时报错</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-plugin/src/main/java/com/webank/plugins/wecmdb/service/WecubeAdapterService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="734" opendate="2020-03-17 09:22:26" fixdate="2020-04-13 06:35:22">
+		<buginformation>
+			<summary>允许为空的属性输入为空时不应校验正则规则</summary>
+			<description>**描述您遇到的bug**   允许为空的属性输入为空时不应校验正则规则。 ![image](https://user-images.githubusercontent.com/17095701/76841508-d7d7e700-6873-11ea-9520-82d0ef17dfcb.png)   **如何重现**    **预期行为**    **截图**     **附加** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/interceptor/CiDataInterceptorService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="733" opendate="2020-03-17 08:13:45" fixdate="2020-04-20 01:54:44">
+		<buginformation>
+			<summary>新增CI属性的ID不应允许数据库关键字</summary>
+			<description>**描述您遇到的bug**   新增CI属性的ID不应允许数据库关键字，如当前属性的ID允许输入为"select"，会导致录入CI数据失败。 ![image](https://user-images.githubusercontent.com/17095701/76835448-149ee080-686a-11ea-8036-3a9fd1230b9a.png) ![image](https://user-images.githubusercontent.com/17095701/76835517-36986300-686a-11ea-9304-0967f571bd3a.png)   **如何重现**    **预期行为**    **截图**     **附加** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/interceptor/CiTypeAttrsInterceptorService.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/exception/BatchChangeException.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="731" opendate="2020-03-17 07:15:09" fixdate="2020-04-01 02:36:01">
+		<buginformation>
+			<summary>取消新增CI数据后密码字段的数据残留</summary>
+			<description>**描述您遇到的bug**   录入新增的CI数据包括密码内容，然后点击“取消”按钮，页面仍显示该数据行以及密码字段的数据. ![image](https://user-images.githubusercontent.com/17095701/76831182-cc7bc000-6861-11ea-826a-e96aa6158625.png)   **如何重现**    **预期行为**    **截图**     **附加** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/controller/ui/helper/UIWrapperService.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/impl/CiServiceImpl.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/CiService.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/controller/ui/UICiDataManagementController.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/interceptor/CiDataInterceptorService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="704" opendate="2020-02-26 08:19:36" fixdate="2020-03-04 01:51:57">
+		<buginformation>
+			<summary>新建ci属性，未提交，新增ci数据时会校验未提交的属性</summary>
+			<description>**描述您遇到的bug**   新建ci属性，未提交，新增ci数据时会校验未提交的属性  **如何重现**  新建ci属性，不提交，ci属性还是notCreated状态，然后去新增ci数据  **预期行为**  不校验这个属性的唯一非空等性质  **截图**    **附加** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/interceptor/CiDataInterceptorService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="696" opendate="2020-02-20 09:22:30" fixdate="2020-02-24 01:02:16">
+		<buginformation>
+			<summary>应用架构设计历史数据查询无数据</summary>
+			<description>描述：应用架构设计，定版之后，查询历史版本，历史版本的CI无数据  原因：定版之后，系统设计的历史数据的guid改变了，子模块关联的还是以前的guid，所以查不出数据  解决方案：查询历史数据的参数由guid改为r_guid</description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/controller/ui/helper/UIWrapperService.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/controller/ui/UICiDataManagementController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="692" opendate="2020-02-20 02:14:33" fixdate="2020-02-28 01:30:08">
+		<buginformation>
+			<summary>异步按钮点击之后需要禁用</summary>
+			<description>**描述您遇到的bug**   需要调后台接口的按钮点击之后没有反应，用户无法确认是否已点击，点击后需要禁用或显示loading状态，防止重复点击  **如何重现**    **预期行为**    **截图**     **附加** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/service/interceptor/CiDataInterceptorService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="670" opendate="2020-02-06 06:19:38" fixdate="2020-04-23 06:55:07">
+		<buginformation>
+			<summary>演示环境的登录问题</summary>
+			<description>**描述您遇到的bug**   1 新建用户登录无需输入登录密码 2 新建用户无法修改登录密码 **如何重现**  1，用系统默认的admin用户登录，此过程无需密码。 2，在权限管理页面，新增一个用户dev1，然后系统返回初始密码是2zYAv7ZK ![image](https://user-images.githubusercontent.com/17263271/73910702-0664b880-48eb-11ea-8c9e-19219204dd58.png) ![image](https://user-images.githubusercontent.com/17263271/73910717-0d8bc680-48eb-11ea-86a9-2f30ae36478d.png) 3，登出admin用户，用新建的dev1用户去登陆，此时并不需要密码即可登录 ![image](https://user-images.githubusercontent.com/17263271/73910780-4035bf00-48eb-11ea-8322-135e354d28b8.png) 4，去修改dev1用户的密码，输入系统返回的初始密码和新密码，返回原密码不对 ![image](https://user-images.githubusercontent.com/17263271/73910883-8a1ea500-48eb-11ea-8dd0-dd61a59fb98a.png)   **预期行为**    **截图**     **附加** </description>
+		</buginformation>
+		<fixedfiles>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/controller/ui/helper/UIUserManagerService.java</file>
+			<file>cmdb-core/src/main/java/com/webank/cmdb/dto/UserAndPasswordDto.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

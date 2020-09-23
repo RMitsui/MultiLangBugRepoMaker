@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="dubbo">
+	<bug id="5442" opendate="2019-12-09 09:01:29" fixdate="2020-02-19 07:49:48">
+		<buginformation>
+			<summary>VERSION_KEY和GROUP_KEY为空时，注册到NACOS的服务名与alibaba实现不一致，导致无法消费。</summary>
+			<description>### Environment  * Dubbo version: latest version * Operating System version: LINUX &amp; WINDOWS * Java version: 1.8  ### Steps to reproduce this issue  必现哦  Pls. provide [GitHub address] to reproduce this issue.  ### Expected Result  VERSION_KEY和GROUP_KEY为空时，注册到NACOS的服务名不带双冒号后缀。  ### Actual Result  What actually happens?  VERSION_KEY和GROUP_KEY为空时，注册到NACOS的服务名有双冒号后缀，与alibaba实现不一致。 alibaba实现是为空时无双冒号后缀。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>dubbo-common/src/main/java/org/apache/dubbo/common/config/configcenter/file/FileSystemDynamicConfiguration.java</file>
+			<file>dubbo-metadata/dubbo-metadata-processor/src/test/java/org/apache/dubbo/metadata/annotation/processing/CompilerInvocationInterceptor.java</file>
+			<file>dubbo-metadata/dubbo-metadata-processor/src/test/java/org/apache/dubbo/metadata/tools/Compiler.java</file>
+			<file>dubbo-common/src/main/java/org/apache/dubbo/common/utils/NetUtils.java</file>
+			<file>dubbo-config/dubbo-config-spring/src/main/java/org/apache/dubbo/config/spring/beans/factory/config/DubboConfigDefaultPropertyValueBeanPostProcessor.java</file>
+			<file>dubbo-common/src/main/java/org/apache/dubbo/config/AbstractMethodConfig.java</file>
+			<file>dubbo-common/src/main/java/org/apache/dubbo/config/ServiceConfigBase.java</file>
+			<file>dubbo-metadata/dubbo-metadata-processor/src/test/java/org/apache/dubbo/metadata/annotation/processing/AnnotationProcessingTestProcessor.java</file>
+			<file>dubbo-metadata/dubbo-metadata-processor/src/test/java/org/apache/dubbo/metadata/annotation/processing/AbstractAnnotationProcessingTest.java</file>
+			<file>dubbo-common/src/main/java/org/apache/dubbo/common/utils/FieldUtils.java</file>
+			<file>dubbo-common/src/test/java/org/apache/dubbo/common/utils/FieldUtilsTest.java</file>
+			<file>dubbo-registry/dubbo-registry-nacos/src/main/java/org/apache/dubbo/registry/nacos/NacosRegistry.java</file>
+			<file>dubbo-common/src/main/java/org/apache/dubbo/common/constants/CommonConstants.java</file>
+			<file>dubbo-metadata/dubbo-metadata-processor/src/test/java/org/apache/dubbo/metadata/tools/TestProcessor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="4991" opendate="2019-09-03 13:43:21" fixdate="2020-02-07 09:40:50">
+		<buginformation>
+			<summary>当配置中心和注册中心在一个zk集群上，zk为未正常初始化问题</summary>
+			<description>- [ ] I have searched the [issues](https://github.com/apache/dubbo/issues) of this repository and believe that this is not a duplicate. - [ ] I have checked the [FAQ](https://github.com/apache/dubbo/blob/master/FAQ.md) of this repository and believe that this is not a duplicate.  ### Environment  * Dubbo version: 2.7.3 * Operating System version: macOS 10.14.6 * Java version: 1.8  ### Steps to reproduce this issue  在我项目中，**配置中心**和**注册中心**都是使用zookeeper，而且是在一个集群上，只是 **path** 和对应的 **username** 和 **password** 不同，但是并未正常初始化两个不同的zk client。  项目启动时： 1、连接配置中心的地址，获取**配置中心**的配置信息 2、在初始化ReferenceBean和ServiceBean，会校验**注册中心**是否初始化  两者都通过 AbstractZookeeperTransporter#connect(URL url) 方法去连接zk  ``` public abstract class AbstractZookeeperTransporter implements ZookeeperTransporter {     //缓存 zk client，key为zk地址     private final Map&lt;String, ZookeeperClient&gt; zookeeperClientMap = new ConcurrentHashMap&lt;&gt;();           @Override     public ZookeeperClient connect(URL url) {         ZookeeperClient zookeeperClient;         List&lt;String&gt; addressList = getURLBackupAddress(url);         // 这个地方会走缓存         if ((zookeeperClient = fetchAndUpdateZookeeperClientCache(addressList)) != null &amp;&amp; zookeeperClient.isConnected()) {             logger.info("find valid zookeeper client from the cache for address: " + url);             return zookeeperClient;         }         。。。     }      ZookeeperClient fetchAndUpdateZookeeperClientCache(List&lt;String&gt; addressList) {          ZookeeperClient zookeeperClient = null;         for (String address : addressList) {             if ((zookeeperClient = zookeeperClientMap.get(address)) != null &amp;&amp; zookeeperClient.isConnected()) {                 break;             }         }         if (zookeeperClient != null &amp;&amp; zookeeperClient.isConnected()) {             //将 zookeeperClient 放入 zookeeperClientMap 缓存中             writeToClientMap(addressList, zookeeperClient);         }         return zookeeperClient;     }     void writeToClientMap(List&lt;String&gt; addressList, ZookeeperClient zookeeperClient) {         for (String address : addressList) {             // 使用 address 作为key             zookeeperClientMap.put(address, zookeeperClient);         }     } } ```  从上边可以看出，在初始化 **配置中心**的 zk client 后，就缓存到了 zookeeperClientMap 中。 当**注册中心**去初始化zk client 时，由于跟**配置中心**在一个集群上，所以 address相同，就会走缓存，返回 **配置中心**的 zk cliient。   **总结**： 如果**配置中心**和**注册中心**在一个集群上，zookeeperClientMap就不能使用address作为key。   **解决方案**： URL信息（配置中心） ![image](https://user-images.githubusercontent.com/13186839/64221021-f42abc80-cefd-11e9-8920-d283ae27e864.png)  URL信息（注册中心） ![image](https://user-images.githubusercontent.com/13186839/64220937-aada6d00-cefd-11e9-8446-69a8f2f95d4a.png)  通过上边两个图可以看出，**配置中心** 和  **注册中心** 传入的 URL信息里边的 **path** 是不相同的，将 zookeeperClientMap 的 key 使用 **address + url.path** 的方式生成，就可以解决这个问题</description>
+		</buginformation>
+		<fixedfiles>
+			<file>dubbo-remoting/dubbo-remoting-zookeeper/src/main/java/org/apache/dubbo/remoting/zookeeper/support/AbstractZookeeperTransporter.java</file>
+			<file>dubbo-remoting/dubbo-remoting-zookeeper/src/test/java/org/apache/dubbo/remoting/zookeeper/support/AbstractZookeeperTransporterTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="4525" opendate="2019-07-10 10:23:32" fixdate="2019-07-12 08:36:55">
+		<buginformation>
+			<summary>TagRouter在设置静态标签的时候无法降级访问到无标签的服务</summary>
+			<description> - [ ] I have searched the issues of this repository and believe that this is not a duplicate.  - [x]  I have checked the FAQ of this repository and believe that this is not a duplicate.  Environment Dubbo version: 2.7.2 Operating System version: Mac OS Java version: 1.8 Steps to reproduce this issue  Infos:  |  IP |  SIDE  |  ENV | STATIC TAG  |     DYNAMIC TAG | | ---- | ---- | ---- | ---- |---- | |    192.168.1.5  |  Consumer |  DEV   |  DEV   |hello| |    192.168.1.6  |   Provider   |  QA   |  QA   | | |    192.168.1.7  |   Provider   |  STABLE |  |   When I config TagRouter like this (in Dubbo admin):  ``` --- force: false runtime: true enabled: true priority: 1 key: hello-service tags:   - name: hello     addresses: ["192.168.1.8","192.168.1.9"] ... ```  when without match dynamic tag and static tag Hope Result:    ``` 192.168.1.5(DEV) =&gt;  192.168.1.7(STABLE) ``` Actual Result:  ``` 192.168.1.5(DEV) =&gt; [NO PROVIDER] ```  原因:  消费方初始化refer时，在ReferenceConfig中会将consumer的配置参数放入一个map(具体参考ReferenceConfig类中第303行`appendParameters(map, consumer)`)，然后在创建代理的时候会合并消费方和提供方的配置参数(参考ReferenceConfig类中第371行`urls.add(ClusterUtils.mergeUrl(url, map));`)，之后在ClusterUtils中尽管会保留提供方的配置，参数，但是在消费方设置了dubbo.tag参数，而提供方未设置dubbo.tag的情况下，导致加了消费方默认的dubbo.tag;  然后在进行标签路由时，由于设置了动态标签路由，但是又没有匹配的提供方实例，最后会获取动态标签中不存在，且动态标签为空的实例（参考TagRouter类中第125~127行，如下） ```  // FAILOVER: return all Providers without any tags.             else {                 List&lt;Invoker&lt;T&gt;&gt; tmp = filterInvoker(invokers, invoker -&gt; addressNotMatches(invoker.getUrl(),                         tagRouterRuleCopy.getAddresses()));                 return filterInvoker(tmp, invoker -&gt; StringUtils.isEmpty(invoker.getUrl().getParameter(Constants.TAG_KEY)));             } ``` 但是由于之前在refer的时候合并了参数，这边尽管Stable下的实例192.168.1.7的ProviderConfig URL中不带Dubbo TAG，这里还是会获取到消费方的默认标签DEV。  解决: 修改判断条件：  ``` return filterInvoker(tmp, invoker -&gt; StringUtils.isEmpty(url.getParameter(Constants.TAG_KEY)? StringUtils.isEmpty(invoker.getUrl().getParameter(Constants.TAG_KEY)) : invoker.getUrl().getParameter(Constants.TAG_KEY).equals(url.getParameter(Constants.TAG_KEY)) ); ```  另外，发现标签路由的常量跟官方文档中不一致，实际上是: ``` org.apache.dubbo.rpc.cluster.TAG_KEY org.apache.dubbo.rpc.FORCE_USE_TAG ``` 能够统一修正为: ``` org.apache.dubbo.rpc.cluster.TAG_KEY org.apache.dubbo.rpc.cluster.FORCE_KEY ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>dubbo-config/dubbo-config-spring/src/test/java/org/apache/dubbo/config/spring/context/annotation/consumer/ConsumerConfiguration.java</file>
+			<file>dubbo-cluster/src/main/java/org/apache/dubbo/rpc/cluster/support/ClusterUtils.java</file>
+			<file>dubbo-config/dubbo-config-spring/src/test/java/org/apache/dubbo/config/spring/beans/factory/annotation/ReferenceAnnotationBeanPostProcessorTest.java</file>
+			<file>dubbo-cluster/src/test/java/org/apache/dubbo/rpc/cluster/support/ClusterUtilsTest.java</file>
+			<file>dubbo-config/dubbo-config-spring/src/test/java/org/apache/dubbo/config/spring/context/annotation/consumer/test/TestConsumerConfiguration.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1089" opendate="2017-12-22 07:45:14" fixdate="2018-04-24 09:07:11">
+		<buginformation>
+			<summary>dispatcher:execution</summary>
+			<description>Dubbo官方的说法是：dispatcher配置为execution时候 只请求消息派发到线程池，不含响应，响应和其它连接断开事件，心跳等消息，直接在IO线程上执行。 但是我在源码中却没有发现其处理逻辑，相反其与all几乎一样，除了在默认的executor找不到时候会去找另外executor和捕捉了异常。  所以具体的execution到底是怎么生效的呢</description>
+		</buginformation>
+		<fixedfiles>
+			<file>dubbo-config/dubbo-config-spring/src/main/java/com/alibaba/dubbo/config/spring/beans/factory/annotation/DubboConfigBindingBeanPostProcessor.java</file>
+			<file>dubbo-remoting/dubbo-remoting-api/src/main/java/com/alibaba/dubbo/remoting/transport/dispatcher/execution/ExecutionChannelHandler.java</file>
+			<file>dubbo-config/dubbo-config-spring/src/main/java/com/alibaba/dubbo/config/spring/beans/factory/annotation/AnnotationInjectedBeanPostProcessor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="543" opendate="2017-08-23 09:33:36" fixdate="2017-10-10 03:49:34">
+		<buginformation>
+			<summary>服务延迟(delay)暴露时存在并发问题</summary>
+			<description>在启用延迟暴露时，同一个工程的多个服务可能会被暴露在不同的端口： 如8个服务在端口20880，2个服务在20881  `public synchronized void export() {         if (provider != null) {             if (export == null) {                 export = provider.getExport();             }             if (delay == null) {                 delay = provider.getDelay();             }         }         if (export != null &amp;&amp; ! export.booleanValue()) {             return;         }         if (delay != null &amp;&amp; delay &gt; 0) {             Thread thread = new Thread(new Runnable() {                 public void run() {                     try {                         Thread.sleep(delay);                     } catch (Throwable e) {                     }                     doExport();                 }             });             thread.setDaemon(true);             thread.setName("DelayExportServiceThread");             thread.start();         } else {             doExport();         }     }          protected synchronized void doExport() {         if (unexported) {             throw new IllegalStateException("Already unexported!");         }      ...   } `</description>
+		</buginformation>
+		<fixedfiles>
+			<file>dubbo-config/dubbo-config-spring/src/main/java/com/alibaba/dubbo/config/spring/ServiceBean.java</file>
+			<file>dubbo-config/dubbo-config-api/src/main/java/com/alibaba/dubbo/config/ServiceConfig.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

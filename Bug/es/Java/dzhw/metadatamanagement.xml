@@ -1,0 +1,1306 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>2639</id>
+		<title>Links in generationDetails.rule and filter.expression do not work anymore</title>
+		<body></body>
+		<created>2020-09-10 14:28:01</created>
+		<closed>2020-09-10 14:28:58</closed>
+	</bug>
+	<bug>
+		<id>2605</id>
+		<title>Question introduction internationalization not working properly</title>
+		<body>For questions the introduction text is not shown properly but as json syntax. [example screenshot](https://files.slack.com/files-pri/TNMPDL5HT-F0162DY79TP/bildschirmfoto_2020-06-26_um_12.31.19.png)  [Example 1 in mdm](https://metadata.fdz.dzhw.eu/#!/en/questions/que-nac2018-ins1-B26.1?page=1&amp;size=10&amp;type=surveys) [Example 2 in mdm](https://metadata.fdz.dzhw.eu/#!/de/questions/que-nac2018-ins1-B42.1?page=1&amp;size=10&amp;type=surveys )  B42_1.json : ``` {   "indexInInstrument": 89,   "instruction": {     "en": null,     "de": null   },   "technicalRespresentation": {     "type": "QML",     "source": "&lt;zofar:page uid=\"B42\" xmlns:zofar=\"http://www.his.de/zofar/xml/questionnaire\" xmlns:display=\"http://www.dzhw.eu/zofar/xml/display\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"&gt;\n&lt;zofar:body uid=\"body\"&gt;\n&lt;zofar:questionSingleChoice uid=\"qsc1\"&gt;\n&lt;zofar:header&gt;\n&lt;zofar:introduction block=\"true\" uid=\"intro\"&gt;Um Doppelbefragungen zu vermeiden, möchten wir - Ihr Einverständnis vorausgesetzt - die von Ihnen in der Befragung gemachten Angaben an die Studienstiftung des deutschen Volkes übermitteln. Ihre Angaben werden ohne Nennung des Hochschulnamens übermittelt. Das Promotionsfach wird nicht mit direktem Namen angegeben, sondern zuvor einer Studienbereichsgruppe zugeordnet. Alle Ortsangaben werden vor Übergabe der Daten gelöscht. Die so organisierten Daten lassen keinen Rückschluss auf Ihre Person zu. Auf diese Weise wird gewährleistet, dass Sie nicht nochmals zu einer ähnlichen Befragung durch die Studienstiftung des deutschen Volkes eingeladen werden.&lt;\/zofar:introduction&gt;\n&lt;zofar:question block=\"true\" uid=\"q1\"&gt;Meine Daten werden zum Zwecke wissenschaftlicher Auswertungen an die Studienstiftung des deutschen Volkes übermittelt.&lt;\/zofar:question&gt;\n&lt;\/zofar:header&gt;\n&lt;zofar:responseDomain itemClasses=\"true\" uid=\"rd\" variable=\"aict02\"&gt;\n&lt;zofar:answerOption label=\"Ja, ich bin damit einverstanden.\" uid=\"ao1\" value=\"1\"/&gt;\n&lt;zofar:answerOption label=\"Nein, ich bin damit nicht einverstanden.\" uid=\"ao2\" value=\"2\"/&gt;\n&lt;\/zofar:responseDomain&gt;\n&lt;\/zofar:questionSingleChoice&gt;\n&lt;\/zofar:body&gt;\n&lt;zofar:transitions&gt;\n&lt;zofar:transition condition=\" afin01a.value or afin01b.value or afin01c.value or afin01d.value or afin01e.value or afin01g.value or afin01h.value or afin01i.value or afin01j.value or afin01k.value or afin01l.value \" target=\"B43\"/&gt;\n&lt;zofar:transition target=\"C34\"/&gt;\n&lt;\/zofar:transitions&gt;\n&lt;\/zofar:page&gt;",     "language": "XML"   },   "successorNumbers": ["C34.1"],   "type": {     "en": "Single Choice",     "de": "Einfachnennung"   },   "introduction": {     "en": "In order to avoid double surveys we would like - with your consent - to pass on the answers you have given in the questionnaire to the Studienstiftung des deutschen Volkes – German Academic Scholarship Foundation. Your details will be transferred without naming the university. The PhD/doctorate discipline will not be named directly, but be assigned to an area of study beforehand. All location information will be deleted before the data is transferred. The data organised in this way cannot be used to identify you personally. In this way, we guarantee that you will not be invited to take part in a similar survey by the Studienstiftung des deutschen Volkes – German Academic Scholarship Foundation.",     "de": "Um Doppelbefragungen zu vermeiden, möchten wir - Ihr Einverständnis vorausgesetzt - die von Ihnen in der Befragung gemachten Angaben an die Studienstiftung des deutschen Volkes übermitteln. Ihre Angaben werden ohne Nennung des Hochschulnamens übermittelt. Das Promotionsfach wird nicht mit direktem Namen angegeben, sondern zuvor einer Studienbereichsgruppe zugeordnet. Alle Ortsangaben werden vor Übergabe der Daten gelöscht. Die so organisierten Daten lassen keinen Rückschluss auf Ihre Person zu. Auf diese Weise wird gewährleistet, dass Sie nicht nochmals zu einer ähnlichen Befragung durch die Studienstiftung des deutschen Volkes eingeladen werden."   },   "questionText": {     "en": "My data will be transmitted for the purpose of scientific evaluation to the Studienstiftung des deutschen Volkes – German Academic Scholarship Foundation.",     "de": "Meine Daten werden zum Zwecke wissenschaftlicher Auswertungen an die Studienstiftung des deutschen Volkes übermittelt."   },   "additionalQuestionText": {     "en": "In order to avoid double surveys we would like - with your consent - to pass on the answers you have given in the questionnaire to the Studienstiftung des deutschen Volkes – German Academic Scholarship Foundation. Your details will be transferred without naming the university. The PhD/doctorate discipline will not be named directly, but be assigned to an area of study beforehand. All location information will be deleted before the data is transferred. The data organised in this way cannot be used to identify you personally. In this way, we guarantee that you will not be invited to take part in a similar survey by the Studienstiftung des deutschen Volkes – German Academic Scholarship Foundation.,My data will be transmitted for the purpose of scientific evaluation to the Studienstiftung des deutschen Volkes – German Academic Scholarship Foundation.,Yes, I agree with that.,No, I do not agree with that.",     "de": "Um Doppelbefragungen zu vermeiden, möchten wir - Ihr Einverständnis vorausgesetzt - die von Ihnen in der Befragung gemachten Angaben an die Studienstiftung des deutschen Volkes übermitteln. Ihre Angaben werden ohne Nennung des Hochschulnamens übermittelt. Das Promotionsfach wird nicht mit direktem Namen angegeben, sondern zuvor einer Studienbereichsgruppe zugeordnet. Alle Ortsangaben werden vor Übergabe der Daten gelöscht. Die so organisierten Daten lassen keinen Rückschluss auf Ihre Person zu. Auf diese Weise wird gewährleistet, dass Sie nicht nochmals zu einer ähnlichen Befragung durch die Studienstiftung des deutschen Volkes eingeladen werden.,Meine Daten werden zum Zwecke wissenschaftlicher Auswertungen an die Studienstiftung des deutschen Volkes übermittelt.,Ja, ich bin damit einverstanden.,Nein, ich bin damit nicht einverstanden."   },   "topic": {     "en": null,     "de": null   },   "conceptIds": null,   "annotations": {     "en": null,     "de": null   } } ```  </body>
+		<created>2020-06-26 11:10:50</created>
+		<closed>2020-06-26 12:05:45</closed>
+	</bug>
+	<bug>
+		<id>2602</id>
+		<title>English dataset report fails for dat-nac2018-ds1$</title>
+		<body>Due to a '\n' in the label of one variable (adsv08ca) pdflatex fails.</body>
+		<created>2020-06-25 09:29:48</created>
+		<closed>2020-06-25 11:20:11</closed>
+	</bug>
+	<bug>
+		<id>2591</id>
+		<title>Sidenav should be hidden when shopping cart is restored</title>
+		<body></body>
+		<created>2020-06-19 08:06:29</created>
+		<closed>2020-06-19 08:09:06</closed>
+	</bug>
+	<bug>
+		<id>2585</id>
+		<title>Difference in the Citation </title>
+		<body>@UteH  and I realized that the CitationHintGenerator makes a difference in the citation. There are two dots following the names at the end of the data curators. This looks irritating.  For example: ![Zitation_zweifachePunkte](https://user-images.githubusercontent.com/37400886/84875369-2b7dea80-b086-11ea-9815-136a714c3a24.png) </body>
+		<created>2020-06-17 08:36:01</created>
+		<closed>2020-06-17 08:55:44</closed>
+	</bug>
+	<bug>
+		<id>2579</id>
+		<title>typos in description of access ways (info i)</title>
+		<body>&gt; Unsere Datenpaketkonfiguration ist gegliedert in: &gt;  &gt;  - download-cuf: nur für Lehrzwecke; stärkerer statistischer Anonymisierungsgrad; zum Download nach Antragsbewilligung) &gt;  - download-suf: stärkerer statistischer Anonymisierungsgrad; zum Download nach Vertragsabschluss)  -&gt; remove the ")"  (en is ok)</body>
+		<created>2020-06-15 14:11:20</created>
+		<closed>2020-06-15 14:18:09</closed>
+	</bug>
+	<bug>
+		<id>2556</id>
+		<title>Delete variables may cause error</title>
+		<body>The project in question was `gra2005` with more than 3000 variables. The error message was "Sorry, etwas ist schief gelaufen" and it deleted only some variables but not all. After 3 or 4 attempts all variables were deleted.</body>
+		<created>2020-05-27 08:27:34</created>
+		<closed>2020-06-16 07:06:38</closed>
+	</bug>
+	<bug>
+		<id>2554</id>
+		<title>Investigate elasticsearch health check errors</title>
+		<body></body>
+		<created>2020-05-26 08:55:52</created>
+		<closed>2020-06-16 08:11:01</closed>
+	</bug>
+	<bug>
+		<id>2526</id>
+		<title>Wrong mouseover for Data Search</title>
+		<body>There is a wrong or at least misleading mouseover for data search: ![mouseover](https://user-images.githubusercontent.com/22055122/77402680-53bfbb00-6daf-11ea-91ff-94499c60df50.png)  Shouldn't it say something like "Klicken, um zur Datensuche zurückzukehren"?</body>
+		<created>2020-03-24 08:12:59</created>
+		<closed>2020-05-07 09:17:35</closed>
+	</bug>
+	<bug>
+		<id>2522</id>
+		<title>Prod client is being built with dev profile</title>
+		<body>This leads to the read banner and the saucelabs logo in the prod system. ![image](https://user-images.githubusercontent.com/12323832/76415152-f84a0200-6398-11ea-8e40-6dd8e018f876.png) </body>
+		<created>2020-03-11 12:03:24</created>
+		<closed>2020-03-11 12:45:03</closed>
+	</bug>
+	<bug>
+		<id>2517</id>
+		<title>survey.geographicCoverages are not displayed anymore</title>
+		<body>The geographic coverage of surveys which have more than one entry in geographicCoverages is not displayed anymore. It has been accidentally removed during the rework of the GUI. Be aware that `geographicCoverage.description` can now contain markdown.</body>
+		<created>2020-03-02 11:28:18</created>
+		<closed>2020-03-25 10:04:36</closed>
+	</bug>
+	<bug>
+		<id>2493</id>
+		<title>Study List Resource in public API returns 500</title>
+		<body>This is caused by: Jest does not support Elasticsearch 7.x =&gt; we need to switch to RestHighLevelClient</body>
+		<created>2020-01-24 20:59:59</created>
+		<closed>2020-01-27 13:51:02</closed>
+	</bug>
+	<bug>
+		<id>2478</id>
+		<title>Remove hyphenator from copied values</title>
+		<body>Currently we have hyphens in the DB at least for stu-gsl2015 in the title and description. This happens when u copy and paste from the MDM.</body>
+		<created>2019-12-20 12:14:19</created>
+		<closed>2020-01-27 14:34:23</closed>
+	</bug>
+	<bug>
+		<id>2445</id>
+		<title>Links in generationDetails.rule (Stata) are broken</title>
+		<body>Since the introduction of shadow copies the links do not work anymore...</body>
+		<created>2019-11-11 11:26:50</created>
+		<closed>2020-01-28 13:45:49</closed>
+	</bug>
+	<bug>
+		<id>2430</id>
+		<title>Not all release managers get release notification</title>
+		<body>@anneweber did not get release notifications for the last 2 releases, whereas I got them. I suspect that the issue is at her side, but I'm not sure, so I create this issue.</body>
+		<created>2019-10-28 13:34:16</created>
+		<closed>2019-10-28 13:43:25</closed>
+	</bug>
+	<bug>
+		<id>2382</id>
+		<title>Links to the MDM in Twitter</title>
+		<body>Since Twitter accepts no "$" in links, it is not possible to set a link to a study detail page in twitter.  ![grafik](https://user-images.githubusercontent.com/17981185/65488683-f56e5a00-dea9-11e9-8d1f-491c44d2eae5.png)  </body>
+		<created>2019-09-24 07:03:19</created>
+		<closed>2020-06-16 06:57:03</closed>
+	</bug>
+	<bug>
+		<id>2365</id>
+		<title>Cannot browse previous attachment versions</title>
+		<body>Clicking next and previous in the attachment versions dialogs does not increase/decrease the page number...</body>
+		<created>2019-09-11 12:24:35</created>
+		<closed>2019-09-11 12:27:46</closed>
+	</bug>
+	<bug>
+		<id>2351</id>
+		<title>when clicking on study details page and going back the study overview does not load correctly in safari on ios</title>
+		<body>![image](https://user-images.githubusercontent.com/1101547/63753115-bea92200-c8b2-11e9-9d6d-2bbb80a19509.png) </body>
+		<created>2019-08-27 08:06:19</created>
+		<closed>2019-09-25 13:55:47</closed>
+	</bug>
+	<bug>
+		<id>2345</id>
+		<title>Project shadows without release cause NPE</title>
+		<body>If the publisher releases a project and immediately unreleases it afterwards then the shadow copy of the project does not contain a release which cause NPEs on the next release...</body>
+		<created>2019-08-20 13:40:48</created>
+		<closed>2019-08-21 11:28:15</closed>
+	</bug>
+	<bug>
+		<id>2331</id>
+		<title>Editing a study on the study details page requires a selected project</title>
+		<body>Clicking edit directly on the search cards does not require a selected project which is ok, because the access manager can get the project from the domain object....</body>
+		<created>2019-08-12 10:58:32</created>
+		<closed>2019-08-13 08:37:41</closed>
+	</bug>
+	<bug>
+		<id>2318</id>
+		<title>publication cannot be uploaded if studySerieses.de contains whitespace (Student Life Cycle)</title>
+		<body>Error message:   &gt; Die Publikation mit FDZ-ID pub-Mentges.2018$ wurde nicht gespeichert! &gt;     Es gibt keine Studie mit der Studienreihe ""!    [relatedPublications.xlsx](https://github.com/dzhw/metadatamanagement/files/3456646/relatedPublications.xlsx) </body>
+		<created>2019-08-01 12:22:57</created>
+		<closed>2019-08-01 12:53:10</closed>
+	</bug>
+	<bug>
+		<id>2313</id>
+		<title>allow title breaks in dataset report </title>
+		<body></body>
+		<created>2019-07-31 10:10:34</created>
+		<closed>2019-08-29 11:34:43</closed>
+	</bug>
+	<bug>
+		<id>2311</id>
+		<title>Clear filters when logging off</title>
+		<body></body>
+		<created>2019-07-31 09:14:48</created>
+		<closed>2019-08-30 12:35:34</closed>
+	</bug>
+	<bug>
+		<id>2282</id>
+		<title>As public User I cannot see the instruments of ssy21 although they are released</title>
+		<body>https://metadata.fdz.dzhw.eu/#!/de/studies/stu-ssy21$?version=2.0.0   Rerelease fixed the problem. But why </body>
+		<created>2019-07-02 12:32:51</created>
+		<closed>2019-08-01 13:47:33</closed>
+	</bug>
+	<bug>
+		<id>2269</id>
+		<title>changing filename of versioned file causes duplicates which one does not see when logged in</title>
+		<body>see for example https://metadata.fdz.dzhw.eu/#!/de/instruments/ins-bst02-ins1$?version=1.0.0</body>
+		<created>2019-06-20 14:05:07</created>
+		<closed>2019-06-21 14:15:09</closed>
+	</bug>
+	<bug>
+		<id>2261</id>
+		<title>cannot unrelease in edge</title>
+		<body>It shortly unreleases and then the status button is green again and reads "released". If I manually reload the page it's shows correctly that it's unreleased.</body>
+		<created>2019-06-18 09:45:39</created>
+		<closed>2019-06-18 12:02:57</closed>
+	</bug>
+	<bug>
+		<id>2255</id>
+		<title>Variablereport: some variables span 2 pages but the second is essentially empty</title>
+		<body>ausbmut bervat</body>
+		<created>2019-06-17 08:57:29</created>
+		<closed>2019-06-24 09:28:39</closed>
+	</bug>
+	<bug>
+		<id>2251</id>
+		<title>Variable report: fix whitespace</title>
+		<body>- Currently no whitespace between `Prozent` and `(gültig)` - ~~Currently no linebreak between questionText and additionalQuestiontext~~ see #2254, #2253 these attributes are not used in the report - Maybe add linebreak in title after `Variablendokumentation:` instead of just a single space</body>
+		<created>2019-06-17 08:41:41</created>
+		<closed>2019-06-20 15:33:10</closed>
+	</bug>
+	<bug>
+		<id>2215</id>
+		<title>Dataset report upload protocol still shows the failure message for the already uploaded file </title>
+		<body>- i have uploaded Variablelist.tex file but the error shows that i have not uploaded it  - remove the failure message for the uploaded file - correct the failure count </body>
+		<created>2019-05-10 10:56:54</created>
+		<closed>2019-08-20 08:17:27</closed>
+	</bug>
+	<bug>
+		<id>2211</id>
+		<title>Filter by related publications shows too many studies</title>
+		<body>When you filter studies by related publication the filter shows more studies than available...</body>
+		<created>2019-05-07 08:06:18</created>
+		<closed>2019-05-08 15:41:32</closed>
+	</bug>
+	<bug>
+		<id>2187</id>
+		<title>Logged in users can open sites of project when another project is chosen</title>
+		<body>If a project is already chosen via the project chooser and I directly enter a url, e.g. https://metadatamanagement-test.cfapps.io/#!/en/data-sets/dat-gra2005-ds3$/edit , I do not get redirected to https://metadatamanagement-test.cfapps.io/#!/en/search?page=1 but https://metadatamanagement-test.cfapps.io/#!/en/data-sets/dat-gra2005-ds3$/edit is opened as if the project gra2005 was chosen. When not realising this and trying to release, of course the version of the chosen project is shown, which is confusing.</body>
+		<created>2019-04-17 14:09:29</created>
+		<closed>2020-06-16 07:49:57</closed>
+	</bug>
+	<bug>
+		<id>2169</id>
+		<title>shadow copy bug: study appears twice when searching for variables</title>
+		<body>I searched for variables and filtered for - study series - accessWays - ~~survey~~ study  -&gt; ssy21 appears twice   ![grafik](https://user-images.githubusercontent.com/18573122/55935718-9935b780-5c34-11e9-875a-4b140705b9c0.png)  not sure if this is already in progress.</body>
+		<created>2019-04-11 06:36:53</created>
+		<closed>2019-04-11 16:18:52</closed>
+	</bug>
+	<bug>
+		<id>2163</id>
+		<title>Link from dataset to survey does not work (empty)</title>
+		<body></body>
+		<created>2019-04-09 12:04:23</created>
+		<closed>2019-04-11 12:15:34</closed>
+	</bug>
+	<bug>
+		<id>2158</id>
+		<title>Async validator for attachment upload doesn't work anymore.</title>
+		<body>We use an async validator on file pickers to check if a file with the same name already exists. This validator doesn't seem to work for some masks anymore and the user is able to upload files with invalid names resulting in a server exception.</body>
+		<created>2019-04-09 07:57:47</created>
+		<closed>2019-04-11 14:32:35</closed>
+	</bug>
+	<bug>
+		<id>2151</id>
+		<title>validation error when uploading questions with images</title>
+		<body>https://github.com/dzhw/gra2005-metadata/tree/master/questions</body>
+		<created>2019-04-08 12:25:46</created>
+		<closed>2019-04-09 11:28:26</closed>
+	</bug>
+	<bug>
+		<id>2140</id>
+		<title>session based loading of shopping cart causes trouble when order is already completed (via api)</title>
+		<body>**Error description / Steps to reproduce** When visiting the MDM the last shopping cart is loaded via active session. When this loaded shopping cart is already completed (via external API request f.e.) you aren't able to modify it anymore.  1. Put any product in the shopping cart 2. Confirm order which redirects you to DLP 3. Complete order in DLP which sets the status to "COMPLETED" (via API) when application is finished - or "fake" this step with calling the API manualy to set the order status to "COMPLETED" 4. Return to MDM (f.e. you want to place another order) 5. You will see your already "COMPLETED" shopping cart (loaded via session/cookie) and you are not able to modify it anymore (not clearing the shopping cart nor adding new items). On any request regarding a update to the shopping cart the AJAX endpoint responses with the error "order-management.error.order-already-completed"  As a result you are not able to create a new shopping cart nor clearing the existing and therefore you're not able to proceed.  **Proposed solution** When loading a shopping cart (via session or id in url) check if the order is already in "COMPLETED" state and create a new shopping cart when this case is true.  **Screenshots** ![image](https://user-images.githubusercontent.com/8781699/55476051-d20ed480-5615-11e9-8685-9ab1477bd25e.png) ![image](https://user-images.githubusercontent.com/8781699/55476075-dfc45a00-5615-11e9-89db-43f969b1be7a.png)   </body>
+		<created>2019-04-03 11:41:38</created>
+		<closed>2019-04-08 12:35:54</closed>
+	</bug>
+	<bug>
+		<id>2139</id>
+		<title>Version is null if user unreleases a project while a shadow copy task is queued</title>
+		<body>If a shadow copy task is queued for a project, but the user unreleases the project before the task could be executed the version is removed and the process runs into a `NullPointerException`. We need to read the version from Javers instead.</body>
+		<created>2019-04-03 10:24:18</created>
+		<closed>2019-04-03 13:45:11</closed>
+	</bug>
+	<bug>
+		<id>2129</id>
+		<title>Project ids get invalid with postfix of shadow version</title>
+		<body>size validation fails</body>
+		<created>2019-03-29 13:13:24</created>
+		<closed>2019-04-03 13:45:54</closed>
+	</bug>
+	<bug>
+		<id>2128</id>
+		<title>Dataprovider sees project shadow ids in project chooser</title>
+		<body></body>
+		<created>2019-03-29 13:12:08</created>
+		<closed>2019-03-29 15:04:53</closed>
+	</bug>
+	<bug>
+		<id>2127</id>
+		<title>Clear on Autocomplete does not set the form dirty</title>
+		<body>Currently when editing a survey or study and I click the clear button of an autocomplete then it does not set the form dirty leading to no question if I leave the view...</body>
+		<created>2019-03-29 11:34:27</created>
+		<closed>2019-04-09 09:47:53</closed>
+	</bug>
+	<bug>
+		<id>2124</id>
+		<title>Filter by variable.panelIdentifier displays outdated shadow</title>
+		<body>If I am not authenticated and filter for a panelIdentifier I see outdated shadows: https://metadata.fdz.dzhw.eu/#!/de/search?page=1&amp;type=variables&amp;panel-identifier=gra2005-ds1-dem08</body>
+		<created>2019-03-29 09:46:49</created>
+		<closed>2019-04-08 12:39:55</closed>
+	</bug>
+	<bug>
+		<id>2121</id>
+		<title>Investigate: Shadow copy queue items get not processed after container restart</title>
+		<body>...it seems that a locked shadow copy queue item is not processed and remains in the queue for ever if something broke the processing thread (e.g. container restart).</body>
+		<created>2019-03-28 07:47:02</created>
+		<closed>2019-04-01 10:01:33</closed>
+	</bug>
+	<bug>
+		<id>2120</id>
+		<title>Handle out-of-memory issues on prod during creation of search documents</title>
+		<body>Currently each container has 1GB RAM due to the increase of variables in gra2005 we get out-of-memory-exceptions when the StudySearchDocument is indexed...</body>
+		<created>2019-03-27 18:54:00</created>
+		<closed>2019-06-20 13:30:30</closed>
+	</bug>
+	<bug>
+		<id>2118</id>
+		<title>No wait cursor (blockui) when navigating to details pages</title>
+		<body>...especially study details for gra2005 take a while where the users sees no wait cursor.</body>
+		<created>2019-03-27 17:08:00</created>
+		<closed>2019-03-29 15:04:13</closed>
+	</bug>
+	<bug>
+		<id>2117</id>
+		<title>Number of panel variables displayed at "related objects" is not correct</title>
+		<body>Example 1:  https://metadata.fdz.dzhw.eu/#!/en/variables/var-gsl2008-ds1-cfut03$?version=1.0.0 --&gt; there should be 6 panel variables --&gt; https://metadata.fdz.dzhw.eu/#!/en/search?page=1&amp;type=variables&amp;data-set=dat-gsl2008-ds1$-1.0.0&amp;panel-identifier=gsl2008-ds1-fut03&amp;study=stu-gsl2008$-1.0.0  --&gt; there are only 3 panel variables  Example 2: https://metadata.fdz.dzhw.eu/#!/en/variables/var-gsl2008-ds1-cgoa01o$?version=1.0.0 --&gt; there should be 4 panel variables --&gt; https://metadata.fdz.dzhw.eu/#!/en/search?page=1&amp;type=variables&amp;data-set=dat-gsl2008-ds1$-1.0.0&amp;panel-identifier=gsl2008-ds1-goa01o&amp;study=stu-gsl2008$-1.0.0 --&gt; there are only 2 panel variables </body>
+		<created>2019-03-27 14:34:05</created>
+		<closed>2019-04-01 05:47:46</closed>
+	</bug>
+	<bug>
+		<id>2115</id>
+		<title>"Whitelabel Error Page" for attachments</title>
+		<body>Noticed during the update of metadata for gra2005 (Version 2.0.0; no re-release yet): When I upload attachments, they are available first. After a certain time, the following error message appears:  &gt; **Whitelabel Error Page** &gt; This application has no explicit mapping for /error, so you are seeing this as a fallback. &gt;  &gt; Wed Mar 27 07:09:30 UTC 2019 &gt; There was an unexpected error (type=Internal Server Error, status=500). &gt; No contentType data for this GridFS file  Examples: - https://metadata.fdz.dzhw.eu/public/files/data-sets/dat-gra2005-ds1$/attachments/dsreport-gra2005-ds1.pdf - https://metadata.fdz.dzhw.eu/public/files/instruments/ins-gra2005-ins3$/attachments/gra2005_W3_Main_Questionnaire_de.pdf - https://metadata.fdz.dzhw.eu/public/files/instruments/ins-gra2005-ins3$/attachments/gra2005_W2-3_Documentation_ComparisonFigure_de.pdf  ---  For the domain object "instruments", the problem only occurs with instrument 3. For instrument 1 and 2, most documents from version 1.0.0 were retained, but partially renewed. Everything works there.  Examples: - https://metadata.fdz.dzhw.eu/public/files/instruments/ins-gra2005-ins1$/attachments/gra2005_W1_VariableQuestionnaire_de.pdf - https://metadata.fdz.dzhw.eu/public/files/instruments/ins-gra2005-ins2$/attachments/gra2005_W2_VariableQuestionnaire_en.pdf  ---  For the domain objekt "study" it works as well - https://metadata.fdz.dzhw.eu/public/files/studies/stu-gra2005$/attachments/gra2005_Overview_en.pdf (but the other problem exists: https://github.com/dzhw/metadatamanagement/issues/2114)  ---  In the released version 1.0.0 the problem does not seem to exist, e.g. https://metadata.fdz.dzhw.eu/public/files/data-sets/dat-gra2005-ds1$-1.0.0/attachments/dsreport-gra2005-ds1.pdf  (@rbirkelbach )</body>
+		<created>2019-03-27 07:59:04</created>
+		<closed>2019-03-28 09:13:01</closed>
+	</bug>
+	<bug>
+		<id>2114</id>
+		<title>Doc­u­ments re­lated to the Study are not displayed</title>
+		<body>For the not yet published update of gra2005 the uploaded "documents re­lated to the study" are not displayed: https://metadata.fdz.dzhw.eu/#!/de/studies/stu-gra2005$ (In the shadow copy v1.0.0 everything is fine, in the test system as well.)  Maybe the problem will be solved when the study is re-released?  </body>
+		<created>2019-03-26 12:38:03</created>
+		<closed>2019-03-28 09:12:39</closed>
+	</bug>
+	<bug>
+		<id>2110</id>
+		<title>Change hint message when unreleasing a project</title>
+		<body>Now that we have shadow copies the following hint message should be changed, because the project is still visible for mdm users:  ![image](https://user-images.githubusercontent.com/22055122/54908186-a0945b80-4ee7-11e9-80c9-8eb214089b12.png)  </body>
+		<created>2019-03-25 09:22:59</created>
+		<closed>2019-03-29 10:07:46</closed>
+	</bug>
+	<bug>
+		<id>2098</id>
+		<title>Handle dara errors for existing dois</title>
+		<body>Dara's API seems to have changed. Currently we sometimes get a 400 with "Resource's metadata updated. Registration/remint failed!" in the body.</body>
+		<created>2019-03-20 11:19:18</created>
+		<closed>2019-03-20 12:07:19</closed>
+	</bug>
+	<bug>
+		<id>2091</id>
+		<title>Removing a survey from instrument.surveys or dataSet.surveys cannot be saved</title>
+		<body>The button remains grey in instrument edit and data set edit, if I remove a survey...</body>
+		<created>2019-03-15 11:03:03</created>
+		<closed>2019-03-29 09:58:11</closed>
+	</bug>
+	<bug>
+		<id>2074</id>
+		<title>Long titles in "Related Objects" (Verbundene Objekte) are not truncated anymore</title>
+		<body>![image](https://user-images.githubusercontent.com/12323832/53871100-d71f3a80-3ffb-11e9-91d1-13ed1638fa26.png) </body>
+		<created>2019-03-06 09:38:39</created>
+		<closed>2019-03-08 10:38:20</closed>
+	</bug>
+	<bug>
+		<id>2061</id>
+		<title>Handle empty data sets in data set report service</title>
+		<body>Currently we get a server side exception and the user waits forever...  `   2019-02-27T14:14:22.78+0100 [APP/PROC/WEB/0] OUT at java.util.Optional.get(Optional.java:135)    2019-02-27T14:14:22.78+0100 [APP/PROC/WEB/0] OUT at eu.dzhw.fdz.metadatamanagement.datasetmanagement.service.DataSetReportService.addStudyAndDataSetAndLastRelease(DataSetReportService.java:337) `</body>
+		<created>2019-02-27 13:16:13</created>
+		<closed>2019-03-05 09:28:49</closed>
+	</bug>
+	<bug>
+		<id>2055</id>
+		<title>Variablereport files missing</title>
+		<body>When uploading the template folder I sometimes get these errors:  &gt; The uploaded files for the data set report were not complete. The missing file is: Main.tex &gt; The uploaded files for the data set report were not complete. The missing file is: variables/Variable.tex &gt; The uploaded files for the data set report were not complete. The missing file is: Variablelist.tex &gt; Tex file creation cancelled! </body>
+		<created>2019-02-25 10:09:56</created>
+		<closed>2019-03-19 09:09:38</closed>
+	</bug>
+	<bug>
+		<id>2051</id>
+		<title>dataset report crashes after uploading template</title>
+		<body></body>
+		<created>2019-02-21 13:41:08</created>
+		<closed>2019-02-27 09:36:04</closed>
+	</bug>
+	<bug>
+		<id>2029</id>
+		<title>survey: field period can end before it started</title>
+		<body>The field period had been entered correctly. I edited the field period and was able to put the end date before the start date. ![grafik](https://user-images.githubusercontent.com/18573122/52554433-1e445200-2de7-11e9-882c-a95a9add4ebd.png)  (error toast only when trying to save) ![grafik](https://user-images.githubusercontent.com/18573122/52554659-d114b000-2de7-11e9-8490-0049c4c0f6fc.png)  reported by @TinaOe95 </body>
+		<created>2019-02-11 09:29:09</created>
+		<closed>2019-02-13 10:24:27</closed>
+	</bug>
+	<bug>
+		<id>2016</id>
+		<title>No asterisk on subDataSet.citationHint</title>
+		<body>...although it is mandatory.</body>
+		<created>2019-02-05 08:42:54</created>
+		<closed>2019-02-11 13:53:28</closed>
+	</bug>
+	<bug>
+		<id>2015</id>
+		<title>instrument: english attributes are not mandatory</title>
+		<body>at least in the test system english attributes are not mandatory despite the asterisk.  ![grafik](https://user-images.githubusercontent.com/18573122/52261180-c4481600-2928-11e9-8cc9-968cf680b034.png) </body>
+		<created>2019-02-05 08:32:54</created>
+		<closed>2019-02-05 09:25:28</closed>
+	</bug>
+	<bug>
+		<id>2010</id>
+		<title>Do not restore shopping-cart before redirect</title>
+		<body>Currently the location is updated right before the redirect to the DLP which triggers the restore shopping cart state...</body>
+		<created>2019-02-04 15:59:44</created>
+		<closed>2019-02-13 10:13:02</closed>
+	</bug>
+	<bug>
+		<id>1999</id>
+		<title>Badges on search result cards containing the ids are cropped</title>
+		<body>Especially here: https://metadata.fdz.dzhw.eu/#!/de/search?page=1&amp;type=related_publications  Seems to be caused by .fdz-truncate-string...</body>
+		<created>2019-01-30 12:55:26</created>
+		<closed>2019-02-01 12:33:51</closed>
+	</bug>
+	<bug>
+		<id>1998</id>
+		<title>Project settings are changeable after project release</title>
+		<body>It is possible to change required fields and ready state for said fields in the project cockpit after a project has been released.  Desired changes: - Disable modification of required fields in project settings and the metadata state fields on the status page. - It should still be possible to add (but not remove) users as publishers or data providers (under the current rule set). - It should still be possible to unrelease a project. </body>
+		<created>2019-01-30 09:09:17</created>
+		<closed>2019-02-01 12:34:09</closed>
+	</bug>
+	<bug>
+		<id>1996</id>
+		<title>Unable to edit studies when multiple studies are displayed</title>
+		<body>Currently when you do not select a project you will see many study search results but only one is used for granting access or rejecting access since there is a global transition hook which triggers the access check.  The same happens for surveys, data sets and instruments.</body>
+		<created>2019-01-29 12:30:21</created>
+		<closed>2019-01-31 14:05:58</closed>
+	</bug>
+	<bug>
+		<id>1992</id>
+		<title>Bug: Assign and Release buttons only update after a page refresh after assigning yourself</title>
+		<body></body>
+		<created>2019-01-25 13:06:03</created>
+		<closed>2019-02-04 20:52:12</closed>
+	</bug>
+	<bug>
+		<id>1984</id>
+		<title>Handle users correctly which have both roles "DATA_PROVIDER" and "PUBLISHER"</title>
+		<body>Currently users who have both roles cannot work as data provider in a project. The access service rejects them.</body>
+		<created>2019-01-22 12:32:23</created>
+		<closed>2019-01-24 14:47:51</closed>
+	</bug>
+	<bug>
+		<id>1982</id>
+		<title>Deal with long running test cases</title>
+		<body>Currently our build errors due to not producing any console out put for more than 10 minutes: https://travis-ci.org/dzhw/metadatamanagement/jobs/482628692#L966  We need to split up the tests so that they produce out put more frequently.</body>
+		<created>2019-01-22 10:56:04</created>
+		<closed>2019-01-25 12:51:27</closed>
+	</bug>
+	<bug>
+		<id>1976</id>
+		<title>Icons (study, ....) are missing in IE</title>
+		<body>On initial load they are present, but when u use the app for a while they disappear.... ![image](https://user-images.githubusercontent.com/12323832/51477627-511b9d00-1d89-11e9-81c6-9292eb96a43f.png)  </body>
+		<created>2019-01-21 13:32:26</created>
+		<closed>2019-02-04 14:56:43</closed>
+	</bug>
+	<bug>
+		<id>1966</id>
+		<title>A publisher or dataprovider I should not get the discard the changes pop up when creating studies or data sets</title>
+		<body></body>
+		<created>2019-01-17 12:13:08</created>
+		<closed>2019-02-13 10:34:00</closed>
+	</bug>
+	<bug>
+		<id>1964</id>
+		<title>As a user, I don't want a project that has been deleted selected when returning to the site</title>
+		<body>When the selected project is loaded from the local storage when I return to the site, after it had been deleted elsewhere, the site should check if it still exists and unselect when not. Tested in: Edge</body>
+		<created>2019-01-17 07:53:51</created>
+		<closed>2019-02-13 10:17:12</closed>
+	</bug>
+	<bug>
+		<id>1952</id>
+		<title>Creating metadata (e.g. instruments) is possible via link although the type is not expected</title>
+		<body></body>
+		<created>2019-01-10 12:56:57</created>
+		<closed>2019-02-13 10:20:09</closed>
+	</bug>
+	<bug>
+		<id>1936</id>
+		<title>Variable search filter and question search filter show no results</title>
+		<body>Kompaed has variable labels and question texts only in German. This breaks the current implementation of the search filter.</body>
+		<created>2018-12-21 09:18:17</created>
+		<closed>2019-01-07 09:45:58</closed>
+	</bug>
+	<bug>
+		<id>1927</id>
+		<title>Focusing the userlist input in the cockpit for the first time after a load unfocuses the input again</title>
+		<body>* Prevent the unfocusing issue</body>
+		<created>2018-12-13 14:57:56</created>
+		<closed>2019-01-07 10:29:57</closed>
+	</bug>
+	<bug>
+		<id>1924</id>
+		<title>Prevent elasticsearch requests from being cached so Internet Explorer doesn't show wrong data</title>
+		<body>* Add cache control headers to elasticsearch replies ([https://stackoverflow.com/q/32261000](https://stackoverflow.com/q/32261000))</body>
+		<created>2018-12-13 13:09:04</created>
+		<closed>2018-12-13 13:35:07</closed>
+	</bug>
+	<bug>
+		<id>1923</id>
+		<title>In Internet Explorer 11, on the Study details page, the title in the Toolbar is a link to `undefined`</title>
+		<body>* Correct or remove the link in the toolbar</body>
+		<created>2018-12-13 12:32:16</created>
+		<closed>2019-01-09 09:55:29</closed>
+	</bug>
+	<bug>
+		<id>1922</id>
+		<title>When I delete an element in the study details view, it doesn't disappear until I refresh the page</title>
+		<body>* Automatically refresh the view after deletion</body>
+		<created>2018-12-13 12:08:50</created>
+		<closed>2019-01-18 13:46:39</closed>
+	</bug>
+	<bug>
+		<id>1898</id>
+		<title>Forced to provide first and last name during language configuration in user settings</title>
+		<body>A user who only wants to change the language on "Access for Data Providers" &gt; "Edit Account" must also provide first and last name to enable the save button.</body>
+		<created>2018-12-03 09:23:23</created>
+		<closed>2018-12-05 14:25:12</closed>
+	</bug>
+	<bug>
+		<id>1877</id>
+		<title>Bug in confirmation mail when added to a project</title>
+		<body>There is a typo in the salutation:  ![image](https://user-images.githubusercontent.com/31613371/49006284-0a367000-f169-11e8-9147-87e2a3e2ce71.png) </body>
+		<created>2018-11-26 09:50:52</created>
+		<closed>2018-11-26 09:59:35</closed>
+	</bug>
+	<bug>
+		<id>1875</id>
+		<title>Data providers should not see "new project" plus button</title>
+		<body></body>
+		<created>2018-11-23 14:31:27</created>
+		<closed>2018-11-26 10:34:34</closed>
+	</bug>
+	<bug>
+		<id>1861</id>
+		<title>study detail page: edit and delete buttons visible for datasets after release</title>
+		<body>![grafik](https://user-images.githubusercontent.com/18573122/48565984-0188a300-e8fa-11e8-9a6b-7a8021899d76.png)  I cannot edit the objects (error message), but I can see the edit and delete buttons. ![grafik](https://user-images.githubusercontent.com/18573122/48566043-267d1600-e8fa-11e8-9ee6-94832c628711.png)  We have had the problem before for surveys in #1646 and fixed in #1615</body>
+		<created>2018-11-15 16:17:16</created>
+		<closed>2018-11-22 12:47:53</closed>
+	</bug>
+	<bug>
+		<id>1859</id>
+		<title>(Re-)Upload all dataset attachments and instrument attachments</title>
+		<body>Currently we have files without a contentType in the mongodb which leads to an exception by spring data.  Simply uploading the attachments again should fix the issue...  The following query must not return any result: `db.getCollection('fs.files').find({"contentType": null, "metadata._contentType": null})`  </body>
+		<created>2018-11-13 10:57:29</created>
+		<closed>2018-11-13 13:48:28</closed>
+	</bug>
+	<bug>
+		<id>1849</id>
+		<title>Dataset report: standardisation of the font in the tables</title>
+		<body>![datasetreport_font](https://user-images.githubusercontent.com/17066262/48341180-b60d9500-e66c-11e8-81a6-b81212af1a08.jpg) ![image](https://user-images.githubusercontent.com/18573122/48354321-b2403980-e691-11e8-8421-99f0af164cae.png)   - text (Arial) vs. numbers (?) -&gt; seems messed up - 100 (example see above)</body>
+		<created>2018-11-12 10:20:23</created>
+		<closed>2018-12-17 15:08:25</closed>
+	</bug>
+	<bug>
+		<id>1848</id>
+		<title>Dataset report: Please change "deskritive" to "deskriptive"</title>
+		<body>![image](https://user-images.githubusercontent.com/17066262/48340645-65e20300-e66b-11e8-98b2-be9a5ab51b54.png) </body>
+		<created>2018-11-12 10:09:41</created>
+		<closed>2018-11-20 16:28:06</closed>
+	</bug>
+	<bug>
+		<id>1841</id>
+		<title>fix bugs of dataset report</title>
+		<body>- [ ] title may span two pages - [x] no table of contents - [ ] page break after "variables"? - [x] delete blank space before footnote, e. g.  ![image](https://user-images.githubusercontent.com/18573122/48353941-d8190e80-e690-11e8-8137-f2d02776102c.png) </body>
+		<created>2018-11-08 09:24:31</created>
+		<closed>2018-11-27 09:26:52</closed>
+	</bug>
+	<bug>
+		<id>1820</id>
+		<title>Server nicht erreichbar</title>
+		<body>Hi,  gerade kam eine Fehlermeldung, dass der Server nicht erreichbar sei:  ![image](https://user-images.githubusercontent.com/1101547/47136990-9bd2d800-d2b5-11e8-8740-0295f0fae882.png)  Ich war nur auf der scs2016 Studienseite.</body>
+		<created>2018-10-18 07:11:12</created>
+		<closed>2018-10-23 07:25:13</closed>
+	</bug>
+	<bug>
+		<id>1819</id>
+		<title>variableMetadataExtractor missing_conditions_numeric "mehr Elemente gegeben als zu ersetzen Sind"</title>
+		<body>scs2016 throws an error. I need to check whether this is due to a real bug or problem sits in front of computer and has not setup the missing conditions properly.  Complete error message:   ``` Fehler in private$missing_conditions[["numeric"]] = missing_conditions_numeric :  mehr Elemente gegeben als zu ersetzen sind Ruft auf: variable_metadata_generation -&gt; &lt;Anonymous&gt; -&gt; &lt;Anonymous&gt; ```</body>
+		<created>2018-10-18 07:07:31</created>
+		<closed>2018-11-06 10:37:49</closed>
+	</bug>
+	<bug>
+		<id>1794</id>
+		<title>variableMetadataExtractor undefined columns selected</title>
+		<body>@svietgen gets the following error when trying to generate variable jsons for scs2016. She thinks it's the fault of the `vimport_ds1.xlsx` file.  ![image](https://user-images.githubusercontent.com/1101547/45758094-1cee6f00-bc25-11e8-970c-47e2f7dc38a2.png) </body>
+		<created>2018-09-19 14:02:00</created>
+		<closed>2018-09-20 13:43:02</closed>
+	</bug>
+	<bug>
+		<id>1782</id>
+		<title>Bug: Internal Server Error when I open attachment</title>
+		<body>I changed and uploaded an attachment for the 20th Social Survey. When I try to open the attachment I get an Internal Server Error:  https://metadata.fdz.dzhw.eu/public/files/studies/stu-ssy20$/attachments/ssy20_MethodReport_en.pdf </body>
+		<created>2018-09-11 12:08:20</created>
+		<closed>2018-09-12 12:12:37</closed>
+	</bug>
+	<bug>
+		<id>1764</id>
+		<title>Missing mag in toolbar on mobiles</title>
+		<body>![bildschirmfoto von 2018-08-21 15-40-14](https://user-images.githubusercontent.com/12323832/44405201-f8857100-a558-11e8-9feb-1b89229fecfb.png)     </body>
+		<created>2018-08-21 13:38:54</created>
+		<closed>2018-08-22 13:49:19</closed>
+	</bug>
+	<bug>
+		<id>1760</id>
+		<title>Bug: Subsequent questions are not displayed (prod and test system)</title>
+		<body>The subsequent questions are not displayed e.g. https://metadata.fdz.dzhw.eu/#!/en/questions/que-phd2014-ins1-1.4$?search-result-index=4   This occurs in prod and test system.</body>
+		<created>2018-08-21 09:51:10</created>
+		<closed>2018-08-22 07:19:40</closed>
+	</bug>
+	<bug>
+		<id>1754</id>
+		<title>As data provider I want to extract variable metadata for monolingual data sets</title>
+		<body></body>
+		<created>2018-08-20 12:40:43</created>
+		<closed>2018-09-05 11:52:55</closed>
+	</bug>
+	<bug>
+		<id>1711</id>
+		<title>Bug: cannot upload question jsons when using successorNumbers field</title>
+		<body>I generated the json files with the R-script on Faust. The successor numbers cause error messages on upload. If I replace the numbers with null it works. It's working in the test system.  ![unbenannt](https://user-images.githubusercontent.com/22055122/42750545-e0b877f8-88e7-11e8-9705-5549210431db.PNG) [Protokoll-2018-07-16T10-39-08.txt](https://github.com/dzhw/metadatamanagement/files/2197029/Protokoll-2018-07-16T10-39-08.txt) </body>
+		<created>2018-07-16 09:05:25</created>
+		<closed>2018-08-20 07:03:52</closed>
+	</bug>
+	<bug>
+		<id>1690</id>
+		<title>Filters using aggregations show unreleased infos</title>
+		<body></body>
+		<created>2018-06-05 17:33:57</created>
+		<closed>2018-09-05 12:20:16</closed>
+	</bug>
+	<bug>
+		<id>1688</id>
+		<title>Fix 404 when editing surveys and study has not been created yet</title>
+		<body></body>
+		<created>2018-06-04 08:19:35</created>
+		<closed>2018-06-04 08:28:51</closed>
+	</bug>
+	<bug>
+		<id>1685</id>
+		<title>As data provider i'm not able to generate a dataset report</title>
+		<body>When I sign in as data provider, navigate to the dataset page of ssy19 and move a template folder on the page the dropping area becomes green. But when I drop the folder, nothing happens (no message is displayed).  When I use the dataset generation button and select a template folder also nothing happens.   Firefox, Chrome on Ubuntu 14.04  </body>
+		<created>2018-05-30 09:23:47</created>
+		<closed>2018-06-25 09:02:48</closed>
+	</bug>
+	<bug>
+		<id>1684</id>
+		<title>Problems with creation of a project in IE11</title>
+		<body>When creating a new project in IE11 you are not redirected to the new project but the start page without any project chosen. Also not possible to manually select the new project as IE saves the project list in its cache, reload won't fix it.</body>
+		<created>2018-05-29 11:37:53</created>
+		<closed>2018-08-16 14:05:57</closed>
+	</bug>
+	<bug>
+		<id>1655</id>
+		<title>Plotly x axis, y axis and tooltips display numbers with english thousands sepearator</title>
+		<body></body>
+		<created>2018-05-16 19:35:42</created>
+		<closed>2018-08-06 08:54:23</closed>
+	</bug>
+	<bug>
+		<id>1646</id>
+		<title>study detail page: surveys editable after release</title>
+		<body>even for already released projects as a publisher I can edit the survey details - _not_ via the survey detail page _but_ via the integrated survey details on the study detail page  ![grafik](https://user-images.githubusercontent.com/18573122/39575977-b852e57c-4edc-11e8-8792-a811b4635895.png)  :speak_no_evil:   thanks @svietgen for realizing :sparkles: </body>
+		<created>2018-05-03 12:19:26</created>
+		<closed>2018-05-08 08:57:52</closed>
+	</bug>
+	<bug>
+		<id>1632</id>
+		<title>gsl2008: instruments not released?</title>
+		<body>I wanted to check the instruments of gsl2008 as a public user:  ![grafik](https://user-images.githubusercontent.com/18573122/39140945-77f6b61a-4726-11e8-8131-c03d32299072.png) ![grafik](https://user-images.githubusercontent.com/18573122/39141002-b2782058-4726-11e8-845c-0a02fdc383b4.png) https://metadata.fdz.dzhw.eu/#!/de/search?page=1&amp;type=instruments&amp;study=stu-gsl2008$  they are available for fdz members </body>
+		<created>2018-04-23 16:50:32</created>
+		<closed>2018-05-03 09:12:54</closed>
+	</bug>
+	<bug>
+		<id>1630</id>
+		<title>As a user, I would prefer a highlighted warning (e.g.: red)</title>
+		<body>![unbenannt](https://user-images.githubusercontent.com/38426839/38857908-abd2860e-422a-11e8-91c9-894f9be52783.png) </body>
+		<created>2018-04-17 08:34:54</created>
+		<closed>2018-05-08 10:49:09</closed>
+	</bug>
+	<bug>
+		<id>1620</id>
+		<title>Scrolling down the options of the Select Box is not possible</title>
+		<body>When I click on Survey Design on the study edit page and scroll down, I scroll down the page but not the options of the select box. ![md-select_bug](https://user-images.githubusercontent.com/19772575/38719540-ceaae7d8-3ef2-11e8-92c3-a532357a8204.png) </body>
+		<created>2018-04-13 06:28:49</created>
+		<closed>2018-05-17 13:01:16</closed>
+	</bug>
+	<bug>
+		<id>1618</id>
+		<title>Search Result Navigation broken when using Back Button</title>
+		<body>When I am in the data set search, click on related surveys and afterwards go back one step, I would expect to be in the data set search again. Instead I am in the related surveys search.  **Clicking order:**  https://metadata.fdz.dzhw.eu/#!/de/search?page=1&amp;type=data_sets&amp;study=stu-gra2005$ -&gt; click ds1 -&gt; I am in the data set search -&gt; click related surveys -&gt; click back button -&gt; I am not in the data set search anymore but in the related surveys search</body>
+		<created>2018-04-12 12:19:09</created>
+		<closed>2018-05-16 10:30:15</closed>
+	</bug>
+	<bug>
+		<id>1615</id>
+		<title>Edit buttons available after release</title>
+		<body>Currently the GUI displays or hides the edit and delete buttons of surveys and studies depending on the state of the domain object in elasticsearch. Since elasticsearch is updated eventually there is the possiblity that a user releases a project and afterwards (without unreleasing the project) changes data...</body>
+		<created>2018-04-10 09:44:47</created>
+		<closed>2018-05-09 13:18:52</closed>
+	</bug>
+	<bug>
+		<id>1614</id>
+		<title>selecting text from detail page activates swipe</title>
+		<body>I wanted to copy some strings of the [survey detail page of gra2005](https://metadata.fdz.dzhw.eu/#!/de/surveys/sur-gra2005-sy2$?search-result-index=2) and always "got swiped" to the next survey detail page instead. :confused:   I learned that I have to select the strings more slowly to not "get swiped" to the next survey detail page.   Is this okay? Could the swipe function be deactivated for the desktop version?</body>
+		<created>2018-04-06 09:16:26</created>
+		<closed>2018-04-09 20:12:12</closed>
+	</bug>
+	<bug>
+		<id>1602</id>
+		<title>Edge: SideNavBar in small Browser Window</title>
+		<body>Browser Window in Edge is small &gt; scroll down &gt; click on SideNavBar &gt; SideNavBar appears further down or is not shown at all ![unbenannt](https://user-images.githubusercontent.com/19772575/37278664-b6502c84-25e8-11e8-889a-7ab226776889.png) </body>
+		<created>2018-03-12 10:36:39</created>
+		<closed>2018-05-17 13:01:42</closed>
+	</bug>
+	<bug>
+		<id>1595</id>
+		<title>Create new project with already existing name</title>
+		<body>It is possible to create a new project with an already existing name. I would expect a warning instead of the message: Successfully saved the Data Acquisition Project "robotsproject"! </body>
+		<created>2018-03-08 09:30:18</created>
+		<closed>2018-05-16 14:23:25</closed>
+	</bug>
+	<bug>
+		<id>1588</id>
+		<title>Investigate Elasticsearch Downtime</title>
+		<body>Elasticsearch has been down for 45 minutes on 02.03.2018 from 1 pm to 1:45 pm....</body>
+		<created>2018-03-05 21:39:09</created>
+		<closed>2018-03-06 10:04:43</closed>
+	</bug>
+	<bug>
+		<id>1581</id>
+		<title>Variables without distribution</title>
+		<body>- I was able to upload a variable with "distribution": null and did not get an error message - However the relation to other attributes does not work properly: https://metadatamanagement-test.cfapps.io/#!/de/variables/var-test1-ds2-pid$?search-result-index=1</body>
+		<created>2018-02-21 10:26:44</created>
+		<closed>2018-05-08 10:56:23</closed>
+	</bug>
+	<bug>
+		<id>1580</id>
+		<title>Creation of New Data Acquisition Project not possible</title>
+		<body>I cannot create a new project (neither in test system nor in productive system) although I have publisher rights. This is what I get:  ![bug](https://user-images.githubusercontent.com/31613371/36474407-b253a9a8-16f7-11e8-99d0-fb5dfceecb33.png) </body>
+		<created>2018-02-21 10:10:24</created>
+		<closed>2018-03-20 10:56:54</closed>
+	</bug>
+	<bug>
+		<id>1576</id>
+		<title>Update related object after removing assignment</title>
+		<body>For an existing variable I changed the question number from 45.1 (valid question) to 45.7 (invalid question). However the related question link to question 45.1 was still shown.</body>
+		<created>2018-02-16 10:19:39</created>
+		<closed>2018-04-09 09:48:22</closed>
+	</bug>
+	<bug>
+		<id>1564</id>
+		<title>Writing issue with MongoDB</title>
+		<body>I get many error messages when uploading new attachments or images to new test projects (all domain objects).  For example https://metadatamanagement-test.cfapps.io/#!/de/search?page=1&amp;type=instruments&amp;study=stu-test5$ when uploading instruments from gra2005: `{"timestamp":"2018-02-14T10:55:55.944+0000","status":500,"error":"Internal Server Error","exception":"com.mongodb.WriteConcernException","message":"Write failed with error code 12501 and error message 'quota exceeded'","path":"/api/instruments/attachments"}`</body>
+		<created>2018-02-14 11:21:48</created>
+		<closed>2018-02-16 09:08:57</closed>
+	</bug>
+	<bug>
+		<id>1563</id>
+		<title>Filters overlap with cards in IE11</title>
+		<body>When several filters are selected in IE11 (2 and more), the filters overlap with the cards below.  ![ie](https://user-images.githubusercontent.com/19772575/36195511-fb1eeefc-116d-11e8-9955-79bee3733d1b.png) </body>
+		<created>2018-02-14 09:07:41</created>
+		<closed>2018-02-16 13:41:15</closed>
+	</bug>
+	<bug>
+		<id>1547</id>
+		<title>Need to reload the page after unreleasing a project</title>
+		<body>When I unrelease a currently released project in order to upload new questions, I have to refresh the app before I am able to upload the questions via drag and drop... Even worse: After releasing the project I can still upload via drag and drop...</body>
+		<created>2018-02-08 22:18:40</created>
+		<closed>2018-02-26 09:42:14</closed>
+	</bug>
+	<bug>
+		<id>1546</id>
+		<title>Fix cloudfoundry cli warning</title>
+		<body>Currently our build produces the following warning: Deprecation warning: Route component attributes 'domain', 'domains', 'host', 'hosts' and 'no-hostname' are deprecated. Found: host. Please see http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html#deprecated for the currently supported syntax and other app manifest deprecations. This feature will be removed in the future. </body>
+		<created>2018-02-08 21:52:02</created>
+		<closed>2018-02-20 09:46:42</closed>
+	</bug>
+	<bug>
+		<id>1545</id>
+		<title>Investigate 504 (Gateway Timeout) errors</title>
+		<body>Some users have reported that they have seen this error and our monitoring system reports these errors as well from time to time. Currently we have no idea which requests (from the server to external systems) take so long that the reverse proxy from pivotal sends a timeout.  @anneweber @svietgen @kimsommer Please try to explain what you have done, when you have seen this error.</body>
+		<created>2018-02-08 20:10:39</created>
+		<closed>2018-03-06 11:24:46</closed>
+	</bug>
+	<bug>
+		<id>1527</id>
+		<title>Study Attachment Upload has problem with escaped signs in filename</title>
+		<body>Some signs will be escaped by default. If a file is added as a study attachment, the filename is changed by escaping. This produces the problem that files will not found locally.</body>
+		<created>2018-01-23 09:04:24</created>
+		<closed>2018-02-06 12:52:25</closed>
+	</bug>
+	<bug>
+		<id>1466</id>
+		<title>wave numbers in dara: 0. wave</title>
+		<body>**win2015:** Should 0 be allowed as wave number? Maybe 1. wave or a replacement string would be better.  ![image](https://user-images.githubusercontent.com/19772575/33611043-64017512-d9cd-11e7-9b19-3cac0ab160f2.png) </body>
+		<created>2017-12-05 14:10:49</created>
+		<closed>2018-01-22 07:32:58</closed>
+	</bug>
+	<bug>
+		<id>1432</id>
+		<title>Missing splash screen on initial load</title>
+		<body>The blue splash screen with the hourglass is gone :(</body>
+		<created>2017-11-16 11:01:01</created>
+		<closed>2017-11-16 11:03:10</closed>
+	</bug>
+	<bug>
+		<id>1426</id>
+		<title>The usermanagement has a grey overlay after clicking on edit</title>
+		<body></body>
+		<created>2017-11-13 07:54:35</created>
+		<closed>2017-11-13 14:30:47</closed>
+	</bug>
+	<bug>
+		<id>1422</id>
+		<title>Merkwürdigkeit in Suchfeld der engl. Metadatensuche</title>
+		<body>Alles klar, hier mein erster Käfer: Hallo mir ist grad beim Verfolgen eines Links (Firefox 53.0.3 (32-Bit) unter Win 10 Enterprise, Version 1607, Build 14393.693) von fdz.dzhw.eu/en auf https://metadata.fdz.dzhw.eu/#!/en/search?page=1&amp;type=studies aufgefallen, dass dort auf Deutsch „Filter für die Studiensuche“ steht. Nach dem Hinundherklicken stand dann dort korrekt die engl. Variante „Select Filter for Study Search“…  --------------------------------- Source: https://metadata.fdz.dzhw.eu/#!/en/search?page=1&amp;type=studies ---------------------------------  ![grafik](https://user-images.githubusercontent.com/19329401/32657699-f96bf516-c616-11e7-9faa-802d811a6ec6.png) </body>
+		<created>2017-11-10 12:00:50</created>
+		<closed>2018-01-25 13:47:22</closed>
+	</bug>
+	<bug>
+		<id>1421</id>
+		<title>Rework number of decimal places of values</title>
+		<body>- Not enough decimal places are shown for weight variables: https://metadatamanagement-test.cfapps.io/#!/en/variables/var-gra2005-ds1-wgt_t1d$?search-result-index=1 - For example school grades only need zero or one decimal place: https://metadatamanagement-test.cfapps.io/#!/en/variables/var-gra2005-ds1-astu03c$?search-result-index=1 - Integer variables which were wrongly stored as float in stata datasets have zero decimal places: https://metadatamanagement-test.cfapps.io/#!/en/variables/var-gra2005-ds4-end_y$?search-result-index=2  </body>
+		<created>2017-11-10 11:25:57</created>
+		<closed>2017-11-24 14:21:28</closed>
+	</bug>
+	<bug>
+		<id>1356</id>
+		<title>location of protocol field </title>
+		<body>Protocol field appears under search cards and only when browser window is small (tested in chrome, firefox).  ![protocol](https://user-images.githubusercontent.com/19772575/31078165-5aac6ca2-a781-11e7-8357-a3dbbc4f9cf7.png)  </body>
+		<created>2017-10-02 13:07:36</created>
+		<closed>2017-10-17 14:22:19</closed>
+	</bug>
+	<bug>
+		<id>1352</id>
+		<title>Internet Explorer 11: not all filters are shown</title>
+		<body>When I use IE 11 and want to select a filter the last filter (publication) is not displayed. This concerns every search page.  ![image](https://user-images.githubusercontent.com/22055122/31017162-e846066a-a527-11e7-9ab0-a51cfd091d6a.png) </body>
+		<created>2017-09-29 13:12:03</created>
+		<closed>2017-10-11 11:47:16</closed>
+	</bug>
+	<bug>
+		<id>1328</id>
+		<title>Fix duplicate id="login" error</title>
+		<body>In the navbar and on the register form we use the id "login" :-(</body>
+		<created>2017-09-06 08:46:02</created>
+		<closed>2017-09-06 09:07:46</closed>
+	</bug>
+	<bug>
+		<id>1327</id>
+		<title>Filter: please correct error messages</title>
+		<body>Instrument filter: "**Keine** gültiges Instrument ausgewählt" to "Kein gültiges Instrument ausgewählt" DataSet Filter: "No data set selected" to "No **valid** data set selected" Variable Filer: "Keine gültige Erhebung ausgewählt" to "Keine gültige **Variable** ausgewählt" and the same in english "No valid survey selected" to "No valid **variable** selected"  Sorry that I didn't find these while testing the filter issues.</body>
+		<created>2017-09-05 09:53:31</created>
+		<closed>2017-09-05 12:01:31</closed>
+	</bug>
+	<bug>
+		<id>1313</id>
+		<title>question upload: wrong validation rule</title>
+		<body>When I upload questions I get the following warning because of a wrong validation rule:  ![grafik](https://user-images.githubusercontent.com/22055122/29863121-f39dbbfa-8d6e-11e7-9e01-af789c78ced1.png)  </body>
+		<created>2017-08-30 08:39:16</created>
+		<closed>2017-09-12 12:55:18</closed>
+	</bug>
+	<bug>
+		<id>1304</id>
+		<title>Searchmanagement Filter Input Field do not display correctly errors</title>
+		<body>The filter input fields do not displays errors correctly. The field are blinking red once and are black finally. The field should be displayed in red (error color), if there is a wrong string in the filter input fields.</body>
+		<created>2017-08-24 13:19:55</created>
+		<closed>2017-09-05 09:42:39</closed>
+	</bug>
+	<bug>
+		<id>1280</id>
+		<title>Internet Explorer 11: DZHW-logo shrinks when I open the sidebar</title>
+		<body>And there is a larger gap between the DZHW-logo and the BMBF-logo (compared to Chrome, Firefox and Edge) ![sidebar](https://user-images.githubusercontent.com/22055122/28356590-eebd2dae-6c68-11e7-84a5-f1b87ddb424d.jpg) </body>
+		<created>2017-07-19 07:59:56</created>
+		<closed>2017-09-29 13:23:54</closed>
+	</bug>
+	<bug>
+		<id>1276</id>
+		<title>Fix Content of Related Publication Card</title>
+		<body>1. Please set the following order of items in Study Detail Page, Related Objects Card: surveys instruments questions datasets variables publications  2. Please set the correct instrument icon  3. Please hotdeploy in consultation with @svietgen </body>
+		<created>2017-07-14 06:41:17</created>
+		<closed>2017-07-14 11:04:28</closed>
+	</bug>
+	<bug>
+		<id>1273</id>
+		<title>text "Error page!" is displayed in the blue bar on top of page for 2 seconds</title>
+		<body>When following this link https://metadata.fdz.dzhw.eu/#!/en/variables/var-gra2005-ds1-adem02a$ at least the browser firefox 53.0.3 displays the text "Error page!" for about 2 seconds in the blue bar on top of the webpage. Then the correct content shows up. </body>
+		<created>2017-07-12 17:17:40</created>
+		<closed>2017-08-21 14:21:26</closed>
+	</bug>
+	<bug>
+		<id>1246</id>
+		<title>wrong order if i search by variable name</title>
+		<body>https://metadata.fdz.dzhw.eu/#!/de/search?page=1&amp;type=variables&amp;query=bdem12d&amp;sort-by=indexInDataSet&amp;data-set=dat-phd2014-ds1$ </body>
+		<created>2017-06-27 12:04:50</created>
+		<closed>2017-09-05 15:24:47</closed>
+	</bug>
+	<bug>
+		<id>1240</id>
+		<title>problem: Internet Explorer 11</title>
+		<body>There are several problems (values, labels and histogram) when users are using the Internet Explorer (variable detail page). For example: https://metadatamanagement-test.cfapps.io/#!/de/variables/var-ssy19-ds1-abr02c$  ![grafik](https://user-images.githubusercontent.com/22055122/27546227-7f64f500-5a92-11e7-84f8-48825f1265d8.png)  ![grafik](https://user-images.githubusercontent.com/22055122/27546252-953729de-5a92-11e7-85ac-ad7a352769c0.png)    </body>
+		<created>2017-06-26 07:20:14</created>
+		<closed>2017-07-19 12:17:42</closed>
+	</bug>
+	<bug>
+		<id>1226</id>
+		<title>Change order of question search cards</title>
+		<body>When you search for questions you get the "wrong" order: 1.1, 1.10, 1.11,... instead of 1.1, 1.2,...  https://metadata.fdz.dzhw.eu/#!/de/search?page=1&amp;type=questions&amp;sort-by=number&amp;instrument=ins-gsl2008-ins3$  </body>
+		<created>2017-06-20 11:17:49</created>
+		<closed>2017-08-07 13:25:10</closed>
+	</bug>
+	<bug>
+		<id>1194</id>
+		<title>domain objects disappear</title>
+		<body>I made several observations, I am not sure, if it is the same problem  1. on study details page sometimes the dataSet search card are disappeared, if you click reload sometimes they are back, sometimes not. On relatedObejcts card they are present. I think it is only a problem with study and datasets pages I imported this afternoon after new deployment of prodMDM  2. on question details pages we lost the previous and successor questions. It affects all studies not only the studies I imported after the deployment  3. I reimported gra2005 questions to check, if I could get back predecessor und successor questions. The MDM succesfully imported all 146 questions, I clicked on some question details pages and then on question search and with the exception of 12 questions all are disappeared. I imported the questions again, now they are there. I cannot reconstruct the problem.   </body>
+		<created>2017-05-30 15:45:10</created>
+		<closed>2017-05-31 11:59:21</closed>
+	</bug>
+	<bug>
+		<id>1190</id>
+		<title>variable search cards get new order, when you click previous or next</title>
+		<body>example: project gsl2008, question: que-gsl2008-ins1-05$  I selected the question details page, I clicked variables in card related objects (seven variables), I got the variables search page (five cards on first page); I clicked "next" and got the second page of variables search with two variable search cards, but sometimes the same variables as on first page same effect with previous-button, the order of variables search cards changed with every click</body>
+		<created>2017-05-27 12:09:08</created>
+		<closed>2017-06-09 09:07:02</closed>
+	</bug>
+	<bug>
+		<id>1187</id>
+		<title>Successor questions cannot be loaded</title>
+		<body>The subsequent question are not loaded on the question details page.  There is a Status Code of 400 with the _mget call   `{"error":{"root_cause":[{"type":"parsing_exception","reason":"unexpected token [START_OBJECT], expected [FIELD_NAME] or [START_ARRAY]","line":1,"col":10}],"type":"parsing_exception","reason":"unexpected token [START_OBJECT], expected [FIELD_NAME] or [START_ARRAY]","line":1,"col":10},"status":400}`</body>
+		<created>2017-05-24 13:36:44</created>
+		<closed>2017-05-29 10:38:27</closed>
+	</bug>
+	<bug>
+		<id>1179</id>
+		<title>can no longer delete projects in MDM prod.</title>
+		<body>wanted to delete se19, didn't work, the same with project test2017 error message: Das Datenaufbereitungsprojekt "se19" konnte nicht gelöscht werden 3 days ago I succesfully deleted pp2014</body>
+		<created>2017-05-20 10:49:01</created>
+		<closed>2017-05-22 08:28:45</closed>
+	</bug>
+	<bug>
+		<id>1173</id>
+		<title>Variables cannot be imported due to duplicate indexInDataSet error</title>
+		<body>Fehlermeldung, dass Index schon vergeben wurde, obwohl dem nicht so ist. Wird erneut hochgeladen, ist immer eine Variable weniger betroffen.   1. Versuch  Die Variable vom Skalenniveau Verhältnis mit dem Namen cjob0529c hat nicht alle Informationen für die Erzeugung eines Histrogram. Die Variable vom Skalenniveau Verhältnis mit dem Namen cjob0529d hat nicht alle Informationen für die Erzeugung eines Histrogram. Die Variable vom Skalenniveau Verhältnis mit dem Namen cjob0530c hat nicht alle Informationen für die Erzeugung eines Histrogram. Die Variable vom Skalenniveau Verhältnis mit dem Namen cjob0530d hat nicht alle Informationen für die Erzeugung eines Histrogram. Variable mit FDZ-ID var-sb2008-ds1-wave! wurde nicht gespeichert: Der Index der Variable ist innerhalb des Datensatzes schon vergeben. Variable mit FDZ-ID var-sb2008-ds1-asys01! wurde nicht gespeichert: Der Index der Variable ist innerhalb des Datensatzes schon vergeben. Variable mit FDZ-ID var-sb2008-ds1-asys01_g1! wurde nicht gespeichert: Der Index der Variable ist innerhalb des Datensatzes schon vergeben. Variable mit FDZ-ID var-sb2008-ds1-asys02_g1! wurde nicht gespeichert: Der Index der Variable ist innerhalb des Datensatzes schon vergeben. Variable mit FDZ-ID var-sb2008-ds1-asys02_g2a! wurde nicht gespeichert: Der Index der Variable ist innerhalb des Datensatzes schon vergeben. Upload von 1280 Variablen mit 4 Warnungen und 5 Fehlern beendet!  2. Versuch  Die Variable vom Skalenniveau Verhältnis mit dem Namen cjob0529c hat nicht alle Informationen für die Erzeugung eines Histrogram. Die Variable vom Skalenniveau Verhältnis mit dem Namen cjob0529d hat nicht alle Informationen für die Erzeugung eines Histrogram. Die Variable vom Skalenniveau Verhältnis mit dem Namen cjob0530c hat nicht alle Informationen für die Erzeugung eines Histrogram. Die Variable vom Skalenniveau Verhältnis mit dem Namen cjob0530d hat nicht alle Informationen für die Erzeugung eines Histrogram. Variable mit FDZ-ID var-sb2008-ds1-wave! wurde nicht gespeichert: Der Index der Variable ist innerhalb des Datensatzes schon vergeben. Variable mit FDZ-ID var-sb2008-ds1-asys01! wurde nicht gespeichert: Der Index der Variable ist innerhalb des Datensatzes schon vergeben. Variable mit FDZ-ID var-sb2008-ds1-asys01_g1! wurde nicht gespeichert: Der Index der Variable ist innerhalb des Datensatzes schon vergeben. Variable mit FDZ-ID var-sb2008-ds1-asys02_g1! wurde nicht gespeichert: Der Index der Variable ist innerhalb des Datensatzes schon vergeben. Upload von 1280 Variablen mit 4 Warnungen und 4 Fehlern beendet!  Beim hochladen in ein neues Projekt treten keine Fehler mehr auf. </body>
+		<created>2017-05-19 11:57:04</created>
+		<closed>2017-05-23 07:39:05</closed>
+	</bug>
+	<bug>
+		<id>1155</id>
+		<title>check variable details page, Generation Rule</title>
+		<body>example SE19: https://metadatamanagement.cfapps.io/#!/de/variables/var-ssy19-ds1-abr03a_g2!  in the imported Excel-file (variables.xslx) part of the rule is like this: replace abr03a_g2 = 9 if (abr03a_g1r &gt; 199 &amp; abr03a_g1r &lt; 300)  on variables details page it is displayed like this: replace abr03a_g2 = 9 if (abr03a_g1r!"&gt;abr03a_g1r &gt; 199 &amp; abr03a_g1r!"&gt;abr03a_g1r &lt; 300)  @UteH for information</body>
+		<created>2017-05-17 18:06:32</created>
+		<closed>2017-05-23 08:53:33</closed>
+	</bug>
+	<bug>
+		<id>1154</id>
+		<title>Show publications if a data project is selected and has related publications</title>
+		<body></body>
+		<created>2017-05-17 12:26:10</created>
+		<closed>2017-06-19 07:24:57</closed>
+	</bug>
+	<bug>
+		<id>1142</id>
+		<title>Add human readable error message for uploading of not interface confirmed jsons</title>
+		<body>A part of the json is: ``` "instruction":{         "de":[             "Genaue Berufsbezeichnung:",             "(bitte möglichst genau; z. B. Ingenieur(in) für Messtechnik, Personalentwickler(in), Schulsozialarbeiter(in))"         ]     }, ``` The de field is an array, but the interface accepts only a string. I got the not human readable error message:  {{Can not deserialize instance of java.lang.String out of START_ARRAY token at [Source: org.apache.catalina.connector.CoyoteInputStream@663f8085; line: 1, column: 2482] (through reference chain: eu.dzhw.fdz.metadatamanagement.questionmanagement.domain.Question["instruction"]-&gt;eu.dzhw.fdz.metadatamanagement.common.domain.I18nString["de"])}}   </body>
+		<created>2017-05-16 11:54:33</created>
+		<closed>2017-06-26 07:05:10</closed>
+	</bug>
+	<bug>
+		<id>1131</id>
+		<title>Wrong survey display in breadcrumb</title>
+		<body>Take a look on the breadcrumb in the screenshot.  ![bildschirmfoto vom 2017-05-10 14 42 32](https://cloud.githubusercontent.com/assets/13166156/25899184/2f32a5e6-358f-11e7-9556-5c044d1bb3f1.png)  There is a [object Object] notation, which should be there. The dataset has three linked surveys, which will be displayed in the breadcrumb plus the object notation.  - [x] Remove the [object Object] notation</body>
+		<created>2017-05-10 12:47:08</created>
+		<closed>2017-05-18 06:57:18</closed>
+	</bug>
+	<bug>
+		<id>1124</id>
+		<title>Check error message "Title mandatory in both languages" for instrument upload </title>
+		<body>I guess the validator that the title for instrument upload is mandatory in both languages was deleted. So the error message for a title with more than 128 characters has to be adapted. "The titel must not contain more than 128 characters." instead of "The titel is mandatory in both languages and must not contain more than 128 characters." </body>
+		<created>2017-05-10 08:03:33</created>
+		<closed>2017-05-16 11:34:38</closed>
+	</bug>
+	<bug>
+		<id>1123</id>
+		<title>Improve error message for failed survey upload produced by strings instead of numbers</title>
+		<body>When I upload the surveys excel file with a string instead of a number in grossSampleSize, SampleSize or responseRate I get the error: {{Could not read an object of type class eu.dzhw.fdz.metadatamanagement.surveymanagement.domain.Survey from the request!; nested exception is org.springframework.http.converter.HttpMessageNotReadableException: Could not read payload!; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Can not deserialize value of type java.lang.Integer from String "f": not a valid Integer value at [Source: N/A; line: -1, column: -1] (through reference chain: eu.dzhw.fdz.metadatamanagement.surveymanagement.domain.Survey["sampleSize"])}} </body>
+		<created>2017-05-09 08:37:53</created>
+		<closed>2017-07-19 09:32:01</closed>
+	</bug>
+	<bug>
+		<id>1121</id>
+		<title>mixed representation of numbers (point and comma) in frequency table in german version</title>
+		<body>please check variable details page of [abs05-ds1-astu03c!](https://metadatamanagement.cfapps.io/#!/de/variables/var-abs2005-ds1-astu03c!) german version, frequency table, column value: mixed representation of numbers, 1.0 (with point) and 1,1 (with comma) therefore wrong presentation of frequency figure  the english version of this varibale details page is ok</body>
+		<created>2017-05-06 12:03:54</created>
+		<closed>2017-05-17 15:07:46</closed>
+	</bug>
+	<bug>
+		<id>1112</id>
+		<title>Fix elasticsearch.js and lodash conflict</title>
+		<body></body>
+		<created>2017-04-28 10:32:52</created>
+		<closed>2017-04-28 11:03:32</closed>
+	</bug>
+	<bug>
+		<id>1107</id>
+		<title>Survey attachments and images are deleted even if survey validation fails</title>
+		<body>Attachments and images must no be deleted by the import before the survey has been saved successfully...</body>
+		<created>2017-04-27 14:00:49</created>
+		<closed>2017-05-09 06:40:46</closed>
+	</bug>
+	<bug>
+		<id>1087</id>
+		<title>Occasionally some variables are not uploaded </title>
+		<body>The variable upload sometimes looses variables which are present in the excel and as json. This can occur because reading the json's of a data set is executed in parallel and upload might start before all json's have been read...</body>
+		<created>2017-04-20 18:56:45</created>
+		<closed>2017-04-21 14:43:53</closed>
+	</bug>
+	<bug>
+		<id>1055</id>
+		<title>Error handling when dataSetNumber is missing</title>
+		<body>The client should be able to handle missing dataSetNumber on subDataSet sheet and display clear messages when exceptions occur</body>
+		<created>2017-04-11 16:10:18</created>
+		<closed>2017-06-21 13:49:44</closed>
+	</bug>
+	<bug>
+		<id>1054</id>
+		<title>Survey images with the content type "application/octet-stream"</title>
+		<body>During the surveys upload process, the content type of images is currently being set up as "application/octet-stream". This happens when drag&amp;drop and Firefox(v.52) are used.</body>
+		<created>2017-04-11 08:19:23</created>
+		<closed>2017-05-26 14:27:22</closed>
+	</bug>
+	<bug>
+		<id>984</id>
+		<title>Fix broken build caused by cf-maven-plugin</title>
+		<body>Currently the build fails with a 503 Service Unavailable cause cf-maven-plugin has a problem. We could switch to the cf CLI...</body>
+		<created>2017-03-02 14:59:43</created>
+		<closed>2017-03-17 11:26:13</closed>
+	</bug>
+	<bug>
+		<id>975</id>
+		<title>Undefined download document of DSR</title>
+		<body>If you create a dataSetReport you getting a file, which is a zip-document but without a .zip-ending</body>
+		<created>2017-02-20 14:34:24</created>
+		<closed>2017-09-29 14:15:00</closed>
+	</bug>
+	<bug>
+		<id>972</id>
+		<title>No visible fdz.dzhw logo at IE</title>
+		<body>You can't see the home log (in the left upper corner) int the Internet Explorer: ![nologo](https://cloud.githubusercontent.com/assets/13656277/23029129/ceb171ae-f469-11e6-82d3-45d09c507e48.png) </body>
+		<created>2017-02-16 16:05:09</created>
+		<closed>2017-02-17 09:11:44</closed>
+	</bug>
+	<bug>
+		<id>970</id>
+		<title>Visible Datasets after Deleting them</title>
+		<body>I deleted the dataset by uploading a wrong folder. The datasets will be still visible and clickable after the deletion. If I enter one, I got a 404 error message.  I saw the dataset delete entries in the elasticsearch update queue.</body>
+		<created>2017-02-16 09:18:31</created>
+		<closed>2017-09-05 08:37:22</closed>
+	</bug>
+	<bug>
+		<id>919</id>
+		<title>Selected project not visible after changing language </title>
+		<body></body>
+		<created>2017-01-16 15:57:31</created>
+		<closed>2017-01-30 15:44:55</closed>
+	</bug>
+	<bug>
+		<id>901</id>
+		<title>Fix w3c html validation errors</title>
+		<body></body>
+		<created>2016-12-19 08:45:01</created>
+		<closed>2016-12-20 13:49:51</closed>
+	</bug>
+	<bug>
+		<id>874</id>
+		<title>Missing translations of pager (next, previous) on search page</title>
+		<body>If you go to https://metadatamanagement.cfapps.io in incognito mode in chrome the next and previous buttons are sometimes not translated correctly: ![image](https://cloud.githubusercontent.com/assets/12323832/20903295/130c34dc-bb3b-11e6-84fa-adabf7bb3c3f.png) </body>
+		<created>2016-12-05 21:35:38</created>
+		<closed>2017-01-24 09:12:58</closed>
+	</bug>
+	<bug>
+		<id>872</id>
+		<title>data set report: escape of quotation marks</title>
+		<body>In the data set report of the Absolventenpanel 05 there is a problem with the escape of the quotation marks. For examples see:  - **Genereation detail description of variable astu011e_g2d:**   _Für die Zuordnung der darin nicht enthaltenen älteren Fächercodes 47 ("Krankenpege-Ausbildung-&gt;STB: **SS**ozialwesen") und 112 (**SS**ozialpsychologie-&gt; STB "Psychologie")_  - **Genereation detail description of variable astu011k_g2**: _Die generierte Variable hat die Ausprägung 1 **Ü**niversität"_  - **Genereation detail description of variable astu011k_g4r:** _Hochschulen im Ausland erhielten den Code 22 **Ä**usland"_</body>
+		<created>2016-12-02 08:34:01</created>
+		<closed>2017-02-20 12:50:45</closed>
+	</bug>
+	<bug>
+		<id>858</id>
+		<title>Response rate images seemed to be cached</title>
+		<body></body>
+		<created>2016-11-28 15:03:04</created>
+		<closed>2017-03-03 10:25:23</closed>
+	</bug>
+	<bug>
+		<id>842</id>
+		<title>Empty variables page when navigating to /de/variables/</title>
+		<body></body>
+		<created>2016-11-23 14:13:42</created>
+		<closed>2016-11-29 09:46:00</closed>
+	</bug>
+	<bug>
+		<id>838</id>
+		<title>Question.technicalRepresentation is not displayed</title>
+		<body>The following technical representation is not displayed: https://github.com/dzhw/metadatamanagement-io/blob/master/project/se19/data/questions/se19-ins1-10.2.json</body>
+		<created>2016-11-23 10:41:09</created>
+		<closed>2016-11-23 12:47:45</closed>
+	</bug>
+	<bug>
+		<id>822</id>
+		<title>Handle empty ScaleLevels in the DataSet Report</title>
+		<body>There is no handling for an empty Variable.ScaleLevel value. This is a problem, because the system can't create a dataset report, if the scale level is empty.</body>
+		<created>2016-11-16 11:27:34</created>
+		<closed>2016-11-17 16:23:49</closed>
+	</bug>
+	<bug>
+		<id>773</id>
+		<title>No more Datasets Report can be created</title>
+		<body>No more datasets can be created. It returns directly an error.</body>
+		<created>2016-11-02 08:09:21</created>
+		<closed>2016-11-04 09:32:34</closed>
+	</bug>
+	<bug>
+		<id>728</id>
+		<title>Elasticsearch Update Queue loses updates when import crashes</title>
+		<body>When the import crashes during processing of the update queue and the user reimports the same data then some entries are not stored in elasticsearch.  </body>
+		<created>2016-10-11 07:54:39</created>
+		<closed>2016-10-14 13:06:05</closed>
+	</bug>
+	<bug>
+		<id>638</id>
+		<title>Display bug IE (question detail page)</title>
+		<body>if you watch this [page](https://metadatamanagement.cfapps.io/#/de/questions/se19-ins1-01) ate the IE there is a display bug: ![dbqdp](https://cloud.githubusercontent.com/assets/13656277/18054880/ff0d3300-6e05-11e6-825b-96e3d1eeb362.png) </body>
+		<created>2016-08-29 14:31:38</created>
+		<closed>2017-02-03 14:07:04</closed>
+	</bug>
+	<bug>
+		<id>624</id>
+		<title>Search doesn't work</title>
+		<body></body>
+		<created>2016-08-19 13:43:13</created>
+		<closed>2016-08-19 14:03:06</closed>
+	</bug>
+	<bug>
+		<id>623</id>
+		<title>Validation problem with generationDetails.ruleExpressionLanguage</title>
+		<body>If you upload abs2005 you will get an validation error of the generationDetails.ruleExpressionLanguage which is wrong, because the data are correct. </body>
+		<created>2016-08-19 13:24:14</created>
+		<closed>2016-08-23 07:10:39</closed>
+	</bug>
+	<bug>
+		<id>609</id>
+		<title>Display error: Protocol </title>
+		<body>There are missing error messages in the protocoll. Also you get wrong validation warnings. ![error protocol](https://cloud.githubusercontent.com/assets/13656277/17699879/96007986-63c3-11e6-8c43-9925ef136774.png) </body>
+		<created>2016-08-16 13:10:46</created>
+		<closed>2016-08-18 07:20:04</closed>
+	</bug>
+	<bug>
+		<id>608</id>
+		<title>Change error message of post-valiadtion</title>
+		<body>Here are some not so important suggestions from issue #347: German Error Messages: “referenzieren auf” I think we don’t need any success-messages at the post-validation </body>
+		<created>2016-08-16 08:19:48</created>
+		<closed>2016-08-18 07:19:29</closed>
+	</bug>
+	<bug>
+		<id>596</id>
+		<title>No Reload after Upload</title>
+		<body>- [ ] No uploaded files will be displayed after an Upload - [ ] No actual number will be displayed in the tab after an Upload </body>
+		<created>2016-08-11 09:57:52</created>
+		<closed>2016-09-19 13:45:18</closed>
+	</bug>
+	<bug>
+		<id>593</id>
+		<title>Set back the error counter for upload </title>
+		<body>If you upload data (e.g. variables) and after that you upload the data again the counter of the errors doesn't start with zero. </body>
+		<created>2016-08-10 14:39:26</created>
+		<closed>2016-08-15 09:17:47</closed>
+	</bug>
+	<bug>
+		<id>592</id>
+		<title>Design of the "show protocol"-button</title>
+		<body>The text of the "show protocol"-button is to big for the button: ![button](https://cloud.githubusercontent.com/assets/13656277/17557676/6d3b45b2-5f18-11e6-9e07-b95ecf5a0c3c.png) </body>
+		<created>2016-08-10 14:36:01</created>
+		<closed>2016-08-18 15:45:01</closed>
+	</bug>
+	<bug>
+		<id>547</id>
+		<title>The states of tabs should be changed by clicking the back button in the browser</title>
+		<body></body>
+		<created>2016-07-14 12:49:55</created>
+		<closed>2016-09-16 14:03:03</closed>
+	</bug>
+	<bug>
+		<id>546</id>
+		<title>Variable search card layout problem</title>
+		<body>there is an layout problem, if you reduce the size of the IE window (#535): ![search card ie](https://cloud.githubusercontent.com/assets/13656277/16839427/47fc52ea-49cf-11e6-9fd8-5b21fb4de941.png) </body>
+		<created>2016-07-14 12:32:55</created>
+		<closed>2016-08-10 12:16:13</closed>
+	</bug>
+	<bug>
+		<id>505</id>
+		<title>Language bug</title>
+		<body>If you are logged in as admin at the IE and your language is English and you click on any navbar icon the language changes automatically to German. </body>
+		<created>2016-06-21 15:26:49</created>
+		<closed>2016-06-28 07:11:11</closed>
+	</bug>
+	<bug>
+		<id>489</id>
+		<title>LaTex error sb2008</title>
+		<body>If you compiling the sb2008 data you get this error: TeX capacity exceeded, sorry [main memory size=3000000]. }; </body>
+		<created>2016-06-08 13:44:19</created>
+		<closed>2016-06-09 08:20:19</closed>
+	</bug>
+	<bug>
+		<id>483</id>
+		<title>8 second delays when uploading variables</title>
+		<body>On the test system we have seen that there is a 8-9 second delay when uploading variables. This delay occurs roughly every 10th record. Profiling has shown that 90% of the time has been spent in MongoDbTokenStore.readAccessToken() </body>
+		<created>2016-05-31 14:21:12</created>
+		<closed>2016-07-12 08:43:07</closed>
+	</bug>
+	<bug>
+		<id>445</id>
+		<title>Wrong encoding when importing variables</title>
+		<body>Currently the json files of the variable import zip are not read as UTF-8 strings. This can be seen when you import abs2005-a2afrmdsp and abs2001-a2afrmdsp. </body>
+		<created>2016-05-11 14:10:24</created>
+		<closed>2016-05-17 14:56:44</closed>
+	</bug>
+	<bug>
+		<id>403</id>
+		<title>Redirect and load bug in the client application</title>
+		<body>Not every invalid url redirectes to the error page. This behavior is fixed for the project details page within this issue #396 . This local fix should not be repeated/copied for every state/valid page like survey details, datasets and so on. This needs a fix for the whole client application. An another problem is, that the most pages/states have a different behavior, if a invalid url is called by an user. This should be done by a fix, which works for the whole client application. </body>
+		<created>2016-04-20 08:38:25</created>
+		<closed>2016-09-19 14:10:46</closed>
+	</bug>
+	<bug>
+		<id>396</id>
+		<title>Fix redirect and load bug</title>
+		<body>- by given an invalid project id in the url, the state shold be redirected to the error page - resolve the promise issue while loading the project details page </body>
+		<created>2016-04-18 14:17:20</created>
+		<closed>2016-06-06 09:32:35</closed>
+	</bug>
+	<bug>
+		<id>311</id>
+		<title>Karma Test loads Navbar / Main Template</title>
+		<body>The Navbar and Main Template will by load by Karma Unit Tests, where they shouldn't. E.g.: survey.resource.spec.js or file.resource.spec.js .  The tests expect the get calls for the Navbar and Main template by the call of '$httpBackend.flush()'. This is the reason for the try catch block around the flush call. The loading of the templates must be defined by a more general configuration for the tests or worse the application.  This is a not traceable behavior und should be fixed.  </body>
+		<created>2016-03-15 10:03:32</created>
+		<closed>2016-09-19 14:23:47</closed>
+	</bug>
+	<bug>
+		<id>215</id>
+		<title>Validate that a variable has only surveys which belongs to the corresponding Fdzproject.</title>
+		<body>If you edit a variable you can choose a survey from anotherFdzproject. </body>
+		<created>2016-01-28 08:47:30</created>
+		<closed>2016-02-24 10:38:17</closed>
+	</bug>
+	<bug>
+		<id>176</id>
+		<title>Fix invalid oauth2 tokens</title>
+		<body>Sometimes the admin user is not able to log in due to broken oauth2 tokens. We currently delete all tokens (refresh and access) as a workarrround... </body>
+		<created>2016-01-11 14:08:01</created>
+		<closed>2017-02-03 11:25:11</closed>
+	</bug>
+	<bug>
+		<id>132</id>
+		<title>User can't execute a variable search when he changes bookmarkable url manualy</title>
+		<body></body>
+		<created>2015-12-15 13:21:22</created>
+		<closed>2016-02-25 09:29:23</closed>
+	</bug>
+	<bug>
+		<id>104</id>
+		<title>Circular reference involving containing bean 'cloudMongoDbConfiguration' </title>
+		<body>There is a bug at uploading the app into the cloud. The bug is circular reference issue of the mongo db factory object and the CloudMongoDbConfiguration. </body>
+		<created>2015-12-01 11:26:47</created>
+		<closed>2015-12-02 15:00:34</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>Glyphicons in navbar are not visible in IE</title>
+		<body>@anfranken Please add you IE version to this issue </body>
+		<created>2015-11-13 10:23:06</created>
+		<closed>2015-12-03 11:38:57</closed>
+	</bug>
+	<bug>
+		<id>84</id>
+		<title>Set user preferred language in the url</title>
+		<body>when user logs in the application, the preferred language don't appear in the url. </body>
+		<created>2015-11-12 11:12:58</created>
+		<closed>2016-02-24 12:07:40</closed>
+	</bug>
+	<bug>
+		<id>80</id>
+		<title>Unable to remove last element in list views (e.g. variable)</title>
+		<body></body>
+		<created>2015-11-06 14:06:40</created>
+		<closed>2016-02-24 12:32:13</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>Too many matches when searching for variables</title>
+		<body>When searching variables by "allbus ordinal" (https://metadatamanagement.cfapps.io/de/variables/search?query=allbus+ordinal&amp;_surveyTitle=on&amp;_scaleLevel=on&amp;_scaleLevel=on&amp;dateRange.startDate=&amp;dateRange.endDate=) the search returns nominal variables as well. </body>
+		<created>2015-09-14 07:18:23</created>
+		<closed>2015-09-14 07:57:17</closed>
+	</bug>
+</bugs>

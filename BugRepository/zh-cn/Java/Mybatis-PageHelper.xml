@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Mybatis-PageHelper">
+	<bug id="459" opendate="2019-11-09 13:15:31" fixdate="2020-07-21 15:43:28">
+		<buginformation>
+			<summary>由于sql注释引起的BUG</summary>
+			<description>- [ ] 我已在 [issues](https://github.com/pagehelper/Mybatis-PageHelper/issues) 搜索类似问题，并且不存在相同的问题.   ### 使用环境  * PageHelper 版本: 5.0.0 * 数据库类型和版本: mysql 8.0.18  ### 当查询的sql语句中存在注释时，有可能会导致分页失效 比如mapper中的sql如下 ```sql     select * from emp   --   order by emp.emp_id ``` 分页参数： ```java PageHelper.startPage(1, 10); xxMapper.select(model); ``` 生成的sql如下： ```sql     select * from emp   --   order by emp.emp_id LIMIT 10 ``` 这样注释就会导致分页失败 ### 修复建议 可以换行后再添加分页参数`LIMIT 10`来避免这种情况下的bug</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/pagehelper/dialect/rowbounds/HsqldbRowBoundsDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/helper/SqlServer2012Dialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/rowbounds/MySqlRowBoundsDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/helper/Oracle9iDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/helper/InformixDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/rowbounds/Db2RowBoundsDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/rowbounds/SqlServer2012RowBoundsDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/helper/OracleDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/rowbounds/HerdDBRowBoundsDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/rowbounds/InformixRowBoundsDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/helper/HsqldbDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/helper/HerdDBDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/rowbounds/OracleRowBoundsDialect.java</file>
+			<file>src/main/java/com/github/pagehelper/parser/CountSqlParser.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/helper/Db2Dialect.java</file>
+			<file>src/main/java/com/github/pagehelper/dialect/helper/MySqlDialect.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="276" opendate="2018-09-02 13:00:53" fixdate="2018-09-03 13:27:17">
+		<buginformation>
+			<summary>小问题 </summary>
+			<description>CountSqlParser的skipFunctions 、 falseFunctions不支持并发吧</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/pagehelper/parser/CountSqlParser.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

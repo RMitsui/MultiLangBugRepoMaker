@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Aria">
+	<bug id="731" opendate="2020-08-13 10:26:48" fixdate="2020-08-14 03:37:41">
+		<buginformation>
+			<summary>加密m3u8下载</summary>
+			<description>&lt;!-- 提交问题前，请先阅读文档和搜索相应问题的issue --&gt;  ## 版本 * 框架版本  implementation 'com.arialyy.aria:core:3.8.11-beta'  implementation 'com.arialyy.aria:m3u8Component:3.8.11-beta' * 系统版本  ## 错误日志 &lt;!-- 请提供详细的错误日志 --&gt;  加密的m3u8视频下载，ts文件和key文件都能下载成功，但是m3u8文件为空 请问这是为什么呢 ![Uploading image.png…]()        </description>
+		</buginformation>
+		<fixedfiles>
+			<file>M3U8Component/src/main/java/com/arialyy/aria/m3u8/vod/M3U8VodLoader.java</file>
+			<file>M3U8Component/src/main/java/com/arialyy/aria/m3u8/BaseM3U8Loader.java</file>
+			<file>M3U8Component/src/main/java/com/arialyy/aria/m3u8/vod/VodStateManager.java</file>
+			<file>M3U8Component/src/main/java/com/arialyy/aria/m3u8/M3U8InfoTask.java</file>
+			<file>app/src/main/java/com/arialyy/simple/core/download/m3u8/M3U8VodDLoadActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="695" opendate="2020-06-16 04:10:17" fixdate="2020-06-30 10:00:38">
+		<buginformation>
+			<summary>配置文件threadNum为1 下载失败,不会自动重试?</summary>
+			<description>&lt;!-- 提交问题前，请先阅读文档和搜索相应问题的issue --&gt;  ## 版本 * 框架版本 3.8.6  * 系统版本 华为Emui 10.1  ## 错误日志 &lt;!-- 请提供详细的错误日志 --&gt; 2020-06-16 12:01:44.135 W/System.err: com.arialyy.aria.exception.AriaHTTPException: HttpThreadTask, 文件下载失败，savePath: /storage/emulated/0/Android/data/com.example.test/cache/playbook/ffd52f3c7e12435a724a8f30fddadd9c.zip, url: xxxxxxx 2020-06-16 12:01:44.136 W/System.err:     at com.arialyy.aria.http.download.HttpDThreadTaskAdapter.readDynamicFile(HttpDThreadTaskAdapter.java:228) 2020-06-16 12:01:44.136 W/System.err:     at com.arialyy.aria.http.download.HttpDThreadTaskAdapter.handlerThreadTask(HttpDThreadTaskAdapter.java:106) 2020-06-16 12:01:44.136 W/System.err:     at com.arialyy.aria.core.task.AbsThreadTaskAdapter.call(AbsThreadTaskAdapter.java:54) 2020-06-16 12:01:44.136 W/System.err:     at com.arialyy.aria.core.task.ThreadTask.call(ThreadTask.java:543) 2020-06-16 12:01:44.137 W/System.err:     at com.arialyy.aria.core.task.ThreadTask.call(ThreadTask.java:47)  ## 重现步骤 &lt;!-- 请提供明确的步骤 --&gt; 1.网络波动导致下载失败 2.触发ThreadTask fail回调 ``` if (mTaskWrapper.getRequestType() == ITaskWrapper.M3U8_VOD) {       writeConfig(false, 0);       retryM3U8Peer(needRetry);     } else {       if (mTaskWrapper.isSupportBP()) {         writeConfig(false, subCurrentLocation);         retryBlockTask(needRetry &amp;&amp; mConfig.startThreadNum != 1);       } else {         ALog.e(TAG, String.format("任务【%s】执行失败", getFileName()));         ErrorHelp.saveError(TAG, "", ALog.getExceptionString(ex));         sendFailMsg(null, needRetry);       }     } ``` retryBlockTask 因为配置的threadNum 是1所以不会重试 直接触发失败回调 请问是这样吗?    </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/arialyy/simple/core/download/HttpDownloadModule.java</file>
+			<file>app/src/main/java/com/arialyy/simple/core/download/SingleTaskActivity.java</file>
+			<file>PublicComponent/src/main/java/com/arialyy/aria/core/loader/SubLoader.java</file>
+			<file>PublicComponent/src/main/java/com/arialyy/aria/core/task/ThreadTask.java</file>
+			<file>Aria/src/main/java/com/arialyy/aria/core/manager/SubTaskManager.java</file>
+			<file>app/src/main/java/com/arialyy/simple/widget/ProgressLayout.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

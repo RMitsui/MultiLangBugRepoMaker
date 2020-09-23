@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="MomsBay">
+	<bug id="117" opendate="2018-05-31 05:12:54" fixdate="2018-05-31 05:21:27">
+		<buginformation>
+			<summary>거래게시판 글삭제 후 잘못된 목록이동</summary>
+			<description>- detail_trade_post.jsp - PagingBean - SharPostService - TradeBoardController - TradePostService</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/kosta/momsbay/model/service/TradePostService.java</file>
+			<file>src/main/java/org/kosta/momsbay/model/common/PagingBean.java</file>
+			<file>src/main/java/org/kosta/momsbay/controller/TradeBoardController.java</file>
+			<file>src/main/java/org/kosta/momsbay/model/service/SharePostService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="94" opendate="2018-05-25 05:41:19" fixdate="2018-05-30 10:46:10">
+		<buginformation>
+			<summary>목록버튼으로 목록 갈때와 삭제후 목록으로 돌아갈때 수정</summary>
+			<description>- #92 의 목록구현은 이전페이지가 목록이 아닐때의 경우는 제대로된 페이지로 넘겨주지 못한다.    &gt; 상세페이지에 page번호를 같이 넘겨 목록으로 이동시 넘어온 page 번호로 이동한다.  - 전체 메세지함에서 상세목록으로 왔다가 목록으로 돌아갈시 받은메세지이면 받은메세지 함으로 보낸메세지면 보낸메세지 함으로 이동하는 버그 수정    &gt;  db에 messageType을 추가한다.  - 삭제후 이전 경로의 페이지 번호로 넘어갈 경우 페이지번호가 없어졌을때 문제가 생긴다. 삭제후 정확한 목록으로 가야한다.    &gt; 상세페이지에 page번호를 같이 넘겨 pagingBean에서 마지막 페이지 번호를 구하고 넘어온 page번호와 보다 작을경우 nowPageNo를 다시 set한다.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/kosta/momsbay/model/service/MessageService.java</file>
+			<file>src/main/java/org/kosta/momsbay/model/common/PagingBean.java</file>
+			<file>src/main/java/org/kosta/momsbay/controller/MessageController.java</file>
+			<file>src/main/java/org/kosta/momsbay/model/vo/MessageVO.java</file>
+			<file>src/test/java/org/kosta/momsbay/MessageMapperTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="greys-anatomy">
+	<bug id="94" opendate="2015-12-09 23:17:10" fixdate="2015-12-13 16:37:37">
+		<buginformation>
+			<summary>trace命令在跟进类构造函数存在继承关系的时候不准</summary>
+			<description>RT </description>
+		</buginformation>
+		<fixedfiles>
+			<file>core/src/main/java/com/github/ompc/greys/core/advisor/Enhancer.java</file>
+			<file>core/src/main/java/com/github/ompc/greys/core/util/PointCut.java</file>
+			<file>core/src/main/java/com/github/ompc/greys/core/command/TraceCommand.java</file>
+			<file>core/src/main/java/com/github/ompc/greys/core/manager/impl/DefaultReflectManager.java</file>
+			<file>core/src/main/java/com/github/ompc/greys/core/advisor/AdviceWeaver.java</file>
+			<file>core/src/main/java/com/github/ompc/greys/core/advisor/ReflectAdviceTracingListenerAdapter.java</file>
+			<file>core/src/main/java/com/github/ompc/greys/core/command/AsmCommand.java</file>
+			<file>core/src/main/java/com/github/ompc/greys/core/GlobalOptions.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2015-03-05 05:22:00" fixdate="2015-03-08 15:45:47">
+		<buginformation>
+			<summary>解决$Proxy代理类无法被拦截的问题</summary>
+			<description>在拦截HSF的Consumer的时候，其中的方法无法被正确拦截，经过仔细排查发现是`GreysAnatomyClassFileTransformer.java`类中无法通过ClassLoader获取$Proxy的类，原因是ClassLoader获取$Proxy类字节码的时候是通过getReousrces()完成的，但$Proxy因为没有CodeSource，所以无法通过这样的方式完成字节码获取，需要改变获取的方式。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/googlecode/greysanatomy/console/server/ConsoleServerHandler.java</file>
+			<file>src/main/java/com/googlecode/greysanatomy/agent/GreysAnatomyClassFileTransformer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="18" opendate="2014-11-06 13:25:36" fixdate="2014-11-06 15:44:58">
+		<buginformation>
+			<summary>JOB输出文件存在性能问题</summary>
+			<description>JOB的输出为了节省内存，是通过文件进行交互的，在频繁的输出过程中存在反复写文件的问题，严重的时候会非常影响性能（比如watch/profiler一个非常热的方法），所以需要将文件的打开、关闭和session的生命周期进行挂钩，避免不必要的反复打开、关闭文件。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/googlecode/greysanatomy/console/server/ConsoleServerHandler.java</file>
+			<file>src/main/java/com/googlecode/greysanatomy/probe/ProbeJobs.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

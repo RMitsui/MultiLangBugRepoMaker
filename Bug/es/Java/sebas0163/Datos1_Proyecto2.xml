@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>45</id>
+		<title>RadixSort</title>
+		<body>El radix falla si los archivos son muy pesados </body>
+		<created>2019-10-26 05:23:16</created>
+		<closed>2019-10-26 18:09:14</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>BubbleSort</title>
+		<body>El método con el que se esta convirtiendo la fecha a un numero esta retornando un valor igual para todas las fechas  ### Solución: se crea una nueva función que toma la fecha y elimina todos los caracteres de modo que solo quede un numero para luego utilizar este numero. Esta función reemplaza la de StringtoInt utilizada anterior mente </body>
+		<created>2019-10-26 05:22:44</created>
+		<closed>2019-10-26 05:37:18</closed>
+	</bug>
+	<bug>
+		<id>43</id>
+		<title>Error al mostrar un txt en pantalla</title>
+		<body>A la hora de tomar el texto de un txt y reescribirlo en un textArea, solo era copiada solamente la última linea de del texto. El error se presentó debido al funcionamiento del método que se usaba para transcribir el txt copiaba todo en la misma linea una y otra vez, eliminado lo que ya se encontraba ahí.  ### Solución: Se optó por añadir todas las lineas del txt a un solo string, para posterior añadirlo de una sola vez al text area.</body>
+		<created>2019-10-25 06:09:01</created>
+		<closed>2019-10-25 06:11:44</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>Error en la ejecución del radixSort</title>
+		<body>A la hora de aplicar el ordenamiento según el tamaño del archivo, el programa se caía y uno de los archivos se perdía, esto se debe a que el programa "crashea" por lo tanto la lista queda desordenada. debido a que la lista que se retornaba no estaba bien creada por lo que aarrojaba un null pointer exception  ### Solución: se arregló la lista de salida mediante el metodo de relleno para crear una lista que va a contener documentos con el len correcto, para que no apareciera el null pointer exception  </body>
+		<created>2019-10-25 06:01:50</created>
+		<closed>2019-10-25 21:28:17</closed>
+	</bug>
+	<bug>
+		<id>41</id>
+		<title>Error al eliminar los archivos </title>
+		<body>A la hora de ejecutar la eliminación de algún archivo, se eliminaban todos los datos que  se relacionaban a el menos el documento directamente en la carpeta. Este error se producía debido a que en el momento de trabajar con el  o los documentos, estos no eran cerrados, por lo cual no se podían eliminar.  ### Solución: Se procedió a cerrar cada documento después de su uso.</body>
+		<created>2019-10-25 05:57:10</created>
+		<closed>2019-10-25 06:02:29</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>Eliminar Documentos de formato PDF</title>
+		<body>Posterior a la solución del error causado por dejar los archivos abiertos, los archivos de formato pdf seguían sin poderse eliminar, ni modificar. Este error fue causado por asignar un método erróneo al botón encargado de eliminar este documento.  ### Solución: Se asignó el método correcto a dicho botón.</body>
+		<created>2019-10-25 05:50:57</created>
+		<closed>2019-10-25 05:51:50</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>ordenamientos</title>
+		<body>Al  ordenar los documentos se utiliza la funcion strtoint de la clase palabra, esta fallaba al invocarla  Se corrigió creando la funcion strtoint  en la clase ejecutaar.</body>
+		<created>2019-10-24 05:07:00</created>
+		<closed>2019-10-26 05:21:57</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>Agregar Palabras al arbol</title>
+		<body>Las palabras se transforman en un int para ordenarla Problema: existe la posibilidad de que al sumar los valores se de el mismo numero aunque sea una palabra diferente Solución:  se suman los numeros como un string y el valor se le da con ascii para evitar conflictos</body>
+		<created>2019-10-16 00:31:23</created>
+		<closed>2019-10-16 00:31:45</closed>
+	</bug>
+</bugs>

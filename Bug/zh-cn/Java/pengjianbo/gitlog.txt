@@ -1,0 +1,1118 @@
+da83e1902b9bd54a3dfe704f41fb9b3fa92f8a80, Merge pull request #66 from CommonOpenSourceOrganization-Android/develop, Thu Apr 21 15:12:50 2016 +0800
+94cd75208a987b8983dfbf95967a265c7bd71365, 修复恢复数据是获取图片缓存bug, Thu Apr 21 14:51:06 2016 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+
+b41dd7727eb21a86e0e6fb36e2bb5cb1f0175392, Update, Fri Mar 4 16:48:02 2016 +0800
+M	CHANGELOG.md
+M	README.md
+
+b28b02841ee3726879813d8857ac1a8b0a966a46, 标题栏主题颜色修改, Tue Feb 23 12:51:31 2016 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoPreviewActivity.java
+
+3f7c603cc45b2aab06da2f90cbc7f939b3155f51, 预览页添加删除图片功能, Mon Feb 22 19:55:42 2016 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoPreviewActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoPreviewAdapter.java
+M	galleryfinal/src/main/res/layout/gf_adapter_preview_viewpgaer_item.xml
+
+8c5d6011c0fbb809344ded6e778c871434f10461, 添加uCrop裁剪库, Mon Feb 22 18:36:30 2016 +0800
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/res/values/styles.xml
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/permission/EasyPermissions.java
+D	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/ILogger.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropUtil.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/CupcakeGestureDetector.java
+M	settings.gradle
+A	ucrop/.gitignore
+A	ucrop/build.gradle
+A	ucrop/proguard-rules.pro
+A	ucrop/src/androidTest/java/cn/finalteam/galleryfinal/ucrop/ApplicationTest.java
+A	ucrop/src/main/AndroidManifest.xml
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/UCrop.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/UCropActivity.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/util/BitmapLoadUtils.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/util/CubicEasing.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/util/FastBitmapDrawable.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/util/RectUtils.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/util/RotationGestureDetector.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/util/SelectedStateListDrawable.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/view/CropImageView.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/view/GestureCropImageView.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/view/OverlayView.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/view/TransformImageView.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/view/UCropView.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/view/widget/AspectRatioTextView.java
+A	ucrop/src/main/java/cn/finalteam/galleryfinal/ucrop/view/widget/HorizontalProgressWheelView.java
+A	ucrop/src/main/res/color/ucrop_scale_text_view_selector.xml
+A	ucrop/src/main/res/drawable-hdpi/ucrop_ic_angle.png
+A	ucrop/src/main/res/drawable-hdpi/ucrop_ic_crop.png
+A	ucrop/src/main/res/drawable-hdpi/ucrop_ic_cross.png
+A	ucrop/src/main/res/drawable-hdpi/ucrop_ic_done.png
+A	ucrop/src/main/res/drawable-hdpi/ucrop_ic_next.png
+A	ucrop/src/main/res/drawable-hdpi/ucrop_ic_reset.png
+A	ucrop/src/main/res/drawable-hdpi/ucrop_ic_rotate.png
+A	ucrop/src/main/res/drawable-hdpi/ucrop_ic_scale.png
+A	ucrop/src/main/res/drawable-ldpi/ucrop_ic_angle.png
+A	ucrop/src/main/res/drawable-ldpi/ucrop_ic_crop.png
+A	ucrop/src/main/res/drawable-ldpi/ucrop_ic_cross.png
+A	ucrop/src/main/res/drawable-ldpi/ucrop_ic_done.png
+A	ucrop/src/main/res/drawable-ldpi/ucrop_ic_next.png
+A	ucrop/src/main/res/drawable-ldpi/ucrop_ic_reset.png
+A	ucrop/src/main/res/drawable-ldpi/ucrop_ic_rotate.png
+A	ucrop/src/main/res/drawable-ldpi/ucrop_ic_scale.png
+A	ucrop/src/main/res/drawable-mdpi/ucrop_ic_angle.png
+A	ucrop/src/main/res/drawable-mdpi/ucrop_ic_crop.png
+A	ucrop/src/main/res/drawable-mdpi/ucrop_ic_cross.png
+A	ucrop/src/main/res/drawable-mdpi/ucrop_ic_done.png
+A	ucrop/src/main/res/drawable-mdpi/ucrop_ic_next.png
+A	ucrop/src/main/res/drawable-mdpi/ucrop_ic_reset.png
+A	ucrop/src/main/res/drawable-mdpi/ucrop_ic_rotate.png
+A	ucrop/src/main/res/drawable-mdpi/ucrop_ic_scale.png
+A	ucrop/src/main/res/drawable-xhdpi/ucrop_ic_angle.png
+A	ucrop/src/main/res/drawable-xhdpi/ucrop_ic_crop.png
+A	ucrop/src/main/res/drawable-xhdpi/ucrop_ic_cross.png
+A	ucrop/src/main/res/drawable-xhdpi/ucrop_ic_done.png
+A	ucrop/src/main/res/drawable-xhdpi/ucrop_ic_next.png
+A	ucrop/src/main/res/drawable-xhdpi/ucrop_ic_reset.png
+A	ucrop/src/main/res/drawable-xhdpi/ucrop_ic_rotate.png
+A	ucrop/src/main/res/drawable-xhdpi/ucrop_ic_scale.png
+A	ucrop/src/main/res/drawable-xxhdpi/ucrop_ic_angle.png
+A	ucrop/src/main/res/drawable-xxhdpi/ucrop_ic_crop.png
+A	ucrop/src/main/res/drawable-xxhdpi/ucrop_ic_cross.png
+A	ucrop/src/main/res/drawable-xxhdpi/ucrop_ic_done.png
+A	ucrop/src/main/res/drawable-xxhdpi/ucrop_ic_next.png
+A	ucrop/src/main/res/drawable-xxhdpi/ucrop_ic_reset.png
+A	ucrop/src/main/res/drawable-xxhdpi/ucrop_ic_rotate.png
+A	ucrop/src/main/res/drawable-xxhdpi/ucrop_ic_scale.png
+A	ucrop/src/main/res/drawable-xxxhdpi/ucrop_ic_angle.png
+A	ucrop/src/main/res/drawable-xxxhdpi/ucrop_ic_crop.png
+A	ucrop/src/main/res/drawable-xxxhdpi/ucrop_ic_cross.png
+A	ucrop/src/main/res/drawable-xxxhdpi/ucrop_ic_done.png
+A	ucrop/src/main/res/drawable-xxxhdpi/ucrop_ic_next.png
+A	ucrop/src/main/res/drawable-xxxhdpi/ucrop_ic_reset.png
+A	ucrop/src/main/res/drawable-xxxhdpi/ucrop_ic_rotate.png
+A	ucrop/src/main/res/drawable-xxxhdpi/ucrop_ic_scale.png
+A	ucrop/src/main/res/drawable/ucrop_shadow_upside.xml
+A	ucrop/src/main/res/layout/ucrop_activity_photobox.xml
+A	ucrop/src/main/res/layout/ucrop_layout_aspect_ratio.xml
+A	ucrop/src/main/res/layout/ucrop_layout_rotate_wheel.xml
+A	ucrop/src/main/res/layout/ucrop_layout_scale_wheel.xml
+A	ucrop/src/main/res/layout/ucrop_view.xml
+A	ucrop/src/main/res/menu/ucrop_menu_activity.xml
+A	ucrop/src/main/res/values-zh/strings.xml
+A	ucrop/src/main/res/values/attrs.xml
+A	ucrop/src/main/res/values/colors.xml
+A	ucrop/src/main/res/values/dimens.xml
+A	ucrop/src/main/res/values/public.xml
+A	ucrop/src/main/res/values/strings.xml
+A	ucrop/src/main/res/values/styles.xml
+
+1b0eda23030345c39ce61780772e82858257a443, 解决反选bug，添加单选可以预览, Thu Feb 18 17:41:33 2016 +0800
+A	CHANGELOG.md
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	gradle.properties
+
+78ece270502fff4184217154f49a7e859ffc7498, 解决选择图片顺序错位问题, Sun Feb 14 11:36:05 2016 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/model/PhotoInfo.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+
+cf6285b511db4eff0cd365f0cfcc7560a0e0b5cc, 更新工具库, Sun Feb 14 11:34:45 2016 +0800
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	galleryfinal/build.gradle
+D	galleryfinal/libs/ToolsFinal-1.1.3-release.jar
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+
+849dd796ce24e24703757e9490d262ba2251b7a2, 解决fresco gif图片不显示问题, Mon Feb 1 16:19:45 2016 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/FrescoImageLoader.java
+M	galleryfinal/build.gradle
+A	galleryfinal/libs/ToolsFinal-1.1.3-release.jar
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/permission/EasyPermissions.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/ILogger.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GFImageView.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropUtil.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/CupcakeGestureDetector.java
+M	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/strings.xml
+M	gradle.properties
+
+563e4b26671201e33221d1f102cc5dbf9ffb53da, 修改打开相册maxsize判断逻辑, Mon Jan 25 19:53:46 2016 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/FunctionConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/strings.xml
+M	gradle.properties
+
+0fb621bbb9a1729368da58b6e9ca2a5374bfedd2, 提交1.4.8.2, Mon Jan 25 00:01:52 2016 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	gradle.properties
+
+4bb86ca134cc3a6590baeedcc01b96797e93ab40, 添加打开相册maxsize判断, Mon Jan 25 00:01:24 2016 +0800
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+
+6bdbc121e3085962fcd6bb08cca3c702a147e7f4, 优化6.0权限兼容性问题, Mon Jan 25 00:00:52 2016 +0800
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/permission/AfterPermissionGranted.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/permission/EasyPermissions.java
+
+4c84b30ed40328bbecc604c95e51551e19d9921f, Update README.md, Fri Jan 22 20:02:49 2016 +0800
+M	README.md
+
+7782aa6808cf074a3d32d4e48491d4475cbe608a, 解决openCamera拍照不可编辑时无返回图片的bug, Fri Jan 22 18:48:18 2016 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	gradle.properties
+
+1fea120b39c8d5125c961f4403fb19a133f1f9fc, 发布1.4.8版本, Fri Jan 22 10:06:28 2016 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	gradle.properties
+
+32484ccc7dd353460348ab106da7bbe77b9c04e4, openCamera拍照失败直接返回失败结果给调用者, Fri Jan 22 09:53:34 2016 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoPreviewActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+
+d1e948a211134a0cdbdb3fe7e4c8b168ef40324c, openCamera拍照成功不可编辑时直接返回结果, Fri Jan 22 09:20:48 2016 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+
+82fd4dc6142fd2e6589d3ef3271d6530655828cc, Update README.md, Thu Jan 21 12:48:21 2016 +0800
+M	README.md
+
+0948594cc8bcd9a87ac317e551a53faf09f1578a, 解决拍照时部分手机Activity重启导致数据丢失问题, Wed Jan 20 20:49:56 2016 +0800
+M	README.md
+M	galleryfinal/src/main/AndroidManifest.xml
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/FunctionConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/ThemeConfig.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/model/PhotoTempModel.java
+M	gradle.properties
+
+abe16eef09591f444e8b9f7f24861d3e1730bbe5, Update README.md, Thu Jan 14 17:03:24 2016 +0800
+M	README.md
+
+a65225deb2b03c021ba37f08310a58e58b6584a8,  解决Moto手机拍照失败问题, Thu Jan 14 11:02:57 2016 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	gradle.properties
+
+1e4c8509328025e0901b410fa7d2423f2fb918c5, 解决拍照强制裁剪无效问题, Wed Jan 13 16:03:48 2016 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	gradle.properties
+
+e1bb32f3cba6eb869ce3e2a0726b00523080b042, Merge pull request #12 from henjue/master, Tue Jan 12 17:57:59 2016 +0800
+07569de4eb559290f7c580aa2596f7e1bd958a88, fix result error when take photo and press back key, Tue Jan 12 17:18:52 2016 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+
+54ab3de9c4fd3e552c32c1a924c2ae596b71defa, Update README.md, Sat Jan 9 23:06:48 2016 +0800
+M	README.md
+
+93c00fccd131e0f18553293bcd367963e631ba72, Update demo apk, Sat Jan 9 23:00:24 2016 +0800
+M	GalleryFinal-Sample.apk
+
+2e04cdbea8a364f4b26ab6e903fcbfc6b3ebb7f4, Update README.md, Sat Jan 9 23:00:10 2016 +0800
+M	README.md
+
+3c44ac2a18d08b10e4f67307331a05b29786fe7b, 发布1.4.4版本, Sat Jan 9 19:28:50 2016 +0800
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	gradle.properties
+
+6d47fe707d0d0de7b3457c19fa50cbec877aa99f, 添加ImageLoader PauseOnScrollListener优化，添加关闭动画方法, Sat Jan 9 19:13:43 2016 +0800
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/listener/GlidePauseOnScrollListener.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/listener/PicassoPauseOnScrollListener.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/listener/UILPauseOnScrollListener.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/listener/XUtils2PauseOnScrollListener.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtilsImageLoader.java
+M	app/src/main/res/layout/content_main.xml
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/Global.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PauseOnScrollListener.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/ImageViewTouchBase.java
+
+b223b5c659b98a64006b46756ff375b32fab4c85, 修复glide setTag问题, Tue Jan 5 21:48:35 2016 +0800
+M	GalleryFinal-Sample.apk
+A	app/src/main/res/values/ids.xml
+M	app/src/main/res/values/strings.xml
+M	galleryfinal/src/main/res/values/ids.xml
+
+6991cb2bae99f7cd2e393705b147e9915343a9f3, Merge branch 'develop', Tue Jan 5 21:42:54 2016 +0800
+cad792e6c43f8a1fb1c2caa92b791439945f1e52, 修复glide setTag问题, Tue Jan 5 21:39:50 2016 +0800
+M	README.md
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/GlideImageLoader.java
+M	galleryfinal/src/main/res/values/ids.xml
+
+97897044da4478d0c3e3f1b6cfead1604982929a, Update README.md, Mon Jan 4 19:11:08 2016 +0800
+M	README.md
+
+c5a1057d3f81cb7ee3e84252774d16ebe1c0fe6c, Merge branch 'develop', Mon Jan 4 19:09:53 2016 +0800
+a612ae7a8602f2fe9d7d9a5edb0e2be8b4b079ba, Update README.md, Mon Jan 4 19:09:23 2016 +0800
+M	README.md
+
+9ef294bc091ea44ca7b1ddaeca07654b5a7b6e12, 多选方法添加maxsize字段, Mon Jan 4 19:07:55 2016 +0800
+M	README.md
+M	app/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/FunctionConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	gradle.properties
+
+737068df8e4bbe7086f51b094ce5b37be68cafdc, publish 1.4.2, Sun Jan 3 00:44:20 2016 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	gradle.properties
+
+0c518048db3ae8782da029ecea784b873a9be9a0, 添加动画, Sun Jan 3 00:28:22 2016 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+A	galleryfinal/src/main/res/anim/gf_flip_horizontal_in.xml
+A	galleryfinal/src/main/res/anim/gf_flip_horizontal_out.xml
+M	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/strings.xml
+
+9cc83866b3ee7dab8ea97eed51cc0149eb50154b, 6.0权限兼容性问题, Thu Dec 31 18:05:40 2015 +0800
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/strings.xml
+
+c4107243cf5b0318a82c01ab0cd591f5b3581a07, 解决创建文件夹bug。, Thu Dec 31 11:27:17 2015 +0800
+M	GalleryFinal-Sample.apk
+
+16bcf73ac3c8a8694cb94630b126f49e11aeddb8, 解决创建文件夹bug。, Thu Dec 31 11:26:09 2015 +0800
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	gradle.properties
+
+8c524aa2070b6ec74a5ac2f1b89a917fa5e26b51, Update README.md, Wed Dec 30 19:57:57 2015 +0800
+M	README.md
+
+1d33a4e04640393a37dfa48e624fc0ade6504f6b, 提交demo apk, Wed Dec 30 19:57:36 2015 +0800
+M	GalleryFinal-Sample.apk
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+
+2ead64549a8c0f05d83228a27ac16c4e20a2b9c2, Update README.md, Wed Dec 30 19:15:48 2015 +0800
+M	README.md
+
+d9e3cb437a18dd091a0b1fd6b0fade745cd35b3e, imageloader迁移到app modul, Wed Dec 30 19:14:49 2015 +0800
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/FrescoImageLoader.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/GlideImageLoader.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/PicassoImageLoader.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/UILImageLoader.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtilsImageLoader.java
+A	galleryfinal/gradle.properties
+M	gradle.properties
+M	settings.gradle
+
+f55b68759b156da2ad774e60248da4c1eee566a5, 修改主题, Wed Dec 30 19:14:09 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoPreviewActivity.java
+
+fa00f4947b04ed2f74583149562e86c820ebd14f, 去掉imageloader modul, Wed Dec 30 19:09:09 2015 +0800
+D	fresco/.gitignore
+D	fresco/build.gradle
+D	fresco/gradle.properties
+D	fresco/proguard-rules.pro
+D	fresco/src/main/AndroidManifest.xml
+D	fresco/src/main/java/cn/finalteam/galleryfinal/imageloader/fresco/FrescoImageLoader.java
+D	glide/.gitignore
+D	glide/build.gradle
+D	glide/gradle.properties
+D	glide/proguard-rules.pro
+D	glide/src/main/AndroidManifest.xml
+D	glide/src/main/java/cn/finalteam/galleryfinal/imageloader/glide/GlideImageLoader.java
+D	picasso/.gitignore
+D	picasso/build.gradle
+D	picasso/gradle.properties
+D	picasso/proguard-rules.pro
+D	picasso/src/main/AndroidManifest.xml
+D	picasso/src/main/java/cn/finalteam/galleryfinal/imageloader/picasso/PicassoImageLoader.java
+D	uil/.gitignore
+D	uil/build.gradle
+D	uil/gradle.properties
+D	uil/proguard-rules.pro
+D	uil/src/main/AndroidManifest.xml
+D	uil/src/main/java/cn/finalteam/galleryfinal/imageloader/uil/UILImageLoader.java
+D	xuilts/.gitignore
+D	xuilts/build.gradle
+D	xuilts/gradle.properties
+D	xuilts/proguard-rules.pro
+D	xuilts/src/main/AndroidManifest.xml
+D	xuilts/src/main/java/cn/finalteam/galleryfinal/imageloader/xutils/XUtilsImageLoader.java
+
+ffdf21d0f70c6194577e8725668712a95bd89c48, 修改间距, Tue Dec 29 20:03:54 2015 +0800
+M	galleryfinal/src/main/res/layout/gf_activity_photo_edit.xml
+M	galleryfinal/src/main/res/layout/gf_activity_photo_select.xml
+
+670dc45ef650d4e68d432edc9621b5f20c42623a, 添加图片预览功能, Tue Dec 29 19:36:30 2015 +0800
+M	README.md
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/res/layout/content_main.xml
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/AndroidManifest.xml
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/FunctionConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoPreviewActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/ThemeConfig.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoPreviewAdapter.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/ViewHolderRecyclingPagerAdapter.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GFViewPager.java
+A	galleryfinal/src/main/res/drawable-hdpi/gf_ic_preview.png
+A	galleryfinal/src/main/res/drawable-mdpi/gf_ic_preview.png
+A	galleryfinal/src/main/res/drawable-xhdpi/gf_ic_preview.png
+A	galleryfinal/src/main/res/drawable-xxhdpi/gf_ic_preview.png
+A	galleryfinal/src/main/res/drawable-xxxhdpi/ic_gf_preview.png
+M	galleryfinal/src/main/res/layout/gf_activity_photo_edit.xml
+A	galleryfinal/src/main/res/layout/gf_activity_photo_preview.xml
+M	galleryfinal/src/main/res/layout/gf_activity_photo_select.xml
+A	galleryfinal/src/main/res/layout/gf_adapter_preview_viewpgaer_item.xml
+M	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/strings.xml
+
+c7084a0aeeb81894eec1925fc6c4ffea2d1f5f2f, 去掉common adapter, Tue Dec 29 15:51:41 2015 +0800
+D	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/CommonBaseAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoEditListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+
+5f36f44ecb432f3b308a5866d72502037997f26b, 必须选中了图片才能点击确认, Tue Dec 29 14:17:59 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+
+747a97ce3fa13ebf93e2088dca79fa219460ded7, 解决事件回调finish Activity bug, Tue Dec 29 11:29:38 2015 +0800
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	fresco/build.gradle
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/strings.xml
+M	glide/build.gradle
+M	picasso/build.gradle
+M	uil/build.gradle
+M	xuilts/build.gradle
+
+a865ad1058cf295b40779e26282ea61c1b58b96f, 修改sdk版本, Tue Dec 29 08:52:52 2015 +0800
+M	app/build.gradle
+M	fresco/build.gradle
+M	galleryfinal/build.gradle
+M	glide/build.gradle
+M	picasso/build.gradle
+M	uil/build.gradle
+M	xuilts/build.gradle
+
+36fe145159334b1feac5f74d02d4442d199bb668, 修改配置信息, Mon Dec 28 20:45:11 2015 +0800
+M	README.md
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+A	bintray.gradle
+M	fresco/build.gradle
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+R094	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryTheme.java	galleryfinal/src/main/java/cn/finalteam/galleryfinal/ThemeConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageActivity.java
+M	glide/build.gradle
+M	gradle.properties
+M	picasso/build.gradle
+M	uil/build.gradle
+M	xuilts/build.gradle
+
+35d152941dbe00b0e57f4d895b90bd47fcc8707f, listener重命名, Mon Dec 28 15:26:59 2015 +0800
+M	fresco/src/main/java/cn/finalteam/galleryfinal/imageloader/fresco/FrescoImageLoader.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GFImageView.java
+
+3be92c779b4dbe1cd27bf90c7a9a9ff8d22aaee9, 优化配置, Mon Dec 28 09:04:20 2015 +0800
+M	README.md
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/CoreConfig.java
+R063	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryConfig.java	galleryfinal/src/main/java/cn/finalteam/galleryfinal/FunctionConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoEditListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GFImageView.java
+M	glide/src/main/java/cn/finalteam/galleryfinal/imageloader/glide/GlideImageLoader.java
+
+536d2a890a7759ef463b6619efacb47e33fd5e2a, 主流imageloader GalleryFinal实现通过gradle引入, Sat Dec 26 20:06:49 2015 +0800
+M	README.md
+M	fresco/gradle.properties
+M	fresco/src/main/java/cn/finalteam/galleryfinal/imageloader/fresco/FrescoImageLoader.java
+M	glide/gradle.properties
+M	glide/src/main/java/cn/finalteam/galleryfinal/imageloader/glide/GlideImageLoader.java
+M	picasso/gradle.properties
+M	picasso/src/main/java/cn/finalteam/galleryfinal/imageloader/picasso/PicassoImageLoader.java
+M	uil/gradle.properties
+M	uil/src/main/java/cn/finalteam/galleryfinal/imageloader/uil/UILImageLoader.java
+M	xuilts/gradle.properties
+M	xuilts/src/main/java/cn/finalteam/galleryfinal/imageloader/xutils/XUtilsImageLoader.java
+
+3f320174afed9a705c42db79e130af1d13719a03, ImageLoader plugin, Sat Dec 26 13:14:55 2015 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+R078	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtilsImageLoader.java	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtils2ImageLoader.java
+A	fresco/.gitignore
+A	fresco/build.gradle
+A	fresco/gradle.properties
+A	fresco/proguard-rules.pro
+A	fresco/src/main/AndroidManifest.xml
+R096	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/FrescoImageLoader.java	fresco/src/main/java/cn/finalteam/galleryfinal/imageloader/fresco/FrescoImageLoader.java
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/ImageLoader.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoEditListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+A	glide/.gitignore
+A	glide/build.gradle
+A	glide/gradle.properties
+A	glide/proguard-rules.pro
+A	glide/src/main/AndroidManifest.xml
+R082	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/GlideImageLoader.java	glide/src/main/java/cn/finalteam/galleryfinal/imageloader/glide/GlideImageLoader.java
+A	picasso/.gitignore
+A	picasso/build.gradle
+A	picasso/gradle.properties
+A	picasso/proguard-rules.pro
+A	picasso/src/main/AndroidManifest.xml
+R082	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/PicassoImageLoader.java	picasso/src/main/java/cn/finalteam/galleryfinal/imageloader/picasso/PicassoImageLoader.java
+M	settings.gradle
+A	uil/.gitignore
+A	uil/build.gradle
+A	uil/gradle.properties
+A	uil/proguard-rules.pro
+A	uil/src/main/AndroidManifest.xml
+R058	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/UILImageLoader.java	uil/src/main/java/cn/finalteam/galleryfinal/imageloader/uil/UILImageLoader.java
+A	xuilts/.gitignore
+A	xuilts/build.gradle
+A	xuilts/gradle.properties
+A	xuilts/proguard-rules.pro
+A	xuilts/src/main/AndroidManifest.xml
+R070	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtils3ImageLoader.java	xuilts/src/main/java/cn/finalteam/galleryfinal/imageloader/xutils/XUtilsImageLoader.java
+
+6375822ddb93f3bf81852db6b635507864207d00, 添加PhotoView缩放控件, Fri Dec 25 23:25:51 2015 +0800
+M	README.md
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/FrescoImageLoader.java
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GFImageView.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageView.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/Compat.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/CupcakeGestureDetector.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/DefaultOnDoubleTapListener.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/EclairGestureDetector.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/FroyoGestureDetector.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/GestureDetector.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/GingerScroller.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/IPhotoView.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/IcsScroller.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/OnGestureListener.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/PhotoView.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/PhotoViewAttacher.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/PreGingerScroller.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/ScrollerProxy.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/zoonview/VersionedGestureDetector.java
+M	galleryfinal/src/main/res/layout/gf_activity_photo_edit.xml
+
+14ff39b8df54da2a4929f81d6f5693d88ee31415, 添加fresco的支持, Fri Dec 25 18:08:06 2015 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/FrescoImageLoader.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/GlideImageLoader.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/PicassoImageLoader.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/UILImageLoader.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtils3ImageLoader.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtilsImageLoader.java
+M	app/src/main/res/layout/content_main.xml
+D	fresco-image-loader/.gitignore
+D	fresco-image-loader/build.gradle
+D	fresco-image-loader/proguard-rules.pro
+D	fresco-image-loader/src/androidTest/java/com/paojiao/fresco_image_loader/ApplicationTest.java
+D	fresco-image-loader/src/main/AndroidManifest.xml
+D	fresco-image-loader/src/main/res/values/strings.xml
+D	fresco-image-loader/src/test/java/com/paojiao/fresco_image_loader/ExampleUnitTest.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/ImageLoader.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoEditListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+R050	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GalleryImageView.java	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GFImageView.java
+M	galleryfinal/src/main/res/layout/gf_activity_photo_edit.xml
+M	galleryfinal/src/main/res/layout/gf_adapter_edit_list.xml
+M	galleryfinal/src/main/res/layout/gf_adapter_folder_list_item.xml
+M	galleryfinal/src/main/res/layout/gf_adapter_photo_list_item.xml
+M	settings.gradle
+
+2bfd9d536d54b74e99a31ff7b542b67dba8948e4, 添加fresco, Fri Dec 25 11:06:53 2015 +0800
+M	app/build.gradle
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/FrescoImageLoader.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/ImageLoader.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GalleryImageView.java
+
+9883a0ce6336987173d17f3998b58e251c39f6f5, 添加自定义imageview, Thu Dec 24 20:23:39 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GalleryImageView.java
+
+742cdd171268d62df3e41a946afaad91cf615024, 提交自定义ImageView, Thu Dec 24 20:22:11 2015 +0800
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/GalleryImageView.java
+
+206d3513d31ae4facab1a2069228ae54aa7d0d0f, 文件重命名, Thu Dec 24 19:52:35 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryTheme.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/RecycleViewBitmapUtils.java
+R100	galleryfinal/src/main/res/drawable-hdpi/ic_gf_rotation.png	galleryfinal/src/main/res/drawable-hdpi/ic_gf_rotate.png
+R100	galleryfinal/src/main/res/drawable-mdpi/ic_gf_rotation.png	galleryfinal/src/main/res/drawable-mdpi/ic_gf_rotate.png
+R100	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_rotation.png	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_rotate.png
+R100	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_rotation.png	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_rotate.png
+R100	galleryfinal/src/main/res/drawable-xxxhdpi/ic_gf_rotation.png	galleryfinal/src/main/res/drawable-xxxhdpi/ic_gf_rotate.png
+M	galleryfinal/src/main/res/layout/gf_activity_photo_edit.xml
+
+f24ec69a979be15e906db4aed28165847a49b077, 优化裁剪, Thu Dec 24 19:39:46 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/RecycleViewBitmapUtils.java
+
+d36684449e0d6b9e89a89890ee8c95fc2f943675, 单选时，非jpg,png格式的图片不可编辑, Thu Dec 24 19:02:56 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+
+7a7092e6ca48f7458d194e60a5806e582dcda754, jpeg可编辑, Thu Dec 24 18:57:08 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageActivity.java
+
+62e96da24ec9effc97626448611d15db6658b1b0, 解决Builder模式bug, Thu Dec 24 18:55:51 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryTheme.java
+
+4b0889bcded5f0bc14593197ea44894fe0333b84, 更新README.md, Thu Dec 24 16:08:51 2015 +0800
+M	README.md
+
+1d94f6d7065f76f864501dc98004095a2714651c, Update Demo apk, Tue Dec 22 12:59:22 2015 +0800
+M	GalleryFinal-Sample.apk
+
+f4e165dcc26941b0613a0bebbcf8c44502e3a56d, publish v1.3.0, Tue Dec 22 12:56:44 2015 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/res/layout/content_main.xml
+M	gradle.properties
+M	images/functions.jpg
+M	images/gallery_final_effect.png
+
+760560778cba8a65ca540d52d0a878a23983d724, 添加debug, Tue Dec 22 12:56:11 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+
+302f73f5ef4e00306a6c9dca643c5d890e23566d, add fresco, Tue Dec 22 12:55:54 2015 +0800
+A	fresco-image-loader/.gitignore
+A	fresco-image-loader/build.gradle
+A	fresco-image-loader/proguard-rules.pro
+A	fresco-image-loader/src/androidTest/java/com/paojiao/fresco_image_loader/ApplicationTest.java
+A	fresco-image-loader/src/main/AndroidManifest.xml
+A	fresco-image-loader/src/main/res/values/strings.xml
+A	fresco-image-loader/src/test/java/com/paojiao/fresco_image_loader/ExampleUnitTest.java
+M	settings.gradle
+
+7253c5175673b6822a9c71a0b7d1957eb659f0a0, 优化裁剪、旋转，修改文档, Mon Dec 21 20:53:46 2015 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+D	galleryfinal/src/main/java/cn/finalteam/galleryfinal/Consts.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageActivity.java
+
+aa2e3ff7ad461169efa3d2f927f263726ea6ee32, 添加强制裁剪, Sun Dec 20 11:15:59 2015 +0800
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/res/layout/content_main.xml
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+
+b8d467f66a115d95d6007fafd138ff9093f13e14, 添加裁剪是否替换原图，添加旋转是否替换原图, Sat Dec 19 17:57:15 2015 +0800
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/res/layout/content_main.xml
+M	app/src/main/res/menu/menu_main.xml
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+
+11f733df60b3530abfebeddb9f2755670d650dfb, 优化, Sat Dec 19 15:29:27 2015 +0800
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/res/menu/menu_main.xml
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+
+c74682fb6fb53ecaf0f2fad36d16cbadb984f018, 非png和非jpg图片不能编辑，图片编辑后原本图片格式保存到本地, Sat Dec 19 15:07:38 2015 +0800
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/Utils.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageActivity.java
+M	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/strings.xml
+
+0f3d27bdf1f46e91393760fe043f573e819ab36a, 支持打开相册、打开相机、打开裁剪、打开编辑功能, Sat Dec 19 14:28:59 2015 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/res/values/styles.xml
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryTheme.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/Utils.java
+
+bb7d77d7ef0be34cee4300d84242ffd82deecaa7, 自定义主题, Fri Dec 18 18:17:09 2015 +0800
+M	README.md
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/IApplication.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/res/layout/content_main.xml
+A	app/src/main/res/mipmap-xxhdpi/ic_action_camera.png
+A	app/src/main/res/mipmap-xxhdpi/ic_action_crop.png
+A	app/src/main/res/mipmap-xxhdpi/ic_action_previous_item.png
+A	app/src/main/res/mipmap-xxhdpi/ic_action_repeat.png
+M	app/src/main/res/values/styles.xml
+M	galleryfinal/src/main/AndroidManifest.xml
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryTheme.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/CommonBaseAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoEditListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageActivity.java
+R100	galleryfinal/src/main/res/drawable-hdpi/ic_rotation.png	galleryfinal/src/main/res/drawable-hdpi/ic_gf_rotation.png
+R100	galleryfinal/src/main/res/drawable-mdpi/ic_rotation.png	galleryfinal/src/main/res/drawable-mdpi/ic_gf_rotation.png
+R100	galleryfinal/src/main/res/drawable-xhdpi/ic_rotation.png	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_rotation.png
+R100	galleryfinal/src/main/res/drawable-xxhdpi/ic_rotation.png	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_rotation.png
+R100	galleryfinal/src/main/res/drawable-xxxhdpi/ic_rotation.png	galleryfinal/src/main/res/drawable-xxxhdpi/ic_gf_rotation.png
+M	galleryfinal/src/main/res/layout/gf_activity_photo_edit.xml
+M	galleryfinal/src/main/res/layout/gf_activity_photo_select.xml
+M	galleryfinal/src/main/res/layout/gf_adapter_photo_list_item.xml
+M	galleryfinal/src/main/res/values/attrs.xml
+M	galleryfinal/src/main/res/values/styles.xml
+
+a3b7c49d4ea2123520e959a4ed5b65591ea3b5de, 将不存在或已损坏的图片移除, Wed Dec 16 15:16:08 2015 +0800
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+M	gradle.properties
+
+10dec73fb6b83f8a58433a3e00f9c09d477a728d, update demo apk, Tue Dec 15 19:51:32 2015 +0800
+M	GalleryFinal-Sample.apk
+
+2bbe83fd8467e8564b69ad20218e5a5ea5a7748e, Revert "update demo apt", Tue Dec 15 19:50:30 2015 +0800
+M	GalleryFinal-Sample.apk
+
+360ea74b04a2554839bfd27a9c17e78820b79359, update demo apt, Tue Dec 15 19:50:08 2015 +0800
+M	GalleryFinal-Sample.apk
+
+f8435bb7b3274420a22916dc0a0071b40881617e, Update README.md, Tue Dec 15 19:46:47 2015 +0800
+M	README.md
+
+5d83cd102d70b3470b47dbb288334c84aea760a9, publish v1.2.7, Tue Dec 15 19:45:14 2015 +0800
+M	README.md
+M	app/build.gradle
+M	gradle.properties
+
+6a555f5b8c380c4072d9171650a4de0d30cb5cf7, 解决单选编辑拍照返回多张图片bug, Tue Dec 15 19:37:22 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+
+6cc2e42a9b8169617b0bffee5b33973d1c9d0b55, 不自动清理缓存, Tue Dec 15 19:36:28 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+
+26ff926c81f0e227a08129062f546a1e7211e91e, 去掉v4包, Tue Dec 15 15:59:30 2015 +0800
+M	README.md
+
+f88321ecdd883e51ea66ebc09f57a5d77f98244b, Update README.md, Tue Dec 15 15:57:15 2015 +0800
+M	README.md
+
+f9f92ecc67e29b3b626a7d570bfaf5be09f6b78b, 去掉v4包, Tue Dec 15 15:55:39 2015 +0800
+M	galleryfinal/build.gradle
+M	gradle.properties
+
+070ec56288c738685a0bfe936fb7895079d721b7, 添加自定义缓存目录, Tue Dec 15 10:51:02 2015 +0800
+M	README.md
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/Consts.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	gradle.properties
+
+537e4ba6bfe16c37f1895aaf808c651a13924e03, 添加已选列表, Mon Dec 14 19:59:06 2015 +0800
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+
+15c60ad4860c06998132d296af27c9a356df0f2d, 解决多选且不裁剪确认按钮无响应问题, Mon Dec 14 14:21:24 2015 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	gradle.properties
+
+37daaaf33d7c8d89c40d534462a855f673fa52e1, Upadate README.md, Fri Dec 11 21:52:49 2015 +0800
+M	README.md
+
+9a28839bd086900792fe74a99e07ee106b4d3a52, 解决过滤器筛选问题, Fri Dec 11 21:48:22 2015 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+M	gradle.properties
+
+0c91253be12a4e2dfe5797c317b276c2cb0407cb, update demo, Fri Dec 11 17:07:44 2015 +0800
+M	GalleryFinal-Sample.apk
+
+2d2aaec760cdd649273789f74eb6d358c4a909a5, 提高稳定性, Fri Dec 11 16:59:12 2015 +0800
+M	README.md
+M	app/build.gradle
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/strings.xml
+M	gradle.properties
+
+4a99e723852d507e20c068d7045801776aa587ff, 解决单选拍照部分手机兼容性问题, Fri Dec 11 16:00:13 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/res/layout/gf_adapter_folder_list_item.xml
+M	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/strings.xml
+
+030c34ba02fa9f3fe679b3f7bd4e9d1198aaf1e6, 发布1.2.0, Tue Dec 8 19:13:42 2015 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/PicassoImageLoader.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtils3ImageLoader.java
+M	app/src/main/res/layout/content_main.xml
+M	galleryfinal/build.gradle
+M	gradle.properties
+
+1ee2faddd83605f369d528b52bc024d2aa20b66f, 添加图片选择过滤, Tue Dec 8 14:24:06 2015 +0800
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryConfig.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoEditListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+
+681eafc5a2d640174da37ae3cdea9525a469e1ab, 解决切换图片无法二次裁剪问题, Tue Dec 8 10:23:36 2015 +0800
+M	README.md
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/GlideImageLoader.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/PicassoImageLoader.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageActivity.java
+
+119fbeca227e325a636f12f1411fa303d612b890, 添加缓存定时清除, Mon Dec 7 22:48:12 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+
+ac9f7377a6cfc7bf67c7675eb5ca5920f3668583, 解决图片多次旋转不清晰问题, Mon Dec 7 20:42:08 2015 +0800
+M	README.md
+M	app/build.gradle
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/GlideImageLoader.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/PicassoImageLoader.java
+M	galleryfinal/build.gradle
+M	galleryfinal/src/main/AndroidManifest.xml
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/Consts.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoEditListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/model/PhotoInfo.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/Utils.java
+M	galleryfinal/src/main/res/layout/gf_activity_photo_edit.xml
+
+c3cba34d873b32efe6348e5095baccf07f1e75bb, 解决无图片编辑图片缓存bug, Thu Dec 3 22:25:42 2015 +0800
+M	GalleryFinal-Sample.apk
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+
+73f385239c246e718a081a1e90992899399de712, Update README.md, Thu Dec 3 19:53:19 2015 +0800
+M	README.md
+
+206eab1822731e77dbd18dd9cb015c288ebe3c31, publish galleryfinal 1.1.0, Thu Dec 3 19:39:27 2015 +0800
+M	GalleryFinal-Sample.apk
+M	README.md
+M	app/build.gradle
+A	app/libs/xUtils-2.6.14.jar
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/ChoosePhotoListAdapter.java
+M	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/GlideImageLoader.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/PicassoImageLoader.java
+R058	app/src/main/java/cn/finalteam/galleryfinal/sample/GalleryImageLoader.java	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/UILImageLoader.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtils3ImageLoader.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/loader/XUtilsImageLoader.java
+M	app/src/main/res/layout/activity_main.xml
+R069	galleryfinal/src/main/res/drawable/gf_bg_list_item_selector.xml	app/src/main/res/layout/adapter_photo_list_item.xml
+M	app/src/main/res/layout/content_main.xml
+M	app/src/main/res/values/dimens.xml
+M	galleryfinal/build.gradle
+M	galleryfinal/proguard-rules.pro
+M	galleryfinal/src/main/AndroidManifest.xml
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/Consts.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryConfig.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryFinal.java
+D	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryHelper.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/ImageLoader.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+D	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoCropActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoEditActivity.java
+R067	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoChooseActivity.java	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoSelectActivity.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/CommonBaseAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoEditListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/model/PhotoFolderInfo.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/model/PhotoInfo.java
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/HorizontalListView.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropImageView.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/CropUtil.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/HighlightView.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/ImageViewTouchBase.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/MonitoredActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/crop/RotateBitmap.java
+A	galleryfinal/src/main/res/drawable-hdpi/ic_gf_clear.png
+A	galleryfinal/src/main/res/drawable-hdpi/ic_gf_crop.png
+A	galleryfinal/src/main/res/drawable-hdpi/ic_rotation.png
+A	galleryfinal/src/main/res/drawable-mdpi/ic_gf_clear.png
+A	galleryfinal/src/main/res/drawable-mdpi/ic_gf_crop.png
+A	galleryfinal/src/main/res/drawable-mdpi/ic_rotation.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_delete_photo.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_clear.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_crop.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_crop_tile.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_triangle_arrow.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_rotation.png
+A	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_clear.png
+D	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_corner_mark.png
+A	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_crop.png
+A	galleryfinal/src/main/res/drawable-xxhdpi/ic_rotation.png
+A	galleryfinal/src/main/res/drawable-xxxhdpi/ic_gf_clear.png
+A	galleryfinal/src/main/res/drawable-xxxhdpi/ic_gf_crop.png
+A	galleryfinal/src/main/res/drawable-xxxhdpi/ic_rotation.png
+A	galleryfinal/src/main/res/drawable/bg_gf_crop_texture.xml
+D	galleryfinal/src/main/res/layout/gf_activity_photo_crop.xml
+A	galleryfinal/src/main/res/layout/gf_activity_photo_edit.xml
+R054	galleryfinal/src/main/res/layout/gf_activity_photo_choose.xml	galleryfinal/src/main/res/layout/gf_activity_photo_select.xml
+A	galleryfinal/src/main/res/layout/gf_adapter_edit_list.xml
+M	galleryfinal/src/main/res/layout/gf_adapter_folder_list_item.xml
+D	galleryfinal/src/main/res/layout/gf_template_titlebar.xml
+A	galleryfinal/src/main/res/values-zh-rCN/strings.xml
+M	galleryfinal/src/main/res/values/attrs.xml
+D	galleryfinal/src/main/res/values/colors.xml
+M	galleryfinal/src/main/res/values/strings.xml
+M	galleryfinal/src/main/res/values/styles.xml
+M	gradle.properties
+A	images/functions.jpg
+A	images/gallery_edit.jpg
+D	images/gallery_final.gif
+A	images/gallery_final_effect.png
+A	images/gallery_selects.jpg
+
+bf1b37274634564f4420680b3e52ad6612cb72b4, commit sample apk, Mon Oct 19 17:56:41 2015 +0800
+M	GalleryFinal-Sample.apk
+
+148482803f4f3922d7d82e542fcf088ca713b79d, 发布1.0.2版本, Mon Oct 19 17:53:46 2015 +0800
+M	README.md
+M	gradle.properties
+
+a39aa7299ac0c09ec6343f832f41ff83eb3c6aed, 混淆配置, Mon Oct 19 17:53:08 2015 +0800
+M	app/build.gradle
+M	app/proguard-rules.pro
+M	galleryfinal/build.gradle
+M	galleryfinal/proguard-rules.pro
+
+3636718a1f290f65b3c1d1db7859ec02b1f474eb, 解决在5.0+手机兼容性问题, Mon Oct 19 17:52:19 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoChooseActivity.java
+
+c24e11f25bc256c9215c2f1f24415844f248b0d5, 解决拍照回调不刷新相册列表问题, Mon Oct 19 17:51:44 2015 +0800
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoCropActivity.java
+
+188b2de40ae097bac118df6d77e378c3892a788e, 修改属性名, Thu Oct 15 23:50:34 2015 +0800
+M	README.md
+M	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/FloatingActionButton.java
+M	galleryfinal/src/main/res/layout/gf_activity_photo_choose.xml
+M	galleryfinal/src/main/res/layout/gf_activity_photo_crop.xml
+M	galleryfinal/src/main/res/values/attrs.xml
+M	gradle.properties
+
+5faa458bae93603aa57557ab0b57f2aaf6a85358, update qrcode, Tue Oct 13 20:05:43 2015 +0800
+M	images/gallery_final_qrcode.png
+
+9eecbfb2244e821307e52d8844e6ea8cc995f6b7, 提交README.md, Tue Oct 13 19:56:46 2015 +0800
+M	README.md
+
+61ee5ec9f369c9521708a303c248c67d6d8a5bb2, 提交README.md, Tue Oct 13 19:51:51 2015 +0800
+M	README.md
+A	images/gallery_final_qrcode.png
+
+f16f42670433467988db76e4730fea9d2227c6ba, 提交1.0.0代码, Tue Oct 13 19:43:20 2015 +0800
+M	.gitignore
+A	GalleryFinal-Sample.apk
+A	app/.gitignore
+A	app/build.gradle
+A	app/proguard-rules.pro
+A	app/src/androidTest/java/cn/finalteam/galleryfinal/sample/ApplicationTest.java
+A	app/src/main/AndroidManifest.xml
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/GalleryImageLoader.java
+A	app/src/main/java/cn/finalteam/galleryfinal/sample/MainActivity.java
+A	app/src/main/res/layout/activity_main.xml
+A	app/src/main/res/layout/content_main.xml
+A	app/src/main/res/menu/menu_main.xml
+A	app/src/main/res/mipmap-hdpi/ic_launcher.png
+A	app/src/main/res/mipmap-mdpi/ic_launcher.png
+A	app/src/main/res/mipmap-xhdpi/ic_launcher.png
+A	app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+A	app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+A	app/src/main/res/values-v21/styles.xml
+A	app/src/main/res/values-w820dp/dimens.xml
+A	app/src/main/res/values/colors.xml
+A	app/src/main/res/values/dimens.xml
+A	app/src/main/res/values/strings.xml
+A	app/src/main/res/values/styles.xml
+A	app/src/test/java/cn/finalteam/galleryfinal/sample/ExampleUnitTest.java
+A	build.gradle
+A	galleryfinal/.gitignore
+A	galleryfinal/build.gradle
+A	galleryfinal/proguard-rules.pro
+A	galleryfinal/src/main/AndroidManifest.xml
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/GalleryHelper.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/ImageLoader.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoBaseActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoChooseActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/PhotoCropActivity.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/CommonBaseAdapter.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/FolderListAdapter.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/adapter/PhotoListAdapter.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/model/PhotoFolderInfo.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/model/PhotoInfo.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/MediaScanner.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/utils/PhotoTools.java
+A	galleryfinal/src/main/java/cn/finalteam/galleryfinal/widget/FloatingActionButton.java
+A	galleryfinal/src/main/res/drawable-hdpi/ic_gf_back.png
+A	galleryfinal/src/main/res/drawable-hdpi/ic_gf_camera.png
+A	galleryfinal/src/main/res/drawable-hdpi/ic_gf_done.png
+A	galleryfinal/src/main/res/drawable-mdpi/ic_gf_back.png
+A	galleryfinal/src/main/res/drawable-mdpi/ic_gf_camera.png
+A	galleryfinal/src/main/res/drawable-mdpi/ic_gf_done.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_back.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_camera.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_default_photo.png
+A	galleryfinal/src/main/res/drawable-xhdpi/ic_gf_done.png
+A	galleryfinal/src/main/res/drawable-xxhdpi/ic_folder_check.png
+A	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_back.png
+A	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_camera.png
+A	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_corner_mark.png
+A	galleryfinal/src/main/res/drawable-xxhdpi/ic_gf_done.png
+A	galleryfinal/src/main/res/drawable-xxxhdpi/ic_gf_back.png
+A	galleryfinal/src/main/res/drawable-xxxhdpi/ic_gf_camera.png
+A	galleryfinal/src/main/res/drawable-xxxhdpi/ic_gf_done.png
+A	galleryfinal/src/main/res/drawable/gf_bg_list_item_selector.xml
+A	galleryfinal/src/main/res/layout/gf_activity_photo_choose.xml
+A	galleryfinal/src/main/res/layout/gf_activity_photo_crop.xml
+A	galleryfinal/src/main/res/layout/gf_adapter_folder_list_item.xml
+A	galleryfinal/src/main/res/layout/gf_adapter_photo_list_item.xml
+A	galleryfinal/src/main/res/layout/gf_template_titlebar.xml
+A	galleryfinal/src/main/res/values-land/dimens.xml
+A	galleryfinal/src/main/res/values-sw600dp/dimens.xml
+A	galleryfinal/src/main/res/values/attrs.xml
+A	galleryfinal/src/main/res/values/colors.xml
+A	galleryfinal/src/main/res/values/dimens.xml
+A	galleryfinal/src/main/res/values/ids.xml
+A	galleryfinal/src/main/res/values/strings.xml
+A	galleryfinal/src/main/res/values/styles.xml
+A	gradle.properties
+A	gradle/wrapper/gradle-wrapper.jar
+A	gradle/wrapper/gradle-wrapper.properties
+A	gradlew
+A	gradlew.bat
+A	images/gallery_final.gif
+A	settings.gradle
+
+96df71057c1d7612feaefcc2b433951d4dd1ee17, Initial commit, Mon Sep 21 15:01:17 2015 +0800
+A	.gitignore
+A	LICENSE
+A	README.md

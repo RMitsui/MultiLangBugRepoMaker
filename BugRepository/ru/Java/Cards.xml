@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Cards">
+	<bug id="97" opendate="2018-11-02 09:58:09" fixdate="2018-12-11 15:34:45">
+		<buginformation>
+			<summary>Экран "Создание колоды" Создается пустышка при выборе всех параметров, исключая кнопки "Все"</summary>
+			<description>http://joxi.ru/LmGg7x6fe1d8gm  При создании новой колоды №1 При выборе какой либо категории, кроме "ВСЕ" в "Тематике" и "Частях речи" создается колода №2, которая пустая №3</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/AddCardDeckController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="93" opendate="2018-11-02 09:29:23" fixdate="2018-12-21 15:48:36">
+		<buginformation>
+			<summary>Экран "Карточки" Не работает "редактирование"</summary>
+			<description>http://joxi.ru/n2YLYDNCoBp0Om  При выборе в списке колоды, которая пустая. Например "Прилагательные" - не работает кнопка "Редактировать" и я не могу теперь удалить эту пустую колоду.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/A_Controller.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/EditCardDeckController.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/EditVerbCardDeckController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="89" opendate="2018-11-02 08:59:49" fixdate="2019-03-25 15:59:10">
+		<buginformation>
+			<summary>Экран "Карточка" Окно "Карточка" Глагол теряет форму возвратного.</summary>
+			<description>http://joxi.ru/KAg5Eplt4aYwom  Все формы глагола должны иметь свою возвратную форму. также как и отделяемые приставки. Все формы! При этом к инфинитиву нужно ещё и добавить предлог АКК</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/A_Controller.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/Decks/AddCardDeckController.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/A_CardController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="86" opendate="2018-11-02 08:45:29" fixdate="2019-04-05 12:50:21">
+		<buginformation>
+			<summary>Экран "Карточка" Окно "Карточка" Озвучка неправильно</summary>
+			<description>http://joxi.ru/12MgVMafMQ6P0r  Озвучка не там где надо</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/A_CardController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="83" opendate="2018-11-02 08:33:35" fixdate="2019-04-05 11:56:56">
+		<buginformation>
+			<summary>Экран "Карточка" </summary>
+			<description>http://joxi.ru/J2bxJ7ptXWlbEr  Окно "Карточка" Существительное не отображает артикли в немецком варианте и не нужно значки озвучки</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/ModelDAO/ModelsDAO.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/A_CardController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="81" opendate="2018-11-02 08:25:02" fixdate="2018-11-13 16:50:19">
+		<buginformation>
+			<summary>Экран "Карточка" Кнопка "Создать новую колоду" </summary>
+			<description>http://joxi.ru/zANMQ8RCB0N0D2  Окно "Создать колоду" Выбор "Части речи" - Все и Тематика "Все" безовсякой реакции проходит минут 5 не меньше. ужас</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/AddCardDeckController.java</file>
+			<file>src/main/java/com/cards/shvedko/ModelDAO/DecksValuesDAO.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="79" opendate="2018-11-02 08:14:54" fixdate="2018-12-12 15:44:05">
+		<buginformation>
+			<summary>Экран "Карточка" Кнопка "Создать новую колоду" Окно "Создать колоду" Выбор "Части речи" - Глаголы. Ошибка, которая все ломает</summary>
+			<description>http://joxi.ru/eAOE5V3UxldZ5m http://joxi.ru/p27ZgkqcoY9pZm http://joxi.ru/823WgZ7TJlgGn2  1. После того как создаёшь Глаголы в своей колоде. Жмёшь "Сохранить". Всё глобально тормозит. Ждёшь долго и потом нажимаешь "Отмена". 2. При этом теряется связь с базой данных - список колод пустой, частей речи и тематики в "Создать новую колоду" нет - кна пустые. Нужно только полностью закрывать программу и перезапускать её.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/AddCardDeckController.java</file>
+			<file>src/main/java/com/cards/shvedko/Model/CardsPrepositionAkkusativ.java</file>
+			<file>src/main/java/com/cards/shvedko/Model/CardsPrepositionDativ.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/AddVerbCardDeckController.java</file>
+			<file>src/main/java/com/cards/shvedko/Helpers/FillDatabase.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/A_CardController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="75" opendate="2018-11-02 07:40:49" fixdate="2019-03-19 16:11:36">
+		<buginformation>
+			<summary>Экран "Карточка" Кнопка "Список" Работа со списком. Возможно ошибка? Подумать поведение</summary>
+			<description>http://joxi.ru/brRgd4XfJEMgMm  1. При выборе какого нибудь слова хочется увидеть его Карточкой. 2. Но при нажатии кнопки "Отобразить карточкой" отображается не выбранное слово, а самое первое. 3. Скорее всего, это ошибка.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/Decks/ListOfCardsInDeckController.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/A_CardController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="66" opendate="2018-11-01 15:16:32" fixdate="2019-04-02 14:43:31">
+		<buginformation>
+			<summary>Экран "КарточкИИИ" кнопка "Редактировать"</summary>
+			<description>http://joxi.ru/a2Xl7p8c1WgR72  1. Кнопка "Редактировать должна быть больше и активна только тогда когда выбрана какая нибудь колода. 2. При не выбранной колоде наведение на эту кнопку должно содержать подсказку "Вы забыли выбрать колоду"</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/Decks/ChooseDecksController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="64" opendate="2018-11-01 15:10:02" fixdate="2019-04-05 12:06:26">
+		<buginformation>
+			<summary>Экран "Карточка " Окно "Список карточек в колоде" Контроль поведения</summary>
+			<description>http://joxi.ru/5md1G8bukL0XG2  1. Проконтролировать: "Звёздочка" автоматически отключает "Кубок"</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/A_CardController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="16" opendate="2018-09-04 15:06:51" fixdate="2018-12-21 15:10:51">
+		<buginformation>
+			<summary>При закрытии программы через "Х" главного окна, программа выполняется дальше</summary>
+			<description>При закрытии программы через "Х" главного окна, программа выполняется дальше. Сделать так, что бы при закрытии главного окна, программа прерывала свое выполнение.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/MainApp.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="12" opendate="2018-09-03 11:34:13" fixdate="2018-12-21 14:50:59">
+		<buginformation>
+			<summary>Создание "Колоды" с глаголами теряется имя "Колоды"</summary>
+			<description>При создании "Колоды" с глаголами теряется имя "Колоды" во время переключения на форму для согздания глаголов. Приходится вписывать имя второй раз</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/AddVerbCardDeckController.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/AddCardDeckController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="10" opendate="2018-09-03 11:18:07" fixdate="2018-12-21 14:15:08">
+		<buginformation>
+			<summary>После сохранения "Колоды" оставаться на странице выбора "Колоды"</summary>
+			<description>После сохранения "Колоды" оставаться на странице выбора "Колоды",  а не переходить на главню страницу</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/cards/shvedko/Controller/AddVerbCardDeckController.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/A_Controller.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/AddCardDeckController.java</file>
+			<file>src/main/java/com/cards/shvedko/Controller/ModalSuccessStayOnPageController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Testumgebung">
+	<bug id="61" opendate="2016-10-28 08:31:28" fixdate="2016-11-26 19:51:11">
+		<buginformation>
+			<summary>Wenn das Fenster zu klein ist, kann man die IP nicht sehen</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>Common/src/test/java/at/htl/common/FileUtilsTest.java</file>
+			<file>Server/src/main/java/at/htl/server/Server.java</file>
+			<file>Common/src/main/java/at/htl/common/io/ScreenShot.java</file>
+			<file>Server/src/main/java/at/htl/server/view/Controller.java</file>
+			<file>Server/src/main/java/at/htl/server/PatrolMode.java</file>
+			<file>Server/src/main/java/at/htl/server/Settings.java</file>
+			<file>Server/src/main/java/at/htl/server/view/TeacherGui.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="59" opendate="2016-10-25 08:13:48" fixdate="2016-11-26 19:51:11">
+		<buginformation>
+			<summary>Beim Stoppen des Servers soll der Patrol-Modus automatisch beendet werden!</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>Common/src/test/java/at/htl/common/FileUtilsTest.java</file>
+			<file>Server/src/main/java/at/htl/server/Server.java</file>
+			<file>Common/src/main/java/at/htl/common/io/ScreenShot.java</file>
+			<file>Server/src/main/java/at/htl/server/view/Controller.java</file>
+			<file>Server/src/main/java/at/htl/server/PatrolMode.java</file>
+			<file>Server/src/main/java/at/htl/server/Settings.java</file>
+			<file>Server/src/main/java/at/htl/server/view/TeacherGui.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="58" opendate="2016-10-25 08:12:22" fixdate="2016-11-28 10:53:27">
+		<buginformation>
+			<summary>Nach dem Export, kann Dialogfeld nicht mehr geschlossen werden</summary>
+			<description>Ausserdem sollte der Pfad, zum erstellten Logfile angegeben werden!  &lt;img width="1210" alt="screen shot 2016-10-25 at 10 10 46" src="https://cloud.githubusercontent.com/assets/7039733/19677830/6b46c8d0-9a9b-11e6-9bef-236456950373.png"&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Common/src/main/java/at/htl/common/fx/FxUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2016-06-02 11:35:12" fixdate="2016-06-09 12:48:24">
+		<buginformation>
+			<summary>Escape Fenster wird mehrmals geöffnet</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>Server/src/test/java/at/htl/server/SettingsTest.java</file>
+			<file>Server/src/main/java/at/htl/server/Server.java</file>
+			<file>Server/src/main/java/at/htl/server/view/Controller.java</file>
+			<file>Server/src/main/java/at/htl/server/view/TeacherGui.java</file>
+			<file>Server/src/main/java/at/htl/server/Settings.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="41" opendate="2016-06-02 10:59:30" fixdate="2016-06-02 11:04:59">
+		<buginformation>
+			<summary>Fehler in der Unzip-Methode</summary>
+			<description>Housten, wir haben ein Problem </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Client/src/main/java/at/htl/client/view/Controller.java</file>
+			<file>Common/src/main/java/at/htl/common/io/FileUtils.java</file>
+			<file>Common/src/test/java/at/htl/common/FileUtilsTest.java</file>
+			<file>Common/src/main/java/at/htl/common/transfer/ResponsePackage.java</file>
+			<file>Common/src/test/java/at/htl/common/CountdownTest.java</file>
+			<file>Client/src/main/java/at/htl/client/Client.java</file>
+			<file>Common/src/main/java/at/htl/common/Others.java</file>
+			<file>Common/src/main/java/at/htl/common/transfer/Package.java</file>
+			<file>Server/src/main/java/at/htl/server/view/TeacherGui.java</file>
+			<file>Client/src/main/java/at/htl/client/view/StudentGui.java</file>
+			<file>Server/src/test/java/at/htl/server/TeacherTestGui.java</file>
+			<file>Common/src/main/java/at/htl/common/fx/TextAnimation.java</file>
+			<file>Common/src/main/java/at/htl/common/transfer/LoginPackage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="38" opendate="2016-05-31 10:19:06" fixdate="2016-06-02 11:19:40">
+		<buginformation>
+			<summary>Ping funktioniert nicht unter Windows</summary>
+			<description>![fehlernoping](https://cloud.githubusercontent.com/assets/7039733/15671125/6e79e0fe-2729-11e6-91fd-f8e3129f983b.jpg)  Der Parameter unter Windows lautet -n und nicht -c, daher funktioniert es nicht  Besser: Ping von java verwenden try{             InetAddress address = InetAddress.getByName("192.168.1.103");             boolean reachable = address.isReachable(10000);  ```         System.out.println("Is host reachable? " + reachable);     } catch (Exception e){         e.printStackTrace();     } ```  http://stackoverflow.com/questions/11506321/java-code-to-ping-an-ip-address </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Client/src/main/java/at/htl/client/view/Controller.java</file>
+			<file>Server/src/main/java/at/htl/server/view/Controller.java</file>
+			<file>Common/src/main/java/at/htl/common/actions/IpConnection.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

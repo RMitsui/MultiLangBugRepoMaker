@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="Sistema-de-riego">
+	<bug id="92" opendate="2020-08-23 00:14:41" fixdate="2020-08-23 06:42:47">
+		<buginformation>
+			<summary>Hacer que el sistema le permita al usuario cargar los registros históricos de una parcela</summary>
+			<description>**Descripción** En la versión actual del sistema el usuario no puede cargar los registros del pasado de una parcela, lo cual obviamente está mal porque el sistema le tiene que permitir al usuario cargar el historial de una parcela. Tampoco se le permite al usuario cargar los registros históricos que tienen fechas de siembra y de cosecha posteriores a las fechas del registro histórico que está en el estado "En desarrollo", el cual obviamente pertenece a la parcela del registro histórico que se desea dar de alta en el sistema.  **Condiciones de aceptación** - [x] Dado un usuario cuando decide cargar un registro histórico pasado o no de una parcela entonces el sistema deberá persistir en la base de datos subyacente dicho registro. - [x] Dado un usuario cuando decide cargar un registro histórico pasado o no de una parcela con fechas que se superponen con las fechas de otros registros de la misma parcela entonces el sistema deberá impedir tal persistencia y avisar al usuario de lo sucedido. - [x] Dado un usuario cuando decide cargar un registro histórico pasado o no de una parcela con las fechas de siembra y de cosecha superpuestas entonces el sistema deberá impedir tal persistencia y avisar al usuario de lo sucedido.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/stateless/CultivoServiceBean.java</file>
+			<file>app/src/servlet/InstanciaParcelaRestServlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="91" opendate="2020-08-20 21:15:04" fixdate="2020-08-21 04:01:37">
+		<buginformation>
+			<summary>No se persiste el estado de una instancia de parcela cuando se modifican sus fechas de siembra y de cosecha</summary>
+			<description>**Descripción del problema** Cuando se modifica una de las fechas de una instancia de parcela o ambas, no se modifica el estado de la misma, lo cual obviamente está mal.  **Condiciones de aceptación** - Si la fecha de cosecha de una instancia de parcela es anterior a la fecha actual del sistema y las fechas de siembra y de cosecha no están superpuestas entonces dicha instancia de parcela deberá tener el estado "Finalizado". - Si la fecha de siembra de una instancia de parcela es anterior a la fecha actual del sistema y la fecha de cosecha es posterior a la fecha actual del sistema entonces dicha instancia de parcela deberá tener el estado "En desarrollo". - Si la fecha de siembra y la fecha de cosecha de una instancia de parcela son posteriores a la fecha actual del sistema y no están superpuestas entonces dicha instancia de parcela deberá tener el estado "En espera".</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/stateless/InstanciaParcelaServiceBean.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="90" opendate="2020-08-20 20:43:44" fixdate="2020-08-21 04:01:38">
+		<buginformation>
+			<summary>No se persiste el valor de la hectárea de una parcela cuando se lo modifica</summary>
+			<description>Cuando se modifica el valor de la hectárea de una parcela, éste valor no es persistido en la base de datos subyacente.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/servlet/ParcelRestServlet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="72" opendate="2020-06-04 20:06:38" fixdate="2020-09-04 08:57:24">
+		<buginformation>
+			<summary>Crear controles de fechas en la creación de instancias de parcelas</summary>
+			<description>**Descripción del problema** En el estado actual de la aplicación se pueden crear instancias de parcelas con sus fechas de siembra y de cosecha superpuestas, y también se pueden crear instancias de parcelas que tengan superposición de fechas con las demás instancias de parcela pertenecientes a la misma parcela de la instancia de parcela que se está por crear.  **Propuesta de solución** - Crear código fuente que compruebe la superposición de las fechas de siembra y de cosecha de una instancia de parcela a crear. - Crear código fuente que compruebe la superposición de fechas de la instancia de parcela a crear con las fechas de las demás instancia de parcela, en la clase que tenga la responsabilidad de comprobar las reglas de negocio a la hora de crear instancias de parcela.  **Tareas** * [x] Crear un modelo de datos que represente los errores de fecha. Este modelo será en la base de datos una tabla. * [x] Crear clase de acceso a la base de datos para el modelo de datos que contendrá los errores de fecha.  **Condiciones de aceptación** * [x] Dado una nueva instancia de parcela a crear cuando tiene la fecha de siembra y la fecha de cosecha cruzadas (superpuestas) entonces la aplicación no deberá persistir dicha instancia de parcela en la base de datos subyacente y deberá informar al usuario de lo sucedido. * [x] Dado una nueva instancia de parcela a crear cuando tiene superposición de fechas con las demás instancias de parcela pertenecientes a la misma parcela entonces la aplicación no deberá persistir dicha instancia de parcela en la base de datos subyacente y deberá informar al usuario de lo sucedido. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/stateless/DateErrorServiceBean.java</file>
+			<file>app/src/stateless/CultivoServiceBean.java</file>
+			<file>app/src/servlet/InstanciaParcelaRestServlet.java</file>
+			<file>app/src/stateless/InstanciaParcelaService.java</file>
+			<file>app/src/model/DateError.java</file>
+			<file>app/src/stateless/InstanciaParcelaServiceBean.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

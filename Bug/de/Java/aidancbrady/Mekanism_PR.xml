@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<pullrequests>
+	<pullrequest>
+		<number>5418</number>
+		<title>Add support for configurable machines storage.</title>
+		<body>fixes #5367   I added a configuration category called storage, which is loaded both on client and server. Created default values for the storage, for most of the machines, that were in the switch in `getUsage()` function. Notably added an option for `TELEPORTER` and `CHARGEPAD`, which had hard-wired values in `getUsage()`. Using the previous method of determining storage as default.  As suggested by @thiakil , the code does:  `baseEnergy = Math.max(usage, storage);`  This is not perfect though, if you put some speed upgrades into the machine, you can still get it into a state when it requires more energy, than can hold, or when the energy use increases due to some settings (eg. using silk touch in digital miner).  I see no straightforward way how to fix these machine issues (which can anyway happen only with very unusual config values). If you would like it to work somehow, feel free to suggest me something. I did test the changes and they seem to work as expected, other than what was mentioned.</body>
+		<to>5367</to>
+	</pullrequest>
+</pullrequests>

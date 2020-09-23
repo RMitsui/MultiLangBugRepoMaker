@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>221</id>
+		<title>1.7.6.6安装失败</title>
+		<body>![image](https://user-images.githubusercontent.com/1090230/33812472-abb112de-de58-11e7-886e-6051f6d5fdcf.png) </body>
+		<created>2017-12-11 01:50:30</created>
+		<closed>2017-12-12 07:31:58</closed>
+	</bug>
+	<bug>
+		<id>218</id>
+		<title>【建议】启动过程未安装unzip命令报错，考虑是否可以支持tar解压缩</title>
+		<body>./greys.sh 12345 new version(**1.7.6.4**) detection, update now... ###################################100.0% ./greys.sh: line 164: unzip: command not found update fail, ignore this update. Error: Unable to access jarfile /home/www/.greys/lib/**0.7.6.4**/greys/greys-core.jar attach to target jvm(12345) failed.  1）这里是否能支持tar的解压缩方式？ 因为有些服务器可能没有安装unzip包执行不了unzip命令，但基本上都可以用tar命令。 2）更新失败后衍生的问题：通过get_local_version()方法获取路径异常，造成greys命令不能正常启动。这里是否考虑可以添加默认版本解决？ </body>
+		<created>2017-12-07 09:35:05</created>
+		<closed>2017-12-08 03:24:40</closed>
+	</bug>
+	<bug>
+		<id>156</id>
+		<title>WatchCommand.java#L35 有误</title>
+		<body>`watch *StringUtils isBlank params[0] '#cost&gt;100' ` 并不能起效，因为没有强行指定b/f/e/s中的任何一个时，则默认为b，而invokeCost对象是在before()中初始化startTime的，并立即进行isInCondition判断，所以#cost永远是0。唯一有效的方式是加上f/e/s中任何一个，例如： `watch -f *StringUtils isBlank params[0] '#cost&gt;100'`</body>
+		<created>2016-11-15 08:49:05</created>
+		<closed>2016-11-30 10:55:42</closed>
+	</bug>
+	<bug>
+		<id>140</id>
+		<title>GREYS启动失败</title>
+		<body>``` java.lang.IllegalAccessError: tried to access class com.github.ompc.greys.agent.AgentLauncher$1 from class com.github.ompc.greys.agent.AgentLauncher     at com.github.ompc.greys.agent.AgentLauncher.loadOrDefineClassLoader(AgentLauncher.java:45)     at com.github.ompc.greys.agent.AgentLauncher.main(AgentLauncher.java:128)     at com.github.ompc.greys.agent.AgentLauncher.agentmain(AgentLauncher.java:22)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     at java.lang.reflect.Method.invoke(Method.java:497)     at sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:386)     at sun.instrument.InstrumentationImpl.loadClassAndCallAgentmain(InstrumentationImpl.java:411) ``` </body>
+		<created>2016-07-27 09:07:05</created>
+		<closed>2016-11-07 04:03:49</closed>
+	</bug>
+	<bug>
+		<id>138</id>
+		<title>pTrace 使用时 不明白 --path 的作用</title>
+		<body>看了 pTrace 的使用说明，理解 --path 的作用是限制追踪范围的。但是，试了之后发现理解有误。例子如下：  ``` ga?&gt;ptrace *AuthInterceptor preHandle --path com.abcd.web.rmsui.interceptor* Press Ctrl+D to abort. Affect(class-cnt:3 , method-cnt:18) cost in 167 ms. `---+pTracing for : thread_name="http-bio-8084-exec-6" thread_id=0x1d;is_daemon=true;priority=5;process=1104;     `---+[1,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:preHandle()         +---[1,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:isLogin()         `---+[1,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:hasLogin()             `---[1,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:queryCurrModule()  `---+pTracing for : thread_name="http-bio-8084-exec-5" thread_id=0x1c;is_daemon=true;priority=5;process=1105;     `---+[12,12ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:preHandle()         +---[1,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:isLogin()         `---+[12,11ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:hasLogin()             `---+[12,11ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:isApiPermision()                 +---[3,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[5,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[6,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[7,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[8,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[9,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[10,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 `---[12,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi() ```  ``` ga?&gt;ptrace *AuthInterceptor preHandle --path com.abcd.web.rmsui.interceptor.dddd* Press Ctrl+D to abort. Affect(class-cnt:2 , method-cnt:16) cost in 156 ms. `---+pTracing for : thread_name="http-bio-8084-exec-9" thread_id=0x20;is_daemon=true;priority=5;process=1106;     `---+[2,2ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:preHandle()         +---[1,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:isLogin()         `---+[2,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:hasLogin()             `---[2,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:queryCurrModule()  `---+pTracing for : thread_name="http-bio-8084-exec-7" thread_id=0x1e;is_daemon=true;priority=5;process=1107;     `---+[11,11ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:preHandle()         +---[1,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:isLogin()         `---+[11,10ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:hasLogin()             `---+[11,10ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:isApiPermision()                 +---[3,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[5,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[6,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[7,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[8,1ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[9,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 +---[10,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi()                 `---[11,0ms]com.abcd.web.rmsui.interceptor.AuthInterceptor:routeMatchApi() ```  第二个例子中的路径`dddd`是不存在的。 请问，`--path`是干什么用的？文档中的`渲染路径`是什么意思？谢谢。 </body>
+		<created>2016-07-21 12:09:09</created>
+		<closed>2017-03-29 07:18:42</closed>
+	</bug>
+	<bug>
+		<id>117</id>
+		<title>在特殊JDK下面启动失败</title>
+		<body>``` $/opt/taobao/java/bin/java -version openjdk version "1.8.0_40-Yun" OpenJDK Runtime Environment (build 1.8.0_40-Yun-1-b25) OpenJDK 64-Bit Server VM (build 25.60-b06, mixed mode) ```  原因是greys.sh脚本里判断java版本的时候没有考虑到openjdk version开头的场景  ``` java -version 2&gt;&amp;1 | awk -F '"' '/java version/&amp;&amp;$2&gt;"1.5"{print $2}' ``` </body>
+		<created>2016-02-04 04:08:49</created>
+		<closed>2016-02-15 09:21:43</closed>
+	</bug>
+	<bug>
+		<id>113</id>
+		<title>有没有用过IBM的JDK啊</title>
+		<body>似乎报错 </body>
+		<created>2016-01-18 12:35:18</created>
+		<closed>2017-03-29 06:06:39</closed>
+	</bug>
+	<bug>
+		<id>112</id>
+		<title>在某些特殊的ClassLoader中植入Spy会报错</title>
+		<body>在某些特殊的ClassLoader实现中，定义Spy会出现  ``` 01 2016-01-15 14:09:44.574 WARN [as-command-execute-daemon:arthas] print spy failed. classname=com/alipay/dwsap/web/home/soas/OlapQuery;loader=com.alipay.cloudengine.extensions.equinox.KernelAceClassLoader@2ff1bf46; java.lang.reflect.InvocationTargetException: null         at sun.reflect.GeneratedMethodAccessor105.invoke(Unknown Source) ~[na:na]         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25) ~[na:1.6.0_33]         at java.lang.reflect.Method.invoke(Method.java:597) ~[na:1.6.0_33]         at com.taobao.arthas.core.util.ArthasReflectUtils.defineClass(ArthasReflectUtils.java:304) ~[arthas-core.jar:na]         at com.taobao.arthas.core.advisor.Enhancer.spy(Enhancer.java:98) [arthas-core.jar:na]         at com.taobao.arthas.core.advisor.Enhancer.transform(Enhancer.java:217) [arthas-core.jar:na]         at sun.instrument.TransformerManager.transform(TransformerManager.java:169) [na:1.6.0_33]         at sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:365) [na:1.6.0_33]         at sun.instrument.InstrumentationImpl.retransformClasses0(Native Method) [na:1.6.0_33]         at sun.instrument.InstrumentationImpl.retransformClasses(InstrumentationImpl.java:124) [na:1.6.0_33]         at com.taobao.arthas.core.advisor.Enhancer.enhance(Enhancer.java:346) [arthas-core.jar:na]         at com.taobao.arthas.core.command.handler.AbstractCommandHandler.execute(AbstractCommandHandler.java:252) [arthas-core.jar:na]         at com.taobao.arthas.core.command.handler.DefaultCommandHandler.handleCommand(DefaultCommandHandler.java:67) [arthas-core.jar:na]         at com.taobao.arthas.core.server.ArthasServer$4.run(ArthasServer.java:276) [arthas-core.jar:na]         at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886) [na:1.6.0_33]         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908) [na:1.6.0_33]         at java.lang.Thread.run(Thread.java:662) [na:1.6.0_33] Caused by: java.lang.LinkageError: loader (instance of  com/alipay/cloudengine/extensions/equinox/KernelAceClassLoader): attempted  duplicate class definition for name: "com/taobao/arthas/core/advisor/Spy"         at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.6.0_33]         at java.lang.ClassLoader.defineClassCond(ClassLoader.java:631) ~[na:1.6.0_33]         at java.lang.ClassLoader.defineClass(ClassLoader.java:615) ~[na:1.6.0_33]         at java.lang.ClassLoader.defineClass(ClassLoader.java:465) ~[na:1.6.0_33]         ... 17 common frames omitted ```  这样的错误信息 </body>
+		<created>2016-01-18 07:54:46</created>
+		<closed>2016-01-18 07:55:17</closed>
+	</bug>
+	<bug>
+		<id>111</id>
+		<title>当对象无法被渲染的时候返回错误信息</title>
+		<body>tt命令在执行的时候会去渲染对象，调用对象的toString()方法，但是某些场景下对象重写了toString，会让这个方法执行报错，此时会导致整个命令执行失败。用户体验不友好。 </body>
+		<created>2016-01-12 09:03:39</created>
+		<closed>2016-01-12 09:03:46</closed>
+	</bug>
+	<bug>
+		<id>108</id>
+		<title>asm命令在部分自定义ClassLoader中无法正确解析</title>
+		<body>yosingron用户反馈，自定义ClassLoader在以文件的形式从一个错位的class文件加载到ClassLoader中时，其他命令可以正常使用，但asm命令无法正确解析。 </body>
+		<created>2016-01-07 08:58:19</created>
+		<closed>2016-01-07 14:13:10</closed>
+	</bug>
+	<bug>
+		<id>98</id>
+		<title>Advice的returnObj在拦截构造函数的时候丢失</title>
+		<body>在return的时候,如果目标函数是&lt;init&gt;,会导致return的内容缺失 </body>
+		<created>2015-12-11 05:04:52</created>
+		<closed>2015-12-12 12:22:47</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>trace命令在跟进类构造函数存在继承关系的时候不准</title>
+		<body>RT </body>
+		<created>2015-12-09 23:17:10</created>
+		<closed>2015-12-13 16:37:37</closed>
+	</bug>
+	<bug>
+		<id>78</id>
+		<title>trace命令在跟踪&lt;init&gt;方法时出现顺序错误</title>
+		<body>在Greys的模型中，我们期待的顺序是  `before()` -&gt; `invokeBeforeTracing()` -&gt; `invokeAfterTracing()` -&gt; `afterThrowing()`/`afterReturning()` -&gt; `afterFinishing()`  但在处理`&lt;init&gt;`方法时，`invokeBeforeTracing()`要优先于`before()`方法而执行 </body>
+		<created>2015-10-05 12:41:23</created>
+		<closed>2015-10-05 14:32:25</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>GREYS在处理继承类的时候非常混乱</title>
+		<body>GREYS的所有命令在处理继承关系的时候非常混乱，不同命令之间看到的信息不对等，给用户使用上带来非常多的困扰。 </body>
+		<created>2015-09-30 05:03:56</created>
+		<closed>2015-10-01 08:16:40</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>trace命令在处理大方法时会出现编译错误</title>
+		<body>``` 2015-09-30 11:26:28 [ga-command-execute-daemon] WARN  greys-anatomy - transform loader[com.taobao.tomcat.container.context.loader.AliWebappClassLoader]:class[com/taobao/wmpinput/refund/service/RefundQualityChecking] failed. java.lang.RuntimeException: Method code too large!     at org.objectweb.asm.MethodWriter.a(Unknown Source) ~[greys-core.jar:na]     at org.objectweb.asm.ClassWriter.toByteArray(Unknown Source) ~[greys-core.jar:na]     at com.github.ompc.greys.core.advisor.Enhancer.transform(Enhancer.java:230) [greys-core.jar:na]     at sun.instrument.TransformerManager.transform(TransformerManager.java:169) [na:1.6.0_32]     at sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:365) [na:1.6.0_32]     at sun.instrument.InstrumentationImpl.retransformClasses0(Native Method) [na:1.6.0_32]     at sun.instrument.InstrumentationImpl.retransformClasses(InstrumentationImpl.java:124) [na:1.6.0_32]     at com.github.ompc.greys.core.advisor.Enhancer.enhance(Enhancer.java:372) [greys-core.jar:na]     at com.github.ompc.greys.core.server.DefaultCommandHandler.execute(DefaultCommandHandler.java:223) [greys-core.jar:na]     at com.github.ompc.greys.core.server.DefaultCommandHandler.executeCommand(DefaultCommandHandler.java:87) [greys-core.jar:na]     at com.github.ompc.greys.core.server.GaServer$4.run(GaServer.java:329) [greys-core.jar:na]     at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886) [na:1.6.0_32]     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908) [na:1.6.0_32]     at java.lang.Thread.run(Thread.java:662) [na:1.6.0_32] ```  就其原因，主要还是`trace`命令要在每个方法中埋点过多，遇到大方法的时候非常容易超过JVM对于method_code不能超过64K的限制 </body>
+		<created>2015-09-30 04:30:43</created>
+		<closed>2015-10-02 02:15:22</closed>
+	</bug>
+	<bug>
+		<id>73</id>
+		<title>trace命令存在时间为负数的情况</title>
+		<body>在某些情况下，`trace`命令统计出来的时间竟然为负数。这种场景我只有在TreeView的begin()和end()方法没有配对的情况下才会出现，需要好好尽兴排查。 </body>
+		<created>2015-09-30 04:29:16</created>
+		<closed>2015-10-05 12:38:22</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>monitor命令当时翻译的时候没有i18n，也没有example例子。</title>
+		<body>monitor命令当时翻译的时候没有i18n，也没有example例子。 </body>
+		<created>2015-09-09 16:09:54</created>
+		<closed>2015-09-10 14:45:41</closed>
+	</bug>
+	<bug>
+		<id>65</id>
+		<title>异常终止grey的客户端达到3次时，第四次执行greys.sh将无法连接到jvm。这个时候假如正常停止远程的JVM，该java进程会变成一个僵尸进程，无法kill -9，只能kill -9他的父进程</title>
+		<body>异常终止grey的客户端达到3次时，第四次执行greys.sh将无法连接到jvm。这个时候假如正常停止远程的JVM，该java进程会变成一个僵尸进程，无法kill -9，只能kill -9他的父进程 </body>
+		<created>2015-09-09 16:09:30</created>
+		<closed>2015-09-14 13:56:13</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>执行tt等子命令时（所有的子命令都不能识别Ctrl+x），Ctrl+x无法退出，只能使用Ctrl+d</title>
+		<body>执行tt等子命令时（所有的子命令都不能识别Ctrl+x），Ctrl+x无法退出，只能使用Ctrl+d </body>
+		<created>2015-09-09 16:08:46</created>
+		<closed>2015-09-10 14:45:53</closed>
+	</bug>
+	<bug>
+		<id>63</id>
+		<title>Groovy语法的解析好像有点问题</title>
+		<body>watch -s  com.agile.admin.security.weblogic.WLSLoginModule validate "hello"+params[0]+"/"+params[1]+"="+returnObj+":"+method 不执行("hello"字符串放在最前面就不工作)，无任何输出  watch -s  com.agile.admin.security.weblogic.WLSLoginModule validate params[0]+"/"+params[1]+"="+returnObj+":"+method+"hello" 正确执行   watch -s  com.agile.admin.security.weblogic.WLSLoginModule validate params[0] + "/" + params[1] + "=" + returnObj + ":" + method 不执行 （字符型连接时如果有空格也不工作），无任何输出  watch -s  com.agile.admin.security.weblogic.WLSLoginModule validate params[0]+"/"+params[1]+"="+returnObj+":"+method 正确执行  ga?&gt;watch -s  com.agile.admin.security.weblogic.WLSLoginModule validate method+":"+params[0]+"/"+params[1]+"="+returnObj 出现错误提示 （method放在最前面会错误） No signature of method: com.github.ompc.greys.core.util.GaMethod.plus() is applicable for argument types: (java.lang.String) values: [:] Possible solutions: split(groovy.lang.Closure), is(java.lang.Object), use([Ljava.lang.Object;), wait(), dump(), grep()  ga?&gt;watch -s  com.agile.admin.security.weblogic.WLSLoginModule validate params[0]+"/"+params[1]+"="+returnObj+":"+method 正确执行  </body>
+		<created>2015-09-09 16:07:56</created>
+		<closed>2015-09-19 12:38:42</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>wiki中的链接信息错误，希望更新wiki</title>
+		<body>wiki 中 `Installing` 的 `本地安装` 下的链接  &gt; http://ompc.oss.aliyuncs.com/greys/greys-[VERSION].zip  描述不太清楚，使用http://ompc.oss.aliyuncs.com/greys/greys-1.7.0.4.zip 提示错误，应该是文件不存在。  `常见安装问题` 中的链接  &gt; http://ompc.oss.aliyuncs.com/greys/greys.zip  字面和指向也不相符 </body>
+		<created>2015-09-06 07:11:25</created>
+		<closed>2015-09-07 05:38:40</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>有时候会遇到ClassNotFoundException </title>
+		<body>OS:  mac 10.9.5  JDK java version "1.7.0_71" Java(TM) SE Runtime Environment (build 1.7.0_71-b14) Java HotSpot(TM) 64-Bit Server VM (build 24.71-b01, mixed mode)  在用monitor的时候遇到如下错误  java.lang.ClassNotFoundException: [Lbyte[];     at java.lang.Class.forName0(Native Method) ~[na:1.7.0_71]     at java.lang.Class.forName(Class.java:274) ~[na:1.7.0_71]     at com.github.ompc.greys.advisor.ReflectAdviceListenerAdapter.toClass(ReflectAdviceListenerAdapter.java:69) ~[greys.jar:na]     at com.github.ompc.greys.advisor.ReflectAdviceListenerAdapter.toMethod(ReflectAdviceListenerAdapter.java:80) ~[greys.jar:na]     at com.github.ompc.greys.advisor.ReflectAdviceListenerAdapter.afterReturning(ReflectAdviceListenerAdapter.java:112) ~[greys.jar:na]     at com.github.ompc.greys.advisor.AdviceWeaver.afterReturning(AdviceWeaver.java:303) [greys.jar:na]     at com.github.ompc.greys.advisor.AdviceWeaver.methodOnEnd(AdviceWeaver.java:183) [greys.jar:na]     at com.github.ompc.greys.advisor.AdviceWeaver.methodOnReturnEnd(AdviceWeaver.java:136) [greys.jar:na] </body>
+		<created>2015-09-02 01:11:31</created>
+		<closed>2015-09-05 01:20:29</closed>
+	</bug>
+	<bug>
+		<id>53</id>
+		<title>resin中无法获取Agent</title>
+		<body>微博网友 [IT大卫](http://weibo.com/u/1156458007) 返回greys在resin中会抛出空指针。 - 原因      经过核对发现是resin在启动过程中替换掉了`System.props`，替换的内容随着Thread改变而改变，以此达到彻底的容器隔离效果。      但不幸的是greys依靠`System.props`来传递Hook，所以一旦被替换掉之后后续就无法优雅的再次拿到。 - 思考      不得不承认resin的隔离机制做得真变态，但有道理。所以这里将参考HouseMD的做法，将间谍类注入到对应的ClassLoader中来规避这个问题。 </body>
+		<created>2015-08-23 05:48:35</created>
+		<closed>2015-08-23 19:33:54</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>sc命令查看类详细信息可能出错的问题</title>
+		<body>当`sc`命令使用`-d`参数查看类的详细信息时，由于存在类的&lt;clint&gt;初始化失败的可能，会导致整个命令无法完成。  纠其本质原因，因为`-d`命令在执行时，将所有Field进行展示，需要用另外一个参数进行隔离 </body>
+		<created>2015-07-23 14:48:01</created>
+		<closed>2015-07-24 15:20:27</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>GreysAnatomyClassFileTransformer类中存在内存泄漏风险</title>
+		<body>在`GreysAnatomyClassFileTransformer.java`中定义了一个  ``` java     /*      * 对之前做的类进行一个缓存      */     private final static Map&lt;String, byte[]&gt; classBytesCache = new ConcurrentHashMap&lt;String, byte[]&gt;(); ```  用了一个HashMap缓存了之前生成的字节码，但这种做法存在无法释放内存的严重风险，随着在一个jvm上使用greys数次之后，有可能引发OOM </body>
+		<created>2015-03-08 15:22:33</created>
+		<closed>2015-03-08 16:54:19</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>解决$Proxy代理类无法被拦截的问题</title>
+		<body>在拦截HSF的Consumer的时候，其中的方法无法被正确拦截，经过仔细排查发现是`GreysAnatomyClassFileTransformer.java`类中无法通过ClassLoader获取$Proxy的类，原因是ClassLoader获取$Proxy类字节码的时候是通过getReousrces()完成的，但$Proxy因为没有CodeSource，所以无法通过这样的方式完成字节码获取，需要改变获取的方式。 </body>
+		<created>2015-03-05 05:22:00</created>
+		<closed>2015-03-08 15:45:47</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>JavaScript引擎rhino与Javassist结合存在严重漏洞</title>
+		<body>使用Javassist进行编织的代码中，如果混入JavaScript引擎rhino所组织的代码，会引起JVM崩溃。触发的时机在YaungGC发生的时候，如果对象被GC掉，但仍然有命令在通过rhino所组织的代码访问该对象时，会引起JVM崩溃。  ``` # # A fatal error has been detected by the Java Runtime Environment: # #  SIGBUS (0xa) at pc=0x0000000796a2a9f8, pid=11844, tid=4867 # # JRE version: Java(TM) SE Runtime Environment (8.0_25-b17) (build 1.8.0_25-b17) # Java VM: Java HotSpot(TM) 64-Bit Server VM (25.25-b02 mixed mode bsd-amd64 compressed oops) # Problematic frame: # C  0x0000000796a2a9f8 # # Core dump written. Default location: /cores/core or core.11844 # # An error report file with more information is saved as: # /Users/vlinux/temp/hs_err_pid11844.log Compiled method (c1)   41756 3032       3       java.lang.invoke.LambdaForm$MH/556442004::getObjectField (23 bytes)  total in heap  [0x000000010878d010,0x000000010878d7e8] = 2008  relocation     [0x000000010878d138,0x000000010878d188] = 80  main code      [0x000000010878d1a0,0x000000010878d5e0] = 1088  stub code      [0x000000010878d5e0,0x000000010878d670] = 144  oops           [0x000000010878d670,0x000000010878d678] = 8  metadata       [0x000000010878d678,0x000000010878d6a8] = 48  scopes data    [0x000000010878d6a8,0x000000010878d740] = 152  scopes pcs     [0x000000010878d740,0x000000010878d7c0] = 128  dependencies   [0x000000010878d7c0,0x000000010878d7d0] = 16  nul chk table  [0x000000010878d7d0,0x000000010878d7e8] = 24 ^C^C^CAbort trap: 6 (core dumped) ```  与此同时，jstat看到的GC情况  ```   S0     S1     E      O      M     CCS    YGC     YGCT    FGC    FGCT     GCT    LGCC                 GCC                   99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC                 99.68   0.00  97.73   1.93  94.35  88.62      2    0.012     1    0.009    0.020 Allocation Failure   No GC  ```  可以看到在触发YGC的时候，引起了错误 </body>
+		<created>2014-11-30 12:15:03</created>
+		<closed>2014-11-30 18:07:44</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>如果目标JVM设置了无效的"-Djava.rmi.server.hostname"参数会导致Greys无法启动</title>
+		<body>如果目标JVM设置了无效的"-Djava.rmi.server.hostname"参数会导致Greys无法启动 </body>
+		<created>2014-11-22 21:17:11</created>
+		<closed>2014-11-22 21:18:54</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>JOB输出文件存在性能问题</title>
+		<body>JOB的输出为了节省内存，是通过文件进行交互的，在频繁的输出过程中存在反复写文件的问题，严重的时候会非常影响性能（比如watch/profiler一个非常热的方法），所以需要将文件的打开、关闭和session的生命周期进行挂钩，避免不必要的反复打开、关闭文件。 </body>
+		<created>2014-11-06 13:25:36</created>
+		<closed>2014-11-06 15:44:58</closed>
+	</bug>
+	<bug>
+		<id>13</id>
+		<title>greys研发1.5.1版本</title>
+		<body>## Greys1.5.1 ### BUGFIX 1. 修复profiler命令在渲染大量类的时候会出错。 2. 如果RMI放着太久，超过4个小时左右吧，下次再企图访问这个RMI就无法访问了，我会加上一个超时机制，超过一定的时间主动shutdown  </body>
+		<created>2014-10-31 01:20:14</created>
+		<closed>2014-11-02 10:07:31</closed>
+	</bug>
+	<bug>
+		<id>11</id>
+		<title>monitor指令存在CAS重大BUG</title>
+		<body>#### 问题描述  在Monitor的命令中，间隔X秒对统计的内容进行输出，是通过一个CAS来完成的。但在对此次CAS的处理中，存在严重的逻辑错误，会导致一旦出现并发将会让Timer进入死循环，吃光CPU资源，导致JVM崩溃。 #### 问题修复  本次CAS问题将会在1.5版本中进行修复 </body>
+		<created>2014-10-25 06:00:34</created>
+		<closed>2014-10-26 10:44:29</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>greys研发1.5版本</title>
+		<body>## Greys1.5 ### 特性 1. 支持精简指令集 2. 更友好的错误提示 3. 更友好的帮助文档 4. 支持单用户、多用户的切换 ### BUGFIX 1. 修复多用户模式下多个Greys都占用3658端口的问题 </body>
+		<created>2014-10-23 06:22:25</created>
+		<closed>2014-10-26 10:44:18</closed>
+	</bug>
+</bugs>

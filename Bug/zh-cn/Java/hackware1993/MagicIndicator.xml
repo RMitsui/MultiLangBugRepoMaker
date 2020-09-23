@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>20</id>
+		<title>titie中文时，文字没有居中</title>
+		<body>使用以下这种样式（TAB WITH BADGE VIEW页面的第三个） `MagicIndicator magicIndicator = (MagicIndicator) findViewById(R.id.magic_indicator3); //        magicIndicator.setBackgroundResource(R.drawable.round_indicator_bg);         CommonNavigator commonNavigator = new CommonNavigator(this);         commonNavigator.setAdapter(new CommonNavigatorAdapter() {             @Override             public int getCount() {                 return mDataList == null ? 0 : mDataList.size();             }              @Override             public IPagerTitleView getTitleView(Context context, final int index) {                 BadgePagerTitleView badgePagerTitleView = new BadgePagerTitleView(context);                  ClipPagerTitleView clipPagerTitleView = new ClipPagerTitleView(context);                 clipPagerTitleView.setText(mDataList.get(index));                 clipPagerTitleView.setTextColor(Color.parseColor("#000000"));//默认文本颜色                 clipPagerTitleView.setClipColor(Color.WHITE);//选中后文本颜色                 clipPagerTitleView.setOnClickListener(new View.OnClickListener() {                     @Override                     public void onClick(View v) {                         mViewPager.setCurrentItem(index);                     }                 });                 badgePagerTitleView.setInnerPagerTitleView(clipPagerTitleView);                  return badgePagerTitleView;             }              @Override             public IPagerIndicator getIndicator(Context context) {                 LinePagerIndicator indicator = new LinePagerIndicator(context);                 float navigatorHeight = context.getResources().getDimension(R.dimen.common_navigator_height_test);                 float borderWidth = UIUtil.dip2px(context, 1);                 float lineHeight = navigatorHeight - 2 * borderWidth;                 indicator.setLineHeight(lineHeight);                 indicator.setRoundRadius(lineHeight / 2);                 indicator.setYOffset(borderWidth);                 indicator.setColors(Color.parseColor("#f4ac29"));//圆形颜色                 return indicator;             }         });         magicIndicator.setNavigator(commonNavigator);         ViewPagerHelper.bind(magicIndicator, mViewPager);`  如果text是中文，没有居中。。。</body>
+		<created>2016-11-19 03:30:22</created>
+		<closed>2016-11-21 02:57:20</closed>
+	</bug>
+	<bug>
+		<id>1</id>
+		<title>NavigatorHelper  onSelected &amp;onDeselected 多次调用</title>
+		<body>请问一下 NavigatorHelper 中的mNavigatorScrollListener.onSelected(safePosition);  和mNavigatorScrollListener.onDeselected(i);可以去掉么？在onPageSelected中已经调用过。 </body>
+		<created>2016-07-08 08:11:52</created>
+		<closed>2016-07-09 05:51:37</closed>
+	</bug>
+</bugs>

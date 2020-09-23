@@ -1,0 +1,2228 @@
+de14ccce5868729485760cb41a9a13c4263797f8, * Spring boot 버전 업그레이드 1.4 -> 2.0.0 * Spring boot 버전 업그레이드에 맞춰 코드 리팩토링 * Spring boot 버전 2.0 에 맞춰 properties 수정, Tue Mar 6 13:24:23 2018 +0900
+M	pom.xml
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/config/DevWebConfiguration.java
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+M	src/main/java/kr/co/leehana/config/DevWebSocketConfig.java
+M	src/main/java/kr/co/leehana/config/DevWebSocketSecurityConfig.java
+M	src/main/resources/application-dev.properties
+M	src/main/resources/application-prod.properties
+M	src/main/resources/static/bower.json
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+M	src/test/resources/application-test.properties
+
+96ebcb7f0e7b318e29429a8a217445dd6d1c94c2, jslint 에서 eslint 로 변경. 관련 코드 수정., Mon Jul 10 09:40:03 2017 +0900
+A	.eslintrc
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/const.js
+M	src/main/resources/static/scripts/model.js
+M	src/main/resources/static/scripts/utils.js
+M	src/main/resources/static/scripts/v_chat.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_player_profile.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_sign_up.js
+M	src/main/resources/static/scripts/vo.js
+
+88e43e14adc5e9a23628c5ce544604cebb78479e, jquery 및 webix 스크립트 라이브러리 버전 업그레이드, Mon Jul 10 09:11:38 2017 +0900
+M	src/main/resources/static/bower.json
+M	src/main/resources/static/index.html
+
+c1f0220f2ab8361672ca702a68d35ae106e0ade4, Upadate README file, Wed Jun 8 23:19:58 2016 +0900
+M	README.md
+
+5c4769a0e9285e208828501fdb229ba5e7350798, * 사용하지 않는 클래스 삭제 * 관련된 테스트 코드 삭제, Mon Jun 6 21:17:52 2016 +0900
+D	src/main/java/kr/co/leehana/controller/ClientBackground.java
+D	src/main/java/kr/co/leehana/controller/GameClient.java
+D	src/main/java/kr/co/leehana/controller/GameProgressController.java
+D	src/main/java/kr/co/leehana/controller/OldScoreCalculator.java
+D	src/main/java/kr/co/leehana/controller/ServerBackground.java
+D	src/main/java/kr/co/leehana/factory/GameRoomMaker.java
+D	src/main/java/kr/co/leehana/main/ClientStarter.java
+D	src/main/java/kr/co/leehana/main/ServerStarter.java
+D	src/test/java/kr/co/leehana/DummyTest.java
+D	src/test/java/kr/co/leehana/OldScoreCalculatorTest.java
+
+a740c421d822828ea68a07bcc8bc18b1266bf2bc, Merge remote-tracking branch 'origin/master', Sun Jun 5 18:24:01 2016 +0900
+9bba4367905195e5b8174daeb4def862a65633ef, * 스프링 라이브러리 버전 업그레이드 * 지원하지 않는 property 변경, Sun Jun 5 18:23:51 2016 +0900
+M	pom.xml
+M	src/main/resources/application-prod.properties
+
+3920a4dfbcf0b51460b96c65315ea8869572133c, 일수 내용 수정., Sat Apr 2 23:40:49 2016 +0900
+M	README.md
+
+be59a89ade0ea792baac8927dd9eb4a5ddfa30bd, websocket error, ajax error 이외의 console.log 제거, Fri Apr 1 23:28:20 2016 +0900
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_shell.js
+
+b9b86eafae71f8b7b3fa8c2a909325661e09ce2f, 수비자의 역할 내용중 숫자 만들어 내는 문구 수정, Thu Mar 31 23:10:25 2016 +0900
+M	README.md
+
+4ed267ae2442219daa4f8ff31c332fdfd4a44269, 수비자의 역할 내용 갱신, Wed Mar 30 22:17:29 2016 +0900
+M	README.md
+
+6162f3e5be53c7640bb989ed601ae7f4081ed923, #33 클라이언트 뷰 생성 코드들 리팩토링 * 로그인시 스크립트 오류 해결, Tue Mar 29 20:53:40 2016 +0900
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_shell.js
+
+315c667ca36b21d387a78e003f1ee3b6fa1caa50, #33 클라이언트 뷰 생성 코드들 리팩토링 * shell.js 에 중복 코드 일부 제거, Mon Mar 28 22:32:40 2016 +0900
+M	src/main/resources/static/scripts/v_shell.js
+
+8e5f9633a986b2566e3bfe742693336607c29602, #96 새로고침을 해도 게임룸 입장 정보가 유지 되어 게임룸이 화면에 떠야 한다. * 일단 해쉬코드를 추가함 - 게임룸 입장시 해쉬코드 추가 (#gr_12) id 12 인 게임룸, Sun Mar 27 06:47:58 2016 +0900
+M	src/main/resources/static/scripts/v_shell.js
+
+17958359d1511464a1cbdf94144e16a9e856b93e, closed #66 게임룸의 진행상황 보드에 상황별로 적절한 색상 및 두께로 표시하기, Sat Mar 26 02:04:43 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/styles/v_game_board.css
+
+72bbaef7af9fcb4a7cdcf936511f3096a94ccc78, README 내용 수정, Fri Mar 25 21:12:28 2016 +0900
+M	README.md
+
+9e7bb96aca33287a1803aa5e957733ba3d634891, Merge pull request #94 from Hana-Lee/baseball-game-93, Thu Mar 24 21:22:54 2016 +0900
+f2eee15195bd47ed71872330165f7dadfc18d1ad, baseball-game-93 클라이언트에서 참조 하는 플레이어의 정보와 게임룸 정보 코드 리팩토링 하기 * 모든 참조 코드들 정리, Thu Mar 24 21:22:16 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+D	src/main/resources/static/scripts/m_player.js
+M	src/main/resources/static/scripts/model.js
+M	src/main/resources/static/scripts/v_chat.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_shell.js
+
+0c8a0888d0d77ca3bd559140c1c614803d750bb7, Merge pull request #92 from Hana-Lee/baseball-game-67, Thu Mar 24 20:10:14 2016 +0900
+c2a4d45319b13dbe0f049d7901c21e00a2767ad3, baseball-game-67 게임룸 진행바가 중간에 꺼지거나 다시 시작되는 문제 해결하기 * webix 의 progress 를 사용할 때 옵션으로 hide : true 를 주게 되면 자동으로 시간이 되면 멈추게 되는데 멈추기 전에 hideProgress 를 호출하게 되더라도 progress 가 메모리에서 사라지지 않고 delay 시간 만큼 지난뒤 자체적으로 hideProgress 를 호출하게 된다, Thu Mar 24 20:09:31 2016 +0900
+M	src/main/resources/static/scripts/v_game_pad.js
+
+6e97abe6226c4ab9010c3b67d433453cf3cf98d0, Merge pull request #91 from Hana-Lee/baseball-game-87, Thu Mar 24 10:46:28 2016 +0900
+aeee82bb5dba42a7a9408d20ba3de61071f937ea, fixed #87 baseball-game-87 로그아웃하지 않고 브라우저를 닫을 경우 세션을 종료 시켜야 한다. * 로그인 세션은 1개로 유지하고 이전 세션이 있어도 로그인은 가능하게 변경, Wed Mar 23 20:41:24 2016 +0900
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+M	src/main/resources/static/scripts/v_shell.js
+
+1e92e2b2bc5bb87372fc7a865aff97e99c29c8d4, Merge pull request #90 from Hana-Lee/baseball-game-84, Wed Mar 23 18:55:51 2016 +0900
+b538876b336e0df22d2d41ad5425788913adbc7b, closed #84 baseball-game-84 플레이어가 잘못 입력한 숫자의 횟수를 세어야 한다., Wed Mar 23 18:55:29 2016 +0900
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_shell.js
+
+91b2845e14a4d0ef9275511916824f424641a481, Merge pull request #89 from Hana-Lee/baseball-game-81, Wed Mar 23 18:46:12 2016 +0900
+3199ff4c047dc9ecf95acf4058ad7d8d6d859e92, baseball-game-81 랭킹 계산 로직 리팩토링 하기, Wed Mar 23 18:45:35 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+
+bd57da8193476d952cc8a0c5c31982b6d00ef5d0, Merge pull request #88 from Hana-Lee/baseball-game-80, Tue Mar 22 23:47:13 2016 +0900
+982768bdb613152322a7b8a1f6bdc044dd7cb2e1, baseball-game-80 메인화면 진입시 느린 속도 개선을 해야 한다. * 게임룸 리스트를 랜더링시 데이터를 가지고 오고 이후 화면을 랜더링해서 느리게 느껴짐 * 게임룸 리스트를 먼저 랜더링 놓고 이후 데이터를 가지고와 화면에 데이터를 보여주게 변경 * 추가로 WaitDialog 추가함, Tue Mar 22 23:45:42 2016 +0900
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/utils.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_shell.js
+
+9c027a7208dda362a3e7a77928ce678ade249822, 주석 추가 및 변경, Tue Mar 22 22:39:28 2016 +0900
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/model.js
+M	src/main/resources/static/scripts/v_shell.js
+
+0fe5f156b8d198695910eef18bc42aabd5f7d9f6, 플레이어 및 게임룸, 게임룸 리스트를 좀 더 쉽게 관리 할 수 있도록 ValueObject 생성 및 vo 를 다룰 model 코드 생성, Mon Mar 21 21:16:54 2016 +0900
+M	src/main/resources/static/index.html
+D	src/main/resources/static/scripts/m_user.js
+A	src/main/resources/static/scripts/model.js
+A	src/main/resources/static/scripts/vo.js
+
+8c99a8dca2d26ead23bf3e1b844dec2c9c761824, baseball-game-85 수비 플레이어가 포함된 게임에서 공격 플레이어가 게임을 마치면 게임이 종료 되어야 한다., Sun Mar 20 20:51:13 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+
+146c49972bf6382c3871bf579b98009ce4fc7766, Merge pull request #86 from Hana-Lee/baseball-game-71, Sun Mar 20 20:06:28 2016 +0900
+2fb0f3253c496b7ae58b282e2b873d3614c30cf8, baseball-game-71 수비 플레이어의 게임 진행 보드에는 다른 플레이어가 입력한 숫자도 볼 수 있어야 한다., Sun Mar 20 20:04:30 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameController.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+
+e2fe1bf21253d06fd5703782989d01bdb0c8b195, Merge pull request #83 from Hana-Lee/baseball-game-70, Sun Mar 20 17:36:04 2016 +0900
+5e08574cfb104240e60aaa1d13e693ecf09b3a7e, baseball-game-70 수비 플레이어는 게임 진행시 숫자 입력을 할 수 없어야 한다., Sun Mar 20 17:02:14 2016 +0900
+M	src/main/resources/static/scripts/const.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_shell.js
+
+7897d7108abf06776581279c2ea2c625e81eff02, Merge pull request #82 from Hana-Lee/baseball-game-78, Sun Mar 20 15:33:19 2016 +0900
+7680043e019a68cbfd2568ffcd4381ad59e0fbd5, baseball-game-78 플레이어의 레벨을 기록해야 한다., Sun Mar 20 15:13:12 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+
+0189e2fefd368c82af5fc47b3ace9f65425dd7e4, baseball-game-77 플레이어의 전적을 기록해야 한다., Sun Mar 20 14:29:32 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/util/ScoreCalculator.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_room.js
+
+5afa92854a57d41e669ef0fe05493d44b423f101, Merge pull request #79 from Hana-Lee/baseball-game-74, Sun Mar 20 13:51:06 2016 +0900
+b322f24761ce5e962a537db31708c2186854bd5a, closed #74 baseball-game-74 플레이어의 전체 랭킹을 계산 해야 한다., Sun Mar 20 13:35:42 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/model/TotalScore.java
+
+25c96fbdeab0bf3b6faa3d6bad9dc950a8613017, #72 게임이 종료 되면 점수를 계산하여 플레이어에게 적용 해야 한다 * 빌드 오류 해결, Fri Mar 18 22:54:04 2016 +0900
+M	src/main/java/kr/co/leehana/model/Score.java
+
+a5da17c65f9271f072a9ba5df47d1d6bb99aa194, closed #72 게임이 종료 되면 점수를 계산하여 플레이어에게 적용 해야 한다, Fri Mar 18 22:49:46 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/model/Score.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/test/java/kr/co/leehana/OldScoreCalculatorTest.java
+
+1d81406853b434546711fa8aeb6b5ae5705b71fc, #57 게임룸의 진행상황을 플레이어에게 알려줘야 한다. * 플레이어의 순위 표시에 약간의 데코레이션 추가, Fri Mar 18 21:53:25 2016 +0900
+M	src/main/resources/static/scripts/v_game_board.js
+
+ddf4d8397060b4aaa92e8aa85223ee238cda8b52, closed #57 게임룸의 진행상황을 플레이어에게 알려줘야 한다. * 게임 종료시 현재 게임의 플레이어 순위 표시 기능 추가 closed #73 플레이어의 랭킹을 계산해야 한다, Fri Mar 18 21:52:32 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/GameController.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+R093	src/main/java/kr/co/leehana/controller/ScoreCalculator.java	src/main/java/kr/co/leehana/controller/OldScoreCalculator.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/model/Ball.java
+M	src/main/java/kr/co/leehana/model/GuessNumberComparedResult.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/model/Settlement.java
+M	src/main/java/kr/co/leehana/model/Strike.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+A	src/main/java/kr/co/leehana/util/ScoreCalculator.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/test/java/kr/co/leehana/GameControllerTest.java
+R096	src/test/java/kr/co/leehana/ScoreCalculatorTest.java	src/test/java/kr/co/leehana/OldScoreCalculatorTest.java
+
+314b649dce4ef6a7c7f90b282cf7cf3d51795d34, 플레이어의 순위 sorting 기능을 사용하기 위해 underscore 자바스크립트 라이브러리 추가, Fri Mar 18 21:51:07 2016 +0900
+M	src/main/resources/static/bower.json
+M	src/main/resources/static/index.html
+
+3418416a8f3dc231f471daddf18977442be0f780, #61 Controller 들에 있는 Exception Handler 들을 ControllerAdvice 로 모두 옮겨서 관리 할 것 * TODO 제거, Fri Mar 18 20:19:14 2016 +0900
+M	src/main/java/kr/co/leehana/advice/GlobalControllerAdvice.java
+
+c809d7a284648536a4aadf66a6442b3db93a9102, closed #61 Controller 들에 있는 Exception Handler 들을 ControllerAdvice 로 모두 옮겨서 관리 할 것, Fri Mar 18 20:18:32 2016 +0900
+A	src/main/java/kr/co/leehana/advice/GlobalControllerAdvice.java
+M	src/main/java/kr/co/leehana/config/TestWebSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/exception/OwnerDuplicatedException.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+fc19506cf235165af169df2d49e0934b9fb39487, closed #76 게임이 시작되면 이전 플레이어들의 순위 정보를 초기화 해야 한다, Thu Mar 17 23:18:25 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+
+cb421b963eb1d831883b71d62cdd715422279b85, closed #75 게임룸에서 진행되는 게임의 횟수를 기록해야 한다, Thu Mar 17 23:17:30 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+
+2992050b9d2fc8e00accab5e7d9c100a17170468, fixed #69 게임 종료후 재시작시 랜덤 숫자 값이 변경되지 않는 오류 해결하기 * 게임 종료 후 게임룸 모델에 이전 숫자가 제거 되지 않아 발생한 오류, Thu Mar 17 23:16:38 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+
+b120a1d04015a83094cfd226a57b4a2bbd4309fe, closed #49 게임룸내의 플레이어 표시창 테두리에 상태에 따라 다르게 표기 해주기 * 모든 플레이어 게임 종료 (이때는 Ready 전) 기능 구현 #57 게임룸의 진행상황을 플레이어에게 알려줘야 한다. * 게임 종료 메세지 표시 기능 구현, Thu Mar 17 21:13:18 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/styles/v_game_list.css
+
+bd510086c5ffb13bd913916cbb9feb056102e8ce, fixed #68 게임룸 입장이나 생성시 엔터를 입력하면 스크립트 오류 발생 해결하기 * 엔터 입력이 webix input 에 설정한 hotkey 에 맞춰 동작하여 아직 chat message 컴포넌트가 생성되지 않았는데 focus 를 하려고 하여 문제가 발생함, Thu Mar 17 19:47:15 2016 +0900
+M	src/main/resources/static/scripts/v_chat.js
+
+d8df64b7caec383d4a65247a6e662238baa7c4d6, #57 게임룸의 진행상황을 플레이어에게 알려줘야 한다. * 숫자를 맞춘 플레이어에 대한 표시 기능 구현 #49 게임룸내의 플레이어 표시창 테두리에 상태에 따라 다르게 표기 해주기 * 게임 종료 (숫자를 맞춤) 기능 구현, Wed Mar 16 23:55:14 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/enums/Status.java
+M	src/main/resources/static/scripts/const.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_player_profile.js
+M	src/main/resources/static/scripts/v_shell.js
+
+8e39c3e88a3020ba5a98ab082d6c8d55c52d2e9e, #57 게임룸의 진행상황을 플레이어에게 알려줘야 한다. * 다른 플레이어가 몇번째 입력인지 표시 구현 ( 좀더 쉽게 알수 있게 색상 추가), Wed Mar 16 22:47:21 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/resources/static/scripts/v_shell.js
+
+d1720da2f3fc66aad38aeea1f183fd73e009a50f, #57 게임룸의 진행상황을 플레이어에게 알려줘야 한다. * 다른 플레이어가 몇번째 입력인지 표시 구현, Wed Mar 16 22:33:31 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_shell.js
+
+15b08c3d2dc0d0348f61154a50c5273191446e95, closed #64 테스트 오류 해결하기 * ResponseEntity 를 리턴 타입으로 지정하였는데 제네릭 타입을 지정하지 않아 발생한 문제 해결 * ResponseEntity 를 ErrorResponse 와 일반 모델 객체를 함께 쓰기 위해 제네릭 타입을 지정하지 않았고 그럴 경우 Spring 에서 자동으로 제네릭타입을 설장하여 처리 하였는데 최근 Spring Framework 4.3.0.BUILD-SNAPSHOT 에서는 자동으로 처리 하지 않고 지정을 꼭 해야 만 하게 변경됨 * 그에 따라 ErrorResponse 는 별도의 메소드로 등록하고 에러는 Exception 을 발생시켜 ExceptionHandler 가 처리 하도록 하여 해결., Wed Mar 16 14:26:29 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+A	src/main/java/kr/co/leehana/exception/GameRoomUpdateFieldAllEmptyException.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+b37a259483854b919b5d163dd5178d29d2353b7f, #64 테스트 오류 해결하기, Wed Mar 16 12:33:46 2016 +0900
+M	src/main/java/kr/co/leehana/validator/GuessNumberValidator.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+e5ad865efbeec1bcc53f65168596c2b7cac830ae, closed #62 사용자가 입력한 숫자를 게임숫자와 비교하여 결과를 전달해야 한다., Wed Mar 16 01:17:07 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/controller/GameController.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+R089	src/main/java/kr/co/leehana/model/Result.java	src/main/java/kr/co/leehana/model/GuessNumberComparedResult.java
+M	src/main/java/kr/co/leehana/model/OldUser.java
+M	src/main/java/kr/co/leehana/model/ResultDto.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/test/java/kr/co/leehana/GameControllerTest.java
+M	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+
+44f4c5e3c34cf7fe2b90195324ab6181f3ab6828, #49 게임룸내의 플레이어 표시창 테두리에 상태에 따라 다르게 표기 해주기 * 숫자 입력중 표시, Wed Mar 16 00:13:58 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/enums/Status.java
+M	src/main/resources/static/scripts/const.js
+M	src/main/resources/static/styles/v_game_board.css
+
+3b6ceb7ef09bc385563932a65ef52e564f6595c1, closed #58 플레이어가 추측한 숫자를 검증해야 한다. * 서버측 검증 코드 수정 closed #60 WebSocket Exception 처리 코드를 추가 해야 한다. * 서버측 WebSocket 오류를 받아서 처리 하도록 코드 추가 * 오류 발생시 클라이언트에서 이벤트 호출, Tue Mar 15 22:24:45 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/dto/MessagingDto.java
+M	src/main/java/kr/co/leehana/validator/AbstractNumberValidator.java
+M	src/main/java/kr/co/leehana/validator/GuessNumberValidator.java
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_shell.js
+
+0d5dbfe741b7f6a1438803cac9da12b0aa45bd38, Semaphore CI 링크 추가., Tue Mar 15 18:23:12 2016 +0900
+M	README.md
+
+9245d7b88a67a27d0f3dd06b6f1d3b83e945fa76, 이미 추가된 waffle.io badge 제거., Tue Mar 15 17:24:54 2016 +0900
+M	README.md
+
+723c183fcc7f31177df2b119b32366a9ae0c2b3e, Merge pull request #59 from waffle-iron/master, Tue Mar 15 17:23:13 2016 +0900
+5b41372a06540f7adbfd9d4192166b2def405de0, add waffle.io badge, Tue Mar 15 02:22:24 2016 -0600
+M	README.md
+
+723d06c4ccc85a571897ea62b9ed6fd9a987fc20, waffle badge code 추가., Tue Mar 15 17:21:36 2016 +0900
+M	README.md
+
+e5fe6008b9e6bac3a9a41d858171e32cb55aa1e0, 사용하지 않는 필드 제거, Tue Mar 15 14:26:12 2016 +0900
+M	src/main/java/kr/co/leehana/config/TestWebSecurityConfig.java
+
+a0c99008372af8d150baf59b55877df26b46fe5b, 사용하지 않는 필드 제거, Tue Mar 15 14:25:56 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+
+0535c60779f51c124b9c4b7df7338382a2100e79, #58 플레이어가 추측한 숫자를 검증해야 한다. * 서버 검증 코드 추가 (ValidGuessNumber annotation), Mon Mar 14 23:28:12 2016 +0900
+A	src/main/java/kr/co/leehana/annotation/ValidGuessNumber.java
+M	src/main/java/kr/co/leehana/config/DevWebSocketConfig.java
+M	src/main/java/kr/co/leehana/config/DevWebSocketSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/dto/MessagingDto.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+A	src/main/java/kr/co/leehana/validator/AbstractNumberValidator.java
+M	src/main/java/kr/co/leehana/validator/GameNumberValidator.java
+A	src/main/java/kr/co/leehana/validator/GuessNumberValidator.java
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/m_player.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_shell.js
+
+cabb2304aae2ec27d0e44ad6b48e0331084fa167, #58 플레이어가 추측한 숫자를 검증해야 한다. * 클라이언트 측 검증 코드 추가, Mon Mar 14 21:27:42 2016 +0900
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+
+a9d0b76fbf7260d5bef3e14ef51915578f7178e4, #57 게임룸의 진행상황을 플레이어에게 알려줘야 한다. #6 게임룸 내부 정보 갱신 기능 * 상수 스크립트 정의 * 게임의 running 과 game over 이벤트 등록, Mon Mar 14 20:50:47 2016 +0900
+M	src/main/resources/static/index.html
+A	src/main/resources/static/scripts/const.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+
+f96e2d35512d7f43a6eba8210d07f0919328d64b, #57 게임룸의 진행상황을 플레이어에게 알려줘야 한다. #6 게임룸 내부 정보 갱신 기능 * 게임 준비 로직 변경 * 준비 대기 메세지 표시 * 게임 시작 메세지 표시, Sun Mar 13 22:07:44 2016 +0900
+M	src/main/java/kr/co/leehana/annotation/PasswordMatches.java
+M	src/main/java/kr/co/leehana/annotation/ValidEmail.java
+M	src/main/java/kr/co/leehana/annotation/ValidGameNumber.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/service/PlayerService.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/main/java/kr/co/leehana/validator/GameNumberValidator.java
+M	src/main/resources/static/scripts/v_chat.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_player_profile.js
+M	src/main/resources/static/scripts/v_shell.js
+
+e7acbeb24db75cadee235e7c173b4a53271308d8, #49 게임룸내의 플레이어 표시창 테두리에 상태에 따라 다르게 표기 해주기 * 상황에 맞춰 CSS 백그라운드 색상 추가, Sun Mar 13 18:29:21 2016 +0900
+M	src/main/resources/static/styles/v_game_board.css
+
+b9d48b64865a3dae2336017ba981a631c9d0d93b, #33 클라이언트 뷰 생성 코드들 리팩토링 * 플레이어 정보 및 게임룸 리스트 정보를 stateMap 에서 configMap 으로 이동 * 게임룸의 진행 보드에 초기 메세지 추가 하는 방법 변경, Sun Mar 13 18:28:39 2016 +0900
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_main_menu.js
+
+645d54419afb4a70c9b04c45360617153ff124be, webix.ajax 에 patch method 가 3.2 버전에서 추가 되어 확장 했던 부분 제거, Sun Mar 13 18:26:37 2016 +0900
+M	src/main/resources/static/scripts/app.js
+
+9717c0646b1fb558f0044f0db4de4c1640e4492e, 검증 로직 오류 수정, Sun Mar 13 18:25:50 2016 +0900
+M	src/main/java/kr/co/leehana/validator/GameNumberValidator.java
+
+572c99e0826706b296f217a5e64013e0dc094adc, * 배경 이미지 변경 * webix 라이브러리 버전 업그레이드 * jquery 라이브러리 버전 업그레이드 * sockjs, stomp 의 bower 버전 설정 변경, Sun Mar 13 16:01:36 2016 +0900
+M	src/main/resources/static/bower.json
+A	src/main/resources/static/images/game-list-bg.png
+M	src/main/resources/static/images/logo.png
+A	src/main/resources/static/images/logo_o.png
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/styles/app.css
+M	src/main/resources/static/styles/v_game_list.css
+
+7516ce5382429194b99612a4ceb964d9ce51872f, closed #53 수비 플레이어가 만들어내는 숫자를 검증 해야 한다., Sun Mar 13 02:35:16 2016 +0900
+M	src/main/java/kr/co/leehana/annotation/NotifyClients.java
+M	src/main/java/kr/co/leehana/annotation/PasswordMatches.java
+M	src/main/java/kr/co/leehana/annotation/ValidEmail.java
+A	src/main/java/kr/co/leehana/annotation/ValidGameNumber.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+R089	src/main/java/kr/co/leehana/model/RandomNumber.java	src/main/java/kr/co/leehana/model/GameNumber.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+A	src/main/java/kr/co/leehana/validator/GameNumberValidator.java
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/styles/v_game_pad.css
+
+caebf63ace90d9a76892e4477c74adf9eca437aa, closed #55 게임룸 생성시 게임룸의 번호를 만들어야 한다., Sat Mar 12 22:41:04 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/controller/GameController.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/GenerationNumberStrategy.java
+A	src/main/java/kr/co/leehana/controller/NumberGenerator.java
+D	src/main/java/kr/co/leehana/controller/RandomNumberGenerator.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/test/java/kr/co/leehana/GameControllerTest.java
+
+6f70a18625655e6b5907cb7577a6c965442f3be2, fixed #54 게임룸 입장 혹은 게임룸을 신규로 만들때 스크립트 오류발생. * 게임룸 생성시 ajax 통신 후 게임룸이 생성이 되는데 게임 생성 ajax 통신을 할때 socket 으로 게임생성에 대한 알림을 각 클라이언트에 보내게된다. 하지만 현재 게임룸을 생성한 클라이언트는 알림을 받아서 처리할 뷰가 삭제된 상태라서 알림을 받아 처리 할 수 없게 되어 발생한 오류. * 게임룸 생성 시 먼저 뷰를 제거 하여 알림을 해제 하고 이후 ajax 통신을 하여 오류 해결, Sat Mar 12 19:22:54 2016 +0900
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_shell.js
+
+761151c3c3cdd09aee43bd29729032ffd024c663, #33 클라이언트 뷰 생성 코드들 리팩토링 * proxy 함수에 주석 처리, Sat Mar 12 18:53:07 2016 +0900
+M	src/main/resources/static/scripts/app.js
+
+186c9b643d152258a21cbc80cf95866773181adf, #33 클라이언트 뷰 생성 코드들 리팩토링 * 플레이어 정보 및 게임룸 정보 받아 오는 부분 수정, Sat Mar 12 18:49:41 2016 +0900
+M	src/main/resources/static/scripts/v_chat.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_main_board.js
+
+37d7ad37b41d1187eb8685988ced2d9fb4394bb8, 게임룸 생성시 게임룸 이름 validate 함수 수정, Sat Mar 12 18:48:52 2016 +0900
+M	src/main/resources/static/scripts/v_main_menu.js
+
+2fca6e5ec01af1c7301b0e80f95cc378c02fa76e, closed #53 수비 플레이어가 만들어내는 숫자를 검증 해야 한다. * webix rules 추가, Sat Mar 12 17:07:37 2016 +0900
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_main_menu.js
+
+1f74f9ef02b2744ae4880dc3aaf4def5cb3a908a, #4 게임 시작시 숫자 생성. * 수비 플레이어가 숫자를 입력 할 수 있는 윈도우 추가, Sat Mar 12 00:14:31 2016 +0900
+M	src/main/java/kr/co/leehana/aspect/NotifyAspect.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_shell.js
+
+019f85874d3637745c206faa5c23c712e0d0efd4, #4 게임 시작시 숫자 생성. * 모든 플레이어가 준비 완료시 랜덤 숫자를 만들어내는 기능 추가, Fri Mar 11 22:16:27 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/enums/Status.java
+A	src/main/java/kr/co/leehana/enums/WebixOperation.java
+A	src/main/java/kr/co/leehana/exception/GameRoomRunningException.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+A	src/main/java/kr/co/leehana/model/RandomNumber.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_menu.js
+
+7b0fb2c60b8490ba5de336a41bf0f46d63da886e, closed #3 모든 플레이어가 준비를 마치면 클라이언트로 알림을 보내야 한다., Fri Mar 11 20:33:36 2016 +0900
+M	src/main/java/kr/co/leehana/enums/Status.java
+M	src/main/resources/static/scripts/v_game_room.js
+
+67cf696e72e1ac8b1377bfc829f5f7ee52a99591, closed #3 모든 플레이어가 준비를 마치면 클라이언트로 알림을 보내야 한다., Fri Mar 11 20:31:29 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+
+7e0d68de05046f99e9e3e20d9c0feadb4d2fb1e1, travis CI 오류 해결, Fri Mar 11 15:26:40 2016 +0900
+M	pom.xml
+
+5bee6f05c7c79131b5c22be94755b297fcb296c1, #3 게임 준비 모니터링 * 준비 상태에 따라 플레이어의 profile 헤더에 색상으로 구분 지을 수 있게 변경, Thu Mar 10 21:08:06 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/enums/Status.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_player_profile.js
+M	src/main/resources/static/styles/v_game_board.css
+
+5becf9939b1f50bb1593da01d2849d3a3ed6532b, closed #52 게임룸에서 마지막 플레이어가 나갈경우 메인화면의 플레이어 리스트 갱신이 안되는 오류, Wed Mar 9 22:08:42 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+
+565bcf49c5ebdeffc4406dc787089b8a4c8980af, closed #50 누락된 뷰 상태 초기화 코드 추가 하기, Wed Mar 9 21:31:15 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/v_chat.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_sign_up.js
+D	src/main/resources/static/scripts/v_theme_selector.js
+
+a05c69d0505d6b16ef81b5a1bab020613fd5e435, closed #48 게임룸에 다른 플레이어가 입장시 화면에 표시 해줘야 한다., Tue Mar 8 23:23:15 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/v_chat.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_player_profile.js
+A	src/main/resources/static/styles/v_game_board.css
+
+23c444f6d37ab1ffe22500beea5255bb13e026a0, spring-boot, spring-framework, spring-security 프레임워크 버전 업데이트, Tue Mar 8 19:49:52 2016 +0900
+M	pom.xml
+
+3d5b5927ea1727bf8a04cc978e1682a8d776111b, 불필요한 파일 제거, Mon Mar 7 06:13:46 2016 +0900
+D	src/main/resources/static/package.json
+
+545e4fab01ed24a6650255995c8830efc7332856, travis ci 빌드 오류 해결 -2 * 설명 추가, Mon Mar 7 06:12:29 2016 +0900
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+b55818f1aa09ade4d780066a231e8451b5648c25, travis ci 빌드 오류 해결 -2, Sun Mar 6 18:08:38 2016 +0900
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+7695cc0a7df000b0d28b07497ba3edeca65e0362, travis ci 빌드 오류 해결, Sun Mar 6 18:02:27 2016 +0900
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+c517ce36fdd50bc799071bf849dfeb8783a5b085, #40 게임방 설정이 변경되면 모든 유저에게 알림을 보내야 한다. * 타이틀에 설정 메세지 만들어 내는 부분 조금 수정, Sun Mar 6 17:51:30 2016 +0900
+M	src/main/resources/static/scripts/v_game_room.js
+
+5cf38cd98a5426cb5647ac9978d2695120fc3248, closed #40 게임방 설정이 변경되면 모든 유저에게 알림을 보내야 한다., Sun Mar 6 17:50:07 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_menu.js
+
+ce516d11ba0a83e9e86e5b569803cf353fff1c02, closed #47 빠른 입장 시 역할 선택은 공격으로 정해져야 한다. * 테스트 코드 오류 해결, Sun Mar 6 16:18:25 2016 +0900
+M	src/main/java/kr/co/leehana/config/TestWebSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+8c58a4c7bdc29b292464342955d671927cc963ec, closed #39 게임룸 방장이 변경 되면 모든 유저에게 알림 보내기, Sun Mar 6 15:13:23 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+A	src/main/resources/static/styles/v_game_room_menu.css
+
+c43fa8e1f4bd0f98e0ba7ba402e823fd89e851cd, #39 게임룸 방장이 변경 되면 모든 유저에게 알림 보내기 * 게임룸에 여러 플렐이어가 있는데 방장이 퇴장하는 경우 방장이 랜덤하게 정해지는데 이때 알림을 보내 게임룸 리스트의 정보를 갱신할 수 있도록 기능 개선 * 게임룸 및 채팅 관련 메세지 알림을 보내는 URL 개선 * 게임룸 내에서 채팅시 게임룸 정보가 없어 모든 게임룸 채팅이 한번에 갱신되는 문제 해결., Sat Mar 5 20:26:32 2016 +0900
+M	src/main/java/kr/co/leehana/aspect/NotifyAspect.java
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+A	src/main/java/kr/co/leehana/exception/GameRoomPlayersNotEmpty.java
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_shell.js
+
+a88318e3a760521b21d40247c629a33220f2d154, closed #46 게임룸에 입장 및 퇴장시 대기중 플레이어 목록에서 삭제 및 추가 되어야 한다, Sat Mar 5 03:52:48 2016 +0900
+M	src/main/java/kr/co/leehana/annotation/NotifyClients.java
+M	src/main/java/kr/co/leehana/aspect/NotifyAspect.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/repository/PlayerRepository.java
+M	src/main/java/kr/co/leehana/service/PlayerService.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/main/resources/static/scripts/v_player_list.js
+
+106aef57115559a1b06eb3326a470566191d73e3, closed #44 게임룸에 입장하면 게임룸의 플레이어 인원수 갱신을 위해 알림을 보내야 한다., Sat Mar 5 02:50:13 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+
+59a489a6c79e0505c4fdb30ff423dc8d2a2e4b88, #45 RestController 에서 작업 후 알림 보내는 방법 리팩토링 * 게임룸 생성, 삭제시 알림 보내는 방식 개선., Sat Mar 5 02:38:32 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+A	src/main/java/kr/co/leehana/annotation/NotifyClients.java
+A	src/main/java/kr/co/leehana/aspect/NotifyAspect.java
+D	src/main/java/kr/co/leehana/config/DevWebSecurityInitializer.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+A	src/main/java/kr/co/leehana/dto/MessagingDto.java
+M	src/main/java/kr/co/leehana/service/GameRoomService.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+
+7adcb1a6080cd9cb17b3f18b2789f2d346dd7d72, closed #38 게임룸에 입장시 입장 정보 서버에 전달하기, Fri Mar 4 02:19:05 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/service/GameRoomService.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/main/resources/static/scripts/v_game_list.js
+
+85e9a3013f9ed4873f7a3af43503688d90805467, closed #36 게임룸이나 플레이어를 삭제하지 않고 삭제 flag 로 구분, Thu Mar 3 22:06:47 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+A	src/main/java/kr/co/leehana/enums/Enabled.java
+M	src/main/java/kr/co/leehana/model/Chat.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/repository/ChatRepository.java
+M	src/main/java/kr/co/leehana/repository/GameRoomRepository.java
+M	src/main/java/kr/co/leehana/repository/PlayerRepository.java
+M	src/main/java/kr/co/leehana/service/ChatService.java
+M	src/main/java/kr/co/leehana/service/GameRoomService.java
+M	src/main/java/kr/co/leehana/service/PlayerService.java
+M	src/main/java/kr/co/leehana/service/impl/ChatServiceImpl.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/main/resources/static/scripts/v_game_list.js
+
+66e7ec37aafd21e044fbdc6d1b61b3614ab4edeb, closed #25 채팅 내용을 기록하는 기능 추가, Wed Mar 2 20:49:10 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/model/Chat.java
+A	src/main/java/kr/co/leehana/repository/ChatRepository.java
+A	src/main/java/kr/co/leehana/service/ChatService.java
+A	src/main/java/kr/co/leehana/service/impl/ChatServiceImpl.java
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_chat.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_main_board.js
+
+4b4cfc0ef626b5d9b1fa30abbe3588f4405333d6, closed #35 로그아웃을 하면 다른 플레이어의 대기중 플레이어 리스트에서 제거 되도록 하기, Tue Mar 1 21:22:45 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/resources/static/scripts/m_player.js
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_shell.js
+
+e6dd1c28d4f08d469dcef35e970992c64bbe5b41, fixed #34 다른 플레이어가 로그인 후 페이지 새로고침을 하면 webix unique id 에러 발생, Mon Feb 29 21:30:32 2016 +0900
+M	src/main/java/kr/co/leehana/model/Chat.java
+M	src/main/resources/static/scripts/v_chat.js
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_shell.js
+
+3768b2e7e9535066f905a4ec1514dfcf80cff196, 불필요한 클래스 제거, Mon Feb 29 20:00:56 2016 +0900
+D	src/main/java/kr/co/leehana/websocket/handler/PlayerListHandler.java
+
+923ba3c0d4ae4fc1922f82aeac7d2c5194eb19de, closed #31 새로운 플레이어가 로그인하면 메인화면의 대기중 플레이어의 리스트가 자동 갱신되는 기능, Sun Feb 28 18:52:42 2016 +0900
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_shell.js
+
+912355978d56270401fc7d9a0aef0e1e9ae980dc, closed #22 게임룸 삭제 기능, Sun Feb 28 17:48:59 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/service/GameRoomService.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_board.js
+
+d5efbc327f14f478628ed23419cebae8898d894c, Merge remote-tracking branch 'origin/master', Sun Feb 28 14:34:39 2016 +0900
+e9ccfb15fe24c66cc2bcb4b11a29989864386345, baseball-game-30 게임룸 신규 생성시 빠른 입장 버튼 활성화, Sun Feb 28 14:30:30 2016 +0900
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_main_menu.js
+
+31132bfc1234bb231580bc95fe35aa818ab45cdf, Merge pull request #29 from Hana-Lee/baseball-game-28, Sat Feb 27 20:17:56 2016 +0900
+2c9cc5bb225bec47518cfcc526f9d49d38a523c7, baseball-game-28 메인화면 및 게임룸의 채팅 모듈 중복 제거. * 누락된 css 추가 수정, Sat Feb 27 20:07:42 2016 +0900
+M	src/main/resources/static/index.html
+A	src/main/resources/static/styles/v_chat.css
+D	src/main/resources/static/styles/v_game_room_chat.css
+D	src/main/resources/static/styles/v_main_chat.css
+
+99c3505ccc6a776c015b48b8e9429dc723272e15, baseball-game-28 메인화면 및 게임룸의 채팅 모듈 중복 제거., Sat Feb 27 20:05:08 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/utils.js
+A	src/main/resources/static/scripts/v_chat.js
+M	src/main/resources/static/scripts/v_game_room.js
+D	src/main/resources/static/scripts/v_game_room_chat.js
+M	src/main/resources/static/scripts/v_main_board.js
+D	src/main/resources/static/scripts/v_main_chat.js
+
+e7ba1f7241d17b8f36e046e8baa83f76e0aac4b1, closed #27 채팅화면의 Welcome 메세지를 적절하게 수정. * 추가로 채팅 메세지 및 게임룸 리스트 주고 받는 로직 변경, Fri Feb 26 22:57:04 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+A	src/main/resources/static/scripts/utils.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_chat.js
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/styles/v_game_room_chat.css
+M	src/main/resources/static/styles/v_main_chat.css
+
+6c094ccdea068a5cb4ebd24ecce9d143509aa28b, jslint 옵션 중 불필요한 옵션 제거, Fri Feb 26 21:45:09 2016 +0900
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/m_player.js
+M	src/main/resources/static/scripts/m_user.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_chat.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_player_profile.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_sign_up.js
+M	src/main/resources/static/scripts/v_theme_selector.js
+
+e5bd3be254695c0b0ad2141a948e8d1da7e5e837, 자바스크립트 코딩 규칙 일부 수정, Fri Feb 26 21:39:51 2016 +0900
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/m_player.js
+M	src/main/resources/static/scripts/m_user.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_chat.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_player_profile.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_sign_up.js
+M	src/main/resources/static/scripts/v_theme_selector.js
+
+c1ab82bbdaaa78e9126b62610c34017a61368222, closed #24 메인화면의 게임룸 리스트에 신규 등록된 게임룸이 자동으로 갱신되는 기능, Thu Feb 25 21:42:28 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+A	src/main/java/kr/co/leehana/dto/ChatDto.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+A	src/main/java/kr/co/leehana/model/Chat.java
+D	src/main/java/kr/co/leehana/model/ChatMessage.java
+M	src/main/java/kr/co/leehana/service/GameRoomService.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_shell.js
+
+850d6ae69edda588055e623e78858ff12a38fed7, closed #5 게임룸 내에서 채팅 기능, Wed Feb 24 22:18:52 2016 +0900
+M	pom.xml
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+A	src/main/java/kr/co/leehana/config/DevWebSecurityInitializer.java
+A	src/main/java/kr/co/leehana/config/DevWebSocketSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/SocketController.java
+M	src/main/java/kr/co/leehana/model/ChatMessage.java
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_game_room_chat.js
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_shell.js
+
+df7903877c0bdc17aa618660eb3fc128f7741475, 채팅창에 초기 환영 메세지 프로토 타입 삽입, Tue Feb 23 21:11:18 2016 +0900
+M	src/main/resources/static/scripts/v_game_room_chat.js
+M	src/main/resources/static/scripts/v_main_chat.js
+
+c08f53e47abd3258f6a3fda90f6586723a512d2a, closed #14 빠른 입장 기능 추가, Mon Feb 22 19:49:02 2016 +0900
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_shell.js
+
+dda32fda088876435bdcc9c4508cb95e42b5622e, closed #21 게임룸을 만들면 바로 입장 하는 기능, Mon Feb 22 18:02:09 2016 +0900
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_chat.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_shell.js
+A	src/main/resources/static/styles/v_game_room_chat.css
+
+3d54543c94e344f69e8db68b174af662d77b2379, closed #9 메인 화면에서 채팅 기능, Mon Feb 22 13:31:08 2016 +0900
+M	pom.xml
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+A	src/main/java/kr/co/leehana/config/DevWebSocketConfig.java
+A	src/main/java/kr/co/leehana/controller/SocketController.java
+A	src/main/java/kr/co/leehana/model/ChatMessage.java
+A	src/main/java/kr/co/leehana/websocket/handler/PlayerListHandler.java
+M	src/main/resources/application-dev.properties
+M	src/main/resources/static/bower.json
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_player_list.js
+A	src/main/resources/static/styles/v_main_chat.css
+
+37babaf3ae375e9518b7f40d433e802efa2178b5, closed #13 다른 플레이어의 정보 보기, Sun Feb 21 17:40:41 2016 +0900
+M	src/main/resources/static/scripts/v_player_list.js
+M	src/main/resources/static/scripts/v_player_profile.js
+
+1d9c46850e4eaae5100c9a854b741fa171bfdc3a, 메인화면 스크린샷 갱신, Sun Feb 21 16:15:11 2016 +0900
+M	src/main/resources/static/images/screenshot/ss_main.png
+A	src/main/resources/static/images/screenshot/ss_main1.png
+
+53d2ed4f39d44dd66142ff8a71b468f7baa9ff84, 게임룸에 배경 이미지 등록, Sun Feb 21 16:09:53 2016 +0900
+A	src/main/resources/static/images/baseball-bg.png
+A	src/main/resources/static/images/baseball-bg@2x.png
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/styles/v_game_list.css
+
+487c3e4375d659834876011e1083eac375444e83, closed #10 게임룸 목록 보여주는 기능, Sat Feb 20 22:12:11 2016 +0900
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+A	src/main/java/kr/co/leehana/enums/Status.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/styles/v_game_list.css
+
+26721d962707b6cf34154732920cf100f3776316, closed #10 게임룸 목록 보여주는 기능, Sat Feb 20 22:11:13 2016 +0900
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+
+35f01e8b5eca7a6ec4bd30d0e927e5e4f0dc8ed3, closed #12 게임룸 생성기능, Sat Feb 20 22:10:59 2016 +0900
+M	src/main/resources/static/scripts/v_main_menu.js
+
+2422def4a28493942bfb8a96ee6d19e978857339, closed #19 로그인 한 플레이어의 정보를 보여주는 화면 개발, Sat Feb 20 19:20:00 2016 +0900
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+A	src/main/java/kr/co/leehana/model/Avatar.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/main/resources/application-dev.properties
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_player_profile.js
+
+1688a42d82c014dc453ac1b5369ebb18bb1a7b89, fixed #18 로그아웃을 해도 로그인 정보가 남아 있는 문제, Sat Feb 20 18:29:42 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+M	src/main/resources/static/scripts/v_login.js
+
+0926770eff7d727b738301e733443e0ccf0a6cb1, closed #11 대기중인 플렐이어들의 목록을 보여주는 기능, Fri Feb 19 22:19:00 2016 +0900
+M	src/main/resources/static/scripts/v_player_list.js
+
+326f8feb9d6c253a886ded4454d09c27738d1300, fixed #17 화면에 배치되는 뷰를 생성하는 로직 변경, Fri Feb 19 22:07:18 2016 +0900
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+A	src/main/resources/static/scripts/m_player.js
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_main_menu.js
+A	src/main/resources/static/scripts/v_player_list.js
+A	src/main/resources/static/scripts/v_player_profile.js
+M	src/main/resources/static/scripts/v_shell.js
+D	src/main/resources/static/scripts/v_user_list.js
+D	src/main/resources/static/scripts/v_user_profile.js
+R100	src/main/resources/static/styles/v_user_list.css	src/main/resources/static/styles/v_player_list.css
+
+c2a6223cb8d27e6901e874822e8d97f5a097df04, #11 테스트 코드 오류 해결, Thu Feb 18 23:35:49 2016 +0900
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+55142111ba627911bfb722b87a8659da42242f64, #11 대기중인 로그인한 유저 목록을 보여주는 기능 초안 구현, Thu Feb 18 23:13:39 2016 +0900
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_user_list.js
+
+f117cbb074f20f3cd6c45ecdd400a49cef413e62, 로그아웃 이후 다시 로그인이 되지 않는 문제 해결, Thu Feb 18 22:38:19 2016 +0900
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+
+d1a1076a859127fe8b06ce247fd7955f0d0338bf, 플레이어 정보 및 로그인한 플레이어의 정보를 가지고 오려고 할때 로그인 하지 않은 상태라면 로그인 페이지를 띄우는 기본 설정을 사용하지 않고 Unauthorized 오류가 발생하도록 커스텀 필터 등록, Wed Feb 17 21:56:48 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/exception/PlayerDuplicatedException.java
+M	src/main/java/kr/co/leehana/model/Player.java
+A	src/main/java/kr/co/leehana/model/TotalScore.java
+A	src/main/java/kr/co/leehana/security/authentication/BbgAuthenticationEntryPoint.java
+M	src/main/java/kr/co/leehana/security/authentication/BbgSimpleUrlLogoutSuccessHandler.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_user_list.js
+
+d0a5198986602e12524003fbca573b481b9f9f8f, 처음 앱 실행시 혹은 새로고침시에도 로그인 정보를 읽어와 표기해주기 위한 준비 작업 및 로그인 한 유저들 정보를 읽어 오는 기능 준비, Tue Feb 16 22:05:36 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+A	src/main/java/kr/co/leehana/config/TestWebSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+A	src/main/java/kr/co/leehana/exception/PlayerNotLoggedInException.java
+A	src/main/resources/static/scripts/m_user.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+cc31c2cb987688ba12b02412841a88bfde29388a, closed #15 로그아웃 기능 추가, Mon Feb 15 20:41:59 2016 +0900
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+R090	src/main/java/kr/co/leehana/security/authentication/BbgUrlAuthenticationFailureHandler.java	src/main/java/kr/co/leehana/security/authentication/BbgSimpleUrlAuthenticationFailureHandler.java
+A	src/main/java/kr/co/leehana/security/authentication/BbgSimpleUrlLogoutSuccessHandler.java
+M	src/main/resources/application-dev.properties
+M	src/main/resources/application-prod.properties
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_shell.js
+
+0e68b9f7063d84256b82fe6f5fe15190c1de731b, closed #8 로그인 기능 추가, Sun Feb 14 21:35:57 2016 +0900
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/exception/PlayerNotFoundException.java
+A	src/main/java/kr/co/leehana/security/authentication/BbgUrlAuthenticationFailureHandler.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_shell.js
+
+4a8395dd26ee93e340593eaaa615a97a1315c1ef, Merge pull request #16 from Hana-Lee/baseball-game-7, Sun Feb 14 18:16:13 2016 +0900
+2782361ebb3493b55af11a75d79b4a286d9618c2, fixed #7 회원가입 기능 추가, Sun Feb 14 18:13:16 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameProgressController.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/resources/application-dev.properties
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_sign_up.js
+
+45121d8bc306bddad982d45d2122cfbc646b1f88, Update README.md, Sun Feb 14 16:13:12 2016 +0900
+M	README.md
+
+ae1532bf66a044d6bcc337798fe1ce8fda47a531, Update README.md, Sun Feb 14 16:12:29 2016 +0900
+M	README.md
+
+d52053dd6e704a4964de72aeeec2e6615c6419ab, Update README.md, Sun Feb 14 16:08:45 2016 +0900
+M	README.md
+
+4025da8026cdebfd31f9cfb5225ad3f7a5a162cc, Update README.md, Sun Feb 14 16:07:25 2016 +0900
+M	README.md
+
+4430fe572087e9e195785f717f76b9c6dfba5ba9, README 스크린샷 이미지 추가, Sun Feb 14 16:02:13 2016 +0900
+M	README.md
+
+50ae7da90f101788e526b3fcaf96bac01deb6caa, 각화면의 스크린샷 추가 및 게임룸 채팅 뷰 추가, Sun Feb 14 15:57:42 2016 +0900
+A	src/main/java/kr/co/leehana/controller/GameProgressController.java
+A	src/main/resources/static/images/screenshot/ss_gameroom.png
+A	src/main/resources/static/images/screenshot/ss_login.png
+A	src/main/resources/static/images/screenshot/ss_main.png
+A	src/main/resources/static/images/screenshot/ss_signup.png
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_room.js
+A	src/main/resources/static/scripts/v_game_room_chat.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_shell.js
+
+b2ea3312597fc2cb2a7153ba4cc618e25630bfdc, 게임의 관리를 위한 버튼 생성, Sat Feb 13 22:12:27 2016 +0900
+M	src/main/resources/static/scripts/v_main_menu.js
+
+3c9c895f3e2fccc1cb02b1ecd176b52f2ed6a0cf, 테스트 로그 레벨을 조정, Sat Feb 13 22:04:44 2016 +0900
+M	src/test/resources/application-test.properties
+
+f1f3d79321290b196532a9fdd1cfa64bf24e1c56, Enum 들을 모아놓은 패키지의 이름을 type 에서 enums 로 변경, Sat Feb 13 21:47:24 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/ScoreCalculator.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+R093	src/main/java/kr/co/leehana/type/ErrorType.java	src/main/java/kr/co/leehana/enums/ErrorType.java
+R077	src/main/java/kr/co/leehana/type/GameRole.java	src/main/java/kr/co/leehana/enums/GameRole.java
+A	src/main/java/kr/co/leehana/enums/MessageType.java
+R071	src/main/java/kr/co/leehana/type/RoleType.java	src/main/java/kr/co/leehana/enums/PlayerRole.java
+M	src/main/java/kr/co/leehana/exception/GameRoleDuplicatedException.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/model/Role.java
+M	src/main/java/kr/co/leehana/security/UserDetailsImpl.java
+D	src/main/java/kr/co/leehana/type/MessageType.java
+M	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+761934ac409899f1e49558fdcac940a2984529d5, 게임룸 생성을 위한 폼 UI 추가, Sat Feb 13 18:10:42 2016 +0900
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+f6a8e98e4210ba804bdc520d137f40bb2f18a3a0, 변수명 조정, Sat Feb 13 15:38:20 2016 +0900
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+2f873f709295ac2696a04eb71750dfcdd4bc96d9, 게임룸 빠른 입장시 게임룸이 존재 하지 않으면 오류 발생 여부 테스트 코드 추가 및 내용 구현, Sat Feb 13 15:34:28 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/exception/GameRoomNotFoundException.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+38c0e16b0330c2c55175158ebe021945649bbdd4, 게임룸의 빠른 입장을 테스트 하는 코드 추가 및 내용 구현, Sat Feb 13 15:26:37 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+1140af2240cbb9f9b02d4eb611442e2cdc70cca0, 이미지를 선택 하지 않은 플레이어를 위한 블랭크 이미지 등록, Sat Feb 13 14:58:49 2016 +0900
+R100	src/main/resources/static/images/blank-character.png	src/main/resources/static/images/blank_character.png
+A	src/main/resources/static/images/blank_character_1.gif
+A	src/main/resources/static/images/blank_character_2.gif
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_user_list.js
+
+8dfde07d28a6349511b8bbd37828b278daed06d4, 인텔리 J 의 테스트 커버리지 분석후 누락된 테스트 코드 추가, Fri Feb 12 21:35:29 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+7298c27221ad60ba82b1a27af76908a68ce90810, 모든 유저가 게임룸을 나가고나면 게임룸이 삭제되는지 테스트 및 내용 구현, Fri Feb 12 20:37:40 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+f84cff84719f2563dec1f344119b5be6a1aae3b0, 게임룸에 존재하지 않는 플레이어가 게임룸을 나가려고 할때 오류 발생 여부 테스트 코드 작성 및 내용 구현, Fri Feb 12 20:24:21 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+A	src/main/java/kr/co/leehana/exception/GameRoomPlayerNotFoundException.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+1dc3de6f7939007b5ee6e29c5beeb92c6f19d056, 존재하지 않는 게임룸으로부터 나가려고 할때 오류 발생 여부 테스트 코드 작성 및 내용 구현, Fri Feb 12 20:06:25 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+A	src/test/java/kr/co/leehana/controller/ControllerTestSuite.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+15033fbcbaf707b19a95216503868194a608a4fa, 게임룸 삭제 테스트 코드 작성 및 관련 구현 오류 수정, Thu Feb 11 21:34:14 2016 +0900
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+9873ee28beee88bf00d5054a0224abd8aecd7b94, 게임룸의 삭제는 admin 유저만 가능 테스트 코드 작성, Thu Feb 11 21:26:58 2016 +0900
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+b4d01f4af6bf894300620d0c858fa678498ed8ab, 로그인 정보가 없는데 게임룸을 생성하려고 할때 오류 체크 테스트, Thu Feb 11 21:15:18 2016 +0900
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+769eb70f99bc2e521341394d8ef145cfcbb76ba3, 게임룸의 방장이 아닌 플레이어가 방장을 변경하려고 시도할때 오류가 발생하는지 테스트 코드 작성및 기능 구현, Thu Feb 11 20:33:10 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+A	src/main/java/kr/co/leehana/exception/OwnerChangeException.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+M	src/test/java/kr/co/leehana/utils/TestPlayerCreator.java
+
+888b531cc53840e5a981f38062f5f0220ecfd2e7, 게임룸의 방장 변경 테스트 코드 추가 및 게임룸 컨트롤러에 방장변경 코드추가, Wed Feb 10 23:14:22 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/exception/GameRoleDuplicatedException.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+71bdc6c16a8649be2fb6d7232e8e9a903caff6a2, static import 활용, Wed Feb 10 00:39:26 2016 +0900
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+6fa58ce1f7b47423ca709d4698c05536003ef10a, 테스트 코드 오류 해결 - 단일 테스트로는 이상없으나 여러테스트를 한번에 실행하면 게임룸의 아이디와 게임룸의 플레이어의 순번이 달라져서 오류가 발생하는 문제를 해결함, Wed Feb 10 00:36:52 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/security/UserDetailsImpl.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+
+42472a309fefa0e5af51dcb5ebff9b242cbccb0f, * 게임룸에 입장하는 테스트 코드 작성및 구현 * 1번이상 중복되어 사용되는 상수를 공통 테스트 상수 클래스를 만들어 관리하도록 코드 변경, Tue Feb 9 23:59:46 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+A	src/main/java/kr/co/leehana/exception/GameRoleDuplicatedException.java
+M	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+A	src/test/java/kr/co/leehana/utils/CommonsTestConstant.java
+
+5e97b92785b30d1aea3b7927f40421b6afcc1cef, 게임룸 생성 테스트 코드 작성 및 테스트 유저를 생성하는 테스트 헬퍼 클래스 생성, Tue Feb 9 20:42:57 2016 +0900
+M	pom.xml
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+A	src/test/java/kr/co/leehana/controller/GameRoomControllerTest.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+A	src/test/java/kr/co/leehana/utils/TestPlayerCreator.java
+
+28faa633748753b3cb4efb9b2f63375adf886e6a, 게임룸 생성시 유저 정보를 받지 않고 스프링 시큐리티에서 참조하여 방장 처리, Mon Feb 8 23:58:59 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/service/PlayerService.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+
+a278a9e07974976d23c9f0bf282e32753fd49695, 게임룸 접근에 스프링 시큐리티 필터 적용하여 로그인한 사용자만 접근 가능하게 변경, Mon Feb 8 22:46:27 2016 +0900
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+003deeb63c5f2117823859f73dbad4abf3c65678, 로그인 기능 추가로 인해 실패하는 테스트 코드 수정, Thu Feb 4 14:33:17 2016 +0900
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+1945defc9b1f2fe352a4d31145d42894d2cc97fe, 로그인 처리 로직 구현, Thu Feb 4 12:22:30 2016 +0900
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/controller/ScoreCalculator.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/exception/PlayerNotFoundException.java
+M	src/main/java/kr/co/leehana/model/Role.java
+A	src/main/java/kr/co/leehana/security/UserDetailsImpl.java
+M	src/main/java/kr/co/leehana/service/GameRoomService.java
+M	src/main/java/kr/co/leehana/service/PlayerService.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+A	src/main/java/kr/co/leehana/service/impl/UserDetailsServiceImpl.java
+M	src/main/java/kr/co/leehana/type/RoleType.java
+M	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+
+a060d32de0a343f34c8225010feef5acb2e34244, PlayerDto.Create 의 이메일 필드에 이메일 검증을 위한 코드 별도의 어노테이션으로 분리 및 패스워드 매칭 검증 코드 추가, Thu Feb 4 11:32:53 2016 +0900
+A	src/main/java/kr/co/leehana/annotation/PasswordMatches.java
+A	src/main/java/kr/co/leehana/annotation/ValidEmail.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+A	src/main/java/kr/co/leehana/validator/EmailValidator.java
+A	src/main/java/kr/co/leehana/validator/PasswordMatchesValidator.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+2c55b4cc83538177b5775c245bab9f84e48a7236, * 게임룸 입장 처리를 위한 준비 코드 생성, Wed Feb 3 21:46:35 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+
+42a04e7153cda3ab27f0bd1d6eab82b3718cfaf3, * 게임룸의 정보를 업데이트하는 컨트롤러 메소드 추가 * 게임룸을 삭제하는 기능 추가, Wed Feb 3 21:19:20 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+M	src/main/java/kr/co/leehana/service/GameRoomService.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+
+f55c30d9f3bca2a7c3fce98dede520f562a992ac, * 플레이어 컨트롤러 URL 을 변경 (players -> player) * 게임룸 아이디로 게임룸 정보를 가지고 오는 컨트롤러 메소드 추가 * 게임룸 컨트롤러 URL 변경 (game_room -> gameroom) * 플레이어와 게임룸 전체 리스트를 요청하는 URL 변경, Wed Feb 3 18:33:25 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+A	src/main/java/kr/co/leehana/exception/GameRoomNotFoundException.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+c7bb520e7fbdaba729a6d9c5c47c6a88f7d8c61c, * 게임룸 만드는 요청 json 을 단순하게 변경하고 나머지 처리는 게임룸 컨트롤러에서 하도록 변경, Tue Feb 2 19:12:19 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+
+222374517e27519f63f9bb10f74ee15a6217af9b, * 게임룸을 최초로 생성할때 유저의 게임내 역할을 게임룸 서비스에서 업데이트하지 않고 게임룸 컨트롤러에서 하도록 변경, Tue Feb 2 18:43:48 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameRoomController.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+
+89be41ec7f460521fd3d9c3263e411e1856f763f, * 플레이어 모델에 게임내 역할 필드 추가 * 게임룸을 만들때 플레이어의 역할을 업데이트 하도록 기능 추가, Mon Feb 1 22:27:32 2016 +0900
+M	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+A	src/main/java/kr/co/leehana/type/GameRole.java
+
+8078b8f3e15ceb9f557d7ebfd3acaed002f4bb95, GameRoom 을 만들고 GameRoom 리스트를 가지고 오는 기능 추가, Sun Jan 31 23:10:14 2016 +0900
+A	src/main/java/kr/co/leehana/controller/GameRoomController.java
+A	src/main/java/kr/co/leehana/dto/GameRoomDto.java
+A	src/main/java/kr/co/leehana/exception/OwnerDuplicatedException.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+M	src/main/java/kr/co/leehana/model/Setting.java
+A	src/main/java/kr/co/leehana/repository/GameRoomRepository.java
+A	src/main/java/kr/co/leehana/service/GameRoomService.java
+A	src/main/java/kr/co/leehana/service/impl/GameRoomServiceImpl.java
+
+574ccd85f59016531113ea4647cacff54ee2c489, 불필요한 주석 제거, Sun Jan 31 23:09:46 2016 +0900
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+220905272bdb2ffccc1bfe68b6dada7e0eac4340, 최근 스프링의 관례에 따라 클래스 생성자로 주입받도록 변경, Sun Jan 31 23:08:57 2016 +0900
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+
+10afa6a37c1acf53cafb0fdc914abab6849e56d8, Player 클래스 필드중 joined 를 created 로 변경, Sun Jan 31 23:07:46 2016 +0900
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+
+5db3479813fc17c48a14d50833cb3e0af06e45e6, Player 클래스 필드중 joined 를 created 로 변경, Sun Jan 31 23:07:16 2016 +0900
+M	src/main/java/kr/co/leehana/model/Player.java
+
+e5a471aefafdc3333d8cbadf11b0aa816f07d661, 불필요한 필드 정리, Sun Jan 31 19:45:14 2016 +0900
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+ad826baaad3aa59c265d1194dc1b8297de6351a1, * 플레이어의 공격 및 수비를 한 횟수를 기록하는 필드 추가 * UpdateStatus 메소드를 Update 로 통합, Sun Jan 31 19:44:12 2016 +0900
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/main/java/kr/co/leehana/dto/PlayerDto.java
+A	src/main/java/kr/co/leehana/model/AttackerRoleCount.java
+A	src/main/java/kr/co/leehana/model/DefenderRoleCount.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/service/PlayerService.java
+M	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+996dd5ac8dfef3d773471d971628dede2c0004f7, 플레이어 레벨 및 전적, 승률에 대한 내용 추가, Sun Jan 31 19:16:48 2016 +0900
+M	README.md
+
+53e02a1916a06a1f1b8753c4be004fc64e6e3723, 아이디를 가지고 플레이어의 정보를 Response 해주는 코드 추가 및 테스트 코드 추가, Sun Jan 31 18:14:02 2016 +0900
+M	src/main/java/kr/co/leehana/controller/PlayerController.java
+M	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+
+1ec5efde4e733b4ed5c893f61ad74ec2a4577763, 자바의 기본 타입을 사용하지 않고 기본타입의 레퍼 클래스를 사용하도록 변경 기본 타입은 null 체크를 할 수 없지만 레퍼 클래스들은 null 체크가 용이하기 때문에 상황에 따라 유용하게 사용할 수 있다, Sat Jan 30 21:53:46 2016 +0900
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+M	src/main/java/kr/co/leehana/model/Level.java
+M	src/main/java/kr/co/leehana/model/Lose.java
+M	src/main/java/kr/co/leehana/model/MatchRecord.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/model/Rank.java
+M	src/main/java/kr/co/leehana/model/TotalGame.java
+M	src/main/java/kr/co/leehana/model/TotalRank.java
+M	src/main/java/kr/co/leehana/model/Win.java
+
+92bc062855dc934c0d9276cd9b032b94b8278a0c, Player 및 관련 클래스의 필드에 데이터베이스 널 허용 안함 속성 적용, Sat Jan 30 21:47:02 2016 +0900
+M	src/main/java/kr/co/leehana/model/Level.java
+M	src/main/java/kr/co/leehana/model/Lose.java
+M	src/main/java/kr/co/leehana/model/MatchRecord.java
+M	src/main/java/kr/co/leehana/model/Player.java
+M	src/main/java/kr/co/leehana/model/Rank.java
+M	src/main/java/kr/co/leehana/model/TotalGame.java
+M	src/main/java/kr/co/leehana/model/TotalRank.java
+M	src/main/java/kr/co/leehana/model/Win.java
+
+5725969d2e741873a7accea426eb49df26ed0ddd, Account 클래스의 이름을 좀더 의미있는 Player 로 변경, Sat Jan 30 21:14:36 2016 +0900
+M	src/main/java/kr/co/leehana/config/DevWebConfiguration.java
+M	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+R063	src/main/java/kr/co/leehana/controller/AccountController.java	src/main/java/kr/co/leehana/controller/PlayerController.java
+R098	src/main/java/kr/co/leehana/dto/AccountDto.java	src/main/java/kr/co/leehana/dto/PlayerDto.java
+R061	src/main/java/kr/co/leehana/exception/UserDuplicatedException.java	src/main/java/kr/co/leehana/exception/PlayerDuplicatedException.java
+R061	src/main/java/kr/co/leehana/exception/AccountNotFoundException.java	src/main/java/kr/co/leehana/exception/PlayerNotFoundException.java
+A	src/main/java/kr/co/leehana/model/GameRoom.java
+R096	src/main/java/kr/co/leehana/model/Account.java	src/main/java/kr/co/leehana/model/Player.java
+R059	src/main/java/kr/co/leehana/repository/AccountRepository.java	src/main/java/kr/co/leehana/repository/PlayerRepository.java
+D	src/main/java/kr/co/leehana/service/AccountService.java
+A	src/main/java/kr/co/leehana/service/PlayerService.java
+D	src/main/java/kr/co/leehana/service/impl/AccountServiceImpl.java
+A	src/main/java/kr/co/leehana/service/impl/PlayerServiceImpl.java
+R068	src/test/java/kr/co/leehana/controller/AccountControllerTest.java	src/test/java/kr/co/leehana/controller/PlayerControllerTest.java
+A	src/test/resources/application-test.properties
+M	src/test/resources/application.properties
+
+a2804998f317ec49872c0a35d1f6f2a4f8637b22, 새로운 GameRoom 클래스를 만들기 위해 기존의 GameRoom 클래스 이름 변경 GameRoom -> OldGameRoom, Sat Jan 30 20:48:08 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ScoreCalculator.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/factory/GameRoomMaker.java
+R082	src/main/java/kr/co/leehana/model/GameRoom.java	src/main/java/kr/co/leehana/model/OldGameRoom.java
+M	src/main/java/kr/co/leehana/model/ResultDto.java
+M	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+
+2313e44ff3af77ea2639eae033d74e9b8f6dc020, 새로운 User 클래스를 만들기 위해 기존의 User 클래스 이름 변경 User -> OldUser, Sat Jan 30 20:46:46 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ScoreCalculator.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/factory/GameRoomMaker.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+R091	src/main/java/kr/co/leehana/model/User.java	src/main/java/kr/co/leehana/model/OldUser.java
+M	src/main/java/kr/co/leehana/model/ResultDto.java
+M	src/main/resources/application-dev.properties
+M	src/main/resources/application-prod.properties
+M	src/main/resources/application.properties
+M	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+
+41cd38b23ad06a3bbcbe4187f185991213be709a, 불필요한 어노테이션 제거, Sat Jan 30 19:29:27 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+
+a809f4f11fa90a336d6ae27217bbd886818b0aa6, Spring 의 Profile 기능을 이용하여 dev, prod 을 분리, Sat Jan 30 19:28:22 2016 +0900
+M	.gitignore
+M	src/main/java/kr/co/leehana/App.java
+A	src/main/java/kr/co/leehana/config/DevWebConfiguration.java
+R053	src/main/java/kr/co/leehana/config/WebSecurityConfig.java	src/main/java/kr/co/leehana/config/DevWebSecurityConfig.java
+A	src/main/resources/application-dev.properties
+A	src/main/resources/application-prod.properties
+M	src/main/resources/application.properties
+
+8506184b838f7dc06ff126517542186d00ed9b88, SqlExceptionHelper: SQL Error: 23506, SQLState: 23506 오류 해결 * 원인은 JPA 의 One To One 을 사용할때 여러개의 클래스와 관계를 맺었는데 이 다른 클래스의 id 가 같다 보니 하나의 클래스와만 포린키 연결이 되어 문제가 있었던것 * 각가의 클래스마다 id 컬럼을 다르게 지정함으로써 해결, Sat Jan 30 17:36:50 2016 +0900
+M	src/main/java/kr/co/leehana/dto/AccountDto.java
+M	src/main/java/kr/co/leehana/model/Account.java
+D	src/main/java/kr/co/leehana/model/BasicModel.java
+M	src/main/java/kr/co/leehana/model/Level.java
+M	src/main/java/kr/co/leehana/model/Lose.java
+M	src/main/java/kr/co/leehana/model/MatchRecord.java
+M	src/main/java/kr/co/leehana/model/Rank.java
+M	src/main/java/kr/co/leehana/model/TotalGame.java
+A	src/main/java/kr/co/leehana/model/TotalRank.java
+M	src/main/java/kr/co/leehana/model/Win.java
+M	src/main/java/kr/co/leehana/service/impl/AccountServiceImpl.java
+M	src/main/resources/application.properties
+M	src/test/java/kr/co/leehana/controller/AccountControllerTest.java
+M	src/test/resources/application.properties
+
+e804fd2fd6bc4e6989ee073bbdce975d9a3cf757, AccountController 테스트 클래스 오류 수정, Sat Jan 30 00:31:17 2016 +0900
+M	src/main/java/kr/co/leehana/controller/AccountController.java
+M	src/main/java/kr/co/leehana/model/BasicModel.java
+M	src/main/java/kr/co/leehana/service/impl/AccountServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/AccountControllerTest.java
+
+11d4c039f9f3c3dccbc7f7bc781e80e65959958d, Account delete 테스트 코드 추가, Fri Jan 29 22:36:21 2016 +0900
+M	src/main/java/kr/co/leehana/controller/AccountController.java
+M	src/main/java/kr/co/leehana/service/impl/AccountServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/AccountControllerTest.java
+
+f5fd33e1b4d530564dc119165fc21c216e1ee06b, Account 의 Status(랭킹, 전적, 레벨) 을 업데이트 테스트 코드 작성, Fri Jan 29 22:16:27 2016 +0900
+M	src/main/java/kr/co/leehana/controller/AccountController.java
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ScoreCalculator.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/model/Rank.java
+M	src/main/java/kr/co/leehana/service/AccountService.java
+M	src/main/java/kr/co/leehana/service/impl/AccountServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/AccountControllerTest.java
+
+6952ba4b4595f2201590877b9373374591fa47bf, Account Update 테스트 코드 작성, Fri Jan 29 21:54:51 2016 +0900
+M	src/main/java/kr/co/leehana/controller/AccountController.java
+M	src/main/java/kr/co/leehana/dto/AccountDto.java
+M	src/main/java/kr/co/leehana/model/Account.java
+M	src/main/java/kr/co/leehana/service/impl/AccountServiceImpl.java
+M	src/test/java/kr/co/leehana/controller/AccountControllerTest.java
+
+da63860e654b57f90dd97c2c9743e52e228eb76a, Account 모델에 JPA 의 OneToOne 적용, Fri Jan 29 17:55:36 2016 +0900
+M	src/main/java/kr/co/leehana/model/Account.java
+A	src/main/java/kr/co/leehana/model/BasicModel.java
+M	src/main/java/kr/co/leehana/model/Level.java
+M	src/main/java/kr/co/leehana/model/Lose.java
+M	src/main/java/kr/co/leehana/model/MatchRecord.java
+M	src/main/java/kr/co/leehana/model/Rank.java
+M	src/main/java/kr/co/leehana/model/TotalGame.java
+M	src/main/java/kr/co/leehana/model/Win.java
+M	src/main/java/kr/co/leehana/service/impl/AccountServiceImpl.java
+M	src/main/resources/application.properties
+M	src/test/resources/application.properties
+
+b270470f7cbd8063b9fc5ccf10596e1f7c55837a, 클래스 필드 정의 정리 및 스프링 설정 어노테이션 수정, Thu Jan 28 22:03:21 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+M	src/test/java/kr/co/leehana/controller/AccountControllerTest.java
+
+43a596d5c4fe4d762ec605e46507c5526e0e41b5, 매직넘버 및 매직스트링을 상수로 변경 및 account 를 만드는 상황에 대한 테스트 코드들 추가, Thu Jan 28 21:50:34 2016 +0900
+M	src/main/java/kr/co/leehana/App.java
+M	src/main/java/kr/co/leehana/dto/AccountDto.java
+M	src/test/java/kr/co/leehana/controller/AccountControllerTest.java
+
+82832bb99276f595993190d5597ddc452b8e6642, AccountController 테스트 코드 작성 및 test 를 위한 application.properties 추가, Thu Jan 28 21:05:11 2016 +0900
+M	src/main/java/kr/co/leehana/controller/AccountController.java
+A	src/test/java/kr/co/leehana/controller/AccountControllerTest.java
+A	src/test/resources/application.properties
+
+27157c1e773c6b4c0976d4cf1af24a31e34eef75, 유저의 어카운트를 만들고 저장하는 로직 구현 저장시 POST 방식으로 JSON 데이터를 전달하여 저장, Thu Jan 28 18:34:30 2016 +0900
+M	src/main/java/kr/co/leehana/config/WebSecurityConfig.java
+A	src/main/java/kr/co/leehana/controller/AccountController.java
+D	src/main/java/kr/co/leehana/controller/WebController.java
+A	src/main/java/kr/co/leehana/dto/AccountDto.java
+A	src/main/java/kr/co/leehana/exception/AccountNotFoundException.java
+A	src/main/java/kr/co/leehana/exception/ErrorResponse.java
+A	src/main/java/kr/co/leehana/exception/UserDuplicatedException.java
+A	src/main/java/kr/co/leehana/model/Account.java
+M	src/main/java/kr/co/leehana/model/Level.java
+M	src/main/java/kr/co/leehana/model/Lose.java
+M	src/main/java/kr/co/leehana/model/MatchRecord.java
+M	src/main/java/kr/co/leehana/model/Rank.java
+M	src/main/java/kr/co/leehana/model/TotalGame.java
+M	src/main/java/kr/co/leehana/model/Win.java
+A	src/main/java/kr/co/leehana/repository/AccountRepository.java
+A	src/main/java/kr/co/leehana/service/AccountService.java
+A	src/main/java/kr/co/leehana/service/impl/AccountServiceImpl.java
+
+cf51a97d6e51e4a1d0c8b4b0fe4b6f0a3d5e2a14, 유저 모델 클래스에서 id 를 email 로 변경하고 유저 모델에 필요한 필드를 추가함, Thu Jan 28 15:53:32 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+A	src/main/java/kr/co/leehana/model/Level.java
+A	src/main/java/kr/co/leehana/model/Lose.java
+A	src/main/java/kr/co/leehana/model/MatchRecord.java
+A	src/main/java/kr/co/leehana/model/TotalGame.java
+M	src/main/java/kr/co/leehana/model/User.java
+A	src/main/java/kr/co/leehana/model/Win.java
+M	src/test/resources/db/test_data.sql
+
+f6d31a43eab56a4cf0aed7a0a5ce94bbd2d9776a, spring boot 버전 업그레이드, Thu Jan 28 15:41:17 2016 +0900
+M	pom.xml
+
+db66868163204fb8844d9987542b32ce482ab5d5, 로그인 창에 헤더를 만들고 위치를 약간 위로 올림, Thu Jan 28 15:01:06 2016 +0900
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/styles/v_login.css
+
+37dcf2c196f1db9b5cbad6a8b86b198b623a3189, 회원가입 페이지 디자인 정리, Wed Jan 27 20:06:27 2016 +0900
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_sign_up.js
+M	src/main/resources/static/scripts/v_user_profile.js
+M	src/main/resources/static/styles/app.css
+M	src/main/resources/static/styles/v_login.css
+M	src/main/resources/static/styles/v_sign_up.css
+
+6852c8b3018d8af6933ffc8cbd25da9d79f66d6b, 로그인 페이지를 별도로 만들었던것을 하나의 페이지안에서 처리 하도록 코드 수정, Tue Jan 26 22:37:05 2016 +0900
+M	src/main/resources/static/index.html
+D	src/main/resources/static/login.html
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_sign_up.js
+M	src/main/resources/static/styles/app.css
+M	src/main/resources/static/styles/v_login.css
+A	src/main/resources/static/styles/v_sign_up.css
+
+a4c60f90bba8e9945e90bcff37b672e582555790, 가입페이지 생성, Mon Jan 25 02:12:53 2016 +0900
+M	src/main/resources/static/login.html
+A	src/main/resources/static/scripts/v_sign_up.js
+
+51b350b1292ed26a733bbe3e229de5ce33434579, Merge remote-tracking branch 'origin/master', Mon Jan 25 01:53:40 2016 +0900
+3b0ff6e7a0f187f6e200e8ff86623be8a467d127, 로그인 페이지에 야구게임 로고 추가, Mon Jan 25 01:53:23 2016 +0900
+A	src/main/resources/static/images/baseball_game_main_logo.png
+M	src/main/resources/static/styles/v_login.css
+
+775a1ae44af29c5f77cd679dd20e01fe380653f4, Update README.md, Sun Jan 24 23:39:12 2016 +0900
+M	README.md
+
+76bbdf96eab1c0f679a999f1d39e2fc88b69404b, 메인화면과 게임룸을 전환하는 기능 프로토타입 추가, Sat Jan 23 23:21:13 2016 +0900
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_shell.js
+
+53729f62db234c233962195d14b5318c2a7a3c8b, 로그인을 별도의 페이지(login.html) 에서 하도록 변경 및 로그인 폼에 validation 설정, Sat Jan 23 22:25:42 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/login.html
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_main_chat.js
+A	src/main/resources/static/styles/v_login.css
+
+506d37057ca9c212461498ea25a9a9175e21d8ab, 채팅창 높이 변경 및 채팅창 사이즈 조절 할 수 있게 기능 추가, Fri Jan 22 18:07:12 2016 +0900
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_shell.js
+
+19e8f0f4d6cac7165914194b5c9da2d662a7eebc, * 유저와 유저사이 및 진행상황 사이 여백 추가. * 진행상황의 마지막 메세지를 보기위해 이벤트 추가., Fri Jan 22 17:05:03 2016 +0900
+M	src/main/resources/static/scripts/v_game_board.js
+
+af0f9cb5e028067681cef60d04af5915ef1bbebc, 불필요한 주석 제거, Fri Jan 22 17:00:21 2016 +0900
+M	src/main/resources/static/scripts/v_game_pad.js
+
+0a6b2d6692466921aaec41c0c6da7073e298a1d0, 게임룸에서 숫자 입력 시간 카운트를 위해 webix progress 프로토타입 추가., Fri Jan 22 16:59:57 2016 +0900
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/styles/v_game_pad.css
+
+dc7c4e3b46fccbb4bf54101fc8ccff6f31832a47, 테마 셀렉터 뷰 추가, Fri Jan 22 16:19:09 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room_menu.js
+M	src/main/resources/static/scripts/v_main_menu.js
+M	src/main/resources/static/scripts/v_shell.js
+A	src/main/resources/static/scripts/v_theme_selector.js
+
+a0cb36a1871f2c16f89d7a54902b29c2949b6872, webix 테마 변경 및 그에 따른 문제점 해결., Thu Jan 21 18:10:12 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/scripts/v_user_profile.js
+M	src/main/resources/static/styles/v_game_list.css
+M	src/main/resources/static/styles/v_game_pad.css
+
+6d16f0f625d8934f104a3244ea403b3b740e6e4c, 준비 버튼의 텍스트 크기를 키우고 제출 버튼의 동작을 추가, Thu Jan 21 11:40:47 2016 +0900
+M	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/styles/v_game_pad.css
+
+8565212fdbd97a7b06c3d2ec3c7bdbb8a27d6ebc, 게임패드를 별도의 파일로 분리 및 패드 누를수 있는 횟수 제한 로직 변경., Wed Jan 20 21:36:25 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+A	src/main/resources/static/scripts/v_game_pad.js
+M	src/main/resources/static/scripts/v_game_room.js
+A	src/main/resources/static/styles/v_game_pad.css
+M	src/main/resources/static/styles/v_game_room.css
+
+1f60b33509062ee309b11567550d29a80be0e04d, 게임패드 왼쪽에 유저 정보를 보여주는 대신 준비 버튼으로 변경, Tue Jan 19 20:39:14 2016 +0900
+M	src/main/resources/static/scripts/v_game_room.js
+
+78505eb2903b88fda1f63172fb6394ea0d694967, 게임룸의 가운데 화면 구성 프로토타입 생성, Tue Jan 19 20:32:35 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+A	src/main/resources/static/scripts/v_game_board.js
+M	src/main/resources/static/scripts/v_game_room.js
+
+bb3a51d0f9596c063406501e4ffdb696b417b0a2, 게임룸의 타이틀 변경, Tue Jan 19 20:15:34 2016 +0900
+M	src/main/resources/static/scripts/v_game_room.js
+
+cbe4191281085edea6fe4dd0f7bee0c113d87b93, 게임룸의 메뉴 프로토타입 생성, Tue Jan 19 20:02:23 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_game_room.js
+A	src/main/resources/static/scripts/v_game_room_menu.js
+
+ac2c0423c8af12c63018b887d80ea381d8e98037, 게임룸 구성 요소 일부 프로토타입 생성, Tue Jan 19 17:45:55 2016 +0900
+M	src/main/resources/static/bower.json
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+D	src/main/resources/static/scripts/v_game_board.js
+A	src/main/resources/static/scripts/v_game_room.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/styles/app.css
+A	src/main/resources/static/styles/v_game_room.css
+
+f4bf93cee3e2c884488e7d5b221a7ec90d6b8678, 채팅내용이 화면을 넘어갈경우 마지막 메세지를 모여주기 위한 코드 추가 및 message 창에 focusing 이 제대로 되지 않는 문제 해결, Mon Jan 18 23:44:34 2016 +0900
+M	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_shell.js
+
+3d14241339e9209cceaf7cbaedfa1110d2636831, 메인화면 채팅창 프로토타입 적용 및 node, bower 컴포넌트 추가., Mon Jan 18 23:19:39 2016 +0900
+M	.gitignore
+A	src/main/resources/static/bower.json
+M	src/main/resources/static/index.html
+A	src/main/resources/static/package.json
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_main_board.js
+A	src/main/resources/static/scripts/v_main_chat.js
+M	src/main/resources/static/scripts/v_shell.js
+
+cbfeb2530fe35e96d9072a714a1d9ccd361bd9db, 게임룸 리스트에 그림자 효과 추가, Mon Jan 18 15:34:37 2016 +0900
+M	src/main/resources/static/styles/v_game_list.css
+
+7f612182ae72e2bc1ba6a2f9b16b14111bd8ae33, 게임룸 리스트를 webix 의 dataview 로 변경, Mon Jan 18 15:30:51 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/v_game_list.js
+A	src/main/resources/static/styles/v_game_list.css
+
+1bb6d82d2dd5194b5bf5cbeebe32806fc02dec3c, 구분하기 쉽게 각각 게임룸의 테두리 색상 및 종류 변경, Sun Jan 17 22:43:12 2016 +0900
+M	src/main/resources/static/scripts/v_game_list.js
+
+8c3b16432d859a56b52b24fb4478ccc4401533d4, 오타 수정, Sun Jan 17 22:38:29 2016 +0900
+M	src/main/resources/static/scripts/v_game_list.js
+
+20ca59d01e6f719f3f291432deb859a0fbcb11de, 메인화면의 게임룸 리스트에 나올 목록 프로토타입 생성, Sun Jan 17 22:38:09 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+A	src/main/resources/static/scripts/v_game_list.js
+M	src/main/resources/static/scripts/v_main_board.js
+
+bc7bc143233f1db96fb164c4e7d46a0732266f7c, 메인 화면의 유저 리스트 프로토타입 생성, Sun Jan 17 22:32:50 2016 +0900
+A	src/main/resources/static/images/blank-character.png
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_main_board.js
+A	src/main/resources/static/scripts/v_user_list.js
+A	src/main/resources/static/styles/v_user_list.css
+
+3c83b1496d95ab5fed4a87140fd707a6fddd8f75, 메인메뉴를 메뉴 타입의 뷰에서 일반 버튼으로 대체, Sun Jan 17 22:07:17 2016 +0900
+M	src/main/resources/static/scripts/v_main_menu.js
+
+9cf1275bb8a7207665d612494c082e75b43dee0a, 메인 화면의 메뉴를 별도로 분리 및 메뉴아이템 텍스트 변경, Sun Jan 17 21:41:38 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_main_board.js
+A	src/main/resources/static/scripts/v_main_menu.js
+
+8b7c9fcc9469d89527191eea6cd2ec47348c7ff2, 유저 기본 프로파일 프로토타입 작성, Sun Jan 17 21:36:19 2016 +0900
+A	src/main/resources/static/images/character.gif
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_main_board.js
+A	src/main/resources/static/scripts/v_user_profile.js
+
+f933ea61df90fa7de9a3d6246abf1c326e3cb4fd, 게임보드 및 메인 보드 뷰를 별도로 분리, Sun Jan 17 21:07:32 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+A	src/main/resources/static/scripts/v_game_board.js
+A	src/main/resources/static/scripts/v_main_board.js
+M	src/main/resources/static/scripts/v_shell.js
+
+75e8091647401b4dd004875bf10aafd9fd23e941, Author 정보 업데이트, Sun Jan 17 20:00:17 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+M	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_shell.js
+M	src/main/resources/static/styles/app.css
+M	src/main/resources/static/styles/v_shell.css
+
+fcfc8a38259f48d74311b46e902354dc260ad45a, 로그인 기본 뷰 생성., Sat Jan 16 22:15:21 2016 +0900
+M	src/main/resources/static/index.html
+M	src/main/resources/static/scripts/app.js
+A	src/main/resources/static/scripts/v_login.js
+M	src/main/resources/static/scripts/v_shell.js
+
+baedad66c82c012286bf3f525c58ca4bc85c3f2f, 게임룸 디자인 프로토타입 생성, Sat Jan 16 20:42:31 2016 +0900
+M	src/main/resources/static/scripts/v_shell.js
+
+c6a62222d3834195177cecdc38887aa26cb267a8, 장치별 favicon 준비 및 logo 이미지 준비., Fri Jan 15 15:26:29 2016 +0900
+A	src/main/resources/static/images/favicon/android-icon-144x144.png
+A	src/main/resources/static/images/favicon/android-icon-192x192.png
+A	src/main/resources/static/images/favicon/android-icon-36x36.png
+A	src/main/resources/static/images/favicon/android-icon-48x48.png
+A	src/main/resources/static/images/favicon/android-icon-72x72.png
+A	src/main/resources/static/images/favicon/android-icon-96x96.png
+A	src/main/resources/static/images/favicon/apple-icon-114x114.png
+A	src/main/resources/static/images/favicon/apple-icon-120x120.png
+A	src/main/resources/static/images/favicon/apple-icon-144x144.png
+A	src/main/resources/static/images/favicon/apple-icon-152x152.png
+A	src/main/resources/static/images/favicon/apple-icon-180x180.png
+A	src/main/resources/static/images/favicon/apple-icon-57x57.png
+A	src/main/resources/static/images/favicon/apple-icon-60x60.png
+A	src/main/resources/static/images/favicon/apple-icon-72x72.png
+A	src/main/resources/static/images/favicon/apple-icon-76x76.png
+A	src/main/resources/static/images/favicon/apple-icon-precomposed.png
+A	src/main/resources/static/images/favicon/apple-icon.png
+A	src/main/resources/static/images/favicon/browserconfig.xml
+A	src/main/resources/static/images/favicon/favicon-16x16.png
+A	src/main/resources/static/images/favicon/favicon-32x32.png
+A	src/main/resources/static/images/favicon/favicon-96x96.png
+A	src/main/resources/static/images/favicon/favicon.ico
+A	src/main/resources/static/images/favicon/manifest.json
+A	src/main/resources/static/images/favicon/ms-icon-144x144.png
+A	src/main/resources/static/images/favicon/ms-icon-150x150.png
+A	src/main/resources/static/images/favicon/ms-icon-310x310.png
+A	src/main/resources/static/images/favicon/ms-icon-70x70.png
+A	src/main/resources/static/images/logo.png
+A	src/main/resources/static/images/logo@2x.png
+M	src/main/resources/static/index.html
+
+b0e504f455a35fcbde6b1caa38863fb37956abba, 빌드 오류 수정. * 메인 클래스가 여러개가 있어 발생하는 문제., Fri Jan 15 14:43:25 2016 +0900
+M	src/main/java/kr/co/leehana/main/ClientStarter.java
+M	src/main/java/kr/co/leehana/main/ServerStarter.java
+
+f922d12200d6a2fa01bddb58d849ef12eb8d40d7, 메인화면의 레이아웃 프로토타입 작성., Fri Jan 15 11:55:39 2016 +0900
+M	pom.xml
+M	src/main/resources/static/index.html
+A	src/main/resources/static/login.html
+A	src/main/resources/static/scripts/app.js
+A	src/main/resources/static/scripts/v_shell.js
+A	src/main/resources/static/styles/app.css
+A	src/main/resources/static/styles/v_shell.css
+
+4a5af013853d8ca65c84190833a03d007908e1d0, Merge remote-tracking branch 'origin/master', Thu Jan 14 23:11:51 2016 +0900
+8f7c17398b5c04aa6021b91f11df4535fda8d741, 야구게임을 웹 어플리케이션으로 만들기 위해 준비 Spring-boot, Webix.js 사용, Thu Jan 14 23:11:00 2016 +0900
+M	pom.xml
+A	src/main/java/kr/co/leehana/App.java
+A	src/main/java/kr/co/leehana/config/WebSecurityConfig.java
+A	src/main/java/kr/co/leehana/controller/WebController.java
+A	src/main/resources/application.properties
+A	src/main/resources/static/index.html
+
+8d7293a9e233d9349f9331cc3727a37307a935e7, 기본 설정에서 모든 공격자가 맞췄을경우 수비자의 점수 계산하는 테스트 코드 추가, Tue Jan 12 20:01:09 2016 +0900
+M	src/main/java/kr/co/leehana/controller/ScoreCalculator.java
+M	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+
+8c2e2c8c379854765cf708e274b757598cec9d95, * 추후 수비자가 임의로 생성한 숫자에 대해 검증하도록 TODO 추가 * 추후 수비자 점수 계산 잘못되는것에 대해 수정하도록 TODO 추가, Mon Jan 11 21:50:20 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ScoreCalculator.java
+
+05c2e68b5f301c805adaf06781c5c0e46a7d6c8b, 수비자의 로직 검증 및 공격자가 입력한 내용에 대해 출력하는 기능 추가 2명이상의 수비자가 있을수 없게 검증 로직 추가, Mon Jan 11 21:47:58 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ScoreCalculator.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/model/User.java
+M	src/main/java/kr/co/leehana/type/MessageType.java
+
+28b89abc56a76ddab8672e0f9e494efc26515342, 총점 계산 로직 테스트, Mon Jan 11 11:45:41 2016 +0900
+M	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+
+394afac433c7b6c3b94fa4758b3bdf1694981fd6, 잘못된 입력 초과시 점수 계산 테스트 로직 수정, Mon Jan 11 11:35:09 2016 +0900
+R097	src/main/java/kr/co/leehana/model/ScoreCalculator.java	src/main/java/kr/co/leehana/controller/ScoreCalculator.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+
+9535492fdbfa17b92de128384854818ded7539c7, 누적 점수 기능 추가 및 출력 기능 추가, Sun Jan 10 07:37:28 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/model/User.java
+M	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+
+079f393b2b9d528baa9a39638fcaaf31c48d38f0, 게임 입력 턴 횟수 출력 및 랭킹 출력 코드 추가, Sun Jan 10 07:10:57 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+
+e65818f0e34979bc45d713e5dc640e001e105181, 점수 계산을 공격자, 수비자 나눠서하던것을 하나의 메소드로 통일, Sun Jan 10 07:10:23 2016 +0900
+M	src/main/java/kr/co/leehana/model/ScoreCalculator.java
+
+6c33474a8811a99e323805e5178da0aa93681eef, 게임 준비시 유저의 상태 리셋하는 코드 추가, Sun Jan 10 07:10:03 2016 +0900
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+
+e00a834965afb854faf4e6d3e50538652bd9e2c7, 잘못된 숫자를 입력시 오류 카운트 안에서 계속 입력할 수 있게 수정 및 나머지 유저는 계속 대기하도록 코드 수정, Sun Jan 10 05:18:05 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+
+9d9e1a39818ea9bb1a728fe8561666b400779a0e, * 유저가 잘못 입력한 숫자에 대해 검증 및 오류 메세지 전송 코드 추가 * 잘못입력 카운트 코드 추가 * 잘못입력시 Guess 카운트가 추가 되지 않도록 코드 수정, Sun Jan 10 05:12:45 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/model/ScoreCalculator.java
+
+cfbb48b616911d04ef963a6ad573c68fe404b55e, 유저 1명일때 점수 계산 및 랭킹 계산 로직 추가, Sat Jan 9 06:05:50 2016 +0900
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+
+eb0cb6c77ac56fa93b5354e224b2f0bc83788d75, 턴방식으로 진행하기 위해 모든 유저가 숫자 입력을 끝냈는지 확인하는 코드 추가, Sat Jan 9 05:44:55 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+M	src/main/java/kr/co/leehana/model/User.java
+M	src/main/java/kr/co/leehana/type/MessageType.java
+
+3e5c8e86625106207ed387c81bc11217403c2f7f, 게임룸의 모든 유저가 준비를 마쳤을때 메세지 보내기 추가, Sat Jan 9 05:19:07 2016 +0900
+M	src/main/java/kr/co/leehana/controller/ServerBackground.java
+
+df1143f1cfabe76a12d9d4c5ae074c45a7f1b86f, 게임룸을 만든 사용자가 게임을 진행하지 못하는 문제 해결, Sat Jan 9 03:57:57 2016 +0900
+M	src/main/java/kr/co/leehana/controller/GameClient.java
+M	src/main/java/kr/co/leehana/model/GameRoom.java
+
+11b3d079e3e3f1c8058573125ea9d573cb1cc3e3, README 중 기능정의에서 불필요한 부분 제거., Thu Jan 7 20:24:30 2016 +0900
+M	README.md
+
+7aa31f274fecf13f56ed983c93d34902d0de11fb, 안쓰는 패키지 정리 및 관련 테스트코드 전면적으로 수정., Wed Jan 6 23:31:58 2016 +0900
+D	src/main/java/com/eyeq/jhs/strategy/GenerationNumberStrategy.java
+D	src/main/java/com/eyeq/jhs/strategy/RandomNumberGenerator.java
+D	src/main/java/com/eyeq/lhn/App.java
+D	src/main/java/com/eyeq/lhn/BaseballGame.java
+D	src/main/java/com/eyeq/lhn/controller/GameNumberGenerator.java
+D	src/main/java/com/eyeq/lhn/controller/GameNumberRandomGenerator.java
+D	src/main/java/com/eyeq/lhn/exception/GameNotEndException.java
+D	src/main/java/com/eyeq/lhn/factory/MenuFactory.java
+D	src/main/java/com/eyeq/lhn/model/Ball.java
+D	src/main/java/com/eyeq/lhn/model/GuessResult.java
+D	src/main/java/com/eyeq/lhn/model/Menu.java
+D	src/main/java/com/eyeq/lhn/model/Score.java
+D	src/main/java/com/eyeq/lhn/model/Strike.java
+D	src/main/java/com/eyeq/lhn/service/FileSaveScoreService.java
+D	src/main/java/com/eyeq/lhn/service/MemorySaveScoreService.java
+D	src/main/java/com/eyeq/lhn/service/ScoreService.java
+D	src/main/java/com/eyeq/lhn/setting/GameSetting.java
+D	src/main/java/com/eyeq/lhn/socket/ClientBackground.java
+D	src/main/java/com/eyeq/lhn/socket/ServerBackground.java
+D	src/main/java/com/eyeq/lhn/view/ConsoleViewRenderer.java
+D	src/main/java/com/eyeq/lhn/view/ViewRenderer.java
+R098	src/main/java/com/eyeq/jhs/controller/ClientBackground.java	src/main/java/kr/co/leehana/controller/ClientBackground.java
+R098	src/main/java/com/eyeq/jhs/controller/GameClient.java	src/main/java/kr/co/leehana/controller/GameClient.java
+R080	src/main/java/com/eyeq/jhs/controller/GameController.java	src/main/java/kr/co/leehana/controller/GameController.java
+A	src/main/java/kr/co/leehana/controller/GenerationNumberStrategy.java
+A	src/main/java/kr/co/leehana/controller/RandomNumberGenerator.java
+R095	src/main/java/com/eyeq/jhs/controller/ServerBackground.java	src/main/java/kr/co/leehana/controller/ServerBackground.java
+R062	src/main/java/com/eyeq/lhn/exception/UserInputOverLimitException.java	src/main/java/kr/co/leehana/exception/UserInputOverLimitException.java
+R076	src/main/java/com/eyeq/jhs/factory/GameRoomMaker.java	src/main/java/kr/co/leehana/factory/GameRoomMaker.java
+R080	src/main/java/com/eyeq/jhs/main/ClientStarter.java	src/main/java/kr/co/leehana/main/ClientStarter.java
+R072	src/main/java/com/eyeq/jhs/main/ServerStarter.java	src/main/java/kr/co/leehana/main/ServerStarter.java
+R089	src/main/java/com/eyeq/jhs/model/Ball.java	src/main/java/kr/co/leehana/model/Ball.java
+R089	src/main/java/com/eyeq/jhs/model/ErrorMessage.java	src/main/java/kr/co/leehana/model/ErrorMessage.java
+R097	src/main/java/com/eyeq/jhs/model/GameRoom.java	src/main/java/kr/co/leehana/model/GameRoom.java
+R088	src/main/java/com/eyeq/jhs/model/Rank.java	src/main/java/kr/co/leehana/model/Rank.java
+R091	src/main/java/com/eyeq/jhs/model/Result.java	src/main/java/kr/co/leehana/model/Result.java
+R092	src/main/java/com/eyeq/jhs/model/ResultDto.java	src/main/java/kr/co/leehana/model/ResultDto.java
+R080	src/main/java/com/eyeq/jhs/model/Role.java	src/main/java/kr/co/leehana/model/Role.java
+R088	src/main/java/com/eyeq/jhs/model/Score.java	src/main/java/kr/co/leehana/model/Score.java
+R098	src/main/java/com/eyeq/jhs/model/ScoreCalculator.java	src/main/java/kr/co/leehana/model/ScoreCalculator.java
+R092	src/main/java/com/eyeq/jhs/model/Setting.java	src/main/java/kr/co/leehana/model/Setting.java
+R091	src/main/java/com/eyeq/jhs/model/Settlement.java	src/main/java/kr/co/leehana/model/Settlement.java
+R089	src/main/java/com/eyeq/jhs/model/Strike.java	src/main/java/kr/co/leehana/model/Strike.java
+R096	src/main/java/com/eyeq/jhs/model/User.java	src/main/java/kr/co/leehana/model/User.java
+R093	src/main/java/com/eyeq/jhs/type/ErrorType.java	src/main/java/kr/co/leehana/type/ErrorType.java
+R088	src/main/java/com/eyeq/jhs/type/MessageType.java	src/main/java/kr/co/leehana/type/MessageType.java
+R078	src/main/java/com/eyeq/jhs/type/RoleType.java	src/main/java/kr/co/leehana/type/RoleType.java
+D	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+R096	src/test/java/com/eyeq/lhn/DummyTest.java	src/test/java/kr/co/leehana/DummyTest.java
+A	src/test/java/kr/co/leehana/GameControllerTest.java
+R097	src/test/java/com/eyeq/lhn/ScoreCalculatorTest.java	src/test/java/kr/co/leehana/ScoreCalculatorTest.java
+
+42a2933526df8b805799c9e487b242036819cf36, 모든 메소드에 final 키워드 추가 및 일부 매직 넘버 처리, Wed Jan 6 03:32:22 2016 +0900
+M	src/main/java/com/eyeq/jhs/model/ScoreCalculator.java
+
+3fe17e66501f0fe99802b84e101dbd31912dd5fc, * Solve 클래스의 이름이 Settlement 로 변경되면서 관련된 코드 변경 사항 추가 * ScoreCalculator 리팩토링 * GameController 리팩토링, Wed Jan 6 03:21:19 2016 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/controller/GameController.java
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+M	src/main/java/com/eyeq/jhs/model/Result.java
+M	src/main/java/com/eyeq/jhs/model/ScoreCalculator.java
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+M	src/test/java/com/eyeq/lhn/ScoreCalculatorTest.java
+
+275ece98c56330d3bf6246ccb0e950898e6161ca, 기존에 Solve 보다 의미 있는 Settlement 으로 변경, Wed Jan 6 03:19:46 2016 +0900
+R085	src/main/java/com/eyeq/jhs/model/Solve.java	src/main/java/com/eyeq/jhs/model/Settlement.java
+
+5b4e5395d9686017fcd13063d61ab6730cd56dc0, 수비자의 점수 계산 테스트 코드 추가 및 공격자와 수비자의 점수 계산 메소드를 하나의 메소드에서 if 로 구분하지 않고 메소드 분리., Tue Jan 5 23:27:11 2016 +0900
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+M	src/main/java/com/eyeq/jhs/model/ScoreCalculator.java
+M	src/main/java/com/eyeq/jhs/model/User.java
+M	src/test/java/com/eyeq/lhn/ScoreCalculatorTest.java
+
+46cc9ea7924503638ba7d1788025fe2db91c25d6, 공격자 테스트 코드 중복코드 제거 리팩토링, Tue Jan 5 17:39:21 2016 +0900
+M	src/main/java/com/eyeq/jhs/model/GameRoom.java
+M	src/test/java/com/eyeq/lhn/ScoreCalculatorTest.java
+
+ead3c91acb05f1a10e4579f7243727dc7b2100af, 공격자의 잘못 입력한 횟수 초과시 점수 계산 테스트., Mon Jan 4 13:38:38 2016 +0900
+M	src/main/java/com/eyeq/jhs/model/ScoreCalculator.java
+M	src/test/java/com/eyeq/lhn/ScoreCalculatorTest.java
+
+42b3c22ee3253b7282ab3ce9d869e9bb0885c1c4, 공격자가 숫자를 못맞췄을 경우 점수 계산 테스트 코드 추가., Mon Jan 4 13:31:56 2016 +0900
+M	src/main/java/com/eyeq/jhs/model/ScoreCalculator.java
+M	src/main/java/com/eyeq/jhs/model/User.java
+M	src/test/java/com/eyeq/lhn/ScoreCalculatorTest.java
+
+9a407f5ec2d48c647f17e14077b06e64ed87d34f, 공격자 점수 계산 로직 테스트, Mon Jan 4 11:19:24 2016 +0900
+M	src/test/java/com/eyeq/lhn/ScoreCalculatorTest.java
+
+309c407f201b83e3add4897fff8a884e6d0e2370, 아무것도 못맞춘경우 점수 계산방법 업데이트., Mon Jan 4 10:26:25 2016 +0900
+M	README.md
+
+8cb78a8dbcf5ad3618ee4052375118dad4f30fec, 점수 계산방식 오류 수정., Mon Jan 4 10:18:11 2016 +0900
+M	README.md
+
+a902619f74e91dac64b784b5351b43b509b0e692, 점수 계산 테스트 코드 프로토타입 작성, Sun Jan 3 23:00:51 2016 +0900
+M	src/test/java/com/eyeq/lhn/ScoreCalculatorTest.java
+
+8a2b21aef679d7161fc251d16130eeb9674b5009, 게임 점수 계산 로직 테스트 코드 추가 및 유저의 랭킹을 계산하기 위해 랭크 클래스추가, Sun Jan 3 22:58:51 2016 +0900
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+A	src/main/java/com/eyeq/jhs/model/Rank.java
+M	src/main/java/com/eyeq/jhs/model/ScoreCalculator.java
+M	src/main/java/com/eyeq/jhs/model/User.java
+A	src/test/java/com/eyeq/lhn/ScoreCalculatorTest.java
+
+7c109165662dfd29f497187636999278d69096f0, 규칙 예제 업데이트, Thu Dec 31 21:38:58 2015 +0900
+M	README.md
+
+df6fa82d4017f24c9319a80b42911fb268734bff, 기능정의 업데이트, Thu Dec 31 21:37:45 2015 +0900
+M	README.md
+
+aaee2fc2b59bc9fb9f636050a4b468e0afc8a86f, 추가된 기능에 맞춰 기능 정의 수정., Thu Dec 31 21:32:49 2015 +0900
+M	README.md
+
+4aa2c1ff056ceba6ebaffff61c29b92ae5d3cb94, 게임점수 계산 방법 추가 설명 및 점수 체계 변경., Thu Dec 31 21:30:22 2015 +0900
+M	README.md
+
+76f0e3ef1f2cf1a296e56890930a22fab9514a06, 모든 유저가 준비가 되었는지 확인하는 시간을 1초에서 0.5초로 변경., Thu Dec 31 21:29:54 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+
+1257ec87640d59cde50773307851216a85a4a833, * 게임 진행 방식 수정 * 게임룸 입장이나 생성시 아이디를 입력하는게 아닌 게임에 처음 접속시 아이디를 입력하도록 변경 ( 추후 로그인 시스템 도입 준비 ), Thu Dec 31 04:26:31 2015 +0900
+M	README.md
+
+7a61ca1294ca61ea9357728ef1a714af027c444c, * 게임 준비시 수비 역할일 경우 숫자를 생성할 수 있도록 코드 추가. * 게임 준비시 모든 유저가 준비중인지 확인 하는 로직 추가 * 게임 준비가 모두 완료 되면 자동으로 게임이 시작되도록 로직 추가, Thu Dec 31 04:23:20 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/ClientBackground.java
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/controller/GameController.java
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+M	src/main/java/com/eyeq/jhs/main/ClientStarter.java
+M	src/main/java/com/eyeq/jhs/model/GameRoom.java
+M	src/main/java/com/eyeq/jhs/model/User.java
+M	src/main/java/com/eyeq/jhs/type/MessageType.java
+
+c1e5f77fc8d28c53c5551a0bfd231ebed568cc86, 게임 시작전 준비 단계 로직 추가. * 모든 사용자가 준비될때까지 시작되어서는 안된다. * 유저가 1명이면서 공격이면 바로 시작. TODO : 모든 유저가 준비를 마칠때까지 메세지가 무한정 전달되는 버그 해결하기., Thu Dec 31 00:32:27 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/ClientBackground.java
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/controller/GameController.java
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+M	src/main/java/com/eyeq/jhs/model/ErrorMessage.java
+M	src/main/java/com/eyeq/jhs/model/GameRoom.java
+M	src/main/java/com/eyeq/jhs/model/User.java
+A	src/test/java/com/eyeq/lhn/DummyTest.java
+
+b20401dc14501bf15097382e8840d9791511ae7b, * 게임 입장시 유저 아이디를 입력하도록 변경 * 게임룸 생성로직 변경하여 룸 생성시 로그인 한 아이디로 방장 설정 * 설정 화면 디자인 변경 및 저장 기능 개선, Tue Dec 29 23:28:24 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+M	src/main/java/com/eyeq/jhs/factory/GameRoomMaker.java
+M	src/main/java/com/eyeq/jhs/type/ErrorType.java
+M	src/main/java/com/eyeq/jhs/type/MessageType.java
+
+23282bacd0ae1c03fccb78ad4c480e2f6ffa06c4, 게임룸을 만드는 로직과 게임룸의 리스트를 가지고오는 로직 리팩토링, Tue Dec 29 21:41:47 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+
+038c5067bafc0347ed4e4b3a0dbd54c260c68370, 게임의 설정을 불러 오는 기능과 저장하는 기능 추가., Tue Dec 29 18:27:53 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+M	src/main/java/com/eyeq/jhs/factory/GameRoomMaker.java
+M	src/main/java/com/eyeq/jhs/model/GameRoom.java
+M	src/main/java/com/eyeq/jhs/model/Setting.java
+M	src/main/java/com/eyeq/jhs/model/User.java
+M	src/main/java/com/eyeq/jhs/type/MessageType.java
+
+26b426daa56b3f1c5fe413242391d4bd21d8c62b, 게임룸 생성 로직 추가 및 기존에 미리 만들어두었던 게임룸 생성 코드를 변경, Tue Dec 29 04:29:44 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+M	src/main/java/com/eyeq/jhs/factory/GameRoomMaker.java
+M	src/main/java/com/eyeq/jhs/model/GameRoom.java
+M	src/main/java/com/eyeq/jhs/type/MessageType.java
+M	src/main/java/com/eyeq/jhs/type/RoleType.java
+
+9dfdeb34409d9c610ec964f4222b63b33be884fe, 클라이언트쪽 코드 리팩토링 * 하나의 메소드의 많은 기능을 기능별 메소드로 분리, Tue Dec 29 03:15:35 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/model/GameRoom.java
+
+c39a771c9888095be9875c2167d59b66afda5709, 게임의 규칙 및 게임룸 규칙, 점수 선정 방법 업데이트, Mon Dec 28 22:33:25 2015 +0900
+M	README.md
+
+e14c0b91020217ae902b73e53b137df14efff773, # 역할 선택 변경. 기본 역할은 공격으로 설정. * 공격은 숫자를 맞추는 사람 * 수비는 숫자를 출제하는 사람, Mon Dec 28 22:33:05 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/model/Role.java
+
+5d218a871a966934f30b86877856cd219e2a5369, 불필요한 enum 클래스 내용 정리, Mon Dec 28 20:10:46 2015 +0900
+M	src/main/java/com/eyeq/jhs/type/MessageType.java
+
+b4fd41390c2ba9cb5e78bc1a5a2c76d859e4bbd3, * 클라에서 백그라운드로 서버에서 전달되는 메세지를 출력 할 수 있도록 백그라운드용 소켓을 별도로 생성, Sun Dec 27 09:27:22 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/ClientBackground.java
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+D	src/main/java/com/eyeq/jhs/controller/ServerController.java
+M	src/main/java/com/eyeq/jhs/type/MessageType.java
+
+cf63ee737358f206202f11e1c6604b8049d63d10, * 중복 유저 체크 기능 추가 * 유저 역할 기능 추가, Sun Dec 27 05:53:35 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/controller/ServerController.java
+M	src/main/java/com/eyeq/jhs/model/ErrorMessage.java
+A	src/main/java/com/eyeq/jhs/model/Role.java
+M	src/main/java/com/eyeq/jhs/model/User.java
+M	src/main/java/com/eyeq/jhs/type/ErrorType.java
+A	src/main/java/com/eyeq/jhs/type/RoleType.java
+
+15ef8515d7d680d796fb4d42b9a9c5dca2a12222, * 서버룸 출력 기능 추가 * 클라로 부터 받은 유저 정보 저장 기능 추가 * 서버룸 선택 및 유저 아이디 입력 기능 추가, Sun Dec 27 04:29:34 2015 +0900
+M	LICENSE.md
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+M	src/main/java/com/eyeq/jhs/controller/ServerController.java
+M	src/main/java/com/eyeq/jhs/main/ClientStarter.java
+M	src/main/java/com/eyeq/jhs/model/GameRoom.java
+M	src/main/java/com/eyeq/jhs/model/User.java
+M	src/main/java/com/eyeq/jhs/type/MessageType.java
+M	src/main/java/com/eyeq/lhn/service/FileSaveScoreService.java
+
+66926ec71d15ec7f27bd8b6b738e29680f19010f, * 서버룸 출력 기능 추가 * 클라로 부터 받은 유저 정보 저장 기능 추가 * 서버룸 선택 및 유저 아이디 입력 기능 추가, Sun Dec 27 04:28:24 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+
+b9eb1c5987b2e6cdf6ba5954d28a548472a64d42, * 서버에서 클라이언트로 게임룸 정보를 전달하고 클라이언트에서 출력해주는 기능 추가 * 클라에서 게임 시작시 JOIN 을 서버로 전달하여 게임룸에 JOIN 되도록 기능 추가, Sun Dec 27 03:40:33 2015 +0900
+M	src/main/java/com/eyeq/jhs/controller/GameClient.java
+M	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+M	src/main/java/com/eyeq/jhs/controller/ServerController.java
+A	src/main/java/com/eyeq/jhs/factory/GameRoomMaker.java
+M	src/main/java/com/eyeq/jhs/model/GameRoom.java
+M	src/main/java/com/eyeq/jhs/type/MessageType.java
+
+8ac4886449776f526049dd4bc40d0f251f7aea6e, 게임 페키지 구조 변경 및 서버 와 클라이언트 스타터를 만들어서 게임 시작할 수 있도록 클래스 추가, Sat Dec 26 19:16:59 2015 +0900
+R093	src/main/java/com/eyeq/jhs/BaseballGameClient.java	src/main/java/com/eyeq/jhs/controller/ClientBackground.java
+R094	src/main/java/com/eyeq/jhs/App.java	src/main/java/com/eyeq/jhs/controller/GameClient.java
+R095	src/main/java/com/eyeq/jhs/BaseballGameEngine.java	src/main/java/com/eyeq/jhs/controller/GameController.java
+R074	src/main/java/com/eyeq/jhs/BaseballGameServer.java	src/main/java/com/eyeq/jhs/controller/ServerBackground.java
+R089	src/main/java/com/eyeq/jhs/ServerReceiver.java	src/main/java/com/eyeq/jhs/controller/ServerController.java
+A	src/main/java/com/eyeq/jhs/main/ClientStarter.java
+A	src/main/java/com/eyeq/jhs/main/ServerStarter.java
+M	src/main/java/com/eyeq/lhn/socket/ServerBackground.java
+
+26fbb6a1e98cdeab2f7c33a550d81df069131302, 코드 클린업, Fri Dec 25 22:06:58 2015 +0900
+M	src/main/java/com/eyeq/jhs/App.java
+M	src/main/java/com/eyeq/lhn/model/Score.java
+M	src/main/java/com/eyeq/lhn/service/FileSaveScoreService.java
+M	src/main/java/com/eyeq/lhn/socket/ServerBackground.java
+
+f8eadb75743d62e14d56b16c66214adb63acd2c8, 게임의 결과를 주고 받는 로직을 좀더 직관적으로 변경하고 서버에서 전달된 JSON 데이터를 클라에서 해석해서 메세지 출력하도록 변경, Thu Dec 24 23:38:40 2015 +0900
+M	src/main/java/com/eyeq/jhs/App.java
+M	src/main/java/com/eyeq/jhs/ServerReceiver.java
+M	src/main/java/com/eyeq/jhs/model/ErrorMessage.java
+M	src/main/java/com/eyeq/jhs/model/ResultDto.java
+M	src/main/java/com/eyeq/jhs/model/Score.java
+M	src/main/java/com/eyeq/jhs/model/ScoreCalculator.java
+R091	src/main/java/com/eyeq/jhs/model/ErrorType.java	src/main/java/com/eyeq/jhs/type/ErrorType.java
+
+f064f028dcafa48ad3b0abd38292b07048ee87d7, 서버에서 발생한 에러 메세지를 전달하기 위한 클래스 생성., Thu Dec 24 23:26:58 2015 +0900
+A	src/main/java/com/eyeq/jhs/model/ErrorMessage.java
+A	src/main/java/com/eyeq/jhs/model/ErrorType.java
+M	src/main/java/com/eyeq/jhs/model/ResultDto.java
+
+9e9cb1f988e9611b5c6e1a6ef8b08b724d061e47, 서버에서 결과를 리턴해줄때 게임 결과 및 점수, 에러, 유저정보, 게임룸 정보도 보낼 수 있도록 모델 클래스 생성, Wed Dec 23 22:49:50 2015 +0900
+M	src/main/java/com/eyeq/jhs/App.java
+M	src/main/java/com/eyeq/jhs/BaseballGameEngine.java
+M	src/main/java/com/eyeq/jhs/model/Ball.java
+A	src/main/java/com/eyeq/jhs/model/GameRoom.java
+A	src/main/java/com/eyeq/jhs/model/ResultDto.java
+M	src/main/java/com/eyeq/jhs/model/Score.java
+A	src/main/java/com/eyeq/jhs/model/ScoreCalculator.java
+M	src/main/java/com/eyeq/jhs/model/Setting.java
+M	src/main/java/com/eyeq/jhs/model/Solve.java
+M	src/main/java/com/eyeq/jhs/model/Strike.java
+A	src/main/java/com/eyeq/jhs/model/User.java
+
+6c23bc17ca52c87d4c744156b092287bdd10b0bf, 점수를 서버로부터 가지고 오도록 코드 수정., Tue Dec 22 23:54:44 2015 +0900
+M	src/main/java/com/eyeq/jhs/App.java
+M	src/main/java/com/eyeq/jhs/BaseballGameClient.java
+M	src/main/java/com/eyeq/jhs/BaseballGameServer.java
+R089	src/main/java/com/eyeq/jhs/Receiver.java	src/main/java/com/eyeq/jhs/ServerReceiver.java
+M	src/main/java/com/eyeq/jhs/type/MessageType.java
+
+06f083122edc319d48657f62b8b4a2f693b23f99, 주석 제거., Tue Dec 22 22:44:41 2015 +0900
+M	src/main/java/com/eyeq/jhs/Receiver.java
+
+2af4745826f6b32dee0278f77a7a48de2f533007, 불필요한 코드 우선 제거, Mon Dec 21 22:52:46 2015 +0900
+M	src/main/java/com/eyeq/jhs/BaseballGameEngine.java
+M	src/main/java/com/eyeq/jhs/BaseballGameServer.java
+
+91dfccdc58df1c66650c465c759c54bf31f837f1, 1. JSON 포멧으로 데이터 주고 받도록 코드 및 라이브러리 추가 2. Solve 클래스 추가 3. Lombok 라이브러리 적극 활용 4. 코드 클린업, Sun Dec 20 16:23:46 2015 +0900
+M	pom.xml
+M	src/main/java/com/eyeq/jhs/App.java
+M	src/main/java/com/eyeq/jhs/BaseballGameEngine.java
+M	src/main/java/com/eyeq/jhs/Receiver.java
+M	src/main/java/com/eyeq/jhs/model/Ball.java
+M	src/main/java/com/eyeq/jhs/model/Result.java
+M	src/main/java/com/eyeq/jhs/model/Score.java
+M	src/main/java/com/eyeq/jhs/model/Setting.java
+A	src/main/java/com/eyeq/jhs/model/Solve.java
+M	src/main/java/com/eyeq/jhs/model/Strike.java
+M	src/main/java/com/eyeq/jhs/strategy/RandomNumberGenerator.java
+
+46d26b4677700a826dd30d0606e82172d308d89a, 클라이언트에서 추측한 숫자를 서버에서 받아 엔진으로부터 검증받는 로직 추가 및 게임 종료, 점수 측정 결과 클라로 전송하는 기능 추가, Sat Dec 19 21:16:51 2015 +0900
+M	src/main/java/com/eyeq/jhs/App.java
+M	src/main/java/com/eyeq/jhs/BaseballGameClient.java
+M	src/main/java/com/eyeq/jhs/BaseballGameEngine.java
+M	src/main/java/com/eyeq/jhs/BaseballGameServer.java
+M	src/main/java/com/eyeq/jhs/Receiver.java
+A	src/main/java/com/eyeq/jhs/type/MessageType.java
+
+f7e2273c6432ad72f82de74bac8d2d42a089a6b4, 서버에서 클라이언트의 메세지를 받을 수 있도록 Receiver 클래스 추가, Fri Dec 18 21:05:53 2015 +0900
+M	src/main/java/com/eyeq/jhs/App.java
+M	src/main/java/com/eyeq/jhs/BaseballGameClient.java
+M	src/main/java/com/eyeq/jhs/BaseballGameServer.java
+A	src/main/java/com/eyeq/jhs/Receiver.java
+
+fcc85c6f11a11d982ad98c7e3ee9c11c1590f1dc, 코드 클린업, Fri Dec 18 01:30:03 2015 +0900
+M	src/main/java/com/eyeq/jhs/App.java
+M	src/main/java/com/eyeq/jhs/BaseballGameEngine.java
+M	src/main/java/com/eyeq/jhs/BaseballGameServer.java
+M	src/main/java/com/eyeq/jhs/model/Ball.java
+M	src/main/java/com/eyeq/jhs/model/Setting.java
+M	src/main/java/com/eyeq/jhs/model/Strike.java
+M	src/main/java/com/eyeq/jhs/strategy/RandomNumberGenerator.java
+
+dc8b3e8603e4f15214adc97b12482cdff869aa45, 희선씨 코드 카피, Fri Dec 18 01:12:02 2015 +0900
+A	src/main/java/com/eyeq/jhs/App.java
+A	src/main/java/com/eyeq/jhs/BaseballGameClient.java
+A	src/main/java/com/eyeq/jhs/BaseballGameEngine.java
+A	src/main/java/com/eyeq/jhs/BaseballGameServer.java
+A	src/main/java/com/eyeq/jhs/model/Ball.java
+A	src/main/java/com/eyeq/jhs/model/Result.java
+A	src/main/java/com/eyeq/jhs/model/Score.java
+A	src/main/java/com/eyeq/jhs/model/Setting.java
+A	src/main/java/com/eyeq/jhs/model/Strike.java
+A	src/main/java/com/eyeq/jhs/strategy/GenerationNumberStrategy.java
+A	src/main/java/com/eyeq/jhs/strategy/RandomNumberGenerator.java
+M	src/main/java/com/eyeq/lhn/socket/ClientBackground.java
+M	src/main/java/com/eyeq/lhn/socket/ServerBackground.java
+
+6771521970006c4566ae3c5883aaaaf4ae5b39ac, 코드 클린업, Wed Dec 16 22:58:11 2015 +0900
+M	src/main/java/com/eyeq/lhn/socket/ServerBackground.java
+
+cfa2d69aadc9f51117b1f6d13852ab9f808b661f, 네트워크 게임을 위한 Socket 통신 서버 및 클라이언트 예제 코드 추가., Tue Dec 15 21:47:24 2015 +0900
+A	src/main/java/com/eyeq/lhn/socket/ClientBackground.java
+A	src/main/java/com/eyeq/lhn/socket/ServerBackground.java
+
+e08f9040d3c3e084d338f1e58a7ed768584c5ff9, 게임 시작 부분과 게임 처리 클래스 분리, Mon Dec 7 17:58:14 2015 +0900
+A	src/main/java/com/eyeq/lhn/App.java
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+
+1852908f953bac3f52bb4d9be05705490bffa213, 버전 수정 0.0.1 -> 0.0.2, Sun Dec 6 21:13:20 2015 +0900
+M	pom.xml
+
+c011e94f357d15477ba029fd08baaa6cf35e497b, 5회 잘못 입력되면 게임 종료 시키는 코드 추가, Sun Dec 6 21:12:06 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+
+8d472591dc32253c538a32d9825e0f11fd8a83db, 메뉴선택 처리를 if else 에서 switch 로 변경, Fri Dec 4 21:21:20 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+M	src/main/java/com/eyeq/lhn/factory/MenuFactory.java
+
+91e0124738f4bda361f77468d87bcedb2f6e13b5, 띄어쓰기에 대한 테스트 로직 추가 및 사용자 입력 가지고 오는 메소드 변경, Fri Nov 27 17:43:12 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+9b86d404629de7959d0c518ef0f88c802b62c596, 게임 추측 횟수 및 숫자 생성 자릿수 설정 할 수 있도록 코드 추가, Tue Nov 24 22:26:09 2015 +0900
+M	src/main/java/com/eyeq/lhn/view/ConsoleViewRenderer.java
+
+90bdf433974e700fcb0028420bf9084a51356092, 게임 설정 부분 출력 코드 추가, Tue Nov 24 22:15:08 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+
+a829b76f97a43f3dacb50fbf2a067ae8f73db59b, 불필요한 static import 제거, Tue Nov 24 22:14:50 2015 +0900
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+c84b3de13352a9526aaa3d6264a000bb495bbff7, 버전을 1.0 에서 0.0.1 로 변경, Tue Nov 24 22:14:21 2015 +0900
+M	pom.xml
+
+f9174c6bd94eaa32c26cf036d3e455a0125c9840, 게임의 상태들(점수, 추측횟수, 생성된 숫자) 등을 초기화 하는 메소드 추가, Tue Nov 24 22:09:39 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+
+d0f144d6d1eefc34cfaf4b7afb64e8c1f6c69a88, 점수 메모리 저장 서비스를 이용하여 테스트 하게 됨에 따라 발생하는 오류 해결, Mon Nov 23 21:56:06 2015 +0900
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+efbab2ce843c199055649dec64c3e9f9aa112b46, 메모리에 저장해서 스코어를 관리하는 서비스 클래스 등록 (게임을 종료하고 새로 시작할때 마다 스코어값은 초기화됨), Mon Nov 23 21:53:19 2015 +0900
+A	src/main/java/com/eyeq/lhn/service/MemorySaveScoreService.java
+
+859d8d550569a2170409e0e2145b13d8b2a614b9, 1. 파일로 저장하는 스코어 서비스의 이름 변경 2. 파일저장 스코어 서비스의 생성자로 파일 이름을 넘기도록 변경하고 저장 삭제 로드 메소드에서 파일 이름을 넘기는 것을 제거 3. 관련된 테스트 코드 및 메인 코드 수정, Mon Nov 23 21:52:39 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+R085	src/main/java/com/eyeq/lhn/service/ScoreServiceImpl.java	src/main/java/com/eyeq/lhn/service/FileSaveScoreService.java
+M	src/main/java/com/eyeq/lhn/service/ScoreService.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+2df0a70dcf3e1ba66c3419e1953614ab3ad60f6f, 변경된 score 생성 로직때문에 테스트 실패 및 빌드 실패되는 문제 해결, Sun Nov 22 21:15:57 2015 +0900
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+1bd1aea5f1e0a4525b645d1ba92eb58fd7da6183, 실제 게임을 진행 할 수 있도록 기능 개선 및 게임 종료 로직 추가, Sun Nov 22 21:12:22 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+
+3659d274ea001ec4d11ce0c2204e136ddf1e9b91, 스코어 클래스에 이름을 수정 할 수 있도록 setter 추가, Sun Nov 22 21:11:54 2015 +0900
+M	src/main/java/com/eyeq/lhn/model/Score.java
+
+5c98437cfa301380bbe55fd658dc8affad7e4aef, 게임 종료 메뉴 추가, Sun Nov 22 21:11:33 2015 +0900
+M	src/main/java/com/eyeq/lhn/factory/MenuFactory.java
+
+f4865703faf10fee76db2237769414ac896e8856, travis ci 에서 jdk8 로 컴파일 할 수 있도록 설정 변경, Sun Nov 22 18:30:20 2015 +0900
+M	.travis.yml
+
+f078dbff6a6ef9f8750868e92a400acbd530c6e3, 뷰를 출력하는 클래스를 사용하도록 코드 추가 및 실제 게임시 출력 잘되는지 여부 확인 및 일부 사용자 입력 코드 추가., Sun Nov 22 18:22:38 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+e87faf2f987deaf7d2af85f38bd6de530156bcf9, 메뉴를 선택하고 사용할 수 있도록 메뉴 모델 클래스 생성 및 메뉴 만들어 내는 팩토리 클래스 생성, Sun Nov 22 18:21:26 2015 +0900
+A	src/main/java/com/eyeq/lhn/factory/MenuFactory.java
+A	src/main/java/com/eyeq/lhn/model/Menu.java
+
+b433bed65e1f307bf4f109bdc7f9b397e85ada50, 화면 출력을 담당할 클래스 생성 및 출력 방법을 다양하게 선택 할 수 있도록 인터페이스로 구현, Sun Nov 22 18:20:51 2015 +0900
+A	src/main/java/com/eyeq/lhn/view/ConsoleViewRenderer.java
+A	src/main/java/com/eyeq/lhn/view/ViewRenderer.java
+
+f9d071aeefa0a5ec5e09b7efa75cf5c6824690fe, 게임 종료 여부 확인 메소트 테스트 코드 및 구현 코드 추가, Sun Nov 22 13:42:11 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+M	src/main/java/com/eyeq/lhn/controller/GameNumberRandomGenerator.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+3b694e3de491923f9c8d8cbc79cb699447035325, 1. 랜덤 숫자 생성 클래스 기능 테스트 추가. 2. 랜덤 숫자 생성 기능 추가 3. 게임 셋팅에 생성 가능한 숫자 갯수 설정 기능 추가., Mon Nov 16 23:33:25 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+R077	src/main/java/com/eyeq/lhn/GameNumberGenerator.java	src/main/java/com/eyeq/lhn/controller/GameNumberGenerator.java
+A	src/main/java/com/eyeq/lhn/controller/GameNumberRandomGenerator.java
+M	src/main/java/com/eyeq/lhn/setting/GameSetting.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+935e162b2f6abdca597130ba26731e6ca0554bbb, mvn clean script 제거., Mon Nov 16 02:40:37 2015 +0900
+M	.travis.yml
+
+83d77412f93dc7f5ad457f8d5392bd30847ad3f8, Travis CI 의 결과 이미지 추가, Mon Nov 16 02:39:44 2015 +0900
+M	README.md
+
+70c69c99c4f14444d8f8c1687c1dc7dff45a0ab0, TravisCI 테스트, Mon Nov 16 02:35:21 2015 +0900
+M	README.md
+
+8a147f430061fd45542f2175c330fca4bdbd3a61, Travis CI 를 위한 환경설정 파일 추가, Mon Nov 16 02:31:16 2015 +0900
+A	.travis.yml
+
+d63fe40d9aaac5cb0409d1b495052ee979fa3aca, Merge branch 'master' of github.com:eyeqmc-study/baseball-game, Mon Nov 16 02:15:01 2015 +0900
+91d8a690c9d91c896a94ad9ca37f5843b0da5b1c, 게임 점수용 인스턴스의 ID 값이 정상적으로 증가되는지 확인하는 테스트 코드 추가, Mon Nov 16 02:12:44 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+2c615a26e81aa85f9387d589fb09a54b33033cc0, 게임 숫자를 몾맞췄을경우의 테스트 코드 작성, Sun Nov 15 23:48:12 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+38ca7cb3407a6d918fee62628ea1edd6ee5864ba, 게임 점수 생성 및 저장, 불러오기 테스트 코드 및 관련 클래스 생성, Sun Nov 15 23:35:44 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+A	src/main/java/com/eyeq/lhn/exception/GameNotEndException.java
+M	src/main/java/com/eyeq/lhn/model/Ball.java
+R070	src/main/java/com/eyeq/lhn/GuessResult.java	src/main/java/com/eyeq/lhn/model/GuessResult.java
+A	src/main/java/com/eyeq/lhn/model/Score.java
+M	src/main/java/com/eyeq/lhn/model/Strike.java
+A	src/main/java/com/eyeq/lhn/service/ScoreService.java
+A	src/main/java/com/eyeq/lhn/service/ScoreServiceImpl.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+03856915b25617418eff5c37067a97052ba423df, 테스트용 게임 결과를 저장한 sqlite 데이터베이스 파일 추가 및 테이블 생성 sql 추가, Sun Nov 15 20:15:03 2015 +0900
+A	src/test/resources/db/bbgame.data
+A	src/test/resources/db/test_data.sql
+
+52350768e996684710ee03e2cdc09391451ac019, 1. 게임 결과를 sqlite 를 이용하여 기록하기 위해 jdbc 드라이버를 추가함. 2. lombok 을 사용하기 위해 관련 라이브러리 추가, Sun Nov 15 19:58:13 2015 +0900
+M	pom.xml
+
+ea4ff44b28d5f9c4b25647d7cd53c84452efd5c9, 설정 된 입력 제한 횟수 보다 많이 입력 했을때 UserInputOverLimitException 이 발생하는지 확인하는 테스트 코드 추가, Sun Nov 15 19:50:30 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+A	src/main/java/com/eyeq/lhn/exception/UserInputOverLimitException.java
+A	src/main/java/com/eyeq/lhn/setting/GameSetting.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+244a906122617e32f3208278a49437704454ca16, 점수를 계산하는 방식에 대해 좀 더 구체적으로 명시, Sun Nov 15 19:20:17 2015 +0900
+M	README.md
+
+663d3a058a02cad81dabde4b8343986cb6eca688, 처음에 사용자 아이디 입력하는 부분을 제거 하고 게임이 끝난후 기록하는 기능으로 변경., Sun Nov 15 19:15:25 2015 +0900
+M	README.md
+
+23e6990758181acb74c362e4427f9e15f410759d, 기존에 볼과 스트라이크를 그냥 int 값으로 받던것을 볼과 스트라이크 객체를 별도로 만들어서 처리, Thu Nov 12 20:09:50 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+M	src/main/java/com/eyeq/lhn/GameNumberGenerator.java
+M	src/main/java/com/eyeq/lhn/GuessResult.java
+A	src/main/java/com/eyeq/lhn/model/Ball.java
+A	src/main/java/com/eyeq/lhn/model/Strike.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+8e06f292f60cef1774dd33059ca9d2a71f02be50, 게임 테스트 코드 추가, Wed Nov 11 23:29:03 2015 +0900
+M	src/main/java/com/eyeq/lhn/BaseballGame.java
+A	src/main/java/com/eyeq/lhn/GameNumberGenerator.java
+A	src/main/java/com/eyeq/lhn/GuessResult.java
+M	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+cdecf3ea2080c8bde9a1695c65a1d7321ca618ee, LHN 기본 패키지 생성 및 게임 메인 클래스 생성., Wed Nov 11 20:50:30 2015 +0900
+A	src/main/java/com/eyeq/lhn/BaseballGame.java
+A	src/test/java/com/eyeq/lhn/BaseballGameTest.java
+
+d41e81375e9255a88ce3edec39e3307c7ed2e478, 기본으로 만들어진 App.java 및 AppTest.java 파일 삭제, Wed Nov 11 20:50:11 2015 +0900
+D	src/main/java/com/eyeq/App.java
+D	src/test/java/com/eyeq/AppTest.java
+
+e3a6735c8282d31a4d1555fcdcffcfe976cb29d0, README 파일 줄바꿈 처리 변경., Wed Nov 11 20:49:46 2015 +0900
+M	README.md
+
+da13650c25586dd6a7b9b466d624e32178e905d8, 야구 게임 저장소 초기화, Wed Nov 11 20:42:13 2015 +0900
+A	.gitignore
+A	pom.xml
+A	src/main/java/com/eyeq/App.java
+A	src/test/java/com/eyeq/AppTest.java
+
+4d38fb3b9cc6813c2dcdf98cada7c888f6c88fa9, 클래스 설계 부분에 작성중 메세지 추가., Wed Nov 11 18:20:09 2015 +0900
+M	README.md
+
+37a5bd5b44fba6b0a61f85ca543148a7db04fa18, Update LICENSE.md, Wed Nov 11 18:18:23 2015 +0900
+A	LICENSE.md
+
+cd3a7fb823782c0b3d613e91e64c19921874f642, 문법 변경., Wed Nov 11 18:17:50 2015 +0900
+M	README.md
+
+53d608aa4c2ce9f66ec0bfcc2c1c730a93449db2, README.md 파일 생성., Wed Nov 11 18:15:44 2015 +0900
+A	README.md

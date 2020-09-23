@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>875</id>
+		<title>onEnterAnimationEnd回调</title>
+		<body>sdk从1.2.7更新到1.3.0及以上版本， 通过转场动画 extraTransaction()    .setCustomAnimations(targetFragmentEnter, currentFragmentPopExit, currentFragmentPopEnter, targetFragmentExit)    .start(targetFragment); 跳转的界面，不走onEnterAnimationEnd回调 低于1.3.0版本没问题</body>
+		<created>2018-05-21 03:18:15</created>
+		<closed>2018-06-18 16:49:26</closed>
+	</bug>
+	<bug>
+		<id>778</id>
+		<title>SupportActivity#popTo方法中afterPopTransactionRunnable在popTo之前就执行了</title>
+		<body>大神你好, 请问下我升级到v1.2.6之后发现以前的页面pop异常, 查看源码发现popTo的实现有所改变,  ``` void popTo(final String targetFragmentTag, final boolean includeTargetFragment, final Runnable afterPopTransactionRunnable, final FragmentManager fm, final int popAnim) {         enqueue(fm, new Action(Action.ACTION_POP_MOCK) {             @Override             public void run() {                 doPopTo(targetFragmentTag, includeTargetFragment, afterPopTransactionRunnable, fm, popAnim);             }         });         if (afterPopTransactionRunnable != null) {             afterPopTransactionRunnable.run();  &lt;-- 已经被执行了         }     } ```  当前请求被enqueue之后, afterPopTransactionRunnable就立即被执行了? 我理解应该是执行完popTo真正完成之后才会执行afterPopTransactionRunnable吧?</body>
+		<created>2018-02-11 10:53:58</created>
+		<closed>2018-02-25 13:51:31</closed>
+	</bug>
+	<bug>
+		<id>717</id>
+		<title>startWithPop方法，</title>
+		<body>加载根fragment后，startFragment 如何让根fragment的pop</body>
+		<created>2018-01-02 07:50:27</created>
+		<closed>2018-01-02 11:35:44</closed>
+	</bug>
+	<bug>
+		<id>714</id>
+		<title>侧滑的 bug</title>
+		<body>版本：1.2.0 描述：栈结构是 OneFragment - TwoFragment - TwoFragment 。这时候做侧滑，理论结果应该是：OneFragment - TwoFragment。 但实际结果是 OneFragment。还有，按返回键是可以得到正确结果的（ OneFragment - TwoFragment）</body>
+		<created>2018-01-02 06:29:37</created>
+		<closed>2018-01-02 07:03:42</closed>
+	</bug>
+	<bug>
+		<id>683</id>
+		<title>startForResultDontHideSelf 背景是黑的</title>
+		<body>oldFragment 内调用， extraTransaction().setCustomAnimations(R.anim.v_fragment_enter, 0, 0, R.anim.v_fragment_exit) .startForResultDontHideSelf(newFragment,1)  newFragment的背景已設定為透明，卻無法顯示oldFragment的畫面  但調用 startDontHideSelf 則可以顯示oldFragment的畫面  使用版本1.1.10  是使用錯誤嗎？ 感謝解答    </body>
+		<created>2017-12-18 10:05:54</created>
+		<closed>2017-12-31 08:40:16</closed>
+	</bug>
+	<bug>
+		<id>550</id>
+		<title>startForResultDontHideSelf 没有返回值</title>
+		<body>SupportFragment 内调用， extraTransaction().setCustomAnimations(0, 0)                 .startForResultDontHideSelf(fragment,1)拿不到返回值  startForResult(fragment,1)正常 用的 1.1.4</body>
+		<created>2017-09-12 11:14:00</created>
+		<closed>2017-09-12 13:57:45</closed>
+	</bug>
+	<bug>
+		<id>541</id>
+		<title>loadRootFragment 无动画</title>
+		<body>在activity 布局里有一个占位的framelayout，点击事件会给framelayout 加载 fragment，给framelayout 加载第一个fragment 使用loadRootFragment，没有动画～没有动画～没有动画，使用    public void loadRootFragment(containerId, toFragment,true, true),也没有动画，怎么办 啊啊啊 ，动画去哪里了。试了很多次还是没有辙。请求帮助～～～谢谢  </body>
+		<created>2017-09-05 19:13:17</created>
+		<closed>2017-09-06 09:05:33</closed>
+	</bug>
+	<bug>
+		<id>473</id>
+		<title>同时打开打开多个fragment时候的问题</title>
+		<body>用start方法同时打开多个fragment 会遇到栈顺序不对的问题 定位到FragmentationDelegate 的start方法 由于事务的问题 尝试同时调用 bindContainerId和 ft.add  ft.addToBackStack最后执行supportCommit(fragmentManager, ft);貌似还是不对  需求是这样的有时候页面路由 会有同时打开多个页的需求 试过用延时200毫秒逐个执行start方法是可以的 但是中间会呈现出一页页跳转的效果不太理想   所以想请大神提供一个打开fragmentList的方法么</body>
+		<created>2017-08-01 10:03:45</created>
+		<closed>2017-08-01 15:23:12</closed>
+	</bug>
+	<bug>
+		<id>455</id>
+		<title>跳转动画问题</title>
+		<body>之前用的1.0X以下的，准备升级到1.0.8 最新，发现一些问题： 一 1，loadRootFragment(R.id.fl_container, ExamApplyMainFragment.newInstance(gradeUnitId)); 2，ExamApplyMainFragment重写onCreateFragmentAnimator   return new DefaultNoAnimator(); 3，start到下个fragment,ExamApplyMainFragment会出现window的背景，而本身的内容不可见。 二。 loadRootFragment(R.id.fl_container, ExamApplyMainFragment.newInstance(gradeUnitId),false,true);//第四个参数,ExamApplyMainFragment的onEnterAnimationEnd不执行。。。是这样的？？  三。先前的_mActivity是SupportActivity,现在都改成FragmentActivity了，我Fragment操作了Toolbar,((AppCompatActivity)_mActivity).setSupportActionBar(toolbar);  ActionBar actionBar=((AppCompatActivity)_mActivity).getSupportActionBar(); 现在要进行强制转换了？ 或者 实现自己的基类？         </body>
+		<created>2017-07-26 09:05:06</created>
+		<closed>2017-07-27 13:20:46</closed>
+	</bug>
+	<bug>
+		<id>416</id>
+		<title>知乎Demo中ZhihuThirdFragment使用懒加载会造成ShopFragment的onSupportVisible被调用2次</title>
+		<body>首次打开ZhihuThirdFragment时，懒加载ShopFragment。ZhihuThirdFragment 会在https://github.com/YoKeyword/Fragmentation/blob/master/fragmentation_core/src/main/java/me/yokeyword/fragmentation/helper/internal/VisibleDelegate.java#L157 调用ShopFragment的dispatchSupportVisible，同时由于此时ShopFragment自己也会调用dispatchSupportVisible，造成onSupportVisible被调用2次。  而没有使用懒加载的ZhihuSecondFragment，没有这个问题。</body>
+		<created>2017-07-07 13:13:41</created>
+		<closed>2017-07-08 03:39:42</closed>
+	</bug>
+</bugs>

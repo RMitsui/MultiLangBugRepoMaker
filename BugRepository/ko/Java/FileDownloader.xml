@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="FileDownloader">
+	<bug id="933" opendate="2018-01-28 15:05:46" fixdate="2018-01-31 14:31:49">
+		<buginformation>
+			<summary>重复下载</summary>
+			<description>每次下载的时候都会先发起range为  0-  的请求，然后再分段下载，但是这一个 0- 的请求，就已经下载了整个文件了，为什么不发起一个range为0-0的请求，然后解析response中的content-range来获取总长再进行分段？我自己改了一版代码，发现这样也是完全可以下载的，可以解决掉重复下载的问题，但不明白为什么作者不这样用呢？其他的使用者好像也没反馈类似问题 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/ConnectionProfile.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/ConnectTask.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadLaunchRunnable.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/connection/FileDownloadUrlConnection.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/connection/FileDownloadConnection.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/util/FileDownloadUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="867" opendate="2017-12-11 13:28:59" fixdate="2017-12-12 05:17:02">
+		<buginformation>
+			<summary>部分小米手机直接崩溃</summary>
+			<description>No static method a(Ljava/lang/String;Ljava/lang/Object;)V in class Ljunit/framework/Assert; or its super classes (declaration of 'junit.framework.Assert' appears in /system/framework/core-junit.jar)  com.liulishuo.filedownloader.event.DownloadEventPoolImpl.a(SourceFile:42)  1.6.8版本，部分小米手机会直接崩溃，错误如上。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloadMessenger.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/message/BlockCompleteMessage.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/notification/FileDownloadNotificationListener.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/event/DownloadEventPoolImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="789" opendate="2017-10-11 06:42:46" fixdate="2018-02-08 03:11:03">
+		<buginformation>
+			<summary>0KB文件不会下载</summary>
+			<description>文件大小：0kb 文件名：.nomedia 错误提示：java.net.MalformedURLException: Protocol not found：xxx   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/download/DownloadLaunchRunnable.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/util/FileDownloadUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="592" opendate="2017-06-05 01:57:11" fixdate="2017-06-05 01:59:49">
+		<buginformation>
+			<summary>升级1.5.0后初始化就报空指针</summary>
+			<description>![image](https://cloud.githubusercontent.com/assets/16240767/26767754/4b9fd096-49d5-11e7-8cd0-af5795178450.png)  FileDownloader.init(getApplicationContext());</description>
+		</buginformation>
+		<fixedfiles>
+			<file>library/src/main/java/com/liulishuo/filedownloader/FileDownloader.java</file>
+			<file>library/src/main/java/com/liulishuo/filedownloader/services/DownloadMgrInitialParams.java</file>
+			<file>library/src/test/java/com/liulishuo/filedownloader/FileDownloaderTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

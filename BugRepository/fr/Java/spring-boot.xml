@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="spring-boot">
+	<bug id="18211" opendate="2019-09-12 11:20:38" fixdate="2019-09-21 19:46:39">
+		<buginformation>
+			<summary>Concurrent EndpointRequest calls can cause NPE</summary>
+			<description>After upgrade from 2.1.7 to 2.1.8 we started to get these NPE  ```java java.lang.NullPointerException: null     at org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest$AbstractRequestMatcher.matches(EndpointRequest.java:144)     at org.springframework.boot.security.servlet.ApplicationContextRequestMatcher.matches(ApplicationContextRequestMatcher.java:65)     at org.springframework.security.web.access.intercept.DefaultFilterInvocationSecurityMetadataSource.getAttributes(DefaultFilterInvocationSecurityMetadataSource.java:95)     at org.springframework.security.access.intercept.AbstractSecurityInterceptor.beforeInvocation(AbstractSecurityInterceptor.java:197)     at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:124)     at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter.doFilter(OAuth2AuthenticationProcessingFilter.java:176)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:74)     at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)     at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)     at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)     at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118) ```  revert fixed that. I can't really reproduce that locally, thus can't attach a test  Maybe related to #12380 or #14161</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-project/spring-boot/src/main/java/org/springframework/boot/security/servlet/ApplicationContextRequestMatcher.java</file>
+			<file>spring-boot-project/spring-boot/src/test/java/org/springframework/boot/security/servlet/ApplicationContextRequestMatcherTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="16461" opendate="2019-04-04 13:41:18" fixdate="2019-04-04 13:42:09">
+		<buginformation>
+			<summary>Liquibase endpoint does not honor custom change log table</summary>
+			<description>See original issue #16442.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/liquibase/LiquibaseEndpoint.java</file>
+			<file>spring-boot-project/spring-boot-actuator/src/test/java/org/springframework/boot/actuate/liquibase/LiquibaseEndpointTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="16442" opendate="2019-04-03 17:12:50" fixdate="2019-04-04 13:42:08">
+		<buginformation>
+			<summary>Liquibase endpoint does not honor custom change log table</summary>
+			<description>Hello, I am using Spring Boot 2.1.3. With this, I have a project where I use Liquibase to build my database. My config is like this:  &lt;pre&gt; spring:   liquibase:     change-log: classpath:/db/changelog/db.changelog-master.yaml     check-change-log-location: true     drop-first: false     enabled: true     database-change-log-lock-table: liquibase_database_changelog_lock     database-change-log-table: liquibase_database_changelog &lt;/pre&gt;  It is working fine. But, when I used Spring Boot Admin (and so the end point **/actuator/liquibase**), It is not working ==&gt; No datas. In my log file, I have:   &lt;pre&gt; 2019-04-03 17:19:01.002  INFO 6 --- [nio-7911-exec-6] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM portal_partners.DATABASECHANGELOG &lt;/pre&gt;  ==&gt; The endpoint doesn't use the config from the spring.liquibase.*** config.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/liquibase/LiquibaseEndpoint.java</file>
+			<file>spring-boot-project/spring-boot-actuator/src/test/java/org/springframework/boot/actuate/liquibase/LiquibaseEndpointTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="16188" opendate="2019-03-11 06:39:15" fixdate="2019-03-11 08:32:34">
+		<buginformation>
+			<summary>logfile endpoint returns HTTP 406 on Accept: text/plain</summary>
+			<description>The logfile endpoint responds with a content of type `text/plain`. When doing the get request with `Accept: text/plain` a HTTP 406 (Not Acceptable) is returned. I'd expected such a request to succeed.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/logging/LogFileWebEndpoint.java</file>
+			<file>spring-boot-project/spring-boot-actuator/src/test/java/org/springframework/boot/actuate/logging/LogFileWebEndpointWebIntegrationTests.java</file>
+			<file>spring-boot/src/test/java/org/springframework/boot/context/embedded/AbstractEmbeddedServletContainerFactoryTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="13106" opendate="2018-05-08 21:29:13" fixdate="2018-05-10 17:02:15">
+		<buginformation>
+			<summary>ServletEndpoints do not consider server.servlet.path</summary>
+			<description>For example, the jolokia endpoint</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/endpoint/web/ServletEndpointManagementContextConfiguration.java</file>
+			<file>spring-boot-project/spring-boot-actuator-autoconfigure/src/test/java/org/springframework/boot/actuate/autoconfigure/endpoint/web/ServletEndpointManagementContextConfigurationTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="12765" opendate="2018-04-04 21:21:24" fixdate="2018-04-04 21:45:49">
+		<buginformation>
+			<summary>JarURLConnection does not decode nested jar names</summary>
+			<description>Related to the tests provided for #11367. The `JarURLConnection` does not currently attempt to decode names of nested jars. This means URLs of the form `jar:file:some.jar!/space%20nested.jar!/3.dat` fail.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-tools/spring-boot-loader/src/test/java/org/springframework/boot/loader/jar/JarFileTests.java</file>
+			<file>spring-boot-tools/spring-boot-loader/src/test/java/org/springframework/boot/loader/archive/JarFileArchiveTests.java</file>
+			<file>spring-boot-tools/spring-boot-loader/src/test/java/org/springframework/boot/loader/jar/CentralDirectoryParserTests.java</file>
+			<file>spring-boot-tools/spring-boot-loader/src/test/java/org/springframework/boot/loader/archive/ExplodedArchiveTests.java</file>
+			<file>spring-boot-tools/spring-boot-loader/src/test/java/org/springframework/boot/loader/jar/JarURLConnectionTests.java</file>
+			<file>spring-boot-tools/spring-boot-loader/src/test/java/org/springframework/boot/loader/TestJarCreator.java</file>
+			<file>spring-boot-tools/spring-boot-loader/src/main/java/org/springframework/boot/loader/jar/JarURLConnection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="12015" opendate="2018-02-12 23:24:08" fixdate="2018-02-13 01:50:27">
+		<buginformation>
+			<summary>ApplicationContextAssert does not consider parent</summary>
+			<description>Currently we use `getBeanNamesForType` in `ApplicationContextAssert` which doesn't really match what getBean will do.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-project/spring-boot-test/src/test/java/org/springframework/boot/test/context/assertj/ApplicationContextAssertTests.java</file>
+			<file>spring-boot-project/spring-boot-test/src/main/java/org/springframework/boot/test/context/assertj/ApplicationContextAssert.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="11052" opendate="2017-11-16 19:39:17" fixdate="2017-11-23 11:35:58">
+		<buginformation>
+			<summary>JOOQ DSLContext remains non-transactional after auto-configuration</summary>
+			<description>Noticed in Spring Boot **2.0.0.M6**.  With no additional configuration, the auto-wired JOOQ `DSLContext` still has `transactional` flag set to `false` and no transaction provider linked in after the application start.  It will become transactional if an explicit `PlatformTransactionManager` bean is provided:  ``` @Configuration @EnableTransactionManagement public class AppConfig {      @Autowired     DataSource dataSource;      @Bean     public PlatformTransactionManager transactionManager() {         return new DataSourceTransactionManager(dataSource);     } } ```  However, I have noticed that even without the explicit manager bean configuration above, an auto-wired `PlatformTransactionManager` within the same service will contain a reference. Apparently another auto-configuration creates it after all. Since transaction provider setup in the `JOOQAutoConfiguration` is declared as dependent on the `PlatformTransactionManager` bean existence, it seems like JOOQ auto-configuration runs too early to pick the manager's reference.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jooq/JooqAutoConfiguration.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="10569" opendate="2017-10-09 22:30:40" fixdate="2018-01-23 00:08:48">
+		<buginformation>
+			<summary>Intermittent webflux test failures due to timeouts</summary>
+			<description>We're seeing tests regularly fail on CI due to timeout issues. Here's [one example](https://ci.spring.io/teams/spring-boot/pipelines/spring-boot/jobs/build/builds/28).  We keep bumping the timeouts but I feel like there must be an underlying cause that we've not yet identified.  ``` [ERROR] eventsWithDateAfter[Reactive](org.springframework.boot.actuate.audit.AuditEventsEndpointWebIntegrationTests)  Time elapsed: 360.013 s  &lt;&lt;&lt; ERROR! java.lang.IllegalStateException: Timeout on blocking read for 360000 MILLISECONDS at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:110) at reactor.core.publisher.Mono.block(Mono.java:1185) at org.springframework.test.web.reactive.server.DefaultWebTestClient$DefaultRequestBodyUriSpec.toResponseSpec(DefaultWebTestClient.java:293) at org.springframework.test.web.reactive.server.DefaultWebTestClient$DefaultRequestBodyUriSpec.exchange(DefaultWebTestClient.java:271) at org.springframework.boot.actuate.audit.AuditEventsEndpointWebIntegrationTests.eventsWithDateAfter(AuditEventsEndpointWebIntegrationTests.java:55) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) at org.springframework.boot.actuate.endpoint.web.test.AbstractWebEndpointRunner$3.evaluate(AbstractWebEndpointRunner.java:114) at org.springframework.boot.actuate.endpoint.web.test.AbstractWebEndpointRunner$4.evaluate(AbstractWebEndpointRunner.java:129) at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) at org.springframework.boot.actuate.endpoint.web.test.AbstractWebEndpointRunner$1.evaluate(AbstractWebEndpointRunner.java:81) at org.springframework.boot.actuate.endpoint.web.test.AbstractWebEndpointRunner$2.evaluate(AbstractWebEndpointRunner.java:95) at org.junit.runners.ParentRunner.run(ParentRunner.java:363) at org.junit.runners.Suite.runChild(Suite.java:128) at org.junit.runners.Suite.runChild(Suite.java:27) at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) at org.junit.runners.ParentRunner.run(ParentRunner.java:363) at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:369) at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:275) at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:239) at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:160) at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:373) at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:334) at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:119) at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:407)  [INFO] Running org.springframework.boot.actuate.audit.AuditEventsJmxEndpointExtensionTests ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-project/spring-boot/src/main/java/org/springframework/boot/web/embedded/netty/NettyReactiveWebServerFactory.java</file>
+			<file>spring-boot-project/spring-boot-actuator/src/test/java/org/springframework/boot/actuate/endpoint/web/AbstractWebEndpointIntegrationTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="8697" opendate="2017-03-22 21:13:18" fixdate="2018-02-16 11:30:49">
+		<buginformation>
+			<summary>TestRestTemplate replaces custom HttpClients</summary>
+			<description>**Spring-Boot version** 1.5.2.RELEASE  *Problem:* When apache httpclient jar is in the classpath, TestRestTemplate replaces any HttpClient set by the user in a RestTemplate. Alseo, since the field is final there's no way to change that, even with reflection. See this https://github.com/spring-projects/spring-boot/blob/master/spring-boot-test/src/main/java/org/springframework/boot/test/web/client/TestRestTemplate.java#L127-L130.  In my case, I am building a client for mutual authentication and some headers. However, the same applications uses httpclient for other integrations, not only that, previous tests were written in RestAssured which also includes that dependency.  Is it possible to remove that validation, make it optional or just apply it if there's no `requestFactory` set?    </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-project/spring-boot-test/src/test/java/org/springframework/boot/test/web/client/TestRestTemplateTests.java</file>
+			<file>spring-boot-project/spring-boot-test/src/main/java/org/springframework/boot/test/web/client/TestRestTemplate.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="8639" opendate="2017-03-15 21:00:00" fixdate="2017-03-17 23:20:39">
+		<buginformation>
+			<summary>Actuator /loggers endpoint: 'java.lang.IllegalArgumentException: EffectiveLevel must not be null'</summary>
+			<description>I'm using 1.5.2.RELEASE and configure logging using logback-spring.xml. When I go to the 'loggers' endpoint, I get:  Caused by: java.lang.IllegalArgumentException: EffectiveLevel must not be null at org.springframework.util.Assert.notNull(Assert.java:134) at org.springframework.boot.logging.LoggerConfiguration.&lt;init&gt;(LoggerConfiguration.java:45) at org.springframework.boot.logging.logback.LogbackLoggingSystem.getLoggerConfiguration(LogbackLoggingSystem.java:241) at org.springframework.boot.logging.logback.LogbackLoggingSystem.getLoggerConfigurations(LogbackLoggingSystem.java:218) at org.springframework.boot.actuate.endpoint.LoggersEndpoint.invoke(LoggersEndpoint.java:58) at org.springframework.boot.actuate.endpoint.LoggersEndpoint.invoke(LoggersEndpoint.java:40) at org.springframework.boot.actuate.endpoint.mvc.AbstractEndpointMvcAdapter.invoke(AbstractEndpointMvcAdapter.java:56) at org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke(EndpointMvcAdapter.java:42) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133) at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:116) at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897) at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) ... 86 common frames omitted  (this is just the root cause)  Configuration:      &lt;?xml version="1.0" encoding="UTF-8"?&gt;          &lt;configuration&gt;         &lt;include resource="org/springframework/boot/logging/logback/defaults.xml"/&gt;         &lt;include resource="org/springframework/boot/logging/logback/console-appender.xml"/&gt;              &lt;logger name="com.my.package" level="ALL"/&gt;         &lt;logger name="org.hibernate.SQL" level="DEBUG"/&gt;              &lt;root level="INFO"&gt;             &lt;appender-ref ref="CONSOLE"/&gt;         &lt;/root&gt;     &lt;/configuration&gt;</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot/src/main/java/org/springframework/boot/logging/AbstractLoggingSystem.java</file>
+			<file>spring-boot/src/main/java/org/springframework/boot/logging/logback/LogbackLoggingSystem.java</file>
+			<file>spring-boot/src/test/java/org/springframework/boot/logging/logback/LogbackLoggingSystemTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="8200" opendate="2017-02-06 06:28:38" fixdate="2017-02-07 11:03:57">
+		<buginformation>
+			<summary>Fix couchbase auto-configuration</summary>
+			<description>This commit https://github.com/spring-projects/spring-data-couchbase/commit/d62f4bbe8c7d4aed544934ebf795aa1e90fcd8ed#diff-4564410042dc9bc9eb4fdd6680204b82 has broken things.  Looks like `SpringBootCouchbaseDataConfiguration` needs to extend `AbstractCouchbaseConfiguration` now. We also need a `getBootstrapHosts()` method (but I don't know what it should return).</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/couchbase/SpringBootCouchbaseDataConfiguration.java</file>
+			<file>spring-boot-samples/spring-boot-sample-data-couchbase/src/test/java/sample/data/couchbase/SampleCouchbaseApplicationTests.java</file>
+			<file>spring-boot-autoconfigure/src/test/java/org/springframework/boot/autoconfigure/data/couchbase/CouchbaseDataAutoConfigurationTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7606" opendate="2016-12-09 08:26:52" fixdate="2016-12-13 09:46:53">
+		<buginformation>
+			<summary>JolokiaMvcEndpoint does not call ServletWrappingController.destroy</summary>
+			<description>[JolokiaMvcEndpoint.java#L49](https://github.com/spring-projects/spring-boot/blob/44cd625867acbed9fd31e1da70e15446f37e16db/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/endpoint/mvc/JolokiaMvcEndpoint.java#L49) instantiates a `ServletWrappingController`. `ServletWrappingController` implements `DisposableBean`. But `.destroy()` is never called. This causes a ClassLoader leak.  `JolokiaMvcEndpoint` should implement `DisposableBean` and call `this.controller.destroy()`.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-actuator/src/main/java/org/springframework/boot/actuate/endpoint/mvc/JolokiaMvcEndpoint.java</file>
+			<file>spring-boot-actuator/src/test/java/org/springframework/boot/actuate/endpoint/mvc/JolokiaMvcEndpointIntegrationTests.java</file>
+			<file>spring-boot-actuator/src/test/java/org/springframework/boot/actuate/endpoint/mvc/JolokiaMvcEndpointTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7476" opendate="2016-11-24 18:29:52" fixdate="2016-11-24 21:00:01">
+		<buginformation>
+			<summary>Setting endpoints.sensitive=true does not set all endpoints to sensitive in v1.4.1</summary>
+			<description>more details: http://stackoverflow.com/questions/40617489/spring-boot-actuator-endpoint-configuration-doesnt-seem-to-be-working-as-expect  Using v1.4.1 of Spring Boot  When attempting to set the sensitivity of all actuator endpoints to sensitive, mainly to make the health check endpoint sensitive, i set the property "endpoints.sensitive" to "true" to set all endpoints as sensitive. After making this change, calling the health endpoint did not just show UP/DOWN status but still status of all known services. I had to explicitly set the property "endpoints.health.sensitive" to "true" to get just UP/DOWN status on health check endpoint.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-actuator/src/test/java/org/springframework/boot/actuate/endpoint/mvc/HealthMvcEndpointTests.java</file>
+			<file>spring-boot-actuator/src/main/java/org/springframework/boot/actuate/endpoint/mvc/HealthMvcEndpoint.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6713" opendate="2016-08-22 10:46:06" fixdate="2016-08-22 14:07:18">
+		<buginformation>
+			<summary>Liquibase doesn't respect logging configuration</summary>
+			<description>This issue is the same as #3470: liquibase doesn't use logging configuration -- it prints INFO messages when I want to see only warnings and its messages have a different format. ### Steps to reproduce  ``` console $ git clone https://github.com/php-coder/mystamps.git $ cd mystamps $ git checkout b2f1c612d9eba7a957edc602c3431de848fd55e1 $ mvn clean spring-boot:run ``` ### Observable behavior  ``` ... [2016-08-21 12:36:50.686] boot - 3174  INFO [main] --- RequestMappingHandlerAdapter: Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@63dde5e5: startup date [Mon Aug 21 12:36:46 CEST 2016]; root of context hierarchy INFO 8/21/16 12:36 PM: liquibase: Successfully acquired change log lock INFO 8/21/16 12:36 PM: liquibase: Creating database history table with name: PUBLIC.DATABASECHANGELOG INFO 8/21/16 12:36 PM: liquibase: Reading from PUBLIC.DATABASECHANGELOG ... INFO 8/21/16 12:36 PM: liquibase: Successfully released change log lock [2016-08-21 12:36:53.115] boot - 3174  INFO [main] --- application: Initializing Spring FrameworkServlet 'dispatcherServlet' ... ``` ### Expected behavior  I shouldn't see all of these messages from Liquibase because I'm interesting only in warnings:  ``` console $ grep liquibase src/main/resources/application-test.properties liquibase.contexts: scheme, init-data, test-data liquibase.change-log: classpath:/liquibase/changelog.xml logging.level.liquibase: WARN ``` ### Workaround  Also I found out that it was working in Spring Boot 1.3.0.RELEASE but broken since 1.3.1.RELEASE. To test it you can downgrade the version and test that it works:  ``` console sed -i 's|1.3.7.RELEASE|1.3.0.RELEASE|;s|9.2.18.v20160721|9.2.11.v20150529|' pom.xml ```  Let me know if you need more information. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration.java</file>
+			<file>spring-boot-autoconfigure/src/test/java/org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfigurationTests.java</file>
+			<file>spring-boot/src/main/java/org/springframework/boot/liquibase/LiquibaseServiceLocatorApplicationListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5718" opendate="2016-04-18 03:03:01" fixdate="2016-05-02 12:11:01">
+		<buginformation>
+			<summary>Redis auto-configuration requires commons-pool2</summary>
+			<description>&lt;!--  Thanks for raising a Spring Boot issue. Please provide a brief description of your problem along with the version of Spring Boot that you are using. If possible, please also consider putting together a sample application that reproduces the issue. --&gt;   `JedisConnectionFactory` creates a `JedisPoolConfig` which in turn results in a `JedisPool` which in turn uses Apache Commons Pool 2 and the `GenericObjectPool` is used there. Plus, `usePool` is true in `JedisConnectionFactory`, by default, and I don't see a property to change it.    So, i'd have to create a `@Bean` to set usePool to be false, in which case the `@Bean` that's provided by the auto-config that tests for the availability of the `GenericObjectPool` is moot, anyway. And unless I do something like that, it's going to call code that requires the `GenericObjectPool`.   I think.  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/redis/RedisAutoConfiguration.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="3470" opendate="2015-07-13 10:41:24" fixdate="2015-07-29 09:15:45">
+		<buginformation>
+			<summary>Liquibase 3.4.0 breaks logging management via application.properties</summary>
+			<description>After upgrading Liquibase to 3.4.0 (#3389) I can't manage liquibase logging and I always see the logs in console. When I downgrade to 3.3.5 it's working. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot/src/main/java/org/springframework/boot/liquibase/LiquibaseServiceLocatorApplicationListener.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2878" opendate="2015-04-26 14:58:38" fixdate="2015-10-27 13:42:04">
+		<buginformation>
+			<summary>Liquibase and jetty compatibility</summary>
+			<description>When i use liquibase and tomcat everything works smoothly. However when i switch to Jetty by modifying my pom as follows:  ``` &lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;  &lt;exclusions&gt;     &lt;exclusion&gt;         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;         &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;     &lt;/exclusion&gt;  &lt;/exclusions&gt; &lt;/dependency&gt; &lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-starter-jetty&lt;/artifactId&gt; &lt;/dependency&gt; ```  I get an exception while liquibase runs:  ``` java.io.FileNotFoundException: ServletContext resource [/] cannot be resolved to URL because it does not exist     at org.springframework.web.context.support.ServletContextResource.getURL(ServletContextResource.java:156)     at liquibase.integration.spring.SpringLiquibase$SpringResourceOpener.init(SpringLiquibase.java:77)     at liquibase.resource.AbstractResourceAccessor.&lt;init&gt;(AbstractResourceAccessor.java:22)     at liquibase.resource.ClassLoaderResourceAccessor.&lt;init&gt;(ClassLoaderResourceAccessor.java:18)     at liquibase.integration.spring.SpringLiquibase$SpringResourceOpener.&lt;init&gt;(SpringLiquibase.java:67)     at liquibase.integration.spring.SpringLiquibase.createResourceOpener(SpringLiquibase.java:396)     at liquibase.integration.spring.SpringLiquibase.createLiquibase(SpringLiquibase.java:357)     at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:315)     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1633)     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1570)     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539)     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476)     at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303)     at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)     at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299)     at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194)     at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:293)     at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194)     at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:956)     at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:747)     at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480)     at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:118)     at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:686)     at org.springframework.boot.SpringApplication.run(SpringApplication.java:320)     at org.springframework.boot.SpringApplication.run(SpringApplication.java:957)     at org.springframework.boot.SpringApplication.run(SpringApplication.java:946)     at be.tribersoft.triber_fund.Application.main(Application.java:10) ```  The execution of the liquibase scripts is succesful however. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot/src/main/java/org/springframework/boot/context/embedded/jetty/JettyEmbeddedServletContainerFactory.java</file>
+			<file>spring-boot/src/main/java/org/springframework/boot/context/embedded/tomcat/TomcatEmbeddedServletContainerFactory.java</file>
+			<file>spring-boot/src/test/java/org/springframework/boot/context/embedded/AbstractEmbeddedServletContainerFactoryTests.java</file>
+			<file>spring-boot/src/main/java/org/springframework/boot/context/embedded/undertow/UndertowEmbeddedServletContainerFactory.java</file>
+			<file>spring-boot/src/main/java/org/springframework/boot/context/embedded/AbstractEmbeddedServletContainerFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="2344" opendate="2015-01-13 06:50:39" fixdate="2015-01-21 15:09:35">
+		<buginformation>
+			<summary>Gradle plugin doesn't package runtime project dependency</summary>
+			<description>Say there is a Gradle multi-project build with, for example, 2 sub-projects, projectA and projectB and projectA has a runtime dependency on projectB. If the build task for projectA is run without building projectB first, then the jar for projectB doesn't get included in the repackaged jar.  The output for running `gradlew clean :projectA:build` is as follows:  ``` :projectB:clean :projectA:clean :projectA:compileJava :projectA:processResources :projectA:classes :projectA:jar :projectA:bootRepackage :projectA:assemble :projectB:compileJava :projectB:processResources :projectB:classes :projectB:jar :projectA:compileTestJava UP-TO-DATE :projectA:processTestResources UP-TO-DATE :projectA:testClasses UP-TO-DATE :projectA:test UP-TO-DATE :projectA:check UP-TO-DATE :projectA:build ```  The projectB jar is only built by Gradle because it might be used in tests. When the bootRepackage task runs, the jar is not present and is not present in the final fat jar. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-tools/spring-boot-gradle-plugin/src/main/groovy/org/springframework/boot/gradle/repackage/RepackagePluginFeatures.java</file>
+			<file>spring-boot-integration-tests/src/test/java/org/springframework/boot/gradle/MultiProjectRepackagingTests.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1972" opendate="2014-11-21 16:08:22" fixdate="2014-11-21 16:39:16">
+		<buginformation>
+			<summary>ManagementErrorEndpoint defines a useless @ConfigurationProperties</summary>
+			<description>`ManagementErrorEndpoint` has a `@ConfigurationProperties` with an `error` prefix. That prefix itself looks quite wrong and the class does not even define a property.   It's probably an outdated definition that should be removed. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-actuator/src/main/java/org/springframework/boot/actuate/endpoint/mvc/ManagementErrorEndpoint.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1853" opendate="2014-11-07 10:04:50" fixdate="2014-11-07 12:40:12">
+		<buginformation>
+			<summary>since liquibase 3.3.0 upgrade deployment in wildfly fail</summary>
+			<description>since today (only snaphsot change was liquibase upgrade to 3.3.0) we are no longer able to deploy to wildfly:  ```     Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository': Cannot create inner bean '(inner bean)#6dbd4a99' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#6dbd4a99': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [liquibase.integration.spring.SpringLiquibase]: Factory method 'liquibase' threw exception; nested exception is java.lang.LinkageError: Failed to link liquibase/sdk/watch/WatchCommand$DynamicContentHandler (Module \"deployment.steamstats.war:main\" from Service Module Loader)     Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#6dbd4a99': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [liquibase.integration.spring.SpringLiquibase]: Factory method 'liquibase' threw exception; nested exception is java.lang.LinkageError: Failed to link liquibase/sdk/watch/WatchCommand$DynamicContentHandler (Module \"deployment.steamstats.war:main\" from Service Module Loader)     Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [liquibase.integration.spring.SpringLiquibase]: Factory method 'liquibase' threw exception; nested exception is java.lang.LinkageError: Failed to link liquibase/sdk/watch/WatchCommand$DynamicContentHandler (Module \"deployment.steamstats.war:main\" from Service Module Loader)     Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [liquibase.integration.spring.SpringLiquibase]: Factory method 'liquibase' threw exception; nested exception is java.lang.LinkageError: Failed to link liquibase/sdk/watch/WatchCommand$DynamicContentHandler (Module \"deployment.steamstats.war:main\" from Service Module Loader)     Caused by: java.lang.LinkageError: Failed to link liquibase/sdk/watch/WatchCommand$DynamicContentHandler (Module \"deployment.steamstats.war:main\" from Service Module Loader)     Caused by: java.lang.NoClassDefFoundError: org/eclipse/jetty/server/handler/AbstractHandler     Caused by: java.lang.ClassNotFoundException: org.eclipse.jetty.server.handler.AbstractHandler from [Module \"deployment.steamstats.war:main\" from Service Module Loader]"}} ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot/src/main/java/org/springframework/boot/liquibase/SpringPackageScanClassResolver.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1746" opendate="2014-10-22 16:23:59" fixdate="2014-11-19 14:10:12">
+		<buginformation>
+			<summary>/configprops endpoint doesn't render maps or collections</summary>
+			<description>A `@ConfigurationProperties` bean can have properties that are maps or collections, and they will be bindable as long as the generic type of the elements can be determined at runtime. The /configprops endpoint falsely assumes that since a String cannot be converted to a Map (generically using a the default `ConversionService`), that property is not to be included. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>spring-boot-actuator/src/main/java/org/springframework/boot/actuate/endpoint/ConfigurationPropertiesReportEndpoint.java</file>
+			<file>spring-boot-samples/spring-boot-sample-actuator/src/test/java/sample/actuator/SampleActuatorApplicationTests.java</file>
+			<file>spring-boot-actuator/src/test/java/org/springframework/boot/actuate/endpoint/ConfigurationPropertiesReportEndpointSerializationTests.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

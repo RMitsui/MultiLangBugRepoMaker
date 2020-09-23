@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>119</id>
+		<title>1.0.3大BUG，picasso预览大图崩溃</title>
+		<body>升级到1.0.3后换回picasso加载方式，小图没有问题，点击查看大图时直接崩溃。使用centerCrop()必须调用resize()设置宽或高，不然就抛异常。 if(resize){             creator = creator.resize(width, height).centerCrop();// 放这里         }</body>
+		<created>2017-05-11 03:45:14</created>
+		<closed>2017-06-22 03:39:09</closed>
+	</bug>
+	<bug>
+		<id>115</id>
+		<title>Picasso加载的缩略图不是centerCrop模式</title>
+		<body>缩略图没有保持原比例，Glide显示正常。 Picasso加载图片时有centerCrop()方法可以尝试一下。 目前RxGalleryFinal没有使用自定义实现AbsImageLoader的接口，没办法改动内部实现</body>
+		<created>2017-04-25 09:28:22</created>
+		<closed>2017-05-09 04:11:33</closed>
+	</bug>
+	<bug>
+		<id>114</id>
+		<title>自定义剪裁比例函数失效</title>
+		<body>版本号为：1.0.2 rxGalleryFinal.cropAspectRatioOptions(0, new AspectRatio("1:1", 1, 1)); 这个函数调用无效。 原因如下： **在MediaGridFragment.radioNext(MediaBean)方法中的传参因未知原因被注释了（LINE:439）  //AspectRatio []aspectRatios =  mConfiguration.getAspectRatio(); //bundle.putParcelableArrayList(UCrop.Options.EXTRA_ASPECT_RATIO_OPTIONS,arrayList);//EXTRA_CONFIGURATION** UCropActivity.setupAspectRatioWidget(Intent)方法有正常接收以上参数，但是因为没有传，所以使用默认值 </body>
+		<created>2017-04-25 06:19:30</created>
+		<closed>2017-05-09 04:11:30</closed>
+	</bug>
+	<bug>
+		<id>107</id>
+		<title>多选图片超过最大值空指针</title>
+		<body>不添加多选监听时会崩溃  /**      * @author KARL-dujinyang      */     class OnCheckBoxCheckListener implements CompoundButton.OnCheckedChangeListener{         private MediaBean mediaBean;          public OnCheckBoxCheckListener(MediaBean bean){             this.mediaBean = bean;         }          @Override         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {             if(mConfiguration.getMaxSize() == mMediaActivity.getCheckedList().size() &amp;&amp;                     !mMediaActivity.getCheckedList().contains(mediaBean)) {                 AppCompatCheckBox checkBox = (AppCompatCheckBox) buttonView;                 checkBox.setChecked(false);                 Logger.i("选中：" + mMediaActivity.getResources().getString(R.string.gallery_image_max_size_tip, mConfiguration.getMaxSize()));                 iMultiImageCheckedListener.selectedImgMax(buttonView, isChecked, mConfiguration.getMaxSize());             } else {                 if(iMultiImageCheckedListener!=null)                     iMultiImageCheckedListener.selectedImg(buttonView, isChecked);             }          }     }  iMultiImageCheckedListener空指针</body>
+		<created>2017-04-11 09:42:31</created>
+		<closed>2017-05-09 07:18:34</closed>
+	</bug>
+	<bug>
+		<id>105</id>
+		<title>单选照片存在空指针</title>
+		<body>     //3.测试，快速打开单选图片,flag使用true不裁剪         RxGalleryFinalApi.openRadioSelectImage(_mActivity, new                 RxBusResultSubscriber&lt;ImageRadioResultEvent&gt;() {             @Override             protected void onEvent(ImageRadioResultEvent imageRadioResultEvent) throws Exception {              }         },true); 暂时使用  RxGalleryFinalApi.getInstance(_mActivity).openRadioSelectImage（...）解决; ![qq 20170410162153](https://cloud.githubusercontent.com/assets/12166318/24852473/316d9420-1e0a-11e7-859e-cd1f9104c8ef.png) ![qq 20170410162358](https://cloud.githubusercontent.com/assets/12166318/24852486/3cbb0e34-1e0a-11e7-94a5-3cfafaf272ef.png) </body>
+		<created>2017-04-10 08:32:03</created>
+		<closed>2017-05-09 07:20:14</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>Demo里面拍的照片点击进入裁剪显示出来是黑的。</title>
+		<body></body>
+		<created>2016-09-18 15:58:08</created>
+		<closed>2017-04-14 09:47:35</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>question</title>
+		<body>为什么预览图片这么模糊？有什么办法改进吗 </body>
+		<created>2016-09-12 15:45:41</created>
+		<closed>2016-09-13 07:16:42</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>UI界面问题</title>
+		<body>如果不需要头像取景框下面，那么强大的功能。我该怎么去除那些呢？我只需要圆形和方形。类似微博那种简洁的界面。 </body>
+		<created>2016-09-09 02:25:38</created>
+		<closed>2016-09-13 09:50:40</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>和Ucrop冲突</title>
+		<body>如果已经引入Ucrop，编译时出现如下错误: Multiple dex files define Lcom/yalantis/ucrop/view/TransformImageView </body>
+		<created>2016-09-08 13:51:20</created>
+		<closed>2017-04-11 09:23:58</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>预览时崩溃</title>
+		<body>这是我调用的代码  ``` java         RxGalleryFinal                 .with(getContext())                 .image()                 .multiple()                 .maxSize(9)                 .imageLoader(ImageLoaderType.GLIDE)                 .subscribe(new RxBusResultSubscriber&lt;ImageMultipleResultEvent&gt;() {                     @Override                     protected void onEvent(ImageMultipleResultEvent event) throws Exception {                         Logger.d(event.getResult());                     }                 })                 .openGallery(); ```  当选择照片预览的时候直接崩溃，日志如下：  ``` E/AndroidRuntime: FATAL EXCEPTION: main                                                                           Process: com.hhly.community.debug, PID: 24482                                                                           java.lang.VerifyError: Verifier rejected class cn.finalteam.rxgalleryfinal.ui.adapter.MediaPreviewAdapter due to bad method android.view.View cn.finalteam.rxgalleryfinal.ui.adapter.MediaPreviewAdapter.getView(int, android.view.View, android.view.ViewGroup) (declaration of 'cn.finalteam.rxgalleryfinal.ui.adapter.MediaPreviewAdapter' appears in /data/data/com.hhly.community.debug/files/instant-run/dex/slice-cn.finalteam.rxgalleryfinal-library-0.0.2_9bf38eb913e0c82c6a8d7ca07550e46787ac621f-classes.dex)                                                                               at cn.finalteam.rxgalleryfinal.ui.fragment.MediaPageFragment.onViewCreatedOk(MediaPageFragment.java:93)                                                                               at cn.finalteam.rxgalleryfinal.ui.fragment.BaseFragment.onViewCreated(BaseFragment.java:61)                                                                               at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1127)                                                                               at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1290)                                                                               at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:801)                                                                               at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1677)                                                                               at android.support.v4.app.FragmentManagerImpl$1.run(FragmentManager.java:536)                                                                               at android.os.Handler.handleCallback(Handler.java:739)                                                                               at android.os.Handler.dispatchMessage(Handler.java:95)                                                                               at android.os.Looper.loop(Looper.java:158)                                                                               at android.app.ActivityThread.main(ActivityThread.java:7232)                                                                               at java.lang.reflect.Method.invoke(Native Method)                                                                               at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)                                                                               at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120) ``` </body>
+		<created>2016-09-06 02:30:11</created>
+		<closed>2016-09-13 07:12:39</closed>
+	</bug>
+	<bug>
+		<id>13</id>
+		<title>UCropActivity里有个bug</title>
+		<body>Caused by: java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child's parent first.     at android.view.ViewGroup.addViewInner(ViewGroup.java:4442)     at android.view.ViewGroup.addView(ViewGroup.java:4278)     at android.view.ViewGroup.addView(ViewGroup.java:4219)     at android.view.ViewGroup.addView(ViewGroup.java:4192)     at com.yalantis.ucrop.UCropActivity.addBlockingView(UCropActivity.java:573)     at com.yalantis.ucrop.UCropActivity.onStart(UCropActivity.java:117) </body>
+		<created>2016-08-01 02:47:38</created>
+		<closed>2016-08-01 04:36:33</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title> README.md 里的demo 有bug</title>
+		<body>![image](https://cloud.githubusercontent.com/assets/6706496/17122919/4ee3f4ae-5312-11e6-8ec5-29df4b2324fb.png) </body>
+		<created>2016-07-26 01:22:07</created>
+		<closed>2016-08-11 08:42:07</closed>
+	</bug>
+</bugs>

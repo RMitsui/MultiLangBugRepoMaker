@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>34</id>
+		<title>4.4系统在切换fragment时改变状态栏有问题</title>
+		<body>首页用的图片，其他三个fragment用的颜色，发现切换到其他界面后在切回首页，图片有部分会被不见掉。debug看了一下，第一次进来，调用clearPreviousSetting方法时，不会调用以下代码  ``` java if (count &gt; 0 &amp;&amp; decorView.getChildAt(count - 1) instanceof StatusBarView) {             decorView.removeViewAt(count - 1);             ViewGroup rootView = (ViewGroup) ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0);             rootView.setPadding(0, -getStatusBarHeight(activity), 0, 0);         } ```  所以显示正常。 切换到其他界面在切回首页时，会调用上面的代码，导致paddingTop是负数，图片上移，所以看起来上面有部分不见了。 修改为rootView.setPadding(0, 0, 0, 0);后发现可以用了 </body>
+		<created>2016-08-17 03:26:49</created>
+		<closed>2016-08-17 09:19:02</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>StatusBarUtil在CoordinatorLayout中无效，状态栏变白色</title>
+		<body>StatusBarUtil在CoordinatorLayout中无效，状态栏变白色 </body>
+		<created>2016-06-25 14:43:15</created>
+		<closed>2016-08-14 08:45:54</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>DrawerLayout 改变颜色，上面会多出一条状态栏来</title>
+		<body>第一次设置颜色是没问题的 ![qq 20160607163038](https://cloud.githubusercontent.com/assets/7372078/15850937/37dd7570-2ccd-11e6-9770-77030d9a1368.png) ，第二次想改变颜色就出问题了 ![qq 20160607163240](https://cloud.githubusercontent.com/assets/7372078/15850986/7d90c612-2ccd-11e6-9ebf-ec01286b9358.png) </body>
+		<created>2016-06-07 08:33:31</created>
+		<closed>2016-06-11 13:00:38</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>toolbar被覆盖了statusbar的位置</title>
+		<body>出现的问题:toolbar被覆盖了statusbar的位置,米3, Sys:6.1  xml:  ``` xml &lt;android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"     android:id="@+id/dl_main"     android:layout_width="match_parent"     android:layout_height="match_parent"     android:fitsSystemWindows="true"&gt;       &lt;LinearLayout         android:layout_width="match_parent"         android:layout_height="match_parent"         android:orientation="vertical"&gt;          &lt;android.support.v7.widget.Toolbar             android:id="@+id/toolbar"             android:layout_width="match_parent"             android:layout_height="?attr/actionBarSize"             android:background="#ccffee" /&gt;           &lt;FrameLayout             android:id="@+id/fl_main_content"             android:layout_width="match_parent"             android:layout_height="match_parent" /&gt;       &lt;/LinearLayout&gt;      &lt;LinearLayout         android:id="@+id/ll_main_menu_parent"         android:layout_width="match_parent"         android:layout_height="match_parent"         android:layout_gravity="start"&gt;          &lt;FrameLayout             android:id="@+id/fl_main_menu"             android:layout_width="match_parent"             android:layout_height="match_parent" /&gt;      &lt;/LinearLayout&gt;   &lt;/android.support.v4.widget.DrawerLayout&gt; ```  java:  @Override     public void setStatusBar() {         StatusBarUtils.setTranslucentForDrawerLayout(this, dl_main, 0);     }  ``` java  ``` </body>
+		<created>2016-04-04 15:46:31</created>
+		<closed>2016-06-03 04:39:32</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>DrawerLayout中toolbar设置app:layout_scrollFlags="scroll|enterAlways"问题</title>
+		<body>当向上滑动时，本该被状态栏遮住的toolbar却显示在了状态栏上面，  ```         StatusBarUtil.setColorForDrawerLayout(this, drawer,                 ContextCompat.getColor(this,R.color.colorPrimary), 0);          &lt;android.support.v7.widget.Toolbar             android:id="@+id/toolbar"             android:layout_width="match_parent"             android:layout_height="?attr/actionBarSize"             app:contentInsetStart="0dp"             app:layout_scrollFlags="scroll|enterAlways"             &gt;  ``` </body>
+		<created>2016-03-31 06:42:25</created>
+		<closed>2016-08-12 17:59:10</closed>
+	</bug>
+</bugs>

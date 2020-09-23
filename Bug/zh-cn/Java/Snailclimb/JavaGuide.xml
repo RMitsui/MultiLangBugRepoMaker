@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>900</id>
+		<title>枚举那片文章的EnumMap的groupPizzaByStatus方法有问题</title>
+		<body>[文章地址](https://snailclimb.gitee.io/javaguide/#/docs/java/basic/%E7%94%A8%E5%A5%BDJava%E4%B8%AD%E7%9A%84%E6%9E%9A%E4%B8%BE%E7%9C%9F%E7%9A%84%E6%B2%A1%E6%9C%89%E9%82%A3%E4%B9%88%E7%AE%80%E5%8D%95?id=_62-enummap)    ```java public static EnumMap&lt;PizzaStatus, List&lt;Pizza&gt;&gt;    groupPizzaByStatus(List&lt;Pizza&gt; pizzaList) {     EnumMap&lt;PizzaStatus, List&lt;Pizza&gt;&gt; pzByStatus =        new EnumMap&lt;PizzaStatus, List&lt;Pizza&gt;&gt;(PizzaStatus.class);      for (Pizza pz : pizzaList) {         PizzaStatus status = pz.getStatus();         if (pzByStatus.containsKey(status)) {             pzByStatus.get(status).add(pz);         } else {             List&lt;Pizza&gt; newPzList = new ArrayList&lt;Pizza&gt;();             newPzList.add(pz);             pzByStatus.put(status, newPzList);         }     }     return pzByStatus; }  ```  方法中对pizzaList在for循环中进行add操作，导致ConcurrentModificationException。    将for循环部分代码，替换成如下代码：  ```java         Iterator&lt;Pizza&gt; iterator = pizzaList.iterator();         while (iterator.hasNext()) {             Pizza pz = iterator.next();             PizzaStatus status = pz.getStatus();             if (pzByStatus.containsKey(status)) {                 pzByStatus.get(status).add(pz);             } else {                 List&lt;Pizza&gt; newPzList = new ArrayList&lt;&gt;();                 newPzList.add(pz);                 pzByStatus.put(status, newPzList);             }         } ```  </body>
+		<created>2020-08-18 09:56:23</created>
+		<closed>2020-08-23 03:10:22</closed>
+	</bug>
+	<bug>
+		<id>897</id>
+		<title>Full GC 和Major GC</title>
+		<body>![截图](http://cdn.qingtianblog.com/pic/2020/08/17/2020-08-17_191307.png)  **这边修改的还是不对啊，在[知乎讨论](https://www.zhihu.com/question/41922036)中R大说了Full GC是对整个堆区的GC而不是Major GC，而且参考周志明先生的《深入了解Java虚拟机》的最新版，已经把之前很多不妥当的表述改正了**  ![截图2](http://cdn.qingtianblog.com/pic/2020/08/17/Screenshot_20200817_191846_com.tencent.weread.jpg)  - 部分收集(Partial GC)：指目标不是完整收集整个Java堆的垃圾收集，其中又分：   - 新生代GC(Minor GC/Young GC)：指发生新生代的的垃圾收集动作，Minor GC 非常频繁，回收速度一般也比较快。   - 老年代收集(Major GC/Old GC)：指目标只是老年代的垃圾收集。目前只有CMS收集器会有单独收集老年代的行为。另外请注意“Major GC”这个说法现在有点混淆，在不同的资料上常有不同所指，读者需按上下文区分到底是指老年代的收集还是整堆收集。   - 混合收集(Mixed GC)：指目标是收集整个新生代以及部分老年代的垃圾收集。目前只有G1收集器会有这种行为。 - 整堆收集(Full GC)：收集整个Java堆和方法区的垃圾收集。</body>
+		<created>2020-08-17 11:25:13</created>
+		<closed>2020-08-23 03:18:24</closed>
+	</bug>
+	<bug>
+		<id>805</id>
+		<title>在事务隔离级别中，MySQL InnoDB 存储引擎的隔离级别的描述也许有个问题</title>
+		<body>“这里需要注意的是：与 SQL 标准不同的地方在于InnoDB 存储引擎在 **REPEATABLE-READ（可重读）事务隔离级别下使用的是Next-Key Lock 锁算法，因此可以避免幻读的产生，这与其他数据库系统(如 SQL Server)是不同的。所以说InnoDB 存储引擎的默认支持的隔离级别是 REPEATABLE-READ（可重读） 已经可以完全保证事务的隔离性要求，即达到了 SQL标准的SERIALIZABLE(可串行化)**隔离级别。  因为隔离级别越低，事务请求的锁越少，所以大部分数据库系统的隔离级别都是READ-COMMITTED(读取提交内容):，但是你要知道的是InnoDB 存储引擎默认使用 **REPEATABLE-READ（可重读）**并不会有任何性能损失。”  在以上这段内容中，InnoDB 存储引擎的默认支持的隔离级别REPEATABLE-READ（可重读） 并不能完全避免幻读的产生。原因详见请看以下链接，该文有引用MySQL的官方文档来解释。结论是： “结论：MySQL InnoDB的可重复读并不保证避免幻读，需要应用使用加锁读来保证。而这个加锁度使用到的机制就是next-key locks。”  https://blog.csdn.net/Marvel__Dead/article/details/70209641  请问有关人士可以核实吗？</body>
+		<created>2020-06-04 06:50:07</created>
+		<closed>2020-06-06 12:05:24</closed>
+	</bug>
+	<bug>
+		<id>789</id>
+		<title>Full GC收集的是整个堆区和方法区</title>
+		<body>对于该处的问题有确定的答案 ![截屏2020-05-20 下午10 17 57](https://user-images.githubusercontent.com/12171626/82457646-3fb2e400-9ae8-11ea-8b20-7267477f75fc.png)  full gc收集的是整个堆区和方法区 ![截屏2020-05-20 下午10 11 18](https://user-images.githubusercontent.com/12171626/82457742-5ce7b280-9ae8-11ea-8284-d6973477dc1a.png) 出自《深入理解Java虚拟机：JVM高级特性与最佳实践》（第三版） </body>
+		<created>2020-05-20 14:23:19</created>
+		<closed>2020-05-23 02:00:29</closed>
+	</bug>
+	<bug>
+		<id>747</id>
+		<title>JVM 垃圾清理  标记-清除算法    常量池移除问题</title>
+		<body>该算法分为“标记”和“清除”阶段：首先标记出所有活动的对象，在标记完成后统一回收所有未被标记的对象。 《深入理解jvm》底2版p69的描述“标记-清除算法 该算法分为“标记”和“清除”阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。  另外，jdk 7以后只是把字符串常量池从perm区移到了java heap区，不是整个运行时常量池。 [[参考博客:](https://blog.csdn.net/q5706503/article/details/84640762) 希望楼主参考一下。</body>
+		<created>2020-04-22 06:32:23</created>
+		<closed>2020-04-22 08:16:20</closed>
+	</bug>
+	<bug>
+		<id>746</id>
+		<title>Java 并发基础常见面试题总结-2.4中“所有对象都在这里分配内存”说法有误</title>
+		<body>我在“Java 并发基础常见面试题总结“这一章节中看到2.4小节有以下一句话： “堆和方法区是所有线程共享的资源，其中堆是进程中最大的一块内存，主要用于存放新创建的对象 (所有对象都在这里分配内存)”。 此处 (所有对象都在这里分配内存) 的说法不完全正确，在《深入理解Java虚拟机中》关于Java堆内存有这样一段描述： 但是，随着JIT编译期的发展与逃逸分析技术逐渐成熟，栈上分配、标量替换优化技术将会导致一些微妙的变化，所有的对象都分配到堆上也渐渐变得不那么“绝对”了。 从jdk 1.7开始已经默认开启逃逸分析，如果某些方法中的对象引用没有被返回或者未被外面使用（也就是未逃逸出去），那么对象可以直接在栈上分配内存。</body>
+		<created>2020-04-22 05:01:45</created>
+		<closed>2020-04-22 08:32:46</closed>
+	</bug>
+	<bug>
+		<id>736</id>
+		<title>2.3.6 小节中关于线程生命周期和状态的配图有误</title>
+		<body>作者所使用的这张图中有一处小细节有误， ![微信截图_20200418103352](https://user-images.githubusercontent.com/32639811/79626112-2ec92880-8160-11ea-8fcc-6a4bad843579.png) 这里原图的作者出了一点小纰漏，`join`是`Thread`类下的方法，但这里写成了`Object`，**应改为`Thread.join()`**，建议作者在配图后指出，以免误导读者。 ![微信截图_20200418103627](https://user-images.githubusercontent.com/32639811/79626166-967f7380-8160-11ea-819a-c0c7e2a582a8.png)  感谢作者大大的面试笔记，我真的受益良多！！ </body>
+		<created>2020-04-18 02:42:14</created>
+		<closed>2020-05-09 01:10:54</closed>
+	</bug>
+	<bug>
+		<id>734</id>
+		<title>2.1.32小节中Java 异常类层次结构图的一些问题</title>
+		<body>作者在这一小节中使用的配图里在`RuntimeException`中包含了`ClassNotFoundException`：  ![微信截图_20200418100205](https://user-images.githubusercontent.com/32639811/79625418-b2344b00-815b-11ea-9d67-dea00df0eb86.png) 但通过查阅[Java SE8文档](https://docs.oracle.com/javase/8/docs/api/)，可知`ClassNotFoundException`并不继承自`RuntimeException`，应属于checked异常：  ![微信截图_20200418100731](https://user-images.githubusercontent.com/32639811/79625570-7057d480-815c-11ea-998c-a3837c4a2ce3.png)      </body>
+		<created>2020-04-18 02:08:17</created>
+		<closed>2020-04-22 09:29:20</closed>
+	</bug>
+	<bug>
+		<id>723</id>
+		<title>重写方法，返回值类型是不能变的</title>
+		<body>![image](https://user-images.githubusercontent.com/9526190/78964976-4a17b080-7b2e-11ea-92c3-98d5dbf99613.png) </body>
+		<created>2020-04-10 05:22:38</created>
+		<closed>2020-04-12 07:03:54</closed>
+	</bug>
+	<bug>
+		<id>692</id>
+		<title>Java基础知识部分第36点关于静态代码块的描述有误</title>
+		<body> [链接:](https://snailclimb.gitee.io/javaguide/#/docs/java/basic/final,static,this,super?id=static%e9%9d%99%e6%80%81%e4%bb%a3%e7%a0%81%e5%9d%97%e4%b8%8e%e9%9d%9e%e9%9d%99%e6%80%81%e4%bb%a3%e7%a0%81%e5%9d%97%e6%9e%84%e9%80%a0%e4%bb%a3%e7%a0%81%e5%9d%97)  原文是:  &gt; "当执行 Test.test(); 时输出： &gt;  &gt; 静态代码块!--静态方法中的内容! --静态方法中的代码块！--"  实际上静态代码块只会执行一次,调用test()的时候不会执行</body>
+		<created>2020-03-25 12:48:23</created>
+		<closed>2020-04-12 07:20:46</closed>
+	</bug>
+	<bug>
+		<id>685</id>
+		<title>关于CountDownLatch 死锁检测的用法 疑问</title>
+		<body>#死锁检测：一个非常方便的使用场景是，你可以使用 n 个线程访问共享资源，在每次测试阶段的线程数目是不同的，并尝试产生死锁。# 没看懂，搜了一下大部分都是在讲怎么运用CountDownLatch 制造死锁，有没有人能举例一下？</body>
+		<created>2020-03-20 08:08:56</created>
+		<closed>2020-03-21 12:04:42</closed>
+	</bug>
+	<bug>
+		<id>673</id>
+		<title>JavaGuide/docs/java/Java程序设计题.md中的错误</title>
+		<body>文中使用数组实现栈代码内： `//TODO：返回栈顶元素并出栈     private int pop() {         if (count == -1)             throw new IllegalArgumentException("Stack is empty.");         count--;         return storage[count];     }` 实际运行后发现当count==0时，栈已为空，此时做count--操作会报错： `storage[count]=java.lang.IndexOutOfBoundsException:Invalid array index:-1` 是否应该将报空的条件修改为： `if(count == 0)`</body>
+		<created>2020-03-06 03:12:20</created>
+		<closed>2020-03-08 01:16:37</closed>
+	</bug>
+	<bug>
+		<id>667</id>
+		<title>Java反射的内容跳到了404。目测是链接里的大小写写错了吧……</title>
+		<body>RT  ![Snip20200304_2](https://user-images.githubusercontent.com/13863156/75838574-43946b80-5e01-11ea-90b8-c459cdb524d6.png)  ![Snip20200304_1](https://user-images.githubusercontent.com/13863156/75838565-4000e480-5e01-11ea-8d79-bddb8a20fad4.png)  ![Snip20200304_5](https://user-images.githubusercontent.com/13863156/75838729-af76d400-5e01-11ea-98eb-98fbaf938a1a.png) </body>
+		<created>2020-03-04 02:21:27</created>
+		<closed>2020-03-04 06:13:37</closed>
+	</bug>
+	<bug>
+		<id>665</id>
+		<title>回文串构成的第二种情况定义有误</title>
+		<body>+ 位置：算法-几道常见的子符串算法题-4.1 + 内容：字符出现次数为双数的组合+一个只出现一次的字符 + 有误点：只出现一次有误，因为也可以是出现三次、五次    + 例子：aabbcccd，此时最长应为 abcccba，c出现为三次 + 个人见解：应该为**字符出现次数为偶数的组合+单个字符中出现次数最多且为奇数次的字符**</body>
+		<created>2020-03-03 11:31:51</created>
+		<closed>2020-03-18 13:28:50</closed>
+	</bug>
+	<bug>
+		<id>655</id>
+		<title>Java基础知识12-AbstractStringBuilder类中不是使用char[]数组保存字符串, 而是byte[]</title>
+		<body>AbstractStringBuilder类中不是使用char[]数组保存字符串, 而是byte[] 如下图  ![image](https://user-images.githubusercontent.com/55373826/75324472-fe78b280-58b1-11ea-8cad-8af871ea0fb3.png) </body>
+		<created>2020-02-26 08:08:25</created>
+		<closed>2020-02-26 10:46:32</closed>
+	</bug>
+	<bug>
+		<id>650</id>
+		<title>异步概念错误</title>
+		<body>![image](https://user-images.githubusercontent.com/41150022/75085617-0bba3800-5566-11ea-847e-829519ecca37.png)   个人认为这句话描述错误: "被调用者并没有返回结果，此时我们可以处理其他的请求，被调用者通常依靠事件，回调等机制来通知调用者其返回结果。"   同步: 比如调用一个方法计算1 - 100的和，如果该方法没有计算完成，那么该方法就不返回。  异步: 异步需要操作系统的支持。 调用一个方法计算1-100的和，刚调用这个方法就返回了，但是由于它没有返回结果，所以需要被调用的这个方法来通知调用者，或者通过一个回调函数来告诉被调用的方法在计算出结果后该做些什么。  阻塞: 比如调用一个方法计算1-100的和。如果该方法一直计算，没有返回，那么调用方法的线程就必须等待方法执行完成。   非阻塞: 比如调用一个方法计算1-100的和。就算该方法一直计算，不返回，当前线程也不必一直阻塞的等待方法的结果，而是中途可以去做其它的事情,但也要轮询的检查方法是否处理完。   &gt;我所理解的同步与异步的概念是针对被调用者而言的，阻塞与非阻塞是针对调用者而言的。  &gt;同步/异步与阻塞/非阻塞这2组概念一毛钱关系都没有，虽然上面举的烧水的例子确实没错，但很容易让人以为这2组概念有啥关系。。   </body>
+		<created>2020-02-22 03:28:42</created>
+		<closed>2020-02-26 11:22:34</closed>
+	</bug>
+	<bug>
+		<id>645</id>
+		<title>关于AQS组件部分的文章的错误</title>
+		<body>![image](https://user-images.githubusercontent.com/41150022/74838697-ffb05980-535e-11ea-8d86-93fb5927fe9b.png)  如上图: 关于文章中的:  “ Semaphore(信号量)可以指定多个线程同时访问某个资源。” 这句话在我阅读源码后发现，Semaphore 可以指定一次性可以指定最多 permits个线程执行任务，而不是 :  "同时"，因为Semaphore它的实现是只要AQS的state&gt;0 == true，那么线程通过不断自旋CAS，就有机会获得执行任务的机会，所以只要在线程自旋期间，state是大于0的，那么任何一个线程都有可能判断成功，而不是多个线程同时成功。。  然后关于这部分AQS组件的描述个人认为有点模糊不清，所以我在整理后重新组织了下语言:  ##### CountDownLatch CountDownLatch允许count个线程阻塞在一个地方，直至所有线程的任务都执行完毕。  &gt;CountDownLatch是共享锁的一种实现,它默认构造AQS的state为count。 &gt;当线程使用countDown方法时,其实使用了tryReleaseShared方法以CAS的操作来减少state, &gt;直至state为0就代表所有的线程都调用了countDown方法。当调用await方法的时候，如果state不为0，就代表仍然有线程没有调用countDown方法，那么就把已经调用过countDown的线程都放入阻塞队列Park,并自旋CAS判断state == 0，直至最后一个线程调用了countDown，使得state == 0， &gt;于是阻塞的线程便判断成功，全部往下执行。  ##### Semaphore Semaphore允许一次性最多(不是同时)permits个线程执行任务。  &gt;Semaphore与CountDownLatch一样，也是共享锁的一种实现。 &gt;它默认构造AQS的state为permits。当执行任务的线程数量超出permits,那么多余的线程将会被放入阻塞队列Park,并自旋判断state是否大于0。 &gt;只有当state大于0的时候，阻塞的线程才能继续执行,此时先前执行任务的线程继续执行release方法， &gt;release方法使得state的变量会加1，那么自旋的线程便会判断成功。 &gt;如此，每次只有最多不超过permits数量的线程能自旋成功，便限制了执行任务线程的数量。 &gt; &gt;所以这也是我为什么说它可能不是permits个线程同时执行， &gt;因为只要state&gt;0,线程就有机会执行.  ##### CycliBarrier CycliBarrier的功能与CountDownLatch相似，但是CountDownLatch的实现是基于AQS的， 而CycliBarrier是基于ReentrantLock(ReentrantLock也属于AQS同步器)和Condition的.  &gt;CountDownLatch虽然可以令线程阻塞，但是CountDownLatch只能await一次就不能使用了， &gt;而CycliBarrier有Generation代的概念，一个代，就代表CycliBarrier的一个循环， &gt;这也是CycliBarrier支持重复await的原因。     老哥可以选择性的更改下错误的部分。。。  </body>
+		<created>2020-02-19 13:41:40</created>
+		<closed>2020-03-13 10:23:45</closed>
+	</bug>
+	<bug>
+		<id>604</id>
+		<title>最后写的例子论证ensureCapacity方法是有错的，没那么夸张的差距</title>
+		<body>```  public static void main(String[] args) {         final int N = 10000000;          ArrayList&lt;Object&gt;  list2 = new ArrayList&lt;Object&gt;();         long startTime1 = System.currentTimeMillis();         list2.ensureCapacity(N);         for (int i = 0; i &lt; N; i++) {             list2.add(i);         }         long endTime1 = System.currentTimeMillis();         System.out.println("使用ensureCapacity方法后：" + (endTime1 - startTime1));          ArrayList&lt;Object&gt; list = new ArrayList&lt;Object&gt;();          long startTime = System.currentTimeMillis();         for (int i = 0; i &lt; N; i++) {             list.add(i);         }         long endTime = System.currentTimeMillis();         System.out.println("使用ensureCapacity方法前：" + (endTime - startTime));      } ```  结果为 使用ensureCapacity方法后：1945 使用ensureCapacity方法前：902   应该分别跑，确实能快一点，快不了那么多，20倍差距...</body>
+		<created>2019-12-27 09:29:18</created>
+		<closed>2019-12-29 02:10:37</closed>
+	</bug>
+	<bug>
+		<id>593</id>
+		<title>就是JDK8的新特性讲解的TODO疑问</title>
+		<body>就是关于JDK新特性那章节的接口默认方法中，有个地方使用了“//TODO通过匿名内部类方式访问接口”，这点我感觉容易导致歧义，因为这里我感觉好像是注释的感觉，但是按道理说TODO是表示程序中的代码还有部分任务没有完成，后面待解决的意思，作者觉得呢？</body>
+		<created>2019-12-17 03:21:25</created>
+		<closed>2020-03-13 10:26:00</closed>
+	</bug>
+	<bug>
+		<id>591</id>
+		<title>单位换算写错-不了解布隆过滤器？一文给你整的明明白白！</title>
+		<body>不了解布隆过滤器？一文给你整的明明白白！ 1.什么是布隆过滤器？下的 “这样申请一个 100w 个元素的位数组只占用 1000000 / 8 = 125000_B = 15625 byte ≈ 15.3kb 的空间。”写错 </body>
+		<created>2019-12-13 11:09:37</created>
+		<closed>2019-12-15 05:27:30</closed>
+	</bug>
+	<bug>
+		<id>584</id>
+		<title>关于字符串常量至少一个字符结束标志？</title>
+		<body>Java的String对象应该并不需要也没有字符结束标志把，与C是不同的。 </body>
+		<created>2019-12-09 04:42:57</created>
+		<closed>2019-12-23 04:30:33</closed>
+	</bug>
+	<bug>
+		<id>579</id>
+		<title>Java 内存区域中元空间 OOM 描述有问题</title>
+		<body>![image](https://user-images.githubusercontent.com/47094935/70035599-224b9580-15ee-11ea-9be9-b45e649d6397.png) 永远不会得到 java.lang.OutOfMemoryError 这个说法错误了，应该改为不容易出现 java.lang.OutOfMemoryError。</body>
+		<created>2019-12-03 08:59:51</created>
+		<closed>2019-12-06 08:49:55</closed>
+	</bug>
+	<bug>
+		<id>578</id>
+		<title>Java 内存区域中堆的划分有问题</title>
+		<body>&lt;img width="519" alt="屏幕快照 2019-12-03 15 26 10" src="https://user-images.githubusercontent.com/47094935/70029118-4fde1200-15e1-11ea-92e3-9efef5f500ae.png"&gt; 应该是：堆内存只能分为两块：新生代 Young Generation 和老年代 Old Generation。 永生代 Permanent Generation 是在 JDK 1.8 之前，HotSpot 虚拟机把方法区当成永久代</body>
+		<created>2019-12-03 07:29:53</created>
+		<closed>2019-12-06 08:49:55</closed>
+	</bug>
+	<bug>
+		<id>571</id>
+		<title>这里是不是字打错了</title>
+		<body>![image](https://user-images.githubusercontent.com/40761601/69806864-db8d2280-121e-11ea-8160-33277e8f380c.png) https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/jvm/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.md</body>
+		<created>2019-11-28 12:37:44</created>
+		<closed>2019-11-29 12:42:57</closed>
+	</bug>
+	<bug>
+		<id>568</id>
+		<title>”在浏览器中输入url地址到显示主页的过程,整个过程会使用哪些协议“中提到的IP数据包在路由器之间使用的协议为OPSF协议错误，应该为OSPF协议。</title>
+		<body>IP数据包在路由器之间传播大致分为IGP和BGP协议，而IGP目前主流为OSPF协议，思科，华为和H3C等主流厂商都有各自实现并使用；BGP协议为不同AS（自治系统号）间路由传输，也分为I-BGP和E-BGP，详细资料请查看《TCP/IP卷一》</body>
+		<created>2019-11-25 12:13:52</created>
+		<closed>2019-11-29 12:43:24</closed>
+	</bug>
+	<bug>
+		<id>557</id>
+		<title>StackOverflowError和OutOfMemoryError均是错误,而不是异常</title>
+		<body>如题: ![error](https://user-images.githubusercontent.com/41150022/69211368-d255e300-0b98-11ea-96e7-8155de97d707.png) </body>
+		<created>2019-11-20 05:22:04</created>
+		<closed>2019-12-01 05:33:39</closed>
+	</bug>
+	<bug>
+		<id>547</id>
+		<title>Docker-Image.md 中查找官方镜像命令错误</title>
+		<body>docker search --filter=is-offical=true mysql 命令应该为: docker search --filter=is-official=true mysql</body>
+		<created>2019-11-15 05:48:32</created>
+		<closed>2019-11-20 11:30:29</closed>
+	</bug>
+	<bug>
+		<id>527</id>
+		<title>String常量池的位置，是在Heap里还是其他地方方法区？</title>
+		<body>看到引用了这张说在heap里的图，  ![在heap里](https://cdn.journaldev.com/wp-content/uploads/2012/11/String-Pool-Java1.png)  但也有这样 不在heap里的 ![不在heap的](https://user-images.githubusercontent.com/31399290/68081523-20a17d00-fe4a-11e9-8398-18e8469f8bc7.png)  请问String的常量池，是在内存哪个区域呀？ 包装类的呢？</body>
+		<created>2019-11-03 06:59:01</created>
+		<closed>2019-11-16 00:24:05</closed>
+	</bug>
+	<bug>
+		<id>516</id>
+		<title>《类加载器》中 ，自定义类加载器，应该重写loadClass方法，不是重载</title>
+		<body>![image](https://user-images.githubusercontent.com/20264874/67450621-82254880-f60d-11e9-8eb6-5d1f2796685e.png) </body>
+		<created>2019-10-24 03:24:07</created>
+		<closed>2019-10-27 02:59:08</closed>
+	</bug>
+	<bug>
+		<id>473</id>
+		<title>MyISAM与InnoDB，是不是有问题</title>
+		<body>MyISAM更适合读密集的表，而InnoDB更适合写密集的表。 在数据库做主从分离的情况下，经常选择MyISAM作为主库的存储引擎。   MyISAM更适合读密集的表 ，那主库写得话应该采用InnoDB，有歧义 </body>
+		<created>2019-09-15 09:31:42</created>
+		<closed>2019-10-25 15:26:01</closed>
+	</bug>
+	<bug>
+		<id>429</id>
+		<title>链接404</title>
+		<body>大佬，docs/system-design/website-architecture/分布式.md， “图解 Paxos 一致性协议”，“Zookeeper ZAB 协议分析” ，这俩链接失效了！</body>
+		<created>2019-08-07 08:25:08</created>
+		<closed>2019-08-18 10:10:21</closed>
+	</bug>
+	<bug>
+		<id>415</id>
+		<title>《并发容器总结》里的ConcurrentHashMap里面的三个链接失效了</title>
+		<body>![image](https://user-images.githubusercontent.com/38202858/62052101-6a753880-b247-11e9-959d-504567aca700.png) </body>
+		<created>2019-07-29 13:26:12</created>
+		<closed>2019-08-04 08:50:57</closed>
+	</bug>
+	<bug>
+		<id>406</id>
+		<title>勘误：一文搞懂 RabbitMQ 的重要概念以及安装中的错误</title>
+		<body>BindingKey 中可以存在两种特殊字符串“*”和“#”，用于做模糊匹配，其中“.”用于匹配一个单词，“#”用于匹配多个单词(可以是零个)。  这里的“.”应改为“*”</body>
+		<created>2019-07-24 06:54:35</created>
+		<closed>2019-07-27 11:49:43</closed>
+	</bug>
+	<bug>
+		<id>396</id>
+		<title>勘误：字符串算法题-#6字符串转换整数有误</title>
+		<body>### 我发起这个 ISSUE 的主要目的 - [ ] 讨论 - [x] 勘误 - [ ] 建议 ### 涉及文章的相对路径 [几道常见的子符串算法题.md #6-把字符串转换成整数](https://github.com/Snailclimb/JavaGuide/blob/master/docs/dataStructures-algorithms/%E5%87%A0%E9%81%93%E5%B8%B8%E8%A7%81%E7%9A%84%E5%AD%90%E7%AC%A6%E4%B8%B2%E7%AE%97%E6%B3%95%E9%A2%98.md#6-%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B4%E6%95%B0) ### 错误原文或讨论点 原文： ```java public static int StrToInt(String str) {     ......     return flag == 1 ? res : -res; } ``` 应改为：  ```java public static int StrToInt(String str) {     ......     return flag != 2 ? res : -res; } ``` ***  [算法总结——几道常见的子符串算法题------把字符串转换成整数](https://github.com/Snailclimb/JavaGuide/issues/70) Issue #70 提过此问题，但是并未修改！  *** </body>
+		<created>2019-07-19 04:16:05</created>
+		<closed>2019-12-01 05:46:11</closed>
+	</bug>
+	<bug>
+		<id>388</id>
+		<title>注释错误</title>
+		<body>![image](https://user-images.githubusercontent.com/29087372/61213046-8997a480-a736-11e9-9155-6447c1821593.png) 这边输出应该是true吧</body>
+		<created>2019-07-15 11:27:53</created>
+		<closed>2019-07-16 14:55:01</closed>
+	</bug>
+	<bug>
+		<id>384</id>
+		<title>关于在线阅读版本未同步</title>
+		<body>在gitee的在线阅读版本中，java基础少了一个阅读项， ![image](https://user-images.githubusercontent.com/27286340/61094456-e0c11f00-a481-11e9-8cea-4fb985b9ae41.png) 在snailclimb.top的在线阅读版本中，其阅读项的名字也未同步过来 ![image](https://user-images.githubusercontent.com/27286340/61094590-7361be00-a482-11e9-9523-f1fc52495e98.png)   在gitHub中正常的为 ![image](https://user-images.githubusercontent.com/27286340/61094532-2a116e80-a482-11e9-9e48-2c1c4b17ae30.png)  [gitee笨笨传送门](https://snailclimb.gitee.io/javaguide/#/?id=java) [top笨笨传送门](https://snailclimb.top/JavaGuide/#/?id=java)  可惜我不能提PR，不然就自己动手了，知道作者大大你辛苦了</body>
+		<created>2019-07-12 00:54:05</created>
+		<closed>2019-07-13 16:22:03</closed>
+	</bug>
+	<bug>
+		<id>378</id>
+		<title>链接失效(404)</title>
+		<body>在线阅读的版本(两个)里都有一个链接失效了，报错404。 JavaGuide-&gt;java-&gt;容器-&gt;Java容器常见面试题/知识点总结中，**说一说 ArrayList 的扩容机制吧**的链接失效了，两个都失效了， ![image](https://user-images.githubusercontent.com/27286340/60776105-11d8e100-a15c-11e9-9ee7-a1990155ecb2.png)  [在线阅读失效链接1](https://snailclimb.top/JavaGuide/#/java/collection/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98?id=%E8%AF%B4%E4%B8%80%E8%AF%B4-arraylist-%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6%E5%90%A7) [在线阅读失效链接2](https://snailclimb.gitee.io/javaguide/#/java/collection/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98?id=%E8%AF%B4%E4%B8%80%E8%AF%B4-arraylist-%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6%E5%90%A7)</body>
+		<created>2019-07-08 00:42:21</created>
+		<closed>2019-07-11 13:57:23</closed>
+	</bug>
+	<bug>
+		<id>360</id>
+		<title>rabbitmq入门的webpage页面丢失</title>
+		<body></body>
+		<created>2019-06-22 17:58:07</created>
+		<closed>2019-08-19 15:08:57</closed>
+	</bug>
+	<bug>
+		<id>357</id>
+		<title>java-&gt;容器-&gt;剖析面试最常见问题之Java基础知识-&gt;图片显示错误</title>
+		<body>java-&gt;容器-&gt;剖析面试最常见问题之Java基础知识-&gt;ConcurrentHashMap 和 Hashtable 的区别-&gt;JDK1.8的ConcurrentHashMap（TreeBin: 红黑二叉树节点 Node: 链表节点） 图片显示错误</body>
+		<created>2019-06-21 08:11:32</created>
+		<closed>2019-06-21 13:22:24</closed>
+	</bug>
+	<bug>
+		<id>350</id>
+		<title>Shell编程入门中Shell流程控制if语句错误</title>
+		<body>if [ $a = $b ] 是不是应该是 if [ $a == $b ] 才对。 还有为什么3会大于9呢？ 而且在前面段落中也没有看见 '&gt;' ,'&lt;'这样的运算符。不太理解是为什么。希望能得到您的回复。</body>
+		<created>2019-06-17 05:23:51</created>
+		<closed>2019-12-01 05:45:45</closed>
+	</bug>
+	<bug>
+		<id>344</id>
+		<title>关于ThreadLocal原理的理解</title>
+		<body>以下是我的观点：ThreadLocal实际上只是ThreadLocalMap的一个装配类而已，里面的所有方法里的核心操作就是获取线程中的ThreadLocalMap，然后进行各种操作。比如说ThreadLocal里的get方法就是获取到访问线程的ThreadLocalMap集合，然后取出对应的value；set()方法就是获取ThreadLocaMap集合，然后调用map的set方法把值写进去。  以下是我面试时的话：   原理是每个Thread（线程）中都有一个ThreadLocalMap的变量，而ThreadLocalMap是以ThreadLocal为key，变量值为value的结构，用ThreadLocal修饰后的变量，每次线程访问时，ThreadLocal做的事情就是装配的工作，即从访问的线程中获取ThreadLocalMap，然后将key设为修饰这个变量的ThreadLocal，value设置为变量值，再返还给线程。因此ThreadLocal实际上只是ThreadLocalMap的一个装配类而已，里面的所有方法里的核心操作就是获取线程中的ThreadLocalMap，然后进行各种操作。  </body>
+		<created>2019-06-11 06:32:48</created>
+		<closed>2019-09-16 14:41:08</closed>
+	</bug>
+	<bug>
+		<id>336</id>
+		<title>查找链表中倒数第K个元素代码边界条件错误</title>
+		<body>![image](https://user-images.githubusercontent.com/51091238/58679214-1f4cbf80-8395-11e9-8e95-93a0eb5d22f7.png) </body>
+		<created>2019-05-31 03:13:43</created>
+		<closed>2019-06-01 10:40:52</closed>
+	</bug>
+	<bug>
+		<id>333</id>
+		<title>链接失效了</title>
+		<body>![image](https://user-images.githubusercontent.com/20358122/58418817-7879d200-80bb-11e9-804d-358fbe888de9.png)  ![image](https://user-images.githubusercontent.com/20358122/58418829-816aa380-80bb-11e9-942d-cb52d29a3be5.png) </body>
+		<created>2019-05-27 12:10:58</created>
+		<closed>2019-05-27 13:19:02</closed>
+	</bug>
+	<bug>
+		<id>323</id>
+		<title>JavaGuide网站已经无法正常显示内容</title>
+		<body>显示内容为404-Not found</body>
+		<created>2019-05-21 02:46:49</created>
+		<closed>2019-05-21 02:52:33</closed>
+	</bug>
+	<bug>
+		<id>316</id>
+		<title>语句不通</title>
+		<body>Java基础知识--&gt;26 ==与equals重要 原句："一般，我们都覆盖 equals() 方法来两个对象的内容相等；" 表达意思是否是“一般，我们都覆盖 equals() 方法来(**比较？**)两个对象的内容相等；”？</body>
+		<created>2019-05-14 14:50:11</created>
+		<closed>2019-05-15 13:44:52</closed>
+	</bug>
+	<bug>
+		<id>304</id>
+		<title>图挂了 </title>
+		<body>https://github.com/Snailclimb/JavaGuide/blob/15fc507affc141e905573210241ba5d3d616080f/docs/java/%E5%8F%AF%E8%83%BD%E6%98%AF%E6%8A%8AJava%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%AE%B2%E7%9A%84%E6%9C%80%E6%B8%85%E6%A5%9A%E7%9A%84%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0.md#%E4%BA%8C-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F   `JDK 1.8 之前：` 和 `JDK 1.8 ：` 两张图挂了. </body>
+		<created>2019-05-07 08:18:17</created>
+		<closed>2019-05-07 08:37:15</closed>
+	</bug>
+	<bug>
+		<id>295</id>
+		<title>17. 接口和抽象类的区别是什么？ 第4点有歧义</title>
+		<body>地址: https://snailclimb.top/JavaGuide/#/java/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86?id=_17-%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F  4.一个类实现接口的话要实现接口的所有方法，而抽象类不一定。 我做了一个实验: 如果Bclass 不实现check()方法那么编译不通过  ```java class  Bclass extends  Aclass {     @Override     String dosomething() {         return null;     }  }  abstract class Aclass {     abstract String dosomething();     abstract String check();      public void say () {      } }  ```  </body>
+		<created>2019-04-30 15:57:47</created>
+		<closed>2019-05-02 14:46:07</closed>
+	</bug>
+	<bug>
+		<id>274</id>
+		<title>图解 Paxos 一致性协议 超链接404</title>
+		<body>图解 Paxos 一致性协议 超链接404</body>
+		<created>2019-04-16 10:02:07</created>
+		<closed>2019-04-17 01:32:30</closed>
+	</bug>
+	<bug>
+		<id>260</id>
+		<title>[这几道Java集合框架面试题几乎必问]图片不显示</title>
+		<body>地址： https://snailclimb.top/JavaGuide/#/./java/%E8%BF%99%E5%87%A0%E9%81%93Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E9%9D%A2%E8%AF%95%E9%A2%98%E5%87%A0%E4%B9%8E%E5%BF%85%E9%97%AE?id=hashmap-%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF2%E7%9A%84%E5%B9%82%E6%AC%A1%E6%96%B9 HashMap 多线程操作导致死循环问题，图片没有显示  ![QQ截图20190403170219](https://user-images.githubusercontent.com/13505094/55466797-7bfc5a00-5632-11e9-91b3-93e8839beea7.png) </body>
+		<created>2019-04-03 09:04:18</created>
+		<closed>2019-04-15 01:32:55</closed>
+	</bug>
+	<bug>
+		<id>239</id>
+		<title>大佬，有张图错了</title>
+		<body>在`docs/github-trending/2018-12.md`文章中有张图错了  ![image](https://user-images.githubusercontent.com/26432955/54998088-36bfa300-5008-11e9-97e4-f8eb67266daa.png) </body>
+		<created>2019-03-26 12:48:25</created>
+		<closed>2019-03-28 05:00:43</closed>
+	</bug>
+	<bug>
+		<id>236</id>
+		<title>算法学习与面试里的牛课网分类解析链接失效了</title>
+		<body></body>
+		<created>2019-03-26 08:29:12</created>
+		<closed>2019-03-26 12:16:12</closed>
+	</bug>
+	<bug>
+		<id>232</id>
+		<title>连接失效 28. 为什么Java中只有值传递 为什么Java中只有值传递？</title>
+		<body>为什么Java中只有值传递？ 引用的连接失效</body>
+		<created>2019-03-26 03:43:58</created>
+		<closed>2019-03-26 12:21:30</closed>
+	</bug>
+	<bug>
+		<id>230</id>
+		<title>JavaGuide/Java/Multithread/并发容器总结.md 里面几个网页404</title>
+		<body>建议更新一下</body>
+		<created>2019-03-25 09:18:22</created>
+		<closed>2019-03-25 11:13:27</closed>
+	</bug>
+	<bug>
+		<id>212</id>
+		<title>很多跳转到微信公众号的链接已经失效了 ,作者大大可以修复一下吗</title>
+		<body>应该是微信公众号迁移了,jvm虚拟机中指向公众号的链接全部失效了.希望作者修复一下,谢谢</body>
+		<created>2019-03-14 16:29:35</created>
+		<closed>2019-03-26 12:35:07</closed>
+	</bug>
+	<bug>
+		<id>209</id>
+		<title>关于404问题</title>
+		<body>我也遇到了很多404的问题，造成的原因是很多地方的链接有点儿小错误 正确的 .../Java/... 错误的 .../Java相关/... 错误的地方： 1. README.md  Line 199 2. Java\synchronized.md  Line 3 3. 数据结构与算法\数据结构.md  Line84 4. 数据结构与算法\数据结构.md  Line85</body>
+		<created>2019-03-13 17:28:47</created>
+		<closed>2019-03-14 02:43:42</closed>
+	</bug>
+	<bug>
+		<id>200</id>
+		<title>链接全部404了</title>
+		<body></body>
+		<created>2019-03-10 05:51:27</created>
+		<closed>2019-03-14 02:28:40</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>JDK1.8 的ArrayList 的默认构造函数，初始化的list的长度为0</title>
+		<body> 你好：     /**      *默认构造函数，其默认初始容量为10      */     public ArrayList() {         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;     }   DEFAULTCAPACITY_EMPTY_ELEMENTDATA 为0 初始化为10，是在首次add() 的时候进行的</body>
+		<created>2018-12-11 06:41:00</created>
+		<closed>2018-12-28 02:46:15</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>FreeBSD 不是 Linux 发行版</title>
+		<body>你好！FreeBSD 不是 Linux 发行版。望更正。谢谢！</body>
+		<created>2018-10-31 10:49:20</created>
+		<closed>2018-11-05 12:29:09</closed>
+	</bug>
+</bugs>

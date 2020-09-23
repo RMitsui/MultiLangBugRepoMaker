@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="logbook-kai">
+	<bug id="217" opendate="2020-07-29 18:26:59" fixdate="2020-07-29 23:18:49">
+		<buginformation>
+			<summary>所有艦娘一覧の"対空(素)"の値が艦これ表示値と異なっている</summary>
+			<description>### 問題概要 所有艦娘一覧の対空(素)の値が艦これで表示される値と異なっており、他の値と見比べたところ"運"の値と同じであったため"運"を参照していると思われる。   ### スクリーンショット ![Inked2020-07-30 02-59-37 796_LI](https://user-images.githubusercontent.com/68965876/88838308-4fe7ed80-d214-11ea-8daa-69768001235f.jpg)   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/logbook/internal/gui/ShipItem.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="214" opendate="2020-07-28 09:50:18" fixdate="2020-08-02 04:30:35">
+		<buginformation>
+			<summary>現在の戦闘・演習のウィンドウ位置・サイズが共通になっている</summary>
+			<description>### 問題概要 保存されている現在の戦闘と現在の演習のウィンドウ位置・サイズが共通になっている。  ### 再現方法 1. 「現在の戦闘」と「現在の演習」を開く 2. 「現在の戦闘」と「現在の演習」を別々の位置・サイズにする 3. 「現在の戦闘」と「現在の演習」を閉じる 4. 「現在の戦闘」と「現在の演習」を開く  ### 本来予想される動作 2回目に開いたとき、「現在の戦闘」と「現在の演習」はそれぞれ最後に閉じた位置・サイズになるべきと思われますが、同じ位置・サイズで開きます。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/logbook/internal/gui/Tools.java</file>
+			<file>src/main/java/logbook/internal/gui/InternalFXMLLoader.java</file>
+			<file>src/main/java/logbook/internal/gui/MainMenuController.java</file>
+			<file>src/main/java/logbook/internal/gui/Main.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="210" opendate="2020-07-26 23:11:49" fixdate="2020-07-27 14:26:02">
+		<buginformation>
+			<summary>所有艦娘一覧でフィルターの一部が保存されない</summary>
+			<description>### 問題概要 所有艦娘一覧でフィルターを設定して、一旦閉じてからまた開くと、数値型のカラムの条件が「以上」に変わってしまいます。  ### 再現方法 1. 「所有艦娘一覧」を開く 2. 数値型カラムのフィルターを設定する     例：「Lv」「98」「等しい」を設定する 3. 「所有艦娘一覧」を閉じてから、また開く  ### 本来予想される動作 数値型カラムのフィルターで「等しい」に設定したはずが、「以上」に変わってしまいます。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/logbook/internal/gui/ParameterFilterPane.java</file>
+			<file>src/main/java/logbook/internal/gui/ShipTablePane.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="201" opendate="2020-07-19 13:12:31" fixdate="2020-07-26 06:26:08">
+		<buginformation>
+			<summary>所有艦娘の火力(素)の値が装備によって変化する</summary>
+			<description>### 問題概要 所有艦娘の火力(素)の値は何も装備していない火力を示すべきところで、火力上昇効果がある装備を装備すると、火力(素)の値も変化してしまう。  ### 再現方法 陽炎改二(火力改修Max)を使った例を示します。 1. 艦これ上で何も装備していない状態の陽炎改二の火力を確認する: 68 2. 航海日誌で所有艦娘を開き、陽炎改二の火力(素)の値が68であることを確認する 3. 艦これ上で12.7cm連装砲C型改二(未改修)を1本装備する(火力上昇効果で追加で火力+2) 4. 航海日誌の所有艦娘上で陽炎改二の火力(素)の値を確認すると68ではなく70になっている  ### 本来予想される動作 上記の再現方法で言えば、火力(素)は艦娘が何も装備していない状態の火力を示すべきなので、装備にかかわらず火力(素)は68  ### 動作環境  - OS: Windows10  - Java: Java SE Runtime Environment 1.8.0_201  - 航海日誌Version: 20.7.6 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/logbook/internal/Ships.java</file>
+			<file>src/main/java/logbook/internal/gui/ShipItem.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="194" opendate="2020-07-16 04:43:21" fixdate="2020-07-16 12:17:35">
+		<buginformation>
+			<summary>【不具合】任務欄の受領中任務の表示が特定操作で消滅する</summary>
+			<description>### 問題概要 ver. 20.7.5 から任務欄の受領中任務の表示が特定操作で消滅する  ### 再現方法 1. 任務画面を開く 2. 下記の二つの条件を同時に満たすタブを選択する     1. 「全」または「遂行中任務」ではない     2. 受領中の任務を含まない 3. 別の画面（母港など）に移動する  ### 本来予想される動作 * 艦これ側の任務画面のどのタブのページへ遷移しても、航海日誌側の受領中任務の表示が消滅しない、かつ、一番上に表示されること     * 艦これ側の任務画面以外の画面へ遷移したときも、航海日誌側は上記の状態を維持できること  ### スクリーンショット 省略  ### 動作環境  - OS: Windows 10  - Java: SE Runtime Environment 1.8.0_251  - Version: 20.7.5  ### その他 任務画面に行けば受領していない任務はわかりますので、UX/UX 的な観点においても、航海日誌側で艦これ画面と同じ挙動をする必要はないかと思います。この機能はomitするか、設定によって動くか選択できるように改善をお願いします。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/logbook/api/ApiGetMemberQuestlist.java</file>
+			<file>src/main/java/logbook/bean/AppQuestCollection.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="192" opendate="2020-07-15 01:24:33" fixdate="2020-07-15 09:34:21">
+		<buginformation>
+			<summary>第2,3,4艦隊タブが大破表示になる</summary>
+			<description>### 問題概要 第1艦隊で大破艦が出た時、母港に戻ったら第2,3,4艦隊のタブまで大破表示になりました。 （第2,3,4艦隊には大破艦は居ません） その後、第1艦隊の大破艦を修理しても第2,3,4艦隊のタブは大破表示のままです。 再起動しても変わりませんでした。  ### 再現方法 今のところ、再現方法は不明です。 第2,3,4艦隊のタブの色が戻らないので、再現できませんでした。  ### 本来予想される動作 第2,3,4艦隊のタブは遠征表示になるはずです。  ### スクリーンショット ![image](https://user-images.githubusercontent.com/34375409/87491690-c5d04e80-c683-11ea-98c0-b44dbfae0a20.png)  タブの色の設定は変更しています。 ![image](https://user-images.githubusercontent.com/34375409/87491753-e9939480-c683-11ea-89ca-779f8f477787.png)  ### 動作環境  - OS:Windows 10 Pro 1909  - Java:1.8.0_241  - Version:20.7.4  ### その他 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/logbook/internal/gui/FleetTabPane.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="173" opendate="2020-06-30 05:50:28" fixdate="2020-07-01 11:38:43">
+		<buginformation>
+			<summary>戦闘ログについて</summary>
+			<description>お世話になってります。 イベント海域E2の戦闘ログが名前が同じなのか、１-２になってしまっています 見れないわけではないので、お直しいただける時間がありましたら、修正よろしくお願いします</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/logbook/internal/BattleLogs.java</file>
+			<file>src/main/java/logbook/internal/log/BattleResultLogFormat.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="90" opendate="2018-08-22 17:12:18" fixdate="2018-09-12 08:52:36">
+		<buginformation>
+			<summary>windowsのサインアウトで保存されない</summary>
+			<description>仕様なのかもしれませんが、日誌を手動で終了しないままwindows10でサインアウトを行うと 所有艦娘のタグや編成記録などが保存されず消えてしまうようです。  航海日誌 v18.8.3 Java x86 v1.80_171 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/logbook/internal/Config.java</file>
+			<file>src/main/java/logbook/internal/Launcher.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="89" opendate="2018-08-22 04:33:50" fixdate="2018-10-28 04:05:04">
+		<buginformation>
+			<summary>MacとUbuntuで重い</summary>
+			<description>いつも使わせていただき、ありがとうございます。 Win, Mac, Ubuntuで使っています。8.1からですが、お風呂に入りたい艦娘画面を出しておくと、Winは大丈夫なのですが、MacとUbuntuではスクロールもできないほど重くなってしまいます。リフレッシュする間隔を大きくできないでしょうか。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/logbook/internal/gui/RequireNdockController.java</file>
+			<file>src/main/java/logbook/internal/gui/RequireNdock.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

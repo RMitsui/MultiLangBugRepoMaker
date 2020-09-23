@@ -1,0 +1,1628 @@
+13bbbff381ab4e5fbd2ce184462430778f419045, リポジトリからDetailでないDomainに対する処理を除去（Detailの正式化に向けて, Wed May 16 22:23:10 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/DomainService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/service/DomainServiceTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecaseTest.java
+D	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapperTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+ae19864a4f120e67c3e06509adc779ba6cd2d2ae, EmptyDtoを返してる場所を204化 #64, Tue May 15 21:52:30 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/security/AuthenticationSuccessHandler.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/ApplicationMigrationResource.java
+D	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/EmptyDto.java
+M	src/main/web/app/core/core.module.ts
+D	src/main/web/app/core/interceptor/empty-response-body-interceptor.ts
+
+f14f901e9276edf1aa87000305addfeb2d5d7210, wip: angular version up, Tue May 15 21:39:09 2018 +0900
+D	.angular-cli.json
+A	angular.json
+M	build.gradle
+M	package-lock.json
+M	package.json
+M	src/main/web/tsconfig.spec.json
+M	src/test/web/karma.conf.js
+M	tslint.json
+
+eaec9af6e940991982074d0e95970668d55e8b4f, prodじゃないのでDIにまかせてテスト, Tue May 8 21:31:44 2018 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneDatasourceTest.java
+
+67327a26076d581ba686a0fd0afc66362ca69e19, Importの速度向上, Sat May 5 14:57:01 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+
+a8191c827a56b82b56f757fdd3571ace9ff43d28, プロファイルでFSDirectoryとRAMDirectoryを切り替え, Sat May 5 14:39:26 2018 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/ApplicationContextProvider.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/LuceneConfiguration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/LuceneDirectoryFactory.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+
+64546afa54180b62479e867f96ba66f3a1959d24, Windowsでもインポートができるようになった（でも1件1件閉じてるので低速＋RAM切り替えまだ, Sat May 5 13:18:24 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/LuceneConfiguration.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/LuceneDirectoryFactory.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+
+14953ee945a266364de7838314df815dc803ae5c, 作成者更新者がない状態でインポートできなかった問題修正, Sat May 5 10:43:28 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+
+ba5c4ef7d54b5faa052ee59e2bd3a4b3d8f59e21, ドメイン登録・更新ユーザがインポートできていなかった, Fri May 4 13:55:47 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/dao/DomainMetaUser.java
+
+467f1316c64f9b310b60cd31d1782854be97ae71, ドメイン削除、インポート時のロックエラー解消 #63, Fri May 4 13:38:59 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecase.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+
+eaa04119f68da168fe76a8bc31adc25582c98dd8, 環境によって挙動が異なるのでテスト方法変更, Mon Apr 30 15:52:41 2018 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapperTest.java
+
+6959ca6bb2113043abc120f355ea76cced57dc89, travisテストで挙動が異なるのでactive profileを明示, Mon Apr 30 15:46:31 2018 +0900
+M	.travis.yml
+
+0193885e9196535b17d88b506e108feb432b6b22, 臨時で全ドメイン表示への遷移ルート作成（フロントはそろそろ全見直しかけるのでおk, Mon Apr 30 14:44:17 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/web/app/app.component.html
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/app.route.ts
+
+e01d91cc240b49571d177d86d2125fcee28ec58d, 0.4.x系からのインポート実装, Mon Apr 30 14:32:59 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/SearchService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/RelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/user/UserRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/LuceneConfiguration.java
+R092	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneRepository.java	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserMapper.java
+M	src/main/resources/query/UserQuery.xml
+R063	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneRepositoryTest.java	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneDatasourceTest.java
+
+31bf41bc820e00bfa1f80378772507be355a3f66, テスト通過修正, Thu Apr 26 23:10:29 2018 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasourceTest.java
+
+da22961fef77f54df607ddd0ee6987de3dbd74ac, テストのパッケージを機能パッケージに合わせて移動（テスト動かない, Thu Apr 26 22:55:03 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/resources/query/DomainQuery.xml
+R098	src/test/java/org/enlightenseries/DomainDictionary/application/service/LuceneRepositoryTest.java	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneRepositoryTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasourceTest.java
+
+86c148986acf03d32582d93b35139084a2ef91b6, 検索サービスとLuceneを分離してLucene処理をインフラ層に移動, Thu Apr 26 22:16:34 2018 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/service/SearchService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecase.java
+R095	src/main/java/org/enlightenseries/DomainDictionary/application/config/LuceneConfiguration.java	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/LuceneConfiguration.java
+R082	src/main/java/org/enlightenseries/DomainDictionary/application/config/LuceneProperties.java	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/LuceneProperties.java
+R093	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/typehandler/UUIDTypeHandler.java	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/typehandler/UUIDTypeHandler.java
+R095	src/main/java/org/enlightenseries/DomainDictionary/application/service/LuceneService.java	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/LuceneRepository.java
+M	src/main/resources/config/mybatis.xml
+R069	src/test/java/org/enlightenseries/DomainDictionary/application/service/LuceneServiceTest.java	src/test/java/org/enlightenseries/DomainDictionary/application/service/LuceneRepositoryTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecaseTest.java
+
+09476f5222819946b7737a0807ac8c8b78e2d1fa, Merge branch 'dev-export' into dev, Thu Apr 26 21:21:35 2018 +0900
+a38363f90609484e560e2a9bb62de55c6316de3f, エクスポートテスト通過, Thu Apr 26 21:05:38 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainDetail.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/dao/DomainExport.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/dao/DomainMetaUser.java
+M	src/main/resources/config/mybatis.xml
+M	src/main/resources/query/DomainQuery.xml
+A	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasourceTest.java
+
+980e4f37a74ef5693d7468a714e088b87506fa5c, wip: ユーザデータのエクスポートOK, Wed Apr 25 22:13:33 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserMapper.java
+M	src/main/resources/query/UserQuery.xml
+
+dab30710eaec4f00005ab8ac449c5504fbe86ac7, wip, Wed Apr 18 19:59:18 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/user/UserRepository.java
+
+f6e294f2e960088446989c764c83a583d249ecae, Merge branch 'dev-export' into dev, Tue Apr 17 22:00:12 2018 +0900
+ae455e2f3a40241f568599e14d52a34b5ed838f5, Lucene等、dataフォルダを自動的に生成できないのでkeep, Tue Apr 17 21:59:34 2018 +0900
+M	.gitignore
+A	data/.gitkeep
+
+9c43d93c107a637103990fe26c55d77fc324521c, トップページを最近更新されたドメインに限定, Tue Apr 17 21:52:13 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/DomainService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecase.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+M	src/main/resources/query/DomainQuery.xml
+M	src/main/web/app/app.route.ts
+A	src/main/web/app/features/domain-list-recent/domain-list-recent.component.html
+A	src/main/web/app/features/domain-list-recent/domain-list-recent.component.scss
+A	src/main/web/app/features/domain-list-recent/domain-list-recent.component.spec.ts
+A	src/main/web/app/features/domain-list-recent/domain-list-recent.component.ts
+M	src/main/web/app/features/features.module.ts
+M	src/main/web/app/shared/full-searcher/full-searcher.component.ts
+A	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasourceTest.java
+
+038618d1340924bc899e3da1508e88185bbab1eb, htmlフォーマット（機能変更なし）, Mon Apr 16 22:13:45 2018 +0900
+M	.vscode/settings.json
+M	src/main/web/app/app.component.html
+M	src/main/web/app/features/domain-create/domain-create.component.html
+M	src/main/web/app/features/license-list/license-list.component.html
+M	src/main/web/app/shared/full-searcher/full-searcher.component.html
+
+b3d8b344f632651d81392537c7b747cd4c71a2fe, TSフォーマット（機能変更なし）, Mon Apr 16 22:10:28 2018 +0900
+A	.vscode/settings.json
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/app.module.ts
+M	src/main/web/app/app.route.ts
+M	src/main/web/app/core/auth/auth.service.ts
+M	src/main/web/app/core/auth/auth.ts
+M	src/main/web/app/core/core.module.ts
+M	src/main/web/app/core/interceptor/empty-response-body-interceptor.ts
+M	src/main/web/app/core/interceptor/http-status-interceptor.ts
+M	src/main/web/app/features/data-export-dialog/data-export-dialog.component.ts
+M	src/main/web/app/features/data-import-dialog/data-import-dialog.component.ts
+M	src/main/web/app/features/domain-create/domain-create.component.ts
+M	src/main/web/app/features/domain-detail/domain-detail.component.ts
+M	src/main/web/app/features/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts
+M	src/main/web/app/features/domain-edit-form/domain-edit-form.component.ts
+M	src/main/web/app/features/domain-list/domain-list.component.ts
+M	src/main/web/app/features/features.module.ts
+M	src/main/web/app/features/license-list/license-list.component.ts
+M	src/main/web/app/models/domain-summary.ts
+M	src/main/web/app/models/domain.ts
+M	src/main/web/app/models/related-domain.ts
+M	src/main/web/app/shared/directives/equal-validator.directive.ts
+M	src/main/web/app/shared/error-page/error-page.component.ts
+M	src/main/web/app/shared/full-searcher/full-searcher.component.ts
+M	src/main/web/app/shared/login-dialog/login-dialog.component.html
+M	src/main/web/app/shared/login-dialog/login-dialog.component.ts
+M	src/main/web/app/shared/shared.module.ts
+M	src/main/web/app/shared/widgets/growl-messager.component.ts
+M	tslint.json
+
+151e6be33c6fa0283f82b9cee247b67153171f4b, 全文検索機能作成( #26 )＋いつでも新規登録ボタン( #60 ), Mon Apr 16 21:38:59 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+D	src/main/web/app/app.component.css
+M	src/main/web/app/app.component.html
+A	src/main/web/app/app.component.scss
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/features/domain-list/domain-list.component.html
+A	src/main/web/app/shared/full-searcher/full-searcher.component.html
+A	src/main/web/app/shared/full-searcher/full-searcher.component.scss
+A	src/main/web/app/shared/full-searcher/full-searcher.component.spec.ts
+A	src/main/web/app/shared/full-searcher/full-searcher.component.ts
+M	src/main/web/app/shared/shared.module.ts
+M	src/main/web/styles.scss
+
+2ec7dab652b696e8e975d3e68ef5260c98ada67c, ドメインID付与後に付与前のドメインインスタンスを使用してた, Tue Apr 10 22:06:12 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecase.java
+
+f51920493b6d64bf63861d7229619c88279931e8, プロパティクラスのBean化漏れ, Tue Apr 10 22:05:40 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/config/LuceneProperties.java
+
+ede1618594e64bc36c2600d972edd623f1511a46, 全文検索のAPI作成, Tue Apr 10 21:54:58 2018 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/config/LuceneProperties.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/LuceneService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecase.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/service/LuceneServiceTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecaseTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+a5722965342fcdb7081f19c7b16bd7cd81181aea, ドメインの追加・更新・削除と連携, Tue Apr 10 21:07:45 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecase.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+A	src/test/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecaseTest.java
+
+679b8a7d142d25cbc624d5ce7791df7acafe6958, ドメインの削除（残り：ユースケース⇨ドメインと結合）, Mon Apr 9 21:46:02 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/LuceneService.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/service/LuceneServiceTest.java
+
+0741385dbb8683d991d609e40fa471043d04c1d9, ドメインの更新, Mon Apr 9 21:29:03 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/LuceneService.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/service/LuceneServiceTest.java
+
+01d1a5d214300814e0ddf2be3ac580f31b62262b, ドメインのインデックス登録済みチェックとそれに伴うテスト（のこり更新、削除）, Wed Mar 28 21:08:32 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/config/LuceneConfiguration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/LuceneService.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/service/LuceneServiceTest.java
+
+21e903f1f92d7c03f57db7b055b30edde6ea7d9f, Merge branch 'master' into dev, Tue Mar 27 22:09:23 2018 +0900
+1b76734846f84c984238e6307172e2804751ed63, Lucene読み書きテストまで作成（同一ドメイン登録制御してないためテスト落ちる）, Tue Mar 27 22:08:41 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/config/LuceneConfiguration.java
+A	src/main/java/org/enlightenseries/DomainDictionary/application/service/LuceneService.java
+D	src/main/java/org/enlightenseries/DomainDictionary/application/service/SearchService.java
+A	src/test/java/org/enlightenseries/DomainDictionary/application/service/LuceneServiceTest.java
+
+48b058b836e1e52cb5bcd7089ff9e1b10b7de5e5, 不要な記述を削除, Tue Mar 27 20:45:48 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+6bd92159493ae0e841a65b1d1c5b74705264fd27, Luceneのインデックス作成, Tue Mar 27 20:45:23 2018 +0900
+M	build.gradle
+A	src/main/java/org/enlightenseries/DomainDictionary/application/config/LuceneConfiguration.java
+A	src/main/java/org/enlightenseries/DomainDictionary/application/service/SearchService.java
+
+1ee7c65fdf655c7a101cbcabc3ce879264dbee72, Merge branch 'master' into dev, Mon Mar 26 21:16:59 2018 +0900
+6338ff304e295c5c1a8e9adc722dc04d90e788fa, javaコマンドのオプション指定間違いを修正, Mon Mar 26 20:59:10 2018 +0900
+M	Procfile
+
+bb89386f041d329d29e63ef0715a6fcd2b1be7f4, Merge commit '4dcda0b41185e0ea32c45abbfe975a71811348e4' into dev, Sat Mar 17 20:10:31 2018 +0900
+bd9f36aa48e3924c30d3fbada1c7f0ce72e565b3, Merge branch 'master' into dev, Sat Mar 17 20:10:23 2018 +0900
+5bd5100dcb2afe60daa34cdc7cb5e7a3d839ca82, herokuの環境変数を使用するように変更, Sat Mar 17 19:46:30 2018 +0900
+M	Procfile
+
+4175e21045fdd62565a83888ab812fbd8a0dbc34, Herokuでjar名が都度変更になるためワイルドカード実行に変更, Fri Mar 16 21:47:29 2018 +0900
+M	Procfile
+
+5fd4c1521cbd127ad32d3bc883ae9e7ea107e389, ビルド時パラメータでなく実行時パラメータでデモデータを登録するように変更, Fri Mar 16 21:26:44 2018 +0900
+M	Procfile
+M	build.gradle
+A	src/main/java/org/enlightenseries/DomainDictionary/application/config/ApplicationDemoProperties.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+4daf25a1360b8c5dfb53098ca83eb7b58ae410c2, devプロファイルでデモデータを登録するように変更（Herokuのため）, Fri Mar 16 20:15:31 2018 +0900
+A	Procfile
+M	build.gradle
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+D	src/main/resources/config/application-demo.yml
+
+4dcda0b41185e0ea32c45abbfe975a71811348e4, Create CODE_OF_CONDUCT.md, Fri Mar 16 19:11:25 2018 +0900
+A	CODE_OF_CONDUCT.md
+
+049d389acc8cb2145128a8962cce1e3d200ef5ab, Add Heroku generated app.json, Wed Mar 7 23:06:59 2018 +0900
+A	app.json
+
+b80b076aab718a5b89d64ada1b5978ed91364d65, demo profileで起動時にデモ用データを登録するように修正, Wed Mar 7 22:57:24 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/resources/config/application-demo.yml
+D	src/main/resources/data-demo.sql
+
+b1a3f08e216455797b04f66c573ae0d09ed7f893, demo用ビルドプロパティ作成, Wed Mar 7 21:05:51 2018 +0900
+M	build.gradle
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+A	src/main/resources/config/application-demo.yml
+A	src/main/resources/data-demo.sql
+D	src/main/resources/data-dev.sql
+D	src/main/resources/schema-dev.sql
+
+558cb353e52cd8fe18e7edeb56fca0179749a322, wip: インフラ層単位テスト, Wed Mar 7 19:51:33 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/DomainService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+A	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/domain/DomainInfrastructureTest.java
+
+9037b79c6d74d2a37f4eef3550c6436736c0901e, Markdownで記述したリンクはtarget=blankにする #50, Sun Feb 25 16:45:03 2018 +0900
+M	src/main/web/app/features/domain-detail/domain-detail.component.ts
+
+baeadb3bd82bef078995342e61a865e7001db5b8, htmlファイルのフォーマット, Sun Feb 25 16:04:16 2018 +0900
+M	src/main/web/app/app.component.html
+M	src/main/web/app/features/data-export-dialog/data-export-dialog.component.html
+M	src/main/web/app/features/data-import-dialog/data-import-dialog.component.html
+M	src/main/web/app/features/domain-detail/domain-detail.component.html
+M	src/main/web/app/features/domain-detail/edit-relation-dialog/edit-relation-dialog.component.html
+M	src/main/web/app/features/domain-edit-form/domain-edit-form.component.html
+M	src/main/web/app/features/domain-list/domain-list.component.html
+M	src/main/web/app/shared/error-page/error-page.component.html
+M	src/main/web/app/shared/login-dialog/login-dialog.component.html
+M	src/main/web/index.html
+
+6036b61ff00d4d7195bf65a5fbfa74588b915540, CSSファイルのインデント統一, Sun Feb 25 15:58:06 2018 +0900
+M	.editorconfig
+M	src/main/web/app/features/domain-list/domain-list.component.css
+M	src/main/web/styles.scss
+
+9f5a99588eba4cc133807b9479cdd94720b53262, 画面上の「項目」を「ドメイン」に統一（迷ってたので, Sun Feb 25 15:47:43 2018 +0900
+M	src/main/web/app/features/domain-detail/domain-detail.component.html
+M	src/main/web/app/features/domain-detail/edit-relation-dialog/edit-relation-dialog.component.html
+M	src/main/web/app/features/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts
+M	src/main/web/app/features/domain-edit-form/domain-edit-form.component.html
+M	src/main/web/app/features/domain-list/domain-list.component.css
+M	src/main/web/app/features/domain-list/domain-list.component.html
+M	src/main/web/app/features/domain-list/domain-list.component.ts
+
+9b01b4755ad6fef2de5a44924bfeff4f3dfe7474, 一覧からドメイン詳細への遷移をボタンじゃなくてリンクに変更 #53, Sun Feb 25 15:39:20 2018 +0900
+M	src/main/web/app/features/domain-list/domain-list.component.html
+M	src/main/web/app/features/domain-list/domain-list.component.ts
+
+ddc40a6a22c0ebeccb6efad229d6573655df656b, 「フォーマット」フィールドの位置付けをランクダウン #49, Sun Feb 25 15:31:52 2018 +0900
+M	src/main/web/app/features/domain-detail/domain-detail.component.html
+M	src/main/web/app/features/domain-edit-form/domain-edit-form.component.html
+M	src/main/web/app/features/domain-list/domain-list.component.html
+M	src/main/web/app/features/domain-list/domain-list.component.ts
+
+d04df7e0e36a4c71b42c1be5de6264036b21356c, テスト修正, Sun Feb 25 15:11:17 2018 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+80e1dde9498c9ca9381f9fa3faacb7c60e344354, ドメイン登録時に登録した詳細画面に遷移するように変更 #51, Wed Feb 21 21:39:11 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecase.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+M	src/main/web/app/features/domain-create/domain-create.component.ts
+
+5bf6b510baf3f7968ff16aa5cd4cd8a8c5c5ae6a, インポートダイアログの不要記述除去, Wed Feb 21 20:59:58 2018 +0900
+M	src/main/web/app/features/data-import-dialog/data-import-dialog.component.html
+
+caee2e952a89f5e3fdb1dd611ed2c1ca19fa5df8, インポート修正, Tue Feb 6 23:07:28 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+
+7fb140e286017b841c1e1edb6268e8b8014e6cff, Merge branch 'dev-0.3.3' into dev-0.4.0, Tue Feb 6 22:54:27 2018 +0900
+6b05303c23d66ec307065a37315fc6f82163abc1, エクスポート順をインポート順に合わせて修正, Tue Feb 6 22:54:11 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+8a0520c46863b850ff722ae4515437c61824d7f4, Merge branch 'dev-0.3.3' into dev-0.4.0, Tue Feb 6 22:43:47 2018 +0900
+df24f38ab63b9a4fbd48cdff06ff695e0158d829, エクスポートファイル区切り文字修正, Tue Feb 6 22:43:31 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+
+b967b2f9d94af36bab6f629ee03d9182f5be1766, インポート仮実装, Tue Feb 6 22:37:30 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/RelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationMapper.java
+M	src/main/resources/query/DomainToRelationQuery.xml
+M	src/main/resources/query/RelationQuery.xml
+
+a57ae92a0f9502ad6f7f839841648e426b6aa4c3, Merge branch 'dev-0.3.3' into dev-0.4.0, Tue Feb 6 22:08:26 2018 +0900
+7f418b126f7dd6c0281c4080540eda7f028c1679, 0.3.xのエクスポート機能作成, Tue Feb 6 22:02:51 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/RelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationMapper.java
+M	src/main/resources/query/DomainToRelationQuery.xml
+M	src/main/resources/query/RelationQuery.xml
+
+dfa7f6453c6285183f8b9439cad5624ebc6a59e3, バージョン番号アップ, Mon Feb 5 19:56:40 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+9f09ed8987702f6a2aaa5ddea2f2f68ae64f5d58, DomainResourceのテスト対応漏れを対応, Mon Feb 5 19:55:25 2018 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+00c9df588468354b902425a21d18ac696209928e, ユーザダイアログのレイアウト調整, Mon Feb 5 19:54:58 2018 +0900
+M	src/main/web/app/shared/login-dialog/login-dialog.component.scss
+
+1c0b938708b63a26b26467f860a2c6c0f64b2a4c, ドメイン削除時にメタデータも削除, Sun Feb 4 15:00:54 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/resources/query/DomainQuery.xml
+
+2d37c696bfdb2f9f924d1982a245c170aff3ff59, ドメイン更新したユーザの登録, Sun Feb 4 14:26:01 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecase.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/aop/DatasourceAop.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+M	src/main/resources/query/DomainQuery.xml
+
+5a0cd2cc1c8bc09c9e8ddaeb33c0f0fb1cc109b2, ドメイン登録時にログインユーザの情報を記録, Sun Feb 4 13:35:11 2018 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/DomainUsecase.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+M	src/main/resources/query/DomainQuery.xml
+
+5797017259e522fd2ac53ef3b84a9e04ec4a3f2f, ドメイン作成ユーザ・更新ユーザをDBから取得・表示するように変更, Sun Feb 4 12:50:23 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/dao/DomainMetaUser.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/DomainDto.java
+M	src/main/resources/query/DomainQuery.xml
+M	src/main/resources/query/UserQuery.xml
+
+2f51817a0b55169c4da5a57240d9fad088d9ba9e, ドメイン詳細APIに作成者、更新者名を含め、画面に表示するように変更, Sat Feb 3 19:43:03 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/DomainService.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainDetail.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/DomainDto.java
+M	src/main/web/app/features/domain-detail/domain-detail.component.html
+M	src/main/web/app/models/domain.ts
+
+8c3cbca1b42774b3418daf484b7e5118bbc176e9, ユーザ確認時に不要な情報がjacksonに取得されないように修正, Sat Feb 3 16:14:57 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/UserResource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/UserDto.java
+
+7ba1048a977ac9b5c93b613fcddab5e9184cf420, ユーザ登録時に、同じ名前のユーザが登録できないように修正, Sat Feb 3 16:14:23 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/UserService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/web/app/shared/login-dialog/login-dialog.component.ts
+
+1ba1afcb25a0bf7c499b4b1c6d98332743762e36, ログイン失敗時にエラーメッセージ表示, Sat Feb 3 15:59:22 2018 +0900
+M	src/main/web/app/shared/login-dialog/login-dialog.component.ts
+
+2efee8f68a74fc3740b5f9d14fc2e68ad0cc7857, 共通エラーページ、ログインダイアログはfeatureとはいえないのでsharedに移動, Sat Feb 3 15:52:15 2018 +0900
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/app.module.ts
+M	src/main/web/app/app.route.ts
+R100	src/main/web/app/error-page/error-page.component.css	src/main/web/app/shared/error-page/error-page.component.css
+R100	src/main/web/app/error-page/error-page.component.html	src/main/web/app/shared/error-page/error-page.component.html
+R100	src/main/web/app/error-page/error-page.component.spec.ts	src/main/web/app/shared/error-page/error-page.component.spec.ts
+R100	src/main/web/app/error-page/error-page.component.ts	src/main/web/app/shared/error-page/error-page.component.ts
+R100	src/main/web/app/login-dialog/login-dialog.component.html	src/main/web/app/shared/login-dialog/login-dialog.component.html
+R100	src/main/web/app/login-dialog/login-dialog.component.scss	src/main/web/app/shared/login-dialog/login-dialog.component.scss
+R100	src/main/web/app/login-dialog/login-dialog.component.spec.ts	src/main/web/app/shared/login-dialog/login-dialog.component.spec.ts
+R096	src/main/web/app/login-dialog/login-dialog.component.ts	src/main/web/app/shared/login-dialog/login-dialog.component.ts
+M	src/main/web/app/shared/shared.module.ts
+
+e472c8ee0f71dc2d6b9d4d798511466fc2713d78, ドメイン追加・編集機能をfeaturesに移動, Sat Feb 3 15:42:39 2018 +0900
+M	src/main/web/app/app.module.ts
+M	src/main/web/app/app.route.ts
+R100	src/main/web/app/domain-create/domain-create.component.css	src/main/web/app/features/domain-create/domain-create.component.css
+R100	src/main/web/app/domain-create/domain-create.component.html	src/main/web/app/features/domain-create/domain-create.component.html
+R100	src/main/web/app/domain-create/domain-create.component.spec.ts	src/main/web/app/features/domain-create/domain-create.component.spec.ts
+R091	src/main/web/app/domain-create/domain-create.component.ts	src/main/web/app/features/domain-create/domain-create.component.ts
+R100	src/main/web/app/domain-detail/domain-detail.component.css	src/main/web/app/features/domain-detail/domain-detail.component.css
+R100	src/main/web/app/domain-detail/domain-detail.component.html	src/main/web/app/features/domain-detail/domain-detail.component.html
+R100	src/main/web/app/domain-detail/domain-detail.component.spec.ts	src/main/web/app/features/domain-detail/domain-detail.component.spec.ts
+R096	src/main/web/app/domain-detail/domain-detail.component.ts	src/main/web/app/features/domain-detail/domain-detail.component.ts
+R100	src/main/web/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.html	src/main/web/app/features/domain-detail/edit-relation-dialog/edit-relation-dialog.component.html
+R100	src/main/web/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.scss	src/main/web/app/features/domain-detail/edit-relation-dialog/edit-relation-dialog.component.scss
+R100	src/main/web/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.spec.ts	src/main/web/app/features/domain-detail/edit-relation-dialog/edit-relation-dialog.component.spec.ts
+R095	src/main/web/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts	src/main/web/app/features/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts
+R100	src/main/web/app/domain-edit-form/domain-edit-form.component.css	src/main/web/app/features/domain-edit-form/domain-edit-form.component.css
+R100	src/main/web/app/domain-edit-form/domain-edit-form.component.html	src/main/web/app/features/domain-edit-form/domain-edit-form.component.html
+R100	src/main/web/app/domain-edit-form/domain-edit-form.component.spec.ts	src/main/web/app/features/domain-edit-form/domain-edit-form.component.spec.ts
+R097	src/main/web/app/domain-edit-form/domain-edit-form.component.ts	src/main/web/app/features/domain-edit-form/domain-edit-form.component.ts
+M	src/main/web/app/features/features.module.ts
+
+646df9f4d943d47f19020da95ba0b7d30dd625e1, トップの一覧画面をfeaturesに移動, Sat Feb 3 15:33:34 2018 +0900
+M	src/main/web/app/app.module.ts
+M	src/main/web/app/app.route.ts
+R100	src/main/web/app/domain-list/domain-list.component.css	src/main/web/app/features/domain-list/domain-list.component.css
+R100	src/main/web/app/domain-list/domain-list.component.html	src/main/web/app/features/domain-list/domain-list.component.html
+R100	src/main/web/app/domain-list/domain-list.component.spec.ts	src/main/web/app/features/domain-list/domain-list.component.spec.ts
+R097	src/main/web/app/domain-list/domain-list.component.ts	src/main/web/app/features/domain-list/domain-list.component.ts
+M	src/main/web/app/features/features.module.ts
+
+b0609448d8a5bf66cb58d555d7c70210d20c30d3, データインポート、エクスポートをfeaturesに移動＋AngularMaterial系インポートをSharedModuleで一括対応, Sat Feb 3 15:29:51 2018 +0900
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/app.module.ts
+R100	src/main/web/app/data-export-dialog/data-export-dialog.component.html	src/main/web/app/features/data-export-dialog/data-export-dialog.component.html
+R100	src/main/web/app/data-export-dialog/data-export-dialog.component.scss	src/main/web/app/features/data-export-dialog/data-export-dialog.component.scss
+R100	src/main/web/app/data-export-dialog/data-export-dialog.component.spec.ts	src/main/web/app/features/data-export-dialog/data-export-dialog.component.spec.ts
+R100	src/main/web/app/data-export-dialog/data-export-dialog.component.ts	src/main/web/app/features/data-export-dialog/data-export-dialog.component.ts
+R100	src/main/web/app/data-import-dialog/data-import-dialog.component.html	src/main/web/app/features/data-import-dialog/data-import-dialog.component.html
+R100	src/main/web/app/data-import-dialog/data-import-dialog.component.scss	src/main/web/app/features/data-import-dialog/data-import-dialog.component.scss
+R100	src/main/web/app/data-import-dialog/data-import-dialog.component.spec.ts	src/main/web/app/features/data-import-dialog/data-import-dialog.component.spec.ts
+R097	src/main/web/app/data-import-dialog/data-import-dialog.component.ts	src/main/web/app/features/data-import-dialog/data-import-dialog.component.ts
+M	src/main/web/app/features/features.module.ts
+M	src/main/web/app/shared/shared.module.ts
+
+a915ac572994edc3e0b692607f1cf70a9692ebe7, 各機能の階層を下げるためにFeaturesModuleを作成, Fri Feb 2 22:03:53 2018 +0900
+M	src/main/web/app/app.module.ts
+M	src/main/web/app/app.route.ts
+A	src/main/web/app/features/features.module.ts
+R100	src/main/web/app/license-list/license-list.component.css	src/main/web/app/features/license-list/license-list.component.css
+R100	src/main/web/app/license-list/license-list.component.html	src/main/web/app/features/license-list/license-list.component.html
+R100	src/main/web/app/license-list/license-list.component.spec.ts	src/main/web/app/features/license-list/license-list.component.spec.ts
+R100	src/main/web/app/license-list/license-list.component.ts	src/main/web/app/features/license-list/license-list.component.ts
+
+b51d277dbb04d6615a747b3ca00117535e4eaea5, interceptorはcoreに移動, Fri Feb 2 21:54:27 2018 +0900
+M	src/main/web/app/app.module.ts
+M	src/main/web/app/core/core.module.ts
+R100	src/main/web/app/services/http-status-interceptor.ts	src/main/web/app/core/interceptor/http-status-interceptor.ts
+
+28477996fe641480e5e77baea5414cc0f077c97f, 共通directive移動, Fri Feb 2 21:51:41 2018 +0900
+M	src/main/web/app/app.module.ts
+R082	src/main/web/app/directives/equal-validator.directive.ts	src/main/web/app/shared/directives/equal-validator.directive.ts
+M	src/main/web/app/shared/shared.module.ts
+
+58c14820e05cb99fc5ad8e944074f44ca5efc326, app直下がカオスになってきたのでSharedModule作成, Fri Feb 2 21:47:27 2018 +0900
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/app.module.ts
+M	src/main/web/app/data-import-dialog/data-import-dialog.component.ts
+M	src/main/web/app/domain-create/domain-create.component.ts
+M	src/main/web/app/domain-detail/domain-detail.component.ts
+M	src/main/web/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts
+M	src/main/web/app/login-dialog/login-dialog.component.ts
+A	src/main/web/app/shared/shared.module.ts
+R100	src/main/web/app/widgets/growl-messager.component.ts	src/main/web/app/shared/widgets/growl-messager.component.ts
+
+167a2ab9c2411867a3a1e4ace68413465b633421, ユーザ登録・ログイン・ログアウトできるダイアログ一通り作成, Fri Feb 2 21:37:18 2018 +0900
+M	src/main/web/app/app.module.ts
+A	src/main/web/app/directives/equal-validator.directive.ts
+M	src/main/web/app/login-dialog/login-dialog.component.html
+M	src/main/web/app/login-dialog/login-dialog.component.scss
+M	src/main/web/app/login-dialog/login-dialog.component.ts
+
+9f9727d9db2625ab8e5ed82e0e147a63a5f6177f, ログインしていない状態で可能な操作を制限, Thu Feb 1 20:29:18 2018 +0900
+M	src/main/web/app/app.component.html
+M	src/main/web/app/domain-detail/domain-detail.component.html
+M	src/main/web/app/domain-detail/domain-detail.component.ts
+M	src/main/web/app/domain-list/domain-list.component.html
+M	src/main/web/app/domain-list/domain-list.component.ts
+M	src/main/web/app/login-dialog/login-dialog.component.ts
+
+366b0acaa83abed863cea0a09767c5dd100f98d5, ログイン状態をツールチップ表示するように変更, Thu Feb 1 20:15:26 2018 +0900
+M	src/main/web/app/app.component.html
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/app.module.ts
+
+19bfa2d8d579d8adeb5d44204616d1af98b056b1, ソース整理（機能変更なし）, Thu Feb 1 19:57:38 2018 +0900
+M	src/main/web/app/app.component.ts
+
+5bcf048539fd1497977e4a0a26c66b8f34f033ac, ユーザ機能をダイアログに集約, Thu Feb 1 19:53:11 2018 +0900
+M	src/main/web/app/app.component.html
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/login-dialog/login-dialog.component.html
+M	src/main/web/app/login-dialog/login-dialog.component.ts
+M	src/main/web/styles.scss
+
+9e6a4df83c621b3046cebdac9fb59073f94db2f6, ログインセッション再確認をDBで行うように変更, Wed Jan 31 22:13:04 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/UserService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/UserResource.java
+
+5c341ec76249a8b9a26fdfa80977bc327517f69e, アプリ初回時にデフォルトユーザの登録, Wed Jan 31 21:58:37 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/UserService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/UserResource.java
+
+2abb052d717ebe4d72fb8e15b9b265c0710cf18d, ユーザ認証情報をDBから取得するように変更, Wed Jan 31 21:58:16 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/security/ApplicationUserDetailsService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/user/UserRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserDatasource.java
+
+5532bab5fcf7a3d40d14547fad282d7b61a43fd3, ユーザ登録WebAPI作成, Tue Jan 30 21:58:59 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/UserService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/WebSecurityConfiguration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/UserResource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/UserDto.java
+M	src/main/resources/query/UserQuery.xml
+
+e34f4c9bd993028b3580e2845f3ae48f1870c52b, ユーザのパスワード部分テスト方法を変更, Tue Jan 30 21:08:59 2018 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserMapperTest.java
+
+6bdd8cf22dbde67d7cb14c29b12100cc928c01c9, エンコード済み文字列が入るように変更, Tue Jan 30 20:54:14 2018 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserMapperTest.java
+
+64918237211897d25fef64ded18f67b09d051a51, Userのリポジトリ以下を作成, Wed Jan 24 22:24:59 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/user/User.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/user/UserRepository.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserDatasource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserMapper.java
+A	src/main/resources/query/UserQuery.xml
+A	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/user/UserMapperTest.java
+
+1c702383a083375b451c36c5d7963d5357e4f2f4, テストソースだけ作成（なかみなし）, Wed Jan 24 19:50:40 2018 +0900
+A	src/test/java/org/enlightenseries/DomainDictionary/application/service/UserServiceTest.java
+A	src/test/java/org/enlightenseries/DomainDictionary/application/service/security/ApplicationUserDetailsServiceTest.java
+A	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/UserResourceTest.java
+
+161537e1dba08e6bcd11120dd5d6273afc3373b7, wip:認証をサーバと同期させる, Tue Jan 23 22:16:26 2018 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/service/UserService.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/UserResource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/UserDto.java
+M	src/main/web/app/app.component.html
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/core/auth/auth.service.ts
+
+7315f78c1639126ee209694a7aab0e7a00802f37, 未ログイン時にアクセスするとリダイレクトが発生したため、４０３返すだけに変更, Tue Jan 23 21:26:48 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/WebSecurityConfiguration.java
+
+84e69c37f5444d3f116329417948b2ac55dff585, ログイン/ログアウトの状態をフロントで持つように変更, Tue Jan 23 21:10:20 2018 +0900
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/core/auth/auth.service.ts
+M	src/main/web/app/core/core.module.ts
+A	src/main/web/app/core/interceptor/empty-response-body-interceptor.ts
+M	src/main/web/app/login-dialog/login-dialog.component.html
+M	src/main/web/app/login-dialog/login-dialog.component.ts
+
+a1f893a89469edf802b9cf8292510ede74fa5811, wip: CoreModule追加, Tue Jan 23 20:46:02 2018 +0900
+M	src/main/web/app/app.component.html
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/app.module.ts
+A	src/main/web/app/core/auth/auth.service.spec.ts
+A	src/main/web/app/core/auth/auth.service.ts
+A	src/main/web/app/core/auth/auth.ts
+A	src/main/web/app/core/core.module.ts
+M	src/main/web/app/login-dialog/login-dialog.component.ts
+
+b118c3bb3d0427793e3c8d5449118b644bbbd6b5, 今不要な記述を除去, Tue Jan 23 20:36:50 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/security/ApplicationUserDetailsService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/WebSecurityConfiguration.java
+
+9218113d17a904c06ea487ee9116bc1738374d95, Merge branch 'master' into dev-0.4.0, Sun Jan 21 15:36:38 2018 +0900
+dec510a927d0fe3bdd39c8a2cf397b615b520cc8, webapp => webへのフォルダ名変更の対応漏れ, Sun Jan 21 15:14:32 2018 +0900
+M	package.json
+
+dbbdbbcacbca361f15209810e730ff8878fc172e, セッションログインでPOSTを制限できるようになった, Sun Jan 21 15:34:40 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/WebSecurityConfiguration.java
+M	src/main/web/app/app.component.html
+M	src/main/web/app/app.component.ts
+M	src/main/web/app/app.module.ts
+A	src/main/web/app/login-dialog/login-dialog.component.html
+A	src/main/web/app/login-dialog/login-dialog.component.scss
+A	src/main/web/app/login-dialog/login-dialog.component.spec.ts
+A	src/main/web/app/login-dialog/login-dialog.component.ts
+
+5a337df654025dbe134fa5ca914f499d912d3bb8, webapp => webへのフォルダ名変更の対応漏れ, Sun Jan 21 15:14:32 2018 +0900
+M	package.json
+
+51567c7094545fcc17c60dcfb6aa19eba7df6ee1, wip, Sat Jan 20 23:38:58 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/WebSecurityConfiguration.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/security/AuthenticationLogoutSuccessHandler.java
+
+077733b90834171820e49aa794b43fd00c0874a6, wip, Sat Jan 20 17:35:52 2018 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/service/security/ApplicationUserDetailsService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/WebSecurityConfiguration.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/security/AuthenticationFailureHandler.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/security/AuthenticationSuccessHandler.java
+
+54cd7325b09e6a943d91816f7a19fc30f64c041d, GETメソッドのみと、開発用にH2コンソールへのアクセスを許可, Sat Jan 20 15:18:29 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/WebSecurityConfiguration.java
+
+7b6f8e264994470a3682bccbe26586219f1730d9, webアプリを表示しつつ、apiへのアクセスを制限するセキュリティ実装, Sat Jan 20 15:09:32 2018 +0900
+M	build.gradle
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/config/WebSecurityConfiguration.java
+
+3c661dff879108c505e41052ebf3e73318a9a1e1, webアプリのテスト周辺ファイルもsrc配下に移動, Fri Jan 19 21:46:41 2018 +0900
+M	.angular-cli.json
+M	.gitignore
+M	src/main/web/app/domain-edit-form/domain-edit-form.component.html
+R100	e2e/app.e2e-spec.ts	src/test/web/e2e/app.e2e-spec.ts
+R100	e2e/app.po.ts	src/test/web/e2e/app.po.ts
+R100	e2e/tsconfig.e2e.json	src/test/web/e2e/tsconfig.e2e.json
+R100	karma.conf.js	src/test/web/karma.conf.js
+R100	protractor.conf.js	src/test/web/protractor.conf.js
+
+a496440ef8161b85b716a4a1119423fe18bba1e9, webアプリのフォルダをsrc配下に移動, Fri Jan 19 21:31:16 2018 +0900
+M	.angular-cli.json
+M	package.json
+R100	webapp/app/app.component.css	src/main/web/app/app.component.css
+R100	webapp/app/app.component.html	src/main/web/app/app.component.html
+R100	webapp/app/app.component.spec.ts	src/main/web/app/app.component.spec.ts
+R100	webapp/app/app.component.ts	src/main/web/app/app.component.ts
+R100	webapp/app/app.module.ts	src/main/web/app/app.module.ts
+R100	webapp/app/app.route.ts	src/main/web/app/app.route.ts
+R100	webapp/app/data-export-dialog/data-export-dialog.component.html	src/main/web/app/data-export-dialog/data-export-dialog.component.html
+R100	webapp/app/data-export-dialog/data-export-dialog.component.scss	src/main/web/app/data-export-dialog/data-export-dialog.component.scss
+R100	webapp/app/data-export-dialog/data-export-dialog.component.spec.ts	src/main/web/app/data-export-dialog/data-export-dialog.component.spec.ts
+R100	webapp/app/data-export-dialog/data-export-dialog.component.ts	src/main/web/app/data-export-dialog/data-export-dialog.component.ts
+R100	webapp/app/data-import-dialog/data-import-dialog.component.html	src/main/web/app/data-import-dialog/data-import-dialog.component.html
+R100	webapp/app/data-import-dialog/data-import-dialog.component.scss	src/main/web/app/data-import-dialog/data-import-dialog.component.scss
+R100	webapp/app/data-import-dialog/data-import-dialog.component.spec.ts	src/main/web/app/data-import-dialog/data-import-dialog.component.spec.ts
+R100	webapp/app/data-import-dialog/data-import-dialog.component.ts	src/main/web/app/data-import-dialog/data-import-dialog.component.ts
+R100	webapp/app/domain-create/domain-create.component.css	src/main/web/app/domain-create/domain-create.component.css
+R100	webapp/app/domain-create/domain-create.component.html	src/main/web/app/domain-create/domain-create.component.html
+R100	webapp/app/domain-create/domain-create.component.spec.ts	src/main/web/app/domain-create/domain-create.component.spec.ts
+R100	webapp/app/domain-create/domain-create.component.ts	src/main/web/app/domain-create/domain-create.component.ts
+R100	webapp/app/domain-detail/domain-detail.component.css	src/main/web/app/domain-detail/domain-detail.component.css
+R100	webapp/app/domain-detail/domain-detail.component.html	src/main/web/app/domain-detail/domain-detail.component.html
+R100	webapp/app/domain-detail/domain-detail.component.spec.ts	src/main/web/app/domain-detail/domain-detail.component.spec.ts
+R100	webapp/app/domain-detail/domain-detail.component.ts	src/main/web/app/domain-detail/domain-detail.component.ts
+R100	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.html	src/main/web/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.html
+R100	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.scss	src/main/web/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.scss
+R100	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.spec.ts	src/main/web/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.spec.ts
+R100	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts	src/main/web/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts
+R100	webapp/app/domain-edit-form/domain-edit-form.component.css	src/main/web/app/domain-edit-form/domain-edit-form.component.css
+R100	webapp/app/domain-edit-form/domain-edit-form.component.html	src/main/web/app/domain-edit-form/domain-edit-form.component.html
+R100	webapp/app/domain-edit-form/domain-edit-form.component.spec.ts	src/main/web/app/domain-edit-form/domain-edit-form.component.spec.ts
+R100	webapp/app/domain-edit-form/domain-edit-form.component.ts	src/main/web/app/domain-edit-form/domain-edit-form.component.ts
+R100	webapp/app/domain-list/domain-list.component.css	src/main/web/app/domain-list/domain-list.component.css
+R100	webapp/app/domain-list/domain-list.component.html	src/main/web/app/domain-list/domain-list.component.html
+R100	webapp/app/domain-list/domain-list.component.spec.ts	src/main/web/app/domain-list/domain-list.component.spec.ts
+R100	webapp/app/domain-list/domain-list.component.ts	src/main/web/app/domain-list/domain-list.component.ts
+R100	webapp/app/error-page/error-page.component.css	src/main/web/app/error-page/error-page.component.css
+R100	webapp/app/error-page/error-page.component.html	src/main/web/app/error-page/error-page.component.html
+R100	webapp/app/error-page/error-page.component.spec.ts	src/main/web/app/error-page/error-page.component.spec.ts
+R100	webapp/app/error-page/error-page.component.ts	src/main/web/app/error-page/error-page.component.ts
+R100	webapp/app/license-list/license-list.component.css	src/main/web/app/license-list/license-list.component.css
+R100	webapp/app/license-list/license-list.component.html	src/main/web/app/license-list/license-list.component.html
+R100	webapp/app/license-list/license-list.component.spec.ts	src/main/web/app/license-list/license-list.component.spec.ts
+R100	webapp/app/license-list/license-list.component.ts	src/main/web/app/license-list/license-list.component.ts
+R100	webapp/app/models/domain-summary.ts	src/main/web/app/models/domain-summary.ts
+R100	webapp/app/models/domain.ts	src/main/web/app/models/domain.ts
+R100	webapp/app/models/related-domain.ts	src/main/web/app/models/related-domain.ts
+R100	webapp/app/services/http-status-interceptor.ts	src/main/web/app/services/http-status-interceptor.ts
+R100	webapp/app/widgets/growl-messager.component.ts	src/main/web/app/widgets/growl-messager.component.ts
+R100	webapp/assets/.gitkeep	src/main/web/assets/.gitkeep
+R100	webapp/backend-proxy.conf.json	src/main/web/backend-proxy.conf.json
+R100	webapp/environments/environment.prod.ts	src/main/web/environments/environment.prod.ts
+R100	webapp/environments/environment.ts	src/main/web/environments/environment.ts
+R100	webapp/favicon.ico	src/main/web/favicon.ico
+R100	webapp/index.html	src/main/web/index.html
+R100	webapp/main.ts	src/main/web/main.ts
+R100	webapp/polyfills.ts	src/main/web/polyfills.ts
+R100	webapp/styles.scss	src/main/web/styles.scss
+R100	webapp/test.ts	src/main/web/test.ts
+R065	webapp/tsconfig.app.json	src/main/web/tsconfig.app.json
+R075	webapp/tsconfig.spec.json	src/main/web/tsconfig.spec.json
+R100	webapp/typings.d.ts	src/main/web/typings.d.ts
+
+0882f883cb6aefce62f0fffba9ac7858e823fad6, Merge branch 'dev-0.3.2', Thu Jan 18 20:58:39 2018 +0900
+f9fc37427cc84becf762c2510776b7811ed76f54, githubへのリンク追加, Thu Jan 18 00:27:57 2018 +0900
+M	.angular-cli.json
+M	package-lock.json
+M	package.json
+M	webapp/app/app.component.html
+M	webapp/app/app.component.ts
+M	webapp/styles.scss
+
+4cfb83af00364477bdaf13342e286773b8081f43, GithubのLicense templateを使用, Wed Jan 17 19:47:16 2018 +0900
+D	LICENSE
+A	LICENSE.md
+
+d0e900d92f05a089a790cc55e3971b9ed0ee239f, markdownのレンダリング調整（コードハイライト、Blockquote）, Tue Jan 16 21:11:35 2018 +0900
+M	.angular-cli.json
+M	package-lock.json
+M	package.json
+M	webapp/app/domain-detail/domain-detail.component.css
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+1b3a7e37c4e78a07add4bfdacc03c2b3093320fe, ドメイン編集画面UI改善, Tue Jan 16 20:33:44 2018 +0900
+M	webapp/app/domain-detail/domain-detail.component.css
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+
+1fc7dfb3ac0e53eb6deb8aac12a30b23755eecef, #44 ドメイン詳細画面のスタイルを調整, Tue Jan 16 20:10:04 2018 +0900
+M	webapp/app/domain-detail/domain-detail.component.css
+M	webapp/app/domain-detail/domain-detail.component.html
+
+06d974b3ad9cadfd4bcee643b53fb583176a3779, #36 同一ドメイン間に関連を作成しようとした際にエラーを返す, Sun Jan 14 15:38:38 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/RelationService.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/service/RelationServiceTest.java
+
+662d3249aaca46b7b3d3c74dd41fae6b5b768d83, #36 関連を登録した対象ドメインのIDも返す, Sun Jan 14 15:38:14 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/RelationDto.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResourceTest.java
+
+4be85629b143c61e956deb8d962c47a09fb1e5bb, コード配置修正（機能変更なし）, Sun Jan 14 14:56:35 2018 +0900
+M	webapp/app/domain-list/domain-list.component.ts
+
+987d190546502e8ad498d7da9506316c855e6ba9, トップの一覧フィルタ記述を省力化（機能変更なし）, Sun Jan 14 14:45:42 2018 +0900
+M	webapp/app/domain-list/domain-list.component.ts
+
+a10c3563a90fd47957d30d5bdf11093b46e4e51b, lettable-operatorに書き換え, Sun Jan 14 14:39:12 2018 +0900
+M	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts
+M	webapp/app/domain-edit-form/domain-edit-form.component.ts
+M	webapp/app/domain-list/domain-list.component.ts
+
+02264aaa9eb229ea89793e9eee9b5e4bd7be2f70, #42 関連ドメイン遷移時に画面を一番上までスクロールするように変更, Sun Jan 14 14:11:38 2018 +0900
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+914f8456a1ca788c24b7c4a3039794b2bc361575, コード配置のみ修正（機能変更なし）, Sat Jan 13 12:28:21 2018 +0900
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+2af549d9f66d2a01ee6593f62cd37011a080e827, 正常なドメイン登録ができていなかったため修正＋テスト, Sat Jan 13 12:25:31 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/DomainDto.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+b006fa40a48fd13db7f633420a8a44d6041ccd9e, ドメイン登録APIもパラメータ不備時にBadRequestを返すように変更, Fri Jan 12 22:00:15 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/DomainDto.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+3b4eb9e4d6456ca3b3e7bc2d85e799e71e70a2bb, 関連登録APIのパラメータ不備時にBadRequestを返すように変更＋テスト #35, Fri Jan 12 21:59:47 2018 +0900
+M	build.gradle
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/RelationDto.java
+R083	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/error/BusinessErrorDto.java	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/error/ApplicationErrorDto.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/error/ExceptionTranslator.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResourceTest.java
+
+6597c3977c5cd6e043375b2c45709b3eae0309bc, #40 markedバージョンアップ, Thu Jan 11 21:40:33 2018 +0900
+M	package-lock.json
+M	package.json
+
+65ebfce90d17ac6a7d09b7e913be1e28f464156d, #43 Windowsでのインポートファイル読み込み時にUTF8として読み込まれていなかったため修正, Thu Jan 11 20:51:19 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+c4cc4fd59968b789389791d137c7211370c7107e, Merge tag '0.3.0', Wed Jan 10 23:12:00 2018 +0900
+3791cca176165c848f6c53aa30785b4e6b33941a, Merge branch '0.2.2' into 0.3.0, Wed Jan 10 22:35:40 2018 +0900
+f8bb3bb0c03d88f747d60408532a9fc3b08f12ea, インポート最適化を考慮してエクスポート方法修正, Wed Jan 10 21:22:59 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+
+afff975d6f908cca9e930e9608cf568373241d3f, インポート前に既存データを削除するように変更, Tue Jan 9 23:22:07 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/resources/query/DomainQuery.xml
+
+65f8bf4434c65023c603c8a44f1f41306565cdc4, ファイルからのインポート実装, Tue Jan 9 23:07:03 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/MyBatisConfiguration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/resources/query/DomainQuery.xml
+
+bfea4621cc017c94e052f2d0a9f6eb05b621a88e, インポートのフロントからサービスクラス呼び出しまで完了（実DB登録まだ）, Mon Jan 8 20:59:38 2018 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/exception/ApplicationException.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/ApplicationMigrationResource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/error/BusinessErrorDto.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/error/ExceptionTranslator.java
+M	webapp/app/app.component.html
+M	webapp/app/app.component.ts
+M	webapp/app/app.module.ts
+A	webapp/app/data-import-dialog/data-import-dialog.component.html
+A	webapp/app/data-import-dialog/data-import-dialog.component.scss
+A	webapp/app/data-import-dialog/data-import-dialog.component.spec.ts
+A	webapp/app/data-import-dialog/data-import-dialog.component.ts
+
+3fa0154603415e8bd37cd9fb9bde65ceddf9a5b4, 0.2.2をマージ（エクスポート機能が必要、バージョン連続性）, Mon Jan 8 15:09:06 2018 +0900
+c880805ce5037e75fa457ff544f3174644bf3d4d, データエクスポート機能実装完了, Mon Jan 8 14:23:21 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/ApplicationMigrationResource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/EmptyDto.java
+M	webapp/app/data-export-dialog/data-export-dialog.component.ts
+
+b368e68a45048bcb0dc9073de1a6690291e8b423, エクスポートファイルが上書きになるため、作成日時ではなく更新日時をステータスとするように変更, Mon Jan 8 13:56:33 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+14f9481e89efff30be2402646305c4222f1f64c6, エクスポートファイルをダウンロードするAPIを実装, Sun Jan 7 20:01:22 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/ApplicationMigrationResource.java
+
+b41ce5075ca96f582a293be367f5f34b89de5fdd, エクスポートファイルの作成日時を取得, Sun Jan 7 20:01:06 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/ApplicationMigrationResource.java
+
+2298aecbcd14273f2036922fec55b63d6f28ed40, バージョンの書き方是正, Sun Jan 7 19:18:01 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+4dc2e0119826da4b0eeb31259ab1ef95007395f0, エクスポート中の状態をWebAPIで取得する機能を追加, Sun Jan 7 19:13:48 2018 +0900
+R093	src/main/java/org/enlightenseries/DomainDictionary/application/config/AsyncConfiguration.java	src/main/java/org/enlightenseries/DomainDictionary/application/config/ApplicationMigrationConfiguration.java
+A	src/main/java/org/enlightenseries/DomainDictionary/application/singleton/ApplicationMigrationStatus.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+
+f6165db436a0239fb6c29764a526437e03bff980, ドメインデータの全件エクスポート実装, Sun Jan 7 18:54:10 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/resources/query/DomainQuery.xml
+
+c15d074324d7f9c9273ac9238c1fea6798c8e5ac, エクスポートは大量データになり得るのでDB固有処理を使用するためインフラ層に移動, Sun Jan 7 18:35:14 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+
+d2fffc5ef904e05cf3f7fbf9a5a9374842b4a0f5, CSVファイル出力の試作, Sun Jan 7 18:15:20 2018 +0900
+M	build.gradle
+M	src/main/java/org/enlightenseries/DomainDictionary/DomainDictionaryApplication.java
+A	src/main/java/org/enlightenseries/DomainDictionary/application/config/AsyncConfiguration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/ApplicationMigrationResource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/ExportFileGeneratingStatus.java
+A	src/test/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigrationTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/AppliationMigrationResourceTest.java
+
+0d92352ca10c9c3f384aa33cedd83021b47c4c54, マイグレーション用APIの失敗テスト追加, Sun Jan 7 13:43:34 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/ApplicationMigrationResource.java
+R100	src/main/resources/data.sql	src/main/resources/data-dev.sql
+R100	src/main/resources/schema.sql	src/main/resources/schema-dev.sql
+A	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/AppliationMigrationResourceTest.java
+
+a12126081213d8ecfd66c537311021b1c8273672, データエクスポート画面のモックアップ作成, Sun Jan 7 12:51:42 2018 +0900
+M	webapp/app/app.component.html
+M	webapp/app/app.component.ts
+M	webapp/app/app.module.ts
+A	webapp/app/data-export-dialog/data-export-dialog.component.html
+A	webapp/app/data-export-dialog/data-export-dialog.component.scss
+A	webapp/app/data-export-dialog/data-export-dialog.component.spec.ts
+A	webapp/app/data-export-dialog/data-export-dialog.component.ts
+
+8f52ee06334a1aae6ad4c66f5a84e1d6622ef6c6, DBメタデータ上のバージョン番号を0.3.0に是正, Sat Jan 6 15:18:30 2018 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+47a0d582ece0f299ec853a6c45a7af0aaed38508, 関連編集ダイアログで関連を削除できるように変更（これで関連機能は一通り最低限のOK）, Sat Jan 6 15:00:38 2018 +0900
+M	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts
+
+d203dc4dc3a19186ee059fef2a5d897b709a82d3, 関連ドメインを詳細画面に表示するように変更, Sat Jan 6 15:00:06 2018 +0900
+M	webapp/app/domain-detail/domain-detail.component.ts
+M	webapp/app/models/domain.ts
+
+e1a44d4b489e7414ffe690438f96318e1a67f269, 関連の追加フォームを作成, Sat Jan 6 14:38:46 2018 +0900
+M	webapp/app/domain-detail/domain-detail.component.ts
+M	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts
+A	webapp/app/models/related-domain.ts
+
+4dd51a1e69cf3da2c7acd4e49d467ea0b8f34997, 関連ドメイン入力のモックアップ作成, Sat Jan 6 00:13:07 2018 +0900
+M	webapp/app/app.module.ts
+M	webapp/app/domain-detail/domain-detail.component.css
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+A	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.html
+A	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.scss
+A	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.spec.ts
+A	webapp/app/domain-detail/edit-relation-dialog/edit-relation-dialog.component.ts
+A	webapp/app/models/domain-summary.ts
+
+279fd5a21047bc9b1df4619233feb0120d205e64, ドメイン詳細取得時、関連ドメインの関連IDも含めて返すように変更（関連の削除に使用するため）, Sat Dec 30 14:13:45 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/DomainService.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/RelatedDomainSummary.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/DomainDto.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+3114e9dd9ed5f8bf12dd615ff203e6e4c530431e, Mapperのテスト間で影響が出ていたため、@Transactionalで分離（正式にBefore、Afterは時間あればする）, Sat Dec 30 13:51:30 2017 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/application/service/RelationServiceTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationMapperTest.java
+
+227ea89dfcab5d56e40d6dcefde5796f998968b1, 関連を削除するRESTAPI実装, Sat Dec 30 13:39:06 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/RelationService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/RelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResource.java
+M	src/main/resources/query/DomainToRelationQuery.xml
+M	src/main/resources/query/RelationQuery.xml
+M	src/test/java/org/enlightenseries/DomainDictionary/application/service/RelationServiceTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasourceTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationMapperTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasourceTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationMapperTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResourceTest.java
+
+b6bef82a14f5d3c00b7ac068a965757137e1bb3c, 関連を登録・取得する各単体テスト実装, Sat Dec 30 12:17:07 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/RelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationMapper.java
+M	src/main/resources/query/RelationQuery.xml
+A	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasourceTest.java
+A	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationMapperTest.java
+A	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasourceTest.java
+A	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationMapperTest.java
+
+61ac267247440bef99958666e190e2980bc8a92c, 関連登録のサービス層実装, Fri Dec 29 20:43:19 2017 +0900
+M	.gitignore
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/RelationService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelation.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/typehandler/UUIDTypeHandler.java
+M	src/test/java/org/enlightenseries/DomainDictionary/application/service/RelationServiceTest.java
+
+e4181947009d4c2fcf7f40b09ff0c6939905b8a9, 関連サービスの失敗するテスト作成, Fri Dec 29 19:59:31 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelation.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/RelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationMapper.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/typehandler/UUIDTypeHandler.java
+M	src/main/resources/config/mybatis.xml
+M	src/main/resources/query/DomainToRelationQuery.xml
+M	src/main/resources/query/RelationQuery.xml
+A	src/test/java/org/enlightenseries/DomainDictionary/application/service/RelationServiceTest.java
+
+9eea142abe8e661413a2e1aa86acefdfac9c1879, 関連リソースRESTの作成単体テストOK, Fri Dec 29 17:21:36 2017 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResourceTest.java
+
+ae929977169a3fcc6ad87a2668e59b48c02d9e6b, 関連リソースRESTコントローラの単体テスト作成, Fri Dec 29 17:10:08 2017 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/service/RelationService.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/RelationDto.java
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResourceTest.java
+
+55691b9e4ae3ca59a30b6c1a52b282e9ac639745, 関連のRESTリソース作成, Fri Dec 29 16:23:11 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/Relation.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResource.java
+M	src/main/resources/query/RelationQuery.xml
+A	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/RelationResourceTest.java
+
+757d9da1554e7971487b2eb7c5ce53220b2ab52a, 404になるテストが通過するようにコードを修正, Wed Dec 27 22:50:35 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+
+ed008d8f412fc3acb6d14fe839fd016c0f117f55, 現在処理ができていない、失敗するテストを追加（これからテストを通すように作る）, Wed Dec 27 22:39:41 2017 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+180cb524719ca99380aa610b84cba659b23ea842, 結果をすべてアサーションするように追加, Wed Dec 27 22:33:59 2017 +0900
+M	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+da8cbd9a27e84ca8bfc39c8f261ab106eed745ba, プレゼンテーション層のテスト新規作成, Wed Dec 27 22:19:33 2017 +0900
+A	src/test/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResourceTest.java
+
+d76f1be9a2f849d7ba1831b2259c6cb7f5382f4a, サービス層単体テストプロトタイプ新規作成, Sat Dec 23 13:09:02 2017 +0900
+A	src/test/java/org/enlightenseries/DomainDictionary/application/service/DomainServiceTest.java
+M	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapperTest.java
+
+a2451e7b2de59a49d734c6d540d842b27b139687, テスト追加にあたりインフラ層を最初に追加, Tue Dec 19 22:02:58 2017 +0900
+M	.travis.yml
+A	src/test/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapperTest.java
+
+66ba7a3df58cfb5076f78ea1927ca4197d67d4d7, ドメイン関連含む正常系取得ができるようになった, Tue Dec 19 20:58:19 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/DomainDto.java
+M	src/main/resources/query/DomainToRelationQuery.xml
+
+8aaf7fcee7b843ce679eb077315f01772986ef4a, REST：関連ドメイン含むドメイン詳細取得に変更, Tue Dec 19 20:30:13 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/dto/DomainDto.java
+
+224bd7c8a89801363c23df1eccf76116405d372b, アプリ層：関連ドメイン一式取得処理追加, Tue Dec 19 20:29:47 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/service/DomainService.java
+
+19f61ca4e41d919b81f854796fc821b58a661957, モデル層：DomainToRelationの取得処理追加, Tue Dec 19 20:29:02 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelationRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasource.java
+
+30538f7e7363236ec7ae388ab1552a416c872e94, ドメイン層：DomainSummary追加, Tue Dec 19 20:28:23 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainSummary.java
+
+f3f87f47acff93b090b07e887d4c67f150352a4b, インフラ層：DomainSummaryの取得追加, Tue Dec 19 20:27:52 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/resources/query/DomainQuery.xml
+
+41d0d41ef42d2294da422b3b73b27580380907f1, ドメイン関係定義を修正, Mon Dec 18 22:51:56 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelation.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationMapper.java
+M	src/main/resources/query/DomainToRelationQuery.xml
+
+2a98984e5dda4acc0fd68119cb7ea10bc609a644, コンストラクタ化されずインジェクトされなかったので修正, Mon Dec 18 22:05:34 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+M	src/main/resources/query/DomainToRelationQuery.xml
+
+7d89584072b766399ac8e0aa0bdd5720d4ade737, relation関係テーブル初期化, Mon Dec 18 21:47:22 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+d5595b72eae03c2494fa03eac10f151ec14ee73e, DomainToRelationのmybatis要素追加, Mon Dec 18 21:46:54 2017 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelation.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/DomainToRelationRepository.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationDatasource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/DomainToRelationMapper.java
+A	src/main/resources/query/DomainToRelationQuery.xml
+
+dd7ef7eba7beaa7c0d653f64f606ad5a531de117, relationのmybatis要素追加, Mon Dec 18 21:45:49 2017 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/Relation.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/relation/RelationRepository.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationDatasource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/relation/RelationMapper.java
+A	src/main/resources/query/RelationQuery.xml
+
+20504dd05312cc373bee4b0f6b6b00a9dd68f644, create文を１箇所にするためにspringのDB初期化を無効化, Sun Dec 17 22:21:36 2017 +0900
+M	src/main/resources/config/application-dev.yml
+D	src/main/resources/data.sql
+D	src/main/resources/schema.sql
+
+3b112cd77a84fc354af487f1995992c4d3f55422, コード最適化（機能変更なし）, Sat Dec 16 16:20:24 2017 +0900
+M	webapp/app/domain-list/domain-list.component.html
+M	webapp/app/domain-list/domain-list.component.ts
+
+9ecd30b8bfd14a133ba348a67c96bb5b78012d01, #23 フィルタを使いながら実現できたので、フィルタ機能復活, Sat Dec 16 15:56:34 2017 +0900
+M	webapp/app/domain-list/domain-list.component.html
+M	webapp/app/domain-list/domain-list.component.ts
+
+e6bc7634dfcab6c338ba2f7025088a101a55ec23, #23 文字表示削り, Sat Dec 16 15:53:27 2017 +0900
+M	webapp/app/domain-list/domain-list.component.html
+
+0f2ab463a667cc47d6918b361b30282697c1b6c4, travisへのリンク, Sat Dec 16 15:37:21 2017 +0900
+M	README.md
+
+2d6fc580a7f6a736ede6755b17e99daa8608d216, ビルド状況画像（自己満足）, Sat Dec 16 15:35:09 2017 +0900
+M	README.md
+
+f34f727d9f15857ebd15f4635cf6bf2b41bb55f8, フィルタ機能一旦非表示 #23, Sat Dec 16 15:13:26 2017 +0900
+M	webapp/app/domain-list/domain-list.component.html
+M	webapp/app/domain-list/domain-list.component.ts
+
+10053906e5943bbc5ee9efe85ae20c5c492eb9f5, #34 対応, Sat Dec 16 14:58:24 2017 +0900
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+
+6667bf3ef8b919d57bb2d0ea64bb80bd0af90c1c, パッケージバージョンアップ（脆弱性対応）, Sat Dec 16 14:51:13 2017 +0900
+M	package-lock.json
+M	package.json
+
+2bfa1aa6f4f2894b13a39d2684d3cd7eddf57b2c, Angular Materialのドキュメントを見ると、色は乗った方が良さそうなのでその方針で対応 #16, Mon Dec 11 22:22:09 2017 +0900
+M	.angular-cli.json
+R091	webapp/styles.css	webapp/styles.scss
+
+4b87ce8e73dced42502f5143ea7fc75976fad162, フォーマット部分を広く変更, Sun Dec 10 19:45:13 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+
+21526c4c9f1e39f38ddde7ee108f5d036f9e7635, 説明、存在理由を必須入力に変更, Sun Dec 10 19:42:12 2017 +0900
+M	webapp/app/domain-edit-form/domain-edit-form.component.css
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+
+b2d65c6e1649a4bd282798e9c4635916bda130b0, IE11動作のためにpolyfill対応, Sun Dec 10 19:17:23 2017 +0900
+M	webapp/polyfills.ts
+
+1bec0811ef7e7e3afa7720ee9514e2ce0d594c57, Update README.md, Tue Dec 5 21:54:44 2017 +0900
+M	README.md
+
+f12d9934a1a27459e0e90bce0cbae7f7ee834f6b, favicon変更 #29, Tue Dec 5 21:02:05 2017 +0900
+M	webapp/favicon.ico
+
+ad82ae7d454c957bfe4942a90b4386a5679303f3, アプリタイトル修正 #22, Tue Dec 5 20:49:20 2017 +0900
+M	webapp/index.html
+
+826406460d9c4adceeb69e8e4caa957b7e29be65, アプリの導入手順作成による調整, Sun Dec 3 17:05:23 2017 +0900
+M	README.md
+M	build.gradle
+
+7d5a938fecf122ff1c8572da493b75b09be6254b, README更新, Sun Dec 3 15:37:31 2017 +0900
+M	README.md
+
+e0b82ef3381d64ffef890108c7222f2295e4aad3, travisの無駄なパッケージング処理を除去（デフォルトでassembleしてくれる, Sun Dec 3 13:48:33 2017 +0900
+M	.travis.yml
+
+dfb3a5eeebac02dc4f05713efb9a4d6ea17842de, アプリメニュー非表示 #13, Sun Dec 3 13:41:33 2017 +0900
+M	webapp/app/app.component.html
+
+5edebaea21c2deac87c1e959063f9abe51649035, Merge pull request #17 from enlighten-series/use-markdown, Sun Dec 3 13:30:38 2017 +0900
+129afd50a787ff43c5b665f2aa106c6bf2bf0d77, テキストエリアで記入できる要素をMarkdown形式に対応（スタイル対応なし, Sun Dec 3 13:14:17 2017 +0900
+M	package-lock.json
+M	package.json
+M	webapp/app/domain-detail/domain-detail.component.css
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+16c7cd9d11904122478c81cc13d6fbc10df5dc4b, ドメイン詳細表示の項目ラベル追加, Sun Dec 3 12:17:14 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.css
+M	webapp/app/domain-detail/domain-detail.component.html
+
+16ef3513b03b85c0c7169435db73dbdf4d341b95, 誤字除去, Mon Nov 27 20:59:16 2017 +0900
+M	.travis.yml
+
+5e7ddcafda89b9e39627385f74ecc378521ba21b, TravisCi設定追加, Mon Nov 27 20:47:12 2017 +0900
+A	.travis.yml
+
+8fb114fb4b6ab1b7661f0110242d4377b9fb58b9, ユーザメニューを非表示（方式未定のため, Mon Nov 27 20:34:08 2017 +0900
+M	build.gradle
+M	webapp/app/app.component.html
+
+6c53ce78e587ae8c9ebe0132516d603c4f3e72bf, WEBアプリ：ブラウザ幅を縮めた際にヘッダが固定バーに切り替わるように変更（ヘッダボタンが隠れてしまうため）, Wed Nov 22 21:41:27 2017 +0900
+M	webapp/styles.css
+
+c43fb5510d1927698d7058a30a5ec74329110fde, メソッド分割, Wed Nov 22 21:08:00 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+
+b7f20f5a8f3f0f61250590d50615beb4ceef4673, ディスクベースの初回起動時にDomainテーブル作成, Wed Nov 22 20:30:08 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/resources/query/DomainQuery.xml
+
+464ecb56893a966d44abb4216ee7312d140b4ec7, Merge pull request #10 from enlighten-series/domain-query-isolating-to-xml, Wed Nov 22 20:04:29 2017 +0900
+86e3110ba41ec0fb630fcd62408a284147a2bb02, ドメインテーブル操作SQLをXMLファイルに分離, Wed Nov 22 15:13:44 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/MyBatisConfiguration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+A	src/main/resources/query/DomainQuery.xml
+
+4b874d87268bb12c982126f4fe01cf817b64beb4, 初期データの作成時間／更新時間が登録されるように修正, Tue Nov 21 21:08:39 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/metadata/MetadataRepository.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/aop/DatasourceAop.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/metadata/MetadataDatasource.java
+M	src/main/resources/config/application-prod.yml
+
+4a284ac5d35a6412e9702a8dac344094486f367f, 本番モードを初めて実行する際のデータベースの初期化処理実装, Tue Nov 21 20:28:02 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/metadata/MetadataRepository.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/config/MyBatisConfiguration.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/metadata/MetadataDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/metadata/MetadataMapper.java
+A	src/main/resources/config/mybatis.xml
+A	src/main/resources/query/MetadataQuery.xml
+
+b52dbff6a1f1013aec37c16bb3b1842b11cc15c6, アプリケーション自体の情報を格納するメタデータテーブルの追加＋PostConstructでデータ取得, Fri Nov 17 15:53:19 2017 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/usecase/ApplicationMigration.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/metadata/Metadata.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/metadata/MetadataRepository.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/metadata/MetadataDatasource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/metadata/MetadataMapper.java
+M	src/main/resources/data.sql
+M	src/main/resources/schema.sql
+
+015eb6dbfddcae1b907c349bc4e4fd00fca17171, URLがidだけ変わった場合はコンポーネント再作成されないため、id変更をsubscribeし続けるように変更, Fri Nov 17 13:57:01 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+f53906a65ee7461b85ea0c64ec0136c0729672a8, 404が発生した際に、404ページを表示する, Thu Nov 16 22:48:59 2017 +0900
+M	webapp/app/app.module.ts
+M	webapp/app/app.route.ts
+M	webapp/app/domain-detail/domain-detail.component.ts
+A	webapp/app/error-page/error-page.component.css
+A	webapp/app/error-page/error-page.component.html
+A	webapp/app/error-page/error-page.component.spec.ts
+A	webapp/app/error-page/error-page.component.ts
+A	webapp/app/services/http-status-interceptor.ts
+
+b905ce805930273bc58509ad03bb18dffcd7d210, ドメイン変更後に参照タブに切り替えるように変更（変わった感ほしい, Thu Nov 16 21:48:47 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+3e0ffb368ae92b85560be4f876ed1c72444684de, 作成日時、更新日時を画面に表示, Tue Nov 14 21:42:33 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/models/domain.ts
+
+77cd4de5dc8192bf3d18149808b90610a848b579, DBに作成日時、更新日時を保存, Tue Nov 14 21:34:48 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/Domain.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/aop/DatasourceAop.java
+M	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+M	src/main/resources/data.sql
+M	src/main/resources/schema.sql
+
+3acdfa0a8d69d6e2ede4087af4344c4eb030cda7, DB登録、更新処理にAOP設定, Tue Nov 14 20:48:58 2017 +0900
+M	build.gradle
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/aop/DatasourceAop.java
+
+8b1a571525c41cd32f173201633000b422667b12, ドメイン操作処理をアーキテクチャに合わせた依存関係に変更, Mon Nov 13 22:42:02 2017 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/service/DomainService.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/DomainRepository.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainDatasource.java
+M	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+
+e9cbd79573b0384b30fce7eb2c5c2251e072e197, バックエンドのパッケージ構成を変更, Mon Nov 13 22:02:09 2017 +0900
+A	src/main/java/org/enlightenseries/DomainDictionary/application/package-info.java
+A	src/main/java/org/enlightenseries/DomainDictionary/application/service/package-info.java
+R081	src/main/java/org/enlightenseries/DomainDictionary/domain/Domain.java	src/main/java/org/enlightenseries/DomainDictionary/domain/model/domain/Domain.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/model/package-info.java
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/package-info.java
+R084	src/main/java/org/enlightenseries/DomainDictionary/mapper/DomainMapper.java	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/domain/DomainMapper.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/datasource/package-info.java
+A	src/main/java/org/enlightenseries/DomainDictionary/infrastructure/package-info.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/package-info.java
+R087	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/DomainResource.java
+A	src/main/java/org/enlightenseries/DomainDictionary/presentation/rest/package-info.java
+
+97f530fc95100a5b86fcc9211fe0d329d1985c69, 本番ビルド時にDB永続化（不具合あり）, Sun Nov 12 17:30:20 2017 +0900
+M	.gitignore
+M	src/main/resources/config/application-dev.yml
+M	src/main/resources/config/application-prod.yml
+M	src/main/resources/config/application.yml
+
+0bdc3a0898d30ef3850dddb332cb0f21f2d0393a, gradle実行時オプションでアプリケーションのプロファイルを切り替えるように変更（jHipster方式）, Sat Nov 11 23:40:38 2017 +0900
+M	build.gradle
+A	src/main/resources/config/application-dev.yml
+A	src/main/resources/config/application-prod.yml
+M	src/main/resources/config/application.yml
+
+583d8c84917ecfeaea723dc96ea6a2b0fe91af65, プロパティファイルをyamlに変更（好み, Sat Nov 11 14:51:12 2017 +0900
+D	src/main/resources/application.properties
+A	src/main/resources/config/application.yml
+
+35a6975bb82570c08aae2b4cf9aca5f936b522f4, Webアプリ側の削除処理実装, Fri Nov 10 20:51:35 2017 +0900
+M	webapp/app/app.module.ts
+M	webapp/app/domain-detail/domain-detail.component.ts
+M	webapp/app/models/domain.ts
+
+e25651956012dedc0ba26c5e5ea477e19660e7bf, DBからのドメイン削除実装, Fri Nov 10 20:16:28 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/mapper/DomainMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java
+
+271b73722118560e10f4dbfdbfedef6a57203316, DBのドメイン更新実装, Thu Nov 9 21:21:34 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/mapper/DomainMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java
+
+969b7a02610d4f3d8f7ae03e660ad6d50ccc6efc, DBからドメイン単一取得, Thu Nov 9 21:02:59 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/mapper/DomainMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java
+
+036d1eba1566a9de1f15d4b5b20b845514b9dad9, ドメインのDB登録実装, Thu Nov 9 19:41:23 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/mapper/DomainMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java
+M	webapp/app/domain-list/domain-list.component.ts
+
+6ed85c080a2a27fca542af28b8a3464a91a5e0ce, bootRepackage時にaotビルドするように変更, Thu Nov 9 19:37:19 2017 +0900
+M	build.gradle
+M	package.json
+
+22345f426d01dc1ad30e8ab55b98fda4530802e7, mybatis+h2でドメイン一覧を取得するプロトタイプ実装, Wed Nov 8 22:51:32 2017 +0900
+M	build.gradle
+M	src/main/java/org/enlightenseries/DomainDictionary/domain/Domain.java
+A	src/main/java/org/enlightenseries/DomainDictionary/mapper/DomainMapper.java
+M	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java
+A	src/main/resources/data.sql
+A	src/main/resources/schema.sql
+
+b20f05294611e1a267e523ed48ac28188722c600, ドメインの更新API呼び出し実装, Mon Nov 6 22:18:21 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+M	webapp/app/domain-edit-form/domain-edit-form.component.ts
+
+4841b5090511c0f70da6523564f3de9894cff141, Growlメッセージコンポーネントコミット漏れ, Mon Nov 6 21:38:35 2017 +0900
+A	webapp/app/widgets/growl-messager.component.ts
+
+dbe1809c09aff8ce35f66d6a1ec0a80e7d77e1f0, SnackbarでGrowlメッセージ作成, Mon Nov 6 21:38:05 2017 +0900
+M	webapp/app/app.module.ts
+M	webapp/app/domain-create/domain-create.component.ts
+
+0d41011495eecac9cacae072f0a9269dc81ef660, ドメイン登録APIへの通信, Mon Nov 6 20:38:37 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java
+M	webapp/app/domain-create/domain-create.component.ts
+
+bb3eea8907e968e573493dd3552cd2b2b27cce25, ルーティングをハッシュ仕様に変更（URL直叩き考慮）, Sun Nov 5 12:42:45 2017 +0900
+M	webapp/app/app.module.ts
+
+fc13ddbd8ffc75dc311dc5ddbd15ea47621068d8, フォーム入力内容を登録画面、詳細画面に渡す, Sun Nov 5 12:33:44 2017 +0900
+M	webapp/app/domain-create/domain-create.component.html
+M	webapp/app/domain-create/domain-create.component.ts
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+M	webapp/app/domain-edit-form/domain-edit-form.component.ts
+
+c000f6ab4086adbf98d473316b585dab057e8dea, 登録確認ダイアログ実装, Sun Nov 5 12:24:55 2017 +0900
+M	webapp/app/app.module.ts
+M	webapp/app/domain-edit-form/domain-edit-form.component.ts
+
+7b3e8dd2c9c1614cfba05c6c23a437be88cf5996, ドメイン編集画面をform化, Sun Nov 5 11:36:31 2017 +0900
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+M	webapp/app/domain-edit-form/domain-edit-form.component.ts
+
+e1b5f82d2342df948d0fa44270e7bf0a74cdfe4d, ドメイン詳細画面で表示するように変更, Fri Nov 3 22:00:59 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+b63eec9946bce8c160447cd2955123a92b79157a, ドメイン単品を返すAPIモック, Fri Nov 3 21:41:42 2017 +0900
+M	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java
+
+b2c630146a07d75157dc58c472e426809eef103f, 不要な記述を削除, Fri Nov 3 21:17:14 2017 +0900
+M	webapp/app/domain-list/domain-list.component.ts
+
+fb664f8aa6fe30b3b6bfe7e537ac7f424337dd0b, ドメイン一覧をバックエンドから取得して表示するように変更, Fri Nov 3 20:57:27 2017 +0900
+M	webapp/app/domain-list/domain-list.component.ts
+
+cd3e4eb253613aa9803330ef35e701ecb16ee8c6, npm start時にバックエンドサーバにプロキシするように変更, Wed Nov 1 21:15:53 2017 +0900
+M	package.json
+A	webapp/backend-proxy.conf.json
+
+f5e839675990e1c0b77221f6ea820011d909271a, 同一ドメイン上へのhttpアクセス実装, Tue Oct 31 22:00:04 2017 +0900
+M	webapp/app/app.module.ts
+M	webapp/app/domain-list/domain-list.component.ts
+
+0bf2fa634dddf01cbf7316227ccb64236bc0fa92, angularバージョンアップ（@angular/common/httpを使用するため）, Tue Oct 31 21:59:27 2017 +0900
+M	package-lock.json
+M	package.json
+
+9f23c3007ece6ed8756ddc772dc361df5670e047, bootRunが生成している（と思われる）ビルド成果物をignore, Tue Oct 31 21:58:54 2017 +0900
+M	.gitignore
+
+850ce59b3f02a66f18d7454c7afbc9f56431a655, ドメイン一覧を返すモックAPI実装, Mon Oct 30 21:40:47 2017 +0900
+M	build.gradle
+M	package-lock.json
+A	src/main/java/org/enlightenseries/DomainDictionary/domain/Domain.java
+A	src/main/java/org/enlightenseries/DomainDictionary/web/rest/DomainResource.java
+
+f7d22b1ad11213ca980b50fbf185c194ab8ce981, ドメイン項目変更、不要記述削除, Mon Oct 30 20:30:42 2017 +0900
+M	webapp/app/app.component.ts
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+M	webapp/app/domain-edit-form/domain-edit-form.component.ts
+M	webapp/app/domain-list/domain-list.component.html
+M	webapp/app/domain-list/domain-list.component.ts
+M	webapp/app/license-list/license-list.component.html
+M	webapp/app/models/domain.ts
+
+92546df0994942453cb0179546c4397aaf1293ca, ログインメニュー追加, Mon Oct 30 20:04:15 2017 +0900
+M	webapp/app/app.component.html
+M	webapp/app/app.component.ts
+M	webapp/styles.css
+
+d96c7892a2d11b6b339324ce658806b8755c61a0, 画面遷移時、アプリメニュークリック時にアプリメニューを閉じるようにした, Sun Oct 29 21:50:29 2017 +0900
+M	webapp/app/app.component.html
+M	webapp/app/app.component.ts
+M	webapp/app/app.module.ts
+
+129a55838aa05cc7bcefa131e375c7fbb8582425, アプリメニュー配置と表示ボタンイベント実装, Sun Oct 29 21:20:22 2017 +0900
+M	webapp/app/app.component.html
+M	webapp/app/app.component.ts
+M	webapp/styles.css
+
+13026ca1466e08cbb6d849823337fa50ad46cecb, ライセンスページ追加, Sun Oct 29 21:04:35 2017 +0900
+M	webapp/app/app.component.html
+M	webapp/app/app.module.ts
+M	webapp/app/app.route.ts
+A	webapp/app/license-list/license-list.component.css
+A	webapp/app/license-list/license-list.component.html
+A	webapp/app/license-list/license-list.component.spec.ts
+A	webapp/app/license-list/license-list.component.ts
+
+379520b93643c12d28a05c576b2cddbb367f2d37, 項目名、説明のフィルタ掛け合わせを実装, Thu Oct 26 22:09:39 2017 +0900
+M	webapp/app/domain-list/domain-list.component.ts
+
+4b14da9c9487bdf667ee8130ec4669d3e43e6b12, 項目名フィルタ実装, Thu Oct 26 21:57:30 2017 +0900
+M	webapp/app/domain-list/domain-list.component.ts
+
+87aa1c63d049c79f92adce031983acb24b7d4661, コンポーネントソースで何の処理かわかるように命名調整, Wed Oct 25 20:56:24 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+c6de853923215a23c902f5ecf8f3dd0dc0fb2118, フォームに追加・編集両方で使えるように登録ボタンインタフェース追加, Wed Oct 25 20:54:35 2017 +0900
+M	webapp/app/domain-create/domain-create.component.html
+M	webapp/app/domain-create/domain-create.component.ts
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+M	webapp/app/domain-edit-form/domain-edit-form.component.ts
+
+c00709d2dfd4180c5ceb586d2850fef8b7e31b16, コミット漏れ, Wed Oct 25 20:48:43 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.html
+
+1ecef76bc99679f84bea7e91937bba5d8b8acc3c, 項目詳細画面に閲覧のみ行う詳細タブを追加, Wed Oct 25 20:47:19 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.css
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+8dbdb6ac0124164f048ed3ad2d8acc52dccf3545, フォームコンポーネントと似た形式を項目詳細の詳細タブ画面にコピーするため、スタイルをタグ指定からクラス指定に変更, Wed Oct 25 20:46:55 2017 +0900
+M	webapp/app/domain-edit-form/domain-edit-form.component.css
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+
+5e792cc3a61137d92748a34c0b18022cec4ee8f7, 一覧行ボタンを編集から詳細に変更, Wed Oct 25 20:45:37 2017 +0900
+M	webapp/app/domain-list/domain-list.component.css
+M	webapp/app/domain-list/domain-list.component.html
+M	webapp/app/domain-list/domain-list.component.ts
+
+6b29da443e285951b00877f994af063794dae80c, 一覧画面のレイアウト修正, Wed Oct 25 20:23:41 2017 +0900
+M	webapp/app/domain-list/domain-list.component.css
+M	webapp/app/domain-list/domain-list.component.html
+
+488653d43cbe11d99e1a8952c62c64d5b02a8447, 不要な画面部品除去, Wed Oct 25 20:16:35 2017 +0900
+M	webapp/app/domain-create/domain-create.component.html
+M	webapp/app/domain-detail/domain-detail.component.css
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-list/domain-list.component.html
+
+54793d447cb73119ef2972e587228dcd1508f919, タブ切り替え実装, Wed Oct 25 19:13:49 2017 +0900
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+ebcb120a147e40e0888f79040511a9da475779ae, ドメイン登録・編集フォームレイアウト完成, Tue Oct 24 22:51:50 2017 +0900
+M	webapp/app/app.module.ts
+M	webapp/app/domain-edit-form/domain-edit-form.component.css
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+M	webapp/app/domain-edit-form/domain-edit-form.component.ts
+
+bd249d30966a1720b208f791414708c3a0f08a6c, 入力フォームレイアウト調整, Tue Oct 24 22:05:12 2017 +0900
+M	webapp/app/domain-edit-form/domain-edit-form.component.css
+M	webapp/app/domain-edit-form/domain-edit-form.component.html
+
+b50ffd272a8f06e554cf09821b17c5398cdfb33d, タブメニュー追加, Mon Oct 23 23:31:03 2017 +0900
+M	webapp/app/app.module.ts
+M	webapp/app/domain-detail/domain-detail.component.html
+M	webapp/app/domain-detail/domain-detail.component.ts
+
+ef6c5fa34123e33003422df30928f4dd24de817c, ドメイン追加画面・編集画面の初期ソース追加, Mon Oct 23 23:11:51 2017 +0900
+M	webapp/app/app.component.html
+M	webapp/app/app.component.ts
+M	webapp/app/app.module.ts
+M	webapp/app/app.route.ts
+A	webapp/app/domain-create/domain-create.component.css
+A	webapp/app/domain-create/domain-create.component.html
+A	webapp/app/domain-create/domain-create.component.spec.ts
+A	webapp/app/domain-create/domain-create.component.ts
+A	webapp/app/domain-detail/domain-detail.component.css
+A	webapp/app/domain-detail/domain-detail.component.html
+A	webapp/app/domain-detail/domain-detail.component.spec.ts
+A	webapp/app/domain-detail/domain-detail.component.ts
+A	webapp/app/domain-edit-form/domain-edit-form.component.css
+A	webapp/app/domain-edit-form/domain-edit-form.component.html
+A	webapp/app/domain-edit-form/domain-edit-form.component.spec.ts
+A	webapp/app/domain-edit-form/domain-edit-form.component.ts
+M	webapp/app/domain-list/domain-list.component.html
+M	webapp/app/domain-list/domain-list.component.ts
+M	webapp/app/models/domain.ts
+
+b8a1d5eca8f1388c24469413ae4d0043061d5c22, データソース名修正（ストリームではないので"$"除去）, Fri Oct 20 22:54:18 2017 +0900
+M	webapp/app/domain-list/domain-list.component.html
+
+8ab51af0c50c6d255cf2076cf7f3e3e901b9f546, フィルタテキスト変更ストリームの作成, Fri Oct 20 22:52:13 2017 +0900
+M	webapp/app/domain-list/domain-list.component.html
+M	webapp/app/domain-list/domain-list.component.ts
+
+29737abcb6fe7362f44238da51b3244a9973a237, ドメインをクラス定義, Fri Oct 20 22:22:28 2017 +0900
+M	webapp/app/domain-list/domain-list.component.ts
+A	webapp/app/models/domain.ts
+
+aa6107168a2379aa13b06ba9dad402cd1076c4cf, 項目一覧画面デザイン作成, Fri Oct 20 22:14:04 2017 +0900
+M	webapp/app/app.module.ts
+M	webapp/app/domain-list/domain-list.component.css
+M	webapp/app/domain-list/domain-list.component.html
+M	webapp/app/domain-list/domain-list.component.ts
+
+69718b159dce5c26e6ec4b62f228ac0e12f5f439, ホームボタン追加＋レイアウト・フォント調整, Thu Oct 19 22:07:46 2017 +0900
+M	webapp/app/app.component.html
+M	webapp/styles.css
+
+9825f0b8eb73cc2d65f095d545f643da839f00c5, 大枠のスタイル作成中, Thu Oct 19 21:37:59 2017 +0900
+M	webapp/styles.css
+
+9390087fc79c9ad128e7e8997b82bb0df9528796, 画面コンテンツとルーティング追加, Thu Oct 19 21:20:58 2017 +0900
+M	webapp/app/app.component.html
+M	webapp/app/app.module.ts
+A	webapp/app/app.route.ts
+A	webapp/app/domain-list/domain-list.component.css
+A	webapp/app/domain-list/domain-list.component.html
+A	webapp/app/domain-list/domain-list.component.spec.ts
+A	webapp/app/domain-list/domain-list.component.ts
+
+8e3b2c32928a2e9f462d3b83089c39d2b8250b88, ヘッダ要素作成, Thu Oct 19 20:59:52 2017 +0900
+M	webapp/app/app.component.html
+
+1605c735acdbcb2f6579ca573d14b3564d169807, 背景色設定, Thu Oct 19 20:59:38 2017 +0900
+M	webapp/styles.css
+
+77934b6c8d5fbf0c0c82a63457dff7454e126f56, マテリアルアイコン追加, Tue Oct 17 22:57:34 2017 +0900
+M	.angular-cli.json
+M	package-lock.json
+M	package.json
+M	webapp/app/app.component.html
+M	webapp/app/app.component.ts
+M	webapp/app/app.module.ts
+
+5fe2988c3d05c075b7620f2b7b78c370f95e0071, angular materialを導入, Tue Oct 17 21:51:07 2017 +0900
+M	package-lock.json
+M	package.json
+M	webapp/app/app.component.html
+M	webapp/app/app.module.ts
+M	webapp/styles.css
+
+3dbe075f6895ff7b62b1dacdbce169ff4e748e54, Angularがビルドされる先の静的ページをリポジトリ管理外に設定, Mon Oct 16 23:57:21 2017 +0900
+M	.gitignore
+
+95a648d05225cdc53909a27de388d9d2a9174e20, bootrun時にAngularアプリケーションをビルドする構成を追加, Mon Oct 16 23:55:21 2017 +0900
+M	.angular-cli.json
+M	.gitignore
+M	build.gradle
+M	package-lock.json
+M	package.json
+
+2a0d02b83d21dfb4d8b585347d33a41652c411c6, angularアプリケーションを同一フォルダに結合, Mon Oct 16 23:08:32 2017 +0900
+A	.angular-cli.json
+A	.editorconfig
+M	.gitignore
+A	e2e/app.e2e-spec.ts
+A	e2e/app.po.ts
+A	e2e/tsconfig.e2e.json
+A	karma.conf.js
+A	package-lock.json
+A	package.json
+A	protractor.conf.js
+A	tsconfig.json
+A	tslint.json
+A	webapp/app/app.component.css
+A	webapp/app/app.component.html
+A	webapp/app/app.component.spec.ts
+A	webapp/app/app.component.ts
+A	webapp/app/app.module.ts
+A	webapp/assets/.gitkeep
+A	webapp/environments/environment.prod.ts
+A	webapp/environments/environment.ts
+A	webapp/favicon.ico
+A	webapp/index.html
+A	webapp/main.ts
+A	webapp/polyfills.ts
+A	webapp/styles.css
+A	webapp/test.ts
+A	webapp/tsconfig.app.json
+A	webapp/tsconfig.spec.json
+A	webapp/typings.d.ts
+
+11699bf39536f28ac872969ad3744ab674ed26e2, first commit, Wed Oct 4 22:32:40 2017 +0900
+A	.gitignore
+A	LICENSE
+A	README.md
+A	build.gradle
+A	gradle/wrapper/gradle-wrapper.jar
+A	gradle/wrapper/gradle-wrapper.properties
+A	gradlew
+A	gradlew.bat
+A	src/main/java/org/enlightenseries/DomainDictionary/DomainDictionaryApplication.java
+A	src/main/resources/application.properties
+A	src/test/java/org/enlightenseries/DomainDictionary/DomainDictionaryApplicationTests.java

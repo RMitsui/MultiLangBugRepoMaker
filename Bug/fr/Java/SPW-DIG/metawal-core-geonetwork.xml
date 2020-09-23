@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>433</id>
+		<title>GeoCatalogue - Eléments non récupérés</title>
+		<body>Ce ticket fait référence aux éléments de métadonnées non récupérés dans les templates du Geocatalogue déployé en test.  - **Environnement** : Metawal4.test et Geocatalogue en environnement de test - **Templates testés** : Données (avec MD série et donnée - raster et vecteur), Services, Applications et Cartes statiques  ### **Document d'analyse**  * [Voir Wiki :Récupération des MD dans Geocatalogue](https://github.com/SPW-DIG/metawal-core-geonetwork/wiki/Analyse-R%C3%A9cup%C3%A9ration-MD-dans-GeoCatalogue)   ### **Problèmes rencontrés** - Les fiches référençant des services ne sont pas visibles bien qu'elles soient présentes dans la requête CSW  ![image](https://user-images.githubusercontent.com/12267969/46276875-ca387f80-c561-11e8-904a-712f4cadb1ab.png)  http://metawal4.test.wallonie.be/geonetwork/srv/fre/csw?request=GetRecordById&amp;service=CSW&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;outputFormat=application/xml&amp;version=2.0.2&amp;elementSetName=full&amp;id=c5d1d35d-7f02-4a47-9361-b15d20eed232  - Rubrique **Accès** --&gt; Les liens vers les fiches descriptives des WebServices ne sont pas activés (en lien avec absence des fiches de WS  - Rubrique **Description**   Problèmes dans la récupération des modèles de données (OnLineFunctionCode ="information.content") et les légendes (OnLineFunctionCode ="information.portrayal")  Les liens vers MW doivent être adaptés Les identifiants locaux ne sont pas repris  - Rubrique **Qualité**   Problèmes avec la généalogie qui n'est pas toujours récupérée Problèmes avec les documents relatifs à la qualité qui s'affichent mal, de manière incomplète ou tous les documents ne sont pas repris  - Rubrique **Ressources associées**  Problème avec les données associées qui n'apparaissent pas. Les liens sont de type "Collection/source, CrossReference, PartOfSeamlessDatabase)     </body>
+		<created>2018-10-01 08:18:59</created>
+		<closed>2019-07-15 13:47:55</closed>
+	</bug>
+	<bug>
+		<id>373</id>
+		<title>Consultation - vue géoportail</title>
+		<body>L'aperçu ne s'affiche pas.  Onglet Accès, la visualisation dans WalOnMap ou dans une application thématique ne fonctionne pas même si des ressources sont référencées. Les références aux WebServices REST/WMS ne s’affichent pas  Onglet Ressources associées. Les ressources associées (site web etc.) ne s’affichent pas  ![2017-03-22 15_12_59-clipboard](https://cloud.githubusercontent.com/assets/6093597/24202098/5dba0a74-0f12-11e7-83f3-b5922ea2f7d1.png)   </body>
+		<created>2017-03-22 14:16:36</created>
+		<closed>2019-02-05 15:28:33</closed>
+	</bug>
+	<bug>
+		<id>369</id>
+		<title>La validation supprime la sélection</title>
+		<body>Lorsqu’on sélectionne des fiches et qu’on les valide, la validation supprime la sélection.</body>
+		<created>2017-03-22 10:59:32</created>
+		<closed>2018-03-26 14:36:30</closed>
+	</bug>
+	<bug>
+		<id>362</id>
+		<title>Contribuer - nombre de fiches sélectionnées</title>
+		<body>Quand on sélectionne des fiches, leur nombre est indiqué et se met à jour correctement. Si ensuite on effectue une autre action, comme par exemple visualiser le détail d'une fiche en cliquant sur un titre, et qu'on revient ensuite en arrière avec le bouton du navigateur le nombre de fiches sélectionnées est revenu à 0. Pourtant, les cases devant les fiches sont encore checkées. Même chose si on bascule vers le catalogue de la section rechercher : les fiches sont sélectionnées mais le nombre = 0.  Dès qu'on sélectionne ou désélectionne une fiche, le compteur est de nouveau juste.  ![2017-02-23 23_12_19-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/23281755/e6f8aa10-fa1e-11e6-92c6-213c06219f39.png) </body>
+		<created>2017-02-23 22:22:49</created>
+		<closed>2018-01-29 11:25:24</closed>
+	</bug>
+	<bug>
+		<id>354</id>
+		<title>Annuaire - Entrées non identifiées</title>
+		<body>Sur certains annuaires, les entrées ne sont pas identifiées et il n'est pas possible de les éditer.   ![2017-02-22 18_19_36-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/23223551/a614ebf6-f92b-11e6-8bc9-756b932c4c0d.png)  Pourtant, quand on ajoute un contact venant de l'annuaire dans la fiche, il apparait correctement.  ![2017-02-22 18_19_08-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/23223555/a7bda524-f92b-11e6-97c6-dd00b530ad9f.png)    </body>
+		<created>2017-02-22 17:21:56</created>
+		<closed>2018-01-23 11:00:25</closed>
+	</bug>
+	<bug>
+		<id>352</id>
+		<title>Annuaire - ajouter un élément</title>
+		<body>Quand je veux ajouter un élément à l'annuaire, il ne se passe rien de visible. Edit : Je peux ajouter un élément de type contact, mais pas un élément de type rapport de qualité  ![2017-02-22 17_46_18-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/23222042/f76e0e10-f926-11e6-899a-3e37e4272c90.png) </body>
+		<created>2017-02-22 16:47:50</created>
+		<closed>2018-01-23 11:02:06</closed>
+	</bug>
+	<bug>
+		<id>347</id>
+		<title>Import - pas possible de transformer de l'ISO 19139 en ISO 19115-3</title>
+		<body>Lors d'un import MEF de plusieurs fiches avec transformation 19139--&gt;19115-3, erreur XSL transformation not found. ![2017-02-09 16_02_11-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/22888041/a9329ece-f204-11e6-9f1b-724ec5f51fcf.png) </body>
+		<created>2017-02-13 14:55:01</created>
+		<closed>2018-03-26 15:38:32</closed>
+	</bug>
+	<bug>
+		<id>339</id>
+		<title>Consultation - vues en erreur</title>
+		<body>Strictement au niveau de l'affichage : - Pour les fiches en ISO 19139 - vue par défaut : OK - Metawal : OK - Geoportail : KO - Pour les vues en ISO 19115-3 - défaut : OK - Metawal : KO - GP : OK  Par ailleurs :  - à quoi la la vue Metawal correspond-elle ?  - existe-t-il un vue complète </body>
+		<created>2016-10-14 13:10:11</created>
+		<closed>2019-02-07 14:31:39</closed>
+	</bug>
+	<bug>
+		<id>338</id>
+		<title>Consultation - Ouvrir une fiche dans un nouvel onglet</title>
+		<body>En mode recherche, pas possible d'ouvrir une fiche dans un nouvel onglet. Au lieu que la fiche apparaisse, c'est la page d'accueil du catalogue qui apparait. Pas pratique quand on veut comparer des fiches. A partir du catalogue en mode contribution, ça fonctionne. </body>
+		<created>2016-10-14 12:52:21</created>
+		<closed>2018-01-24 09:53:27</closed>
+	</bug>
+	<bug>
+		<id>336</id>
+		<title>Moissonnage - non prise en compte d'une transformation xsl</title>
+		<body>Lors de la sauvegarde des paramètres de moissonnage d'un protocole CSW, la transformation xsl n'est pas conservée. </body>
+		<created>2016-07-12 09:14:07</created>
+		<closed>2019-07-15 13:49:07</closed>
+	</bug>
+	<bug>
+		<id>330</id>
+		<title>Impossible de moissonner Metawal prod depuis Metawal 4 test</title>
+		<body>Je peux configurer le moissonneur, mais il ne remonte aucune fiche. </body>
+		<created>2016-06-08 12:53:06</created>
+		<closed>2018-04-18 12:33:02</closed>
+	</bug>
+	<bug>
+		<id>326</id>
+		<title>Associer service à une donnée - erreur sur &lt;Enter&gt;</title>
+		<body>Quand on est en train de taper un mot-clé de recherche, puis qu'on tape `&lt;Enter&gt;`, on obtient une page d'erreur.  ![2016-04-28 15_47_12-apache tomcat_7 0 59 - rapport d erreur](https://cloud.githubusercontent.com/assets/6093597/14888080/c43ff1e4-0d58-11e6-9f4b-b64c01368840.png) </body>
+		<created>2016-04-28 13:49:31</created>
+		<closed>2018-03-22 16:31:02</closed>
+	</bug>
+	<bug>
+		<id>325</id>
+		<title>Associer un service à une donnée - liste des suggestions</title>
+		<body>Quand on commence à taper dans le champ pour chercher un service, la liste disparait, puis un moment elle réapparait --&gt; la laisser et l'affiner à chaque lettre tapée  ![2016-04-28 15_42_18-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/14887927/212bf462-0d58-11e6-98eb-e0dd26e64a9f.png) ![2016-04-28 15_41_19-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/14887929/22e4301c-0d58-11e6-92c1-639aa9e8bab8.png) ![2016-04-28 15_42_44-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/14887930/2518fb74-0d58-11e6-8323-7d92084a7ad9.png) </body>
+		<created>2016-04-28 13:45:49</created>
+		<closed>2020-01-21 14:35:59</closed>
+	</bug>
+	<bug>
+		<id>315</id>
+		<title>Sign in failure</title>
+		<body>Je crois que j'ai mis du temps à éditer. J'ai obtenu cette erreur : ![2016-03-02 16_14_03-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/13464533/ee77a306-e091-11e5-916c-be500a0c4508.png) </body>
+		<created>2016-03-02 15:15:17</created>
+		<closed>2016-07-07 08:57:03</closed>
+	</bug>
+	<bug>
+		<id>308</id>
+		<title>Mots-clés INSPIRE - problème</title>
+		<body>![2016-02-03 23_06_16-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/12798645/cc5f0bd8-caca-11e5-9441-e37b55361390.png) </body>
+		<created>2016-02-03 22:07:14</created>
+		<closed>2018-01-24 10:22:51</closed>
+	</bug>
+	<bug>
+		<id>306</id>
+		<title>Consultation - mots coupés</title>
+		<body>Eviter les mots coupés ou les couper selon les règles du français ;-p http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?T1=c%C3%A9sure&amp;T3.x=0&amp;T3.y=0  ![2016-02-03 22_43_41-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/12798126/fcbbe0a6-cac7-11e5-8e13-e12990ce0266.png) </body>
+		<created>2016-02-03 21:48:57</created>
+		<closed>2018-03-30 14:36:00</closed>
+	</bug>
+	<bug>
+		<id>305</id>
+		<title>Erreur d'import de fiches</title>
+		<body>Import de fiches de Metawal (ISO 19139) vers Metawal4 (ISO 19115-3). Fiches multilingues moissonnées depuis le catalogue du cadastre. Import d'un MEF contenant plusieurs fiches. Conversion ISO19139 vers ISO19115-3 cochée. Fiches en question : http://metawal.wallonie.be/geonetwork/srv/fre/search?s_search=&amp;s_E_any=belgie&amp;s_timeType=true&amp;s_E_hitsperpage=20&amp;hl=fre  ![2016-02-03 15_31_10-metawal - catalogue pour l information geographique de wallonie - service public](https://cloud.githubusercontent.com/assets/6093597/12785160/6b6c65bc-ca8b-11e5-93a2-4e98746f01d4.png) </body>
+		<created>2016-02-03 14:33:40</created>
+		<closed>2018-01-24 10:25:21</closed>
+	</bug>
+	<bug>
+		<id>304</id>
+		<title>Consultation - les vues ne fonctionnent pas</title>
+		<body>En consultation, seule la vue par défaut fonctionne. Les autres laissent la page blanche. </body>
+		<created>2016-02-03 08:24:45</created>
+		<closed>2018-01-24 10:28:49</closed>
+	</bug>
+	<bug>
+		<id>303</id>
+		<title>La suppression d'une fiche réinitialise la recherche</title>
+		<body>Dans l'interface de recherche. </body>
+		<created>2016-02-02 12:37:28</created>
+		<closed>2018-01-24 10:29:20</closed>
+	</bug>
+	<bug>
+		<id>285</id>
+		<title>Edition / suggestion ajouter un identifiant</title>
+		<body>La suggestion "ajouter un identifiant" ne s'affiche pas si la fiche est en ISO 19139 non rw </body>
+		<created>2015-09-09 20:20:19</created>
+		<closed>2015-11-06 11:30:12</closed>
+	</bug>
+	<bug>
+		<id>251</id>
+		<title>Problème d'intitulé des champs</title>
+		<body>Sur une fiche en profil rw, le nom de certains champs est maintenant en anglais. ![2015-08-20 17_56_13-metawal - test _ test afac - iso 19139 rw dataset](https://cloud.githubusercontent.com/assets/6093597/9388333/0499e32c-4765-11e5-9e64-57d28e10d3ba.png) </body>
+		<created>2015-08-20 15:58:32</created>
+		<closed>2015-08-21 11:23:13</closed>
+	</bug>
+	<bug>
+		<id>245</id>
+		<title>Référence du nom d'un GeoService WMS dans fiche geodonnée</title>
+		<body>A la suite du référencement d'une ressource en ligne de protocole OGC_WMS dans une fiche de géodonnée, on observe qu'en prévisualisation de cette fiche, la description renseignée pour le geoservice apparait au lieu de son nom.   Les essais suivants ont été effectués  - Référencement d'une ressource en ligne sans protocole &gt; le nom du geoservice apparait (comportement OK - cf. PJ cas 1) - Referencement d'une ressource en ligne avec mention du protocole ESRI-REST &gt; le nom du geoservice apparait et tooltip reprenant la description est actif lors du survol de la souris (comportement OK - cf. PJ cas 2) - Referencement d'une ressource en ligne avec mention du protocole OGC-WMS &gt; la description du geoservice apparait et il n'y a aucun tooltip actif lors du survol de la souris (mauvais comportement - cf. PJ cas 3)  Par ailleurs, l'icone "Map" informant de l'existence du geoservice n'apparait pas dans le cas de la mention du protocole ESRI-Rest  ![1_ref_geoservice_ss_protocole](https://cloud.githubusercontent.com/assets/12267969/7836275/56cfd0b2-047f-11e5-9f82-956d34626c9a.png) ![2_ref_geoservice_prot_esri](https://cloud.githubusercontent.com/assets/12267969/7836276/56d1fac2-047f-11e5-9abf-7dc451f156c8.png) ![3_ref_geoservice_prot_wms](https://cloud.githubusercontent.com/assets/12267969/7836277/56d5acb2-047f-11e5-9bd1-40596c57d7be.png) </body>
+		<created>2015-05-27 12:48:02</created>
+		<closed>2015-11-06 11:51:58</closed>
+	</bug>
+	<bug>
+		<id>225</id>
+		<title>CSW / geonet:info ne devrait pas être dans la réponse GetRecordById</title>
+		<body>eg.  http://metawal.wallonie.be/geonetwork/srv/fre/csw-inspire?request=GetRecords&amp;service=CSW&amp;version=2.0.2&amp;namespace=xmlns%28csw=http://www.opengis.net/cat/csw%29&amp;resultType=results&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;outputFormat=application/xml&amp;maxRecords=500&amp;typeNames=csw:Record&amp;elementSetName=full&amp;constraintLanguage=CQL_TEXT </body>
+		<created>2015-02-24 12:34:07</created>
+		<closed>2015-04-30 07:48:36</closed>
+	</bug>
+	<bug>
+		<id>224</id>
+		<title>Mise à jour automatique de la date d'édition de la fiche de métadonnées ne se fait pas</title>
+		<body>Détecté en prod, version 3.1.1 Pas de problème en test.  Je ne sais pas si c'est lié au problème de la mise à jour des id dans le XML. On a travaillé toute la journée sur les fiches "Relief de la Wallonie" et leur date de mise à jour est le 30/01 </body>
+		<created>2015-02-20 17:22:46</created>
+		<closed>2015-04-30 07:49:09</closed>
+	</bug>
+	<bug>
+		<id>223</id>
+		<title>Dupliquer une fiche ne change pas son identifiant</title>
+		<body>Envir. : Metawal 3.1.1 en prod  Quand on duplique une fiche, un nouvel identifiant interne est créé, mais il n'est pas reporté dans la fiche xml au niveau du fileidentifier. Les documents annexes sont chargés avec l'identifiant interne en référence, mais l'adresse des fichiers dans le xml utilise l'identifiant de la fiche (qui n'a pas changé) Le problème se manifeste par l'inacessibilité des documents annexes, comme par exemple la vignette.  ![image 849](https://cloud.githubusercontent.com/assets/6093597/6284985/fe8cf584-b8f6-11e4-8e2a-f1fbd2dd53d3.png)  ![image 850](https://cloud.githubusercontent.com/assets/6093597/6284997/2d93e748-b8f7-11e4-9f3a-9eee9e6174c6.png) </body>
+		<created>2015-02-20 08:02:20</created>
+		<closed>2015-04-30 07:49:09</closed>
+	</bug>
+	<bug>
+		<id>220</id>
+		<title>Edition / Erreur lors de l'ouverture d'une fiche - undeclared prefix xsi</title>
+		<body>Description du problème  ``` l’AGDP concernant les parcelles cadastrales et les limites administratives. 1.       Je n’arrive pas à ajouter le point de moissonnage dans Metawal  2.       Comme il avait déjà été défini dans l’instance de test, j’ai récupéré les fiches et je les ai importées dans Metawal.  3.       Et là, impossible de les éditer :  XPathException : Undeclared prefix xsi ```  Version affectée: 3.1 actuellement en prod  Non reproductible en recette. </body>
+		<created>2015-02-12 16:48:30</created>
+		<closed>2015-04-30 07:49:09</closed>
+	</bug>
+	<bug>
+		<id>210</id>
+		<title>Calcul automatique des emprises géographiques à partir des mots-clés</title>
+		<body>Lorsqu'on active la suggestion automatique, les emprises s'ajoutent deux fois. </body>
+		<created>2015-01-21 15:13:18</created>
+		<closed>2015-03-25 10:22:12</closed>
+	</bug>
+	<bug>
+		<id>207</id>
+		<title>Recherche INSPIRE - les proposition de thème ont disparu</title>
+		<body>Les proposition de thème ont disparu dans la recherche INSPIRE. ![image 831](https://cloud.githubusercontent.com/assets/6093597/5760383/69dc180e-9cd4-11e4-8bdf-ee846f9fe988.png) </body>
+		<created>2015-01-15 15:34:58</created>
+		<closed>2015-01-16 15:24:08</closed>
+	</bug>
+	<bug>
+		<id>199</id>
+		<title>La facette thèmes INSPIRE ne fonctionne pas</title>
+		<body>Quand on sélectionne un thème INSPIRE via les facettes, on obtient aucun résultat. </body>
+		<created>2015-01-08 08:55:48</created>
+		<closed>2018-01-24 11:32:55</closed>
+	</bug>
+	<bug>
+		<id>198</id>
+		<title>Recherche INSPIRE - bug du mot-clé altitude</title>
+		<body>Une recherche par thème INSPIRE sur base du thème Altitude ne renvoie pas les fiches qui renseignent ce mot-clé. D'autres thèmes ont été testés (zones de risque naturel, sols) et fonctionnent. Ex de fiche : http://metawal.wallonie.be/geonetwork/srv/fre/search?uuid=03abb4c1-5f53-46bb-94fa-359f3912a041 </body>
+		<created>2015-01-07 15:48:30</created>
+		<closed>2015-11-06 11:59:52</closed>
+	</bug>
+	<bug>
+		<id>197</id>
+		<title>Association de ressources, contenu du panneau des Ressources associées et de la vue simplifiée</title>
+		<body>Quand on associe deux jeux de données, si le type d'initiative est absent ou n'est pas défini, la relation n'apparait pas dans le panneau des ressources associées. ![image 826](https://cloud.githubusercontent.com/assets/6093597/5646995/2278bcd6-9682-11e4-8633-3367078886ab.png) Si le type d'initiative est spécifié, la relation apparait. ![image 825](https://cloud.githubusercontent.com/assets/6093597/5647005/37e75ce4-9682-11e4-8db0-533cbe1b05d5.png) Comment l'élément est facultatif, la relation devrait apparaitre dans tous les cas. </body>
+		<created>2015-01-07 14:31:48</created>
+		<closed>2015-01-15 15:31:56</closed>
+	</bug>
+	<bug>
+		<id>189</id>
+		<title>Modification des informations du compte utilisateur</title>
+		<body>Quand on se connecte pour modifier des informations utilisateur, on a accès aux champs permettant de modifier le niveau du profil (les droits). On a aussi accès à la liste des autres utilisateurs (du groupe). Après avoir modifié le niveau de profil et enregistré, on n'a plus aucun accès aux infos utilisateur. </body>
+		<created>2014-12-12 10:53:15</created>
+		<closed>2015-01-15 15:52:02</closed>
+	</bug>
+	<bug>
+		<id>172</id>
+		<title>Editeur - Extent - Liste des entités administratives</title>
+		<body>Petites corrections à apporter dans la liste des entités administratives : - Ajouter "Commune de" ou "Commune d'" devant le nom des communes - Ajouter les autres niveaux administratifs : provinces ("Province de") et région wallonne - Limiter les coordonnées en WGS84 à 2 décimales   ![image 786](https://cloud.githubusercontent.com/assets/6093597/4333427/258f0676-3fe0-11e4-91a7-1f0315011530.png) </body>
+		<created>2014-09-19 09:34:42</created>
+		<closed>2015-01-22 15:20:23</closed>
+	</bug>
+	<bug>
+		<id>171</id>
+		<title>CSW / Conversion iso19139.rw &gt; iso19139 absente</title>
+		<body>Exemple:  ``` &lt;?xml version="1.0"?&gt; &lt;csw:GetRecordById xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" service="CSW" version="2.0.2"     outputSchema="csw:IsoRecord"&gt;     &lt;csw:Id&gt;e78b70f2-5819-4384-8fc1-96ddb9b854ce&lt;/csw:Id&gt; &lt;/csw:GetRecordById&gt; ```  Résultat : retourne une fiche en iso19139.rw au lieu d'iso19139.  Bug ici https://github.com/spacebelGIS/metawal-core-geonetwork/blob/metawal-develop/web/src/main/webapp/WEB-INF/data/config/schema_plugins/iso19139.rw/present/csw/iso-full.xsl  Il y a eu des améliorations sur ce point dans GN (https://github.com/geonetwork/core-geonetwork/pull/493). Donc normalement  : - outputSchema="own" = iso19139.rw - outputSchema=csw:IsoRecord (ou http://www.isotc211.org/2005/gmd) pour iso19139  Ajouter la transformation et reporter la PR 493 dans 3.1.  Pour 4.x, rien à faire (c'est opérationnel pour le plugin iso19115-3). </body>
+		<created>2014-07-25 14:51:15</created>
+		<closed>2015-01-13 12:41:45</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>Export d'une fiche en pdf : erreur</title>
+		<body>L'export d'une métadonnée vers du pdf présente l'erreur suivante :  "L'opération demandée ne peut être réalisée.  XPathException : A sequence of more than one item is not allowed as the first argument of concat() " </body>
+		<created>2013-12-03 12:41:31</created>
+		<closed>2014-01-07 15:16:03</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>Editeur / Association / Pb de lien pour fiche parent</title>
+		<body>Idem pour données sources. </body>
+		<created>2013-12-03 12:30:55</created>
+		<closed>2014-01-10 14:56:58</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>export zip et pdf KO</title>
+		<body>Et le retour en arrière ne va pas bien, on ne revient pas où on était. ET si avant on a fait un changement de langue (et puis revenu en français) les messages sont en allemand </body>
+		<created>2013-12-03 09:06:37</created>
+		<closed>2014-01-07 15:16:12</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>RSS ne fonctionne pas</title>
+		<body>Erreur quand on clique sur RSS. De plus le template correspond au template de base GN et pas au template Metawal  ![image 616](https://f.cloud.github.com/assets/6093597/1662161/b43c95d6-5bf8-11e3-88b1-27a0dcb947a5.png) </body>
+		<created>2013-12-03 08:55:54</created>
+		<closed>2014-01-24 15:29:58</closed>
+	</bug>
+	<bug>
+		<id>19</id>
+		<title>Modèle application donne erreur!</title>
+		<body>New MD sur base du modèle applicatif : IllegalStateException : Root element not set </body>
+		<created>2013-12-03 08:45:42</created>
+		<closed>2014-01-07 14:36:34</closed>
+	</bug>
+	<bug>
+		<id>4</id>
+		<title>Connexion / Pas d'alerte sur mauvais mot de passe</title>
+		<body></body>
+		<created>2013-12-03 08:26:33</created>
+		<closed>2014-01-07 14:11:38</closed>
+	</bug>
+	<bug>
+		<id>2</id>
+		<title>Impression / Problème d'accès</title>
+		<body>quand on imprime avec l’icône (en haut à droite d’une fiche), il demande un login/mot de passe </body>
+		<created>2013-12-02 16:14:06</created>
+		<closed>2014-01-07 10:56:35</closed>
+	</bug>
+	<bug>
+		<id>1</id>
+		<title>Vue simplifiée / généalogie non affichée</title>
+		<body>Généalogie pas passée dans la vue simplifiée (bien dans la vue par défaut) </body>
+		<created>2013-12-02 16:09:43</created>
+		<closed>2014-01-24 15:19:32</closed>
+	</bug>
+</bugs>

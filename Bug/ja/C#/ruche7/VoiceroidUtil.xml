@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>145</id>
+		<title>アプリ更新チェックが動作しない</title>
+		<body>さくらのレンタルサーバが TLS 1.0/1.1 を廃止したことが原因。 TLS 1.2 をサポートするようにする。</body>
+		<created>2018-06-13 15:08:38</created>
+		<closed>2018-06-13 15:21:38</closed>
+	</bug>
+	<bug>
+		<id>137</id>
+		<title>AviUtl拡張編集：ドロップ先レイヤー番号最大値を 99 にする</title>
+		<body>#124 でドロップ先レイヤー番号の最大値を 100 としたが、2レイヤー分挿入されるため 100 を指定すると必ず中途半端な挿入になってしまう。</body>
+		<created>2018-04-14 17:57:03</created>
+		<closed>2018-04-14 18:13:50</closed>
+	</bug>
+	<bug>
+		<id>135</id>
+		<title>本体側の文章を使う設定時、入力文クリア機能が働かない</title>
+		<body>操作画面で「本体側の文章を使う」にチェックを入れている時、設定画面/音声保存タブの「保存成功時に入力文をクリア」設定が働かない。</body>
+		<created>2018-04-14 08:53:08</created>
+		<closed>2018-04-14 09:22:05</closed>
+	</bug>
+	<bug>
+		<id>133</id>
+		<title>ファイルダイアログを開こうとするとクラッシュする</title>
+		<body>#124 でついでに行った修正でエンバグしていた。</body>
+		<created>2018-04-14 08:05:43</created>
+		<closed>2018-04-14 08:50:27</closed>
+	</bug>
+	<bug>
+		<id>125</id>
+		<title>exo設定で数値入力後にキャラ変更するとおかしな挙動になる</title>
+		<body>exo設定で X, Y 等の数値入力後にキャラ選択コンボボックスで別キャラを選択すると、入力値が選択後のキャラに適用されてしまったり、どちらにも適用されなかったりする。</body>
+		<created>2018-04-08 16:53:58</created>
+		<closed>2018-04-09 13:27:12</closed>
+	</bug>
+	<bug>
+		<id>119</id>
+		<title>exo設定で文字色と影・縁色が変えられない</title>
+		<body>いつ頃からエンバグしたかも調査する。</body>
+		<created>2018-04-06 12:33:57</created>
+		<closed>2018-04-06 20:19:19</closed>
+	</bug>
+	<bug>
+		<id>115</id>
+		<title>InputHandle -&gt; InputIdle</title>
+		<body>Process.WaitForInputIdle メソッドを扱う一部メソッドの名前が、例えば WhenForInputHandle などのようになっている。 動作に影響はないがコードの見栄えが悪いため修正する。</body>
+		<created>2017-12-20 21:22:12</created>
+		<closed>2018-01-06 21:17:14</closed>
+	</bug>
+	<bug>
+		<id>111</id>
+		<title>EXシリーズ： ArgumentNullException がログ出力される</title>
+		<body>https://github.com/ruche7/VoiceroidUtil/blob/a30448ba1d344e7e133d872a0da00e98603ba2f1/RucheHome.Voiceroid/ProcessFactory.PlusExImpl.cs#L147-L156  150行目の controls が null になって例外送出している。事前に null チェックを入れる。</body>
+		<created>2017-09-23 19:13:59</created>
+		<closed>2017-09-23 19:26:55</closed>
+	</bug>
+	<bug>
+		<id>110</id>
+		<title>VOICEROID2：本体側の文章入力欄が読み取り専用になる場合がある</title>
+		<body>本体側の文章入力欄が読み取り専用になり、文章の設定に失敗する場合がある。 本体側で調声やボイスプリセットの保存を行ったタイミングでなることがあるようだが正確なタイミングは不明。 停止ボタン等をクリックすれば解除されるようなので、読み取り専用状態を検出したらダミーの操作を行わせてみる。</body>
+		<created>2017-09-14 13:15:56</created>
+		<closed>2017-10-01 18:23:28</closed>
+	</bug>
+	<bug>
+		<id>104</id>
+		<title>本体側の終了時に ElementNotAvailableException 例外発生</title>
+		<body>本体側を終了させたタイミングで AutomationElement.FromHandle が走ることで発生している模様。 例外を捕捉するようにする。</body>
+		<created>2017-06-19 16:06:06</created>
+		<closed>2017-06-19 16:41:41</closed>
+	</bug>
+	<bug>
+		<id>102</id>
+		<title>VOICEROID2：音声保存完了後、いくつかのボタンが無効状態のままになる</title>
+		<body>VOICEROID2は、音声保存完了後、一旦クライアント領域がアクティブになることで初めて「再生」、「音声保存」、「再生時間」の各ボタンが有効状態に戻される模様。 VoiceroidUtil側で「本体側の文章を使う」設定を有効にした上で音声保存ボタンを連打すると、音声保存完了後にVOICEROID2側がアクティブにならないままとなり、再生中と誤認したり次の音声保存開始に失敗したりする。 音声保存完了時、一旦VOICEROID2側をアクティブにする処理を入れる。</body>
+		<created>2017-06-19 14:56:15</created>
+		<closed>2017-06-19 15:11:24</closed>
+	</bug>
+	<bug>
+		<id>99</id>
+		<title>VOICEROID2：保存完了ダイアログの親がデスクトップになる場合がある</title>
+		<body>オプション画面を毎回表示する設定を無効にした状態で音声保存を行うと、たまに保存完了時に出る「情報」ダイアログの親が保存進捗ウィンドウではなくデスクトップになることがある。 ProcessId の比較等を駆使し、この場合でも情報ダイアログを取得＆OKボタン押下できるようにする。</body>
+		<created>2017-06-19 12:27:01</created>
+		<closed>2017-06-19 14:16:11</closed>
+	</bug>
+	<bug>
+		<id>98</id>
+		<title>ファイルダイアログへのパス入力反映前にOKボタンが押されてしまう</title>
+		<body>VOICEROID2利用者（複数）の環境で発生。 VOICEROID+シリーズ等でも起きるのかは不明。  ファイルダイアログにファイルパスが自動入力された後、その入力が反映される前にOKボタンが押下されるせいなのか、元々入っていた前回保存ファイル名で保存を行おうとしてしまい、上書き確認ダイアログ表示→保存失敗扱いとなってしまう。  version 1.8.0 でファイルダイアログの UI Automation 対応を行った際に同等の現象を見た覚えがあるため、ユーザの環境次第で起きるのかもしれない。</body>
+		<created>2017-06-19 02:23:45</created>
+		<closed>2017-06-21 12:34:03</closed>
+	</bug>
+	<bug>
+		<id>97</id>
+		<title>VOICEROID2の起動判定が正常に行われない環境がある</title>
+		<body>Twitterで発覚。  https://twitter.com/niln_one/status/876461774492413952  ひとまず調査用にログを仕込んだ特別バージョンを用意する。</body>
+		<created>2017-06-18 17:23:17</created>
+		<closed>2017-06-21 14:01:58</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>VOICEROID2：ファイル分割有効時、ファイル名重複回避処理をすり抜ける</title>
+		<body>* VOICEROID2本体のファイル分割設定が有効。 * VoiceroidUtilのファイル命名にキャラ名and/or入力文のみ含まれている。  上記両方の条件を満たし、同じキャラand/or入力文で音声保存しようとすると、ファイル名重複回避のための "[数字]" サフィックス付与処理をすり抜け、既存ファイル名での保存処理が走ってしまう。 上記のような状態であってもファイル名重複回避が働くようにする。</body>
+		<created>2017-06-18 17:00:21</created>
+		<closed>2017-06-20 17:29:59</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>VOICEROID2：音声保存開始時の別ダイアログ表示を検出する</title>
+		<body>フレーズ変更後未保存での音声保存ボタン押下時に出る注意ダイアログ等を検出できておらず、エラー表示が遅れる。 想定外のダイアログが出ている場合は即座に失敗となるようにする。</body>
+		<created>2017-06-18 05:52:11</created>
+		<closed>2017-06-18 06:05:03</closed>
+	</bug>
+	<bug>
+		<id>88</id>
+		<title>.exoファイル作成処理のVOICEROID2対応漏れ</title>
+		<body>YMM連携と同等の対応を行う。 対象キャラが定まらない場合用にVOICEROID2設定も用意する。</body>
+		<created>2017-06-12 19:03:37</created>
+		<closed>2017-06-12 19:52:51</closed>
+	</bug>
+	<bug>
+		<id>85</id>
+		<title>VOICEROID2：音声保存完了まで待機する</title>
+		<body>VOICEROID2では、音声保存途中でもWAVEファイルが生成されているため、WAVEファイルの存在だけで音声保存完了判定してはならない。 必ず保存進捗ダイアログと完了ダイアログが出るようなので、そちらを用いて判定するように修正する。  また、キャンセル時にはキャンセルボタン押下後にWAVEファイルが削除されるようなので、保存完了と誤認しないような仕組みを入れる。</body>
+		<created>2017-06-11 17:42:25</created>
+		<closed>2017-06-12 16:33:11</closed>
+	</bug>
+	<bug>
+		<id>74</id>
+		<title>ビルドバッチ修正</title>
+		<body>現状だと、ビルド失敗した場合に resource ディレクトリを上書きしたままになってしまうので、きちんと元の状態に戻す。</body>
+		<created>2017-05-13 19:22:58</created>
+		<closed>2017-05-13 19:25:22</closed>
+	</bug>
+	<bug>
+		<id>71</id>
+		<title>たまにWAVEファイル保存確認に失敗する</title>
+		<body>手元の Debug 版で確認。 Release 版ではあまり起きた記憶が無いので Debug 版特有かもしれない。  トレースログファイルが出力されていないことから、保存進捗ダイアログ以外のダイアログが表示されたものと判定されているようだ。</body>
+		<created>2017-05-08 21:27:49</created>
+		<closed>2017-05-13 14:58:16</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>YMM連携に失敗することがある</title>
+		<body>長時間YMMを起動したままにしているとウィンドウハンドルが変化するのか、YMM連携に失敗することがある。 失敗時に内部でリトライすることで結果的には失敗させないようにしたい。</body>
+		<created>2017-05-04 10:49:25</created>
+		<closed>2018-01-06 21:11:45</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>ショートカットキーが自然に効くようにする</title>
+		<body>例えば操作画面のボタンにフォーカスがある状態でF5を押すと、再生は行われるものの、その後フォーカスを移すまでショートカットが効かなくなる。 ウィンドウがアクティブでさえあれば、現在開いている画面に対応するショートカットは常に効果があるようにしたい。</body>
+		<created>2017-03-11 20:13:40</created>
+		<closed>2017-03-13 00:30:47</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>カスペルスキーを導入している特定環境でYMMとの連携に失敗する</title>
+		<body>2ちゃんねるスレッドおよびTwitterのDMで報告あり。  Windows 7 Home Premium 64ビット環境で『カスペルスキー 2016』や『カスペルスキー セキュリティ 2017』を導入すると、『ゆっくりMovieMaker』のタイムラインウィンドウが見つからず連携に失敗する。 Windows 10 Pro 64ビット環境で『カスペルスキー セキュリティ 2017』の体験版を導入してみたが、再現しなかった。  再現環境を持つ人に調査協力してもらう必要がありそう。</body>
+		<created>2017-01-04 11:09:47</created>
+		<closed>2017-01-05 09:42:49</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>音声保存先のパスが長すぎるとクラッシュする</title>
+		<body>音声保存先のパスが長すぎると、音声保存しようとした時に例外が発生してアプリが落ちる。  * パスの長さチェックを行う。 * 例外が発生しても落ちないようにする。</body>
+		<created>2017-01-02 11:41:51</created>
+		<closed>2017-01-03 13:07:37</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>ファイルパスが入力されず音声保存に失敗してしまう</title>
+		<body>TwitterのDMで報告あり。  version 1.6.0 にて音声保存ボタンを押すと、VOICEROID本体の音声保存ダイアログは出るものの、ファイルパスが入力されず、音声保存に失敗する。 出力されたエラーログは下記の通り。  &lt;pre&gt;[2016-12-30 17:35:35][TID:1][DoCheckFileSavedTask;ProcessFactory.ProcessImpl.cs:849]&gt;音声ファイルの保存を確認できません。 progressFound=False&lt;/pre&gt;  version 1.3.2 で同等の不具合を修正したはずだが、抜けがあるのかもしれない。</body>
+		<created>2017-01-02 08:19:52</created>
+		<closed>2017-05-31 14:30:24</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>ドラッグ＆ドロップ処理の修正</title>
+		<body>* 音声保存先フォルダに特殊フォルダをドロップできるように修正する。 * 音声保存先フォルダにごみ箱以下のフォルダをドロップできないように修正する。 * 文章入力欄にごみ箱以下のファイルをドロップすると例外発声する原因を調べて修正する。 * その他、ドラッグ＆ドロップに関する不具合があれば修正する。</body>
+		<created>2016-11-03 10:19:17</created>
+		<closed>2016-11-03 11:07:44</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>短い文章をYMM連携させるとたまに字幕が登録されない</title>
+		<body>http://potato.2ch.net/test/read.cgi/streaming/1475429256/585  &gt; voiceroidUtil使ってYMMに自動で追加すると時々字幕が表示されない気がする  &gt; えっ とかの二文字位の短いファイルだとよく発生する気がする  &gt; 手動で編集してセリフを追加すれば問題ないんだけどもね  &gt; voiceroidUtilが原因かも分からんし  YMM自体のバグかもしれないのでそれも含め調査する。 調査結果次第では修正する。 </body>
+		<created>2016-10-31 01:21:33</created>
+		<closed>2016-11-03 06:59:51</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>不具合：.exo画面の MovableValue.End 値が Begin 値で初期化されてしまう</title>
+		<body>MoveMode.None の時の処理が悪さをしている模様。 この処理自体要らないかもしれない。 </body>
+		<created>2016-10-29 01:30:00</created>
+		<closed>2016-10-29 01:43:59</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>不具合：.exoファイルにトークテキストが書き出されない</title>
+		<body>530ce99e4a206c8d18c08fd8cc87443c3cee3d08 のコミットで外してしまっていた。 </body>
+		<created>2016-10-29 01:21:37</created>
+		<closed>2016-10-29 01:28:06</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>不具合：再生時、たまにVOICEROIDウィンドウが前面に出てこない</title>
+		<body>表題通り、たまに再生開始してもVOICEROIDのウィンドウが前面に出てこない。 新しい文章を再生させようとした時に起きるため、再生中と判定されていないと思われる。 </body>
+		<created>2016-10-27 21:44:42</created>
+		<closed>2016-10-27 22:31:40</closed>
+	</bug>
+</bugs>

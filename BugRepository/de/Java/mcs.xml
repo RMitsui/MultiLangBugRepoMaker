@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="mcs">
+	<bug id="87" opendate="2016-01-17 21:08:51" fixdate="2016-01-28 22:48:50">
+		<buginformation>
+			<summary>Fehlerhafte Logik beim Suffix für Filename-Kollisionen</summary>
+			<description>So war das nicht gedacht:  ![d](http://stud14.technikum-wien.at/~if14b048/Selection_223.png) Sollte (2), (3) (4) sein </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/at/fhtw/mcs/model/Project.java</file>
+			<file>src/test/java/at/fhtw/mcs/model/ProjectTest.java</file>
+			<file>src/test/java/at/fhtw/mcs/model/NoOpTrack.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="85" opendate="2016-01-17 20:02:07" fixdate="2016-01-28 23:28:04">
+		<buginformation>
+			<summary>Ändern des Ausgabegeräts verwirft Lautstärke-Anpassungen</summary>
+			<description>Sowohl Lautheit als auch Mastervolume-Regler werden dabei zurückgesetzt. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/at/fhtw/mcs/model/JavaxJavazoomTrack.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="77" opendate="2016-01-17 18:58:15" fixdate="2016-02-12 15:49:37">
+		<buginformation>
+			<summary>Beim Normalisieren wird die Lautstärke nach dem Löschen des leisesten Tracks nicht nach oben angepasst</summary>
+			<description>Wenn der leistete Track gelöscht wird, bleibt die Lautstärke der übrigen Tracks gleich. Wenn nun ein neuer Track geladen wird, ist dieser lauter als die anderen Tracks. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/at/fhtw/mcs/model/JavaxJavazoomTrack.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2016-01-17 18:14:23" fixdate="2016-01-28 23:01:55">
+		<buginformation>
+			<summary>Beim Beenden mittels X-Button erfolgt keine Warnung bei ungespeicherten Änderungen</summary>
+			<description>Programm wird (zumindest unter Windows) ohne Warnung beendet. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/at/fhtw/mcs/controller/RootController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2015-12-09 14:16:07" fixdate="2015-12-09 17:41:05">
+		<buginformation>
+			<summary>Audioanalyse-Fehler bei MP3</summary>
+			<description>Beim Öffnen einer Mp3 gibts einen Fehler durch die Audioanalyse.  ``` Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: Error while opening clip     at at.fhtw.mcs.model.AudioOuput.openClip(AudioOuput.java:29)     at at.fhtw.mcs.model.JavaxJavazoomTrack.&lt;init&gt;(JavaxJavazoomTrack.java:51)     at at.fhtw.mcs.model.TrackFactory.loadTrack(TrackFactory.java:20)     at at.fhtw.mcs.controller.RootController.handleAddTrack(RootController.java:159)     at at.fhtw.mcs.controller.RootController$$Lambda$86/259363142.handle(Unknown Source)     at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)     at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)     at javafx.event.Event.fireEvent(Event.java:198)     at javafx.scene.control.MenuItem.fire(MenuItem.java:462)     at com.sun.javafx.scene.control.skin.ContextMenuContent$MenuItemContainer.doSelect(ContextMenuContent.java:1405)     at com.sun.javafx.scene.control.skin.ContextMenuContent$MenuItemContainer.lambda$createChildren$341(ContextMenuContent.java:1358)     at com.sun.javafx.scene.control.skin.ContextMenuContent$MenuItemContainer$$Lambda$189/757195946.handle(Unknown Source)     at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)     at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)     at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)     at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)     at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)     at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)     at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)     at javafx.event.Event.fireEvent(Event.java:198)     at javafx.scene.Scene$MouseHandler.process(Scene.java:3758)     at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3486)     at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)     at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2495)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:350)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:275)     at java.security.AccessController.doPrivileged(Native Method)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$350(GlassViewEventHandler.java:385)     at com.sun.javafx.tk.quantum.GlassViewEventHandler$$Lambda$157/2141291667.get(Unknown Source)     at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:404)     at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:384)     at com.sun.glass.ui.View.handleMouseEvent(View.java:555)     at com.sun.glass.ui.View.notifyMouse(View.java:927)     at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)     at com.sun.glass.ui.gtk.GtkApplication.lambda$null$48(GtkApplication.java:139)     at com.sun.glass.ui.gtk.GtkApplication$$Lambda$41/791885625.run(Unknown Source)     at java.lang.Thread.run(Thread.java:745) Caused by: javax.sound.sampled.UnsupportedAudioFileException: could not get audio input stream from input file     at javax.sound.sampled.AudioSystem.getAudioInputStream(AudioSystem.java:1189)     at at.fhtw.mcs.model.AudioOuput.openClip(AudioOuput.java:24)     ... 49 more ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/at/fhtw/mcs/model/JavaxJavazoomTrack.java</file>
+			<file>src/main/java/at/fhtw/mcs/model/Track.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2015-12-09 13:16:55" fixdate="2016-01-14 09:02:19">
+		<buginformation>
+			<summary>Ende der Audiospur behandeln</summary>
+			<description>![Screenshot](http://stud14.technikum-wien.at/~if14b048/Selection_206.png)  Zumindest der PlayPause-Button sollte zurückgesetzt werden. Den Rest sollten wir diskutiern (zB: Progressbar zurücksetzen? oder Loop?) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/at/fhtw/mcs/controller/RootController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

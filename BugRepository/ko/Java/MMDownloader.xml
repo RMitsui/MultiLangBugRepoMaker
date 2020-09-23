@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="MMDownloader">
+	<bug id="78" opendate="2018-07-29 15:04:07" fixdate="2018-07-29 15:28:46">
+		<buginformation>
+			<summary>이미지 압축하기 도움말 개행 필요</summary>
+			<description># 이미지 압축하기 도움말 개행 필요 ![image](https://user-images.githubusercontent.com/20942871/43367689-0d0912e6-938c-11e8-97e8-8b34b156834b.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/sys/SystemInfo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="77" opendate="2018-07-29 15:02:14" fixdate="2018-07-29 16:33:30">
+		<buginformation>
+			<summary>윈도우 버전에서 이미지 압축 기능 에러</summary>
+			<description># 윈도우 버전에서 이미지 압축 기능 에러  ```` 2018-07-30_00-00-47_다운받은_만화_압축_실패.txt  java.util.zip.ZipException: duplicate entry:  at java.util.zip.ZipOutputStream.putNextEntry(Unknown Source) at util.ImageCompress.compress(ImageCompress.java:47) at util.ImageCompress.compress(ImageCompress.java:26) at downloader.Downloader.download(Downloader.java:167) at downloader.Preprocess.connector(Preprocess.java:54) at ui.UI.showMenu(UI.java:63) at main.Main.main(Main.java:9) ```` * 압축 파일명이 `.zip`으로만 되어있는것으로 보아 StringUtils 사용 과정에서 발생한 에러로 추정</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/util/ImageCompress.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2018-07-22 09:50:50" fixdate="2018-07-22 10:14:46">
+		<buginformation>
+			<summary>ZipEntry에 한글 파일은 무시하고 압축됨</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/util/ImageCompress.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2018-07-01 15:58:56" fixdate="2018-07-22 11:01:16">
+		<buginformation>
+			<summary>병합시 모든 파일 병합 필요</summary>
+			<description> 현재 만화를 2화 이상 다운받을때 마지막 화에만 병합이 적용됨  모든 파일에 병합기능이 적용될수 있도록 개선필요</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/downloader/Downloader.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>93</id>
+		<title>GUI 5弱以上と推定される震度観測点の表示順が最後面になっている</title>
+		<body></body>
+		<created>2018-09-30 14:24:55</created>
+		<closed>2018-10-01 13:38:28</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>GUI 震度の大きい観測点を手前に表示する</title>
+		<body>![overwrap](https://user-images.githubusercontent.com/32266659/46255672-b5fd6f80-c4da-11e8-9263-edbf9186efc9.PNG)  ![overwrap_2](https://user-images.githubusercontent.com/32266659/46255668-a847ea00-c4da-11e8-8ce7-7a0effd20645.PNG) </body>
+		<created>2018-09-30 09:00:36</created>
+		<closed>2018-10-01 10:16:46</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>デフォルトの地域コードが地域未設定(900)ではなく地域不明(901)になっている</title>
+		<body></body>
+		<created>2018-05-18 12:25:57</created>
+		<closed>2018-05-18 13:15:35</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>プロトコル時刻の時差計算が正負逆になっている</title>
+		<body></body>
+		<created>2018-03-18 13:34:51</created>
+		<closed>2018-03-19 13:27:49</closed>
+	</bug>
+	<bug>
+		<id>30</id>
+		<title>対サーバ通信時、地域コードを3桁で送信していない</title>
+		<body></body>
+		<created>2018-03-18 05:59:10</created>
+		<closed>2018-03-18 06:46:06</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>パケットの分割が正しく出来ていない</title>
+		<body>Windows / Linux(Mono) 共通  調査エコーリプライ(```635```)での発生頻度が高い。 [CRLFSocket.cs#L196](https://github.com/p2pquake-takuya/epsp-peer-cs/blob/1.0.0-alpha.2/Client/Common/Net/CRLFSocket.cs#L196)付近でパケット分割処理を入れているが、正しく動作していない可能性がある。  ``` 2018-03-07 01:02:50,473 [22] DEBUG Client.Common.Net.CRLFSocket - 受信データ: 635 4 3343:1000419708:594:2399,2844,2368:7 635 5 3343:1000419708:803:2412,3715,3287:8 2018-03-07 01:02:50,474 [22] DEBUG Client.Common.Net.CRLFSocket - 送信データ: 635 5 3343:1000419708:594:2399,2844,2368:7635 5 3343:1000419708:803:2412,3715,3287:8 2018-03-07 01:02:50,474 [22] DEBUG Client.Common.Net.CRLFSocket - 送信データ: 635 5 3343:1000419708:594:2399,2844,2368:7635 5 3343:1000419708:803:2412,3715,3287:8 2018-03-07 01:02:50,475 [22] DEBUG Client.Common.Net.CRLFSocket - 送信データ: 635 5 3343:1000419708:594:2399,2844,2368:7635 5 3343:1000419708:803:2412,3715,3287:8 ```  送信データが不正なフォーマットとなるため、送信直後に各ピアから切断される。</body>
+		<created>2018-03-11 12:29:52</created>
+		<closed>2018-03-13 03:34:35</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>System.ObjectDisposedException at Client.Common.Net.CRLFSocket.WriteLine(CRLFSocket.cs:280)</title>
+		<body>``` Unhandled Exception: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; System.ObjectDisposedException: Cannot access a disposed object. Object name: 'System.Net.Sockets.Socket'.   at System.Net.Sockets.Socket.ThrowIfDisposedAndClosed () [0x0001b] in &lt;a63b52a3a7644f60a95b388cb72441c2&gt;:0   at System.Net.Sockets.Socket.Send (System.Byte[] buffer, System.Int32 offset, System.Int32 size, System.Net.Sockets.SocketFlags socketFlags, System.Net.Sockets.SocketError&amp; errorCode) [0x00000] in &lt;a63b52a3a7644f60a95b388cb72441c2&gt;:0   at System.Net.Sockets.Socket.Send (System.Byte[] buffer, System.Int32 offset, System.Int32 size, System.Net.Sockets.SocketFlags socketFlags) [0x00000] in &lt;a63b52a3a7644f60a95b388cb72441c2&gt;:0   at System.Net.Sockets.Socket.Send (System.Byte[] buffer) [0x00000] in &lt;a63b52a3a7644f60a95b388cb72441c2&gt;:0   at Client.Common.Net.CRLFSocket.WriteLine (System.String line) [0x00026] in (cut)/Client/Common/Net/CRLFSocket.cs:280   at Client.Peer.Manager.Peer.Send (Client.Common.Net.Packet packet) [0x00001] in (cut)/Client/Peer/Manager/Peer.cs:89   at Client.Peer.Manager.PeerManager.Send (Client.Common.Net.Packet packet, Client.Peer.Manager.Peer exceptPeer) [0x00025] in (cut)/Client/Peer/Manager/PeerManager.cs:95   at Client.Peer.Manager.PeerManager.peer_ReadLine (System.Object sender, Client.Common.Net.ReadLineEventArgs e) [0x0003d] in (cut)/Client/Peer/Manager/PeerManager.cs:107   at (wrapper delegate-invoke) System.EventHandler`1[Client.Common.Net.ReadLineEventArgs].invoke_void_object_TEventArgs(object,Client.Common.Net.ReadLineEventArgs) ```</body>
+		<created>2018-03-11 01:30:32</created>
+		<closed>2018-03-13 13:42:28</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>System.NotSupportedException at Client.App.State.ConnectingState.Completed(ConnectingState.cs:52)</title>
+		<body>ピアIDの割り当てが同期サーバ間で重複してしまった場合、割り当てられたピアIDだと思って参加処理を進めていても途中でエラーになってしまう模様。どちらかというとサーバ側の問題。  ``` 018-03-07 06:10:30,447 [23] DEBUG Client.Client.ClientContext - 実行するメソッド: AddressChangedError 2018-03-07 06:10:30,448 [23] DEBUG Client.App.MediatorContext - ClientContext_OperationCompleted: Restartable, RETURNED_ADDRESS_CHANGED 2018-03-07 06:10:30,448 [23] INFO  Client.App.State.MaintenanceState - IPアドレスが変化しているため、再接続します。 2018-03-07 06:10:30,449 [23] INFO  Client.App.State.MaintenanceState - ピア接続をすべて切断しました（接続数: 0） 2018-03-07 06:10:30,457 [16] DEBUG Client.Common.Net.CRLFSocket - 接続しました: p2pquake.ddo.jp:6910 2018-03-07 06:10:30,459 [23] DEBUG Client.Client.ClientContext - 現在の状態: ConnectedState 2018-03-07 06:10:30,459 [23] DEBUG Client.Client.ClientContext - 実行するメソッド: RequireAllowVersion 2018-03-07 06:10:30,459 [23] DEBUG Client.Client.ClientContext - 実行後の状態: NotifyProtocolVersionState 2018-03-07 06:10:30,460 [23] DEBUG Client.Common.Net.CRLFSocket - 送信データ: 131 1 0.32:P2PQ_SharpClient:compatible_0.0.002 2018-03-07 06:10:30,475 [23] DEBUG Client.Common.Net.CRLFSocket - 受信データ: 212 1 0.32:P2PQ_Server:Beta3_Rev1011 2018-03-07 06:10:30,476 [23] DEBUG Client.Client.ClientContext - 現在の状態: NotifyProtocolVersionState 2018-03-07 06:10:30,479 [23] DEBUG Client.Client.ClientContext - 実行するメソッド: NoticeAllowVersion 2018-03-07 06:10:30,479 [23] DEBUG Client.Client.ClientContext - 実行後の状態: RequireTemporaryPeerIdState 2018-03-07 06:10:30,479 [23] DEBUG Client.Common.Net.CRLFSocket - 送信データ: 113 1 2018-03-07 06:10:30,481 [23] DEBUG Client.Common.Net.CRLFSocket - 受信データ: 233 1 382 2018-03-07 06:10:30,482 [23] DEBUG Client.Client.ClientContext - 現在の状態: RequireTemporaryPeerIdState 2018-03-07 06:10:30,482 [23] DEBUG Client.Client.ClientContext - 実行するメソッド: AllocateTemporaryPeerId 2018-03-07 06:10:30,482 [23] DEBUG Client.Client.ClientContext - 実行後の状態: RequirePortScanState 2018-03-07 06:10:30,483 [23] DEBUG Client.Common.Net.CRLFSocket - 送信データ: 114 1 382:6999 2018-03-07 06:10:30,992 [23] DEBUG Client.Common.Net.AsyncListener+&lt;AcceptInfinite&gt;d__8 - 接続受け入れ: 127.0.0.1:63789 2018-03-07 06:10:30,994 [23] DEBUG Client.Common.Net.CRLFSocket - 送信データ: 614 1 0.32:P2PQ_SharpClient:compatible_0.0.002 2018-03-07 06:10:31,005 [23] DEBUG Client.Common.Net.CRLFSocket - 切断されました。 2018-03-07 06:10:31,005 [23] DEBUG Client.Common.Net.CRLFSocket - Connected: true 2018-03-07 06:10:31,006 [26] DEBUG Client.Common.Net.CRLFSocket - 受信データ: 234 1 1 2018-03-07 06:10:31,008 [26] DEBUG Client.Client.ClientContext - 現在の状態: RequirePortScanState 2018-03-07 06:10:31,008 [26] DEBUG Client.Client.ClientContext - 実行するメソッド: ReceivePortCheckResult 2018-03-07 06:10:31,006 [23] DEBUG Client.Common.Net.CRLFSocket - 切断しました。 2018-03-07 06:10:31,010 [26] DEBUG Client.Client.ClientContext - 実行後の状態: RequirePeerDataState 2018-03-07 06:10:31,011 [23] DEBUG Client.Peer.Manager.Peer - ピアから切断されました: -1 2018-03-07 06:10:31,011 [26] DEBUG Client.Common.Net.CRLFSocket - 送信データ: 115 1 382 2018-03-07 06:10:31,012 [23] DEBUG Client.Common.Net.CRLFSocket - 切断処理完了。 2018-03-07 06:10:31,028 [23] DEBUG Client.Common.Net.CRLFSocket - 受信データ: 299 1 IP_Address_has_been_changed 2018-03-07 06:10:31,029 [23] DEBUG Client.Client.ClientContext - 現在の状態: RequirePeerDataState 2018-03-07 06:10:31,031 [23] DEBUG Client.Client.ClientContext - 実行するメソッド: AddressChangedError 2018-03-07 06:10:31,032 [23] DEBUG Client.App.MediatorContext - ClientContext_OperationCompleted: Restartable, RETURNED_ADDRESS_CHANGED  ハンドルされていない例外: System.Reflection.TargetInvocationException: 呼び出しのターゲットが例外をスローしました。 ---&gt; System.NotSupportedException: 指定されたメソッドはサポートされていません。    場所 Client.App.State.ConnectingState.Completed(MediatorContext mediatorContext, IClientContext clientContext, IPeerContext peerContext, OperationCompletedEventArgs oce) 場所 (cut)\Client\App\State\ConnectingState.cs:行 52    場所 Client.App.MediatorContext.ClientContext_OperationCompleted(Object sender, OperationCompletedEventArgs e) 場所 (cut)\Client\App\MediatorContext.cs:行 122    場所 System.EventHandler`1.Invoke(Object sender, TEventArgs e)    場所 Client.Client.ClientContext.RaiseEvent() 場所 (cut)\Client\Client\ClientContext.cs:行 137    場所 Client.Client.ClientContext.set_State(AbstractState value) 場所 (cut)\Client\Client\ClientContext.cs:行 25    場所 Client.Client.State.AbstractState.AddressChangedError(IClientContextForState context, CRLFSocket socket, Packet packet) 場所 (cut)\Client\Client\State\AbstractState.cs:行 232 ```</body>
+		<created>2018-03-07 13:24:00</created>
+		<closed>2018-03-11 07:31:02</closed>
+	</bug>
+	<bug>
+		<id>14</id>
+		<title>Unhandled Exception: System.InvalidOperationException at Client.Peer.Manager.PeerManager.Send</title>
+		<body>``` Unhandled Exception: System.InvalidOperationException: Collection was modified; enumeration operation may not execute.   at System.ThrowHelper.ThrowInvalidOperationException (System.ExceptionResource resource) [0x0000b] in &lt;2e7c1c96edae44d496118948ca617c11&gt;:0   at System.Collections.Generic.List`1+Enumerator[T].MoveNextRare () [0x00013] in &lt;2e7c1c96edae44d496118948ca617c11&gt;:0   at System.Collections.Generic.List`1+Enumerator[T].MoveNext () [0x0004a] in &lt;2e7c1c96edae44d496118948ca617c11&gt;:0   at Client.Peer.Manager.PeerManager.Send (Client.Common.Net.Packet packet, Client.Peer.Manager.Peer exceptPeer) [0x0002f] in (cut)/Client/Peer/Manager/PeerManager.cs:91   at Client.Peer.Manager.PeerManager.Send (Client.Common.Net.Packet packet) [0x00001] in (cut)/Client/Peer/Manager/PeerManager.cs:86   at Client.Peer.Manager.PeerManager.EchoTimer_Tick (System.Object state) [0x0001b] in (cut)/Client/Peer/Manager/PeerManager.cs:277   at System.Threading.Timer+Scheduler.TimerCB (System.Object o) [0x00007] in &lt;2e7c1c96edae44d496118948ca617c11&gt;:0 ```</body>
+		<created>2018-03-05 13:50:52</created>
+		<closed>2018-03-17 14:36:33</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>Unhandled Exception: System.NullReferenceException at Client.App.MaintainTimer.Tick</title>
+		<body>``` Unhandled Exception: System.NullReferenceException: Object reference not set to an instance of an object   at Client.App.MaintainTimer.Tick (System.Object state) [0x00149] in (cut)/Client/App/MaintainTimer.cs:140   at System.Threading.Timer+Scheduler.TimerCB (System.Object o) [0x00007] in &lt;2e7c1c96edae44d496118948ca617c11&gt;:0   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem () [0x00008] in &lt;2e7c1c96edae44d496118948ca617c11&gt;:0   at System.Threading.ThreadPoolWorkQueue.Dispatch () [0x00074] in &lt;2e7c1c96edae44d496118948ca617c11&gt;:0   at System.Threading._ThreadPoolWaitCallback.PerformWaitCallback () [0x00000] in &lt;2e7c1c96edae44d496118948ca617c11&gt;:0 ```</body>
+		<created>2018-02-21 13:26:34</created>
+		<closed>2018-03-21 13:01:51</closed>
+	</bug>
+</bugs>

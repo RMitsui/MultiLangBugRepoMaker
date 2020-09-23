@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="01-Spica-Android">
+	<bug id="144" opendate="2018-11-18 12:43:07" fixdate="2018-11-18 13:20:20">
+		<buginformation>
+			<summary>ブロック追加ボタンを連打するとたまに落ちる</summary>
+			<description>### 概要 - メイン画面のブロック追加ボタン ( + ) を連打すると、たまに下記のエラーで落ちる  ``` E/AndroidRuntime: FATAL EXCEPTION: main     Process: com.t_robop.yuusuke.a01_spica_android, PID: 2923     java.lang.IllegalStateException: Fragment already added: BlockSelectFragment{37798c8 #2 id=0x7f08003e}         at android.support.v4.app.FragmentManagerImpl.addFragment(FragmentManager.java:1882)         at android.support.v4.app.BackStackRecord.executeOps(BackStackRecord.java:762)         at android.support.v4.app.FragmentManagerImpl.executeOps(FragmentManager.java:2580)         at android.support.v4.app.FragmentManagerImpl.executeOpsTogether(FragmentManager.java:2367)         at android.support.v4.app.FragmentManagerImpl.removeRedundantOperationsAndExecute(FragmentManager.java:2322)         at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:2229)         at android.support.v4.app.FragmentManagerImpl$1.run(FragmentManager.java:700)         at android.os.Handler.handleCallback(Handler.java:739)         at android.os.Handler.dispatchMessage(Handler.java:95)         at android.os.Looper.loop(Looper.java:135)         at android.app.ActivityThread.main(ActivityThread.java:5254)         at java.lang.reflect.Method.invoke(Native Method)         at java.lang.reflect.Method.invoke(Method.java:372)         at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698) ```  ### 想定される解決策 - fragmentが破棄される前に2重にfragmentが追加されようとして起きている。 fragmentが追加されたかどうか確認する処理を追加する https://stackoverflow.com/questions/25926402/illegalstateexception-fragment-already-added-in-the-tabhost-fragment  ### リンクとか - </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/t_robop/yuusuke/a01_spica_android/UI/Script/BlockSelectFragment.java</file>
+			<file>app/src/main/java/com/t_robop/yuusuke/a01_spica_android/UI/Script/ScriptMainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2018-10-25 17:25:48" fixdate="2018-10-25 22:40:26">
+		<buginformation>
+			<summary>詳細画面中でソフトウェアキーボードを表示したままメインViewに戻ってもキーボードが表示されたままになっている</summary>
+			<description>### 概要 - 詳細画面中のEditTextにてソフトウェアキーボードを表示したまま、Fragment外をタップして詳細画面もしくはブロック選択画面に戻ってもソフトウェアキーボードが表示されたままになっている  ### 想定される解決策 - fragmentのクリックリスナーは実装しているので、キーボードが表示されていたら閉じる処理を追加する  ### リンクとか - </description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/com/t_robop/yuusuke/a01_spica_android/UI/Script/BlockDetailFragment.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

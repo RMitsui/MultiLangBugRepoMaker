@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>73</id>
+		<title>COURSEの外に書かれているBALLOON命令が無視されている</title>
+		<body>題名まま</body>
+		<created>2019-04-28 09:06:53</created>
+		<closed>2019-06-07 16:06:16</closed>
+	</bug>
+	<bug>
+		<id>64</id>
+		<title>クリア演出の描画優先度がデバッグ情報表示より高くなっている</title>
+		<body>題名どおり。デバッグ情報を表示している場合、2Pプレイ時に2P側のクリア演出がデバッグ情報表示にかぶさる。その際にクリア演出のほうが手前に描画されるので順序を入れ替える。</body>
+		<created>2018-12-22 17:39:42</created>
+		<closed>2019-02-16 16:59:34</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>譜面分岐を行う小節線の手前の音符がほぼ二重になる。</title>
+		<body>(ほぼ二重になる、というのは、たまに発生しないことがあるからです) ↓検証した譜面 https://ux.getuploader.com/Romyu_uploader_01/download/6</body>
+		<created>2018-12-18 18:57:20</created>
+		<closed>2020-03-20 08:27:18</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>2人プレイ時に片方のプレイヤーがミスをするとそれ以降別プレイヤーのコンボ音声が鳴らなくなる</title>
+		<body>&lt;例&gt; 両方が380コンボ ↓ 2P側がミス ↓ 1P側が400コンボに到達してもコンボ音声が鳴らない</body>
+		<created>2018-12-15 10:43:41</created>
+		<closed>2019-06-07 16:07:12</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>Tightモードで連打をした時にミス扱いされる</title>
+		<body>Tightモードで連打をすると全て空打ちミス判定とみなされてしまうため、連打時には空打ち扱いされないよう修正する。</body>
+		<created>2018-11-10 16:23:40</created>
+		<closed>2018-12-15 18:08:55</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>Tightモードでミスをしてもコンボが減らない</title>
+		<body>Tightモードでミスをしてもゲージだけが現象してコンボ数がリセットされていない</body>
+		<created>2018-11-10 16:14:57</created>
+		<closed>2018-12-16 05:12:39</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>Tightモードを複数人数プレイに対応させる</title>
+		<body>現状Tightオプションは1P、2Pでバラバラにセットできるよう設計されていないので対応させる</body>
+		<created>2018-11-10 16:13:03</created>
+		<closed>2018-12-16 05:15:42</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>コンフィグ画面で1Pオート/2P手動にしてからメニューを変更すると2Pもオートになる</title>
+		<body>コンフィグ画面でAUTO PLAYをON、AUTO PLAY 2PをOFFにしてから、左メニューを移動してから再びDrumsに移動するとAUTO PLAY 2PもONになっている</body>
+		<created>2018-11-10 15:48:59</created>
+		<closed>2018-12-04 15:08:35</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>スキンを切り替えてからコンフィグ画面に入ると例外発生する</title>
+		<body>スキンを切り替えた後に選曲画面からコンフィグ画面に入った場合、左メニューのtxMenuItemLeftがNullReferenceExceptionを起こす</body>
+		<created>2018-09-30 14:03:38</created>
+		<closed>2018-10-05 14:46:35</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>風船連打を叩いている途中に花火が出る</title>
+		<body>最新revで確認。手動演奏限定?</body>
+		<created>2018-08-25 07:16:49</created>
+		<closed>2018-08-27 15:22:40</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>AD-LIB音符の判定文字が通常の判定文字と重なって出る</title>
+		<body>最新revで確認</body>
+		<created>2018-08-25 07:13:30</created>
+		<closed>2018-08-30 13:24:26</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>曲から選ぶモードでランダム選曲の難易度を難易度選択画面から指定できない</title>
+		<body>題名のとおり</body>
+		<created>2018-08-19 06:31:48</created>
+		<closed>2018-08-29 14:34:27</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>演奏やり直しをしても現在小節数がリセットされない</title>
+		<body>ポーズメニューから演奏を最初からやり直しても、デバッグ表示にある現在小節数の表示が0に戻らない (Twitterから https://twitter.com/NotouchL/status/1005374252227354624)</body>
+		<created>2018-06-09 10:41:38</created>
+		<closed>2018-11-11 04:43:35</closed>
+	</bug>
+	<bug>
+		<id>26</id>
+		<title>BRANCHENDする譜面で共通部分の譜面が達人譜面にしか追加されない</title>
+		<body>題名のとおり。</body>
+		<created>2018-05-21 17:22:42</created>
+		<closed>2018-08-22 14:08:19</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>セッション譜面と1人プレイ用譜面がある曲が1人プレイで遊べない</title>
+		<body>2人プレイ専用譜面がある場合、1人プレイ時に1人プレイ用譜面が読み込まれない。</body>
+		<created>2018-05-12 11:57:21</created>
+		<closed>2018-05-12 13:31:09</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>手つなぎ音符が常にモノクロになる</title>
+		<body>手つなぎ音符だけ常にモノクロ音符になっている</body>
+		<created>2018-05-12 11:44:23</created>
+		<closed>2018-05-12 13:30:37</closed>
+	</bug>
+	<bug>
+		<id>15</id>
+		<title>ゴーゴータイム判定方法の変更</title>
+		<body>現在は音符を叩いた時にゴーゴータイムのフラグがtrueになっている場合にボーナスを加算するようにしているが、これでは処理落ちやlistChipのソートミス(無いと願いたい)によってゴーゴータイム判定がfalseになる可能性がある。 そこで、予め譜面読み込み時に音符ごとにゴーゴータイムの音符であるかのフラグを立てておき、そのフラグによってボーナスを加算するように変更する。</body>
+		<created>2018-03-11 14:38:38</created>
+		<closed>2018-05-20 07:04:07</closed>
+	</bug>
+</bugs>

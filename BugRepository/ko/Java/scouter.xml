@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="scouter">
+	<bug id="423" opendate="2018-01-09 01:28:13" fixdate="2018-01-16 09:25:10">
+		<buginformation>
+			<summary>xlog 여러개를 하나의 화면에 구성하면 "점"이 나타나지 않음"</summary>
+			<description>하나의 화면에  여러 수집서버의 xlog 화면을 띄워 놓으면, 점이 나타나지 않습니다.   하지만  어떤 다른 탭을 눌렀다가 돌아오면  모든 xlog 가 나타납니다.   ![image](https://user-images.githubusercontent.com/175918/34700698-b863eba6-f527-11e7-96df-f832233f3e43.png) 이 이미지가 클라이언트 띄운지 3분 후의 화면입니다.   Gunhee 님께는 메신저로 말씀 드렸어요 ~ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>scouter.client/src/scouter/client/util/ColorUtil.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="390" opendate="2017-10-16 05:00:42" fixdate="2017-11-04 03:11:02">
+		<buginformation>
+			<summary>alert plugin의 config 변경사항 반영</summary>
+			<description>alert plugin의 plugin 폴더에 있는 *.conf 파일을 변경하여도 에이전트가 여러 개인 경우 모든 에이전트에 반영되지 않고 일부만 변경사항이 반영됩니다. (10초를 2초로 변경하면 일부 에이전트는 2초 변경되서 수집되고 나머지는 그대로 10초) 그래서 전체 에이전트에 반영되도록 하기 위해서는 서버를 다시 내렸다올려야 합니다. 이것은 버그인지 원래 그러한 것인지요.. 다른 방법이 있나요?</description>
+		</buginformation>
+		<fixedfiles>
+			<file>scouter.server/src/main/java/scouter/server/plugin/alert/AlertRuleLoader.java</file>
+			<file>scouter.server/src/main/java/scouter/server/plugin/alert/AlertEngine.java</file>
+			<file>scouter.server/src/main/java/scouter/server/plugin/alert/RealCounter.java</file>
+			<file>scouter.server/src/main/java/scouter/server/plugin/alert/AlertConf.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

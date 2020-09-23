@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="newbiest">
+	<bug id="326" opendate="2020-09-21 08:54:08" fixdate="2020-09-21 08:54:43">
+		<buginformation>
+			<summary>来料导入</summary>
+			<description>根据产品号获取waferSource代码修改</description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/impl/GcServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="307" opendate="2020-09-04 09:38:09" fixdate="2020-09-04 09:38:14">
+		<buginformation>
+			<summary>LOT装箱</summary>
+			<description>修复装箱时没有对晶圆片数做累加</description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/service/impl/PackageServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="296" opendate="2020-08-28 03:25:55" fixdate="2020-08-28 03:26:40">
+		<buginformation>
+			<summary>拆箱</summary>
+			<description>为备货的箱号插箱时不对备货数量（reservedQty）进行扣减</description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/service/impl/PackageServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="267" opendate="2020-08-05 03:08:41" fixdate="2020-08-05 03:13:20">
+		<buginformation>
+			<summary>晶圆管理</summary>
+			<description>1、晶圆接收MMS_DOCUMENT_HIS没有记录历史问题修复； 2、晶圆接收、发料功能多条单据时，单据数量充足，部分单据没有用到，但是MMS_DOCUMENT_LINE_HIS记录多余历史问题修复； ![image](https://user-images.githubusercontent.com/55224413/89367575-fdbf3480-d70b-11ea-9105-5d99777b0753.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/GcConfiguration.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/model/ErpSoa.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/impl/GcServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="264" opendate="2020-08-04 05:37:48" fixdate="2020-08-04 05:40:13">
+		<buginformation>
+			<summary>晶圆接收</summary>
+			<description>晶圆接收发料单数量回写修复 ![image](https://user-images.githubusercontent.com/55224413/89256852-947de980-d657-11ea-8856-3a387ae57e60.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/impl/GcServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="234" opendate="2020-07-03 07:53:24" fixdate="2020-07-23 09:31:20">
+		<buginformation>
+			<summary>晶圆发料和晶圆接收页面显示异常</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/model/ErpSo.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/model/Document.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/model/ErpSob.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/impl/GcServiceImpl.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/model/ErpMaterialOutOrder.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/GcService.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/rest/async/GcAsyncController.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/model/DocumentLine.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/model/ErpSoa.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/model/ErpMaterialOutaOrder.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="170" opendate="2020-01-13 07:31:48" fixdate="2020-01-14 10:53:09">
+		<buginformation>
+			<summary>重构接收物批次</summary>
+			<description>以前的接收物料批次是只考虑了一次性接收不大的量情况下，对物料对状态模型都会产生重复查询。消耗了性能，使用了连接。比如每次接收50个，就会对同种数据产生重复查询。 此处进行重构，可以对一个物料内批量接收物料批次。减少查询。 增加接收时候，对reseverd栏位等的赋值相关。不需要额外在更新</description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/service/MmsService.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/dto/MaterialLotAction.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/service/impl/MmsServiceImpl.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/impl/GcServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="161" opendate="2019-12-24 02:12:04" fixdate="2019-12-24 02:12:49">
+		<buginformation>
+			<summary>成品真空包打印</summary>
+			<description>真空包打印，成品真空包没有工单号，修改打印代码 ![image](https://user-images.githubusercontent.com/55224413/71389065-d19beb00-2635-11ea-8b09-4dca7c4eea97.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/rest/vbox/print/parameter/GetVboxPrintParaController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="159" opendate="2019-12-19 08:49:28" fixdate="2019-12-19 08:50:04">
+		<buginformation>
+			<summary>称重</summary>
+			<description>多箱称重后的箱再次进行单箱称重，没有清除箱的事务信息（Reserved20）</description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/impl/GcServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="119" opendate="2019-09-24 08:05:09" fixdate="2019-09-24 08:16:25">
+		<buginformation>
+			<summary>GC 没有同步单据的DDATE即创建时间</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/rest/stockout/StockOutRequestBody.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/rest/stockIn/StockInRequest.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/rest/stockIn/StockInResponseBody.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/rest/stockIn/StockInRequestBody.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/service/impl/MmsServiceImpl.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/impl/GcServiceImpl.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/rest/stockIn/StockInResponse.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/GcExceptions.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/GcService.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/rest/stockout/StockOutRequest.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/model/MaterialLot.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/model/DocumentLine.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/rest/stockIn/StockInController.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/model/StockInModel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="117" opendate="2019-09-23 06:38:05" fixdate="2019-09-23 06:47:32">
+		<buginformation>
+			<summary>GC要求 在出货检的时候，要把被包装的批次里面的装箱检一起改掉</summary>
+			<description>1. 当前只改了包装批次的装箱检栏位，需要吧被包装批次的装箱检栏位一起修改</description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/impl/GcServiceImpl.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/service/impl/PackageServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="112" opendate="2019-09-23 03:20:52" fixdate="2019-09-23 03:40:40">
+		<buginformation>
+			<summary>追加包装没有验证包装规则</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/service/impl/PackageServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="109" opendate="2019-09-17 07:07:18" fixdate="2019-09-17 07:28:01">
+		<buginformation>
+			<summary>拆包没有记录包装批的历史</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/model/MaterialLotHistory.java</file>
+			<file>newbiest-gc/src/main/java/com/newbiest/gc/service/impl/GcServiceImpl.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/service/impl/PackageServiceImpl.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/state/model/MaterialEvent.java</file>
+			<file>newbiest-mm/src/main/java/com/newbiest/mms/model/MaterialLot.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="37" opendate="2019-03-07 14:27:20" fixdate="2019-04-03 08:10:58">
+		<buginformation>
+			<summary>页面定义ID生成规则的时候，Line无法自动递增SEQ</summary>
+			<description>页面定义ID生成规则Line的时候，无法自动递增SEQ</description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-common-idgenerator/src/main/java/com/newbiest/common/idgenerator/service/impl/GeneratorServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="19" opendate="2019-01-16 06:51:36" fixdate="2019-01-16 13:38:32">
+		<buginformation>
+			<summary>保存的时候，会把关联关系级联删除掉。</summary>
+			<description>因为当前client端不会传输级联关系的对象。如table对应的fields。会导致保存的时候，将fields的数据清掉。会导致很多已经分配了数据的对象，关联数据为空。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-framework/src/main/java/com/newbiest/security/service/impl/SecurityServiceImpl.java</file>
+			<file>newbiest-starter/src/main/java/com/newbiest/main/NewbiestApplication.java</file>
+			<file>newbiest-framework/src/main/java/com/newbiest/base/rest/AbstractRestController.java</file>
+			<file>newbiest-framework/src/main/java/com/newbiest/base/ui/model/NBReferenceName.java</file>
+			<file>newbiest-rms/src/main/java/com/newbiest/rms/model/Equipment.java</file>
+			<file>newbiest-rms/src/main/java/com/newbiest/rms/model/Recipe.java</file>
+			<file>newbiest-framework/src/main/java/com/newbiest/base/ui/model/NBTab.java</file>
+			<file>newbiest-framework/src/main/java/com/newbiest/base/ui/model/NBOwnerReferenceName.java</file>
+			<file>newbiest-framework/src/main/java/com/newbiest/base/ui/model/NBTable.java</file>
+			<file>newbiest-rms/src/main/java/com/newbiest/rms/main/RmsComponent.java</file>
+			<file>newbiest-rms/src/main/java/com/newbiest/rms/model/RecipeContextValue.java</file>
+			<file>newbiest-rms/src/main/java/com/newbiest/rms/repository/EquipmentRepository.java</file>
+			<file>newbiest-framework/src/main/java/com/newbiest/msg/DefaultParser.java</file>
+			<file>newbiest-framework/src/main/java/com/newbiest/base/ui/model/NBField.java</file>
+			<file>newbiest-framework/src/main/java/com/newbiest/base/service/impl/BaseServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="17" opendate="2019-01-02 07:05:05" fixdate="2019-01-17 04:24:34">
+		<buginformation>
+			<summary>查找form出现问题</summary>
+			<description>因为当前的select组件没有指定宽度。而是用100%在显示。就会导致如下图显示错位的异常： ![image](https://user-images.githubusercontent.com/14329149/50582753-bde4fb00-0e9f-11e9-9bb0-79a5ae48ec4d.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>newbiest-framework/src/main/java/com/newbiest/base/rest/AbstractRestController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

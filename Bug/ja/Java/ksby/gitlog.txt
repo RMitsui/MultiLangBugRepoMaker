@@ -1,0 +1,2425 @@
+ebf6011cb5188f5992e8c8a82ac3506c732294e4, PC の IPアドレスが変わったので設定ファイルを修正しました, Sat Aug 8 14:01:25 2020 +0000
+M	.env
+M	src/main/resources/application.properties
+
+c35fae2a40a1fb5a4113b4ba1310bbd9766e6e02, IntelliJ IDEA を 2020.1.1 にバージョンアップした時に org.postgresql.jdbc3.Jdbc3Connection が原因でテストが成功しなくなったので依存関係に含まれないようにしました, Sat May 2 02:03:37 2020 +0000
+M	build.gradle
+
+eaeb8cf6a48877b0efd169cdd8dfef47e13b3b0f, PCのIPアドレスが変更されたので設定ファイルに反映しました, Tue Feb 4 14:35:50 2020 +0000
+M	.env
+M	src/main/resources/application.properties
+
+f06d0cbf8d3ec3ec98eb635f43b767690d607a15, Merge branch '2.2.x', Fri Jan 17 14:58:07 2020 +0000
+76281ef03d16d2368a8e3bfbbebd038d11fe7aeb, Merge branch 'feature/134-issue' into 2.2.x, Fri Jan 17 14:57:40 2020 +0000
+913b1d0305164c438cbfa308eeb8af30f3c01c89, #134 build.gradle に記載していた bootRun、test タスクの VM オプションを更新し忘れていたので更新しました, Mon Jan 13 13:52:40 2020 +0000
+M	build.gradle
+
+f042e269ffdbcbde51d2402fd30a4a50cfa45b72, #134 docker-compose.app.yml で起動するアプリのバージョンを 2.2.2 に上げて、関連する docker image も最新版にバージョンアップしました, Mon Jan 13 13:35:21 2020 +0000
+A	.dockerignore
+M	docker-compose.app.yml
+M	docker/app/Dockerfile
+M	docker/app/docker-entrypoint.sh
+
+b3cdc94f209f514f11d98d18118a756bc9df74b2, #134 haproxy の image を alpine 版に変更しました, Mon Jan 13 13:34:29 2020 +0000
+M	docker-compose.yml
+
+e4088b0b744bf46c51b4c9a08221727a5fc2b157, #134 ユニットテスト実行時の VM オプションに -XX:TieredStopAtLevel=1、-Dspring.main.lazy-initialization=true を追加しました, Mon Jan 13 03:00:17 2020 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+ec02bb27575be8b3b0a0f901c9547eb6e69ac599, #134 gradle の VM オプションを gradle.proeprties に移行しました, Mon Jan 13 01:19:58 2020 +0000
+A	gradle.properties
+
+649df705466edcf63c37cc5b0b0f6e587b882fcb, #134 Actuator の Health Endpoint から詳細なデータを取得できるようにするために management.endpoint.health.show-details=always を追加しました, Sat Jan 11 14:20:11 2020 +0000
+M	src/main/resources/application.properties
+
+957f43f13732c88f9b141990ab4ed19d810cc1b6, #134 Docker コンテナで使用している image を最新バージョンに上げました, Sun Jan 5 14:05:23 2020 +0000
+M	.env
+M	docker-compose.mail.yml
+M	docker-compose.yml
+M	docker/prometheus/prometheus.yml
+
+427600d392636c6afefcf5fa9e5541140368c9c9, #134 SpotBugs プラグインの findsecbugs-plugin を導入し、検知された警告に対応しました, Sun Jan 5 03:01:43 2020 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/BrowfishUtils.java
+M	src/main/java/ksbysample/webapp/lending/SampleController.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/helper/freemarker/FreeMarkerHelper.java
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+M	src/main/java/ksbysample/webapp/lending/web/WebappErrorController.java
+M	src/main/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryController.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistController.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+M	src/main/java/ksbysample/webapp/lending/web/sessionsample/SessionSampleController.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupController.java
+M	src/main/java/ksbysample/webapp/lending/web/textareamemo/TextareaMemoController.java
+M	src/main/java/ksbysample/webapp/lending/webapi/library/LibraryController.java
+
+fadb5d99806b049cc6747c4bb65f66954df9af1f, #134 SpotBugs を 3.1.11 → 4.0.0-beta4 へバージョンアップしました, Sat Jan 4 11:56:15 2020 +0000
+M	build.gradle
+
+35e36152be9d604fafd0fa3b999a4caa84b84766, #134 Error Prone を 2.3.3 → 2.3.4 へバージョンアップしました, Thu Jan 2 00:26:47 2020 +0000
+M	build.gradle
+
+424dc8c9344c5d2757de7408bccaed2eeead1e00, #134 PMD を 6.13.0 → 6.20.0 へバージョンアップしました, Wed Jan 1 12:08:57 2020 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDownloadHelper.java
+M	src/main/java/ksbysample/webapp/lending/view/BookListCsvView.java
+
+722f238e013423e288bbf83198c36d47f6d0bae5, #134 Checkstyle を 8.19 → 8.28 へバージョンアップしました, Wed Jan 1 07:56:33 2020 +0000
+M	build.gradle
+M	config/checkstyle/google_checks.xml
+
+09f52b1c17bf8926d761345f008c4b4c67eedeab, #134 開発環境で Web アプリを起動する時に起動時間を短縮するために -XX:TieredStopAtLevel=1 オプションを追加しました, Tue Dec 31 14:34:35 2019 +0000
+M	build.gradle
+
+fef9edc001d1126566d6c7f900b35097727e2152, #134 設定項目を logging.file → logging.file.name に変更し、以前のバージョンアップで不要になっていた slowquery.logging.file をさ駆除しました, Tue Dec 31 13:24:42 2019 +0000
+M	src/main/resources/application-product.properties
+
+65adb9c5c6827f5b8cf0cf3eebc07d933eae5d14, #134 rainloop の URL を追記しました, Tue Dec 31 12:15:20 2019 +0000
+M	docker-compose.mail.yml
+
+2840b4faea251f76290cc061adf96dd8fdb93266, #134 Freemarker のテンプレートの拡張子を *.ftl → *.ftlh に変更しました, Tue Dec 31 12:13:44 2019 +0000
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail001Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail002Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+R100	src/main/resources/templates/mail/mail001-body.ftl	src/main/resources/templates/mail/mail001-body.ftlh
+R100	src/main/resources/templates/mail/mail002-body.ftl	src/main/resources/templates/mail/mail002-body.ftlh
+R100	src/main/resources/templates/mail/mail003-body.ftl	src/main/resources/templates/mail/mail003-body.ftlh
+
+20fc1015c45a38ba7855e3918d4a73c3235e3114, #134 Spring Boot を 2.1.11 → 2.2.2 へバージョンアップしました, Tue Dec 31 07:30:55 2019 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/webapi/library/LibraryController.java
+M	src/test/java/ksbysample/webapp/lending/webapi/library/LibraryControllerTest.java
+
+e17174dbeb755246a44d6a23387d69f386837f6a, #134 Gradle を 5.6.4 → 6.0.1 へバージョンアップしました, Mon Dec 30 23:59:50 2019 +0000
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.properties
+M	gradlew
+M	gradlew.bat
+
+e7b33cd62000d80df767ae0c3d73a5f731c9fd74, #134 Gradle を 5.3.1 → 5.6.4 へバージョンアップしました, Mon Dec 30 12:12:23 2019 +0000
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.jar
+M	gradle/wrapper/gradle-wrapper.properties
+
+eafa996e97544d533832f64f373eec884f59d3a1, #134 Spring Boot のバージョンを 2.1 系の最新バージョンである 2.1.11 にバージョンアップしました, Mon Dec 30 10:56:48 2019 +0000
+M	build.gradle
+
+8d56f986ea47e979d967ede413e59a201470e4b2, IntelliJ IDEA を 2019.3 にバージョンアップしたら APT によるソース生成先が src/main/generated になったので、git の管理下にならないようにし、gralde の clean タスクで削除するようにしました, Fri Dec 20 15:42:22 2019 +0000
+M	.gitignore
+M	build.gradle
+
+f5b423659b49102222cc621f2f9984a54a18611c, docker-compose up -d を実行すると GreenMail のメールサーバが起動しなくなったので、mail-server, rainloop を docker-compose.yml から docker-compose.mail.yml へ分離しました, Sun Aug 11 05:09:53 2019 +0000
+A	docker-compose.mail.yml
+M	docker-compose.yml
+
+b2c0a520ac092a9e159bbfdb9e230e8c9dd0ed81, Merge branch '2.1.x', Tue Apr 9 22:04:58 2019 +0000
+ad06c2c0334b4288893460164623177787c84963, Merge branch 'feature/133-issue' into 2.1.x, Tue Apr 9 22:04:20 2019 +0000
+b964bf14a5a5492e9e5839e061534ad6cff13ed7, #133 Spring Boot を 2.1.3 → 2.1.4 へバージョンアップしました, Mon Apr 8 15:31:56 2019 +0000
+M	build.gradle
+M	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+
+94a2dc9969099988c76e59f924022858ff2b3272, #133 dependency-management plugin を 1.0.6 → 1.0.7 へ、Checkstyle を 8.17 → 8.19 へ、PMD を 6.11.0 → 6.13.0 へバージョンアップしました, Wed Apr 3 14:50:29 2019 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsService.java
+
+02bd5caa843e1d9e1724b425658a27fcc16ed03e, #133 Spock を 1.2 → 1.3 へ、JUnit 5 を 5.4.0 → 5.4.1 へバージョンアップし、依存関係にあるモジュールのバージョンも最新のものに更新しました, Sat Mar 30 11:28:19 2019 +0000
+M	build.gradle
+
+4c31ebb3c2ea85dc07027ac0d46fd9b5ffe967ce, #133 Gradle を 5.2.1 → 5.3.1 へバージョンアップしました, Sat Mar 30 04:46:31 2019 +0000
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.properties
+
+f64687c6e169eb357aea2ff0a4067c0b7a372a69, #133 build.gradle の sourceCompatibility, targetCompatibility を 1.8 → 11 へ変更しました, Sat Mar 30 03:48:46 2019 +0000
+M	build.gradle
+
+880a47fa5a8b4fba30a279acfc828f1aaa01bf58, #133 コメントアウトしていた error-prone を復活させてバージョンを 2.3.1 → 2.3.3 へ上げました。net.ltgt.errorprone プラグインのバージョンも 0.0.16 → 0.7.1 へ上げました。, Thu Mar 21 12:24:13 2019 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetails.java
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+
+df6d214a403c639aa4ae9865ff934d069d4e0fcf, #133 JDK を 8u202 → 11.0.2+9 に変更しました, Sat Mar 16 05:03:34 2019 +0000
+M	build.gradle
+M	docker-compose.app.yml
+M	docker/app/Dockerfile
+M	src/test/groovy/ksbysample/webapp/lending/SampleHelperTest.groovy
+M	webapps/ksbysample-webapp-lending/bat/webapp_startup.bat
+
+dab2ee1ec61a6009362b61fab991480cfcff4e22, #133 docker-compose.app.yml に指定する jar ファイルを ksbysample-webapp-lending-2.0.8-RELEASE.jar → ksbysample-webapp-lending-2.1.3-RELEASE.jar に変更しました, Fri Mar 15 17:01:25 2019 +0000
+M	docker-compose.app.yml
+
+c2547c28152d41459c6626bc57004cd94ee550b6, #133 @SpringBootTest＋@AutoConfigureMockMvc、@WithAnonymousUser、@WithMockUser を使ってテストを作成しました, Mon Mar 11 15:15:19 2019 +0000
+A	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTestWithMockUser.java
+
+f9fba7bbf532362effd01c586d42b2de08f3dbe7, #133 @Rule を使用しているテストを JUnit 5 ベースに変更しました, Sat Mar 9 06:06:47 2019 +0000
+M	src/test/groovy/ksbysample/webapp/lending/SampleTest.groovy
+R063	src/test/java/ksbysample/common/test/rule/db/AssertOptions.java	src/test/java/ksbysample/common/test/extension/db/AssertOptions.java
+R089	src/test/java/ksbysample/common/test/rule/db/BaseTestData.java	src/test/java/ksbysample/common/test/extension/db/BaseTestData.java
+R092	src/test/java/ksbysample/common/test/rule/db/BaseTestSql.java	src/test/java/ksbysample/common/test/extension/db/BaseTestSql.java
+R089	src/test/java/ksbysample/common/test/rule/db/BaseTestSqlList.java	src/test/java/ksbysample/common/test/extension/db/BaseTestSqlList.java
+R094	src/test/java/ksbysample/common/test/rule/db/DbUnitUtils.java	src/test/java/ksbysample/common/test/extension/db/DbUnitUtils.java
+R085	src/test/java/ksbysample/common/test/rule/db/NoUseTestDataResource.java	src/test/java/ksbysample/common/test/extension/db/NoUseTestDataResource.java
+R098	src/test/java/ksbysample/common/test/rule/db/TableDataAssert.java	src/test/java/ksbysample/common/test/extension/db/TableDataAssert.java
+R090	src/test/java/ksbysample/common/test/rule/db/TestData.java	src/test/java/ksbysample/common/test/extension/db/TestData.java
+R078	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java	src/test/java/ksbysample/common/test/extension/db/TestDataExtension.java
+R088	src/test/java/ksbysample/common/test/rule/db/TestDataList.java	src/test/java/ksbysample/common/test/extension/db/TestDataList.java
+R097	src/test/java/ksbysample/common/test/rule/db/TestDataLoader.java	src/test/java/ksbysample/common/test/extension/db/TestDataLoader.java
+R090	src/test/java/ksbysample/common/test/rule/db/TestSql.java	src/test/java/ksbysample/common/test/extension/db/TestSql.java
+R085	src/test/java/ksbysample/common/test/rule/db/TestSqlExecutor.java	src/test/java/ksbysample/common/test/extension/db/TestSqlExecutor.java
+R088	src/test/java/ksbysample/common/test/rule/db/TestSqlList.java	src/test/java/ksbysample/common/test/extension/db/TestSqlList.java
+R066	src/test/java/ksbysample/common/test/rule/mail/MailServerResource.java	src/test/java/ksbysample/common/test/extension/mail/MailServerExtension.java
+R088	src/test/java/ksbysample/common/test/rule/mockmvc/SecurityMockMvcResource.java	src/test/java/ksbysample/common/test/extension/mockmvc/SecurityMockMvcExtension.java
+A	src/test/java/ksbysample/common/test/helper/DescriptionWrapper.java
+A	src/test/java/ksbysample/common/test/helper/ExtensionContextWrapper.java
+A	src/test/java/ksbysample/common/test/helper/TestContextWrapper.java
+M	src/test/java/ksbysample/test/UniVocityParsersTest.java
+M	src/test/java/ksbysample/webapp/lending/TestDataResourceTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/EmailHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/user/UserHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsTest.java
+M	src/test/java/ksbysample/webapp/lending/service/UserInfoServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/ExceptionHandlerAdviceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/webapi/library/LibraryControllerTest.java
+
+24b307fbe856a240b1834b44b5faf9e5ee97dd45, #133 @Rule を使用していないテストを JUnit 5 ベースに変更しました, Mon Mar 4 21:58:55 2019 +0000
+M	src/test/java/ksbysample/webapp/lending/helper/library/LibraryHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail001HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail002HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail003HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/message/MessagesPropertiesHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/service/calilapi/CalilApiServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/file/BooklistCsvFileServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/WebappErrorControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidatorTest.java
+
+8b4dd6f0f24b3dbbcf433a21ba135ced63300379, #133 Groovy のテストの末尾にセミコロンが付いていたので削除しました, Wed Feb 27 16:34:01 2019 +0000
+M	src/test/groovy/ksbysample/webapp/lending/helper/thymeleaf/SuccessMessagesHelperTest.groovy
+
+29ca8dd8b2610d4d3f53e805f7d85fbbfacc4e5f, #133 JUnit 5 のモジュールを依存関係に追加して、JUnit 4、Spock、JUnit 5 のテストが実行できるようにしました, Wed Feb 27 16:33:32 2019 +0000
+M	build.gradle
+
+eed6035bc3734c936cb9ed026248b1164b31da24, #133 Spring Boot を 2.1.2 → 2.1.3 へバージョンアップしました, Sun Feb 17 14:19:07 2019 +0000
+M	build.gradle
+
+1454f5ad00d6949d036a60839b81b0fca48f3f80, #133 Gradle を 5.2 → 5.2.1 へバージョンアップしました, Sun Feb 17 13:35:49 2019 +0000
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.jar
+M	gradle/wrapper/gradle-wrapper.properties
+
+ad7d69ab430ef858b5b4a79d3a5fc3ece733477c, #133 メトリックスの application label を application.properties の management.metrics.tags.application で定義するよう変更しました, Sun Feb 17 10:53:32 2019 +0000
+M	docker/prometheus/prometheus.yml
+M	src/main/resources/application.properties
+
+1a4fcc693d7ea18703dd806006d172ed6f5d60be, #133 xmlns:sec の記述を xmlns:sec="http://www.thymeleaf.org/extras/spring-security" に変更しました（この記述だと IntelliJ IDEA で候補が表示されます）, Sun Feb 17 07:38:51 2019 +0000
+M	src/main/resources/templates/common/mainparts.html
+M	src/main/resources/templates/loginsuccess.html
+
+e0a75cf70f95df64e2e557076babad56bba89f43, #133 RabbitMQ 用の haproxy の stats ページの URL を追記しました, Sun Feb 17 07:38:01 2019 +0000
+M	docker-compose.yml
+
+4c6517ef470811758d0f934956d507819e674543, #133 Thymeleaf テンプレートの `xmlns="http://www.w3.org/1999/xhtml"` の記述は Thymeleaf 2 系の記述で 3 系では不要なので削除しました, Sun Feb 17 07:14:37 2019 +0000
+M	src/main/resources/static/html/login.html
+M	src/main/resources/templates/admin/library/library.html
+M	src/main/resources/templates/booklist/booklist.html
+M	src/main/resources/templates/booklist/complete.html
+M	src/main/resources/templates/booklist/fileupload.html
+M	src/main/resources/templates/common/mainparts.html
+M	src/main/resources/templates/confirmresult/confirmresult.html
+M	src/main/resources/templates/error.html
+M	src/main/resources/templates/lendingapp/lendingapp.html
+M	src/main/resources/templates/lendingapproval/lendingapproval.html
+M	src/main/resources/templates/login.html
+M	src/main/resources/templates/loginsuccess.html
+M	src/main/resources/templates/sessionsample/confirm.html
+M	src/main/resources/templates/sessionsample/first.html
+M	src/main/resources/templates/sessionsample/next.html
+M	src/main/resources/templates/springmvcmemo/beanValidationGroup.html
+M	src/main/resources/templates/textareamemo/display.html
+M	src/main/resources/templates/textareamemo/index.html
+
+4de64e30eafcebbf906de3412abcf56f9af05e06, #133 build.gradle のコメントの Spring Boot のバージョンを 2.0.7.RELEASE → 2.1.2.RELEASE に修正しました, Wed Feb 13 12:05:18 2019 +0000
+M	build.gradle
+
+27685e7a1fb5ca6e3beb45bb0e71df0c70eb361d, #133 unittest profile の時には devtools が無効になるようにしました, Mon Feb 11 15:34:32 2019 +0000
+M	src/main/resources/application-unittest.properties
+
+dd87d327bd2b6ffd364fed11bfde6d851f7e89de, #133 BeanDefinitionOverrideException のエラーが原因でテストが大量に失敗していたので、ApplicationConfig クラスに定義していた mvcValidator bean の名前を validator bean に変更し、戻り値の型を org.springframework.validation.Validator → LocalValidatorFactoryBean に変更しました, Mon Feb 11 13:56:53 2019 +0000
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupController.java
+M	src/test/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidatorTest.java
+
+be92cee0274deb15c6685b19c07ae67654a9cec7, #133 javax.validation.constraints.NotBlank は Long 型で使用できなかったので import javax.validation.constraints.NotNull に修正しました, Mon Feb 11 12:30:15 2019 +0000
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/EditFormChecker.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/SendmailFormChecker.java
+M	src/main/resources/messages_ja_JP.properties
+
+8a1356e52b307bf57a683225bc8ed28c3a5ac3cc, #133 error-prone でコンパイルすると "...は繰返し可能な注釈型ではありません" というエラーが出るようになったので、一旦 error-prone を外します, Sat Feb 9 14:59:06 2019 +0000
+M	build.gradle
+
+97bd86631f999de81f9116678fc38eb38d244c47, #133 build.gradle を変更して Spring Boot を 2.0.8 → 2.1.2 へバージョンアップしました, Sat Feb 9 01:23:26 2019 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+
+a0bbdb25ba80c66268d954ffcebd11b1d2a8fbd2, #133 Gradle を 4.10.3 → 5.2 にバージョンアップしました, Wed Feb 6 12:48:12 2019 +0000
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.jar
+M	gradle/wrapper/gradle-wrapper.properties
+M	gradlew
+M	gradlew.bat
+
+98637ec78ae4942ee730bc34abe7864936e24c6b, Merge branch '2.0.x', Wed Jan 23 12:42:47 2019 +0000
+47a54ee9dfa6bed70d1dad099bf61a6bef95554b, Merge branch 'feature/132-issue' into 2.0.x, Wed Jan 23 12:41:21 2019 +0000
+2b7ca03f4e74c3a07ae0739bbfb2b46906e61fe3, #132 日本時間を表示可能なコンテナに環境変数 TZ=Asia/Tokyo を設定しました, Mon Jan 21 15:50:54 2019 +0000
+M	docker-compose.yml
+A	docker/rabbitmq/Dockerfile
+
+3a9e207532538261513ba8bd2b0f46fe33b6fb8a, #132 *.sh はチェックアウト時に改行コードが LF になるよう .gitattributes ファイルを作成しました, Sun Jan 20 06:12:16 2019 +0000
+A	.gitattributes
+
+9fbd07b03d15a08a0f1cf6d722d90d0f25300354, #132 Docker で複数の Tomcat を起動して動作確認できるようにしました, Sun Jan 20 06:11:31 2019 +0000
+A	docker-compose.app.yml
+A	docker/app/Dockerfile
+A	docker/app/docker-entrypoint.sh
+A	docker/app/haproxy.cfg
+M	src/main/resources/logback-spring.xml
+
+246f678228459af5f9295417fbca9f1b7afec5c8, #132 RabbitMQ用の HAProxy の stats page を表示できるように設定しました, Thu Jan 17 15:41:43 2019 +0000
+M	docker-compose.yml
+M	docker/rabbitmq/haproxy.cfg
+
+f9fcf38dd87af545c0ed85b0d90228a475a30626, #132 PC の IP アドレスが変更された時に修正するファイルが最小限になるようにしました, Wed Jan 16 15:03:05 2019 +0000
+M	docker-compose.yml
+M	docker/prometheus/prometheus.yml
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+M	src/main/resources/application.properties
+
+48b74910000bb8e9efc15587698716862be0c8b7, #132 PCのIPアドレスが変更されたので設定ファイルに記述しているIPアドレスに反映しました, Tue Jan 15 15:43:58 2019 +0000
+M	.env
+M	docker/prometheus/prometheus.yml
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+
+28f7fa74e35b1f071f10e37134aefaac8240f3ae, #132 Spring Boot を 2.0.6 → 2.0.8 へバージョンアップしました, Mon Jan 14 06:37:56 2019 +0000
+M	build.gradle
+
+ac71bd8bef49bcbbd2926600acb3072199bb0caf, #132 runtimeOnly("org.springframework.boot:spring-boot-properties-migrator") を削除しました, Thu Jan 10 14:29:03 2019 +0000
+M	build.gradle
+
+c6a9d534199c72a2ffb5888507909385766c68a0, #132 HikariCP は最新の 3.3.0 を dependenceis に指定し、spring.datasource.hikari.leak-detection-threshold の値を 5000 → 60000 に変更しました, Thu Jan 10 14:28:33 2019 +0000
+M	build.gradle
+M	src/main/resources/application.properties
+
+ea078053fd85ea3b352d143aa99b9cb9c5871588, #132 pmdMain タスク実行時の `This analysis could be faster,  ...` のメッセージが出力されないようにしました, Mon Jan 7 18:58:25 2019 +0000
+M	build.gradle
+
+af33630c87f497eebb1b77ec8c6cbe20a6e7b857, #132 library_forsearch テーブルに初期データを登録して、最初に検索対象図書館を登録不要にしました, Mon Jan 7 18:02:46 2019 +0000
+M	src/main/resources/db/migration/V1.1__insert_data.sql
+
+02ca1e911f7f05d3ce0df440b6c2d93968ab744a, #132 Prometheus が Spring Actuator にアクセスした時に AuthenticationSuccessEventListener#onApplicationEvent の update 文が実行されないように修正しました, Mon Jan 7 17:39:19 2019 +0000
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+9fbb58d9a2407eb4d25b22c17dafbcee9b8f6f4c, #132 Prometheus が Spring Actuator にアクセスした時にコンソールにレスポンスの内容が出力されないようにしました, Sun Jan 6 15:31:54 2019 +0000
+M	src/main/resources/application-develop.properties
+
+7988f55d2e5f00b50b584ed67b06c600f492e382, #132 Redis のクライアントライブラリを Jedis → Lettuce に変更しました, Sun Jan 6 14:02:11 2019 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/config/RedisClusterConfig.java
+
+d6f88b1c25dd845754942cd13dceff39f5810482, #132 build.gradle の dependencies block を見直して記述不要のものを削除しました, Sun Jan 6 02:25:40 2019 +0000
+M	build.gradle
+
+0a99389055e01d7d62bcf8bb17f63d3ef38a1718, #132 build.gradle から implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310") を削除しました（spring-boot-starter-web の依存関係に入っており別に記述する必要がなかったため）, Sun Jan 6 00:06:00 2019 +0000
+M	build.gradle
+
+fdb90eda3d80e3e20cf971a0705864964cbcb73f, #132 build.gradle から implementation("org.thymeleaf.extras:thymeleaf-extras-java8time") を削除しました（spring-boot-starter-thymeleaf に取り込まれて別に記述する必要がなくなったため）, Sat Jan 5 15:03:46 2019 +0000
+M	build.gradle
+
+4ed8b5a42353689747c97b0234b171a0bc08a06a, #132 .gitignore に記述していた docker/mail-server/config/chksum のファイル名を間違えていたので修正しました, Sat Jan 5 15:02:42 2019 +0000
+M	.gitignore
+
+30cf053932cd0191c4aa10b22325d2db2de2c366, #132 .gitignore にコミット不要のファイル、ディレクトリを追加しました, Sat Jan 5 14:07:58 2019 +0000
+M	.gitignore
+
+49c6b114596cd80f7d8bb8255ae4aa89f334ef0c, #132 Docker で SMTPサーバ＋Webmailクライアント環境を構築しました, Sat Jan 5 14:06:15 2019 +0000
+M	.env
+M	docker-compose.yml
+A	docker/mail-server/config/dovecot.cf
+A	docker/mail-server/config/postfix-accounts.cf
+A	docker/mail-server/config/postfix-main.cf
+A	docker/rainloop/data/.gitkeep
+
+98592684c94147fb01d24d35a909c3a4db952429, #132 org.springframework.security.authentication.ProviderManager#getProviders を呼ぶと userDetailsService に LendingUserDetailsService のインスタンスがセットされた DaoAuthenticationProvider が２つ返ってきたので、１つだけ返るように変更しました, Sat Jan 5 07:52:48 2019 +0000
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+d022810dc7c1a0e05656940e575834a391fd84f1, #132 Gradle を 4.10.2 → 4.10.3 へバージョンアップし、バージョンアップ可能なライブラリもバージョンアップしました（ただし Spring Boot は 2.0.6 据え置き）, Fri Jan 4 23:14:35 2019 +0000
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.jar
+M	gradle/wrapper/gradle-wrapper.properties
+
+28990d0c2606adf60ccd10ca255767a9f8a67a38, #132 postgres_exporter＋PostgreSQL Statistics を導入して Grafana 上に PostgreSQL のメトリックスが表示されるようにしました, Thu Jan 3 07:47:35 2019 +0000
+M	.env
+M	docker-compose.yml
+M	docker/prometheus/prometheus.yml
+M	src/main/resources/db/init/create_database.sql
+
+a648a7195ee08b5f04e6df73d7afef557d669b9f, #132 build.gradle に flyway を追加しました, Thu Jan 3 03:42:10 2019 +0000
+M	build.gradle
+
+45a0306441b9328f355f0750300755663c67031e, #132 RabbitMQ の管理コンソールの URL を docker-compose.yml に記述しました, Thu Jan 3 03:41:37 2019 +0000
+M	docker-compose.yml
+
+d889daad4053be941417ea85de7b1f5ad1972ee0, #132 Docker で Flyway の環境を構築しました, Mon Dec 24 14:57:50 2018 +0000
+M	.env
+M	docker-compose.yml
+R100	sql/create_database.sql	src/main/resources/db/init/create_database.sql
+R100	sql/insert_data.sql	src/main/resources/db/migration/V1.1__insert_data.sql
+R100	sql/create_table.sql	src/main/resources/db/migration/V1__create_table.sql
+
+0dbcf28d69586f137898f63186f32d7a90600ef0, #132 pgAdmin4 のデータ用ディレクトリを Git の管理対象外にしました, Mon Dec 24 14:17:26 2018 +0000
+M	.gitignore
+
+10fc9677da3897f05e804a46a7df8660feb78c27, #132 Docker で単体の PostreSQL＋pgAdmin4 の環境を構築しました, Mon Dec 24 10:40:52 2018 +0000
+M	.env
+M	docker-compose.yml
+A	docker/pgadmin4/data/.gitkeep
+
+a390e78a6ccba2dc85a65882e7194f4cdc7a6cf9, #132 パスワードの先頭に "{bcrypt}" を追加しました, Mon Dec 24 10:39:14 2018 +0000
+M	sql/insert_data.sql
+
+f3bb2c00c7da8f7afa89c2a7a0bf0ca65049fa93, #132 全てのテストを実行した時に MockRestServiceServer を利用したテストの影響で他のテストが失敗することがあったため、@DirtiesContext アノテーションを付加してテスト実行後に Context が初期化されるようにしました, Sun Dec 9 02:40:07 2018 +0000
+M	src/test/groovy/ksbysample/webapp/lending/service/calilapi/CalilApiServiceRetryTest.groovy
+
+de2cb819da49e1ffc582f8e345caf88bb1445155, #132 redis-cluster-make コンテナで使用するイメージファイルを Alpine Linux 版をベースに作成するよう変更しました, Fri Dec 7 23:50:12 2018 +0000
+M	docker/redis/Dockerfile
+
+755827867da11dff8ea9a3cda24977aa149638af, #132 rabbitmq_exporter → haproxy へはホストの IPアドレスではなくコンテナ名でアクセスするよう変更しました, Thu Dec 6 16:17:23 2018 +0000
+M	docker-compose.yml
+
+6478dd339fe885a17e3c552995f59802c5ebe39a, #132 RabbitMQ の Clustering 環境を構築しました, Sun Dec 2 08:17:56 2018 +0000
+M	.env
+M	docker-compose.yml
+A	docker/rabbitmq/cluster-entrypoint.sh
+A	docker/rabbitmq/haproxy.cfg
+
+98fea3cde7e829877fca89a0ac7daad7a83dde83, #132 application-unittest.properties, application-product.properties に spring.rabbitmq.username, spring.rabbitmq.password の設定を追加しました, Sat Dec 1 18:31:05 2018 +0000
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+
+1925353ef3a290627d728de3fccaba29ab73ff4c, #132 起動に使用している Docker Image の総サイズが 2GB 近くなっていてコンテナの起動に失敗する現象が出たので、Redis と RabbitMQ は alpine 版のイメージを使用するよう変更しました, Sat Dec 1 18:20:59 2018 +0000
+M	docker-compose.yml
+M	docker/redis/Dockerfile
+
+63eb7d559db72abaf531b44964eb6134e7d72fe3, #132 RabbitMQ のメトリックスを Prometheus + Grafana で表示する設定を追加しました, Sat Dec 1 17:16:07 2018 +0000
+M	docker-compose.yml
+M	docker/prometheus/prometheus.yml
+
+d450d0a60588da60f9ba38a2755d6d6e16e1ac26, #132 Docker で単体の RabbitMQ サーバを構築し、Web アプリケーションから接続する設定を修正しました, Sat Dec 1 08:36:02 2018 +0000
+M	.env
+M	docker-compose.yml
+M	src/main/resources/application-develop.properties
+
+6c85a2830fc121cfc936ed05d4c8c2e2346b3923, #132 Redis のバージョンを 5.0.1 → 5.0.2 へバージョンアップし、バージョン番号やポート番号を .env の環境変数で定義するよう変更しました, Sat Dec 1 00:27:02 2018 +0000
+M	.env
+M	docker-compose.yml
+M	docker/redis/Dockerfile
+
+2398325f7226c0b4959329e8b64a277ca77fce66, #132 Docker で Redis Cluster の環境を構築する設定を追加し、Web アプリケーションも Redis Cluster へ接続できるよう変更しました, Thu Nov 29 21:58:44 2018 +0000
+A	.env
+M	build.gradle
+M	docker-compose.yml
+A	docker/redis/Dockerfile
+A	docker/redis/redis.conf
+A	src/main/java/ksbysample/webapp/lending/config/RedisClusterConfig.java
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+
+3965224861617dd86693605d9ca89f387a59d098, #132 .httpBasic() と .sessionManagement() を .and() で繋げる記述に変更しました, Mon Nov 26 14:54:03 2018 +0000
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+2948e5cbbec402747137d88cdc3198d9dcfb34ff, #132 Redis のメトリックスを Prometheus + Grafana で表示する設定を追加しました, Sun Nov 25 04:32:23 2018 +0000
+M	docker-compose.yml
+M	docker/prometheus/prometheus.yml
+
+9083adc45f152d83454bb57b6b8957dedbe6c285, #132 Spring Actuator の Basic 認証を Spring Session の管理対象外にするようにしました（セッション情報が作成されないようにしました）, Sat Nov 24 09:33:45 2018 +0000
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+c840eab02fe37356fbf6f3c075cf8b61ece2155b, #132 Docker で単体の Redis サーバの環境を構築する設定を追加しました, Sat Nov 24 09:33:02 2018 +0000
+M	docker-compose.yml
+M	src/main/resources/application-develop.properties
+
+2254063e5b54caea0fa0f3b29846750ead472318, #132 Spock を 1.1-groovy-2.4 → 1.2-groovy-2.5 へバージョンアップしました, Fri Nov 23 08:32:44 2018 +0000
+M	build.gradle
+A	src/test/groovy/ksbysample/webapp/lending/service/calilapi/CalilApiServiceRetryTest.groovy
+
+14c1105a8678b090b527185430e75e0804c1c90e, #132 Spring Boot を 2.0.4 → 2.0.6 へバージョンアップしました, Sun Nov 18 05:50:48 2018 +0000
+M	build.gradle
+
+5b17aaff49b949aa0f9ad06d1112e2b48af8699a, #132 gradle を 4.10 → 4.10.2 へバージョンアップしました, Sun Nov 18 04:46:51 2018 +0000
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.properties
+
+d3e4d9ef7194769e1a24496c4789fb8f2799b9fa, #132 docker/grafana/storage, docker/prometheus/storage を git の管理対象から外しました, Sun Nov 18 03:36:44 2018 +0000
+M	.gitignore
+
+9bc504dd29b67aa917af30070a97239e9d08cd23, #132 Prometheus で収集したメトリックスや Grafana で設定した内容をホストのディレクトリに保存するための設定を追加しました, Sun Nov 18 03:31:43 2018 +0000
+M	docker-compose.yml
+A	docker/grafana/storage/.gitkeep
+A	docker/prometheus/storage/.gitkeep
+M	src/main/resources/application.properties
+
+984ea7fef7b83443ed28454e6da94807c4cc26ea, #132 JVM (Micrometer) 等の Grafana の Dashboard を表示する時に必要となる application label を追加しました, Sun Nov 18 03:31:07 2018 +0000
+M	docker/prometheus/prometheus.yml
+
+6b20029890ed0a13aea1822338fef173b0f92820, #132 Docker で Prometheus＋Grafana の環境を構築しました, Sun Nov 4 11:28:40 2018 +0000
+A	docker-compose.yml
+A	docker/prometheus/prometheus.yml
+
+300fe6a92c62f56e061b20492c32b909ccb30b29, #132 Remember Me 認証で InMemory のユーザしか参照されなくなっていたので DB のデータを参照するよう修正しました, Sat Nov 3 06:01:41 2018 +0000
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+23b9b6944efe56affe6eaaff16d3936fabf76215, #132 Spring Boot Actuator を導入し、Endpoint に Basic 認証を設定しました, Fri Nov 2 15:44:21 2018 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/resources/application.properties
+
+95b061807308e801d512c35282e10e26609b0a0e, #132 ユニットテスト実行時には MBeanExporter の bean は自動生成されないので、生成されていなくてもエラーにならないようにしました, Sat Oct 20 17:26:57 2018 +0000
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+
+9b3da7bd1c5d21a0e2f521981cbff9ca129b38b0, #132 HikariCP のコネクションプーリングの情報を JMX で取得できるようにするために、Spring Boot が dataSource bean を自動で MBean に登録しないようにしました, Thu Oct 18 20:56:03 2018 +0000
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+
+03bb7b00919d3563db756905c22417c894078123, #132 application.properties に spring.autoconfigure.exclude=com.integralblue.log4jdbc.spring.Log4jdbcAutoConfiguration の設定を入れたままコミットしていたので削除しました, Wed Oct 17 15:41:27 2018 +0000
+M	src/main/resources/application.properties
+
+af6aefbb8e993979e8d006062849a723e7094b37, #132 @EnableMBeanExport(registration = RegistrationPolicy.IGNORE_EXISTING) がなくても jar ファイルから起動時にエラーが出なかったので削除しました, Wed Oct 10 15:39:33 2018 +0000
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+
+620d9906d3fb50ffb452fda703bac9b13c88c4a8, #132 コネクションプーリングのライブラリを Spring Boot 2.0 からデフォルトとなった Tomcat connection Pool → HikariCP に変更しました, Wed Oct 10 15:34:33 2018 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/resources/application-product.properties
+M	src/main/resources/application.properties
+M	src/main/resources/logback-spring.xml
+
+54adb7047b883a798133f7d5f9ca62dba43849fb, #132 RabbitMQ へのメッセージ送信時に correlationId を付けるようにしました（付けないと受信時に NullPointerException が発生するため）, Thu Oct 4 22:22:55 2018 +0000
+M	src/main/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueService.java
+
+b9cf3a24e49f75c5ab595377a3b758884040373d, #132 Spring Boot 2.0＋Spring Security の構成だと src/main/resources/static の下の css や js ファイルにアクセスできなくなっていたので、アクセスできるようにしました, Sat Sep 29 23:40:40 2018 +0000
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+38b279cc3d9527055c4898cf44a1f20545a0628b, #132 FindBugs 3.0.1 → SpotBugs 3.1.7 に切り替えました, Fri Sep 28 16:44:23 2018 +0000
+M	build.gradle
+D	config/findbugs/findbugs-exclude.xml
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+D	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/CityData.java
+D	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/FiveDayThreeHourForecastData.java
+D	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/ForecastData.java
+D	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiService.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidator.java
+D	src/main/java/ksbysample/webapp/lending/webapi/weather/CityResponse.java
+D	src/main/java/ksbysample/webapp/lending/webapi/weather/FiveDayThreeHourForecastResponse.java
+D	src/main/java/ksbysample/webapp/lending/webapi/weather/ForecastResponse.java
+D	src/main/java/ksbysample/webapp/lending/webapi/weather/WeatherController.java
+M	src/main/resources/messages_ja_JP.properties
+D	src/test/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+
+468cec6dffed82ed4ac1ddc5b01bdde8a3263150, #132 PMD を 5.8.1 → 6.7.0 にバージョンアップしました, Thu Sep 20 15:46:05 2018 +0000
+M	build.gradle
+M	config/pmd/pmd-project-rulesets.xml
+M	src/main/java/ksbysample/webapp/lending/Application.java
+M	src/main/java/ksbysample/webapp/lending/BrowfishUtils.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/ControllerAndEventNameLogger.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+M	src/main/java/ksbysample/webapp/lending/config/DomaConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/cookie/CookieLastLendingAppId.java
+M	src/main/java/ksbysample/webapp/lending/exception/WebApplicationRuntimeException.java
+M	src/main/java/ksbysample/webapp/lending/helper/thymeleaf/SuccessMessagesHelper.java
+M	src/main/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListener.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUser.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetails.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+M	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvFileService.java
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistService.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/RegisterBooklistForm.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+M	src/main/java/ksbysample/webapp/lending/web/sessionsample/SessionSampleForm.java
+M	src/main/java/ksbysample/webapp/lending/webapi/common/CommonWebApiResponse.java
+M	src/main/java/ksbysample/webapp/lending/webapi/library/LibraryController.java
+
+2c62b7897ae210e8db37e0c72e75a14611c738ca, #132 checkstyle を 7.8.1 → 8.12 にバージョンアップしました, Mon Sep 17 05:12:40 2018 +0000
+M	build.gradle
+M	config/checkstyle/google_checks.xml
+
+ac111b1cca5c98f79d4393ea6dc2cb07ae377921, #132 失敗していたテストが成功するようにしました, Sat Sep 8 13:04:23 2018 +0000
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+M	src/test/resources/testdata/assertdata/user_info.csv
+M	src/test/resources/testdata/base/user_info.csv
+
+dba4ee3b90ec4a4f3b167559babac02ab2822451, #132 AbstractJsonpResponseBodyAdvice が非推奨になったので、その継承クラスとして実装していた JsonpAdvice クラスを削除しました, Sat Sep 8 10:50:08 2018 +0000
+D	src/main/java/ksbysample/webapp/lending/config/JsonpAdvice.java
+
+e8d653f85df9ded7b788974ceb0ffa23028f2ad8, #132 build.gradle を変更して Spring Boot を 1.5.4 → 2.0.4 へバージョンアップし、build 時に出るエラーを取り除きました（ただしまだ警告１件が残っていたり、テストが４件失敗していたりする）, Wed Sep 5 13:17:19 2018 +0000
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/WebMvcConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsService.java
+M	src/main/java/ksbysample/webapp/lending/web/WebappErrorController.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/EditFormChecker.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/SendmailFormChecker.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail001HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail002HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail003HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidatorTest.java
+
+93927e23298b53941bf0a9801f893fb7ba390aa3, #132 Gradle を 3.5 → 4.10 にバージョンアップしました, Sun Sep 2 02:41:18 2018 +0000
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.jar
+M	gradle/wrapper/gradle-wrapper.properties
+M	gradlew
+M	gradlew.bat
+
+c0140464fc8f8f3ca1ddbf807727f7d3b0d76587, Windows 7 PC から Windows 10 PC に移行した時に動作させるのに必要な箇所を変更しました, Sun Aug 19 03:54:25 2018 +0000
+M	build.gradle
+A	sql/insert_data.sql
+
+2777f8910692ab6c195f84bf4cd8487ccca6e1b8, Merge branch '1.5.x', Mon Jul 17 18:53:41 2017 +0900
+476ad46422d38baa7e214b56b3f1e9e574221ae0, #130 -XX:+CrashOnOutOfMemoryError を追加し、-XX:HeapDumpPath と -XX:ErrorFile で指定するファイル名に日時が付くようにしました, Mon Jul 17 18:50:42 2017 +0900
+M	webapps/ksbysample-webapp-lending/bat/webapp_startup.bat
+
+e445e069f46a07028189eaa89a0fb3a7a2d9aaa9, Merge branch '1.5.x', Thu Jul 13 02:38:43 2017 +0900
+874c894e18626802928d5f2bef1210e94f84ac4f, #150 エラーが発生して @ExceptionHandler アノテーションを付加したメソッドが応答を返す時でも response のログが出力されるようにしました, Thu Jul 13 02:37:41 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+
+ead92fbb3b0047a390e17ea859de8b99de1f2ba3, #130 @GetMapping, @PostMapping アノテーションが付加されたメソッドでも request, response のログが出力されるようにしました, Thu Jul 13 01:17:53 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+
+e235f23af333fff1806d0ab44015a3836090c42b, #130 /sample から始まる URL は Spring Security の認証の対象外にしました, Thu Jul 13 01:17:04 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+a40086b6f437fa7ff6a71816fc9b1ddf72563329, Merge branch '1.5.x', Sun Jul 9 20:46:28 2017 +0900
+aba1f163c500fea4907f68aee54a5397c92001fa, Merge pull request #131 from ksby/feature/130-issue, Sun Jul 9 20:44:58 2017 +0900
+8f578c744b1c61efff9db094ff4840d3c3bb7243, #130 bat ファイル内の WEBAPP_JAR の設定を ksbysample-webapp-lending-1.4.6-RELEASE.jar → ksbysample-webapp-lending-1.5.4-RELEASE.jar へ変更しました, Sun Jul 9 20:41:55 2017 +0900
+M	webapps/ksbysample-webapp-lending/bat/webapp_startup.bat
+
+a6b30fe5be6490118bc84e5833c3f1ea901b375c, #130 PowerMock のサンプルで checkstyle, PMD にチェックエラーを指摘された箇所を修正しました, Sun Jul 9 11:55:54 2017 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/BrowfishUtils.java
+M	src/main/java/ksbysample/webapp/lending/SampleHelper.java
+
+0afb480179f924d16f2026a2a22195f1347325ef, #130 PowerMock を使用して static メソッドをモック化してテストするサンプルを追加しました, Sun Jul 9 11:05:19 2017 +0900
+M	build.gradle
+A	src/main/java/ksbysample/webapp/lending/BrowfishUtils.java
+A	src/main/java/ksbysample/webapp/lending/SampleHelper.java
+A	src/test/groovy/ksbysample/webapp/lending/SampleHelperTest.groovy
+
+24b56d14586302a1f8d31ed026a355bef9b01637, #130 PMD を 5.8.0 → 5.8.1 へバージョンアップしました, Sat Jul 8 12:13:41 2017 +0900
+M	build.gradle
+
+c61d6e293437b42b73c975ff373727f411dd8c3f, #130 PMD で指摘された箇所を変更した際に pmd-project-rulesets.xml を一部修正しました, Sat Jul 8 10:13:50 2017 +0900
+M	config/pmd/pmd-project-rulesets.xml
+
+f0a4ed02b80a8c733e5ff2f1de9f4a2b1b8d215a, #130 PMD の rulesets/java/unusedcode.xml の UnusedLocalVariable で指摘された箇所を修正しました, Sat Jul 8 09:05:02 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+
+a77b9a9efe5a3ac06849e93c6b22cbf214fab8c5, #130 PMD の rulesets/java/unusedcode.xml の UnusedPrivateMethod で指摘された箇所を修正しました, Sat Jul 8 08:51:18 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+
+dcf7843b161cb5cd515b38f78fe1988f1b00b11c, #130 PMD の rulesets/java/unnecessary.xml の UnnecessaryModifier で指摘された箇所を修正しました, Fri Jul 7 06:56:27 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/helper/download/DataDownloadHelper.java
+
+e9d42a00af9d36af347e5081adc55425c24ca9df, #130 PMD の rulesets/java/strings.xml の AvoidDuplicateLiterals で指摘された箇所を修正しました, Fri Jul 7 06:29:16 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupController.java
+
+ce0e3171cc74abb0a9cccc5bdf420665252b813a, #130 PMD の rulesets/java/strings.xml の AppendCharacterWithChar で指摘された箇所を修正しました, Fri Jul 7 06:10:16 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+
+e79a633950cfbdcff76dc88aabea6e9edd9475c1, #130 PMD の rulesets/java/strings.xml の ConsecutiveAppendsShouldReuse で指摘された箇所を修正しました, Fri Jul 7 06:06:57 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+
+26e7b1a1f9c14167923bcb3894272711730991d3, #130 PMD の rulesets/java/optimizations.xml の PrematureDeclaration で指摘された箇所を修正しました, Wed Jul 5 23:14:08 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListener.java
+
+facefacc1737f14274f8826cc632cd42de5758a4, #130 PMD の rulesets/java/naming.xml の SuspiciousConstantFieldName で指摘された箇所を修正しました, Wed Jul 5 23:13:32 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+M	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiService.java
+
+e28c1cfd372b05e6df16260c0d45c49798121763, #130 PMD の rulesets/java/logging-java.xml の LoggerIsNotStaticFinal で指摘された箇所を修正しました, Wed Jul 5 22:40:13 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/ControllerAndEventNameLogger.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+M	src/main/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListener.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/webapi/library/LibraryController.java
+
+c288c75a9cdab1280b6965fcaaa3b8799af0d2f4, #130 PMD の rulesets/java/imports.xml の UnnecessaryFullyQualifiedName で指摘された箇所を修正しました, Wed Jul 5 07:24:32 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+
+eea1de5418b2e9fc3063aaecd9b8b141c6b4580b, #130 PMD の rulesets/java/design.xml の AvoidDeeplyNestedIfStmts で指摘された箇所を修正しました, Sat Jul 1 17:33:12 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidator.java
+
+31c2940a37fb661fd39bf7e8647bd7d1bfb60d7a, #130 PMD の rulesets/java/design.xml の ClassWithOnlyPrivateConstructorsShouldBeFinal で指摘された箇所を修正しました, Sat Jul 1 16:44:10 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/values/ValuesHelper.java
+
+07346c215a8ff13435ba7b77418b5e9f0f40319b, #130 PMD の rulesets/java/design.xml の PreserveStackTrace で指摘された箇所を修正しました, Sat Jul 1 16:38:29 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvFileService.java
+
+0ac1edfcdb6552dc5f2bf69b60b41e1d67311280, #130 PMD の rulesets/java/design.xml の AccessorMethodGeneration で指摘された箇所を修正しました, Sat Jul 1 16:34:17 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+
+9cefe1407e4b44db45a0a1ef7eaa6a87181f407d, #130 PMD の rulesets/java/design.xml の ImmutableField で指摘された箇所を修正しました, Sat Jul 1 15:57:29 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDownloadHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/thymeleaf/SuccessMessagesHelper.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetails.java
+M	src/main/java/ksbysample/webapp/lending/security/RoleAwareAuthenticationSuccessHandler.java
+
+5bd7401460dec69bf16ad51c62a88be5be4c8b0f, #130 PMD の rulesets/java/design.xml の UnnecessaryLocalBeforeReturn で指摘された箇所を修正しました, Sat Jul 1 11:00:52 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+M	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiService.java
+M	src/main/java/ksbysample/webapp/lending/web/WebappErrorController.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistService.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultService.java
+M	src/main/java/ksbysample/webapp/lending/webapi/weather/WeatherController.java
+
+5a52ca288440739699c1fb89df4fa2cf403f4a06, #130 PMD の rulesets/java/design.xml の UseVarargs で指摘された箇所を修正しました, Sat Jul 1 10:53:18 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+M	src/main/java/ksbysample/webapp/lending/helper/message/MessagesPropertiesHelper.java
+
+c9d96d18cc1e28b7ef231111410b9a802fa5fa2d, #130 PMD の rulesets/java/comments.xml/CommentRequired の headerCommentRequirement Required で指摘された箇所を修正しました, Sat Jul 1 08:22:50 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/Application.java
+M	src/main/java/ksbysample/webapp/lending/SampleController.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/ControllerAndEventNameLogger.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/Constant.java
+M	src/main/java/ksbysample/webapp/lending/config/DomaConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/JsonpAdvice.java
+M	src/main/java/ksbysample/webapp/lending/config/WebMvcConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/cookie/CookieLastLendingAppId.java
+M	src/main/java/ksbysample/webapp/lending/exception/WebApplicationRuntimeException.java
+M	src/main/java/ksbysample/webapp/lending/helper/download/DataDownloadHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvData.java
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDataConverter.java
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDownloadHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/freemarker/FreeMarkerHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/library/LibraryHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/EmailHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail001Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail002Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/message/MessagesPropertiesHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/page/PagenationHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/thymeleaf/SuccessMessagesHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/user/UserHelper.java
+M	src/main/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListener.java
+M	src/main/java/ksbysample/webapp/lending/security/AuthenticationFailureBadCredentialsEventListener.java
+M	src/main/java/ksbysample/webapp/lending/security/AuthenticationSuccessEventListener.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUser.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetails.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsHelper.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsService.java
+M	src/main/java/ksbysample/webapp/lending/security/RoleAwareAuthenticationSuccessHandler.java
+M	src/main/java/ksbysample/webapp/lending/service/UserInfoService.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Book.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/CheckApiResponse.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Libkey.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Libraries.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/LibrariesForJackson2Xml.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Library.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/LibraryForJackson2Xml.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/SystemData.java
+M	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvFileService.java
+M	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvRecord.java
+M	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/CityData.java
+M	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/FiveDayThreeHourForecastData.java
+M	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/ForecastData.java
+M	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiService.java
+M	src/main/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueMessage.java
+M	src/main/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueService.java
+M	src/main/java/ksbysample/webapp/lending/util/cookie/CookieUtils.java
+M	src/main/java/ksbysample/webapp/lending/util/doma/SelectOptionsUtils.java
+M	src/main/java/ksbysample/webapp/lending/values/Values.java
+M	src/main/java/ksbysample/webapp/lending/values/ValuesHelper.java
+M	src/main/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidator.java
+M	src/main/java/ksbysample/webapp/lending/view/BookListCsvView.java
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+M	src/main/java/ksbysample/webapp/lending/web/WebappErrorController.java
+M	src/main/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryController.java
+M	src/main/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryService.java
+M	src/main/java/ksbysample/webapp/lending/web/admin/library/SetSelectedLibraryForm.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistController.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistService.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/RegisterBooklistForm.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/UploadBooklistForm.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ApprovedBookForm.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultForm.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultParamForm.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultService.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingBookDto.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappParamForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/ApplyingBookForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalParamForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+M	src/main/java/ksbysample/webapp/lending/web/sessionsample/SessionSampleController.java
+M	src/main/java/ksbysample/webapp/lending/web/sessionsample/SessionSampleForm.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupController.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupForm.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/EditFormChecker.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/SendmailFormChecker.java
+M	src/main/java/ksbysample/webapp/lending/web/textareamemo/TextareaMemoController.java
+M	src/main/java/ksbysample/webapp/lending/web/textareamemo/TextareaMemoForm.java
+M	src/main/java/ksbysample/webapp/lending/webapi/common/CommonWebApiResponse.java
+M	src/main/java/ksbysample/webapp/lending/webapi/library/LibraryController.java
+M	src/main/java/ksbysample/webapp/lending/webapi/weather/CityResponse.java
+M	src/main/java/ksbysample/webapp/lending/webapi/weather/FiveDayThreeHourForecastResponse.java
+M	src/main/java/ksbysample/webapp/lending/webapi/weather/ForecastResponse.java
+M	src/main/java/ksbysample/webapp/lending/webapi/weather/WeatherController.java
+
+8ec0031b8a026b8da17bc3402f31177a9e9b552b, #130 PMD を 5.7.0 → 5.8.0 へバージョンアップしました, Sat Jul 1 07:42:03 2017 +0900
+M	build.gradle
+M	config/pmd/pmd-project-rulesets.xml
+
+3a71d386c86876d467774e878e28886bf532edfc, #130 PMD を導入しました, Sat Jul 1 07:36:55 2017 +0900
+M	build.gradle
+A	config/pmd/pmd-project-rulesets.xml
+
+08c45b162093d169df47cf33b93213135a9a7acf, #130 起動時の spring.profiles.active のチェック処理を Set.contains を使用した方法に変更しました, Fri Jun 23 06:36:12 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/Application.java
+
+4aa67fe691d4e238fb23a03bde16755e07460ab4, #130 コメントを一部修正しました, Sun Jun 18 07:19:11 2017 +0900
+M	src/test/groovy/ksbysample/webapp/lending/SampleTest.groovy
+
+4e5d94b3b4743381be54b3c209e80bb5e2de1c9f, #130 Groovy + JUnit4 + Groovy SQL でテストのサンプルを作成しました, Sat Jun 17 19:59:29 2017 +0900
+M	build.gradle
+A	src/test/groovy/ksbysample/webapp/lending/SampleTest.groovy
+
+5b902c81f7e7a6a2c3af9de459e6c8b7000e91be, #130 Spring Boot を 1.5.3 → 1.5.4 へ、他のライブラリも最新バージョンへバージョンアップしました, Sat Jun 17 08:38:48 2017 +0900
+M	build.gradle
+
+ac42018d73564656faa9e9aa38b9b903fe306600, #130 logback-develop.xml, logback-unittest.xml, logback-product.xml の設定を logback-spring.xml と application.properties に移動してファイルを削除しました, Thu Jun 8 00:14:06 2017 +0900
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-unittest.properties
+M	src/main/resources/application.properties
+D	src/main/resources/logback-develop.xml
+D	src/main/resources/logback-product.xml
+M	src/main/resources/logback-spring.xml
+D	src/main/resources/logback-unittest.xml
+
+84ff352b9574f42404ee55b86e80e6a6e84a4dfb, #130 Gradle を 2.13 → 3.5 へバージョンアップし、FindBugs Gradle Plugin が出力するログを抑制する処理を追加しました, Tue May 30 01:49:52 2017 +0900
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.jar
+M	gradle/wrapper/gradle-wrapper.properties
+M	gradlew
+M	gradlew.bat
+
+cec0b5fc94632c9f4bb69b084c905afa6fe93239, #130 WARN ログ `[THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.` が出力されないようにするために spring.thymeleaf.mode=HTML の設定を追加しました, Thu May 25 00:23:38 2017 +0900
+M	src/main/resources/application.properties
+
+2c4e17439c83bedce0f63ef942c2a19524272d55, #130 <!--/*@thymesVar id="..." type="..."*/--> の記述がない Thymeleaf テンプレートに記述を追加しました, Wed May 24 23:36:09 2017 +0900
+M	src/main/resources/templates/admin/library/library.html
+M	src/main/resources/templates/booklist/booklist.html
+M	src/main/resources/templates/booklist/fileupload.html
+M	src/main/resources/templates/confirmresult/confirmresult.html
+M	src/main/resources/templates/lendingapp/lendingapp.html
+M	src/main/resources/templates/lendingapproval/lendingapproval.html
+M	src/main/resources/templates/sessionsample/confirm.html
+M	src/main/resources/templates/sessionsample/first.html
+M	src/main/resources/templates/sessionsample/next.html
+M	src/main/resources/templates/springmvcmemo/beanValidationGroup.html
+M	src/main/resources/templates/textareamemo/display.html
+M	src/main/resources/templates/textareamemo/index.html
+
+f33dd26d88c8a59e0fbdfd1443a758c1665437ed, #130 LibraryHelper#getSelectedLibrary は図書館未選択時には null を返すようにし、Thymeleaf テンプレートでは The No-Operation token の機能を利用して null の時には th:text の処理が実行されないようにしました, Wed May 24 20:41:14 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/helper/library/LibraryHelper.java
+M	src/main/resources/templates/common/mainparts.html
+M	src/test/java/ksbysample/webapp/lending/helper/library/LibraryHelperTest.java
+
+f2abe3d8cab6f76b21748949aab33f132c41c0a2, #130 Thymeleaf を 2.1.5 → 3.0.6 へバージョンアップし、以下の点を変更しました。, Wed May 24 18:03:07 2017 +0900
+M	build.gradle
+A	src/main/java/ksbysample/webapp/lending/config/WebMvcConfig.java
+M	src/main/resources/templates/admin/library/library.html
+M	src/main/resources/templates/booklist/booklist.html
+M	src/main/resources/templates/booklist/complete.html
+M	src/main/resources/templates/booklist/fileupload.html
+M	src/main/resources/templates/common/mainparts.html
+M	src/main/resources/templates/confirmresult/confirmresult.html
+M	src/main/resources/templates/error.html
+M	src/main/resources/templates/lendingapp/lendingapp.html
+M	src/main/resources/templates/lendingapproval/lendingapproval.html
+M	src/main/resources/templates/login.html
+M	src/main/resources/templates/loginsuccess.html
+M	src/main/resources/templates/sessionsample/confirm.html
+M	src/main/resources/templates/sessionsample/first.html
+M	src/main/resources/templates/sessionsample/next.html
+M	src/main/resources/templates/springmvcmemo/beanValidationGroup.html
+M	src/main/resources/templates/textareamemo/display.html
+M	src/main/resources/templates/textareamemo/index.html
+A	src/test/groovy/ksbysample/common/test/matcher/HtmlResultMatchersTest.groovy
+A	src/test/java/ksbysample/common/test/matcher/HtmlResultMatchers.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+
+72236e622a2c8355e46bbbcd05ac92e8da21f3e0, #130 group の前にスペースが入っていたので削除しました, Sat May 20 16:24:37 2017 +0900
+M	build.gradle
+
+3e2ed496874507959310790113f2e0e1698890d8, #130 デフォルトで Devtools が jar ファイルに入らないようになったので、build.gradle の excludeDevtools = true の記述を削除しました, Sat May 20 15:29:13 2017 +0900
+M	build.gradle
+
+f97e08d4652322e0e14eef09a941bfc27d1ba7bc, #130 Spring Boot MVC validator のための Bean 名を validator → mvcValidator へ変更し、不要な WebMvcConfig クラスを削除しました, Fri May 19 00:10:56 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+D	src/main/java/ksbysample/webapp/lending/config/WebMvcConfig.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupController.java
+M	src/test/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidatorTest.java
+
+c5d542b566848e4ebc04820c227507673d41fd52, #130 build.gradle を変更しました, Tue May 16 00:19:18 2017 +0900
+M	build.gradle
+
+55bd90f7ab8165e9e942dc003e6fd21c2bbdb72e, Merge branch '1.4.x', Sat May 13 19:00:18 2017 +0900
+9dac4822e1948aa31ca1fbe874dcaa45c652be03, #128 Thymeleaf テンプレートに記述した @thymesVar のコメント文が HTML に出力されないよう、コメントの形式を Thymeleaf parser-level comment blocks に変更しました, Sat May 13 07:38:10 2017 +0900
+M	src/main/resources/templates/sessionsample/confirm.html
+M	src/main/resources/templates/sessionsample/first.html
+M	src/main/resources/templates/sessionsample/next.html
+M	src/main/resources/templates/springmvcmemo/beanValidationGroup.html
+M	src/main/resources/templates/textareamemo/display.html
+M	src/main/resources/templates/textareamemo/index.html
+
+d6b8fe806e2246bf2374384fdee78290d52cd88e, Merge branch '1.4.x', Sat May 6 23:45:54 2017 +0900
+ce25e2b295d63e42e6d9f5812ee290f507b88d9e, Merge pull request #129 from ksby/feature/128-issue, Sat May 6 23:42:40 2017 +0900
+0b52c59706d9ec66aefea1d461fdab490511de63, #128 jar ファイルから起動した時に ValuesHelper クラスのコンストラクタで Values インターフェースの実装クラスが１つもロードされない問題を解消しました, Sat May 6 23:36:48 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/values/ValuesHelper.java
+M	src/main/resources/application-product.properties
+M	src/main/resources/application.properties
+
+21dc17e3481b8a5e2fdb727c1504b7f0d8ecf8af, #128 FreeMarker のテンプレートで数値→文字列変換が発生する時にカンマ区切りで出力されないようにしました, Sat May 6 08:16:59 2017 +0900
+M	src/main/resources/application.properties
+
+a7ea210435fe3f5fc124f71b27cf2454e4917f0a, #128 lombok の @AllArgsConstructor を付けたクラスをネストしていると Jackson で deserialize できない問題を修正しました, Sat May 6 08:15:20 2017 +0900
+A	lombok.config
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+
+8d7495d6c57cf8401cc771bec8cd26055df8a911, #128 bat ファイル内の JAVA_HOME, WEBAPP_JAR を最新の状態に更新し、-XX:HeapDumpPath オプションで指定していたファイル名のミスを修正しました, Fri May 5 19:41:34 2017 +0900
+M	webapps/ksbysample-webapp-lending/bat/webapp_startup.bat
+
+f516781b7c16f21dc905f23298948cbdd4886937, #128 Spring Boot を 1.4.5 → 1.4.6 にバージョンアップしました, Wed May 3 22:58:01 2017 +0900
+M	build.gradle
+
+06ecbe6cd5f0714f595fbcc4070ae0654bfd5416, #128 ログインエラー時に入力した ID がクリアされず、入力された状態でログイン画面が表示されるようにしました, Wed May 3 17:17:17 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/resources/templates/login.html
+M	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+
+68c52db82a14f91200536714c447fc3b0c007775, #128 .bat 内に記述している Java のバージョンを 1.8.0_92 → 1.8.0_121 へ、ksbysample-webapp-lending-x.x.x-RELEASE.jar のバージョンを 1.1.0 → 1.4.5 へ変更しました, Thu Apr 20 06:43:01 2017 +0900
+M	webapps/ksbysample-webapp-lending/bat/webapp_startup.bat
+
+0397efd89eb73109d99ce020beb7b54cfb9b818b, #128 Tomcat JDBC Connection Pool の SlowQueryReport  intercepter を利用して5秒以上かかる SQL を slow-query.log に出力するようにしました, Thu Apr 20 06:41:32 2017 +0900
+M	src/main/resources/application-product.properties
+M	src/main/resources/application.properties
+M	src/main/resources/logback-product.xml
+M	src/main/resources/logback-spring.xml
+
+63d3ab6a733078e40973fe86ed33b51de17ef000, #128 spring.datasource.tomcat.～ の設定項目で url, username, password, driverClassName 以外で設定した方がよさそうなパラメータを追加しました, Sun Apr 16 01:52:58 2017 +0900
+M	src/main/resources/application-product.properties
+M	src/main/resources/application.properties
+
+2e9453c586200cc14cc7860f4edf773e2b4c03a6, #128 log4jdbc を適用するのに Log4jdbc Spring Boot Starter を利用するようにしました, Sat Apr 15 15:40:13 2017 +0900
+M	build.gradle
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+M	src/main/resources/application.properties
+D	src/main/resources/log4jdbc.log4j2.properties
+
+9e9bd1890f3a63fd4ade3823cb42c5ad682fe572, #128 checkstyle で警告が出たので Javadoc のコメントを追加しました, Sat Apr 8 23:41:21 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebMvcConfig.java
+
+644f189193978aef72ef6f513109fccd9adac032, #128 ValidationMessages_ja_JP.properties に定義されたメッセージを messages_ja_JP.properties へ移動し、メッセージを native-to-ascii で変換せず UTF-8 のまま保存するようにしました, Sat Apr 8 23:23:47 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+A	src/main/java/ksbysample/webapp/lending/config/WebMvcConfig.java
+D	src/main/resources/ValidationMessages_ja_JP.properties
+M	src/main/resources/messages_ja_JP.properties
+
+fd5563aadce8515ee5054caf2bb27812e86225e7, #128 FreeMarkerUtils クラスを Utils クラスから Helper クラスへ変更しました（クラス名を FreeMarkerHelper へ変更し、パッケージも移動しました）, Sat Apr 8 23:03:37 2017 +0900
+D	src/main/java/ksbysample/webapp/lending/util/freemarker/FreeMarkerUtils.java
+D	src/test/groovy/ksbysample/webapp/lending/util/freemarker/FreeMarkerUtilsTest.groovy
+
+67fa4f77c037731d53156797fb77473a3bfd4ecd, #128 FreeMarkerUtils クラスを Utils クラスから Helper クラスへ変更しました（クラス名を FreeMarkerHelper へ変更し、パッケージも移動しました）, Sat Apr 8 23:02:55 2017 +0900
+A	src/main/java/ksbysample/webapp/lending/helper/freemarker/FreeMarkerHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail001Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail002Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+A	src/test/groovy/ksbysample/webapp/lending/helper/freemarker/FreeMarkerHelperTest.groovy
+
+dba5ddab7e6e9be215758b496247477e2c6eccac, #128 HibernateJpaAutoConfiguration クラスを無効にしたことで不要になった hibernate.properties を削除しました, Sat Apr 8 19:40:45 2017 +0900
+D	src/main/resources/hibernate.properties
+
+b6699a101859c8f6001a59987424baa15e84c010, #128 Error Prone のバージョンアップを検証していた時に警告が出たので、テストクラス内に定義しているテスト用クラスに static を追加しました, Sat Apr 8 19:10:47 2017 +0900
+M	src/test/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidatorTest.java
+
+784f8138ee1c0421f0f08b1fbfdc3385a01b51be, #128 application.properties から使用されていない hibernate に関する設定を削除しました, Sat Apr 8 18:54:27 2017 +0900
+M	src/main/resources/application.properties
+
+95f4279261a173cf6e39a5a42ae719dd62c8be77, #128 build.gradle 内で行末のセミコロンを削除しました, Sat Apr 8 14:21:09 2017 +0900
+M	build.gradle
+
+cccbe2a9b067bb2ce62f57200111c30f509cec4e, #128 Spring Boot を 1.4.4 → 1.4.5 にバージョンアップしました, Sat Apr 8 08:08:49 2017 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/Application.java
+M	src/main/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelper.java
+
+f088384b18a4997e8d9f58bea8bf06a267e98ae0, #128 Optional らしい実装に変更しました, Sat Apr 8 00:22:26 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelper.java
+M	src/main/java/ksbysample/webapp/lending/util/cookie/CookieUtils.java
+M	src/test/groovy/ksbysample/webapp/lending/util/cookie/CookieUtilsTest.groovy
+
+6383b868752eb275ffbd4fa689c4deb248b95ea6, #128 LendingUserDetailsHelper に @Component アノテーションを付加して static メソッドを止めて、BooklistServiceTest クラスのモック化の処理を JMockit → @MockBean + Mockito へ変更しました, Mon Apr 3 00:00:31 2017 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsHelper.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistService.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+
+75cad6e9083384d8b9d98a4d5b5d6a9cd48461c8, #128 LibraryHelperTest クラスと InquiringStatusOfBookQueueListenerTest クラスのモック化の処理を JMockit → @MockBean + Mockito へ変更しました, Sun Apr 2 00:46:44 2017 +0900
+M	build.gradle
+M	src/test/java/ksbysample/webapp/lending/helper/library/LibraryHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+
+4e9cd9a188864dd1bef7cc4a7db9cd0890857e39, #128 テストクラスのアノテーションを @RunWith(SpringRunner.class) + @SpringBootTest に変更しました, Sun Mar 26 21:07:23 2017 +0900
+M	src/test/groovy/ksbysample/webapp/lending/util/freemarker/FreeMarkerUtilsTest.groovy
+M	src/test/groovy/ksbysample/webapp/lending/values/ValuesHelperTest.groovy
+M	src/test/java/ksbysample/test/UniVocityParsersTest.java
+M	src/test/java/ksbysample/webapp/lending/TestDataResourceTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/library/LibraryHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/EmailHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail001HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail002HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail003HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/message/MessagesPropertiesHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/user/UserHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsTest.java
+M	src/test/java/ksbysample/webapp/lending/service/UserInfoServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/calilapi/CalilApiServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/file/BooklistCsvFileServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/ExceptionHandlerAdviceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/WebappErrorControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/webapi/library/LibraryControllerTest.java
+
+2be51c9966eced95fd10be0a8ad1e210cfafe0c4, #128 spring-boot-gradle-plugin が自動的に dependency-management-plugin を適用するので、dependency-management-plugin の記述を削除しました, Fri Mar 24 02:41:48 2017 +0900
+M	build.gradle
+
+02505061ffdb2c0f23e943852c82fc5c67a92cc4, #128 RestTemplate で WebAPI を呼び出している処理に spring-retry によるリトライ処理を追加しました, Mon Mar 20 19:29:04 2017 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/Application.java
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+
+88a5c641df7fc6131a0234ee1cc4c47664ded92a, #128 gradle-errorprone-plugin を 0.0.8 → 0.0.9 へバージョンアップし、build.gradle の記述を一部見直しました, Mon Mar 6 23:52:52 2017 +0900
+M	build.gradle
+
+ce1647a1cb3e7025abf4b13991a30c3445d1ee91, #128 インジェクションの方法を @Autowired によるフィールドインジェクション → コンストラクタインジェクションへ変更しました, Sun Mar 5 07:27:00 2017 +0900
+M	config/checkstyle/google_checks.xml
+M	src/main/java/ksbysample/webapp/lending/SampleController.java
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/DomaConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/JsonpAdvice.java
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/cookie/CookieLastLendingAppId.java
+M	src/main/java/ksbysample/webapp/lending/dao/LendingAppDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/LendingBookDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/LibraryForsearchDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/UserInfoDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/UserRoleDao.java
+M	src/main/java/ksbysample/webapp/lending/exception/WebApplicationRuntimeException.java
+M	src/main/java/ksbysample/webapp/lending/helper/download/DataDownloadHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDownloadHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/library/LibraryHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/EmailHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail001Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail002Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/message/MessagesPropertiesHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/thymeleaf/SuccessMessagesHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/user/UserHelper.java
+M	src/main/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListener.java
+M	src/main/java/ksbysample/webapp/lending/security/AuthenticationFailureBadCredentialsEventListener.java
+M	src/main/java/ksbysample/webapp/lending/security/AuthenticationSuccessEventListener.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUser.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetails.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsService.java
+M	src/main/java/ksbysample/webapp/lending/service/UserInfoService.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Book.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/LibrariesForJackson2Xml.java
+M	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvFileService.java
+M	src/main/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueService.java
+M	src/main/java/ksbysample/webapp/lending/util/freemarker/FreeMarkerUtils.java
+M	src/main/java/ksbysample/webapp/lending/values/Values.java
+M	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+M	src/main/java/ksbysample/webapp/lending/web/WebappErrorController.java
+M	src/main/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryController.java
+M	src/main/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryService.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistController.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistService.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/RegisterBooklistForm.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ApprovedBookForm.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultService.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/ApplyingBookForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+M	src/main/java/ksbysample/webapp/lending/web/sessionsample/SessionSampleController.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupController.java
+M	src/main/java/ksbysample/webapp/lending/web/textareamemo/TextareaMemoController.java
+M	src/main/java/ksbysample/webapp/lending/webapi/library/LibraryController.java
+M	src/main/java/ksbysample/webapp/lending/webapi/weather/WeatherController.java
+
+bbb1990e8e50e54938159538bb242899b2ca3c8f, #128 1.3系 → 1.4系で実装方法が変更された点を修正しました, Wed Mar 1 22:55:08 2017 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+M	src/main/resources/application.properties
+
+a6874ae595cb8a090bb914edb09dbe561c4f3c68, #128 findbugs を導入し、警告が出た箇所を修正しました, Sun Feb 19 19:01:03 2017 +0900
+M	build.gradle
+A	config/findbugs/findbugs-exclude.xml
+M	src/main/java/ksbysample/webapp/lending/web/booklist/RegisterBooklistForm.java
+
+4735d0c151518183cb62198a7204e596c93093cc, #128 checkstyle で警告が出た箇所を修正しました, Sun Feb 19 13:51:32 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/Application.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/ControllerAndEventNameLogger.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/LoggingControllerName.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/LoggingEventName.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/DomaConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/dao/LendingAppDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/LendingBookDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/LibraryForsearchDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/UserInfoDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/UserRoleDao.java
+M	src/main/java/ksbysample/webapp/lending/entity/LendingApp.java
+M	src/main/java/ksbysample/webapp/lending/entity/LendingBook.java
+M	src/main/java/ksbysample/webapp/lending/entity/UserInfo.java
+M	src/main/java/ksbysample/webapp/lending/entity/UserRole.java
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDataConverter.java
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDownloadHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/library/LibraryHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail001Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail002Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/page/PagenationHelper.java
+M	src/main/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelper.java
+M	src/main/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListener.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetails.java
+M	src/main/java/ksbysample/webapp/lending/security/RoleAwareAuthenticationSuccessHandler.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/CheckApiResponse.java
+M	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvFileService.java
+R090	src/main/java/ksbysample/webapp/lending/service/file/BooklistCSVRecord.java	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvRecord.java
+M	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiService.java
+M	src/main/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueService.java
+M	src/main/java/ksbysample/webapp/lending/util/cookie/CookieUtils.java
+M	src/main/java/ksbysample/webapp/lending/util/doma/ComponentAndAutowiredDomaConfig.java
+M	src/main/java/ksbysample/webapp/lending/util/doma/SelectOptionsUtils.java
+M	src/main/java/ksbysample/webapp/lending/util/freemarker/FreeMarkerUtils.java
+M	src/main/java/ksbysample/webapp/lending/values/ValuesHelper.java
+M	src/main/java/ksbysample/webapp/lending/values/validation/ValuesEnum.java
+M	src/main/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+M	src/main/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryService.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistController.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistService.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/RegisterBooklistForm.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultForm.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultService.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupController.java
+M	src/main/java/ksbysample/webapp/lending/webapi/library/LibraryController.java
+M	src/main/java/ksbysample/webapp/lending/webapi/weather/WeatherController.java
+M	src/test/java/ksbysample/common/test/matcher/CustomModelResultMatchers.java
+M	src/test/java/ksbysample/common/test/matcher/ErrorsResultMatchers.java
+M	src/test/java/ksbysample/common/test/rule/db/BaseTestData.java
+M	src/test/java/ksbysample/common/test/rule/db/BaseTestSql.java
+M	src/test/java/ksbysample/common/test/rule/db/BaseTestSqlList.java
+M	src/test/java/ksbysample/common/test/rule/db/DbUnitUtils.java
+M	src/test/java/ksbysample/webapp/lending/helper/message/MessagesPropertiesHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/service/file/BooklistCsvFileServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+
+733bc5a21f106db4206012b8e8323c3c7c320b84, #128 checkstyle を導入しました, Sun Feb 19 13:51:06 2017 +0900
+M	build.gradle
+A	config/checkstyle/google_checks.xml
+
+1fefe3d041116d8c75f859447402ede7e8514cea, #128 Error Prone がエラー、警告を出力した部分を修正しました, Sat Feb 18 11:24:08 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/config/DomaConfig.java
+M	src/main/java/ksbysample/webapp/lending/util/cookie/CookieUtils.java
+M	src/main/java/ksbysample/webapp/lending/values/Values.java
+M	src/main/java/ksbysample/webapp/lending/values/lendingapp/LendingAppStatusValues.java
+M	src/main/java/ksbysample/webapp/lending/values/lendingbook/LendingBookApprovalResultValues.java
+M	src/main/java/ksbysample/webapp/lending/values/lendingbook/LendingBookLendingAppFlgValues.java
+M	src/main/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidator.java
+M	src/main/java/ksbysample/webapp/lending/webapi/common/CommonWebApiResponse.java
+M	src/test/java/ksbysample/common/test/helper/SimpleRequestBuilder.java
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+M	src/test/java/ksbysample/common/test/rule/db/TestSqlExecutor.java
+M	src/test/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+
+3378572bc23faf38256b24a795cdce941d76c35f, #128 Google のバグチェックツール Error Prone を導入しました, Sat Feb 18 11:23:31 2017 +0900
+M	build.gradle
+
+6a875451b73b105a40e2dc7491ddf701ccb0749c, #128 build 時に guava 20 から依存しているライブラリが存在しないためログに警告が出ている問題を解消するために com.google.errorprone:error_prone_annotations を追加しました, Sun Feb 12 17:16:35 2017 +0900
+M	build.gradle
+
+035fdb835cda8a5eb5741babb74e53d5362cb25c, #128 テストクラスからテストを実行した時に src/main/resources の下のテンプレートファイルを見てくれない問題を解消するために spring.freemarker.prefer-file-system-access=false の設定を追加しました, Sun Feb 12 11:08:26 2017 +0900
+M	src/main/resources/application.properties
+
+537aeb3ddf606210add936546113e535bed06799, #128 不要な import 文を削除しました, Sun Feb 12 10:21:22 2017 +0900
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail001HelperTest.java
+
+199ae9fe650dce81fe906066d089b43085b5bbbb, #128 FreeMarker のテンプレートファイルの文字コードを application.properties で明確に設定するようにしました, Sun Feb 12 10:13:39 2017 +0900
+M	src/main/resources/application.properties
+
+d48f7293bfdb492cf5e45caa2d49375a200fd9f6, #128 メールのテンプレートに使用するテンプレートエンジンを Velocity → FreeMarker に変更しました, Sun Feb 12 08:20:54 2017 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail001Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail002Helper.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+A	src/main/java/ksbysample/webapp/lending/util/freemarker/FreeMarkerUtils.java
+D	src/main/java/ksbysample/webapp/lending/util/velocity/VelocityUtils.java
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/resources/application.properties
+R100	src/main/resources/templates/mail/mail001-body.vm	src/main/resources/templates/mail/mail001-body.ftl
+R100	src/main/resources/templates/mail/mail002-body.vm	src/main/resources/templates/mail/mail002-body.ftl
+R078	src/main/resources/templates/mail/mail003-body.vm	src/main/resources/templates/mail/mail003-body.ftl
+A	src/test/groovy/ksbysample/webapp/lending/util/freemarker/FreeMarkerUtilsTest.groovy
+M	src/test/java/ksbysample/common/test/rule/mockmvc/SecurityMockMvcResource.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail001HelperTest.java
+A	src/test/resources/templates/mail/FreeMarkerUtilsTest-001.ftl
+A	src/test/resources/templates/mail/FreeMarkerUtilsTest-002-result.txt
+A	src/test/resources/templates/mail/FreeMarkerUtilsTest-002.ftl
+A	src/test/resources/templates/mail/FreeMarkerUtilsTest-003-result.txt
+A	src/test/resources/templates/mail/FreeMarkerUtilsTest-003-result2.txt
+A	src/test/resources/templates/mail/FreeMarkerUtilsTest-003.ftl
+
+bf067b966a9c2273916fa99ed61fa4e0a22dfe34, #128 build.gradle 修正後の Rebuild で出た Warning を解消しました ( Velocity 対応を除く ), Sat Feb 11 10:20:08 2017 +0900
+M	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvFileService.java
+M	src/test/java/ksbysample/test/UniVocityParsersTest.java
+M	src/test/java/ksbysample/webapp/lending/TestDataResourceTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/library/LibraryHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/EmailHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail001HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail002HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail003HelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/message/MessagesPropertiesHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/user/UserHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsTest.java
+M	src/test/java/ksbysample/webapp/lending/service/UserInfoServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/calilapi/CalilApiServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/file/BooklistCsvFileServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/ExceptionHandlerAdviceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/WebappErrorControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/webapi/library/LibraryControllerTest.java
+
+4c114827a7eddbe024251cb87a1c2039b225a663, #128 build.gradle を変更しました, Sat Feb 11 01:53:16 2017 +0900
+M	build.gradle
+
+4fa7b98e7eb4c4948837def47e667c9cdc7c8685, #128 gradle を 2.2 → 2.13 へバージョンアップしました, Fri Feb 10 03:06:35 2017 +0900
+M	gradle/wrapper/gradle-wrapper.properties
+
+46565bd4aeb5d62be8253bb92879273f6fb7d0c9, Merge branch '1.1.x', Mon Jun 20 00:45:38 2016 +0900
+1f684ae1e3d46d8584085d8aa8d284d9ad7365ce, Merge pull request #127 from ksby/1.1.x-springboot-1.2-to-1.3, Mon Jun 20 00:42:54 2016 +0900
+35da02e97c8089aeca19afeb5907957f790c495d, Rebuild Project 時に作成される out ディレクトリが Git の対象外になるようにしました, Mon Jun 20 00:34:52 2016 +0900
+M	.gitignore
+
+bd92c1b04f6f1e04951db9b96c782bb4c8f1095a, logback-unittest.xml の root の定義の書き方が他の logback.xml と異なっていたので修正しました, Mon Jun 20 00:33:51 2016 +0900
+M	src/main/resources/logback-unittest.xml
+
+c5c3043796ba63713dbccacfcd7f91d52384de94, webapp_startup.bat 内の JDK のバージョン及び jar ファイル名を最新のものに変更しました, Sun Jun 5 20:22:35 2016 +0900
+M	webapps/ksbysample-webapp-lending/bat/webapp_startup.bat
+
+51a95bb05ba1d95dd3994e19e00a482fafb01115, devtools を導入し、application.properties から cache の設定を削除しました, Sun Jun 5 20:20:03 2016 +0900
+M	build.gradle
+A	src/main/java/ksbysample/webapp/lending/SampleController.java
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+
+7219ce610d42098a0ec80858e686b31f97cc522d, logback.xml --> logback-spring.xml へリネームし、一部の設定を変更する, Tue May 24 00:54:37 2016 +0900
+M	src/main/resources/application-product.properties
+R092	src/main/resources/logback.xml	src/main/resources/logback-spring.xml
+
+a6e52c1d5b460138c916db99d68f9b2cfa0770c1, build.gradle 修正後のテストが失敗する原因を解消しました, Sun May 22 00:58:13 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/util/cookie/CookieUtils.java
+A	src/main/resources/messages.properties
+
+b4cb07964e34f98bdfad86e98d1961316cae5ddc, build.gradle 修正後の Rebuild で出た Warning を解消する, Wed May 18 19:31:06 2016 +0900
+M	src/test/java/ksbysample/webapp/lending/helper/library/LibraryHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+
+f6824f22156547516ea16abf989eed35362fb4b2, build.gradle の修正, Wed May 18 19:30:33 2016 +0900
+M	build.gradle
+
+4f4e908233a58cd02564041b6019e2ed6cb26ce0, Merge branch '1.0.x', Wed May 11 22:57:15 2016 +0900
+e13c0bd838bc2e9057339b1ab3c866cc0ae9a333, #124 product のみログファイルが出力されるようにし、起動用の webapp_startup.bat を作成しました, Sun Mar 27 21:13:08 2016 +0900
+M	build.gradle
+M	src/main/resources/logback.xml
+A	webapps/ksbysample-webapp-lending/bat/webapp_startup.bat
+
+6093c46c55c732b203f4934f98c699be8b8c176a, #106 セッションに値をセットする・取り出す処理を実装しました, Sat Mar 26 00:59:33 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+A	src/main/java/ksbysample/webapp/lending/web/sessionsample/SessionSampleController.java
+A	src/main/java/ksbysample/webapp/lending/web/sessionsample/SessionSampleForm.java
+A	src/main/resources/templates/sessionsample/confirm.html
+A	src/main/resources/templates/sessionsample/first.html
+A	src/main/resources/templates/sessionsample/next.html
+
+b97a7277fb7959c6a790ed27b525c1d39d53ee85, Merge pull request #122 from ksby/feature/121-issue, Mon Mar 21 01:27:45 2016 +0900
+f8ee5c585d3bb9965ad55c3693a7d2c725c60af0, #121 バージョンが最新でないライブラリを最新にしました（2016/03/21時点）, Mon Mar 21 01:26:58 2016 +0900
+M	build.gradle
+
+7d29b453d4ab48f78dfe822889801729d0da4b2d, Merge pull request #120 from ksby/feature/119-issue, Sun Mar 20 01:17:39 2016 +0900
+5ada1344950b7096462ef6ca76094e5533682bcf, #119 IntelliJ IDEA 2016.1 の Spring MVC View に URL 一覧を表示させるのに /web ディレクトリが不要になったので削除しました, Sun Mar 20 01:16:57 2016 +0900
+D	web/WEB-INF/dispatcher-servlet.xml
+D	web/WEB-INF/web.xml
+
+47593f21eaab207a59e6ae29e4547dc1095b3c56, Merge pull request #118 from ksby/feature/117-issue, Thu Mar 17 00:25:18 2016 +0900
+4bba2731257c824af5a987837d4bbfed45d57c04, #117 WebSecurityConfig クラスに記述しているセッション用の Cookie 名を JSESSIONID → SESSION に修正しました, Thu Mar 17 00:24:38 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+bcc3b821f62fcb5e88e0f4fa2c8b71f23fd5b442, Merge pull request #116 from ksby/feature/107-issue, Wed Mar 16 23:47:05 2016 +0900
+40c4375e0aaae69426dc5c3ebbcda6ac1027a3fe, #107 画面上部のメニューはログインしたユーザの権限で使用可能なもののみ表示するようにしました, Wed Mar 16 23:46:20 2016 +0900
+M	src/main/resources/templates/common/mainparts.html
+
+1ce2ee470eefeccee441d612e34f57769c3dd842, Merge pull request #115 from ksby/feature/104-issue, Mon Mar 14 00:41:57 2016 +0900
+e371f10f6bc051b975a3827c86d4fe4063cfa0b2, #104 WebSecurityConfig の DEFAULT_SUCCESS_URL の値を貸出希望書籍 CSV ファイルアップロード画面 ( /booklist ) に変更しました, Mon Mar 14 00:40:44 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+
+cf51cbd7194aef5a8ed96c24a8e1fb41d9a2ac90, Merge pull request #114 from ksby/feature/111-issue, Sat Mar 12 10:23:17 2016 +0900
+a1411c41993a668631b5342f1c792368bed75204, #111 values パッケージの下にサブパッケージを作成しても ValuesHelper クラスから呼び出せるようにしました, Sat Mar 12 10:21:41 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDataConverter.java
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+M	src/main/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListener.java
+M	src/main/java/ksbysample/webapp/lending/values/ValuesHelper.java
+R077	src/main/java/ksbysample/webapp/lending/values/LendingAppStatusValues.java	src/main/java/ksbysample/webapp/lending/values/lendingapp/LendingAppStatusValues.java
+R072	src/main/java/ksbysample/webapp/lending/values/LendingBookApprovalResultValues.java	src/main/java/ksbysample/webapp/lending/values/lendingbook/LendingBookApprovalResultValues.java
+R073	src/main/java/ksbysample/webapp/lending/values/LendingBookLendingAppFlgValues.java	src/main/java/ksbysample/webapp/lending/values/lendingbook/LendingBookLendingAppFlgValues.java
+M	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistService.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultService.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/ApplyingBookForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+M	src/test/groovy/ksbysample/webapp/lending/values/ValuesHelperTest.groovy
+M	src/test/java/ksbysample/webapp/lending/helper/mail/Mail003HelperTest.java
+
+ca47404f84431f0f4d2e1c96adbe356ed3450878, Merge pull request #113 from ksby/feature/112-issue, Thu Mar 10 01:42:26 2016 +0900
+eac1b8681ec1320c091432c27e0518f9f17e8a4f, #112 SecurityMockMvcResource　を使用するテストでは必ず TestDataResource を使用してテスト用データをロードするように変更しました, Thu Mar 10 01:41:36 2016 +0900
+M	src/test/java/ksbysample/webapp/lending/web/ExceptionHandlerAdviceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/webapi/library/LibraryControllerTest.java
+
+6cc97796a24c11508d09327b71792c9c427cef91, Merge pull request #110 from ksby/feature/thymeleaf-textarea-memo, Sun Mar 6 22:13:28 2016 +0900
+7a5bea5448d62b43bb4ecabf2ffdd5dd2dba229b, Thymeleaf で textarea に入力された改行があるデータをテキスト表示するサンプルを作成しました, Sun Mar 6 14:26:26 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+A	src/main/java/ksbysample/webapp/lending/web/textareamemo/TextareaMemoController.java
+A	src/main/java/ksbysample/webapp/lending/web/textareamemo/TextareaMemoForm.java
+A	src/main/resources/templates/textareamemo/display.html
+A	src/main/resources/templates/textareamemo/index.html
+
+e06e022f85f671134bbf83b257e85aee2320eec8, Merge pull request #109 from ksby/feature/aspectj-memo, Sun Mar 6 14:32:44 2016 +0900
+9c8239915f192fbfc3ce88b96ec17a1285969f69, cookie がない場合に RequestAndResponseLogger が原因で NullPointerException が発生する問題を修正しました, Sun Mar 6 14:28:20 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+
+ecaab7b76c9b76f03b8ae1d54e528b4ab9adf532, Merge pull request #108 from ksby/feature/aspectj-memo, Tue Mar 1 00:58:14 2016 +0900
+bd2a5170357cc06814771c2077b44378f76fca8b, Controller クラスと Service クラスのメソッドが呼び出された時に引数と戻り値をログに出力するようにしました, Tue Mar 1 00:54:30 2016 +0900
+A	src/main/java/ksbysample/webapp/lending/aspect/logging/MethodLogger.java
+
+29905c1ede656873f5ed54a947442bc76abdc95b, Controller クラスの @RequestMapping アノテーションが付加されたメソッドが呼び出された時に request, response のデータをログに出力するようにしました, Sun Feb 28 23:07:02 2016 +0900
+A	src/main/java/ksbysample/webapp/lending/aspect/logging/RequestAndResponseLogger.java
+
+360d9d392b76c9c6b437cbfaddad1b5e28135428, Controller クラスのクラスに画面名を、メソッドに処理名をアノテーションで指定したら、その文字列がログに出力されるようにしました, Sun Feb 28 09:31:39 2016 +0900
+A	src/main/java/ksbysample/webapp/lending/aspect/logging/ControllerAndEventNameLogger.java
+A	src/main/java/ksbysample/webapp/lending/aspect/logging/LoggingControllerName.java
+A	src/main/java/ksbysample/webapp/lending/aspect/logging/LoggingEventName.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+
+43cf86103b7e2a70d17746083c070f385f556d2b, Merge pull request #105 from ksby/test/spring-mvc-memo, Wed Feb 24 22:39:29 2016 +0900
+3244c4732a7a70fb0938d55aaee83e4abd408fff, Bean Validation の groups 属性を使用せずにボタンにより入力チェックを切り替えるサンプルを作成しました, Wed Feb 24 22:34:40 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupController.java
+M	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupForm.java
+A	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/EditFormChecker.java
+A	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/SendmailFormChecker.java
+
+8c867dba48641956e7932771e2e1a1ac8833c02b, Bean Validation の groups 属性を使用してボタンにより入力チェックを切り替えるサンプルを作成しました, Sun Feb 21 18:57:44 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+A	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupController.java
+A	src/main/java/ksbysample/webapp/lending/web/springmvcmemo/BeanValidationGroupForm.java
+A	src/main/resources/templates/springmvcmemo/beanValidationGroup.html
+
+f3d4fbe5924cf5bd16bbe9a1043d52ecd87fbc4d, Merge pull request #103 from ksby/feature/102-issue, Sat Feb 20 19:39:22 2016 +0900
+ef802534ef4557a419763fb69b00fa4b4203c0f8, #102 TableDataAssert クラス内の NULL_STRING は削除し DbUnitUtils.NULL_STRING を使用するようにしました, Sat Feb 20 19:38:39 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/TableDataAssert.java
+
+10b8ad393e84228d6793d6026af451b243f663d8, Merge pull request #101 from ksby/feature/99-issue, Sat Feb 20 19:01:53 2016 +0900
+bdb8f529c63ae7d659b5cde3cac9a9aeaa002b6a, #99 TableDataAssert クラスから assertEqualsByExcludingColumn, assertEqualsByIncludingColumn メソッドを削除しました, Sat Feb 20 19:01:07 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/TableDataAssert.java
+
+61676127695523367e311586e06c3b8b6fec103e, Merge pull request #100 from ksby/feature/93-issue, Sat Feb 20 18:20:27 2016 +0900
+a25c92d4327b410c07b7f7b421225a39b7d9dfcf, #93 TableDataAssert クラスに assertEqualsByQuery メソッドを追加しました, Sat Feb 20 18:19:54 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/TableDataAssert.java
+M	src/test/java/ksbysample/webapp/lending/TestDataResourceTest.java
+
+eb248c2bf45395c9f58ae0c1f258ae61756711e0, Merge pull request #98 from ksby/feature/86-issue, Sat Feb 20 16:59:00 2016 +0900
+65dc6593b6c3d17760f19ae7d1c50129578ba9bb, #86 TableDataAssert クラスに第１引数 String tableName だけの assertEquals メソッドを追加しました, Sat Feb 20 16:57:27 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/TableDataAssert.java
+M	src/test/java/ksbysample/webapp/lending/TestDataResourceTest.java
+
+8e3c2dfae720f11bb05ee3c2f4bfeb910a85ea79, Merge pull request #97 from ksby/feature/91-issue, Fri Feb 19 01:27:50 2016 +0900
+d2ffc495d18fc79af4754ed62e76b2aa33dec59e, #91 TestDataResource クラス内にルートパスを設定することで @BaseTestData, @TestData に記述するパスを短く書けるようにしました, Fri Feb 19 01:27:09 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+M	src/test/java/ksbysample/webapp/lending/TestDataResourceTest.java
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+
+29ac63817419c658ba919d13f8538e1a510afc15, Merge pull request #96 from ksby/feature/90-issue, Fri Feb 19 00:32:14 2016 +0900
+2485c4ec0dc4af322e4ec7b482841a6fbcd5c491, #90 @TestData アノテーションを複数付加できるようにしました, Fri Feb 19 00:31:21 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/TestData.java
+A	src/test/java/ksbysample/common/test/rule/db/TestDataList.java
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+M	src/test/java/ksbysample/webapp/lending/TestDataResourceTest.java
+M	src/test/resources/ksbysample/webapp/lending/web/confirmresult/testdata/001/lending_book.csv
+
+2bdf427756387634a7d27f7a0c58f262f5bc60c0, Merge pull request #95 from ksby/feature/92-issue, Wed Feb 17 20:25:14 2016 +0900
+0ccef0bb28ef1e223885c7ceec434d1a522df5bd, #92 ksbysample.common.test.rule.db パッケージ配下のクラス全般で dataSource.getConnection() で取得した Connection オブジェクトをクローズしていなかったのでクローズするよう修正しました, Wed Feb 17 20:24:13 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/DbUnitUtils.java
+M	src/test/java/ksbysample/common/test/rule/db/TableDataAssert.java
+M	src/test/java/ksbysample/common/test/rule/db/TestDataLoader.java
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+M	src/test/java/ksbysample/common/test/rule/db/TestSqlExecutor.java
+
+029ea874de02997cabd7e5670ffc521f1dc15029, Merge pull request #94 from ksby/feature/88-issue, Wed Feb 17 10:32:19 2016 +0900
+f558421e16924bb533d58b9f0d7fb8674f0dc834, #88 テストクラスとテストデータをコミットしました, Wed Feb 17 10:10:25 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/TestSql.java
+M	src/test/java/ksbysample/common/test/rule/db/TestSqlList.java
+A	src/test/java/ksbysample/webapp/lending/TestDataResourceTest.java
+A	src/test/resources/testdata/assertdata/lending_app.csv
+A	src/test/resources/testdata/assertdata/lending_book.csv
+A	src/test/resources/testdata/assertdata/library_forsearch.csv
+A	src/test/resources/testdata/assertdata/table-ordering.txt
+A	src/test/resources/testdata/assertdata/user_info.csv
+A	src/test/resources/testdata/assertdata/user_role.csv
+
+216118d140af3f8d8e52c9cb0a249ff20e86842f, #88 @TestData で指定されたテストデータをロードした後に @TestSql アノテーションで指定された SQL を実行するようにしました, Wed Feb 17 09:53:37 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+A	src/test/java/ksbysample/common/test/rule/db/TestSql.java
+A	src/test/java/ksbysample/common/test/rule/db/TestSqlList.java
+
+9d046dd2dee00b67674a92d9cf966349463d32ef, #88 TestDataResource クラスでベースのテストデータをバックアップ＆ロードした後に @BaseTestSql アノテーションで指定された SQL を実行するようにしました, Tue Feb 16 06:33:47 2016 +0900
+A	src/test/java/ksbysample/common/test/rule/db/BaseTestSql.java
+A	src/test/java/ksbysample/common/test/rule/db/BaseTestSqlList.java
+M	src/test/java/ksbysample/common/test/rule/db/TableDataAssert.java
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+A	src/test/java/ksbysample/common/test/rule/db/TestSqlExecutor.java
+
+cc5c2f161725360f51c4f2817e5a4599c6cc7f26, #88 TestDataResource クラスでバックアップ＆ロード＆リストアするテストデータを @BaseTestData アノテーションで指定できるようにしました, Sat Feb 13 19:56:26 2016 +0900
+A	src/test/java/ksbysample/common/test/rule/db/BaseTestData.java
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+
+31ae62ea167ba3c21792d1978488ae83b413557f, Merge pull request #89 from ksby/feature/81-issue, Thu Feb 11 00:31:20 2016 +0900
+981e17d996dbc54aabfd244d21cae8e92895e749, #81 build タスク実行時に無検査キャストの警告が出たので警告が出たクラスを修正しました, Thu Feb 11 00:29:00 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/view/BookListCsvView.java
+
+c8ae34eb6826743becf99dba240391972fea977e, #81 貸出申請結果確認画面のテストクラスを作成しました, Wed Feb 10 23:59:19 2016 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDownloadHelper.java
+M	src/main/java/ksbysample/webapp/lending/view/BookListCsvView.java
+A	src/test/groovy/ksbysample/webapp/lending/values/ValuesHelperTest.groovy
+A	src/test/java/ksbysample/common/test/rule/db/DbUnitUtils.java
+M	src/test/java/ksbysample/common/test/rule/db/TestDataLoader.java
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+A	src/test/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultControllerTest.java
+A	src/test/resources/ksbysample/webapp/lending/web/confirmresult/ConfirmResultForm_001.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/confirmresult/assertdata/001/booklist-105.utf-8.csv
+A	src/test/resources/ksbysample/webapp/lending/web/confirmresult/assertdata/002/booklist-105.ms932.csv
+A	src/test/resources/ksbysample/webapp/lending/web/confirmresult/testdata/001/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/web/confirmresult/testdata/001/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/web/confirmresult/testdata/001/table-ordering.txt
+
+651a7412eaa94649acb006ccfe6481ff263df9b0, #81 貸出申請したユーザでなければ、共通エラー画面を表示し HTTPステータスコードの 403 を返す処理を実装しました, Sun Feb 7 02:19:20 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultForm.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultService.java
+M	src/main/resources/messages_ja_JP.properties
+
+e946fc71b71dc9574a106955eadb6787fabe8e38, #81 AbstractView クラスのサブクラスを作成する方法で実装しました, Fri Feb 5 01:35:24 2016 +0900
+A	src/main/java/ksbysample/webapp/lending/view/BookListCsvView.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+
+205796eb7bd13940ae34ad416a1506a9f5a79277, #81 HttpServletResponse に直接出力する方法で CSVファイルダウンロード機能を実装しました, Wed Feb 3 01:20:23 2016 +0900
+A	src/main/java/ksbysample/webapp/lending/helper/download/DataDownloadHelper.java
+A	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvData.java
+A	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDataConverter.java
+A	src/main/java/ksbysample/webapp/lending/helper/download/booklistcsv/BookListCsvDownloadHelper.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultService.java
+M	src/main/resources/templates/confirmresult/confirmresult.html
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+M	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm_001.yaml
+
+f0ab243c68c4adc79de8e8a6eab68abd966740a6, #81 パラメータで指定されている貸出申請IDのデータを表示する処理を実装しました, Sat Jan 30 13:48:17 2016 +0900
+A	src/main/java/ksbysample/webapp/lending/web/confirmresult/ApprovedBookForm.java
+M	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+A	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultForm.java
+A	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultParamForm.java
+A	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultService.java
+M	src/main/resources/messages_ja_JP.properties
+M	src/main/resources/templates/confirmresult/confirmresult.html
+
+6e07ba2730b71a11c82dd2bd960ef4177349f036, #81 貸出申請結果確認画面の Controller クラスと Thymeleaf テンプレートファイルを作成しました, Fri Jan 29 01:10:38 2016 +0900
+A	src/main/java/ksbysample/webapp/lending/web/confirmresult/ConfirmresultController.java
+A	src/main/resources/static/html/confirmresult.html
+A	src/main/resources/templates/confirmresult/confirmresult.html
+
+177d690c68c10766552dbc17971f18ca63c29bab, Merge pull request #87 from ksby/feature/85-issue, Sat Jan 30 14:23:05 2016 +0900
+d958b760c20739be8c764396de5b23345d572857, #85 貸出承認画面で「確定」ボタンクリック時に lending_app.approval_user_id に承認者のユーザID をセットするよう修正しました, Sat Jan 30 14:21:58 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+M	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/001/lending_app.csv
+M	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/002/lending_app.csv
+
+9faf5e20a212d27589b1c7257e5a8b907e9c4c3d, Merge pull request #83 from ksby/feature/82-issue, Thu Jan 28 06:04:30 2016 +0900
+61a12cd6405c09e0b8cea8ba0b94f27e56296921, #82 TestDataResource のメソッド名を hasNouseTestDataResourceAnnotation → hasNoUseTestDataResourceAnnotation へ修正しました, Thu Jan 28 06:03:55 2016 +0900
+M	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+
+1faafc0c65d4e5b217b675c29716c2d5c299947c, Merge pull request #80 from ksby/feature/57-issue, Sun Jan 24 20:07:50 2016 +0900
+2437d7d0b51db24a0133ab77fdb4c5b4c2ff0b9c, #57 Thymeleaf テンプレートの共通エラーメッセージ表示エリア、通常メッセージ表示エリアを外部ファイルにして共通部品にしました, Sun Jan 24 20:07:13 2016 +0900
+M	src/main/resources/templates/common/mainparts.html
+M	src/main/resources/templates/lendingapp/lendingapp.html
+M	src/main/resources/templates/lendingapproval/lendingapproval.html
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+
+8a2e76ee7f846959000c68d0a59061763c6cf1b5, Merge pull request #78 from ksby/feature/54-issue, Sun Jan 24 14:28:19 2016 +0900
+461f62402442c3b8dbb82fc08a67a9e987aaf359, #54 貸出申請画面の lendingapp.html でデータを表示する部分のタグが td ではなく th になっているので修正しました, Sun Jan 24 14:26:49 2016 +0900
+M	src/main/resources/templates/lendingapp/lendingapp.html
+
+d7cbf27dbbdb3b5c2eefdbdc16b4e0ea70c6bd88, Merge pull request #77 from ksby/feature/56-issue, Sun Jan 24 14:05:34 2016 +0900
+bb5289d3f529e102dae5a2c430b82f41517304b2, #56 LendingappController の index メソッドの bindingResult.hasErrors() の if 文内は常に lendingappParamForm.getLendingAppId() == null なので不要なコードを削除しました, Sun Jan 24 14:04:42 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+
+61ed6d4dc483bc350a6a7b6fe09a2ed7834f6c89, Merge pull request #76 from ksby/feature/55-issue, Sun Jan 24 13:42:09 2016 +0900
+aee349c598cd07d5b45cdb5afa7407d925581dd3, #55 LendingappController クラスの setDispData メソッドを LendingappService クラスへ移動しました, Sun Jan 24 13:41:02 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+
+3cfabaa243ccfeb2432e2ce82c04f6b154d514b7, Merge pull request #75 from ksby/feature/58-issue, Sun Jan 24 10:08:22 2016 +0900
+2601f3d7f94dea4aaebb4a65d6e039b003f6d363, #58 AdminLibraryController の権限チェックを hasAuthority → hasRole に変更しました, Sun Jan 24 10:07:48 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryController.java
+
+67d99e0da91d6c4942b2cf02ee1fe2e4cf8982ab, Merge pull request #74 from ksby/feature/67-issue, Sat Jan 23 22:31:57 2016 +0900
+0587877ff673271464559e26fb40338afd985da6, #67 ksbysample.common.test の下にサブパッケージを作成してファイルを配置し直しました, Sat Jan 23 22:31:19 2016 +0900
+R092	src/test/java/ksbysample/common/test/SimpleRequestBuilder.java	src/test/java/ksbysample/common/test/helper/SimpleRequestBuilder.java
+R097	src/test/java/ksbysample/common/test/TestHelper.java	src/test/java/ksbysample/common/test/helper/TestHelper.java
+R098	src/test/java/ksbysample/common/test/CustomModelResultMatchers.java	src/test/java/ksbysample/common/test/matcher/CustomModelResultMatchers.java
+R098	src/test/java/ksbysample/common/test/ErrorsResultMatchers.java	src/test/java/ksbysample/common/test/matcher/ErrorsResultMatchers.java
+R065	src/test/java/ksbysample/common/test/AssertOptions.java	src/test/java/ksbysample/common/test/rule/db/AssertOptions.java
+R087	src/test/java/ksbysample/common/test/NoUseTestDataResource.java	src/test/java/ksbysample/common/test/rule/db/NoUseTestDataResource.java
+R098	src/test/java/ksbysample/common/test/TableDataAssert.java	src/test/java/ksbysample/common/test/rule/db/TableDataAssert.java
+R087	src/test/java/ksbysample/common/test/TestData.java	src/test/java/ksbysample/common/test/rule/db/TestData.java
+R096	src/test/java/ksbysample/common/test/TestDataLoader.java	src/test/java/ksbysample/common/test/rule/db/TestDataLoader.java
+R099	src/test/java/ksbysample/common/test/TestDataResource.java	src/test/java/ksbysample/common/test/rule/db/TestDataResource.java
+R096	src/test/java/ksbysample/common/test/MailServerResource.java	src/test/java/ksbysample/common/test/rule/mail/MailServerResource.java
+R098	src/test/java/ksbysample/common/test/SecurityMockMvcResource.java	src/test/java/ksbysample/common/test/rule/mockmvc/SecurityMockMvcResource.java
+M	src/test/java/ksbysample/webapp/lending/helper/mail/EmailHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/helper/user/UserHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsTest.java
+M	src/test/java/ksbysample/webapp/lending/service/UserInfoServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/file/BooklistCsvFileServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/ExceptionHandlerAdviceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/webapi/library/LibraryControllerTest.java
+
+4c2b5d40afe90c04e238384c072097db807d5906, Merge pull request #73 from ksby/feature/64-issue, Sat Jan 23 20:37:20 2016 +0900
+92022de18ef3cb955fc0408a6a5a47c1527fc349, #64 TestDataLoader クラスの catch 内の処理を e.printStackTrace() → throw new RuntimeException(e) に変更しました, Sat Jan 23 20:36:06 2016 +0900
+M	src/test/java/ksbysample/common/test/TestDataLoader.java
+
+c465ae561e72d28675deacb5cc5f3e4bab5e7420, Merge pull request #72 from ksby/feature/60-issue, Sat Jan 23 20:09:56 2016 +0900
+c55909e6af6f2e95a507ad4f201ded8f5d964e7b, #60 TestHelper クラスから assertEntityByForm メソッドを削除しました, Sat Jan 23 20:08:14 2016 +0900
+M	src/test/java/ksbysample/common/test/TestHelper.java
+
+98efe78aa3a96b71e655deedcbc15bdbfe78bbe5, Merge pull request #71 from ksby/feature/59-issue, Sat Jan 23 19:59:22 2016 +0900
+323eff58f28a2854a705bd7ee43ae4bbb4d11cda, #59 TestHelper クラスに Errors インターフェースの実装クラスのオブジェクトを生成するメソッドを追加しました, Sat Jan 23 19:58:24 2016 +0900
+M	src/test/java/ksbysample/common/test/TestHelper.java
+M	src/test/java/ksbysample/webapp/lending/service/file/BooklistCsvFileServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidatorTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidatorTest.java
+
+84d6e8dbccff049d208bdd7762bc32acce218a9d, Merge pull request #70 from ksby/feature/65-issue, Sat Jan 23 18:26:43 2016 +0900
+c8edfaa0bbef72d3936383f7f8fde8328283616c, #65 定数文字列のフィールドの宣言に static を追加しました, Sat Jan 23 18:22:10 2016 +0900
+M	src/test/java/ksbysample/common/test/TestDataResource.java
+
+364e3212ce7905323c3c08d1034bc0d12bba9951, Merge pull request #69 from ksby/feature/62-issue, Sat Jan 23 18:13:44 2016 +0900
+78a0f01061bb4ad613478c23bf9565415e611311, #62 TableDataAssert クラスに比較するカラムだけを指定するメソッドを追加しました, Sat Jan 23 18:12:43 2016 +0900
+A	src/test/java/ksbysample/common/test/AssertOptions.java
+M	src/test/java/ksbysample/common/test/TableDataAssert.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+
+e91b36a6287e995e600149906e9141fa3d3f5587, Merge pull request #68 from ksby/feature/65-issue, Sat Jan 23 15:03:18 2016 +0900
+cd4fa0569e9397c65d204e71048d567f44d04109, #65 TestDataResource クラスがバックアップを取得する対象テーブルを TESTDATA_BASE_DIR で指定したディレクトリ内の table-ordering.txt から読み込むようにしました, Sat Jan 23 15:02:23 2016 +0900
+M	src/test/java/ksbysample/common/test/TestDataResource.java
+
+76529fd01c0599aa4700552e5e5d70f45c4a2adc, Merge pull request #66 from ksby/feature/61-issue, Sat Jan 23 10:48:37 2016 +0900
+761608c2eda78337ec23364b229e05dd4cc98122, #61 @NoUseTestDataResource アノテーションが付加されているテストメソッドでは TestDataResource クラスの処理が実行されなくなるようにしました, Sat Jan 23 10:47:44 2016 +0900
+A	src/test/java/ksbysample/common/test/NoUseTestDataResource.java
+M	src/test/java/ksbysample/common/test/TestDataResource.java
+
+e541ff4be7c7d55fefbae453a9f600b2b1eb1602, Merge pull request #63 from ksby/feature/53-issue, Fri Jan 22 01:07:00 2016 +0900
+ec1bfc397be80a1dfe48cb602e70e200cdd88905, #53 貸出承認画面のテストを作成しました, Fri Jan 22 01:03:48 2016 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+M	src/main/java/ksbysample/webapp/lending/values/ValuesHelper.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+D	src/test/groovy/ksbysample/webapp/lending/values/ValuesHelperTest.groovy
+M	src/test/java/ksbysample/common/test/SecurityMockMvcResource.java
+A	src/test/java/ksbysample/webapp/lending/helper/mail/Mail003HelperTest.java
+A	src/test/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidatorTest.java
+A	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalControllerTest.java
+A	src/test/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidatorTest.java
+A	src/test/resources/ksbysample/webapp/lending/helper/mail/assertdata/003/message.txt
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm_001.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm_002.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm_003.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm_004.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm_005.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm_006.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/001/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/001/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/001/message.txt
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/001/table-ordering.txt
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/002/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/002/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/002/message.txt
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/assertdata/002/table-ordering.txt
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/testdata/001/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/testdata/001/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapproval/testdata/001/table-ordering.txt
+
+4d575cfd954c29eaceeb7999a2613e592d362be1, #53 承認権限 ( ROLE_APPROVER ) を付与されていないユーザが /lendingapproval にアクセスした場合にはエラーになるようにしました。, Tue Jan 19 00:58:03 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+
+b9cc1fb7514d614382399634accabd47a89416cb, #53 ROLE_USER 権限のみ持つユーザ ( ito aoi ) を追加しました。, Tue Jan 19 00:36:22 2016 +0900
+M	src/test/java/ksbysample/common/test/SecurityMockMvcResource.java
+M	src/test/resources/testdata/base/user_info.csv
+M	src/test/resources/testdata/base/user_role.csv
+
+74547f4c1393858ea332873d04aa3e60d42d2fae, #53 「確定」ボタンをクリックした時の処理を実装しました。, Sun Jan 17 13:47:35 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/dao/LendingBookDao.java
+A	src/main/java/ksbysample/webapp/lending/helper/mail/Mail003Helper.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+M	src/main/resources/templates/lendingapproval/lendingapproval.html
+A	src/main/resources/templates/mail/mail003-body.vm
+
+11222bac5de99ee7fa9e95474e0aefc1dd02bcc9, #53 入力チェック ( Bean Validation の追加及び Validator クラスの作成 ) を実装しました, Fri Jan 15 00:41:32 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/ApplyingBookForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalFormValidator.java
+M	src/main/resources/messages_ja_JP.properties
+M	src/main/resources/templates/lendingapproval/lendingapproval.html
+
+c4214b6fc2e37b3e60a1d2e22ba6d8c1298f1d31, #53 指定された Values 列挙型に定義されていない値が渡された場合にはエラーにするカスタム Bean Validation を作成しました, Wed Jan 13 23:42:29 2016 +0900
+A	src/main/java/ksbysample/webapp/lending/values/validation/ValuesEnum.java
+A	src/main/java/ksbysample/webapp/lending/values/validation/ValuesEnumValidator.java
+
+98436dbf83a9a59be936d2448507fada37aef438, #53 パラメータで指定されている貸出申請 ID の「申請する」が選択された書籍と申請理由の一覧を DB から取得して表示する処理を実装しました。, Sun Jan 10 21:07:55 2016 +0900
+M	src/main/java/ksbysample/webapp/lending/dao/LendingAppDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/LendingBookDao.java
+A	src/main/java/ksbysample/webapp/lending/values/LendingBookApprovalResultValues.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapproval/ApplyingBookForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalForm.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalParamForm.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalService.java
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LendingAppDao/selectByIdAndStatus.sql
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LendingBookDao/selectByLendingAppIdAndLendingAppFlg.sql
+M	src/main/resources/messages_ja_JP.properties
+M	src/main/resources/templates/lendingapproval/lendingapproval.html
+
+937c9a29e8159e066c234d805a85e74ea39c7737, #53 貸出申請画面の Controller クラスを作成しました。, Sat Jan 9 13:29:45 2016 +0900
+A	src/main/java/ksbysample/webapp/lending/web/lendingapproval/LendingapprovalController.java
+M	src/main/resources/templates/lendingapproval/lendingapproval.html
+
+95b71a73a3ac4acd4d42b7f962278c2c8971f7e6, #53 貸出申請画面の Thymeleaf テンプレートファイルを作成しました。, Sat Jan 9 12:53:21 2016 +0900
+A	src/main/resources/templates/lendingapproval/lendingapproval.html
+
+adf801a223f1e28d05846f852830ce8c3a20456c, #53 貸出申請画面の HTML ファイルを作成しました。, Sat Jan 9 11:56:10 2016 +0900
+A	src/main/resources/static/html/lendingapproval.html
+
+47c5d4cfa7cdbadbb74babc901e1a2e2c845860f, Merge pull request #52 from ksby/feature/51-issue, Wed Jan 6 21:00:02 2016 +0900
+19999e217f0a733a8969f0294bef11cb8a167a66, #51 build.gradle でバージョンをしているライブラリを最新のバージョンに更新しました。, Wed Jan 6 20:50:24 2016 +0900
+M	build.gradle
+
+39ca30b8399b27b1aae73b523779a18e66b697e2, #51 TestDataResource にテストデータロード機能を追加し、TestDataLoaderResource クラスはテストデータをロードするユーティリティクラス TestDataLoader へ変更しました。, Wed Jan 6 19:59:27 2016 +0900
+A	src/test/java/ksbysample/common/test/TestData.java
+M	src/test/java/ksbysample/common/test/TestDataLoader.java
+D	src/test/java/ksbysample/common/test/TestDataLoaderResource.java
+M	src/test/java/ksbysample/common/test/TestDataResource.java
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+
+e3610be3e4d72b397ae2ed69061641caba3d8766, #51 Spring Boot を 1.2.7 → 1.2.8 へバージョンアップしました, Sat Jan 2 13:51:07 2016 +0900
+M	build.gradle
+M	src/test/java/ksbysample/common/test/CustomModelResultMatchers.java
+
+e24f9a31434f5c3506ef9a2647fbbe887d35148c, Merge pull request #50 from ksby/feature/43-issue, Thu Dec 31 23:33:51 2015 +0900
+295ef7b44b56692370863a5dd4d79562bbc2e42b, 貸出申請画面のテストを作成しました（JUnit版）。, Thu Dec 31 23:26:40 2015 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappParamForm.java
+M	src/test/java/ksbysample/common/test/TestHelper.java
+M	src/test/java/ksbysample/webapp/lending/helper/library/LibraryHelperTest.java
+A	src/test/java/ksbysample/webapp/lending/helper/mail/Mail002HelperTest.java
+A	src/test/java/ksbysample/webapp/lending/helper/user/UserHelperTest.java
+A	src/test/java/ksbysample/webapp/lending/web/ExceptionHandlerAdviceTest.java
+A	src/test/java/ksbysample/webapp/lending/web/WebappErrorControllerTest.java
+A	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappControllerTest.java
+A	src/test/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidatorTest.java
+A	src/test/resources/ksbysample/webapp/lending/helper/mail/assertdata/002/message.txt
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/LendingappForm_001.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/LendingappForm_002.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/LendingappForm_003.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/LendingappForm_004.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/LendingappForm_005.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/LendingappForm_006.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/LendingappForm_007.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/assertdata/001/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/assertdata/001/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/assertdata/001/message.txt
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/assertdata/001/table-ordering.txt
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/assertdata/002/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/assertdata/002/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/assertdata/002/table-ordering.txt
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/testdata/001/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/testdata/001/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/web/lendingapp/testdata/001/table-ordering.txt
+M	src/test/resources/testdata/base/user_info.csv
+M	src/test/resources/testdata/base/user_role.csv
+
+744e0ae424e75e007fc8fbb3701915e463a138a6, 貸出申請画面のテストを作成しました（Spock版）。, Sun Dec 27 20:34:13 2015 +0900
+M	build.gradle
+A	src/test/groovy/ksbysample/webapp/lending/helper/thymeleaf/SuccessMessagesHelperTest.groovy
+A	src/test/groovy/ksbysample/webapp/lending/util/cookie/CookieUtilsTest.groovy
+A	src/test/groovy/ksbysample/webapp/lending/values/ValuesHelperTest.groovy
+R098	src/test/java/ksbysample/webapp/lending/service/EmailHelperTest.java	src/test/java/ksbysample/webapp/lending/helper/mail/EmailHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+M	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+
+123fd5b8d9d6fda45cdd3ac959ef3b11798b7454, 楽観的排他制御で、他のブラウザから既にデータが更新されていた場合に更新させないようにする処理を実装しました。, Thu Dec 24 00:01:32 2015 +0900
+M	build.gradle
+M	sql/create_table.sql
+M	src/main/java/ksbysample/webapp/lending/dao/LendingAppDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/LendingBookDao.java
+M	src/main/java/ksbysample/webapp/lending/entity/LendingApp.java
+M	src/main/java/ksbysample/webapp/lending/entity/LendingBook.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingBookDto.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LendingAppDao/selectByIdAndVersion.sql
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LendingBookDao/selectByIdAndVersion.sql
+M	src/main/resources/messages_ja_JP.properties
+M	src/main/resources/templates/lendingapp/lendingapp.html
+
+304eb008dad606ab295bde19f1b3c96bbd658230, 承認者ヘメールを送信する機能を実装しました。, Sun Dec 20 23:30:16 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/dao/UserInfoDao.java
+R087	src/main/java/ksbysample/webapp/lending/service/EmailService.java	src/main/java/ksbysample/webapp/lending/helper/mail/EmailHelper.java
+A	src/main/java/ksbysample/webapp/lending/helper/mail/Mail002Helper.java
+A	src/main/java/ksbysample/webapp/lending/helper/user/UserHelper.java
+M	src/main/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListener.java
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/UserInfoDao/selectApproverMailAddrList.sql
+A	src/main/resources/templates/mail/mail002-body.vm
+R092	src/test/java/ksbysample/webapp/lending/service/EmailServiceTest.java	src/test/java/ksbysample/webapp/lending/service/EmailHelperTest.java
+M	src/test/resources/testdata/base/user_info.csv
+
+e42a1d59695250cbf8bedfd48edec030a26da8c0, ValuesHelper クラスを Generics で実装するよう変更し、Values クラスも不要なメソッドを削除しました。, Thu Dec 3 02:29:27 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/values/LendingAppStatusValues.java
+M	src/main/java/ksbysample/webapp/lending/values/LendingBookLendingAppFlgValues.java
+M	src/main/java/ksbysample/webapp/lending/values/ValuesHelper.java
+
+9f8ddc8259dd29c7b206fdbfcaf7d964a732cb04, 一時保存の機能を実装しました。, Wed Dec 2 23:14:35 2015 +0900
+A	src/main/java/ksbysample/webapp/lending/helper/thymeleaf/SuccessMessagesHelper.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappForm.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+M	src/main/resources/templates/lendingapp/lendingapp.html
+
+94362aecf55db354c69900adc309568571b50c4f, 最後に表示した貸出申請の ID を Cookie に保存し、次回ログイン時に前回表示していた貸出申請画面を表示する機能を実装しました。, Sun Nov 29 05:19:13 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/config/Constant.java
+A	src/main/java/ksbysample/webapp/lending/cookie/CookieLastLendingAppId.java
+M	src/main/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelper.java
+M	src/main/java/ksbysample/webapp/lending/security/RoleAwareAuthenticationSuccessHandler.java
+A	src/main/java/ksbysample/webapp/lending/util/cookie/CookieUtils.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+
+9b508b6cddbb4673f3bfc9b86623d7c310698222, 「申請」ボタンクリック時の処理を実装しました。, Mon Nov 23 15:52:13 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/dao/LendingBookDao.java
+M	src/main/java/ksbysample/webapp/lending/values/LendingAppStatusValues.java
+M	src/main/java/ksbysample/webapp/lending/values/ValuesHelper.java
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+M	src/main/java/ksbysample/webapp/lending/web/WebappErrorController.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingBookDto.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappForm.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappFormValidator.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+M	src/main/resources/messages_ja_JP.properties
+M	src/main/resources/templates/lendingapp/lendingapp.html
+
+3eb3df24a0ba4cc6b21eb3174847d1df1cf56c02, 共通エラー画面で 404 Not Found の時にエラー発生原因の URI が表示されるようにしました。, Sat Nov 21 06:26:30 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+
+67f940854bdb06b93fd45ee3440a464946a3e8d7, パラメータで指定されている貸出申請 ID の書籍と貸出状況の一覧を DB から取得する処理を実装しました。共通エラー画面も実装しています。, Fri Nov 20 07:13:40 2015 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+A	src/main/java/ksbysample/webapp/lending/values/LendingBookLendingAppFlgValues.java
+A	src/main/java/ksbysample/webapp/lending/values/Values.java
+A	src/main/java/ksbysample/webapp/lending/values/ValuesHelper.java
+A	src/main/java/ksbysample/webapp/lending/web/ExceptionHandlerAdvice.java
+A	src/main/java/ksbysample/webapp/lending/web/WebappErrorController.java
+M	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappForm.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappParamForm.java
+A	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappService.java
+M	src/main/resources/messages_ja_JP.properties
+A	src/main/resources/templates/error.html
+M	src/main/resources/templates/lendingapp/lendingapp.html
+
+9ee5df4247e85f36c3eae44d08e306f30f80f5f9, LendingAppController クラスを作成しました（ただしメソッドを用意しただけ）。, Sun Nov 15 01:47:42 2015 +0900
+A	src/main/java/ksbysample/webapp/lending/web/lendingapp/LendingappController.java
+M	src/main/resources/static/html/lendingapp.html
+M	src/main/resources/templates/lendingapp/lendingapp.html
+
+db71f8755aec5f3a0762b50d396eb471f13cfb10, Thymeleaf テンプレートを作成しました。, Sun Nov 15 00:39:37 2015 +0900
+M	src/main/resources/static/html/lendingapp.html
+A	src/main/resources/templates/lendingapp/lendingapp.html
+
+5bcdbcc53f1966784e32f51bc803e70ba5a2c2f9, 貸出申請画面の HTML ファイルを作成しました。, Sat Nov 14 11:41:27 2015 +0900
+A	src/main/resources/static/html/lendingapp.html
+
+5648c71fef3dc3336fd9a65d81b7296572a1e8c5, Merge pull request #48 from ksby/feature/46-issue, Thu Dec 3 00:09:17 2015 +0900
+574a9220d3aa8950fa134791f881b0939583293a, #46 JPA の AutoConfiguration を無効にしました。, Thu Dec 3 00:08:29 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/Application.java
+
+a60a5c745f19cb60e6cf85de918a53032643bc4e, Merge pull request #42 from ksby/feature/41-issue, Sun Nov 8 12:33:55 2015 +0900
+939c8814f8d1a5505d1cccc1acbca372a5a11c81, #41 Book, Libkey, SystemData クラスに @AllArgsConstructor に加えて @NoArgsConstructor も付加するようにしました。, Sun Nov 8 12:33:04 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Book.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Libkey.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/response/SystemData.java
+
+94620f5a617eb0edc314050d2eea02030fd2fd69, Merge pull request #40 from ksby/feature/37-issue, Sat Nov 7 19:28:16 2015 +0900
+0ebbc5c15a1d579981c4111eec000a9b279d391c, #37 貸出状況取得タスクを作成しました。, Sun Oct 25 21:22:49 2015 +0900
+M	build.gradle
+D	coverage-error.log
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/dao/LendingAppDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/LendingBookDao.java
+A	src/main/java/ksbysample/webapp/lending/helper/mail/Mail001Helper.java
+A	src/main/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListener.java
+A	src/main/java/ksbysample/webapp/lending/service/EmailService.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+A	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Book.java
+A	src/main/java/ksbysample/webapp/lending/service/calilapi/response/CheckApiResponse.java
+A	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Libkey.java
+R080	src/main/java/ksbysample/webapp/lending/service/calilapi/Libraries.java	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Libraries.java
+R088	src/main/java/ksbysample/webapp/lending/service/calilapi/LibrariesForJackson2Xml.java	src/main/java/ksbysample/webapp/lending/service/calilapi/response/LibrariesForJackson2Xml.java
+R087	src/main/java/ksbysample/webapp/lending/service/calilapi/Library.java	src/main/java/ksbysample/webapp/lending/service/calilapi/response/Library.java
+R087	src/main/java/ksbysample/webapp/lending/service/calilapi/LibraryForJackson2Xml.java	src/main/java/ksbysample/webapp/lending/service/calilapi/response/LibraryForJackson2Xml.java
+A	src/main/java/ksbysample/webapp/lending/service/calilapi/response/SystemData.java
+M	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvFileService.java
+M	src/main/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueService.java
+M	src/main/java/ksbysample/webapp/lending/values/LendingAppStatusValues.java
+M	src/main/java/ksbysample/webapp/lending/webapi/library/LibraryController.java
+M	src/main/resources/messages_ja_JP.properties
+A	src/main/resources/templates/mail/mail001-body.vm
+A	src/test/java/ksbysample/webapp/lending/helper/mail/Mail001HelperTest.java
+A	src/test/java/ksbysample/webapp/lending/listener/rabbitmq/InquiringStatusOfBookQueueListenerTest.java
+A	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsHelperTest.java
+A	src/test/java/ksbysample/webapp/lending/service/EmailServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/calilapi/CalilApiServiceTest.java
+A	src/test/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidatorTest.java
+A	src/test/resources/ksbysample/webapp/lending/helper/mail/assertdata/001/message.txt
+A	src/test/resources/ksbysample/webapp/lending/listener/rabbitmq/assertdata/001/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/listener/rabbitmq/assertdata/001/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/listener/rabbitmq/assertdata/001/table-ordering.txt
+A	src/test/resources/ksbysample/webapp/lending/listener/rabbitmq/testdata/001/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/listener/rabbitmq/testdata/001/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/listener/rabbitmq/testdata/001/table-ordering.txt
+
+448ec0e8d53330ce35d05d7747ef13774f9e996c, Merge pull request #39 from ksby/feature/34-issue, Sat Oct 24 09:00:39 2015 +0900
+521de076eb98d7e2ce0b9657ef3eb74dc9679d6a, #34 TestDataResource クラスの before メソッド内のコメントアウトしたままの処理を削除した, Sat Oct 24 08:59:58 2015 +0900
+M	src/test/java/ksbysample/common/test/TestDataResource.java
+
+a8a3a464a117072de5851bc195dc89c81ed5802a, Merge pull request #38 from ksby/feature/32-issue, Sat Oct 24 08:37:12 2015 +0900
+b074592c9cdd93c2ba53152e521a020d9ca51796, #32 DomaBeanConfig クラスを削除し、setDialect メソッドを追加した, Sat Oct 24 08:33:29 2015 +0900
+A	coverage-error.log
+M	src/main/java/ksbysample/webapp/lending/config/DomaConfig.java
+
+9d41e7e60b0ba7123dc23d8025585857111f6be5, Merge pull request #36 from ksby/1.0.x-upgrade-springboot-1.2.7, Fri Oct 23 03:14:48 2015 +0900
+9823d6668858845f6a0d989b6e483f55c2c14dd0, #35 Spring Boot を 1.2.6 → 1.2.7 へバージョンアップしました。, Fri Oct 23 03:13:54 2015 +0900
+M	build.gradle
+M	src/test/resources/testdata/base/user_info.csv
+
+237de2091a97db429cd540f38cc92d8df4e9dba3, Merge branch '1.0.x' of https://github.com/ksby/ksbysample-webapp-lending into 1.0.x, Wed Oct 21 01:02:06 2015 +0900
+2b0037bb5f113f161df989acd43757bec0f64380, build.gradle の先頭にいつの間にか import 文が入っていたので削除しました。, Mon Oct 12 22:23:14 2015 +0900
+M	build.gradle
+
+c6fa3c517a7f3689a8941f10524807368f906dd2, build.gradle の先頭にいつの間にか import 文が入っていたので削除しました。, Mon Oct 12 22:23:14 2015 +0900
+M	build.gradle
+
+fa929da1ef1fea78a703ba6adf46d27fa6cfcc04, Merge pull request #30 from ksby/1.0.x-make-booklist, Mon Oct 12 07:43:12 2015 +0900
+10399445aa6886889fd8d818d70f07f6061e4cae, #29 貸出希望書籍 CSV ファイルアップロード画面を作成しました。, Sun Sep 20 08:46:20 2015 +0900
+M	build.gradle
+M	sql/create_table.sql
+M	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+M	src/main/java/ksbysample/webapp/lending/config/Constant.java
+M	src/main/java/ksbysample/webapp/lending/dao/LendingBookDao.java
+A	src/main/java/ksbysample/webapp/lending/exception/WebApplicationRuntimeException.java
+A	src/main/java/ksbysample/webapp/lending/helper/message/MessagesPropertiesHelper.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUser.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetails.java
+A	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsHelper.java
+A	src/main/java/ksbysample/webapp/lending/service/file/BooklistCSVRecord.java
+A	src/main/java/ksbysample/webapp/lending/service/file/BooklistCsvFileService.java
+A	src/main/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueMessage.java
+A	src/main/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueService.java
+A	src/main/java/ksbysample/webapp/lending/values/LendingAppStatusValues.java
+A	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistController.java
+A	src/main/java/ksbysample/webapp/lending/web/booklist/BooklistService.java
+A	src/main/java/ksbysample/webapp/lending/web/booklist/RegisterBooklistForm.java
+A	src/main/java/ksbysample/webapp/lending/web/booklist/UploadBooklistForm.java
+A	src/main/java/ksbysample/webapp/lending/web/booklist/UploadBooklistFormValidator.java
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LendingBookDao/selectByLendingAppId.sql
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+M	src/main/resources/messages_ja_JP.properties
+A	src/main/resources/static/css/fileinput.min.css
+A	src/main/resources/static/html/booklist.html
+A	src/main/resources/static/html/index.html
+A	src/main/resources/static/js/fileinput.min.js
+A	src/main/resources/static/js/fileinput_locale_ja.js
+M	src/main/resources/templates/admin/library/library.html
+A	src/main/resources/templates/booklist/booklist.html
+A	src/main/resources/templates/booklist/complete.html
+A	src/main/resources/templates/booklist/fileupload.html
+M	src/main/resources/templates/common/head-cssjs.html
+M	src/test/java/ksbysample/common/test/TableDataAssert.java
+M	src/test/java/ksbysample/common/test/TestDataResource.java
+A	src/test/java/ksbysample/test/Item.java
+A	src/test/java/ksbysample/test/ItemTypeStringToCodeConversion.java
+A	src/test/java/ksbysample/test/StringToLocalDateTimeConversion.java
+A	src/test/java/ksbysample/test/UniVocityParsersTest.java
+A	src/test/java/ksbysample/webapp/lending/helper/message/MessagesPropertiesHelperTest.java
+A	src/test/java/ksbysample/webapp/lending/service/file/BooklistCsvFileServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiServiceTest.java
+A	src/test/java/ksbysample/webapp/lending/service/queue/InquiringStatusOfBookQueueServiceTest.java
+A	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistControllerTest.java
+A	src/test/java/ksbysample/webapp/lending/web/booklist/BooklistServiceTest.java
+A	src/test/resources/ksbysample/webapp/lending/web/booklist/assertdata/001/lending_app.csv
+A	src/test/resources/ksbysample/webapp/lending/web/booklist/assertdata/001/lending_book.csv
+A	src/test/resources/ksbysample/webapp/lending/web/booklist/assertdata/001/table-ordering.txt
+A	src/test/resources/testdata/base/lending_app.csv
+A	src/test/resources/testdata/base/lending_book.csv
+M	src/test/resources/testdata/base/table-ordering.txt
+
+82240eaf19c344955ea66d36069af67babd3f612, Merge pull request #28 from ksby/1.0.x-upgrade-springboot-1.2.6, Wed Sep 30 21:12:45 2015 +0900
+d577c1adee16a14fa7b56f295f541599ab841b16, #27 Spring Boot を 1.2.5 → 1.2.6 へバージョンアップしました。, Wed Sep 30 21:11:55 2015 +0900
+M	build.gradle
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/calilapi/CalilApiServiceTest.java
+
+376e7e377a23aca960bfae15f79891fc96488522, Merge pull request #26 from ksby/1.0.x-make-admin-library, Tue Sep 15 05:17:54 2015 +0900
+ca3af6cd3f269a0a938f4ce7bdb94b056bdf975e, #25 検索対象図書館登録画面を作成しました。, Sat Sep 5 12:44:26 2015 +0900
+M	build.gradle
+M	sql/create_table.sql
+M	src/main/java/ksbysample/webapp/lending/Application.java
+M	src/main/java/ksbysample/webapp/lending/config/Constant.java
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+A	src/main/java/ksbysample/webapp/lending/dao/LibraryForsearchDao.java
+A	src/main/java/ksbysample/webapp/lending/entity/LibraryForsearch.java
+A	src/main/java/ksbysample/webapp/lending/helper/library/LibraryHelper.java
+A	src/main/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelper.java
+A	src/main/java/ksbysample/webapp/lending/security/RoleAwareAuthenticationSuccessHandler.java
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/Library.java
+M	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+A	src/main/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryController.java
+A	src/main/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryService.java
+A	src/main/java/ksbysample/webapp/lending/web/admin/library/SetSelectedLibraryForm.java
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LibraryForsearchDao/deleteAll.sql
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LibraryForsearchDao/selectById.sql
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LibraryForsearchDao/selectSelectedLibrary.sql
+A	src/main/resources/static/html/adminlibrary.html
+A	src/main/resources/templates/admin/library/library.html
+A	src/main/resources/templates/common/bottom-js.html
+A	src/main/resources/templates/common/head-cssjs.html
+A	src/main/resources/templates/common/mainparts.html
+M	src/test/java/ksbysample/common/test/TestDataResource.java
+A	src/test/java/ksbysample/webapp/lending/helper/library/LibraryHelperTest.java
+A	src/test/java/ksbysample/webapp/lending/helper/url/UrlAfterLoginHelperTest.java
+M	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+A	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryControllerTest.java
+A	src/test/java/ksbysample/webapp/lending/web/admin/library/AdminLibraryServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/webapi/library/LibraryControllerTest.java
+A	src/test/resources/ksbysample/webapp/lending/web/admin/library/SetSelectedLibraryForm_001.yaml
+A	src/test/resources/ksbysample/webapp/lending/web/admin/library/assertdata/001/library_forsearch.csv
+A	src/test/resources/ksbysample/webapp/lending/web/admin/library/assertdata/001/table-ordering.txt
+A	src/test/resources/ksbysample/webapp/lending/web/admin/library/testdata/001/library_forsearch.csv
+A	src/test/resources/ksbysample/webapp/lending/web/admin/library/testdata/001/table-ordering.txt
+A	src/test/resources/testdata/base/library_forsearch.csv
+M	src/test/resources/testdata/base/table-ordering.txt
+M	src/test/resources/testdata/base/user_info.csv
+
+dde72abe515de1c45bfed7d7c4567654e95ebbac, Merge pull request #24 from ksby/1.0.x-try-resttemplate-and-webapi, Sun Aug 30 19:41:01 2015 +0900
+ac71cf614ce4a5e9375f5f94d2973835116b2073, #23 RestController&RestTemplateでXMLデータを取り扱うサンプルを実装しました, Wed Aug 26 15:50:28 2015 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+A	src/main/java/ksbysample/webapp/lending/service/calilapi/LibrariesForJackson2Xml.java
+A	src/main/java/ksbysample/webapp/lending/service/calilapi/LibraryForJackson2Xml.java
+M	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/ForecastData.java
+M	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiService.java
+A	src/main/java/ksbysample/webapp/lending/webapi/weather/CityResponse.java
+A	src/main/java/ksbysample/webapp/lending/webapi/weather/FiveDayThreeHourForecastResponse.java
+A	src/main/java/ksbysample/webapp/lending/webapi/weather/ForecastResponse.java
+A	src/main/java/ksbysample/webapp/lending/webapi/weather/WeatherController.java
+M	src/test/java/ksbysample/webapp/lending/service/calilapi/CalilApiServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiServiceTest.java
+
+a274c8ec2421e3cb454605ccfa40f341223cd17e, Merge pull request #22 from ksby/1.0.x-make-webapi-getlibrary, Mon Aug 24 03:45:53 2015 +0900
+42b6d71c023664505babcd6a8980066196eb8024, #21 図書館一覧取得 WebAPI を作成しました。, Sun Aug 23 01:21:26 2015 +0900
+M	.gitignore
+M	build.gradle
+A	src/main/java/ksbysample/webapp/lending/config/JsonpAdvice.java
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUser.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetails.java
+A	src/main/java/ksbysample/webapp/lending/service/calilapi/CalilApiService.java
+A	src/main/java/ksbysample/webapp/lending/service/calilapi/Libraries.java
+A	src/main/java/ksbysample/webapp/lending/service/calilapi/Library.java
+A	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/CityData.java
+A	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/FiveDayThreeHourForecastData.java
+A	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/ForecastData.java
+A	src/main/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiService.java
+A	src/main/java/ksbysample/webapp/lending/webapi/common/CommonWebApiResponse.java
+A	src/main/java/ksbysample/webapp/lending/webapi/library/LibraryController.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsServiceTest.java
+M	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsTest.java
+A	src/test/java/ksbysample/webapp/lending/service/calilapi/CalilApiServiceTest.java
+A	src/test/java/ksbysample/webapp/lending/service/openweathermapapi/OpenWeatherMapApiServiceTest.java
+A	src/test/java/ksbysample/webapp/lending/webapi/library/LibraryControllerTest.java
+M	src/test/resources/testdata/base/user_info.csv
+
+66a47f3a9a776e1b5232f4eef7883c94ded805f0, Merge pull request #20 from ksby/1.0.x-make-test-login, Wed Aug 12 23:26:54 2015 +0900
+9a01c1fdba9639285fe76d629228f6587de25b6f, #19 ログイン画面のテストクラスを作成しました。, Sat Aug 8 07:42:11 2015 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/Application.java
+M	src/test/java/ksbysample/common/test/SecurityMockMvcResource.java
+A	src/test/java/ksbysample/common/test/SimpleRequestBuilder.java
+M	src/test/java/ksbysample/common/test/TestDataResource.java
+A	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsServiceTest.java
+A	src/test/java/ksbysample/webapp/lending/security/LendingUserDetailsTest.java
+A	src/test/java/ksbysample/webapp/lending/service/UserInfoServiceTest.java
+A	src/test/java/ksbysample/webapp/lending/web/LoginControllerTest.java
+A	src/test/resources/testdata/base/table-ordering.txt
+A	src/test/resources/testdata/base/user_info.csv
+A	src/test/resources/testdata/base/user_role.csv
+
+1fa6c1f01983eeda752ccc1e629949feab922820, Merge pull request #18 from ksby/1.0.x-autologin-rememeberme, Tue Aug 4 01:22:59 2015 +0900
+dd2f15daf91001da2f333b489c80a1b1bb7aad97, #17 ログイン画面の URL にアクセス時に有効な remember-me Cookie があればログイン画面を表示せず自動ログインするようにしました。, Tue Aug 4 01:21:34 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+
+a8855a84285894d411ca618a6a371ea2ce725acf, Merge pull request #16 from ksby/1.0.x-make-urllogin, Sun Aug 2 06:48:56 2015 +0900
+47ec5c0cc77f1f32cfc09b993a28b54deb68d7fb, Merge remote-tracking branch 'origin/1.0.x-make-urllogin' into 1.0.x-make-urllogin, Sun Aug 2 06:47:17 2015 +0900
+e6bc29486da4b0aacae0e080580c8e494f177a10, #15 urllogin へアクセスすることで、ログイン画面からログインすることなしに認証できるようにしました。, Sat Jul 25 12:41:08 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsService.java
+M	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+
+b94c384955204b0a0c53aacbba31101bd4f41bf8, urllogin へアクセスすることで、ログイン画面からログインすることなしに認証できるようにしました。, Sat Jul 25 12:41:08 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsService.java
+M	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+
+2f293d0478e4dde28f9c2f1be4d440dc1ae2f112, Merge pull request #14 from ksby/1.0.x-use-spring-session, Sat Aug 1 09:22:39 2015 +0900
+3834e36b3a8cc8a71ba7ecddb964c8e971895cea, #13 Spring Session + Redis Sentinel を使用する設定に変更しました。, Sat Jul 25 21:03:39 2015 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/Application.java
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+A	src/main/java/ksbysample/webapp/lending/security/LendingUser.java
+R081	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetails.java	src/main/java/ksbysample/webapp/lending/security/LendingUserDetails.java
+R093	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetailsService.java	src/main/java/ksbysample/webapp/lending/security/LendingUserDetailsService.java
+M	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+
+3fd66b486d59cdb449bb778ce6fd699738feac45, spring.profiles.active 毎に使用する applicationContext.xml を切り替えられるようにしました。, Wed Jul 22 23:25:13 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/Application.java
+A	src/main/resources/applicationContext-develop.xml
+R076	src/main/resources/applicationContext.xml	src/main/resources/applicationContext-product.xml
+A	src/main/resources/applicationContext-unittest.xml
+
+7a8d2f14758e3d1f22dda4524af895966d2c8961, Merge pull request #12 from ksby/1.0.x-make-rememberme, Wed Jul 22 00:03:48 2015 +0900
+83d2d0ef5ea22251fc12521da3ff9b4d9a5baa37, #11 .failureUrl("/") の位置が変更されていたので元に戻しました。, Wed Jul 22 00:03:07 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+
+b9aa206056a8e7b37a8acd9afabc5c871d16d012, #11 Spring Security の Remember-me 機能を利用して「次回から自動的にログインする」機能を作成しました。, Wed Jul 22 00:00:08 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/dao/UserInfoDao.java
+M	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetails.java
+M	src/main/java/ksbysample/webapp/lending/service/UserInfoService.java
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/UserInfoDao/initCntBadcredentialsByMailAddress.sql
+D	src/main/resources/META-INF/ksbysample/webapp/lending/dao/UserInfoDao/initCntBadcredentialsByUsername.sql
+M	src/main/resources/templates/login.html
+M	src/main/resources/templates/loginsuccess.html
+
+0e2e492f2c60abe22351198a25b2eb1a4d7528e0, #9 ID、パスワードの有効期限が現在日時と同じ場合にはログインできるようにしました。, Sun Jul 19 14:38:58 2015 +0900
+M	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetails.java
+
+cde42eac364b1a6ab5aaa69ea857a931af95ef21, Merge pull request #10 from ksby/1.0.x-expired-idpass, Sun Jul 19 14:29:43 2015 +0900
+5b848541743b6c401e178060674d55120470087f, #9 ID、パスワードに有効期限を設けて、過ぎている場合にはログインできないようにしました。, Sun Jul 19 14:27:46 2015 +0900
+M	sql/create_table.sql
+M	src/main/java/ksbysample/webapp/lending/entity/UserInfo.java
+M	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetails.java
+M	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetailsService.java
+
+b7d3c9b55de6da92675a6eda91d1d8dd19bf2352, Merge pull request #8 from ksby/1.0.x-make-accountlock, Sat Jul 18 21:46:02 2015 +0900
+dc3d664739cc01a9f7182290e1b028e8d7c598cb, #7 パスワードを５回間違えたら ID をロックするようにしました, Sat Jul 18 21:35:44 2015 +0900
+M	sql/create_table.sql
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/dao/UserInfoDao.java
+M	src/main/java/ksbysample/webapp/lending/entity/UserInfo.java
+A	src/main/java/ksbysample/webapp/lending/security/AuthenticationFailureBadCredentialsEventListener.java
+A	src/main/java/ksbysample/webapp/lending/security/AuthenticationSuccessEventListener.java
+M	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetails.java
+M	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetailsService.java
+A	src/main/java/ksbysample/webapp/lending/service/UserInfoService.java
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/UserInfoDao/incCntBadcredentialsByMailAddress.sql
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/UserInfoDao/initCntBadcredentialsByUsername.sql
+M	src/main/resources/messages_ja_JP.properties
+
+d83587789070f9053ed8a6e64929722940013f95, Merge pull request #6 from ksby/1.0.x-make-login-basic, Sat Jul 18 01:23:50 2015 +0900
+d610843e4eb7c90c52df21618686bf500cef56ca, #5 ログイン機能 ( 基本的な部分 ) を作成しました, Sat Jul 18 01:23:00 2015 +0900
+M	build.gradle
+M	sql/create_table.sql
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+M	src/main/java/ksbysample/webapp/lending/dao/UserInfoDao.java
+M	src/main/java/ksbysample/webapp/lending/dao/UserRoleDao.java
+A	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetails.java
+A	src/main/java/ksbysample/webapp/lending/security/UserInfoUserDetailsService.java
+A	src/main/java/ksbysample/webapp/lending/web/LoginController.java
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/UserInfoDao/selectByMailAddress.sql
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/UserRoleDao/selectByUserId.sql
+A	src/main/resources/static/starter.html
+A	src/main/resources/templates/login.html
+A	src/main/resources/templates/loginsuccess.html
+
+37b32c741332f17c16264a0b93a78fe34f90dcc5, Merge pull request #4 from ksby/1.0.x-make-login-html, Sun Jul 12 02:39:45 2015 +0900
+90fbaebbaed7a90a8cecfeeeae8ba4bfbca3ac2c, #3 ログイン画面のHTMLファイルを作成しました。, Sat Jul 11 08:04:12 2015 +0900
+M	build.gradle
+M	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+A	src/main/resources/static/css/AdminLTE.css
+A	src/main/resources/static/css/AdminLTE.min.css
+A	src/main/resources/static/css/bootstrap.css
+A	src/main/resources/static/css/bootstrap.css.map
+A	src/main/resources/static/css/bootstrap.min.css
+A	src/main/resources/static/css/font-awesome.min.css
+A	src/main/resources/static/css/ionicons.min.css
+A	src/main/resources/static/css/skins/_all-skins.css
+A	src/main/resources/static/css/skins/_all-skins.min.css
+A	src/main/resources/static/css/skins/skin-black-light.css
+A	src/main/resources/static/css/skins/skin-black-light.min.css
+A	src/main/resources/static/css/skins/skin-black.css
+A	src/main/resources/static/css/skins/skin-black.min.css
+A	src/main/resources/static/css/skins/skin-blue-light.css
+A	src/main/resources/static/css/skins/skin-blue-light.min.css
+A	src/main/resources/static/css/skins/skin-blue.css
+A	src/main/resources/static/css/skins/skin-blue.min.css
+A	src/main/resources/static/css/skins/skin-green-light.css
+A	src/main/resources/static/css/skins/skin-green-light.min.css
+A	src/main/resources/static/css/skins/skin-green.css
+A	src/main/resources/static/css/skins/skin-green.min.css
+A	src/main/resources/static/css/skins/skin-purple-light.css
+A	src/main/resources/static/css/skins/skin-purple-light.min.css
+A	src/main/resources/static/css/skins/skin-purple.css
+A	src/main/resources/static/css/skins/skin-purple.min.css
+A	src/main/resources/static/css/skins/skin-red-light.css
+A	src/main/resources/static/css/skins/skin-red-light.min.css
+A	src/main/resources/static/css/skins/skin-red.css
+A	src/main/resources/static/css/skins/skin-red.min.css
+A	src/main/resources/static/css/skins/skin-yellow-light.css
+A	src/main/resources/static/css/skins/skin-yellow-light.min.css
+A	src/main/resources/static/css/skins/skin-yellow.css
+A	src/main/resources/static/css/skins/skin-yellow.min.css
+A	src/main/resources/static/fonts/FontAwesome.otf
+A	src/main/resources/static/fonts/fontawesome-webfont.eot
+A	src/main/resources/static/fonts/fontawesome-webfont.svg
+A	src/main/resources/static/fonts/fontawesome-webfont.ttf
+A	src/main/resources/static/fonts/fontawesome-webfont.woff
+A	src/main/resources/static/fonts/fontawesome-webfont.woff2
+A	src/main/resources/static/fonts/glyphicons-halflings-regular.eot
+A	src/main/resources/static/fonts/glyphicons-halflings-regular.svg
+A	src/main/resources/static/fonts/glyphicons-halflings-regular.ttf
+A	src/main/resources/static/fonts/glyphicons-halflings-regular.woff
+A	src/main/resources/static/fonts/glyphicons-halflings-regular.woff2
+A	src/main/resources/static/fonts/ionicons.eot
+A	src/main/resources/static/fonts/ionicons.svg
+A	src/main/resources/static/fonts/ionicons.ttf
+A	src/main/resources/static/fonts/ionicons.woff
+A	src/main/resources/static/html/login.html
+A	src/main/resources/static/html/starter.html
+A	src/main/resources/static/html/template.html
+A	src/main/resources/static/js/app.js
+A	src/main/resources/static/js/app.min.js
+A	src/main/resources/static/js/bootstrap.js
+A	src/main/resources/static/js/bootstrap.min.js
+A	src/main/resources/static/js/html5shiv.min.js
+A	src/main/resources/static/js/jQuery-2.1.4.min.js
+A	src/main/resources/static/js/npm.js
+A	src/main/resources/static/js/respond.min.js
+
+bed900afca12d22f1e5b06409a1e4f9ef6f5377a, Merge pull request #2 from ksby/1.0.x-create-database, Tue Jul 7 01:03:38 2015 +0900
+329974a31c39c84b69cea118ce23a9d609b0114f, #1 DBとテーブル生成用のSQLファイルを作成し、EntityクラスとDaoインターフェースを生成しました。, Tue Jul 7 01:00:35 2015 +0900
+M	build.gradle
+A	sql/create_database.sql
+A	sql/create_table.sql
+A	src/main/java/ksbysample/webapp/lending/dao/LendingAppDao.java
+A	src/main/java/ksbysample/webapp/lending/dao/LendingBookDao.java
+A	src/main/java/ksbysample/webapp/lending/dao/UserInfoDao.java
+A	src/main/java/ksbysample/webapp/lending/dao/UserRoleDao.java
+A	src/main/java/ksbysample/webapp/lending/entity/LendingApp.java
+A	src/main/java/ksbysample/webapp/lending/entity/LendingBook.java
+A	src/main/java/ksbysample/webapp/lending/entity/UserInfo.java
+A	src/main/java/ksbysample/webapp/lending/entity/UserRole.java
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LendingAppDao/selectById.sql
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/LendingBookDao/selectById.sql
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/UserInfoDao/selectById.sql
+A	src/main/resources/META-INF/ksbysample/webapp/lending/dao/UserRoleDao/selectById.sql
+M	src/main/resources/application-develop.properties
+M	src/main/resources/application-product.properties
+M	src/main/resources/application-unittest.properties
+
+38436ffadbe4499f2857d728bd7cf90974f3edce, Update README.md, Sat Jul 4 15:25:37 2015 +0900
+M	README.md
+
+1a306fcd2347815a915916ea76d55545648cd15c, Update README.md, Sat Jul 4 15:25:07 2015 +0900
+M	README.md
+
+2a0e0ee4ac05ec38382f7d41d7ba3e8175c645e5, Create README.md, Sat Jul 4 15:23:50 2015 +0900
+A	README.md
+
+43e19599c5b60968cdeacc2735faa0632e4ceb1d, Initial commit, Sat Jul 4 15:19:26 2015 +0900
+A	.gitignore
+A	build.gradle
+A	gradle/wrapper/gradle-wrapper.jar
+A	gradle/wrapper/gradle-wrapper.properties
+A	gradlew
+A	gradlew.bat
+A	settings.gradle
+A	src/main/java/ksbysample/webapp/lending/Application.java
+A	src/main/java/ksbysample/webapp/lending/config/ApplicationConfig.java
+A	src/main/java/ksbysample/webapp/lending/config/Constant.java
+A	src/main/java/ksbysample/webapp/lending/config/DomaConfig.java
+A	src/main/java/ksbysample/webapp/lending/config/WebSecurityConfig.java
+A	src/main/java/ksbysample/webapp/lending/helper/page/PagenationHelper.java
+A	src/main/java/ksbysample/webapp/lending/util/doma/ComponentAndAutowiredDomaConfig.java
+A	src/main/java/ksbysample/webapp/lending/util/doma/SelectOptionsUtils.java
+A	src/main/java/ksbysample/webapp/lending/util/velocity/VelocityUtils.java
+A	src/main/resources/ValidationMessages_ja_JP.properties
+A	src/main/resources/application-develop.properties
+A	src/main/resources/application-product.properties
+A	src/main/resources/application-unittest.properties
+A	src/main/resources/application.properties
+A	src/main/resources/applicationContext.xml
+A	src/main/resources/hibernate.properties
+A	src/main/resources/log4jdbc.log4j2.properties
+A	src/main/resources/logback-develop.xml
+A	src/main/resources/logback-product.xml
+A	src/main/resources/logback-unittest.xml
+A	src/main/resources/logback.xml
+A	src/main/resources/messages_ja_JP.properties
+A	src/main/resources/templates/.gitkeep
+A	src/test/java/ksbysample/common/test/CustomModelResultMatchers.java
+A	src/test/java/ksbysample/common/test/ErrorsResultMatchers.java
+A	src/test/java/ksbysample/common/test/MailServerResource.java
+A	src/test/java/ksbysample/common/test/SecurityMockMvcResource.java
+A	src/test/java/ksbysample/common/test/TableDataAssert.java
+A	src/test/java/ksbysample/common/test/TestDataLoader.java
+A	src/test/java/ksbysample/common/test/TestDataLoaderResource.java
+A	src/test/java/ksbysample/common/test/TestDataResource.java
+A	src/test/java/ksbysample/common/test/TestHelper.java
+A	web/WEB-INF/dispatcher-servlet.xml
+A	web/WEB-INF/web.xml

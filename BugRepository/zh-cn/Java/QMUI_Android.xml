@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="QMUI_Android">
+	<bug id="811" opendate="2020-01-02 14:59:49" fixdate="2020-01-07 06:13:32">
+		<buginformation>
+			<summary>关于禁用返回的问题</summary>
+			<description>### 运行环境 ###  - [x] QMUI Android 版本：2.0.0-alpha02  ### 具体问题描述 ### 如下图，这个弃用方法才有效，下面的推荐方法无效 #### 问题截图 #### ![image](https://user-images.githubusercontent.com/20694300/71673239-3a603180-2db3-11ea-8550-ae042e080726.png) ![image](https://user-images.githubusercontent.com/20694300/71673403-afcc0200-2db3-11ea-806e-faf3a3cd29a1.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>arch/src/main/java/com/qmuiteam/qmui/arch/QMUIActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="62" opendate="2017-10-13 05:03:28" fixdate="2018-03-09 06:29:28">
+		<buginformation>
+			<summary>单选菜单类型对话框在华为mate9上不显示选中状态</summary>
+			<description>### 运行环境 ###  - [x] 设备型号：华为 mate9 - [x] 设备系统版本：Android 7.0 - [x] Gradle 版本：如 `2.2.3` - [x] QMUI Android 版本：`1.0.4`  ### 具体问题描述 ### 在华为mate9上显示单选菜单型对话框只有初始化时调用了setCheckedIndex()的默认选中项有选中状态，其他的Item都没有选中状态 官方demo和我自己项目里面集成在华为mate9上面都有这个问题 其他手机正常显示没有问题  #### 问题截图 #### ![2017-10-13 12_57_34](https://user-images.githubusercontent.com/9779970/31531053-1211cf74-afaa-11e7-8cda-92c83217b988.gif)  #### 异常日志（堆栈） #### </description>
+		</buginformation>
+		<fixedfiles>
+			<file>qmui/src/main/java/com/qmuiteam/qmui/util/QMUIViewHelper.java</file>
+			<file>qmui/src/main/java/com/qmuiteam/qmui/widget/dialog/QMUIDialogMenuItemView.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="54" opendate="2017-09-28 03:19:33" fixdate="2017-12-15 17:12:50">
+		<buginformation>
+			<summary>多选对话框的选择，当item数量过多会无法滚动，是否考虑做一个滚动列表</summary>
+			<description>### 运行环境 ###  - [x] 设备型号：如：`Nexus 6` - [x] 设备系统版本：如 `Android 5.0` - [x] Gradle 版本：如 `2.3.0` - [x] QMUI Android 版本：`1.x.x`  ### 具体问题描述 ###  #### 问题截图 ####  #### 异常日志（堆栈） #### </description>
+		</buginformation>
+		<fixedfiles>
+			<file>qmui/src/main/java/com/qmuiteam/qmui/widget/dialog/QMUIDialog.java</file>
+			<file>qmuidemo/src/main/java/com/qmuiteam/qmuidemo/fragment/components/QDDialogFragment.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

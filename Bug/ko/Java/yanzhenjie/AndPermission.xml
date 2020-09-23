@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>500</id>
+		<title>2.0.2版本BridgeActivity的问题</title>
+		<body>2.0.2版本中 BridgeActivity 配置为 noHistory 在Android M上会导致 BridgeActivity 失去焦点后被destroy 导致 onRequestPermissionsResult 无法回调！</body>
+		<created>2019-10-09 13:01:44</created>
+		<closed>2019-10-10 13:39:12</closed>
+	</bug>
+	<bug>
+		<id>483</id>
+		<title>频繁申请RECORD_AUDIO出现权限状态错误的情况</title>
+		<body>如果调用频繁会崩溃，只能限制调用次数。 目前看来是RecordAudioTest创建的文件占用问题。</body>
+		<created>2019-09-16 13:24:42</created>
+		<closed>2019-10-08 13:36:56</closed>
+	</bug>
+	<bug>
+		<id>436</id>
+		<title>老板，内存泄漏了</title>
+		<body>Instance of com.yanzhenjie.permission.bridge.RequestExecutor 就是这个线程造成的</body>
+		<created>2019-04-16 07:27:42</created>
+		<closed>2019-10-08 13:36:55</closed>
+	</bug>
+	<bug>
+		<id>385</id>
+		<title>由于连续启动录音器会存在失败的情况，所以反复调用这里的录音权限判断会经常出现一次判断有录音权限紧接着又判断为无录音权限的情况</title>
+		<body></body>
+		<created>2018-11-27 07:41:30</created>
+		<closed>2019-02-22 07:37:10</closed>
+	</bug>
+	<bug>
+		<id>359</id>
+		<title>Permission这个类中的ADD_VOICEMAI权限是不是写错了</title>
+		<body>严大，public static final String ADD_VOICEMAIL = "com.android.voicemail.permission.ADD_VOICEMAIL";这个权限是不是写错了，多了个com</body>
+		<created>2018-09-28 02:32:08</created>
+		<closed>2019-02-22 07:37:09</closed>
+	</bug>
+	<bug>
+		<id>330</id>
+		<title>#311</title>
+		<body>#311  </body>
+		<created>2018-08-13 10:17:10</created>
+		<closed>2018-08-20 03:51:55</closed>
+	</bug>
+	<bug>
+		<id>322</id>
+		<title>ANR异常问题</title>
+		<body>![qq 20180725161903](https://user-images.githubusercontent.com/5763030/43188434-a7e4913c-9026-11e8-8ebb-c37f8d46a2a0.png) ![qq 20180725161917](https://user-images.githubusercontent.com/5763030/43188493-d2df46de-9026-11e8-97d0-3f38a7d624ba.png) bugly的anr异常上报的 </body>
+		<created>2018-07-25 08:22:14</created>
+		<closed>2019-02-22 07:37:10</closed>
+	</bug>
+	<bug>
+		<id>281</id>
+		<title>AppOpsManager 内存泄漏</title>
+		<body>AppOpsManager 引用的context 存在内存泄漏，看能否处理下 @yanzhenjie</body>
+		<created>2018-06-06 07:29:33</created>
+		<closed>2018-06-10 08:25:28</closed>
+	</bug>
+	<bug>
+		<id>279</id>
+		<title>手机型号华为荣耀V9、 android8.0系统</title>
+		<body>我的代码和权限申请如下： 我用的是implementation 'com.yanzhenjie:permission:2.0.0-rc8'这个版本 我分明点击了“始终允许”定位权限，但是代码居然走了 onDenied,授权失败。让我感到很奇怪。这种情况反复出现 AndPermission.with(this)//                 .runtime()//                 .permission(Permission.ACCESS_FINE_LOCATION,//                         Permission.ACCESS_COARSE_LOCATION)//                 .rationale(new RuntimeRationale())//                 .onGranted(new Action&lt;List&lt;String&gt;&gt;() {                     @Override                     public void onAction(List&lt;String&gt; permissions) {                         //toast(R.string.successfully);                     }                 })                 .onDenied(new Action&lt;List&lt;String&gt;&gt;() {                     @Override                     public void onAction(@NonNull List&lt;String&gt; permissions) {                         LogUtils.d("itchen---在点击了禁止按钮，禁用了定位权限");                     }                 })                 .start();</body>
+		<created>2018-06-05 08:16:02</created>
+		<closed>2018-06-06 02:43:52</closed>
+	</bug>
+	<bug>
+		<id>267</id>
+		<title>有个问题,从设置回来后重新检测申请权限居然不回调失败?</title>
+		<body> 我在设置的回调中重新检测申请权限,如果我在设置界面什么都不做或者权限只开启一部分返回的话 ,重新检测权限就不走onDenied方法, 如果我在设置页面把权限开启了就会走到onGranted方法中了, 我是小米手机 6.0的系统 ```java     private void setPermission(final List&lt;String&gt; permissions) {         AndPermission.with(this)                 .runtime()                 .setting()                 .onComeback(new Setting.Action() {                     @Override                     public void onAction() {                         permissionCallback.PermissionReRequest();                     }                 })                 .start();     } ```</body>
+		<created>2018-05-22 07:43:14</created>
+		<closed>2018-05-30 09:12:17</closed>
+	</bug>
+	<bug>
+		<id>247</id>
+		<title>魅族Flyme 7，系统升级后，bug；</title>
+		<body>Intent intent = new Intent("com.meizu.safe.security.SHOW_APPSEC");         intent.putExtra("packageName", context.getPackageName());         intent.setComponent(new ComponentName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity"));         return intent;</body>
+		<created>2018-04-27 05:47:19</created>
+		<closed>2018-05-12 14:19:23</closed>
+	</bug>
+	<bug>
+		<id>243</id>
+		<title>Redmi Note 4X 和Redmi Note 4出现崩溃</title>
+		<body>从后台手机的崩溃日志上看到： android.util.AndroidRuntimeException Calling startActivity from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want at android.app.ContextImpl.startActivityContextImpl.java687 at android.app.ContextImpl.startActivityContextImpl.java674 at android.content.ContextWrapper.startActivityContextWrapper.java341 at com.yanzhenjie.permission.source.ContextSource.startActivitySourceFile40 at com.yanzhenjie.permission.setting.PermissionSetting.executeSourceFile49 at com.linglong.android.b.b41.onClickSourceFile175 at android.view.View.performClickView.java5275 at android.view.ViewPerformClick.runView.java21556 at android.os.Handler.handleCallbackHandler.java815 at android.os.Handler.dispatchMessageHandler.java104 at android.os.Looper.loopLooper.java207 at android.app.ActivityThread.mainActivityThread.java5811 at java.lang.reflect.Method.invokeNative Method at com.android.internal.os.ZygoteInitMethodAndArgsCaller.runZygoteInit.java907 at com.android.internal.os.ZygoteInit.mainZygoteInit.java768</body>
+		<created>2018-04-25 09:10:17</created>
+		<closed>2018-05-12 14:19:23</closed>
+	</bug>
+	<bug>
+		<id>237</id>
+		<title>360 N5  Android 6.0.1 (相机权限)  点击拒绝不再提示后 总是进入onGranted的Action</title>
+		<body>我是运行AndPermission-master分支的demo，把demo的targetSdkVersion改为22 操作流程： 1.点击“相机” 2.弹出授权框，勾选“下次不再提示”，并点击拒绝 3.回调成功 4.之后继续点击“相机”，一直回调成功  我断点后发现是在PermissionActivity的public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)回调中permissions数组变成了空的，导致Request那边判断拒绝的权限列表为空回调的成功</body>
+		<created>2018-04-18 06:36:24</created>
+		<closed>2018-05-12 14:19:22</closed>
+	</bug>
+	<bug>
+		<id>206</id>
+		<title>StandChecker的方法如果有一个op为空就返回true</title>
+		<body>for (String permission : permissions) {             int result = context.checkPermission(permission, android.os.Process.myPid(), android.os.Process.myUid());             if (result == PackageManager.PERMISSION_DENIED) {                 return false;             }              String op = AppOpsManager.permissionToOp(permission);             if (TextUtils.isEmpty(op)) {                 return true;             }              AppOpsManager appOpsManager = context.getSystemService(AppOpsManager.class);             result = appOpsManager.noteProxyOp(op, context.getPackageName());             if (result != AppOpsManager.MODE_ALLOWED) {                 return false;             }          }        中间第二步用op判断，如果op为空的话，不应当直接返回true,应当是继续检查下一条权限吧</body>
+		<created>2018-03-15 11:38:48</created>
+		<closed>2018-03-27 02:39:31</closed>
+	</bug>
+	<bug>
+		<id>183</id>
+		<title>拒绝权限不再提醒后后进入系统设置中立即返回</title>
+		<body>看了下源代码，里边多了个 FLAG_ACTIVITY_NEW_TASK，这个 flag 会导致 startActivityForResult 立即返回。</body>
+		<created>2018-02-27 09:45:49</created>
+		<closed>2018-03-27 02:39:32</closed>
+	</bug>
+	<bug>
+		<id>181</id>
+		<title>连续调用权限问题</title>
+		<body>请求第一个权限以后, 回调了onGranted方法,在第一个权限的onGranted方法中继续请求第二个权限,这时第二个权限的回调不会执行,目前解决方法是在第一个方法的onGranted回调中延迟250毫秒左右再请求第二个权限</body>
+		<created>2018-02-27 08:38:35</created>
+		<closed>2018-03-27 02:39:32</closed>
+	</bug>
+	<bug>
+		<id>105</id>
+		<title>依赖最新版本1.1.1，界面卡死，对话框出不来</title>
+		<body></body>
+		<created>2017-10-16 08:36:17</created>
+		<closed>2017-10-17 05:24:30</closed>
+	</bug>
+	<bug>
+		<id>104</id>
+		<title>AndPermission.hasPermission()改进建议与小米5请求权限拒绝后设置无效建议</title>
+		<body>手机：小米5安卓7.0 1.在小米下权限申请拒绝后再设置中设置后，检测权限已获得，但实际未获得AndPermission.hasPermission()中的checkSelfPermission是android.support.v4.content.ContextCompat包下的，使用android.support.v4.content.PermissionChecker.checkSelfPermission()可以检测到实际未获得权限，原因未知。 2.在小米下权限申请拒绝后再设置中设置后，需要再次申请权限且用户确认后才可获得，使用AndPermission的申请权限方法无效，使用系统方法有效，原因未知。</body>
+		<created>2017-10-12 09:33:43</created>
+		<closed>2017-10-16 01:48:16</closed>
+	</bug>
+</bugs>

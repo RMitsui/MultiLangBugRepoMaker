@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>60</id>
+		<title>Materias no guardadas quedan seleccionadas</title>
+		<body>En la vista de suscripciones, si se marcan/desmarcan materias y se cambia de vista sin guardar los cambios, al volver a la vista de suscripciones, los elementos modificados se siguen mostrando así. Sin embargo la nueva selección no queda guardado en la base, por lo que es un tema de interfaz. </body>
+		<created>2015-02-06 19:04:45</created>
+		<closed>2015-02-07 02:51:39</closed>
+	</bug>
+	<bug>
+		<id>55</id>
+		<title>Error al ingresar a una materia con contenido creado</title>
+		<body>Cuando se pretender entrar a una materia a la que otro usuario ya le creo algun tipo de contenido (al menos se probó con Noticias), la pantalla queda en blanco porque no se agrega ningún componente. Esto sucede porque se pretende definir el alineamiento de un componente que todavía no se agregó al layout. Es decir, primero de debe agregar el componente al componente padre, y despues desde el componente padre setear el alineamiento del componente hijo. El problema se encuentra en SubjectNewsImpl:130 </body>
+		<created>2015-02-06 18:41:10</created>
+		<closed>2015-02-06 22:49:00</closed>
+	</bug>
+	<bug>
+		<id>43</id>
+		<title>Ordenar las tablas de eventos y archivos recientes en Home</title>
+		<body>La tabla de archivos recientes esta ordenada de menor a mayor por fecha de publicación tendría que estar al revés. La tabla de eventos recientes hay que ordenarla por fecha de inicio de menor a mayor. </body>
+		<created>2015-02-05 02:45:22</created>
+		<closed>2015-02-09 18:55:59</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>Controlar las fechas en el calendario</title>
+		<body>Antes de poder crear un evento en el calendario se debe controlar que la fecha de inicio no sea mayor a la fecha final y que la fecha final no sea menor a la fecha de inicio. </body>
+		<created>2015-02-05 02:44:25</created>
+		<closed>2015-02-09 05:28:10</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>No reloadea las tablas de Home cuando editas algun evento o noticia</title>
+		<body>Cuando se edita alguna notica o evento y se va a la HomeView los mismos aparecen como si no se los hubiera editado, no está reloadeando la tabla. </body>
+		<created>2015-02-05 02:28:04</created>
+		<closed>2015-02-06 18:57:08</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>Validación y elemento vacio en ventana de crear evento</title>
+		<body>El formulario de crear evento debe tener seleccionado por default una materia vacia y un tipo de evento vacío. Debe realizarse la validación para que estos datos no puedan persistirse, y avisarle al usuario que debe completar correctamente los datos. </body>
+		<created>2015-02-04 02:46:19</created>
+		<closed>2015-02-04 03:00:29</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>Error al abrir un archivo desde HomeView</title>
+		<body>Cuando se clickea en algun item de la tabla de Archivos más recientes, se abre el archivo en una nueva pestaña pero se produce un error referido a EventWindowRO. </body>
+		<created>2015-02-04 02:40:03</created>
+		<closed>2015-02-04 03:00:29</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>Modificar orden de las noticias en Novedades</title>
+		<body>Las noticias mas viejas aparecen arriba cuando deberían aparecer las mas nuevas. </body>
+		<created>2015-02-03 04:53:27</created>
+		<closed>2015-02-04 03:00:29</closed>
+	</bug>
+	<bug>
+		<id>28</id>
+		<title>Corregir manejo de ventana en la subida de archivos desde Drive</title>
+		<body>Cuando se va a subir un archivo desde Google Drive, en el momento de invocación del Picker, debe cerrarse la ventana para completar los datos del archivo, y guardar los datos cargados en una variable temporal. Luego, en caso que se seleccione un archivo desde el Picker, debe abrirse de nuevo la ventana pero con los campos cargados tomando los datos de la variable temporal. </body>
+		<created>2015-01-26 23:41:44</created>
+		<closed>2015-02-05 03:58:06</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>Refresco automático de tabla de archivos</title>
+		<body>Luego de cargarse exitósamente un archivo el método que sea, se debe permanecer en la misma vista y refrescar automáticamente la tabla para mostrar el nuevo archivo cargado. Actualmente esto no funciona, y la redirección se hace a otra vista. El refresco se hace cuando se navega nuevamente a la materia solamente. Si no se consigue mediante un Listener el comportamiento deseado, probablemente haya que reprogramar la tabla. Actualmente se usa un custom component con una tabla, en vez de la tabla Table asociada a un JPAContainer provista por el framework, que tiene funcionalidades más completas. La razón de esto era para incluir un elemento Link en la tabla, cosa que no sea había conseguido usando JPAContainer. Se propone utilizar una tabla con un JPAContainer asociado. Y de no encontrarse una mejor formar de introducir el elemento Link en la tabla, quizas la única opción sea modificar la entidad para que el atributo link pase de ser un String a un Link. </body>
+		<created>2015-01-09 20:21:18</created>
+		<closed>2015-02-05 19:43:59</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>Setear permisos correspondientes para la visibilidad de los archivos</title>
+		<body>Cuando sea posible, tanto en la importación de archivos de Drive, como en la subida de archivos a Drive, deben setearse a los archivos los permisos adecuados para la correcta visibilidad por el resto de los usuarios. En los casos que no sea posible, al menos notificar al usuario en la pantalla adecuada que deben cambiarse estos permisos para tal propósito. Consultar la API de Drive. </body>
+		<created>2015-01-09 20:11:19</created>
+		<closed>2015-02-10 03:51:47</closed>
+	</bug>
+</bugs>

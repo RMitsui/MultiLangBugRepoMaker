@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="AndPermission">
+	<bug id="183" opendate="2018-02-27 09:45:49" fixdate="2018-03-27 02:39:32">
+		<buginformation>
+			<summary>拒绝权限不再提醒后后进入系统设置中立即返回</summary>
+			<description>看了下源代码，里边多了个 FLAG_ACTIVITY_NEW_TASK，这个 flag 会导致 startActivityForResult 立即返回。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>permission/src/main/java/com/yanzhenjie/permission/checker/StandardChecker.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

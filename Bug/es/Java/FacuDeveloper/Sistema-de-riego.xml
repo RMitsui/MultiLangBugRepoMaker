@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>92</id>
+		<title>Hacer que el sistema le permita al usuario cargar los registros históricos de una parcela</title>
+		<body>**Descripción** En la versión actual del sistema el usuario no puede cargar los registros del pasado de una parcela, lo cual obviamente está mal porque el sistema le tiene que permitir al usuario cargar el historial de una parcela. Tampoco se le permite al usuario cargar los registros históricos que tienen fechas de siembra y de cosecha posteriores a las fechas del registro histórico que está en el estado "En desarrollo", el cual obviamente pertenece a la parcela del registro histórico que se desea dar de alta en el sistema.  **Condiciones de aceptación** - [x] Dado un usuario cuando decide cargar un registro histórico pasado o no de una parcela entonces el sistema deberá persistir en la base de datos subyacente dicho registro. - [x] Dado un usuario cuando decide cargar un registro histórico pasado o no de una parcela con fechas que se superponen con las fechas de otros registros de la misma parcela entonces el sistema deberá impedir tal persistencia y avisar al usuario de lo sucedido. - [x] Dado un usuario cuando decide cargar un registro histórico pasado o no de una parcela con las fechas de siembra y de cosecha superpuestas entonces el sistema deberá impedir tal persistencia y avisar al usuario de lo sucedido.</body>
+		<created>2020-08-23 00:14:41</created>
+		<closed>2020-08-23 06:42:47</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>No se persiste el estado de una instancia de parcela cuando se modifican sus fechas de siembra y de cosecha</title>
+		<body>**Descripción del problema** Cuando se modifica una de las fechas de una instancia de parcela o ambas, no se modifica el estado de la misma, lo cual obviamente está mal.  **Condiciones de aceptación** - Si la fecha de cosecha de una instancia de parcela es anterior a la fecha actual del sistema y las fechas de siembra y de cosecha no están superpuestas entonces dicha instancia de parcela deberá tener el estado "Finalizado". - Si la fecha de siembra de una instancia de parcela es anterior a la fecha actual del sistema y la fecha de cosecha es posterior a la fecha actual del sistema entonces dicha instancia de parcela deberá tener el estado "En desarrollo". - Si la fecha de siembra y la fecha de cosecha de una instancia de parcela son posteriores a la fecha actual del sistema y no están superpuestas entonces dicha instancia de parcela deberá tener el estado "En espera".</body>
+		<created>2020-08-20 21:15:04</created>
+		<closed>2020-08-21 04:01:37</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>No se persiste el valor de la hectárea de una parcela cuando se lo modifica</title>
+		<body>Cuando se modifica el valor de la hectárea de una parcela, éste valor no es persistido en la base de datos subyacente.</body>
+		<created>2020-08-20 20:43:44</created>
+		<closed>2020-08-21 04:01:38</closed>
+	</bug>
+	<bug>
+		<id>72</id>
+		<title>Crear controles de fechas en la creación de instancias de parcelas</title>
+		<body>**Descripción del problema** En el estado actual de la aplicación se pueden crear instancias de parcelas con sus fechas de siembra y de cosecha superpuestas, y también se pueden crear instancias de parcelas que tengan superposición de fechas con las demás instancias de parcela pertenecientes a la misma parcela de la instancia de parcela que se está por crear.  **Propuesta de solución** - Crear código fuente que compruebe la superposición de las fechas de siembra y de cosecha de una instancia de parcela a crear. - Crear código fuente que compruebe la superposición de fechas de la instancia de parcela a crear con las fechas de las demás instancia de parcela, en la clase que tenga la responsabilidad de comprobar las reglas de negocio a la hora de crear instancias de parcela.  **Tareas** * [x] Crear un modelo de datos que represente los errores de fecha. Este modelo será en la base de datos una tabla. * [x] Crear clase de acceso a la base de datos para el modelo de datos que contendrá los errores de fecha.  **Condiciones de aceptación** * [x] Dado una nueva instancia de parcela a crear cuando tiene la fecha de siembra y la fecha de cosecha cruzadas (superpuestas) entonces la aplicación no deberá persistir dicha instancia de parcela en la base de datos subyacente y deberá informar al usuario de lo sucedido. * [x] Dado una nueva instancia de parcela a crear cuando tiene superposición de fechas con las demás instancias de parcela pertenecientes a la misma parcela entonces la aplicación no deberá persistir dicha instancia de parcela en la base de datos subyacente y deberá informar al usuario de lo sucedido. </body>
+		<created>2020-06-04 20:06:38</created>
+		<closed>2020-09-04 08:57:24</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>Corregir la función que calcula el coeficiente del cultivo (kc)</title>
+		<body>El problema de esta función es que calcula el coeficiente del cultivo teniendo en cuenta únicamente los meses, con lo cual cuando se utilizan años de diferencia entre la fecha de siembra y la fecha actual para el cálculo del coeficiente del cultivo, la misma devuelve un valor incorrecto.</body>
+		<created>2019-11-02 22:43:06</created>
+		<closed>2019-11-05 05:36:56</closed>
+	</bug>
+</bugs>

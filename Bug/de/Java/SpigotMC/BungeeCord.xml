@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>2546</id>
+		<title>reducedDebugInfo state not updating when changing servers</title>
+		<body>Hi, I recently discovered that if I enable reducedDebugInfo in one of servers in my network and then I connect to other one, where reducedDebugInfo is set to false, I will still have the coordinates hidden and vice-versa.   After looking thru BungeeCord code, I see why. The Login/Join Game packet is sent to client only when it connects to the Bungee, when client is changing a server there is nothing to inform it that reducedDebugInfo state changes (it's possible thru the Entity Status packet).</body>
+		<created>2018-11-19 05:55:35</created>
+		<closed>2018-12-17 23:47:35</closed>
+	</bug>
+	<bug>
+		<id>1909</id>
+		<title>Broken console</title>
+		<body>[This commit](https://github.com/SpigotMC/BungeeCord/commit/eca99576a0bf41a07684fc653405b9e9d2a09111) brakes windows console. newlines replaces by "^J^[[m^[[2K^M". </body>
+		<created>2016-07-12 19:36:41</created>
+		<closed>2016-07-13 01:05:54</closed>
+	</bug>
+	<bug>
+		<id>1859</id>
+		<title>Leads issues since 1.9 update</title>
+		<body>Hi.  I have a server with bungeecord and i'm having a annoying problem with the leads...  When i try capture a animal with a lead the lead disappear, i've tried making a new bungeecord and servers on my pc and the problem still there, i don't have plugins installed and everything is from default.  The leads just works on the "hub" server, in the others servers disappear, here i put a gif: https://i.gyazo.com/021ffa60ec0a599f3dc756babeb4fc7e.gif  All my servers are on 1.9.2, tested under linux and windows 10, java 8 in both sides, on 1.8 the problem doesn't exist.  </body>
+		<created>2016-05-09 22:14:47</created>
+		<closed>2016-06-28 23:14:05</closed>
+	</bug>
+	<bug>
+		<id>1218</id>
+		<title>Players "disconnect" from Bungee but are still online playing</title>
+		<body>Note: this did not happen pre 1.8 patch / bungee.  We are not on a multi-bungee/proxy setup. Everything is one a single server.  All players will randomly fall into a "limbo" mode where they are online and playing on the server but they cant take any warps/portals to other servers and no "bungee" API / service works for them.   They cannot be seen with /find, they do show up in /glist - and also if the player affected attempts to log in again, they wont be disconnected by the "you have logged in from another location" message.  Error relating - http://hastebin.com/igonewicol.avrasm Also to note: when I attempted to do "find Kainzo" - it showed me not online in Bungee.  I couldnt teleport to anyone or send cross-server private messages.  When I relogged, it seemingly fixed it. Here's the last two proxy logs, https://www.mediafire.com/?i99z9yicmr6m9ft (new logs), I looked through but didnt see anything too unusual that wasnt already pasted here.  Versions: 18:46:47 [INFO] This server is running BungeeCord version git:BungeeCord-Bootstrap:1.8-SNAPSHOT:"65ae8b4":994 by md_5 [18:47:26 INFO]: This server is running CraftBukkit version git-Spigot-1649 (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)  http://pastie.org/private/tmjbkkdx5jcrqyj0pdbg  Plugins on Bungeecord: EnhancedReconnect (Private &gt; http://git.hc.to/herocraft/enhancedreconnect) GeSuit (Latest) MoveMeNow 1.1 HeroChatBridgeBungee (Fork from Github) ServerListPlusUniversal-3.3.1 Yamler-Bungee-2.2.3 BungeeMsg </body>
+		<created>2014-09-08 23:23:42</created>
+		<closed>2014-09-12 08:46:25</closed>
+	</bug>
+	<bug>
+		<id>1036</id>
+		<title>If the server crashes there's no way to set targetServer.</title>
+		<body>When using ServerDisconnectEvent whenever server crashes you don't have control over where player should go.  setTarget when server crashes does not work.  The worst situation is when fallback server crashes, there's no way to setTarget. </body>
+		<created>2014-05-31 12:33:06</created>
+		<closed>2016-06-20 01:26:20</closed>
+	</bug>
+	<bug>
+		<id>797</id>
+		<title>BungeeCord Crashes Minecraft</title>
+		<body>Hello, I updated BungeeCord to the newest version and when I join, my minecraft crashes. My minecraft is not modded at all and it works for older versions.  You can find the crash report here: http://pastebin.com/veEs9gbm  Thanks,  typad1 </body>
+		<created>2014-01-02 05:45:11</created>
+		<closed>2014-01-02 17:40:29</closed>
+	</bug>
+	<bug>
+		<id>714</id>
+		<title>Multiline [Kick] messages are broke</title>
+		<body></body>
+		<created>2013-11-15 23:21:00</created>
+		<closed>2013-11-16 00:22:42</closed>
+	</bug>
+	<bug>
+		<id>703</id>
+		<title>can't leave beds after server switch.</title>
+		<body>Client only receives packet 0x0B (type 2) when you click "Leave bed".  Bug appears only after server change. </body>
+		<created>2013-11-05 13:17:28</created>
+		<closed>2013-12-08 16:54:07</closed>
+	</bug>
+	<bug>
+		<id>690</id>
+		<title>ProxyPingEvent's ServerPing is not used for responses to 1.6 clients</title>
+		<body>`event.setResponse()` functions as expected for 1.7 clients, but is completely ignored for 1.6 clients.  This may introduce some issues with server lists relying on 1.6-style pings, and some multi-proxy setups. </body>
+		<created>2013-10-30 03:02:35</created>
+		<closed>2013-11-01 06:43:07</closed>
+	</bug>
+	<bug>
+		<id>689</id>
+		<title>ServerInfo.ping does not send any data to the target server</title>
+		<body>Using the latest Bungee build (722) and the latest Spigot 1.7 build (9), ServerInfo.ping appears to not send any data to the target server. Note that connections to the target server still work as expected; however, pinging does not.  I've modified Spigot to print out all packets it receives, and it does not appear to be receiving any packets from the Bungee instance when ServerInfo.ping is called from a plugin on said Bungee instance; the target server itself logs "lost connection" once the Bungee timeout is exceeded and the proxy disconnects. </body>
+		<created>2013-10-30 02:08:47</created>
+		<closed>2013-11-01 06:52:22</closed>
+	</bug>
+	<bug>
+		<id>686</id>
+		<title>Arrows shoot back at you (Graphical only) when switched servers</title>
+		<body>When you shoot an arrow it appears to shoot back at you but the arrow does actually fire as you can hit the target it just doesn't appear to fire.  It only happens once you have switched server from the first bungee you connect to (So bows work fine in hub but not in other servers) </body>
+		<created>2013-10-29 06:56:13</created>
+		<closed>2013-11-01 06:38:58</closed>
+	</bug>
+	<bug>
+		<id>671</id>
+		<title>Cancelkick will timeout client if target server is down.</title>
+		<body>When canceling kick event and changing servers, if target server is down client will timeout on "loading terrain" screen. </body>
+		<created>2013-10-20 15:54:52</created>
+		<closed>2013-11-01 06:46:45</closed>
+	</bug>
+	<bug>
+		<id>582</id>
+		<title>API server.sendData sends too many times</title>
+		<body>I am having a issue with the server.sendData method.  I have been trying to debug this plugin, http://www.spigotmc.org/threads/commandsync.2577/page-2 and I cant find any thing wrong with the bukkit side of the code. The issue is the bungee side of things is sending the information times how many players are logged into the server. See this image here  ![86a67fb321f4595859475bb530755014](https://f.cloud.github.com/assets/768681/1011010/aae90dd8-0b54-11e3-8196-dc32a0cc7e3d.png)  Might have something to do with how the connection to the bukkit server is made. </body>
+		<created>2013-08-22 18:00:11</created>
+		<closed>2013-09-25 23:20:54</closed>
+	</bug>
+	<bug>
+		<id>515</id>
+		<title>Fix depend resolution</title>
+		<body>To test, use http://www.spigotmc.org/resources/global-joins.106/ without BungeeYAML </body>
+		<created>2013-07-17 06:57:22</created>
+		<closed>2014-01-07 03:34:39</closed>
+	</bug>
+	<bug>
+		<id>396</id>
+		<title>player count all breaks api spec</title>
+		<body></body>
+		<created>2013-05-28 11:20:12</created>
+		<closed>2013-05-29 02:03:52</closed>
+	</bug>
+	<bug>
+		<id>395</id>
+		<title>NPE on greload command</title>
+		<body>Build 463  ``` greload An internal error occurred whilst executing this command, please check the console log for details. 01:05:38 [WARNING] Error in dispatching command java.lang.ClassCastException: net.md_5.bungee.BungeeServerInfo cannot be cast to java.lang.String         at net.md_5.bungee.util.CaseInsensitiveHashingStrategy.equals(CaseInsensitiveHashingStrategy.java:5)         at gnu.trove.map.hash.TCustomHashMap.containsValue(TCustomHashMap.java:521)         at net.md_5.bungee.config.Configuration.load(Configuration.java:103)         at net.md_5.bungee.command.CommandReload.execute(CommandReload.java:19)         at net.md_5.bungee.api.plugin.PluginManager.dispatchCommand(PluginManager.java:103)         at net.md_5.bungee.BungeeCord.main(BungeeCord.java:177) ``` </body>
+		<created>2013-05-27 16:08:03</created>
+		<closed>2013-05-29 02:01:07</closed>
+	</bug>
+	<bug>
+		<id>391</id>
+		<title>BungeeCord not calling PlayerDisconnectEvent when stopping</title>
+		<body>When BungeeCord is stopped via the /end command, and all players are disconnected, BungeeCord should also call a PlayerDisconnectEvent on each player disconnecting.  Thanks. </body>
+		<created>2013-05-26 19:40:08</created>
+		<closed>2013-05-30 06:23:08</closed>
+	</bug>
+	<bug>
+		<id>384</id>
+		<title>catch errors loading reconnect yaml</title>
+		<body></body>
+		<created>2013-05-24 00:01:17</created>
+		<closed>2013-05-24 04:17:07</closed>
+	</bug>
+	<bug>
+		<id>383</id>
+		<title>Add an outbound handler to catch and ignore closed channel exceptions</title>
+		<body></body>
+		<created>2013-05-23 21:24:15</created>
+		<closed>2013-05-24 04:17:07</closed>
+	</bug>
+	<bug>
+		<id>381</id>
+		<title>Dependency loading is broken</title>
+		<body>Dependencies aren't resolved in the right order it would seem. Simple example : DynamicMOTD, a plugin made by @LaxWasHere, has his main class as a ConfigurablePlugin, a class defined in BungeeYAML to add getConfig(), reloadConfig(), etc... methods to the Plugin class. He also has a dependency to BungeeYAML set in his plugin.yml.   depends: ['BungeeYAML']  However, it seems that on some platforms, BungeeYAML is still loaded AFTER DynamicMOTD, causing the later to throw a ClassNotFoundException (cannot find ConfigurablePlugin).   I suppose this means that DynamicMOTD is loaded regardless of bungeeyaml being loaded or not.  </body>
+		<created>2013-05-23 16:10:10</created>
+		<closed>2013-06-05 08:33:47</closed>
+	</bug>
+	<bug>
+		<id>374</id>
+		<title>take a lock for channel operations</title>
+		<body></body>
+		<created>2013-05-22 11:58:21</created>
+		<closed>2013-05-23 03:50:50</closed>
+	</bug>
+	<bug>
+		<id>347</id>
+		<title>Translation file exceptions. </title>
+		<body>Two problems :  1) You probably want to change fallback_lobby at https://github.com/ElasticPortalSuite/BungeeCord/blob/master/proxy/src/main/java/net/md_5/bungee/UserConnection.java#L189 to fallback_move as to match the translation file.  2) That's the more important issue, getTranslation throws exceptions when said translation doesn't exist (http://pastebin.com/TKupPkVd). It would be more sensible to return null or an empty String in my opinion.  </body>
+		<created>2013-05-15 14:34:03</created>
+		<closed>2013-05-29 02:09:02</closed>
+	</bug>
+	<bug>
+		<id>337</id>
+		<title>Connect via bound address</title>
+		<body></body>
+		<created>2013-05-12 11:52:18</created>
+		<closed>2013-05-19 08:14:31</closed>
+	</bug>
+	<bug>
+		<id>319</id>
+		<title>Forge error/cant connect with mods</title>
+		<body>connecting works with just forge but when you install any mods i get this error when i try to connect the mods are server side and client side http://pastebin.com/EDNaus3m </body>
+		<created>2013-05-04 23:21:17</created>
+		<closed>2013-05-15 08:59:19</closed>
+	</bug>
+	<bug>
+		<id>318</id>
+		<title>Forge clients have issues switching servers</title>
+		<body>God I hate forge </body>
+		<created>2013-05-04 21:57:45</created>
+		<closed>2013-05-04 22:31:51</closed>
+	</bug>
+	<bug>
+		<id>311</id>
+		<title>Pass on exceptions in ServerConnector</title>
+		<body></body>
+		<created>2013-05-03 10:55:43</created>
+		<closed>2013-05-03 23:52:01</closed>
+	</bug>
+	<bug>
+		<id>304</id>
+		<title>ConcurrentModificationException</title>
+		<body>Saw this in the console:  ``` java 05:50:23 [WARNING] Error in dispatching command java.util.ConcurrentModificationException     at java.util.HashMap$HashIterator.nextEntry(HashMap.java:894)     at java.util.HashMap$EntryIterator.next(HashMap.java:934)     at java.util.HashMap$EntryIterator.next(HashMap.java:932)     at org.yaml.snakeyaml.representer.BaseRepresenter.representMapping(BaseRepresenter.java:159)     at org.yaml.snakeyaml.representer.SafeRepresenter$RepresentMap.representData(SafeRepresenter.java:213)     at org.yaml.snakeyaml.representer.BaseRepresenter.representData(BaseRepresenter.java:95)     at org.yaml.snakeyaml.representer.BaseRepresenter.represent(BaseRepresenter.java:65)     at org.yaml.snakeyaml.Yaml.dumpAll(Yaml.java:271)     at org.yaml.snakeyaml.Yaml.dumpAll(Yaml.java:262)     at org.yaml.snakeyaml.Yaml.dump(Yaml.java:249)     at net.md_5.bungee.YamlReconnectHandler.save(YamlReconnectHandler.java:87)     at net.md_5.bungee.BungeeCord.stop(BungeeCord.java:282)     at net.md_5.bungee.command.CommandEnd.execute(CommandEnd.java:21)     at net.md_5.bungee.api.plugin.PluginManager.dispatchCommand(PluginManager.java:95)     at net.md_5.bungee.BungeeCord.main(BungeeCord.java:174) ```  decided to post it </body>
+		<created>2013-05-02 21:58:13</created>
+		<closed>2013-05-03 04:15:34</closed>
+	</bug>
+	<bug>
+		<id>300</id>
+		<title>Error on joining when the server is full</title>
+		<body>Using the latest build: #386.  We recently hit the maximum of 250 online users. If players connect to the server when it's full they get disconnected with the following message:  ![http://i.imgur.com/KLbe7ce.png](http://i.imgur.com/KLbe7ce.png)  Unfortunately, players get really confused. Now I'm not sure if this normal because it does report to the player that the server is full...  Error report in the console:  &gt; 19:46:37 [INFO] [/XX.XX.XXX.XXX:49737] &lt;-&gt; InitialHandler has connected &gt; 19:46:37 [SEVERE] [/XX.XX.XXX.XXX:49737] &lt;-&gt; InitialHandler - encountered exception &gt; java.lang.IllegalStateException: Server is full! &gt;     at com.google.common.base.Preconditions.checkState(Preconditions.java:149) &gt;     at net.md_5.bungee.connection.InitialHandler.handle(InitialHandler.java:112) &gt;     at net.md_5.bungee.packet.Packet2Handshake.handle(Packet2Handshake.java:41) &gt;     at net.md_5.bungee.netty.HandlerBoss.messageReceived(HandlerBoss.java:63) &gt;     at net.md_5.bungee.netty.HandlerBoss.messageReceived(HandlerBoss.java:19) &gt;     at io.netty.channel.ChannelHandlerUtil.handleInboundBufferUpdated(ChannelHandlerUtil.java:60) &gt;     at io.netty.channel.ChannelInboundMessageHandlerAdapter.inboundBufferUpdated(ChannelInboundMessageHandlerAdapter.java:82) &gt;     at io.netty.channel.DefaultChannelHandlerContext.invokeInboundBufferUpdated(DefaultChannelHandlerContext.java:896) &gt;     at io.netty.channel.DefaultChannelHandlerContext.fireInboundBufferUpdated0(DefaultChannelHandlerContext.java:864) &gt;     at io.netty.channel.DefaultChannelHandlerContext.fireInboundBufferUpdated(DefaultChannelHandlerContext.java:843) &gt;     at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:468) &gt;     at io.netty.handler.codec.ByteToMessageDecoder.inboundBufferUpdated(ByteToMessageDecoder.java:69) &gt;     at io.netty.channel.ChannelInboundByteHandlerAdapter.inboundBufferUpdated(ChannelInboundByteHandlerAdapter.java:51) &gt;     at io.netty.channel.DefaultChannelHandlerContext.invokeInboundBufferUpdated(DefaultChannelHandlerContext.java:896) &gt;     at io.netty.channel.DefaultChannelHandlerContext.fireInboundBufferUpdated0(DefaultChannelHandlerContext.java:864) &gt;     at io.netty.channel.DefaultChannelHandlerContext.fireInboundBufferUpdated(DefaultChannelHandlerContext.java:843) &gt;     at io.netty.handler.timeout.ReadTimeoutHandler.inboundBufferUpdated(ReadTimeoutHandler.java:149) &gt;     at io.netty.channel.DefaultChannelHandlerContext.invokeInboundBufferUpdated(DefaultChannelHandlerContext.java:917) &gt;     at io.netty.channel.DefaultChannelHandlerContext.fireInboundBufferUpdated0(DefaultChannelHandlerContext.java:864) &gt;     at io.netty.channel.DefaultChannelHandlerContext.fireInboundBufferUpdated(DefaultChannelHandlerContext.java:843) &gt;     at io.netty.channel.DefaultChannelPipeline.fireInboundBufferUpdated(DefaultChannelPipeline.java:1017) &gt;     at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:115) &gt;     at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:434) &gt;     at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:397) &gt;     at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:327) &gt;     at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:109) &gt;     at java.lang.Thread.run(Thread.java:722) &gt; 19:46:37 [INFO] [/XX.XX.XXX.XXX:49737] &lt;-&gt; InitialHandler has disconnected </body>
+		<created>2013-05-01 17:56:02</created>
+		<closed>2013-05-03 04:16:59</closed>
+	</bug>
+	<bug>
+		<id>251</id>
+		<title>Hide restricted Servers in /glist</title>
+		<body>Restricted Servers are visible in /glist.  ![2013-04-02_17 27 44](https://f.cloud.github.com/assets/1354793/329377/4aca65b8-9bb1-11e2-8d51-96d936a4726a.png) ![2013-04-02_17 27 47](https://f.cloud.github.com/assets/1354793/329378/4b564128-9bb1-11e2-9cb8-7e0b6be20b05.png) </body>
+		<created>2013-04-02 16:22:05</created>
+		<closed>2013-04-12 02:40:43</closed>
+	</bug>
+	<bug>
+		<id>241</id>
+		<title>add permission to check in PermissionCheckEvent</title>
+		<body>otherwise hasPermission cannot be overriden </body>
+		<created>2013-03-29 11:10:19</created>
+		<closed>2013-04-01 02:04:30</closed>
+	</bug>
+	<bug>
+		<id>228</id>
+		<title>Fix playerlist with no players online &amp; Allow ALL</title>
+		<body>https://github.com/ElasticPortalSuite/BungeeCord/blob/master/proxy/src/main/java/net/md_5/bungee/connection/DownstreamBridge.java#L269 </body>
+		<created>2013-03-25 01:17:11</created>
+		<closed>2013-03-26 06:53:35</closed>
+	</bug>
+	<bug>
+		<id>227</id>
+		<title>Do not markt the first username</title>
+		<body>![2013-03-24_14 52 26](https://f.cloud.github.com/assets/1354793/295418/9165961a-948a-11e2-9364-a9f0e9428107.png) The first username is now marked (/glist). </body>
+		<created>2013-03-24 13:56:23</created>
+		<closed>2013-03-25 08:25:12</closed>
+	</bug>
+	<bug>
+		<id>213</id>
+		<title>Delete all scoreboard info on server change</title>
+		<body>Doesnt appear to be working? @lazertester </body>
+		<created>2013-03-19 01:16:09</created>
+		<closed>2013-03-24 23:12:03</closed>
+	</bug>
+	<bug>
+		<id>211</id>
+		<title>NullPointerException in ServerInfo.ping()</title>
+		<body>Example code: http://paste.md-5.net/qixucugovu.java </body>
+		<created>2013-03-18 13:47:37</created>
+		<closed>2013-03-19 00:41:23</closed>
+	</bug>
+	<bug>
+		<id>209</id>
+		<title>Check new server != current server in connect method not command</title>
+		<body></body>
+		<created>2013-03-17 10:32:48</created>
+		<closed>2013-03-20 09:27:27</closed>
+	</bug>
+	<bug>
+		<id>203</id>
+		<title>Util.exception error</title>
+		<body>http://paste.ubuntu.com/5614299/ </body>
+		<created>2013-03-14 20:11:20</created>
+		<closed>2013-03-15 09:39:10</closed>
+	</bug>
+	<bug>
+		<id>199</id>
+		<title>Rewrite only entity IDs which may be players</title>
+		<body>Will need @lazertester on the Netty builds first before I go breaking things. </body>
+		<created>2013-03-14 10:26:43</created>
+		<closed>2013-11-01 03:37:23</closed>
+	</bug>
+	<bug>
+		<id>192</id>
+		<title>Random disconnects on netty builds</title>
+		<body>No clue whats causing - tried disabling everything and switched to packet framing + passthrough, no encryption, no nothing still happens.  TODO: Try tcp nodelay </body>
+		<created>2013-03-12 09:42:18</created>
+		<closed>2013-03-14 08:28:34</closed>
+	</bug>
+	<bug>
+		<id>36</id>
+		<title>1.4.4 Pots&amp;Item frames.</title>
+		<body>When players is getting load a part of the map with pots/item frames on it he gets kicked with following error "[Proxy] IllegalArgumentException : Unknown metadata type 7 @ net.md_5.mendax.datainput.MetaData:37" And another error (Possible my own fault, not a Bungee). Player unable to connect with newest version of BungeeCord with "[Proxy Error] SocketTimeoutExpection : Read timed out @ java.net.SocketInputStream:-2". On old version everything is fine almost with same configuration. </body>
+		<created>2012-11-15 20:05:11</created>
+		<closed>2012-11-21 20:21:53</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>More bad packets</title>
+		<body>http://i.imgur.com/Y1Chu.png  Anyone else seeing disconnect issues? </body>
+		<created>2012-11-06 05:15:54</created>
+		<closed>2012-11-11 20:13:53</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>Potions don't seem to be sent to the client</title>
+		<body>Applying a potion such as speed to a player does not actually increase the player's perceived speed, nor is the potion shown to the left of the inventory.   Connecting without the aid of BungeeCord fixes this issue. </body>
+		<created>2012-10-29 18:52:45</created>
+		<closed>2012-11-02 01:54:56</closed>
+	</bug>
+	<bug>
+		<id>16</id>
+		<title>Spoutcraft</title>
+		<body></body>
+		<created>2012-10-27 11:25:06</created>
+		<closed>2012-11-19 04:44:38</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>Do we need to keep track of held item?</title>
+		<body>Idk I'm pretty sure last I checked the client set help item to the first slot  when changing worlds. </body>
+		<created>2012-10-24 22:22:33</created>
+		<closed>2012-10-25 05:28:42</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>Arrows fly backwards on occasion</title>
+		<body>Sometimes when fired and arrow appears to fly backwards.  Do in depth testing + logging of 0x17 </body>
+		<created>2012-10-24 20:33:40</created>
+		<closed>2012-10-25 06:05:29</closed>
+	</bug>
+	<bug>
+		<id>3</id>
+		<title>Weather shown to client on connect for a few seconds</title>
+		<body>Connecting to the default server and then switching to another results in the client seeing rain/snow for a few seconds which then disappears. It is clear that this is not real, as using toggledownfall in this time period turns ON weather. </body>
+		<created>2012-10-21 16:20:39</created>
+		<closed>2012-10-25 05:28:44</closed>
+	</bug>
+</bugs>

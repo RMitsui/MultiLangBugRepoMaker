@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="xp">
+	<bug id="7967" opendate="2020-03-20 12:13:03" fixdate="2020-04-07 12:54:08">
+		<buginformation>
+			<summary>Restore ConfigurationAdmin fallback in application installation</summary>
+			<description>fix #7928 for #7925 is only partially addresses the problem. Users still get not working application even though XP is alive.  Until proper fix #7966 it is best to bring back code #6688 which reads configuration from ConfigurationAdmin if ApplicationConfigReloader ManagedService was not notified about config update (reason for this is still unknown)   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>modules/core/core-app/src/test/java/com/enonic/xp/core/impl/app/BundleBasedTest.java</file>
+			<file>modules/core/core-app/src/testFixtures/java/com/enonic/xp/core/impl/app/BundleBasedTest.java</file>
+			<file>modules/core/core-app/src/main/java/com/enonic/xp/core/impl/app/ApplicationRegistry.java</file>
+			<file>modules/core/core-app/src/test/java/com/enonic/xp/core/impl/app/ApplicationServiceImplTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="7046" opendate="2019-04-02 08:02:33" fixdate="2019-04-23 11:26:21">
+		<buginformation>
+			<summary>Rollback region name removal</summary>
+			<description>When calling portal.getComponent() from inside a layout controller, the result in 7.0.0-B4 no longer outputs "name" (which should have had the layout display name) on the root level. This was present in all versions of 6.x  ``` 2019-04-02 09:17:59,948 INFO  com.enonic.web.enonic.com - (/site/layouts/layout-bg-color/layout-bg-color.js) {     "path": "/main/0",     "type": "layout",     "descriptor": "com.enonic.web.enonic.com:layout-bg-color",     "config": {         "paddingTop": false     },     "regions": {         "main": {             "components": []         }     } } ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>modules/lib/lib-content/src/main/java/com/enonic/xp/lib/content/mapper/RegionMapper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6783" opendate="2018-11-27 11:01:19" fixdate="2018-12-18 14:44:04">
+		<buginformation>
+			<summary>Delete content - Pending delete progression</summary>
+			<description>Follows the issue https://github.com/enonic/xp/issues/6743  - The delete progression for pending delete contents is incorrect. - Additional task: Remove the use of DeleteRunnableTask.countContentsToDelete and DeleteRunnableTask.countChildrenToDelete if possible   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>modules/core/core-content/src/main/java/com/enonic/xp/core/impl/content/DeleteContentCommand.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6331" opendate="2018-06-12 12:50:11" fixdate="2018-06-26 10:55:40">
+		<buginformation>
+			<summary>SessionData cannot be serialized</summary>
+			<description>We get the warning below. Investigate and fix or close the issue   2018-06-12 14:44:37,035 WARN  o.a.i.internal.binary.BinaryContext - Class "org.eclipse.jetty.server.session.SessionData" cannot be serialized using BinaryMarshaller because it either implements Externalizable interface or have writeObject/readObject methods. OptimizedMarshaller will be used instead and class instances will be deserialized on the server. Please ensure that all nodes have this class in classpath. To enable binary serialization either implement Binarylizable interface or set explicit serializer using BinaryTypeConfiguration.setSerializer() method.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>modules/core/core-ignite/src/main/java/com/enonic/xp/ignite/impl/config/ConfigurationFactory.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5854" opendate="2017-12-08 11:24:14" fixdate="2017-12-19 11:35:17">
+		<buginformation>
+			<summary>Portal lib - Get current content/site/siteConfig - Use contentPath as alternative</summary>
+			<description>If the site or content set is null, we could use the contentPath from the portal request.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>modules/tools/testing/src/main/java/com/enonic/xp/testing/ScriptTestSupport.java</file>
+			<file>modules/lib/lib-portal/src/main/java/com/enonic/xp/lib/portal/current/GetCurrentSiteHandler.java</file>
+			<file>modules/lib/lib-portal/src/main/java/com/enonic/xp/lib/portal/current/GetCurrentContentHandler.java</file>
+			<file>modules/lib/lib-portal/src/main/java/com/enonic/xp/lib/portal/current/GetCurrentSiteConfigHandler.java</file>
+			<file>modules/lib/lib-portal/src/main/java/com/enonic/xp/lib/portal/current/GetCurrentAbstractHandler.java</file>
+			<file>modules/lib/lib-portal/src/test/java/com/enonic/xp/lib/portal/current/GetCurrentSiteConfigScriptTest.java</file>
+			<file>modules/lib/lib-portal/src/test/java/com/enonic/xp/lib/portal/current/GetCurrentContentScriptTest.java</file>
+			<file>modules/lib/lib-portal/src/test/java/com/enonic/xp/lib/portal/current/GetCurrentSiteScriptTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5491" opendate="2017-08-17 08:53:53" fixdate="2017-08-29 08:30:52">
+		<buginformation>
+			<summary>Image Editor should store custom orientation data in data.media</summary>
+			<description>We should store custom orientation data in ``data.media``, like we do with cropping and focal point. Now we overwrite default orientation value in ``media.cameraInfo`` and after that there's no way to roll back to the original value.  Commit to branch issue-5328</description>
+		</buginformation>
+		<fixedfiles>
+			<file>modules/core/core-media/src/main/java/com/enonic/xp/core/impl/media/MediaInfoServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="5192" opendate="2017-06-23 11:57:36" fixdate="2017-07-04 08:25:41">
+		<buginformation>
+			<summary>Dump load - Ignore meta files</summary>
+			<description>Ignore files generated by OS like .DS_Store and the such</description>
+		</buginformation>
+		<fixedfiles>
+			<file>modules/core/core-repo/src/main/java/com/enonic/xp/repo/impl/dump/reader/FileDumpReader.java</file>
+			<file>modules/core/core-api/src/main/java/com/enonic/xp/branch/Branch.java</file>
+			<file>modules/core/core-repo/src/test/java/com/enonic/xp/repo/impl/dump/reader/FileDumpReaderTest.java</file>
+			<file>modules/core/core-repo/src/main/java/com/enonic/xp/repo/impl/dump/DumpBlobStore.java</file>
+			<file>modules/core/core-api/src/test/java/com/enonic/xp/branch/BranchTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

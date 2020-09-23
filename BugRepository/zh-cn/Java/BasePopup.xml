@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="BasePopup">
+	<bug id="338" opendate="2020-08-11 06:39:51" fixdate="2020-08-13 06:37:26">
+		<buginformation>
+			<summary>输入法适配，弹出pop后，点击外部取消pop,然后再点，弹出时pop就会被输入法就会遮挡住。只有先手动关闭软键盘，再关闭pop,下次才能弹出才不会被遮挡。</summary>
+			<description>  - 系统版本（必须）/ System version (required)：魅族16X android 8.1.0  魅族16S android9 vivoZ3X android9  - 库版本（必须）/ Library version (required)：:2.2.4.1   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>lib/src/main/java/razerdp/basepopup/PopupDecorViewProxy.java</file>
+			<file>lib/src/main/java/razerdp/util/KeyboardUtils.java</file>
+			<file>lib/src/main/java/razerdp/util/PopupUiUtils.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupHelper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="336" opendate="2020-08-11 02:36:16" fixdate="2020-08-13 06:37:17">
+		<buginformation>
+			<summary>部分华为手机 横屏状态无法弹出pop</summary>
+			<description> - 系统版本（必须）/ System version (required)：Android9 / Android 8.10  - 库版本（必须）/ Library version (required)：2.2.4.1 - 手机 ：华为畅享9plus、荣耀8C  activity横屏时，无法弹起pop(有背景阴影，但看不见pop).  2.2.3无此问题， 其他手机暂未发现此问题 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>lib/src/main/java/razerdp/basepopup/PopupDecorViewProxy.java</file>
+			<file>lib/src/main/java/razerdp/util/KeyboardUtils.java</file>
+			<file>lib/src/main/java/razerdp/util/PopupUiUtils.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupHelper.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="314" opendate="2020-07-15 03:33:22" fixdate="2020-07-19 04:21:43">
+		<buginformation>
+			<summary>代码问题</summary>
+			<description>`razerdp.basepopup.BasePopupHelper#applyToPopupWindow`  源码如下:  ```java  private void applyToPopupWindow() {      if (mPopupWindow == null || mPopupWindow.mPopupWindowProxy == null) return;      mPopupWindow.mPopupWindowProxy.setSoftInputMode(isAutoShowInputMethod() ? WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE : WindowManager.LayoutParams.SOFT_INPUT_STATE_UNCHANGED      mPopupWindow.mPopupWindowProxy.setSoftInputMode(mSoftInputMode);      mPopupWindow.mPopupWindowProxy.setAnimationStyle(animationStyleRes);  } ```  这里调用了2次`setSoftInputMode`, 是否有问题?</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/razerdp/demo/ui/issuestest/home/IssueHelper.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupHelper.java</file>
+			<file>app/src/main/java/razerdp/demo/ui/issuestest/Issue277TestActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="297" opendate="2020-06-18 09:45:39" fixdate="2020-07-19 04:21:42">
+		<buginformation>
+			<summary>issue测试页面的 #224bug</summary>
+			<description>### 提issue前请去[**WIKI#常见问题**](https://github.com/razerdp/BasePopup/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)找找相关问题，避免重复提问 ### 提issue前请务必参考以下格式填写，否则该问题优先级将会降低   - 系统版本：华为p9 plus  - 库版本：发布【Candy】- 2.2.4.0517  - 问题描述/重现步骤：有视频  - 问题代码/截图：软键盘挡住输入框了，这儿适配了么，未适配的话可忽略  - 报错信息：视频连接 https://gitee.com/andmy/other/blob/master/video/VID_20200618_165621.mp4       --- </description>
+		</buginformation>
+		<fixedfiles>
+			<file>lib/src/main/java/razerdp/util/SimpleAnimationUtils.java</file>
+			<file>lib/src/main/java/razerdp/util/PopupUiUtils.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/PopupDecorViewProxy.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupWindow.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="188" opendate="2019-05-17 08:14:06" fixdate="2020-04-07 15:11:45">
+		<buginformation>
+			<summary>在横屏应用点出弹框，然后在有弹框的情况下，点击菜单栏键，退回到桌面后，再重新回到应用，出现弹窗变形错位甚至失去焦点的问题。</summary>
+			<description>### 提issue前请去[**WIKI#常见问题**](https://github.com/razerdp/BasePopup/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)找找相关问题，避免重复提问 ### 提issue前请务必参考以下格式填写，否则该问题优先级将会降低   - 系统版本：8.1.0  - 库版本：2.2.0  - 问题描述/重现步骤：在横屏应用点出弹框，然后在有弹框的情况下，点击菜单栏键，退回到桌面后，再重新回到应用，出现弹窗变形错位甚至失去焦点的问题。  - 问题代码/截图：  - 报错信息：  --- </description>
+		</buginformation>
+		<fixedfiles>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupSupporterManager.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/PopupDecorViewProxy.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupWindow.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="28" opendate="2017-06-26 00:50:14" fixdate="2018-10-08 08:33:21">
+		<buginformation>
+			<summary>被软键盘顶起之后 按返回键取消软键盘 布局还是被顶起来的样子下不去</summary>
+			<description>设置了  setAutoShowInputMethod(true); 和getInputView()</description>
+		</buginformation>
+		<fixedfiles>
+			<file>lib/src/main/java/razerdp/basepopup/HackPopupDecorView.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupWindow.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupHelper.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/PopupController.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupWindowProxy.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="18" opendate="2017-04-01 04:05:36" fixdate="2017-04-08 09:29:36">
+		<buginformation>
+			<summary>v1.6.3 的改动似乎没有效果。</summary>
+			<description>anima view在pop的布局设置为其中的子view。并不能精确位置。小米miui8（android7.0） 。 有的地方anima view就是和pop的view相同，可以精确位置。但是有的地方就是不行。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>lib/src/main/java/razerdp/basepopup/PopupWindowProxy.java</file>
+			<file>lib/src/main/java/razerdp/basepopup/BasePopupWindow.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

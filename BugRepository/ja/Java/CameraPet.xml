@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="CameraPet">
+	<bug id="76" opendate="2015-04-14 09:18:20" fixdate="2015-04-14 15:22:02">
+		<buginformation>
+			<summary>カメラ機能で連打された時に撮影枚数とカウントがずれるバグ</summary>
+			<description>連打をブロックするか、実際に撮影された枚数をカウントするかいずれかで対応。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/MealTimeJudgment.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/FukidasiTxt.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="75" opendate="2015-04-14 03:17:45" fixdate="2015-04-14 05:18:20">
+		<buginformation>
+			<summary>満腹度100時の経験値UpがGameSurfaceViewに戻るたびに実行されるバグ</summary>
+			<description>前回満腹度100で経験値をアップした時間を取得。3時間経過時に次のUp実行を行うようにしてバグフィックス。また、プレファレンスかな。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/PetLevel.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="69" opendate="2015-04-10 09:51:28" fixdate="2015-04-13 08:37:59">
+		<buginformation>
+			<summary>notificationが設定日時以内なのに出されてしまうバグ</summary>
+			<description>AlarmBroadcastReceiverクラス側で、notificationを出すかどうかを現在時刻と前回notificationを出した時刻で比較して出すようにする。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/tutorial/TutorialThirdActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc06Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/AlarmBroadcastReceiver.java</file>
+			<file>src/jp/egaonohon/camerapet/tutorial/TutorialFifthActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/PetAlarmBroadcastReceiver.java</file>
+			<file>src/jp/egaonohon/camerapet/tutorial/TutorialSeventhActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc04Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/tutorial/TutorialFourthActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc08Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc03Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc07Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc10Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/tutorial/TutorialSixthActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc05Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/tutorial/TutorialFirstActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/tutorial/TutorialSecondActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc09Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc02Activity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="66" opendate="2015-04-07 15:22:53" fixdate="2015-04-08 15:09:45">
+		<buginformation>
+			<summary>ノーティフィケーションで表示されるペットイラストのサイズが大きすぎて見えないバグ</summary>
+			<description>ノーティフィケーションマネジャーでイラストを渡す時点でviewの幅を基準にリサイズして回避を。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/AlarmBroadcastReceiver.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/SupportedSizesReflect.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="65" opendate="2015-04-07 15:18:46" fixdate="2015-04-08 15:09:45">
+		<buginformation>
+			<summary>横位置で写真を撮ろうとするとプレビューが左右がつまった感じになるバグ</summary>
+			<description>実際に撮った写真はアスペクト比は問題ない模様。プレビューのみが変。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/AlarmBroadcastReceiver.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/SupportedSizesReflect.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="62" opendate="2015-04-07 15:05:17" fixdate="2015-04-09 15:59:53">
+		<buginformation>
+			<summary>ゲーム画面で戻るボタン押下時にホーム画面に戻らないバグ</summary>
+			<description>2回押すと戻るということは、どこかでMainActivityが2つ起動しているということ？ </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/pet/Pet003A.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet002A.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeItem.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet001A.java</file>
+			<file>src/jp/egaonohon/camerapet/Fukidasi.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2015-04-07 15:02:57" fixdate="2015-04-08 15:09:45">
+		<buginformation>
+			<summary>チュートリアルで説明文最終行の文字の下部がかけている</summary>
+			<description>パディングの調整でなんとか…。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/AlarmBroadcastReceiver.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/SupportedSizesReflect.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="57" opendate="2015-04-07 05:34:05" fixdate="2015-04-07 15:00:38">
+		<buginformation>
+			<summary>ゲーム中以外でレベルアップした場合にペット図鑑の表示が実態とずれるバグ</summary>
+			<description>プリファレンスへの履歴登録おwゲームスレッドで行っているため。現状のステータスを参照してプリファレンスを更新するようにするか、図鑑側からペットのgetter経由でペット種別名を取得するように変更が必要。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/CameraActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc06Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet001A.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePh.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet002A.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc04Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet003A.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc08Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc03Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc07Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc10Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc05Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeItem.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/EncycCommonTextRect.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc09Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc02Activity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="56" opendate="2015-04-07 04:19:29" fixdate="2015-04-07 15:00:38">
+		<buginformation>
+			<summary>3時間以内に食べたエサの数が起動直後だとリセットされていないバグ</summary>
+			<description>プリファレンスから取得した数を、プリファレンス登録時の時間も一緒に登録&amp;取得するように変更？　もっと合理的な実装方法があるかもしれないですが…。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/CameraActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc06Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet001A.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePh.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet002A.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc04Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet003A.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc08Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc03Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc07Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc10Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc05Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeItem.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/EncycCommonTextRect.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc09Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc02Activity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="55" opendate="2015-04-07 04:17:57" fixdate="2015-04-08 15:09:44">
+		<buginformation>
+			<summary>タップした座標が残っているためペットが当該位置に来るたびに鳴き声を出すバグ</summary>
+			<description>鳴き声を出させるための座標を別の変数にて管理することで回避かな。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/CameraActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc06Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/AlarmBroadcastReceiver.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet001A.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePh.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet002A.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc04Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/SupportedSizesReflect.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet003A.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc08Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc03Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc07Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc10Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc05Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeItem.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/EncycCommonTextRect.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc09Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc02Activity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="53" opendate="2015-04-06 12:41:29" fixdate="2015-04-07 04:16:10">
+		<buginformation>
+			<summary>エサの出現範囲（乱数で出しているX座標）を画面幅を最大値に変更</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/AlarmBroadcastReceiver.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet001A.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet003A.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet002A.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="52" opendate="2015-04-06 08:24:27" fixdate="2015-04-16 06:09:00">
+		<buginformation>
+			<summary>Nexus7で写真が取得できなくなっている不具合</summary>
+			<description>写真取得時に乱数を使ったことで発生した問題か? </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/AlarmBroadcastReceiver.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet001A.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet003A.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet002A.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="43" opendate="2015-04-05 07:07:01" fixdate="2015-04-05 10:21:51">
+		<buginformation>
+			<summary>ペット図鑑でのレベル取得バグ</summary>
+			<description>セリフ機能を実装したところ、ペット図鑑でのレベル取得がうまくいかない。 そのため、レベル1のペットしか表示されない状態となっている。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/simpleFukidasi.java</file>
+			<file>src/jp/egaonohon/camerapet/PetLevel.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc09ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc05ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc06ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc07ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet003A.java</file>
+			<file>src/jp/egaonohon/camerapet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/Start.java</file>
+			<file>src/jp/egaonohon/camerapet/FukidasiTxt.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet001A.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc03ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc10ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/Fukidasi.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc08ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc02ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeItem.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc04ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet002A.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="41" opendate="2015-04-02 12:48:41" fixdate="2015-04-05 07:08:36">
+		<buginformation>
+			<summary>ペット図鑑でのViewによる想定外表示を微調整する</summary>
+			<description>xmlでの描画時とくらべてやや文字が小さくなっている。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/simpleFukidasi.java</file>
+			<file>src/jp/egaonohon/camerapet/PetLevel.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc01Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc03Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc07Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc03ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc01ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc08Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet003A.java</file>
+			<file>src/jp/egaonohon/camerapet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/Start.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc09Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/EncycTxtBitmap.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc06Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc05Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/FukidasiTxt.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet001A.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc04Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/Fukidasi.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc10Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeItem.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc02Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc02ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/EncycCommonTextRect.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet002A.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="37" opendate="2015-03-30 08:07:28" fixdate="2015-04-01 14:39:56">
+		<buginformation>
+			<summary>10インチタブレットでのペットの動きが早過ぎる</summary>
+			<description>移動幅をViewの幅からとれていない? </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/Pet002A.java</file>
+			<file>src/jp/egaonohon/camerapet/PetLevel.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeItem.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc03Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc02Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc04Activity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="36" opendate="2015-03-30 08:05:42" fixdate="2015-03-30 14:45:14">
+		<buginformation>
+			<summary>10インチタブレットでペットの表示サイズが小さい</summary>
+			<description>Viewの幅をとれていない? </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="35" opendate="2015-03-30 08:02:02" fixdate="2015-03-31 15:25:18">
+		<buginformation>
+			<summary>10インチタブレットでTwitterとfacebook遷移時に例外発生</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/SnsBtn.java</file>
+			<file>src/jp/egaonohon/camerapet/Start.java</file>
+			<file>src/jp/egaonohon/camerapet/MealTimeJudgment.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="34" opendate="2015-03-30 08:01:48" fixdate="2015-03-30 14:45:14">
+		<buginformation>
+			<summary>10インチタブレットでペットとエサの動く範囲がおかしい問題</summary>
+			<description>ペットは画面の左右3/4くらい。エサは画面をややはみ出た部分まで行ってしまう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2015-03-30 07:58:52" fixdate="2015-04-07 15:00:38">
+		<buginformation>
+			<summary>10インチタブレットで謎の犬画像の解像度が足りない問題に対処</summary>
+			<description>Xhdpiに高解像度画像を入れる。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/CameraActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc06Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01ContentsDrawView.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet001A.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePh.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc01Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet002A.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc04Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/Pet003A.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc08Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc03Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc07Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc10Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc05Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeItem.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/EncycCommonTextRect.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc09Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/encyc/Encyc02Activity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2015-03-30 02:04:54" fixdate="2015-03-30 14:45:14">
+		<buginformation>
+			<summary>ゲーム画面初回表示時のwelcomeメッセージ表示バグ</summary>
+			<description>ゲーム画面表示時のwelcomeメッセージ内のTextがstring.xmlをうまく拾わないことによるバグ。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc01Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/Encyc02Activity.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="30" opendate="2015-03-29 12:25:44" fixdate="2015-03-30 14:45:14">
+		<buginformation>
+			<summary>生後1日目と2日目の英語表記バグ</summary>
+			<description>1th Day. 2th Dayと気の毒な表示になっているバグ。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="29" opendate="2015-03-28 14:20:06" fixdate="2015-03-31 15:25:18">
+		<buginformation>
+			<summary>インストール後の初回起動検知がうまく行っていないバグ</summary>
+			<description>チュートリアル機能実装にともない、インストール後の初回起動検知をStartActivityでプリファレンスを用いて行う。  ところが、その判定がうまく行っていない。謎。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/Birthday.java</file>
+			<file>src/jp/egaonohon/camerapet/SnsBtn.java</file>
+			<file>src/jp/egaonohon/camerapet/Start.java</file>
+			<file>src/jp/egaonohon/camerapet/TutorialSixthActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/MealTimeJudgment.java</file>
+			<file>src/jp/egaonohon/camerapet/TutorialFirstActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/TutorialSecondActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/TutorialThirdActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/TutorialFourthActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/TutorialSeventhActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+			<file>src/jp/egaonohon/camerapet/TutorialFifthActivity.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="26" opendate="2015-03-26 15:07:13" fixdate="2015-03-27 14:59:48">
+		<buginformation>
+			<summary>ペット動作での画面端判定バグ</summary>
+			<description>ペットが動いているうちにだんだんとxy両方向とも外側にはみ出てしまう現象が発生している。クラス構成を全面的に書き換えた時に何処かで問題が発生。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/Birthday.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="24" opendate="2015-03-24 14:36:03" fixdate="2015-03-26 15:02:38">
+		<buginformation>
+			<summary>ペットと餌の衝突判定でのエラー</summary>
+			<description>RectFクラスのintersects(RectF a, RectF b)メソッドを使うと、衝突判定のfor文中でRectFの中身が殻になっている模様（同クラスのisEmpty()メソッドで確認）。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/CPMainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CPEsa.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CPGameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/CPGameMgr.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeItem.java</file>
+			<file>src/jp/egaonohon/camerapet/Esa.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/CPPet.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePh.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="14" opendate="2015-03-18 06:31:12" fixdate="2015-03-19 00:10:41">
+		<buginformation>
+			<summary>累積撮影回数の書き込みが0になる現象</summary>
+			<description>SurfaceViewから直接SQLiteファイルに書き込むように変更した際に発生。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/CameraActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeDb.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/GetPh.java</file>
+			<file>src/jp/egaonohon/camerapet/PetMove.java</file>
+			<file>src/jp/egaonohon/camerapet/SimpleDatabaseHelper.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePh.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="13" opendate="2015-03-17 10:54:28" fixdate="2015-04-08 15:09:44">
+		<buginformation>
+			<summary>CameraActivityに遷移する際にLolipopのNexus7（2013）で例外発生。</summary>
+			<description>Nexus7（2012）では例外は発生しない。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/AlarmBroadcastReceiver.java</file>
+			<file>src/jp/egaonohon/camerapet/pet/AbstractPet.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/GameSurfaceView.java</file>
+			<file>src/jp/egaonohon/camerapet/SupportedSizesReflect.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePref.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="11" opendate="2015-03-15 18:28:15" fixdate="2015-03-17 05:41:34">
+		<buginformation>
+			<summary>BGMのオン・オフ不具合</summary>
+			<description>onResume()とonPause()でBGMのオン・オフをしようとしたところ、TwitterやFacebookにインテントを飛ばして戻ってきたあとBGMが必ずオフになる現象が発生。 また、カメラ機能を利用してメインアクティビティに戻ってきたあとは逆に、BGMが必ずオンになる現象も。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/CameraActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/GetPh.java</file>
+			<file>src/jp/egaonohon/camerapet/TakenPhNum.java</file>
+			<file>src/jp/egaonohon/camerapet/BitmapAdapter.java</file>
+			<file>src/jp/egaonohon/camerapet/SimpleDatabaseHelper.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/AsyncOnSave.java</file>
+			<file>src/jp/egaonohon/camerapet/ClickSnsBtn.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="10" opendate="2015-03-15 14:53:17" fixdate="2015-03-19 00:10:41">
+		<buginformation>
+			<summary>onResumeとonPause時のPreference不具合</summary>
+			<description>撮影回数を保持しているPreferenceのリセットがうまくいかない。 onResume→onPauseを減ると撮影していなくても、Preferenceに保存されている直近の撮影回数分だけ撮影回数が増加してしまう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/CameraActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/Pet.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeDb.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/GetPh.java</file>
+			<file>src/jp/egaonohon/camerapet/PetMove.java</file>
+			<file>src/jp/egaonohon/camerapet/SimpleDatabaseHelper.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePh.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1" opendate="2015-03-11 02:17:00" fixdate="2015-03-15 14:49:46">
+		<buginformation>
+			<summary>撮影ボタンでException発生</summary>
+			<description>CameraActivityにて、撮影ボタンをタップするとException発生。原因不明。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/jp/egaonohon/camerapet/CameraActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPeDb.java</file>
+			<file>src/jp/egaonohon/camerapet/CameraView.java</file>
+			<file>src/jp/egaonohon/camerapet/GetPh.java</file>
+			<file>src/jp/egaonohon/camerapet/PetMove.java</file>
+			<file>src/jp/egaonohon/camerapet/SimpleDatabaseHelper.java</file>
+			<file>src/jp/egaonohon/camerapet/MainActivity.java</file>
+			<file>src/jp/egaonohon/camerapet/CamPePh.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

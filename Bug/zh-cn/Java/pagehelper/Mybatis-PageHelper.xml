@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>498</id>
+		<title>reasonable在5.x中不起作用</title>
+		<body>大神好： 以下代码在5.1.x中 reasonable 的参数为 false 的情况下不起作用，会查询出10条记录， 但在但在4.2.1中测试是起作用的，查不出记录， ```java PageHelper.startPage(-1, 10,true,false,true); ``` 请帮忙解惑，谢谢</body>
+		<created>2020-03-10 16:24:32</created>
+		<closed>2020-07-21 14:22:16</closed>
+	</bug>
+	<bug>
+		<id>490</id>
+		<title>PageAutoDialect#fromJdbcUrl 存在大小写不能匹配问题</title>
+		<body>- [x] 我已在 [issues](https://github.com/pagehelper/Mybatis-PageHelper/issues) 搜索类似问题，并且不存在相同的问题.  ```java     private String fromJdbcUrl(String jdbcUrl) {         // 如 jdbcUrl为：jdbc:Mysql:....，将不能自动匹配         for (String dialect : dialectAliasMap.key，Set()) {             if (jdbcUrl.indexOf(":" + dialect + ":") != -1) {                 return dialect;             }         }         return null;     } ``` 可修改为： ```java  private String fromJdbcUrl(String jdbcUrl) {         final String url = jdbcUrl.toLowerCase();         for (String dialect : dialectAliasMap.keySet()) {             if (jdbcUrl.indexOf(":" + dialect.toLowerCase() + ":") != -1) {                 return dialect;             }         }         return null;     } ``` 已提PR。 </body>
+		<created>2020-02-24 07:23:53</created>
+		<closed>2020-03-17 06:49:43</closed>
+	</bug>
+	<bug>
+		<id>459</id>
+		<title>由于sql注释引起的BUG</title>
+		<body>- [ ] 我已在 [issues](https://github.com/pagehelper/Mybatis-PageHelper/issues) 搜索类似问题，并且不存在相同的问题.   ### 使用环境  * PageHelper 版本: 5.0.0 * 数据库类型和版本: mysql 8.0.18  ### 当查询的sql语句中存在注释时，有可能会导致分页失效 比如mapper中的sql如下 ```sql     select * from emp   --   order by emp.emp_id ``` 分页参数： ```java PageHelper.startPage(1, 10); xxMapper.select(model); ``` 生成的sql如下： ```sql     select * from emp   --   order by emp.emp_id LIMIT 10 ``` 这样注释就会导致分页失败 ### 修复建议 可以换行后再添加分页参数`LIMIT 10`来避免这种情况下的bug</body>
+		<created>2019-11-09 13:15:31</created>
+		<closed>2020-07-21 15:43:28</closed>
+	</bug>
+	<bug>
+		<id>442</id>
+		<title>使用PageHelper.startPage(..).doSelectPage(..)分页报ROW_ID标识符无效</title>
+		<body>- [x] 我已在 [issues](https://github.com/pagehelper/Mybatis-PageHelper/issues) 搜索类似问题，并且不存在相同的问题.  ## 异常模板  ### 使用环境  * PageHelper 版本: 5.1.2 * 数据库类型和版本: Oracle11 * JDBC_URL: xxx  ### SQL 解析错误  #### 分页参数  ```java PageHelper.startPage(1, 10); xxMapper.select(model); ```  #### 通过执行日志打印出来的 SQL  ```sql Preparing: SELECT * FROM ( "我的完整sql语句" ) WHERE ROW_ID &gt; ?  ```  #### 期望的结果：  ```sql  ```  ### 完整异常信息  ``` Error querying database.  Cause: java.sql.SQLException: ORA-00904: "ROW_ID": 标识符无效 ```  ### 其他类型的错误  ## 功能建议  详细说明，尽可能提供(伪)代码示例。 极少数情况偶发，用的mybatis的provider的注解方式，发现报错row_id标识符无效，看源码这个字段是StringBuilder里面加上的，问题就是为什么后面加上了row_id&gt;0的判断，前面却没有加上select tmp_page.*, rownum row_id，然后导致报错，关键还是偶发，请问什么情况可能出现这种情况？ </body>
+		<created>2019-09-27 07:43:12</created>
+		<closed>2020-07-21 15:43:29</closed>
+	</bug>
+	<bug>
+		<id>409</id>
+		<title>PageRowBounds方式分页，reasonable设置false无效</title>
+		<body>- [ ] 我已在 [issues](https://github.com/pagehelper/Mybatis-PageHelper/issues) 搜索类似问题，并且不存在相同的问题.  ## 异常模板  ### 使用环境  * PageHelper 版本: 5.1.9 * 数据库类型和版本: mysql5.7 * JDBC_URL:   ### SQL 解析错误  #### 分页参数  ```java PageRowBounds pageRowBounds = new PageRowBounds(pageNum, pageSize); xxMapper.select(pageRowBounds); ```  #### 原 SQL  ```sql select * from xxx where xxx = xxx ```  #### 期望的结果：  ```sql select * from xxx where xxx = xxx limit 10 ```  ### 完整异常信息  ```  ```  ### 其他类型的错误 ```  &lt;plugin interceptor="com.github.pagehelper.PageInterceptor"&gt;     &lt;property name="reasonable" value="false"/&gt;     &lt;property name="offsetAsPageNum" value="true"/&gt; &lt;/plugin&gt; ``` 分页参数如此设置的，按照reasonable参数的设置介绍，设置为false时（禁用合理化分页），pageNum&lt;1或者pageNum&gt;totalPages 应该返回空数据才对，可我看到的结果pageNum&lt;1时会返回第一页内容，当pageNum&gt;totalPages时会返回count值。 下面是代码和结果(表中数据共26条，每页10条分页，共3页)： 1.pageNum&lt;1（这里选择pageNum值为-1）代码： ```         PageRowBounds rowBounds = new PageRowBounds(-1, 10);     SqlSession session = null;     String indexName = null; try { session = MyBatisUtil.getSqlSession(); IndexPrefixDao dao = session.getMapper(IndexPrefixDao.class); List&lt;IndexPrefix&gt; findIndexPrefix = dao.findIndexPrefixByPage(rowBounds, indexName); System.out.println(findIndexPrefix); session.commit(); } catch (Exception e) { if(null != session){ session.rollback(); } }finally{ MyBatisUtil.closeSession(session); } ``` 结果（这里结果有返回分页信息，数据列表中也有数据）： ``` Page{count=true, pageNum=-1, pageSize=10, startRow=0, endRow=0, total=26, pages=3, reasonable=false, pageSizeZero=false}[{xx=xx,xx=xx,xx=xx}] ``` 2.pageNum&gt;totalpages （这里选择pageNum=4） ``` PageRowBounds rowBounds = new PageRowBounds(4, 10); ``` 结果(这里结果只有分页对象的信息，而数据列表中没有数据)： ``` ==&gt;  Preparing: SELECT count(0) FROM index_prefix  ==&gt; Parameters:  &lt;==    Columns: count(0) &lt;==        Row: 26 &lt;==      Total: 1 Page{count=true, pageNum=4, pageSize=10, startRow=30, endRow=40, total=26, pages=3, reasonable=false, pageSizeZero=false}[] ```  ## 功能建议  详细说明，尽可能提供(伪)代码示例。  希望各位大佬们帮忙看看这个问题，谢谢</body>
+		<created>2019-07-09 02:35:39</created>
+		<closed>2020-07-21 15:48:26</closed>
+	</bug>
+	<bug>
+		<id>276</id>
+		<title>小问题 </title>
+		<body>CountSqlParser的skipFunctions 、 falseFunctions不支持并发吧</body>
+		<created>2018-09-02 13:00:53</created>
+		<closed>2018-09-03 13:27:17</closed>
+	</bug>
+	<bug>
+		<id>257</id>
+		<title>OrderByParser异常信息输出</title>
+		<body>OrderByParser::converToOrderBySql()方法里的异常能不能抛出来，而不是直接用e.printStackTrace()输出？</body>
+		<created>2018-07-20 10:27:11</created>
+		<closed>2018-09-02 07:54:06</closed>
+	</bug>
+	<bug>
+		<id>232</id>
+		<title>关于查询全部</title>
+		<body>1.设置了orderby当pageSize=0的时候查询全部，为什么orderby就没有了 *我使用单独的orderby插件，不会这样 2.pageSizeZero这个flag设置与否都会查询全部 3.查询全部返回的pageInfo里pages为啥是0，不应该是1吗，还有endRow也是0？ </body>
+		<created>2018-05-23 02:15:39</created>
+		<closed>2020-07-21 15:51:47</closed>
+	</bug>
+	<bug>
+		<id>129</id>
+		<title>informix分页sql报错</title>
+		<body>PageHelper版本：5.1.2 informix版本：11.5  改成SELECT count(*) FROM t_customer则正常。  报错信息如下： org.apache.ibatis.exceptions.PersistenceException:  ### Error querying database.  Cause: java.sql.SQLException: A syntax error has occurred. ### The error may exist in cn/itcast/vo/CustomerMapper.xml ### The error may involve cn.itcast.dao.CustomerMapper.findAll_COUNT ### The error occurred while executing a query ### SQL: SELECT count(0) FROM t_customer ### Cause: java.sql.SQLException: A syntax error has occurred. at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30) at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:150) at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141) at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:137) at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:75) at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59) at com.sun.proxy.$Proxy5.findAll(Unknown Source) at cn.itcast.dao.MybatisCustomerDaoImpl.findByPage(MybatisCustomerDaoImpl.java:108)  </body>
+		<created>2017-10-19 08:34:47</created>
+		<closed>2017-10-21 05:49:26</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>SQL Server WITH(NOLOCK) 问题</title>
+		<body>`SELECT * FROM A  WITH(NOLOCK) INNER JOIN B WITH(NOLOCK) ON A.TypeId = B.Id` 中WITH(NOLOCK) 后面的 ON 条件会被去掉; 分析原因 SqlServerDialect 类中把 WITH(NOLOCK)  替换成, PAGEWITHNOLOCK 后解析SQL把 PAGEWITHNOLOCK 解析成一张表了, 建议替换WITH(NOLOCK) 为表名_PAGEWITHNOLOCK, 然后替换过来.例如: A  WITH(NOLOCK) ==&gt; A_PAGEWITHNOLOCK</body>
+		<created>2017-08-15 08:23:15</created>
+		<closed>2017-08-24 12:56:03</closed>
+	</bug>
+	<bug>
+		<id>60</id>
+		<title>关于SQL SERVER左关联丢失on及关联条件的问题</title>
+		<body>数据库：SQLSERVER2008 Pagehelper版本：4和5 SQL：select a.id from table1 a with(nolock) left join table2 b  with(nolock)  on a.id = b.rid where a.name = 'xxx' 执行问题： 执行SQL会解析成：select count(0) from table1 a with(nolock) left join table2 b with(nolock)  where a.name = 'xxx' 报错信息：where附近语法错误 补充，解析后的SQL中丢失了on 及后面的关联条件  请问如何解决该bug，谢谢！万分感谢！</body>
+		<created>2017-06-09 09:23:54</created>
+		<closed>2018-09-02 09:09:21</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>collection 关联查询 First_PageHelper 缺失异常</title>
+		<body>使用版本pagehelper-4.1.3  重现: 1.使用分页查询某条数据 假设在Mapper里面 id="selectA" (此处会改变 id="selectA" 的sqlSource 为PageDynamicSqlSource) 2.使用分页查询另外一条数据,但是其resultMap里面包含了selectA 如: ``` &lt;resultMap id="ResultMap" type="XXXForm" &gt;  &lt;collection property="pros" column="Id=prosID" select="selectA" /&gt; &lt;/resultMap&gt; ``` 在mybatis在查出主表的数据之后，会执行查询属性pros的语句selectA，在 PageSqlSource.getBoundSql方法里面获取SQL的时候就会将selectA也当作是需要分页查询的语句  &gt; 原因是getCount()获取的是线程变量Page的countSignal属性(count信号，3种情况，null的时候执行默认BoundSql,true的时候执行count，false执行分页)  然后这里实际上是不需要分页查询的，所以再获取 First_PageHelper 的时候会报找不到 First_PageHelper 属性的异常。  请教一下，这个bug在后续的版本有修复吗？ </body>
+		<created>2017-04-27 02:58:08</created>
+		<closed>2017-06-01 12:20:27</closed>
+	</bug>
+</bugs>

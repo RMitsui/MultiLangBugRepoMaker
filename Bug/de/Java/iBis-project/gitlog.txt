@@ -1,0 +1,1559 @@
+c2c065354bb83b40b19f74511d8574031869881b, Merge pull request #123 from OpenCycleCompass/bugfix/upload-text-filter, Mon Aug 1 21:02:27 2016 +0200
+8a0d0c0787acb44665ee0ec658ca01fe2bf904f1, fix EditText InputFilter in UploadTrackActivity, Mon Aug 1 18:05:08 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/UploadTrackActivity.java
+M	app/src/main/res/layout/activity_upload_track.xml
+
+c1940e4148a7eb41dac1af3c685e2764ffa18be3, revert acra update, Mon Aug 1 17:02:34 2016 +0200
+M	app/build.gradle
+
+1bd90d87e0a43ae975e8d8194b48ec7bd16675d1, update gradle wrapper, Mon Aug 1 16:45:52 2016 +0200
+M	gradle/wrapper/gradle-wrapper.jar
+M	gradle/wrapper/gradle-wrapper.properties
+
+1779fb6fb092324d48364a1e0e99f966d218d4bf, travis ci: update to jdk 8, Mon Aug 1 16:34:31 2016 +0200
+M	.travis.yml
+
+ade15000c9415abfaa8d1be1dd75a8da2948a450, Update android tools in travis ci script, Mon Aug 1 15:56:18 2016 +0200
+M	.travis.yml
+
+d9ce6894a55bb2632db59bd396702ff7a781f088, Update android tools, appcompat, google play services, other dependencies and gradle to the latest version, Mon Aug 1 15:50:25 2016 +0200
+M	app/build.gradle
+M	build.gradle
+
+b2d71c04752524b76bf56a2a1223bb7119d4fdae, Merge pull request #120 from OpenCycleCompass/feature/track-archive-metadata-sqlite, Sun Jul 31 14:45:04 2016 +0200
+1fb1d8f6e5d28d863597ec18c9f04f3795af7fd6, track archive: rewrite finished * track archive stores metadata in a SQLite database * only the list of OcycoLocations is stored in a file (using serialization) * de-serialized data is checked for consistency, errors get toasted * OcycoTrackMetadata replace OcycoTrack.MetaData and is now an independent class * OcycoTrack.metaData renamed to OcycoTrack.metadata * javadoc supplemented, Sun Jul 24 02:44:52 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/MapFragment.java
+M	app/src/main/java/de/opencyclecompass/app/android/RoutingActivity.java
+M	app/src/main/java/de/opencyclecompass/app/android/TrackArchiveActivity.java
+M	app/src/main/java/de/opencyclecompass/app/android/Tracking.java
+M	app/src/main/java/de/opencyclecompass/app/android/UploadTrackActivity.java
+M	app/src/main/java/de/opencyclecompass/app/android/storage/OcycoTrack.java
+M	app/src/main/java/de/opencyclecompass/app/android/storage/OcycoTrackArchive.java
+A	app/src/main/java/de/opencyclecompass/app/android/storage/OcycoTrackMetadata.java
+M	app/src/main/res/values/strings.xml
+
+315b4f56320ddbce22639fa7db23639621512d3b, WIP, Fri Jun 17 16:48:42 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/storage/OcycoTrackArchive.java
+
+6c78a9c8d0a76c3bf169b61c0c8ce1209f5e4fd4, Merge pull request #116 from OpenCycleCompass/bugfix/115-ShowDataActivity-crash-if-invisible, Sun May 22 13:41:31 2016 +0200
+5582f504cdf06988f2944567992a70d45401f841, fix error in TrackArchive: dealing with corrupted tracks, Sat May 21 17:32:59 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/TrackArchiveActivity.java
+
+62549233151ab8a51b4b07b2c6d9dc2ec29d889f, fix error in TrackArchive: reading track from file fails because of wrong metadata file extension, Sat May 21 17:11:54 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/storage/OcycoTrackArchive.java
+
+d2e0023a1b00033376ec37d90149f85ecdfa6c23, use Utils.roundDecimals() instead of local implementation, Sat May 21 16:27:13 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/ShowDataActivity.java
+
+45646267ab64e5b912682d0a0fc79f8cef4e11bb, [Utils] format strings using default locale, Sat May 21 16:26:33 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/util/Utils.java
+
+1d48dcb40a323409eadfe7a00a0e55766e4d9df1, Merge pull request #112 from OpenCycleCompass/feature/deploy-google-play-store, Sat May 14 10:47:23 2016 +0200
+72880c70305845ab67f6c07ef3d9c997b0da08c7, fixed ShowDataActivity crash when activity is invisible, by disabling UI updating (and thus creating dialogs); beautified ShowDataActivity code, Fri May 13 09:54:53 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/ShowDataActivity.java
+
+694896446844c73ee680d09843ddb7ad9cdbf5bd, Merge pull request #110 from maride/develop, Thu May 12 23:23:59 2016 +0200
+02b313fcbf2e54287c4cd97c47fd098c39a9dd0b, Do TODO (onRequestPermissionsResult feedback), Thu May 12 20:45:00 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/RoutingActivity.java
+
+3640cde2f077a4ae097669eb9ca1b117ab51b805, Merge branch 'develop' of github.com:OpenCycleCompass/ocyco-app-android into develop, Thu May 12 20:26:52 2016 +0200
+1c1e94dda4554524ee3146f12a2ec95773c312e0, travis before_deploy: do not fail on branches other than develop, Thu May 12 14:59:02 2016 +0200
+M	.travis.yml
+
+c855153df6f114ea997adba048f5da43adbf8f02, New encryption keys for keystores, Thu May 12 14:42:32 2016 +0200
+M	ocyco-google-play.keystore.enc
+
+81685e1aad9d458d9949e22ab5c6a5d5690cec6f, publish develop build on Google Play (beta channel); use unix timestamp as versionCode, Thu May 12 14:31:42 2016 +0200
+M	.travis.yml
+M	app/build.gradle
+
+bec02416545c48636ab9af049ab314c409bab267, add (encrypted) google play credentials, Thu May 12 13:30:56 2016 +0200
+M	.travis.yml
+A	play-keys.json.enc
+
+367b95479fdf09799907c7de537bb9db60281c80, Deploy to Google Play Store using com.github.triplet.gradle:play-publisher [wip], Thu May 12 11:41:02 2016 +0200
+M	.travis.yml
+M	app/build.gradle
+M	build.gradle
+A	ocyco-google-play.keystore.enc
+
+702de75551ee5f368b93549a2d2be4e112fe6ed9, Merge pull request #111 from OpenCycleCompass/bugfix/travis-keystore-encryption, Thu May 12 12:14:51 2016 +0200
+d6f82899d200d3d6f20ca57b607ccb8d712d2df1, New encryption keys for keystores, Thu May 12 12:06:14 2016 +0200
+M	.travis.yml
+M	ocyco.keystore.enc
+
+fd5690d69574fa3aa119bf955efaf955c745998f, Update Travis status image, Thu May 12 04:53:45 2016 +0200
+M	README.md
+
+62628ac5be22a51c1180f295cba8012de85f32a4, Request permission if not given, Thu May 12 04:34:44 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/RoutingActivity.java
+
+2f068fc474217dfcef1b67b973affa36ece29521, Catch possible SecurityException leading to crash, Thu May 12 03:07:40 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/Tracking.java
+
+3ba56a99a72a1ab6cd952ff2c6585f6f1ad1ebbe, Merge pull request #108 from OpenCycleCompass/feature/update_gradle, Mon Apr 18 16:55:45 2016 +0200
+e2844e8f34c9a9923124e9a3a3cfb78c5493b111, Merge pull request #109 from OpenCycleCompass/bugfix/OcycoTrack-calculateDuration, Mon Apr 18 13:43:10 2016 +0200
+c87f9b02dee22098a0ca6a71b0ca6295fb6fafe6, fix error in OcycoTrack.calculateDuration(), Sun Apr 17 19:10:25 2016 +0200
+M	app/src/main/java/de/opencyclecompass/app/android/storage/OcycoTrack.java
+
+fcc2ee19fe9eb31e4a6a4b425e29dc8542115a6f, update gradle version, build tools and some dependencies, Fri Apr 15 19:03:41 2016 +0200
+M	.travis.yml
+M	app/build.gradle
+M	build.gradle
+M	gradle/wrapper/gradle-wrapper.properties
+
+6000747f05d0d2b265a886c0b4c6505685dad5eb, Merge pull request #107 from iBis-project/feature/rename_open-cycle-compass, Sun Apr 3 21:23:59 2016 +0200
+b5adf518f8d374b04e1fbcf886711218356dbe09, travis ci: upload destination folder fixed (escaped branch variable was not defined), Sat Apr 2 20:19:48 2016 +0200
+M	upload.sh
+
+173fce67296d1d33d18b3f601d65ac260656ab71, travis ci: execute upload.sh as *before_deploy* instead of script deploy provider, Fri Apr 1 23:18:27 2016 +0200
+M	.travis.yml
+
+a43b74ad3aa04388c57a06a5d9a7643888161d22, travis ci: script upload.sh exit code 127 debugging, Fri Apr 1 23:10:14 2016 +0200
+M	upload.sh
+
+94162253244b594f3dbfb26007ebf43d23649b14, travis ci: build feature branches, Fri Apr 1 22:53:08 2016 +0200
+M	.travis.yml
+
+0406e37220be1aaf7f2203e8359037da939c5586, travis ci: add deploy to https://dl.ocyco.de/, Fri Apr 1 19:58:47 2016 +0200
+M	.travis.yml
+A	upload.sh
+
+5cefb1757112d191237b9dd66532f59d5a975716, rename iBis to OpenCycleCompass, Fri Apr 1 16:50:32 2016 +0200
+M	.travis.yml
+M	README.md
+M	app/build.gradle
+R088	app/src/androidTest/java/de/mytfg/jufo/ibis/ApplicationTest.java	app/src/androidTest/java/de/opencyclecompass/app/android/ApplicationTest.java
+M	app/src/debug/res/values/strings.xml
+M	app/src/main/AndroidManifest.xml
+R099	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java	app/src/main/java/de/opencyclecompass/app/android/Calculate.java
+R097	app/src/main/java/de/mytfg/jufo/ibis/InfoActivity.java	app/src/main/java/de/opencyclecompass/app/android/InfoActivity.java
+R092	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java	app/src/main/java/de/opencyclecompass/app/android/MainActivity.java
+R082	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java	app/src/main/java/de/opencyclecompass/app/android/MapFragment.java
+R095	app/src/main/java/de/mytfg/jufo/ibis/IbisApplication.java	app/src/main/java/de/opencyclecompass/app/android/OcycoApplication.java
+R095	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java	app/src/main/java/de/opencyclecompass/app/android/RoutingActivity.java
+R078	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java	app/src/main/java/de/opencyclecompass/app/android/SettingsActivity.java
+R083	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java	app/src/main/java/de/opencyclecompass/app/android/ShowDataActivity.java
+R097	app/src/main/java/de/mytfg/jufo/ibis/TimePickerFragment.java	app/src/main/java/de/opencyclecompass/app/android/TimePickerFragment.java
+R080	app/src/main/java/de/mytfg/jufo/ibis/TrackArchiveActivity.java	app/src/main/java/de/opencyclecompass/app/android/TrackArchiveActivity.java
+R089	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java	app/src/main/java/de/opencyclecompass/app/android/Tracking.java
+R095	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java	app/src/main/java/de/opencyclecompass/app/android/UploadTrackActivity.java
+R088	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApi.java	app/src/main/java/de/opencyclecompass/app/android/ocycoApi/OcycoApi.java
+R070	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApiCache.java	app/src/main/java/de/opencyclecompass/app/android/ocycoApi/OcycoApiCache.java
+R075	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApiCacheKey.java	app/src/main/java/de/opencyclecompass/app/android/ocycoApi/OcycoApiCacheKey.java
+R075	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApiCallback.java	app/src/main/java/de/opencyclecompass/app/android/ocycoApi/OcycoApiCallback.java
+R078	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApiResult.java	app/src/main/java/de/opencyclecompass/app/android/ocycoApi/OcycoApiResult.java
+R083	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisLocation.java	app/src/main/java/de/opencyclecompass/app/android/storage/OcycoLocation.java
+R084	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrack.java	app/src/main/java/de/opencyclecompass/app/android/storage/OcycoTrack.java
+R088	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrackArchive.java	app/src/main/java/de/opencyclecompass/app/android/storage/OcycoTrackArchive.java
+R091	app/src/main/java/de/mytfg/jufo/ibis/util/TransparentLoadingOverlay.java	app/src/main/java/de/opencyclecompass/app/android/util/TransparentLoadingOverlay.java
+R098	app/src/main/java/de/mytfg/jufo/ibis/util/Utils.java	app/src/main/java/de/opencyclecompass/app/android/util/Utils.java
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/layout/activity_show_data.xml
+M	app/src/main/res/layout/activity_track_archive.xml
+M	app/src/main/res/layout/activity_upload_track.xml
+M	app/src/main/res/menu/menu_info.xml
+M	app/src/main/res/menu/menu_routing.xml
+M	app/src/main/res/menu/menu_settings.xml
+M	app/src/main/res/menu/menu_show_data.xml
+M	app/src/main/res/values/strings.xml
+M	deploy-bintray.txt
+R100	ibis.keystore.enc	ocyco.keystore.enc
+
+a0d066a9e8893c50fe7af3f981730b19d40f8ccb, Merge pull request #106 from iBis-project/bugfix/trackArchiveInvalidUuid, Mon Feb 29 11:21:59 2016 +0100
+e3625e53169618c5bb08cc2df6ac6f0ac2966e7f, IbisTrackArchive: remove Toast notifications used for debugging, Mon Feb 29 10:51:14 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrackArchive.java
+
+3f4024c1de6c95d81ca5bc06a1e006fe11fc8cdd, IbisTrackArchive: reading track list/mapping from shared preferences: bugfix: check for empty strings before converting to UUID, Sat Feb 27 23:13:21 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrackArchive.java
+
+a57002c191d4bf79e1b29fc3972a3fab156ba3eb, travis: escape branch names for apk upload, Sat Feb 27 21:35:52 2016 +0100
+M	.travis.yml
+
+db576377e4a8f322d40106c39a7b427d39ac3e4c, travis: upload master, develop and bugfix* (-> all build) branches, Sat Feb 27 21:22:08 2016 +0100
+M	.travis.yml
+
+ac7de16e2d2fa145a0722852441fad8976853d4a, travis: build and deploy/upload bugfix branches, Sat Feb 27 21:11:30 2016 +0100
+M	.travis.yml
+
+b2a15b3084816115334b2ae34f4dbc1b514c9bba, IbisTrackArchive: catch invalid Long and UUID value when reading track list/mapping from shared preferences, Sat Feb 27 20:54:31 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrackArchive.java
+
+c3a5f6242838c9cb13a684f4102d3cab419747be, Merge pull request #101 from iBis-project/feature_UploadLater, Thu Feb 18 19:43:38 2016 +0100
+ca5b814d0a78866bbe724a0c905af34d86e36d8f, IbisTrackArchive: fix deleteAll() method (crashes because ConcurrentModificationException), Wed Feb 17 13:26:43 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrackArchive.java
+
+771c3cd07c7287ee7e3ce7814d8ae1b08a3560a4, add string resource for recent commit: "TrackArchiveActivity: upload track only if it is not uploaded yet", Wed Feb 17 02:25:21 2016 +0100
+M	app/src/main/res/values/strings.xml
+
+4dccfafa0980d91a5e2175e009852173b82bbacc, TrackArchiveActivity: fixed button calling renamed deleteAll method, Wed Feb 17 02:24:28 2016 +0100
+M	app/src/main/res/layout/activity_track_archive.xml
+
+6be3959c8d35a9e525040f7a0e88ae88f98cf12d, UploadTrackActivity: use IbisTrackArchive, Wed Feb 17 02:23:11 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+72381bd0acf5cab0c118482d4b88f7421cb71953, TrackArchiveActivity: access tracks through global IbisTrackArchive instance; upload track only if it is not uploaded yet, Wed Feb 17 02:22:04 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/TrackArchiveActivity.java
+
+e19cf17de000e05e6b03ccae346ada049e3d6eaa, Tracking service: use class-local IbisTrack object, pass track UUID to UploadTrackActivity; stop self after track is stored in track archive and UploadTrackActivity is called, Wed Feb 17 02:19:24 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+65980c7ecd7593425f4829d95f4deba97171481f, IbisApplication: removed global IbisTrack variables and replaced them with a global IbisTrackArchive instance, Wed Feb 17 02:15:40 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/IbisApplication.java
+
+3c0b5091ed03e487be66395b43b49b0670c9a0e0, IbisTrackArchive: save and read track and tracks metadata separately, Wed Feb 17 02:13:51 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrackArchive.java
+
+9e886be394ee0423473dd14052d50d61211a4a2b, IbisTrack: add uploaded field to metadata, Wed Feb 17 02:12:22 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrack.java
+
+a63782aecc20be6095bbc68037a0efb23cbaac73, converted mRDB to a local variable (see fb8b4a2: disabled/bricked MapFragment polylines to enable IbisTrackArchive and remove global IbisTrack variables), Tue Feb 16 01:15:32 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+fb8b4a23f638c7a3906ba46ef7d1e177fd2761a1, disabled/bricked MapFragment polylines to enable IbisTrackArchive and remove global IbisTrack variables, Tue Feb 16 01:13:58 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+
+e451af6915ac9e1d6a13818b85c40ae54e5f059a, IbisTrack: added MetaData subclass, Sat Feb 13 14:34:40 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/TrackArchiveActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrack.java
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrackArchive.java
+
+6a924910cb469547a9d7ae48e01b32b86d47daf4, Add IbisTrackArchive class to store and manage IbisTrack objects persistent, Fri Feb 12 03:22:42 2016 +0100
+A	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrackArchive.java
+
+cbef6f62df7217f9bb33552eb5006af73b86d38b, IbisTrack: add public track ID and local track UUID to IbisTrack class, Fri Feb 12 03:21:10 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrack.java
+
+aa0616f2c407c25e43dae0f77f4c6a676248f0ac, renamed TrackDatabaseMemory to IbisTrack, Wed Feb 10 19:27:25 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/IbisApplication.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/TrackArchiveActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+R098	app/src/main/java/de/mytfg/jufo/ibis/storage/TrackDatabaseMemory.java	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisTrack.java
+
+051f920c44e310c2250ff898fd5dea1c407152ca, feature "upload track later": first working draft, but [wip], Wed Feb 10 14:00:31 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/TrackArchiveActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+c656ae063598faa3cba0a817e5ff8b8d1868ca21, Utils.formatTime(long ms): shortened display for small time intervals, Wed Feb 10 13:11:59 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/util/Utils.java
+
+f169c34023b52d0bbb5dc56ca707cee94fc06c8a, feature "upload track later": make IbisLocation and TrackDatabaseMemory serializable, Wed Feb 10 13:10:08 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisLocation.java
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/TrackDatabaseMemory.java
+
+a98d89a650a2ee51c26e47d7ae01fa0d96119257, feature "upload track later": set UploadTrackActivity title, Fri Feb 5 23:13:25 2016 +0100
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/res/values/strings.xml
+
+0ee3b777e481284dd264780e3fc290267e25eab4, feature "upload track later": clarified units used for time (milliseconds) and distance (meter), fixing display bug in UploadTrackActivity; documented units used; fixed bug in TrackArchiveActivity, ListView is now refreshed after delete all operation, error handling inTrackArchiveActivity, Fri Feb 5 18:52:19 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/TrackArchiveActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisLocation.java
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/TrackDatabaseMemory.java
+M	app/src/main/java/de/mytfg/jufo/ibis/util/Utils.java
+M	app/src/main/res/values/strings.xml
+
+59de281855a31409325b0a18798e8d8eb0c49e26, feature "upload track later": integrate TrackArchiveActivity; add buttons to show TrackArchiveActivity to MainActivity; add "Upload Later" button to UploadTrackActivity modified UploadTrackActivity to upload archived track from shared preferences, Thu Feb 4 19:09:01 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/layout/activity_main.xml
+M	app/src/main/res/layout/activity_upload_track.xml
+
+eceeea634bf2d8e8fb2b0c105a3c9ad3ffc54fb7, feature "upload track later": added TrackArchiveActivity (lists archived tracks and starts upload of archived tracks), Thu Feb 4 19:05:34 2016 +0100
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/de/mytfg/jufo/ibis/TrackArchiveActivity.java
+A	app/src/main/res/layout/activity_track_archive.xml
+M	app/src/main/res/values/strings.xml
+
+8109a0d5e84d81daad44ee817121057089aaefb3, IbisLocation class: added getDuration() method, Thu Feb 4 18:57:09 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/TrackDatabaseMemory.java
+
+6fab50e3e72c6622b18676cade5426321686fa8c, Merge pull request #100 from iBis-project/feature_TrackDatabaseMemory, Wed Feb 3 12:14:23 2016 +0100
+3f04388f23344ed2d772674cf07d4e1eedc8110c, IbisLocation class: removed greek letters in variable names; enhanced haversine formula variable naming in distanceTo() method, Wed Feb 3 01:41:16 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisLocation.java
+
+b3660d7b4bfa3991366ec40ccb818ace06cda5fb, TrackDatabaseMemory class: use ArrayList instead of LinkedList (better iteration performance); (semi) intelligent capacity management, Tue Feb 2 17:42:41 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/TrackDatabaseMemory.java
+
+06dbb806c697f4a11b41a146802dd50ce0f8ffa4, TrackDatabaseMemory class: * removed deprecated methods and their usage * rename recalcDistances() to recalculateDistances() * add class documentation, Tue Feb 2 17:21:44 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/IbisApplication.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/TrackDatabaseMemory.java
+
+d7853bd3a50541685ce17f437dc7f268a3457784, IbisLocation class: add class documentation and copy constructor, Tue Feb 2 17:16:57 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisLocation.java
+
+c99d3041fe7d7def69a816d49c6f89970f994b27, Feature TrackDatabaseMemory: replace SQLite based TrackDatabase with TrackDatabaseMemory built on own data types and Lists., Mon Feb 1 04:08:20 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/IbisApplication.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+A	app/src/main/java/de/mytfg/jufo/ibis/storage/IbisLocation.java
+A	app/src/main/java/de/mytfg/jufo/ibis/storage/TrackDatabaseMemory.java
+D	app/src/main/java/de/mytfg/jufo/ibis/util/TrackDatabase.java
+
+d590f13de1edfd0b622d06bfc536640297866215, upload backward compatibility, Tue Jan 26 11:53:56 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+2423e240e3fa436cad5f632a66b6a7c632087b41, Feature acceleration (/vibration) metering: initial implementation, Mon Jan 25 19:47:47 2016 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/util/TrackDatabase.java
+
+6e92bdf2783ce08da0c602668243253644aa4563, Merge pull request #99 from iBis-project/feature_TrackDatabaseClass_branch4, Sun Jan 24 01:49:38 2016 +0100
+40c56bbbe34fac8423af46bc147361c42cc54d98, GPSDatabase and RoutingDatabase classes deleted and replaced with TrackDatabase class; database instances (mGPSDB and mRDB) are now static global variables (in class IbisApplication), Sun Jan 24 01:22:05 2016 +0100
+D	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/IbisApplication.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+D	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/util/TrackDatabase.java
+
+14015c1c7225650071c39c0277bdfb7bf5a6bc29, fixed some comments, Sat Nov 28 13:00:56 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/util/TrackDatabase.java
+
+5651689f274a0ccf43b7e4c780e735d6601854fa, add TrackDatabase class (replaces GPSDatabase and RoutingDatabase classes) [WIP], Mon Nov 16 19:49:37 2015 +0100
+A	app/src/main/java/de/mytfg/jufo/ibis/util/TrackDatabase.java
+
+11212a4276512582a0602a35d89c78715ba1103c, Merge pull request #97 from iBis-project/feature_info_version, Mon Nov 30 20:11:41 2015 +0100
+28c2b359754bc85522520369c3f6760c0c6419b2, add version info to InfoActivity (fixes #96), Mon Nov 30 20:05:36 2015 +0100
+M	app/build.gradle
+M	app/src/main/java/de/mytfg/jufo/ibis/InfoActivity.java
+M	app/src/main/res/layout/activity_info.xml
+M	app/src/main/res/values/strings.xml
+
+be71e63da653e96c88c4201c18c9eded5191a07c, Utils: added getDateTime() and parseDateTime() functions, Mon Nov 30 20:03:23 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/util/Utils.java
+
+cf760f91b1e20c6d0e9011b77f89d933e6c82241, Merge pull request #95 from iBis-project/feature_build_system_2, Sat Nov 28 17:34:32 2015 +0100
+22e396706c83ca3342bfc7afc1cc279908ce9b2c, bintray upload: include upload date in apk file name, Sat Nov 28 16:12:00 2015 +0100
+M	.travis.yml
+
+1d0587147e673eee2280c07de1eb750da6fa63b5, gradle build: include date and commit hash in version name; remove unused unsignedrelease build, Sat Nov 28 16:07:47 2015 +0100
+M	app/build.gradle
+
+7b67d883b040032a7fa735cb83f2c76dbfec573d, Travis CI: do not assemble release build, Sat Nov 28 15:47:26 2015 +0100
+M	.travis.yml
+
+17cfde1d0892736cf5aa4513e31222a2877d765a, updated dependencies in gradle; use only play-services-location:8.3.0 (instead of play-services:7.8.0), Sat Nov 28 15:44:55 2015 +0100
+M	app/build.gradle
+
+94144da0d59ca5dae598fd263bed88a70467ae35, Merge pull request #94 from iBis-project/bugfix_upload_error_track_too_short, Sat Nov 28 15:38:31 2015 +0100
+6b96b33b5e427e128bfbb6261ba6dbc0fb72db99, fixed bug preventing track upload because track seems too short (ID and Dist column were interchanged in random cut), Sat Nov 28 14:44:04 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+
+8313916f0d5728ef00752ba238716e29dbc23868, Merge pull request #93 from iBis-project/hotfix_upload-button-disabled, Mon Nov 16 17:49:18 2015 +0100
+de6bf3cb4ecb274be52cb9f37173d382a5e28f85, hotfix: don't disable (and never re-enable) upload button in UploadTrackActivity, Mon Nov 16 17:20:15 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+d63d7f732a1b834bd396e5ffb4a62b2fa26c8b16, Merge pull request #92 from iBis-project/bugfix_issue87, Sun Nov 15 22:16:36 2015 +0100
+4cf5d03ed28c2d0222bdc3e6dfffc2f1a6ac55eb, finally fixed random cut bug (closes #87), Sun Nov 15 21:34:49 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/res/values/strings.xml
+
+528ce271b949fd838952057f70dcf61d7e91beb9, Merge pull request #91 from iBis-project/feature_loading_overlay, Sun Nov 15 21:33:36 2015 +0100
+1a7e21f11b7abd3c16831c9fb05b97ee71ac31b7, added previous missed loading overlay graphics, Sun Nov 15 20:02:42 2015 +0100
+A	app/src/main/res/drawable-hdpi/loading_icon.png
+A	app/src/main/res/drawable-mdpi/loading_icon.png
+A	app/src/main/res/drawable-xhdpi/loading_icon.png
+A	app/src/main/res/drawable-xxhdpi/loading_icon.png
+A	app/src/main/res/mipmap-xxxhdpi/loading_icon.png
+
+465e8a65f504990853cc026bef91eff1a9b03a86, show loading overlay while uploading track (closes #53), Sun Nov 15 19:52:27 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+b07ce9ae00509497d57f6d9c1369b3a0a5a989d0, minor changes in TransparentLoadingOverlay class, Sun Nov 15 19:29:52 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/util/TransparentLoadingOverlay.java
+
+53e2152b77c965b6f02b29b498fc9e32e9473ed4, created transparent loading overlay, Sun Nov 15 19:19:17 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+A	app/src/main/java/de/mytfg/jufo/ibis/util/TransparentLoadingOverlay.java
+M	app/src/main/res/anim/rotation.xml
+M	app/src/main/res/layout/activity_routing.xml
+A	app/src/main/res/layout/transparent_loading_layout.xml
+M	app/src/main/res/values/styles.xml
+
+5e44fd0692d6d30405547f745023f9290bde5e47, Merge pull request #90 from iBis-project/feature_drivenPolyline, Sun Nov 15 14:56:40 2015 +0100
+b43826a78ba766f67b2b2e219b56d2dbcdce2966, show polyline of driven route (closes #70), Sun Nov 15 14:39:44 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+
+50688cbaae4d5c391511a40b49b2e648c3dbd9a2, Merge pull request #88 from iBis-project/feature_fix_issue_87, Sun Sep 27 15:05:34 2015 +0200
+951eedd05f3eb057c5f1295b5549a5db765ada93, fixes #87: do not loop infinitely (and catch some corner cases), Sun Sep 27 13:21:50 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+
+b915661ed985fe9a37c5e5c04509a339cd1ea396, Merge pull request #86 from iBis-project/feature_android23, Sun Sep 13 23:32:00 2015 +0200
+81672c7a95ee0442acb7a6b6681fe621e67047cb, Merge pull request #85 from iBis-project/feature_api, Sun Sep 13 23:23:41 2015 +0200
+01ebf1b35bd539559e128f60b90705b273ba91a9, android 23: removed commented (deprecated) code, Sun Sep 13 23:23:34 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+f9a0a83e7f8fa6a2391e5994f501070a084bc533, travis: build and upload only on master and develop, Sun Sep 13 03:03:47 2015 +0200
+M	.travis.yml
+
+2b491a0bae01ee0ce7ba004866afded2fadf8d94, update to android 23; rewrote deprecated code, Sun Sep 13 03:01:34 2015 +0200
+M	.travis.yml
+M	app/build.gradle
+M	app/src/main/java/de/mytfg/jufo/ibis/InfoActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+4ba68f365262c67222f7e3458c636997c492515c, ibisApi class: minor improvements, Sun Sep 13 00:09:42 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApi.java
+
+dc7579c32e6490edaca40331b1b9ae611ca15970, add ibisApi class, Sat Sep 12 22:58:28 2015 +0200
+A	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApi.java
+A	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApiCache.java
+A	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApiCacheKey.java
+A	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApiCallback.java
+A	app/src/main/java/de/mytfg/jufo/ibis/ibisApi/IbisApiResult.java
+
+7c52b95619d0903c7420ce7d87426d626040fa9c, Merge pull request #84 from iBis-project/feature_issue-fixing, Mon Sep 7 20:28:32 2015 +0200
+c36dc10f9ea94c89cb963702166a5c8ba183cd45, some improvements and fixes in UploadTrackActivity, Sun Sep 6 14:40:21 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+c2024bdc314598029a325097b1b603b8141ac3f7, created util class, moved readStream(InputStream stream), roundDecimals(double d), formatTime(double secondsInput) to util class (fixes #62), Sat Sep 5 01:05:10 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+A	app/src/main/java/de/mytfg/jufo/ibis/util/Utils.java
+
+7720cd25f70769a3fb87e397b79527939d538284, random track cut off: use SecureRandom (cryptographically secure), Sat Sep 5 00:40:44 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+
+65ca63f0b9bec1efb76e50d368257c8d978dddf5, disable minify and shrinkResources for release and bintray builds, Fri Sep 4 19:29:14 2015 +0200
+M	app/build.gradle
+
+92d439bdd474ac210215096c8b6cb5c06fd6f920, add track random cut off (fixes #75), Fri Sep 4 13:30:45 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+
+91b2f90f6e972fa954a2fe756e1fd3048c3256f0, fixed links to travis build page in README, Thu Sep 3 14:02:34 2015 +0200
+M	README.md
+
+5973988b01877d3241b3fc2cdb449e149a303068, travis: do not download sys-img and do not start emulator (emulator is unused since 1908230111edb4ee69326e002ca2e5f9aa127f26), Thu Sep 3 13:59:54 2015 +0200
+M	.travis.yml
+
+208366c43a4722d02bf3ac8efbb07645dff3ef6a, updateMap() only when fragment is visible; prevent NPE if location is null, Thu Sep 3 11:06:37 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+
+5fedef50c416c322fb287e5a0b9954d5c79e4fc5, use static IbisApplication methods, Thu Sep 3 09:30:48 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/TimePickerFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+f77fa7e272b6a04f823ce7ac36354941d0fcd6c3, rename GlobalVariables to IbisApplication; made IbisApplication variables and methods static, Thu Sep 3 09:15:58 2015 +0200
+M	app/src/main/AndroidManifest.xml
+D	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+A	app/src/main/java/de/mytfg/jufo/ibis/IbisApplication.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+cb1d0b594da50947e18c40ea273780f8878cae3e, start/stop updating map in onPause()/onResume(), Thu Sep 3 09:08:21 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+
+b95671d472ae8e9ab7fb1c8d3b3f6e6e337695dd, prevent updateMap() being called if MapFragment is not attached (caused (catched) NPE), Wed Sep 2 23:35:42 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+
+9277cffc1f1e0bde67a6755cca345aa6d6d454cc, refactored Map.createPolyline() (-> *createStaticPolyline()* ), Wed Sep 2 23:11:43 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+
+f2002a5a2667e33608ff920319c47c9a5ac64797, switch back to android skd version 21 (see #83 for details), Wed Sep 2 09:18:34 2015 +0200
+M	app/build.gradle
+
+bf8e8b5d4a92839474f18f0d7330c6b35a486068, add scrollView in MainActivity, everything is now visible on small screens (fixes #79), Wed Sep 2 09:16:23 2015 +0200
+M	app/src/main/res/layout/activity_main.xml
+
+1369aca9c48b49ad658d9eea2cabba713db82ed3, fixed typo in MainActivity (fixes #80), Wed Sep 2 08:49:06 2015 +0200
+M	app/src/main/res/values/strings.xml
+
+41e990e8a264aeb437672076b22acdbfd7b9ba03, Merge pull request #82 from iBis-project/feature_readme, Tue Sep 1 23:57:00 2015 +0200
+41b6be3475025a5146533adb40586e1fac845717, added README.md (in english), Tue Sep 1 18:32:53 2015 +0200
+D	README
+A	README.md
+
+485fc01d398bad536305cb146afc538056defd56, Merge pull request #81 from iBis-project/feature_travis-ci, Tue Sep 1 17:05:28 2015 +0200
+2f36a98f7a2fc0deb151c0aa7fe8063991257611, travis ci: gradlew typo, Tue Sep 1 16:46:06 2015 +0200
+M	.travis.yml
+
+1908230111edb4ee69326e002ca2e5f9aa127f26, travis ci: solely assemble bintray and release builds, Tue Sep 1 16:34:10 2015 +0200
+M	.travis.yml
+
+a0d738789643a9ce5bc48d7ba96e3330882eb397, travis ci: use OracleJDK7, Mon Aug 31 23:48:43 2015 +0200
+M	.travis.yml
+
+cd2bb2ae70c2f3a22c1403a51dc042027932c487, updated gradle to version 2.6, Mon Aug 31 23:48:07 2015 +0200
+M	gradle/wrapper/gradle-wrapper.properties
+
+125e91dda9b2ab2519c8b2f6d08b96310060abe1, fixed keystore location, Mon Aug 31 20:39:16 2015 +0200
+M	app/build.gradle
+
+e9958d407ccc48fd99268246312eeabe5c44bdf9, add google-m2repository dependency, Mon Aug 31 19:58:22 2015 +0200
+M	.travis.yml
+
+220c034911361e2da56b23a06ce285ae8806e8d1, add Google Play Services Library; remove Google Cloud Messaging lib, Mon Aug 31 18:43:42 2015 +0200
+M	.travis.yml
+
+aba4845f5f82027f09069de9335110704555aff0, remove zipalign, Mon Aug 31 18:23:11 2015 +0200
+M	app/build.gradle
+
+19f531c04a8ee98bcb98f7eb98dcc486ae3b9095, add Travis CI and android keystore; deploy builds to bintray.com, Mon Aug 31 18:10:49 2015 +0200
+A	.travis.yml
+M	app/build.gradle
+A	deploy-bintray.txt
+A	ibis.keystore.enc
+
+3b54e0917c38887b3fe72dac414e6891f86943e6, remove gitlab ci, Mon Aug 31 18:09:26 2015 +0200
+D	.gitlab-ci.yml
+
+4f2781d52652366cba80120e7add52ec043f1ec8, append "DEBUG" to app_name for debug build type, Mon Aug 31 18:00:25 2015 +0200
+A	app/src/debug/res/values/strings.xml
+
+c4f54c7d22a6ad10d0b0b944515fcac93d1d98ad, Merge branch 'feature_webui-tokens' into 'develop', Tue Aug 25 18:17:42 2015 +0200
+2751ff8a7ff8065a310f4d660ed0e3c5122b89fe, Merge branch 'crash_reports' into 'develop', Tue Aug 25 18:15:10 2015 +0200
+d6d9eb92d417e43213de5f616c3ecd46e8cda4b5, Merge branch 'feature_gitlab-ci' into 'develop', Tue Aug 25 18:14:46 2015 +0200
+bdb19dd51049aea146af47aa3b43320e86c8eccb, fixed Gitlab CI file, Mon Aug 24 18:21:47 2015 +0200
+M	.gitlab-ci.yml
+
+d4e9b571be1f65e2487ae605e1c418d2244653ba, fixed Gitlab CI file, Mon Aug 24 18:17:53 2015 +0200
+M	.gitlab-ci.yml
+
+5610a88285b1eb1aa1f3e854cb9f92c130c623e0, fixed Gitlab CI file, Mon Aug 24 18:07:23 2015 +0200
+M	.gitlab-ci.yml
+
+38de4e9b6ce0fd5b6e21f01af622327cd54d9da4, add Gitlab CI file, Mon Aug 24 17:45:38 2015 +0200
+A	.gitlab-ci.yml
+
+32de611ab27f8b9b162f717eb3daa4ee66c29455, append user tokens to WebUI URL to allow users to view their private tracks., Mon Aug 24 17:18:16 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+cc2af9897b520dfd27dc694d89e5e6277ef4be02, updated gradle android plugin to 1.3.0, Mon Aug 24 15:57:45 2015 +0200
+M	build.gradle
+
+6cf82046f29bcd76e883ce7ef0818dfed1d89bbd,  acra: removed unused strings, Mon Aug 24 15:39:05 2015 +0200
+M	app/src/main/res/values/strings.xml
+
+dd086c6958d83aef101d8d6a000b43711372a256,  acra: send crash report to acralyzer (https://acra.mytfg.de/acralyzer/_design/acralyzer/index.html#/dashboard/ibis), Fri Aug 21 20:49:54 2015 +0200
+M	app/build.gradle
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/res/values/strings.xml
+
+df7cd51d66b8dc0501873044669f021a1312d36d, Fix: Read HTTP body correctly (caused error on Andoid 5 / ART runtime), Wed Jun 24 11:04:11 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+2893f1f156f189f05caaa4bb6fddb93c77424e46, added ACRA (Application Crash Reports for Android), Tue Apr 7 23:16:51 2015 +0200
+M	app/build.gradle
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/res/values/strings.xml
+
+2a4f7a0d47511a5d17ac4832c87954c6db070605, track upload notification (fixes #77) and upload result processing (enable regenerate token button; fixes #76), Tue Apr 7 22:37:31 2015 +0200
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+dfa0328445cc125b39508e872108df37a95b3a50, Merge branch 'issue_fixing_2' into 'master', Mon Mar 23 22:59:47 2015 +0100
+bd6d3a94bf1587a06badf4fa455bad5687d60d6c, increased http timeouts (fixed #68), Mon Mar 23 22:52:14 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+471ec0888543495a1d9741c642efd63784a35175, changed process flow of online tracking, Mon Mar 23 22:46:55 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+4e0e9120004f86a8bf89f6ca8e841189113e5394, bug fixing, Mon Mar 23 20:55:27 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+1ac345a3197afa66b0b4962de5d935d9f7782944, re-structured code, deleted unnecessary logs (fixed #73), Sun Mar 22 20:04:05 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/InfoActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/TimePickerFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+51ae521852e24a1881f326c16fa2c55040c3069a, keep screen on, show ShowDataActivity on lock screen (fixed #69), Sun Mar 22 18:23:34 2015 +0100
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+
+2e4bee2342e370ffc196813f398fb2e4982f3b03, Merge branch 'map' into 'master', Sun Mar 22 16:28:29 2015 +0100
+9e34b9f47153de808503b13bb1db0352f3931bea, deleted archive file provider, bug fixing, Sun Mar 22 16:26:08 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+
+c91ec745f5b449e9c2595ce51d1752ade1c579a5, only enable auto rotation, if auto centering is enabled, Sun Mar 22 10:56:36 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+
+2e9bb08c30f06c711ad5964e9c9013cbdfe19185, added optional auto map rotation (fixed #65), Sat Mar 21 23:58:24 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/res/menu/menu_show_data.xml
+
+45a9e1c265896118d6da44af3535b0a37a871136, MapFragment: created custom tile provider chain (use open cycle map), Thu Mar 19 16:30:14 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+
+c39135fd840b2f1783d2e33b5b1761c231924f7e, Merge branch 'InfoActivity' into 'master', Wed Mar 18 17:00:14 2015 +0100
+3b70d89fa21b5685e78d3c636d2388aef2e89b98, InfoActivity: added section "Kontakt", Wed Mar 18 16:56:44 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/InfoActivity.java
+M	app/src/main/res/layout/activity_info.xml
+M	app/src/main/res/values/strings.xml
+
+e07dadfcf88fb41f38153b304b83e0b956fe34db, InfoActivity: linked links, some minor changes, Wed Mar 18 16:17:08 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/InfoActivity.java
+M	app/src/main/res/layout/activity_info.xml
+M	app/src/main/res/values/strings.xml
+
+dc730e462cdbbe724ecb36e8deccf1846417b3a1, linked InfoActivity in menus, Wed Mar 18 14:53:59 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/InfoActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/menu/menu_info.xml
+M	app/src/main/res/menu/menu_main.xml
+M	app/src/main/res/menu/menu_routing.xml
+M	app/src/main/res/menu/menu_settings.xml
+M	app/src/main/res/menu/menu_show_data.xml
+M	app/src/main/res/values/strings.xml
+
+66f6df622fcce18b68b95a31bc5d7ffff83b5bfd, InfoActivity: added content, Wed Mar 18 12:22:01 2015 +0100
+M	app/src/main/res/layout/activity_info.xml
+M	app/src/main/res/values/strings.xml
+
+77b3e017f920c1d4ccbd0e86cac174a60df9272a, created InfoActivity, Wed Mar 18 11:38:07 2015 +0100
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/de/mytfg/jufo/ibis/InfoActivity.java
+A	app/src/main/res/layout/activity_info.xml
+A	app/src/main/res/menu/menu_info.xml
+M	app/src/main/res/values/strings.xml
+
+37902c0cb9964cdc2ce13ad736a820569d0eab49, Merge branch 'issue_fixing' into 'master', Wed Mar 18 11:30:08 2015 +0100
+0d717b4e7d487460af892d8dd0c28d066213cd60, Calculate: bug fixing, Wed Mar 18 11:28:31 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+
+06c96e55fa16aab63c1c43094960a26a427ccf39, fixed problems with token (fixed #66, worked on #67), Wed Mar 18 10:50:30 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/layout/activity_upload_track.xml
+M	app/src/main/res/values/strings.xml
+
+3114a9888b7330dbf8d6a0cd39489355a89d87e8, UploadActivity: format shown values (fixed #55), Wed Mar 18 09:48:18 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/values/strings.xml
+
+05e927f3791c4ac619c93c7bc5818cc9b0e7fe4c, Show map overlays as default (fixed #64), Mon Mar 16 18:24:57 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+
+17f57e1a6c609d993372fd47a653065b666f0db6, Calculate: bug fixing, Mon Mar 16 18:05:25 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+
+fafa1473797e811d3efb40701d70b9494626b542, UploadActivity: added alert popup for deleting track (fixed #34), Mon Mar 16 16:29:57 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/layout/activity_upload_track.xml
+
+b68f9cf5d2dc565f36303511be0ba1671c36dd0f, MainActivity: typo (fixed #59), Wed Mar 11 17:28:52 2015 +0100
+M	app/src/main/res/values/strings.xml
+
+ef7715119d4c51ba44c7528c63d5dc519594038c, Merge branch 'Regional_Wettbewerb' into 'master', Wed Mar 11 14:50:33 2015 +0100
+6810abd59f1c51d15b9d6ae92839cc7926f2415c, Merge branch 'CodeStyle' into 'master', Wed Mar 11 14:50:23 2015 +0100
+b3fc0733d82a7895638e46d1ce75865eb11ac267, Calculate: convert driven distance to km, Wed Mar 11 14:26:39 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+
+b93cc446bd6372c883ffbcb92ea74004f92fb0af, changed some modifiers, Wed Mar 4 04:19:23 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+e9d7c25a046c6d4c07602f2c47fdd51319ed06be, Merge branch 'UI_2' into 'master', Wed Mar 4 02:46:04 2015 +0100
+fb5c2822f9bc51f4570790150d61121deb4d2712, avoid showing unrealistic high values in info boxes, Wed Mar 4 02:42:30 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+
+f96f7a99dcb89f89dd0879c6a52e96414663b44c, added menus (fixed #39), Tue Mar 3 23:57:17 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/res/menu/menu_main.xml
+M	app/src/main/res/menu/menu_routing.xml
+M	app/src/main/res/menu/menu_settings.xml
+M	app/src/main/res/menu/menu_show_data.xml
+M	app/src/main/res/values/strings.xml
+
+006be887024d96974ebcadd628034ab29d29906e, Merge branch 'time_factor' into 'master', Tue Mar 3 23:09:29 2015 +0100
+a1691edf9a71f463e1ea4d228d7f39d31ef4e6f1, RoutingActivity: enable switches in correct way, Tue Mar 3 23:07:36 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+5a5457f69478d8543078a7f28af692d565006339, request time_factor from server, calculate with time_factor, Tue Mar 3 22:46:30 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/values/strings.xml
+
+7a7706caa833254a3b98fae4d0960835bfac5e10, RoutingDatabase: prepared for using time_factor, Tue Mar 3 20:50:15 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+1fd7fd157b3d986e4c9b5b62a062c8af0891b0a6, added LICENCE (fixed #40), Tue Mar 3 20:10:55 2015 +0100
+A	LICENCE.txt
+
+34bcf26ad100151398f2f8cfd7eebf49b047f301, Merge branch 'bugfixing_3' into 'master', Tue Mar 3 19:59:30 2015 +0100
+836c21d780a0a5d4e3107c7c3a7190e685431f24, fixed problems with different sGef in notification and info box, fixed 'infinity km/h' problem (fixed #49), Tue Mar 3 19:04:41 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+d92fa7610bac928eb79b553e2019ae7a4d01d549, delete RDD before inserting a new (fixed #56), Tue Mar 3 16:30:06 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+
+042a3262645ed1aaa06295c8005769700f04f2c8, RoutingActivity: fixed problems with focus @start_address, Tue Mar 3 15:40:43 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+a87036ec5143977bf26b03b73c2434113e5a2309, Merge branch 'navigate_from_current_position' into 'master', Tue Mar 3 15:03:45 2015 +0100
+aad838c3e24596d000621dd2bd6aa27baa137ca4, RoutingActivity: send start position to server, Tue Mar 3 14:59:48 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+01ae48f3c3f1a38b1162a7878feab86a2dc28e73, RoutingActivity: added Button for navigate from current position, Tue Mar 3 14:24:16 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/values/strings.xml
+
+7bf6a9284dc2f1c2c57992276d758d233242f9a7, Merge branch 'tracking_buttons' into 'master', Tue Mar 3 12:25:54 2015 +0100
+6553597f819c9775c414dcc923e582f8eea67ef7, ShowDataActivity: start Tracking, if wasn't started yet, Tue Mar 3 12:23:33 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+
+56ffb5b2b7be8270e79dbca812686a2155df0fe7, SettingsActivity: removed stop tracking button, don't start tracking service in saveSettings, Tue Mar 3 01:11:28 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/res/layout/activity_settings.xml
+
+1579e391ca7c1b3034c9fb6c0af7dc41bf897cd8, SettingsActivity: added UI updater, Tue Mar 3 01:04:14 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+
+2a424c17a77c814c0415258ae47ce17300004421, added start- and stop tracking buttons to MainActivity, Tue Mar 3 00:57:48 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/res/layout/activity_main.xml
+M	app/src/main/res/values/strings.xml
+
+09cc9acb28eb8b6ec62b56efea0f6432bf9b79d9, Fixed GPSDb I/O exception (fixed #47), Mon Mar 2 21:46:27 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+6e5fda3985ed3f020af127080d4856e2fb500f52, Merge branch 'RoutingActivity_improvements' into 'master', Mon Mar 2 21:26:24 2015 +0100
+d73f96422e0f65346cd91931c49f0cb5f58b373b, RoutingActivity: added switch for routing with user data (dynamic costs), Mon Mar 2 21:22:19 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/values/strings.xml
+
+0ce39fe8b3428b9ef1d6f8a7031f2b3ae3b8c175, RoutingActivity: save in shared preferences, Mon Mar 2 20:54:46 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+023294c897472e11c2e44015512979a59f1e477d, RoutingActivity: added alert dialog, if time or distance wasn't entered, Mon Mar 2 20:09:38 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+3acb0d031eadbf7e4b3c77842c3b8396d591c95f, RoutingActivity: UI improvements, Mon Mar 2 19:02:24 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/values/strings.xml
+
+cbc3eec174e77009937fbd17110719d5c6cc3f50, RoutingActivity: sorted initialisation and declaration, Mon Mar 2 18:43:54 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+eeb69f6b9d8262470ce4904b256d2e4a44f9f4e3, Merge branch 'database_performance' into 'master', Mon Mar 2 18:32:08 2015 +0100
+8050776c4b9c9dd30e7f8ea2c02a698cd386a790, RoutingActivity: added loading animation, Mon Mar 2 18:29:54 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+A	app/src/main/res/anim/rotation.xml
+M	app/src/main/res/drawable-hdpi/ic_launcher.png
+M	app/src/main/res/drawable-mdpi/ic_launcher.png
+M	app/src/main/res/drawable-xhdpi/ic_launcher.png
+M	app/src/main/res/drawable-xxhdpi/ic_launcher.png
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/values/strings.xml
+
+3aeab181d4dcf1be0fcb3c37a4cc70e0350230a0, Merge remote-tracking branch 'origin/master', Mon Mar 2 14:34:09 2015 +0100
+b7b16d825cf750353acf5acb6b086fb3c724bd9c, fixed SQLite I/O exception, Mon Mar 2 14:33:39 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+fbcd0fbbf5d1f1f0029d6ca21f037d843a4c46a9, read from jArray inside RoutingDatabase class, Mon Mar 2 14:30:43 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+
+5bf6ac7298bd83a9d53e42bd710d4539adcee655, Merge branch 'routing_types' into 'master', Mon Mar 2 13:26:46 2015 +0100
+9868f43f8c90425d7517fb210751c434212745a3, send route_type to server, Mon Mar 2 13:24:32 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+e4818d16eaebb24fbd2456e3eed3222ab653cad1, added spinner for selecting route type, Mon Mar 2 12:59:46 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/res/layout/activity_routing.xml
+A	app/src/main/res/values/arrays.xml
+M	app/src/main/res/values/strings.xml
+
+4cecbba8ad7a9e1f8898e819e9ed684cd0e0edd3, Merge branch 'Bugfixing' into 'master', Mon Mar 2 11:58:06 2015 +0100
+ba14cffad892ea3bcafee80a7037534af3768fa6, fixed problems with auto focus on edit texts (fixed #35), Mon Mar 2 11:53:29 2015 +0100
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/layout/activity_settings.xml
+
+ee92ea7cf28ec698133e15b6d267651aa6ed07fd, fixed bug app crashes when start navigation is clicked, added popup, if GPS is deactivated (fixed #38), Mon Mar 2 00:31:35 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+
+dd8ad77912aa8a02f4eb82d7f0c9dcf3b15e7407, added content to Database's onUpgrade() (fixed #36), Mon Mar 2 00:10:30 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+
+0228fb0c8b900a79239aa0cf7cf12a7d624399e8, made auto center map optional, bug fixing (fixed #44), Mon Mar 2 00:01:18 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/res/menu/menu_show_data.xml
+
+1dc185567d18667c4c53a71941c62fddee18a7d6, MainActivity: changed title (fixed #43), Sun Mar 1 22:35:53 2015 +0100
+M	app/src/main/res/values/strings.xml
+
+5ba7d209212fafb5ffcc712d608585a918761721, call updateUi() from onCreate() (fixed #41), Sun Mar 1 22:27:41 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+aced444e64cc4a8d2e752c3510574b1a0fe7e266, fixed #37, Sun Mar 1 22:23:13 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+54aa4622f2a1bc19384430084cc4936af9e26b66, Merge branch 'RoutingActivity' into 'master', Sun Mar 1 17:27:03 2015 +0100
+a547bc3c223933d35bd09d0d8ed488f22926d0e8, fixed lint errors, Sun Mar 1 13:09:15 2015 +0100
+M	app/src/main/res/layout/activity_routing.xml
+
+84bf6f65ee16b2db153f05d6bf8969a28c18887d, updated welcome text and titles, Sun Mar 1 12:32:05 2015 +0100
+M	app/src/main/res/values/strings.xml
+
+350167afb128a58e317bc14ab0f756aca2828715, RoutingActivity: added switch for entering distance manually, Sun Mar 1 12:23:04 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/values/strings.xml
+
+46de8297b8efaa1f4e97439c185aa8a37cc1f10c, re-structured UI (routing-relevant Settings from SettingsActivity to RoutingActivity), Sun Mar 1 11:50:43 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/res/layout/activity_main.xml
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+95fbf71ca91af016bdb8568232179c74e601d2cd, added routeOverlay, Sat Feb 28 17:20:58 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+
+562e0645c1daeb9c55afb5b77ae3b4e62e4f4bb5, added osmbounspack and other required libs, Sat Feb 28 12:58:44 2015 +0100
+M	app/build.gradle
+A	app/libs/osmbonuspack_v5.1.jar
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+
+9520a1632a085ac4c5a14abbb14abf0fc91d7c37, RoutingActivity: added start_navigation button and some Toasts, Sat Feb 28 11:28:48 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/values/strings.xml
+
+5a620672c8d1fff3f97bf28f7477f472c8c45544, RoutingActivity: write to database, Wed Feb 25 22:46:09 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+
+5d454f77bf6db6ae91b58f213a8eb481b2887389, RoutingActivity: read data from JSON, Wed Feb 25 18:04:01 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+
+aad62b297cd3fdb9c0994ed03814c856fbcd19de, added RoutingDatabase with basic structure, Wed Feb 25 17:23:47 2015 +0100
+A	app/src/main/java/de/mytfg/jufo/ibis/RoutingDatabase.java
+
+e0b39123e1cc9867fdbe12b75ae663fd91da2af1, RoutingActivity: added communication with server, >SettingsActivity: added Button, Wed Feb 25 16:56:39 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+0ca211d5ffca7aa9ebb6ca49444f3fcd7ac7c45b, RoutingActivity: added UI, Wed Feb 25 09:09:01 2015 +0100
+M	app/src/main/res/layout/activity_routing.xml
+M	app/src/main/res/values/dimens.xml
+M	app/src/main/res/values/strings.xml
+
+cfd6d50837a36660209c052727b3268ee3aa4613, added RoutingActivity, Wed Feb 25 08:37:13 2015 +0100
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/de/mytfg/jufo/ibis/RoutingActivity.java
+A	app/src/main/res/layout/activity_routing.xml
+A	app/src/main/res/menu/menu_routing.xml
+M	app/src/main/res/values/strings.xml
+
+28cbd6826368606b6a2f7b13a470e5ae1d1c37f3, Merge branch 'issue-33' into 'master', Sat Feb 21 00:40:56 2015 +0100
+a468eb3b116e2a59c495f1664f00224e00de9f33, Added info to notification if accuracy is not ok; fixes #33, Fri Feb 20 22:10:41 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/res/values/strings.xml
+
+c3f8ca3344de66cf292969d32e1f705a676cbc2c, fixed merge errors: GPSDatabase is now open()ed and close()ed correctly., Fri Feb 20 21:46:04 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/values/strings.xml
+
+4155707d88afc04fdb3da94d04ff5dfb2ecbd4c4, fixed merge errors (2), Wed Feb 18 18:20:14 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+ea20d05b7bd1ed0b7e1761dfe4c72b6d6940e8c2, fixed merge problems, Wed Feb 18 17:42:21 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+
+004c9d4fddd63e58fc6862bf3eade13ed92a56c7, Merge branch 'lifecycle', Wed Feb 18 17:28:28 2015 +0100
+b74a88418f46b0f151337ff9a83316d6c5190d98, Tracking: added no_history flag to tracking_showIntent, Wed Feb 18 17:10:59 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+e87ff67130e2e45306e7b68bac03525b2b413112, only start UploadActivity, if data string isn't empty (fixed #21 , #8) (partly fixed in  commit before), Wed Feb 18 16:32:01 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+031dadb3c5aa686fdb00b6865027a1f7f52a9578, improved tracking lifecycle, fixed some tracking problems(fixed #4 , #9 , #30), Wed Feb 18 15:26:26 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+8f856107646ab4f47b91449fa92716db22a7bcb7, Merge branch 'working-raphael' into 'master', Tue Feb 17 21:29:41 2015 +0100
+f30095b6d5ae8e593228a837a9d8fe78b8580253, added delete button in UploadTrackActivity (strings in strings.xml), Tue Feb 17 19:30:48 2015 +0100
+M	app/src/main/res/values/strings.xml
+
+00d75a19fa34eebfdef4df724cd34ae0ea4b9d8d, added delete button in UploadTrackActivity; fixes #31, Tue Feb 17 19:29:42 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/layout/activity_upload_track.xml
+
+dc5c4ddb695c7e7fb95bfab8b4904237e7e2770a, optimized checkFirstLoc(), Tue Feb 17 16:54:59 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+
+d1f8e591ace1cb068c2dbab3305223a30e5b93d5, Use dp instead of px, Tue Feb 17 16:54:30 2015 +0100
+M	app/src/main/res/layout/activity_upload_track.xml
+
+9deb72f39ade997815e4ef9ad19ccd6b10acd738, added dist and tdiff column to sqlite db (time difference and distence to previous gps coordinate), calculate tdiff and dist and filter track coordinates in prepareDB(). optimzized insertRows(string ..., double ...): --> insertLocation(Location). added getTotalDist() function to get sum of distances between points (used in UploadTrackActivity). GPSDatabase.open() / close() only once., Tue Feb 17 16:51:49 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+b5005406756e25db75a807fd94b925537ac9a45f, Merge branch 'calculate-enhancement-raphael' into 'master', Tue Feb 17 15:25:57 2015 +0100
+738e040be8bb79c82c027ded6f115425c77f2c95, suggestions for improvements and optimizations, Tue Feb 17 15:19:27 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+
+779ca282c07f2e88691c4f4574ebd0bcdf9d9972, save and send track timestamp as float (seconds + 3 decimal places (milliseconds::integer/1000)) to server; fixes #32 save coordinates as real/integer numbers instead of string in SQLite database, Tue Feb 17 13:19:30 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+c2ae9e856a676962e8319fd580f9b01a384ac85c, Tracking: bug fixing (fixed ), Fri Feb 13 16:06:42 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+8fc4c1fac4818c0163317ad8347fc52b58430b5f, build.gradle: changed app id, Fri Feb 13 15:35:32 2015 +0100
+M	app/build.gradle
+
+1b75f433ca83daf5d3db568b78098c8a9d0bfe13, Merge branch 'working_HarryR' into 'master', Fri Feb 13 15:19:26 2015 +0100
+24f3bcafb6ad5538a2045164a074ab135b43da20, made date comprehensive time enter possible (fixed #22), Fri Feb 13 15:13:31 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+
+635796c8c16d2c1500a43402a3745c0de3926067, UploadActivity: bug fixing (switch public upload), Fri Feb 13 12:53:13 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+7ed53a51137d0a61fa5c60d64b2d34b8a921579c, UploadActivity: show track length, Fri Feb 13 12:43:58 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/values/strings.xml
+
+980f4f5219142951fc0d4ed66dcb94b733d2ba34, added accuracy column to database, Fri Feb 13 12:07:06 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+c13310095811c9fb0c421e0e75c2a8ba8c4d8ef4, UploadActivity: fixed problems with uploadPublic switch (fixed #29), Fri Feb 13 11:26:44 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+96db7f05959091865aacd873edd673defad2e216, fixed problems with accuracy alert popup (fixed #28), Fri Feb 13 11:01:35 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+
+27b5c437441d459dfcde4226ba5a029bbb55db87, made UploadActivity scrollable (fixed #25), Fri Feb 13 10:24:44 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/layout/activity_upload_track.xml
+
+c9f912c8ca4d85138239faaca67c2e51c3882fcc, Tracking: bug fixing, Thu Feb 12 16:49:37 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/res/layout/activity_upload_track.xml
+
+aa69093605a8026dc87ceed9312d39cb7edbb9f0, Merge branch 'tidy' into 'master', Thu Feb 12 15:20:11 2015 +0100
+0e365447953e639a93cde21552d7803e0ff487ab, improved some code analysis warnings, Thu Feb 12 15:03:51 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+
+f730ec2cb5e3fb3069eca562243d71615bfa8460, deleted unnecessary log tags an comments, changed some comments, auto-formated code (fixed #23), Thu Feb 12 14:59:41 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+M	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+M	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+
+edd029a458ae2830fa3006b4f4d7afca3a6bbede, changed communication from intents to global class (fixed #16), Thu Feb 12 13:52:30 2015 +0100
+M	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+M	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+M	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+
+0e5bff8c21884773e59641a9cfbfbe170a403033, changed package directory (fixed #3), Wed Feb 11 15:27:45 2015 +0100
+R082	app/src/androidTest/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ApplicationTest.java	app/src/androidTest/java/de/mytfg/jufo/ibis/ApplicationTest.java
+M	app/src/main/AndroidManifest.xml
+R098	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java	app/src/main/java/de/mytfg/jufo/ibis/Calculate.java
+R098	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java	app/src/main/java/de/mytfg/jufo/ibis/GPSDatabase.java
+R097	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GlobalVariables.java	app/src/main/java/de/mytfg/jufo/ibis/GlobalVariables.java
+R095	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MainActivity.java	app/src/main/java/de/mytfg/jufo/ibis/MainActivity.java
+R098	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MapFragment.java	app/src/main/java/de/mytfg/jufo/ibis/MapFragment.java
+R099	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java	app/src/main/java/de/mytfg/jufo/ibis/SettingsActivity.java
+R099	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java	app/src/main/java/de/mytfg/jufo/ibis/ShowDataActivity.java
+R095	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/TimePickerFragment.java	app/src/main/java/de/mytfg/jufo/ibis/TimePickerFragment.java
+R099	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java	app/src/main/java/de/mytfg/jufo/ibis/Tracking.java
+R099	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/UploadTrackActivity.java	app/src/main/java/de/mytfg/jufo/ibis/UploadTrackActivity.java
+M	app/src/main/res/layout/activity_show_data.xml
+M	app/src/main/res/layout/activity_upload_track.xml
+M	app/src/main/res/menu/menu_settings.xml
+M	app/src/main/res/menu/menu_show_data.xml
+
+9210097514a9f33a6c8dc5d6e8b67bdf9136757e, changes in .gitignore, Wed Feb 11 14:50:10 2015 +0100
+M	.gitignore
+D	.idea/.name
+D	.idea/compiler.xml
+D	.idea/copyright/profiles_settings.xml
+D	.idea/encodings.xml
+D	.idea/gradle.xml
+D	.idea/misc.xml
+D	.idea/modules.xml
+D	.idea/scopes/scope_settings.xml
+D	.idea/vcs.xml
+
+3c66ce158c707c20aeec4971d279fc4bd66ac419, Merge remote-tracking branch 'remotes/origin/signing', Tue Feb 10 17:22:49 2015 +0100
+5121ad212d63c1e14cc0a50dcbc6f564cc5ff8e1, Calculate: convert speed to km/h (fixed #20), Tue Feb 10 17:12:08 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+
+6afbc7142a1d01e71dc9d346a75224b18637403e, deleted .iml files, added them to .gitignore, Tue Feb 10 17:08:23 2015 +0100
+M	.gitignore
+D	App.iml
+D	app/app.iml
+
+a80161bfbfb04c50a3bb0b80d87db8d96c9287a2, Merge remote-tracking branch 'origin/UI', Tue Feb 10 15:53:38 2015 +0100
+ebf1a58eeccab4dd62f25abe11f32251d2cca6ba, SettingsActivity: save state of showOverlay check boxes, set true as default, Tue Feb 10 14:17:57 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+
+664207ee38a2331e5e9ecdd97cc07a2196531ec8, set iBis icon as app icon (fixed #14), Tue Feb 10 13:48:55 2015 +0100
+M	app/src/main/AndroidManifest.xml
+
+b1fdcd62c2501b8938f4c55e6c4cec14f7de9cbc, ShowDataActivity: replace sens-free (but mathematical correct) values with "---", Tue Feb 10 13:37:37 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/res/values/colors.xml
+
+1a2e8f65445b18943f62f9e8cd54e24a6357766a, added option to change text size (info boxes), Mon Feb 9 23:23:23 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GlobalVariables.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+eb1553321a9f671eeacf5ed215375c8f7c7f839d, made Overlays optional, made SettingsActivity scrollable, Sat Feb 7 20:21:50 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GlobalVariables.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MapFragment.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+93f83c4e64067a24aa7f7a6222b395e247228756, ShowDataActivity, SettingsActivity: show time in more pretty format, Sat Feb 7 19:22:02 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+
+a09b5806b0834208f661049406395028fc6b33ef, ShowDataActivity: show units in info boxes; show arrival time in readable format, Fri Feb 6 22:25:51 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+
+f8749a3fe552e4b9bd66937ba41c218608f226be, sign app release build (in Gitlab CI): * Keystore mus be in $project_root/app/ibis.keystore * Create ANDROID_KEYSTORE_PW enviroment variable, Wed Feb 4 19:49:30 2015 +0100
+M	.gitignore
+M	app/build.gradle
+
+2ddec7a2887b1e9819f1cadfc5d3881d1053d781, sign app release build (in Gitlab CI): keystore in project dir, Wed Feb 4 18:52:38 2015 +0100
+M	.gitignore
+M	app/build.gradle
+
+61658ea0af58785f22008cdea485bf69877b49f5, sign app release build (in Gitlab CI), Wed Feb 4 18:31:34 2015 +0100
+M	app/build.gradle
+
+2ac7aacbc10e4da79d71412e3f67d7bd85d9cebf, ShowDataActivity: set text color in info boxen in relation to values, Wed Feb 4 17:00:47 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/res/values/colors.xml
+
+10aff11b89d073e2eef2f462aa169a84f73b70e1, ShowDataActivity: bug fixing in roundDecimal function, Wed Feb 4 16:41:24 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+
+d3368e4c3cf167983f510fefaeba4a7833a5dc5a, MapFragment: set default zoom level to 18, Wed Feb 4 15:23:46 2015 +0100
+D	app.iml
+D	app/app-app.iml
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MapFragment.java
+
+801690d1f27fb3fbc83051e48e40179870e4aa7b, few little changes, Wed Feb 4 15:18:17 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GlobalVariables.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MapFragment.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/TimePickerFragment.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/UploadTrackActivity.java
+M	app/src/main/res/layout/activity_show_data.xml
+
+d896874bdfba36f5b4b4cf41f81e999c6160c464, center map to user location automatically, Tue Feb 3 14:58:52 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GlobalVariables.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MapFragment.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+0d9a7d417538d9fa28dc3bd20abec9cfeecc4832, round values before showing in info boxes, Tue Feb 3 13:37:08 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+fe761d8de6a24df83afe070d6711c3a3cf6a06ad, Merge branch 'upload2' into 'master', Mon Feb 2 23:24:30 2015 +0100
+96c68217e0d25c35ab2910caee6e7e8961fc494d, Enhanced upload: added option for non public uploads (without name and comment; not shown in WebUI), Mon Feb 2 23:11:16 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/UploadTrackActivity.java
+M	app/src/main/res/layout/activity_upload_track.xml
+M	app/src/main/res/values/strings.xml
+
+5c09bba219b2595b81877240e9e9749bdd8e7ee2, Bugfix: upload button not visible in SettingsActivity layout (padding: 50dp/30dp -> 10dp), Mon Feb 2 01:04:47 2015 +0100
+M	app/src/main/res/layout/activity_settings.xml
+
+f34f170a4d368579dd9a2c80ab9fbab9a5d26d1e, Merge branch 'lint-fixes2' into 'master', Sun Feb 1 23:44:40 2015 +0100
+c82007c5985364124d79321528a421cb51ed1c39, reverted minSdkVersion to 15 (changed in commit 9c436dc86c80b18dd2bc328d1fee4268378c49f2), Sun Feb 1 23:02:05 2015 +0100
+M	app/build.gradle
+
+27e2beb6693a1303a8329c098b1c9ab8441db42f, Merge branch 'lint-fixes' into 'master', Sun Feb 1 22:43:54 2015 +0100
+8e9bd8ace52f4a825f9eaf2d9c8470b9f188246a, fixed lint warnings: added labelFor attributes in activity_settings.xml, Sun Feb 1 22:40:26 2015 +0100
+M	app/src/main/res/layout/activity_settings.xml
+
+174da0b3c8bb6c3f85a12b64695cd1d407245c36, fixed lint warnings: added labelFor attributes (bugfix), Sun Feb 1 22:37:24 2015 +0100
+M	app/src/main/res/layout/activity_upload_track.xml
+
+f490df98dce4c72346657b6c9f947c184f2e3552, fixed lint warnings: added labelFor attributes, Sun Feb 1 22:30:05 2015 +0100
+M	app/src/main/res/layout/activity_upload_track.xml
+
+7a53ea48d08042b87a9a1fce58089110f54eabae, fixed warnings/errors preventing Gitlab CI to build app: converted 10px to 10dp (padding), disabled Rtl support, Sun Feb 1 22:22:03 2015 +0100
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/res/layout/activity_main.xml
+M	app/src/main/res/layout/activity_settings.xml
+
+4d4462ac036d7d0137de3ec3cf46cdd1baa2b47a, fixed error (activity_show_data.xml:16: Unexpected namespace prefix "xmlns" found for tag TableLayout) preventing Gitlab CI to build app, Sun Feb 1 19:26:18 2015 +0100
+M	app/src/main/res/layout/activity_show_data.xml
+
+9c436dc86c80b18dd2bc328d1fee4268378c49f2, fixed warnings/errors preventing Gitlab CI to build app, Sun Feb 1 19:22:33 2015 +0100
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/layout/activity_show_data.xml
+M	app/src/main/res/values/strings.xml
+
+94c42b31f03d7ee7b7f230a9db1a4d701b3c2860, remove notification when tracking is stopped, Thu Jan 29 00:33:13 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+39ee49b6e42fb5fc20cf23ae7cb7da8eba31178d, bug from merging fixed, Wed Jan 28 23:55:24 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+
+4f25fc74f9fa496bc7dc5f98e96999f85e16fc09, Merge branch 'upload', Wed Jan 28 23:24:42 2015 +0100
+24270a79c6a6259421eb0115cc560b9246e5d64d, Calculate: bugfixing, Wed Jan 28 19:13:53 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+
+9a224350ad9e67acafb2bbea7ea1cb9e007d348f, added timer for updating the UI, Wed Jan 28 16:16:13 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+
+178816fec6a09d611f9e92d4e66b38dd4641b12a, added sEing and tAnkEingTime to GlobalVariables class, Tue Jan 27 23:06:04 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GlobalVariables.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+fcf5538e3ddb303f017509dfb711dde58bb4b64b, Improved tracking notification: open ShowDataActivity as default action; documentation ..., Tue Jan 27 21:49:46 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+6a86518162c2d2e99552c77d47c6cb4dc928ab67, Improved upload success/error notification: open iBis WebGUI as default action, Tue Jan 27 21:42:45 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/UploadTrackActivity.java
+
+5fd33437f6d38a1daa806a13b1ee7a87c7f6e6b1, added speed calculation, Tue Jan 27 21:41:55 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+82d9097d72bb41edb183cfe077c9774e8040804c, deleted Interface, added class GlobalVariables, implemented showData(), Tue Jan 27 20:46:48 2015 +0100
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GlobalVariables.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+f9b1ff61b06749915ed1e802a7113c629e4d8b13, Improved notification, Mon Jan 26 20:12:39 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+0799fab0678831fad97759eff1c1c6d091c0547f, Added iBis icon, Mon Jan 26 20:12:15 2015 +0100
+A	app/src/main/res/mipmap-hdpi/ic_launcher.png
+A	app/src/main/res/mipmap-mdpi/ic_launcher.png
+A	app/src/main/res/mipmap-xhdpi/ic_launcher.png
+A	app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+A	app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+
+62f33bc84979d9c6e8f9a19b8c107f79394fe7f3, Added icon: action_map, Mon Jan 26 19:25:39 2015 +0100
+A	app/src/main/res/drawable-hdpi/ic_action_map.png
+A	app/src/main/res/drawable-mdpi/ic_action_map.png
+A	app/src/main/res/drawable-xhdpi/ic_action_map.png
+A	app/src/main/res/drawable-xxhdpi/ic_action_map.png
+
+5e82426d73348696252924e4bdae4cdf37abfb92, Added icon: action_cancel, Mon Jan 26 19:23:51 2015 +0100
+A	app/src/main/res/drawable-hdpi/ic_action_cancel.png
+A	app/src/main/res/drawable-mdpi/ic_action_cancel.png
+A	app/src/main/res/drawable-xhdpi/ic_action_cancel.png
+A	app/src/main/res/drawable-xxhdpi/ic_action_cancel.png
+
+5f3810b50a4bd47c1166eac62dc910ec52e0553a, Merge branch 'notification-nodes' into 'upload', Mon Jan 26 17:35:27 2015 +0100
+18bc839c5b9df21c2c9977921a5012b1148a399a, UploadTrackActivity: enable upload button in onCreate() if token is loaded from UserPrefs, Mon Jan 26 17:13:01 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/UploadTrackActivity.java
+
+b02c2594353b24cff85dbddc0cb6204f67193c10, Added activity to AndroidManifest.xml, Mon Jan 26 17:08:21 2015 +0100
+M	app/src/main/AndroidManifest.xml
+
+e3a426a28ccf51a68b21cb27a9ec7c8eaea24232, Calculate: bugfixing, Sun Jan 25 22:56:39 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+3cf14f5c0f5c2136e56f257da4200b6592454944, Tracking: added call Calculate methode, Sun Jan 25 17:43:12 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+b93fdeb696a50987d0da55e593ba348fdf09b16b, Calculate: little changes, bugfixing, Sun Jan 25 16:23:37 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+
+3fea49e086a19ebe0b833e037f97fbb9659f5e8d, added interface to transfer data from Calculation to ShowDataActivity, Sun Jan 25 16:05:42 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/res/layout/activity_show_data.xml
+
+8bde4243ea48af6053ced2f2e606a55452690768, Notifications shows number of GPS points; fixes #15, Thu Jan 22 01:11:50 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+7f526d1e059d77f55e052f1194e2d7fd2f2b23f4, Code cleanup (most functionality moved to UploadTrackActivity), Thu Jan 22 00:29:43 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+6f0b0870f16704d8866e9b065bdfa7f9d39595f2, Save token in user prefs Set HTTP User-Agent to lass specific val Minor fixes / typo / documentation Code cleaned up, Thu Jan 22 00:18:11 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/UploadTrackActivity.java
+M	app/src/main/res/values/strings.xml
+
+04bb0dfb6f88d4bb127ef0c7d0eca528cd34a536, Changed User-Agent to not device specific value ("iBis app"). fixes #11, Wed Jan 21 23:33:57 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/UploadTrackActivity.java
+
+7fd5fd505767969cd19b46ce2616059913bf41dd, added calculation of tAnkEing, Wed Jan 21 16:43:43 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+ea8e8120e9d62bd1e2066f0c20bdbd856cc76b68, added TimePickerFragment to set up planned arrival time, Wed Jan 21 13:26:47 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/TimePickerFragment.java
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+bcf55aec7f5d6ed3ce7f7d8a03feb3c71345bd5f, Added UploadTrackActivity: Set name, comment, (calculated) length (TODO), duration, generate/get and submit valid user_token; Improved error handling (upload track again on error); Fixes #11, Wed Jan 21 02:09:32 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/UploadTrackActivity.java
+A	app/src/main/res/layout/activity_upload_track.xml
+M	app/src/main/res/values/strings.xml
+
+02ec5c711e5e41c1f324c1f1794fdc4b93263ac9, Calculation: added getTimeVars(), Sun Jan 18 23:58:22 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+
+bfd211325477778957450ef5608c72e647f7f12f, Calculation: added math() algorithm, Sun Jan 18 17:49:37 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+
+aad8e6c37d2b5eede9e8872b2eac4b6e7b9951a7, Calculation: added calculateDrivenTime(), Sun Jan 18 17:44:27 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+
+d5faf9f149cf12dba331906f84f8295597622eba, Calculation: Changed all Fload to Double vars, calculate sGef, Sun Jan 18 17:35:49 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+
+e8d6b5e8db0a1057423975e276823123d0469126, Added Calculation class with var declaration and first structure, Sun Jan 18 16:18:08 2015 +0100
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Calculate.java
+M	app/src/main/res/layout/activity_show_data.xml
+
+cec71176376c8b222b2ebc1241b891a116e45326, GPS Database: added speed column, Wed Jan 14 17:34:45 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+9c88486a1c96e2ca34de9c6b58ebad3f6d3a3676, MapFragment: added some Overlays, Tue Jan 13 22:38:08 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MapFragment.java
+D	app/src/main/res/layout/fragment_map.xml
+
+8b14aa8941cf693c75f2df2c155e2d507a2c38ed, added MapFragment, Tue Jan 13 21:36:41 2015 +0100
+M	app/app-app.iml
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MapFragment.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/res/layout/activity_show_data.xml
+A	app/src/main/res/layout/fragment_map.xml
+
+8cb71c80b72e31975f6095d1d10285733448645d, added handling for inexact GPS position (fixed #10), Tue Jan 13 16:24:03 2015 +0100
+M	.idea/modules.xml
+A	app.iml
+A	app/app-app.iml
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+e965719451a47399df7c30db6f3a4f753cc43ec0, delete database at end of Tracking.onDestroy() (fixed #5), Fri Jan 9 00:36:34 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+cfe17764e685bebfedebdd1c7c8d9d060dc1110d, Merge branch 'send-track-to-server' into 'master', Wed Jan 7 13:36:16 2015 +0100
+9ae8f31f8959ae0604fb5ef88da104ef3c4a1bd6, merged master into send-tracking-to-server, Wed Jan 7 13:22:13 2015 +0100
+7f669c92fc7ccdf3e764aa2f8fc271c38c5d8ae6, track upload notification: few small improvements and bugfixes, Wed Jan 7 01:36:09 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+M	app/src/main/res/values/strings.xml
+
+7bbb9ad8b85fe843b84b2c68a342ae7840117707, added initial implementation to send track to server and notify user on success, Wed Jan 7 00:49:37 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+M	app/src/main/res/values/strings.xml
+
+6a7f582e1184eac6ddc242e1a72de2c4d48af624, Manifest: added internet access permission, Wed Jan 7 00:29:52 2015 +0100
+M	app/src/main/AndroidManifest.xml
+
+7965ddb22592f26a9b6f3299bc5adf90314bd543, added funktion so send track data to server and prepare track data to be sent as json, Tue Jan 6 15:46:01 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+6326634adee2a5800de03eac2e24d652b7d1a04b, added Altitude coloum to GPSDatabase, Tue Jan 6 14:38:29 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+e6770444d06cfd7dd950fa957dab05d7a1bdec75, bugfix Tracking.updateDatabase(), Tue Jan 6 13:47:06 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+f692da54d9a79e3d37f4d093249b7e08d9e6e3df, added Android Studio / Gradle setting etc. files, Tue Jan 6 02:40:15 2015 +0100
+A	.gitignore
+A	.idea/.name
+A	.idea/compiler.xml
+A	.idea/copyright/profiles_settings.xml
+A	.idea/encodings.xml
+A	.idea/gradle.xml
+A	.idea/misc.xml
+A	.idea/modules.xml
+A	.idea/scopes/scope_settings.xml
+A	.idea/vcs.xml
+A	App.iml
+A	build.gradle
+A	gradle.properties
+A	gradle/wrapper/gradle-wrapper.jar
+A	gradle/wrapper/gradle-wrapper.properties
+A	gradlew
+A	gradlew.bat
+A	settings.gradle
+
+bf69ec80ded66b6845f996f3c694f822d60ac6b8, removed altitude column from database, constructed database instance central at onCreate, Tue Jan 6 02:31:25 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+882d4b9fa4764ac5b1fb69a41a616e4e475a4225, added local SQLDatabase for GPS Data, Tue Jan 6 00:26:38 2015 +0100
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/GPSDatabase.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+8e3a98ecc67a225fdcc222338488272f4886067f, set screenOrientation to portrait for every activity, Mon Jan 5 22:07:31 2015 +0100
+M	app/src/main/AndroidManifest.xml
+
+081d4d664b4c52cad96eb27883be736b17566162, few changes at Location Updates, Mon Jan 5 21:59:26 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+2a11fdee50c07856edca0e75d8f0c39701a64dbd, Merge branch 'Working' into 'master', Mon Jan 5 19:46:29 2015 +0100
+ca722728f93e999a7e68c4302d5db786dd6dd629, made collecting data option (and stop tracking Button) working, Mon Jan 5 19:42:32 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MainActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+
+2dad4b95983d7d79568f0ae76506334137e6426f, linked Notification Buttons, created stopTracking Button @Settings, Mon Jan 5 14:05:22 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+M	app/src/main/res/layout/activity_settings.xml
+
+d156c95218405275039a4d502b45f109b2adf63b, integrated Location Service from iBisTracking Repo, Mon Jan 5 02:35:28 2015 +0100
+M	app/app.iml
+M	app/build.gradle
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/Tracking.java
+M	app/src/main/res/values/strings.xml
+
+65c9ed3c9c2d8043789b421ad57799b14f4a9476, added preference saving, Sun Jan 4 23:58:04 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MainActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/res/values/strings.xml
+
+3793db37635894b090c032bd512610945540fe9e, removed bug in exception handling @SettingsActivity, Sun Jan 4 21:05:13 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+
+290d2e7d287d5fb6876d1d847bb6cc67a973cde7, added menu items for ShowDataActivity, Sun Jan 4 20:52:41 2015 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MainActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+M	app/src/main/res/menu/menu_main.xml
+M	app/src/main/res/menu/menu_settings.xml
+M	app/src/main/res/menu/menu_show_data.xml
+M	app/src/main/res/values/strings.xml
+
+bc2c2269cb3fc12d234d61e5aad7f4fc5a14e4b1, added colors.xml and general structure @activity_show_data.xml, Sun Jan 4 20:25:35 2015 +0100
+M	app/src/main/res/layout/activity_show_data.xml
+A	app/src/main/res/values/colors.xml
+M	app/src/main/res/values/dimens.xml
+
+ea6154cc9ae3cecf9e0aec75245319a5f6ec68d3, added ShowDataActivity, Sun Jan 4 17:41:05 2015 +0100
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ShowDataActivity.java
+A	app/src/main/res/layout/activity_show_data.xml
+A	app/src/main/res/menu/menu_show_data.xml
+M	app/src/main/res/values/strings.xml
+
+469e93fc816d73e679bfc2ee6cfeb44c4b17f388, Merge branch 'raphael-dev' into 'master', Sun Jan 4 16:12:40 2015 +0100
+a84a7d4578f9b05a8c5dbe3f0a13065d7b7b63f2, Schreibweise von "enterDistance" zu "enter_distance" geändert. (In commit befa6c29f56a129e67e55f8fb5e90df5cd38f531 im Layout geändert), Sun Dec 28 12:18:16 2014 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+
+befa6c29f56a129e67e55f8fb5e90df5cd38f531, wrote names of view elements with underscores, Sat Dec 27 22:04:40 2014 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/res/layout/activity_main.xml
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+afd061b11bdf36c57777b8275ae5b91952e04950, added exception handling for enterDistance EditText @Settings, Sat Dec 27 21:54:54 2014 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+
+ef6168cf3c13cb51c5d13445cca30347690358de, added TextEdit for Distance and save Button @Settings, Sat Dec 27 20:24:45 2014 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+9b3731ff0db2df668e66c852a37e89fc6cd56db7, added Checkbox for collecting Data @Settings, Sat Dec 27 18:07:05 2014 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MainActivity.java
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/values/strings.xml
+
+965e84759b4bb0944e839b1a017d47d7283036c4, created menu item for settings, Sat Dec 27 17:19:48 2014 +0100
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MainActivity.java
+M	app/src/main/res/menu/menu_main.xml
+M	app/src/main/res/menu/menu_settings.xml
+M	app/src/main/res/values/strings.xml
+
+2f5fc3e0f3d72895e5c1270dbfd2e4ed971c7fd5, added ButtonOpenSettings below welcome text, Fri Dec 26 13:09:51 2014 +0100
+M	app/src/main/AndroidManifest.xml
+M	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MainActivity.java
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/SettingsActivity.java
+M	app/src/main/res/layout/activity_main.xml
+A	app/src/main/res/layout/activity_settings.xml
+M	app/src/main/res/menu/menu_main.xml
+A	app/src/main/res/menu/menu_settings.xml
+M	app/src/main/res/values/strings.xml
+
+b9843b853a82dd697ee4f119fed8342eea3f4b97, deleted relative layout @welcome activity, Thu Dec 25 21:32:17 2014 +0100
+M	app/build.gradle
+M	app/src/main/res/layout/activity_main.xml
+
+f4d4a1f01984627181b042ed20a021b5e38cc5d7, added welcome text, Thu Dec 25 19:32:43 2014 +0100
+M	app/app.iml
+M	app/src/main/res/layout/activity_main.xml
+M	app/src/main/res/values/strings.xml
+
+2205c76ad130e501b9f8b9c73e871468692e886a, created project, deleted 'hello world' string, Thu Dec 25 16:03:28 2014 +0100
+A	app/.gitignore
+A	app/app.iml
+A	app/build.gradle
+A	app/proguard-rules.pro
+A	app/src/androidTest/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/ApplicationTest.java
+A	app/src/main/AndroidManifest.xml
+A	app/src/main/java/ibis/jufo/mytfg/de/ibis_intelligentbikeinformationsystem/MainActivity.java
+A	app/src/main/res/drawable-hdpi/ic_launcher.png
+A	app/src/main/res/drawable-mdpi/ic_launcher.png
+A	app/src/main/res/drawable-xhdpi/ic_launcher.png
+A	app/src/main/res/drawable-xxhdpi/ic_launcher.png
+A	app/src/main/res/layout/activity_main.xml
+A	app/src/main/res/menu/menu_main.xml
+A	app/src/main/res/values-w820dp/dimens.xml
+A	app/src/main/res/values/dimens.xml
+A	app/src/main/res/values/strings.xml
+A	app/src/main/res/values/styles.xml
+
+236b01f0a1d22b5c7957698bb2c472336c516ef9, added README, Thu Oct 16 18:15:15 2014 +0200
+A	README

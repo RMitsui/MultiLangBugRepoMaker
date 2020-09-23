@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="geowe-core">
+	<bug id="355" opendate="2019-06-20 07:29:48" fixdate="2019-06-20 07:44:59">
+		<buginformation>
+			<summary>Cargar WMTS desde Arcgis server</summary>
+			<description>Error al cargar capas WMTS desde el servicio: https://ide.ign.gob.ar/geoservicios/rest/services/sensores_remotos/mendoza/ImageServer/WMTS/1.0.0/WMTSCapabilities.xml en geowe. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/layermanager/tool/create/LoadRasterLayerDialog.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/map/catalog/model/WmtsLayerDef.java</file>
+			<file>src/main/java/org/geowe/client/local/layermanager/tool/create/AddRasterLayerTool.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/map/catalog/layerset/MiscWmsLayerSet.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="351" opendate="2017-03-30 06:12:58" fixdate="2017-04-07 07:27:32">
+		<buginformation>
+			<summary>Error al crear capa después de validar geometrías</summary>
+			<description>Expongo la situación: 1. Creo una capa nueva. 2. Dibujo uno o varios polígonos con errores en la geometría. Por ejemplo orientación de los vértices. 3. Valido la capa. Me muestra un resultado de la validación en una nueva capa 4. Elimino la capa del resultado de la validación (pasa igual si no se elimina la capa) 5.  Vuelvo a validar la capa (o un solo elemento 6. Muestra el mensaje de que hay un error en la capa. en esta segunda vez ya no crea la capa de resultados.  7. Si después de este proceso intento crear una capa (nueva, desde fichero, ....) el sistema ya no deja hacerlo. Se queda la barra de progreso, o muestra un mensaje de error y no funciona la creación de capa.   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/main/tool/spatial/GeometryValidator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="337" opendate="2017-03-02 10:47:24" fixdate="2017-03-06 13:39:07">
+		<buginformation>
+			<summary>Error en el grid de edición de entidades</summary>
+			<description>El nuevo grid de edición directa de datos alfanuméricos de una capa falla para algunas capas concretas, no mostrándose nada en el mismo (ni siquiera el grid). Además, el tamaño de la ventana del grid cambia de manera aleatoria.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/ui/FeatureGrid.java</file>
+			<file>src/main/java/org/geowe/client/local/ui/EditingFeatureGrid.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/LayerEditDialog.java</file>
+			<file>src/main/java/org/geowe/client/local/ui/IntegerValueComboBox.java</file>
+			<file>src/main/java/org/geowe/client/local/ImageProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="325" opendate="2017-02-19 09:07:26" fixdate="2017-02-20 15:08:41">
+		<buginformation>
+			<summary>Estilos temáticos con features seleccionadas.</summary>
+			<description>Caso de prueba: 1. cargo capa 2. aplico color temático 3. selecciono un feature 4. abro diálogo de estilos y se abre en la pestaña de color tematico, cuando el color tematico no se admite para estilos de features </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/ui/FeatureGrid.java</file>
+			<file>src/main/java/org/geowe/client/local/style/VectorLayerStyleWidget.java</file>
+			<file>src/main/java/org/geowe/client/local/ui/EditingFeatureGrid.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/EditLayerDataTool.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/ChangeStyleTool.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/SingleFeatureInfoTool.java</file>
+			<file>src/main/java/org/geowe/client/local/ui/FeatureGridCellRenderer.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/LayerEditDialog.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/spatial/GeoprocessingTool.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/LayerInfoDialog.java</file>
+			<file>src/main/java/org/geowe/client/local/messages/UIMessages.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/featureinfo/FeatureInfoDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="321" opendate="2017-02-17 11:36:13" fixdate="2017-02-20 15:12:50">
+		<buginformation>
+			<summary>No se actualizan las features en el diálogo de información de capa</summary>
+			<description>Al editar un elemento de la capa desde el diálogo de información de capa (herramienta info de elemento), al aceptar los cambios, estos no se reflejan en el listado a menos que se pulse el botón de actualización del grid.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/ui/FeatureGrid.java</file>
+			<file>src/main/java/org/geowe/client/local/style/VectorLayerStyleWidget.java</file>
+			<file>src/main/java/org/geowe/client/local/ui/EditingFeatureGrid.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/EditLayerDataTool.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/ChangeStyleTool.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/SingleFeatureInfoTool.java</file>
+			<file>src/main/java/org/geowe/client/local/ui/FeatureGridCellRenderer.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/LayerEditDialog.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/spatial/GeoprocessingTool.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/LayerInfoDialog.java</file>
+			<file>src/main/java/org/geowe/client/local/messages/UIMessages.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/featureinfo/FeatureInfoDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="303" opendate="2017-02-10 11:42:40" fixdate="2017-02-11 11:29:39">
+		<buginformation>
+			<summary>Error al cargar proyecto</summary>
+			<description>si intentas cargar un proyecto (de fichero o por url) y has olvidado rellenar los campos (poner la url o examinar el fichero) se muestra un diálogo de error y se cierra la pantalla de carga.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/main/tool/project/OpenProjectDialog.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/project/OpenProjectTool.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="297" opendate="2017-02-07 16:39:46" fixdate="2017-02-10 11:15:37">
+		<buginformation>
+			<summary>Estilos: habiliatar label cambia el relleno</summary>
+			<description>Al habilitar el estilo de atributos y pulsar aplicar, sin seleccionar atributo ni tamaño salta una ventana de error (podría ser aviso), y cambia el color de relleno de los elementos de la capa.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/style/ColorThemingStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/style/VectorLayerStyleWidget.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/spatial/geoprocess/Geoprocess.java</file>
+			<file>src/main/java/org/geowe/client/local/model/vector/VectorLayerFactory.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/ChangeStyleTool.java</file>
+			<file>src/main/java/org/geowe/client/local/style/LabelStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/style/StyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/W3wTool.java</file>
+			<file>src/main/java/org/geowe/client/local/model/vector/VectorLayer.java</file>
+			<file>src/main/java/org/geowe/client/local/style/ColorStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/VectorFeatureStyleDef.java</file>
+			<file>src/main/java/org/geowe/client/local/model/vector/VectorLayerConfig.java</file>
+			<file>src/main/java/org/geowe/client/local/layermanager/LayerManagerWidget.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/map/catalog/LayerLoader.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/VectorStyleAssistant.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/VectorStyleDef.java</file>
+			<file>src/main/java/org/geowe/client/local/messages/UIMessages.java</file>
+			<file>src/main/java/org/geowe/client/local/style/VertexStyleTab.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="289" opendate="2017-02-03 08:35:20" fixdate="2017-02-03 12:50:18">
+		<buginformation>
+			<summary>Estilos de atributo se queda barra de progreso</summary>
+			<description>Al habilitar los estilos de atributo, y pulsar aplicar (sin seleccionar atributo del combo), se queda la barra de progreso. Debería ser obligatorio seleccionar aldo del combo de atributo. Igual pasa con el tamaño de fuente.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/main/tool/ChangeStyleTool.java</file>
+			<file>src/main/java/org/geowe/client/local/messages/UIMessages.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="273" opendate="2017-01-21 10:40:29" fixdate="2017-02-03 10:49:34">
+		<buginformation>
+			<summary>Estilos: Etiqueta de atributo</summary>
+			<description>Se pierde el estilo de etiquetado de atributo al cambiar de capa en el administrador de capas. También pierde el estilo de relleno.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/style/ColorThemingStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/LineStyle.java</file>
+			<file>src/main/java/org/geowe/client/local/style/VectorLayerStyleWidget.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/spatial/geoprocess/Geoprocess.java</file>
+			<file>src/main/java/org/geowe/client/local/style/StyleFactory.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/FillStyle.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/ChangeStyleTool.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/LabelStyle.java</file>
+			<file>src/main/java/org/geowe/client/local/style/LabelStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/spatial/GeometryValidator.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/map/catalog/layerset/SampleLayerSet.java</file>
+			<file>src/main/java/org/geowe/client/local/style/StyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/model/vector/VectorLayer.java</file>
+			<file>src/main/java/org/geowe/client/local/style/ColorStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/PointStyle.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/VectorStyleDef.java</file>
+			<file>src/main/java/org/geowe/client/local/messages/UIMessages.java</file>
+			<file>src/main/java/org/geowe/client/local/style/VertexStyleTab.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="255" opendate="2016-11-26 10:47:58" fixdate="2016-11-29 09:35:37">
+		<buginformation>
+			<summary>Tamaño de la ventana "Análisis geográfico"</summary>
+			<description>El tamaño actual de la ventana corta el texto de la parte inferior ![seleccion_347](https://cloud.githubusercontent.com/assets/4746157/20639827/21d24822-b3ce-11e6-9ccd-31490675a37f.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/main/tool/spatial/geoprocess/dialog/GeoprocessDialog.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="213" opendate="2016-10-17 06:27:13" fixdate="2017-02-03 10:48:28">
+		<buginformation>
+			<summary>Estilo de atributo deshabilitado al cambiar de capa</summary>
+			<description>Una capa vectorial que tiene el estilo de atributo (label) habilitado. Cuando se cambia de capa y volvemos a seleccionar la primera, en el diálogo de estilos aparece como deshabilitado. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/style/ColorThemingStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/LineStyle.java</file>
+			<file>src/main/java/org/geowe/client/local/style/VectorLayerStyleWidget.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/spatial/geoprocess/Geoprocess.java</file>
+			<file>src/main/java/org/geowe/client/local/style/StyleFactory.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/FillStyle.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/ChangeStyleTool.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/LabelStyle.java</file>
+			<file>src/main/java/org/geowe/client/local/style/LabelStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/spatial/GeometryValidator.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/map/catalog/layerset/SampleLayerSet.java</file>
+			<file>src/main/java/org/geowe/client/local/style/StyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/model/vector/VectorLayer.java</file>
+			<file>src/main/java/org/geowe/client/local/style/ColorStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/PointStyle.java</file>
+			<file>src/main/java/org/geowe/client/local/model/style/VectorStyleDef.java</file>
+			<file>src/main/java/org/geowe/client/local/messages/UIMessages.java</file>
+			<file>src/main/java/org/geowe/client/local/style/VertexStyleTab.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="159" opendate="2016-08-30 19:05:44" fixdate="2016-08-30 19:06:03">
+		<buginformation>
+			<summary>No se actualizan las peticiones GetFeatureInfo sobre WMS </summary>
+			<description>Al realizar una petición GetFeatureInfo sobre una capa WMS la respuesta es correcta la primera vez. Si lo intentas hacer sobre otra capa WMS distinta no se refrescan los datos y como respuesta se obtiene la información de la petición de la WMS anterior. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/main/tool/ToggleTool.java</file>
+			<file>src/main/java/org/geowe/client/local/initializer/EventListenerInitializer.java</file>
+			<file>src/main/java/org/geowe/client/local/layermanager/LayerManagerWidget.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/map/catalog/LayerLoader.java</file>
+			<file>src/main/java/org/geowe/client/local/layermanager/ChangeSelectedWMSLayerListener.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/info/WmsGetInfoTool.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="158" opendate="2016-08-30 10:35:02" fixdate="2016-08-31 10:30:08">
+		<buginformation>
+			<summary>Estilos de capa: atributo</summary>
+			<description>El panel no se ve correctamente, quedando el último campo (fondo) a medio ver. Al aplicar el label, cuando se quiere quitar ya no hay manera de quitar el label. Se queda para siempre. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/main/ZoomStatusWidget.java</file>
+			<file>src/main/java/org/geowe/client/local/style/VectorLayerStyleWidget.java</file>
+			<file>src/main/java/org/geowe/client/local/initializer/GeoMapZoomListener.java</file>
+			<file>src/main/java/org/geowe/client/local/style/LabelStyleTab.java</file>
+			<file>src/main/java/org/geowe/client/local/messages/UIMessages.java</file>
+			<file>src/main/java/org/geowe/client/local/main/tool/map/catalog/model/WfsVectorLayerDef.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="150" opendate="2016-07-25 08:36:26" fixdate="2016-08-18 09:54:24">
+		<buginformation>
+			<summary>Fallo al cargar geojson desde url</summary>
+			<description>Al intencar cargar el siguiente geojson: https://raw.githubusercontent.com/iderioja/base_datos_geografica/master/aguas_residuales_emisarios.json se produce un error y no realiza la carga.  Igual pasa al intentar cargarlo desde local, o desde texto. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/geowe/client/local/model/vector/VectorLayerFactory.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

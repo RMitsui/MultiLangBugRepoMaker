@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="xlsmapper">
+	<bug id="94" opendate="2016-12-23 11:02:28" fixdate="2017-01-02 05:44:20">
+		<buginformation>
+			<summary>POI-3.15でHorizontalRecordsで行の挿入を伴うレコードを書き込むと、結合が解除される。</summary>
+			<description>```@XlsHorizontalRecords(overRecord=OverRecordOperataion.Insert)``` で書き込むときに行の挿入を行うと、挿入した行よりもしたにある結合されたセルが解除される。 削除を行うときも同様。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/fieldprocessor/AnnoHorizontalRecordsTest.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/POIUtilsTest.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/HorizontalRecordsProcessor.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/XlsMapperConfig.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/POIUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="92" opendate="2016-12-23 09:33:54" fixdate="2017-01-02 05:43:59">
+		<buginformation>
+			<summary>POI-3.14でネストした表を出力する際に結合していると例外が発生する</summary>
+			<description>メソッド ``.HorizontalRecordsProcessor.processSavingNestedMergedRecord(...)`` で、結合しない（=結合する幅が1）のとき、例外が発生する。  ``` java.lang.IllegalArgumentException: Merged region D8 must contain 2 or more cells at org.apache.poi.xssf.usermodel.XSSFSheet.addMergedRegion(XSSFSheet.java:344) at org.apache.poi.xssf.usermodel.XSSFSheet.addMergedRegion(XSSFSheet.java:310) at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.processSavingNestedMergedRecord(HorizontalRecordsProcessor.java:1432) at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.saveNestedRecords(HorizontalRecordsProcessor.java:1358) at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.saveRecords(HorizontalRecordsProcessor.java:1044) at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.saveNestedRecords(HorizontalRecordsProcessor.java:1319) at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.saveRecords(HorizontalRecordsProcessor.java:1044) at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.saveRecords(HorizontalRecordsProcessor.java:773) at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.saveProcess(HorizontalRecordsProcessor.java:681) at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.saveProcess(HorizontalRecordsProcessor.java:1) at com.gh.mygreen.xlsmapper.FieldAdaptorProxy.saveProcess(FieldAdaptorProxy.java:65) at com.gh.mygreen.xlsmapper.XlsSaver.saveSheet(XlsSaver.java:302) at com.gh.mygreen.xlsmapper.XlsSaver.save(XlsSaver.java:115) at com.gh.mygreen.xlsmapper.XlsSaver.save(XlsSaver.java:67) at com.gh.mygreen.xlsmapper.XlsMapper.save(XlsMapper.java:339) at com.gh.mygreen.xlsmapper.fieldprocessor.AnnoHorizontalRecordsTest.test_save_hr_nestedRecords(AnnoHorizontalRecordsTest.java:2456) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:606) at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) at org.junit.runners.ParentRunner.run(ParentRunner.java:309) at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)  ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/HorizontalRecordsProcessor.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/VerticalRecordsProcessor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="87" opendate="2016-10-30 08:02:39" fixdate="2016-10-30 08:20:40">
+		<buginformation>
+			<summary>HorizontalRecordsで書き込む際に、表の直後に文字があると消えてしまう。</summary>
+			<description>`@XlsHorizontalRecords` で書き込む際に、表の直後に文字がある場合、挿入操作をすると、直後の文字が消えてしまう。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/HorizontalRecordsProcessor.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/fieldprocessor/AnnoHorizontalRecordsTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="84" opendate="2016-08-30 09:19:09" fixdate="2016-08-30 09:25:44">
+		<buginformation>
+			<summary>Javadocの記述ミス。</summary>
+			<description>- `@XlsHorizontalRecords` の javadoc中の `&lt;ul&gt;`タグの閉じがない。 `&lt;p&gt;` タグの閉じもない。 - `@XlsEnumConverter` のjavadocの属性 `ignoreCase` が参照形式になっていない。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/annotation/XlsEnumConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/annotation/XlsHorizontalRecords.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="82" opendate="2016-06-28 14:43:12" fixdate="2016-07-02 06:54:45">
+		<buginformation>
+			<summary>XMLファイルによるマッピングが動作しないのではないでしょうか</summary>
+			<description>失礼いたします。  XlsLoaderの下記部分は直接クラスからアノテーションの情報を取得されていますが、 XMLファイルによるマッピングもサポートされるなら、 AnnotationReaderから取得しなければならないような気がしますが如何でしょうか。  ``` XlsLoader.java#L144 final XlsSheet sheetAnno = clazz.getAnnotation(XlsSheet.class); 　　　↓　 XlsSheet sheetAnno = annoReader.getAnnotation(clazz, XlsSheet.class); ```  的外れなようであれば申し訳ありません。&lt;(_  _)&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/SampleTest.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/XlsLoader.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/XlsSaver.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="80" opendate="2016-04-26 06:04:19" fixdate="2016-04-29 14:16:28">
+		<buginformation>
+			<summary>外部XMLファイルによるマッピングが機能しない</summary>
+			<description>アノテーションで設定した値が外部Xmlで上書きできないです。 `AnnotationReaderTest.java` もテストがFail しているようです。  ``` @XlsSheet(name = "List") public class UserSheet {     @XlsLabelledCell(label = "Date", type = LabelledCellType.Right)     public Date createDate; }  ```  ``` &lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;annotations&gt;     &lt;class name="com.example.xlsmapper.sample.UserSheet" override="true"&gt;         &lt;field name="createDate" override="true"&gt;           &lt;annotation name="com.gh.mygreen.xlsmapper.annotation.XlsLabelledCell"&gt;             &lt;attribute name="label"&gt;Label&lt;/attribute&gt;           &lt;/annotation&gt;         &lt;/field&gt;     &lt;/class&gt; &lt;/annotations&gt; ```  ``` public class First {     public static void main(String[] args) throws Exception {         XlsMapper xlsMapper = new XlsMapper();               UserSheet sheet = xlsMapper.load(First.class.getClassLoader().             getResourceAsStream("example.xlsx"),             UserSheet.class,             First.class.getClassLoader().getResourceAsStream("example.xml"));         System.out.println(sheet.toString());     } } ```  `XmlIO.java` の load で JAXB の unmarshal で空振りしているように見えます。  ```     public static XmlInfo load(final InputStream in) throws XmlOperateException {         ArgUtils.notNull(in, "in");          final XmlInfo xmlInfo;          try {             xmlInfo = JAXB.unmarshal(in, XmlInfo.class);         } catch (DataBindingException e) {             throw new XmlOperateException("fail load xml with JAXB.", e);         }          return xmlInfo;     }  ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/xml/bind/XmlInfo.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/xml/AnnotationReaderTest.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/xml/bind/AnnotationInfo.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/xml/bind/ClassInfo.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/xml/bind/MethodInfo.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/xml/XmlBuilderTest.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/xml/bind/FieldInfo.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="60" opendate="2015-07-05 05:12:01" fixdate="2015-07-19 06:36:03">
+		<buginformation>
+			<summary>MessageInterpolatorでエスケープ文字が正しく処理できない。</summary>
+			<description>メッセージのフォーマットを行う、Messageinterpolatorでエスケープ文字が正しく処理できない。  ``` ${'Helo World\\}' + formatter.format('%1.1f', validatedValue)}は、{min}～${max}の範囲で入力してください。 ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/validation/MessageInterpolator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="59" opendate="2015-07-05 01:54:07" fixdate="2015-07-19 06:34:37">
+		<buginformation>
+			<summary>@XlsHorizontalRecordsで書き込み時のGenericsのタイプ取得時に読み込み用のものを取得している。</summary>
+			<description> メソッドにアノテーションを付与したテストをしていないので行う必要がある。 - メソッドから取得する際に書き込み時に何も出力されない。 - `@XlsVerticalRecords` も同様に書き込み時に出力されない。 - `@XlsSheetName` の場合、書き込み時にシート名が設定されない。 - 各種Converterの処理の書き込み時において、 `@XlsConverter` を取得する際に、反映されない。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/CharacterCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/ArrayCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/AbstractNumberCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/CalendarCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/CellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/HorizontalRecordsProcessor.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/AbstractDateCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/FieldAdaptor.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/VerticalRecordsProcessor.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/URICellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/AbstractCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/SetCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/Utils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="49" opendate="2015-06-11 06:13:42" fixdate="2015-06-28 17:41:23">
+		<buginformation>
+			<summary>@XlsHorizontalRecordsで書き込む際に入力規則の範囲修正が上手くいかない。</summary>
+			<description>入力規則の範囲を修正する際に、新しく規則を追加しているが、実際には更新または一旦削除してから追加し直す必要がある。 - 現象として、既存の規則が残ったままになり、行を追加／削除すると、入力規則の位置がおかしくなる。 - POIで行を削除しても入力規則の範囲はそのままなので、修正する必要がある。 - POIでは入力規則は、セルではなく、結合の用に別データとしてセルの範囲として持っている。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoSheetNameTest.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoLabelledCellTest.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoHorizontalRecordsTest.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/TestUtils.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoIterateTablesTest.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/cellconvert/DateTimeCellConverterTest.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/cellconvert/TextCellConverterTest.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/HorizontalRecordsProcessor.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoCellTest.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoSheetTest.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/VerticalRecordsProcessor.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/cellconvert/BooleanCellConverterTest.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/XlsMapperConfig.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/annotation/XlsVerticalRecords.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/POIUtils.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoVerticalRecordsTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="47" opendate="2015-06-08 14:23:35" fixdate="2015-06-28 17:38:34">
+		<buginformation>
+			<summary>@XlsHorizontalRecordsで配列型を書き込むときにレコードが書き出されない。</summary>
+			<description>@XlsHorizontalRecordsで配列型を書き込むときに、データが設定されているにもかかわらずレコードが書き出されない。 - @XlsVertiacalRecordsの時でも同様に書き込まれない。 - @XlsIterateTablesの時も同様に書き込まれない。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/HorizontalRecordsProcessor.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/VerticalRecordsProcessor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="46" opendate="2015-06-08 13:38:17" fixdate="2015-06-28 17:29:49">
+		<buginformation>
+			<summary>@XlsHoritonralRecordsで書き込む場合、セルの結合を行うとファイルが壊れる。</summary>
+			<description>@XlsHoritonralRecords内のレコードクラスのプロパティにおいて、@XlsColumn(merged=true)を設定している場合、結合するときファイルを出力すると、Excelで開いたときにファイルの修復メッセージが表示される。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/HorizontalRecordsProcessor.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/POIUtils.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/VerticalRecordsProcessor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="40" opendate="2015-05-27 06:32:37" fixdate="2015-06-28 17:12:52">
+		<buginformation>
+			<summary>char型を書き込む時に初期値'\u000'で書き込むとExcel上で文字化けする。</summary>
+			<description>fix v0.5 - char型を書き込む時に、’\u000’は、空白と判断して、空セルとして書き込む。 - char型の場合、書き込む時に初期値が2文字以上あってもそのまま書き込まれるため、先頭の1文字のみ書き込むよう修正。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/AbstractNumberCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/CharacterCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/AbstractDateCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/Utils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="34" opendate="2015-05-15 13:27:38" fixdate="2015-06-28 16:55:22">
+		<buginformation>
+			<summary>@XlsHorizontalRecordsで見出しセルを結合している場合、正しく値が取得できない。</summary>
+			<description>@XlsHorizontalRecordsのレコードのカラムに、見出しセルを結合してしている場合、一方のセルが正しく取得できない。 - 下記の例で、フィールドmailにtelの値が設定される。 - プログラムのロジックを見ると、結合している列分、ループが余計に実行されている。  ``` java private static class HeaderMergedRecord {          @XlsColumn(columnName="氏名")         private String name;          @XlsColumn(columnName="連絡先")         private String mail;          @XlsColumn(columnName="連絡先", headerMerged=1)         private String tel;      } ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoSheetNameTest.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/POIUtils.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/HorizontalRecordsProcessor.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoCellTest.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoSheetTest.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/VerticalRecordsProcessor.java</file>
+			<file>src/test/java/com/gh/mygreen/xlsmapper/annotation/AnnoLabelledCellTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="33" opendate="2015-05-11 03:49:48" fixdate="2015-06-28 16:53:13">
+		<buginformation>
+			<summary>@XlsSheet(number=2)でシート番号を指定してもSheetNotFoundExceptionがスローされる。</summary>
+			<description>@XlsSheet(numbe=2)で正しいシート番号を指定しても、SheetNotFoundExceptionがスローされる。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/XlsLoader.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/XlsSaver.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="32" opendate="2015-05-10 07:19:17" fixdate="2015-06-28 16:51:15">
+		<buginformation>
+			<summary>@XlsLabelledCellでセルの値が空のときに、アドレスが正しく取得できない。</summary>
+			<description>@XlsLaelledCellで値が設定されているセルの値が空のときに、Map&lt;String, Position&gt; positionsフィールドにてセルの位置を設定する際に、値が見出しのセルのアドレスになっている。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/LabelledCellProcessor.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/Utils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="27" opendate="2015-05-06 05:34:45" fixdate="2015-06-28 16:37:04">
+		<buginformation>
+			<summary>リスト型にマッピングする際に、空の項目をスキップする際にトリム処理の判定が適用されない。</summary>
+			<description>リスト型にマッピングする際に、トリム処理が有効でかつ各項目のが空の場合無視する処理が有効な場合、空の項目を無視するかどうかの判定にトリム処理が反映されない。  ``` java @XlsConverter(trim=true) @XlsArrayConverter(ignoreEmptyItem=true) List&lt;String&gt; list ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/ListCellConverter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2015-05-05 01:59:37" fixdate="2015-06-28 16:17:00">
+		<buginformation>
+			<summary>文字列型のセルをjava.util.Date型にマッピングする際に、@XlsDateConverterを指定しないとエラーとなる。</summary>
+			<description>@XlsDateConverterで書式を指定しない場合、文字列型のセルをjava.util.Date型にマッピングすると例外が発生する。  ``` java com.gh.mygreen.xlsmapper.AnnotationInvalidException: Anotation '@null' attribute 'pattern' should be not empty.     at com.gh.mygreen.xlsmapper.cellconvert.converter.AbstractDateCellConverter.createDateFormat(AbstractDateCellConverter.java:95)     at com.gh.mygreen.xlsmapper.cellconvert.converter.AbstractDateCellConverter.toObject(AbstractDateCellConverter.java:70)     at com.gh.mygreen.xlsmapper.cellconvert.converter.AbstractDateCellConverter.toObject(AbstractDateCellConverter.java:1)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.loadRecords(HorizontalRecordsProcessor.java:260)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.loadProcess(HorizontalRecordsProcessor.java:91)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.loadProcess(HorizontalRecordsProcessor.java:1)     at com.gh.mygreen.xlsmapper.FieldAdaptorProxy.loadProcess(FieldAdaptorProxy.java:61)     at com.gh.mygreen.xlsmapper.XlsLoader.loadSheet(XlsLoader.java:440)     at com.gh.mygreen.xlsmapper.XlsLoader.load(XlsLoader.java:157)     at com.gh.mygreen.xlsmapper.XlsLoader.load(XlsLoader.java:105)     at com.gh.mygreen.xlsmapper.XlsMapper.load(XlsMapper.java:90)     at com.gh.mygreen.xlsmapper.cellconvert.DateTimeCellConverterTest.test_load_date_time(DateTimeCellConverterTest.java:60)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     at java.lang.reflect.Method.invoke(Method.java:606)     at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)     at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)     at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)     at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)     at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)     at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)     at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)     at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)     at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)     at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)     at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)     at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)     at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)     at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)     at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)     at org.junit.runners.ParentRunner.run(ParentRunner.java:309)     at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)     at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/SqlTimeCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/SqlTimestampCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/DateCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/AbstractDateCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/SqlDateCellConverter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="24" opendate="2015-05-04 01:14:40" fixdate="2015-06-28 08:31:11">
+		<buginformation>
+			<summary>数値型にマッピングする際に、最大値/最小値を設定してもエラーにならない。</summary>
+			<description>shortに最大値+1(32768)を設定してもエラーとならず、オーバーフローを起こして、「-32768」となる。 バインディングエラーとすべき。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/TypeBindException.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/ByteCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/validation/FieldErrorBuilder.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/AbstractNumberCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/IntegerCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/validation/SheetBindingErrors.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/AbstractCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/LongCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/ShortCellConverter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="23" opendate="2015-05-04 00:44:41" fixdate="2015-06-28 08:18:43">
+		<buginformation>
+			<summary>文字列型のセルに数値を入力し数値として取り込む場合、エラーが発生する。</summary>
+			<description>文字列型の負の数（-12.34）をJavaのdouble型にマッピングする場合、エラーが発生する。  ``` java com.gh.mygreen.xlsmapper.cellconvert.TypeBindException: Fail conversion field value '-12.34' =&gt; type 'double'. Cell 'F20' map to 'com.gh.mygreen.xlsmapper.cellconvert.CellConvertNumberTest$PrimitiveRecord#d'.     at com.gh.mygreen.xlsmapper.cellconvert.AbstractCellConverter.newTypeBindException(AbstractCellConverter.java:39)     at com.gh.mygreen.xlsmapper.cellconvert.converter.AbstractNumberCellConverter.toObject(AbstractNumberCellConverter.java:72)     at com.gh.mygreen.xlsmapper.cellconvert.converter.AbstractNumberCellConverter.toObject(AbstractNumberCellConverter.java:1)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.loadRecords(HorizontalRecordsProcessor.java:260)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.loadProcess(HorizontalRecordsProcessor.java:91)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.loadProcess(HorizontalRecordsProcessor.java:1)     at com.gh.mygreen.xlsmapper.FieldAdaptorProxy.loadProcess(FieldAdaptorProxy.java:61)     at com.gh.mygreen.xlsmapper.XlsLoader.loadSheet(XlsLoader.java:440)     at com.gh.mygreen.xlsmapper.XlsLoader.load(XlsLoader.java:157)     at com.gh.mygreen.xlsmapper.XlsLoader.load(XlsLoader.java:67)     at com.gh.mygreen.xlsmapper.XlsMapper.load(XlsMapper.java:60)     at com.gh.mygreen.xlsmapper.cellconvert.CellConvertNumberTest.test_load_number(CellConvertNumberTest.java:58)     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)     at java.lang.reflect.Method.invoke(Method.java:606)     at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)     at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)     at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)     at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)     at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)     at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)     at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)     at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)     at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)     at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)     at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)     at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)     at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)     at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)     at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)     at org.junit.runners.ParentRunner.run(ParentRunner.java:309)     at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)     at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)     at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) Caused by: java.text.ParseException: '-12.34' cannot less than 0.000000     at com.gh.mygreen.xlsmapper.cellconvert.converter.AbstractNumberCellConverter.parseNumber(AbstractNumberCellConverter.java:171)     at com.gh.mygreen.xlsmapper.cellconvert.converter.AbstractNumberCellConverter.toObject(AbstractNumberCellConverter.java:70)     ... 36 more  ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/BigIntegerCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/DoubleCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/FloatCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/AbstractNumberCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/BigDecimalCellConverter.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="19" opendate="2015-01-29 06:39:26" fixdate="2015-04-05 03:37:39">
+		<buginformation>
+			<summary>2003形式のExcelを書き込む場合、セルの取得時に例外が発生する。</summary>
+			<description>java.lang.NullPointerException     at com.gh.mygreen.xlsmapper.POICellFormatter.getNumericCellValue(POICellFormatter.java:165)     at com.gh.mygreen.xlsmapper.POICellFormatter.format(POICellFormatter.java:55)     at com.gh.mygreen.xlsmapper.POIUtils.getCellContents(POIUtils.java:234)     at com.gh.mygreen.xlsmapper.POIUtils.isEmptyCellContents(POIUtils.java:262)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.saveRecords(HorizontalRecordsProcessor.java:574)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.HorizontalRecordsProcessor.saveProcess(HorizontalRecordsProcessor.java:458)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.IterateTablesProcessor.saveMultipleHorizontalTableCell(IterateTablesProcessor.java:388)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.IterateTablesProcessor.saveTables(IterateTablesProcessor.java:313)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.IterateTablesProcessor.saveProcess(IterateTablesProcessor.java:257)     at com.gh.mygreen.xlsmapper.fieldprocessor.processor.IterateTablesProcessor.saveProcess(IterateTablesProcessor.java:1)     at com.gh.mygreen.xlsmapper.FieldAdaptorProxy.saveProcess(FieldAdaptorProxy.java:65) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/CellFormatter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/CellLinkCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/CellCommentStore.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/fieldprocessor/processor/HorizontalRecordsProcessor.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/URICellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/XlsMapperConfig.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/POIUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="6" opendate="2014-12-01 13:51:19" fixdate="2014-12-01 14:09:21">
+		<buginformation>
+			<summary>入力値検証の際に変数の値がnullにしているとNPEが発生する。</summary>
+			<description>MessageInterpolatorに渡す、マップの変数の項目がnullの場合、NPEが発生する。 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/ArrayCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/ListCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/validation/MessageInterpolator.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/cellconvert/converter/SetCellConverter.java</file>
+			<file>src/main/java/com/gh/mygreen/xlsmapper/Utils.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

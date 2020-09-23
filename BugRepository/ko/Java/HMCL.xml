@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="HMCL">
+	<bug id="532" opendate="2019-02-19 14:34:41" fixdate="2019-02-19 15:15:57">
+		<buginformation>
+			<summary>无法正版登陆</summary>
+			<description>启动器无法正版登陆，有时报错密码错误，有时报错无法解析，反复检查密码都是正确的，并且在其他启动器和官方启动器登陆并启动成功 * 启动器版本：3.2.123 * 操作系统：Windows10 1809 * Java 版本：1.8_192 * 错误截图（最好请将整个电脑屏幕的截图发上来）： ![image](https://user-images.githubusercontent.com/32028165/53022300-e3e94d80-3495-11e9-8778-a7f8c5b687e5.png)  * 游戏版本（如果是启动通过启动器自带的自动安装功能安装的游戏）：1.13.2 * 对游戏做的修改（是否自行通过安装器安装 Rift 等 API，以及 mod）：optifine * 游戏崩溃报告（如果有）： * 启动器崩溃报告（如果有）： * 启动器日志文件（在启动器设置中打开日志文件夹并将文件夹内所有文件打包发在这里）：[hmcl-exported-logs-2019-02-19T22-32-16.log](https://github.com/huanghongxun/HMCL/files/2880423/hmcl-exported-logs-2019-02-19T22-32-16.log) * 问题描述（如何触发问题）：  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/auth/yggdrasil/User.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="502" opendate="2018-12-15 18:35:37" fixdate="2018-12-16 08:14:14">
+		<buginformation>
+			<summary>输入非法代理端口号导致NPE</summary>
+			<description>重现方法： 1. 启用代理，输入一个非空主机 2. 输入一个非法端口号，如-1 3. HMCL崩溃。并且由于设置已保存，之后再启动HMCL会立即崩溃  ``` 十二月 16, 2018 2:32:49 上午 javafx.beans.binding.Bindings$6 computeValue 警告: Exception while evaluating binding java.lang.IllegalArgumentException: port out of range:-1111 at java.net.InetSocketAddress.checkPort(InetSocketAddress.java:143) at java.net.InetSocketAddress.&lt;init&gt;(InetSocketAddress.java:224) at org.jackhuang.hmcl.setting.ProxyManager.lambda$0(ProxyManager.java:56) at javafx.beans.binding.Bindings$6.computeValue(Bindings.java:338) at javafx.beans.binding.ObjectBinding.get(ObjectBinding.java:153) at org.jackhuang.hmcl.setting.ProxyManager.updateSystemProxy(ProxyManager.java:83) at org.jackhuang.hmcl.setting.ProxyManager.lambda$1(ProxyManager.java:64) at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137) at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81) at javafx.beans.binding.ObjectBinding.invalidate(ObjectBinding.java:172) at com.sun.javafx.binding.BindingHelperObserver.invalidated(BindingHelperObserver.java:51) at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:349) at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81) at javafx.beans.property.StringPropertyBase.fireValueChangedEvent(StringPropertyBase.java:103) at javafx.beans.property.StringPropertyBase.markInvalid(StringPropertyBase.java:110) at javafx.beans.property.StringPropertyBase.set(StringPropertyBase.java:144) at javafx.beans.property.StringPropertyBase.set(StringPropertyBase.java:49) at javafx.beans.property.StringProperty.setValue(StringProperty.java:65) at javafx.beans.property.StringProperty.setValue(StringProperty.java:57) at com.sun.javafx.binding.BidirectionalBinding$TypedGenericBidirectionalBinding.changed(BidirectionalBinding.java:599) at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:361) at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81) at javafx.scene.control.TextInputControl$TextProperty.fireValueChangedEvent(TextInputControl.java:1389) at javafx.scene.control.TextInputControl$TextProperty.markInvalid(TextInputControl.java:1393) at javafx.scene.control.TextInputControl$TextProperty.controlContentHasChanged(TextInputControl.java:1332) at javafx.scene.control.TextInputControl$TextProperty.access$1600(TextInputControl.java:1300) at javafx.scene.control.TextInputControl.lambda$new$0(TextInputControl.java:139) at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137) at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81) at javafx.scene.control.TextField$TextFieldContent.insert(TextField.java:87) at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:1204) at javafx.scene.control.TextInputControl.updateContent(TextInputControl.java:556) at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:548) at com.sun.javafx.scene.control.skin.TextFieldSkin.replaceText(TextFieldSkin.java:576) at com.sun.javafx.scene.control.behavior.TextFieldBehavior.replaceText(TextFieldBehavior.java:202) at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.defaultKeyTyped(TextInputControlBehavior.java:238) at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callAction(TextInputControlBehavior.java:139) at com.sun.javafx.scene.control.behavior.BehaviorBase.callActionForEvent(BehaviorBase.java:218) at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callActionForEvent(TextInputControlBehavior.java:127) at com.sun.javafx.scene.control.behavior.BehaviorBase.lambda$new$0(BehaviorBase.java:135) at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218) at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) at javafx.event.Event.fireEvent(Event.java:198) at javafx.scene.Scene$KeyHandler.process(Scene.java:3964) at javafx.scene.Scene$KeyHandler.access$1800(Scene.java:3910) at javafx.scene.Scene.impl_processKeyEvent(Scene.java:2040) at javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2501) at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:217) at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:149) at java.security.AccessController.doPrivileged(Native Method) at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:248) at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389) at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:247) at com.sun.glass.ui.View.handleKeyEvent(View.java:546) at com.sun.glass.ui.View.notifyKey(View.java:966) at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) at com.sun.glass.ui.gtk.GtkApplication.lambda$null$5(GtkApplication.java:139) at java.lang.Thread.run(Thread.java:748)  [02:32:50] [org.jackhuang.hmcl.util.CrashReporter.uncaughtException/SEVERE] Uncaught exception in thread JavaFX Application Thread java.lang.NullPointerException at org.jackhuang.hmcl.setting.ProxyManager.updateSystemProxy(ProxyManager.java:84) at org.jackhuang.hmcl.setting.ProxyManager.lambda$1(ProxyManager.java:64) at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137) at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81) at javafx.beans.binding.ObjectBinding.invalidate(ObjectBinding.java:172) at com.sun.javafx.binding.BindingHelperObserver.invalidated(BindingHelperObserver.java:51) at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:349) at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81) at javafx.beans.property.StringPropertyBase.fireValueChangedEvent(StringPropertyBase.java:103) at javafx.beans.property.StringPropertyBase.markInvalid(StringPropertyBase.java:110) at javafx.beans.property.StringPropertyBase.set(StringPropertyBase.java:144) at javafx.beans.property.StringPropertyBase.set(StringPropertyBase.java:49) at javafx.beans.property.StringProperty.setValue(StringProperty.java:65) at javafx.beans.property.StringProperty.setValue(StringProperty.java:57) at com.sun.javafx.binding.BidirectionalBinding$TypedGenericBidirectionalBinding.changed(BidirectionalBinding.java:599) at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:361) at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81) at javafx.scene.control.TextInputControl$TextProperty.fireValueChangedEvent(TextInputControl.java:1389) at javafx.scene.control.TextInputControl$TextProperty.markInvalid(TextInputControl.java:1393) at javafx.scene.control.TextInputControl$TextProperty.controlContentHasChanged(TextInputControl.java:1332) at javafx.scene.control.TextInputControl$TextProperty.access$1600(TextInputControl.java:1300) at javafx.scene.control.TextInputControl.lambda$new$0(TextInputControl.java:139) at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137) at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81) at javafx.scene.control.TextField$TextFieldContent.insert(TextField.java:87) at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:1204) at javafx.scene.control.TextInputControl.updateContent(TextInputControl.java:556) at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:548) at com.sun.javafx.scene.control.skin.TextFieldSkin.replaceText(TextFieldSkin.java:576) at com.sun.javafx.scene.control.behavior.TextFieldBehavior.replaceText(TextFieldBehavior.java:202) at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.defaultKeyTyped(TextInputControlBehavior.java:238) at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callAction(TextInputControlBehavior.java:139) at com.sun.javafx.scene.control.behavior.BehaviorBase.callActionForEvent(BehaviorBase.java:218) at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callActionForEvent(TextInputControlBehavior.java:127) at com.sun.javafx.scene.control.behavior.BehaviorBase.lambda$new$0(BehaviorBase.java:135) at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218) at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) at javafx.event.Event.fireEvent(Event.java:198) at javafx.scene.Scene$KeyHandler.process(Scene.java:3964) at javafx.scene.Scene$KeyHandler.access$1800(Scene.java:3910) at javafx.scene.Scene.impl_processKeyEvent(Scene.java:2040) at javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2501) at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:217) at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:149) at java.security.AccessController.doPrivileged(Native Method) at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:248) at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389) at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:247) at com.sun.glass.ui.View.handleKeyEvent(View.java:546) at com.sun.glass.ui.View.notifyKey(View.java:966) at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) at com.sun.glass.ui.gtk.GtkApplication.lambda$null$5(GtkApplication.java:139) at java.lang.Thread.run(Thread.java:748) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/launch/DefaultLauncher.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/ProxyManager.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/SettingsPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/game/LaunchOptions.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="500" opendate="2018-12-15 18:05:47" fixdate="2018-12-18 05:45:02">
+		<buginformation>
+			<summary>删除版本后返回主页时崩溃</summary>
+			<description>重现方法： 1. 安装一个游戏版本，选中它，然后回到启动器主页 2. 点击版本设置，进入版本设置界面 3. 点击版本列表，进入版本列表界面 4. 再点击版本设置，再次进入版本设置界面 5. 再点击版本列表，再次进入版本列表界面 6. 在版本列表中删除这个版本 7. 点击返回主页按钮  ``` [02:02:24] [org.jackhuang.hmcl.util.CrashReporter.uncaughtException/SEVERE] Uncaught exception in thread JavaFX Application Thread java.lang.IllegalStateException at org.jackhuang.hmcl.ui.construct.Navigator.close(Navigator.java:100) at org.jackhuang.hmcl.ui.construct.Navigator.lambda$0(Navigator.java:76) at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218) at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) at javafx.event.Event.fireEvent(Event.java:198) at javafx.scene.Node.fireEvent(Node.java:8413) at org.jackhuang.hmcl.ui.versions.VersionPage.lambda$12(VersionPage.java:138) at com.sun.javafx.application.PlatformImpl.lambda$null$5(PlatformImpl.java:295) at java.security.AccessController.doPrivileged(Native Method) at com.sun.javafx.application.PlatformImpl.lambda$runLater$6(PlatformImpl.java:294) at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) at com.sun.glass.ui.gtk.GtkApplication.lambda$null$5(GtkApplication.java:139) at java.lang.Thread.run(Thread.java:748) ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/construct/Navigator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="489" opendate="2018-11-18 06:18:45" fixdate="2018-12-02 12:03:45">
+		<buginformation>
+			<summary>加载版本列表失败</summary>
+			<description> ![g m7p vf7twj4 w39c 1_a](https://user-images.githubusercontent.com/40971680/48669292-9084fd80-eb3c-11e8-89e7-993d721bf69b.png) 没有办法安装新版本了，大概资源挂了 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/game/ModpackHelper.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/task/Task.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/download/DefaultGameBuilder.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/task/FinalizedTask.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/SettingsPage.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/util/io/FileUtils.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/task/FinalizedCallback.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/SettingsView.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Settings.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="461" opendate="2018-10-01 09:34:28" fixdate="2018-10-02 04:16:03">
+		<buginformation>
+			<summary>3.2.104的一个问题</summary>
+			<description>在该版本下使用自动安装功能后所安装的东西不显示，具体见GIF ![GIF.gif](https://i.loli.net/2018/10/01/5bb1e9f8221ea.gif)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/VersionPage.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/construct/Navigator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="460" opendate="2018-09-30 06:23:52" fixdate="2018-09-30 11:46:32">
+		<buginformation>
+			<summary>3.1.83-win版本-代理设置功能失效</summary>
+			<description>修改代理配置后，代理配置不生效。hmcl.json中相关字段如下：   ```json {   "hasProxy": true,   "hasProxyAuth": false,   "proxyType": "DIRECT" } ``` proxyType字段期望值为HTTP/SOCKS5，实际值为DIRECT，导致代理配置不生效。   手工修改proxyType字段为HTTP/SOCKS5后代理配置生效。  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="403" opendate="2018-07-27 03:34:49" fixdate="2018-08-06 10:55:59">
+		<buginformation>
+			<summary>OSX 下窗口不能移动</summary>
+			<description>窗口不能移动不能调整，就像粘在我桌面上了一样。可以正常操作。  macOS High Sierra 10.13.6</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/Decorator.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="377" opendate="2018-07-11 00:27:53" fixdate="2018-07-11 04:46:40">
+		<buginformation>
+			<summary>修改全局配置会导致独立配置被覆盖</summary>
+			<description>只要进入某个带全局配置的版本设置页面（不做任何修改），就会导致其他版本独立设置被覆盖 这属于逻辑上的判断问题 正确情况应该是：修改某个配置时含有全局标识的配置文件时同时修改，不含全局标识的配置文件保持不变，只允许单独修改！ 这个问题在多版本测试mod时问题很严重！ ![gif](https://user-images.githubusercontent.com/25012170/42544417-477fc552-84e4-11e8-8e8b-9eff82530a79.gif) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/VersionSettingsController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="296" opendate="2018-02-28 03:00:26" fixdate="2018-05-20 11:45:09">
+		<buginformation>
+			<summary>authlib认证地址不支持https</summary>
+			<description>如题，键入https链接后提示链接不合法，改为http后无法添加</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/ui/AuthlibInjectorServersPage.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="153" opendate="2017-06-23 04:45:25" fixdate="2017-06-24 09:31:25">
+		<buginformation>
+			<summary>启动器没法使用各版本独立</summary>
+			<description>已经在设置里设置了，版本隔离，但是启动时还是会直接在.minecraft目录下生成游戏文件，希望能解决Ver 2.7.7.29</description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/util/HMCLGameProvider.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/version/MinecraftVersionManager.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/version/MinecraftClassicVersion.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/util/HMCLAssetService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/util/HMCLMinecraftService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hmcl/setting/Config.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/version/MinecraftVersion.java</file>
+			<file>HMCLCore/src/main/java/org/jackhuang/hmcl/core/service/IMinecraftProvider.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="61" opendate="2016-04-09 07:16:08" fixdate="2016-04-09 09:29:46">
+		<buginformation>
+			<summary>正版登出后“密码”后面的背景无法显示</summary>
+			<description>![](https://cloud.githubusercontent.com/assets/13145126/14402362/f3899d08-fe65-11e5-8fef-328ed15dc74b.png) @huanghongxun  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/ui/LogWindow.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/MainPagePanel.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="45" opendate="2016-03-04 06:43:10" fixdate="2016-03-04 11:23:18">
+		<buginformation>
+			<summary>1.7.10依赖库文件官方源下载失败</summary>
+			<description>http://paste.ubuntu.com/15279118/  有三个文件一直下载失败。选择官方源时会从oschina的maven下载这些文件，但是一直失败。HMCL版本2.4.1.23。Forge版本1614 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/VersionSetting.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/GameSettingsPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/LaunchOptions.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/MinecraftCrashAdvicer.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/AbstractMinecraftLoader.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/download/MojangDownloadProvider.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/launch/MinecraftLoader.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/LaunchingUIDaemon.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2016-03-01 14:50:31" fixdate="2016-03-03 12:26:41">
+		<buginformation>
+			<summary>新建不了配置</summary>
+			<description>如题，新建后点确认啥事都没有发生，嗯啥事都没有 版本：ci上的最新 （不知道是不是只是我一个人的问题;( </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/setting/Profile.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/tasks/Task.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/ui/GameSettingsPanel.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/asset/AssetsMojangLoader.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/service/IMinecraftAssetService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/asset/MinecraftAssetService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/asset/IAssetsHandler.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/tasks/TaskList.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="39" opendate="2016-02-29 08:01:55" fixdate="2016-03-01 04:37:24">
+		<buginformation>
+			<summary>重新下载1.89有些文件下载失败</summary>
+			<description>![image](https://cloud.githubusercontent.com/assets/5134746/13388731/8abffb0a-defd-11e5-910b-42ad0246dc62.png) 然后在语言里面都是空的 ![image](https://cloud.githubusercontent.com/assets/5134746/13388735/98b499d2-defd-11e5-9f3f-8da731bce07c.png) 下面是日志截图 ![image](https://cloud.githubusercontent.com/assets/5134746/13388751/bec361e4-defd-11e5-848d-4620268bc574.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/util/CrashReporter.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/service/IMinecraftAssetService.java</file>
+			<file>HMCL/src/main/java/org/jackhuang/hellominecraft/launcher/core/asset/MinecraftAssetService.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/tasks/download/FileDownloadTask.java</file>
+			<file>HMCLAPI/src/main/java/org/jackhuang/hellominecraft/util/tasks/TaskList.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

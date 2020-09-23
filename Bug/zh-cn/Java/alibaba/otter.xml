@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>812</id>
+		<title>保存canal时，数据库ip自动转换为hostname保存到数据库</title>
+		<body>新建/编辑canal时，数据库地址填写本机ip，结果保存的时候被自动转化为manager所在机器的hostname了。  这样canal在其他node上执行的时候，有可能会出现node不识别manager hostname的情况吧？  查看了下源代码，FastJson在序列化json的时候出的问题  ![image](https://user-images.githubusercontent.com/42435177/63565063-0e79a780-c59a-11e9-9cd8-5e099e4ab7a2.png)  本来想写一个自定义类继承InetSocketAddress的，但是发现InetSocketAddress的getHostName是final的，有没有其他解决方法能保证数据库存的是ip地址？ </body>
+		<created>2019-08-23 03:37:20</created>
+		<closed>2019-08-28 06:15:07</closed>
+	</bug>
+	<bug>
+		<id>638</id>
+		<title>异常挂起后手工解挂2次，channel pipeline状态都显示正常，但实际上channel已经假死不同步</title>
+		<body>- 现象：  node在insert 时出现异常触发manager挂起，不处理这个异常，紧接着直接在manager界面上面点击解挂，2次这样操作后channel 状态显示正常，但实际上channel已经假死不工作。    - 原因 出现异常rollback，触发SelectTask.java里面 `if (rversion.get() != startVersion) {// 说明存在过变化，中间出现过rollback，需要丢弃该数据                     logger.warn("rollback happend , should skip this data and get new message.");                     canStartSelector.get();// 确认一下rollback是否完成                     gotMessage = otterSelector.selector();// 这时不管有没有数据，都需要执行一次s/e/t/l                 }`   ，同时rollback会发送错误给manager,更改channel状态为PAUSE。如果在ExtractMemoryArbitrateEvent中channel状态已经变成了PAUSE, **会直接丢掉数据不进行任何处理**，EventStore里面的读取位置点没有被rollback.        </body>
+		<created>2018-11-10 05:55:15</created>
+		<closed>2018-11-13 15:01:59</closed>
+	</bug>
+	<bug>
+		<id>633</id>
+		<title>share.push jar包 源码 MediaDatasourceSupplier.java 中parse方法 slaveAddress 被设置为 master地址</title>
+		<body>4.2.16 源码 MediaDatasourceSupplier.java 中 142行 ，slaveAddress被设置为master地址，这个是否存在bug？ ``` private HaDatasourceInfo parse(String matrixStr) {         HaDatasourceInfo haInfo = new HaDatasourceInfo();          Map jsonMap = JsonUtils.unmarshalFromString(matrixStr, HashMap.class);         String masterAddress = (String) jsonMap.get("master");         if (masterAddress != null) {             DatasourceInfo master = new DatasourceInfo();             master.setAddress(parseAddress(masterAddress));             haInfo.setMaster(master);         }        // slaveAddress 被设置为master地址         String slaveAddress = (String) jsonMap.get("master");         if (slaveAddress != null) {             DatasourceInfo slave = new DatasourceInfo();             slave.setAddress(parseAddress(slaveAddress));             haInfo.getSlavers().add(slave);         }          return haInfo; } ```</body>
+		<created>2018-11-08 14:24:17</created>
+		<closed>2018-11-13 15:28:51</closed>
+	</bug>
+	<bug>
+		<id>617</id>
+		<title>otter同步set类型出错</title>
+		<body>pid:3 nid:1 exception:setl:com.alibaba.otter.node.etl.load.exception.LoadException: java.util.concurrent.ExecutionException: com.alibaba.otter.node.etl.load.exception.LoadException: com.alibaba.otter.node.etl.load.exception.LoadException: com.alibaba.otter.node.etl.load.exception.LoadException: org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [update `jz`.`jz_videos` set `category` = ? where ( `video_id` = ? )]; Data truncated for column 'category' at row 1; nested exception is java.sql.SQLException: Data truncated for column 'category' at row 1  ---Pks     EventColumn[index=0,columnType=-5,columnName=video_id,columnValue=3280,isNull=false,isKey=true,isUpdate=true] ---oldPks  ---Columns     EventColumn[index=47,columnType=1,columnName=category,columnValue=-124,isNull=false,isKey=false,isUpdate=true] ---Sql     update `jz`.`jz_videos` set `category` = ? where ( `video_id` = ? )</body>
+		<created>2018-10-03 14:40:02</created>
+		<closed>2018-10-24 08:26:00</closed>
+	</bug>
+	<bug>
+		<id>607</id>
+		<title>主备配置 有成功的吗？</title>
+		<body>在主备配置中，尝试各种，始终不成功。但是用主库直接部署otter却可以。  </body>
+		<created>2018-09-13 03:51:48</created>
+		<closed>2018-09-18 02:22:31</closed>
+	</bug>
+	<bug>
+		<id>605</id>
+		<title>v4.2.16版本中异构库表明同步有问题</title>
+		<body>在4.2.15中增加“支持一下mysql异构库表名的同步”功能，在新版本中该功能对于表名不同的情况下无法进行ddl的更新</body>
+		<created>2018-09-12 08:13:25</created>
+		<closed>2018-09-20 02:25:42</closed>
+	</bug>
+	<bug>
+		<id>507</id>
+		<title>otter同步时，部分update的操作没有同步成功</title>
+		<body>有一种场景，业务上先insert一条数据，再update这条数据。otter进行同步时，update的这个操作丢失了，日志中也没有报错信息。是node在消费时因为多线程原因导致先操作了update失败，然后insert了数据吗？</body>
+		<created>2018-04-10 07:45:59</created>
+		<closed>2018-08-01 07:46:55</closed>
+	</bug>
+	<bug>
+		<id>76</id>
+		<title>ArrayIndexOutOfBoundsException: 0</title>
+		<body>manager日志中报如下错误： pid:49 nid:8 exception:canal:cn8:com.alibaba.otter.canal.parse.exception.CanalParseException: java.lang.ArrayIndexOutOfBoundsException: 0 Caused by: java.lang.ArrayIndexOutOfBoundsException: 0     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.SimpleDdlParser.parseTableName(SimpleDdlParser.java:163)     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.SimpleDdlParser.parseDdl(SimpleDdlParser.java:115)     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.SimpleDdlParser.parse(SimpleDdlParser.java:80)     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parseQueryEvent(LogEventConvert.java:150)     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parse(LogEventConvert.java:99)     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parse(LogEventConvert.java:62)     at com.alibaba.otter.canal.parse.inbound.AbstractEventParser.parseAndProfilingIfNecessary(AbstractEventParser.java:323)     at com.alibaba.otter.canal.parse.inbound.AbstractEventParser$3$1.sink(AbstractEventParser.java:176)     at com.alibaba.otter.canal.parse.inbound.mysql.MysqlConnection.dump(MysqlConnection.java:124)     at com.alibaba.otter.canal.parse.inbound.AbstractEventParser$3.run(AbstractEventParser.java:209)     at java.lang.Thread.run(Thread.java:745) ######   查看node日志： 2015-04-28 09:36:30.977 [destination = 8 , address = /**_.**_.**_.**_:**\* , EventParser] ERROR c.a.otter.canal.parse.inbound.mysql.MysqlEventParser - dump address  /**_.**_.**_.**_:**\* has an error, retrying. caused by  com.alibaba.otter.canal.parse.exception.CanalParseException: java.lang.ArrayIndexOutOfBoundsException: 0 java.lang.ArrayIndexOutOfBoundsException: 0     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.SimpleDdlParser.parseTableName(SimpleDdlParser.java:163) ~[canal.parse-1.0.19.jar:na]     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.SimpleDdlParser.parseDdl(SimpleDdlParser.java:115) ~[canal.parse-1.0.19.jar:na]     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.SimpleDdlParser.parse(SimpleDdlParser.java:80) ~[canal.parse-1.0.19.jar:na]     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parseQueryEvent(LogEventConvert.java:150) ~[canal.parse-1.0.19.jar:na]     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parse(LogEventConvert.java:99) ~[canal.parse-1.0.19.jar:na]     at com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert.parse(LogEventConvert.java:62) ~[canal.parse-1.0.19.jar:na]     at com.alibaba.otter.canal.parse.inbound.AbstractEventParser.parseAndProfilingIfNecessary(AbstractEventParser.java:323) ~[canal.parse-1.0.19.jar:na]     at com.alibaba.otter.canal.parse.inbound.AbstractEventParser$3$1.sink(AbstractEventParser.java:176) ~[canal.parse-1.0.19.jar:na]     at com.alibaba.otter.canal.parse.inbound.mysql.MysqlConnection.dump(MysqlConnection.java:124) ~[canal.parse-1.0.19.jar:na]     at com.alibaba.otter.canal.parse.inbound.AbstractEventParser$3.run(AbstractEventParser.java:209) ~[canal.parse-1.0.19.jar:na]     at java.lang.Thread.run(Thread.java:745) [na:1.7.0_71] </body>
+		<created>2015-04-28 01:46:15</created>
+		<closed>2015-05-06 09:03:26</closed>
+	</bug>
+	<bug>
+		<id>57</id>
+		<title>rename ddl引起no such dataMedia</title>
+		<body>用户使用一些online ddl操作，大致步骤： 第一步：mytable    复制成   _mytable_new 第二部：mytable    改名   _mytable_old 第三部：_mytable_new  改名  mytable 第四部：删除 _mytable_old  同步映射关系配置中，目前只定义了mytable，因为canal进行表匹配，是将rename的源和目标表，只要其中一个满足映射规则条件，就会返回.  所以在第一步时，otter就会收到rename mytable to _mytable_new的sql，而为了保证表结构的正确性，otter会根据rename的目标库清空对应的表结构cache.   因为映射规则没配置_mytable_new，所以就出现了该问题  </body>
+		<created>2014-07-03 12:52:47</created>
+		<closed>2014-07-03 13:02:30</closed>
+	</bug>
+	<bug>
+		<id>54</id>
+		<title>删除pipeline时，同步删除对应canal中的cursor，避免canal被另一个pipeline重用时导致cursor错误</title>
+		<body>RT.  之前因为pipeline删除后，未清理canal cursor. 导致当前canal被重用时，会出现多个cursor，每次都会选择最小的cursor进行启动，也就是用户不论怎么删除新pipeline的cursor，还是没有效果 </body>
+		<created>2014-06-18 15:20:02</created>
+		<closed>2014-06-18 15:21:13</closed>
+	</bug>
+	<bug>
+		<id>50</id>
+		<title>otter node無法啟動，log中一直寫ip not match</title>
+		<body>Dear agapple 小弟在測試環境安裝otter時出現非常奇怪的問題 我在no-ip上配置了三台node的domain name 但是怎麼啟動都是看到相同的訊息(在log中) 2014-02-25 22:52:16.550 [main] WARN  Exception in thread "main" java.lang.IllegalArgumentException: node[2] ip[test2.no-ip.biz] port[80] , but your host ip[112.105.XXX.XXX] is not matched! 我已經寫在/etc/hosts中，也確定nslookup指向的domain name是同一個IP 我是否需要新增哪些設定解決這個ERROR thanks for your help Best regards </body>
+		<created>2014-02-26 08:17:11</created>
+		<closed>2014-03-03 05:15:06</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>针对时间类型为NULL值时，基于数据库反查模式同步，出现'0000-00-00 00:00:00'</title>
+		<body>针对时间类型为NULL值时，基于数据库反查模式同步，出现'0000-00-00 00:00:00'.  主要原因： 1.  之前&lt;=4.2.8版本为解决mysql数据库的0值同步问题，增加了zeroDateTimeBehavior=convertToNull链接参数，针对NULL值转化为'0000-00-00 00:00:00'，针对原本字段为NULL值时，需要做区分  解决办法：时间类型获取为NULL值时，再基于rs.wasNull()判断是否物理数据为NULL </body>
+		<created>2014-02-18 12:51:46</created>
+		<closed>2014-02-18 13:55:03</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>TimelineTransactionBarrier处理下HEARTBEAT事件，避免多库解析时合并挂起</title>
+		<body>需要特殊处理下HEARTBEAT事件 </body>
+		<created>2014-02-18 03:09:43</created>
+		<closed>2014-02-18 13:12:55</closed>
+	</bug>
+	<bug>
+		<id>45</id>
+		<title>canal配置中即选择了media又配置了分库数据库配置</title>
+		<body>media配置只针对单库配置有效，针对多库配置，比如：192.168.85.173:3306;192.168.85.174:3306;  应该直接报错 </body>
+		<created>2014-02-18 03:04:57</created>
+		<closed>2014-02-18 13:14:24</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>全量同步时tinyint字段类型转换错误</title>
+		<body>pid:4 nid:1 exception:setl:com.alibaba.otter.node.etl.load.exception.LoadException: java.util.concurrent.ExecutionException: com.alibaba.otter.node.etl.load.exception.LoadException: com.alibaba.otter.node.etl.load.exception.LoadException: com.alibaba.otter.node.etl.load.exception.LoadException: org.apache.commons.beanutils.ConversionException: Error converting from 'String' to 'BigInteger' For input string: "true"     at org.apache.commons.beanutils.converters.AbstractConverter.handleError(AbstractConverter.java:267)     at org.apache.commons.beanutils.converters.AbstractConverter.convert(AbstractConverter.java:164)     at org.apache.commons.beanutils.converters.ConverterFacade.convert(ConverterFacade.java:60)     at org.apache.commons.beanutils.ConvertUtilsBean.convert(ConvertUtilsBean.java:470)     at com.alibaba.otter.node.etl.common.db.utils.SqlUtils.stringToSqlValue(SqlUtils.java:149)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker.doPreparedStatement(DbLoadAction.java:754)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker.access$800(DbLoadAction.java:513)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker$2$1.setValues(DbLoadAction.java:624)     at org.springframework.jdbc.core.JdbcTemplate$2.doInPreparedStatement(JdbcTemplate.java:816)     at org.springframework.jdbc.core.JdbcTemplate$2.doInPreparedStatement(JdbcTemplate.java:1)     at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:587)     at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:812)     at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:868)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker$2.doInTransaction(DbLoadAction.java:621)     at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:130)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker.doCall(DbLoadAction.java:613)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker.call(DbLoadAction.java:541)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction.doTwoPhase(DbLoadAction.java:458)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction.doLoad(DbLoadAction.java:275)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction.load(DbLoadAction.java:161)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$$FastClassByCGLIB$$d932a4cb.invoke()     at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:191)     at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:618)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$$EnhancerByCGLIB$$80fd23c2.load()     at com.alibaba.otter.node.etl.load.loader.db.DataBatchLoader$2.call(DataBatchLoader.java:198)     at com.alibaba.otter.node.etl.load.loader.db.DataBatchLoader$2.call(DataBatchLoader.java:189)     at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)     at java.util.concurrent.FutureTask.run(FutureTask.java:166)     at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)     at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)     at java.util.concurrent.FutureTask.run(FutureTask.java:166)     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)     at java.lang.Thread.run(Thread.java:724) Caused by: java.lang.NumberFormatException: For input string: "true"     at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)     at java.lang.Integer.parseInt(Integer.java:492)     at java.math.BigInteger.(BigInteger.java:338)     at java.math.BigInteger.(BigInteger.java:476)     at org.apache.commons.beanutils.converters.NumberConverter.toNumber(NumberConverter.java:453)     at org.apache.commons.beanutils.converters.NumberConverter.convertToType(NumberConverter.java:268)     at org.apache.commons.beanutils.converters.AbstractConverter.convert(AbstractConverter.java:156)     ... 32 more :----------------- - PairId: 11 , TableId: 1 , EventType : I , Time : 1389086001000  ## \- Consistency : M , Mode : R   ---Pks     EventColumn[index=0,columnType=4,columnName=Id,columnValue=4,isNull=false,isKey=true,isUpdate=true]     EventColumn[index=6,columnType=12,columnName=DOMAIN_NAME,columnValue=30san.com,isNull=false,isKey=true,isUpdate=true] ---oldPks  ---Columns     EventColumn[index=1,columnType=12,columnName=UserId,columnValue=10000004,isNull=false,isKey=false,isUpdate=true]     EventColumn[index=2,columnType=12,columnName=InfoSLID,columnValue=1,isNull=false,isKey=false,isUpdate=true]     EventColumn[index=3,columnType=4,columnName=CreatLogId,columnValue=0,isNull=false,isKey=false,isUpdate=true]     EventColumn[index=4,columnType=4,columnName=LastModLogId,columnValue=0,isNull=false,isKey=false,isUpdate=true]     EventColumn[index=5,columnType=-7,columnName=Enable,columnValue=true,isNull=false,isKey=false,isUpdate=true] ---Sql     insert into webcenter.sl_conf_userinfo(`UserId` , `InfoSLID` , `CreatLogId` , `LastModLogId` , `Enable` , `Id` , `DOMAIN_NAME`) values (? , ? , ? , ? , ? , ? , ?) on duplicate key update `UserId`=values(`UserId`) , `InfoSLID`=values(`InfoSLID`) , `CreatLogId`=values(`CreatLogId`) , `LastModLogId`=values(`LastModLogId`) , `Enable`=values(`Enable`) , `Id`=values(`Id`) , `DOMAIN_NAME`=values(`DOMAIN_NAME`)  Caused by: java.util.concurrent.ExecutionException: com.alibaba.otter.node.etl.load.exception.LoadException: com.alibaba.otter.node.etl.load.exception.LoadException: com.alibaba.otter.node.etl.load.exception.LoadException: org.apache.commons.beanutils.ConversionException: Error converting from 'String' to 'BigInteger' For input string: "true"     at org.apache.commons.beanutils.converters.AbstractConverter.handleError(AbstractConverter.java:267)     at org.apache.commons.beanutils.converters.AbstractConverter.convert(AbstractConverter.java:164)     at org.apache.commons.beanutils.converters.ConverterFacade.convert(ConverterFacade.java:60)     at org.apache.commons.beanutils.ConvertUtilsBean.convert(ConvertUtilsBean.java:470)     at com.alibaba.otter.node.etl.common.db.utils.SqlUtils.stringToSqlValue(SqlUtils.java:149)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker.doPreparedStatement(DbLoadAction.java:754)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker.access$800(DbLoadAction.java:513)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker$2$1.setValues(DbLoadAction.java:624)     at org.springframework.jdbc.core.JdbcTemplate$2.doInPreparedStatement(JdbcTemplate.java:816)     at org.springframework.jdbc.core.JdbcTemplate$2.doInPreparedStatement(JdbcTemplate.java:1)     at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:587)     at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:812)     at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:868)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker$2.doInTransaction(DbLoadAction.java:621)     at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:130)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker.doCall(DbLoadAction.java:613)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$DbLoadWorker.call(DbLoadAction.java:541)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction.doTwoPhase(DbLoadAction.java:458)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction.doLoad(DbLoadAction.java:275)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction.load(DbLoadAction.java:161)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$$FastClassByCGLIB$$d932a4cb.invoke()     at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:191)     at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:618)     at com.alibaba.otter.node.etl.load.loader.db.DbLoadAction$$EnhancerByCGLIB$$80fd23c2.load()     at com.alibaba.otter.node.etl.load.loader.db.DataBatchLoader$2.call(DataBatchLoader.java:198)     at com.alibaba.otter.node.etl.load.loader.db.DataBatchLoader$2.call(DataBatchLoader.java:189)     at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)     at java.util.concurrent.FutureTask.run(FutureTask.java:166)     at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)     at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)     at java.util.concurrent.FutureTask.run(FutureTask.java:166)     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)     at java.lang.Thread.run(Thread.java:724) Caused by: java.lang.NumberFormatException: For input string: "true"     at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)     at java.lang.Integer.parseInt(Integer.java:492)     at java.math.BigInteger.(BigInteger.java:338)     at java.math.BigInteger.(BigInteger.java:476)     at org.apache.commons.beanutils.converters.NumberConverter.toNumber(NumberConverter.java:453)     at org.apache.commons.beanutils.converters.NumberConverter.convertToType(NumberConverter.java:268)     at org.apache.commons.beanutils.converters.AbstractConverter.convert(AbstractConverter.java:156)     ... 32 more :----------------- - PairId: 11 , TableId: 1 , EventType : I , Time : 1389086001000  ## \- Consistency : M , Mode : R   ---Pks     EventColumn[index=0,columnType=4,columnName=Id,columnValue=4,isNull=false,isKey=true,isUpdate=true]     EventColumn[index=6,columnType=12,columnName=DOMAIN_NAME,columnValue=30san.com,isNull=false,isKey=true,isUpdate=true] ---oldPks  ---Columns     EventColumn[index=1,columnType=12,columnName=UserId,columnValue=10000004,isNull=false,isKey=false,isUpdate=true]     EventColumn[index=2,columnType=12,columnName=InfoSLID,columnValue=1,isNull=false,isKey=false,isUpdate=true]     EventColumn[index=3,columnType=4,columnName=CreatLogId,columnValue=0,isNull=false,isKey=false,isUpdate=true]     EventColumn[index=4,columnType=4,columnName=LastModLogId,columnValue=0,isNull=false,isKey=false,isUpdate=true]     EventColumn[index=5,columnType=-7,columnName=Enable,columnValue=true,isNull=false,isKey=false,isUpdate=true] ---Sql     insert into webcenter.sl_conf_userinfo(`UserId` , `InfoSLID` , `CreatLogId` , `LastModLogId` , `Enable` , `Id` , `DOMAIN_NAME`) values (? , ? , ? , ? , ? , ? , ?) on duplicate key update `UserId`=values(`UserId`) , `InfoSLID`=values(`InfoSLID`) , `CreatLogId`=values(`CreatLogId`) , `LastModLogId`=values(`LastModLogId`) , `Enable`=values(`Enable`) , `Id`=values(`Id`) , `DOMAIN_NAME`=values(`DOMAIN_NAME`) </body>
+		<created>2014-01-08 12:22:32</created>
+		<closed>2014-01-10 07:53:34</closed>
+	</bug>
+	<bug>
+		<id>41</id>
+		<title>freedom针对多主键时出现ArrayIndexOutOfBoundsException</title>
+		<body>&lt;pre&gt; 2013-12-26 14:00:16.984 [pipelineId = 1,taskName = ExtractWorker] WARN  c.a.otter.node.etl.extract.extractor.FreedomExtractor - process freedom data error EventData[tableId=3,tableName=cm_groups,schemaName=test,eventType=INSERT,executeTime=1388034365000,oldKeys=[],keys=[EventColumn[index=0,columnType=-5,columnName=ID,columnValue=5178,isNull=false,isKey=true,isUpdate=true]],columns=[EventColumn[index=1,columnType=4,columnName=TABLE_ID,columnValue=0,isNull=false,isKey=false,isUpdate=true], EventColumn[index=2,columnType=12,columnName=FULL_NAME,columnValue=test.cm_groups,isNull=false,isKey=false,isUpdate=true], EventColumn[index=3,columnType=1,columnName=TYPE,columnValue=I,isNull=false,isKey=false,isUpdate=true], EventColumn[index=4,columnType=12,columnName=PK_DATA,columnValue=130san.com,isNull=false,isKey=false,isUpdate=true], EventColumn[index=5,columnType=93,columnName=GMT_CREATE,columnValue=2013-12-26 13:06:05,isNull=false,isKey=false,isUpdate=true], EventColumn[index=6,columnType=93,columnName=GMT_MODIFIED,columnValue=2013-12-26 13:06:05,isNull=false,isKey=false,isUpdate=true]],size=81,pairId=-1,sql=&lt;null&gt;,ddlSchemaName=&lt;null&gt;,syncMode=&lt;null&gt;,syncConsistency=&lt;null&gt;,remedy=false] java.lang.ArrayIndexOutOfBoundsException: 12  at com.alibaba.otter.node.etl.extract.extractor.FreedomExtractor.extract(FreedomExtractor.java:180) [node.etl-4.2.7-SNAPSHOT.jar:na]  at com.alibaba.otter.node.etl.extract.extractor.FreedomExtractor.extract(FreedomExtractor.java:1) [node.etl-4.2.7-SNAPSHOT.jar:na]  at com.alibaba.otter.node.etl.extract.extractor.OtterExtractorFactory.extract(OtterExtractorFactory.java:50) [node.etl-4.2.7-SNAPSHOT.jar:na]  at com.alibaba.otter.node.etl.extract.ExtractTask$1.run(ExtractTask.java:79) [node.etl-4.2.7-SNAPSHOT.jar:na]  at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441) [na:1.6.0_25]  at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303) [na:1.6.0_25]  at java.util.concurrent.FutureTask.run(FutureTask.java:138) [na:1.6.0_25]  at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886) [na:1.6.0_25]  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908) [na:1.6.0_25]  at java.lang.Thread.run(Thread.java:662) [na:1.6.0_25] &lt;/pre&gt;   大致原因分析： for (int i = 0; i &lt; allColumns.length; i++) {                             Column column = allColumns[i];                             if (column.isPrimaryKey()) {                                 EventColumn newColumn = new EventColumn();                                 newColumn.setIndex(i); // 设置下标                                 newColumn.setColumnName(column.getName());                                 newColumn.setColumnType(column.getTypeCode());                                 newColumn.setColumnValue(pks[i]);                                 newColumn.setKey(true);                                 newColumn.setNull(pks[i] == null);                                 newColumn.setUpdate(true);                                 // 添加到记录                                 newColumns.add(newColumn);                             }                         }  在设置pk values，通过pks[i]获取，如果主键不是最前面的字段，就会出现数组越界.  </body>
+		<created>2013-12-26 08:17:03</created>
+		<closed>2013-12-30 04:34:37</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>otter出现随机端口监听</title>
+		<body>node节点上会开启4个端口，3个是根据配置的指定端口，1个端口号每次启动都随机 ![1](https://f.cloud.github.com/assets/834743/1804918/619dfd14-6c6b-11e3-9798-71fa2e259e78.jpg) </body>
+		<created>2013-12-24 07:17:13</created>
+		<closed>2013-12-24 07:18:58</closed>
+	</bug>
+	<bug>
+		<id>35</id>
+		<title>选择为memory调度模式，出现同步异常后会挂住不再做同步</title>
+		<body>同步过程中因为出现内存不足，出现miss data异常，触发了otter进行rollback操作.  在同步日志中出现： [pipelineId = 1,taskName = ProcessSelect] WARN  com.alibaba.otter.node.etl.select.SelectTask - rollback happend , should skip this data and get new message.  然后几个程序就处于一个业务死锁状态.  1.  ProcessSelect一直在等待rollback动作完成  &lt;pre&gt; "pipelineId = 1,taskName = ProcessSelect" prio=10 tid=0x00007f9cac08c000 nid=0x4240 waiting on condition [0x00007f9cdc7ba000]    java.lang.Thread.State: WAITING (parking)     at sun.misc.Unsafe.park(Native Method)     - parking to wait for  &lt;0x00000000a1a95ba0&gt; (a com.alibaba.otter.shared.common.utils.lock.BooleanMutex$Sync)     at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)     at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)     at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedInterruptibly(AbstractQueuedSynchronizer.java:969)     at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1281)     at com.alibaba.otter.shared.common.utils.lock.BooleanMutex$Sync.innerGet(BooleanMutex.java:139)     at com.alibaba.otter.shared.common.utils.lock.BooleanMutex.get(BooleanMutex.java:69)     at com.alibaba.otter.node.etl.select.SelectTask.processSelect(SelectTask.java:265)     at com.alibaba.otter.node.etl.select.SelectTask.access$300(SelectTask.java:94) &lt;/pre&gt;  1.  而ProcessTermin一直在等待termin信号，完成rollback的处理.  所以一个怀疑，就是termin信号丢了.  </body>
+		<created>2013-12-05 07:52:48</created>
+		<closed>2013-12-05 07:56:50</closed>
+	</bug>
+	<bug>
+		<id>34</id>
+		<title>retl_buffer导入数据一直报no such dataMedia异常</title>
+		<body>4.2.2&lt;= version &lt;=4.2.6 均有这个问题  主要原因：系统表不应该去映射规则中查找，这异常就是映射规则中没有retl.retl_buffer的配置 </body>
+		<created>2013-11-20 13:41:00</created>
+		<closed>2013-11-20 13:52:34</closed>
+	</bug>
+	<bug>
+		<id>32</id>
+		<title>otter配置为双向同步模式，ddl同步会出现死循环同步</title>
+		<body>otter为解决循环同步使用的算法：https://github.com/alibaba/otter/wiki/Otter%E5%8F%8C%E5%90%91%E5%9B%9E%E7%8E%AF%E6%8E%A7%E5%88%B6  而ddl同步在mysql binlog中是独立的事务，没有BEGIN/COMMIT事件包围，所以无法进行避免回环控制，只能暂时性在双向同步时别使用ddl同步，单向同步无影响. </body>
+		<created>2013-11-01 08:53:06</created>
+		<closed>2014-03-06 11:32:23</closed>
+	</bug>
+	<bug>
+		<id>31</id>
+		<title>otter同步配置为反查数据库模式，遇到特殊时间类型jdbc driver处理会出现异常</title>
+		<body>比如mysql中的timestamp类型，值为：0000-00-00 00:00:00。 因为该类型无法在java通过Timestamp来标示，所以mysql jdbc driver在处理返回结果时会报转换出错.   暂时还没想到好的解决办法，估计要绕过mysql jdbc driver才可以解决，直接取出返回流转为string进行存储.  ps.  mysql jdbc的getString()方法也会先转成Timestamp，然后才是toString </body>
+		<created>2013-11-01 08:49:38</created>
+		<closed>2013-11-20 06:32:38</closed>
+	</bug>
+	<bug>
+		<id>29</id>
+		<title>POSITIONEOUT监控无位点信息的误报</title>
+		<body>当第一次启动，一直没有binlog数据，会出现同步进度的位点一直为空，而POSITIONEOUT监控会根据当前时间与位点的更新时间做一个监控，如果同步进度位点为空，则默认使用了0值，导致监控一直出现误报.   处理：忽略位点不存在的报警.  </body>
+		<created>2013-10-18 06:15:24</created>
+		<closed>2013-10-18 06:16:28</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>manager启动后输入中文字符出现乱码</title>
+		<body>mysql链接设置编码问题，目前建表语句统一为utf-8编码，需要在otter manager与mysql建立链接时也强制使用utf-8编码 </body>
+		<created>2013-10-08 02:52:39</created>
+		<closed>2013-10-08 04:18:01</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>mysql binary类型特殊字符出现同步失败</title>
+		<body>1. 源库存在一字段，对应类型为binary(8)，插入数据unhex('B80A993B3E3A6351').  2. 源库和目标库都为binary(8)，源库插入数据后，同步的目标库出现Data truncation: Data too long for column 'idvisitor' at row 1.  (字符超长)  原因分析：  &lt;pre&gt; EventColumn[index=2,columnType=1,columnName=idvisitor,columnValue=� �;&gt;:cQ,isNull=false,isKey=false,isUpdate=true] &lt;/pre&gt;   binary类型在canal中被解决为了char类型，从而导致在同步时使用了PrepareStatement.setString()方法，该方法中会对字符串进行转移处理，比如一个char '\n'会被转化为两个char: '\' '\n'.  从而导致了字符超长 </body>
+		<created>2013-09-25 10:31:59</created>
+		<closed>2013-09-25 15:21:43</closed>
+	</bug>
+	<bug>
+		<id>21</id>
+		<title>目标库mysql为unsigned类型时，如果开启表结构反查数据会越界</title>
+		<body>原因分析：   目前otter内部通过DdlUtils时，unsigned int会直接返回int，导致之后setInteger(value, type)出现越界  解决：    将unsigned int转化为bigint进行处理 </body>
+		<created>2013-09-25 10:21:53</created>
+		<closed>2013-09-25 15:20:02</closed>
+	</bug>
+	<bug>
+		<id>17</id>
+		<title>manager的视图配置页面，不选择任何字段映射，保存失败</title>
+		<body></body>
+		<created>2013-09-13 04:21:52</created>
+		<closed>2013-09-13 04:22:29</closed>
+	</bug>
+	<bug>
+		<id>16</id>
+		<title>在没有登陆的情况下zookeeper查看那一项有删除的权限</title>
+		<body>在没有登陆的情况下zookeeper查看那一项有删除的权限 </body>
+		<created>2013-09-13 02:35:30</created>
+		<closed>2013-09-13 05:54:45</closed>
+	</bug>
+	<bug>
+		<id>13</id>
+		<title>添加oracle数据库时，验证失败</title>
+		<body>添加oracle数据库时，验证失败，确认为打包时缺少oracle driver包.   原因分析： oracle driver的scope设置了system，打包的时候依赖了assembly，默认处理的scope为runtime，导致oracle driver没有被打包进去 </body>
+		<created>2013-09-04 04:58:56</created>
+		<closed>2013-09-04 05:01:40</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>日志页面打开出现异常</title>
+		<body>&lt;pre&gt; Caused by: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: couldn't query any pipeline by pipelineIds:[1]     at com.alibaba.otter.manager.biz.config.record.impl.LogRecordServiceImpl.doToModel(LogRecordServiceImpl.java:225)     at com.alibaba.otter.manager.biz.config.record.impl.LogRecordServiceImpl.listByCondition(LogRecordServiceImpl.java:115)     at com.alibaba.otter.manager.web.home.module.screen.LogRecordList.execute(LogRecordList.java:61)     at com.alibaba.otter.manager.web.home.module.screen.LogRecordList$$FastClassByCGLIB$$288abc70.invoke(&lt;generated&gt;)     at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)     at com.alibaba.citrus.service.moduleloader.impl.adapter.MethodInvoker.invoke(MethodInvoker.java:70)     at com.alibaba.citrus.service.moduleloader.impl.adapter.DataBindingAdapter.executeAndReturn(DataBindingAdapter.java:41)     at com.alibaba.citrus.turbine.pipeline.valve.PerformScreenValve.performScreenModule(PerformScreenValve.java:111)     ... 53 more Caused by: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: couldn't query any pipeline by pipelineIds:[1]     at com.alibaba.otter.manager.biz.config.record.impl.LogRecordServiceImpl.doToModel(LogRecordServiceImpl.java:210)     at com.alibaba.otter.manager.biz.config.record.impl.LogRecordServiceImpl.doToModel(LogRecordServiceImpl.java:220)     ... 60 more Caused by: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: couldn't query any pipeline by pipelineIds:[1]     at com.alibaba.otter.manager.biz.config.pipeline.impl.PipelineServiceImpl.listByIds(PipelineServiceImpl.java:342)     at com.alibaba.otter.manager.biz.config.pipeline.impl.PipelineServiceImpl.findById(PipelineServiceImpl.java:208)     at com.alibaba.otter.manager.biz.config.pipeline.impl.PipelineServiceImpl.findById(PipelineServiceImpl.java:49)     at com.alibaba.otter.manager.biz.config.channel.impl.ChannelServiceImpl.findByPipelineId(ChannelServiceImpl.java:278)     at com.alibaba.otter.manager.biz.config.record.impl.LogRecordServiceImpl.doToModel(LogRecordServiceImpl.java:186)     ... 61 more Caused by: com.alibaba.otter.manager.biz.common.exceptions.ManagerException: couldn't query any pipeline by pipelineIds:[1]     at com.alibaba.otter.manager.biz.config.pipeline.impl.PipelineServiceImpl.listByIds(PipelineServiceImpl.java:336)     ... 65 more &lt;/pre&gt;   原因：日志记录里记录了对应信息的channel和pipeline的id，而老的channel/pipeline已经被删除，导致查询的时候失败.  </body>
+		<created>2013-08-30 09:23:36</created>
+		<closed>2013-08-30 09:24:34</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>同步时选择HTTP协议进行传输，出现json序列化出错</title>
+		<body>参见fastjson issue： https://github.com/alibaba/fastjson/issues/72.    原因分析：fastjson在处理streaming解析的时候，针对单个token初始化了一个char数组，默认大小8192。当数据中出现token大于8192时，就会出现类似错误。  解决： 1.  废弃fastjson的序列化，改用自己编码处理数组数据.  先写入length，然后基于streaming模式将数据写出和读入.   </body>
+		<created>2013-08-29 08:24:27</created>
+		<closed>2013-08-29 08:25:11</closed>
+	</bug>
+	<bug>
+		<id>5</id>
+		<title>canal保存一次后获取slaveId为NULL</title>
+		<body>canal保存一次后获取slaveId为NULL  解决：canal在编辑页面，增加slaveId的数据传递  </body>
+		<created>2013-08-21 03:43:24</created>
+		<closed>2013-08-21 03:44:45</closed>
+	</bug>
+</bugs>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="runcity-lcp-automation">
+	<bug id="140" opendate="2018-04-10 07:37:37" fixdate="2018-04-10 18:49:45">
+		<buginformation>
+			<summary>Двойное применение xss правил</summary>
+			<description>Найдено в таблице волонтеров по КП ![image](https://user-images.githubusercontent.com/5850510/38542684-2dbe37c4-3cab-11e8-8c2e-6e2e96a08a1b.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestCategoryController.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/CoordinatorVolunteerTable.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestCoordinatorController.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/util/FormDddwCategoriesColumn.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/TeamTable.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/TeamEventTable.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/VolunteerTable.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/entity/Translation.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/entity/ControlPoint.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/formdata/RouteCreateForm.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/ControlPointTable.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/RouteItemTable.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/VolunteerTeamTable.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/CoordinatorControlPointTable.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/CoordinatorTeamStatTable.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestControlPointController.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/RouteTable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="136" opendate="2018-04-09 13:10:51" fixdate="2018-04-09 17:21:32">
+		<buginformation>
+			<summary>Некорректно отображаются слеши</summary>
+			<description>Ошибка в https://github.com/pmatveev/runcity-lcp-automation/blob/master/Runcity/src/main/java/org/runcity/util/StringUtils.java, строка 104 - нужно добавить ; в конце замен</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/util/StringUtils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="129" opendate="2018-04-06 10:26:33" fixdate="2018-04-06 10:29:21">
+		<buginformation>
+			<summary>Некорректное формирование писем</summary>
+			<description>Письма для восстановления пароля: - не учитывают локаль пользователя - передаются в неправильной кодировке</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/ConsumerServiceImpl.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestConsumerController.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/ConsumerService.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestRuntimeController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="126" opendate="2018-04-04 18:57:18" fixdate="2018-04-04 19:09:04">
+		<buginformation>
+			<summary>Mark still active работает для неактивной команды</summary>
+			<description>Необходимо возвращать ошибку, указывая текущий статус команды</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestCoordinatorController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="125" opendate="2018-04-04 06:10:44" fixdate="2018-04-04 18:33:18">
+		<buginformation>
+			<summary>Не работает валидация этапа для обычных кп</summary>
+			<description>Команду можно провести через обычный КП вне зависимости от статуса</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/db/repository/TeamRepository.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestCoordinatorController.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/entity/RouteItem.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/TeamServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="119" opendate="2018-04-02 19:21:26" fixdate="2018-04-02 19:26:00">
+		<buginformation>
+			<summary>NPE при проведении команды через не-этапные КП</summary>
+			<description>Лог: [Runcity.log](https://github.com/pmatveev/runcity-lcp-automation/files/1869093/Runcity.log) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/TeamServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="110" opendate="2018-03-20 17:33:07" fixdate="2018-03-23 15:07:12">
+		<buginformation>
+			<summary>Неактивный волонтер может обработать команду</summary>
+			<description>Шаги для воспроизведения: - открыть КП - активировать: появится форма - в другой вкладке зайти в КП и деактивировать - в первой вкладке ввести номер команды в форму</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/VolunteerServiceImpl.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/formdata/TeamProcessByVolunteerForm.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/formdata/TeamProcessAbstractForm.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/util/FormIdVolunteerColumn.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestRuntimeController.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/MenuController.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/FrameController.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/VolunteerService.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="99" opendate="2018-03-17 12:05:22" fixdate="2018-03-17 14:17:44">
+		<buginformation>
+			<summary>REST API некорректно возвращает 405 </summary>
+			<description>В т.ч. если должен вернуть 404 или 403</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/ExceptionHandlerController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="95" opendate="2018-03-17 11:03:48" fixdate="2018-03-18 07:38:50">
+		<buginformation>
+			<summary>Некорректная валидация маршрутов</summary>
+			<description>В случае отсутствия КП на последнем участке генерируется предупреждение Multiple stage ends</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/tabledata/RouteItemTable.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="86" opendate="2018-03-14 18:47:30" fixdate="2018-03-14 18:56:44">
+		<buginformation>
+			<summary>Некорректно отображается название подчиненного КП</summary>
+			<description>В названии пишется null</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/db/entity/ControlPoint.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="84" opendate="2018-03-14 06:42:59" fixdate="2018-03-14 19:23:41">
+		<buginformation>
+			<summary>Некорректная обработка пользователей без роли</summary>
+			<description>1) При входе попадает на страницу "Main secure page" 2) При попытке перехода на существующую страницу получает Something went wrong без пояснений. Должно быть forbidden.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/MenuController.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/config/util/CommonAccessDeniedHandler.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/config/SpringSecurityConfig.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/ExceptionHandlerController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="76" opendate="2018-03-04 09:03:51" fixdate="2018-03-05 17:22:16">
+		<buginformation>
+			<summary>При наследовании КП должно наследоваться название</summary>
+			<description>Сабж</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/db/entity/ControlPoint.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/formdata/ControlPointCreateEditByGameForm.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="74" opendate="2018-03-01 07:05:38" fixdate="2018-03-02 10:48:51">
+		<buginformation>
+			<summary>Remember me сессии не учитываются при редактировании пользователя</summary>
+			<description>Баг spring security (https://github.com/spring-projects/spring-security/issues/2253). Нужно проверить импакт (будет ли создана сессия, если у пользователя есть remember me токен, но он заблокирован?) и способы исправления.  См. https://stackoverflow.com/questions/21788983/how-to-obtain-a-list-of-all-currently-logged-in-users-including-rememberme-cook?rq=1</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/config/SpringSecurityConfig.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="71" opendate="2018-02-26 17:56:19" fixdate="2018-02-27 18:17:33">
+		<buginformation>
+			<summary>Некорректные адреса приводят к Exception</summary>
+			<description>Сделать красивую переадресацию вместо выкидывания exception в случаях, когда адрес ссылается на несуществующий объект</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/MenuController.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/FrameController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="66" opendate="2018-02-21 20:25:13" fixdate="2018-02-25 08:32:06">
+		<buginformation>
+			<summary>Некорректная обработка ролей</summary>
+			<description>- все сервисы должны быть размечены ролями - при изменении ролей пользователя администратором система должна учитывать изменения сразу же</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/GameServiceImpl.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/FileController.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/ControlPointService.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestGameController.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/ControlPointServiceImpl.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/MenuController.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/GameService.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/CategoryServiceImpl.java</file>
+			<file>Runcity/src/main/java/org/runcity/secure/SecureUserDetails.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/CategoryService.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/ConsumerService.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestCategoryController.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/VolunteerService.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/FrameController.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/RouteService.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestFileUploader.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/config/SpringSecurityConfig.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/RouteServiceImpl.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/ConsumerController.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestControlPointController.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/VolunteerServiceImpl.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/ConsumerServiceImpl.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestConsumerController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="47" opendate="2018-01-16 21:19:30" fixdate="2018-01-17 18:52:31">
+		<buginformation>
+			<summary>Администратор может удалить сам себя</summary>
+			<description>Сабж</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestConsumerController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="44" opendate="2017-12-29 08:37:11" fixdate="2018-01-08 12:20:55">
+		<buginformation>
+			<summary>BLOB из БД не кешируется браузером</summary>
+			<description>Добавить необходимые заголовки, см. https://stackoverflow.com/questions/35692515/how-to-add-cache-control-headers-to-image-stored-in-database-served-by-spring-mv</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/FileController.java</file>
+			<file>Runcity/src/main/java/org/runcity/util/CommonProperties.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/config/SpringWebConfig.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/config/SpringSecurityConfig.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2017-12-24 17:55:03" fixdate="2017-12-25 20:43:11">
+		<buginformation>
+			<summary>Не работает ondelete cascade</summary>
+			<description>При удалении игры не удаляются переводы и файлы. Исследовать возможность удаления на программном уровне, если невозможно - перестроить схему данных для поддержки FK (см. связанную #38)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/db/entity/Game.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/entity/ControlPoint.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/ControlPointServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="39" opendate="2017-12-24 13:17:41" fixdate="2017-12-24 17:52:11">
+		<buginformation>
+			<summary>Не обновляются значения выпадающего списка</summary>
+			<description>Шаги для воспроизведения: 1) Создать новое КП 2) Не обновляя страницу, инициировать создание еще одного КП  На шаге 2 недоступно КП, созданное на шаге 1. При обновлении страницы ошибка исчезает.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/util/FormDddwColumn.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/repository/ControlPointRepository.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/formdata/ControlPointCreateEditByGameForm.java</file>
+			<file>Runcity/src/main/java/org/runcity/jsp/FormInputTag.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/ControlPointService.java</file>
+			<file>Runcity/src/main/java/org/runcity/db/service/impl/ControlPointServiceImpl.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/util/FormDddwControlPointColumn.java</file>
+			<file>Runcity/src/main/java/org/runcity/mvc/rest/RestControlPointController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="35" opendate="2017-12-20 22:15:36" fixdate="2017-12-21 19:19:08">
+		<buginformation>
+			<summary>Страница регистрации не допускает пустое значение</summary>
+			<description>Валидация на JS успешна, сервер возвращает "Invalid value:"</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/util/FormListboxColumn.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="31" opendate="2017-12-13 17:57:24" fixdate="2017-12-13 17:58:42">
+		<buginformation>
+			<summary>Предзаполнено значение текущего пароля в форме смены пароля</summary>
+			<description>Сабж</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/formdata/ChangePasswordByPasswordForm.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="29" opendate="2017-12-10 15:15:06" fixdate="2017-12-10 15:28:00">
+		<buginformation>
+			<summary>Модальные формы возвращают ошибку 415 при отправке на сервер</summary>
+			<description>В логах видна ошибка org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded' not supported</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/web/formdata/AbstractForm.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="25" opendate="2017-12-04 19:49:10" fixdate="2017-12-04 19:51:48">
+		<buginformation>
+			<summary>Не работает кеширование ресурсов</summary>
+			<description>css/js/font файлы загружаются при каждом переходе</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/main/java/org/runcity/mvc/config/SpringWebConfig.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="4" opendate="2017-10-23 19:01:13" fixdate="2017-10-28 19:57:06">
+		<buginformation>
+			<summary>Отображение имени пользователя</summary>
+			<description>Выводить в заголовок имя пользователя вместо логина</description>
+		</buginformation>
+		<fixedfiles>
+			<file>Runcity/src/org/runcity/mvc/web/ConsumerController.java</file>
+			<file>Runcity/src/org/runcity/exception/DBException.java</file>
+			<file>Runcity/src/org/runcity/secure/SecureUserDetails.java</file>
+			<file>Runcity/src/org/runcity/db/service/impl/ConsumerDetailsServiceImpl.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

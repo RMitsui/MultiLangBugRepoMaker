@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>492</id>
+		<title>不要增加 Main 类型，而是通过 key 来判断是不是 main 页面</title>
+		<body>都归为页面，然后通过 key 判断是不是 main 页面</body>
+		<created>2020-08-07 22:22:10</created>
+		<closed>2020-08-08 23:18:53</closed>
+	</bug>
+	<bug>
+		<id>490</id>
+		<title>使用 github 帐号登录时，如果出错则应显示详细信息</title>
+		<body>现在是直接调转到 `/error` 页面，没有给出任何友好提示。</body>
+		<created>2020-08-05 05:35:49</created>
+		<closed>2020-08-06 00:48:13</closed>
+	</bug>
+	<bug>
+		<id>487</id>
+		<title>注册 API 组件库时没有保存 Widget 信息</title>
+		<body>API 仓库中定义了 App 和 Page 组件，但是注册时没有保存到数据库中</body>
+		<created>2020-08-01 23:57:51</created>
+		<closed>2020-08-09 00:07:43</closed>
+	</bug>
+	<bug>
+		<id>485</id>
+		<title>在 apiRepo 中应该保存 api 组件库的 git 地址，但实际保存的是 ide 组件库的 git 地址</title>
+		<body></body>
+		<created>2020-07-31 12:48:42</created>
+		<closed>2020-07-31 13:58:51</closed>
+	</bug>
+	<bug>
+		<id>479</id>
+		<title>往组件市场中注册 ide 组件时，提示 component_repo_version 中的 build 字段违反非空约束</title>
+		<body>``` Hibernate: insert into component_repo_version (api_repo_version_id, app_type, build, component_repo_id, create_time, create_user_id, description, display_name, git_tag_name, language, last_publish_time, logo_path, name, version) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 2020-07-27 21:00:01.835  WARN 19628 --- [cTaskExecutor-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23502 2020-07-27 21:00:01.835 ERROR 19628 --- [cTaskExecutor-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : 错误: 在字段 "build" 中空值违反了非空约束   详细：失败, 行包含(1, 1, master, 1, 1, 2020-07-27 21:00:01.807755+08, refs/heads/master, 03, ide-mini-program-component, null, null, null, 02, null, 2020-07-27 21:00:01.808776+08). ```</body>
+		<created>2020-07-27 13:04:13</created>
+		<closed>2020-07-27 13:29:32</closed>
+	</bug>
+	<bug>
+		<id>478</id>
+		<title>解析 API 仓库时提示不存在 __schemas__ 文件夹</title>
+		<body>`D:\data\blocklang\marketplace\github.com\blocklang\api-mini-program-component\package\master\__schemas__`  ![图片](https://user-images.githubusercontent.com/624517/88543839-20d25000-d04b-11ea-8122-160d620d4f08.png) </body>
+		<created>2020-07-27 12:51:24</created>
+		<closed>2020-07-27 13:02:23</closed>
+	</bug>
+	<bug>
+		<id>353</id>
+		<title>在存放源码的 server 目录下不应自动生成 marketplace 文件夹</title>
+		<body>![image](https://user-images.githubusercontent.com/624517/70909446-79b72000-2048-11ea-87fc-d36f426056cc.png) </body>
+		<created>2019-12-16 13:10:33</created>
+		<closed>2019-12-17 08:01:02</closed>
+	</bug>
+	<bug>
+		<id>347</id>
+		<title>生成的页面模型信息的存储路径有误</title>
+		<body>1. 缺失 `pages` 文件夹 2. 文件路径应为 `pages/main.json`，但当前为 `main/main.json`  ![image](https://user-images.githubusercontent.com/624517/70856585-69088c00-1f1a-11ea-9928-cc5c6c0dba82.png) </body>
+		<created>2019-12-15 01:08:46</created>
+		<closed>2019-12-16 01:21:30</closed>
+	</bug>
+	<bug>
+		<id>344</id>
+		<title>发布列表页面布局错乱</title>
+		<body>操作步骤：  1. 新增一个发布； 1. 进入发布详情页面后，点击左上角的“发行版” 1. 然后进入到发布列表页面，就会出现以下错乱布局  ![image](https://user-images.githubusercontent.com/624517/70840678-d8b14500-1e4e-11ea-9db5-dc9c32db47ab.png) </body>
+		<created>2019-12-14 00:51:39</created>
+		<closed>2019-12-17 08:21:35</closed>
+	</bug>
+	<bug>
+		<id>343</id>
+		<title>生成的 dependences.json 文件内容有误</title>
+		<body>```json [{"apiRepoId":67,"name":"ide-widgets-bootstrap","version":"0.1.6"},{"apiRepoId":1,"name":"std-widget-web","version":"0.0.1"}] ```  1. 不应该包含 `ide-widgets-bootstrap`，因为这是 dev 版依赖，不是 build 版依赖。</body>
+		<created>2019-12-12 02:28:51</created>
+		<closed>2019-12-14 09:04:11</closed>
+	</bug>
+	<bug>
+		<id>342</id>
+		<title>Page Designer 中接收的部件属性中的 name 不应使用 label 的值</title>
+		<body>如果需要使用 label 值，则需要同时返回 name 和 label</body>
+		<created>2019-12-12 01:51:06</created>
+		<closed>2019-12-12 02:15:07</closed>
+	</bug>
+	<bug>
+		<id>333</id>
+		<title>当指定的文件路径不存在时，需要在控制台显示提示信息</title>
+		<body>当前是后台报错，前台不相应。  ```text java.nio.file.FileSystemException: E:\data\blocklang\...\publishLogs: Unable to determine if root directory exists at java.base/java.nio.file.Files.createDirectories(Files.java:775) ~[na:na] at com.blocklang.marketplace.task.TaskLogger.&lt;init&gt;(TaskLogger.java:40) ~[classes/:na] at com.blocklang.marketplace.service.impl.PublishServiceImpl.publish(PublishServiceImpl.java:83) ~[classes/:na] at com.blocklang.marketplace.service.impl.PublishServiceImpl.asyncPublish(PublishServiceImpl.java:68) ~[classes/:na] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na] at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na] at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na] at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.2.2.RELEASE.jar:5.2.2.RELEASE] at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.2.2.RELEASE.jar:5.2.2.RELEASE] at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.2.RELEASE.jar:5.2.2.RELEASE] at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115) ~[spring-aop-5.2.2.RELEASE.jar:5.2.2.RELEASE] at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na] at java.base/java.lang.Thread.run(Thread.java:830) ~[na:na] ```</body>
+		<created>2019-12-10 00:28:36</created>
+		<closed>2019-12-10 03:20:13</closed>
+	</bug>
+	<bug>
+		<id>318</id>
+		<title>在设计器中往页面中添加一个 TextInput 部件后未显示</title>
+		<body>需要打印页面模型，以便实时跟踪其中的数据。</body>
+		<created>2019-11-22 09:43:42</created>
+		<closed>2019-11-23 12:48:51</closed>
+	</bug>
+	<bug>
+		<id>316</id>
+		<title>在设计器中初始加载一个页面时出错</title>
+		<body>``` java.lang.NullPointerException: null at com.blocklang.develop.service.impl.ProjectResourceServiceImpl.lambda$30(ProjectResourceServiceImpl.java:643) ~[classes/:na] ```</body>
+		<created>2019-11-22 08:36:06</created>
+		<closed>2019-11-22 09:16:49</closed>
+	</bug>
+	<bug>
+		<id>315</id>
+		<title>先跑通获取项目依赖的部件</title>
+		<body>后续完善逻辑</body>
+		<created>2019-11-22 08:09:50</created>
+		<closed>2019-11-24 01:36:48</closed>
+	</bug>
+	<bug>
+		<id>314</id>
+		<title>初始启动项目后，初次请求 user/projects 报 403 异常</title>
+		<body>user/projects  因为为 `userService.findByLoginName` 增加了缓存，在某一个环节为 xiaohulu 缓存了空值，所以后续都是空值，即使用户已登录。</body>
+		<created>2019-11-22 07:25:42</created>
+		<closed>2019-11-22 08:10:05</closed>
+	</bug>
+	<bug>
+		<id>307</id>
+		<title>往依赖中添加项，然后再删掉，则应该显示未修改</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/69037921-c399ef80-0a23-11ea-9d0c-eb34cce06c0f.png) </body>
+		<created>2019-11-18 08:53:11</created>
+		<closed>2019-11-18 09:10:10</closed>
+	</bug>
+	<bug>
+		<id>303</id>
+		<title>当查询不到项目依赖的部件时，不应返回 404</title>
+		<body>虽然没有找到，但并不是出错，而是真的没有内容，所以应返回 200</body>
+		<created>2019-11-18 02:16:16</created>
+		<closed>2019-11-18 02:48:49</closed>
+	</bug>
+	<bug>
+		<id>297</id>
+		<title>当没有为在组件库中注册组件时，初始化显示设计器时不能报 500 错误</title>
+		<body>逐个检查：  1. /designer/projects/9/dependences?category=ide  报 500</body>
+		<created>2019-11-16 01:31:34</created>
+		<closed>2019-11-18 00:23:11</closed>
+	</bug>
+	<bug>
+		<id>271</id>
+		<title>项目分组下的页面未设置超链接</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/67997674-22bfdc00-fc90-11e9-8fdf-b2a270d9ed26.png)  为 -&gt; 未</body>
+		<created>2019-11-01 02:13:16</created>
+		<closed>2019-11-01 02:50:44</closed>
+	</bug>
+	<bug>
+		<id>268</id>
+		<title>刷新项目页面后，没有触发初始化 process</title>
+		<body>在 dojo 5 中是可以触发的，但升级到 dojo 6 后就不再触发。  所以按 F5 之后，页面中一直显示 Spinner</body>
+		<created>2019-10-31 07:36:49</created>
+		<closed>2019-10-31 11:20:45</closed>
+	</bug>
+	<bug>
+		<id>261</id>
+		<title>当刷新注册组件页面时，会提示没有权限 403</title>
+		<body>https://localhost/settings/marketplace/publish/1  但是用户其实是有访问权限的。  有时候 403 页面会一闪而过。</body>
+		<created>2019-10-29 08:16:04</created>
+		<closed>2019-12-17 08:33:52</closed>
+	</bug>
+	<bug>
+		<id>217</id>
+		<title>修改依赖后，执行提交操作，但显示的提交时间不准确</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/63248188-5bf3cd00-c299-11e9-81d8-d35c229aff5b.png) </body>
+		<created>2019-08-19 07:53:27</created>
+		<closed>2019-11-12 07:52:36</closed>
+	</bug>
+	<bug>
+		<id>214</id>
+		<title>DEPENDENCE.json 文件修改后，在项目的提交视图中却没有显示出来</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/63221530-e6222f80-c1cc-11e9-928e-51050728e97d.png) </body>
+		<created>2019-08-18 07:29:41</created>
+		<closed>2019-08-18 07:53:56</closed>
+	</bug>
+	<bug>
+		<id>208</id>
+		<title>如果用户未登录，则进入个人注册组件库页面后，显示 Not Found 页面</title>
+		<body></body>
+		<created>2019-08-16 01:07:30</created>
+		<closed>2019-08-18 07:41:57</closed>
+	</bug>
+	<bug>
+		<id>186</id>
+		<title>在初始进入项目的依赖管理页面时要清空之前的数据</title>
+		<body>清空  1. 查询出的组件仓库 2. 项目依赖，因为可能已过时，最好重新请求</body>
+		<created>2019-08-02 07:27:17</created>
+		<closed>2019-08-02 07:38:15</closed>
+	</bug>
+	<bug>
+		<id>185</id>
+		<title>没有为组件仓库添加 tag 而解析失败时，不显示多余的“解析失败”</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/62350630-df8d8a00-b535-11e9-9d53-e6b65b9ff54d.png) </body>
+		<created>2019-08-02 06:58:03</created>
+		<closed>2019-08-08 09:55:03</closed>
+	</bug>
+	<bug>
+		<id>174</id>
+		<title>在项目页面和分组页面的提交信息右侧的时间两边各一个空格</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/62000477-81fad700-b10a-11e9-804b-5fa9a4dfe0ec.png) </body>
+		<created>2019-07-27 23:38:21</created>
+		<closed>2019-08-18 01:14:44</closed>
+	</bug>
+	<bug>
+		<id>173</id>
+		<title>本地开发时，打开项目后控制台偶尔会抛异常</title>
+		<body>虽然抛异常，但页面加载正常。  ```text java.nio.file.AccessDeniedException: C:\Program Files\Git\mingw64\etc\.probe-4fd4c9c2-5360-4d80-9b4a-7a884b2b30a0 at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:89) ~[na:na] at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[na:na] at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[na:na] at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:235) ~[na:na] at java.base/java.nio.file.Files.newByteChannel(Files.java:373) ~[na:na] at java.base/java.nio.file.Files.createFile(Files.java:650) ~[na:na] at org.eclipse.jgit.util.FS$FileStoreAttributeCache.&lt;init&gt;(FS.java:234) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at org.eclipse.jgit.util.FS$FileStoreAttributeCache.getFsTimestampResolution(FS.java:211) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at org.eclipse.jgit.util.FS.getFsTimerResolution(FS.java:321) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at org.eclipse.jgit.internal.storage.file.FileSnapshot.&lt;init&gt;(FileSnapshot.java:186) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at org.eclipse.jgit.internal.storage.file.FileSnapshot.save(FileSnapshot.java:122) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at org.eclipse.jgit.storage.file.FileBasedConfig.load(FileBasedConfig.java:156) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at org.eclipse.jgit.internal.storage.file.FileRepository.loadSystemConfig(FileRepository.java:245) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at org.eclipse.jgit.internal.storage.file.FileRepository.&lt;init&gt;(FileRepository.java:203) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at org.eclipse.jgit.storage.file.FileRepositoryBuilder.build(FileRepositoryBuilder.java:88) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at org.eclipse.jgit.storage.file.FileRepositoryBuilder.create(FileRepositoryBuilder.java:108) ~[org.eclipse.jgit-5.4.0.201906121030-r.jar:5.4.0.201906121030-r] at com.blocklang.core.git.GitFile.execute(GitFile.java:53) ~[classes/:na] at com.blocklang.core.git.GitUtils.getFiles(GitUtils.java:198) ~[classes/:na] at com.blocklang.develop.service.impl.ProjectResourceServiceImpl.lambda$4(ProjectResourceServiceImpl.java:112) ~[classes/:na] at java.base/java.util.Optional.map(Optional.java:265) ~[na:na] at com.blocklang.develop.service.impl.ProjectResourceServiceImpl.findChildren(ProjectResourceServiceImpl.java:112) ~[classes/:na] ```</body>
+		<created>2019-07-26 12:33:17</created>
+		<closed>2019-11-12 07:50:30</closed>
+	</bug>
+	<bug>
+		<id>164</id>
+		<title>在我的组件市场发布完组件后，然后点击面包屑导航栏中的“组件市场”返回时，页面错乱</title>
+		<body>等 dojo 升级到 6.0 之后再测。  ![图片](https://user-images.githubusercontent.com/624517/61386922-b3dc9400-a8e7-11e9-8a0b-393bcd4f5ab6.png) </body>
+		<created>2019-07-17 15:07:15</created>
+		<closed>2019-07-20 13:28:17</closed>
+	</bug>
+	<bug>
+		<id>150</id>
+		<title>使用 Files.writeString 记录的打印日志中出现异常信息</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/61166629-2d305b80-a563-11e9-980e-44254338b4d8.png) ![图片](https://user-images.githubusercontent.com/624517/61166630-2d305b80-a563-11e9-9854-bb56076b5d57.png)  当使用 vscode 打开日志文件后，提示文件中有不支持的编码。  可能与 java 11 的这个 bug 有关 [JDK-8209576 : java.nio.file.Files.writeString writes garbled UTF-16 instead of UTF-8](https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8209576)</body>
+		<created>2019-07-13 03:43:21</created>
+		<closed>2019-07-13 04:06:18</closed>
+	</bug>
+	<bug>
+		<id>138</id>
+		<title>当刷新组件市场后，组件列表区域一直显示等待的问题</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/60753549-9ade0400-a006-11e9-88ea-ab67a1507f7a.png) </body>
+		<created>2019-07-06 07:56:48</created>
+		<closed>2019-07-07 01:53:03</closed>
+	</bug>
+	<bug>
+		<id>137</id>
+		<title>修复当在组件市场发布组件报错后，重新进入组件市场发布页面后依然存在错误提示的问题</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/60753524-5ce0e000-a006-11e9-92df-5392c965be62.png) </body>
+		<created>2019-07-06 07:54:56</created>
+		<closed>2019-07-06 10:47:49</closed>
+	</bug>
+	<bug>
+		<id>110</id>
+		<title>E-mail address of PersonIdent must not be null.</title>
+		<body>https://sentry.io/share/issue/ba3b710f1f754cc4832709ffdd79b45e/</body>
+		<created>2019-05-24 14:11:09</created>
+		<closed>2019-07-20 01:18:53</closed>
+	</bug>
+	<bug>
+		<id>98</id>
+		<title>eclipse 控制台偶尔会刷屏，显示一堆错误信息</title>
+		<body>但是无法还原出错场景。需进一步跟踪。</body>
+		<created>2019-05-13 08:01:14</created>
+		<closed>2019-05-22 12:12:51</closed>
+	</bug>
+	<bug>
+		<id>97</id>
+		<title>创建页面中 name 的校验信息显示有误</title>
+		<body>![image](https://user-images.githubusercontent.com/624517/57603445-51d47b00-7594-11e9-9de1-7ebf07eab7ef.png) </body>
+		<created>2019-05-13 07:33:12</created>
+		<closed>2019-05-13 09:56:23</closed>
+	</bug>
+	<bug>
+		<id>96</id>
+		<title>创建分组时，校验 key 值重复的提示信息显示有误</title>
+		<body>检查 key 和 name 的校验  ![image](https://user-images.githubusercontent.com/624517/57603348-0c17b280-7594-11e9-95e2-fec6c77d8889.png) </body>
+		<created>2019-05-13 07:30:41</created>
+		<closed>2019-05-13 09:56:23</closed>
+	</bug>
+	<bug>
+		<id>95</id>
+		<title>点击新增页面和新增分组中的取消按钮后，要跳转到当前分组下，而不是跳转到根目录</title>
+		<body></body>
+		<created>2019-05-13 07:26:22</created>
+		<closed>2019-05-13 07:54:14</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>提交页面的目录缺少分隔符</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/57592442-4ae44300-7569-11e9-9589-bc135ef1bfd3.png) </body>
+		<created>2019-05-13 02:24:40</created>
+		<closed>2019-05-13 04:45:23</closed>
+	</bug>
+	<bug>
+		<id>93</id>
+		<title>在访问项目页面会先显示 404页面，然后才显示项目详情</title>
+		<body>刚开始应该是数据没有加载上来，并不是找不到，所以不应该先显示 404 页面</body>
+		<created>2019-05-13 01:42:48</created>
+		<closed>2019-05-14 01:50:48</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>执行 stage-changes 操作时，有时会报 403</title>
+		<body></body>
+		<created>2019-05-12 12:59:59</created>
+		<closed>2019-05-16 01:40:22</closed>
+	</bug>
+	<bug>
+		<id>91</id>
+		<title>在提交页面，徽标数字偏上了</title>
+		<body>![image](https://user-images.githubusercontent.com/624517/57582504-35830080-74f8-11e9-8482-4a29fdbe735b.png) </body>
+		<created>2019-05-12 12:55:23</created>
+		<closed>2019-05-13 02:05:16</closed>
+	</bug>
+	<bug>
+		<id>83</id>
+		<title>在子分组下创建页面和创建分组的逻辑有误</title>
+		<body>![image](https://user-images.githubusercontent.com/624517/57179571-c67f2980-6eb1-11e9-90f7-18b799138533.png) </body>
+		<created>2019-05-04 13:15:56</created>
+		<closed>2019-05-05 23:34:08</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>当页面的key 或分组的 key 冲突时，提示信息未正确显示</title>
+		<body>![image](https://user-images.githubusercontent.com/624517/57179430-7f446900-6eb0-11e9-8715-0b3685d7df1c.png)  ![image](https://user-images.githubusercontent.com/624517/57179426-7489d400-6eb0-11e9-94c8-91454eb225fd.png) </body>
+		<created>2019-05-04 13:06:53</created>
+		<closed>2019-05-04 13:12:29</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>在 ie11和华为手机浏览器上首页显示不出来</title>
+		<body>感谢 v2ex 上的 [xiaotuzi](https://www.v2ex.com/member/xiaotuzi) 反馈</body>
+		<created>2019-04-21 01:18:47</created>
+		<closed>2019-04-21 01:40:17</closed>
+	</bug>
+	<bug>
+		<id>65</id>
+		<title>第二次发布时，console 中没有显示消息</title>
+		<body></body>
+		<created>2019-04-20 02:35:37</created>
+		<closed>2019-04-20 05:40:17</closed>
+	</bug>
+	<bug>
+		<id>61</id>
+		<title>发布控制台问题</title>
+		<body>在 firefox 浏览器下测试：  1. 启动发布后，控制台中没有显示任何内容； 2. 刷新一次后，会显示，但是内容显示了两次。</body>
+		<created>2019-04-19 08:42:12</created>
+		<closed>2019-04-20 02:43:16</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>个人首页中的项目列表没有显示</title>
+		<body>第一次加载的时候没有显示，刷新一次之后才显示。</body>
+		<created>2019-04-17 03:06:25</created>
+		<closed>2019-04-18 07:35:40</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>当项目名为 b 时，会出现截断资源文件不正确的问题</title>
+		<body>在后台 dojo 的资源文件以 b 字母开头l(bootstrap.js)，如果以 `a/b` 访问，则资源会截取为 ootstrap.js</body>
+		<created>2019-04-12 23:29:47</created>
+		<closed>2019-04-13 01:05:13</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>标题未填写，但发布按钮激活了</title>
+		<body>![图片](https://user-images.githubusercontent.com/624517/55925782-48788b80-5c41-11e9-96ad-46a4bf6033e0.png) </body>
+		<created>2019-04-11 02:05:37</created>
+		<closed>2019-04-13 07:50:32</closed>
+	</bug>
+	<bug>
+		<id>42</id>
+		<title>确认为什么有些项目在发布时，卡在“开始配置 spring boot 项目”这一环节</title>
+		<body></body>
+		<created>2019-04-09 13:44:33</created>
+		<closed>2019-04-11 02:22:39</closed>
+	</bug>
+	<bug>
+		<id>38</id>
+		<title>readme文档有误</title>
+		<body>第一段尾部：  `请移步[演示站点 https://blocklang.com](https://blocklang)。`-&gt;`请移步[演示站点 `https://blocklang.com](https://blocklang.com)。`</body>
+		<created>2019-04-08 08:09:03</created>
+		<closed>2019-04-08 14:44:12</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>当使用 qq 登录进入到完善用户信息页面后，再使用 github 用户登录，会报错</title>
+		<body>![github_login](https://user-images.githubusercontent.com/624517/55205768-21689580-520f-11e9-81e5-817f6da1b9e5.png) </body>
+		<created>2019-03-29 02:41:03</created>
+		<closed>2019-04-14 08:49:55</closed>
+	</bug>
+	<bug>
+		<id>27</id>
+		<title>刷新页面后，以下页面显示 Whitelabel Error Page</title>
+		<body>![complete_user_info_2](https://user-images.githubusercontent.com/624517/55118156-50580c00-5128-11e9-8943-918d3f6d10f0.png)  ![release_1](https://user-images.githubusercontent.com/624517/55118158-50f0a280-5128-11e9-8ae2-f8b0028c672a.png) </body>
+		<created>2019-03-27 23:08:56</created>
+		<closed>2019-04-13 01:16:15</closed>
+	</bug>
+	<bug>
+		<id>25</id>
+		<title>使用 qq 用户登录成功后，个人资料页面中的个人主页等信息不能显示为 null</title>
+		<body></body>
+		<created>2019-03-27 12:55:00</created>
+		<closed>2019-03-27 22:57:47</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>当使用qq登录跳转到完善用户页面后，下次再访问主页直接进入完善用户信息页面</title>
+		<body>~~应该是跳转到公共首页~~ 这个逻辑没有问题</body>
+		<created>2019-03-27 12:51:58</created>
+		<closed>2019-04-14 08:49:45</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>完善用户信息页面的登录名为空时，不能显示为 null</title>
+		<body> </body>
+		<created>2019-03-27 12:38:17</created>
+		<closed>2019-03-27 22:57:29</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>使用 StateHistory 后，需要点击多次浏览器上的后退按钮才能返回上一个页面</title>
+		<body>当使用 dojo framework routing 的 `Link` 部件后，如果多次点击同一个 `Link` 部件，然后点击浏览器上的后退按钮，则需要点击相同次数，才能返回到上一个页面。  查看了 angular 的 router 后，都是先判断如果要设置的路由就是当前页面，则不再设置。  这样处理，用户友好性高一些。</body>
+		<created>2019-03-20 01:14:11</created>
+		<closed>2019-11-12 07:51:13</closed>
+	</bug>
+	<bug>
+		<id>10</id>
+		<title>从创建发行版页面跳转到发行版列表页面后，页面没有按预期效果布局</title>
+		<body>![list_release_1](https://user-images.githubusercontent.com/624517/55118307-d96f4300-5128-11e9-87a5-f64974e8bf46.png) </body>
+		<created>2019-03-17 08:47:13</created>
+		<closed>2019-04-17 13:42:29</closed>
+	</bug>
+	<bug>
+		<id>3</id>
+		<title>当项目名重复时，提示信息中不应该显示出 strong 标签字样</title>
+		<body>![01-create-project](https://user-images.githubusercontent.com/624517/53319732-5b900000-390e-11e9-9da3-268f82cbbcaa.png) </body>
+		<created>2019-02-25 07:04:42</created>
+		<closed>2019-02-25 13:34:03</closed>
+	</bug>
+</bugs>

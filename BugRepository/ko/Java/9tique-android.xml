@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="9tique-android">
+	<bug id="18" opendate="2017-01-18 12:08:09" fixdate="2017-01-21 10:30:39">
+		<buginformation>
+			<summary>상품 리스트화면의 하단 스크롤시 메인 카테고리 TabLayout이 늘어나는 버그 </summary>
+			<description>## 상품 리스트화면의 하단 스크롤시 메인 카테고리 TabLayout이 늘어나는 버그  상품 리스트화면에서 CollapseToolbarLayout을 상하단 스크롤시 메인 카테고리 TabLayout이 위로 늘어나는 버그 발견</description>
+		</buginformation>
+		<fixedfiles>
+			<file>app/src/main/java/kr/co/mash_up/a9tique/ui/setting/sellerregistration/SellerRegistrationDialogFragment.java</file>
+			<file>app/src/main/java/kr/co/mash_up/a9tique/ui/productdetail/SellerProductDetailFragment.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="17" opendate="2017-01-18 12:06:01" fixdate="2017-02-21 16:22:22">
+		<buginformation>
+			<summary>갤러리 정렬이 찍힌 시간 내림차순으로 안돼는 문제</summary>
+			<description>## 갤러리 정렬이 사진이 찍힌 시간 내림차순으로 안돼는 문제 `PickerController.java`의 ContentProvider를 이용해 media query할 때 정렬 기준이 잘못 설정되있다.  1. 정렬기준을 수정 2. 불필요한 로그도 지우기  ```java // 현재 String sort = MediaStore.Images.Media._ID + " DESC"; //Todo: 수정 String sort = MediaStore.Images.Media.DATE_TAKEN + " DESC"; ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>FishBun/src/main/java/com/sangcomz/fishbun/ui/picker/PickerController.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

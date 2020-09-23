@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="EasyScheduler">
+	<bug id="723" opendate="2019-08-22 01:47:11" fixdate="2019-09-26 10:01:46">
+		<buginformation>
+			<summary>[BUG] 任务实际日志路径和任务实例的日志路径不相同，导致无法查看日志</summary>
+			<description>*For better global communication, please give priority to using English description, thx! *  **Describe the bug** the task instance log is System.getProperty("user.dir") + "/logs/" *  but I can change the path with the log xml   **To Reproduce** Steps to reproduce the behavior, for example: 1. I config the log Path to other dir for worker_log.xml 2. run the task ,then get the rollView log 3. the log path of task instance in database is still the user work dir + "/logs" 4. the path not exist  **Expected behavior** the task instance log path should be same with the log xml properties  **Screenshots** If applicable, add screenshots to help explain your problem.   **Which version of Easy Scheduler:**  -[1.1.0]  **Additional context** Add any other context about the problem here.  **Requirement or improvement  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>escheduler-server/src/main/java/cn/escheduler/server/worker/log/TaskLogFilter.java</file>
+			<file>escheduler-server/src/main/java/cn/escheduler/server/worker/task/PythonCommandExecutor.java</file>
+			<file>escheduler-server/src/main/java/cn/escheduler/server/worker/task/AbstractCommandExecutor.java</file>
+			<file>escheduler-server/src/main/java/cn/escheduler/server/utils/LoggerUtils.java</file>
+			<file>escheduler-server/src/main/java/cn/escheduler/server/worker/task/ShellCommandExecutor.java</file>
+			<file>escheduler-server/src/main/java/cn/escheduler/server/rpc/LoggerServer.java</file>
+			<file>escheduler-server/src/main/java/cn/escheduler/server/worker/log/TaskLogDiscriminator.java</file>
+			<file>escheduler-common/src/main/java/cn/escheduler/common/utils/HadoopUtils.java</file>
+			<file>escheduler-server/src/main/java/cn/escheduler/server/worker/runner/TaskScheduleThread.java</file>
+			<file>escheduler-api/src/main/java/cn/escheduler/api/service/ProcessInstanceService.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

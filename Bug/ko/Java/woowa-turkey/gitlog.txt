@@ -1,0 +1,2570 @@
+670e701f2945e67ee4daae1f57822ce9f8cd79aa, Update README.md, Fri Dec 6 09:16:36 2019 +0900
+M	README.md
+
+4b9517ce09d35e521796a64c21ef59c11d4055de, feat: 백그라운드 상태가 아니어도 푸시 알림 기능 추가, Wed Sep 11 17:22:24 2019 +0900
+M	src/main/resources/static/js/notification/notification.js
+
+5a1b36872f463bf0f4081fcc8ca22bb64288b43a, feat: 글 태그, 마이페이지에 남길경우 상대방에게 푸시 알림 기능 추가, Wed Sep 11 14:47:34 2019 +0900
+M	build.gradle
+A	src/main/java/com/wootecobook/turkey/commons/firebase/FCMInitializer.java
+A	src/main/java/com/wootecobook/turkey/commons/firebase/FCMService.java
+M	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+M	src/main/java/com/wootecobook/turkey/login/controller/LoginApiController.java
+A	src/main/java/com/wootecobook/turkey/notification/NotificationMessageGenerator.java
+A	src/main/java/com/wootecobook/turkey/notification/NotificationType.java
+A	src/main/java/com/wootecobook/turkey/notification/controller/NotificationApiController.java
+A	src/main/java/com/wootecobook/turkey/notification/service/NotificationService.java
+A	src/main/java/com/wootecobook/turkey/notification/service/dto/NotificationRequest.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+A	src/main/resources/static/firebase-messaging-sw.js
+A	src/main/resources/static/js/notification/notification.js
+M	src/main/resources/templates/fragments/script.html
+A	src/main/resources/woowa-turkey-firebase-adminsdk.json
+
+feb5ebc8f713ba86e2c7ec085b45d6af4eb4ec18, docs: README.md, Wed Sep 4 09:49:44 2019 +0900
+M	README.md
+
+b6b3924512c7b79d0b81aaee6a54b0116e8e450b, 프론트 코드리뷰 반영 (#134), Tue Sep 3 23:43:51 2019 +0900
+M	src/main/resources/static/css/mypage.css
+M	src/main/resources/static/js/friendbar/template.js
+M	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/login/logout.js
+M	src/main/resources/static/js/messenger/messenger.js
+M	src/main/resources/static/js/mypage/mypage.js
+M	src/main/resources/static/js/mypage/profile-upload.js
+M	src/main/resources/static/js/mypage/template-writeform.js
+M	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/static/js/nav/setup.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/template-carousel.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/static/js/search/searchbox.js
+M	src/main/resources/templates/mypage.html
+
+963a481feafc827eff54a5e380b81ce9342c4311, Merge branch 'develop' into refactor/front, Tue Sep 3 23:43:39 2019 +0900
+849f4eb8ac6d9a7e2749e20f4bb8b12652ab3360, refactor: post.js의 initLoad() 두번 호출되어 발생하던 문제 해결 - eventListener가 두개 등록되어 글 작성시 두개의 글이 포스팅되던 문제 - 처음 글 목록을 로드할 때 두번 로드되던 문제, Tue Sep 3 23:40:44 2019 +0900
+M	src/main/resources/static/js/mypage/mypage.js
+
+49198b521905aa09601ef89cbf9f1e7f5b2b3237, refactor: mypage html style 적용시 class 활용하도록 수정, Tue Sep 3 23:28:42 2019 +0900
+M	src/main/resources/static/css/mypage.css
+M	src/main/resources/static/js/mypage/mypage.js
+M	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/templates/mypage.html
+
+c4c86bc6c357fd2a51fd6687813b57a15f45aaf3, refactor: html 마크업 안의 자바스크립트 로직 함수로 분리, Tue Sep 3 22:45:03 2019 +0900
+M	src/main/resources/static/js/friendbar/template.js
+M	src/main/resources/static/js/nav/setup.js
+M	src/main/resources/static/js/post/template.js
+
+46ecb9fe0a94900952c7a29e008c52c166b4ae76, refactor: html style 적용시 class 활용하도록 수정, Tue Sep 3 22:42:12 2019 +0900
+M	src/main/resources/static/js/mypage/profile-upload.js
+
+494aeadec1a2777d530447e11fc332e6f137f2da, refactor: 상수 대문자로, Tue Sep 3 22:08:02 2019 +0900
+M	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/search/searchbox.js
+
+cdb8010b4be4b7320acd220e5b05456096afab8b, refactor: 공백 컨벤션 보정, Tue Sep 3 22:06:28 2019 +0900
+M	src/main/resources/static/js/login/logout.js
+M	src/main/resources/static/js/mypage/mypage.js
+
+60c2d4aa821f0b31b06f0a67104a777fe12b18c1, refactor: 문자열 리터럴 활용, Tue Sep 3 22:01:34 2019 +0900
+M	src/main/resources/static/js/mypage/template-writeform.js
+M	src/main/resources/static/js/post/post.js
+
+108e8be5db934236159bcc2ee88ed2c91c0fe886, refactor: setAttribute 대신 classList 활용, Tue Sep 3 22:01:11 2019 +0900
+M	src/main/resources/static/js/post/template-carousel.js
+
+9f785afef8e26bc0780c4c8f6ce64561f765087f, refactor: 공백컨벤션 보정, Tue Sep 3 22:01:02 2019 +0900
+M	src/main/resources/static/js/messenger/messenger.js
+M	src/main/resources/static/js/post/post.js
+
+4ca8a1c3e30b44d7d552ec3e2f391e0398432e28, fix: mypage 관련 각종 버그 수정, Tue Sep 3 21:48:14 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+M	src/main/resources/static/js/mypage/mypage.js
+M	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/static/js/post/post.js
+
+735507293ed746503b181b2cb785fab0d4747be9, Merge branch 'develop' of github.com:woowa-turkey/miniprojects-2019 into elasticsearch, Tue Sep 3 18:14:01 2019 +0900
+0089a2f446c21ec225d6b48796a02d623b10086f, feat: test skip, Tue Sep 3 18:12:52 2019 +0900
+M	build.gradle
+M	deploy.sh
+
+708b65e9a0bdb8b1ae94d2ac3f1a6f339b1550a9, merge from develop, Tue Sep 3 18:07:48 2019 +0900
+b4c2515403f43ee06c78ec1fac14a59fb3be3010, feat: rest docs 추가, Tue Sep 3 18:03:46 2019 +0900
+M	deploy.sh
+A	src/main/resources/static/docs/api-guide.html
+
+ecebd4fbdfdb21842ae16d73892f931f7621a892, merge from develop, Tue Sep 3 17:58:40 2019 +0900
+M	build.gradle
+M	src/test/java/com/wootecobook/turkey/config/AwsMockConfig.java
+
+79224513d41fd9114a101400047aa3fb4f70a505, fix: 깨지는 테스트 수정, Tue Sep 3 17:56:25 2019 +0900
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserImageUploadServiceTest.java
+
+3f948ec5603661249b1a9928613b47004dd62f68, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into develop, Tue Sep 3 17:49:31 2019 +0900
+3d00911c67c74cf35c142f1ca3f4886eed9231a7, fix: 테스트 멈추는 현상 해결, Tue Sep 3 17:47:46 2019 +0900
+M	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/commons/storage/aws/S3ConnectorTest.java
+D	src/test/java/com/wootecobook/turkey/config/AwsMockConfig.java
+M	src/test/java/com/wootecobook/turkey/file/service/UploadFileServiceTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserImageUploadServiceTest.java
+
+772f5458f934ef26ca59af00d490a6b353350d32, fix: 에러페이지 js 추가, Tue Sep 3 17:08:25 2019 +0900
+M	src/main/resources/templates/403.html
+
+8763476073b21e97ccdd11e0aaba9f1c38c707c9, fix: 첨부파일 포함된 게시글 삭제, Tue Sep 3 16:55:38 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+
+b5fcc39faf54eded1f35635b794f5ecdbb9f8151, 함께한 친구 태그 기능 추가 (#132), Tue Sep 3 16:54:38 2019 +0900
+M	src/main/java/com/wootecobook/turkey/friend/service/FriendService.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+A	src/main/java/com/wootecobook/turkey/post/service/exception/NotFriendException.java
+A	src/main/resources/static/css/friendtag.css
+A	src/main/resources/static/images/default/icons5.png
+M	src/main/resources/static/js/mypage/template-writeform.js
+A	src/main/resources/static/js/post/friend-tag.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/template.js
+A	src/main/resources/templates/fragments/friend-tag-modal.html
+M	src/main/resources/templates/fragments/write-post.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/layouts/main.html
+M	src/main/resources/templates/mypage.html
+M	src/test/java/com/wootecobook/turkey/BaseControllerTests.java
+M	src/test/java/com/wootecobook/turkey/messenger/service/MessengerServiceTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+7731e08cd99ae99fb5d9eb79302e092234dfcb79, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/friendtag, Tue Sep 3 16:40:28 2019 +0900
+46ed60e97d4200ff196421d895d09410f18f2b3f, refactor: 문자열 상수화, Tue Sep 3 16:10:29 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/controller/WebSocketMessengerController.java
+
+73595961d1cf78823e3a6e6682bcae242bb9241f, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into develop, Tue Sep 3 14:01:08 2019 +0900
+7b682c8b4233659161fb95d0e309f7b9850703f0, refactor: StorageConnector interface 구현 (#133), Tue Sep 3 13:59:57 2019 +0900
+A	src/main/java/com/wootecobook/turkey/commons/storage/StorageConnector.java
+A	src/main/java/com/wootecobook/turkey/commons/storage/aws/FailedUploadException.java
+R081	src/main/java/com/wootecobook/turkey/commons/aws/S3Connector.java	src/main/java/com/wootecobook/turkey/commons/storage/aws/S3Connector.java
+D	src/main/java/com/wootecobook/turkey/file/service/FailedSaveFileException.java
+M	src/main/java/com/wootecobook/turkey/file/service/UploadFileService.java
+M	src/main/java/com/wootecobook/turkey/user/service/ImageType.java
+R097	src/test/java/com/wootecobook/turkey/commons/aws/S3ConnectorTest.java	src/test/java/com/wootecobook/turkey/commons/storage/aws/S3ConnectorTest.java
+
+39e41af9475a11b7f5bfc95ebcccec8e5f4488e3, refactor: StorageConnector interface 구현, Tue Sep 3 13:56:07 2019 +0900
+A	src/main/java/com/wootecobook/turkey/commons/storage/StorageConnector.java
+A	src/main/java/com/wootecobook/turkey/commons/storage/aws/FailedUploadException.java
+R081	src/main/java/com/wootecobook/turkey/commons/aws/S3Connector.java	src/main/java/com/wootecobook/turkey/commons/storage/aws/S3Connector.java
+D	src/main/java/com/wootecobook/turkey/file/service/FailedSaveFileException.java
+M	src/main/java/com/wootecobook/turkey/file/service/UploadFileService.java
+M	src/main/java/com/wootecobook/turkey/user/service/ImageType.java
+R097	src/test/java/com/wootecobook/turkey/commons/aws/S3ConnectorTest.java	src/test/java/com/wootecobook/turkey/commons/storage/aws/S3ConnectorTest.java
+
+1046fc0003102619fd28222f2b99f4da6ef00f90, fix: 피드 페이지에서 글 작성 에러 수정, Tue Sep 3 13:39:17 2019 +0900
+M	src/main/resources/static/js/mypage/template-writeform.js
+M	src/main/resources/templates/mypage.html
+
+5e0355d79372b4867ae982323777166ce949b3a8, Merge branch 'develop' of github.com:woowa-turkey/miniprojects-2019 into elasticsearch, Tue Sep 3 13:19:43 2019 +0900
+70105799255c9850705f634414656b1beb04bfe0, feat: 주석추가, Tue Sep 3 13:19:25 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/elasticsearch/ElasticSearchTemplate.java
+M	src/main/java/com/wootecobook/turkey/commons/elasticsearch/utils/InitElasticSearchIndex.java
+M	src/main/java/com/wootecobook/turkey/config/CommandLineRunnerImpl.java
+M	src/main/java/com/wootecobook/turkey/config/ElasticSearchConfig.java
+M	src/main/java/com/wootecobook/turkey/search/repository/UserElasticSearchRepository.java
+M	src/main/resources/application.yml
+
+104e0b48570aa1a0f2e20fc35294262b15d74293, feat: PostResponse taggedUsers 필드 문서화, Tue Sep 3 13:09:15 2019 +0900
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+
+ca29e88f9e6d9881b2f028a58a8e416bc1fbd05f, Merge branch 'feature/friendtag' of https://github.com/woowa-turkey/miniprojects-2019 into develop, Tue Sep 3 13:02:23 2019 +0900
+69267a40c1679d4dac823d3bd84e36dbc94f7b2d, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/friendtag, Tue Sep 3 12:59:32 2019 +0900
+7043a1a0a26110e3ae9a28607f0a4e7fb6e942f8, good Service 객체 @Transactional 피드백 반영 (#129), Tue Sep 3 10:54:38 2019 +0900
+M	src/main/java/com/wootecobook/turkey/good/service/CommentGoodService.java
+M	src/main/java/com/wootecobook/turkey/good/service/GoodService.java
+M	src/main/java/com/wootecobook/turkey/good/service/PostGoodService.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+
+3befd792151920b1f239e6fd33fb9a407182a4ee, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/friendtag, Tue Sep 3 10:53:52 2019 +0900
+07a87ff4a939c0bdee2866a315222eec6a46b016, 게시글 수정 에러메세지 수정 (#130), Tue Sep 3 09:35:50 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiControllerAdvice.java
+
+250679ed639842d47aacf6adb359c73c139b7a9c, refactor: 채팅방 페이지 요청 에러 발생 처리 - 상태코드 403으로 응답하도록 수정, Tue Sep 3 09:33:19 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerControllerAdvice.java
+
+d20cb226cd41bb6817d88a492d541e0ec049f78d, refactor: 게시글 수정 에러메세지 수정, Tue Sep 3 09:32:33 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiControllerAdvice.java
+
+746f01743e91d883a9d9fe8d06165b67973139c9, refactor: 채팅방 페이지 요청 에러 발생 처리 (#128), Tue Sep 3 08:55:55 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/exception/AccessDeniedException.java
+A	src/main/resources/static/css/403.css
+A	src/main/resources/static/js/403.js
+A	src/main/resources/templates/403.html
+
+e379a36cc3f00ed8e33443570d823068731e3b7f, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into refactor/post, Tue Sep 3 08:53:34 2019 +0900
+d2089a09256d2bff896ffaa4b5cfc34ea5e88aa0, refactor: 채팅방 페이지 요청 에러 발생 처리 - 403 에러 페이지로 리다이렉트, Tue Sep 3 08:53:21 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/exception/AccessDeniedException.java
+A	src/main/resources/static/css/403.css
+A	src/main/resources/static/js/403.js
+A	src/main/resources/templates/403.html
+
+6bc5ec7c2d04b36dc797eb06ef0a9d431e961fc7, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/friendtag, Tue Sep 3 00:14:22 2019 +0900
+cb1b1363c4e9b46f7ab4d58dcf366a48ba88ff8d, fix: 머지후 충돌 해결, Tue Sep 3 00:08:25 2019 +0900
+M	src/main/resources/static/js/search/searchbox.js
+
+be0494ca86fca35d4c239ee6f5bc90983f99d682, merge from develop, Tue Sep 3 00:01:51 2019 +0900
+b60c9159f0fcadd670171b37b053c1fcdf1e6480, fix: 슬래시, 백슬래시 (/, \) 검색 포함되게 수정 (#127), Tue Sep 3 00:00:35 2019 +0900
+M	src/main/resources/static/js/search/searchbox.js
+
+0179ef7ad29888d740c3b23e13d559e60abe834e, fix: 검색 /, \ 문제 치환으로 해결, Mon Sep 2 23:59:07 2019 +0900
+cc0b17d66590d06705623ddd7393d0f8ca4c49ae, feat: 프론트 작성된 글에 태그된 친구 표시 기능 추가, Mon Sep 2 21:49:21 2019 +0900
+M	src/main/resources/static/js/post/template.js
+
+a6ac2795ea4e219ee4fda6af3cccc5132ba1f125, feat: 프론트 글 작성 시 태그된 친구 표시 기능 추가, Mon Sep 2 21:38:41 2019 +0900
+M	src/main/resources/static/js/post/friend-tag.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/fragments/friend-tag-modal.html
+M	src/main/resources/templates/fragments/write-post.html
+
+6dca75331d3ecc3b9b67fba7a5a14dd76b4482d3, feat: 친구 태그 프론트 기능 추가, Mon Sep 2 21:21:57 2019 +0900
+A	src/main/resources/static/css/friendtag.css
+A	src/main/resources/static/images/default/icons5.png
+A	src/main/resources/static/js/post/friend-tag.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/template.js
+A	src/main/resources/templates/fragments/friend-tag-modal.html
+M	src/main/resources/templates/fragments/write-post.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/layouts/main.html
+
+a372890df03109864df0cce31202fd2ef3783e2e, 배포서버에서 게시글 작성시간 잘못 나오는 것 수정 (#126), Mon Sep 2 18:26:25 2019 +0900
+M	deploy.sh
+M	src/main/resources/static/js/post/template.js
+
+4acac65b3ea64a64a8871f94aacae83b47a3ffa1, fix: mypage에서 가끔 글이 안써지는 문제 해결 (#125), Mon Sep 2 18:02:09 2019 +0900
+M	src/main/resources/static/js/mypage/mypage.js
+
+3d5df416c1f3b0d27b110ad871ea8cb04ab131b7, fix: mypage에서 가끔 글이 안써지는 문제 해결, Mon Sep 2 17:59:12 2019 +0900
+M	src/main/resources/static/js/mypage/mypage.js
+
+052b8eecfda18f73048b1bc0376e1fa374988053, fix: Post 검색 관련 문서화 제거, Mon Sep 2 17:36:59 2019 +0900
+M	src/docs/asciidoc/api-guide.adoc
+
+79c82b66a108261b5f8959b8a4bc7df9f7d32c50, fix: 검색 요청 테스트 실패 수정, Mon Sep 2 17:32:27 2019 +0900
+M	src/test/java/com/wootecobook/turkey/search/controller/SearchControllerTests.java
+
+91fa9e933f1dc2a26d1f43734ff1ea5a3a600ea2, fix: 프론트에서 첨부한 파일 크기 제한 기능 추가 (#124), Mon Sep 2 17:13:16 2019 +0900
+M	src/main/resources/static/js/post/post.js
+
+81dc263db45fb385ebc57a16b3730ce94d9622ba, feat: a (#123), Mon Sep 2 17:05:49 2019 +0900
+M	src/main/java/com/wootecobook/turkey/search/controller/SearchController.java
+M	src/main/java/com/wootecobook/turkey/user/controller/UserApiController.java
+M	src/main/resources/static/js/search/searchResult.js
+M	src/main/resources/static/js/search/searchbox.js
+M	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+
+dcb310984f64e3e909557bac8747dcf84fa1225a, docs: 도메인 안내 문구 추가, Mon Sep 2 16:27:34 2019 +0900
+M	src/docs/asciidoc/api-guide.adoc
+
+ebdf8a55a1902b26021670deefb13a25ea09c1c6, fix: DEFINE_PORT -> RANDOM_PORT 변경, Mon Sep 2 16:27:20 2019 +0900
+M	src/test/java/com/wootecobook/turkey/BaseControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/commons/aws/S3ConnectorTest.java
+M	src/test/java/com/wootecobook/turkey/file/service/UploadFileServiceTest.java
+M	src/test/java/com/wootecobook/turkey/friend/controller/FriendApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/login/controller/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/messenger/controller/MessengerApiControllerTest.java
+M	src/test/java/com/wootecobook/turkey/messenger/controller/MessengerControllerTest.java
+M	src/test/java/com/wootecobook/turkey/messenger/controller/WebSocketMessengerControllerTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/search/controller/SearchControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/IntroductionApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/UserControllerTests.java
+
+de0719ed61433a54c6b312fb9bda24da7e1d5449, fix: build시 테스트 되지 않는 문제 해결, Mon Sep 2 16:26:46 2019 +0900
+M	build.gradle
+
+51c8adcc4cd7080afc7d84ddc86bff9e793a876f, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/restdocs, Mon Sep 2 16:17:50 2019 +0900
+7cdf6debf3e0c8d067e5e8768cd8fbdd70eb93ee, fix: 슬래시, 백슬래시 (/, \) 검색 포함되게 수정, Mon Sep 2 16:09:22 2019 +0900
+M	src/main/resources/static/js/search/searchbox.js
+
+ddaf7af10e09030f244aaa4ea533530477ea769b, feat: elasticsearch plugin 등록, Mon Sep 2 13:41:04 2019 +0900
+A	javacafe-analyzer-7.3.1.zip
+
+03fc79008aa8781cd37f66071d8f116dcc3b810a, REST docs 적용 완료 (#121), Mon Sep 2 13:24:26 2019 +0900
+M	build.gradle
+A	src/docs/asciidoc/api-guide.adoc
+M	src/main/java/com/wootecobook/turkey/config/WebConfig.java
+M	src/test/java/com/wootecobook/turkey/BaseControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/commons/aws/S3ConnectorTest.java
+M	src/test/java/com/wootecobook/turkey/file/service/UploadFileServiceTest.java
+M	src/test/java/com/wootecobook/turkey/friend/controller/FriendApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/login/controller/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/search/controller/SearchControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/IntroductionApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/UserControllerTests.java
+
+4894e4152f1022503caf8a422a44ec085557aaf7, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/restdocs, Mon Sep 2 11:39:14 2019 +0900
+5d5c0dd541adb2e33190ecd23cb6c420562a73cf, feat: 문서화 경로 interceptor에서 제거, Mon Sep 2 11:39:00 2019 +0900
+M	src/main/java/com/wootecobook/turkey/config/WebConfig.java
+
+efde3ffd22ff1275e9d2751fb1bb404c5a5f658d, docs: API 문서화, Mon Sep 2 11:38:41 2019 +0900
+A	src/docs/asciidoc/api-guide.adoc
+
+55b21ebfa40908860daf0ecd70b6abab3db0a753, refactor: 누락된 문서화 작성, Mon Sep 2 11:38:29 2019 +0900
+M	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/friend/controller/FriendApiControllerTests.java
+
+1c28a858d41f1b83f772aaf5350ed5f138d441cf, refactor: WebTestClient 설정에 맞게 DEFINE_PORT로 변경, Mon Sep 2 11:37:48 2019 +0900
+M	src/test/java/com/wootecobook/turkey/commons/aws/S3ConnectorTest.java
+M	src/test/java/com/wootecobook/turkey/file/service/UploadFileServiceTest.java
+M	src/test/java/com/wootecobook/turkey/search/controller/SearchControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/UserControllerTests.java
+
+ab48f79801e00206d0768c83bed29df1a486db31, 친구 삭제시 의도하지 않은 에러메시지 수정 (#120), Sun Sep 1 17:29:31 2019 +0900
+M	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendResponse.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+M	src/main/resources/static/js/friendask/load.js
+M	src/main/resources/static/js/friendbar/load.js
+M	src/main/resources/static/js/friendbar/template.js
+
+b1383b921860eddcf97d9a6ae6f7f531fcf5cbf7, feat: 프로젝트 시작시 엘라스틱 데이터 동기화, Sun Sep 1 17:18:59 2019 +0900
+M	src/main/java/com/wootecobook/turkey/TurkeyApplication.java
+M	src/main/java/com/wootecobook/turkey/commons/elasticsearch/utils/InitElasticSearchIndex.java
+A	src/main/java/com/wootecobook/turkey/config/CommandLineRunnerImpl.java
+M	src/main/java/com/wootecobook/turkey/search/service/UserElasticSearchService.java
+M	src/test/java/com/wootecobook/turkey/search/repository/UserElasticSearchRepositoryTest.java
+
+d25de09cf5fc20b68d200eff435b9edfe083fe83, feat: CommentApiController 문서화, Sun Sep 1 15:24:09 2019 +0900
+M	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+
+085ecbed7e9e223654446e3bfb3e85c02b9335d6, feat: PostApiController 문서화, Sun Sep 1 15:23:57 2019 +0900
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+
+728819080311d38ac82b6639c370d1ed18e076ab, feat: FriendApiController 문서화, Sun Sep 1 15:23:44 2019 +0900
+M	src/test/java/com/wootecobook/turkey/friend/controller/FriendApiControllerTests.java
+
+77273a632d275229c5e14b34cc8cf6f87cb62d29, feat: IntroductionApiController 문서화, Sun Sep 1 15:23:28 2019 +0900
+M	src/test/java/com/wootecobook/turkey/user/controller/IntroductionApiControllerTests.java
+
+1044400b4b40e1b9b30fc10860d9d912ad6fe81c, feat: LoginApiController 문서화, Sun Sep 1 15:23:08 2019 +0900
+M	src/test/java/com/wootecobook/turkey/login/controller/LoginApiControllerTests.java
+
+bc92df3b4148169c13e366a039f9e48afb1abc7d, feat: UserApiController 문서화, Sun Sep 1 15:22:39 2019 +0900
+M	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+
+5a7302bca04502135e8cd0af1064a515394ee005, feat: webTestClient rest docs 설정, Sun Sep 1 15:22:16 2019 +0900
+M	src/test/java/com/wootecobook/turkey/BaseControllerTests.java
+
+9dd3d42c5909f613204e366a5821945e8510f34c, settings: rest docs 의존성 및 설정, Sun Sep 1 15:21:26 2019 +0900
+M	build.gradle
+
+5e95e2019f5774a0d58776ac9e64f098ef6e4cd8, Merge branch 'develop' into feature/elasticsearch, Sun Sep 1 14:42:18 2019 +0900
+39982b6364b935d0539497fcfeb70b32d8e6f998, feat: 프로젝트 시작시 엘라스틱 데이터 동기화, Sun Sep 1 14:39:55 2019 +0900
+M	src/main/java/com/wootecobook/turkey/TurkeyApplication.java
+M	src/main/java/com/wootecobook/turkey/commons/elasticsearch/ElasticSearchTemplate.java
+A	src/main/java/com/wootecobook/turkey/commons/elasticsearch/utils/InitElasticSearchIndex.java
+M	src/main/java/com/wootecobook/turkey/search/repository/UserElasticSearchRepository.java
+M	src/main/resources/data.sql
+A	src/main/resources/elasticsearch-user-create-index.json
+A	src/main/resources/elasticsearch-user-mapping-index.json
+M	src/test/java/com/wootecobook/turkey/user/service/UserCreateServiceTest.java
+
+81c6e7af1ab2893c52647a711253ca71a1ffc53e, 메신저 기능 구현했습니다~ (#98), Sun Sep 1 12:25:48 2019 +0900
+M	build.gradle
+A	src/main/java/com/wootecobook/turkey/commons/interceptor/HttpHandshakeInterceptor.java
+A	src/main/java/com/wootecobook/turkey/config/WebSocketConfig.java
+A	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerApiController.java
+A	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerApiControllerAdvice.java
+A	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerController.java
+A	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerControllerAdvice.java
+A	src/main/java/com/wootecobook/turkey/messenger/controller/WebSocketMessengerController.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/Message.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/MessageRepository.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/Messenger.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/MessengerRepository.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/MessengerRoom.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/MessengerRoomRepository.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/exception/InvalidMessengerRoomException.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/MessageService.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/MessengerRoomService.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/MessengerService.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessageRequest.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessageResponse.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessengerRequest.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessengerRoomResponse.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/exception/AccessDeniedException.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/strategy/JoinStrategy.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/strategy/MessengerRoomCodeStrategy.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/strategy/MessengerRoomCodeStrategyConfig.java
+A	src/main/resources/static/css/messenger.css
+M	src/main/resources/static/js/friendbar/load.js
+M	src/main/resources/static/js/friendbar/template.js
+A	src/main/resources/static/js/messenger/messenger.js
+A	src/main/resources/static/js/messenger/template.js
+A	src/main/resources/templates/messenger.html
+M	src/test/java/com/wootecobook/turkey/BaseControllerTests.java
+A	src/test/java/com/wootecobook/turkey/messenger/controller/MessengerApiControllerTest.java
+A	src/test/java/com/wootecobook/turkey/messenger/controller/MessengerControllerTest.java
+A	src/test/java/com/wootecobook/turkey/messenger/controller/WebSocketMessengerControllerTest.java
+A	src/test/java/com/wootecobook/turkey/messenger/service/MessageServiceTest.java
+A	src/test/java/com/wootecobook/turkey/messenger/service/MessengerRoomServiceTest.java
+A	src/test/java/com/wootecobook/turkey/messenger/service/MessengerServiceTest.java
+
+52a2c3073f2db3ea46581bb1453a6ddb96f7dc85, fix: 깨지는 테스트 수정, Sun Sep 1 12:23:08 2019 +0900
+M	src/test/java/com/wootecobook/turkey/messenger/controller/WebSocketMessengerControllerTest.java
+
+9323777f505ba6a89fe87f51e319f002d4b3e978, refactor: fetchType 변경(EAGER -> LAZY), Sun Sep 1 12:22:54 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/domain/Message.java
+
+e2d71814747ab97f2c1d4281fc62f7026af09a53, refactor: saveAll 활용, Sun Sep 1 12:22:28 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/service/MessengerService.java
+
+63867c01f6406611bfd3a508c8fd5c86e8cb488b, refactor: 변수 추출해 가독성 높임, Sun Sep 1 12:04:58 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/controller/WebSocketMessengerController.java
+
+c0d6fe0c7c07671890f4178d498ec3edf6d46c73, test: 메신저 통합 테스트 코드 작성, Sun Sep 1 04:40:05 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerApiController.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessageRequest.java
+M	src/test/java/com/wootecobook/turkey/BaseControllerTests.java
+A	src/test/java/com/wootecobook/turkey/messenger/controller/MessengerApiControllerTest.java
+A	src/test/java/com/wootecobook/turkey/messenger/controller/MessengerControllerTest.java
+A	src/test/java/com/wootecobook/turkey/messenger/controller/WebSocketMessengerControllerTest.java
+
+8cb74671764298f14c95e71292488d1e807f4c10, feat: 엘라스틱서치 검색기능 추가, Sun Sep 1 01:14:03 2019 +0900
+M	build.gradle
+A	src/main/java/com/wootecobook/turkey/commons/elasticsearch/ElasticSearchTemplate.java
+A	src/main/java/com/wootecobook/turkey/commons/elasticsearch/utils/AbstractKoreanParser.java
+A	src/main/java/com/wootecobook/turkey/commons/elasticsearch/utils/JamoUtil.java
+A	src/main/java/com/wootecobook/turkey/commons/elasticsearch/utils/KoreanJamoParser.java
+A	src/main/java/com/wootecobook/turkey/config/ElasticSearchConfig.java
+A	src/main/java/com/wootecobook/turkey/search/controller/SearchApiController.java
+A	src/main/java/com/wootecobook/turkey/search/repository/UserDocument.java
+A	src/main/java/com/wootecobook/turkey/search/repository/UserElasticSearchRepository.java
+A	src/main/java/com/wootecobook/turkey/search/service/UserElasticSearchService.java
+A	src/main/java/com/wootecobook/turkey/search/service/dto/UserSearchResponse.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserCreateService.java
+M	src/main/resources/application.yml
+M	src/main/resources/static/js/search/searchbox.js
+A	src/test/java/com/wootecobook/turkey/commons/elasticsearch/utils/KoreanJamoParserTest.java
+A	src/test/java/com/wootecobook/turkey/search/repository/ElasticSearchRepositoryTest.java
+A	src/test/java/com/wootecobook/turkey/search/repository/UserElasticSearchRepositoryTest.java
+A	src/test/java/com/wootecobook/turkey/search/service/UserElasticSearchServiceTest.java
+
+6bd4bb71e44b41b50e7547d38d0a847173ca7e0b, fix: 비밀번호 정규식 수정 (#119), Sat Aug 31 21:01:06 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/domain/UserValidator.java
+M	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/domain/UserTest.java
+
+b917cac760f3bc5e623f47daacc6e21f100ef164, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/friendtag, Sat Aug 31 20:50:26 2019 +0900
+ff02c9f103c738ba02f2217e2ff6b36cc28de00c, refactor: 친구 태그 컨트롤러 테스트 작성, Sat Aug 31 20:40:19 2019 +0900
+M	src/main/java/com/wootecobook/turkey/friend/service/FriendService.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+A	src/main/java/com/wootecobook/turkey/post/service/exception/NotFriendException.java
+M	src/test/java/com/wootecobook/turkey/BaseControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/IntroductionServiceTest.java
+
+832c43f5fcf28ca55a8ee2d471eac1ba70a51888, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/messenger, Fri Aug 30 21:24:24 2019 +0900
+5759ec77cf9a1304d25508cc189fde504b7334ee, styles: 주석 제거, Fri Aug 30 21:22:08 2019 +0900
+M	src/main/resources/templates/messenger.html
+
+e4198ecf06349dfb7ee7b5601283a360e9a9e5dc, styles: 코드 컨벤션 - final 키워드 붙이기 - 클래스 안 첫줄 개행, Fri Aug 30 21:21:49 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerApiController.java
+M	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerController.java
+M	src/main/java/com/wootecobook/turkey/messenger/controller/WebSocketMessengerController.java
+M	src/main/java/com/wootecobook/turkey/messenger/domain/Messenger.java
+M	src/main/java/com/wootecobook/turkey/messenger/domain/MessengerRoom.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/MessageService.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/MessengerRoomService.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/MessengerService.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessageResponse.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessengerRequest.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessengerRoomResponse.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/exception/AccessDeniedException.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/strategy/JoinStrategy.java
+
+de2f0c22ea5fddf44ec663145e43eed7adadc431, 이메일 길이 에러 메세지 정상노출되도록 수정 (#118), Fri Aug 30 18:05:58 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/domain/UserValidator.java
+M	src/main/resources/templates/signup.html
+M	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/domain/UserTest.java
+
+8e612d7bbb149c3576278a6a3ba25bca7b341579, fix: 이메일 중복 확인 수정 (#117), Fri Aug 30 17:29:51 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+M	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+18e324e441b2ec3494ea1ca04794855438d47ad6, fix: 댓글 업데이트 안되는 문제 해결 (#116), Fri Aug 30 17:17:24 2019 +0900
+M	src/main/resources/static/js/post/post.js
+
+3662b1c4dd7f5a446d43c4569e7e41591bb934e1, fix: post 삭제 안되는 버그 수정, Fri Aug 30 16:10:06 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+
+ec54de451fafb3d44eee2d386423388fad9dbe5c, feat: friendbar 스크롤 기능 및 토글 기능 추가, Fri Aug 30 15:44:06 2019 +0900
+M	src/main/resources/static/css/friendbar.css
+M	src/main/resources/static/js/friendbar/load.js
+M	src/main/resources/templates/layouts/main.html
+M	src/main/resources/templates/mypage.html
+
+d53b8f5a11b8da0d83dbe07bd2b0064774594ef3, feat: 유저 정보 표시할 때 프로필 사진도 표시되도록 구현 (#99), Fri Aug 30 14:38:06 2019 +0900
+M	src/main/java/com/wootecobook/turkey/login/controller/LoginApiController.java
+M	src/main/resources/static/js/comment/template.js
+M	src/main/resources/static/js/friendbar/template.js
+M	src/main/resources/static/js/leftpanel/leftpanel.js
+M	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/login/logout.js
+M	src/main/resources/static/js/mypage/profile-upload.js
+M	src/main/resources/static/js/nav/setup.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/fragments/left-panel.html
+M	src/main/resources/templates/fragments/nav.html
+
+e93095990cb19f62edb7156f18d0fbe972f37763, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/messenger, Fri Aug 30 13:57:58 2019 +0900
+bce5ae10a8e82103e798a29f51cee00b3b472aac, feat: 이전에 주고받은 메세지 불러오기 구현, Fri Aug 30 13:57:41 2019 +0900
+M	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerApiController.java
+A	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/messenger/domain/MessageRepository.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/MessengerService.java
+M	src/main/resources/static/js/messenger/messenger.js
+M	src/test/java/com/wootecobook/turkey/messenger/service/MessageServiceTest.java
+M	src/test/java/com/wootecobook/turkey/messenger/service/MessengerServiceTest.java
+
+181be04d189f869bfc2cee55ad69cb5236b23ff8, feat: 메세지 전송 및 전달 프론트 구현, Fri Aug 30 13:48:57 2019 +0900
+A	src/main/resources/static/js/messenger/messenger.js
+A	src/main/resources/static/js/messenger/template.js
+M	src/main/resources/templates/messenger.html
+
+3033f40a02de83e000877ae95de911337e8ebcce, feat: 메세지 전송 및 전달 구현, Fri Aug 30 13:48:12 2019 +0900
+A	src/main/java/com/wootecobook/turkey/commons/interceptor/HttpHandshakeInterceptor.java
+A	src/main/java/com/wootecobook/turkey/config/WebSocketConfig.java
+A	src/main/java/com/wootecobook/turkey/messenger/controller/WebSocketMessengerController.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/Message.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/MessageRepository.java
+M	src/main/java/com/wootecobook/turkey/messenger/domain/MessengerRepository.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/MessageService.java
+M	src/main/java/com/wootecobook/turkey/messenger/service/MessengerService.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessageRequest.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessageResponse.java
+A	src/test/java/com/wootecobook/turkey/messenger/service/MessageServiceTest.java
+
+f76761ab40fcf003d2d8448a607d3ad825ad136a, setting: spring websocket gradle 설정 추가, Fri Aug 30 13:37:58 2019 +0900
+M	build.gradle
+
+aac91ee0d1efbfc98237a13f5ac03d6ba310f4af, feat: 채팅방 만들기 프론트 구현, Fri Aug 30 12:59:50 2019 +0900
+A	src/main/resources/static/css/messenger.css
+M	src/main/resources/static/js/friendbar/load.js
+M	src/main/resources/static/js/friendbar/template.js
+A	src/main/resources/templates/messenger.html
+
+2d0ae8a9cca464214a3fab8f3da1567448f5442e, feat: 채팅방 만들기 구현, Fri Aug 30 12:58:58 2019 +0900
+A	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerApiController.java
+A	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerController.java
+A	src/main/java/com/wootecobook/turkey/messenger/controller/MessengerControllerAdvice.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/Messenger.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/MessengerRepository.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/MessengerRoom.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/MessengerRoomRepository.java
+A	src/main/java/com/wootecobook/turkey/messenger/domain/exception/InvalidMessengerRoomException.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/MessengerRoomService.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/MessengerService.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessengerRequest.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/dto/MessengerRoomResponse.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/exception/AccessDeniedException.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/strategy/JoinStrategy.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/strategy/MessengerRoomCodeStrategy.java
+A	src/main/java/com/wootecobook/turkey/messenger/service/strategy/MessengerRoomCodeStrategyConfig.java
+A	src/test/java/com/wootecobook/turkey/messenger/service/MessengerRoomServiceTest.java
+A	src/test/java/com/wootecobook/turkey/messenger/service/MessengerServiceTest.java
+
+9c6b4eeeb97e58b68c6b059b06c08d10bab28af7, 현재 접속중인 친구 확인하기  (#95), Fri Aug 30 11:25:16 2019 +0900
+M	src/main/java/com/wootecobook/turkey/TurkeyApplication.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+A	src/main/java/com/wootecobook/turkey/commons/listener/UserSessionListener.java
+M	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+M	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendResponse.java
+M	src/main/java/com/wootecobook/turkey/good/domain/Good.java
+M	src/main/java/com/wootecobook/turkey/good/domain/comment/CommentGood.java
+M	src/main/java/com/wootecobook/turkey/good/domain/post/PostGood.java
+M	src/main/java/com/wootecobook/turkey/login/controller/LoginApiController.java
+M	src/main/java/com/wootecobook/turkey/login/service/LoginService.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+M	src/main/java/com/wootecobook/turkey/user/service/dto/UserResponse.java
+M	src/main/resources/application.yml
+M	src/main/resources/static/js/friendbar/template.js
+M	src/main/resources/static/js/mypage/mypage.js
+A	src/test/java/com/wootecobook/turkey/commons/listener/UserSessionListenerTest.java
+M	src/test/java/com/wootecobook/turkey/login/service/LoginServiceTest.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/controller/IntroductionApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/domain/UserTest.java
+
+efe0e0f9f60912841324fa0cdad0ab49adb5b315, fix: profile, cover null 문제 해결, Fri Aug 30 10:53:00 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/service/dto/MyPageResponse.java
+M	src/main/java/com/wootecobook/turkey/user/service/dto/UserResponse.java
+
+20ff2b6cdf00217e766b389336496d53716071ed, 프로필 및 커버 사진업로드 구현 (#93), Fri Aug 30 10:37:35 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/aws/S3Connector.java
+A	src/main/java/com/wootecobook/turkey/commons/converter/ImageTypeConverter.java
+M	src/main/java/com/wootecobook/turkey/config/WebConfig.java
+M	src/main/java/com/wootecobook/turkey/file/domain/UploadFileRepository.java
+M	src/main/java/com/wootecobook/turkey/file/service/UploadFileService.java
+M	src/main/java/com/wootecobook/turkey/user/controller/UserApiController.java
+M	src/main/java/com/wootecobook/turkey/user/domain/IntroductionRepository.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+M	src/main/java/com/wootecobook/turkey/user/domain/UserRepository.java
+A	src/main/java/com/wootecobook/turkey/user/service/ImageType.java
+A	src/main/java/com/wootecobook/turkey/user/service/ImageUploader.java
+M	src/main/java/com/wootecobook/turkey/user/service/IntroductionService.java
+A	src/main/java/com/wootecobook/turkey/user/service/MyPageService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserCreateService.java
+A	src/main/java/com/wootecobook/turkey/user/service/UserImageUploadService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/main/java/com/wootecobook/turkey/user/service/dto/MyPageResponse.java
+A	src/main/java/com/wootecobook/turkey/user/service/dto/UploadImage.java
+M	src/main/java/com/wootecobook/turkey/user/service/dto/UserResponse.java
+M	src/main/resources/static/css/mypage.css
+M	src/main/resources/static/js/comment/template.js
+M	src/main/resources/static/js/commons/api.js
+M	src/main/resources/static/js/mypage/mypage.js
+A	src/main/resources/static/js/mypage/profile-upload.js
+M	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/templates/mypage.html
+M	src/test/java/com/wootecobook/turkey/friend/service/FriendAskServiceTest.java
+M	src/test/java/com/wootecobook/turkey/friend/service/FriendServiceTest.java
+M	src/test/java/com/wootecobook/turkey/search/controller/SearchControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/IntroductionApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/domain/UserRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/IntroductionServiceTest.java
+A	src/test/java/com/wootecobook/turkey/user/service/MyPageServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserCreateServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserDeleteServiceTest.java
+A	src/test/java/com/wootecobook/turkey/user/service/UserImageUploadServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+c01a101b8994ac5180c7f2f8d821b92c17f82543, 개인 피드 페이지 소개 기능 추가 (#90), Thu Aug 29 13:37:40 2019 +0900
+A	src/main/java/com/wootecobook/turkey/user/controller/IntroductionApiController.java
+M	src/main/java/com/wootecobook/turkey/user/controller/UserApiController.java
+A	src/main/java/com/wootecobook/turkey/user/domain/Introduction.java
+A	src/main/java/com/wootecobook/turkey/user/domain/IntroductionRepository.java
+A	src/main/java/com/wootecobook/turkey/user/service/IntroductionService.java
+A	src/main/java/com/wootecobook/turkey/user/service/UserCreateService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserDeleteService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/main/java/com/wootecobook/turkey/user/service/dto/IntroductionRequest.java
+A	src/main/java/com/wootecobook/turkey/user/service/dto/IntroductionResponse.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/UserMismatchException.java
+M	src/main/resources/data.sql
+M	src/main/resources/static/css/mypage.css
+A	src/main/resources/static/images/default/icons4.png
+M	src/main/resources/static/js/commons/app.js
+A	src/main/resources/static/js/leftpanel/leftpanel.js
+M	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/mypage/mypage.js
+M	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/signup/signup.js
+M	src/main/resources/templates/fragments/head.html
+M	src/main/resources/templates/fragments/left-panel.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/mypage.html
+M	src/main/resources/templates/signup.html
+M	src/test/java/com/wootecobook/turkey/friend/service/FriendAskServiceTest.java
+M	src/test/java/com/wootecobook/turkey/friend/service/FriendServiceTest.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+A	src/test/java/com/wootecobook/turkey/user/controller/IntroductionApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/user/service/IntroductionServiceTest.java
+A	src/test/java/com/wootecobook/turkey/user/service/UserCreateServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserDeleteServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+b771130a9d83f5e6082ff32ed52d955a3dfbfffd, feat: 회원가입 불가능, database create-drop에서 update로 변경, Thu Aug 29 10:16:51 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/UserApiController.java
+M	src/main/resources/application.yml
+
+756815a662b9d53ad8ec952fcea3de91767e3012, feat: 왼쪽 패널 이름 출력, Wed Aug 28 18:10:09 2019 +0900
+M	src/main/resources/data.sql
+A	src/main/resources/static/js/leftpanel/leftpanel.js
+M	src/main/resources/templates/fragments/left-panel.html
+M	src/main/resources/templates/index.html
+
+63a0f80ddaeccaccc601a754b7f73b96e479b2af, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into develop, Wed Aug 28 17:53:25 2019 +0900
+8325ffa5b1e214a49399832e67e36bee6f676a49, feat: 배포 파일 수정, Wed Aug 28 17:24:28 2019 +0900
+M	deploy.sh
+
+f6c4c27bfefecaef0112b2b1c65f05e6ce6f5561, Revert "feat: 크루별 유저 계정 생성 (#88)" (#89), Wed Aug 28 16:38:40 2019 +0900
+M	src/main/resources/data.sql
+
+9ea1c2850b02e51b06b0453f04b472961fa78d6a, feat: 크루별 유저 계정 생성 (#88), Wed Aug 28 16:24:51 2019 +0900
+M	src/main/resources/data.sql
+
+3e66b252361471d41f85f9595c2c0baae92bb67d, feat: 크루별 유저 계정 생성, Wed Aug 28 16:22:52 2019 +0900
+M	src/main/resources/data.sql
+
+8d16b9205eb5ae17fd2d4da4e422eff0b695cab7, feat: nav 이름 누르면 마이페이지 이동 구현, Wed Aug 28 15:35:24 2019 +0900
+M	src/main/resources/static/css/shared.css
+M	src/main/resources/static/js/nav/setup.js
+
+4fa8d3287d57ef51fb836515d8afafce45436ab9, feat: mypage 이름 출력, Wed Aug 28 15:35:05 2019 +0900
+M	src/main/resources/templates/mypage.html
+
+4e99f65e998e127e8a70568a053faf02838f5e41, Merge branch 'feature/profile' into develop, Wed Aug 28 15:29:19 2019 +0900
+456d1cc641d8dc444360b4a387aec6de5957779d, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into develop, Wed Aug 28 15:29:08 2019 +0900
+0ab14b84179d7569b35e62a3fa07c8e183b0df16, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into feature/profile, Wed Aug 28 15:28:19 2019 +0900
+8df8b61abe1ebc215645ff642d825ec9aee85dad, fix: 메인페이지 이외의 페이지에서 로그아웃 안되는 문제 해결, Wed Aug 28 15:24:57 2019 +0900
+M	src/main/resources/static/js/login/logout.js
+M	src/main/resources/static/js/post/post.js
+
+c89d0b8a8229b0fcfd08bbbd5af515f7a962ed95, profile prod 추가 (#86), Wed Aug 28 15:11:08 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/domain/PostRepository.java
+M	src/main/resources/application.yml
+M	src/main/resources/static/js/comment/template.js
+A	src/test/java/com/wootecobook/turkey/post/domain/PostRepositoryTest.java
+
+bcc68bd1b37b8676879961fd2b8a166ce9a0f078, refactor: 모두가 전체글 볼 수 있도록 설정, Wed Aug 28 15:09:34 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+
+6c9cb8ec5306fb862e3b2bfab33de4b52b3ccfbc, feat: profile prod 추가, Wed Aug 28 14:56:28 2019 +0900
+M	src/main/resources/application.yml
+
+4f942d13e541911b592c2d3bcca984defc77550d, fix: 댓글 수정, 삭제 버튼이 나타나지 않는 문제 해결, Wed Aug 28 14:56:08 2019 +0900
+M	src/main/resources/static/js/comment/template.js
+
+da66a9a77e8a043728f1f600aef82d21ceeb84cc, feat: mypage 프론트 작업, Wed Aug 28 14:12:59 2019 +0900
+M	src/main/resources/static/css/mypage.css
+D	src/main/resources/static/images/default/chelsea.jpg
+A	src/main/resources/static/images/default/chelsea.png
+D	src/main/resources/static/images/default/default.jpg
+D	src/main/resources/static/images/default/liverpool.jpg
+A	src/main/resources/static/images/default/person1.jpg
+A	src/main/resources/static/images/default/person2.jpg
+A	src/main/resources/static/images/default/person3.jpg
+A	src/main/resources/static/images/default/person4.jpg
+A	src/main/resources/static/images/logo/chelsea.png
+M	src/main/resources/static/js/mypage/mypage.js
+M	src/main/resources/templates/mypage.html
+
+90dae208991db08d8aeda84275bcce88e0928882, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into develop, Tue Aug 27 15:44:03 2019 +0900
+683438da8e48576971cbc5f0758cf3abbe5537f0, [프론트] 댓글 좋아요  (#85), Tue Aug 27 15:41:57 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+M	src/main/resources/static/css/app.css
+M	src/main/resources/static/css/index.css
+M	src/main/resources/static/js/comment/template.js
+M	src/main/resources/static/js/good/good.js
+M	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/template.js
+M	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+14b59de4903bd1bf9d81a043e2a570dd0c90d6cc, test: PostRepository findByUserId, Tue Aug 27 15:12:14 2019 +0900
+A	src/test/java/com/wootecobook/turkey/post/domain/PostRepositoryTest.java
+
+6d63d9b183d2f45fac864ea1703c34b17761f66e, refactor: 나와 친구가 쓴 글만 피드에 나타나도록 수정 - JPQL로 친구의 글, 내가 쓴글, 내가 받은 글 모두 보여주도록 쿼리 작성, Tue Aug 27 14:40:07 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/domain/PostRepository.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+
+16c9b950d4bc5543655cebcc783b806f785c0f12, 코드리뷰에서 받은 Good 관련 피드백 반영했습니다. (#84), Tue Aug 27 12:16:10 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+D	src/main/java/com/wootecobook/turkey/commons/GoodResponse.java
+D	src/main/java/com/wootecobook/turkey/commons/GoodService.java
+M	src/main/java/com/wootecobook/turkey/file/service/UploadFileService.java
+R085	src/main/java/com/wootecobook/turkey/commons/Good.java	src/main/java/com/wootecobook/turkey/good/domain/Good.java
+R078	src/main/java/com/wootecobook/turkey/comment/domain/CommentGood.java	src/main/java/com/wootecobook/turkey/good/domain/comment/CommentGood.java
+R057	src/main/java/com/wootecobook/turkey/comment/domain/CommentGoodRepository.java	src/main/java/com/wootecobook/turkey/good/domain/comment/CommentGoodRepository.java
+R079	src/main/java/com/wootecobook/turkey/post/domain/PostGood.java	src/main/java/com/wootecobook/turkey/good/domain/post/PostGood.java
+R059	src/main/java/com/wootecobook/turkey/post/domain/PostGoodRepository.java	src/main/java/com/wootecobook/turkey/good/domain/post/PostGoodRepository.java
+R062	src/main/java/com/wootecobook/turkey/comment/service/CommentGoodService.java	src/main/java/com/wootecobook/turkey/good/service/CommentGoodService.java
+A	src/main/java/com/wootecobook/turkey/good/service/GoodService.java
+R063	src/main/java/com/wootecobook/turkey/post/service/PostGoodService.java	src/main/java/com/wootecobook/turkey/good/service/PostGoodService.java
+A	src/main/java/com/wootecobook/turkey/good/service/dto/GoodResponse.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+M	src/main/resources/static/js/good/good.js
+M	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentGoodRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/domain/PostGoodRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+28c428dc3b9aad3eb2acfc1cc0009ac4c87aca10, refactor: nav바 렌더링 관련 js 파일 추가, Mon Aug 26 16:13:03 2019 +0900
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/mypage.html
+M	src/main/resources/templates/search-result.html
+
+e18b88e753fafa94ed255b482723257e5c84d7f0, fix: 깨지는 테스트 수정, Mon Aug 26 16:11:15 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentCreate.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentGoodRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+
+2137c12ed851b8c41427bb382fa33e9c6cce8ad3, 다같이 리뷰 (#83), Mon Aug 26 15:49:34 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/controller/CommentApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+R094	src/main/java/com/wootecobook/turkey/utils/S3Connector.java	src/main/java/com/wootecobook/turkey/commons/aws/S3Connector.java
+M	src/main/java/com/wootecobook/turkey/file/service/UploadFileService.java
+M	src/main/java/com/wootecobook/turkey/friend/controller/FriendApiController.java
+M	src/main/java/com/wootecobook/turkey/friend/controller/FriendApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/friend/domain/FriendAsk.java
+M	src/main/java/com/wootecobook/turkey/login/controller/LoginApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/search/controller/SearchController.java
+M	src/main/java/com/wootecobook/turkey/user/controller/UserApiControllerAdvice.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+R097	src/test/java/com/wootecobook/turkey/utils/S3ConnectorTest.java	src/test/java/com/wootecobook/turkey/commons/aws/S3ConnectorTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+
+d39b6dd74e19f8ad9cf71634a93868494889d3c7, 특정유저에게 글쓰기 구현 (#81), Sun Aug 25 21:59:07 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+M	src/main/resources/data.sql
+M	src/main/resources/static/js/good/good.js
+M	src/main/resources/static/js/mypage/mypage.js
+A	src/main/resources/static/js/mypage/template-writeform.js
+M	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/mypage.html
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+
+481a7c34c44b13eff558bb5f9d87ea9b1c144131, 게시글 동영상 업로드 구현 (#79), Sun Aug 25 01:20:20 2019 +0900
+M	src/main/resources/application.yml
+M	src/main/resources/static/css/index.css
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/preview.js
+M	src/main/resources/static/js/post/template-carousel.js
+A	src/main/resources/static/js/post/template-file.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/fragments/write-post.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/mypage.html
+
+95780f2eb6d7c0b0b4e05c421fde7ada2d48316a, 로컬스토리지 활용해서 프론트에서 로그인 유저정보 사용하기 (#76), Sat Aug 24 14:31:06 2019 +0900
+M	src/main/java/com/wootecobook/turkey/login/controller/LoginApiController.java
+M	src/main/resources/static/js/comment/template.js
+M	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/login/logout.js
+A	src/main/resources/static/js/nav/setup.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/fragments/nav.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/signup.html
+M	src/test/java/com/wootecobook/turkey/login/controller/LoginApiControllerTests.java
+
+fdf928cb290c7f455c83f365493838aa4cb0c0a2, Merge branch 'Turkey' of https://github.com/woowacourse/miniprojects-2019 into develop, Fri Aug 23 16:23:20 2019 +0900
+1c25f3ea3fb104a1e9b79338df70686a7c1825cd, [칠면조] 2주차 TurkeyBook  (#14), Fri Aug 23 15:51:00 2019 +0900
+M	.gitignore
+M	build.gradle
+M	deploy.sh
+A	package-lock.json
+A	package.json
+R074	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java	src/main/java/com/wootecobook/turkey/comment/controller/CommentApiController.java
+R095	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java	src/main/java/com/wootecobook/turkey/comment/controller/CommentApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/CommentGood.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/CommentGoodRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+A	src/main/java/com/wootecobook/turkey/comment/service/CommentGoodService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+D	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentNotFoundException.java
+A	src/main/java/com/wootecobook/turkey/commons/Good.java
+A	src/main/java/com/wootecobook/turkey/commons/GoodResponse.java
+A	src/main/java/com/wootecobook/turkey/commons/GoodService.java
+M	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+R076	src/main/java/com/wootecobook/turkey/commons/BaseEntity.java	src/main/java/com/wootecobook/turkey/commons/domain/BaseEntity.java
+A	src/main/java/com/wootecobook/turkey/commons/domain/UpdatableEntity.java
+M	src/main/java/com/wootecobook/turkey/commons/exception/NotLoginException.java
+A	src/main/java/com/wootecobook/turkey/commons/interceptor/LoginInterceptor.java
+A	src/main/java/com/wootecobook/turkey/commons/resolver/LoginUser.java
+M	src/main/java/com/wootecobook/turkey/commons/resolver/UserSessionArgumentResolver.java
+A	src/main/java/com/wootecobook/turkey/config/AwsConfig.java
+M	src/main/java/com/wootecobook/turkey/config/WebConfig.java
+A	src/main/java/com/wootecobook/turkey/file/domain/FileFeature.java
+A	src/main/java/com/wootecobook/turkey/file/domain/UploadFile.java
+A	src/main/java/com/wootecobook/turkey/file/domain/UploadFileRepository.java
+A	src/main/java/com/wootecobook/turkey/file/service/FailedSaveFileException.java
+A	src/main/java/com/wootecobook/turkey/file/service/FileResponse.java
+A	src/main/java/com/wootecobook/turkey/file/service/UploadFileService.java
+A	src/main/java/com/wootecobook/turkey/friend/controller/FriendApiController.java
+A	src/main/java/com/wootecobook/turkey/friend/controller/FriendApiControllerAdvice.java
+A	src/main/java/com/wootecobook/turkey/friend/domain/Friend.java
+A	src/main/java/com/wootecobook/turkey/friend/domain/FriendAsk.java
+A	src/main/java/com/wootecobook/turkey/friend/domain/FriendAskRepository.java
+A	src/main/java/com/wootecobook/turkey/friend/domain/FriendRepository.java
+A	src/main/java/com/wootecobook/turkey/friend/service/FriendAskService.java
+A	src/main/java/com/wootecobook/turkey/friend/service/FriendService.java
+A	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendAskCreate.java
+A	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendAskResponse.java
+A	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendCreate.java
+A	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendResponse.java
+A	src/main/java/com/wootecobook/turkey/friend/service/exception/AlreadyFriendException.java
+A	src/main/java/com/wootecobook/turkey/friend/service/exception/FriendAskFailException.java
+A	src/main/java/com/wootecobook/turkey/friend/service/exception/MismatchedUserException.java
+R076	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiController.java	src/main/java/com/wootecobook/turkey/login/controller/LoginApiController.java
+R093	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java	src/main/java/com/wootecobook/turkey/login/controller/LoginApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/login/service/LoginService.java
+M	src/main/java/com/wootecobook/turkey/login/service/exception/LoginFailException.java
+R054	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+R067	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java	src/main/java/com/wootecobook/turkey/post/controller/PostApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Contents.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+A	src/main/java/com/wootecobook/turkey/post/domain/PostGood.java
+A	src/main/java/com/wootecobook/turkey/post/domain/PostGoodRepository.java
+A	src/main/java/com/wootecobook/turkey/post/service/PostGoodService.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+D	src/main/java/com/wootecobook/turkey/post/service/exception/NotFoundPostException.java
+A	src/main/java/com/wootecobook/turkey/search/controller/SearchController.java
+A	src/main/java/com/wootecobook/turkey/user/controller/UserApiController.java
+R083	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java	src/main/java/com/wootecobook/turkey/user/controller/UserApiControllerAdvice.java
+R053	src/main/java/com/wootecobook/turkey/user/controller/web/UserController.java	src/main/java/com/wootecobook/turkey/user/controller/UserController.java
+D	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+M	src/main/java/com/wootecobook/turkey/user/domain/UserRepository.java
+A	src/main/java/com/wootecobook/turkey/user/service/UserDeleteService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/NotFoundUserException.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/SignUpException.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/UserDeleteException.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/UserMismatchException.java
+A	src/main/java/com/wootecobook/turkey/utils/S3Connector.java
+M	src/main/resources/application.yml
+A	src/main/resources/data.sql
+M	src/main/resources/static/css/app.css
+A	src/main/resources/static/css/friendbar.css
+M	src/main/resources/static/css/index.css
+A	src/main/resources/static/css/mypage.css
+A	src/main/resources/static/css/shared.css
+M	src/main/resources/static/css/signup.css
+A	src/main/resources/static/images/default/chelsea.jpg
+A	src/main/resources/static/images/default/default.jpg
+A	src/main/resources/static/images/default/icons3.png
+A	src/main/resources/static/images/default/liverpool.jpg
+A	src/main/resources/static/js/comment/template.js
+R075	src/main/resources/static/js/post/api.js	src/main/resources/static/js/commons/api.js
+R100	src/main/resources/static/js/app.js	src/main/resources/static/js/commons/app.js
+A	src/main/resources/static/js/friendask/load.js
+A	src/main/resources/static/js/friendask/template.js
+A	src/main/resources/static/js/friendbar/load.js
+A	src/main/resources/static/js/friendbar/template.js
+A	src/main/resources/static/js/good/good.js
+M	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/login/logout.js
+A	src/main/resources/static/js/mypage/mypage.js
+A	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/static/js/post/post.js
+A	src/main/resources/static/js/post/preview.js
+A	src/main/resources/static/js/post/template-carousel.js
+M	src/main/resources/static/js/post/template.js
+A	src/main/resources/static/js/search/searchResult.js
+A	src/main/resources/static/js/search/searchbox.js
+A	src/main/resources/static/js/search/template.js
+M	src/main/resources/static/js/signup/signup.js
+M	src/main/resources/templates/fragments/head.html
+M	src/main/resources/templates/fragments/nav.html
+M	src/main/resources/templates/fragments/write-post.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/layouts/main.html
+A	src/main/resources/templates/mypage.html
+A	src/main/resources/templates/search-result.html
+M	src/main/resources/templates/signup.html
+R088	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java	src/test/java/com/wootecobook/turkey/BaseControllerTests.java
+R077	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/comment/domain/CommentGoodRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+A	src/test/java/com/wootecobook/turkey/config/AwsMockConfig.java
+A	src/test/java/com/wootecobook/turkey/file/service/UploadFileServiceTest.java
+A	src/test/java/com/wootecobook/turkey/friend/controller/FriendApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/friend/domain/FriendAskTest.java
+A	src/test/java/com/wootecobook/turkey/friend/domain/FriendTest.java
+A	src/test/java/com/wootecobook/turkey/friend/service/FriendAskServiceTest.java
+A	src/test/java/com/wootecobook/turkey/friend/service/FriendServiceTest.java
+R071	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java	src/test/java/com/wootecobook/turkey/login/controller/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/login/service/LoginServiceTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/post/domain/PostGoodRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+A	src/test/java/com/wootecobook/turkey/search/controller/SearchControllerTests.java
+R073	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+R084	src/test/java/com/wootecobook/turkey/user/controller/web/UserControllerTest.java	src/test/java/com/wootecobook/turkey/user/controller/UserControllerTests.java
+A	src/test/java/com/wootecobook/turkey/user/domain/UserRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/user/domain/UserTest.java
+A	src/test/java/com/wootecobook/turkey/user/service/UserDeleteServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+A	src/test/java/com/wootecobook/turkey/utils/S3ConnectorTest.java
+
+bdfbf493a021c78e6bf9f9205868915e325578e0, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into develop, Fri Aug 23 15:40:41 2019 +0900
+fb2621cdb79deaef508e532812d92b9264267258, fix: 배포 스크립트 수정, Fri Aug 23 15:40:28 2019 +0900
+M	deploy.sh
+
+ce142a631c9330180671b566389a5da2af05e3c9, 첨부파일 이미지 프리뷰 프론트입니다! (#74), Fri Aug 23 15:30:50 2019 +0900
+M	src/main/resources/static/js/post/post.js
+A	src/main/resources/static/js/post/preview.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/fragments/write-post.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/mypage.html
+
+a8d66825739ede1f9947409f3e151b7adda6328f, feat: GoodService, Fri Aug 23 15:24:45 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentGoodService.java
+R076	src/main/java/com/wootecobook/turkey/post/service/GoodService.java	src/main/java/com/wootecobook/turkey/commons/GoodService.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostGoodService.java
+
+2f9d83ffcaf4a2983572bffc96294e55f86a9e4c, feat: GoodService interface (#73), Fri Aug 23 15:15:52 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentGoodService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+A	src/main/java/com/wootecobook/turkey/post/service/GoodService.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostGoodService.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+757672461a3eb08cd862c81b81c1b0286c74e1b4, refactor: 프론트 피드백 수정, Fri Aug 23 14:50:33 2019 +0900
+M	src/main/resources/static/js/friendask/load.js
+M	src/main/resources/static/js/friendbar/load.js
+M	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/login/logout.js
+M	src/main/resources/static/js/signup/signup.js
+M	src/main/resources/templates/signup.html
+
+bcd7923996ffcb059b526113d69256d7e14ef885, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into develop, Fri Aug 23 14:39:25 2019 +0900
+f6acc43b6c722f22e9017f7d12290e2f86b62ad2, style: 포맷팅, Fri Aug 23 11:28:01 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+
+31944cf83bb443514775a39756927d9dd37aaa1b, feat: @LoginUser 추가, Fri Aug 23 11:27:39 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/CommentApiController.java
+A	src/main/java/com/wootecobook/turkey/commons/resolver/LoginUser.java
+M	src/main/java/com/wootecobook/turkey/commons/resolver/UserSessionArgumentResolver.java
+M	src/main/java/com/wootecobook/turkey/friend/controller/FriendApiController.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/user/controller/UserApiController.java
+
+511c9b2a4a9627999db792d7ff8bea8601de839a, refactor: Entity 기본 생성자 private 접근제어자 추가, Fri Aug 23 11:14:34 2019 +0900
+M	src/main/java/com/wootecobook/turkey/file/domain/FileFeature.java
+M	src/main/java/com/wootecobook/turkey/friend/domain/Friend.java
+M	src/main/java/com/wootecobook/turkey/friend/domain/FriendAsk.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+
+dba6d0f013665dc75825d537fe0e99d6e2608df6, refactor: Comment @Where 추가, Fri Aug 23 11:03:58 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+90e8931f4c8969e3cc8dfb038a6a4d6a96877328, refactor: rename Comment.isDeleted -> deleted, Fri Aug 23 10:58:48 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+297a85f1b6d98b21250fe7f49894de5f6673975d, refactor: 필드에 final 추가, Fri Aug 23 10:55:18 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentGoodService.java
+M	src/main/java/com/wootecobook/turkey/friend/controller/FriendApiController.java
+M	src/main/java/com/wootecobook/turkey/friend/service/FriendAskService.java
+M	src/main/java/com/wootecobook/turkey/friend/service/FriendService.java
+M	src/main/java/com/wootecobook/turkey/login/controller/LoginApiController.java
+M	src/main/java/com/wootecobook/turkey/login/service/LoginService.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostGoodService.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/search/controller/SearchController.java
+M	src/main/java/com/wootecobook/turkey/user/controller/UserApiController.java
+M	src/main/java/com/wootecobook/turkey/user/controller/UserController.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserDeleteService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+
+3822c4a4d58a110e4f48761af119162e4a075f99, fix: signup.css 에러 처리, Fri Aug 23 10:44:36 2019 +0900
+M	src/main/resources/static/css/signup.css
+
+a3d5d165698477719ca9065fc25f58d572a3b456, refactor: Controller 패키지 구조 변경, Fri Aug 23 10:41:45 2019 +0900
+R098	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java	src/main/java/com/wootecobook/turkey/comment/controller/CommentApiController.java
+R095	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java	src/main/java/com/wootecobook/turkey/comment/controller/CommentApiControllerAdvice.java
+R097	src/main/java/com/wootecobook/turkey/friend/controller/api/FriendApiController.java	src/main/java/com/wootecobook/turkey/friend/controller/FriendApiController.java
+R095	src/main/java/com/wootecobook/turkey/friend/controller/api/FriendApiControllerAdvice.java	src/main/java/com/wootecobook/turkey/friend/controller/FriendApiControllerAdvice.java
+R095	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiController.java	src/main/java/com/wootecobook/turkey/login/controller/LoginApiController.java
+R093	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java	src/main/java/com/wootecobook/turkey/login/controller/LoginApiControllerAdvice.java
+R098	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+R082	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java	src/main/java/com/wootecobook/turkey/post/controller/PostApiControllerAdvice.java
+R090	src/main/java/com/wootecobook/turkey/search/controller/web/SearchController.java	src/main/java/com/wootecobook/turkey/search/controller/SearchController.java
+R097	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java	src/main/java/com/wootecobook/turkey/user/controller/UserApiController.java
+R095	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java	src/main/java/com/wootecobook/turkey/user/controller/UserApiControllerAdvice.java
+R094	src/main/java/com/wootecobook/turkey/user/controller/web/UserController.java	src/main/java/com/wootecobook/turkey/user/controller/UserController.java
+R098	src/test/java/com/wootecobook/turkey/commons/BaseControllerTests.java	src/test/java/com/wootecobook/turkey/BaseControllerTests.java
+R098	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java	src/test/java/com/wootecobook/turkey/comment/controller/CommentApiControllerTests.java
+R099	src/test/java/com/wootecobook/turkey/friend/controller/api/FriendApiControllerTests.java	src/test/java/com/wootecobook/turkey/friend/controller/FriendApiControllerTests.java
+R097	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java	src/test/java/com/wootecobook/turkey/login/controller/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+R089	src/test/java/com/wootecobook/turkey/search/controller/web/SearchControllerTests.java	src/test/java/com/wootecobook/turkey/search/controller/SearchControllerTests.java
+R098	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java	src/test/java/com/wootecobook/turkey/user/controller/UserApiControllerTests.java
+R087	src/test/java/com/wootecobook/turkey/user/controller/web/UserControllerTest.java	src/test/java/com/wootecobook/turkey/user/controller/UserControllerTests.java
+
+8d2ca1f25e738867194bab23721efa907e0c2070, feat: 이스터에그 추가, Thu Aug 22 20:56:47 2019 +0900
+M	src/main/resources/static/css/mypage.css
+A	src/main/resources/static/images/default/default.jpg
+A	src/main/resources/static/images/default/liverpool.jpg
+M	src/main/resources/templates/mypage.html
+
+1f0e8b1a23aa9a7a5af970e57652d07368bee13f, fix: SearchController 뷰네임 / 삭제, Thu Aug 22 20:41:48 2019 +0900
+M	deploy.sh
+M	src/main/java/com/wootecobook/turkey/search/controller/web/SearchController.java
+
+d2ed4c39663e75c73ccc30a0e3d87bcefe747d5d, 검색 결과 구현 (#67), Thu Aug 22 20:25:08 2019 +0900
+A	src/main/java/com/wootecobook/turkey/search/controller/web/SearchController.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+M	src/main/java/com/wootecobook/turkey/user/domain/UserRepository.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserDeleteService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+M	src/main/resources/static/css/app.css
+M	src/main/resources/static/css/index.css
+D	src/main/resources/static/js/search/search.js
+A	src/main/resources/static/js/search/searchResult.js
+A	src/main/resources/static/js/search/searchbox.js
+M	src/main/resources/static/js/search/template.js
+M	src/main/resources/templates/fragments/nav.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/mypage.html
+A	src/main/resources/templates/search-result.html
+A	src/test/java/com/wootecobook/turkey/search/controller/web/SearchControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/domain/UserRepositoryTest.java
+
+fd3c4d6c92d8ce895469a55377334f897be93d66, Merge branch 'develop' of https://github.com/woowa-turkey/miniprojects-2019 into develop, Thu Aug 22 20:19:23 2019 +0900
+1917433ba47ef04b163eb1f41463de3cbdf7e561, 게시글 수정, 삭제 안되는 문제 및 댓글 에러 처리 (#66), Thu Aug 22 19:24:34 2019 +0900
+M	src/main/resources/static/js/post/post.js
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+edc595d1fee05459ab3bb38a46c2942c1e146fd7, [mypage 연결] (#65), Thu Aug 22 19:19:06 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/web/UserController.java
+M	src/main/resources/static/js/mypage/mypage.js
+M	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/mypage.html
+
+83305f08c25ae49b9056b6402d9f4e3b1e704bc9, feat: mypage, Thu Aug 22 19:14:11 2019 +0900
+M	src/main/resources/static/js/mypage/mypage.js
+M	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/mypage.html
+
+7ba09aeb49887dacbd1d9e8ab5cb0b6dfaa3887c, feat: Mypage 연결 핸들러 메서드 생성, Thu Aug 22 19:13:58 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/web/UserController.java
+
+fefd903aac1d870f9bfe72acac770c5d3ee904a2, 좋아요 기능 (#64), Thu Aug 22 18:35:55 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentGoodRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentGoodService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/commons/Good.java
+M	src/main/java/com/wootecobook/turkey/commons/GoodResponse.java
+M	src/main/java/com/wootecobook/turkey/file/service/FailedSaveFileException.java
+M	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/domain/PostGoodRepository.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostGoodService.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+M	src/main/resources/static/css/shared.css
+M	src/main/resources/static/js/friendask/template.js
+M	src/main/resources/static/js/friendbar/template.js
+A	src/main/resources/static/js/good/good.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/index.html
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+b9311976fe93524900f8c4624476e7da95483fee, 친구 삭제 & 예외처리  (#63), Thu Aug 22 17:57:25 2019 +0900
+M	src/main/java/com/wootecobook/turkey/friend/controller/api/FriendApiController.java
+M	src/main/java/com/wootecobook/turkey/friend/controller/api/FriendApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/friend/domain/Friend.java
+M	src/main/java/com/wootecobook/turkey/friend/domain/FriendAsk.java
+M	src/main/java/com/wootecobook/turkey/friend/domain/FriendAskRepository.java
+M	src/main/java/com/wootecobook/turkey/friend/domain/FriendRepository.java
+M	src/main/java/com/wootecobook/turkey/friend/service/FriendAskService.java
+M	src/main/java/com/wootecobook/turkey/friend/service/FriendService.java
+A	src/main/java/com/wootecobook/turkey/friend/service/exception/AlreadyFriendException.java
+A	src/main/java/com/wootecobook/turkey/friend/service/exception/MismatchedUserException.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+A	src/main/java/com/wootecobook/turkey/user/service/UserDeleteService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+M	src/main/resources/static/js/friendask/load.js
+M	src/main/resources/static/js/friendask/template.js
+M	src/main/resources/static/js/friendbar/load.js
+M	src/main/resources/static/js/friendbar/template.js
+M	src/test/java/com/wootecobook/turkey/friend/controller/api/FriendApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/friend/domain/FriendAskTest.java
+A	src/test/java/com/wootecobook/turkey/friend/domain/FriendTest.java
+M	src/test/java/com/wootecobook/turkey/friend/service/FriendAskServiceTest.java
+M	src/test/java/com/wootecobook/turkey/friend/service/FriendServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/domain/UserRepositoryTest.java
+A	src/test/java/com/wootecobook/turkey/user/service/UserDeleteServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+0c53e6414ecf0273bf9ebe6046033cff00a9b409, 게시글 작성 이미지 첨부 프론트 (#62), Thu Aug 22 17:05:15 2019 +0900
+M	src/main/resources/static/js/commons/api.js
+M	src/main/resources/static/js/post/post.js
+A	src/main/resources/static/js/post/template-carousel.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/fragments/write-post.html
+M	src/main/resources/templates/index.html
+
+e24af85fbfbc790521b34ee35158a90c6d1ee205, 게시글 첨부파일 리팩터링 적용 (#60), Thu Aug 22 15:58:37 2019 +0900
+M	src/main/java/com/wootecobook/turkey/config/AwsConfig.java
+M	src/main/java/com/wootecobook/turkey/file/domain/FileFeature.java
+M	src/main/java/com/wootecobook/turkey/file/domain/UploadFile.java
+M	src/main/java/com/wootecobook/turkey/file/service/FailedSaveFileException.java
+R076	src/main/java/com/wootecobook/turkey/file/service/FileDto.java	src/main/java/com/wootecobook/turkey/file/service/FileResponse.java
+M	src/main/java/com/wootecobook/turkey/file/service/UploadFileService.java
+M	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Contents.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+M	src/main/java/com/wootecobook/turkey/utils/S3Connector.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+M	src/test/java/com/wootecobook/turkey/utils/S3ConnectorTest.java
+
+ac59f7a7e95957df415af6e86db7dc824b2e3e80, 글 / 댓글 좋아요 백엔드 (#58), Thu Aug 22 14:41:31 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/CommentGood.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/CommentGoodRepository.java
+A	src/main/java/com/wootecobook/turkey/comment/service/CommentGoodService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+A	src/main/java/com/wootecobook/turkey/commons/Good.java
+A	src/main/java/com/wootecobook/turkey/commons/GoodResponse.java
+M	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java
+A	src/main/java/com/wootecobook/turkey/post/domain/PostGood.java
+A	src/main/java/com/wootecobook/turkey/post/domain/PostGoodRepository.java
+A	src/main/java/com/wootecobook/turkey/post/service/PostGoodService.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/resources/static/css/friendbar.css
+M	src/main/resources/static/css/mypage.css
+A	src/main/resources/static/images/default/chelsea.jpg
+M	src/main/resources/static/js/friendask/load.js
+M	src/main/resources/static/js/friendask/template.js
+M	src/main/resources/static/js/friendbar/load.js
+M	src/main/resources/static/js/friendbar/template.js
+M	src/main/resources/static/js/mypage/mypage.js
+M	src/main/resources/static/js/mypage/template.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/templates/fragments/nav.html
+M	src/main/resources/templates/layouts/main.html
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/comment/domain/CommentGoodRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+M	src/test/java/com/wootecobook/turkey/friend/controller/api/FriendApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/friend/service/FriendServiceTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/post/domain/PostGoodRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+25f88a62ee6e5c2ddb3228a4d4996ee925c3bea6, Merge pull request #57 from woowa-turkey/refactor/all, Wed Aug 21 19:40:33 2019 +0900
+e1c2d56a4d2e0db3ea6fcac3d3e4dca64873be79, fix: 게시글 추가 안되는 문제 해결, Wed Aug 21 19:37:46 2019 +0900
+M	src/main/resources/static/js/post/post.js
+
+2316fa5027feefac7a55456431094530bb92792c, refactor: BaseEntity에서 UpdatableEntity 분리, Wed Aug 21 19:34:57 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+R074	src/main/java/com/wootecobook/turkey/commons/BaseEntity.java	src/main/java/com/wootecobook/turkey/commons/domain/BaseEntity.java
+A	src/main/java/com/wootecobook/turkey/commons/domain/UpdatableEntity.java
+M	src/main/java/com/wootecobook/turkey/file/domain/UploadFile.java
+M	src/main/java/com/wootecobook/turkey/friend/controller/api/FriendApiController.java
+M	src/main/java/com/wootecobook/turkey/friend/domain/Friend.java
+M	src/main/java/com/wootecobook/turkey/friend/domain/FriendAsk.java
+M	src/main/java/com/wootecobook/turkey/friend/service/FriendService.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+
+57db1f7c373293d0ae1e20d73046b838209be520, test: given, when, then 추가, Wed Aug 21 19:01:30 2019 +0900
+M	src/test/java/com/wootecobook/turkey/friend/domain/FriendAskTest.java
+M	src/test/java/com/wootecobook/turkey/friend/service/FriendServiceTest.java
+M	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/login/service/LoginServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/web/UserControllerTest.java
+M	src/test/java/com/wootecobook/turkey/user/domain/UserTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+6117e6b0999805a488c7a979c6377240459c0dc6, refactor: Response 생성자 -> 팩터리 메서드로 변경, Wed Aug 21 18:57:44 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+
+e00875186c55fbb37e80adb8859697c206764e04, refactor: build.gradle 정리, Wed Aug 21 18:57:08 2019 +0900
+M	build.gradle
+
+f0291ed3c93ec5110f577e80cc4c3a38cb7da76e, test: PostServiceTest 깨지는 테스트 수정, Wed Aug 21 18:56:54 2019 +0900
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+b8d396bf5c1034caeb74c707ef87404bc2f0fb37, 게시글 파일 첨부 기능 백엔드 (#56), Wed Aug 21 18:14:15 2019 +0900
+M	build.gradle
+A	src/main/java/com/wootecobook/turkey/config/AwsConfig.java
+A	src/main/java/com/wootecobook/turkey/file/domain/FileFeature.java
+A	src/main/java/com/wootecobook/turkey/file/domain/UploadFile.java
+A	src/main/java/com/wootecobook/turkey/file/domain/UploadFileRepository.java
+A	src/main/java/com/wootecobook/turkey/file/service/FailedSaveFileException.java
+A	src/main/java/com/wootecobook/turkey/file/service/FileDto.java
+A	src/main/java/com/wootecobook/turkey/file/service/UploadFileService.java
+M	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+A	src/main/java/com/wootecobook/turkey/utils/S3Connector.java
+M	src/main/resources/application.yml
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/config/AwsMockConfig.java
+A	src/test/java/com/wootecobook/turkey/file/service/UploadFileServiceTest.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+A	src/test/java/com/wootecobook/turkey/utils/S3ConnectorTest.java
+
+8ca1034dd15a3a16a24baebcf38d20cacf6c9e49, 친구 맺기 (#55), Wed Aug 21 17:47:10 2019 +0900
+A	src/main/java/com/wootecobook/turkey/friend/controller/api/FriendApiController.java
+A	src/main/java/com/wootecobook/turkey/friend/controller/api/FriendApiControllerAdvice.java
+A	src/main/java/com/wootecobook/turkey/friend/domain/Friend.java
+A	src/main/java/com/wootecobook/turkey/friend/domain/FriendAsk.java
+A	src/main/java/com/wootecobook/turkey/friend/domain/FriendAskRepository.java
+A	src/main/java/com/wootecobook/turkey/friend/domain/FriendRepository.java
+A	src/main/java/com/wootecobook/turkey/friend/service/FriendAskService.java
+A	src/main/java/com/wootecobook/turkey/friend/service/FriendService.java
+A	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendAskCreate.java
+A	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendAskResponse.java
+A	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendCreate.java
+A	src/main/java/com/wootecobook/turkey/friend/service/dto/FriendResponse.java
+A	src/main/java/com/wootecobook/turkey/friend/service/exception/FriendAskFailException.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+M	src/main/resources/application.yml
+M	src/main/resources/data.sql
+A	src/main/resources/static/css/friendbar.css
+M	src/main/resources/static/css/index.css
+A	src/main/resources/static/images/default/icons3.png
+A	src/main/resources/static/js/friendask/load.js
+A	src/main/resources/static/js/friendask/template.js
+A	src/main/resources/static/js/friendbar/load.js
+A	src/main/resources/static/js/friendbar/template.js
+M	src/main/resources/templates/fragments/nav.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/layouts/main.html
+A	src/test/java/com/wootecobook/turkey/friend/controller/api/FriendApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/friend/domain/FriendAskTest.java
+A	src/test/java/com/wootecobook/turkey/friend/service/FriendAskServiceTest.java
+A	src/test/java/com/wootecobook/turkey/friend/service/FriendServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+ff8dc57512cba8e64fc78f46c9ec0ede97c5c810, Merge branch 'master' into develop, Wed Aug 21 17:30:57 2019 +0900
+59c97460436761c61d1a327dffbd68682b869400, Revert "[칠면조] 1주차 Facebook 기능 구현 (#8)", Wed Aug 21 17:30:41 2019 +0900
+D	.gitignore
+D	build.gradle
+D	deploy.sh
+D	gradle/wrapper/gradle-wrapper.jar
+D	gradle/wrapper/gradle-wrapper.properties
+D	gradlew
+D	gradlew.bat
+D	settings.gradle
+D	src/main/java/com/wootecobook/turkey/TurkeyApplication.java
+D	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+D	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/CommentValidator.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/exception/CommentUpdateFailException.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/exception/InvalidCommentException.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/exception/NotCommentOwnerException.java
+D	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+D	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentCreate.java
+D	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+D	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentUpdate.java
+D	src/main/java/com/wootecobook/turkey/comment/service/exception/AlreadyDeleteException.java
+D	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentNotFoundException.java
+D	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentSaveException.java
+D	src/main/java/com/wootecobook/turkey/commons/BaseEntity.java
+D	src/main/java/com/wootecobook/turkey/commons/ErrorMessage.java
+D	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+D	src/main/java/com/wootecobook/turkey/commons/exception/NotLoginException.java
+D	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+D	src/main/java/com/wootecobook/turkey/commons/resolver/UserSessionArgumentResolver.java
+D	src/main/java/com/wootecobook/turkey/config/WebConfig.java
+D	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiController.java
+D	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java
+D	src/main/java/com/wootecobook/turkey/login/service/LoginService.java
+D	src/main/java/com/wootecobook/turkey/login/service/dto/LoginRequest.java
+D	src/main/java/com/wootecobook/turkey/login/service/exception/LoginFailException.java
+D	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+D	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java
+D	src/main/java/com/wootecobook/turkey/post/domain/Contents.java
+D	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+D	src/main/java/com/wootecobook/turkey/post/domain/PostRepository.java
+D	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidContentException.java
+D	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidPostException.java
+D	src/main/java/com/wootecobook/turkey/post/domain/exception/PostUpdateFailException.java
+D	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+D	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+D	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+D	src/main/java/com/wootecobook/turkey/post/service/exception/NotFoundPostException.java
+D	src/main/java/com/wootecobook/turkey/post/service/exception/NotPostOwnerException.java
+D	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+D	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java
+D	src/main/java/com/wootecobook/turkey/user/controller/web/UserController.java
+D	src/main/java/com/wootecobook/turkey/user/domain/User.java
+D	src/main/java/com/wootecobook/turkey/user/domain/UserRepository.java
+D	src/main/java/com/wootecobook/turkey/user/domain/UserValidator.java
+D	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+D	src/main/java/com/wootecobook/turkey/user/service/dto/UserRequest.java
+D	src/main/java/com/wootecobook/turkey/user/service/dto/UserResponse.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/NotFoundUserException.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/SignUpException.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/UserDeleteException.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/UserMismatchException.java
+D	src/main/resources/application.yml
+D	src/main/resources/logback-access.xml
+D	src/main/resources/static/css/app.css
+D	src/main/resources/static/css/edit.css
+D	src/main/resources/static/css/index.css
+D	src/main/resources/static/css/signup.css
+D	src/main/resources/static/images/default/eastjun_big.jpg
+D	src/main/resources/static/images/default/eastjun_profile.jpg
+D	src/main/resources/static/images/default/icons.png
+D	src/main/resources/static/images/default/icons2.png
+D	src/main/resources/static/images/default/plus_btn.png
+D	src/main/resources/static/images/default/profile-default.png
+D	src/main/resources/static/images/logo/facebook-full-logo.png
+D	src/main/resources/static/images/logo/favicon.ico
+D	src/main/resources/static/images/logo/global.png
+D	src/main/resources/static/images/logo/logo_thumnail_bg.jpg
+D	src/main/resources/static/js/app.js
+D	src/main/resources/static/js/login/login.js
+D	src/main/resources/static/js/login/logout.js
+D	src/main/resources/static/js/post/api.js
+D	src/main/resources/static/js/post/post.js
+D	src/main/resources/static/js/post/template.js
+D	src/main/resources/static/js/signup/signup.js
+D	src/main/resources/templates/fragments/head.html
+D	src/main/resources/templates/fragments/left-panel.html
+D	src/main/resources/templates/fragments/nav.html
+D	src/main/resources/templates/fragments/script.html
+D	src/main/resources/templates/fragments/write-post.html
+D	src/main/resources/templates/index.html
+D	src/main/resources/templates/layouts/main.html
+D	src/main/resources/templates/signup.html
+D	src/test/java/com/wootecobook/turkey/TurkeyApplicationTests.java
+D	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+D	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+D	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+D	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+D	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+D	src/test/java/com/wootecobook/turkey/login/service/LoginServiceTest.java
+D	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+D	src/test/java/com/wootecobook/turkey/post/domain/ContentsTest.java
+D	src/test/java/com/wootecobook/turkey/post/domain/PostTest.java
+D	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+D	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+D	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+D	src/test/java/com/wootecobook/turkey/user/controller/web/UserControllerTest.java
+D	src/test/java/com/wootecobook/turkey/user/domain/UserTest.java
+D	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+1c194ba9fef534c667d75c4d5bb2fdf307e8c10a, Merge pull request #54 from woowa-turkey/feature/comment_time, Wed Aug 21 16:14:37 2019 +0900
+f6a7b284f68aeeca341f6971497605ef19c15830, feat: 댓글 시간 표시, Wed Aug 21 15:29:41 2019 +0900
+M	src/main/resources/data.sql
+M	src/main/resources/static/js/comment/template.js
+
+f5550477731e8026a222e148af8905ada8a37123, refactor: 댓글 수정 폼 변경, Wed Aug 21 15:06:20 2019 +0900
+M	src/main/resources/static/js/comment/template.js
+
+2be79ffb25f800a0ea79179a7f43c575ae90aef1, Merge pull request #52 from woowa-turkey/fix/comment_newLine, Wed Aug 21 13:37:27 2019 +0900
+b360162310b199714f8ce68daa1c8601aa383952, fix: 댓글 개행 문제 해결, Wed Aug 21 13:36:15 2019 +0900
+M	src/main/resources/static/js/comment/template.js
+M	src/main/resources/static/js/mypage/mypage.js
+M	src/main/resources/static/js/post/post.js
+
+bc4d156158108ccd6ac51775676cfd42c18f8d1e, Merge pull request #51 from woowa-turkey/feature/댓글_프론트, Wed Aug 21 13:21:58 2019 +0900
+54b2337576ba0d3b635659aae8bb8122d9e7562b, Merge pull request #50 from woowa-turkey/feature/search, Wed Aug 21 13:17:29 2019 +0900
+b31fd13a57d2cffbfc98eb28d050fe8454f01e1a, Merge branch 'develop' into feature/search, Wed Aug 21 13:17:15 2019 +0900
+14a2fde0fe4ab4eb668d2135af2348d7bb4433d4, Merge pull request #47 from woowa-turkey/feature/댓글_프론트, Wed Aug 21 13:16:04 2019 +0900
+9863f6d9fcc4c4f595504aaac777d54521ab464b, Merge pull request #46 from pkch93/feature/feed-page, Wed Aug 21 13:15:50 2019 +0900
+77c6f6dc8f7b05d8eafa71e88e53c3d89e1f3a67, fix: 댓글 수정폼 클릭시 답글도 수정폼 나오는 문제 해결, Wed Aug 21 13:11:09 2019 +0900
+M	src/main/resources/static/js/comment/template.js
+M	src/main/resources/static/js/post/post.js
+
+d936b1fbed0961bcf40beee49548253d3d6d51b8, feat: 이름으로 검색 프론트, Wed Aug 21 01:16:11 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+M	src/main/resources/data.sql
+A	src/main/resources/static/js/search/search.js
+A	src/main/resources/static/js/search/template.js
+M	src/main/resources/templates/fragments/nav.html
+M	src/main/resources/templates/index.html
+
+b552cafee36615bb137a0bdd9f883b83c547a7fa, feat: 이름으로 유저 검색, Tue Aug 20 22:24:49 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+M	src/main/java/com/wootecobook/turkey/user/domain/UserRepository.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/user/domain/UserRepositoryTest.java
+
+0ef295edf677afc292810420cbd1cee18b4de010, fix: 대댓글 수정 완료 후 이상하게 보이는 부분 수정, Tue Aug 20 21:33:34 2019 +0900
+M	src/main/resources/static/js/post/post.js
+
+7bd490633896b3a95ab87f87d793209e159d4ed8, refactor: console.log 제거, Tue Aug 20 21:27:38 2019 +0900
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/templates/index.html
+
+4af32e3af1786aef77534866dc5b36cf1d36b056, feat: 댓글, 대댓글 프론트 CRUD, Tue Aug 20 20:58:03 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+M	src/main/resources/static/css/app.css
+A	src/main/resources/static/js/comment/template.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/template.js
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+e726e25058c56384b859794139fe812518dd8561, feat: mypage front 구현, Tue Aug 20 16:15:44 2019 +0900
+A	src/main/resources/static/css/mypage.css
+A	src/main/resources/static/js/mypage/mypage.js
+A	src/main/resources/static/js/mypage/template.js
+A	src/main/resources/templates/mypage.html
+
+f195826b93af9902f54294f7dc8ce87262974033, refactor: 정적 파일 경로 수정, Tue Aug 20 16:15:15 2019 +0900
+M	src/main/resources/static/css/index.css
+M	src/main/resources/static/js/post/template.js
+
+e700201b56fbd6431b000c597348743929acb060, refactor: 공통 css 파일인 shared.css 생성 - head.html 추가, Tue Aug 20 16:14:47 2019 +0900
+A	src/main/resources/static/css/shared.css
+M	src/main/resources/templates/fragments/head.html
+
+a3b8069141896671920a3949bb5f1ab4281ca7e2, refactor: main layout 공통으로 사용할 수 있도록 일부 수정 - main layout 수정에 따른 index.html 수정, Tue Aug 20 16:14:03 2019 +0900
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/layouts/main.html
+
+926b11cfef078181d77d752547f2f3838c2a5499, settings: lite-server - front 작업을 쉽게 하기 위한 lite-server 추가 - npm run dev로 lite-server 실행 설정, Tue Aug 20 16:00:40 2019 +0900
+M	.gitignore
+A	package-lock.json
+A	package.json
+
+70f462124857f54b4845a4881e0f5271c59ab5a0, fix: 글 작성시 개행 적용 안되는 버그 해결, Tue Aug 20 09:05:46 2019 +0900
+M	src/main/resources/static/css/index.css
+M	src/main/resources/static/js/post/template.js
+
+ca2e41b568f79e7e2501ffc95b88fcbc84998c14, styles: 소스 코드 포메팅, Mon Aug 19 17:04:22 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+M	src/main/java/com/wootecobook/turkey/commons/exception/NotLoginException.java
+M	src/main/java/com/wootecobook/turkey/login/service/exception/LoginFailException.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/SignUpException.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/UserDeleteException.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/UserMismatchException.java
+
+05d4b6ab10ad36b5832d73c25ea12ec80bfe0e97, refactor: 공통 MediaType 상수화, Mon Aug 19 17:02:19 2019 +0900
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+R088	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java	src/test/java/com/wootecobook/turkey/commons/BaseControllerTests.java
+M	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+
+b5efc66e5f21da6e90c062de993886fba8b2e11e, feat: 기본 더미데이터 추가 (data.sql), Mon Aug 19 16:56:37 2019 +0900
+A	src/main/resources/data.sql
+
+85a12f950f83471dff7c2f36575b587869dd8c26, refactor: app.js, api.js 폴더링 변경, Mon Aug 19 16:56:10 2019 +0900
+R100	src/main/resources/static/js/post/api.js	src/main/resources/static/js/commons/api.js
+R100	src/main/resources/static/js/app.js	src/main/resources/static/js/commons/app.js
+M	src/main/resources/templates/fragments/head.html
+M	src/main/resources/templates/index.html
+
+5d95ee8c3b5d3def2b17a84d5abc8ef4ee6c5254, refactor: BaseEntity Column 명세 작성, Mon Aug 19 16:44:47 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/BaseEntity.java
+
+d82d3015a6e96acb8a119b6ee5eb73f640207aed, refactor: 도메인 NotFound Exception을 기존의 javax.persistence.EntityNotFoundException으로 변경, Mon Aug 19 16:42:47 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+D	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentNotFoundException.java
+M	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+D	src/main/java/com/wootecobook/turkey/post/service/exception/NotFoundPostException.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/NotFoundUserException.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+M	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+ffb68daf0db978d370723d1687d4800c651b7ac9, feat: LoginInterceptor 구현 및 적용 - LoginInterceptor 적용에 따른 테스트 코드 수정, Mon Aug 19 16:31:20 2019 +0900
+A	src/main/java/com/wootecobook/turkey/commons/interceptor/LoginInterceptor.java
+M	src/main/java/com/wootecobook/turkey/config/WebConfig.java
+M	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiController.java
+M	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+
+f10e4baa82f5d6b3179f3efaf2b97f7b3679f5ff, [칠면조] 1주차 Facebook 기능 구현 (#8), Mon Aug 19 13:45:30 2019 +0900
+A	.gitignore
+A	build.gradle
+A	deploy.sh
+A	gradle/wrapper/gradle-wrapper.jar
+A	gradle/wrapper/gradle-wrapper.properties
+A	gradlew
+A	gradlew.bat
+A	settings.gradle
+A	src/main/java/com/wootecobook/turkey/TurkeyApplication.java
+A	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+A	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/CommentValidator.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/exception/CommentUpdateFailException.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/exception/InvalidCommentException.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/exception/NotCommentOwnerException.java
+A	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+A	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentCreate.java
+A	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+A	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentUpdate.java
+A	src/main/java/com/wootecobook/turkey/comment/service/exception/AlreadyDeleteException.java
+A	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentNotFoundException.java
+A	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentSaveException.java
+A	src/main/java/com/wootecobook/turkey/commons/BaseEntity.java
+A	src/main/java/com/wootecobook/turkey/commons/ErrorMessage.java
+A	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+A	src/main/java/com/wootecobook/turkey/commons/exception/NotLoginException.java
+A	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+A	src/main/java/com/wootecobook/turkey/commons/resolver/UserSessionArgumentResolver.java
+A	src/main/java/com/wootecobook/turkey/config/WebConfig.java
+A	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiController.java
+A	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java
+A	src/main/java/com/wootecobook/turkey/login/service/LoginService.java
+A	src/main/java/com/wootecobook/turkey/login/service/dto/LoginRequest.java
+A	src/main/java/com/wootecobook/turkey/login/service/exception/LoginFailException.java
+A	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+A	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java
+A	src/main/java/com/wootecobook/turkey/post/domain/Contents.java
+A	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+A	src/main/java/com/wootecobook/turkey/post/domain/PostRepository.java
+A	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidContentException.java
+A	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidPostException.java
+A	src/main/java/com/wootecobook/turkey/post/domain/exception/PostUpdateFailException.java
+A	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+A	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+A	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+A	src/main/java/com/wootecobook/turkey/post/service/exception/NotFoundPostException.java
+A	src/main/java/com/wootecobook/turkey/post/service/exception/NotPostOwnerException.java
+A	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+A	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java
+A	src/main/java/com/wootecobook/turkey/user/controller/web/UserController.java
+A	src/main/java/com/wootecobook/turkey/user/domain/User.java
+A	src/main/java/com/wootecobook/turkey/user/domain/UserRepository.java
+A	src/main/java/com/wootecobook/turkey/user/domain/UserValidator.java
+A	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/main/java/com/wootecobook/turkey/user/service/dto/UserRequest.java
+A	src/main/java/com/wootecobook/turkey/user/service/dto/UserResponse.java
+A	src/main/java/com/wootecobook/turkey/user/service/exception/NotFoundUserException.java
+A	src/main/java/com/wootecobook/turkey/user/service/exception/SignUpException.java
+A	src/main/java/com/wootecobook/turkey/user/service/exception/UserDeleteException.java
+A	src/main/java/com/wootecobook/turkey/user/service/exception/UserMismatchException.java
+A	src/main/resources/application.yml
+A	src/main/resources/logback-access.xml
+A	src/main/resources/static/css/app.css
+A	src/main/resources/static/css/edit.css
+A	src/main/resources/static/css/index.css
+A	src/main/resources/static/css/signup.css
+A	src/main/resources/static/images/default/eastjun_big.jpg
+A	src/main/resources/static/images/default/eastjun_profile.jpg
+A	src/main/resources/static/images/default/icons.png
+A	src/main/resources/static/images/default/icons2.png
+A	src/main/resources/static/images/default/plus_btn.png
+A	src/main/resources/static/images/default/profile-default.png
+A	src/main/resources/static/images/logo/facebook-full-logo.png
+A	src/main/resources/static/images/logo/favicon.ico
+A	src/main/resources/static/images/logo/global.png
+A	src/main/resources/static/images/logo/logo_thumnail_bg.jpg
+A	src/main/resources/static/js/app.js
+A	src/main/resources/static/js/login/login.js
+A	src/main/resources/static/js/login/logout.js
+A	src/main/resources/static/js/post/api.js
+A	src/main/resources/static/js/post/post.js
+A	src/main/resources/static/js/post/template.js
+A	src/main/resources/static/js/signup/signup.js
+A	src/main/resources/templates/fragments/head.html
+A	src/main/resources/templates/fragments/left-panel.html
+A	src/main/resources/templates/fragments/nav.html
+A	src/main/resources/templates/fragments/script.html
+A	src/main/resources/templates/fragments/write-post.html
+A	src/main/resources/templates/index.html
+A	src/main/resources/templates/layouts/main.html
+A	src/main/resources/templates/signup.html
+A	src/test/java/com/wootecobook/turkey/TurkeyApplicationTests.java
+A	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+A	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+A	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+A	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/login/service/LoginServiceTest.java
+A	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/post/domain/ContentsTest.java
+A	src/test/java/com/wootecobook/turkey/post/domain/PostTest.java
+A	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+A	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+A	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/user/controller/web/UserControllerTest.java
+A	src/test/java/com/wootecobook/turkey/user/domain/UserTest.java
+A	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+461b2836f46d5e94a7cb73a51e2c625b07481fcc, Merge pull request #43 from woowa-turkey/feature/logoutfront, Mon Aug 19 12:36:27 2019 +0900
+39df4dbf39504d3c63a27363573d7146353cda2c, Merge remote-tracking branch 'origin/develop' into feature/logoutfront, Sun Aug 18 22:57:49 2019 +0900
+7e695bda4f4207fb44b35c99bc2c39c9ba6fcf87, Merge pull request #42 from pkch93/refactor/post, Sun Aug 18 22:56:17 2019 +0900
+b4b465839a4aaceeea85f5ef4d12e7aacf49184d, refactor: 서버와 jquery ajax로 통신하도록 변경, Sun Aug 18 22:50:16 2019 +0900
+M	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/signup/signup.js
+
+61c3915bb03fc001df61fd8f7d55f2aafa69a449, refactor: 회원 가입 form의 input 태그 아이디 값 수정, Sun Aug 18 22:23:49 2019 +0900
+M	src/main/resources/static/js/signup/signup.js
+M	src/main/resources/templates/signup.html
+
+403c2e7b2d360cd9a26281222b2dfedd9bb85e78, refactor: javascript var 변수 피드백 반영, Sun Aug 18 22:18:20 2019 +0900
+M	src/main/resources/static/js/app.js
+
+aaf7a2afeda398ab249e51254ca89b3d4b15a9d4, feat: 프론트엔드 로그아웃 기능 추가, Sun Aug 18 22:14:45 2019 +0900
+M	src/main/resources/static/css/index.css
+A	src/main/resources/static/js/login/logout.js
+M	src/main/resources/templates/fragments/nav.html
+M	src/main/resources/templates/index.html
+
+56990f1c5d2203641f717783432ab2027af95672, refactor: onload 제거, Sun Aug 18 12:22:12 2019 +0900
+M	src/main/resources/static/js/post/post.js
+
+ccae8fb302ee999a718e9ac7e6b9b77d6cbc8c65, refactor: LoggingAspect exception pointcut 수정, Sun Aug 18 12:21:58 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+
+2e3ebea3e44b280c4c8ffc6efc7ea67cb5a109b5, Merge pull request #41 from woowa-turkey/refactor/Comment, Sun Aug 18 12:07:38 2019 +0900
+ccd16d3e53b2ac20b7ff71b9b0abd6c4689771fe, Merge pull request #40 from woowa-turkey/revert-38-refactor/Comment, Sun Aug 18 12:06:26 2019 +0900
+c596de246fe10ed3e778915d65de3a77ff40c0d9, Revert "댓글 피드백 반영", Sun Aug 18 12:05:54 2019 +0900
+D	.gitignore
+D	build.gradle
+D	deploy.sh
+D	gradle/wrapper/gradle-wrapper.jar
+D	gradle/wrapper/gradle-wrapper.properties
+D	gradlew
+D	gradlew.bat
+D	settings.gradle
+D	src/main/java/com/wootecobook/turkey/TurkeyApplication.java
+D	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+D	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/CommentValidator.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/exception/CommentUpdateFailException.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/exception/InvalidCommentException.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/exception/NotCommentOwnerException.java
+D	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+D	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentCreate.java
+D	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+D	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentUpdate.java
+D	src/main/java/com/wootecobook/turkey/comment/service/exception/AlreadyDeleteException.java
+D	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentNotFoundException.java
+D	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentSaveException.java
+D	src/main/java/com/wootecobook/turkey/commons/BaseEntity.java
+D	src/main/java/com/wootecobook/turkey/commons/ErrorMessage.java
+D	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+D	src/main/java/com/wootecobook/turkey/commons/exception/NotLoginException.java
+D	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+D	src/main/java/com/wootecobook/turkey/commons/resolver/UserSessionArgumentResolver.java
+D	src/main/java/com/wootecobook/turkey/config/WebConfig.java
+D	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiController.java
+D	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java
+D	src/main/java/com/wootecobook/turkey/login/service/LoginService.java
+D	src/main/java/com/wootecobook/turkey/login/service/dto/LoginRequest.java
+D	src/main/java/com/wootecobook/turkey/login/service/exception/LoginFailException.java
+D	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+D	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+D	src/main/java/com/wootecobook/turkey/post/controller/exception/PostBadRequestException.java
+D	src/main/java/com/wootecobook/turkey/post/domain/Contents.java
+D	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+D	src/main/java/com/wootecobook/turkey/post/domain/PostRepository.java
+D	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidContentException.java
+D	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidPostException.java
+D	src/main/java/com/wootecobook/turkey/post/domain/exception/PostUpdateFailException.java
+D	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+D	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+D	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+D	src/main/java/com/wootecobook/turkey/post/service/exception/NotFoundPostException.java
+D	src/main/java/com/wootecobook/turkey/post/service/exception/NotPostOwnerException.java
+D	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+D	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java
+D	src/main/java/com/wootecobook/turkey/user/controller/web/UserController.java
+D	src/main/java/com/wootecobook/turkey/user/domain/User.java
+D	src/main/java/com/wootecobook/turkey/user/domain/UserRepository.java
+D	src/main/java/com/wootecobook/turkey/user/domain/UserValidator.java
+D	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+D	src/main/java/com/wootecobook/turkey/user/service/dto/UserRequest.java
+D	src/main/java/com/wootecobook/turkey/user/service/dto/UserResponse.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/NotFoundUserException.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/SignUpException.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/UserDeleteException.java
+D	src/main/java/com/wootecobook/turkey/user/service/exception/UserMismatchException.java
+D	src/main/resources/application.yml
+D	src/main/resources/logback-access.xml
+D	src/main/resources/static/css/app.css
+D	src/main/resources/static/css/edit.css
+D	src/main/resources/static/css/index.css
+D	src/main/resources/static/css/signup.css
+D	src/main/resources/static/images/default/eastjun_big.jpg
+D	src/main/resources/static/images/default/eastjun_profile.jpg
+D	src/main/resources/static/images/default/icons.png
+D	src/main/resources/static/images/default/icons2.png
+D	src/main/resources/static/images/default/plus_btn.png
+D	src/main/resources/static/images/default/profile-default.png
+D	src/main/resources/static/images/logo/facebook-full-logo.png
+D	src/main/resources/static/images/logo/favicon.ico
+D	src/main/resources/static/images/logo/global.png
+D	src/main/resources/static/images/logo/logo_thumnail_bg.jpg
+D	src/main/resources/static/js/app.js
+D	src/main/resources/static/js/login/login.js
+D	src/main/resources/static/js/post/api.js
+D	src/main/resources/static/js/post/post.js
+D	src/main/resources/static/js/post/template.js
+D	src/main/resources/static/js/signup/signup.js
+D	src/main/resources/templates/fragments/head.html
+D	src/main/resources/templates/fragments/left-panel.html
+D	src/main/resources/templates/fragments/nav.html
+D	src/main/resources/templates/fragments/script.html
+D	src/main/resources/templates/fragments/write-post.html
+D	src/main/resources/templates/index.html
+D	src/main/resources/templates/layouts/main.html
+D	src/main/resources/templates/signup.html
+D	src/test/java/com/wootecobook/turkey/TurkeyApplicationTests.java
+D	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+D	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+D	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+D	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+D	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+D	src/test/java/com/wootecobook/turkey/login/service/LoginServiceTest.java
+D	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+D	src/test/java/com/wootecobook/turkey/post/domain/ContentsTest.java
+D	src/test/java/com/wootecobook/turkey/post/domain/PostTest.java
+D	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+D	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+D	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+D	src/test/java/com/wootecobook/turkey/user/controller/web/UserControllerTest.java
+D	src/test/java/com/wootecobook/turkey/user/domain/UserTest.java
+D	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+19a8a026bfc76355db9f1a7d7227721b8a43d1d7, Merge pull request #39 from woowa-turkey/refactor/post, Sun Aug 18 11:39:42 2019 +0900
+7aaa152e7bfd6ba772bba71eb904725bc2cc686a, Merge pull request #38 from woowa-turkey/refactor/Comment, Sun Aug 18 11:05:33 2019 +0900
+1b600a42fcba9be3fad5cf0ff26477393fda1122, refactor: PostApiController의 BindingResult 처리 부분 중복 제거 - PostControllerAdvice에서 BindException을 처리하도록 함, Sun Aug 18 10:57:33 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java
+D	src/main/java/com/wootecobook/turkey/post/controller/exception/PostBadRequestException.java
+
+78ca15ae1ee767240a7d52c7f7b65c92e837d3a7, refactor: Comment.getParent(), getParentCommentId() return Optional 로 변경, Sun Aug 18 09:52:10 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+
+66719770b5eba7e6e7c221be9c299ea1aaa25f89, refactor: Comment.update(), Sun Aug 18 09:35:33 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+
+f45e282633949135de699d3e92c7b434f0fa910b, refactor: CommentRepository.findAllByPostId() JPQL 없이 조회하게 수정, Sun Aug 18 09:32:59 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+3ab3732b611b82bdfe059976ce33cd47644a3449, refactor: PostApiController 위치 변경, Sun Aug 18 03:16:19 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+R098	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java	src/main/java/com/wootecobook/turkey/post/controller/api/PostApiController.java
+
+932c2ab8712a6f3f3a8f7f6bd72ec2809fe66f06, refactor: ResponseEntity 반환 컨벤션 통일 - Created 상태코드의 URI 값 추가, Sun Aug 18 03:12:06 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+
+3eecf52c3de98252243cfa1596398d95df2d950b, Merge pull request #30 from woowa-turkey/feature/deploy, Sat Aug 17 02:49:37 2019 +0900
+983d3363298c772457c2b344f6848236cd175617, refactor: 배포 스크립트 수정, Fri Aug 16 18:43:02 2019 +0900
+M	deploy.sh
+
+deefe8ceaff325bfbbc0260ea86249d1325eb566, feat: 배포 스크립트 작성 및 build.gradle 수정, Fri Aug 16 18:21:06 2019 +0900
+M	build.gradle
+A	deploy.sh
+M	gradlew
+
+8db8bacb20f21fa621ffc820177af8b4056e76ca, rename: ResolverConfig -> WebConfig, Fri Aug 16 15:47:16 2019 +0900
+R091	src/main/java/com/wootecobook/turkey/config/ResolverConfig.java	src/main/java/com/wootecobook/turkey/config/WebConfig.java
+
+e32cd694da07cde7ae074ffb98c4aa6f3497de16, refactor: BaseControllerTests jsessionId, Email, password, name 상수 처리, Fri Aug 16 15:40:45 2019 +0900
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+
+87bf083dc931d984684780b4d06eb384e8dea578, refactor: ErrorMessage commons.ErrorMessage 로 통일, Fri Aug 16 15:18:01 2019 +0900
+M	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java
+D	src/main/java/com/wootecobook/turkey/user/controller/api/ErrorMessage.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java
+M	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+
+7f3359b0ca3b20b21705863ffd9f96a27e2b9ab8, style: build.gradle 정리, Fri Aug 16 15:15:15 2019 +0900
+M	build.gradle
+
+8e52f8e973feae48c72087614c42816df477a2e5, refactor: NotPostOwnerException 메시지 변경, Fri Aug 16 15:15:02 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/service/exception/NotPostOwnerException.java
+
+8468aa1283c440d39dc4bbad5616cea5da3121eb, Merge pull request #29 from woowa-turkey/feature/comment, Fri Aug 16 15:12:45 2019 +0900
+1ca471398fe7a8ce70edf6cd74ebe4e695ec42d1, Merge pull request #27 from woowa-turkey/feature/comment, Fri Aug 16 14:49:03 2019 +0900
+9b633c74401695c91ae5a2278cff5edff09bb2e3, style: 포맷팅, Fri Aug 16 14:34:18 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentValidator.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/exception/CommentUpdateFailException.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/exception/InvalidCommentException.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentCreate.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentUpdate.java
+M	src/main/java/com/wootecobook/turkey/comment/service/exception/AlreadyDeleteException.java
+M	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentNotFoundException.java
+M	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentSaveException.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+299fbcdb0d342c265c685b5de0bd4bd0e374c1af, feat: Comment.contents 공백, null 예외처리 추가, Fri Aug 16 14:24:22 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/CommentValidator.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/exception/InvalidCommentException.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+
+1add62cbfe22c0bb24a9692abfeefb82b13dadf8, feat: Comment.update() Null 예외처리, CommentUpdateFailException 추가, Fri Aug 16 14:13:47 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+D	src/main/java/com/wootecobook/turkey/comment/domain/NotCommentOwnerException.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/exception/CommentUpdateFailException.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/exception/NotCommentOwnerException.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+
+91c206cbd78fbdd8cc6a624fc6f95548b46ccd1f, refactor: CommentServiceTest 테스트메소드명 한글 -> 영어로 수정, Fri Aug 16 13:48:16 2019 +0900
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+71d18f1664d1c1d79176362855f0c49c273b0620, feat: Comment getParentId() 추가, Fri Aug 16 13:44:03 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+
+9921adebc387401f79c5fe5850c2fb4972a0618a, refactor: 모든 Exception log 제거, Fri Aug 16 13:39:23 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/service/exception/AlreadyDeleteException.java
+M	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentNotFoundException.java
+M	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentSaveException.java
+
+7ad4c46e3b6f134885894c6a1b950cf70fdec4a2, fix: CommentServiceTest 댓글저장 테스트 문제 수정, Fri Aug 16 13:36:49 2019 +0900
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+2ff231383c7ab871e652f586ff984cf2c41688e2, feat: 삭제된 댓글 삭제, 수정 시도 예외처리 추가, Fri Aug 16 13:31:15 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+A	src/main/java/com/wootecobook/turkey/comment/service/exception/AlreadyDeleteException.java
+M	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+b76c393db8b7934b1f699a5b85611998605e572e, rename: CommentAuthException -> NotCommentOwnerException, Fri Aug 16 13:05:00 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+R056	src/main/java/com/wootecobook/turkey/comment/domain/CommentAuthException.java	src/main/java/com/wootecobook/turkey/comment/domain/NotCommentOwnerException.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+
+42cc5c2261dd6fc0cadcd158a6a3c99f2af5a6f6, Merge pull request #25 from woowa-turkey/feature/signupfront, Fri Aug 16 12:16:38 2019 +0900
+cb41cd2927e61e1125f8be7bd0e560f57983c232, test: CommentServiceTest, Fri Aug 16 03:43:47 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentCreate.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentUpdate.java
+A	src/test/java/com/wootecobook/turkey/comment/service/CommentServiceTest.java
+
+8d98e69a8c24eb45c2f242431ef6f92e452c4cce, refactor: BaseEntity setId() 추가, Fri Aug 16 03:43:28 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/BaseEntity.java
+
+a9f644e0831ed148eba890f4804e12c8e663d956, refactor: favicon 변경, Fri Aug 16 02:37:34 2019 +0900
+M	src/main/resources/static/images/logo/favicon.ico
+
+f225bce1e412f24b34a564ce8824eccb1efcf236, refactor: LoggingAspect 추가로 인한 CommentApiController 의 log 제거, Fri Aug 16 02:33:26 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+
+896cd7f505bb79238f0a00b6afa1e8684e86aaab, feat: BaseControllerTests 공통적으로 사용되는 값들 상수 생성, Fri Aug 16 02:29:29 2019 +0900
+M	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+
+48e59cfe2a7dcb19baa713935a2bf610c82c44ca, fix: Comment 조회할 때 발생하는 에러 해결, Fri Aug 16 02:27:57 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+
+881caaaae76c9b48a4aef9bf6a00a328ab27c359, feat: 로그인 프론트엔드 연동, Fri Aug 16 02:17:55 2019 +0900
+A	src/main/resources/static/js/login/login.js
+M	src/main/resources/static/js/signup/signup.js
+M	src/main/resources/templates/signup.html
+
+5f9f1fba4f374428bc1ab760ad2974b3a9ea242c, Merge branch 'develop' into feature/comment, Fri Aug 16 02:10:53 2019 +0900
+67d36d0ed46b0fd299ada78b84de2184a5aa1acd, feat: 댓글만, 답글만 조회 구현, Fri Aug 16 02:07:34 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/comment/domain/CommentRepositoryTest.java
+
+62aec77f421070ee6407674bbdb2bfd19985a1bc, feat: 자바스크립트 공통 함수 분리, Fri Aug 16 00:46:15 2019 +0900
+A	src/main/resources/static/js/app.js
+M	src/main/resources/templates/fragments/head.html
+
+f532a72cc238d8add0826f55c9b488fddcf4359b, feat: 회원 가입 프론트엔드 연동, Fri Aug 16 00:42:54 2019 +0900
+A	src/main/resources/static/css/signup.css
+A	src/main/resources/static/images/logo/facebook-full-logo.png
+A	src/main/resources/static/images/logo/global.png
+A	src/main/resources/static/js/signup/signup.js
+M	src/main/resources/templates/fragments/head.html
+M	src/main/resources/templates/signup.html
+
+ffbdb8ea67be6771133659c8275ea5bb9a4aaf26, feat: Comment - User, Post 매핑 완료, Thu Aug 15 22:18:08 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentAuthException.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentUpdate.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+
+33490f0ce67e5e2e7f57a80a7bcbb009d6d9367c, refactor: BaseControllerTests JSessionId 상수 처리, Thu Aug 15 22:17:31 2019 +0900
+M	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+
+b7c9d013347c917af7687d0729c40ae72ebd602b, refactor: CommentApiControllerAdvice  @ExceptionHandler 변경 변경 전 - @ExceptionHandler({RuntimeException.class}) 변경 후 - @ExceptionHandler({ContextNotEmptyException.class, CommentSaveException.class, CommentAuthException.class}), Thu Aug 15 22:16:35 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java
+
+a1a8f54bcaf4f98a453a9241ee9ccc1061f94af4, Merge pull request #23 from pkch93/feature/post, Thu Aug 15 19:18:09 2019 +0900
+60bd066e148a08dd9da2d37ded43dab4c020c64b, feat: PostResponse에 author 필드 추가 - 게시글 템플릿에 작성자 표시되게 변경, Thu Aug 15 19:04:04 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+M	src/main/resources/static/js/post/template.js
+
+2ee524611057641b57a773cab58fbdf129b886ca, feat: PostApiController 유저 추가 구현 - 테스트 코드 구현, Thu Aug 15 18:48:33 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+R082	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTest.java	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTests.java
+
+b81b252c293e504a3a9446a9d5060f687238af63, refactor: Message 상수 이름 변경 - EXIST -> FOUND, Thu Aug 15 18:48:02 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/service/exception/NotFoundPostException.java
+
+097e24861136c0ade585d3b8b8bcce827d0358f9, feat: PostService User 추가 구현 - 커스텀 Exception 추가 (NotPostOwnerException) - 테스트 코드 추가, Thu Aug 15 18:47:34 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+A	src/main/java/com/wootecobook/turkey/post/service/exception/NotPostOwnerException.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+ab50b041044a59ede301c669c8d1fa1b5d1cd968, feat: Post 도메인 builder 추가 및 작성자 여부 기능 구현 - Post 도메인 테스트 추가 구현, Thu Aug 15 18:45:39 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/test/java/com/wootecobook/turkey/post/domain/PostTest.java
+
+f3f1947c02ed65146b566c514aecb95e2fa9d0f6, Merge branch 'develop' into feature/comment, Thu Aug 15 17:41:59 2019 +0900
+b97d749eddbceb3dfaa8d9a7b6e46edd7dd3e7ef, feat: Post 엔티티 User 필드 추가 (author), Thu Aug 15 16:56:33 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+
+9b0ba2532f602c1b09bf2d3fc2d5f97e4520d1a7, Merge pull request #22 from pkch93/bugfix, Thu Aug 15 16:48:08 2019 +0900
+231dddd0aee44d7310f95497af5df339554520bd, refactor: 존재하지 않는 값 명시화, Thu Aug 15 16:35:12 2019 +0900
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTest.java
+
+63a29639a921d053461de57ca222c8637ae655de, refactor: @EnableJpaAuditing 위치 변경, Thu Aug 15 16:34:51 2019 +0900
+M	src/main/java/com/wootecobook/turkey/config/ResolverConfig.java
+
+9df10f5004190308af519bd4a2802e1397835093, fix: 더미데이터 제거 (ApplicationRunner 제거), Thu Aug 15 16:34:26 2019 +0900
+M	src/main/java/com/wootecobook/turkey/TurkeyApplication.java
+
+ccad1d5c23b4ed064a93276760ad233b996dbadc, fix: Error시 200 OK 응답 문제 해결 - Exception logging시 void 리턴 문제, Thu Aug 15 16:33:56 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+
+75d2306f8a4a906499ca1bc670085bd30ec2f66b, Merge pull request #14 from school0bhy/feature/post, Thu Aug 15 16:21:13 2019 +0900
+cafeddad9b3ff49eec4e3858883f186e8dd250d0, Merge branch 'develop' into feature/post, Thu Aug 15 16:19:50 2019 +0900
+03bdde40788a1d400efcef7a45fd88997fd69ffe, Merge pull request #21 from woowa-turkey/feature/login, Thu Aug 15 16:15:32 2019 +0900
+d154c00fc36ff88c74d8d1258e09e87b8a53b06a, refactor: UserApiController status code 변경, Thu Aug 15 16:13:48 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+M	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+
+6347e8a5281605f2326dd01afd403888c1fb4ddb, refactor: UserSession 생성자 private로 변경, Thu Aug 15 16:01:48 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+
+4f57f802885264fadd66d06fed51e4e09d5bf920, style: 공백 제거, Thu Aug 15 15:59:10 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/service/exception/UserMismatchException.java
+
+47c68af1acdfb6457e6d3df75bbb89aaa4ecbbf3, refactor: UserSessionHandlerMethodArgumentResolver -> UserSessionArgumentResolver 이름 변경, Thu Aug 15 15:56:09 2019 +0900
+R093	src/main/java/com/wootecobook/turkey/commons/resolver/UserSessionHandlerMethodArgumentResolver.java	src/main/java/com/wootecobook/turkey/commons/resolver/UserSessionArgumentResolver.java
+M	src/main/java/com/wootecobook/turkey/config/ResolverConfig.java
+
+2623ead740e6d2b98327f27bfbd3dd51413d69ca, refactor: ControllerAdvice에서 리턴 방식 변경, Thu Aug 15 15:53:35 2019 +0900
+M	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java
+
+2a7938a71d4bdf79af65a345246c3e4f25dd943d, refactor: 파라미터 이름 수정, Thu Aug 15 15:38:52 2019 +0900
+M	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java
+
+eeeb54c0dfc7508f7a3d56ce107002a0dc26a480, feat: 유저 삭제 시 사용자 인증 추가 및 테스트, Thu Aug 15 15:37:54 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/main/java/com/wootecobook/turkey/user/service/exception/UserMismatchException.java
+M	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+9a5584e20de4d030e582c581d9d2697d01f76e72, feat: Exception 로그 추가, Thu Aug 15 15:08:15 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+
+f51789293a612835db6de071efc2ed4fe3e456e4, feat: User id 비교 메서드 추가, Thu Aug 15 14:51:36 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+
+6416303ebb9cd6aa18fc41b87d4aed221de3dffd, feat: 로그아웃 기능 구현, Thu Aug 15 14:51:01 2019 +0900
+A	src/main/java/com/wootecobook/turkey/commons/exception/NotLoginException.java
+M	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+A	src/main/java/com/wootecobook/turkey/commons/resolver/UserSessionHandlerMethodArgumentResolver.java
+A	src/main/java/com/wootecobook/turkey/config/ResolverConfig.java
+M	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiController.java
+M	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java
+M	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+M	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+
+6fd7de5176d432423dee7a2cf480d966811a9d2f, refactor : CommentResponse 생성자 변경, Thu Aug 15 14:50:57 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+
+d9c427e516ddbe1e5e7d5d4ba6079c68de52aaf6, refactor: error 메세지 출력, Thu Aug 15 14:30:11 2019 +0900
+M	src/main/resources/static/js/post/post.js
+
+371bad0a56ea0231456d99e14970a3e21fa0390b, Merge branch 'feature/post-front' into feature/post, Thu Aug 15 14:15:52 2019 +0900
+e9cd8ec84157d98e2b6d0576e17d4efa3508db16, refactor: test 코드 피드백 반영, Thu Aug 15 14:15:13 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/ErrorMessage.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTest.java
+M	src/test/java/com/wootecobook/turkey/post/domain/ContentsTest.java
+M	src/test/java/com/wootecobook/turkey/post/domain/PostTest.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+c84cfd3b44e1fa21d33485ff556eefbb1c4fb553, refactor: 댓글 삭제 flag 형식으로 변경, Thu Aug 15 14:00:53 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentAuthException.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+D	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentDeleteException.java
+M	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+
+4f69f5d35c36050778fe2a172abdf39bcae4fbf1, refactor: Service에 @Transactional 추가, Thu Aug 15 13:57:36 2019 +0900
+M	src/main/java/com/wootecobook/turkey/login/service/LoginService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+
+7bee564de1184a686ebfd4c55dcd2b793d20abbb, refactor: service 피드백 반영 - PostService @Transactional 추가 - PostResponse @Builder 반영, Thu Aug 15 13:55:03 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+
+8fd410450baf34387323ff456d8ca0b9080a3fa9, refactor: Advice 수정, Thu Aug 15 13:53:46 2019 +0900
+R077	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerExceptionAdvice.java	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerAdvice.java
+R081	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerExceptionAdvice.java	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerAdvice.java
+
+ea778a420fce3530bdc7706a04d90a7cbbed4f65, refactor: Post 도메인 피드백 반영 - update 메서드 파라미터 이름 통일 (other), Thu Aug 15 13:52:50 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+
+f7eabab38ec153cb0144cbf728a079fe81b1683b, refactor: PostApiController - ResponseEntity 팩토리 메서드 사용, Thu Aug 15 13:51:17 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+
+0574659f27673029f00661b23a4338ab69c62dd7, refactor: PostControllerAdvice 피드백 반영 - RestControllerAdvice - ResponseEntity 팩토리 메서드 사용, Thu Aug 15 13:49:52 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+
+e9b5f1d9ba058a8fdfc3e6229fc4c6f53df6fcfb, refactor: NotExistPostException -> NotFoundPostException 변경, Thu Aug 15 13:47:53 2019 +0900
+R068	src/main/java/com/wootecobook/turkey/post/service/exception/NotExistPostException.java	src/main/java/com/wootecobook/turkey/post/service/exception/NotFoundPostException.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+c070f3a3d97f22416dfd1521f94d66300c3f35ec, feat: Post 수정, 삭제 프론트 뷰, Thu Aug 15 11:38:50 2019 +0900
+A	src/main/resources/static/css/edit.css
+M	src/main/resources/static/js/post/api.js
+M	src/main/resources/static/js/post/post.js
+M	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/fragments/head.html
+M	src/main/resources/templates/fragments/write-post.html
+
+9ef4d1ad46ffd856665e6f0a7bf5c6cbd6f5ba45, refactor: CommentResponse  @JsonDeserialize(using = LocalDateTimeDeserializer.class) 제거, Thu Aug 15 11:24:15 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+
+0e94829ec881f68267d94d25f32c0ef75c642b03, refactor: Comment  @ForeignKey(name = "fk_comment_to_comment")) 추가, Thu Aug 15 11:21:14 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+
+f32519cf3b87a3449ddba04f15cef0f862fc627a, test: CommentTest 추가, Thu Aug 15 11:20:43 2019 +0900
+A	src/test/java/com/wootecobook/turkey/comment/domain/CommentTest.java
+
+3ef3cca4f20f3f2302c250ce1c9f8dd2f33bfa81, refactor: PostService에 @Transactional 적용, Thu Aug 15 10:23:40 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+
+0eea4a512b8542d6130d10469ea81518eb7bb3f2, feat: Post 생성, 조회 프론트 뷰 - ajax로 생성 로직 완료 - 첫 로딩시 10개의 포스팅 로딩 완료 - 스크롤을 90% 정도 내렸을 시 다음 10개의 포스팅 추가 구현 완료, Wed Aug 14 21:48:31 2019 +0900
+M	src/main/resources/static/css/index.css
+A	src/main/resources/static/js/post/api.js
+A	src/main/resources/static/js/post/post.js
+A	src/main/resources/static/js/post/template.js
+M	src/main/resources/templates/fragments/write-post.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/layouts/main.html
+
+2b80e4588d4ce46a67b39ebc43ce65d40e4cd1bc, fix: JPA Audit 적용 안되는 문제 해결 - @EnableJpaAuditing 추가, Wed Aug 14 21:47:18 2019 +0900
+M	src/main/java/com/wootecobook/turkey/TurkeyApplication.java
+
+01e003e284f03eec9c26b5198e22ef8718ae7897, feat: Logging을 위한 AOP 적용, Wed Aug 14 21:46:28 2019 +0900
+A	src/main/java/com/wootecobook/turkey/commons/aop/LoggingAspect.java
+
+b5a75a14d27312ae75b4fdcfc3ddef275e8fdafa, delete: CommentController, Wed Aug 14 19:58:50 2019 +0900
+D	src/main/java/com/wootecobook/turkey/comment/controller/CommentController.java
+
+0d53693667380bfaf32b29f52e81636adb57d8a0, feat: CommentApiControllerAdvice.class, Wed Aug 14 19:58:30 2019 +0900
+A	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerAdvice.java
+
+81bf61d3d86e07134dfbf132617d117ab7b9d655, refactor: Comment.contents  @Column(nullable = false) 추가, Wed Aug 14 18:23:04 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+
+5c5112298e1e948b364e3b1906ee69104e89f8d2, feat: login 기능 구현, Wed Aug 14 18:20:33 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+A	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiController.java
+A	src/main/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerExceptionAdvice.java
+A	src/main/java/com/wootecobook/turkey/login/service/LoginService.java
+A	src/main/java/com/wootecobook/turkey/login/service/dto/LoginRequest.java
+A	src/main/java/com/wootecobook/turkey/login/service/exception/LoginFailException.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+M	src/main/java/com/wootecobook/turkey/user/domain/UserRepository.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/test/java/com/wootecobook/turkey/login/controller/api/LoginApiControllerTests.java
+A	src/test/java/com/wootecobook/turkey/login/service/LoginServiceTest.java
+A	src/test/java/com/wootecobook/turkey/user/domain/UserTest.java
+M	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+7a9285095430f6ebb39e003477723a1d60778ac6, refactor: CommentApiController.list direction = Sort.Direction.ASC 파라미터 제거, Wed Aug 14 18:15:25 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+
+9f4961c628ca150c02d5601a584b152c1548735f, Merge remote-tracking branch 'origin/develop' into feature/comment, Wed Aug 14 18:10:26 2019 +0900
+b55f2bc10e75e6309c3dd99773a301a30a525f72, refactor: CommentService 메소드들 파라미터 수정, Wed Aug 14 18:08:31 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentCreate.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentUpdate.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+
+fdba73de3098b3fdf439422d01a2e90267f3f09c, feat: Comment 삭제, Wed Aug 14 17:45:09 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+A	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentUpdate.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+
+4cc87ffee3524e760c997d8534ff8ec52892f6b5, feat: Comment 삭제, Wed Aug 14 17:18:02 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/CommentAuthException.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+A	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentDeleteException.java
+M	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+
+9008e0ac5fe46ea38e496c815e282ed562b06fba, Merge branch 'master' into feature/post, Wed Aug 14 16:49:40 2019 +0900
+91de7340b7bbcc591397f96ab204193220e68689, merge: User 도메인 / Post 도메인, Wed Aug 14 16:33:56 2019 +0900
+29683858f1cc51a13e3ac92c98f63dfce2e04a8e, feat: Comment 등록, Wed Aug 14 16:28:05 2019 +0900
+M	build.gradle
+M	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+A	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentCreate.java
+M	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+A	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentNotFoundException.java
+A	src/main/java/com/wootecobook/turkey/comment/service/exception/CommentSaveException.java
+R063	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTest.java	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTests.java
+
+f988b14104475ed8864ddbf61e295dd9e9f18827, refactor: PostService 테스트 코드 중복 제거, Wed Aug 14 16:27:32 2019 +0900
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+45fac706ffaa44ed8139222914ff4c29897d40ca, styles: 코드 포맷팅, Wed Aug 14 16:21:22 2019 +0900
+M	src/test/java/com/wootecobook/turkey/post/domain/PostTest.java
+
+1c29990e4322a8676fcbee5bd05956601f5c9357, refactor: NotExistPostException 에러메세지 관리, Wed Aug 14 16:19:11 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/exception/NotExistPostException.java
+
+4070c7e01f7bbfe4edbced8ac7dfccb2949a5c6e, refactor: Post domain 관련 exception 에러메세지 관리, Wed Aug 14 16:18:17 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/domain/Contents.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidContentException.java
+M	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidPostException.java
+M	src/main/java/com/wootecobook/turkey/post/domain/exception/PostUpdateFailException.java
+
+0d1c1aba9d07e7d4b0e808552a9a50af6f45c306, Merge pull request #13 from woowa-turkey/feature/user, Wed Aug 14 16:15:57 2019 +0900
+4e9f0caa3a49719530ac3f80cc79508d726274e0, refactor: PostBadRequestException 에러메시지 관리, Wed Aug 14 16:15:49 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/controller/exception/PostBadRequestException.java
+
+6336db5bd8ee9d17143ece9cb4d4d6c2bbd7e747, refactor: 컨트롤러 테스트 이름 수정, Wed Aug 14 16:15:02 2019 +0900
+R097	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTest.java	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTests.java
+R099	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTest.java	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTests.java
+
+bfc078b8a9fce2a87793e4cf7ff3b5f59f3a234b, feat: Post 삭제 기능 구현, Wed Aug 14 16:11:30 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTest.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+80d6018411959d397ccfc08629d7858b8277c50e, refactor: Exception 수정, Wed Aug 14 16:09:06 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/NotFoundUserException.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/SignUpException.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/UserDeleteException.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTest.java
+
+51a26723462a92f2a2ee571cd2f7553fd8b16fd4, refactor: User 검증 방식 수정, Wed Aug 14 15:58:34 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+A	src/main/java/com/wootecobook/turkey/user/domain/UserValidator.java
+
+b71afda30ea1a613f98be90b644d56196665accc, feat: Post 수정 기능 구현, Wed Aug 14 15:53:38 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+A	src/main/java/com/wootecobook/turkey/post/domain/exception/PostUpdateFailException.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTest.java
+M	src/test/java/com/wootecobook/turkey/post/domain/PostTest.java
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+33692e543970aa8ccb0f1613f6394950cfcbb4f6, refactor: 테스트 코드 수정, Wed Aug 14 15:32:31 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/api/ErrorMessage.java
+M	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTest.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTest.java
+
+23a2d39da6295f2898ca68ecafcfda978568e0a9, refactor: 유저 DTO Lombok ToString 어노테이션 사용, Wed Aug 14 15:07:31 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/service/dto/UserRequest.java
+M	src/main/java/com/wootecobook/turkey/user/service/dto/UserResponse.java
+
+23bebf45bc5a8fbe5038a2bb93d4d29e7ce6791b, test: 페이지 조회, Wed Aug 14 15:03:50 2019 +0900
+M	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTest.java
+
+91c67d86230019a1bd64ff0a039112b1d14cf0c3, refactor: PostConrollerAdvice 지정 패키지 속성 변경, Wed Aug 14 15:02:50 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+
+3c6c667ec72921fbb730f30b5ae35b22e90aee3a, refactor: ControllerAdvice basePackages -> basePackageClasses 변경, Wed Aug 14 13:20:00 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerExceptionAdvice.java
+
+ea4dafc318d8f9d95cbb9f4ee2fd0b9c2349183a, feat: PostController 생성 로직 구현, Wed Aug 14 11:55:27 2019 +0900
+A	src/main/java/com/wootecobook/turkey/commons/ErrorMessage.java
+A	src/main/java/com/wootecobook/turkey/post/PostControllerAdvice.java
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+A	src/main/java/com/wootecobook/turkey/post/controller/exception/PostBadRequestException.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+A	src/test/java/com/wootecobook/turkey/post/controller/PostApiControllerTest.java
+
+5d19d8e6ca8620e3bd9b1a8255f9b0f4955a4b4f, settings: WebTestClient 의존성 추가, Wed Aug 14 11:52:45 2019 +0900
+M	build.gradle
+
+ea0ad35a0895b1f9bb5ba44af0f2deb9ec3d8574, feat: Comment 목록 조회, Wed Aug 14 11:52:18 2019 +0900
+M	build.gradle
+A	src/main/java/com/wootecobook/turkey/comment/controller/api/CommentApiController.java
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/CommentRepository.java
+M	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+A	src/main/java/com/wootecobook/turkey/comment/service/dto/CommentResponse.java
+A	src/test/java/com/wootecobook/turkey/comment/controller/api/CommentApiControllerTest.java
+
+7b2b079e1a6acaf8bff6e6dd5f1f8f3888429821, test: UserService 테스트 작성, Wed Aug 14 11:51:15 2019 +0900
+A	src/test/java/com/wootecobook/turkey/user/service/UserServiceTest.java
+
+a6e6fa28c329e0b24ba9004c08c514edc9ffca97, test: 회원가입 폼 이동 테스트 작성, Wed Aug 14 11:14:31 2019 +0900
+A	src/test/java/com/wootecobook/turkey/user/controller/web/UserControllerTest.java
+
+afa94f5184e56d304ddf7b7ce8aa9c1009d5c22b, refactor: Mock 테스트를 DataJpaTest로 변경, Wed Aug 14 11:08:39 2019 +0900
+M	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+92fe9afa8afe83e862901b6540b2dd5d1fa0a999, refactor: User 연관 관계 제거, Wed Aug 14 11:08:11 2019 +0900
+M	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Contents.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+M	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+M	src/test/java/com/wootecobook/turkey/post/domain/PostTest.java
+
+dd5b03f045c99f9e438731c0e1c7b7ac15042b06, test: 유저 조회 테스트 작성, Wed Aug 14 11:07:52 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerExceptionAdvice.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTest.java
+
+5e32efadec7b60b11fcbe4039402ca7384840989, feat: 유저 삭제 기능 구현, Wed Aug 14 10:57:31 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerExceptionAdvice.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/main/java/com/wootecobook/turkey/user/service/exception/UserDeleteException.java
+A	src/test/java/com/wootecobook/turkey/user/controller/BaseControllerTest.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTest.java
+
+f0804621308e6536ce78925b5a8efbabc076e002, test: PostService 생성 및 조회 테스트 구현 중 코드 프리징 (19.08.13), Tue Aug 13 20:17:45 2019 +0900
+A	src/test/java/com/wootecobook/turkey/post/service/PostServiceTest.java
+
+769b212e276ef1aef53bb35395eddc966359ee27, feat: PostService 생성기능 및 페이징 처리 조회기능 - Controller 및 Service 구현 - Request용 Dto인 PostRequest와 Response용 Dto인 PostResponse 구현 - 테스트는 아직 미완성, Tue Aug 13 20:16:06 2019 +0900
+M	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+A	src/main/java/com/wootecobook/turkey/post/controller/PostApiController.java
+D	src/main/java/com/wootecobook/turkey/post/controller/PostController.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+A	src/main/java/com/wootecobook/turkey/post/domain/PostRepository.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+A	src/main/java/com/wootecobook/turkey/post/service/dto/PostRequest.java
+A	src/main/java/com/wootecobook/turkey/post/service/dto/PostResponse.java
+A	src/main/java/com/wootecobook/turkey/post/service/exception/NotExistPostException.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+
+1f8086f05d61920c06028bdf3aca4a24294795fb, refactor: 유저 조회, 생성 기능 Controller -> RestController 변경, Tue Aug 13 17:52:33 2019 +0900
+D	src/main/java/com/wootecobook/turkey/user/controller/UserControllerExceptionAdvice.java
+A	src/main/java/com/wootecobook/turkey/user/controller/api/ErrorMessage.java
+M	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+A	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiControllerExceptionAdvice.java
+R061	src/main/java/com/wootecobook/turkey/user/controller/UserController.java	src/main/java/com/wootecobook/turkey/user/controller/web/UserController.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+M	src/main/java/com/wootecobook/turkey/user/service/dto/UserRequest.java
+M	src/main/java/com/wootecobook/turkey/user/service/dto/UserResponse.java
+M	src/main/java/com/wootecobook/turkey/user/service/exception/SignUpException.java
+D	src/test/java/com/wootecobook/turkey/user/controller/UserControllerTest.java
+M	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTest.java
+
+a429edeb1d9b66cb2390eaeefdf492644b028a2f, refactor: UserRestController -> UserApiController 이름 변경, Tue Aug 13 16:26:53 2019 +0900
+R089	src/main/java/com/wootecobook/turkey/user/controller/api/UserRestController.java	src/main/java/com/wootecobook/turkey/user/controller/api/UserApiController.java
+A	src/test/java/com/wootecobook/turkey/user/controller/api/UserApiControllerTest.java
+
+fed0fb4453d8911fb5f00ade0449a5170813d3e2, feat: 유저 조회 기능 구현, Tue Aug 13 16:22:59 2019 +0900
+A	src/main/java/com/wootecobook/turkey/user/controller/api/UserRestController.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/main/java/com/wootecobook/turkey/user/service/dto/UserResponse.java
+A	src/main/java/com/wootecobook/turkey/user/service/exception/NotFoundUserException.java
+
+87642c6bc67656a04da02d5ad3165560f7ef930d, feat: Post Entity 및 Contents Value Type 정의 - 커스텀 Exception 정의 (InvalidContentException, InvalidPostException) - 테스트 코드 작성, Tue Aug 13 15:45:13 2019 +0900
+A	src/main/java/com/wootecobook/turkey/post/domain/Contents.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+A	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidContentException.java
+A	src/main/java/com/wootecobook/turkey/post/domain/exception/InvalidPostException.java
+A	src/test/java/com/wootecobook/turkey/post/domain/ContentsTest.java
+A	src/test/java/com/wootecobook/turkey/post/domain/PostTest.java
+
+4f034440533129b26680bb74365c70436239f0be, feat: 유저 생성 검증 기능 구현, Tue Aug 13 15:42:21 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/controller/UserController.java
+A	src/main/java/com/wootecobook/turkey/user/controller/UserControllerExceptionAdvice.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/main/java/com/wootecobook/turkey/user/service/exception/SignUpException.java
+A	src/main/resources/templates/signup.html
+M	src/test/java/com/wootecobook/turkey/user/controller/UserControllerTest.java
+
+09cec19dd028c469f6d7a67ae7098e39434b4712, feat: 유저 생성 기능 구현, Tue Aug 13 15:11:30 2019 +0900
+M	build.gradle
+M	src/main/java/com/wootecobook/turkey/user/controller/UserController.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/main/java/com/wootecobook/turkey/user/service/dto/UserRequest.java
+A	src/test/java/com/wootecobook/turkey/user/controller/UserControllerTest.java
+
+6b50029ec4cbc4cd579427622c8203d456ab7103, feat: User 도메인 생성, Tue Aug 13 14:36:04 2019 +0900
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+A	src/main/java/com/wootecobook/turkey/user/domain/UserRepository.java
+
+f5246f7bd1795a3ac2361f054dfc71010acc510c, feat: 협업 베이스 코드 작성, Tue Aug 13 14:07:22 2019 +0900
+A	src/main/java/com/wootecobook/turkey/commons/resolver/UserSession.java
+M	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+M	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+
+9ebc584d4769a6c146f1b6f10a65c30740b0291b, refactor: junit4 어노테이션 junit5로 변경, Tue Aug 13 12:11:22 2019 +0900
+M	src/test/java/com/wootecobook/turkey/TurkeyApplicationTests.java
+
+f3e58c6d9bea1e4ab968b6198bd61a70e2e731c5, feat: template main layout 생성, 정적 컨텐츠 추가(css, images, js), Tue Aug 13 12:10:48 2019 +0900
+A	src/main/resources/static/css/app.css
+A	src/main/resources/static/css/index.css
+A	src/main/resources/static/images/default/eastjun_big.jpg
+A	src/main/resources/static/images/default/eastjun_profile.jpg
+A	src/main/resources/static/images/default/icons.png
+A	src/main/resources/static/images/default/icons2.png
+A	src/main/resources/static/images/default/plus_btn.png
+A	src/main/resources/static/images/default/profile-default.png
+A	src/main/resources/static/images/logo/favicon.ico
+A	src/main/resources/static/images/logo/logo_thumnail_bg.jpg
+A	src/main/resources/templates/fragments/head.html
+A	src/main/resources/templates/fragments/left-panel.html
+A	src/main/resources/templates/fragments/nav.html
+A	src/main/resources/templates/fragments/script.html
+A	src/main/resources/templates/fragments/write-post.html
+A	src/main/resources/templates/index.html
+A	src/main/resources/templates/layouts/main.html
+
+9ca994f6017831f4448068d36aafe28f4896ff29, feat: 도메인 BaseEntity 상속, Tue Aug 13 11:23:28 2019 +0900
+M	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+M	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+M	src/main/java/com/wootecobook/turkey/user/domain/User.java
+
+d213d8e43959f6e9f16af901d4cf62f22e3f5d09, feat: BaseEntity 생성, Tue Aug 13 11:21:36 2019 +0900
+A	src/main/java/com/wootecobook/turkey/commons/BaseEntity.java
+
+898a806084804bfbfc51bc7a67fdf90e4027510a, 프로젝트 초기 세팅, Mon Aug 12 17:58:53 2019 +0900
+A	.gitignore
+A	build.gradle
+A	gradle/wrapper/gradle-wrapper.jar
+A	gradle/wrapper/gradle-wrapper.properties
+A	gradlew
+A	gradlew.bat
+A	settings.gradle
+A	src/main/java/com/wootecobook/turkey/TurkeyApplication.java
+A	src/main/java/com/wootecobook/turkey/comment/controller/CommentController.java
+A	src/main/java/com/wootecobook/turkey/comment/domain/Comment.java
+A	src/main/java/com/wootecobook/turkey/comment/service/CommentService.java
+A	src/main/java/com/wootecobook/turkey/post/controller/PostController.java
+A	src/main/java/com/wootecobook/turkey/post/domain/Post.java
+A	src/main/java/com/wootecobook/turkey/post/service/PostService.java
+A	src/main/java/com/wootecobook/turkey/user/controller/UserController.java
+A	src/main/java/com/wootecobook/turkey/user/domain/User.java
+A	src/main/java/com/wootecobook/turkey/user/service/UserService.java
+A	src/main/resources/application.yml
+A	src/main/resources/logback-access.xml
+A	src/test/java/com/wootecobook/turkey/TurkeyApplicationTests.java
+
+e0e9525a4907e494a9ca6f6e67952b50261c35dd, Initial commit, Fri Aug 2 16:43:16 2019 +0900
+A	README.md

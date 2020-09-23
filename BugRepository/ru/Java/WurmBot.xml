@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="WurmBot">
+	<bug id="35" opendate="2019-01-12 17:47:00" fixdate="2019-01-12 18:07:00">
+		<buginformation>
+			<summary>CrafterBot не находит предметы по координатам игрового окна</summary>
+			<description>Ключи ssxy и stxy</description>
+		</buginformation>
+		<fixedfiles>
+			<file>main/java/net/ildar/wurm/Utils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="28" opendate="2019-01-02 10:21:32" fixdate="2019-02-24 17:21:54">
+		<buginformation>
+			<summary>ImproveBot делает большие паузы</summary>
+			<description>При работе с blacksmiting делает паузу секунд 5-10, потом выдает сообщение "Improve action didn't finish!" и продолжает работать дальше. Через некоторое время все повторяется.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>main/java/net/ildar/wurm/bot/ImproverBot.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="24" opendate="2018-12-28 23:03:15" fixdate="2019-01-02 08:31:01">
+		<buginformation>
+			<summary>Зависание игры при выводе в консоль большого количества сообщений</summary>
+			<description>Если быстро запускать и останавливать ботов то игра может зависнуть в функции Utils.consolePrint(String) из-за дедлока. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>main/java/net/ildar/wurm/Mod.java</file>
+			<file>main/java/net/ildar/wurm/Utils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="21" opendate="2018-12-28 20:11:32" fixdate="2019-01-02 08:31:19">
+		<buginformation>
+			<summary>Исключение при выключении любого бота</summary>
+			<description>Периодически при выключении бота падает исключение:  ProspectorBot was stopped Unable to configure  ProspectorBot java.lang.IndexOutOfBoundsException: Index: 1, Size: 1 at java.util.ArrayList.rangeCheck(ArrayList.java:657) at java.util.ArrayList.remove(ArrayList.java:496) at net.ildar.wurm.bot.Bot.deactivate(Bot.java:220) at net.ildar.wurm.bot.Bot.lambda$new$2(Bot.java:184) at net.ildar.wurm.bot.Bot.handleInput(Bot.java:271) at net.ildar.wurm.Mod.configureBot(Mod.java:417) at net.ildar.wurm.Mod.handleInput(Mod.java:71) at com.wurmonline.client.console.WurmConsole.handleDevInput(WurmConsole.java) at com.wurmonline.client.console.WurmConsole.handleInput2$1(WurmConsole.java:587) at sun.reflect.GeneratedMethodAccessor25.invoke(Unknown Source) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.gotti.wurmunlimited.modsupport.console.ModConsole$1$1.invoke(ModConsole.java:52) at org.gotti.wurmunlimited.modloader.classhooks.HookManager.invoke(HookManager.java:344) at com.wurmonline.client.console.WurmConsole.handleInput2(WurmConsole.java) at com.wurmonline.client.console.WurmConsole.handleInput(WurmConsole.java:243) at com.wurmonline.client.renderer.gui.ConsoleComponent.handleInput(ConsoleComponent.java:42) at com.wurmonline.client.renderer.gui.WurmInputField.keyTyped(WurmInputField.java:739) at com.wurmonline.client.renderer.gui.HeadsUpDisplay.keyTyped(HeadsUpDisplay.java:1087) at com.wurmonline.client.WurmEventHandler.keyTyped(WurmEventHandler.java:155) at com.wurmonline.client.WurmEventHandler.handleKeyEvents(WurmEventHandler.java:433) at com.wurmonline.client.WurmEventHandler.handleEvents(WurmEventHandler.java:405) at com.wurmonline.client.WurmClientBase.handleEvents(WurmClientBase.java:375) at com.wurmonline.client.WurmClientBase.runGameLoop(WurmClientBase.java:529) at com.wurmonline.client.WurmClientBase.runConnectionLoop(WurmClientBase.java:325) at com.wurmonline.client.WurmClientBase.runGame(WurmClientBase.java:304) at com.wurmonline.client.WurmClientBase.run(WurmClientBase.java:1597) at java.lang.Thread.run(Thread.java:748)  От типа бота вроде бы не зависит, точно замечено на ProspectorBot, FisherBot, MinerBot, ForagerBot</description>
+		</buginformation>
+		<fixedfiles>
+			<file>main/java/net/ildar/wurm/Mod.java</file>
+			<file>main/java/net/ildar/wurm/bot/Bot.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="15" opendate="2018-12-27 08:41:07" fixdate="2018-12-27 19:29:36">
+		<buginformation>
+			<summary>Некорректное описание команд в InputKey</summary>
+			<description>ItemMoverBot У команды stid параметры отсутствуют, в то время как обработчик команды handleTargetIdChange ожидает 1 параметр - идентификатор. Аналогично у команды stcn и ее обработчика handleItemNumberInsideContainerChange.  FarmerBot Аналогично у команды and и обработчика handleDropNameAdding.</description>
+		</buginformation>
+		<fixedfiles>
+			<file>main/java/net/ildar/wurm/bot/ItemMoverBot.java</file>
+			<file>main/java/net/ildar/wurm/bot/FarmerBot.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="13" opendate="2018-12-24 19:11:40" fixdate="2019-03-02 00:04:32">
+		<buginformation>
+			<summary>ImproverBot не видит некоторых металлов</summary>
+			<description>Как минимум не видит золото</description>
+		</buginformation>
+		<fixedfiles>
+			<file>main/java/net/ildar/wurm/bot/ImproverBot.java</file>
+			<file>main/java/net/ildar/wurm/Utils.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="10" opendate="2018-12-24 19:00:39" fixdate="2018-12-25 15:40:38">
+		<buginformation>
+			<summary>Во время рыбалки может быть выбрана удочка без лески</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>main/java/net/ildar/wurm/bot/FisherBot.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="9" opendate="2018-12-24 18:59:32" fixdate="2018-12-25 13:11:38">
+		<buginformation>
+			<summary>Во время рыбалки не меняется порванная леска</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>main/java/net/ildar/wurm/bot/FisherBot.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

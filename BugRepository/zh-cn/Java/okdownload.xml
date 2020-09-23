@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="okdownload">
+	<bug id="107" opendate="2018-06-26 02:30:30" fixdate="2018-07-04 08:31:40">
+		<buginformation>
+			<summary>okdownload 崩溃</summary>
+			<description>我使用的是1.0.3的代码现在发现有如下问题 ![image](https://user-images.githubusercontent.com/1260653/42070881-04105302-7b8b-11e8-9b9d-4e93bdd6720a.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/Util.java</file>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/core/UtilTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="89" opendate="2018-06-05 02:09:49" fixdate="2018-09-06 06:13:33">
+		<buginformation>
+			<summary>对单个下载任务进行频繁开始，取消下载操作会报空指针异常！</summary>
+			<description>### OkDownload Version  v1.0.3  ### Problem Describe  I occur some problem, I also search on [issues][issues-url] and [wiki][wiki-url], I even checked the source code, but it can't help, so my real problem is:...  ### Log  There is the whole log from LogCat when I occur the problem(I know we can use [this tool][okcat-wiki-url] to let log more readable):  ``` ```  [issues-url]: https://github.com/lingochamp/okdownload/issues [wiki-url]: https://github.com/lingochamp/okdownload/wiki [okcat-wiki-url]: https://github.com/lingochamp/okdownload/wiki/Debug-OkDownload </description>
+		</buginformation>
+		<fixedfiles>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/interceptor/connect/HeaderInterceptor.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="42" opendate="2018-04-25 06:20:28" fixdate="2018-04-26 15:42:46">
+		<buginformation>
+			<summary>没搞明白是怎么样给okhttp设置请求头的？</summary>
+			<description>.setHeaderMapFields(map)好像没看到有把设置的请求头带过去</description>
+		</buginformation>
+		<fixedfiles>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/core/download/ConnectTrialTest.java</file>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/DownloadTaskTest.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/download/ConnectTrial.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/Util.java</file>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/core/interceptor/connect/HeaderInterceptorTest.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/interceptor/connect/HeaderInterceptor.java</file>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/core/UtilTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="41" opendate="2018-04-24 09:20:54" fixdate="2018-04-26 14:28:47">
+		<buginformation>
+			<summary>目标存储路径是文件，而不是文件夹情况下的异常处理设计不太合理</summary>
+			<description>在`DownloadTask.java`中  ```java try {     ...     if (file.exists() &amp;&amp; file.isFile()) {     // it have already provided file for it. throw new IllegalArgumentException("If you want filename from " + "response please make sure you provide path is directory " + file.getPath());     }     ... } finally {     this.id = OkDownload.with().breakpointStore().findOrCreateId(this); } ``` 此处判断`file.exists() &amp;&amp; file.isFile()`抛出`IllegalArgumentException`异常， 当此判断条件成立时，因为加了finally，所以代码还会执行 `this.id = OkDownload.with().breakpointStore().findOrCreateId(this);` 而此时会抛出 ```log E/AndroidRuntime: FATAL EXCEPTION: main     Process: com.xxx.sample.webdownloader, PID: 16251     java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.liulishuo.okdownload.core.download.DownloadStrategy$FilenameHolder.get()' on a null object reference         at com.liulishuo.okdownload.DownloadTask.getFilename(DownloadTask.java:230)         at com.liulishuo.okdownload.core.breakpoint.KeyToIdMap.generateKey(KeyToIdMap.java:63)         at com.liulishuo.okdownload.core.breakpoint.KeyToIdMap.get(KeyToIdMap.java:43)         at com.liulishuo.okdownload.core.breakpoint.BreakpointStoreOnCache.findOrCreateId(BreakpointStoreOnCache.java:146)         at com.liulishuo.okdownload.core.breakpoint.BreakpointStoreOnSQLite.findOrCreateId(BreakpointStoreOnSQLite.java:100)         at com.liulishuo.okdownload.DownloadTask.&lt;init&gt;(DownloadTask.java:190)         at com.liulishuo.okdownload.DownloadTask$Builder.build(DownloadTask.java:838) ``` 从而掩盖了 `throw new IllegalArgumentException("If you want filename from " + "response please make sure you provide path is directory " + file.getPath());` 的异常信息。  导致追查问题时不方便。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/DownloadTask.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="39" opendate="2018-04-23 02:58:57" fixdate="2018-04-26 13:56:28">
+		<buginformation>
+			<summary>断点续传进度有误</summary>
+			<description>在demo的SingleDownload中，我下载了百分之五六十，然后点击取消，关掉app，刷掉进程。然后重新进去，个别时候没有进度需要重新下载，个别时候进度只有百分之二三十左右，但是我退出之前显示的进度确实百分之五六十。不知道这个问题是出在哪里。</description>
+		</buginformation>
+		<fixedfiles>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/interceptor/RetryInterceptor.java</file>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/core/file/MultiPointOutputStreamTest.java</file>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/core/dispatcher/DownloadDispatcherTest.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/download/DownloadCall.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/file/MultiPointOutputStream.java</file>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/core/interceptor/RetryInterceptorTest.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/download/DownloadChain.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/file/FileLock.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/interceptor/BreakpointInterceptor.java</file>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/core/download/DownloadCallTest.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/core/dispatcher/DownloadDispatcher.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="10" opendate="2018-02-14 09:16:04" fixdate="2018-03-26 17:14:18">
+		<buginformation>
+			<summary>当任务开始时，获取到块的下载速度异常大</summary>
+			<description>文件大小：1MB ![qq 20180214171233](https://user-images.githubusercontent.com/28668856/36196092-8e52bcee-11aa-11e8-8f12-e30fd67cc5d5.png)  文件大小：50MB ![qq 20180214171802](https://user-images.githubusercontent.com/28668856/36196260-1f1ad612-11ab-11e8-9db8-1ca8b6622b3e.png)  下载开始一段时间后就不会出现这种情况 </description>
+		</buginformation>
+		<fixedfiles>
+			<file>okdownload/src/test/java/com/liulishuo/okdownload/SpeedCalculatorTest.java</file>
+			<file>okdownload/src/main/java/com/liulishuo/okdownload/SpeedCalculator.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

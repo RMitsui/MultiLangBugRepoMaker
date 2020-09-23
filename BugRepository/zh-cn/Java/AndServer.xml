@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="AndServer">
+	<bug id="175" opendate="2019-04-12 09:31:20" fixdate="2019-07-02 01:25:34">
+		<buginformation>
+			<summary>参数值有“=”时无法获取到参数值</summary>
+			<description>![1234561](https://user-images.githubusercontent.com/8955999/56027504-c2476c80-5d48-11e9-8b83-4cad947e5c1c.png) ![1234562](https://user-images.githubusercontent.com/8955999/56027512-c5daf380-5d48-11e9-8872-2d2cf33087dd.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>api/src/main/java/com/yanzhenjie/andserver/http/Uri.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="160" opendate="2019-03-01 09:58:39" fixdate="2019-07-02 01:25:33">
+		<buginformation>
+			<summary>一个空指针问题</summary>
+			<description>java.lang.NullPointerException                                                                         at com.yanzhenjie.andserver.http.session.StandardSessionManager.&lt;init&gt;(StandardSessionManager.java:36)                                                                         at com.yanzhenjie.andserver.DispatcherHandler.&lt;init&gt;(DispatcherHandler.java:74)                                                                         at com.yanzhenjie.andserver.Server$1.run(Server.java:89)                                                                         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)                                                                         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)                                                                         at java.lang.Thread.run(Thread.java:841)</description>
+		</buginformation>
+		<fixedfiles>
+			<file>api/src/main/java/com/yanzhenjie/andserver/AndServer.java</file>
+			<file>api/src/main/java/com/yanzhenjie/andserver/framework/website/AssetsWebsite.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="145" opendate="2019-01-18 09:29:17" fixdate="2019-01-23 07:30:21">
+		<buginformation>
+			<summary>当遇到POST提交参数中有base64编码图片时，可能存在问题</summary>
+			<description>当客户端是C#的时候，请求的body一般是手动组装，如果imageBase64 字符串没有进行encode的时候，参数值中会出现 “=” 号，那么下面这段代码可能存在问题：  ```     @NonNull     private static MultiValueMap&lt;String, String&gt; parseParameters(@NonNull String input) {         MultiValueMap&lt;String, String&gt; parameters = new LinkedMultiValueMap&lt;&gt;();         StringTokenizer tokenizer = new StringTokenizer(input, "&amp;");         while (tokenizer.hasMoreElements()) {             String element = tokenizer.nextToken();             int end = element.lastIndexOf("=");              if (end &gt; 0) {                 String key = element.substring(0, end);                 if (end + 1 &lt;= element.length()) {                     String value = element.substring(end + 1, element.length());                     parameters.add(key, UrlCoder.urlDecode(value, Charsets.UTF_8));                 }             }         }         return parameters;     } ```  `int end = element.lastIndexOf("=");` 这里定位到最后一个 '=' 会导致截取的参数名不正确，从而引发 `ParamMissingException`   [test_data.txt](https://github.com/yanzhenjie/AndServer/files/2772336/test_data.txt)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>api/src/main/java/com/yanzhenjie/andserver/http/StandardRequest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="34" opendate="2017-12-12 04:30:12" fixdate="2018-03-11 04:34:51">
+		<buginformation>
+			<summary>StorageWebsite  中文路径无法访问</summary>
+			<description>中文路径如何启动服务器</description>
+		</buginformation>
+		<fixedfiles>
+			<file>andserver/src/main/java/com/yanzhenjie/andserver/util/HttpRequestParser.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

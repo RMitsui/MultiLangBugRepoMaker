@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>76</id>
+		<title>同じssae 内の別のアニメに属するユーザーデータがコールバックされる</title>
+		<body>``` C++ test.ssae   anime_1   どこかのパーツにユーザーデータのキーあり 整数値：1   anime_2   どこかのパーツにユーザーデータのキーあり 整数値：2   anime_3   どこかのパーツにユーザーデータのキーあり 整数値：3  SsRootPart.AnimationStop(); // 停止 SsRootPart.FunctionUserData += OnUserData; // コールバック指定 SsRootPart.AnimationPlay(2,1); // anime_3 のみ再生  void OnUserData(...int AnimationNo...Library_SpriteStudio.KeyFrame.ValueUser.Data Data...) {   // 問題   //３回呼ばれる。   // Data.NumberInt には 1, 2, 3 が入っているのでanime_1, anime_2 が呼ばれているように見える。   // なお、AnimationNo には常に2( anime_3 を示す)が入っている } ```  テストデータあります。 </body>
+		<created>2014-12-05 09:31:22</created>
+		<closed>2015-07-23 03:16:44</closed>
+	</bug>
+	<bug>
+		<id>69</id>
+		<title>カメラの下に複数のviewを作成すると表示がおかしくなる場合がある</title>
+		<body>Camera2D Pixel (1080p)の下にViewを複数作成し、それぞれのViewにアニメーションを配置します。 アニメーションの一部のスプライトが同時に再生している他のアニメーションの頂点データを使用して表示されます。 複数のスプライトが重なり表示が崩れてしまいます。  再現性は低く（１０回中３回くらい）必ず発生するわけではありません。 読み込みの終了順などが関係しているのかもしれません。 表示が重なっているため、ほかのスプライトの頂点、UV情報を使用しているように見えます。 </body>
+		<created>2014-10-31 07:15:07</created>
+		<closed>2015-09-09 06:15:53</closed>
+	</bug>
+	<bug>
+		<id>67</id>
+		<title>インスタンスパーツを持つアニメーションをスケールで反転した場合に結果がおかしくなる</title>
+		<body>インスタンスパーツを持ったアニメーションを、制御用ノードのX/Yスケールで反転させた場合に、表示結果に反映されない。 位置関係・移動方向など一部情報は反映されているようですが、インスタンスパーツそのものが反転表示されていないようです。 </body>
+		<created>2014-10-16 19:19:51</created>
+		<closed>2014-10-26 19:44:23</closed>
+	</bug>
+	<bug>
+		<id>66</id>
+		<title>インスタンスパーツに設定した透明度が反映されない</title>
+		<body>インスタンスとして配置したパーツに透明度を設定した場合、透明度が反映されません。 </body>
+		<created>2014-10-16 05:26:16</created>
+		<closed>2015-09-09 06:16:28</closed>
+	</bug>
+	<bug>
+		<id>65</id>
+		<title>cript_SpriteStudio_PartsRootのFrameNoNowに意図しない大きな値が入る</title>
+		<body>Debug.Log(cript_SpriteStudio_PartsRoot.FrameNoNow); これを、Consoleで確認すると、最初のフレームに500くらいの値が入ってしまいます </body>
+		<created>2014-10-08 10:54:31</created>
+		<closed>2015-09-09 08:03:23</closed>
+	</bug>
+	<bug>
+		<id>63</id>
+		<title>spriteStudioRoot.AnimationPlayでアニメを再生した場合に１フレーム別のモーションが表示される</title>
+		<body>spriteStudioRoot.AnimationPlayでモーションを設定してアニメを再生した場合、設定したフレームに別のモーションが表示される事があります。 アニメのフレーム（コマ）は無関係に再生したフレームに一瞬表示されます。 アニメの再生速度を0.1のように遅くするとアニメのフレーム（コマ）の進みに関係なく一瞬ちらつくのが確認できます。 </body>
+		<created>2014-10-07 08:35:20</created>
+		<closed>2014-10-15 06:25:46</closed>
+	</bug>
+	<bug>
+		<id>62</id>
+		<title>アニメのフレームが進むタイミングで表示がちらつく場合がある</title>
+		<body>アニメのフレーム（コマ）が進むタイミングでスプライトがちらつく場合があります。 親子のパーツの計算中に描画がされているように見えます。 アニメの速度を0.1のように遅くすると現象を確認しやすいです。  子供のパーツほどちらつきやすくなるようです。 おそらく角度の継承の結果に誤差があるように見えます。 </body>
+		<created>2014-10-06 10:00:38</created>
+		<closed>2014-10-15 06:24:59</closed>
+	</bug>
+	<bug>
+		<id>59</id>
+		<title>インスタンスのアニメーションの終了位置が異なる場合がある。</title>
+		<body>インスタンスを使用したアニメーションの再生が、「時間満了で終了した」場合に、インスタンスで呼び出されているアニメーションの停止フレームが（SS上でのプレビューと比較して）+1ないし-1の状態で停止することがあります。  発生確率: ジャストで停止する場合と半々位  発生環境: CPU: Core-i7(3770K) 3.5GHz Memory: 32GB GPU: nVIDIA GeForce GTX 770 / VRAM 4GB OS: Windows7 Unity: ver. 3.57 SS5PU: ver1.1RC1a (2014/10/3 早朝版) </body>
+		<created>2014-10-03 01:55:01</created>
+		<closed>2015-09-09 08:04:14</closed>
+	</bug>
+	<bug>
+		<id>58</id>
+		<title>アニメーションの逆再生時に、先頭フレームが1描画フレームだけ出てしまう</title>
+		<body>アニメーションを逆再生すると、再生環境での1描画期間、AnimationPlayで再生指定した再生区間の先頭のフレームが表示されてしまう。 </body>
+		<created>2014-10-03 01:46:01</created>
+		<closed>2014-10-26 19:43:58</closed>
+	</bug>
+	<bug>
+		<id>57</id>
+		<title>描画順がSS5と異なる場合がある</title>
+		<body>描画順がSS5と異なる場合があります。 加算パーツが奥に表示されているように見えます。 </body>
+		<created>2014-10-03 01:19:16</created>
+		<closed>2014-10-03 03:27:57</closed>
+	</bug>
+	<bug>
+		<id>56</id>
+		<title>カメラの位置を変更するとインスタンスパーツのレイアウトが崩れる</title>
+		<body>カメラの位置を変更するとインスタンスパーツの位置が意図しない位置に配置されます。 </body>
+		<created>2014-10-03 01:16:04</created>
+		<closed>2014-10-26 19:44:45</closed>
+	</bug>
+	<bug>
+		<id>55</id>
+		<title>インスタンスパラメータのスピードが反映されてない</title>
+		<body>インスタンスパラメータのスピードを0.5に設定してもインスタンスアニメの速度が変わらない。ｌ </body>
+		<created>2014-09-26 07:26:35</created>
+		<closed>2014-09-30 01:23:28</closed>
+	</bug>
+	<bug>
+		<id>52</id>
+		<title>インスタンスの再生回数が１回の時でもループする</title>
+		<body># 現象  Issue52 内の sspj に含まれる Layout_Label.ssae を再生した時に、 hazure_left_in_down:moji05 インスタンスの再生は、 SS5 本体では1回で終わりますが、プレイヤー側は先頭に戻ってループします。 1. インスタンスキーが無い場合 1. インスタンスキーが先頭にある場合 1. インスタンスキーが20フレーム目にある場合 の3パターンのアニメが入っていますがいずれも、先頭に戻っているようです。 ご確認よろしくお願いしますー </body>
+		<created>2014-09-25 10:15:50</created>
+		<closed>2014-10-01 07:17:31</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>表示されないパーツがある</title>
+		<body>stageanim3フォルダのstageeffect2.ssae内にある BGパーツが表示されない。  ・環境 Unity4 Ver4.5.4f1 SpriteStudio5 Ver5.3.5.5059　開発版 インスタンス設定と個別継承のフラグが必ず出力されるように修正されているバージョン。 sseaはすべてこのバージョンで保存しなおした。 </body>
+		<created>2014-09-25 10:07:56</created>
+		<closed>2014-10-02 09:15:43</closed>
+	</bug>
+	<bug>
+		<id>49</id>
+		<title>インスタンスパーツの表示位置が右上になる</title>
+		<body>インスタンスパーツのあるアニメを再生すると、画面右上に表示される。  ・環境 Unity4 Ver4.5.4f1 SpriteStudio5 Ver5.3.5.5059　開発版 インスタンス設定と個別継承のフラグが必ず出力されるように修正されているバージョン。 sseaはすべてこのバージョンで保存しなおした。 </body>
+		<created>2014-09-25 10:04:04</created>
+		<closed>2014-10-02 09:52:51</closed>
+	</bug>
+	<bug>
+		<id>48</id>
+		<title>最終のキーフレームの位置でアニメがループする</title>
+		<body>アニメーションの途中に最終のキーフレームがある状態（総フレームと最終キーフレームの位置が違う）場合に、最終キーフレームの位置でアニメがループしてしまう。  ・環境 Unity4 Ver4.5.4f1 SpriteStudio5 Ver5.3.5.5059　開発版 インスタンス設定と個別継承のフラグが必ず出力されるように修正されているバージョン。 sseaはすべてこのバージョンで保存しなおした。 </body>
+		<created>2014-09-25 10:02:29</created>
+		<closed>2014-09-30 09:15:12</closed>
+	</bug>
+	<bug>
+		<id>47</id>
+		<title>個別の継承設定が子供に反映されない</title>
+		<body>個別の継承設定が子供に反映されない。 親は非表示になった場合、子のパーツが表示し続ける。 親は反転した場合、子のパーツが反転しない。  環境： Unity4 Ver4.5.4f1 SpriteStudio5 Ver5.3.5.5059　開発版 インスタンス設定と個別継承のフラグが必ず出力されるように修正されているバージョン。 sseaはすべてこのバージョンで保存しなおした。 </body>
+		<created>2014-09-25 09:57:23</created>
+		<closed>2014-10-02 08:20:00</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>パーツのブレンド方法が反映されない</title>
+		<body>パーツのブレンド方法で加算、減算、乗算を設定しているパーツがミックス表示となる。  環境： Unity4 Ver4.5.4f1 SpriteStudio5 Ver5.3.5.5059　開発版 インスタンス設定と個別継承のフラグが必ず出力されるように修正されているバージョン。 sseaはすべてこのバージョンで保存しなおした。 </body>
+		<created>2014-09-25 09:49:36</created>
+		<closed>2014-09-30 01:20:40</closed>
+	</bug>
+	<bug>
+		<id>44</id>
+		<title>複数アニメを含むインスタンスアニメを再生した時に IndexOutOfRange エラーが出る</title>
+		<body># 現象  あるインスタンスパーツでだけエラーが出ます。 キーが１つも打たれていないことが原因かと思い、非表示キーだけ打ちましたが変わらずでした。 # 再現データ - 場所：デバッグ/Issue44/ -  元データとUnityProject # 手順 1. _TEST/Animal/Scene_Animal シーンを開く 2. 再生する # エラーメッセージ  IndexOutOfRangeException: Array index is out of range. Library_SpriteStudio+AnimationData.UpdateInstanceData (Int32 FrameNo, UnityEngine.GameObject GameObjectNow, .Script_SpriteStudio_PartsRoot ScriptRoot, .Script_SpriteStudio_PartsInstance PartsInstance) (at Assets/SpriteStudio/ScriptLibrary/Library_SpriteStudio.cs:1494) Script_SpriteStudio_PartsInstance.Update () (at Assets/SpriteStudio/Script/Script_SpriteStudio_PartsInstance.cs:98) </body>
+		<created>2014-09-25 07:57:11</created>
+		<closed>2014-09-29 01:23:44</closed>
+	</bug>
+	<bug>
+		<id>40</id>
+		<title>AnimationDataFlags および FrameNoStart の実装の確認</title>
+		<body>ご指摘および要確認事項になります。 確認前ではありますが、フィルターで見つけやすいようbugラベルを付けておきました。 ## 配列の範囲外アクセスチェックについて  ``` ・Library_SpriteStudio.cs : 676行あたり      // if (0 == AnimationDataFlags.Length)     // で保護されていないため例外が発生する     return(!AnimationDataFlags[FrameNo].IsHide); ``` ## プロパティの戻り値について  ``` ・Script_SpriteStudio_PartsRoot.cs : 246行 public int FrameNoStart {     get     {         // return(frameNoStart);では？         return(frameNoEnd);     } } ``` </body>
+		<created>2014-07-04 05:30:04</created>
+		<closed>2014-09-18 01:18:29</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>X/Y座標のキーが１つも無いパーツが表示されない</title>
+		<body>## 対応方法 - SS5 では 0 になるためこれと同じ挙動にする。   - ※v0.9 からの変更に伴うエンバグ ## 回避策 - 先頭に0のX/Y座標キーを打ち、値を0にしておく。 </body>
+		<created>2014-07-01 05:39:38</created>
+		<closed>2014-09-18 01:18:29</closed>
+	</bug>
+	<bug>
+		<id>37</id>
+		<title>コライダーのずれ</title>
+		<body>SS5上で、四角形のあたり判定をした後、SS5PlayerForUnityにて、とりこむと、コライダーの位置がSS5上で設定した位置とずれてしまいます。 ## 補足 - SS5上では、パーツと当たり判定領域の表示が一致していますが、Unity 上ではずれています。 - セルの原点が関係してそうです。問題が起こったパーツは原点がcenter-bottom ぐらいになっていました。 - 再現データあり。contact SpriteStudio!! </body>
+		<created>2014-06-24 08:24:58</created>
+		<closed>2014-09-25 01:19:44</closed>
+	</bug>
+	<bug>
+		<id>33</id>
+		<title>四角形の当たり判定を設定したアニメをインポートし使おうとするとエラーが出る</title>
+		<body>SpriteStudio5上で、四角形のあたり判定を設定した後、SS5PlayerForUnityをインポートし、 使おうとすると NullReferenceException: Object reference not set to an instance of an object Library_SpriteStudio+PartsBase.OnCollisionEnter (UnityEngine.Collision Contacts) (at Assets/SpriteStudio/ScriptLibrary/Library_SpriteStudio.cs:1032) と、エラーが出てしまいます </body>
+		<created>2014-06-23 08:00:12</created>
+		<closed>2014-09-22 09:13:08</closed>
+	</bug>
+	<bug>
+		<id>23</id>
+		<title>RootノードのInspectorのフレーム設定が時折-1されてずれることがある</title>
+		<body>反転フラグのClose時のコメントにあったので、一旦別issueにしました。 ＃念のためバグ扱いにしておきます。  &gt; Inspector の Start Offset Frame を 293 にした状態で Initial/Preview Play Setting のグループを閉じたり、 &gt; Scene や Game ビューをフローティングさせたタイミングで、表示フレームが-1されるらしく、292 フレームの状態で更新される(結果として非表示キーによりアニメが消えたので焦りました…)様な現象が見つかりました… &gt;  &gt; これは、以前お願いしたInspectorの表示との同期に関連する問題でしょうかね？ &gt; だとすると、対応困難とのことですので、既知の不具合扱いでしょうね。  こちらでも時折起こることがあるので、調査致します。 </body>
+		<created>2014-05-30 23:44:49</created>
+		<closed>2015-09-09 08:05:02</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>反転フラグの継承結果が異なる</title>
+		<body>all の293フレームにて、9体のロボが並んでいる状態で、 中央NewCell_9_4と中央右NewCell_9_5のパーツの反転状態がSS5.2.0と異なります。 これは時間がかかりそうなので後回しで構わないです。 </body>
+		<created>2014-05-16 10:09:58</created>
+		<closed>2014-05-30 05:23:43</closed>
+	</bug>
+	<bug>
+		<id>16</id>
+		<title>フォルダを選択せずインポートした時のエラー</title>
+		<body>バグというものではないのですが、以下のエラーがポトリと出て、ユーザーさんが何がいけないのか分からなそうなので、警告アイコン付きのダイアログで、"Please select the folder you want to store in before import" などと表示してエラーが出ないようにして頂けないでしょうか？  DirectoryNotFoundException: Destination directory not found: D:/Projects/SS5PlayerForUnity/Assets/e System.IO.File.Copy (System.String sourceFileName, System.String destFileName, Boolean overwrite) </body>
+		<created>2014-05-16 08:47:38</created>
+		<closed>2014-05-20 01:46:05</closed>
+	</bug>
+	<bug>
+		<id>15</id>
+		<title>X/Yサイズのアトリビュートに対応していない</title>
+		<body>X/Yサイズのアトリビュートに対応していません。 </body>
+		<created>2014-05-15 21:32:52</created>
+		<closed>2014-05-30 23:58:17</closed>
+	</bug>
+	<bug>
+		<id>14</id>
+		<title>左右反転/上下反転が絡んだ場合の頂点変形の適用頂点が間違っている</title>
+		<body>左右反転や上下反転が絡んだ場合の頂点変形の適用頂点が間違う現象があります。 適用時の計算順序の違いが原因と思われます。 </body>
+		<created>2014-05-15 21:31:13</created>
+		<closed>2014-05-30 23:58:17</closed>
+	</bug>
+	<bug>
+		<id>13</id>
+		<title>プレハブを更新した場合に制御プレハブからのリンクが切れる場合がある。</title>
+		<body>プレハブを更新した場合に制御プレハブからのリンクが切れる場合があります。 （インスタンス側は切れませんが、プロジェクト側にある制御プレハブのリンクが切れます） </body>
+		<created>2014-05-15 21:24:20</created>
+		<closed>2014-05-22 01:21:46</closed>
+	</bug>
+	<bug>
+		<id>8</id>
+		<title>Parent -&gt; basic アニメで頭(NewCell_8)と右手(NewCell_3_1)が表示されない</title>
+		<body></body>
+		<created>2014-05-13 10:59:07</created>
+		<closed>2014-05-16 08:56:24</closed>
+	</bug>
+	<bug>
+		<id>7</id>
+		<title>Animation Name を切り替えるとRate Time-Progressが０になる。</title>
+		<body></body>
+		<created>2014-05-13 10:49:46</created>
+		<closed>2014-05-14 03:11:22</closed>
+	</bug>
+	<bug>
+		<id>5</id>
+		<title>*_Control プレハブをCamera-&gt;View 下にドロップで表示されないものがある</title>
+		<body>再現データ： allcheck -&gt; Accelerate_Control  Prefabs 内のルートプレハブを直接ドロップした場合は表示されます。 されるものとされないものがあります。 Parent_Control はOKです。 </body>
+		<created>2014-05-12 06:02:57</created>
+		<closed>2014-05-14 03:06:32</closed>
+	</bug>
+</bugs>

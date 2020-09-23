@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="bsl-language-server">
+	<bug id="1361" opendate="2020-09-17 10:16:27" fixdate="2020-09-17 10:25:10">
+		<buginformation>
+			<summary>[BUG] generic reporter добавляет неверную строку для типа ERROR</summary>
+			<description>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  0.16.1  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  В итоговый json вместо ожидаемого форматом BUG выплевывается ERROR  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/reporters/GenericIssueReport.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="1233" opendate="2020-06-02 03:32:08" fixdate="2020-06-07 13:38:34">
+		<buginformation>
+			<summary>[BUG] Срабатывание MissingSpace на последней строке модуля на символе ";"</summary>
+			<description>**Версия** &gt; 0.15.0  **Описание ошибки диагностики**  Неправильно работает MissingSpace. На символе ";" срабатывает диагностика, если выражение расположено на последней строке. Есть подозрения на EOF.  **Пример кода** ```bsl Тест = "1";  Сообщить(Текст); ```  **Скриншоты** ![image](https://user-images.githubusercontent.com/11651847/83476771-c50ca000-a4bb-11ea-8a54-48e7ac0ac133.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/MissingSpaceDiagnosticTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="970" opendate="2020-02-17 07:19:04" fixdate="2020-03-27 07:48:40">
+		<buginformation>
+			<summary>[BUG] Не работает "висячее" откл.чение диагностики</summary>
+			<description>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  0.13.3  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  Не работает висячий комментарий отключения срабатывания диагностики (блочный работает)  **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится  `ПараметрыРегистрации = МодульДополнительныеОтчетыИОбработки.СведенияОВнешнейОбработке("2.2.2.1");  ` **Скриншоты** &gt; Скриншоты с подтверждением  ![image](https://user-images.githubusercontent.com/9591731/74631797-e9dc4200-516e-11ea-93e1-f0a33adb2d1c.png)  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/context/computer/DiagnosticIgnoranceComputer.java</file>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/context/computer/DiagnosticIgnoranceComputerTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="934" opendate="2020-02-04 14:25:25" fixdate="2020-02-05 11:38:03">
+		<buginformation>
+			<summary>Плагин VSCODE падает при редактировании файла по сети[BUG]</summary>
+			<description>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS  1.20.0  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  Редактируем файл по пути `\\sv-88\c$\opt\copy.os`  Получаем ошибку "A request has failed.".  ``` WARNING: Notification threw an exception: {   "jsonrpc": "2.0",   "method": "textDocument/didOpen",   "params": {     "textDocument": {       "uri": "file://sv-88/c%24/opt/copy.os",       "languageId": "bsl",       "version": 1,       "text": "..."     }   } } ```  **Скриншоты** &gt; Скриншоты с подтверждением  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы ``` java.lang.RuntimeException: java.lang.reflect.InvocationTargetException at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67) at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152) at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220) at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187) at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194) at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94) at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113) at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) at java.base/java.util.concurrent.FutureTask.run(Unknown Source) at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) at java.base/java.lang.Thread.run(Unknown Source) Caused by: java.lang.reflect.InvocationTargetException at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) at java.base/java.lang.reflect.Method.invoke(Unknown Source) at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65) ... 11 more Caused by: java.lang.IllegalArgumentException: URI has an authority component at java.base/java.io.File.&lt;init&gt;(Unknown Source) at com.github._1c_syntax.bsl.languageserver.utils.Absolute.path(Absolute.java:48) at com.github._1c_syntax.bsl.languageserver.utils.Absolute.uri(Absolute.java:38) at com.github._1c_syntax.bsl.languageserver.context.ServerContext.addDocument(ServerContext.java:65) at com.github._1c_syntax.bsl.languageserver.context.ServerContext.addDocument(ServerContext.java:79) at com.github._1c_syntax.bsl.languageserver.BSLTextDocumentService.didOpen(BSLTextDocumentService.java:226) ... 16 more  ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/utils/Absolute.java</file>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/utils/AbsoluteTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="929" opendate="2020-02-03 11:22:50" fixdate="2020-02-04 17:13:40">
+		<buginformation>
+			<summary>Обработка документов с URI-схемами, отличающимися от file://</summary>
+			<description>При редактировании не-сохранненного untitled-файла в VSC в URI документа указана схема untitled. При прогоне такого URI через Absolute#URI возникает IllegalArgumentException.  Нужно научить класс Absolute обрабатывать такие схемы и возвращать исходный uri, если передается не file://</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/util/TestUtils.java</file>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/utils/Absolute.java</file>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/context/DocumentContext.java</file>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/context/DocumentContextTest.java</file>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/utils/AbsoluteTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="900" opendate="2020-01-23 07:25:26" fixdate="2020-01-23 13:03:10">
+		<buginformation>
+			<summary>[BUG] CyclomaticComplexityDiagnostic ошибка в позиционировании</summary>
+			<description>## Диагностика &lt;!-- Имя или код диагностики, в которой обнаружена ошибка --&gt; CyclomaticComplexityDiagnostic   ## Версия &lt;!-- Версия BSLLS либо плагина, который использует BSLLS --&gt; latest RC  ## Описание ошибки диагностики &lt;!-- Описание ошибки, замечачания --&gt;  Обнаружено неверное позиционирование замечения + лишний элемент в релейшене  ## Пример кода &lt;!-- Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится --&gt;  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt;  ![image](https://user-images.githubusercontent.com/9591731/72964690-9b37c400-3dcb-11ea-804f-ff6bc5eccc27.png)  ## Дополнительная информация &lt;!-- Любая дополнительная информация, которая поможет в расследовании проблемы --&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/CyclomaticComplexityDiagnostic.java</file>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/context/computer/CyclomaticComplexityComputerTest.java</file>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/context/computer/CyclomaticComplexityComputer.java</file>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/CyclomaticComplexityDiagnosticTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="819" opendate="2020-01-20 12:59:31" fixdate="2020-01-20 13:14:42">
+		<buginformation>
+			<summary>[BUG] CodeOutOfRegionDiagnostic ranges 0</summary>
+			<description>## Диагностика CodeOutOfRegionDiagnostic  ## Версия &lt;!-- Версия BSLLS либо плагина, который использует BSLLS --&gt;  ## Описание ошибки диагностики Возвращает  Start 0 0 End 0 0  ## Пример кода &lt;!-- Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится --&gt;  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt;  ## Дополнительная информация &lt;!-- Любая дополнительная информация, которая поможет в расследовании проблемы --&gt; </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/CodeOutOfRegionDiagnosticTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="759" opendate="2019-12-18 12:10:34" fixdate="2019-12-18 14:29:05">
+		<buginformation>
+			<summary>Форматтер съедает цифры в начале имени библиотеки</summary>
+			<description>```bsl #Использовать 1commands ```  после форматирования превращается в   ```bsl #Использовать commands ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/providers/FormatProviderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="700" opendate="2019-11-22 14:28:11" fixdate="2019-11-24 22:18:33">
+		<buginformation>
+			<summary>[BUG]Не срабатывают диагностики с фильтром по режиму совместимости.</summary>
+			<description>**Версия** &gt; Версия BSLLS либо плагина, который использует BSLLS 0.12  **Описание ошибки диагностики** &gt; Описание ошибки, замечачания  Не определяется режим совместимости.   **Пример кода** &gt; Пример кода (в блоке code или прикрепленный файл), на котором ошибка воспроизводится   **Скриншоты** &gt; Скриншоты с подтверждением  ![image](https://user-images.githubusercontent.com/15638529/69433827-71bbd700-0d4d-11ea-885a-068f4b99fb9e.png)  ![image](https://user-images.githubusercontent.com/15638529/69433915-9b74fe00-0d4d-11ea-8c28-75dd21b68b5b.png)   **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/DiagnosticSupplierTest.java</file>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/DiagnosticSupplier.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="674" opendate="2019-11-18 07:12:53" fixdate="2019-11-18 08:01:55">
+		<buginformation>
+			<summary>[BUG] TimeoutsInExternalResourcesDiagnostic</summary>
+			<description>## Диагностика TimeoutsInExternalResourcesDiagnostic - неверный порядок параметра таймаут у FTPСоединение. Должен быть 7-ой, а не 6-ой.  ## Описание ошибки диагностики &lt;!-- Описание ошибки, замечачания --&gt;  ## Пример кода ```bsl FTPСоединение = Новый FTPСоединение(ПараметрыПодключения.FTPсервер, 21, ПараметрыПодключения.FTPлогин, ПараметрыПодключения.FTPпароль, , Истина, 60); ``` </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/TimeoutsInExternalResourcesDiagnostic.java</file>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/utils/DiagnosticHelper.java</file>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/TimeoutsInExternalResourcesDiagnosticTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="670" opendate="2019-11-16 13:53:55" fixdate="2019-11-18 10:16:57">
+		<buginformation>
+			<summary>[BUG]  DeletingCollectionItem lowercase в сообщении</summary>
+			<description>## Диагностика DeletingCollectionItem  ## Версия 12  ## Описание ошибки диагностики В сообщение выводится имя коллекции приведенное к нижнему регистру  ## Пример кода  ## Скриншоты ![image](https://user-images.githubusercontent.com/15638529/68994213-70903300-0891-11ea-8468-0bb68acfc1b3.png)  ## Дополнительная информация &lt;!-- Любая дополнительная информация, которая поможет в расследовании проблемы --&gt;  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/DeletingCollectionItemDiagnostic.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="593" opendate="2019-11-01 11:16:05" fixdate="2019-11-01 11:37:17">
+		<buginformation>
+			<summary>[BUG] Срабатывает отключенная диагностика</summary>
+			<description>## Диагностика CognitiveComplexity но думаю, проблема со всеми  ## Версия 0.11.0+247  ## Описание ошибки диагностики Срабатывает отключенная диагностика   ## Пример кода ```bsl // BSLLS:CognitiveComplexity-off Процедура ПрочитатьДанныеСтроки(...) // Какой-то код КонецПроцедуры // BSLLS:CognitiveComplexity-on ```  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt; ![image](https://user-images.githubusercontent.com/10762909/68021226-e56c4600-fcb1-11e9-8650-9ca107f84a80.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/context/DocumentContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="591" opendate="2019-11-01 10:59:30" fixdate="2019-11-06 13:06:39">
+		<buginformation>
+			<summary>[BUG] Задваивает сообщение об ошибке для диагностики WorkingTimeoutWithExternalResources</summary>
+			<description>## Диагностика WorkingTimeoutWithExternalResources  ## Версия 0.11.0 + (develop от 29.10.2019)  ## Описание ошибки диагностики Задваивает сообщение об ошибке для диагностики WorkingTimeoutWithExternalResources  ## Пример кода ```bsl Эластик_Соединение = Новый HTTPСоединение(Эластик_Сервер, Эластик_Порт, Эластик_Пользователь, Эластик_Пароль); ```  ## Скриншоты &lt;!-- Скриншоты с подтверждением --&gt; ![image](https://user-images.githubusercontent.com/10762909/68020266-0bdcb200-fcaf-11e9-9a86-7342bedc1833.png)   </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/WorkingTimeoutWithExternalResourcesDiagnostic.java</file>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/WorkingTimeoutWithExternalResourcesDiagnosticTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="521" opendate="2019-10-22 12:33:50" fixdate="2019-11-02 16:35:51">
+		<buginformation>
+			<summary>[BUG] Диагностика "Использование свойства "ЭтаФорма" срабатывает дважды</summary>
+			<description>**Диагностика** Использование свойства "ЭтаФорма"  **Тип ошибки** - [ ] Ложное срабатывание [FP] - [ ] Ложное НЕ срабатывание [FN] - [x] Ошибка [BUG]  **Версия** 1C (BSL) Community Plugin 1.2.0  **Описание ошибки диагностики** Диагностика сработала дважды  **Пример кода**  ```bsl Процедура ПрочитатьФайл(Команда)      Если НЕ ПроверкаПередЗагрузкойПройдена() Тогда         Возврат;     КонецЕсли;     Режим = РежимДиалогаВопрос.ДаНет;     Оповещение = Новый ОписаниеОповещения("ПослеЗакрытияВопроса_ПрочитатьФайл", ЭтаФорма, Параметры);  КонецПроцедуры ```  **Скриншоты** ![image](https://user-images.githubusercontent.com/24920942/67285974-383f4400-f4e1-11e9-8f6f-ffd35bf99322.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/UsingThisFormDiagnostic.java</file>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/UsingThisFormDiagnosticTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="481" opendate="2019-10-14 15:53:41" fixdate="2019-10-29 19:36:38">
+		<buginformation>
+			<summary>Диагностики не всегда отправляются на клиента после сохранения файла</summary>
+			<description>**Версия**  BSL LS 0.11.0  **Описание ошибки**  BSL LS не всегда публикует диагностики по событию onSave  **Дополнительная информация** &gt; Любая дополнительная информация, которая поможет в расследовании проблемы  Отмечена некая корелляция с добавлением/удалением в/из кода аннотации BSLLS:CognitiveComplexity-off  Trace log https://t.me/bsl_language_server/21253</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/com/github/_1c_syntax/bsl/languageserver/context/DocumentContextTest.java</file>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/diagnostics/CommentedCodeDiagnostic.java</file>
+			<file>src/main/java/com/github/_1c_syntax/bsl/languageserver/context/DocumentContext.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="340" opendate="2019-09-06 18:30:35" fixdate="2019-09-10 09:04:47">
+		<buginformation>
+			<summary>Позиционирование Несколько директив компиляции</summary>
+			<description>![image](https://user-images.githubusercontent.com/15638529/64451732-7cbb7f80-d0ed-11e9-992c-80499b8646d3.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/org/github/_1c_syntax/bsl/languageserver/diagnostics/SeveralCompilerDirectivesDiagnosticTest.java</file>
+			<file>src/main/java/org/github/_1c_syntax/bsl/languageserver/diagnostics/SeveralCompilerDirectivesDiagnostic.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="323" opendate="2019-08-16 10:45:36" fixdate="2019-08-20 12:44:20">
+		<buginformation>
+			<summary>IOOBE при процедуре и имени процедуры на разных строках</summary>
+			<description> ![codeAction](https://user-images.githubusercontent.com/1132840/63162772-19798880-c02c-11e9-9727-560f6a7f0196.gif)   ``` ��� 16, 2019 1:43:07 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError SEVERE: Internal error: java.lang.IndexOutOfBoundsException: start 1, end 140, s.length() 109 java.util.concurrent.CompletionException: java.lang.IndexOutOfBoundsException: start 1, end 140, s.length() 109 at java.util.concurrent.CompletableFuture.encodeThrowable(Unknown Source) at java.util.concurrent.CompletableFuture.completeThrowable(Unknown Source) at java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source) at java.util.concurrent.CompletableFuture$AsyncSupply.exec(Unknown Source) at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(Unknown Source) at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) Caused by: java.lang.IndexOutOfBoundsException: start 1, end 140, s.length() 109 at java.lang.AbstractStringBuilder.append(Unknown Source) at java.lang.StringBuilder.append(Unknown Source) at org.github._1c_syntax.bsl.languageserver.context.DocumentContext.getText(DocumentContext.java:145) at org.github._1c_syntax.bsl.languageserver.diagnostics.SpaceAtStartCommentDiagnostic.lambda$getQuickFixes$2(SpaceAtStartCommentDiagnostic.java:119) at java.util.Collections$SingletonList.forEach(Unknown Source) at org.github._1c_syntax.bsl.languageserver.diagnostics.SpaceAtStartCommentDiagnostic.getQuickFixes(SpaceAtStartCommentDiagnostic.java:116) at org.github._1c_syntax.bsl.languageserver.codeactions.QuickFixCodeActionSupplier.getCodeActionsByDiagnostic(QuickFixCodeActionSupplier.java:73) at org.github._1c_syntax.bsl.languageserver.codeactions.QuickFixCodeActionSupplier.lambda$getCodeActions$0(QuickFixCodeActionSupplier.java:56) at java.util.ArrayList.forEach(Unknown Source) at org.github._1c_syntax.bsl.languageserver.codeactions.QuickFixCodeActionSupplier.getCodeActions(QuickFixCodeActionSupplier.java:55) at org.github._1c_syntax.bsl.languageserver.providers.CodeActionProvider.getCodeActions(CodeActionProvider.java:93) at org.github._1c_syntax.bsl.languageserver.BSLTextDocumentService.lambda$codeAction$1(BSLTextDocumentService.java:156) ... 6 more  [Error - 13:43:07] Request textDocument/codeAction failed.   Message: Internal error.   Code: -32603  java.util.concurrent.CompletionException: java.lang.IndexOutOfBoundsException: start 1, end 140, s.length() 109 at java.util.concurrent.CompletableFuture.encodeThrowable(Unknown Source) at java.util.concurrent.CompletableFuture.completeThrowable(Unknown Source) at java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source) at java.util.concurrent.CompletableFuture$AsyncSupply.exec(Unknown Source) at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(Unknown Source) at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) Caused by: java.lang.IndexOutOfBoundsException: start 1, end 140, s.length() 109 at java.lang.AbstractStringBuilder.append(Unknown Source) at java.lang.StringBuilder.append(Unknown Source) at org.github._1c_syntax.bsl.languageserver.context.DocumentContext.getText(DocumentContext.java:145) at org.github._1c_syntax.bsl.languageserver.diagnostics.SpaceAtStartCommentDiagnostic.lambda$getQuickFixes$2(SpaceAtStartCommentDiagnostic.java:119) at java.util.Collections$SingletonList.forEach(Unknown Source) at org.github._1c_syntax.bsl.languageserver.diagnostics.SpaceAtStartCommentDiagnostic.getQuickFixes(SpaceAtStartCommentDiagnostic.java:116) at org.github._1c_syntax.bsl.languageserver.codeactions.QuickFixCodeActionSupplier.getCodeActionsByDiagnostic(QuickFixCodeActionSupplier.java:73) at org.github._1c_syntax.bsl.languageserver.codeactions.QuickFixCodeActionSupplier.lambda$getCodeActions$0(QuickFixCodeActionSupplier.java:56) at java.util.ArrayList.forEach(Unknown Source) at org.github._1c_syntax.bsl.languageserver.codeactions.QuickFixCodeActionSupplier.getCodeActions(QuickFixCodeActionSupplier.java:55) at org.github._1c_syntax.bsl.languageserver.providers.CodeActionProvider.getCodeActions(CodeActionProvider.java:93) at org.github._1c_syntax.bsl.languageserver.BSLTextDocumentService.lambda$codeAction$1(BSLTextDocumentService.java:156) ... 6 more ```</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/org/github/_1c_syntax/bsl/languageserver/context/DocumentContextTest.java</file>
+			<file>src/main/java/org/github/_1c_syntax/bsl/languageserver/context/computer/MethodSymbolComputer.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="233" opendate="2019-06-21 07:38:57" fixdate="2019-06-21 22:38:37">
+		<buginformation>
+			<summary>FoldingRangeProvider NoSuchElementException</summary>
+			<description>```bsl &amp;НаКлиенте Процедура ПриОткрытии(Отказ) #Если НЕ (ТонкийКлиент ИЛИ ВебКлиент)  Сообщить(1); #Иначе Сообщить(2); #КонецЕсли КонецПроцедуры ``` Удаляем `#Если НЕ (ТонкийКлиент ИЛИ ВебКлиент) ` получаем NoSuchElementException</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/github/_1c_syntax/bsl/languageserver/providers/FoldingRangeProvider.java</file>
+			<file>src/test/java/org/github/_1c_syntax/bsl/languageserver/providers/FoldingRangeProviderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="180" opendate="2019-06-03 09:49:23" fixdate="2019-08-20 12:49:18">
+		<buginformation>
+			<summary>Автоформатер / Отступ после аннотации со скобками</summary>
+			<description>При использовании автоформатирования, где используются анотации со скобками происходит сдвиг права следующей строки.  Изначальный код:  ```bsl #Использовать entity  &amp;Идентификатор &amp;Колонка (Тип = "Строка") Перем Код Экспорт;  Перем Наименование Экспорт;  Перем Описание Экспорт;  &amp;Колонка(Тип = "Ссылка", ТипСсылки = "Автор") Перем Автор Экспорт;  &amp;Колонка Перем КлючевыеСлова Экспорт;  Перем Путь Экспорт; ```  После форматирования: ```bsl #Использовать entity  &amp;Идентификатор &amp;Колонка (Тип = "Строка") Перем Код Экспорт;  Перем Наименование Экспорт;  Перем Описание Экспорт;  &amp;Колонка (Тип = "Ссылка", ТипСсылки = "Автор") Перем Автор Экспорт;  &amp;Колонка Перем КлючевыеСлова Экспорт;  Перем Путь Экспорт; ```  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/github/_1c_syntax/bsl/languageserver/providers/FormatProvider.java</file>
+			<file>src/test/java/org/github/_1c_syntax/bsl/languageserver/providers/FormatProviderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="179" opendate="2019-06-03 09:45:19" fixdate="2019-06-13 05:03:28">
+		<buginformation>
+			<summary>Автоформатер / форматирование отступов знака "-"</summary>
+			<description>Изначальная строка: ```bsl #Использовать xml-parser ```  После автоформатирования: ![image](https://user-images.githubusercontent.com/11651847/58792677-d7d96400-861e-11e9-84b5-da383a3017ec.png) </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/test/java/org/github/_1c_syntax/bsl/languageserver/providers/FormatProviderTest.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="172" opendate="2019-05-27 15:16:21" fixdate="2019-05-28 09:22:47">
+		<buginformation>
+			<summary>NPE на поиске foldingRange, если дерево построилось некорректно</summary>
+			<description>Добавить проверку на null в addFoldingRange</description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/github/_1c_syntax/bsl/languageserver/providers/FoldingRangeProvider.java</file>
+			<file>src/main/java/org/github/_1c_syntax/bsl/languageserver/diagnostics/SemicolonPresenceDiagnostic.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="29" opendate="2019-01-30 16:41:25" fixdate="2019-06-11 21:21:12">
+		<buginformation>
+			<summary>При ошибке разбора внутри функции Ложно срабатывает FunctionShouldHaveReturn</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/github/_1c_syntax/bsl/languageserver/diagnostics/FunctionShouldHaveReturnDiagnostic.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="28" opendate="2019-01-30 15:29:56" fixdate="2019-02-03 09:46:39">
+		<buginformation>
+			<summary>Позиционирование на многострочном блоке</summary>
+			<description>![image](https://user-images.githubusercontent.com/15638529/51991689-adcf3400-24bc-11e9-892d-cd6a332ac480.png)  </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/github/_1c_syntax/bsl/languageserver/diagnostics/AbstractVisitorDiagnostic.java</file>
+			<file>src/main/java/org/github/_1c_syntax/bsl/languageserver/diagnostics/SemicolonPresenceDiagnostic.java</file>
+			<file>src/test/java/org/github/_1c_syntax/bsl/languageserver/diagnostics/SemicolonPresenceDiagnosticTest.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

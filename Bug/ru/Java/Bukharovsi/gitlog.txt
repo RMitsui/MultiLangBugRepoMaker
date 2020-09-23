@@ -1,0 +1,2076 @@
+7f3839a37bfaaf2312d08d7976b6f9ded10b3c3f, change logging level to INFO, Sat Feb 2 15:26:21 2019 +0200
+M	src/main/resources/application.yml
+
+eff2fd4334e9b645c51f7c8e784f49446f8a6679, Merge pull request #112 from Bukharovsi/111_slpit_content_by_authorities, Sun Jan 13 21:43:00 2019 +0200
+73cec7719b7a6719fcebfa36e2aa5f5ac0096250, #111 change home page and show content by user`s authority, Sat Jan 12 11:10:33 2019 +0300
+M	src/main/java/ru/curriculum/application/auth/principal/AuthorityFactory.java
+M	src/main/java/ru/curriculum/application/auth/principal/CuratorPrincipalService.java
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+M	src/main/java/ru/curriculum/web/auth/AuthController.java
+M	src/main/resources/templates/error/accessDenied.html
+M	src/main/resources/templates/fragments/sidebar.html
+M	src/main/resources/templates/login.html
+
+8b9941067ab5a757b71272b38a2866109ec68506, Merge pull request #110 from Bukharovsi/107_ordering_in_etp, Wed Dec 26 16:10:47 2018 +0200
+9fcbfa19b543ce5c5a301e966eb9445a16d2d786, #107 default value for number, Sat Sep 29 22:59:32 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EAModule.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EASection.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EATopic.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalActivity/EMAModule.java
+M	src/main/java/ru/curriculum/domain/etp/entity/organizationMethodicalActivity/OMAModule.java
+M	src/main/resources/db/changelog/291020182132_add_number_to_etp_parts.xml
+M	src/main/resources/templates/etp/etpForm.html
+
+530d6b72d1fc78ead42381cd45bc5bae22902495, #107 ordered etp, Sat Sep 29 22:45:29 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EAModule.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EASection.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EATopic.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalActivity/EMAModule.java
+M	src/main/java/ru/curriculum/domain/etp/entity/organizationMethodicalActivity/OMAModule.java
+A	src/main/java/ru/curriculum/service/etp/controller/IRow.java
+A	src/main/java/ru/curriculum/service/etp/controller/IRowController.java
+A	src/main/java/ru/curriculum/service/etp/controller/OrderedRowController.java
+A	src/main/java/ru/curriculum/service/etp/controller/Row.java
+A	src/main/java/ru/curriculum/service/etp/controller/RowController.java
+M	src/main/java/ru/curriculum/service/etp/converter/ETPDtoToEtpConverter.java
+M	src/main/java/ru/curriculum/service/etp/dto/EAModuleDto.java
+M	src/main/java/ru/curriculum/service/etp/dto/EASectionDto.java
+M	src/main/java/ru/curriculum/service/etp/dto/EATopicDto.java
+M	src/main/java/ru/curriculum/service/etp/dto/EMAModuleDto.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+M	src/main/java/ru/curriculum/service/etp/dto/OMAModuleDto.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/291020182132_add_number_to_etp_parts.xml
+M	src/main/resources/static/css/etp/etp.css
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoTest.java
+
+80d115cff38514cb94c45d233377dfda04e893ea, #107 draft for ordering module in etp, Thu Sep 27 21:45:54 2018 +0300
+M	src/main/java/ru/curriculum/service/etp/dto/EMAModuleDto.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoTest.java
+
+59f147dce5c3e73868c34a8d9cb0038c3882d872, #106 add type learning to education learning activity module, Sun Sep 23 17:54:21 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EAModule.java
+M	src/main/java/ru/curriculum/service/etp/converter/ETPDtoToEtpConverter.java
+M	src/main/java/ru/curriculum/service/etp/dto/EAModuleDto.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/231020181718_add_learning_type_to_ea_module.xml
+M	src/main/resources/templates/etp/etpForm.html
+
+21131078f2db58fb9114a1593a82193510a96bbd, #105 add begin and end date to etp, Sun Sep 23 16:53:42 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/WorkbookGenerator.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplateCoordinates.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpHeaderFiller.java
+M	src/main/java/ru/curriculum/service/etp/converter/ETPDtoToEtpConverter.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/231020181510_add_timing_of_to_etp.xml
+M	src/main/resources/printing/etp.xls
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/etp/etpList.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoToEtpConverterTest.java
+
+5415dd4495e655d661192649923915e5683f3a6f, Merge pull request #104 from Bukharovsi/101_fix_total_hours_in_etp, Wed Aug 15 10:00:21 2018 +0300
+0d9e8c86bb0beeb63055af77cde1826d38762b7c, Merge pull request #102 from Bukharovsi/86_bugfix_count_per_lerner_in_etp, Wed Aug 15 09:59:58 2018 +0300
+180ef011ebe46d7e1bd003e6062bd78b28812d68, 101 fill lerner count for all row if value no present, Sun Aug 12 16:42:58 2018 +0300
+M	src/main/resources/static/js/etp/etp.js
+M	src/main/resources/templates/etp/etpForm.html
+
+8ac7f22c208dd659b7d2bca98c48c0f7db0c442c, 101 fix total calulation, Sun Aug 12 15:37:05 2018 +0300
+M	src/main/resources/static/js/etp/etp.js
+M	src/main/resources/templates/etp/etpForm.html
+
+a5bcc0011a6bd9aef5584cf992171be15e1f3895, 89 fix formula from file, Sat Aug 11 15:54:46 2018 +0300
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpFiller.java
+
+5020d7845040034ab17e9763d8cc120c245609e1, 89_fix_calc_for_per_lerner_hours, Sat Aug 11 14:48:53 2018 +0300
+M	src/main/resources/static/js/etp/etp.js
+
+8336d7b6a318c70e4c86fd41546a968d87dd321d, some changes, Sat Aug 11 14:00:34 2018 +0300
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/ColumnIndexToFieldMap.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/ColumnIndexToFieldMapper.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramDateParser.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFieldSetter.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFieldsStorage.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFileParser.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramTemplateToStateProgramConverter.java
+M	src/main/java/ru/curriculum/service/directories/academicDegree/AcademicDegreeFindService.java
+M	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCreationFromFileService.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/templates/stateSchedule/stateProgramFileFormatInfo.html
+
+89871f3f90fc2cd7c127f69b792daeb3ab1c4773, Merge pull request #100 from Bukharovsi/99_fix_etp_input, Mon Aug 6 00:33:25 2018 +0300
+fe0b542d6dc55c328d692dde74005408daade187, Merge pull request #95 from Bukharovsi/prevent_delete_admin_curator, Mon Aug 6 00:31:55 2018 +0300
+790d38ff094f90893809b1db439f93fb182fc2f1, 99 add constraint for digits in etp, Sun Aug 5 21:16:38 2018 +0300
+M	src/main/resources/static/js/etp/etp.js
+
+7b78372d49a48d6d13313c2f4d503fe41e1a5644, remoce academic_degree, add candidate_of_science and none, Sun Aug 5 20:00:48 2018 +0300
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/040820181946_remove_aspirant.xml
+
+8378062f9dbe7dcbd02c41285a0e38cdfccb59dc, change app name, Sun Aug 5 19:37:58 2018 +0300
+M	src/main/resources/templates/fragments/header.html
+
+3b2aff00f355964f9255c82a78d5433ffd09a934, add border to input, Sun Aug 5 19:30:42 2018 +0300
+M	src/main/resources/static/css/etp/etp.css
+M	src/main/resources/static/js/etp/etp.js
+M	src/main/resources/templates/etp/etpForm.html
+
+663b92b312c6083024735e423e2b45822324341e, free some input space, Mon Jul 30 22:27:29 2018 +0300
+M	src/main/resources/static/css/etp/etp.css
+M	src/main/resources/static/css/main.css
+M	src/main/resources/templates/etp/etpForm.html
+
+b3795f87ac60fd47140babc24a4443402072eb4f, prevent delete admin curator, Sun Jul 29 20:58:48 2018 +0300
+M	src/main/java/ru/curriculum/application/auth/principal/CuratorPrincipalService.java
+M	src/main/java/ru/curriculum/domain/admin/curator/entity/Curator.java
+M	src/main/java/ru/curriculum/service/curator/CuratorCRUDService.java
+M	src/main/java/ru/curriculum/service/curator/dto/CuratorDto.java
+A	src/main/java/ru/curriculum/service/curator/exception/CrudOperationException.java
+M	src/main/java/ru/curriculum/web/admin/CuratorManagementController.java
+M	src/main/resources/templates/admin/curators/curatorList.html
+M	src/test/java/ru/curriculum/domain/admin/web/CuratorManagementControllerTest.java
+
+8bc2f8e831b052045a65d7e5692872d256b4996e, Merge pull request #94 from Bukharovsi/90_timetable_multiply_teachers, Sun May 20 22:29:50 2018 +0300
+eae00b8d327789a43a9166319e1c7616d40bfc70, Merge branch 'master' into 90_timetable_multiply_teachers, Sun May 20 22:19:49 2018 +0300
+a4585ee0ca7331e62e2af7c2d4862cd1f4e0d53f, Merge pull request #93 from Bukharovsi/87_etp_theme_multiply_teachers, Sun May 20 21:54:08 2018 +0300
+164f722dde842f83a0d3960f704516f1ed0f8f14, Merge pull request #91 from Bukharovsi/85_teacher_no_teleport, Sun May 20 21:51:26 2018 +0300
+7dcf0b074f04f8da1aeb195e87d87ee91ee853a5, #90 select input autocomplete with many teachers, Sun May 20 16:31:50 2018 +0300
+M	src/main/java/ru/curriculum/domain/teacher/repository/TeacherRepository.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableSearchService.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableApiController.java
+M	src/main/resources/static/js/timetable/themeSelection.js
+M	src/main/resources/templates/timetable/timetableForm.html
+
+d23e9c6808c06c1fa02f3bc61295f180c930b7d3, #90 timetable specification works with multiply teachers, Sun May 20 13:15:27 2018 +0300
+M	src/main/java/ru/curriculum/domain/timetable/specification/AndSpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/ResultOfApplySpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/TeachersCannotBeCloneSpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/TeachersDoNotKnowHowToTeleportSpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/TeachersNoNeedMoneySpecification.java
+M	src/main/resources/templates/timetable/timetableForm.html
+
+1dc153299971fb00cb128bc1b6fbb6adf9d1790f, #90 merge master, Sat May 19 22:12:48 2018 +0300
+82307d4bcc86d4b269c0c44aff6c85f74de0839d, #90 to timetalbe can be added many teachers, Mon May 14 23:29:08 2018 +0300
+M	src/main/java/ru/curriculum/domain/timetable/entity/Lesson.java
+M	src/main/java/ru/curriculum/domain/timetable/repository/LessonRepository.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/TeachersCannotBeCloneSpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/TeachersNoNeedMoneySpecification.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableCRUDService.java
+M	src/main/java/ru/curriculum/service/timetable/converter/TimetableDtoToTimetableConverter.java
+M	src/main/java/ru/curriculum/service/timetable/dto/LessonDto.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/140520182127_create_lesson_teacher_table.xml
+M	src/main/resources/static/js/timetable/themeSelection.js
+M	src/main/resources/templates/timetable/timetableForm.html
+M	src/test/java/ru/curriculum/domain/admin/service/timetable/LessonDtoTest.java
+
+7b2c252c293dcc2434b9eefb92eb91b7411ff359, #87 remove local settings, Mon May 14 01:56:09 2018 +0300
+M	src/main/resources/application.yml
+
+4e267088e66f73695268ae2bd47bc0b32fa1741f, #87 add multiply teacher support for etp, Mon May 14 01:54:16 2018 +0300
+M	pom.xml
+M	src/main/java/ru/curriculum/domain/etp/entity/Plan.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpHeaderFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpOmaFiller.java
+M	src/main/java/ru/curriculum/service/curator/CuratorCRUDService.java
+M	src/main/java/ru/curriculum/service/etp/converter/PlanFactory.java
+M	src/main/java/ru/curriculum/service/etp/dto/PlanDto.java
+M	src/main/resources/application.yml
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/130520182240_create_plan_teacher_table.xml
+M	src/main/resources/static/js/etp/etp.js
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/PlanTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/PlanAndPlanDtoCreationTest.java
+
+d24a1afb10340238e9354e61680605c8dbdbbfea, #85 refactor TeacherDoNotKnowHowToTeleportSpecification, Sun May 13 15:59:40 2018 +0300
+M	src/main/java/ru/curriculum/domain/timetable/specification/TeachersDoNotKnowHowToTeleportSpecification.java
+M	src/main/resources/templates/fragments/inputField.html
+M	src/main/resources/templates/timetable/timetableForm.html
+
+61c903c8374b3aff46e8e433a6005068268acf68, #85 add warnings to ui and choise to save without ignore warnigns, Sun May 13 00:38:31 2018 +0300
+D	src/main/java/ru/curriculum/domain/timetable/specification/TeachersDoNotKnowHowToTeleport.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/TeachersDoNotKnowHowToTeleportSpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/builder/ITimetableSpecificationBuilder.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/builder/TimetableSpecificationBuilder.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableCRUDService.java
+A	src/main/java/ru/curriculum/service/timetable/TimetableSpecificationResolver.java
+A	src/main/java/ru/curriculum/service/timetable/dto/TimetableDtoValidation.java
+M	src/main/java/ru/curriculum/service/timetable/dto/WeeklyTimetableDto.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/templates/timetable/timetableForm.html
+
+8359bba381bc3c428bdeb60332c0fafa7b7aed2a, #85 add warnings to timetable, Fri May 11 00:31:09 2018 +0300
+M	src/main/java/ru/curriculum/domain/timetable/repository/LessonRepository.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/AndSpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/ResultOfApplySpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/TeachersDoNotKnowHowToTeleport.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/builder/TimetableSpecificationBuilder.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableCRUDService.java
+M	src/main/java/ru/curriculum/service/timetable/dto/WeeklyTimetableDto.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/templates/timetable/timetableForm.html
+
+94d2f33754a202f454c1a7f70294d05d4b049e0c, 85_teacher_no_teleport. add prototype for detailed errors, Mon May 7 21:24:41 2018 +0300
+A	src/main/java/ru/curriculum/domain/timetable/specification/IResultOfApplySpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/ResultOfApplySpecification.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/timetable/timetableForm.html
+
+61c9a5b60a70f88a5e167c47d9422d4385024484, Merge pull request #84 from Bukharovsi/82_missprint_lesson_form, Thu May 3 22:24:00 2018 +0300
+4d865fda59969a0d10006810a985ee9954f2fcee, Merge pull request #83 from Bukharovsi/71_teachers_dont_need_money, Thu May 3 22:13:21 2018 +0300
+e5683f3e16fa7f02c830ff5c4400fabc7d2c2e8d, 71_teachers_dont_need_money. fix findAllHavingLessonOnDate query calculate only for NOT_BUDGET, Thu May 3 21:38:12 2018 +0300
+M	src/main/java/ru/curriculum/domain/teacher/repository/TeacherRepository.java
+
+2a076730bcb9443ba2242aa2baae79fb34f0f8f5, Merge branch '71_teachers_dont_need_money' into 82_missprint_lesson_form, Thu May 3 21:02:39 2018 +0300
+5bbfdc4f56a0d5c894d08960650a9da7eb8244c7, 82_missprint. add migration to fix, Thu May 3 21:02:02 2018 +0300
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/030520182054_change_lesson_form_value.xml
+
+85a502d76212def39f7d7faf8dc5a7c3a398b6c3, 71_teachers_dont_need_money. format date when create error message in timetable specifcation, Thu May 3 20:32:19 2018 +0300
+M	src/main/java/ru/curriculum/domain/timetable/specification/TeachersCannotBeCloneSpecification.java
+M	src/main/java/ru/curriculum/domain/timetable/specification/TeachersNoNeedMoneySpecification.java
+
+624e0f7245de1470673b36a4e0efe94754d0eeec, 71_teachers_dont_need_money. fix bug when volume in hors is empty, Thu May 3 20:19:06 2018 +0300
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+
+aa81f0c5e373a9bb5e35f17894993f7bdb98de02, Merge branch 'master' into 71_teachers_dont_need_money, Thu May 3 20:11:44 2018 +0300
+9aad0eecbaecfe139f380978e111ddd322d50a28, 71_teacher_dont_need_money, Thu May 3 20:10:02 2018 +0300
+M	src/main/java/ru/curriculum/domain/teacher/repository/TeacherRepository.java
+A	src/main/java/ru/curriculum/domain/timetable/repository/LessonRepository.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/AndSpecification.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/CompositeSpecification.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/ISpecification.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/ResultOfApplySpecification.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/TeachersCannotBeCloneSpecification.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/TeachersDoNotKnowHowToTeleport.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/TeachersNoNeedMoneySpecification.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/builder/ITimetableSpecificationBuilder.java
+A	src/main/java/ru/curriculum/domain/timetable/specification/builder/TimetableSpecificationBuilder.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableCRUDService.java
+M	src/main/java/ru/curriculum/service/timetable/converter/TimetableDtoToTimetableConverter.java
+M	src/main/java/ru/curriculum/service/timetable/dto/WeeklyTimetableDto.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableApiController.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/timetable/timetableForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/timetable/TimetableRepositoryTest.java
+
+a5360f12cfbd03b2ee7d8c651c204fabbf062ca7, Merge pull request #80 from Bukharovsi/73_extend_etp_header, Wed May 2 20:56:43 2018 +0300
+a8dbde662313fadc715086a33ac175b9df2adf62, Merge pull request #79 from Bukharovsi/78_bugfix_etp_hours_migration, Wed May 2 20:07:22 2018 +0300
+f4a577540ac7deb977fbfa254afca8b201661fe4, 72_extend_etp_header. add etp hours to exs temaplate, Wed May 2 17:54:15 2018 +0300
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplateCoordinates.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpHeaderFiller.java
+M	src/main/resources/printing/etp.xls
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+
+5ae3519274463989110d4e4e709631b559f9b758, 73_extend_etp_header. add hours field to etp, Wed May 2 16:46:14 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+A	src/main/java/ru/curriculum/domain/etp/entity/VolumeInHours.java
+M	src/main/java/ru/curriculum/service/etp/converter/ETPDtoToEtpConverter.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+A	src/main/java/ru/curriculum/service/etp/dto/VolumeInHoursDto.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/020520181400_add_volume_in_hours_to_etp.xml
+M	src/main/resources/static/js/etp/etp.js
+M	src/main/resources/templates/etp/etpForm.html
+A	src/main/resources/templates/etp/etpHeaderInput.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/web/ETPControllerTest.java
+
+ef1af4f979ec9d7ca89cfafac215306725fdd234, 72_etp_hours. add default when create new column, Wed May 2 11:05:34 2018 +0300
+M	src/main/resources/db/changelog/300420182015_add_hours_per_one_listener_for_etp.xml
+
+5697684cfa10583d05ba2fa582799a80caee103a, Merge pull request #77 from Bukharovsi/72_etp_hours, Wed May 2 00:47:03 2018 +0300
+9b31beb6b52ab937268e95c1dee331c223153fc0, 72_etp_hours. merge master, Tue May 1 22:21:49 2018 +0300
+c5a5a1f79cdc629725443a268b8d28f6ed87ebf6, 72_etp_hours. chnage excel etp template, Tue May 1 22:17:33 2018 +0300
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplateCoordinates.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpOmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpPivotFiller.java
+
+361ca1f554fcdd2548710f1427ba0fcd8e07fe28, 72_etp_hours. fix printing etp to excel, Tue May 1 16:33:52 2018 +0300
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplateCoordinates.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpOmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpPivotFiller.java
+
+d11382b690edfe9a04d8a74683a9e3619efffbc7, 72_etp_hours, Tue May 1 16:01:35 2018 +0300
+M	src/main/resources/static/css/etp/etp.css
+M	src/main/resources/static/js/etp/etp.js
+
+1a3cbfb40306e69a515864a024b2c7b6db1dea8c, 72_etp_hours. chage hours calculation logic, Tue May 1 01:39:45 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/Plan.java
+M	src/main/java/ru/curriculum/service/etp/converter/PlanFactory.java
+M	src/main/java/ru/curriculum/service/etp/dto/PlanDto.java
+M	src/main/java/ru/curriculum/service/etp/dto/TotalRow.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/300420182015_add_hours_per_one_listener_for_etp.xml
+M	src/main/resources/static/css/etp/etp.css
+M	src/main/resources/static/js/etp/etp.js
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/PlanTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/PlanAndPlanDtoCreationTest.java
+
+57c590780deee2deec0b53bfc4f136c4cb0412dd, Merge pull request #76 from Bukharovsi/70_pretty_timetable, Mon Apr 30 20:03:18 2018 +0300
+bba31c29e71f8946086e1694557be79c03a41fd3, 70_pretty_timetable. autocomplete teacher in timetable, Mon Apr 30 16:33:31 2018 +0300
+M	src/main/java/ru/curriculum/domain/teacher/repository/TeacherRepository.java
+R068	src/main/java/ru/curriculum/service/timetable/TimetableFindingService.java	src/main/java/ru/curriculum/service/timetable/TimetableSearchService.java
+A	src/main/java/ru/curriculum/service/timetable/dto/TeacherDto.java
+A	src/main/java/ru/curriculum/web/timetable/TimetableApiController.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/application.yml
+A	src/main/resources/static/js/timetable/themeSelection.js
+M	src/main/resources/templates/timetable/timetableForm.html
+
+00097772a334d95abb9459db387be17bdd3857a7, 70_pretty_timetable. change dictionary lesson_form value, Wed Apr 25 21:31:35 2018 +0300
+M	src/main/resources/application.yml
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/250420182048_change_laboratory_work_to_seminars_in_lesson_form.xml
+M	src/main/resources/templates/timetable/timetableForm.html
+
+642eea0b0c50980db1e192244c02a0a7807d9288, Merge pull request #75 from Bukharovsi/64_missprint, Sat Apr 21 22:53:41 2018 +0300
+b828ad67c004c20168c4ac8c9f03a39229c95ac5, 64_missprint. fix missprint and write some tests for printing, Sat Apr 21 00:17:28 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/financingSource/FinancingSource.java
+M	src/main/java/ru/curriculum/domain/printing/exception/CreationFileException.java
+R079	src/main/java/ru/curriculum/domain/printing/file/template/specific/CellAddress.java	src/main/java/ru/curriculum/domain/printing/file/excel/CellAddress.java
+R096	src/main/java/ru/curriculum/domain/printing/file/template/specific/DefaultCellStyle.java	src/main/java/ru/curriculum/domain/printing/file/excel/DefaultCellStyle.java
+R074	src/main/java/ru/curriculum/domain/printing/file/excel/ExcelDownloadableFile.java	src/main/java/ru/curriculum/domain/printing/file/excel/EtpExcelDownloadableFile.java
+M	src/main/java/ru/curriculum/domain/printing/file/excel/SUM.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/WorkbookGenerator.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/loader/TemplateLoaderFromResource.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplateCoordinates.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpHeaderFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpOmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpPivotFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpWorkbookGenerator.java
+M	src/main/java/ru/curriculum/service/printing/EtpReportGenerationService.java
+R095	src/main/java/ru/curriculum/web/etp/ResponseFile.java	src/main/java/ru/curriculum/web/downloadableFile/ResponseFile.java
+M	src/main/java/ru/curriculum/web/etp/ETPFileDownloadController.java
+M	src/main/resources/templates/etp/etpForm.html
+A	src/test/java/ru/curriculum/domain/admin/domain/printing/EtpExcelDownloadableFileTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/printing/TemplateLoaderFromResourceTest.java
+D	src/test/java/ru/curriculum/domain/admin/domain/printing/TemplateLoaderTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/printing/WorkbookGeneratorTest.java
+A	src/test/java/ru/curriculum/domain/admin/web/ResponseFileTest.java
+
+e189b914e0d64f87d162c4856fdb7feb0868c452, Merge pull request #69 from Bukharovsi/62_print_etp_with_formula, Wed Apr 18 01:20:47 2018 +0300
+cc741c039e2c6191f42687d216babf50b41dc843, Merge branch 'master' into 62_print_etp, Wed Apr 18 00:46:44 2018 +0300
+d1f59b6dd4cf7755361b830a9b176841b030bb95, 62. add formulas to etp export file, Wed Apr 18 00:43:37 2018 +0300
+D	etp.xls
+R090	src/main/java/ru/curriculum/domain/printing/file/ExcelDownloadableFile.java	src/main/java/ru/curriculum/domain/printing/file/excel/ExcelDownloadableFile.java
+A	src/main/java/ru/curriculum/domain/printing/file/excel/ExcelFormula.java
+A	src/main/java/ru/curriculum/domain/printing/file/excel/SUM.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpHeaderFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpOmaFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpPivotFiller.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpWorkbookGenerator.java
+M	src/main/java/ru/curriculum/service/printing/EtpReportGenerationService.java
+M	src/test/java/ru/curriculum/domain/admin/domain/printing/TemplateLoaderTest.java
+
+c9a3406e20f79e4b7cb278cfbae30681baee0f91, up meta, Wed Apr 18 00:28:19 2018 +0300
+M	src/main/resources/templates/fragments/header.html
+
+78de8e9ba286b8ff8e192ce71d9ebde967e01466, add google verification, Wed Apr 18 00:22:38 2018 +0300
+M	src/main/resources/templates/fragments/header.html
+
+f3775673fc037e6a1111780c89722180f1140053, Merge branch 'master' of github.com:Bukharovsi/curriculum, Wed Apr 18 00:19:43 2018 +0300
+df17ba0927b001896148adffd2f1b68477e18e5b, add yandex verification, Wed Apr 18 00:19:22 2018 +0300
+M	src/main/resources/templates/fragments/header.html
+
+0d36c9035003ef0a9f7b4023082c4a79fafd8fc6, Merge pull request #68 from Bukharovsi/fix_time_slots, Wed Apr 18 00:05:58 2018 +0300
+0502f0591ef0ac1763fdf378a5e2785e3da488b8, fix time slot, Tue Apr 17 23:44:03 2018 +0300
+M	src/main/java/ru/curriculum/service/timetable/dto/LessonDto.java
+M	src/test/java/ru/curriculum/domain/admin/domain/timetable/TimetableRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/timetable/LessonDtoTest.java
+
+08355d17d726f9f3bbc3a463d654f0fa5f2d7535, Merge pull request #67 from Bukharovsi/62_print_etp, Tue Apr 17 23:36:30 2018 +0300
+377e874673fa3c75fc4608f50b74d2ece8bf2ce5, #62 read templates from jar, Tue Apr 17 23:32:32 2018 +0300
+M	pom.xml
+M	src/main/java/ru/curriculum/domain/printing/exception/TemplateLoadingException.java
+M	src/main/java/ru/curriculum/domain/printing/file/template/loader/TemplateLoaderFromResource.java
+
+57ebb7bbb0efc0986bcc1491fff071c18957d459, #62 after CR, Mon Apr 16 12:14:51 2018 +0300
+R088	src/main/java/ru/curriculum/domain/printing/file/ExcelFile.java	src/main/java/ru/curriculum/domain/printing/file/ExcelDownloadableFile.java
+R081	src/main/java/ru/curriculum/domain/printing/file/IFile.java	src/main/java/ru/curriculum/domain/printing/file/IDownloadableFile.java
+R059	src/main/java/ru/curriculum/domain/printing/file/template/ITemplate.java	src/main/java/ru/curriculum/domain/printing/file/template/IWorkbookGenerator.java
+R084	src/main/java/ru/curriculum/domain/printing/file/template/Template.java	src/main/java/ru/curriculum/domain/printing/file/template/WorkbookGenerator.java
+D	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplate.java
+R094	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplateSubstitutionRule.java	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplateCoordinates.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEaFiller.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpEmaFiller.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpFiller.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpHeaderFiller.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpOmaFiller.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpPivotFiller.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/EtpWorkbookGenerator.java
+A	src/main/java/ru/curriculum/service/printing/EtpReportGenerationService.java
+D	src/main/java/ru/curriculum/service/printing/IPrintingService.java
+A	src/main/java/ru/curriculum/service/printing/IReportService.java
+D	src/main/java/ru/curriculum/service/printing/PrintingService.java
+M	src/main/java/ru/curriculum/web/etp/ETPFileDownloadController.java
+M	src/main/java/ru/curriculum/web/etp/ResponseFile.java
+M	src/test/java/ru/curriculum/domain/admin/domain/printing/TemplateLoaderTest.java
+
+4e3329f62c7fbeb7c6dfb1d4e9ee5fbdcd0ebd55, 62. rename file to ru, Mon Apr 16 08:29:21 2018 +0300
+M	src/main/java/ru/curriculum/domain/printing/file/ExcelFile.java
+M	src/main/java/ru/curriculum/web/etp/ETPFileDownloadController.java
+M	src/main/java/ru/curriculum/web/etp/ResponseFile.java
+
+48a1d13036cf2f61c1320d1acc028debcb3112ab, 62. export etp to excel prototype, Mon Apr 16 02:21:05 2018 +0300
+A	etp.xls
+D	src/main/java/ru/curriculum/domain/printing/file/template/CalculatedTemplate.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/CellAddress.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/DefaultCellStyle.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplate.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/specific/ETPTemplateSubstitutionRule.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+M	src/main/java/ru/curriculum/service/printing/IPrintingService.java
+M	src/main/java/ru/curriculum/service/printing/PrintingService.java
+M	src/main/java/ru/curriculum/web/etp/ETPFileDownloadController.java
+M	src/main/resources/printing/etp.xls
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/printing/TemplateLoaderTest.java
+
+3237e9e06d6b8c31ba29b3b96af9df621a027d8c, 62. add carcas to printing, Sat Apr 14 23:20:38 2018 +0300
+M	pom.xml
+A	src/main/java/ru/curriculum/domain/printing/exception/CreationFileException.java
+A	src/main/java/ru/curriculum/domain/printing/exception/CreationTemplateException.java
+A	src/main/java/ru/curriculum/domain/printing/exception/TemplateLoadingException.java
+A	src/main/java/ru/curriculum/domain/printing/file/ExcelFile.java
+A	src/main/java/ru/curriculum/domain/printing/file/IFile.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/CalculatedTemplate.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/ITemplate.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/Template.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/loader/ITemplateLoader.java
+A	src/main/java/ru/curriculum/domain/printing/file/template/loader/TemplateLoaderFromResource.java
+A	src/main/java/ru/curriculum/service/printing/IPrintingService.java
+A	src/main/java/ru/curriculum/service/printing/PrintingService.java
+A	src/main/java/ru/curriculum/web/etp/ETPFileDownloadController.java
+A	src/main/java/ru/curriculum/web/etp/ResponseFile.java
+A	src/main/resources/printing/etp.xls
+M	src/main/resources/templates/etp/etpForm.html
+A	src/test/java/ru/curriculum/domain/admin/domain/printing/TemplateLoaderTest.java
+D	test.docx
+
+b6e12ccb7a3af666263e10b84df181d8259ce8b6, Merge pull request #66 from Bukharovsi/fix_timetable, Fri Apr 13 15:00:14 2018 +0300
+0d5ed79bdd83be9df8742f8561524e5aca0c8e06, fix_timetable. form full timetable from etp, Thu Apr 12 00:10:18 2018 +0300
+M	src/main/java/ru/curriculum/domain/timetable/entity/SchoolDay.java
+A	src/main/java/ru/curriculum/domain/timetable/entity/Week.java
+A	src/main/java/ru/curriculum/domain/timetable/entity/WeeklyTimetable.java
+M	src/main/java/ru/curriculum/service/timetable/CreationTimetableFromEtpService.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableCRUDService.java
+M	src/main/java/ru/curriculum/service/timetable/converter/TimetableDtoToTimetableConverter.java
+M	src/main/java/ru/curriculum/service/timetable/dto/LessonDto.java
+M	src/main/java/ru/curriculum/service/timetable/dto/SchoolDayDto.java
+A	src/main/java/ru/curriculum/service/timetable/dto/WeekDto.java
+A	src/main/java/ru/curriculum/service/timetable/dto/WeeklyTimetableDto.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/templates/timetable/timetableForm.html
+
+9d3f2b3a648a1ca918925bf088e94f63459e72d5, fix_timetable. refactor timetable, Tue Apr 10 03:34:34 2018 +0300
+M	src/main/java/ru/curriculum/domain/timetable/entity/Lesson.java
+A	src/main/java/ru/curriculum/domain/timetable/entity/SchoolDay.java
+M	src/main/java/ru/curriculum/domain/timetable/entity/Timetable.java
+M	src/main/java/ru/curriculum/service/timetable/CreationTimetableFromEtpService.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableCRUDService.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableEditService.java
+A	src/main/java/ru/curriculum/service/timetable/TimetableFindingService.java
+A	src/main/java/ru/curriculum/service/timetable/converter/TimetableDtoToTimetableConverter.java
+M	src/main/java/ru/curriculum/service/timetable/dto/LessonDto.java
+A	src/main/java/ru/curriculum/service/timetable/dto/SchoolDayDto.java
+M	src/main/java/ru/curriculum/service/timetable/dto/TimetableDto.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/090420182319_create_school_days_table.xml
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/fragments/inputField.html
+M	src/main/resources/templates/timetable/timetableForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/timetable/TimetableRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/timetable/CreationTimetableFromEtpServiceTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/timetable/LessonDtoTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/timetable/TimetableDtoTest.java
+
+e19f6170842930c66528cf315f06c22226995d2a, Merge pull request #65 from Bukharovsi/63_timetable, Tue Mar 27 23:57:15 2018 +0300
+3c6371b9b56871b5fff783246cd6e0ced7c88681, 63. can create and edit timetable from etp, Sun Mar 25 21:30:41 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/domain/timetable/repository/TimetableRepository.java
+M	src/main/java/ru/curriculum/service/teacher/dto/TeacherDto.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableCRUDService.java
+M	src/main/java/ru/curriculum/service/timetable/dto/LessonDto.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/etp/etpList.html
+M	src/main/resources/templates/timetable/timetableForm.html
+M	src/main/resources/templates/timetable/timetableList.html
+
+c4f9332ca01301233187c1dbbd782e32c3192f39, 63_timetable. add timetable: domain and ui, Sun Mar 25 01:10:59 2018 +0300
+M	pom.xml
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/domain/timetable/entity/Lesson.java
+M	src/main/java/ru/curriculum/domain/timetable/entity/LessonForm.java
+M	src/main/java/ru/curriculum/domain/timetable/entity/Timetable.java
+M	src/main/java/ru/curriculum/domain/timetable/repository/LessonFormRepository.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+M	src/main/java/ru/curriculum/service/teacher/dto/TeacherDto.java
+A	src/main/java/ru/curriculum/service/timetable/AddressFindingService.java
+M	src/main/java/ru/curriculum/service/timetable/CreationTimetableFromEtpService.java
+A	src/main/java/ru/curriculum/service/timetable/LessonFormFindingService.java
+M	src/main/java/ru/curriculum/service/timetable/TimetableCRUDService.java
+A	src/main/java/ru/curriculum/service/timetable/TimetableEditService.java
+M	src/main/java/ru/curriculum/service/timetable/dto/LessonDto.java
+M	src/main/java/ru/curriculum/service/timetable/dto/LessonFormDto.java
+M	src/main/java/ru/curriculum/service/timetable/dto/TimetableDto.java
+M	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/db/changelog/180320181353_create_timetable_tables.xml
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/timetable/timetableForm.html
+M	src/main/resources/templates/timetable/timetableList.html
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/timetable/TimetableRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDtoValidationTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/timetable/CreationTimetableFromEtpServiceTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/timetable/LessonDtoTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/timetable/TimetableDtoTest.java
+A	src/test/java/ru/curriculum/domain/helper/TeacherHelper.java
+
+6f6e8acaaecb47ab24de6c3f7ef24e8b0309fed0, Merge pull request #64 from Bukharovsi/60_add_status_to_etp, Thu Mar 22 00:22:58 2018 +0300
+1b7c2c298f6eebfd01354dfb721b103e3f1175de, 63. add in ui forms with timetables, Mon Mar 19 21:42:26 2018 +0300
+M	pom.xml
+M	src/main/java/ru/curriculum/application/route/Routes.java
+M	src/main/java/ru/curriculum/domain/timetable/entity/Timetable.java
+A	src/main/java/ru/curriculum/service/timetable/TimetableCRUDService.java
+A	src/main/java/ru/curriculum/service/timetable/dto/LessonDto.java
+A	src/main/java/ru/curriculum/service/timetable/dto/LessonFormDto.java
+A	src/main/java/ru/curriculum/service/timetable/dto/TimetableDto.java
+M	src/main/java/ru/curriculum/web/View.java
+A	src/main/java/ru/curriculum/web/timetable/TimetableController.java
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/fragments/sidebar.html
+A	src/main/resources/templates/timetable/timetableForm.html
+A	src/main/resources/templates/timetable/timetableList.html
+
+d964e8fec593cc8d6e9640d511b0acab616b1e59, 63. add timetable entity, and creation from etp service, Sun Mar 18 17:29:03 2018 +0300
+M	pom.xml
+A	src/main/java/ru/curriculum/domain/timetable/entity/Lesson.java
+A	src/main/java/ru/curriculum/domain/timetable/entity/LessonForm.java
+A	src/main/java/ru/curriculum/domain/timetable/entity/Timetable.java
+A	src/main/java/ru/curriculum/domain/timetable/repository/LessonFormRepository.java
+A	src/main/java/ru/curriculum/domain/timetable/repository/TimetableRepository.java
+M	src/main/java/ru/curriculum/service/etp/dto/PlanDto.java
+A	src/main/java/ru/curriculum/service/timetable/CreationTimetableFromEtpService.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/180320181353_create_timetable_tables.xml
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+A	src/test/java/ru/curriculum/domain/admin/domain/timetable/TimetableRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoToEtpConverterTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoValidationTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/timetable/CreationTimetableFromEtpServiceTest.java
+
+eccd8358efebdd32e8478bb70dc338fae36f2b72, 60. merge   add_to_etp_lerner_count_and_days_count, Sat Mar 17 21:49:28 2018 +0300
+c534f5e049571c680ae1ab9a67a2431747a0466f, 60. can commented etp, Sat Mar 17 21:11:47 2018 +0300
+A	src/main/java/ru/curriculum/application/auth/principal/AuthenticationFacade.java
+M	src/main/java/ru/curriculum/domain/etp/entity/Comment.java
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+A	src/main/java/ru/curriculum/domain/etp/repository/ETPCommentRepository.java
+A	src/main/java/ru/curriculum/service/etp/dto/CommentDto.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+A	src/main/java/ru/curriculum/service/etp/service/ETPCommentCRUDService.java
+M	src/main/java/ru/curriculum/service/etp/service/ETP_CRUDService.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/db/changelog/130320182204_add_etp_comment_table.xml
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoTest.java
+
+cfb7b1ab078656002c3cb94cc6099d49e1a7e77a, 60. add comment entity to etp, Tue Mar 13 22:23:54 2018 +0300
+A	src/main/java/ru/curriculum/domain/etp/entity/Comment.java
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/130320182204_add_etp_comment_table.xml
+
+4ed561633d8a58db246076d52c8ea2afdaae0cbc, 60. make moving statuses in UI pretty, add some tests to EtpStatusManager, Tue Mar 13 21:59:09 2018 +0300
+M	src/main/java/ru/curriculum/service/etp/service/ETP_CRUDService.java
+M	src/main/java/ru/curriculum/service/etp/statusManager/ETPStatusManager.java
+M	src/main/java/ru/curriculum/service/etp/statusManager/ETPStatusTransitionManager.java
+M	src/main/java/ru/curriculum/service/etp/statusManager/IllegalTransitionException.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/templates/etp/etpForm.html
+A	src/test/java/ru/curriculum/domain/admin/service/etp/statusManager/ETPStatusManagerTest.java
+
+66a9bcdf31dec6745333d2f784d5c239b5a4b3d3, 60. add statuses to etp, Mon Mar 12 23:19:32 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/service/etp/converter/ETPDtoToEtpConverter.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+M	src/main/java/ru/curriculum/service/etp/service/ETP_CRUDService.java
+A	src/main/java/ru/curriculum/service/etp/statusManager/ETPStatus.java
+A	src/main/java/ru/curriculum/service/etp/statusManager/ETPStatusManager.java
+A	src/main/java/ru/curriculum/service/etp/statusManager/ETPStatusTransitionManager.java
+A	src/main/java/ru/curriculum/service/etp/statusManager/IllegalTransitionException.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/120320182000_add_status_to_etp.xml
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoToEtpConverterTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/etp/statusManager/ETPStatusTransitionManagerTest.java
+
+2024ba22d2cf1c987a03159ae9979d9e3511c703, add_to_etp_lerner_count_and_days_count. extend etp, Sat Mar 10 12:33:21 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/service/etp/converter/ETPDtoToEtpConverter.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/090320181413_add_lerner_count_and_school_days.xml
+M	src/main/resources/static/css/etp/etp.css
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoToEtpConverterTest.java
+
+7220f1085bc86be7d13203e3a447067d4a3e4fdb, Merge pull request #59 from Bukharovsi/smart_search, Sun Mar 4 19:32:53 2018 +0300
+e31802119625f2811d770ef37afc024d03f061b0, [smart_search], Sun Mar 4 17:51:47 2018 +0300
+M	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/DictionaryValuesFinder.java
+D	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/DictionaryValuesStore.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/config/DictionaryValuesFinderConfig.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/finders/CuratorValueFinder.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/finders/ImplementationFormValueFinder.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/finders/ResponsibleDepartmentValuesFinder.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/finders/StudyModeValueFinder.java
+M	src/test/java/ru/curriculum/domain/lib/DahmerauLevenshteinComparatorTest.java
+
+c6d463f3b8bc3d14f566485d255feba2e965219c, [smart_search] add persentage metric to comparator, Sun Mar 4 16:01:50 2018 +0300
+M	src/main/java/ru/curriculum/lib/DahmerauLevenshteinComparator.java
+A	src/main/java/ru/curriculum/lib/PercentageMetric.java
+M	src/test/java/ru/curriculum/domain/lib/DahmerauLevenshteinComparatorTest.java
+A	src/test/java/ru/curriculum/domain/lib/PercentageMetricTest.java
+
+4d558272af7425afdc63e335fe1d65013a0cd42d, [smart_search] Add string comparator base on smart search, + tests, Sun Mar 4 14:41:17 2018 +0300
+M	src/main/java/ru/curriculum/lib/DahmerauLevenshtein.java
+A	src/main/java/ru/curriculum/lib/DahmerauLevenshteinComparator.java
+A	src/test/java/ru/curriculum/domain/lib/DahmerauLevenshteinComparatorTest.java
+M	src/test/java/ru/curriculum/domain/lib/DahmerauLevenshteinTest.java
+
+4e5e18b8d4488b70d9161a82bc068e39cd4b8bfa, fix, Fri Mar 2 17:27:56 2018 +0300
+M	src/test/java/ru/curriculum/domain/lib/DahmerauLevenshteinTest.java
+
+99ab5a72d4822ac9fe6993ecdbd020472027ae07, add data provider for tests, Fri Mar 2 17:27:25 2018 +0300
+M	pom.xml
+M	src/test/java/ru/curriculum/domain/lib/DahmerauLevenshteinTest.java
+
+52c26d4f6ec995876418edc9f2be33d6c9687fda, simple levenshtein, Tue Feb 27 23:17:21 2018 +0300
+M	src/main/java/ru/curriculum/lib/DahmerauLevenshtein.java
+M	src/test/java/ru/curriculum/domain/lib/DahmerauLevenshteinTest.java
+
+e149d25523a96712523b3cdc82e05e9450518421, attempt to implement dahmerau-levenshtein, Tue Feb 27 22:12:24 2018 +0300
+A	src/main/java/ru/curriculum/lib/DahmerauLevenshtein.java
+A	src/test/java/ru/curriculum/domain/lib/DahmerauLevenshteinTest.java
+
+b40da67e982fc04480c4e9682a1277a789a0df28, #54 fill division, Mon Feb 26 22:51:20 2018 +0300
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/260220181342_fill_division_table.xml
+
+e43a904946f23d05b9c609f914030ffa932fb5f0, #51 ведущий сотрудник, Mon Feb 26 21:57:01 2018 +0300
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/260218181913_fill_staff_position_table.xml
+
+205bcace1dce77b4fbeaaf4fcd8675093d682d2d, Merge pull request #58 from Bukharovsi/add_traineeship_to_state_program, Mon Feb 26 21:48:46 2018 +0300
+cf7c478ff7e7212133fa28929a9774dc277301a8, add_traineeship_to_state_program. change parse date format, and make pretty some html pages, Mon Feb 26 21:21:43 2018 +0300
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/InternshipParser.java
+M	src/main/resources/templates/admin/curators/curatorForm.html
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+A	src/main/resources/templates/fragments/pageHeader.html
+M	src/main/resources/templates/stateSchedule/stateProgramFileFormatInfo.html
+M	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/InternshipDateParserTest.java
+
+0b499dcb6d901f3e5acab0061854fe4f3786075b, Merge pull request #56 from Bukharovsi/add_traineeship_to_state_program, Sun Feb 25 22:33:41 2018 +0300
+0b24f85ace000aadfa755982e7136ff309c85ad9, merge master, Mon Feb 19 23:04:44 2018 +0300
+9ce3ead594b01d45971362bcca208017c98fffed, add description to state program file, Mon Feb 19 22:38:01 2018 +0300
+d6981074d52a72513bc940cb54e9cb6f2560cff3, add fileParseResult. Check for extensions and empties, Mon Feb 19 21:28:44 2018 +0300
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFileParser.java
+A	src/main/java/ru/curriculum/service/stateSchedule/service/FileParseResult.java
+M	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCreationFromFileService.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateProgramCreationFromFileServiceTest.java
+
+694107e08f2932e39b7f97a5aaaeebcb9f002993, Merge pull request #55 from Bukharovsi/staff_and_guest_teacher, Mon Feb 19 20:39:50 2018 +0300
+b1ee89403caff95ee3e61f4def3800732bfed5b5, remove teacher type of work validation, Mon Feb 19 19:28:52 2018 +0300
+M	src/main/java/ru/curriculum/service/teacher/dto/TeacherDto.java
+
+f7ccd720b428bd4ccba9da0b6081c1f8135944a2, parse internship from file and form entity, Sun Feb 18 21:11:31 2018 +0300
+M	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/DictionaryValuesFinder.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/DictionaryValuesStore.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/IDictionaryValuesFinder.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/config/DictionaryValuesFinderConfig.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/Internship.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/StateProgram.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/ColumnIndexToFieldMap.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/ColumnIndexToFieldMapper.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/InternshipParser.java
+D	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFieldComparator.java
+R056	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramField.java	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFieldSetter.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFieldsStorage.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFileParser.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramTemplate.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramTemplateToStateProgramConverter.java
+A	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/InternshipDateParserTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/StateProgramFieldsStorageTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateProgramCreationFromFileServiceTest.java
+
+b538bb1145e79cab1fc19433f23942df49b1d35c, add to teacher entity type of work, Sat Feb 17 21:07:34 2018 +0300
+M	src/main/java/ru/curriculum/domain/teacher/entity/Teacher.java
+A	src/main/java/ru/curriculum/domain/teacher/entity/TeacherType.java
+M	src/main/java/ru/curriculum/domain/teacher/factory/TeacherFactory.java
+M	src/main/java/ru/curriculum/service/teacher/dto/TeacherDto.java
+M	src/main/java/ru/curriculum/service/teacher/factory/TeacherDtoFactory.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/170220182041_add_teacher_type_column.xml
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherTest.java
+M	src/test/java/ru/curriculum/domain/admin/web/TeacherManagementControllerTest.java
+
+b550ecd08b10e8f3df75d3cdcd728b88a1ec2aa2, pretty fix stateSchedulerController, Sat Feb 17 20:23:38 2018 +0300
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+
+76f17dc331a0af13f613a76de4fe2e6a02c91c20, add to state program entity internships, Sat Feb 17 20:17:20 2018 +0300
+A	src/main/java/ru/curriculum/domain/stateSchedule/entity/Internship.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/StateProgram.java
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/DtoToStateScheduleConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/StateScheduleEntityToDtoConverter.java
+A	src/main/java/ru/curriculum/service/stateSchedule/dto/InternshipDto.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramCreationDto.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramViewDto.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/170220181200_create_internship_table.xml
+M	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/StateProgramTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateScheduleConvertersTest.java
+M	src/test/java/ru/curriculum/domain/helper/StateProgramTestHelper.java
+
+9c39e89bcdc53143370cefb2fc85b385f7b25df0, state_program_file_info. add html page about statate program file format info, Sat Feb 17 11:46:13 2018 +0300
+M	src/main/java/ru/curriculum/CurriculumApplication.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFileParser.java
+M	src/main/java/ru/curriculum/web/View.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+A	src/main/resources/templates/stateSchedule/stateProgramFileFormatInfo.html
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+
+f2b540600827de8785e84dcca69dcb107e20f902, Merge pull request #49 from Bukharovsi/form_state_program_from_doc_file, Sun Feb 11 20:58:56 2018 +0300
+4a3d402bdad032a37404a62861b7f61307e791ef, form_state_program_doc_file. merge master, Sun Feb 11 20:52:08 2018 +0300
+92abc5840feaa72aad16c9f1eb863c1235a0f4ab, form_state_program_from_doc_file. merge master, Sun Feb 11 20:32:46 2018 +0300
+69b48f808c7cebe0a8b985d1bcae03f0304938f8, #42 remove all from state schedule, Sun Feb 11 20:29:57 2018 +0300
+M	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCRUDService.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+
+a6083c7828b06fba756d116c2c3cd3e89db251e7, #30 /health permit all, Sun Feb 11 20:13:53 2018 +0300
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+
+fed05153694ae6702eb64dac42e0423f56bb2b8a, form_state_program_from_doc_file. from doc file form simple template of state program, Sun Feb 11 20:13:33 2018 +0300
+M	pom.xml
+A	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/DictionaryValuesFinder.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/DictionaryValuesStore.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/IDictionaryValuesFinder.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/dictionary/config/DictionaryValuesFinderConfig.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramDateParser.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramField.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFieldComparator.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/stateProgramFileParser/StateProgramFileParser.java
+M	src/main/java/ru/curriculum/service/division/DivisionDto.java
+A	src/main/java/ru/curriculum/service/stateSchedule/converter/MultipartFileToFileConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/StateScheduleEntityToDtoConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramCreationDto.java
+D	src/main/java/ru/curriculum/service/stateSchedule/service/IStateProgramFileParser.java
+D	src/main/java/ru/curriculum/service/stateSchedule/service/StateProgramFieldComparator.java
+D	src/main/java/ru/curriculum/service/stateSchedule/service/StateProgramFileParser.java
+M	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCreationFromFileService.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/100220181800_change_state_program_null_constraint.xml
+A	src/main/resources/static/css/stateSchedule/stateSchedule.css
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+A	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/StateProgramDateParserTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateProgramCreationFromFileServiceTest.java
+M	test.docx
+D	"\320\237\320\276\320\273\320\276\320\266\320\265\320\275\320\270\320\265_\320\276\320\261 \320\276\320\261\321\203\321\207\320\265\320\275\320\270\320\270 \321\200\320\260\320\261\320\276\321\202\320\275\320\270\320\272\320\276\320\262.docx"
+
+a1308a34c4217f0cac297fc44d4dd323ceeb354f, #30 health status, Sun Feb 11 20:02:41 2018 +0300
+M	pom.xml
+M	src/main/resources/application.yml
+
+3eba78c9b78688ff50bb81f0177ee055bdfe1bfb, #34 fill staff position dictionary, Sun Feb 11 19:31:50 2018 +0300
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/110220181913_fill_staff_position_table.xml
+
+e6be799ca7240cae64c57e079803cd6b97b71635, Merge pull request #48 from Bukharovsi/47_utp_budget, Sun Feb 11 16:18:30 2018 +0300
+c66b9a58dcfaf626da3b1112539615834db6ef2a, #27 change division auto to identity, Sun Feb 11 16:08:03 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+A	src/main/java/ru/curriculum/domain/etp/entity/financingSource/FinancingSource.java
+M	src/main/java/ru/curriculum/service/etp/converter/ETPDtoToEtpConverter.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/110220220146_add_financing_source_to_ETP.xml
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoValidationTest.java
+M	src/test/java/ru/curriculum/domain/admin/web/ETPControllerTest.java
+
+adbfcdfb09030d708b9ed00da2d70f0d709297ad, Merge pull request #46 from Bukharovsi/forming_etp_from_state_schedule, Sat Feb 10 21:46:52 2018 +0300
+1a1d8f456672de3ae05b696f2095488360e8c71f, form_state_program_doc_file. form state program as map, Thu Feb 8 22:11:30 2018 +0300
+A	src/main/java/ru/curriculum/service/stateSchedule/service/IStateProgramFileParser.java
+A	src/main/java/ru/curriculum/service/stateSchedule/service/StateProgramFieldComparator.java
+A	src/main/java/ru/curriculum/service/stateSchedule/service/StateProgramFileParser.java
+M	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCreationFromFileService.java
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateProgramCreationFromFileServiceTest.java
+
+805c795d9816fd6391dd8ffde3189a7d25c2d763, form_state_program_from_doc_file. upload file and begin prototype to parse, Tue Feb 6 23:53:09 2018 +0300
+M	pom.xml
+A	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCreationFromFileService.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+A	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateProgramCreationFromFileServiceTest.java
+A	test.docx
+A	"\320\237\320\276\320\273\320\276\320\266\320\265\320\275\320\270\320\265_\320\276\320\261 \320\276\320\261\321\203\321\207\320\265\320\275\320\270\320\270 \321\200\320\260\320\261\320\276\321\202\320\275\320\270\320\272\320\276\320\262.docx"
+
+a8e4fdb60187e2ada39bd6454dc3065c1a3d25f4, forming_etp_from_state_schedule. not delete from division repository, Mon Feb 5 22:21:12 2018 +0300
+M	src/test/java/ru/curriculum/domain/helper/StateProgramTestHelper.java
+
+ded06d2f57f9115500f83f0f5fa06e661e572959, forming_etp_from_state_schedule. if ept created formed by stateProgram then do not delete stateProgram, Mon Feb 5 21:33:55 2018 +0300
+M	src/main/java/ru/curriculum/service/etp/service/ETP_CRUDService.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+M	src/test/java/ru/curriculum/domain/admin/web/ETPControllerTest.java
+
+8b91554240a0caf0a3a50e2ebe2886cf2d8f41b6, forming_etp_from_schedule_state. can create etp from plan, Sun Feb 4 23:57:40 2018 +0300
+A	src/main/java/ru/curriculum/domain/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/domain/etp/entity/Plan.java
+M	src/main/java/ru/curriculum/domain/etp/repository/ETPRepository.java
+M	src/main/java/ru/curriculum/domain/teacher/factory/TeacherFactory.java
+M	src/main/java/ru/curriculum/service/curator/AccountService.java
+M	src/main/java/ru/curriculum/service/curator/CuratorCRUDService.java
+M	src/main/java/ru/curriculum/service/curator/converter/DtoToCuratorConverter.java
+R093	src/main/java/ru/curriculum/service/curator/dto/CuratorDTO.java	src/main/java/ru/curriculum/service/curator/dto/CuratorDto.java
+M	src/main/java/ru/curriculum/service/curator/validation/PasswordValidator.java
+M	src/main/java/ru/curriculum/service/curator/validation/UniqueLoginValidator.java
+R072	src/main/java/ru/curriculum/service/directories/academicDegree/AcademicDegreeDTO.java	src/main/java/ru/curriculum/service/directories/academicDegree/AcademicDegreeDto.java
+M	src/main/java/ru/curriculum/service/directories/academicDegree/AcademicDegreeFindService.java
+R088	src/main/java/ru/curriculum/service/directories/staffTable/StaffTableDto.java	src/main/java/ru/curriculum/service/directories/staffTable/StaffPositionDto.java
+M	src/main/java/ru/curriculum/service/directories/staffTable/StaffTableFindService.java
+D	src/main/java/ru/curriculum/service/etp/PlanFactory.java
+R070	src/main/java/ru/curriculum/service/etp/ETPFactory.java	src/main/java/ru/curriculum/service/etp/converter/ETPDtoToEtpConverter.java
+A	src/main/java/ru/curriculum/service/etp/converter/PlanFactory.java
+R084	src/main/java/ru/curriculum/service/etp/dto/EAModuleDTO.java	src/main/java/ru/curriculum/service/etp/dto/EAModuleDto.java
+R083	src/main/java/ru/curriculum/service/etp/dto/EASectionDTO.java	src/main/java/ru/curriculum/service/etp/dto/EASectionDto.java
+R071	src/main/java/ru/curriculum/service/etp/dto/EATopicDTO.java	src/main/java/ru/curriculum/service/etp/dto/EATopicDto.java
+R068	src/main/java/ru/curriculum/service/etp/dto/EMAModuleDTO.java	src/main/java/ru/curriculum/service/etp/dto/EMAModuleDto.java
+R085	src/main/java/ru/curriculum/service/etp/dto/ETP_DTO.java	src/main/java/ru/curriculum/service/etp/dto/ETPDto.java
+R072	src/main/java/ru/curriculum/service/etp/dto/OMAModuleDTO.java	src/main/java/ru/curriculum/service/etp/dto/OMAModuleDto.java
+R085	src/main/java/ru/curriculum/service/etp/dto/PlanDTO.java	src/main/java/ru/curriculum/service/etp/dto/PlanDto.java
+A	src/main/java/ru/curriculum/service/etp/exception/ETPAlreadyCreatedFromStateProgramException.java
+A	src/main/java/ru/curriculum/service/etp/service/ETPFromStateProgramFormationService.java
+R066	src/main/java/ru/curriculum/service/etp/ETP_CRUDService.java	src/main/java/ru/curriculum/service/etp/service/ETP_CRUDService.java
+M	src/main/java/ru/curriculum/service/etp/validation/ETPDatesValidator.java
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/StateScheduleEntityToDtoConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramViewDto.java
+M	src/main/java/ru/curriculum/service/teacher/TeacherCRUDService.java
+R095	src/main/java/ru/curriculum/service/teacher/dto/TeacherDTO.java	src/main/java/ru/curriculum/service/teacher/dto/TeacherDto.java
+D	src/main/java/ru/curriculum/service/teacher/factory/TeacherDTOFactory.java
+A	src/main/java/ru/curriculum/service/teacher/factory/TeacherDtoFactory.java
+M	src/main/java/ru/curriculum/web/View.java
+M	src/main/java/ru/curriculum/web/admin/CuratorManagementController.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+M	src/main/java/ru/curriculum/web/error/ErrorHandlerController.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/040220182200_add_program_state_id_to_ept.xml
+M	src/main/resources/templates/admin/curators/curatorForm.html
+M	src/main/resources/templates/admin/curators/curatorList.html
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/CuratorTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/directories/StaffPositionDtoTest.java
+R069	src/test/java/ru/curriculum/domain/admin/service/etp/ETP_DTOTest.java	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoTest.java
+R078	src/test/java/ru/curriculum/domain/admin/service/etp/ETPFactoryTest.java	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoToEtpConverterTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoValidationTest.java
+R087	src/test/java/ru/curriculum/domain/admin/service/etp/PlanAndPlanDTOCreationTest.java	src/test/java/ru/curriculum/domain/admin/service/etp/PlanAndPlanDtoCreationTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateScheduleConvertersTest.java
+D	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOFactoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDtoFactoryTest.java
+R056	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOValidationTest.java	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDtoValidationTest.java
+R074	src/test/java/ru/curriculum/domain/admin/service/user/CuratorDTOValidationTest.java	src/test/java/ru/curriculum/domain/admin/service/user/CuratorDtoValidationTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/user/DtoToCuratorConverterTest.java
+R098	src/test/java/ru/curriculum/domain/admin/AuthControllerTest.java	src/test/java/ru/curriculum/domain/admin/web/AuthControllerTest.java
+R091	src/test/java/ru/curriculum/domain/admin/CuratorManagementControllerTest.java	src/test/java/ru/curriculum/domain/admin/web/CuratorManagementControllerTest.java
+A	src/test/java/ru/curriculum/domain/admin/web/ETPControllerTest.java
+R095	src/test/java/ru/curriculum/domain/admin/ErrorControllerTest.java	src/test/java/ru/curriculum/domain/admin/web/ErrorControllerTest.java
+R099	src/test/java/ru/curriculum/domain/admin/TeacherManagementControllerTest.java	src/test/java/ru/curriculum/domain/admin/web/TeacherManagementControllerTest.java
+A	src/test/java/ru/curriculum/domain/helper/StateProgramTestHelper.java
+
+6bc22b6898d7838ef55d22f3f63dd607bc2d93d4, Merge pull request #45 from Bukharovsi/etp_add_total_hours, Fri Feb 2 20:15:11 2018 +0300
+ea96bd01d66663237c6028e374df61d24c1197ad, etp_add_total_hours. calculate and update after loading page total sum, Thu Feb 1 22:23:10 2018 +0300
+M	src/main/java/ru/curriculum/service/etp/dto/PlanDTO.java
+D	src/main/resources/static/js/etp/constants.js
+M	src/main/resources/static/js/etp/etp.js
+D	src/main/resources/static/js/etp/totalHoursCalc.js
+M	src/main/resources/templates/etp/etpForm.html
+R085	src/test/java/ru/curriculum/domain/admin/service/etp/PlanFactoryTest.java	src/test/java/ru/curriculum/domain/admin/service/etp/PlanAndPlanDTOCreationTest.java
+
+35ac321e7f00becadd9b865c36586c2649af5e8c, etp_add_total_hours. calcuate total, Thu Feb 1 00:01:59 2018 +0300
+M	src/main/resources/static/js/etp/constants.js
+M	src/main/resources/static/js/etp/etp.js
+M	src/main/resources/static/js/etp/totalHoursCalc.js
+M	src/main/resources/templates/etp/etpForm.html
+
+abd2d62ceb60055664cf6e0b30dc8e9a57564347, etp_add_total_hours. add calc total on front, Wed Jan 31 00:48:06 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/domain/etp/entity/Plan.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETP_DTO.java
+A	src/main/java/ru/curriculum/service/etp/dto/TotalRow.java
+A	src/main/resources/static/js/etp/constants.js
+M	src/main/resources/static/js/etp/totalHoursCalc.js
+M	src/main/resources/templates/etp/etpForm.html
+
+cadc120277745252d0c66c1cf63a45caf5783956, Merge pull request #44 from Bukharovsi/etp_add_columns, Mon Jan 29 21:50:03 2018 +0300
+8849def3bcbb56f28a11cfd43a71509434d81ea1, etp_add_columns. merge master, Mon Jan 29 21:37:53 2018 +0300
+fd33bcb9ca1b81a359b6704227f453c0844c8e55, etp_add_columns, Mon Jan 29 21:21:20 2018 +0300
+M	src/main/resources/static/css/etp/etp.css
+M	src/main/resources/templates/etp/etpForm.html
+
+c79c8f23508f2243faffbf8c86d97ffc8cf6649e, #27 change division auto to identity, Mon Jan 29 00:09:31 2018 +0300
+M	src/main/java/ru/curriculum/domain/organization/entity/Division.java
+
+581876da3a7ab71ad7ef3fddbedd6c7427158195, Merge pull request #43 from Bukharovsi/27_division, Sun Jan 28 23:50:49 2018 +0300
+0756dd7a7b8ad4eb06bdda47ebbe5908c6e1382b, #27 using devision entity, Sun Jan 28 23:38:28 2018 +0300
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/StateProgram.java
+A	src/main/java/ru/curriculum/service/division/DivisionDto.java
+A	src/main/java/ru/curriculum/service/division/DivisionFindingService.java
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/DtoToStateScheduleConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/StateScheduleEntityToDtoConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramCreationDto.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramViewDto.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/db/changelog-master.xml
+M	src/main/resources/db/changelog/280120181342_create_division_table.xml
+A	src/main/resources/db/changelog/280120220146_change_state_chedule_change_division.xml
+M	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+M	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/StateProgramTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateScheduleConvertersTest.java
+
+d0018c3fad1edb9e383fe0523f718ed7e0188b54, #27 add division entity, Sun Jan 28 21:31:56 2018 +0300
+A	src/main/java/ru/curriculum/domain/organization/entity/Division.java
+A	src/main/java/ru/curriculum/domain/organization/repository/DivisionRepository.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/280120181342_create_division_table.xml
+M	src/test/java/ru/curriculum/domain/admin/domain/directories/StaffTableTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/division/DivisionTest.java
+
+6157b94ef257213ac583d0369f8ca7cc4522aef2, etp_add_columns. exted etp entity, Sun Jan 28 20:04:01 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/entity/Plan.java
+M	src/main/java/ru/curriculum/service/etp/PlanFactory.java
+M	src/main/java/ru/curriculum/service/etp/dto/PlanDTO.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/280120181326_add_columns_to_plan.xml
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/etp/PlanTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/etp/PlanFactoryTest.java
+
+117c16dd64151abb6628b3cae2609ccaa3fed3a7, Merge pull request #41 from Bukharovsi/26_fill_dictionries, Sun Jan 28 00:07:16 2018 +0300
+70a0af66f13d75b06c819e739d630c9d36e6a428, #26 fill dictionaries, Sat Jan 27 23:59:48 2018 +0300
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/270120181342_insert_study_mode.xml
+A	src/main/resources/db/changelog/270120181346_insert_implementation_form.xml
+
+503d8be4a86dbc13d0e0caadbe29e44bbc43d323, Merge pull request #40 from Bukharovsi/user_becomes_curator, Sat Jan 27 19:53:35 2018 +0300
+0eb35441d3442c70e255cd9eae4a25ea35387c69, #28 my state schedule, Sat Jan 27 19:51:19 2018 +0300
+M	src/main/java/ru/curriculum/application/auth/principal/CuratorPrincipal.java
+M	src/main/java/ru/curriculum/application/route/Routes.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/repository/StateProgramRepository.java
+M	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCRUDService.java
+A	src/main/java/ru/curriculum/web/stateSchedule/MyStateScheduleController.java
+M	src/main/resources/templates/fragments/sidebar.html
+
+440ad1ead19a84893ea71401b393406636866e74, user_becomes_curator. dorp not user value from role table, Sat Jan 27 19:19:28 2018 +0300
+M	src/main/resources/db/changelog/250120182124_rename_user_table_to_curator.xml
+
+192a1a24c6e7378ec3a080f771770780f8e7d869, user_becomes_curator. fix migration, Sat Jan 27 18:54:47 2018 +0300
+M	src/main/resources/application-aws.yml
+M	src/main/resources/db/changelog/250120182124_rename_user_table_to_curator.xml
+
+76f20fdaa67fd63d7de82d2eb6e3602f6d652894, Merge pull request #32 from Bukharovsi/user_becomes_curator, Fri Jan 26 22:38:47 2018 +0300
+a2485751795843bff85ee29e619f3ef4b9d2abc8, Merge pull request #31 from Bukharovsi/teacher_position_from_directory, Fri Jan 26 22:37:12 2018 +0300
+35c51c08a7fb1e10f65912c08ca5a7f0b82590af, user_becomes_curator. user is curator, Fri Jan 26 19:51:17 2018 +0300
+M	src/main/java/ru/curriculum/service/curator/converter/DtoToCuratorConverter.java
+M	src/main/java/ru/curriculum/service/curator/dto/CuratorDTO.java
+M	src/main/java/ru/curriculum/service/curator/validation/UniqueLoginValidator.java
+M	src/main/java/ru/curriculum/service/teacher/factory/TeacherDTOFactory.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+M	src/main/resources/templates/admin/curators/curatorForm.html
+M	src/main/resources/templates/admin/curators/curatorList.html
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/teachers/teacherFromCuratorForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/main/resources/templates/fragments/sidebar.html
+M	src/test/java/ru/curriculum/domain/admin/AuthControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/CuratorManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/CuratorTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateScheduleConvertersTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/user/CuratorDTOValidationTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/user/DtoToCuratorConverterTest.java
+
+3038f70c57f94516ddc879a1ab015b8cc008b024, user_becomes_curator. rename user model, Thu Jan 25 23:59:25 2018 +0300
+M	src/main/java/ru/curriculum/application/auth/principal/AuthorityFactory.java
+R070	src/main/java/ru/curriculum/application/auth/principal/UserPrincipal.java	src/main/java/ru/curriculum/application/auth/principal/CuratorPrincipal.java
+A	src/main/java/ru/curriculum/application/auth/principal/CuratorPrincipalService.java
+D	src/main/java/ru/curriculum/application/auth/principal/UserPrincipalService.java
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationInfoInitializationService.java
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+M	src/main/java/ru/curriculum/application/route/Routes.java
+R080	src/main/java/ru/curriculum/domain/admin/user/entity/User.java	src/main/java/ru/curriculum/domain/admin/curator/entity/Curator.java
+R086	src/main/java/ru/curriculum/domain/admin/user/entity/Password.java	src/main/java/ru/curriculum/domain/admin/curator/entity/Password.java
+R091	src/main/java/ru/curriculum/domain/admin/user/entity/Role.java	src/main/java/ru/curriculum/domain/admin/curator/entity/Role.java
+A	src/main/java/ru/curriculum/domain/admin/curator/entity/Roles.java
+R075	src/main/java/ru/curriculum/domain/admin/user/exceptions/IllegalPasswordException.java	src/main/java/ru/curriculum/domain/admin/curator/exceptions/IllegalPasswordException.java
+A	src/main/java/ru/curriculum/domain/admin/curator/repository/CuratorRepository.java
+R058	src/main/java/ru/curriculum/domain/admin/user/repository/RoleRepository.java	src/main/java/ru/curriculum/domain/admin/curator/repository/RoleRepository.java
+D	src/main/java/ru/curriculum/domain/admin/user/entity/Roles.java
+D	src/main/java/ru/curriculum/domain/admin/user/repository/UserRepository.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/StateProgram.java
+M	src/main/java/ru/curriculum/domain/teacher/entity/Teacher.java
+M	src/main/java/ru/curriculum/domain/teacher/factory/TeacherFactory.java
+M	src/main/java/ru/curriculum/domain/teacher/repository/TeacherRepository.java
+A	src/main/java/ru/curriculum/service/curator/AccountService.java
+A	src/main/java/ru/curriculum/service/curator/CuratorCRUDService.java
+A	src/main/java/ru/curriculum/service/curator/converter/DtoToCuratorConverter.java
+R064	src/main/java/ru/curriculum/service/user/dto/UserDTO.java	src/main/java/ru/curriculum/service/curator/dto/CuratorDTO.java
+A	src/main/java/ru/curriculum/service/curator/exception/CuratorNotFoundException.java
+R089	src/main/java/ru/curriculum/service/user/validation/PasswordConstraint.java	src/main/java/ru/curriculum/service/curator/validation/PasswordConstraint.java
+A	src/main/java/ru/curriculum/service/curator/validation/PasswordValidator.java
+A	src/main/java/ru/curriculum/service/curator/validation/UniqueLoginValidator.java
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/DtoToStateScheduleConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/StateScheduleEntityToDtoConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramViewDto.java
+M	src/main/java/ru/curriculum/service/teacher/dto/TeacherDTO.java
+M	src/main/java/ru/curriculum/service/teacher/factory/TeacherDTOFactory.java
+D	src/main/java/ru/curriculum/service/user/AccountService.java
+D	src/main/java/ru/curriculum/service/user/UserCRUDService.java
+D	src/main/java/ru/curriculum/service/user/converter/DtoToUserConverter.java
+D	src/main/java/ru/curriculum/service/user/exception/UserNotFoundException.java
+D	src/main/java/ru/curriculum/service/user/validation/PasswordValidator.java
+D	src/main/java/ru/curriculum/service/user/validation/UniquerUsernameValidator.java
+M	src/main/java/ru/curriculum/web/View.java
+A	src/main/java/ru/curriculum/web/admin/CuratorManagementController.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+D	src/main/java/ru/curriculum/web/admin/UserManagementController.java
+M	src/main/java/ru/curriculum/web/auth/AuthController.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/application.yml
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/250120182124_rename_user_table_to_curator.xml
+R055	src/main/resources/templates/admin/users/userForm.html	src/main/resources/templates/admin/curators/curatorForm.html
+R053	src/main/resources/templates/admin/users/usersList.html	src/main/resources/templates/admin/curators/curatorList.html
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+R081	src/main/resources/templates/admin/teachers/teacherFromUserForm.html	src/main/resources/templates/admin/teachers/teacherFromCuratorForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/main/resources/templates/fragments/sidebar.html
+M	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+M	src/test/java/ru/curriculum/domain/admin/AuthControllerTest.java
+A	src/test/java/ru/curriculum/domain/admin/CuratorManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/ErrorControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/TeacherManagementControllerTest.java
+D	src/test/java/ru/curriculum/domain/admin/UserManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/application/AuthorityFactoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/admin/CuratorRepositoryTest.java
+R052	src/test/java/ru/curriculum/domain/admin/domain/admin/UserTest.java	src/test/java/ru/curriculum/domain/admin/domain/admin/CuratorTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/PasswordTest.java
+D	src/test/java/ru/curriculum/domain/admin/domain/admin/UserRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/StateProgramTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateScheduleConvertersTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOFactoryTest.java
+R064	src/test/java/ru/curriculum/domain/admin/service/user/UserDTOValidationTest.java	src/test/java/ru/curriculum/domain/admin/service/user/CuratorDTOValidationTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/user/DtoToCuratorConverterTest.java
+D	src/test/java/ru/curriculum/domain/admin/service/user/DtoToUserConverterTest.java
+M	src/test/java/ru/curriculum/domain/helper/UserTestFactory.java
+
+a5311dba5b4a05337be877827866c11542c99092, teacher_position_from_directory. add user converter, Thu Jan 25 21:20:09 2018 +0300
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationInfoInitializationService.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+R080	src/main/java/ru/curriculum/domain/directories/staffTable/StaffTable.java	src/main/java/ru/curriculum/domain/directories/staffTable/StaffPosition.java
+R055	src/main/java/ru/curriculum/domain/directories/staffTable/StaffTableRepository.java	src/main/java/ru/curriculum/domain/directories/staffTable/StaffPositionRepository.java
+M	src/main/java/ru/curriculum/domain/teacher/factory/TeacherFactory.java
+M	src/main/java/ru/curriculum/service/directories/staffTable/StaffTableFindService.java
+M	src/main/java/ru/curriculum/service/user/UserCRUDService.java
+A	src/main/java/ru/curriculum/service/user/converter/DtoToUserConverter.java
+M	src/main/resources/db/changelog-master.xml
+R084	src/main/resources/db/changelog/240120181913_create_staff_table_directory_table.xml	src/main/resources/db/changelog/240120181913_create_staff_position_directory_table.xml
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/test/java/ru/curriculum/domain/admin/UserManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/directories/StaffTableTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherTest.java
+R081	src/test/java/ru/curriculum/domain/admin/service/directories/StaffTableDtoTest.java	src/test/java/ru/curriculum/domain/admin/service/directories/StaffPositionDtoTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/user/DtoToUserConverterTest.java
+R098	src/test/java/ru/curriculum/domain/admin/service/UserDTOValidationTest.java	src/test/java/ru/curriculum/domain/admin/service/user/UserDTOValidationTest.java
+
+5b68192adbc3edc30932d421ebc38b805fbb812e, teacher_position_from_directory. can choos positionHeld from directory, Wed Jan 24 23:44:00 2018 +0300
+M	src/main/java/ru/curriculum/domain/admin/user/entity/Password.java
+R052	src/main/java/ru/curriculum/domain/admin/user/exceptions/IllegalPassword.java	src/main/java/ru/curriculum/domain/admin/user/exceptions/IllegalPasswordException.java
+R090	src/main/java/ru/curriculum/domain/teacher/entity/AcademicDegree.java	src/main/java/ru/curriculum/domain/directories/academicDegree/AcademicDegree.java
+R070	src/main/java/ru/curriculum/domain/teacher/entity/AcademicDegreeCode.java	src/main/java/ru/curriculum/domain/directories/academicDegree/AcademicDegreeCode.java
+R062	src/main/java/ru/curriculum/domain/teacher/repository/AcademicDegreeRepository.java	src/main/java/ru/curriculum/domain/directories/academicDegree/AcademicDegreeRepository.java
+A	src/main/java/ru/curriculum/domain/directories/staffTable/StaffTable.java
+A	src/main/java/ru/curriculum/domain/directories/staffTable/StaffTableRepository.java
+M	src/main/java/ru/curriculum/domain/teacher/entity/Teacher.java
+M	src/main/java/ru/curriculum/domain/teacher/factory/TeacherFactory.java
+R072	src/main/java/ru/curriculum/service/teacher/dto/AcademicDegreeDTO.java	src/main/java/ru/curriculum/service/directories/academicDegree/AcademicDegreeDTO.java
+A	src/main/java/ru/curriculum/service/directories/academicDegree/AcademicDegreeFindService.java
+A	src/main/java/ru/curriculum/service/directories/staffTable/StaffTableDto.java
+A	src/main/java/ru/curriculum/service/directories/staffTable/StaffTableFindService.java
+M	src/main/java/ru/curriculum/service/teacher/TeacherCRUDService.java
+M	src/main/java/ru/curriculum/service/teacher/dto/TeacherDTO.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/240120181913_create_staff_table_directory_table.xml
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/teachers/teacherFromUserForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/test/java/ru/curriculum/domain/admin/TeacherManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/PasswordTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/directories/StaffTableTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/directories/StaffTableDtoTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOValidationTest.java
+
+207727119cbf1a9eb0e9a9212caaa64e32d1141b, teacher_position_from_directory. merge latest ept and master, Wed Jan 24 19:06:17 2018 +0300
+3d61e6c4e3169185aa65bf0804b9a215cba66d53, Merge branch 'CURRICULUM-5_etp' of github.com:Bukharovsi/curriculum into CURRICULUM-5_etp, Wed Jan 24 18:58:55 2018 +0300
+bb6e834214ce3eb0ddfd7b45c50ce3656015dc0a, add creative commons license, Wed Jan 24 18:32:50 2018 +0300
+A	LICENSE
+
+6f773d3b9a680fedfaad3983ebd146f77eccdf65, user setup update, Sun Jan 21 01:31:02 2018 +0300
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationInfoInitializationService.java
+
+a31221f55b9a1cbdf8551d9a3ac0e0e207e11d8a, user list updated, Sun Jan 21 01:21:35 2018 +0300
+M	src/main/resources/templates/admin/users/usersList.html
+
+ecd43c6c385a050ff7e4f499326898beb4655d13, Merge pull request #24 from Bukharovsi/22_real_db, Sun Jan 21 01:13:26 2018 +0300
+c95cc6d16db6d84150283446ea43955a07df2ba9, #22 add default profile if aws not setted, Sun Jan 21 00:58:52 2018 +0300
+M	src/main/resources/application.yml
+
+b692775c417f4b8a264dbed8a0757b62a9c69908, #22 add aws yml config, Sun Jan 21 00:57:17 2018 +0300
+M	src/main/resources/application-aws.yml
+M	src/main/resources/application.yml
+
+f33534777a40834c45fc36becb7cd88f9889803e, Merge pull request #23 from Bukharovsi/22_real_db, Sun Jan 21 00:26:07 2018 +0300
+137fbb974c7bca5155042ba0ae3ff720daa14098, #22 add aws yml config, Sun Jan 21 00:08:59 2018 +0300
+M	pom.xml
+A	src/main/resources/application-aws.yml
+
+294e942f0f51353a5cd81cef502883ec784251b8, #22 creates only admin user, Sun Jan 21 00:07:37 2018 +0300
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationInfoInitializationService.java
+
+c2f985c52f3c550017c2418f070fd52d6d311e74, Merge pull request #21 from Bukharovsi/17_plan_graphik, Sat Jan 20 20:24:57 2018 +0300
+21f6ab7f0ddb2a302db3227d9680fcade79c8977, #17 some fixes for state schedule, Sat Jan 20 20:23:01 2018 +0300
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/DtoToStateScheduleConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/StateScheduleEntityToDtoConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramCreationDto.java
+M	src/main/resources/db/changelog/070120181351_create_state_program_table.xml
+M	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+
+edf551e6b7b7a617b84b4ca1954dc995225f5eac, Merge branch 'master' into 17_plan_graphik, Sat Jan 20 18:53:11 2018 +0300
+64ddb08682693c6116adecf1698daffa89c58d41, update spring 1.5.8 to 1.5.9. also dependencies versions was fixed, Sat Jan 20 18:41:46 2018 +0300
+M	pom.xml
+
+9eeee68449059f9e615ff8f2183952ac57c54e34, #17 fio edition, Sat Jan 20 18:07:59 2018 +0300
+M	src/main/java/ru/curriculum/service/user/dto/UserDTO.java
+
+61ceafba287d03218cc00ae01662b55d3d5ceb17, #17 add spaces in stateSchedule template. Also fio edition, Sat Jan 20 18:03:13 2018 +0300
+M	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+
+d698d7badc939d386887ab5a5503e58a6931ccc8, Merge branch 'master' of https://github.com/Bukharovsi/curriculum into 17_plan_graphik, Sat Jan 20 17:55:53 2018 +0300
+fe9289ddd9bef8d46a20fb488a0e5c93ac41cf79, editing and deletion state program in progress, Sat Jan 20 17:53:24 2018 +0300
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/StateScheduleEntityToDtoConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCRUDService.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateScheduleConvertersTest.java
+
+adba0e080f65a80b9fd0fe0de6395e5b42ccd172, Merge pull request #20 from Bukharovsi/CURRICULUM-5_etp, Fri Jan 19 22:24:21 2018 +0300
+88a48eaa36bb11a95ea11f7404bba58c2c1a0c03, CURRICULUM-5 add some icons for ui, recreate user CRUD, Fri Jan 19 22:10:09 2018 +0300
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationInfoInitializationService.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/service/user/UserCRUDService.java
+A	src/main/java/ru/curriculum/service/user/exception/UserNotFoundException.java
+M	src/main/java/ru/curriculum/web/admin/UserManagementController.java
+M	src/main/resources/static/css/etp/etp.css
+M	src/main/resources/templates/admin/users/usersList.html
+M	src/main/resources/templates/error/accessDenied.html
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/etp/etpList.html
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/UserTest.java
+
+6ba2613595dafe9dc0814f5d5d0c599fa0465883, Merge pull request #19 from Bukharovsi/master, Fri Jan 19 16:10:18 2018 +0300
+a9794bc152470be089fd5483f683a1d4bb108519, CURRICULUM-5 add some etp validation, test, make remove add button on etp, Thu Jan 18 22:47:22 2018 +0300
+D	src/main/java/ru/curriculum/domain/etp/ETPFactory.java
+D	src/main/java/ru/curriculum/domain/etp/entity/IModule.java
+D	src/main/java/ru/curriculum/domain/etp/entity/ISection.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalActivity/EMAModule.java
+M	src/main/java/ru/curriculum/domain/etp/entity/organizationMethodicalActivity/OMAModule.java
+M	src/main/java/ru/curriculum/service/etp/PlanFactory.java
+M	src/main/java/ru/curriculum/service/etp/dto/EAModuleDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/EASectionDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/EATopicDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/EMAModuleDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETP_DTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/OMAModuleDTO.java
+A	src/main/java/ru/curriculum/service/etp/validation/ETPDatesValidator.java
+A	src/main/java/ru/curriculum/service/etp/validation/EndDateLargerThanBeginDateConstraint.java
+M	src/main/java/ru/curriculum/web/admin/UserManagementController.java
+M	src/main/resources/static/css/etp/etp.css
+M	src/main/resources/static/js/etp/totalHoursCalc.js
+M	src/main/resources/templates/etp/etpForm.html
+A	src/test/java/ru/curriculum/domain/admin/service/etp/ETPDtoValidationTest.java
+
+15478fdff8386f84dbabe603485d24d443d038f8, CURRICULUM-5, Mon Jan 15 23:42:30 2018 +0300
+A	src/main/resources/static/css/etp/etp.css
+D	src/main/resources/static/css/etpTable.css
+M	src/main/resources/static/css/main.css
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/fragments/inputField.html
+
+429392e20539e4d8d30814169d4c20284cf04aca, CURRICULUM-5 маска для утп, Mon Jan 15 21:56:12 2018 +0300
+M	pom.xml
+D	src/main/resources/static/js/dataTablesSettings.js
+A	src/main/resources/static/js/etp/etp.js
+M	src/main/resources/static/js/etp/totalHoursCalc.js
+M	src/main/resources/templates/etp/etpForm.html
+M	src/main/resources/templates/fragments/layout.html
+
+6595e3333478096bc83c789083cc64a0666825d6, CURRICULUM-5 динамические модули УТП, вычисление общего значения часов на фронте, Sun Jan 14 23:20:11 2018 +0300
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EAModule.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EASection.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EATopic.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalActivity/EMAModule.java
+D	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalActivity/EMASection.java
+M	src/main/java/ru/curriculum/domain/etp/entity/organizationMethodicalActivity/OMAModule.java
+D	src/main/java/ru/curriculum/domain/etp/entity/organizationMethodicalActivity/OMASection.java
+M	src/main/java/ru/curriculum/domain/teacher/entity/Teacher.java
+M	src/main/java/ru/curriculum/domain/teacher/factory/TeacherFactory.java
+M	src/main/java/ru/curriculum/service/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/service/etp/dto/EMAModuleDTO.java
+D	src/main/java/ru/curriculum/service/etp/dto/EMASectionDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/OMAModuleDTO.java
+D	src/main/java/ru/curriculum/service/etp/dto/OMASectionDTO.java
+M	src/main/java/ru/curriculum/service/teacher/dto/TeacherDTO.java
+M	src/main/java/ru/curriculum/service/teacher/factory/TeacherDTOFactory.java
+M	src/main/java/ru/curriculum/service/user/dto/UserDTO.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/db/changelog/021120172221_create_user_table.xml
+M	src/main/resources/db/changelog/091220171920_create_teacher_table.xml
+M	src/main/resources/db/changelog/251220172200_create_education_methodical_module_tables.xml
+M	src/main/resources/db/changelog/251220172201_create_organizationally_methodical_module_tables.xml
+A	src/main/resources/static/js/etp/totalHoursCalc.js
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/teachers/teacherFromUserForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/main/resources/templates/admin/users/userForm.html
+M	src/main/resources/templates/admin/users/usersList.html
+M	src/main/resources/templates/etp/etpForm.html
+M	src/test/java/ru/curriculum/domain/admin/TeacherManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/UserManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/UserTest.java
+D	src/test/java/ru/curriculum/domain/admin/domain/etp/EPTFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/UserDTOValidationTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/etp/ETPFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETP_DTOTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOValidationTest.java
+
+9af146d726f415db2c3c7232e02782e9f026e422, editing and deletion state program in progress, Sun Jan 14 22:39:05 2018 +0300
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramCreationDto.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramViewDto.java
+M	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCRUDService.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+
+ca912204e3740557095794ae571cd80610eadcb2, add stateScheduleForm. add missed files, Sun Jan 14 20:36:40 2018 +0300
+A	src/main/java/ru/curriculum/service/stateSchedule/service/ImplementationFormFindService.java
+A	src/main/java/ru/curriculum/service/stateSchedule/service/StudyModeFindService.java
+A	src/main/resources/templates/stateSchedule/stateScheduleForm.html
+
+cf994a7e105342318e57c6347f1061edb4f0929d, add stateScheduleForm, Sat Jan 13 23:16:43 2018 +0300
+M	src/main/java/ru/curriculum/service/stateSchedule/converter/DtoToStateScheduleConverter.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/ImplementationFormDto.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramCreationDto.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramViewDto.java
+M	src/main/java/ru/curriculum/service/stateSchedule/dto/StudyModeDto.java
+M	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCRUDService.java
+M	src/main/java/ru/curriculum/service/user/dto/UserDTO.java
+M	src/main/java/ru/curriculum/web/View.java
+M	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateScheduleConvertersTest.java
+
+e43ba6e601a1fcb1b0dd4d6ed6c302c57df80217, CURRICULUM-5. create new ETP factory, Thu Jan 11 22:13:10 2018 +0300
+M	pom.xml
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/domain/etp/entity/Plan.java
+M	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EAModule.java
+D	src/main/java/ru/curriculum/presentation/ETP_DTOFactory.java
+M	src/main/java/ru/curriculum/service/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/service/etp/ETP_CRUDService.java
+M	src/main/java/ru/curriculum/service/etp/PlanFactory.java
+R091	src/main/java/ru/curriculum/presentation/dto/EMAModuleDTO.java	src/main/java/ru/curriculum/service/etp/dto/EMAModuleDTO.java
+R093	src/main/java/ru/curriculum/presentation/dto/EMASectionDTO.java	src/main/java/ru/curriculum/service/etp/dto/EMASectionDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETP_DTO.java
+R090	src/main/java/ru/curriculum/presentation/dto/OMAModuleDTO.java	src/main/java/ru/curriculum/service/etp/dto/OMAModuleDTO.java
+R093	src/main/java/ru/curriculum/presentation/dto/OMASectionDTO.java	src/main/java/ru/curriculum/service/etp/dto/OMASectionDTO.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETP_DTOTest.java
+
+af9d28d03b3276e1284c6813115b1f417c2adccb, CURRICULUM-5. make dynamyc etp modules for domain level add repository test, Tue Jan 9 23:57:07 2018 +0300
+M	src/main/java/ru/curriculum/domain/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+A	src/main/java/ru/curriculum/domain/etp/entity/IModule.java
+A	src/main/java/ru/curriculum/domain/etp/entity/ISection.java
+R057	src/main/java/ru/curriculum/domain/etp/entity/educationActivityModule/EAModule.java	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EAModule.java
+A	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EASection.java
+A	src/main/java/ru/curriculum/domain/etp/entity/educationActivity/EATopic.java
+D	src/main/java/ru/curriculum/domain/etp/entity/educationActivityModule/EASection.java
+A	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalActivity/EMAModule.java
+A	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalActivity/EMASection.java
+D	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalSection/EMASection.java
+D	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalSection/EMSectionInfo.java
+A	src/main/java/ru/curriculum/domain/etp/entity/organizationMethodicalActivity/OMAModule.java
+A	src/main/java/ru/curriculum/domain/etp/entity/organizationMethodicalActivity/OMASection.java
+D	src/main/java/ru/curriculum/domain/etp/entity/organizationallyMethodicalSection/OMASection.java
+D	src/main/java/ru/curriculum/domain/etp/entity/organizationallyMethodicalSection/OMASectionInfo.java
+D	src/main/java/ru/curriculum/domain/etp/repository/EMASectionInfoRepository.java
+D	src/main/java/ru/curriculum/domain/etp/repository/OMASectionInfoRepository.java
+M	src/main/java/ru/curriculum/presentation/ETP_DTOFactory.java
+A	src/main/java/ru/curriculum/presentation/dto/EMAModuleDTO.java
+M	src/main/java/ru/curriculum/presentation/dto/EMASectionDTO.java
+D	src/main/java/ru/curriculum/presentation/dto/EMASectionInfoDTO.java
+A	src/main/java/ru/curriculum/presentation/dto/OMAModuleDTO.java
+M	src/main/java/ru/curriculum/presentation/dto/OMASectionDTO.java
+D	src/main/java/ru/curriculum/presentation/dto/OMASectionInfoDTO.java
+A	src/main/java/ru/curriculum/service/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/service/etp/ETP_CRUDService.java
+M	src/main/java/ru/curriculum/service/etp/dto/EAModuleDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/EASectionDTO.java
+A	src/main/java/ru/curriculum/service/etp/dto/EATopicDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETP_DTO.java
+M	src/main/resources/db/changelog/231220171502_create_education_activity_module_table.xml
+M	src/main/resources/db/changelog/251220172200_create_education_methodical_module_tables.xml
+M	src/main/resources/db/changelog/251220172201_create_organizationally_methodical_module_tables.xml
+M	src/main/resources/templates/etp/etpForm.html
+D	src/test/java/ru/curriculum/domain/admin/domain/etp/EMASectionInfoRepositoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/EPTFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+D	src/test/java/ru/curriculum/domain/admin/presentation/ETP_DTOFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETP_DTOTest.java
+
+643660b77c57b70838e54d99f15cad742d6c6ac9, #17 add simple gui for state schedule, Tue Jan 9 10:39:56 2018 +0300
+M	src/main/java/ru/curriculum/application/route/Routes.java
+R097	src/main/java/ru/curriculum/service/stateSchedule/service/StateSchedultCRUDService.java	src/main/java/ru/curriculum/service/stateSchedule/service/StateScheduleCRUDService.java
+M	src/main/java/ru/curriculum/service/user/dto/UserDTO.java
+M	src/main/java/ru/curriculum/web/View.java
+A	src/main/java/ru/curriculum/web/stateSchedule/StateScheduleController.java
+M	src/main/resources/templates/fragments/sidebar.html
+M	src/main/resources/templates/stateSchedule/stateScheduleList.html
+
+0c712852f3b3ae8003bd0cba2c9bf07330482588, #17 fix test, Mon Jan 8 10:49:06 2018 +0300
+M	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateScheduleConvertersTest.java
+
+92df5f9199ad691fb4b2a2d95b022a5020fae985, #17 add converters, Mon Jan 8 10:43:22 2018 +0300
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/ImplementationForm.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/StudyMode.java
+A	src/main/java/ru/curriculum/service/stateSchedule/converter/DtoToStateScheduleConverter.java
+A	src/main/java/ru/curriculum/service/stateSchedule/converter/StateScheduleEntityToDtoConverter.java
+A	src/main/java/ru/curriculum/service/stateSchedule/dto/ImplementationFormDto.java
+A	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramCreationDto.java
+A	src/main/java/ru/curriculum/service/stateSchedule/dto/StateProgramViewDto.java
+A	src/main/java/ru/curriculum/service/stateSchedule/dto/StudyModeDto.java
+A	src/main/java/ru/curriculum/service/stateSchedule/service/StateSchedultCRUDService.java
+A	src/test/java/ru/curriculum/domain/admin/service/stateSchelule/StateScheduleConvertersTest.java
+
+cedea57f6b596ebe2347e8ec8ac7ed33a7425dfb, #17 test passed, Sun Jan 7 16:27:31 2018 +0300
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/ImplementationForm.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/StateProgram.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/StudyMode.java
+M	src/main/resources/db/changelog/070120181351_create_state_program_table.xml
+M	src/test/java/boot/IntegrationBoot.java
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/UserTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/StateProgramTest.java
+A	src/test/java/ru/curriculum/domain/helper/UserTestFactory.java
+
+5b5bb3e88339a1abd06a9bb6f10fd279209e5a0a, #17 study program db, Sun Jan 7 15:05:02 2018 +0300
+M	src/main/java/ru/curriculum/domain/stateSchedule/entity/StateProgram.java
+M	src/main/java/ru/curriculum/domain/stateSchedule/repository/ImplementationFormRepository.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/070120181342_create_study_mode_table.xml
+A	src/main/resources/db/changelog/070120181346_create_implementation_form_table.xml
+A	src/main/resources/db/changelog/070120181351_create_state_program_table.xml
+A	src/main/resources/templates/stateSchedule/stateScheduleList.html
+M	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/StateProgramTest.java
+
+2161e088565cfbfd28f2f7dcfccd3dc2c4b23f30, #17 add state schedule domain objects and repositories, Mon Jan 1 18:23:13 2018 +0300
+A	src/main/java/ru/curriculum/domain/stateSchedule/entity/ImplementationForm.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/entity/StateProgram.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/entity/StudyMode.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/repository/ImplementationFormRepository.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/repository/StateProgramRepository.java
+A	src/main/java/ru/curriculum/domain/stateSchedule/repository/StudyModeRepository.java
+A	src/test/java/ru/curriculum/domain/admin/domain/stateSchedule/StateProgramTest.java
+
+59d989e51004b02502318e6977bb14367bff85eb, Merge pull request #16 from Bukharovsi/CURRICULUM-5_etp, Thu Dec 28 21:12:22 2017 +0300
+8f9297a8b9ed9e5e30b39d6ac761dbbdf0d26a0c, CURRICULUM-5. delete some comments, rename variables, Wed Dec 27 03:37:48 2017 +0300
+M	src/main/java/ru/curriculum/domain/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/presentation/ETP_DTOFactory.java
+M	src/main/java/ru/curriculum/service/etp/ETP_CRUDService.java
+
+9630d8b013e0bdf22811fbcc88eec286550bb084, CURRICULUM-5. make view etp with all modules, Wed Dec 27 03:26:32 2017 +0300
+M	src/main/java/ru/curriculum/domain/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/presentation/dto/EMASectionInfoDTO.java
+M	src/main/java/ru/curriculum/presentation/dto/OMASectionInfoDTO.java
+M	src/main/java/ru/curriculum/service/etp/PlanFactory.java
+M	src/main/resources/db/changelog/251220172200_create_education_methodical_module_tables.xml
+M	src/main/resources/templates/etp/etpForm.html
+
+382f1ad376a329e3ce264f684fdf77e263d42544, CURRICULUM-5. create etp by factory, fix some migrations bug, use reduction for etp modules, Wed Dec 27 01:10:58 2017 +0300
+A	src/main/java/ru/curriculum/domain/etp/ETPFactory.java
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+M	src/main/java/ru/curriculum/domain/etp/entity/Plan.java
+R059	src/main/java/ru/curriculum/domain/etp/entity/educationActivityModule/EducationActivityModule.java	src/main/java/ru/curriculum/domain/etp/entity/educationActivityModule/EAModule.java
+R072	src/main/java/ru/curriculum/domain/etp/entity/educationActivityModule/EducationActivitySection.java	src/main/java/ru/curriculum/domain/etp/entity/educationActivityModule/EASection.java
+R054	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalSection/EducationMethodicalSection.java	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalSection/EMASection.java
+R064	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalSection/EducationMethodicalSectionInfo.java	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalSection/EMSectionInfo.java
+R053	src/main/java/ru/curriculum/domain/etp/entity/organizationallyMethodicalSection/OrganizationallyMethodicalSection.java	src/main/java/ru/curriculum/domain/etp/entity/organizationallyMethodicalSection/OMASection.java
+R060	src/main/java/ru/curriculum/domain/etp/entity/organizationallyMethodicalSection/OrganizationallyMethodicalSectionInfo.java	src/main/java/ru/curriculum/domain/etp/entity/organizationallyMethodicalSection/OMASectionInfo.java
+A	src/main/java/ru/curriculum/domain/etp/repository/EMASectionInfoRepository.java
+D	src/main/java/ru/curriculum/domain/etp/repository/EducationMethodicalSectionInfoRepository.java
+A	src/main/java/ru/curriculum/domain/etp/repository/OMASectionInfoRepository.java
+D	src/main/java/ru/curriculum/domain/etp/repository/OrganizationallyMethodicalSectionInfoRepository.java
+M	src/main/java/ru/curriculum/presentation/ETP_DTOFactory.java
+R054	src/main/java/ru/curriculum/presentation/dto/EducationMethodicalSectionDTO.java	src/main/java/ru/curriculum/presentation/dto/EMASectionDTO.java
+R067	src/main/java/ru/curriculum/presentation/dto/EducationMethodicalSectionInfoDTO.java	src/main/java/ru/curriculum/presentation/dto/EMASectionInfoDTO.java
+R050	src/main/java/ru/curriculum/presentation/dto/OrganizationallyMethodicalSectionDTO.java	src/main/java/ru/curriculum/presentation/dto/OMASectionDTO.java
+R057	src/main/java/ru/curriculum/presentation/dto/OrganizationallyMethodicalSectionInfoDTO.java	src/main/java/ru/curriculum/presentation/dto/OMASectionInfoDTO.java
+M	src/main/java/ru/curriculum/service/etp/ETP_CRUDService.java
+A	src/main/java/ru/curriculum/service/etp/PlanFactory.java
+R063	src/main/java/ru/curriculum/service/etp/dto/EducationActivityModuleDTO.java	src/main/java/ru/curriculum/service/etp/dto/EAModuleDTO.java
+R076	src/main/java/ru/curriculum/service/etp/dto/EducationActivitySectionDTO.java	src/main/java/ru/curriculum/service/etp/dto/EASectionDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETP_DTO.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/db/changelog/251220172200_create_education_methodical_module_tables.xml
+M	src/main/resources/db/changelog/251220172201_create_organizationally_methodical_module_tables.xml
+M	src/main/resources/templates/etp/etpForm.html
+A	src/test/java/ru/curriculum/domain/admin/domain/etp/EMASectionInfoRepositoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/etp/EPTFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+D	src/test/java/ru/curriculum/domain/admin/domain/etp/EducationMethodicalSectionInfoRepositoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/presentation/ETP_DTOFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/etp/ETP_DTOTest.java
+
+f4a1d807b1616f92cd075e73c690e4ee50945649, CURRICULUM-5. add education methodical modules and organizatonally methodical module, Tue Dec 26 01:00:09 2017 +0300
+R088	src/main/java/ru/curriculum/domain/admin/user/exceptions/Password.java	src/main/java/ru/curriculum/domain/admin/user/entity/Password.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+R074	src/main/java/ru/curriculum/domain/admin/user/entity/IllegalPassword.java	src/main/java/ru/curriculum/domain/admin/user/exceptions/IllegalPassword.java
+D	src/main/java/ru/curriculum/domain/etp/EducationMethodicalActivity.java
+D	src/main/java/ru/curriculum/domain/etp/OrganizationalAndMethodicalActivity.java
+M	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+R087	src/main/java/ru/curriculum/domain/etp/entity/EducationActivityModule.java	src/main/java/ru/curriculum/domain/etp/entity/educationActivityModule/EducationActivityModule.java
+R082	src/main/java/ru/curriculum/domain/etp/entity/EducationActivitySection.java	src/main/java/ru/curriculum/domain/etp/entity/educationActivityModule/EducationActivitySection.java
+A	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalSection/EducationMethodicalSection.java
+A	src/main/java/ru/curriculum/domain/etp/entity/educationMethodicalSection/EducationMethodicalSectionInfo.java
+A	src/main/java/ru/curriculum/domain/etp/entity/organizationallyMethodicalSection/OrganizationallyMethodicalSection.java
+A	src/main/java/ru/curriculum/domain/etp/entity/organizationallyMethodicalSection/OrganizationallyMethodicalSectionInfo.java
+A	src/main/java/ru/curriculum/domain/etp/repository/EducationMethodicalSectionInfoRepository.java
+A	src/main/java/ru/curriculum/domain/etp/repository/OrganizationallyMethodicalSectionInfoRepository.java
+A	src/main/java/ru/curriculum/presentation/ETP_DTOFactory.java
+A	src/main/java/ru/curriculum/presentation/dto/EducationMethodicalSectionDTO.java
+A	src/main/java/ru/curriculum/presentation/dto/EducationMethodicalSectionInfoDTO.java
+A	src/main/java/ru/curriculum/presentation/dto/OrganizationallyMethodicalSectionDTO.java
+A	src/main/java/ru/curriculum/presentation/dto/OrganizationallyMethodicalSectionInfoDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/ETP_DTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/EducationActivityModuleDTO.java
+M	src/main/java/ru/curriculum/service/etp/dto/EducationActivitySectionDTO.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/251220172200_create_education_methodical_module_tables.xml
+A	src/main/resources/db/changelog/251220172201_create_organizationally_methodical_module_tables.xml
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/PasswordTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+M	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/etp/EducationMethodicalSectionInfoRepositoryTest.java
+
+238a6a873bc4ec5a38c7d4497ae816a149aed086, Merge pull request #15 from Bukharovsi/CURRICULUM-5_etp, Mon Dec 25 10:44:38 2017 +0300
+8db45d91e15da2d5a379342a8d226d8c4cec5121, CURRICULUM-5. all crud operations fro etp (education dynamic module), validation, some tests, Mon Dec 25 02:58:29 2017 +0300
+M	src/main/java/ru/curriculum/application/route/Routes.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+R088	src/main/java/ru/curriculum/domain/admin/user/entity/Password.java	src/main/java/ru/curriculum/domain/admin/user/exceptions/Password.java
+D	src/main/java/ru/curriculum/domain/etp/ETP.java
+A	src/main/java/ru/curriculum/domain/etp/EducationMethodicalActivity.java
+A	src/main/java/ru/curriculum/domain/etp/OrganizationalAndMethodicalActivity.java
+A	src/main/java/ru/curriculum/domain/etp/entity/ETP.java
+A	src/main/java/ru/curriculum/domain/etp/entity/EducationActivityModule.java
+A	src/main/java/ru/curriculum/domain/etp/entity/EducationActivitySection.java
+A	src/main/java/ru/curriculum/domain/etp/entity/Plan.java
+A	src/main/java/ru/curriculum/domain/etp/repository/ETPRepository.java
+M	src/main/java/ru/curriculum/domain/teacher/entity/Teacher.java
+A	src/main/java/ru/curriculum/service/etp/ETP_CRUDService.java
+D	src/main/java/ru/curriculum/service/etp/ETP_DTO.java
+D	src/main/java/ru/curriculum/service/etp/ModuleDTO.java
+D	src/main/java/ru/curriculum/service/etp/SectionDTO.java
+A	src/main/java/ru/curriculum/service/etp/dto/ETP_DTO.java
+A	src/main/java/ru/curriculum/service/etp/dto/EducationActivityModuleDTO.java
+A	src/main/java/ru/curriculum/service/etp/dto/EducationActivitySectionDTO.java
+A	src/main/java/ru/curriculum/service/etp/dto/PlanDTO.java
+M	src/main/java/ru/curriculum/web/View.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+M	src/main/java/ru/curriculum/web/auth/AuthController.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/231220171500_create_etp_table.xml
+A	src/main/resources/db/changelog/231220171501_create_etp_plan_table.xml
+A	src/main/resources/db/changelog/231220171502_create_education_activity_module_table.xml
+A	src/main/resources/templates/etp/etpForm.html
+A	src/main/resources/templates/etp/etpList.html
+D	src/main/resources/templates/etp/index.html
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/PasswordTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPMock.java
+A	src/test/java/ru/curriculum/domain/admin/domain/etp/ETPRepositoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/etp/ETP_DTOTest.java
+
+d1ce96a0b54b0f9e2f65ccef4c7d20eaa8ec5268, CURRICULUM-5. add etp page with dynamic education activity table, Sun Dec 24 04:15:35 2017 +0300
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+A	src/main/java/ru/curriculum/domain/etp/ETP.java
+A	src/main/java/ru/curriculum/service/etp/ETP_DTO.java
+A	src/main/java/ru/curriculum/service/etp/ModuleDTO.java
+A	src/main/java/ru/curriculum/service/etp/SectionDTO.java
+M	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/templates/etp/index.html
+
+02e99bc9a348a6d647b1df2199b759cae6274c26, CURRIRULUM-5. add input table for etp, Sat Dec 23 19:32:57 2017 +0300
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+M	src/main/java/ru/curriculum/web/auth/AuthController.java
+M	src/main/resources/static/css/inputField.css
+M	src/main/resources/static/css/main.css
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/users/userForm.html
+M	src/main/resources/templates/etp/index.html
+M	src/main/resources/templates/fragments/formValidationError.html
+M	src/main/resources/templates/fragments/inputField.html
+M	src/main/resources/templates/fragments/layout.html
+
+4268f0960b61fccb7402a50fecec8eabf3c4c431, Merge branch 'master' into CURRICULUM-5_etp, Sat Dec 23 15:03:22 2017 +0300
+985d16e942981accd4891d52485ba0a2f7513531, remove / before template name, Wed Dec 20 22:52:58 2017 +0300
+M	src/main/java/ru/curriculum/web/View.java
+M	src/main/java/ru/curriculum/web/auth/AuthController.java
+M	src/main/java/ru/curriculum/web/error/ErrorHandlerController.java
+M	src/test/java/ru/curriculum/domain/admin/ErrorControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/TeacherManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/UserManagementControllerTest.java
+
+326075bc1a36111903aa478e4abdde0b38801a2b, Merge branch 'master' of github.com:Bukharovsi/curriculum, Wed Dec 20 22:16:57 2017 +0300
+dd63f5531920f7314003c9c45a1cb036d97ba108, add errorPage, Wed Dec 20 22:15:41 2017 +0300
+A	src/main/resources/templates/error/errorPage.html
+
+d91aa21778f9a0b3be4d8ac1b3e6c408f559b3bc, Merge branch 'master' into CURRICULUM-5_etp, Wed Dec 20 15:37:11 2017 +0300
+877af0b21a5652473a764f614fdbcd1be756e156, Merge pull request #13 from Bukharovsi/CURRICULUM-4_html_layout, Wed Dec 20 11:43:55 2017 +0300
+e88f4beaf9007d9d50d47bcb43162eb7d7f6e21d, CURRICULUM-5. add data table, Wed Dec 20 00:04:46 2017 +0300
+A	src/main/resources/static/css/etpTable.css
+A	src/main/resources/static/js/dataTablesSettings.js
+M	src/main/resources/templates/etp/index.html
+M	src/main/resources/templates/fragments/header.html
+M	src/main/resources/templates/fragments/layout.html
+
+2cc97f5f67c3be7f54e0cea0352653d36cbbba85, Merge branch 'master' into CURRICULUM-4_html_layout, Tue Dec 19 00:20:39 2017 +0300
+4d1cc71090029c5c4b064dc0b51968fa5f61c82f, CURRICULUM-4. add user account, add tests for auht, Tue Dec 19 00:16:41 2017 +0300
+M	pom.xml
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/service/teacher/dto/TeacherDTO.java
+A	src/main/java/ru/curriculum/service/user/AccountService.java
+M	src/main/java/ru/curriculum/service/user/UserCRUDService.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+A	src/main/java/ru/curriculum/web/error/ErrorHandlerController.java
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+A	src/main/resources/templates/error/errorPage.html
+A	src/test/java/ru/curriculum/domain/admin/AuthControllerTest.java
+A	src/test/java/ru/curriculum/domain/admin/ErrorControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/TeacherManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/UserManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/UserRepositoryTest.java
+
+92119dbd35138e4667a9ccd91b3bab5a0763c422, CURRICULUM-4. apply styles, make some layouts, Mon Dec 18 01:18:09 2017 +0300
+M	pom.xml
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+M	src/main/java/ru/curriculum/application/route/Routes.java
+M	src/main/java/ru/curriculum/service/teacher/TeacherCRUDService.java
+M	src/main/java/ru/curriculum/service/teacher/dto/TeacherDTO.java
+M	src/main/java/ru/curriculum/service/user/dto/UserDTO.java
+M	src/main/java/ru/curriculum/web/View.java
+M	src/main/java/ru/curriculum/web/admin/AdminController.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+M	src/main/java/ru/curriculum/web/auth/AuthController.java
+M	src/main/java/ru/curriculum/web/error/LoggingAccessDeniedHandler.java
+A	src/main/java/ru/curriculum/web/etp/ETPController.java
+M	src/main/resources/messages/messages.properties
+M	src/main/resources/static/css/main.css
+A	src/main/resources/static/js/teacher.js
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/teachers/teacherFromUserForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/main/resources/templates/admin/users/userForm.html
+M	src/main/resources/templates/admin/users/usersList.html
+R100	src/main/resources/templates/error/access-denied.html	src/main/resources/templates/error/accessDenied.html
+A	src/main/resources/templates/etp/index.html
+M	src/main/resources/templates/fragments/header.html
+A	src/main/resources/templates/fragments/layout.html
+M	src/main/resources/templates/fragments/sidebar.html
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/login.html
+M	src/test/java/ru/curriculum/domain/admin/TeacherManagementControllerTest.java
+
+27abdcb97d5022cc61b0ac6c0cb4884eb0e5a24f, CURRICULUM-4. when user creating add default role user, improve some forms, Sun Dec 17 01:11:44 2017 +0300
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/resources/db/changelog/021120172200_create_role_table.xml
+A	src/main/resources/static/css/inputField.css
+M	src/main/resources/static/css/main.css
+D	src/main/resources/static/test.css
+M	src/main/resources/templates/admin/users/userForm.html
+M	src/main/resources/templates/admin/users/usersList.html
+A	src/main/resources/templates/fragments/formValidationError.html
+A	src/main/resources/templates/fragments/header.html
+A	src/main/resources/templates/fragments/inputField.html
+M	src/main/resources/templates/fragments/sidebar.html
+M	src/main/resources/templates/login.html
+
+e5b964f40b05d619aa9ba4e110b93952924bf529, CURRICULUM-4 begin  creating beatifull form, Fri Dec 15 22:41:55 2017 +0300
+M	src/main/resources/templates/admin/users/userForm.html
+
+f764a9593a66b4a93ca7be537d96b3d722dbf885, Merge pull request #11 from Bukharovsi/CURRICULUM-3_admin_manage_teachers, Fri Dec 15 11:38:51 2017 +0300
+0ef4d7c124f75f26f255a488592bcb07f9ac81bc, CURRICULUM-4. login usernaem, Thu Dec 14 23:38:53 2017 +0300
+M	pom.xml
+M	src/main/resources/templates/admin/teachers/teacherFromUserForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/main/resources/templates/admin/users/userForm.html
+M	src/main/resources/templates/admin/users/usersList.html
+M	src/main/resources/templates/fragments/sidebar.html
+M	src/main/resources/templates/index.html
+
+a5fd1aedcbaa3eec1aff57399f4266382796f79f, CURRICULUM-3. merge master, Thu Dec 14 21:29:00 2017 +0300
+d72a24cfc5863febf2a5f231427d7a54def3f80d, CURRICULUM-4. add sidebar as fragment, Thu Dec 14 01:52:46 2017 +0300
+A	src/main/resources/static/css/main.css
+A	src/main/resources/static/test.css
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/main/resources/templates/admin/users/usersList.html
+A	src/main/resources/templates/fragments/sidebar.html
+M	src/main/resources/templates/index.html
+
+2695ea9610a5568b212dc13577ac81b22709d782, CURRICULUM-4. make home page is index or login if not auth, Wed Dec 13 23:02:38 2017 +0300
+M	src/main/java/ru/curriculum/web/auth/AuthController.java
+D	src/main/resources/templates/admin/index.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/main/resources/templates/admin/users/usersList.html
+M	src/main/resources/templates/index.html
+
+ffcd9be6768e8901e62c738bcee1c0d73fc01c2e, CURRICULUM-3. all crud operation for teachers, validation, tests, Wed Dec 13 00:45:16 2017 +0300
+A	src/main/java/ru/curriculum/application/config/MessageSourceConfig.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/domain/admin/user/repository/UserRepository.java
+R082	src/main/java/ru/curriculum/domain/teacher/AcademicDegree.java	src/main/java/ru/curriculum/domain/teacher/entity/AcademicDegree.java
+R075	src/main/java/ru/curriculum/domain/teacher/AcademicDegreeCode.java	src/main/java/ru/curriculum/domain/teacher/entity/AcademicDegreeCode.java
+R093	src/main/java/ru/curriculum/domain/teacher/Teacher.java	src/main/java/ru/curriculum/domain/teacher/entity/Teacher.java
+R083	src/main/java/ru/curriculum/service/teacher/TeacherFactory.java	src/main/java/ru/curriculum/domain/teacher/factory/TeacherFactory.java
+R062	src/main/java/ru/curriculum/domain/teacher/AcademicDegreeRepository.java	src/main/java/ru/curriculum/domain/teacher/repository/AcademicDegreeRepository.java
+R053	src/main/java/ru/curriculum/domain/teacher/TeacherRepository.java	src/main/java/ru/curriculum/domain/teacher/repository/TeacherRepository.java
+M	src/main/java/ru/curriculum/service/teacher/TeacherCRUDService.java
+R076	src/main/java/ru/curriculum/service/teacher/AcademicDegreeDTO.java	src/main/java/ru/curriculum/service/teacher/dto/AcademicDegreeDTO.java
+R080	src/main/java/ru/curriculum/service/teacher/TeacherDTO.java	src/main/java/ru/curriculum/service/teacher/dto/TeacherDTO.java
+R083	src/main/java/ru/curriculum/service/teacher/TeacherDTOFactory.java	src/main/java/ru/curriculum/service/teacher/factory/TeacherDTOFactory.java
+M	src/main/java/ru/curriculum/service/user/UserCRUDService.java
+R096	src/main/java/ru/curriculum/service/user/UserDTO.java	src/main/java/ru/curriculum/service/user/dto/UserDTO.java
+M	src/main/java/ru/curriculum/service/user/validation/PasswordValidator.java
+M	src/main/java/ru/curriculum/service/user/validation/UniquerUsernameValidator.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+M	src/main/java/ru/curriculum/web/admin/UserManagementController.java
+A	src/main/resources/messages/messages.properties
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/teachers/teacherFromUserForm.html
+M	src/test/java/ru/curriculum/domain/admin/TeacherManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/UserManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/UserTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/UserDTOValidationTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOValidationTest.java
+
+f7203f74dc6b4bca79a6ea4d0c2f882545ad9b88, CURRICULUM-3. change accessor prefix property fields for domain, Tue Dec 12 13:59:59 2017 +0300
+M	src/main/java/ru/curriculum/domain/admin/user/entity/Role.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/domain/teacher/AcademicDegree.java
+M	src/main/java/ru/curriculum/domain/teacher/Teacher.java
+M	src/main/java/ru/curriculum/service/user/UserDTO.java
+M	src/test/java/ru/curriculum/domain/admin/UserManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/UserTest.java
+
+f76dc6352b710377124ebf7f873bd9abffbeb1c0, CURRICULUM-3. add ability to create teachers from users, Tue Dec 12 03:23:36 2017 +0300
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/domain/teacher/Teacher.java
+M	src/main/java/ru/curriculum/service/teacher/TeacherCRUDService.java
+M	src/main/java/ru/curriculum/service/teacher/TeacherDTO.java
+A	src/main/java/ru/curriculum/service/teacher/TeacherDTOFactory.java
+M	src/main/java/ru/curriculum/service/teacher/TeacherFactory.java
+R097	src/main/java/ru/curriculum/service/UserCRUDService.java	src/main/java/ru/curriculum/service/user/UserCRUDService.java
+R081	src/main/java/ru/curriculum/service/UserDTO.java	src/main/java/ru/curriculum/service/user/UserDTO.java
+R090	src/main/java/ru/curriculum/service/validation/PasswordConstraint.java	src/main/java/ru/curriculum/service/user/validation/PasswordConstraint.java
+R090	src/main/java/ru/curriculum/service/validation/PasswordValidator.java	src/main/java/ru/curriculum/service/user/validation/PasswordValidator.java
+R089	src/main/java/ru/curriculum/service/validation/UniquerUsernameValidator.java	src/main/java/ru/curriculum/service/user/validation/UniquerUsernameValidator.java
+M	src/main/java/ru/curriculum/web/View.java
+M	src/main/java/ru/curriculum/web/admin/AdminController.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+M	src/main/java/ru/curriculum/web/admin/UserManagementController.java
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/teachers/teacherFromUserForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/main/resources/templates/admin/users/usersList.html
+M	src/test/java/ru/curriculum/domain/admin/domain/admin/UserTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherFactoryTest.java
+M	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/UserDTOValidationTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOFactoryTest.java
+R094	src/test/java/ru/curriculum/domain/admin/service/TeacherDTOValidationTest.java	src/test/java/ru/curriculum/domain/admin/service/teacher/TeacherDTOValidationTest.java
+
+b7aacf603e45323c0c7f0d3b25db403f586390ae, CURRICULUM-2. add teacher crud, Tue Dec 12 00:55:33 2017 +0300
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationInfoInitializationService.java
+M	src/main/java/ru/curriculum/domain/teacher/AcademicDegree.java
+A	src/main/java/ru/curriculum/domain/teacher/AcademicDegreeCode.java
+M	src/main/java/ru/curriculum/domain/teacher/Teacher.java
+M	src/main/java/ru/curriculum/service/teacher/AcademicDegreeDTO.java
+M	src/main/java/ru/curriculum/service/teacher/TeacherCRUDService.java
+M	src/main/java/ru/curriculum/service/teacher/TeacherDTO.java
+A	src/main/java/ru/curriculum/service/teacher/TeacherFactory.java
+M	src/main/java/ru/curriculum/web/View.java
+M	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+M	src/main/resources/application.yml
+M	src/main/resources/db/changelog/021220171919_create_academic_degree_table.xml
+M	src/main/resources/db/changelog/091220171920_create_teacher_table.xml
+M	src/main/resources/templates/admin/teachers/teacherForm.html
+M	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/test/java/boot/IntegrationBoot.java
+A	src/test/java/ru/curriculum/domain/admin/TeacherManagementControllerTest.java
+M	src/test/java/ru/curriculum/domain/admin/UserManagementControllerTest.java
+R095	src/test/java/ru/curriculum/domain/admin/domain/PasswordTest.java	src/test/java/ru/curriculum/domain/admin/domain/admin/PasswordTest.java
+R097	src/test/java/ru/curriculum/domain/admin/domain/UserRepositoryTest.java	src/test/java/ru/curriculum/domain/admin/domain/admin/UserRepositoryTest.java
+R098	src/test/java/ru/curriculum/domain/admin/domain/UserTest.java	src/test/java/ru/curriculum/domain/admin/domain/admin/UserTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherFactoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/teacher/TeacherTest.java
+A	src/test/java/ru/curriculum/domain/admin/service/TeacherDTOValidationTest.java
+M	src/test/java/ru/curriculum/domain/admin/service/UserDTOValidationTest.java
+
+c7b9b2e99499a1897651eeb955494826c6c8859e, CURRICULUM-3. add teacher entit, academicDegree directory, add create and delete teacher, add view teacher and create from teacher, Mon Dec 11 01:09:40 2017 +0300
+M	pom.xml
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationInfoInitializationService.java
+M	src/main/java/ru/curriculum/application/route/Routes.java
+A	src/main/java/ru/curriculum/domain/teacher/AcademicDegree.java
+A	src/main/java/ru/curriculum/domain/teacher/AcademicDegreeRepository.java
+A	src/main/java/ru/curriculum/domain/teacher/Teacher.java
+A	src/main/java/ru/curriculum/domain/teacher/TeacherRepository.java
+A	src/main/java/ru/curriculum/service/teacher/AcademicDegreeDTO.java
+A	src/main/java/ru/curriculum/service/teacher/TeacherCRUDService.java
+A	src/main/java/ru/curriculum/service/teacher/TeacherDTO.java
+M	src/main/java/ru/curriculum/web/View.java
+A	src/main/java/ru/curriculum/web/admin/TeachersManagementController.java
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/021220171919_create_academic_degree_table.xml
+A	src/main/resources/db/changelog/091220171920_create_teacher_table.xml
+M	src/main/resources/templates/admin/index.html
+A	src/main/resources/templates/admin/teachers/teacherForm.html
+A	src/main/resources/templates/admin/teachers/teacherFromUserForm.html
+A	src/main/resources/templates/admin/teachers/teachersList.html
+M	src/main/resources/templates/admin/users/userForm.html
+
+4a3cea728532da5f624c570afbb3045a6f3d6595, add versions for mvn dependencies, Mon Dec 11 00:37:19 2017 +0300
+M	pom.xml
+
+82b86ba3e44aecb832278186416cef82d1e5705c, Merge pull request #7 from Bukharovsi/CURRICULUM-2_admin_manage_users, Sun Dec 10 22:11:19 2017 +0300
+d6d47dbd808023a5f8a9e933036809c9bc50e9f0, CURRICULUM-2. merge dev, Sun Dec 10 15:22:11 2017 +0300
+50af295e984b7b80f8c3fd9faeeaa120bbbbc827, CURRICULUM-2. merge master, Sun Dec 10 15:18:56 2017 +0300
+e7985f15f21c04f446aef7d84303b8757360a10e, CURRICULUM-2. change asign password logic, add validation for uniquer username + tests, Sun Dec 10 15:14:13 2017 +0300
+R083	src/main/java/ru/curriculum/application/config/AdminAuthenticationIfnoInitializationService.java	src/main/java/ru/curriculum/application/config/AdminAuthenticationInfoInitializationService.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/service/UserCRUDService.java
+M	src/main/java/ru/curriculum/service/UserDTO.java
+M	src/main/java/ru/curriculum/service/validation/PasswordValidator.java
+A	src/main/java/ru/curriculum/service/validation/UniquerUsernameValidator.java
+R088	src/main/java/ru/curriculum/web/admin/UserManagmentController.java	src/main/java/ru/curriculum/web/admin/UserManagementController.java
+M	src/main/resources/templates/admin/users/userForm.html
+M	src/main/resources/templates/admin/users/usersList.html
+R070	src/test/java/boot/IntegrationWebBoot.java	src/test/java/boot/WebIntegrationBoot.java
+A	src/test/java/ru/curriculum/domain/admin/UserManagementControllerTest.java
+D	src/test/java/ru/curriculum/domain/admin/UserTest.java
+R093	src/test/java/ru/curriculum/domain/admin/AuthorityFactoryTest.java	src/test/java/ru/curriculum/domain/admin/application/AuthorityFactoryTest.java
+R096	src/test/java/ru/curriculum/domain/admin/PasswordTest.java	src/test/java/ru/curriculum/domain/admin/domain/PasswordTest.java
+R081	src/test/java/ru/curriculum/domain/admin/repository/UserRepositoryTest.java	src/test/java/ru/curriculum/domain/admin/domain/UserRepositoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/domain/UserTest.java
+R055	src/test/java/ru/curriculum/domain/admin/service/ValidationUserDTOTest.java	src/test/java/ru/curriculum/domain/admin/service/UserDTOValidationTest.java
+
+da1ba60e6ec690367f840196ad3bd684faf3cbba, CURRICULUM-2. some validation, Sat Dec 9 13:42:33 2017 +0300
+M	src/test/java/ru/curriculum/domain/admin/service/ValidationUserDTOTest.java
+
+fab71b9cba475625ede8b9cb25cec053a5434caf, CURRICULUM-2 all tests pass and new laptop work fine, Sat Dec 9 00:47:56 2017 +0300
+M	src/test/java/ru/curriculum/domain/admin/UserTest.java
+
+14d39f7ed29afd46f214ae0ba06c9df1a97d6127, CURRICULUM-2. password validation depends on user id (new user or existed), Thu Dec 7 23:38:43 2017 +0300
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/service/UserCRUDService.java
+R085	src/main/java/ru/curriculum/service/UserDto.java	src/main/java/ru/curriculum/service/UserDTO.java
+M	src/main/java/ru/curriculum/service/validation/PasswordConstraint.java
+M	src/main/java/ru/curriculum/service/validation/PasswordValidator.java
+M	src/main/java/ru/curriculum/web/admin/UserManagmentController.java
+A	src/test/java/ru/curriculum/domain/admin/service/ValidationUserDTOTest.java
+
+d94aeea91ffc78837407d69a54ce2c90f93eb603, CURRICULUM-2. password as embeded field of user entity, Thu Dec 7 00:55:15 2017 +0300
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationIfnoInitializationService.java
+A	src/main/java/ru/curriculum/domain/admin/user/entity/IllegalPassword.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/Password.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/service/UserCRUDService.java
+M	src/main/java/ru/curriculum/service/UserDto.java
+A	src/main/java/ru/curriculum/service/validation/PasswordConstraint.java
+A	src/main/java/ru/curriculum/service/validation/PasswordValidator.java
+M	src/main/java/ru/curriculum/web/admin/UserManagmentController.java
+M	src/main/resources/templates/admin/users/userForm.html
+M	src/main/resources/templates/admin/users/usersList.html
+A	src/test/java/ru/curriculum/domain/admin/PasswordTest.java
+M	src/test/java/ru/curriculum/domain/admin/UserTest.java
+
+da72e2b64544fb5433f12e1c781588508ec17d54, Merge pull request #6 from Bukharovsi/CURRICULUM-1_admin_auth, Wed Dec 6 22:57:58 2017 +0300
+6fe02d01c0e989eaeefb5a6721ca366f1d0aeb02, Merge branch 'CURRICULUM-1_admin_auth' of https://github.com/Bukharovsi/curriculum into CURRICULUM-1_admin_auth, Wed Dec 6 22:40:31 2017 +0300
+bf7f269fd8474434ebe1da1dcddb5db4e0b46df7, CURRICULUM-2. user change password, Wed Dec 6 22:40:08 2017 +0300
+M	src/main/java/ru/curriculum/application/auth/principal/UserPrincipal.java
+D	src/main/java/ru/curriculum/domain/Hello.java
+D	src/main/java/ru/curriculum/domain/HelloRepository.java
+A	src/main/java/ru/curriculum/domain/admin/user/entity/Password.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/service/UserCRUDService.java
+M	src/main/java/ru/curriculum/service/UserDto.java
+
+6e71c5e0fabae7c419a066e541d52bafb582854b, Merge branch 'master' into CURRICULUM-1_admin_auth, Wed Dec 6 22:20:07 2017 +0300
+e0b880c4a263400da1dad8ceed95618511ff3d9a, change server port to 5000, Wed Dec 6 22:08:20 2017 +0300
+M	src/main/resources/application.yml
+
+d176aae2b9991f996759127150f90fa76611bb38, add skip cleanup, Wed Dec 6 22:05:12 2017 +0300
+M	.travis.yml
+
+26e587b46e863bc0d7199179e64079382c4cdc05, add travis.ci deploy. update env and app name, Wed Dec 6 21:59:52 2017 +0300
+M	.travis.yml
+
+198e73ae0d32a4d6233218d8a3c394af8579aa33, add travis.ci deploy. update env and app name, Wed Dec 6 21:47:22 2017 +0300
+M	.travis.yml
+
+eecad7d5585cdf384ecb0f2b9b75096e8f55b23a, add travis.ci deploy. update env and app name, Wed Dec 6 21:45:52 2017 +0300
+M	.travis.yml
+
+3f2f732f87470c621842127a9007231874cf6eb5, add travis.ci deploy. update env, Wed Dec 6 21:41:05 2017 +0300
+M	.travis.yml
+
+f8f1a0bb589a5cb3564ca86c39328cf663caa406, add travis.ci deploy. update name and env, Wed Dec 6 21:37:35 2017 +0300
+M	.travis.yml
+
+1637cc50c950c8b7c0c15c9f2abbc1b5ca0ba756, add travis.ci deploy. S3 bucket is provided, Wed Dec 6 21:26:51 2017 +0300
+M	.travis.yml
+
+065c9707c5cf3e12d4098e39f06ef6b1b9b30d64, add travis.ci deploy. S3 bucket does not provided, Wed Dec 6 18:58:25 2017 +0300
+M	.travis.yml
+
+6b03e819c66475592b41f24a2f8e4ddd6aa39f9e, CURRICULUM-1 валидация формы, отдельный котнроллер для управления пользователями, Wed Dec 6 00:33:05 2017 +0300
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationIfnoInitializationService.java
+M	src/main/java/ru/curriculum/application/route/Routes.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+M	src/main/java/ru/curriculum/service/UserCRUDService.java
+M	src/main/java/ru/curriculum/service/UserDto.java
+M	src/main/java/ru/curriculum/web/View.java
+M	src/main/java/ru/curriculum/web/admin/AdminController.java
+A	src/main/java/ru/curriculum/web/admin/UserManagmentController.java
+R065	src/main/resources/templates/admin/users/edit.html	src/main/resources/templates/admin/users/userForm.html
+R084	src/main/resources/templates/admin/users/users.html	src/main/resources/templates/admin/users/usersList.html
+
+92a4db8379149bfed089c1568b48845fb76b8f83, CURRICULUM-2. Расширение пользователя, создание, удаление, Tue Dec 5 01:19:10 2017 +0300
+R092	src/main/java/ru/curriculum/domain/admin/principal/AuthorityFactory.java	src/main/java/ru/curriculum/application/auth/principal/AuthorityFactory.java
+R096	src/main/java/ru/curriculum/domain/admin/principal/UserPrincipal.java	src/main/java/ru/curriculum/application/auth/principal/UserPrincipal.java
+R095	src/main/java/ru/curriculum/domain/admin/principal/UserPrincipalService.java	src/main/java/ru/curriculum/application/auth/principal/UserPrincipalService.java
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+M	src/main/java/ru/curriculum/application/route/Routes.java
+D	src/main/java/ru/curriculum/controllers/HomeController.java
+D	src/main/java/ru/curriculum/controllers/admin/AdminController.java
+M	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+A	src/main/java/ru/curriculum/service/UserCRUDService.java
+A	src/main/java/ru/curriculum/service/UserDto.java
+A	src/main/java/ru/curriculum/web/Redirect.java
+A	src/main/java/ru/curriculum/web/View.java
+A	src/main/java/ru/curriculum/web/admin/AdminController.java
+R077	src/main/java/ru/curriculum/controllers/auth/AuthController.java	src/main/java/ru/curriculum/web/auth/AuthController.java
+R084	src/main/java/ru/curriculum/controllers/error/LoggingAccessDeniedHandler.java	src/main/java/ru/curriculum/web/error/LoggingAccessDeniedHandler.java
+M	src/main/resources/db/changelog/021120172221_create_user_table.xml
+A	src/main/resources/templates/admin/users/edit.html
+M	src/main/resources/templates/admin/users/users.html
+M	src/test/java/ru/curriculum/domain/admin/AuthorityFactoryTest.java
+
+b821e18aa4ee30db93494e8bf729e3b2a8756d56, CURRICULUM-1. В личный кабинет добавлен раздел упралвения пользователями, Mon Dec 4 22:18:25 2017 +0300
+M	src/main/java/ru/curriculum/application/route/Routes.java
+M	src/main/java/ru/curriculum/controllers/admin/AdminController.java
+M	src/main/resources/templates/admin/index.html
+A	src/main/resources/templates/admin/users/users.html
+
+e524e4ab9f91e15748bdc77f0967cf6a52e31bf7, CURRICULUM-1. аутенетификация проходит через userDetailService, логин пароль вынесены в конфиг, при первом старте создается администратор, пока заведена одна роль и пользователь не может иметь несколько ролей + тесты, Mon Dec 4 00:14:30 2017 +0300
+M	src/main/java/ru/curriculum/application/config/AdminAuthenticationIfnoInitializationService.java
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+A	src/main/java/ru/curriculum/domain/admin/principal/AuthorityFactory.java
+R074	src/main/java/ru/curriculum/domain/user/UserPrincipal.java	src/main/java/ru/curriculum/domain/admin/principal/UserPrincipal.java
+R083	src/main/java/ru/curriculum/domain/user/UserPrincipalService.java	src/main/java/ru/curriculum/domain/admin/principal/UserPrincipalService.java
+A	src/main/java/ru/curriculum/domain/admin/user/entity/Role.java
+A	src/main/java/ru/curriculum/domain/admin/user/entity/Roles.java
+A	src/main/java/ru/curriculum/domain/admin/user/entity/User.java
+A	src/main/java/ru/curriculum/domain/admin/user/repository/RoleRepository.java
+R066	src/main/java/ru/curriculum/domain/user/UserRepository.java	src/main/java/ru/curriculum/domain/admin/user/repository/UserRepository.java
+D	src/main/java/ru/curriculum/domain/user/Roles.java
+D	src/main/java/ru/curriculum/domain/user/User.java
+M	src/main/resources/application.yml
+M	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/021120172200_create_role_table.xml
+R081	src/main/resources/db/changelog/261020172020_create_hello_table.xml	src/main/resources/db/changelog/021120172221_create_user_table.xml
+A	src/test/java/boot/IntegrationBoot.java
+M	src/test/java/boot/IntegrationWebBoot.java
+D	src/test/java/ru/curriculum/UserRepositoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/AuthorityFactoryTest.java
+A	src/test/java/ru/curriculum/domain/admin/UserTest.java
+A	src/test/java/ru/curriculum/domain/admin/repository/UserRepositoryTest.java
+
+fac2fae94e468ae11bf0ff1d2a855305ae41ef68, add auth by userdetailservice, Sun Dec 3 22:17:10 2017 +0300
+M	pom.xml
+A	src/main/java/ru/curriculum/application/config/AdminAuthenticationIfnoInitializationService.java
+M	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+M	src/main/java/ru/curriculum/domain/Hello.java
+M	src/main/java/ru/curriculum/domain/HelloRepository.java
+A	src/main/java/ru/curriculum/domain/user/Roles.java
+A	src/main/java/ru/curriculum/domain/user/User.java
+A	src/main/java/ru/curriculum/domain/user/UserPrincipal.java
+A	src/main/java/ru/curriculum/domain/user/UserPrincipalService.java
+A	src/main/java/ru/curriculum/domain/user/UserRepository.java
+M	src/main/resources/db/changelog/261020172020_create_hello_table.xml
+M	src/main/resources/templates/index.html
+M	src/main/resources/templates/login.html
+D	src/test/java/ru/curriculum/HelloControllerTest.java
+A	src/test/java/ru/curriculum/UserRepositoryTest.java
+
+127894d194a705bdaa5bb0e45406b6fd91234644, add versioneye, Wed Nov 29 23:32:43 2017 +0300
+M	pom.xml
+M	readme.md
+
+299204440588219ce49b97e9fd1009d485311841, update readme, Wed Nov 29 23:26:49 2017 +0300
+M	readme.md
+
+4a8bba953ccb4383df801826f02f7a79d2461cf5, add readme, Wed Nov 29 23:25:01 2017 +0300
+A	readme.md
+
+029f9fda2b382972a51c699c2409dfde5ea57212, fix tests, Wed Nov 29 23:15:25 2017 +0300
+M	src/test/java/boot/IntegrationWebBoot.java
+M	src/test/java/ru/curriculum/HelloControllerTest.java
+
+7c36c01d60307a6d94b97acfebf1fa6fc40dfe69, add travis.ci, Wed Nov 29 23:08:14 2017 +0300
+A	.travis.yml
+
+4cdb09dd017f31758db606a4c21d1d63c71faf36, master. add thymeleaf and simple home, login ... pages, Tue Nov 28 00:25:09 2017 +0300
+M	pom.xml
+D	src/main/java/ru/curriculum/api/HelloController.java
+D	src/main/java/ru/curriculum/api/error/ApiErrorController.java
+A	src/main/java/ru/curriculum/application/config/WebSecurityConfig.java
+A	src/main/java/ru/curriculum/application/route/Routes.java
+A	src/main/java/ru/curriculum/controllers/HomeController.java
+A	src/main/java/ru/curriculum/controllers/admin/AdminController.java
+A	src/main/java/ru/curriculum/controllers/auth/AuthController.java
+A	src/main/java/ru/curriculum/controllers/error/LoggingAccessDeniedHandler.java
+M	src/main/resources/application.yml
+A	src/main/resources/templates/admin/index.html
+A	src/main/resources/templates/error/access-denied.html
+A	src/main/resources/templates/index.html
+A	src/main/resources/templates/login.html
+
+69c76e4b3b83cec2fd45511f215146c8471b6665, master. change dependencies versions, Sun Nov 26 23:45:30 2017 +0300
+M	pom.xml
+
+8921b09452f55bdb3cfd0173a9a6bed2bd7b4065, master. create hello project, Sun Nov 26 23:36:51 2017 +0300
+A	.gitignore
+A	pom.xml
+A	src/main/java/ru/curriculum/CurriculumApplication.java
+A	src/main/java/ru/curriculum/api/HelloController.java
+A	src/main/java/ru/curriculum/api/error/ApiErrorController.java
+A	src/main/java/ru/curriculum/domain/Hello.java
+A	src/main/java/ru/curriculum/domain/HelloRepository.java
+A	src/main/resources/application.yml
+A	src/main/resources/db/changelog-master.xml
+A	src/main/resources/db/changelog/261020172020_create_hello_table.xml
+A	src/test/java/boot/IntegrationWebBoot.java
+A	src/test/java/ru/curriculum/HelloControllerTest.java

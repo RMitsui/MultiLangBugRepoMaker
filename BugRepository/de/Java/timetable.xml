@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugrepository name="timetable">
+	<bug id="287" opendate="2015-02-03 19:26:09" fixdate="2015-02-04 13:51:43">
+		<buginformation>
+			<summary>Update des Stundenplans bei Wechsel von Einrichtung auf Planung</summary>
+			<description>Wenn von der Einrichtungs- auf die Planungsseite gewechselt wird, muss der momentan dargestellte Stundenplan aktualisiert werden. Alternativ könnte auch zunächst gar kein Stundenplan angezeigt werden. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/woym/controller/planning/PlanningController.java</file>
+			<file>src/main/java/org/woym/ui/util/EntityHelper.java</file>
+			<file>src/main/java/org/woym/controller/GUIController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="281" opendate="2015-02-03 17:11:58" fixdate="2015-02-04 13:28:05">
+		<buginformation>
+			<summary>Ungültige Zeit über TimePicker im Aktivitätendialog wählbar</summary>
+			<description>Sei das Ende eines Wochentages in den Einstellungen auf 16 Uhr festgelegt: Öffnet man nun den Dialog zum Hinzufügen einer Aktivität und wählt für die Endzeit die maximale Stunden-und Minutenzahl aus, erhält man bei einem Zeitraster von 15 Minuten eine Endzeit von 16:45, die außerhalb der Einstellungen liegt. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/woym/controller/planning/PlanningController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="277" opendate="2015-02-03 15:37:57" fixdate="2015-02-03 16:14:08">
+		<buginformation>
+			<summary>Uhrzeit im Aktivitätsinformationsdialog ist im AM/PM-Format</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/woym/controller/planning/PlanningController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="254" opendate="2015-02-01 12:21:20" fixdate="2015-02-01 13:03:56">
+		<buginformation>
+			<summary>Im Aktivitätsdialog für CompoundLessons fehlen die Inhalte</summary>
+			<description></description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/woym/controller/PlanningController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="231" opendate="2015-01-29 15:37:46" fixdate="2015-02-03 13:09:34">
+		<buginformation>
+			<summary>TimePeriod Objekte Validierung erweitern</summary>
+			<description>Zurzeit ist es möglich Zeiten außerhalb der Gesetzten grenzen zu wählen . Das soll unterbunden werden. Weiterhin kann die Endzeit vor die Startzeit durch die Abzüge seiten der Zieh-Funktion der GUI erreicht werden. </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/woym/controller/planning/PlanningController.java</file>
+		</fixedfiles>
+	</bug>
+	<bug id="68" opendate="2014-12-13 15:22:41" fixdate="2014-12-16 11:02:54">
+		<buginformation>
+			<summary>Beim Bearbeiten eines Objektes kann ein eindeutiger Wert erneut vergeben werden</summary>
+			<description>Es muss am Validator bekannt sein, welches Objekt er validiert.  Siehe: http://stackoverflow.com/questions/1178783/jsf-accessing-bean-from-validator-via-field </description>
+		</buginformation>
+		<fixedfiles>
+			<file>src/main/java/org/woym/ui/validators/ActivityTypeNameValidator.java</file>
+			<file>src/main/java/org/woym/ui/validators/SymbolValidator.java</file>
+		</fixedfiles>
+	</bug>
+<bugrepository>

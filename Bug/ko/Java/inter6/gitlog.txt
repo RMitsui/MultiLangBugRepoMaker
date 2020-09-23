@@ -1,0 +1,1102 @@
+bae725484d7e851958f0e95be7c8329a0708f7de, Upgrade dependencies, Wed Feb 22 22:34:41 2017 +0900
+M	.gitignore
+M	build.gradle
+
+8e141c6595dc0b6a57e42614895440e5b70a3551, Update README.md, Thu Jun 9 00:24:28 2016 +0900
+M	README.md
+
+3045b9865c7f410810451c1b7037b97c7458d666, Merge pull request #61 from inter6/v1.2.2, Fri Dec 18 23:53:15 2015 +0900
+795daf11ff712c4f0e4e7ff2a6890357dee76893, v1.2.2 release, Fri Dec 18 23:49:33 2015 +0900
+M	README.md
+M	build.gradle
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/resources/message/about.msg
+
+2329ce48e0e6d024322fc0b1cc56584b786f42f3, #59 EML과 SCP 패널에서 전송 딜레이를 줄 수 있는 기능 추가 #60 상태를 가지고있는 AbstractSmtpSendJob들을 재사용하는 문제, Fri Dec 18 23:41:56 2015 +0900
+M	src/main/java/com/inter6/mail/Application.java
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/component/AddressPanel.java
+M	src/main/java/com/inter6/mail/gui/component/DatePanel.java
+M	src/main/java/com/inter6/mail/gui/component/EncodingTextPanel.java
+M	src/main/java/com/inter6/mail/gui/component/HeaderPanel.java
+A	src/main/java/com/inter6/mail/gui/component/SendDelayPanel.java
+M	src/main/java/com/inter6/mail/gui/component/TextViewDialog.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/gui/menu/TopMenuBar.java
+M	src/main/java/com/inter6/mail/gui/menu/file/LoadConfigMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigAsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/help/AboutMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Base64MenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/DnsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Rfc2074MenuItem.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/gui/tab/RootTabPanel.java
+M	src/main/java/com/inter6/mail/gui/tab/TabComponentPanel.java
+M	src/main/java/com/inter6/mail/gui/tab/TabPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendMasterJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/ScpSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/AdvancedInternetAddress.java
+M	src/main/java/com/inter6/mail/model/AdvancedMimeMessage.java
+M	src/main/java/com/inter6/mail/model/AppSession.java
+M	src/main/java/com/inter6/mail/model/AuthOption.java
+M	src/main/java/com/inter6/mail/model/ContentType.java
+M	src/main/java/com/inter6/mail/model/HeloType.java
+M	src/main/java/com/inter6/mail/model/JobStatistics.java
+M	src/main/java/com/inter6/mail/model/advanced/PreSendSettingData.java
+M	src/main/java/com/inter6/mail/model/component/AddressData.java
+M	src/main/java/com/inter6/mail/model/component/EncodingTextData.java
+A	src/main/java/com/inter6/mail/model/component/SendDelayData.java
+M	src/main/java/com/inter6/mail/model/component/content/AttachmentPartData.java
+M	src/main/java/com/inter6/mail/model/component/content/PartData.java
+M	src/main/java/com/inter6/mail/model/component/content/PartDataJsonDeserializer.java
+M	src/main/java/com/inter6/mail/model/component/content/PartDataJsonSerializer.java
+M	src/main/java/com/inter6/mail/model/data/EditSourceData.java
+M	src/main/java/com/inter6/mail/model/data/EmlSourceData.java
+M	src/main/java/com/inter6/mail/model/data/EnvelopeData.java
+M	src/main/java/com/inter6/mail/model/data/ScpSourceData.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditAddressData.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditHeaderData.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditMessageData.java
+M	src/main/java/com/inter6/mail/model/setting/ServerData.java
+M	src/main/java/com/inter6/mail/module/AppConfig.java
+M	src/main/java/com/inter6/mail/module/ModuleService.java
+M	src/main/java/com/inter6/mail/module/TabComponentManager.java
+M	src/main/java/com/inter6/mail/module/Workers.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+M	src/main/java/com/inter6/mail/service/XTrustProvider.java
+M	src/main/java/com/inter6/mail/util/StringUtil.java
+
+5c48839b2e7120c73312070cfbe155ad7a5fafa8, #57 HELO 도메인을 입력할 수 있게 추가, Fri Dec 18 21:12:01 2015 +0900
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+A	src/main/java/com/inter6/mail/model/HeloType.java
+M	src/main/java/com/inter6/mail/model/setting/ServerData.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+
+f62e2b681cd559023442e114bf8f4285274655d0, Merge pull request #56 from inter6/v1.2.1, Sat Dec 5 15:08:26 2015 +0900
+dc98bad57def2443f5eeade3c46bbfdfc046ad29, v1.2.1 release, Sat Dec 5 15:06:52 2015 +0900
+M	README.md
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/resources/message/about.msg
+
+c1229af4b103a60a2925cc1af5d7a951495e2482, #55 Maven에서 Gradle로 전환, Sat Dec 5 15:00:03 2015 +0900
+M	.gitignore
+A	build.gradle
+A	gradlew
+A	gradlew.bat
+D	pom.xml
+A	settings.gradle
+
+56f2ff037ec4054328b8f5c598891d19048e7045, Merge branches 'master' and 'v1.2.1' of https://github.com/inter6/smtp-sender into v1.2.1, Sat Dec 5 14:05:17 2015 +0900
+c206ec4b10c67ce80b6fccc5b1ddccc793a6a0ca, Update README.md, Sat Dec 5 14:01:17 2015 +0900
+M	README.md
+
+2b9d2b79e1985f53fcc8818716754d574264e4cd, 버튼 문구 수정, Fri Dec 4 08:42:59 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+
+e4f5c06fcaa69f41b882e0a417c679bbf3ce3ad8, #54 EML 패널에서 이전에 저장한 경로를 불러오지 못하는 현상 수정, Thu Dec 3 22:20:17 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/model/AppSession.java
+M	src/main/java/com/inter6/mail/module/AppConfig.java
+
+53390d5937e1c8c689beb6c5a998bd051ff598f9, #53 EML 패널에서 여러개의 EML 전송시, 전송율 표시가 깜빡이는 현상 수정, Thu Dec 3 21:44:53 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendMasterJob.java
+
+db4b20eb3bce72d8bd92b3a9ac69163e9b6e170b, Merge pull request #50 from inter6/v1.2.0, Sun Nov 8 23:50:09 2015 +0900
+d55c34250e82cac03211f868a5e05a66969ec8ab, v1.2.0 release, Sun Nov 8 23:48:26 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/resources/message/about.msg
+
+76d682c789bd6c5018a7eb6267dd471921f63646, #33 스크롤 범위 UI 조정, Sun Nov 8 23:30:54 2015 +0900
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/gui/tab/TabPanel.java
+
+89449e33f7974b67877230c369365fc018958a1c, #33 탭 패널 10개 추가, Sun Nov 8 23:06:15 2015 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+D	src/main/java/com/inter6/mail/gui/RootTabPanel.java
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/gui/menu/TopMenuBar.java
+M	src/main/java/com/inter6/mail/gui/menu/file/LoadConfigMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigAsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/help/AboutMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Base64MenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/DnsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Rfc2074MenuItem.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+A	src/main/java/com/inter6/mail/gui/tab/RootTabPanel.java
+R051	src/main/java/com/inter6/mail/gui/TabComponent.java	src/main/java/com/inter6/mail/gui/tab/TabComponent.java
+R091	src/main/java/com/inter6/mail/gui/TabComponentPanel.java	src/main/java/com/inter6/mail/gui/tab/TabComponentPanel.java
+R096	src/main/java/com/inter6/mail/gui/TabPanel.java	src/main/java/com/inter6/mail/gui/tab/TabPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/ScpSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/action/ActionData.java
+M	src/main/java/com/inter6/mail/model/advanced/PostSendSettingData.java
+M	src/main/java/com/inter6/mail/model/advanced/PreSendSettingData.java
+M	src/main/java/com/inter6/mail/model/component/AddressData.java
+M	src/main/java/com/inter6/mail/model/component/DateData.java
+M	src/main/java/com/inter6/mail/model/component/EncodingTextData.java
+M	src/main/java/com/inter6/mail/model/component/HeaderData.java
+M	src/main/java/com/inter6/mail/model/component/content/AttachmentPartData.java
+M	src/main/java/com/inter6/mail/model/component/content/PartData.java
+M	src/main/java/com/inter6/mail/model/component/content/TextPartData.java
+M	src/main/java/com/inter6/mail/model/data/EditSourceData.java
+M	src/main/java/com/inter6/mail/model/data/EmlSourceData.java
+M	src/main/java/com/inter6/mail/model/data/EnvelopeData.java
+M	src/main/java/com/inter6/mail/model/data/ScpSourceData.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditAddressData.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditHeaderData.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditMessageData.java
+M	src/main/java/com/inter6/mail/model/setting/ServerData.java
+M	src/main/java/com/inter6/mail/module/TabComponentManager.java
+
+ede52a7f4b189055a6db3e1fb63882e4da4dc19e, #33 TabComponentManager를 싱글톤으로 변경, 리팩토링, Sun Nov 8 20:31:31 2015 +0900
+M	src/main/java/com/inter6/mail/Application.java
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/RootTabPanel.java
+M	src/main/java/com/inter6/mail/gui/TabComponentPanel.java
+M	src/main/java/com/inter6/mail/gui/TabPanel.java
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/component/TextViewDialog.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/gui/menu/file/LoadConfigMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigAsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/help/AboutMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Base64MenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/DnsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Rfc2074MenuItem.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendMasterJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/ScpSmtpSendJob.java
+R095	src/main/java/com/inter6/mail/service/ModuleService.java	src/main/java/com/inter6/mail/module/ModuleService.java
+R074	src/main/java/com/inter6/mail/service/TabComponentService.java	src/main/java/com/inter6/mail/module/TabComponentManager.java
+
+76f01b083f5bd3afba45e60beae571f651f1f63d, #33 탭 기능 추가를 위한 클래스 조정, 싱글 탭 추가, Sun Nov 8 20:18:33 2015 +0900
+M	src/main/java/com/inter6/mail/Application.java
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+A	src/main/java/com/inter6/mail/gui/RootTabPanel.java
+A	src/main/java/com/inter6/mail/gui/TabComponent.java
+A	src/main/java/com/inter6/mail/gui/TabComponentPanel.java
+A	src/main/java/com/inter6/mail/gui/TabPanel.java
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/component/TextViewDialog.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/gui/menu/file/LoadConfigMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigAsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/help/AboutMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Base64MenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/DnsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Rfc2074MenuItem.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendMasterJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/ScpSmtpSendJob.java
+D	src/main/java/com/inter6/mail/job/smtp/SmtpSendJobObserver.java
+R081	src/main/java/com/inter6/mail/module/ModuleService.java	src/main/java/com/inter6/mail/service/ModuleService.java
+A	src/main/java/com/inter6/mail/service/TabComponentService.java
+
+2ac135c52574ebb6198165a53940ce3b97d4f37a, #33 Optimized import statements, Sun Nov 8 19:25:35 2015 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/component/AddressPanel.java
+M	src/main/java/com/inter6/mail/gui/component/DatePanel.java
+M	src/main/java/com/inter6/mail/gui/component/EncodingTextPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Base64MenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/DnsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Rfc2074MenuItem.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/ScpSmtpSendJob.java
+M	src/main/java/com/inter6/mail/module/Workers.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+
+3426943e9d8d7b8eea0cb8892cf97774f95d7cca, #33 prototype String을 enum으로 수정, Sat Nov 7 17:11:45 2015 +0900
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/ScpSmtpSendJob.java
+
+c955cf4980dc1953c3fcc45ff36876070c735ad7, #33 불필요한 패널 삭제, Sat Nov 7 02:43:50 2015 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+D	src/main/java/com/inter6/mail/gui/advanced/AdvancedPanel.java
+D	src/main/java/com/inter6/mail/gui/advanced/PostSendSettingPanel.java
+D	src/main/java/com/inter6/mail/gui/advanced/PreSendSettingPanel.java
+D	src/main/java/com/inter6/mail/gui/setting/SettingPanel.java
+
+c393f9619136cf8de4e6374a77ef9925377f87ed, Merge pull request #49 from inter6/v1.1.1, Sat Nov 7 01:01:04 2015 +0900
+f19911294ef17462f718a56cb681935e81d3786f, v1.1.1 릴리즈 준비, Sat Nov 7 00:53:38 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/java/com/inter6/mail/Application.java
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/component/DatePanel.java
+M	src/main/java/com/inter6/mail/gui/component/EncodingTextPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/DnsMenuItem.java
+M	src/main/resources/message/about.msg
+
+f6b9a674fcaa06136f96633e78b6f18ced157277, FindBugs 처리, Wed Nov 4 00:45:52 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/advanced/PostSendSettingPanel.java
+M	src/main/java/com/inter6/mail/gui/component/DatePanel.java
+D	src/main/java/com/inter6/mail/gui/component/JFileTree.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Base64MenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/DnsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/tools/Rfc2074MenuItem.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+
+531b17efa61f8d7c69d6c9f471fbde076014662f, Java 1.7에 맞게 코드 정리, Tue Nov 3 23:53:53 2015 +0900
+M	src/main/java/com/inter6/mail/gui/ConfigObserver.java
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/component/AddressPanel.java
+M	src/main/java/com/inter6/mail/gui/component/EncodingTextPanel.java
+M	src/main/java/com/inter6/mail/gui/component/JFileTree.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/job/Job.java
+M	src/main/java/com/inter6/mail/job/SendJobBuilder.java
+M	src/main/java/com/inter6/mail/job/smtp/SmtpSendJobObserver.java
+M	src/main/java/com/inter6/mail/module/Workers.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+M	src/main/java/com/inter6/mail/util/StringUtil.java
+
+23471f086be17da87d9393c58e6d8212f0b5ace7, v1.1.0 릴리즈 관련 메세지 추가, Tue Sep 22 00:59:03 2015 +0900
+M	README.md
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/resources/message/about.msg
+
+1f76accacce2af04ca12bc7f89e776e1c5098613, #41 SCP로 원격 서버에 있는 EML들을 가져와서 보낼 수 있는 패널/기능 추가, Tue Sep 22 00:47:31 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/ScpSmtpSendJob.java
+
+682a8cdd0ecc75a506b7cdf0602dbe607ebf72e1, #41 SCP로 원격 서버에 있는 EML들을 가져와서 보낼 수 있는 패널/기능 추가, Mon Sep 21 23:22:18 2015 +0900
+M	pom.xml
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/advanced/AdvancedPanel.java
+M	src/main/java/com/inter6/mail/gui/component/AddressPanel.java
+M	src/main/java/com/inter6/mail/gui/component/DatePanel.java
+M	src/main/java/com/inter6/mail/gui/component/JFileTree.java
+M	src/main/java/com/inter6/mail/gui/component/TextViewDialog.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+A	src/main/java/com/inter6/mail/gui/data/ScpSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendMasterJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+A	src/main/java/com/inter6/mail/job/smtp/ScpSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/AdvancedInternetAddress.java
+M	src/main/java/com/inter6/mail/model/AdvancedMimeMessage.java
+M	src/main/java/com/inter6/mail/model/AppSession.java
+M	src/main/java/com/inter6/mail/model/AuthOption.java
+M	src/main/java/com/inter6/mail/model/ContentType.java
+M	src/main/java/com/inter6/mail/model/component/AddressData.java
+M	src/main/java/com/inter6/mail/model/component/content/PartData.java
+M	src/main/java/com/inter6/mail/model/component/content/PartDataJsonDeserializer.java
+M	src/main/java/com/inter6/mail/model/component/content/PartDataJsonSerializer.java
+M	src/main/java/com/inter6/mail/model/data/EnvelopeData.java
+A	src/main/java/com/inter6/mail/model/data/ScpSourceData.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditAddressData.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditHeaderData.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditMessageData.java
+M	src/main/java/com/inter6/mail/model/setting/ServerData.java
+M	src/main/java/com/inter6/mail/module/AppConfig.java
+M	src/main/java/com/inter6/mail/module/Workers.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+M	src/main/java/com/inter6/mail/service/XTrustProvider.java
+M	src/main/java/com/inter6/mail/util/StringUtil.java
+
+6247a252f2e537d8e10e3697feb8f302c08784de, #46 EML 패널에 모든 EML에 대해 날짜를 교체하여 전송하는 옵션 추가, Sun Sep 13 20:09:00 2015 +0900
+M	src/main/java/com/inter6/mail/gui/advanced/PreSendSettingPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/data/EmlSourceData.java
+
+76ac916b88d362a09bebe9dcf677291feefabf97, #44 에디터의 첨부 패널에서 파일명을 포함할지말지에 대한 옵션 추가, Sun Sep 13 19:23:04 2015 +0900
+M	src/main/java/com/inter6/mail/gui/advanced/PreSendSettingPanel.java
+A	src/main/java/com/inter6/mail/gui/component/EncodingTextPanel.java
+D	src/main/java/com/inter6/mail/gui/component/SubjectPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/advanced/PreSendSettingData.java
+R094	src/main/java/com/inter6/mail/model/component/SubjectData.java	src/main/java/com/inter6/mail/model/component/EncodingTextData.java
+M	src/main/java/com/inter6/mail/model/component/content/AttachmentPartData.java
+M	src/main/java/com/inter6/mail/model/data/EditSourceData.java
+
+6970f2d3f8386c1b18a2a39a13a9f0beb1f0207f, #42 EML과 EML on Dirs 패널을 하나로 합치기, Sun Sep 13 18:45:09 2015 +0900
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+D	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+D	src/main/java/com/inter6/mail/job/smtp/DirSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+D	src/main/java/com/inter6/mail/model/data/DirSourceData.java
+M	src/main/java/com/inter6/mail/model/data/EmlSourceData.java
+
+d46c4d2d367e20358d0dc985633b1d265d7fbaa9, #45 진행율이 99%로만 출력되는 문제 수정, Sun Sep 13 18:43:00 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+
+c068c672d7fd3802e553fc1612e8c4c2721e4dbc, v1.0.1 Release를 위한 메세지 수정, Sat Sep 12 11:47:36 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/resources/message/about.msg
+
+7be6bf5f36e2c4e2da244e64810866d1a8b5192a, #39 UI 컴포넌트 크기 조정, Thu Sep 10 22:46:19 2015 +0900
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigAsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigMenuItem.java
+
+2d131e5404958da974cea884aa508e8a041c104e, #40 에디터와 MIME 패널에 파일로 저장 버튼 추가, Thu Sep 10 22:25:34 2015 +0900
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+
+c002f15328c05dc543f5469bc06cd7c6305c9352, #39 UI 컴포넌트 크기 조정, Thu Sep 10 22:08:15 2015 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/component/HeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+
+7a3248a9e448a11ac07b7fd86144ec894d0a18fa, #38 Pre/Post Send Setting 패널 감추기, Thu Sep 10 21:54:06 2015 +0900
+M	.gitignore
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/advanced/PostSendSettingPanel.java
+M	src/main/java/com/inter6/mail/gui/advanced/PreSendSettingPanel.java
+
+3f75cdc90a4c6f180786500a1c656c4249711f6d, #37 설정 파일 불러오기/저장하기를 탑메뉴바로 이동, Thu Sep 10 21:33:06 2015 +0900
+M	.gitignore
+M	src/main/java/com/inter6/mail/gui/menu/TopMenuBar.java
+A	src/main/java/com/inter6/mail/gui/menu/file/LoadConfigMenuItem.java
+A	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigAsMenuItem.java
+A	src/main/java/com/inter6/mail/gui/menu/file/SaveConfigMenuItem.java
+R097	src/main/java/com/inter6/mail/gui/menu/AboutMenuItem.java	src/main/java/com/inter6/mail/gui/menu/help/AboutMenuItem.java
+R098	src/main/java/com/inter6/mail/gui/menu/Base64MenuItem.java	src/main/java/com/inter6/mail/gui/menu/tools/Base64MenuItem.java
+R099	src/main/java/com/inter6/mail/gui/menu/DnsMenuItem.java	src/main/java/com/inter6/mail/gui/menu/tools/DnsMenuItem.java
+R098	src/main/java/com/inter6/mail/gui/menu/Rfc2074MenuItem.java	src/main/java/com/inter6/mail/gui/menu/tools/Rfc2074MenuItem.java
+D	src/main/java/com/inter6/mail/gui/setting/ConfigPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/SettingPanel.java
+
+327f9b622edc0774773655a62588e647aa9fedc6, #36 Spring Boot 프레임워크로 전환, Thu Sep 10 20:37:05 2015 +0900
+M	pom.xml
+M	src/main/java/com/inter6/mail/Application.java
+M	src/main/java/com/inter6/mail/module/ModuleService.java
+D	src/main/resources/META-INF/spring-beans-4.1.xsd.xml
+D	src/main/resources/META-INF/spring-context-4.1.xsd.xml
+D	src/main/resources/META-INF/spring.handlers
+D	src/main/resources/META-INF/spring.schemas
+D	src/main/resources/app-context.xml
+
+26735469a93dcea889b7257c18971e5d7152f97f, 테스트 eml 추가, Tue Jul 21 22:38:39 2015 +0900
+M	src/test/resources/eml/test1_no_message_id.eml
+M	src/test/resources/eml/test1_normal.eml
+
+8d291a3f3aeefadffb00fae857ab6446b4fb381f, clover 플러그인 추가, 테스트 코드 추가, Tue Jul 21 22:32:24 2015 +0900
+M	pom.xml
+M	src/main/java/com/inter6/mail/util/ObjectUtil.java
+A	src/test/java/com/inter6/mail/model/AdvancedInternetAddressTest.java
+A	src/test/java/com/inter6/mail/model/AdvancedMimeMessageTest.java
+A	src/test/java/com/inter6/mail/util/ObjectUtilTest.java
+A	src/test/java/com/inter6/mail/util/StringUtilTest.java
+A	src/test/resources/eml/test1_no_message_id.eml
+A	src/test/resources/eml/test1_normal.eml
+
+5901e476504473d369b4c42223d555b3fbc2e04f, v1.0.0 릴리즈 준비, Tue Jun 23 20:07:01 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/resources/message/about.msg
+
+ef347e206215c9e6e8816211d99851eebf028f6c, 최초 실행시 에디터가 나오게 수정 불필요한 주석 삭제, Tue Jun 23 20:00:30 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/HeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+
+3c7864f848a66aa60c9e8776314ab5c51e8e2003, 최상위 Content-Type이 멀티파트가 아닐 때, MIME이 만들어지지 않는 문제 수정, Tue Jun 23 19:37:52 2015 +0900
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+
+7b0cef3039d1b4467472b83857c52bbab28a0b37, Merge branch '1.0.0-dev' of https://git.daou.co.kr/inter6/smtp-sender, Tue Jun 23 19:01:54 2015 +0900
+53a9260be11e7302c0b5c539a688c6bb13c30c84, 첨부 파트에서 Disposition을 inline/attachment 변경시마다 Content-ID 사용 또한 변경하도록 개선, Tue Jun 23 18:58:26 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+
+7a8ce69a30fa7f5129d47cf56481cfab2ae9b122, #35 Base64 및 RFC2074 툴 다이얼로그에 버튼이 보이지 않는 현상 수정 #35 시스템 Look and Feel 제거, Thu Jun 18 10:21:38 2015 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/menu/Base64MenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/DnsMenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/Rfc2074MenuItem.java
+
+afd1a5c1473d8c7e7cc6bf3379eef328978e506d, 디버그 로그 추가, Fri Jun 5 09:06:55 2015 +0900
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+
+b27cbff499e8d7c5147093038c0c400919cf1fbf, 코드 정리, Tue Jun 2 21:12:13 2015 +0900
+M	pom.xml
+
+f54d297bd6a781c0b8837f9d023bc4710b72d4c8, Merge pull request #34 from inter6/v0.4.1-dev, Mon May 25 17:26:00 2015 +0900
+4b3f6a6b384a1895102d46ebf034a3a9d1af2cb9, 버전 변경 및 v0.4.1 릴리즈 준비, Mon May 25 17:24:01 2015 +0900
+M	src/main/resources/message/about.msg
+
+3873540eb16cedde0877a58f6c123e6565b7c4a8, 버전 변경 및 v0.4.1 릴리즈 준비, Mon May 25 17:21:32 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/resources/message/about.msg
+
+069ba4c0282a69abce7b1ad473d1bf19271d763b, #25 DNS 쿼리 툴 메뉴 추가, Mon May 25 17:19:51 2015 +0900
+M	src/main/java/com/inter6/mail/gui/menu/DnsMenuItem.java
+
+199660617571311a5afa05cf64015732ff183287, #23 Base64 인코딩/디코딩 툴 메뉴 추가, Mon May 25 17:19:00 2015 +0900
+M	src/main/java/com/inter6/mail/gui/menu/Base64MenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/Rfc2074MenuItem.java
+
+c839d09288243a8d6c52fdfdcf13aaae4444d4ea, Merge pull request #31 from inter6/v0.4.0-dev, Sat May 23 17:35:49 2015 +0900
+39c6d1423200c7a2373462f868d4624cbcb7f1c0, 버전 변경 및 v0.4.0 릴리즈 준비, Sat May 23 17:32:38 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/resources/message/about.msg
+
+a701cf438d88de673c112fc06de6dca304814ff1, #30 에디터에서 2depth 이상의 멀티파트를 저장시, 1depth까지만 로딩되는 현상 수정, Sat May 23 17:16:12 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+
+3626cd0592f99deb5f2c0d82c0db3a7f6c56bf09, #26 에디터에서 최상위 Content-Type을 바꿀 수 있게 수정, Sat May 23 17:01:50 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/model/data/edit/EditMessageData.java
+
+5de58a0f6266644e6f317507f0da5245fedf4f36, #29 에디터에서 파일 첨부시, Content-ID 헤더를 선택적으로 추가할 수 있게 기능 추가, Sat May 23 15:16:06 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/model/component/content/AttachmentPartData.java
+
+05b9b3101e86d217b1a3aaaa72457eb46cef17dc, #28 에디터에서 첨부 파트의 Content-Type이 변경되지 않는 문제 수정, Sat May 23 14:57:30 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+
+393a7ede8e8eea95536e1043f0ba538bef39dda3, #24 RFC2074 인코딩/디코딩 툴 메뉴 추가, Sat May 9 21:10:33 2015 +0900
+A	src/main/java/com/inter6/mail/gui/menu/AboutMenuItem.java
+A	src/main/java/com/inter6/mail/gui/menu/Base64MenuItem.java
+A	src/main/java/com/inter6/mail/gui/menu/DnsMenuItem.java
+A	src/main/java/com/inter6/mail/gui/menu/Rfc2074MenuItem.java
+M	src/main/java/com/inter6/mail/gui/menu/TopMenuBar.java
+
+2684875fc4c1a504eb14ea36ed5f0e9f95749200, #22 - 날짜 헤더를 교체할 수 있는 기능 추가 - v0.3.2 릴리즈, Sat May 9 19:28:30 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/java/com/inter6/mail/gui/advanced/PreSendSettingPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/advanced/PreSendSettingData.java
+M	src/main/resources/message/about.msg
+
+b8c72d6de3607f83a158efd1763c5fc0fd7db228, #21 버그 수정, Sat Apr 25 15:59:29 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/DatePanel.java
+
+d8bf2159fc047f1cea8f8997f5fce744347df6d5, #21 기존 config 호환, Sat Apr 25 15:54:51 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/DatePanel.java
+
+fac2ce3b99e0676cb6a2a1eb3730d0cc38941763, #21 MIME 에디터에 날짜를 지정할 수 있는 기능 추가, Sat Apr 25 15:42:25 2015 +0900
+A	src/main/java/com/inter6/mail/gui/component/DatePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+A	src/main/java/com/inter6/mail/model/component/DateData.java
+M	src/main/java/com/inter6/mail/model/data/EditSourceData.java
+
+037a413f45a8e546ee363716b8d30f2242fd7223, #20 EML 및 디렉토리 패널에서 저장된 경로가 제대로 읽혀지지 않는 문제 수정, Sat Apr 11 18:09:43 2015 +0900
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/job/smtp/DirSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/data/DirSourceData.java
+M	src/main/java/com/inter6/mail/model/data/EmlSourceData.java
+
+58eaa960511047d2705b0695147e0ac55cd88ecc, v0.3.1 Released, Sun Mar 8 02:42:28 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/resources/message/about.msg
+
+785a798d9f87adda822a980f787c4ec6d7553f65, #14 마지막으로 선택한 EML 디렉토리를 불러오지 못하는 현상 수정, Sun Mar 8 02:35:28 2015 +0900
+M	src/main/java/com/inter6/mail/Application.java
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ConfigPanel.java
+A	src/main/java/com/inter6/mail/model/AppSession.java
+M	src/main/java/com/inter6/mail/model/component/content/AttachmentPartData.java
+M	src/main/java/com/inter6/mail/model/component/content/MultiPartData.java
+M	src/main/java/com/inter6/mail/model/component/content/PartData.java
+M	src/main/java/com/inter6/mail/model/component/content/TextPartData.java
+
+b8bc4c4f86467f4275dac2ece168e25bb3b82d37, #18 config 파일 설정값을 초기에 UI에 반영하는 모든 컴포넌트에 대해 UI refresh 수행, Sun Mar 8 01:19:55 2015 +0900
+M	src/main/java/com/inter6/mail/gui/setting/ConfigPanel.java
+
+86f9050dff933afa957fd912cb4f6b4dc8d8b4c8, #17 - 멀티쓰레드 설정 옵션화 #19 - 멀티쓰레드를 사용하지 않을 경우, Executor를 사용하지 않도록 개선, Sun Mar 8 01:11:04 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendMasterJob.java
+M	src/main/java/com/inter6/mail/model/JobStatistics.java
+A	src/main/java/com/inter6/mail/model/action/ActionData.java
+
+2fdfd8f48257a4482e8de584990c2b971858c21b, Merge remote-tracking branch 'origin/master' into v0.3.1-dev, Wed Mar 4 00:10:04 2015 +0900
+0b803fc28d9896fa9e6d9e06f41aa6533b629d4f, Update README.md, Wed Mar 4 00:06:13 2015 +0900
+M	README.md
+
+95a2fef4238ba9b6a9aad9978a9b2e363dd161f6, v0.3.1-dev Start, Tue Mar 3 23:55:36 2015 +0900
+M	pom.xml
+M	src/main/resources/message/about.msg
+
+49c8a422fe80cbaafb1496e84febeb3ffad1e607, v0.3.0 Released, Tue Mar 3 23:43:31 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/resources/message/about.msg
+
+0aa66f457395c0f779d7ad095af95c4fc69f9d45, #15 - 메일 전송 중 중단 기능 추가 - 메일 전송 상황 표시, Tue Mar 3 23:36:41 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendMasterJob.java
+M	src/main/java/com/inter6/mail/job/smtp/DirSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/SmtpSendJobObserver.java
+M	src/main/resources/logback.xml
+
+49b129937a9a0795e96b65d96382a164a88b5502, #16 멀티쓰레드 풀 사이즈 지정, Tue Mar 3 02:33:22 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+
+0f70ba84850ad42c9d186361f1998e43cac7a007, #16 [멀티쓰레드] 메일 전송율 표시, Tue Mar 3 02:20:52 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendMasterJob.java
+M	src/main/java/com/inter6/mail/job/smtp/DirSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+A	src/main/java/com/inter6/mail/job/smtp/SmtpSendJobObserver.java
+M	src/main/java/com/inter6/mail/model/JobStatistics.java
+M	src/main/java/com/inter6/mail/model/component/content/PartData.java
+M	src/main/java/com/inter6/mail/module/Workers.java
+
+0e999fa4c3fd6795214b8767c2a355d2bb67e9bf, v0.3.0-dev 로 버전 업데이트, Sun Mar 1 02:01:11 2015 +0900
+M	pom.xml
+M	src/main/resources/message/about.msg
+
+bb1c098c95f745eab5c66f172211b089cdb99992, #5 EML 전송 멀티쓰레드화, Sun Mar 1 01:47:36 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/job/SendJobBuilder.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+A	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendMasterJob.java
+M	src/main/java/com/inter6/mail/job/smtp/DirSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+A	src/main/java/com/inter6/mail/job/thread/JobExecuteException.java
+A	src/main/java/com/inter6/mail/job/thread/ThreadSupportJob.java
+A	src/main/java/com/inter6/mail/module/Workers.java
+
+65f59fc547bf3701417291b64b85976b9fb5d0ff, #13 제목을 Replace하는 조건이 아니라면 MIME 파싱을 하지않게 개선, Sat Feb 28 23:30:26 2015 +0900
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+
+823f1b287a6a89d8d9a4513df08716ec1d093da4, #12 리눅스용 실행 스크립트 추가, Sun Feb 22 21:49:47 2015 +0900
+M	script/smtp-sender.bat
+A	script/smtp-sender.sh
+
+861d38ba93050d2a1a2be9aea2de6688a6938614, #11 HELO 날릴 때, 호스트명을 Mail From으로 날리는 현상 수정, Sun Feb 22 21:38:18 2015 +0900
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+
+7187c91221a512fc34fe81f6af58b432a2b7e7b1, v0.2.2 Released, Wed Feb 18 18:27:44 2015 +0900
+M	README.md
+M	pom.xml
+M	src/main/java/com/inter6/mail/gui/menu/TopMenuBar.java
+M	src/main/resources/message/about.msg
+
+5e3acf8151cd56f5bb064485426934c21642738e, #10 에디터에 입력한 데이터들을 저장할 수 있게 개선, Wed Feb 18 17:49:26 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/model/component/content/MultiPartData.java
+M	src/main/java/com/inter6/mail/model/component/content/PartData.java
+M	src/main/java/com/inter6/mail/model/component/content/PartDataJsonDeserializer.java
+A	src/main/java/com/inter6/mail/model/component/content/PartDataJsonSerializer.java
+
+c42f57bbc1457671c4aa5ae18977c94b73adcb92, #9 로그 패널에 시간 추가, Fri Feb 13 22:49:50 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+
+e6a6dab83f8aac47d786b0452c81bcdd3de65409, #3 에디터에서 text 파트의 charset과 Content-Transfer-Encoding을 지정할 수 있게 추가, Thu Feb 12 19:21:12 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/model/component/content/TextPartData.java
+
+163017b816dad06ede07b0a32f6bbfbb05a1bbff, #1 에디터에서 파일 첨부시, filename을 쿼터로 감싸기, Thu Feb 12 18:58:22 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+
+74e0e36dcd39ac2c5a0a6de941aa16709186ea93, about 메세지 갱신, Tue Feb 10 00:20:45 2015 +0900
+M	src/main/resources/message/about.msg
+
+51af7cb6e091064d0df5a62663c19065e92bbbf0, - 에디터 내용을 config 로 저장 - config로 저장한 에디터 내용 중 제목, 주소, 헤더를 로드, Tue Feb 10 00:09:58 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/AddressPanel.java
+M	src/main/java/com/inter6/mail/gui/component/HeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/ContentType.java
+A	src/main/java/com/inter6/mail/model/component/content/AttachmentPartData.java
+A	src/main/java/com/inter6/mail/model/component/content/MultiPartData.java
+A	src/main/java/com/inter6/mail/model/component/content/PartData.java
+A	src/main/java/com/inter6/mail/model/component/content/PartDataJsonDeserializer.java
+A	src/main/java/com/inter6/mail/model/component/content/TextPartData.java
+A	src/main/java/com/inter6/mail/model/data/EditSourceData.java
+A	src/main/java/com/inter6/mail/model/data/edit/EditAddressData.java
+A	src/main/java/com/inter6/mail/model/data/edit/EditHeaderData.java
+A	src/main/java/com/inter6/mail/model/data/edit/EditMessageData.java
+
+16bb5172ce59a4a24244f603a07bc9a5e1d18c26, Merge branch 'master' of https://github.com/inter6/smtp-sender.git, Mon Feb 2 02:23:51 2015 +0900
+84f6545a3c84caaa18c198c1638f947936875a52, TLS 연결 지원, Mon Feb 2 02:18:26 2015 +0900
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/setting/ServerData.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+M	src/main/resources/message/about.msg
+
+098f7e83b64eb7ed6b37a8b7c01704d33f911150, 파일 첨부시 Content-Disposition을 변경할 수 있게 수정, Sat Jan 31 02:00:36 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+
+d4a9f686b3b1a553cac88cee9255927ef6cbb0fb, - AdvancedPanel 모듈화 - 전송 성공 이후 로그가 나타나지 않는 문제 수정 - 에디터에서 파일 첨부시, 파일 이름과 Content-Transfer-Encoding을 지정할 수 있게 추가 - 에디터의 MIME 보기 다이얼로그 개선 - About 메뉴 추가, Wed Jan 28 00:12:46 2015 +0900
+M	pom.xml
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/advanced/AdvancedPanel.java
+A	src/main/java/com/inter6/mail/gui/advanced/PostSendSettingPanel.java
+A	src/main/java/com/inter6/mail/gui/advanced/PreSendSettingPanel.java
+A	src/main/java/com/inter6/mail/gui/component/TextViewDialog.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/menu/TopMenuBar.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+A	src/main/java/com/inter6/mail/model/advanced/PostSendSettingData.java
+R062	src/main/java/com/inter6/mail/model/advanced/AdvancedData.java	src/main/java/com/inter6/mail/model/advanced/PreSendSettingData.java
+A	src/main/resources/message/about.msg
+
+5872e7cc606cf047ca4711a5fb978e07915896e6, Editor에서 첨부파일명을 인코딩하여 MIME 생성, Mon Jan 26 18:56:57 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+
+3b407d871accac1187a0996e924e332346a5c5ab, Content-ID 지정시 < >를 넣지 않는 버그 수정, Tue Jan 20 23:39:21 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+
+f234ff85d766cd589d674e96d379d02a24b3646a, - 에디터에 multipart/related 추가 - 첨부 파일에 Content-ID를 지정할 수 있게 추가, Tue Jan 20 23:37:11 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/model/ContentType.java
+
+9a54816579510d73a08cedef29159a74614cc450, Update README.md, Thu Jan 15 00:08:58 2015 +0900
+M	README.md
+
+ba206f47fd8249b021cb821a519a1a8ec0559030, Release v0.2.0, Thu Jan 15 00:05:42 2015 +0900
+M	pom.xml
+
+6dfc949b3e9074562ee658302a7df72664833446, MIME 에디터에서 삭제 버튼이 UI는 삭제하지만 실제 데이터는 삭제하지 않던 문제 해결, Sun Jan 11 14:35:08 2015 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/advanced/AdvancedPanel.java
+M	src/main/java/com/inter6/mail/gui/component/AddressPanel.java
+M	src/main/java/com/inter6/mail/gui/component/SubjectPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+
+2f0e688512ad2fc4526a9bb90dc2b3047b731aae, Update README.md, Fri Jan 9 00:50:03 2015 +0900
+M	README.md
+
+5fbb8379c1cd811c587a2240b761e06aa8210ce2, - MIME 에디터에 헤더를 추가할 수 있는 기능 추가, Fri Jan 9 00:09:16 2015 +0900
+A	src/main/java/com/inter6/mail/gui/component/HeaderPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+A	src/main/java/com/inter6/mail/gui/data/edit/EditHeaderPanel.java
+A	src/main/java/com/inter6/mail/model/component/HeaderData.java
+
+d036747b1c37076cd9ed4802d65b199e555aa9a1, - 에디터로 작성한 MIME을 전송할 수 있게 기능 추가, Thu Jan 8 23:39:01 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/job/SendJobBuilder.java
+
+d74b1e194e51768ec4d18e7ffcbb41e5418c96d1, - 에디터로 작성한 내용을 MIME으로 빌드하고 볼 수 있는 기능 추가, Thu Jan 8 23:09:39 2015 +0900
+M	src/main/java/com/inter6/mail/gui/component/AddressPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+A	src/main/java/com/inter6/mail/model/AdvancedInternetAddress.java
+M	src/main/java/com/inter6/mail/model/component/AddressData.java
+M	src/main/java/com/inter6/mail/model/component/SubjectData.java
+
+5c2abee1a3857bc5c0df5edde1357107f8de9979, Merge branch 'master' of https://github.com/inter6/smtp-sender.git, Wed Jan 7 00:19:07 2015 +0900
+711516dc96ac1b1b847c79f5c76e35f9f6244292, Part 패널 관련 리팩토링, Wed Jan 7 00:17:06 2015 +0900
+R088	src/main/java/com/inter6/mail/gui/component/AttachmentPartPanel.java	src/main/java/com/inter6/mail/gui/component/content/AttachmentPartPanel.java
+R062	src/main/java/com/inter6/mail/gui/component/ContentPanel.java	src/main/java/com/inter6/mail/gui/component/content/ContentPartPanel.java
+R062	src/main/java/com/inter6/mail/gui/component/MultiPartPanel.java	src/main/java/com/inter6/mail/gui/component/content/MultiPartPanel.java
+R051	src/main/java/com/inter6/mail/gui/component/TextPartPanel.java	src/main/java/com/inter6/mail/gui/component/content/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/model/ContentType.java
+
+ec95d4974be7c5c5e39edd8576d7cd4ae67fd9cf, Update README.md, Tue Jan 6 22:38:29 2015 +0900
+M	README.md
+
+afab5ed594852645a42bc7198bafa093d0d5c37f, - MIME 에디터 버튼 이벤트 작성 - 첨부 Part 패널 작성, Tue Jan 6 22:34:37 2015 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+A	src/main/java/com/inter6/mail/gui/component/AttachmentPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/ContentPanel.java
+M	src/main/java/com/inter6/mail/gui/component/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/model/ContentType.java
+
+03722b032c5d67d04f81e72221aa56a5bc91727d, 에디터 MIME UI 컴포넌트 작성, Sat Jan 3 20:40:19 2015 +0900
+A	src/main/java/com/inter6/mail/gui/component/ContentPanel.java
+M	src/main/java/com/inter6/mail/gui/component/MultiPartPanel.java
+M	src/main/java/com/inter6/mail/gui/component/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+M	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+A	src/main/java/com/inter6/mail/model/ContentType.java
+
+5d970f07590f5d9576bb8c0d142e790634698e3e, Update README.md, Sat Jan 3 17:22:19 2015 +0900
+M	README.md
+
+3dc9e0ec35e07fd143e79119af77719255052cd5, - 데이터 모델을 Map에서 Vo로 변경 - lombok 사용, Sat Jan 3 17:12:01 2015 +0900
+M	pom.xml
+M	src/main/java/com/inter6/mail/gui/advanced/AdvancedPanel.java
+M	src/main/java/com/inter6/mail/gui/component/AddressPanel.java
+M	src/main/java/com/inter6/mail/gui/component/SubjectPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/DirSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/AuthOption.java
+A	src/main/java/com/inter6/mail/model/advanced/AdvancedData.java
+A	src/main/java/com/inter6/mail/model/component/AddressData.java
+A	src/main/java/com/inter6/mail/model/component/SubjectData.java
+A	src/main/java/com/inter6/mail/model/data/DirSourceData.java
+A	src/main/java/com/inter6/mail/model/data/EmlSourceData.java
+A	src/main/java/com/inter6/mail/model/data/EnvelopeData.java
+A	src/main/java/com/inter6/mail/model/setting/ServerData.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+A	src/main/java/com/inter6/mail/util/StringUtil.java
+M	src/main/resources/logback.xml
+
+7d94dc14f28b531049fbb2116bb02ccf46ef5792, 윈도우 실행 스크립트 추가, Fri Jan 2 08:28:31 2015 +0900
+A	script/smtp-sender.bat
+
+e793579957f2e0dbeaf55ae0fbf357a6f5aece3e, - UI 컴포넌트 모듈화 - 에디터 UI 작성, Thu Jan 1 18:39:53 2015 +0900
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/advanced/AdvancedPanel.java
+A	src/main/java/com/inter6/mail/gui/component/AddressPanel.java
+A	src/main/java/com/inter6/mail/gui/component/MultiPartPanel.java
+A	src/main/java/com/inter6/mail/gui/component/SubjectPanel.java
+A	src/main/java/com/inter6/mail/gui/component/TextPartPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+A	src/main/java/com/inter6/mail/gui/data/EditSourcePanel.java
+A	src/main/java/com/inter6/mail/gui/data/edit/EditAddressPanel.java
+A	src/main/java/com/inter6/mail/gui/data/edit/EditMessagePanel.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+D	src/main/java/com/inter6/mail/model/EncodingOption.java
+M	src/main/resources/app-context.xml
+
+1e596243e7c5e41885a11d3feb69765e3dac46d5, SMTP 인증 구현, Thu Jan 1 02:34:46 2015 +0900
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/model/AuthOption.java
+M	src/main/java/com/inter6/mail/model/EncodingOption.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+
+963a7c9a42ef605e8a3fd19772cf3d342bb73dbf, 리팩토링 수행, Wed Dec 31 19:29:46 2014 +0900
+M	src/main/java/com/inter6/mail/gui/advanced/AdvancedPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/job/smtp/DirSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+R094	src/main/java/com/inter6/mail/service/AuthOption.java	src/main/java/com/inter6/mail/model/AuthOption.java
+A	src/main/java/com/inter6/mail/model/EncodingOption.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+
+b402fd9502288d839451dacdb3a7bb9e4ce68ff9, - 추가 GUI 레이아웃 - 통계 모듈 추가, Wed Dec 31 00:05:42 2014 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+A	src/main/java/com/inter6/mail/gui/menu/TopMenuBar.java
+M	src/main/java/com/inter6/mail/job/Job.java
+D	src/main/java/com/inter6/mail/job/event/JobEvent.java
+D	src/main/java/com/inter6/mail/job/event/LogJobEvent.java
+R077	src/main/java/com/inter6/mail/job/send/AbstractSmtpSendJob.java	src/main/java/com/inter6/mail/job/smtp/AbstractSmtpSendJob.java
+R096	src/main/java/com/inter6/mail/job/send/DirSmtpSendJob.java	src/main/java/com/inter6/mail/job/smtp/DirSmtpSendJob.java
+R095	src/main/java/com/inter6/mail/job/send/EmlSmtpSendJob.java	src/main/java/com/inter6/mail/job/smtp/EmlSmtpSendJob.java
+R099	src/main/java/com/inter6/mail/job/send/MimeSmtpSendJob.java	src/main/java/com/inter6/mail/job/smtp/MimeSmtpSendJob.java
+A	src/main/java/com/inter6/mail/model/JobStatistics.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+
+44ccd8623a03f0ebab69c966825d9557d4ead401, - 제목을 교체할 수 있는 기능 추가 - 보낼 MIME을 EML로 저장할 수 있는 기능 추가, Tue Dec 30 10:59:30 2014 +0900
+M	pom.xml
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/advanced/AdvancedPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ConfigPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/SettingPanel.java
+M	src/main/java/com/inter6/mail/job/send/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/send/MimeSmtpSendJob.java
+A	src/main/java/com/inter6/mail/model/AdvancedMimeMessage.java
+A	src/main/java/com/inter6/mail/util/ObjectUtil.java
+
+5fc039dae3a908bf21250656ff30443ea7ce5a2e, Update README.md, Sat Dec 27 19:53:51 2014 +0900
+M	README.md
+
+4d1da6aca50ed4b0787cbf41043c38d77f88beb9, Update README.md, Sat Dec 27 19:31:54 2014 +0900
+M	README.md
+
+d1a3e93d9832d0dd3826693ad58376fcbec455ef, v0.1.0 완료 - 인증없는 smtp 전송 - MIME, EML 전송, Sat Dec 27 19:15:42 2014 +0900
+M	pom.xml
+M	src/main/java/com/inter6/mail/Application.java
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+M	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+M	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ConfigPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/SettingPanel.java
+M	src/main/java/com/inter6/mail/job/event/LogJobEvent.java
+M	src/main/java/com/inter6/mail/job/send/AbstractSmtpSendJob.java
+M	src/main/java/com/inter6/mail/job/send/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+
+4f90acf35cf244045dd87b7fd47517f3c76acb58, - SMTP 서비스 작성 - MIME, EML 전송 대략 완료, Fri Dec 26 17:52:38 2014 +0900
+M	pom.xml
+M	src/main/java/com/inter6/mail/gui/ConfigObserver.java
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+A	src/main/java/com/inter6/mail/gui/action/ActionPanel.java
+A	src/main/java/com/inter6/mail/gui/action/LogPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+D	src/main/java/com/inter6/mail/gui/send/SendPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ConfigPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+D	src/main/java/com/inter6/mail/job/AbstractSendJob.java
+D	src/main/java/com/inter6/mail/job/BlankJobEvent.java
+D	src/main/java/com/inter6/mail/job/DirSendJob.java
+D	src/main/java/com/inter6/mail/job/EmlSendJob.java
+D	src/main/java/com/inter6/mail/job/JobEvent.java
+D	src/main/java/com/inter6/mail/job/MimeSendJob.java
+R052	src/main/java/com/inter6/mail/gui/SendJobBuilder.java	src/main/java/com/inter6/mail/job/SendJobBuilder.java
+A	src/main/java/com/inter6/mail/job/event/JobEvent.java
+A	src/main/java/com/inter6/mail/job/event/LogJobEvent.java
+A	src/main/java/com/inter6/mail/job/send/AbstractSmtpSendJob.java
+A	src/main/java/com/inter6/mail/job/send/DirSmtpSendJob.java
+A	src/main/java/com/inter6/mail/job/send/EmlSmtpSendJob.java
+A	src/main/java/com/inter6/mail/job/send/MimeSmtpSendJob.java
+M	src/main/java/com/inter6/mail/module/AppConfig.java
+M	src/main/java/com/inter6/mail/service/AuthOption.java
+M	src/main/java/com/inter6/mail/service/SmtpService.java
+
+054dad86e8991d5e0ce3b353408381c47433fcd8, SMTP 전송 Job 클래스 생성, Thu Dec 25 15:36:04 2014 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+A	src/main/java/com/inter6/mail/gui/SendJobBuilder.java
+A	src/main/java/com/inter6/mail/gui/advanced/AdvancedPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ConfigPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+A	src/main/java/com/inter6/mail/job/AbstractSendJob.java
+A	src/main/java/com/inter6/mail/job/BlankJobEvent.java
+A	src/main/java/com/inter6/mail/job/DirSendJob.java
+A	src/main/java/com/inter6/mail/job/EmlSendJob.java
+A	src/main/java/com/inter6/mail/job/Job.java
+A	src/main/java/com/inter6/mail/job/JobEvent.java
+A	src/main/java/com/inter6/mail/job/MimeSendJob.java
+
+63d511db4b32cf5f02e10953a5a8a70bdaea8cef, 대략 GUI 완성, Thu Dec 25 06:38:05 2014 +0900
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+A	src/main/java/com/inter6/mail/gui/component/JFileTree.java
+M	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+M	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+M	src/main/java/com/inter6/mail/gui/send/SendPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ConfigPanel.java
+M	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+A	src/main/java/com/inter6/mail/service/AuthOption.java
+A	src/main/java/com/inter6/mail/service/SmtpService.java
+
+5aabbf049e82c11dce7491bf7aa94bff2a0230c3, 하위 GUI 패널 작성, Thu Dec 25 00:37:05 2014 +0900
+M	src/main/java/com/inter6/mail/Application.java
+M	src/main/java/com/inter6/mail/gui/MainFrame.java
+A	src/main/java/com/inter6/mail/gui/data/DataPanel.java
+A	src/main/java/com/inter6/mail/gui/data/DirSourcePanel.java
+A	src/main/java/com/inter6/mail/gui/data/EmlSourcePanel.java
+A	src/main/java/com/inter6/mail/gui/data/EnvelopePanel.java
+A	src/main/java/com/inter6/mail/gui/data/MimeSourcePanel.java
+D	src/main/java/com/inter6/mail/gui/info/InfoPanel.java
+M	src/main/java/com/inter6/mail/gui/send/SendPanel.java
+A	src/main/java/com/inter6/mail/service/XTrustProvider.java
+
+c41f13cbaf929b3963510c4ec06a86d1f86328a7, 기본 GUI 작성, Wed Dec 24 23:05:25 2014 +0900
+M	.gitignore
+A	src/main/java/com/inter6/mail/Application.java
+A	src/main/java/com/inter6/mail/gui/ConfigObserver.java
+A	src/main/java/com/inter6/mail/gui/MainFrame.java
+A	src/main/java/com/inter6/mail/gui/info/InfoPanel.java
+A	src/main/java/com/inter6/mail/gui/send/SendPanel.java
+A	src/main/java/com/inter6/mail/gui/setting/ConfigPanel.java
+A	src/main/java/com/inter6/mail/gui/setting/ServerPanel.java
+A	src/main/java/com/inter6/mail/gui/setting/SettingPanel.java
+A	src/main/java/com/inter6/mail/module/AppConfig.java
+A	src/main/java/com/inter6/mail/module/ModuleService.java
+A	src/main/resources/META-INF/spring-beans-4.1.xsd.xml
+A	src/main/resources/META-INF/spring-context-4.1.xsd.xml
+A	src/main/resources/META-INF/spring.handlers
+A	src/main/resources/META-INF/spring.schemas
+A	src/main/resources/app-context.xml
+A	src/main/resources/app.config
+A	src/main/resources/logback.xml
+
+56393ca037cf7035902307fac55950de63a38a4c, Create pom.xml, Wed Dec 24 18:35:03 2014 +0900
+A	pom.xml
+
+52a90968093de7ff656192ede5f17e6da97fdaa7, Initial commit, Wed Dec 24 18:32:59 2014 +0900
+A	.gitignore
+A	LICENSE
+A	README.md

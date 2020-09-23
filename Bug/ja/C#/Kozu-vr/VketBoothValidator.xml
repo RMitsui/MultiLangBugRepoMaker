@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bugs>
+	<bug>
+		<id>111</id>
+		<title>テクスチャ圧縮はあくまで強い推奨であり必須ではない。</title>
+		<body>**問題の概要** 運営から指摘 2019.3bでチェックしているテクスチャ圧縮のUse crunch compressionのチェックは、あくまで強い推奨であり必須ではない </body>
+		<created>2019-01-27 04:16:10</created>
+		<closed>2019-01-29 12:54:52</closed>
+	</bug>
+	<bug>
+		<id>110</id>
+		<title>[D07]テクスチャの圧縮を見るときにエラーになることがある</title>
+		<body>**問題の概要** テクスチャの圧縮を見るときにNullチェックをしていないためにエラーになることがある報告あり。 </body>
+		<created>2019-01-27 04:13:56</created>
+		<closed>2019-02-03 05:20:46</closed>
+	</bug>
+	<bug>
+		<id>106</id>
+		<title>C02のエラーコードがC01になっている。</title>
+		<body>**問題の概要** C02のエラーコードがC01になっている。  https://github.com/Kozu-vr/VketBoothValidator/blob/4593df878a5bfb439648d5a070c3458e9fc2792d/VketBoothValidator/Assets/VketBoothValidator/Editor/Rules/C_SceneHierarchy/C02_StaticObjectRule.cs#L22 </body>
+		<created>2019-01-26 15:44:46</created>
+		<closed>2019-01-29 06:39:31</closed>
+	</bug>
+	<bug>
+		<id>105</id>
+		<title>2019.3bでバージョン番号の書き換え忘れ</title>
+		<body>**問題の概要** ツールウインドウのバージョン表記が2019.3aのままになっている。 </body>
+		<created>2019-01-26 15:13:10</created>
+		<closed>2019-01-29 06:39:59</closed>
+	</bug>
+	<bug>
+		<id>102</id>
+		<title>インポート時に警告が出る。</title>
+		<body>**問題の概要** インポート時に警告が出る。   **ログの内容** &lt;details&gt;  ``` `Renamed .meta file 'Assets/VketBoothValidator/Editor/Rules/B_NameFormat/B08_blenderFileRule.cs.meta' to 'B08_BlenderFileRule.cs.meta' because the .meta file had an inconsistent case. ```` &lt;/details&gt; </body>
+		<created>2019-01-21 01:14:14</created>
+		<closed>2019-01-21 01:34:58</closed>
+	</bug>
+	<bug>
+		<id>94</id>
+		<title>particle systemのTrail materialを使用しない場合でもマテリアルの警告が出る。</title>
+		<body>**問題の概要** Trail materialを使用しない場合はNoneのままでいいが、ツールでNGとして検出される。 Missingまたは未割当のマテリアルがみつかりました。:GameObject   **ログの内容** &lt;details&gt;  ``` [!]Ð02.マテリアル数制限 rule Missingまたは未割当のマテリアルがみつかりました。:GameObject アクティブな使用マテリアル: ベースフォルダに含まれないマテリアルを参照しています。  Assets/VRCSDK/Examples/Sample Assets/Prototyping/Materials/YellowGrid.mat Default-Materialが使用されています。意図した設定ですか？ シーン内マテリアル数：2  ``` &lt;/details&gt; </body>
+		<created>2019-01-13 00:09:18</created>
+		<closed>2019-01-13 00:50:36</closed>
+	</bug>
+	<bug>
+		<id>92</id>
+		<title>unitypackageのインポート時に警告がでる。</title>
+		<body>以下のコードを見直す。 Assets/VketBoothValidator/Editor/Rules/G_ComponentLimitation/G07_AnimatorRule.cs(55,37): warning CS0219: The variable `curve' is assigned but its value is never used</body>
+		<created>2019-01-11 10:27:01</created>
+		<closed>2019-01-11 10:33:48</closed>
+	</bug>
+	<bug>
+		<id>90</id>
+		<title>運営配布Prefab以外でのVRC_Object Sync利用</title>
+		<body>**問題の概要** - 運営から配布されるPrefab以外でVRC_Object Syncを使用しても警告が出ない   - (Prefabの名前が変更された場合など)検出困難な場合はあるが、一応警告は出してほしい   **ログの内容** &lt;details&gt;  ```  Start vket booth validation. (2019.3a) Base folder:issue_61 Scene file:Assets/issue_61/issue_61.unity Unity version:2017.4.15f1  全角文字使用アセット数：0  名前の末尾に'~'が含まれるアセット：0  180文字を超える長いパス：0  シーン内の次のオブジェクトはブースに含まれないです。  Main Camera  Directional Light  ブースのサイズ:(0.000, 0.000, 0.000)  アクティブな使用マテリアル: シーン内マテリアル数：0  ブース内のMonoBehavior：  GameObject (VRCSDK2.VRC_ObjectSync)  --- 0件のルール違反が見つかりました。 Finish validation ``` &lt;/details&gt; </body>
+		<created>2019-01-10 13:49:15</created>
+		<closed>2019-01-11 10:19:59</closed>
+	</bug>
+	<bug>
+		<id>87</id>
+		<title>シーンファイルがない時のエラーメッセージが崩れる。</title>
+		<body>改行が入らない。  ``` Start vket booth validation. (2019.3a) Base folder:VketBoothValidator[!]シーンファイルが見つかりません。 ```</body>
+		<created>2019-01-10 12:14:54</created>
+		<closed>2019-01-10 12:23:23</closed>
+	</bug>
+	<bug>
+		<id>82</id>
+		<title>[G01]公式プレハブを使うとVRC_SceneResetPositionが誤検出される。</title>
+		<body>[!]G01 使用可能コンポーネント Rule Pickup(VRCSDK2.VRC_SceneResetPosition) は使用可能コンポーネント一覧に入っていません。  </body>
+		<created>2019-01-09 14:52:10</created>
+		<closed>2019-01-10 03:02:42</closed>
+	</bug>
+	<bug>
+		<id>75</id>
+		<title>[G01]使用可能なコンポーネントが誤検出される。</title>
+		<body>#61 のテストで摘出。 **問題の概要** 下記コンポーネントは使用可能なはずだが、エラーが表示される。  Canvas(UnityEngine.UI.CanvasScaler) は使用可能コンポーネント一覧に入っていません。 Canvas(UnityEngine.UI.GraphicRaycaster) は使用可能コンポーネント一覧に入っていません。 Canvas(UnityEngine.UI.CanvasScaler) は使用可能コンポーネント一覧に入っていません。 Canvas(UnityEngine.UI.GraphicRaycaster) は使用可能コンポーネント一覧に入っていません。 Reflection Probe(UnityEngine.ReflectionProbe) は使用可能コンポーネント一覧に入っていません。 Light Probe Group(UnityEngine.LightProbeGroup) は使用可能コンポーネント一覧に入っていません。 EventSystem(UnityEngine.EventSystems.EventSystem) は使用可能コンポーネント一覧に入っていません。 EventSystem(UnityEngine.EventSystems.StandaloneInputModule) は使用可能コンポーネント一覧に入っていません。 WheelCollider(Sphere)(UnityEngine.WheelCollider) は使用可能コンポーネント一覧に入っていません。  **ログの内容** &lt;details&gt;  ```  Start vket booth validation. (2019.3a) Base folder:Test_G01_1 Scene file:Assets/Test_G01_1/Test_G01_1.unity Unity version:2017.4.15f1  全角文字使用アセット数：0  名前の末尾に'~'が含まれるアセット：0  180文字を超える長いパス：0  シーン内の次のオブジェクトはブースに含まれないです。  Main Camera  Directional Light  ブースのサイズ:(1.000, 2.000, 2.000)  [!]Ð02.マテリアル数制限 rule Missingまたは未割当のマテリアルがみつかりました。:LineRenderer Missingまたは未割当のマテリアルがみつかりました。:TrailRenderer Missingまたは未割当のマテリアルがみつかりました。:ParticleSystem Missingまたは未割当のマテリアルがみつかりました。:ParticleSystem Missingまたは未割当のマテリアルがみつかりました。:SkinnedMeshRenderer(Quad) アクティブな使用マテリアル: Default-Materialが使用されています。意図した設定ですか？ シーン内マテリアル数：1  [!]G01 使用可能コンポーネント Rule Canvas(UnityEngine.UI.CanvasScaler) は使用可能コンポーネント一覧に入っていません。 Canvas(UnityEngine.UI.GraphicRaycaster) は使用可能コンポーネント一覧に入っていません。 Canvas(UnityEngine.UI.CanvasScaler) は使用可能コンポーネント一覧に入っていません。 Canvas(UnityEngine.UI.GraphicRaycaster) は使用可能コンポーネント一覧に入っていません。 Reflection Probe(UnityEngine.ReflectionProbe) は使用可能コンポーネント一覧に入っていません。 Light Probe Group(UnityEngine.LightProbeGroup) は使用可能コンポーネント一覧に入っていません。 EventSystem(UnityEngine.EventSystems.EventSystem) は使用可能コンポーネント一覧に入っていません。 EventSystem(UnityEngine.EventSystems.StandaloneInputModule) は使用可能コンポーネント一覧に入っていません。 WheelCollider(Sphere)(UnityEngine.WheelCollider) は使用可能コンポーネント一覧に入っていません。  ブース内のMonoBehavior：  Item Background (UnityEngine.UI.Image)  Item Checkmark (UnityEngine.UI.Image)  Item (UnityEngine.UI.Toggle)  Handle (UnityEngine.UI.Image)  Handle (UnityEngine.UI.Image)  Handle (UnityEngine.UI.Image)  Item Label (UnityEngine.UI.Text)  Viewport (UnityEngine.UI.Mask)  Viewport (UnityEngine.UI.Image)  Scrollbar (UnityEngine.UI.Image)  Scrollbar (UnityEngine.UI.Scrollbar)  Checkmark (UnityEngine.UI.Image)  Fill (UnityEngine.UI.Image)  Handle (UnityEngine.UI.Image)  Handle (UnityEngine.UI.Image)  Text (UnityEngine.UI.Text)  Viewport (UnityEngine.UI.Mask)  Viewport (UnityEngine.UI.Image)  Background (UnityEngine.UI.Image)  Text (UnityEngine.UI.Text)  Arrow (UnityEngine.UI.Image)  Scrollbar Vertical (UnityEngine.UI.Image)  Scrollbar Vertical (UnityEngine.UI.Scrollbar)  Placeholder (UnityEngine.UI.Text)  Template (UnityEngine.UI.Image)  Template (UnityEngine.UI.ScrollRect)  Label (UnityEngine.UI.Text)  Label (UnityEngine.UI.Text)  Scrollbar Horizontal (UnityEngine.UI.Image)  Scrollbar Horizontal (UnityEngine.UI.Scrollbar)  Background (UnityEngine.UI.Image)  InputField (UnityEngine.UI.Image)  InputField (UnityEngine.UI.InputField)  Text (UnityEngine.UI.Text)  Image (UnityEngine.UI.Image)  Slider (UnityEngine.UI.Slider)  Scroll View (UnityEngine.UI.ScrollRect)  Scroll View (UnityEngine.UI.Image)  Panel (UnityEngine.UI.Image)  Scrollbar (UnityEngine.UI.Image)  Scrollbar (UnityEngine.UI.Scrollbar)  Toggle (UnityEngine.UI.Toggle)  RawImage (UnityEngine.UI.RawImage)  Button (UnityEngine.UI.Image)  Button (UnityEngine.UI.Button)  Dropdown (UnityEngine.UI.Image)  Dropdown (UnityEngine.UI.Dropdown)  Canvas (UnityEngine.UI.CanvasScaler)  Canvas (UnityEngine.UI.GraphicRaycaster)  Canvas (VRCSDK2.VRC_UiShape)  Canvas (UnityEngine.UI.CanvasScaler)  Canvas (UnityEngine.UI.GraphicRaycaster)  EventSystem (UnityEngine.EventSystems.EventSystem)  EventSystem (UnityEngine.EventSystems.StandaloneInputModule)  VRC_Pickup(Cube) (VRCSDK2.VRC_Pickup)  AudioSource+ONSPAudioSource (ONSPAudioSource)  VRC_Trigger(Cube) (VRCSDK2.VRC_EventHandler)  VRC_Trigger(Cube) (VRCSDK2.VRC_Trigger)  DynamicBone (DynamicBone)  VRC_AudioBank (VRCSDK2.VRC_AudioBank)  VRC_AvatarPedestal (VRCSDK2.VRC_AvatarPedestal)  DynamicBoneCollider (DynamicBoneCollider)  VRC_TutorialAreaMarker (VRCSDK2.VRC_TutorialAreaMarker)  ブース内のPickup Object： VRC_Pickup(Cube)  [!]G04 Rigidbody Rule ブース内のRigidbody：  CharacterJoint(Cube)(is Kinematic:False, Discrete) is KinematicではないRigidbodyです。運営に相談済みの場合はこのメッセージを無視してください。  FixedJoint(Cube)(is Kinematic:False, Discrete) is KinematicではないRigidbodyです。運営に相談済みの場合はこのメッセージを無視してください。  SpringJoint(Cube)(is Kinematic:False, Discrete) is KinematicではないRigidbodyです。運営に相談済みの場合はこのメッセージを無視してください。  ConfigurableJoint(Cube)(is Kinematic:False, Discrete) is KinematicではないRigidbodyです。運営に相談済みの場合はこのメッセージを無視してください。  HingeJoint(Cube)(is Kinematic:False, Discrete) is KinematicではないRigidbodyです。運営に相談済みの場合はこのメッセージを無視してください。  VRC_Pickup(Cube)(is Kinematic:True, Discrete)  RigidBody(Cube)(is Kinematic:True, Discrete)  ConstantForce(Cube)(is Kinematic:False, Discrete) is KinematicではないRigidbodyです。運営に相談済みの場合はこのメッセージを無視してください。  ブース内のJoint：  CharacterJoint(Cube)(CharacterJoint)  FixedJoint(Cube)(FixedJoint)  SpringJoint(Cube)(SpringJoint)  ConfigurableJoint(Cube)(ConfigurableJoint)  HingeJoint(Cube)(HingeJoint)  ブース内のLight：  Point light(Point, Baked)  Area Light(Area, Baked)  Spotlight(Spot, Baked)  Directional light(Directional, Baked)  --- 3件のルール違反が見つかりました。 Finish validation ``` &lt;/details&gt; </body>
+		<created>2019-01-07 10:54:14</created>
+		<closed>2019-01-07 13:13:03</closed>
+	</bug>
+	<bug>
+		<id>72</id>
+		<title>相対パスを含んでいないアニメーションで警告が出る</title>
+		<body>#65 テストで発見 **問題の概要** 相対パスを使用していないアニメーションが使用している判定で検出される。  **ログの内容** &lt;details&gt;  ``` Start vket booth validation. (2019.3a) Base folder:Test_G07_01 Scene file:Assets/Test_G07_01/Test_G07_01.unity Unity version:2017.4.15f1  [!]A06:ブースPrefab化 rule ベースフォルダ内にPrefab'Test_G07_01'がみつかりません。  全角文字使用アセット数：0  名前の末尾に'~'が含まれるアセット：0  180文字を超える長いパス：0  シーン内の次のオブジェクトはブースに含まれないです。  Main Camera  Directional Light  ブースのサイズ:(2.000, 4.117, 2.000)  アクティブな使用マテリアル:  Assets/Test_G07_01/boxes.fbx (Material) Default-Materialが使用されています。意図した設定ですか？ シーン内マテリアル数：2  [!]G07 Animator Rule ブース内のAnimator,Animation：  boxes_with_animator_normal   Animationのパスに「../」は使用できません。   Animationのパスに「../」は使用できません。   Animationのパスに「../」は使用できません。  Cube_with_animation   Animationのパスに「../」は使用できません。   Animationのパスに「../」は使用できません。   Animationのパスに「../」は使用できません。  Cube  boxes_with_animator   Animationのパスに「../」は使用できません。   Animationのパスに「../」は使用できません。   Animationのパスに「../」は使用できません。  --- 2件のルール違反が見つかりました。 Finish validation ``` &lt;/details&gt; </body>
+		<created>2019-01-07 01:15:12</created>
+		<closed>2019-01-07 02:09:27</closed>
+	</bug>
+	<bug>
+		<id>68</id>
+		<title>FindAllObjectsInBoothがブースに含まれないオブジェクトを返すことがある。</title>
+		<body>**問題の概要** UtilsのFindAllObjectsInBoothでブースオブジェクトを取得した場合に、一部のオブジェクトが重複して配列に入っている。 PrefabUtility.FindPrefabRootを使ってそれらの親プレハブ探した場合、別のオブジェクトが返ってくる。  </body>
+		<created>2019-01-05 00:47:50</created>
+		<closed>2019-01-05 05:14:25</closed>
+	</bug>
+	<bug>
+		<id>51</id>
+		<title>[B07]#9 長いファイルパスのfbxファイルが複数回ログに表示される</title>
+		<body>180を超えると現象が発生するが、更に長くなるとfbxの中身が展開できなくなり、１つのfbxとしてカウントされている模様。  ``` [!]B07:ファイルパス長制限 rule 180文字を超える長いパス：8 Assets/circlename_yourname/Textures/日本語メッシュのみ01234567890123456789012345678901234567890123456789012345678901234567890123456789/日本語 101234567890123456789012345678901234567890123456789012345678901234567890123456789.fbx Assets/circlename_yourname/Textures/日本語メッシュのみ01234567890123456789012345678901234567890123456789012345678901234567890123456789/日本語3materiaru1234567890123456789012345678901234567890123456789012345678901234567890123456789.fbx Assets/circlename_yourname/Textures/日本語メッシュのみ01234567890123456789012345678901234567890123456789012345678901234567890123456789/日本語メッシュのみ0123456789012345678901234567890123456789012.fbx Assets/circlename_yourname/Textures/日本語メッシュのみ01234567890123456789012345678901234567890123456789012345678901234567890123456789/日本語メッシュのみ0123456789012345678901234567890123456789012.fbx Assets/circlename_yourname/Textures/日本語メッシュのみ01234567890123456789012345678901234567890123456789012345678901234567890123456789/日本語メッシュのみ0123456789012345678901234567890123456789012.fbx Assets/circlename_yourname/Textures/日本語メッシュのみ01234567890123456789012345678901234567890123456789012345678901234567890123456789/日本語メッシュ＋日本語アーマチュア23456789012345678901234567890123456.fbx Assets/circlename_yourname/Textures/日本語メッシュのみ01234567890123456789012345678901234567890123456789012345678901234567890123456789/日本語メッシュ＋日本語アーマチュア23456789012345678901234567890123456.fbx Assets/circlename_yourname/Textures/日本語メッシュのみ01234567890123456789012345678901234567890123456789012345678901234567890123456789/日本語メッシュ＋日本語アーマチュア23456789012345678901234567890123456.fbx ```</body>
+		<created>2018-12-29 10:13:46</created>
+		<closed>2018-12-29 10:58:01</closed>
+	</bug>
+	<bug>
+		<id>46</id>
+		<title>[D02]fbxの埋め込みマテリアルは名前が表示されない</title>
+		<body>fbxの埋め込みマテリアルを使っている場合、数にカウントされるが、ログ上のファイルパスがfbxファイルまでになる。 Extract Materialsした場合は下のように正常。  ``` [!]Ð02.マテリアル数制限 rule アクティブな使用マテリアル:  Assets/circlename_yourname/3materiaru.fbx  Assets/circlename_yourname/3materiaru.fbx  Assets/circlename_yourname/3materiaru.fbx Default-Materialが使用されています。意図した設定ですか？  Assets/circlename_yourname/Materials/material1.mat  Assets/circlename_yourname/Materials/material2.mat  Assets/circlename_yourname/Materials/material3.mat  Assets/circlename_yourname/Materials/material4.mat  Assets/circlename_yourname/Materials/material5.mat  Assets/circlename_yourname/Materials/material6.mat  Assets/circlename_yourname/Materials/material7.mat  Assets/circlename_yourname/Materials/material8.mat  Assets/circlename_yourname/Materials/material9.mat  Assets/circlename_yourname/Materials/material10.mat シーン内マテリアル数：14 マテリアル数が10を超えています。  ``` ``` [!]Ð02.マテリアル数制限 rule アクティブな使用マテリアル:  Assets/circlename_yourname/Materials/Material.002.mat  Assets/circlename_yourname/Materials/Material.001.mat  Assets/circlename_yourname/Materials/Material.mat Default-Materialが使用されています。意図した設定ですか？  Assets/circlename_yourname/Materials/material1.mat  Assets/circlename_yourname/Materials/material2.mat  Assets/circlename_yourname/Materials/material3.mat  Assets/circlename_yourname/Materials/material4.mat  Assets/circlename_yourname/Materials/material5.mat  Assets/circlename_yourname/Materials/material6.mat  Assets/circlename_yourname/Materials/material7.mat  Assets/circlename_yourname/Materials/material8.mat  Assets/circlename_yourname/Materials/material9.mat  Assets/circlename_yourname/Materials/material10.mat シーン内マテリアル数：14 マテリアル数が10を超えています。 ``</body>
+		<created>2018-12-28 23:38:52</created>
+		<closed>2018-12-29 00:49:47</closed>
+	</bug>
+	<bug>
+		<id>41</id>
+		<title>[G02]ObjectSyncというGameObjectが誤検出される</title>
+		<body>#39 の同類</body>
+		<created>2018-12-28 13:46:48</created>
+		<closed>2018-12-28 13:56:02</closed>
+	</bug>
+	<bug>
+		<id>39</id>
+		<title>[G03]Pickupという名前のGameObjectがPickup Objectとして誤って検出される。</title>
+		<body></body>
+		<created>2018-12-28 13:28:50</created>
+		<closed>2018-12-28 13:56:09</closed>
+	</bug>
+	<bug>
+		<id>24</id>
+		<title>[B04]Assetsに終わりが「~」のファイル・フォルダを作ることができるが検証がない</title>
+		<body>#14 調査中に判明。 今判定していないが終わりが~のファイルをProjectタブから作ることができ、これがあると#14が発生する模様。  https://docs.unity3d.com/Manual/SpecialFolders.html </body>
+		<created>2018-12-27 03:59:20</created>
+		<closed>2019-01-03 04:18:21</closed>
+	</bug>
+	<bug>
+		<id>22</id>
+		<title>[D02]MaterialのMissingが検知されない場合がある。</title>
+		<body>画像の状態だとMissingが検知されない。 先頭以外のマテリアルだと検知されない可能性。  ![material_missing_bug](https://user-images.githubusercontent.com/46106857/50448239-46751000-0963-11e9-878c-19b13f5dab28.png) </body>
+		<created>2018-12-26 14:10:46</created>
+		<closed>2018-12-28 06:50:58</closed>
+	</bug>
+	<bug>
+		<id>20</id>
+		<title>[D01]制限値より0.001より小さい値だけ越えてた場合、ブースのサイズの数値が正しくない</title>
+		<body>CubeのxのスケールをUnityで入力可能な最小桁の4.000001にしました すると以下のように表示され、制限超過は検出されましたが, 小数点以下4桁目以降は切り捨てになり表示されていなかった  ~~~ Start vket booth validation. (2019.3 Alpha) Base folder:Test_D01_1 Scene file:Assets/Test_D01_1/Test_D01_1.unity Unity version:2017.4.15f1   全角文字使用：0 180文字を超える長いパス：0 シーン内の次のオブジェクトはブースに含まれないです。  Main Camera  Directional Light  ScaleLimitVisualizer   [!]Ð01.ブースサイズ Rule ブースのサイズ:(4.000, 1.000, 1.000) 幅(X)が4を超えています。  [!]Ð02.マテリアル数制限 rule アクティブな使用マテリアル: ベースフォルダに含まれないマテリアルを参照しています。  Resources/unity_builtin_extra シーン内マテリアル数：1  --- 2件のルール違反が見つかりました。 Finish validation ~~~ </body>
+		<created>2018-12-26 14:02:28</created>
+		<closed>2018-12-28 03:50:29</closed>
+	</bug>
+	<bug>
+		<id>18</id>
+		<title>[D02]ベースフォルダと同じ名前で始まるマテリアルはベースフォルダの外にあってもNGとならない</title>
+		<body> ログ中の「_Test_D02_01InvalidMaterialPath.mat」が「Test_D02_01InvalidMaterialPath.mat」の場合は検証をパスする。  -- Start vket booth validation. (2019.3 Alpha) Base folder:Test_D02_01 Scene file:Assets/Test_D02_01/Test_D02_01.unity Unity version:2017.4.15f1   全角文字使用アセット数：0 180文字を超える長いパス：0 シーン内の次のオブジェクトはブースに含まれないです。  Main Camera  Directional Light   [!]Ð01.ブースサイズ Rule ブースのサイズ:(3.405, 4.105, 8.978) 奥行(Z)が3を超えています。  [!]Ð02.マテリアル数制限 rule アクティブな使用マテリアル: ベースフォルダに含まれないマテリアルを参照しています。  Assets/_Test_D02_01InvalidMaterialPath.mat  Assets/Test_D02_01/New Material.mat シーン内マテリアル数：3    --- 2件のルール違反が見つかりました。 Finish validation </body>
+		<created>2018-12-26 13:45:33</created>
+		<closed>2018-12-28 02:38:29</closed>
+	</bug>
+	<bug>
+		<id>13</id>
+		<title>[G01]スクリプト一覧表示をした際にGraphic Raycasterの表示がおかしくなる</title>
+		<body>スクリプト一覧にてCanvasにデフォルトでついているGraphicRaycasterの表示が  Name: Canvas (UnityEngine.GameObject) eventCamera:  sortOrderPriority: 0 renderOrderPriority: 1  のようになっている  このスクリプトは許可一覧にはないが, 許可されているCanvasに標準でついてくる </body>
+		<created>2018-12-26 12:48:20</created>
+		<closed>2018-12-28 02:36:47</closed>
+	</bug>
+	<bug>
+		<id>12</id>
+		<title>[G01] スクリプト一覧表示をした際にEventSystemの表示がおかしくなる</title>
+		<body>uGUIを使う時に自動的についてくるEventSystemをシーンに含めたとき  &lt;b&gt;Selected:&lt;/b&gt; No module &lt;b&gt;Pointer Input Module of type: &lt;/b&gt;UnityEngine.EventSystems.StandaloneInputModule  のような表示になる  対象スクリプトはEventSystemおよびStandaloneInputModule EventSystemは許可リストにはないが, uGUIを正常に使う際に必要である </body>
+		<created>2018-12-26 12:34:47</created>
+		<closed>2018-12-28 02:36:29</closed>
+	</bug>
+	<bug>
+		<id>11</id>
+		<title>[A03]アンダーバーが連続するフォルダ名が検証をパスしてしまう</title>
+		<body># 関係する入稿ルール - A03 「サークル名_サークル主(全て半角)」の確認  # 課題 - アンダーバーが連続するフォルダ名をルールが識別できていない（というより、アンダーバー前後の文字を確認していない？".+_.+"みたいな）  # バグの例 - フォルダ名：__A03 - フォルダ名：Test__ - フォルダ名：___</body>
+		<created>2018-12-26 12:29:27</created>
+		<closed>2018-12-27 07:59:44</closed>
+	</bug>
+	<bug>
+		<id>9</id>
+		<title>[B02]日本語.fbxだと複数ログにカウントされる</title>
+		<body>日本語.fbxだと複数個ログにカウントされる  Start vket booth validation. (2019.3 Alpha) Base folder:Test_B02_01 Scene file:Assets/Test_B02_01/Test_B02_01.unity Unity version:2017.4.15f1    [!]B02:全角禁止 rule 全角文字使用アセット数：7 Assets/Test_B02_01/Model/日本語.fbx Assets/Test_B02_01/Model/日本語.fbx Assets/Test_B02_01/Model/日本語.fbx Assets/Test_B02_01/Model/日本語フォルダ Assets/Test_B02_01/Space　Folder Assets/Test_B02_01/日本語シェーダ.shader Assets/Test_B02_01/日本語フォルダ 180文字を超える長いパス：0 シーン内の次のオブジェクトはブースに含まれないです。  Main Camera  Directional Light  ブースのサイズ:(1.000, 1.000, 1.000)  [!]Ð02.マテリアル数制限 rule アクティブな使用マテリアル: ベースフォルダに含まれないマテリアルを参照しています。  Resources/unity_builtin_extra シーン内マテリアル数：1    --- 2件のルール違反が見つかりました。 Finish validation </body>
+		<created>2018-12-26 12:15:00</created>
+		<closed>2018-12-29 00:16:53</closed>
+	</bug>
+</bugs>
