@@ -23,16 +23,7 @@ GITHUB_API_KEY = "トークン"
 ```
 
 ## Usage
-### 現時点ではJavaのみに対応
-- 日本語の上位250番目までに含まれるJavaで開発されたリポジトリを対象にXMLを生成する
-```
-$ python3 RunMLBRMaker.py -n ja -t 250 -p Java
-```
- 
-- 申し訳程度のヘルプ
-```
-$ python3 RunMLBRMaker.py -h
-```
+あとでかく
 
 - 対応言語
 ```
@@ -43,30 +34,13 @@ pt, ro, ru, sk, sl, so, sq, sv, sw, ta, te, th, tl, tr, uk, ur, vi, zh-cn, zh-tw
 
 ## しくみ
 ![shikumi](https://user-images.githubusercontent.com/43768808/86399542-64eb6280-bce2-11ea-9599-906aaa9efee0.png)
+この図から少し変更あり
 
-- SelectPLang.py
-  - 与えられたリポジトリ群から，あるプログラミング言語(PL)で開発されたものを抽出する．
-  - 入力:ある自然言語(NL)で書かれたイシュー数リポジトリランキング(ranking-{PL}.txt)
-  - 出力:NLで書かれたイシュー数リポジトリ(PLで開発)ランキング(ranking-{PL}_{NL}.txt)
+- 01_GetPLangInfo.py
+  - リポジトリの言語を取得する
 
-- GetBugtag.py
-  - 入力されたファイルに記載されたリポジトリの，
-    1. Bug(bug)とラベル付けされたIssueの数とリポジトリの名前を，BugラベルIssue数の多い順に./Bug にtxtで出力する．
-    2. 各リポジトリについて，バグ情報のうち修正ファイル以外の情報を./Bug/{username}/{reponame}.xmlに出力する．
-    3. 各リポジトリについて，PRがどのIssueに紐付いているかを./Bug/{username}/{reponame}_PR.xmlに出力する．
-    4. 各リポジトリについてgit logに必要な情報だけをcloneする(git clone --bare)．
-  - 入力:NLで書かれたイシュー数リポジトリ(PLで開発)ランキング(ranking-{PL}_{NL}.txt)
-  - 出力:
-    - Bug(bug)とラベル付けされたIssueの数リポジトリランキング(ranking-{PL}_{NL}_bug.txt)
-    - 各リポジトリの修正ファイル情報を除くバグ情報({reponame}.xml)
-    - 各リポジトリのPRとIssueの紐付き情報({reponame}_PR.xml)
-
-- MakeXML.py
-  - 与えられたリポジトリ名から，XMLを生成する．(バグ情報，PR情報が所定のフォルダにあることが前提)
-  - 入力:リポジトリ名
-  - 出力:そのリポジトリのバグリポジトリ(XML)
-
-- RunMLBRMaker.py
-  - 上記機能をまとめて実行する．
-  - 入力:ある自然言語(NL)で書かれたイシュー数リポジトリランキング(ranking-{PL}.txt)
-  - 出力:入力のうち，PLで開発されたリポジトリの，Bugとラベル付けされたIssueに対する修正ファイルの一覧(バグリポジトリ)
+- 02_GetBugIssue.py
+  - 各リポジトリのBugラベルが付いたIssueを収集する
+  
+- 03_MakeXML.py
+  - 上記情報を用いてxml形式のバグリポジトリを生成する
